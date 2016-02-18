@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grbTargetTemplate = new System.Windows.Forms.GroupBox();
+            this.optFTDISBFinto = new System.Windows.Forms.RadioButton();
             this.optFTDILadeLight = new System.Windows.Forms.RadioButton();
             this.optFTDISpybatt = new System.Windows.Forms.RadioButton();
             this.optFTDIGenerico = new System.Windows.Forms.RadioButton();
@@ -41,23 +42,35 @@
             this.txtEsito = new System.Windows.Forms.TextBox();
             this.btnMostraTemplate = new System.Windows.Forms.Button();
             this.btnResetDevice = new System.Windows.Forms.Button();
-            this.optFTDISBFinto = new System.Windows.Forms.RadioButton();
+            this.optFTDIDesolf = new System.Windows.Forms.RadioButton();
             this.grbTargetTemplate.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbTargetTemplate
             // 
             this.grbTargetTemplate.BackColor = System.Drawing.Color.White;
+            this.grbTargetTemplate.Controls.Add(this.optFTDIDesolf);
             this.grbTargetTemplate.Controls.Add(this.optFTDISBFinto);
             this.grbTargetTemplate.Controls.Add(this.optFTDILadeLight);
             this.grbTargetTemplate.Controls.Add(this.optFTDISpybatt);
             this.grbTargetTemplate.Controls.Add(this.optFTDIGenerico);
             this.grbTargetTemplate.Location = new System.Drawing.Point(27, 226);
             this.grbTargetTemplate.Name = "grbTargetTemplate";
-            this.grbTargetTemplate.Size = new System.Drawing.Size(261, 156);
+            this.grbTargetTemplate.Size = new System.Drawing.Size(496, 179);
             this.grbTargetTemplate.TabIndex = 0;
             this.grbTargetTemplate.TabStop = false;
             this.grbTargetTemplate.Text = "Modello Interfaccia";
+            // 
+            // optFTDISBFinto
+            // 
+            this.optFTDISBFinto.AutoSize = true;
+            this.optFTDISBFinto.ForeColor = System.Drawing.Color.Green;
+            this.optFTDISBFinto.Location = new System.Drawing.Point(36, 138);
+            this.optFTDISBFinto.Name = "optFTDISBFinto";
+            this.optFTDISBFinto.Size = new System.Drawing.Size(213, 21);
+            this.optFTDISBFinto.TabIndex = 3;
+            this.optFTDISBFinto.Text = "Interfaccia FT201x su HW SB";
+            this.optFTDISBFinto.UseVisualStyleBackColor = true;
             // 
             // optFTDILadeLight
             // 
@@ -151,12 +164,12 @@
             // txtEsito
             // 
             this.txtEsito.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEsito.Location = new System.Drawing.Point(27, 411);
+            this.txtEsito.Location = new System.Drawing.Point(27, 437);
             this.txtEsito.Multiline = true;
             this.txtEsito.Name = "txtEsito";
             this.txtEsito.ReadOnly = true;
             this.txtEsito.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtEsito.Size = new System.Drawing.Size(513, 214);
+            this.txtEsito.Size = new System.Drawing.Size(513, 188);
             this.txtEsito.TabIndex = 7;
             // 
             // btnMostraTemplate
@@ -179,16 +192,15 @@
             this.btnResetDevice.UseVisualStyleBackColor = true;
             this.btnResetDevice.Click += new System.EventHandler(this.btnResetDevice_Click);
             // 
-            // optFTDISBFinto
+            // optFTDIDesolf
             // 
-            this.optFTDISBFinto.AutoSize = true;
-            this.optFTDISBFinto.ForeColor = System.Drawing.Color.Green;
-            this.optFTDISBFinto.Location = new System.Drawing.Point(36, 111);
-            this.optFTDISBFinto.Name = "optFTDISBFinto";
-            this.optFTDISBFinto.Size = new System.Drawing.Size(213, 21);
-            this.optFTDISBFinto.TabIndex = 3;
-            this.optFTDISBFinto.Text = "Interfaccia FT201x su HW SB";
-            this.optFTDISBFinto.UseVisualStyleBackColor = true;
+            this.optFTDIDesolf.AutoSize = true;
+            this.optFTDIDesolf.Location = new System.Drawing.Point(36, 111);
+            this.optFTDIDesolf.Name = "optFTDIDesolf";
+            this.optFTDIDesolf.Size = new System.Drawing.Size(252, 21);
+            this.optFTDIDesolf.TabIndex = 4;
+            this.optFTDIDesolf.Text = "Scheda Display DESOLFATATORE";
+            this.optFTDIDesolf.UseVisualStyleBackColor = true;
             // 
             // frmFlashFTDI
             // 
@@ -233,5 +245,6 @@
         private System.Windows.Forms.Button btnMostraTemplate;
         private System.Windows.Forms.Button btnResetDevice;
         private System.Windows.Forms.RadioButton optFTDISBFinto;
+        private System.Windows.Forms.RadioButton optFTDIDesolf;
     }
 }

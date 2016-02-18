@@ -607,7 +607,7 @@ namespace ChargerLogic
                     llVariabiliAttuali = new MoriData.llVariabili();
                     llVariabiliAttuali.IdApparato = "00";
                     llVariabiliAttuali.IstanteLettura = DateTime.Now;
-                    llVariabiliAttuali.TensioneTampone = 0; // (ushort)(_mS.variabiliScheda.TensioneBattT);
+                    llVariabiliAttuali.TensioneTampone = 0; 
                     llVariabiliAttuali.TensioneIstantanea = _mS.VariabiliAttuali.Vbatt;
                     llVariabiliAttuali.CorrenteIstantanea = _mS.VariabiliAttuali.Ibatt;
                     llVariabiliAttuali.AhCaricati = _mS.VariabiliAttuali.AhCaricati;
@@ -646,7 +646,6 @@ namespace ChargerLogic
                 _rxRisposta = false;
                 Log.Debug("Leggi Ciclo Programmato");
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                //                _parametri.serialeCorrente.Write(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 object Risposta;
 
                 _esito = aspettaRisposta(AttesaTimeout, out Risposta,2048000,false,false,elementiComuni.tipoMessaggio.DumpMemoria);

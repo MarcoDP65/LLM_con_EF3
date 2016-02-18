@@ -189,6 +189,7 @@ namespace ChargerLogic
                 // recupero la mappa del programma
                 _tempDati = new byte[_dimBreve];
                 _tempDati = Breve.DataArrayV4;
+                Log.Debug("Breve " + Breve.IdMemoriaBreve.ToString("000") + " " + FunzioniComuni.HexdumpArray(_tempDati));
 
                 // Accodo i dati
                 for (int _i = 0; _i < _dimBreve; _i++)

@@ -15,11 +15,13 @@ namespace PannelloCharger
 
         public string LadeLightUsbSerialNo;
         public string SpyBattUsbSerialNo;
+        public string SeqDesUsbSerialNo;
         public string NoInitSerialNo;
 
 
         public int NumDevLadeLight;
         public int NumDevSpyBatt;
+        public int NumDevSeqDes;
         public int NumDevFTDInoInit;
         public List<UsbDevice> ListaPorte;
 
@@ -30,10 +32,13 @@ namespace PannelloCharger
         {
             LadeLightUsbSerialNo = null;
             SpyBattUsbSerialNo = null;
+            SeqDesUsbSerialNo = null;
             NoInitSerialNo = null;
             NumDevLadeLight = 0;
             NumDevSpyBatt = 0;
+            NumDevSeqDes = 0;
             NumDevFTDInoInit = 0;
+            
             ListaPorte = new List<UsbDevice>();
         }
 
@@ -42,9 +47,11 @@ namespace PannelloCharger
         {
             LadeLightUsbSerialNo = null;
             SpyBattUsbSerialNo = null;
+            SeqDesUsbSerialNo = null;
             NoInitSerialNo = null;
             NumDevLadeLight = 0;
             NumDevSpyBatt = 0;
+            NumDevSeqDes = 0;
             NumDevFTDInoInit = 0;
             string campo;
             string chiave;
@@ -109,6 +116,24 @@ namespace PannelloCharger
                         NumDevFTDInoInit++;
                         NoInitSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
                     }
+
+                    if (ftdiDeviceList[CicloDev].Description == "SEQ-DESO")
+                    {
+                        NumDevSpyBatt++;
+                        NumDevSeqDes++;
+                        SpyBattUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                        SeqDesUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                    }
+
+                    if (ftdiDeviceList[CicloDev].Description == "DESOLFATATORE")
+                    {
+                        NumDevSpyBatt++;
+                        NumDevSeqDes++;
+                        SpyBattUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                        SeqDesUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                    }
+
+
                 }
             }
             else

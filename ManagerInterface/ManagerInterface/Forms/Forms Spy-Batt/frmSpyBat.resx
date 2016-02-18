@@ -274,7 +274,7 @@
     <value>flvwCicliBatteria</value>
   </data>
   <data name="&gt;&gt;flvwCicliBatteria.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwCicliBatteria.Parent" xml:space="preserve">
     <value>tabCb04</value>
@@ -454,7 +454,7 @@
     <value>flvwProgrammiCarica</value>
   </data>
   <data name="&gt;&gt;flvwProgrammiCarica.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwProgrammiCarica.Parent" xml:space="preserve">
     <value>tabCb02</value>
@@ -485,573 +485,6 @@
   </data>
   <data name="&gt;&gt;tabCb02.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="btnStatProvaInserimento.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnStatProvaInserimento.Location" type="System.Drawing.Point, System.Drawing">
-    <value>628, 85</value>
-  </data>
-  <data name="btnStatProvaInserimento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 36</value>
-  </data>
-  <data name="btnStatProvaInserimento.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="btnStatProvaInserimento.Text" xml:space="preserve">
-    <value>Test Dati</value>
-  </data>
-  <data name="&gt;&gt;btnStatProvaInserimento.Name" xml:space="preserve">
-    <value>btnStatProvaInserimento</value>
-  </data>
-  <data name="&gt;&gt;btnStatProvaInserimento.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnStatProvaInserimento.Parent" xml:space="preserve">
-    <value>tabStatParametri</value>
-  </data>
-  <data name="&gt;&gt;btnStatProvaInserimento.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoPause.Name" xml:space="preserve">
-    <value>chkStatGraficoPause</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoPause.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoPause.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoPause.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoFC.Name" xml:space="preserve">
-    <value>chkStatGraficoFC</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoFC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoFC.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoFC.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCP.Name" xml:space="preserve">
-    <value>chkStatGraficoDTCP</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCP.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCP.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCC.Name" xml:space="preserve">
-    <value>chkStatGraficoDTCC</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCC.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTCC.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCP.Name" xml:space="preserve">
-    <value>chkStatGraficoTmaxCP</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCP.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCP.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCC.Name" xml:space="preserve">
-    <value>chkStatGraficoTmaxCC</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCC.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxCC.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTS.Name" xml:space="preserve">
-    <value>chkStatGraficoDTS</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTS.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDTS.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTminS.Name" xml:space="preserve">
-    <value>chkStatGraficoTminS</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTminS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTminS.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTminS.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxS.Name" xml:space="preserve">
-    <value>chkStatGraficoTmaxS</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxS.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTmaxS.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCP.Name" xml:space="preserve">
-    <value>chkStatGraficoDurCP</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCP.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCP.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCC.Name" xml:space="preserve">
-    <value>chkStatGraficoDurCC</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCC.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDurCC.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDoD.Name" xml:space="preserve">
-    <value>chkStatGraficoDoD</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDoD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDoD.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoDoD.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTemporale.Name" xml:space="preserve">
-    <value>chkStatGraficoTemporale</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTemporale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTemporale.Parent" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;chkStatGraficoTemporale.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="grbStatSelGrafici.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 269</value>
-  </data>
-  <data name="grbStatSelGrafici.Size" type="System.Drawing.Size, System.Drawing">
-    <value>564, 233</value>
-  </data>
-  <data name="grbStatSelGrafici.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="grbStatSelGrafici.Text" xml:space="preserve">
-    <value>Selezione Grafici</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelGrafici.Name" xml:space="preserve">
-    <value>grbStatSelGrafici</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelGrafici.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelGrafici.Parent" xml:space="preserve">
-    <value>tabStatParametri</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelGrafici.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnStatRicalcola.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnStatRicalcola.Location" type="System.Drawing.Point, System.Drawing">
-    <value>628, 28</value>
-  </data>
-  <data name="btnStatRicalcola.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 36</value>
-  </data>
-  <data name="btnStatRicalcola.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="btnStatRicalcola.Text" xml:space="preserve">
-    <value>Ricalcola</value>
-  </data>
-  <data name="&gt;&gt;btnStatRicalcola.Name" xml:space="preserve">
-    <value>btnStatRicalcola</value>
-  </data>
-  <data name="&gt;&gt;btnStatRicalcola.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnStatRicalcola.Parent" xml:space="preserve">
-    <value>tabStatParametri</value>
-  </data>
-  <data name="&gt;&gt;btnStatRicalcola.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;grbStatDate.Name" xml:space="preserve">
-    <value>grbStatDate</value>
-  </data>
-  <data name="&gt;&gt;grbStatDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbStatDate.Parent" xml:space="preserve">
-    <value>grbStatSelPeriodo</value>
-  </data>
-  <data name="&gt;&gt;grbStatDate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;optStatPeriodoSel.Name" xml:space="preserve">
-    <value>optStatPeriodoSel</value>
-  </data>
-  <data name="&gt;&gt;optStatPeriodoSel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;optStatPeriodoSel.Parent" xml:space="preserve">
-    <value>grbStatSelPeriodo</value>
-  </data>
-  <data name="&gt;&gt;optStatPeriodoSel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;optStatInteroIntervallo.Name" xml:space="preserve">
-    <value>optStatInteroIntervallo</value>
-  </data>
-  <data name="&gt;&gt;optStatInteroIntervallo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;optStatInteroIntervallo.Parent" xml:space="preserve">
-    <value>grbStatSelPeriodo</value>
-  </data>
-  <data name="&gt;&gt;optStatInteroIntervallo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="grbStatSelPeriodo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 18</value>
-  </data>
-  <data name="grbStatSelPeriodo.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="grbStatSelPeriodo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>571, 207</value>
-  </data>
-  <data name="grbStatSelPeriodo.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="grbStatSelPeriodo.Text" xml:space="preserve">
-    <value>Selezione Periodo</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelPeriodo.Name" xml:space="preserve">
-    <value>grbStatSelPeriodo</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelPeriodo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelPeriodo.Parent" xml:space="preserve">
-    <value>tabStatParametri</value>
-  </data>
-  <data name="&gt;&gt;grbStatSelPeriodo.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabStatParametri.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabStatParametri.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabStatParametri.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1139, 547</value>
-  </data>
-  <data name="tabStatParametri.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabStatParametri.Text" xml:space="preserve">
-    <value>Parametri Selezione</value>
-  </data>
-  <data name="&gt;&gt;tabStatParametri.Name" xml:space="preserve">
-    <value>tabStatParametri</value>
-  </data>
-  <data name="&gt;&gt;tabStatParametri.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStatParametri.Parent" xml:space="preserve">
-    <value>tbcStatistiche</value>
-  </data>
-  <data name="&gt;&gt;tabStatParametri.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;grbStatEnergia.Name" xml:space="preserve">
-    <value>grbStatEnergia</value>
-  </data>
-  <data name="&gt;&gt;grbStatEnergia.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbStatEnergia.Parent" xml:space="preserve">
-    <value>tabStatSintesi</value>
-  </data>
-  <data name="&gt;&gt;grbStatEnergia.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;grbStatCarica.Name" xml:space="preserve">
-    <value>grbStatCarica</value>
-  </data>
-  <data name="&gt;&gt;grbStatCarica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbStatCarica.Parent" xml:space="preserve">
-    <value>tabStatSintesi</value>
-  </data>
-  <data name="&gt;&gt;grbStatCarica.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;grbStatScariche.Name" xml:space="preserve">
-    <value>grbStatScariche</value>
-  </data>
-  <data name="&gt;&gt;grbStatScariche.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbStatScariche.Parent" xml:space="preserve">
-    <value>tabStatSintesi</value>
-  </data>
-  <data name="&gt;&gt;grbStatScariche.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;grbStatStato.Name" xml:space="preserve">
-    <value>grbStatStato</value>
-  </data>
-  <data name="&gt;&gt;grbStatStato.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbStatStato.Parent" xml:space="preserve">
-    <value>tabStatSintesi</value>
-  </data>
-  <data name="&gt;&gt;grbStatStato.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabStatSintesi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabStatSintesi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabStatSintesi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1139, 547</value>
-  </data>
-  <data name="tabStatSintesi.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabStatSintesi.Text" xml:space="preserve">
-    <value>Riepilogo</value>
-  </data>
-  <data name="&gt;&gt;tabStatSintesi.Name" xml:space="preserve">
-    <value>tabStatSintesi</value>
-  </data>
-  <data name="&gt;&gt;tabStatSintesi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStatSintesi.Parent" xml:space="preserve">
-    <value>tbcStatistiche</value>
-  </data>
-  <data name="&gt;&gt;tabStatSintesi.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buiStatCockpit.Name" xml:space="preserve">
-    <value>buiStatCockpit</value>
-  </data>
-  <data name="&gt;&gt;buiStatCockpit.Type" xml:space="preserve">
-    <value>NextUI.BaseUI.BaseUI, NextUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;buiStatCockpit.Parent" xml:space="preserve">
-    <value>tabStatCockpit</value>
-  </data>
-  <data name="&gt;&gt;buiStatCockpit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabStatCockpit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabStatCockpit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1139, 547</value>
-  </data>
-  <data name="tabStatCockpit.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabStatCockpit.Text" xml:space="preserve">
-    <value>Cockpit</value>
-  </data>
-  <data name="&gt;&gt;tabStatCockpit.Name" xml:space="preserve">
-    <value>tabStatCockpit</value>
-  </data>
-  <data name="&gt;&gt;tabStatCockpit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStatCockpit.Parent" xml:space="preserve">
-    <value>tbcStatistiche</value>
-  </data>
-  <data name="&gt;&gt;tabStatCockpit.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label49.Name" xml:space="preserve">
-    <value>label49</value>
-  </data>
-  <data name="&gt;&gt;label49.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label49.Parent" xml:space="preserve">
-    <value>tabStatComparazioni</value>
-  </data>
-  <data name="&gt;&gt;label49.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabStatComparazioni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabStatComparazioni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1139, 547</value>
-  </data>
-  <data name="tabStatComparazioni.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="tabStatComparazioni.Text" xml:space="preserve">
-    <value>Comparazioni</value>
-  </data>
-  <data name="&gt;&gt;tabStatComparazioni.Name" xml:space="preserve">
-    <value>tabStatComparazioni</value>
-  </data>
-  <data name="&gt;&gt;tabStatComparazioni.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStatComparazioni.Parent" xml:space="preserve">
-    <value>tbcStatistiche</value>
-  </data>
-  <data name="&gt;&gt;tabStatComparazioni.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabStatGrafici.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabStatGrafici.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1139, 547</value>
-  </data>
-  <data name="tabStatGrafici.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabStatGrafici.Text" xml:space="preserve">
-    <value>Grafici</value>
-  </data>
-  <data name="&gt;&gt;tabStatGrafici.Name" xml:space="preserve">
-    <value>tabStatGrafici</value>
-  </data>
-  <data name="&gt;&gt;tabStatGrafici.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStatGrafici.Parent" xml:space="preserve">
-    <value>tbcStatistiche</value>
-  </data>
-  <data name="&gt;&gt;tabStatGrafici.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabStatTabelle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabStatTabelle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1139, 547</value>
-  </data>
-  <data name="tabStatTabelle.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tabStatTabelle.Text" xml:space="preserve">
-    <value>Tabelle</value>
-  </data>
-  <data name="&gt;&gt;tabStatTabelle.Name" xml:space="preserve">
-    <value>tabStatTabelle</value>
-  </data>
-  <data name="&gt;&gt;tabStatTabelle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStatTabelle.Parent" xml:space="preserve">
-    <value>tbcStatistiche</value>
-  </data>
-  <data name="&gt;&gt;tabStatTabelle.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;flvwListaSoglie.Name" xml:space="preserve">
-    <value>flvwListaSoglie</value>
-  </data>
-  <data name="&gt;&gt;flvwListaSoglie.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
-  </data>
-  <data name="&gt;&gt;flvwListaSoglie.Parent" xml:space="preserve">
-    <value>tabStatSoglie</value>
-  </data>
-  <data name="&gt;&gt;flvwListaSoglie.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabStatSoglie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tabStatSoglie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1139, 547</value>
-  </data>
-  <data name="tabStatSoglie.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabStatSoglie.Text" xml:space="preserve">
-    <value>Soglie</value>
-  </data>
-  <data name="&gt;&gt;tabStatSoglie.Name" xml:space="preserve">
-    <value>tabStatSoglie</value>
-  </data>
-  <data name="&gt;&gt;tabStatSoglie.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStatSoglie.Parent" xml:space="preserve">
-    <value>tbcStatistiche</value>
-  </data>
-  <data name="&gt;&gt;tabStatSoglie.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tbcStatistiche.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="tbcStatistiche.ShowToolTips" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tbcStatistiche.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1147, 576</value>
-  </data>
-  <data name="tbcStatistiche.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;tbcStatistiche.Name" xml:space="preserve">
     <value>tbcStatistiche</value>
@@ -1393,7 +826,7 @@
     <value>flvwLettureCorrente</value>
   </data>
   <data name="&gt;&gt;flvwLettureCorrente.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwLettureCorrente.Parent" xml:space="preserve">
     <value>tbpCalibrazioni</value>
@@ -1533,6 +966,156 @@
   <data name="&gt;&gt;tbpFirmware.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="txtClonaLogBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 6pt</value>
+  </data>
+  <data name="txtClonaLogBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 520</value>
+  </data>
+  <data name="txtClonaLogBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtClonaLogBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 86</value>
+  </data>
+  <data name="txtClonaLogBox.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.Name" xml:space="preserve">
+    <value>txtClonaLogBox</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbxClonaListaStep.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="lbxClonaListaStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 94</value>
+  </data>
+  <data name="lbxClonaListaStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 420</value>
+  </data>
+  <data name="lbxClonaListaStep.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.Name" xml:space="preserve">
+    <value>lbxClonaListaStep</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtClonaStatoAttuale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtClonaStatoAttuale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 48</value>
+  </data>
+  <data name="txtClonaStatoAttuale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 27</value>
+  </data>
+  <data name="txtClonaStatoAttuale.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="txtClonaStatoAttuale.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.Name" xml:space="preserve">
+    <value>txtClonaStatoAttuale</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label134.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label134.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label134.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 28</value>
+  </data>
+  <data name="label134.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="label134.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="label134.Text" xml:space="preserve">
+    <value>Stato Attuale</value>
+  </data>
+  <data name="&gt;&gt;label134.Name" xml:space="preserve">
+    <value>label134</value>
+  </data>
+  <data name="&gt;&gt;label134.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label134.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;label134.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grbTracciaClonazione.Location" type="System.Drawing.Point, System.Drawing">
+    <value>721, 32</value>
+  </data>
+  <data name="grbTracciaClonazione.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 625</value>
+  </data>
+  <data name="grbTracciaClonazione.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="grbTracciaClonazione.Text" xml:space="preserve">
+    <value>Avanzamento</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.Name" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.Parent" xml:space="preserve">
+    <value>tbpClonaScheda</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 621</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 30</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.Text" xml:space="preserve">
+    <value>Aggiorna SPY-BATT</value>
+  </data>
   <data name="&gt;&gt;btnClonaScriviRecordTestata.Name" xml:space="preserve">
     <value>btnClonaScriviRecordTestata</value>
   </data>
@@ -1543,7 +1126,319 @@
     <value>tbpClonaScheda</value>
   </data>
   <data name="&gt;&gt;btnClonaScriviRecordTestata.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktCliente.Name" xml:space="preserve">
+    <value>txtClonaPktCliente</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktCliente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktCliente.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktCliente.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktBrevi.Name" xml:space="preserve">
+    <value>txtClonaPktBrevi</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktBrevi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktBrevi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktBrevi.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktLunghi.Name" xml:space="preserve">
+    <value>txtClonaPktLunghi</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktLunghi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktLunghi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktLunghi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktProgr.Name" xml:space="preserve">
+    <value>txtClonaPktProgr</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktProgr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktProgr.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaPktProgr.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimCliente.Name" xml:space="preserve">
+    <value>txtClonaDimCliente</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimCliente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimCliente.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimCliente.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label132.Name" xml:space="preserve">
+    <value>label132</value>
+  </data>
+  <data name="&gt;&gt;label132.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label132.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label132.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDatiCliente.Name" xml:space="preserve">
+    <value>txtClonaDatiCliente</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDatiCliente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDatiCliente.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDatiCliente.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label133.Name" xml:space="preserve">
+    <value>label133</value>
+  </data>
+  <data name="&gt;&gt;label133.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label133.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label133.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnClonaPreparaMatrici.Name" xml:space="preserve">
+    <value>btnClonaPreparaMatrici</value>
+  </data>
+  <data name="&gt;&gt;btnClonaPreparaMatrici.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClonaPreparaMatrici.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnClonaPreparaMatrici.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txtMaxCicli.Name" xml:space="preserve">
+    <value>txtMaxCicli</value>
+  </data>
+  <data name="&gt;&gt;txtMaxCicli.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtMaxCicli.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtMaxCicli.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label129.Name" xml:space="preserve">
+    <value>label129</value>
+  </data>
+  <data name="&gt;&gt;label129.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label129.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label129.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;textBox8.Name" xml:space="preserve">
+    <value>textBox8</value>
+  </data>
+  <data name="&gt;&gt;textBox8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox8.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;textBox8.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label128.Name" xml:space="preserve">
+    <value>label128</value>
+  </data>
+  <data name="&gt;&gt;label128.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label128.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label128.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimBrevi.Name" xml:space="preserve">
+    <value>txtClonaDimBrevi</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimBrevi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimBrevi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimBrevi.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label126.Name" xml:space="preserve">
+    <value>label126</value>
+  </data>
+  <data name="&gt;&gt;label126.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label126.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label126.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumBrevi.Name" xml:space="preserve">
+    <value>txtClonaNumBrevi</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumBrevi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumBrevi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumBrevi.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label127.Name" xml:space="preserve">
+    <value>label127</value>
+  </data>
+  <data name="&gt;&gt;label127.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label127.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label127.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimLunghi.Name" xml:space="preserve">
+    <value>txtClonaDimLunghi</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimLunghi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimLunghi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimLunghi.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;label122.Name" xml:space="preserve">
+    <value>label122</value>
+  </data>
+  <data name="&gt;&gt;label122.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label122.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label122.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumLunghi.Name" xml:space="preserve">
+    <value>txtClonaNumLunghi</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumLunghi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumLunghi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumLunghi.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;label125.Name" xml:space="preserve">
+    <value>label125</value>
+  </data>
+  <data name="&gt;&gt;label125.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label125.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label125.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimProgr.Name" xml:space="preserve">
+    <value>txtClonaDimProgr</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimProgr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimProgr.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaDimProgr.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;label123.Name" xml:space="preserve">
+    <value>label123</value>
+  </data>
+  <data name="&gt;&gt;label123.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label123.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label123.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumProgr.Name" xml:space="preserve">
+    <value>txtClonaNumProgr</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumProgr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumProgr.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtClonaNumProgr.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;label124.Name" xml:space="preserve">
+    <value>label124</value>
+  </data>
+  <data name="&gt;&gt;label124.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label124.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label124.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 187</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>623, 233</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Dati Scheda</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -1555,7 +1450,43 @@
     <value>tbpClonaScheda</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnClonaGeneraRecordTestata.Name" xml:space="preserve">
+    <value>btnClonaGeneraRecordTestata</value>
+  </data>
+  <data name="&gt;&gt;btnClonaGeneraRecordTestata.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClonaGeneraRecordTestata.Parent" xml:space="preserve">
+    <value>grbClonaRecordTestata</value>
+  </data>
+  <data name="&gt;&gt;btnClonaGeneraRecordTestata.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtClonaRecordTestata.Name" xml:space="preserve">
+    <value>txtClonaRecordTestata</value>
+  </data>
+  <data name="&gt;&gt;txtClonaRecordTestata.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaRecordTestata.Parent" xml:space="preserve">
+    <value>grbClonaRecordTestata</value>
+  </data>
+  <data name="&gt;&gt;txtClonaRecordTestata.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="grbClonaRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 441</value>
+  </data>
+  <data name="grbClonaRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
+    <value>623, 174</value>
+  </data>
+  <data name="grbClonaRecordTestata.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="grbClonaRecordTestata.Text" xml:space="preserve">
+    <value>Record Testata</value>
   </data>
   <data name="&gt;&gt;grbClonaRecordTestata.Name" xml:space="preserve">
     <value>grbClonaRecordTestata</value>
@@ -1567,7 +1498,115 @@
     <value>tbpClonaScheda</value>
   </data>
   <data name="&gt;&gt;grbClonaRecordTestata.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnClonaSchedVuota.Name" xml:space="preserve">
+    <value>btnClonaSchedVuota</value>
+  </data>
+  <data name="&gt;&gt;btnClonaSchedVuota.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClonaSchedVuota.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;btnClonaSchedVuota.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnClonaCaricaOrigine.Name" xml:space="preserve">
+    <value>btnClonaCaricaOrigine</value>
+  </data>
+  <data name="&gt;&gt;btnClonaCaricaOrigine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClonaCaricaOrigine.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;btnClonaCaricaOrigine.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBox6.Name" xml:space="preserve">
+    <value>textBox6</value>
+  </data>
+  <data name="&gt;&gt;textBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox6.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;textBox6.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;label118.Name" xml:space="preserve">
+    <value>label118</value>
+  </data>
+  <data name="&gt;&gt;label118.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label118.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;label118.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtClonaFwOrigine.Name" xml:space="preserve">
+    <value>txtClonaFwOrigine</value>
+  </data>
+  <data name="&gt;&gt;txtClonaFwOrigine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaFwOrigine.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;txtClonaFwOrigine.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label119.Name" xml:space="preserve">
+    <value>label119</value>
+  </data>
+  <data name="&gt;&gt;label119.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label119.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;label119.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtClonaIdOrigine.Name" xml:space="preserve">
+    <value>txtClonaIdOrigine</value>
+  </data>
+  <data name="&gt;&gt;txtClonaIdOrigine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaIdOrigine.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;txtClonaIdOrigine.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label120.Name" xml:space="preserve">
+    <value>label120</value>
+  </data>
+  <data name="&gt;&gt;label120.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label120.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;label120.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 32</value>
+  </data>
+  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>623, 131</value>
+  </data>
+  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Scheda Origine</value>
   </data>
   <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
     <value>groupBox9</value>
@@ -1579,7 +1618,7 @@
     <value>tbpClonaScheda</value>
   </data>
   <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="tbpClonaScheda.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -1747,7 +1786,7 @@
     <value>32</value>
   </data>
   <data name="btnSfoglia.Text" xml:space="preserve">
-    <value> ...</value>
+    <value>...</value>
   </data>
   <data name="&gt;&gt;btnSfoglia.Name" xml:space="preserve">
     <value>btnSfoglia</value>
@@ -4045,7 +4084,7 @@
     <value>10</value>
   </data>
   <data name="btnSelFileCicli.Text" xml:space="preserve">
-    <value> ...</value>
+    <value>...</value>
   </data>
   <data name="&gt;&gt;btnSelFileCicli.Name" xml:space="preserve">
     <value>btnSelFileCicli</value>
@@ -4330,7 +4369,7 @@
     <value>flvwCicliBatteria</value>
   </data>
   <data name="&gt;&gt;flvwCicliBatteria.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwCicliBatteria.Parent" xml:space="preserve">
     <value>tabCb04</value>
@@ -6451,13 +6490,403 @@
     <value>flvwProgrammiCarica</value>
   </data>
   <data name="&gt;&gt;flvwProgrammiCarica.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwProgrammiCarica.Parent" xml:space="preserve">
     <value>tabCb02</value>
   </data>
   <data name="&gt;&gt;flvwProgrammiCarica.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.Name" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.Name" xml:space="preserve">
+    <value>tabStatSintesi</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.Name" xml:space="preserve">
+    <value>tabStatCockpit</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.Name" xml:space="preserve">
+    <value>tabStatComparazioni</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.Name" xml:space="preserve">
+    <value>tabStatGrafici</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.Name" xml:space="preserve">
+    <value>tabStatTabelle</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.Name" xml:space="preserve">
+    <value>tabStatSoglie</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tbcStatistiche.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tbcStatistiche.ShowToolTips" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tbcStatistiche.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1147, 576</value>
+  </data>
+  <data name="tbcStatistiche.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbcStatistiche.Name" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tbcStatistiche.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbcStatistiche.Parent" xml:space="preserve">
+    <value>tabStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tbcStatistiche.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.Name" xml:space="preserve">
+    <value>btnStatProvaInserimento</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.Name" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.Name" xml:space="preserve">
+    <value>btnStatRicalcola</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.Name" xml:space="preserve">
+    <value>grbStatSelPeriodo</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabStatParametri.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabStatParametri.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabStatParametri.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1139, 547</value>
+  </data>
+  <data name="tabStatParametri.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabStatParametri.Text" xml:space="preserve">
+    <value>Parametri Selezione</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.Name" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatParametri.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnStatProvaInserimento.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStatProvaInserimento.Location" type="System.Drawing.Point, System.Drawing">
+    <value>628, 85</value>
+  </data>
+  <data name="btnStatProvaInserimento.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 36</value>
+  </data>
+  <data name="btnStatProvaInserimento.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="btnStatProvaInserimento.Text" xml:space="preserve">
+    <value>Test Dati</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.Name" xml:space="preserve">
+    <value>btnStatProvaInserimento</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;btnStatProvaInserimento.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoPause.Name" xml:space="preserve">
+    <value>chkStatGraficoPause</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoPause.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoPause.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoPause.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoFC.Name" xml:space="preserve">
+    <value>chkStatGraficoFC</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoFC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoFC.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoFC.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCP.Name" xml:space="preserve">
+    <value>chkStatGraficoDTCP</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCP.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCP.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCC.Name" xml:space="preserve">
+    <value>chkStatGraficoDTCC</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCC.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTCC.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCP.Name" xml:space="preserve">
+    <value>chkStatGraficoTmaxCP</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCP.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCP.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCC.Name" xml:space="preserve">
+    <value>chkStatGraficoTmaxCC</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCC.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxCC.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTS.Name" xml:space="preserve">
+    <value>chkStatGraficoDTS</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTS.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDTS.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTminS.Name" xml:space="preserve">
+    <value>chkStatGraficoTminS</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTminS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTminS.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTminS.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxS.Name" xml:space="preserve">
+    <value>chkStatGraficoTmaxS</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxS.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTmaxS.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCP.Name" xml:space="preserve">
+    <value>chkStatGraficoDurCP</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCP.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCP.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCC.Name" xml:space="preserve">
+    <value>chkStatGraficoDurCC</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCC.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDurCC.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDoD.Name" xml:space="preserve">
+    <value>chkStatGraficoDoD</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDoD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDoD.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoDoD.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTemporale.Name" xml:space="preserve">
+    <value>chkStatGraficoTemporale</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTemporale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTemporale.Parent" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;chkStatGraficoTemporale.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="grbStatSelGrafici.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 269</value>
+  </data>
+  <data name="grbStatSelGrafici.Size" type="System.Drawing.Size, System.Drawing">
+    <value>564, 233</value>
+  </data>
+  <data name="grbStatSelGrafici.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="grbStatSelGrafici.Text" xml:space="preserve">
+    <value>Selezione Grafici</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.Name" xml:space="preserve">
+    <value>grbStatSelGrafici</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelGrafici.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="chkStatGraficoPause.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6849,6 +7278,96 @@
   <data name="&gt;&gt;chkStatGraficoTemporale.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="btnStatRicalcola.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStatRicalcola.Location" type="System.Drawing.Point, System.Drawing">
+    <value>628, 28</value>
+  </data>
+  <data name="btnStatRicalcola.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 36</value>
+  </data>
+  <data name="btnStatRicalcola.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="btnStatRicalcola.Text" xml:space="preserve">
+    <value>Ricalcola</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.Name" xml:space="preserve">
+    <value>btnStatRicalcola</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;btnStatRicalcola.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;grbStatDate.Name" xml:space="preserve">
+    <value>grbStatDate</value>
+  </data>
+  <data name="&gt;&gt;grbStatDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatDate.Parent" xml:space="preserve">
+    <value>grbStatSelPeriodo</value>
+  </data>
+  <data name="&gt;&gt;grbStatDate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;optStatPeriodoSel.Name" xml:space="preserve">
+    <value>optStatPeriodoSel</value>
+  </data>
+  <data name="&gt;&gt;optStatPeriodoSel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optStatPeriodoSel.Parent" xml:space="preserve">
+    <value>grbStatSelPeriodo</value>
+  </data>
+  <data name="&gt;&gt;optStatPeriodoSel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;optStatInteroIntervallo.Name" xml:space="preserve">
+    <value>optStatInteroIntervallo</value>
+  </data>
+  <data name="&gt;&gt;optStatInteroIntervallo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optStatInteroIntervallo.Parent" xml:space="preserve">
+    <value>grbStatSelPeriodo</value>
+  </data>
+  <data name="&gt;&gt;optStatInteroIntervallo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grbStatSelPeriodo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 18</value>
+  </data>
+  <data name="grbStatSelPeriodo.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="grbStatSelPeriodo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>571, 207</value>
+  </data>
+  <data name="grbStatSelPeriodo.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="grbStatSelPeriodo.Text" xml:space="preserve">
+    <value>Selezione Periodo</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.Name" xml:space="preserve">
+    <value>grbStatSelPeriodo</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;grbStatSelPeriodo.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;lblStatDataFine.Name" xml:space="preserve">
     <value>lblStatDataFine</value>
   </data>
@@ -7085,6 +7604,81 @@
   </data>
   <data name="&gt;&gt;optStatInteroIntervallo.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;grbStatEnergia.Name" xml:space="preserve">
+    <value>grbStatEnergia</value>
+  </data>
+  <data name="&gt;&gt;grbStatEnergia.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatEnergia.Parent" xml:space="preserve">
+    <value>tabStatSintesi</value>
+  </data>
+  <data name="&gt;&gt;grbStatEnergia.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;grbStatCarica.Name" xml:space="preserve">
+    <value>grbStatCarica</value>
+  </data>
+  <data name="&gt;&gt;grbStatCarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatCarica.Parent" xml:space="preserve">
+    <value>tabStatSintesi</value>
+  </data>
+  <data name="&gt;&gt;grbStatCarica.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grbStatScariche.Name" xml:space="preserve">
+    <value>grbStatScariche</value>
+  </data>
+  <data name="&gt;&gt;grbStatScariche.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatScariche.Parent" xml:space="preserve">
+    <value>tabStatSintesi</value>
+  </data>
+  <data name="&gt;&gt;grbStatScariche.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;grbStatStato.Name" xml:space="preserve">
+    <value>grbStatStato</value>
+  </data>
+  <data name="&gt;&gt;grbStatStato.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStatStato.Parent" xml:space="preserve">
+    <value>tabStatSintesi</value>
+  </data>
+  <data name="&gt;&gt;grbStatStato.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabStatSintesi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabStatSintesi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabStatSintesi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1139, 547</value>
+  </data>
+  <data name="tabStatSintesi.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabStatSintesi.Text" xml:space="preserve">
+    <value>Riepilogo</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.Name" xml:space="preserve">
+    <value>tabStatSintesi</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatSintesi.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;txtStatEnergiaMediaAh.Name" xml:space="preserve">
     <value>txtStatEnergiaMediaAh</value>
@@ -8883,6 +9477,42 @@
   <data name="&gt;&gt;lblStatAttivazioe.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="&gt;&gt;buiStatCockpit.Name" xml:space="preserve">
+    <value>buiStatCockpit</value>
+  </data>
+  <data name="&gt;&gt;buiStatCockpit.Type" xml:space="preserve">
+    <value>NextUI.BaseUI.BaseUI, NextUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buiStatCockpit.Parent" xml:space="preserve">
+    <value>tabStatCockpit</value>
+  </data>
+  <data name="&gt;&gt;buiStatCockpit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabStatCockpit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabStatCockpit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1139, 547</value>
+  </data>
+  <data name="tabStatCockpit.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabStatCockpit.Text" xml:space="preserve">
+    <value>Cockpit</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.Name" xml:space="preserve">
+    <value>tabStatCockpit</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatCockpit.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="buiStatCockpit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -8910,6 +9540,42 @@
   <data name="&gt;&gt;buiStatCockpit.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;label49.Name" xml:space="preserve">
+    <value>label49</value>
+  </data>
+  <data name="&gt;&gt;label49.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label49.Parent" xml:space="preserve">
+    <value>tabStatComparazioni</value>
+  </data>
+  <data name="&gt;&gt;label49.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabStatComparazioni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabStatComparazioni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1139, 547</value>
+  </data>
+  <data name="tabStatComparazioni.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tabStatComparazioni.Text" xml:space="preserve">
+    <value>Comparazioni</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.Name" xml:space="preserve">
+    <value>tabStatComparazioni</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatComparazioni.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="label49.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -8923,13 +9589,13 @@
     <value>475, 20</value>
   </data>
   <data name="label49.Size" type="System.Drawing.Size, System.Drawing">
-    <value>714, 29</value>
+    <value>706, 29</value>
   </data>
   <data name="label49.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label49.Text" xml:space="preserve">
-    <value>Stima Vantaggio Impiego Caricabatterie LADE Light </value>
+    <value>Stima Vantaggio Impiego Caricabatterie LADE Light</value>
   </data>
   <data name="label49.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -8946,6 +9612,90 @@
   <data name="&gt;&gt;label49.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="tabStatGrafici.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabStatGrafici.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1139, 547</value>
+  </data>
+  <data name="tabStatGrafici.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabStatGrafici.Text" xml:space="preserve">
+    <value>Grafici</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.Name" xml:space="preserve">
+    <value>tabStatGrafici</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatGrafici.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabStatTabelle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabStatTabelle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1139, 547</value>
+  </data>
+  <data name="tabStatTabelle.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabStatTabelle.Text" xml:space="preserve">
+    <value>Tabelle</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.Name" xml:space="preserve">
+    <value>tabStatTabelle</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatTabelle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;flvwListaSoglie.Name" xml:space="preserve">
+    <value>flvwListaSoglie</value>
+  </data>
+  <data name="&gt;&gt;flvwListaSoglie.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;flvwListaSoglie.Parent" xml:space="preserve">
+    <value>tabStatSoglie</value>
+  </data>
+  <data name="&gt;&gt;flvwListaSoglie.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabStatSoglie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabStatSoglie.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1139, 547</value>
+  </data>
+  <data name="tabStatSoglie.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabStatSoglie.Text" xml:space="preserve">
+    <value>Soglie</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.Name" xml:space="preserve">
+    <value>tabStatSoglie</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.Parent" xml:space="preserve">
+    <value>tbcStatistiche</value>
+  </data>
+  <data name="&gt;&gt;tabStatSoglie.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="flvwListaSoglie.Location" type="System.Drawing.Point, System.Drawing">
     <value>52, 45</value>
   </data>
@@ -8959,7 +9709,7 @@
     <value>flvwListaSoglie</value>
   </data>
   <data name="&gt;&gt;flvwListaSoglie.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwListaSoglie.Parent" xml:space="preserve">
     <value>tabStatSoglie</value>
@@ -13621,7 +14371,7 @@
     <value>10</value>
   </data>
   <data name="btnCalFilesearch.Text" xml:space="preserve">
-    <value> ...</value>
+    <value>...</value>
   </data>
   <data name="&gt;&gt;btnCalFilesearch.Name" xml:space="preserve">
     <value>btnCalFilesearch</value>
@@ -15058,7 +15808,7 @@
     <value>flvwLettureCorrente</value>
   </data>
   <data name="&gt;&gt;flvwLettureCorrente.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.7.0.34322, Culture=neutral, PublicKeyToken=80f255ff0a768397</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwLettureCorrente.Parent" xml:space="preserve">
     <value>tbpCalibrazioni</value>
@@ -16123,7 +16873,7 @@
     <value>44</value>
   </data>
   <data name="btnFWFileSBFsearch.Text" xml:space="preserve">
-    <value> ...</value>
+    <value>...</value>
   </data>
   <data name="&gt;&gt;btnFWFileSBFsearch.Name" xml:space="preserve">
     <value>btnFWFileSBFsearch</value>
@@ -16270,7 +17020,7 @@
     <value>35</value>
   </data>
   <data name="btnFWFilePubSave.Text" xml:space="preserve">
-    <value>Genera </value>
+    <value>Genera</value>
   </data>
   <data name="&gt;&gt;btnFWFilePubSave.Name" xml:space="preserve">
     <value>btnFWFilePubSave</value>
@@ -16414,7 +17164,7 @@
     <value>16</value>
   </data>
   <data name="btnFWFileCCSsearch.Text" xml:space="preserve">
-    <value> ...</value>
+    <value>...</value>
   </data>
   <data name="&gt;&gt;btnFWFileCCSsearch.Name" xml:space="preserve">
     <value>btnFWFileCCSsearch</value>
@@ -19426,7 +20176,7 @@
     <value>16</value>
   </data>
   <data name="btnFWFileSBFReadSearch.Text" xml:space="preserve">
-    <value> ...</value>
+    <value>...</value>
   </data>
   <data name="&gt;&gt;btnFWFileSBFReadSearch.Name" xml:space="preserve">
     <value>btnFWFileSBFReadSearch</value>
@@ -20175,360 +20925,6 @@
   <data name="&gt;&gt;label62.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="btnClonaScriviRecordTestata.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 621</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.Text" xml:space="preserve">
-    <value>Aggiorna SPY-BATT</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.Name" xml:space="preserve">
-    <value>btnClonaScriviRecordTestata</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.Parent" xml:space="preserve">
-    <value>tbpClonaScheda</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktCliente.Name" xml:space="preserve">
-    <value>txtClonaPktCliente</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktCliente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktCliente.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktCliente.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktBrevi.Name" xml:space="preserve">
-    <value>txtClonaPktBrevi</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktBrevi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktBrevi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktBrevi.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktLunghi.Name" xml:space="preserve">
-    <value>txtClonaPktLunghi</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktLunghi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktLunghi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktLunghi.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktProgr.Name" xml:space="preserve">
-    <value>txtClonaPktProgr</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktProgr.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktProgr.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaPktProgr.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimCliente.Name" xml:space="preserve">
-    <value>txtClonaDimCliente</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimCliente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimCliente.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimCliente.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label132.Name" xml:space="preserve">
-    <value>label132</value>
-  </data>
-  <data name="&gt;&gt;label132.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label132.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label132.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDatiCliente.Name" xml:space="preserve">
-    <value>txtClonaDatiCliente</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDatiCliente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDatiCliente.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDatiCliente.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label133.Name" xml:space="preserve">
-    <value>label133</value>
-  </data>
-  <data name="&gt;&gt;label133.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label133.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label133.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;btnClonaPreparaMatrici.Name" xml:space="preserve">
-    <value>btnClonaPreparaMatrici</value>
-  </data>
-  <data name="&gt;&gt;btnClonaPreparaMatrici.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClonaPreparaMatrici.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;btnClonaPreparaMatrici.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;txtMaxCicli.Name" xml:space="preserve">
-    <value>txtMaxCicli</value>
-  </data>
-  <data name="&gt;&gt;txtMaxCicli.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtMaxCicli.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtMaxCicli.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label129.Name" xml:space="preserve">
-    <value>label129</value>
-  </data>
-  <data name="&gt;&gt;label129.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label129.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label129.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;textBox8.Name" xml:space="preserve">
-    <value>textBox8</value>
-  </data>
-  <data name="&gt;&gt;textBox8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox8.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox8.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;label128.Name" xml:space="preserve">
-    <value>label128</value>
-  </data>
-  <data name="&gt;&gt;label128.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label128.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label128.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimBrevi.Name" xml:space="preserve">
-    <value>txtClonaDimBrevi</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimBrevi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimBrevi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimBrevi.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;label126.Name" xml:space="preserve">
-    <value>label126</value>
-  </data>
-  <data name="&gt;&gt;label126.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label126.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label126.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumBrevi.Name" xml:space="preserve">
-    <value>txtClonaNumBrevi</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumBrevi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumBrevi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumBrevi.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;label127.Name" xml:space="preserve">
-    <value>label127</value>
-  </data>
-  <data name="&gt;&gt;label127.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label127.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label127.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimLunghi.Name" xml:space="preserve">
-    <value>txtClonaDimLunghi</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimLunghi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimLunghi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimLunghi.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;label122.Name" xml:space="preserve">
-    <value>label122</value>
-  </data>
-  <data name="&gt;&gt;label122.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label122.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label122.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumLunghi.Name" xml:space="preserve">
-    <value>txtClonaNumLunghi</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumLunghi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumLunghi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumLunghi.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;label125.Name" xml:space="preserve">
-    <value>label125</value>
-  </data>
-  <data name="&gt;&gt;label125.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label125.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label125.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimProgr.Name" xml:space="preserve">
-    <value>txtClonaDimProgr</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimProgr.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimProgr.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaDimProgr.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;label123.Name" xml:space="preserve">
-    <value>label123</value>
-  </data>
-  <data name="&gt;&gt;label123.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label123.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label123.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumProgr.Name" xml:space="preserve">
-    <value>txtClonaNumProgr</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumProgr.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumProgr.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtClonaNumProgr.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;label124.Name" xml:space="preserve">
-    <value>label124</value>
-  </data>
-  <data name="&gt;&gt;label124.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label124.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label124.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 187</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 233</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Dati Scheda</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tbpClonaScheda</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="txtClonaPktCliente.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
@@ -21220,13 +21616,13 @@
     <value>20, 28</value>
   </data>
   <data name="label124.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 17</value>
+    <value>98, 17</value>
   </data>
   <data name="label124.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
   <data name="label124.Text" xml:space="preserve">
-    <value>Programmazioni</value>
+    <value>Configurazioni</value>
   </data>
   <data name="&gt;&gt;label124.Name" xml:space="preserve">
     <value>label124</value>
@@ -21239,54 +21635,6 @@
   </data>
   <data name="&gt;&gt;label124.ZOrder" xml:space="preserve">
     <value>24</value>
-  </data>
-  <data name="&gt;&gt;btnClonaGeneraRecordTestata.Name" xml:space="preserve">
-    <value>btnClonaGeneraRecordTestata</value>
-  </data>
-  <data name="&gt;&gt;btnClonaGeneraRecordTestata.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClonaGeneraRecordTestata.Parent" xml:space="preserve">
-    <value>grbClonaRecordTestata</value>
-  </data>
-  <data name="&gt;&gt;btnClonaGeneraRecordTestata.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtClonaRecordTestata.Name" xml:space="preserve">
-    <value>txtClonaRecordTestata</value>
-  </data>
-  <data name="&gt;&gt;txtClonaRecordTestata.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaRecordTestata.Parent" xml:space="preserve">
-    <value>grbClonaRecordTestata</value>
-  </data>
-  <data name="&gt;&gt;txtClonaRecordTestata.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="grbClonaRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 441</value>
-  </data>
-  <data name="grbClonaRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 174</value>
-  </data>
-  <data name="grbClonaRecordTestata.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="grbClonaRecordTestata.Text" xml:space="preserve">
-    <value>Record Testata</value>
-  </data>
-  <data name="&gt;&gt;grbClonaRecordTestata.Name" xml:space="preserve">
-    <value>grbClonaRecordTestata</value>
-  </data>
-  <data name="&gt;&gt;grbClonaRecordTestata.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbClonaRecordTestata.Parent" xml:space="preserve">
-    <value>tbpClonaScheda</value>
-  </data>
-  <data name="&gt;&gt;grbClonaRecordTestata.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="btnClonaGeneraRecordTestata.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
@@ -21344,126 +21692,6 @@
   </data>
   <data name="&gt;&gt;txtClonaRecordTestata.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnClonaSchedVuota.Name" xml:space="preserve">
-    <value>btnClonaSchedVuota</value>
-  </data>
-  <data name="&gt;&gt;btnClonaSchedVuota.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClonaSchedVuota.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;btnClonaSchedVuota.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnClonaCaricaOrigine.Name" xml:space="preserve">
-    <value>btnClonaCaricaOrigine</value>
-  </data>
-  <data name="&gt;&gt;btnClonaCaricaOrigine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClonaCaricaOrigine.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;btnClonaCaricaOrigine.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBox6.Name" xml:space="preserve">
-    <value>textBox6</value>
-  </data>
-  <data name="&gt;&gt;textBox6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox6.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;textBox6.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label118.Name" xml:space="preserve">
-    <value>label118</value>
-  </data>
-  <data name="&gt;&gt;label118.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label118.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;label118.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtClonaFwOrigine.Name" xml:space="preserve">
-    <value>txtClonaFwOrigine</value>
-  </data>
-  <data name="&gt;&gt;txtClonaFwOrigine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaFwOrigine.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;txtClonaFwOrigine.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label119.Name" xml:space="preserve">
-    <value>label119</value>
-  </data>
-  <data name="&gt;&gt;label119.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label119.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;label119.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtClonaIdOrigine.Name" xml:space="preserve">
-    <value>txtClonaIdOrigine</value>
-  </data>
-  <data name="&gt;&gt;txtClonaIdOrigine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaIdOrigine.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;txtClonaIdOrigine.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label120.Name" xml:space="preserve">
-    <value>label120</value>
-  </data>
-  <data name="&gt;&gt;label120.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label120.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;label120.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 32</value>
-  </data>
-  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 131</value>
-  </data>
-  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>Scheda Origine</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
-    <value>tbpClonaScheda</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="btnClonaSchedVuota.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

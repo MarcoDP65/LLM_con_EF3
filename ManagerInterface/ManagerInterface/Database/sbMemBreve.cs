@@ -250,7 +250,7 @@ namespace MoriData
                 FunzioniComuni.SplitInt32(_sbsm.V1, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
                 _datamap[_arrayInit++] = _byte3;
                 _datamap[_arrayInit++] = _byte4;
-
+                /*
                 FunzioniComuni.SplitSShort((short)_sbsm.Amed, ref _byte1, ref _byte2);
                 _datamap[_arrayInit++] = _byte1;
                 _datamap[_arrayInit++] = _byte2;
@@ -263,6 +263,20 @@ namespace MoriData
                 _datamap[_arrayInit++] = _byte1;
                 _datamap[_arrayInit++] = _byte2;
 
+    */
+
+
+                FunzioniComuni.SplitInt32(_sbsm.Amed, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                _datamap[_arrayInit++] = _byte3;
+                _datamap[_arrayInit++] = _byte4;
+
+                FunzioniComuni.SplitInt32(_sbsm.Amin, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                _datamap[_arrayInit++] = _byte3;
+                _datamap[_arrayInit++] = _byte4;
+
+                FunzioniComuni.SplitInt32(_sbsm.Amax, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                _datamap[_arrayInit++] = _byte3;
+                _datamap[_arrayInit++] = _byte4;
 
                 _datamap[_arrayInit++] = _sbsm.Tntc;
                 _datamap[_arrayInit++] = _sbsm.PresenzaElettrolita;

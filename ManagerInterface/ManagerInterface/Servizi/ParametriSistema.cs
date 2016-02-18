@@ -47,6 +47,7 @@ namespace ChargerLogic
         public CultureInfo currentCulture = new CultureInfo("it");
         public string currentCultureValue = "it";
         public bool currentSaveLogin = true;
+        public bool firstRun = false;
         public static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
 
@@ -77,8 +78,9 @@ namespace ChargerLogic
             {
                 currentUser = PannelloCharger.Properties.Settings.Default.utente;
                 currentPassword = PannelloCharger.Properties.Settings.Default.password;
-                currentCultureValue = PannelloCharger.Properties.Settings.Default.cultureInfo;
+                currentCultureValue = PannelloCharger.Properties.Settings.Default.cultureinfo;
                 currentSaveLogin = PannelloCharger.Properties.Settings.Default.autoLogin;
+                firstRun = PannelloCharger.Properties.Settings.Default.firstRun;
             }
             catch
             {
@@ -90,15 +92,16 @@ namespace ChargerLogic
         {
             try
             {
+                PannelloCharger.Properties.Settings.Default.firstRun = firstRun;
                 PannelloCharger.Properties.Settings.Default.utente = currentUser;
                 PannelloCharger.Properties.Settings.Default.password = currentPassword;
-                PannelloCharger.Properties.Settings.Default.cultureInfo = currentCultureValue;
+                PannelloCharger.Properties.Settings.Default.cultureinfo = currentCultureValue;
                 PannelloCharger.Properties.Settings.Default.autoLogin = currentSaveLogin;
                 PannelloCharger.Properties.Settings.Default.Save();
             }
-            catch
+            catch (Exception Ex)
             {
-
+                Log.Error(Ex.Message);
             }
         }
 
@@ -133,7 +136,7 @@ namespace ChargerLogic
             {
                 currentCultureValue = CodiceLingua;
                 currentCulture = new CultureInfo(currentCultureValue);
-                PannelloCharger.Properties.Settings.Default.cultureInfo = currentCultureValue;
+                PannelloCharger.Properties.Settings.Default.cultureinfo = currentCultureValue;
                 PannelloCharger.Properties.Settings.Default.Save();
             }
             catch
@@ -159,6 +162,8 @@ namespace ChargerLogic
                         {
 
                             // Open device by serial number
+                            ftStatus = usbSpyBatt.OpenByIndex(12);
+
                             ftStatus = usbSpyBatt.OpenBySerialNumber(usbSpyBattSerNum);
                             if (ftStatus != FTDI.FT_STATUS.FT_OK)
                             {

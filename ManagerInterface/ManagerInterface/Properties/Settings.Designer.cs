@@ -25,6 +25,18 @@ namespace PannelloCharger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("uno")]
+        public string pippo {
+            get {
+                return ((string)(this["pippo"]));
+            }
+            set {
+                this["pippo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Factory")]
         public string utente {
             get {
@@ -50,12 +62,12 @@ namespace PannelloCharger.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("it")]
-        public string cultureInfo {
+        public string cultureinfo {
             get {
-                return ((string)(this["cultureInfo"]));
+                return ((string)(this["cultureinfo"]));
             }
             set {
-                this["cultureInfo"] = value;
+                this["cultureinfo"] = value;
             }
         }
         
@@ -74,12 +86,12 @@ namespace PannelloCharger.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool firtRun {
+        public bool firstRun {
             get {
-                return ((bool)(this["firtRun"]));
+                return ((bool)(this["firstRun"]));
             }
             set {
-                this["firtRun"] = value;
+                this["firstRun"] = value;
             }
         }
     }

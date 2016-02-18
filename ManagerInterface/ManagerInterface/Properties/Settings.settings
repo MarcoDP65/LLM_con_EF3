@@ -2,19 +2,22 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PannelloCharger.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="pippo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">uno</Value>
+    </Setting>
     <Setting Name="utente" Type="System.String" Scope="User">
       <Value Profile="(Default)">Factory</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="User">
       <Value Profile="(Default)">Factory</Value>
     </Setting>
-    <Setting Name="cultureInfo" Type="System.String" Scope="User">
+    <Setting Name="cultureinfo" Type="System.String" Scope="User">
       <Value Profile="(Default)">it</Value>
     </Setting>
     <Setting Name="autoLogin" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="firtRun" Type="System.Boolean" Scope="User">
+    <Setting Name="firstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

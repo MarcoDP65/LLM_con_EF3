@@ -1058,7 +1058,7 @@
     <value>mnuEsci</value>
   </data>
   <data name="archivioToolStripMenuItem.Text" xml:space="preserve">
-    <value> Archivio</value>
+    <value>Archivio</value>
   </data>
   <data name="tstBtnClose.Text" xml:space="preserve">
     <value>toolStripButton1</value>

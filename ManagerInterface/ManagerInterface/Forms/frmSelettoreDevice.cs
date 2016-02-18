@@ -178,7 +178,7 @@ namespace PannelloCharger
                             case "SPY-BATT":
                                 _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
                                 _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
-                                ApriSpyBatt();
+                                ApriSpyBatt(_tempCanale.SerialNumber);
                                 return;
 
                             case "FT201X USB I2C":
@@ -187,6 +187,19 @@ namespace PannelloCharger
                                 ApriSpyBatt();
                                 return;
 
+                            case "SEQ-DESO":
+                                //_tempCanale.Description = "SPY-BATT";
+                                _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
+                                _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
+                                ApriSpyBatt();
+                                return;
+
+                            case "DESOLFATATORE":
+                                //_tempCanale.Description = "SPY-BATT";
+                                _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
+                                _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
+                                ApriDesolfatatore();
+                                return;
                             default:
                                 break;
                         }
@@ -245,7 +258,7 @@ namespace PannelloCharger
 
         }
 
-        private void ApriSpyBatt()
+        private void ApriSpyBatt(string IdScheda = "" )
         {
             try
             {
@@ -262,8 +275,12 @@ namespace PannelloCharger
                 {
                     if (form.GetType() == typeof(frmSpyBat))
                     {
-                        form.Activate();
-                        return;
+                        frmSpyBat _tmpFrmSB = (frmSpyBat)form;
+                        if (_tmpFrmSB.IdCorrente == IdScheda)
+                        {
+                            form.Activate();
+                            return;
+                        }
                     }
                 }
                 Log.Debug("NUOVO SB");
@@ -284,6 +301,47 @@ namespace PannelloCharger
             }
 
         }
+
+        private void ApriDesolfatatore()
+        {
+            try
+            {
+                bool esitoCanaleApparato = false;
+                // se la porta seriale non è aperta , la apro
+                // -- rev 14/09  se già aperta chiudo e riapro
+                if (_varGlobali.statoCanaleSpyBatt()) _varGlobali.chiudiCanaleSpyBatt();
+
+                this.Cursor = Cursors.WaitCursor;
+
+                esitoCanaleApparato = _varGlobali.apriSpyBat();
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmDesolfatatore))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+                Log.Debug("NUOVO Desolfatatore");
+                frmDesolfatatore sbCorrente = new frmDesolfatatore(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+                sbCorrente.MdiParent = this.MdiParent; ;
+                sbCorrente.StartPosition = FormStartPosition.CenterParent;
+
+                this.Cursor = Cursors.Default;
+
+                Log.Debug("PRIMA");
+                sbCorrente.Show();
+                Log.Debug("DOPO");
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain.ApriDesolfatatore: " + Ex.Message);
+            }
+
+        }
+
 
         private void btnConnetti_Click(object sender, EventArgs e)
         {

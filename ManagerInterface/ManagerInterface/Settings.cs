@@ -1,4 +1,4 @@
-﻿namespace ManagerInterface.Properties {
+﻿namespace PannelloCharger.Properties {
     
     
     // La classe consente la gestione di eventi specifici sulla classe delle impostazioni:

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerInterface", "ManagerInterface\ManagerInterface.csproj", "{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PannelloCharger", "ManagerInterface\PannelloCharger.csproj", "{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LadeLightPcl", "..\LadeLightPcl\LadeLightPcl.csproj", "{CD7B5A1C-4014-4707-90CC-824FA4FFBF10}"
 EndProject
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_NeutralResourcesLanguage = it-IT
 	EndGlobalSection
 EndGlobal

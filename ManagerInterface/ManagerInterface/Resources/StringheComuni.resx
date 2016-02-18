@@ -117,76 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="benvenuto" xml:space="preserve">
-    <value>Benvenuto</value>
+  <data name="Domenica" xml:space="preserve">
+    <value>Dom</value>
   </data>
-  <data name="ConfermaCambioLingua" xml:space="preserve">
-    <value>L'operazione comporta la chiusura di tutte le schede aperte.</value>
+  <data name="FaseCarica" xml:space="preserve">
+    <value>Fase di Carica</value>
   </data>
-  <data name="ConfermaDisconnessione" xml:space="preserve">
-    <value>Disconnettere l'utente corrente ?  (L'operazione chiuderà tutte le finestre aperte)</value>
+  <data name="FaseEqualizzazione" xml:space="preserve">
+    <value>Fase di Equalizzazione</value>
   </data>
-  <data name="strVistaLunghiCol01" xml:space="preserve">
-    <value>F.</value>
+  <data name="FaseScarica" xml:space="preserve">
+    <value>Fase di Scarica</value>
   </data>
-  <data name="strVistaLunghiTtCol01" xml:space="preserve">
-    <value>Progressivo Fase</value>
+  <data name="Giovedi" xml:space="preserve">
+    <value>Gio</value>
   </data>
-  <data name="strVistaLunghiCol02" xml:space="preserve">
-    <value>Tipo Fase</value>
-  </data>
-  <data name="strVistaLunghiTtCol02" xml:space="preserve">
-    <value>Tipo Fase</value>
-  </data>
-  <data name="strVistaLunghiCol03" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="strVistaLunghiTtCol03" xml:space="preserve">
-    <value>Data/Ora Inizio Fase</value>
-  </data>
-  <data name="strVistaLunghiCol04" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="strVistaLunghiTtCol04" xml:space="preserve">
-    <value>Data/Ora Fine Fase</value>
-  </data>
-  <data name="strVistaLunghiCol05" xml:space="preserve">
-    <value>Durata</value>
-  </data>
-  <data name="strVistaLunghiTtCol05" xml:space="preserve">
-    <value>Durata Fase</value>
-  </data>
-  <data name="strVistaLunghiCol06m" xml:space="preserve">
-    <value>°C Min</value>
-  </data>
-  <data name="strVistaLunghiTtCol06m" xml:space="preserve">
-    <value>Temperatura Minima</value>
-  </data>
-  <data name="strVistaLunghiCol06" xml:space="preserve">
-    <value>°C Max</value>
-  </data>
-  <data name="strVistaLunghiTtCol06" xml:space="preserve">
-    <value>Temperatura Massima</value>
-  </data>
-  <data name="strVistaLunghiCol07" xml:space="preserve">
-    <value>V Min</value>
-  </data>
-  <data name="strVistaLunghiTtCol07" xml:space="preserve">
-    <value>Tensione Minima</value>
-  </data>
-  <data name="strVistaLunghiCol08" xml:space="preserve">
-    <value>V Max</value>
-  </data>
-  <data name="strVistaLunghiTtCol08" xml:space="preserve">
-    <value>Tensione Massima</value>
-  </data>
-  <data name="strTipoEvento" xml:space="preserve">
-    <value />
-  </data>
-  <data name="strVistaLunghiCol09" xml:space="preserve">
-    <value>a</value>
-  </data>
-  <data name="strGiornoLun" xml:space="preserve">
+  <data name="Lunedi" xml:space="preserve">
     <value>Lun</value>
+  </data>
+  <data name="Martedi" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="Mercoledi" xml:space="preserve">
+    <value>Mer</value>
+  </data>
+  <data name="PresenzaElett" xml:space="preserve">
+    <value>Pres Elettrolita</value>
+  </data>
+  <data name="Sabato" xml:space="preserve">
+    <value>Sab</value>
+  </data>
+  <data name="Venerdi" xml:space="preserve">
+    <value>Ven</value>
   </data>
 </root>

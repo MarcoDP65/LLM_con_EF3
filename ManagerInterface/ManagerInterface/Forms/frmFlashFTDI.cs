@@ -278,8 +278,8 @@ namespace PannelloCharger
                                 // SPY-BATT
                                 //-----------------------------------------------------
                                 _epromCorrente.ProductID = 0x6015;
-                                _epromCorrente.Manufacturer = FunzioniMR.CompletaAZero("FTDI", 32);
-                                _epromCorrente.Description = FunzioniMR.CompletaAZero("FT201X USB I2C", 64);
+                                _epromCorrente.Manufacturer = FunzioniMR.CompletaAZero("MORI RADDRIZZATORI", 32);
+                                _epromCorrente.Description = FunzioniMR.CompletaAZero("SEQ-DESO", 64);
                                 _epromCorrente.IsVCP = 0x00;
                                 //-----------------------------------------------------
                                 _epromCorrente.I2CDeviceId = 0x123456;
@@ -293,6 +293,30 @@ namespace PannelloCharger
                                 _epromCorrente.Cbus6 = 0x00;
                                 //-----------------------------------------------------
                             }
+
+
+                            if (optFTDIDesolf.Checked)
+                            {
+                                // DESOLFATATORE
+                                //-----------------------------------------------------
+                                _epromCorrente.ProductID = 0x7A77;
+                                _epromCorrente.Manufacturer = FunzioniMR.CompletaAZero("MORI RADDRIZZATORI", 32);
+                                _epromCorrente.Description = FunzioniMR.CompletaAZero("DESOLFATATORE", 64);
+                                _epromCorrente.IsVCP = 0x01;
+                                //-----------------------------------------------------
+                                _epromCorrente.I2CDeviceId = 0x134567;
+                                //-----------------------------------------------------
+                                _epromCorrente.Cbus0 = 0x00;
+                                _epromCorrente.Cbus1 = 0x00;
+                                _epromCorrente.Cbus2 = 0x00;
+                                _epromCorrente.Cbus3 = 0x00;
+                                _epromCorrente.Cbus4 = 0x00;
+                                _epromCorrente.Cbus5 = 0x04;
+                                _epromCorrente.Cbus6 = 0x00;
+                                //-----------------------------------------------------
+                            }
+
+
 
 
                             // Impostata la classe aggiorno la EEPROM

@@ -26,9 +26,11 @@ using log4net.Config;
 
 namespace PannelloCharger
 {
-    public partial class frmSpyBat : Form
+    public partial class frmDesolfatatore : Form
     {
         const int TabParametri = 6;
+        const int DataBlock = 128;
+
         public const int NumGrafici = 20;
         public enum IdGrafico : int { };
         parametriSistema _parametri;
@@ -68,6 +70,9 @@ namespace PannelloCharger
 
         private OxyPlot.PlotModel due;
         public frmAlimentatore Lambda;
+        public byte[] DataBuffer;
+
+
 
 
         // delegate is used to write to a UI control from a non-UI thread
@@ -84,7 +89,7 @@ namespace PannelloCharger
 
         public string IdCorrente;
 
-        public frmSpyBat(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
+        public frmDesolfatatore(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
         {
             bool _esito;
             try
@@ -128,21 +133,8 @@ namespace PannelloCharger
 
                     if (_sb.FirmwarePresente)
                     {
-                        // Se sono in stato BL lo evidenzio e mi fermo, altrimenti leggo la testata
-                        if ((_sb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
-                        {
-                            MostraTestata();
-                            txtRevSWSb.Text = "BOOTLOADER";
-                            txtRevSWSb.ForeColor = Color.Red;
-                            Log.Info("Stato scheda SPY-BATT: LD OK, MODO BOOTLOADER ");
-                        }
-                        else
-                        {
-                            //TODO: gestire io DB se la scheda è già in archivio
-                            CaricaTestata(IdApparato, Logiche, SerialeCollegata);
-                        }
-
-
+                        //TODO: gestire io DB se la scheda è già in archivio
+                        CaricaTestata(IdApparato, Logiche, SerialeCollegata);
                     }
                     else
                     {
@@ -151,12 +143,10 @@ namespace PannelloCharger
                 }
 
                 IdCorrente = _sb.Id;
-                _apparatoPresente = SerialeCollegata;
-
-
+              
+  
                 InizializzaOxyGrSingolo();
                 applicaAutorizzazioni();
-                RicalcolaStatistiche();
                 InizializzaCalibrazioni();
                 InizializzaVistaCorrenti();
 
@@ -168,13 +158,12 @@ namespace PannelloCharger
 
         }
 
-        public frmSpyBat()
+        public frmDesolfatatore()
         {
             Log.Debug("----------------------- frmSpyBat  Easy ---------------------------");
             InitializeComponent();
             InizializzaOxyGrAnalisi();
             InizializzaOxyGrSingolo();
-            RicalcolaStatistiche();
             InizializzaCalibrazioni();
             InizializzaVistaCorrenti();
         }
@@ -209,94 +198,6 @@ namespace PannelloCharger
 
 
         }
-
-        public bool reconnectSpyBat()
-        {
-            bool _esito;
-            try
-            {
-
-                //_parametri = _par;
-                //System.Threading.Thread.CurrentThread.CurrentUICulture = _parametri.currentCulture;
-
-                //InitializeComponent();
-                //InizializzaOxyGrAnalisi();
-                //ResizeRedraw = true;
-                //_logiche = Logiche;
-
-                Log.Debug("----------------------- reconnectSpyBat ---------------------------");
-
-                //_msg = new MessaggioSpyBatt();
-                //_sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
-
-                //_stat = new StatMemLungaSB();
-                string _idCorrente = _sb.Id;
-                abilitaSalvataggi(false);
-
-                // in futuro, inserire quì il precaricamento delle statistiche
-                //CaricaTestata(IdApparato, Logiche, SerialeCollegata);
-
-                // 12/10/15: inizio leggendo lo stato del bootloader, per verificare se c'è un firmware caricato
-                _esito = CaricaStatoFirmware(ref _idCorrente, _logiche, _apparatoPresente);
-                if (!_esito)
-                {
-                    // Se non ho il firmware state potrebbe essere una versione precedente
-                    // provo a legere la testata
-                    _esito = ApriComunicazione(_idCorrente, _logiche, _apparatoPresente);
-                    if (_idCorrente != "")
-                    {
-                        CaricaTestata(_idCorrente, _logiche, _apparatoPresente);
-                    }
-
-                }
-                else
-                {
-
-                    if (_sb.FirmwarePresente)
-                    {
-                        // Se sono in stato BL lo evidenzio e mi fermo, altrimenti leggo la testata
-                        if ((_sb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
-                        {
-                            MostraTestata();
-                            txtRevSWSb.Text = "BOOTLOADER";
-                            txtRevSWSb.ForeColor = Color.Red;
-                            Log.Info("Stato scheda SPY-BATT: LD OK, MODO BOOTLOADER ");
-                        }
-                        else
-                        {
-                            //TODO: gestire io DB se la scheda è già in archivio
-                            CaricaTestata(_idCorrente, _logiche, _apparatoPresente);
-                        }
-
-
-                    }
-                    else
-                    {
-                        MostraTestata();
-                    }
-                }
-
-                IdCorrente = _sb.Id;
-
-
-                InizializzaOxyGrSingolo();
-                applicaAutorizzazioni();
-                RicalcolaStatistiche();
-                InizializzaCalibrazioni();
-                InizializzaVistaCorrenti();
-                return true;
-
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("frmSpyBat: " + Ex.Message + " [" + Ex.TargetSite.ToString() + "]");
-                return false;
-            }
-
-        }
-
-
-
 
         public bool caricaDati(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
         {
@@ -655,7 +556,7 @@ namespace PannelloCharger
                     _readonly = false;
                 else
                 {
-                    tabCaricaBatterie.TabPages.Remove(tabCb03);
+                   // tabCaricaBatterie.TabPages.Remove(tabCb03);
                     _readonly = true;
                 }
                 _enabled = (_readonly == false);
@@ -1263,12 +1164,6 @@ namespace PannelloCharger
                     tabCaricaBatterie.Width = this.Width - 50;
                     //lvwCicliBatteriaOld.Width = this.Width - 120;
                     flvwCicliBatteria.Width = this.Width - 120;
-                    tbcStatistiche.Width = tabCaricaBatterie.Width - 12;
-                    //  buiStatCockpit.Width = tabStatCockpit.Width;
-                    if (TbcStatSettimane != null)
-                    {
-                        TbcStatSettimane.Width = tbcStatistiche.Width - 12;
-                    }
                 }
 
                 if (tbpCalibrazioni.Width > 600 )
@@ -1322,14 +1217,6 @@ namespace PannelloCharger
                     btnDettaglioCicliBrevi.Top = this.Height - 140;
                     btnCaricaDettaglioSel.Top = this.Height - 140;
                     */
-                    //Ridimensiono i tab grafici
-                    tbcStatistiche.Height = tabCaricaBatterie.Height - 30;
-                    // buiStatCockpit.Height = tabStatCockpit.Height;
-                    
-                    if (TbcStatSettimane != null)
-                    {
-                        TbcStatSettimane.Height = tbcStatistiche.Height - 30;
-                    }
 
 
                 }
@@ -1559,16 +1446,6 @@ namespace PannelloCharger
             MostraDettaglioRiga();
         }
 
-        private void opSonda01_CheckedChanged(object sender, EventArgs e)
-        {
-            grbComboSonda.Enabled = false;
-        }
-
-        private void opSonda02_CheckedChanged(object sender, EventArgs e)
-        {
-            grbComboSonda.Enabled = true;
-        }
-
         private void rbtAccensione01_CheckedChanged(object sender, EventArgs e)
         {
             cmbOreRitardo.Enabled = false;
@@ -1637,11 +1514,8 @@ namespace PannelloCharger
             try
             {
 
-                txtOraRtc.Text = "";
-                txtDataRtc.Text = "";
-
                 _esito = _sb.LeggiOrologio();
-                if (_esito && _sb.UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
+                if (_esito)
                 {
                     txtOraRtc.Text = _sb.OrologioSistema.ore.ToString("00") + ":" + _sb.OrologioSistema.minuti.ToString("00");
                     txtDataRtc.Text = _sb.OrologioSistema.giorno.ToString("00") + "/" + _sb.OrologioSistema.mese.ToString("00") + "/" + _sb.OrologioSistema.anno.ToString("0000");
@@ -2683,216 +2557,7 @@ namespace PannelloCharger
         }
 
 
-        public void RicalcolaStatistiche()
-        {
-            try
-            {
-                DatiEstrazione TempStat = new DatiEstrazione();
-
-                _stat = new StatMemLungaSB();
-                _stat.SoglieAnalisi = _sb.SoglieAnalisi;
-                _stat.caricaSoglie();
-                _stat.CicliAttesi = _sb.sbCliente.CicliAttesi;
-                if (_sb.CicliMemoriaLunga.Count > 0)
-                {
-                    _stat.CicliMemoriaLunga = _sb.CicliMemoriaLunga;
-                    _stat.aggregaValori(optStatPeriodoSel.Checked, dtpStatInizio.Value, dtpStatFine.Value);
-
-
-                }
-
-                InizializzaVistaSoglie();
-
-                MostraSintesiStatistiche();
-                InizializzaCockpitStat();
-                InizializzaSchedaConfronti();
-        
-                    CaricaSchedeGrafico(_stat);
-
-
-                //TempStat = _stat.CalcolaArrayGraficoDeepChg(SerialMessage.TipoCiclo.Scarica, "D.o.D. Scariche");
-
-                //InizializzaOxyGrSingolo();
-                //GraficoCicloOxy("D.o.D. Scariche", TempStat);_cicliAttesi
-                // Simplemodel();
-                //oxyContainerGrSingolo.Model = due;
-
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("frmSpyBat.RicalcolaStatistiche: " + Ex.Message);
-
-            }
-        }
-
-        /// <summary>
-        /// Carica i dati sulla pagina di sintesi statistiche
-        /// </summary>
-        public void MostraSintesiStatistiche()
-        {
-            try
-            {
-                if (_stat.DatiPronti)
-                {
-                    //Stato Batteria
-                    txtStatAttivazione.Text = _stat.AvvioSistemaSt;
-                    txtStatGiorniAtt.Text = _stat.NumeroGiorni.ToString();
-                    txtStatNCicli.Text = _stat.NumeroCicli.ToString();
-                    double _etot = _stat.Etot();
-                    if (_etot > 0)
-                    {
-                        double _eresidua = (_etot - _stat.EnScaricataNorm()) / _etot;
-                        if (_eresidua > 100)
-                            txtStatSOH.Text = "N.D.";
-                        else
-                            txtStatSOH.Text = _eresidua.ToString("p2");
-                    }
-                    else
-                    {
-                        txtStatSOH.Text = "";
-                    }
-
-
-                    //Scarica
-                    txtTempoInScarica.Text = FunzioniMR.StringaDurataBase(_stat.DurataScarica);
-                    txtStatNumScariche.Text = _stat.NumeroScariche.ToString();
-                    txtStatNumSovrascariche.Text = _stat.NumeroSovrascariche.ToString();
-                    txtStatPauseSC.Text = _stat.NumeroPauseBattScarica.ToString();
-                    txtStatDoDMedia.Text = _stat.ProfonditaScaricaMedia().ToString("0.0") + "%";
-                    txtStatNumScaricheOverT.Text = _stat.NumeroScaricheSovraT.ToString();
-
-                    //Carica
-                    txtStatTempoInCarica.Text = FunzioniMR.StringaDurataBase(_stat.DurataCarica);
-                    txtStatNumCariche.Text = _stat.NumeroCariche.ToString();
-                    txtStatNumCaricheComp.Text = _stat.NumeroCaricheComplete.ToString();
-                    txtStatNumCaricheParz.Text = _stat.NumeroCaricheParziali.ToString();
-                    txtStatNumCaricheCOverTemp.Text = _stat.NumeroCaricheCompSovraT.ToString();
-                    txtStatNumCarichePOverTemp.Text = _stat.NumeroCaricheParzSovraT.ToString();
-
-                    if (_stat.SecondiTotali > 0)
-                    {
-                        double _fattoreME = _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
-                        txtStatMancElettr.Text = _fattoreME.ToString("p2");
-                    }
-                    //Energia
-                    double _kwtot = _stat.WHtotali / 100;
-
-                    txtStatTotEnergia.Text = _kwtot.ToString("0.0");
-                    if (_stat.SuperatoMassimoSbilanciamento)
-                        txtStatSbilCelle.ForeColor = Color.Red;
-                    else
-                        txtStatSbilCelle.ForeColor = Color.Black;
-
-                    if (_stat.NumeroScariche > 0)
-                    {
-                        double _kwMed = _stat.WHtotali / (100 * _stat.NumeroScariche);
-                        txtStatEnergiaMediaKWh.Text = _kwMed.ToString("0.0");
-                        _kwMed = _stat.AhTotali / ( _stat.NumeroScariche);
-                        txtStatEnergiaMediaAh.Text = _kwMed.ToString("0.0");
-
-                    }
-                    else
-                    {
-                        txtStatEnergiaMediaKWh.Text = "0.0";
-                        txtStatEnergiaMediaAh.Text = "0.0";
-
-                    }
-
-
-                    if (_stat.SecondiTotali > 0)
-                    {
-                        double _fattoreSB = _stat.DurataSbilanciamento / _stat.SecondiTotali;
-                        txtStatSbilCelle.Text = _fattoreSB.ToString("p2");
-                    }
-                    else
-                        txtStatSbilCelle.Text = "";
-
-
-                }
-                else
-                {
-                    txtStatNCicli.Text = "";
-                    txtStatNumScariche.Text = "";
-                }
-
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error("frmSpyBat.MostraSintesiStatistiche: " + Ex.Message);
-
-            }
-        }
-
-        /// <summary>
-        /// Carico la lista delle soglie per le analisi statistiche
-        /// </summary>
-        private void InizializzaVistaSoglie()
-        {
-            try
-            {
-                HeaderFormatStyle _stile = new HeaderFormatStyle();
-                _stile.SetBackColor(Color.DarkGray);
-                _stile.SetForeColor(Color.Yellow);
-                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
-                _stile.SetFont(_carattere);
-                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
-
-                flvwListaSoglie.HeaderUsesThemes = false;
-                flvwListaSoglie.HeaderFormatStyle = _stile;
-                flvwListaSoglie.UseAlternatingBackColors = true;
-                flvwListaSoglie.AlternateRowBackColor = Color.LightGoldenrodYellow;
-
-                flvwListaSoglie.AllColumns.Clear();
-
-                flvwListaSoglie.View = View.Details;
-                flvwListaSoglie.ShowGroups = false;
-                flvwListaSoglie.GridLines = true;
-
-                BrightIdeasSoftware.OLVColumn colIdSoglia = new BrightIdeasSoftware.OLVColumn();
-                colIdSoglia.Text = "ID";
-                colIdSoglia.AspectName = "IdLocale";
-                colIdSoglia.Width = 30;
-                colIdSoglia.HeaderTextAlign = HorizontalAlignment.Left;
-                colIdSoglia.TextAlign = HorizontalAlignment.Right ;
-                flvwListaSoglie.AllColumns.Add(colIdSoglia);
-
-                BrightIdeasSoftware.OLVColumn colNomeSoglia = new BrightIdeasSoftware.OLVColumn();
-                colNomeSoglia.Text = "Soglia";
-                colNomeSoglia.AspectName = "NomeSoglia";
-                colNomeSoglia.Width = 300;
-                colNomeSoglia.HeaderTextAlign = HorizontalAlignment.Left;
-                colNomeSoglia.TextAlign = HorizontalAlignment.Left;
-                flvwListaSoglie.AllColumns.Add(colNomeSoglia);
-
-                BrightIdeasSoftware.OLVColumn colValoreSoglia = new BrightIdeasSoftware.OLVColumn();
-                colValoreSoglia.Text = "Limite";
-                colValoreSoglia.AspectName = "strValoreSoglia";
-                colValoreSoglia.Width = 100;
-                colValoreSoglia.HeaderTextAlign = HorizontalAlignment.Center;
-                colValoreSoglia.TextAlign = HorizontalAlignment.Right;
-                flvwListaSoglie.AllColumns.Add(colValoreSoglia);
-
-
-
-                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
-                colRowFiller.Text = "";
-                colRowFiller.Width = 60;
-                colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
-                colRowFiller.TextAlign = HorizontalAlignment.Right;
-                colRowFiller.FillsFreeSpace = true;
-                flvwListaSoglie.AllColumns.Add(colRowFiller);
-
-                flvwListaSoglie.RebuildColumns();
-
-                this.flvwListaSoglie.SetObjects(_sb.SoglieAnalisi.PacchettoSoglie);
-                flvwListaSoglie.BuildList();
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("InizializzaVistaLunghi: " + Ex.Message);
-            }
-        }
+ 
 
 
         private void tabCaricaBatterie_Selected(object sender, TabControlEventArgs e)
@@ -2919,8 +2584,8 @@ namespace PannelloCharger
                       // btnAttivaProgrammazione.Enabled = true;
                     }
                 }
-                if (e.TabPage == tabStatistiche)
-                    frmSpyBat_Resize(null, null);
+                // if (e.TabPage == tabStatistiche)
+                //    frmSpyBat_Resize(null, null);
 
 
             }
@@ -2953,7 +2618,7 @@ namespace PannelloCharger
                 this.oxyContainerGrSingolo.Click += new System.EventHandler(this.oxyContainerGrSingolo_Click);
                 // 
 
-                tabStatGrafici.Controls.Add(this.oxyContainerGrSingolo);
+                
 
                 oxyGraficoSingolo = new OxyPlot.PlotModel
                 {
@@ -2979,1119 +2644,6 @@ namespace PannelloCharger
         }
 
 
-        /// <summary>
-        /// Disegna i singoli grafici realizzando le singole schede.
-        /// </summary>
-        /// <param name="DatiStat">Classe con i dati preaggregati in base ai parametri.</param>
-        public void CaricaSchedeGrafico(StatMemLungaSB DatiStat)
-        {
-            int  _primaScheda = 4;
-            try
-            {
-
-                //prima elimino le esistenti
-                foreach (TabPage _pagina in tbcStatistiche.TabPages)
-                {
-                    if (_pagina.Tag == "GRAFICO")
-                        tbcStatistiche.TabPages.Remove(_pagina);
-                }
-
-                if (chkStatGraficoDTCP.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("Diff T C.P.");
-                    _grafico.ToolTipText = chkStatGraficoTminS.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 2, 2, 0, 20, 0, "Differenza Temperature in Carica Parziale");
-                    GraficoTemperaturaCiclo("Differenza Temperature in Carica Parziale", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-                if (chkStatGraficoDTCC.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("Diff T C.C.");
-                    _grafico.ToolTipText = chkStatGraficoTminS.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 2, 2, 0, 20, 1, "Differenza Temperature in Carica Completa");
-                    GraficoTemperaturaCiclo("Differenza Temperature in Carica Completa", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-
-                if (chkStatGraficoTmaxCP.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("Tmax C.P.");
-                    _grafico.ToolTipText = chkStatGraficoTminS.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 0, "Temperature Massime in Carica Parziale");
-                    GraficoTemperaturaCiclo("Temperature Massime in Carica Completa", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-
-                if (chkStatGraficoTmaxCC.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("Tmax C.C.");
-                    _grafico.ToolTipText = chkStatGraficoTminS.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 1, "Temperature Massime in Carica Completa");
-                    GraficoTemperaturaCiclo("Temperature Massime in Carica Completa", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-                if (chkStatGraficoDTS.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("Diff T S.");
-                    _grafico.ToolTipText = chkStatGraficoTminS.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 2, 2, 0, 20, -1, "Differenza Temperature in Scarica");
-                    GraficoTemperaturaCiclo("Differenza Temperature in Scarica", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-                if (chkStatGraficoTminS.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("T Min S.");
-                    _grafico.ToolTipText = chkStatGraficoTminS.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 0, 5, -20, 70, -1, "Temperature Minime in Scarica");
-                    GraficoTemperaturaCiclo("Temperature Minime in Scarica", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-                if (chkStatGraficoTmaxS.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("T Max S.");
-                    _grafico.ToolTipText = chkStatGraficoTmaxS.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 1, 5, -10, 80, -1, "Temperature Massime in Scarica");
-                    GraficoTemperaturaCiclo("Temperature Massime in Scarica", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-
-                if (chkStatGraficoDurCP.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("Durata C.P.");
-                    _grafico.ToolTipText = chkStatGraficoDurCC.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo.Carica, 0, 15, 16, "Durata Cariche Parziali");
-                    GraficoDurataCiclo("Durata Cariche Parziali", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-                if (chkStatGraficoDurCC.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("Durata CC");
-                    _grafico.ToolTipText = chkStatGraficoDurCC.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo.Carica, 1, 30, 28, "Durata Cariche Complete");
-                    GraficoDurataCiclo("Durata Cariche Complete", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-
-
-                if (chkStatGraficoDoD.Checked == true)
-                {
-                    oxyTabPage _grafico = new oxyTabPage("D.o.D.");
-                    _grafico.ToolTipText = chkStatGraficoDoD.Text;
-                    _grafico.Tag = "GRAFICO";
-                    _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDeepChg(SerialMessage.TipoCiclo.Scarica, "D.o.D. Scariche");
-                    GraficoLivelliOxy("D.o.D. Scariche", _grafico.DatiGrafico, ref _grafico.GraficoBase);
-
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
-
-                }
-
-                if (chkStatGraficoTemporale.Checked == true)
-                {
-                    TabPage _HostTemporale = new TabPage("Grafico Temporale");
-                    _HostTemporale.Tag = "GRAFICO";
-                    _HostTemporale.BackColor = Color.LightYellow;
-                    _HostTemporale.ToolTipText = chkStatGraficoTemporale.Text;
-                    TbcStatSettimane = new TabControl();
-
-                    // TbcStatSettimane
-                    // 
-
-                    TbcStatSettimane.Location = new System.Drawing.Point(3, 3);
-                    TbcStatSettimane.Name = "TbcStatSettimane";
-                    TbcStatSettimane.SelectedIndex = 0;
-                    //_TbcStatSettimane.Size = new System.Drawing.Size(1136, 541);
-                    TbcStatSettimane.TabIndex = 0;
-                    TbcStatSettimane.ShowToolTips = true;
-                    TbcStatSettimane.Width = tbcStatistiche.Width - 18;
-                    TbcStatSettimane.Height = tbcStatistiche.Height - 30;
-                    _HostTemporale.Controls.Add(TbcStatSettimane);
-                    tbcStatistiche.TabPages.Insert(_primaScheda, _HostTemporale);
-
-                    foreach (SettimanaMR _sett in DatiStat.SettimanePresenti)
-                    {
-                        oxyTabPage _grafico = new oxyTabPage(_sett.settimana.ToString() + "/" + _sett.anno.ToString("0000"));
-                        _grafico.ToolTipText = "Settimana " + _sett.settimana.ToString() + "/" + _sett.anno.ToString("0000");
-                        _grafico.Tag = "GRAFICO";
-                        _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoSettimana(_sett.chiaveSettimana, _grafico.ToolTipText);
-                        _grafico.BackColor = Color.LightYellow;
-                        GraficoTemporaleSett(_grafico.ToolTipText, _grafico.DatiGrafico, ref _grafico.GraficoBase);
-                        TbcStatSettimane.TabPages.Add(_grafico);
-                        Log.Debug("Gr. temporale: pag " + _grafico.Text + " in posizione " + TbcStatSettimane.TabPages.IndexOf(_grafico).ToString() + " di " + TbcStatSettimane.TabPages.Count.ToString());
-                    }
-
-                }
-            }
-            catch
-            {
-
-            }
-
-        }
-
-
-        /// <summary>
-        /// GraficoCicloOxy : 
-        /// </summary>
-        /// <param name="TipoCiclo">Tipo ciclo lungo da visualizzare</param>
-        /// <param name="TempoRelativo">Se true Orari di registrazione relativi</param>
-        public void GraficoCicloOxy(string TitoloGrafico, DatiEstrazione DatiGraph)
-        {
-            try
-            {
-                string _Flag;
-                string _titoloGrafico = "";
-                string _modelloIntervallo;
-                double _fattoreCorrente = 0;
-                double _dtInSecondi;
-
-                tabStatGrafici.BackColor = Color.LightYellow;
-
-                // Preparo le serie di valori
-
-                ValoriPuntualiGrafico.Clear();
-
-                if (DatiGraph == null) return;
-                if (DatiGraph.DatiValidi != true) return;
-
-                int ValMinX;
-                int ValMaxX;
-
-                int ValMinY;
-                int ValMaxY;
-
-                ValMinX = 0;
-                ValMinY = 0;
-                ValMaxX = 100;
-
-
-                // Inizializzo il controllo OxyPlot.PlotModel ( oxyGraficoCiclo )
-                oxyGraficoSingolo.Series.Clear();
-                oxyGraficoSingolo.Axes.Clear();
-
-                oxyGraficoSingolo.Background = OxyPlot.OxyColors.LightYellow;
-                oxyGraficoSingolo.PlotAreaBackground = OxyPlot.OxyColors.White;
-                oxyGraficoSingolo.PlotAreaBorderThickness = new OxyPlot.OxyThickness(3, 3, 3, 3);
-
-
-                oxyGraficoSingolo.Title = TitoloGrafico;
-                oxyGraficoSingolo.TitleFont = "Utopia";
-                oxyGraficoSingolo.TitleFontSize = 18;
-
-
-                // Creo gli Assi
-
-                OxyPlot.Axes.CategoryAxis AsseCat = new OxyPlot.Axes.CategoryAxis();
-                AsseCat.MinorStep = 1;
-
-                OxyPlot.Axes.LinearAxis AsseConteggi = new OxyPlot.Axes.LinearAxis();
-                AsseCat.MinorStep = 1;
-                AsseConteggi.Minimum = 0;
-                AsseConteggi.Maximum = 100;
-
-
-
-                //Creo le serie:
-                OxyPlot.Series.LineSeries serValore = new OxyPlot.Series.LineSeries();
-                serValore.Title = DatiGraph.Titolo;
-                serValore.DataFieldX = "Carica";
-                serValore.DataFieldY = "Numero";
-                serValore.Color = OxyPlot.OxyColors.Blue;
-
-
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
-                ColValore.StrokeThickness = 1;
-                ColValore.Title = DatiGraph.TitoloAsseY;
-
-                //ColValore.YAxis.Maximum = DatiGraph.MaxY * 1.5;
-
-                // carico il Dataset
-
-                ValoriPuntualiGrafico.Clear();
-                for (int _ciclo = 0; _ciclo < DatiGraph.NumStep; _ciclo++)
-                {
-                    AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
-                    //AsseCat.ActualLabels.Add(DatiGraph.arrayLabel[_ciclo]);
-
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
-                    colonna.Value = DatiGraph.arrayValori[_ciclo];
-                    colonna.CategoryIndex = -1;
-                    if (_ciclo < DatiGraph.StepSoglia)
-                        colonna.Color = OxyPlot.OxyColors.Red;
-                    else
-                        colonna.Color = OxyPlot.OxyColors.Blue;
-
-
-                    ColValore.Items.Add(colonna);
-
-                }
-
-
-
-
-
-                oxyGraficoSingolo.Axes.Add(AsseCat);
-                oxyGraficoSingolo.Axes.Add(AsseConteggi);
-
-
-                serValore.XAxisKey = DatiGraph.KeyAsseX;
-                serValore.YAxisKey = DatiGraph.KeyAsseY;
-
-                oxyGraficoSingolo.Series.Add(ColValore);
-
-
-                oxyGraficoSingolo.InvalidatePlot(true);
-
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error("GraficoCiclo: " + Ex.Message);
-            }
-
-        }
-
-        /// <summary>
-        /// GraficoCicloOxy : 
-        /// </summary>
-        /// <param name="TipoCiclo">Tipo ciclo lungo da visualizzare</param>
-        /// <param name="TempoRelativo">Se true Orari di registrazione relativi</param>
-        public void GraficoLivelliOxy(string TitoloGrafico, DatiEstrazione DatiGraph, ref OxyPlot.PlotModel Grafico)
-        {
-            try
-            {
-                string _Flag;
-                string _titoloGrafico = "";
-                string _modelloIntervallo;
-                double _fattoreCorrente = 0;
-                double _dtInSecondi;
-
-                // Preparo le serie di valori
-
-                ValoriPuntualiGrafico.Clear();
-
-                if (DatiGraph == null) return;
-                if (DatiGraph.DatiValidi != true) return;
-
-                double ValMinX;
-                double ValMaxX;
-
-                double ValMinY;
-                double ValMaxY;
-
-                ValMinX = 0;
-                ValMinY = 0;
-                ValMaxX = 100;
-
-
-                // Inizializzo il controllo OxyPlot.PlotModel ( oxyGraficoCiclo )
-                Grafico.Series.Clear();
-                Grafico.Axes.Clear();
-
-                Grafico.Background = OxyPlot.OxyColors.LightYellow;
-                Grafico.PlotAreaBackground = OxyPlot.OxyColors.White;
-                Grafico.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
-
-
-                Grafico.Title = TitoloGrafico;
-                Grafico.TitleFont = "Utopia";
-                Grafico.TitleFontSize = 18;
-
-
-                // Creo gli Assi
-
-                OxyPlot.Axes.CategoryAxis AsseCat = new OxyPlot.Axes.CategoryAxis();
-                AsseCat.MinorStep = 1;
-                AsseCat.MajorGridlineStyle = OxyPlot.LineStyle.Dash;
-                AsseCat.Title = DatiGraph.TitoloAsseX;
-
-                OxyPlot.Axes.LinearAxis AsseConteggi = new OxyPlot.Axes.LinearAxis();
-                AsseCat.MinorStep = 1;
-                AsseConteggi.Minimum = 0;
-                ValMaxY = DatiGraph.MaxY * 1.5;
-                AsseConteggi.Maximum = ValMaxY;
-                AsseConteggi.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseConteggi.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
-
-                AsseConteggi.Title = DatiGraph.TitoloAsseY;
-
-
-
-                //Creo le serie:
-                OxyPlot.Series.LineSeries serValore = new OxyPlot.Series.LineSeries();
-                serValore.Title = DatiGraph.Titolo;
-                serValore.DataFieldX = "Carica";
-                serValore.DataFieldY = "Numero";
-                serValore.Color = OxyPlot.OxyColors.Blue;
-
-
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
-                ColValore.StrokeThickness = 1;
-                ColValore.Title = DatiGraph.TitoloAsseY;
-                ColValore.FillColor = OxyPlot.OxyColors.Blue;
-
-                // carico il Dataset
-
-                ValoriPuntualiGrafico.Clear();
-                for (int _ciclo = 0; _ciclo < DatiGraph.NumStep; _ciclo++)
-                {
-                    AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
-
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
-                    colonna.Value = DatiGraph.arrayValori[_ciclo];
-                    colonna.CategoryIndex = -1;
-                    double _percCicli = 0;
-
-                    if (DatiGraph.TotLetture > 0)
-                    {
-                        _percCicli = (double)DatiGraph.arrayValori[_ciclo] / (double)DatiGraph.TotLetture;
-                    }
-
-                    if (_ciclo >= DatiGraph.StepSoglia)
-                        colonna.Color = OxyPlot.OxyColors.Red;
-                    else
-                        colonna.Color = OxyPlot.OxyColors.Blue;
-
-                    if (colonna.Value > 0)
-                    {
-                        OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
-                        NotaPunto.X = _ciclo;
-                        NotaPunto.Y = colonna.Value;
-                        NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
-                        NotaPunto.Text += "\n" + _percCicli.ToString("P1");
-                        NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
-                        NotaPunto.Shape = OxyPlot.MarkerType.Cross;
-                        Grafico.Annotations.Add(NotaPunto);
-                    }
-
-
-
-                    ColValore.Items.Add(colonna);
-
-                }
-
-
-
-
-
-                Grafico.Axes.Add(AsseCat);
-                Grafico.Axes.Add(AsseConteggi);
-
-
-                serValore.XAxisKey = DatiGraph.KeyAsseX;
-                serValore.YAxisKey = DatiGraph.KeyAsseY;
-
-                Grafico.Series.Add(ColValore);
-
-
-                //Grafico.InvalidatePlot(true);
-
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error("GraficoCiclo: " + Ex.Message);
-            }
-
-        }
-
-        public void GraficoDurataCiclo(string TitoloGrafico, DatiEstrazione DatiGraph, ref OxyPlot.PlotModel Grafico)
-        {
-            try
-            {
-                string _Flag;
-                string _titoloGrafico = "";
-                string _modelloIntervallo;
-                double _fattoreCorrente = 0;
-                double _dtInSecondi;
-
-                // Preparo le serie di valori
-
-                ValoriPuntualiGrafico.Clear();
-
-                if (DatiGraph == null) return;
-                if (DatiGraph.DatiValidi != true) return;
-
-                double ValMinX;
-                double ValMaxX;
-
-                double ValMinY;
-                double ValMaxY;
-
-                ValMinX = 0;
-                ValMinY = 0;
-                ValMaxX = 100;
-
-
-                // Inizializzo il controllo OxyPlot.PlotModel ( oxyGraficoCiclo )
-                Grafico.Series.Clear();
-                Grafico.Axes.Clear();
-
-                Grafico.Background = OxyPlot.OxyColors.LightYellow;
-                Grafico.PlotAreaBackground = OxyPlot.OxyColors.White;
-                Grafico.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
-
-
-                Grafico.Title = TitoloGrafico;
-                Grafico.TitleFont = "Utopia";
-                Grafico.TitleFontSize = 18;
-
-
-                // Creo gli Assi
-
-                OxyPlot.Axes.CategoryAxis AsseCat = new OxyPlot.Axes.CategoryAxis();
-                AsseCat.MinorStep = 1;
-                AsseCat.MajorGridlineStyle = OxyPlot.LineStyle.Dash;
-                AsseCat.Title = DatiGraph.TitoloAsseX;
-
-                OxyPlot.Axes.LinearAxis AsseConteggi = new OxyPlot.Axes.LinearAxis();
-                AsseCat.MinorStep = 1;
-                AsseConteggi.Minimum = 0;
-                ValMaxY = DatiGraph.MaxY * 1.5;
-                AsseConteggi.Maximum = ValMaxY;
-                AsseConteggi.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseConteggi.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
-
-                AsseConteggi.Title = DatiGraph.TitoloAsseY;
-
-
-
-                //Creo le serie:
-                OxyPlot.Series.LineSeries serValore = new OxyPlot.Series.LineSeries();
-                serValore.Title = DatiGraph.Titolo;
-                serValore.DataFieldX = "Durata";
-                serValore.DataFieldY = "Numero";
-                serValore.Color = OxyPlot.OxyColors.Blue;
-
-
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
-                ColValore.StrokeThickness = 1;
-                ColValore.Title = DatiGraph.TitoloAsseY;
-                ColValore.FillColor = OxyPlot.OxyColors.Blue;
-
-                //ColValore.YAxis.Maximum = DatiGraph.MaxY * 1.5;
-
-                // carico il Dataset
-
-                ValoriPuntualiGrafico.Clear();
-                for (int _ciclo = 0; _ciclo <= DatiGraph.NumStep; _ciclo++)
-                {
-                    AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
-                    //AsseCat.ActualLabels.Add(DatiGraph.arrayLabel[_ciclo]);
-
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
-                    colonna.Value = DatiGraph.arrayValori[_ciclo];
-                    colonna.CategoryIndex = -1;
-                    double _percCicli = 0;
-
-                    if (DatiGraph.TotLetture > 0)
-                    {
-                        _percCicli = (double)DatiGraph.arrayValori[_ciclo] / (double)DatiGraph.TotLetture;
-                    }
-
-                    if (_ciclo >= DatiGraph.StepSoglia)
-                        colonna.Color = OxyPlot.OxyColors.Red;
-                    else
-                        colonna.Color = OxyPlot.OxyColors.Blue;
-
-                    if (colonna.Value > 0)
-                    {
-                        OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
-                        NotaPunto.X = _ciclo;
-                        NotaPunto.Y = colonna.Value;
-                        NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
-                        NotaPunto.Text += "\n" + _percCicli.ToString("P1");
-                        NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
-                        NotaPunto.Shape = OxyPlot.MarkerType.Cross;
-                        Grafico.Annotations.Add(NotaPunto);
-                    }
-
-
-
-                    ColValore.Items.Add(colonna);
-
-                }
-
-
-
-
-
-                Grafico.Axes.Add(AsseCat);
-                Grafico.Axes.Add(AsseConteggi);
-
-
-                serValore.XAxisKey = DatiGraph.KeyAsseX;
-                serValore.YAxisKey = DatiGraph.KeyAsseY;
-
-                Grafico.Series.Add(ColValore);
-
-
-                //Grafico.InvalidatePlot(true);
-
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error("GraficoCiclo: " + Ex.Message);
-            }
-
-        }
-
-        public void GraficoTemperaturaCiclo(string TitoloGrafico, DatiEstrazione DatiGraph, ref OxyPlot.PlotModel Grafico)
-        {
-            try
-            {
-                string _Flag;
-                string _titoloGrafico = "";
-                string _modelloIntervallo;
-                double _fattoreCorrente = 0;
-                double _dtInSecondi;
-
-                // Preparo le serie di valori
-
-                ValoriPuntualiGrafico.Clear();
-
-                if (DatiGraph == null) return;
-                if (DatiGraph.DatiValidi != true) return;
-
-                double ValMinX;
-                double ValMaxX;
-
-                double ValMinY;
-                double ValMaxY;
-
-                ValMinX = 0;
-                ValMinY = 0;
-                ValMaxX = 100;
-
-
-                // Inizializzo il controllo OxyPlot.PlotModel ( oxyGraficoCiclo )
-                Grafico.Series.Clear();
-                Grafico.Axes.Clear();
-
-                Grafico.Background = OxyPlot.OxyColors.LightYellow;
-                Grafico.PlotAreaBackground = OxyPlot.OxyColors.White;
-                Grafico.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
-
-
-                Grafico.Title = TitoloGrafico;
-                Grafico.TitleFont = "Utopia";
-                Grafico.TitleFontSize = 18;
-
-
-                // Creo gli Assi
-
-                OxyPlot.Axes.CategoryAxis AsseCat = new OxyPlot.Axes.CategoryAxis();
-                AsseCat.MinorStep = 1;
-                AsseCat.MajorGridlineStyle = OxyPlot.LineStyle.Dash;
-                AsseCat.Title = DatiGraph.TitoloAsseX;
-
-                OxyPlot.Axes.LinearAxis AsseConteggi = new OxyPlot.Axes.LinearAxis();
-                AsseCat.MinorStep = 1;
-                AsseConteggi.Minimum = 0;
-                ValMaxY = DatiGraph.MaxY * 1.5;
-                AsseConteggi.Maximum = ValMaxY;
-                AsseConteggi.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseConteggi.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
-
-                AsseConteggi.Title = DatiGraph.TitoloAsseY;
-
-
-
-                //Creo le serie:
-                OxyPlot.Series.LineSeries serValore = new OxyPlot.Series.LineSeries();
-                serValore.Title = DatiGraph.Titolo;
-                serValore.DataFieldX = "Durata";
-                serValore.DataFieldY = "Numero";
-                serValore.Color = OxyPlot.OxyColors.Blue;
-
-
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
-                ColValore.StrokeThickness = 1;
-                ColValore.Title = DatiGraph.TitoloAsseY;
-                ColValore.FillColor = OxyPlot.OxyColors.Blue;
-
-                //ColValore.YAxis.Maximum = DatiGraph.MaxY * 1.5;
-
-                // carico il Dataset
-
-                ValoriPuntualiGrafico.Clear();
-                for (int _ciclo = 0; _ciclo <= DatiGraph.NumStep; _ciclo++)
-                {
-                    AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
-                    //AsseCat.ActualLabels.Add(DatiGraph.arrayLabel[_ciclo]);
-
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
-                    colonna.Value = DatiGraph.arrayValori[_ciclo];
-                    colonna.CategoryIndex = -1;
-                    double _percCicli = 0;
-
-                    if (DatiGraph.TotLetture > 0)
-                    {
-                        _percCicli = (double)DatiGraph.arrayValori[_ciclo] / (double)DatiGraph.TotLetture;
-                    }
-
-                    if (_ciclo >= DatiGraph.StepSoglia)
-                       colonna.Color = OxyPlot.OxyColors.Red;
-                    else
-                        colonna.Color = OxyPlot.OxyColors.Blue;
-
-                    if (colonna.Value > 0)
-                    {
-                        OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
-                        NotaPunto.X = _ciclo;
-                        NotaPunto.Y = colonna.Value;
-                        NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
-                        NotaPunto.Text += "\n" + _percCicli.ToString("P1");
-                        NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
-                        NotaPunto.Shape = OxyPlot.MarkerType.Cross;
-                        Grafico.Annotations.Add(NotaPunto);
-                    }
-
-
-
-                    ColValore.Items.Add(colonna);
-
-                }
-
-
-
-
-
-                Grafico.Axes.Add(AsseCat);
-                Grafico.Axes.Add(AsseConteggi);
-
-
-                serValore.XAxisKey = DatiGraph.KeyAsseX;
-                serValore.YAxisKey = DatiGraph.KeyAsseY;
-
-                Grafico.Series.Add(ColValore);
-
-
-                //Grafico.InvalidatePlot(true);
-
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error("GraficoCiclo: " + Ex.Message);
-            }
-
-        }
-
-
-        public void GraficoTemporaleSett(string TitoloGrafico, DatiEstrazione DatiGraph, ref OxyPlot.PlotModel Grafico)
-        {
-            try
-            {
-                string _Flag;
-                string _titoloGrafico = "";
-                string _modelloIntervallo;
-                double _fattoreCorrente = 0;
-                double _dtInSecondi;
-
-                // Preparo le serie di valori
-
-                ValoriPuntualiGrafico.Clear();
-
-                if (DatiGraph == null) return;
-                if (DatiGraph.DatiValidi != true) return;
-
-                double ValMinX;
-                double ValMaxX;
-
-                double ValMinY;
-                double ValMaxY;
-
-                ValMinX = 0;
-                ValMinY = 0;
-                ValMaxX = 100;
-
-
-                // Inizializzo il controllo OxyPlot.PlotModel ( oxyGraficoCiclo )
-                Grafico.Series.Clear();
-                Grafico.Axes.Clear();
-
-                Grafico.Background = OxyPlot.OxyColors.LightYellow;
-                Grafico.PlotAreaBackground = OxyPlot.OxyColors.White;
-                Grafico.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
-                Grafico.LegendBackground = OxyPlot.OxyColors.White;
-                Grafico.LegendBorder = OxyPlot.OxyColors.Black;
-                Grafico.LegendPlacement = OxyPlot.LegendPlacement.Outside;
-
-
-                Grafico.Title = TitoloGrafico;
-                Grafico.TitleFont = "Arial";
-                Grafico.TitleFontSize = 18;
-
-
-                // Creo gli Assi
-
-                OxyPlot.Axes.LinearAxis AsseGiorni = new OxyPlot.Axes.LinearAxis();
-                AsseGiorni.Minimum = 0;
-                AsseGiorni.MinorStep = 96;
-                AsseGiorni.MajorStep = 288;
-                AsseGiorni.Maximum = 2016;
-                AsseGiorni.MinimumPadding = 0;
-                AsseGiorni.MaximumPadding = 0;
-                //AsseGiorni.MajorGridlineStyle = OxyPlot.LineStyle.Dash;
-                AsseGiorni.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseGiorni.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
-                AsseGiorni.Title = DatiGraph.TitoloAsseX;
-                AsseGiorni.Position = OxyPlot.Axes.AxisPosition.Bottom;
-                AsseGiorni.IsAxisVisible = false;
-                AsseGiorni.IsZoomEnabled = false;
-                AsseGiorni.IsPanEnabled = false;
-
-                OxyPlot.Axes.LinearAxis AsseCarica = new OxyPlot.Axes.LinearAxis();
-                //Asse spostato da .1 a .7
-                AsseCarica.StartPosition = 0.05;
-                AsseCarica.EndPosition = 0.7;
-                AsseCarica.AxislineThickness = 20;
-                AsseCarica.AxislineStyle = OxyPlot.LineStyle.Solid;
-                AsseCarica.AxislineColor = OxyPlot.OxyColors.Green;
-                AsseCarica.IsZoomEnabled = false;
-                AsseCarica.IsPanEnabled = false;
-                AsseCarica.MinorStep = 5;
-                AsseCarica.MajorStep = 20;
-                AsseCarica.MaximumPadding = 5;
-                AsseCarica.Minimum = 0;
-                ValMaxY = 110;
-                AsseCarica.Maximum = ValMaxY;
-                AsseCarica.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseCarica.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
-                AsseCarica.Key = "Chg";
-                AsseCarica.Title = DatiGraph.TitoloAsseY;
-                AsseCarica.PositionAtZeroCrossing = true;
-
-                OxyPlot.Axes.LinearAxis AsseTemp = new OxyPlot.Axes.LinearAxis();
-                //Asse spostato da .7 a 1
-                AsseTemp.StartPosition = 0.7;
-                AsseTemp.EndPosition = 1;
-                AsseTemp.MinorStep = 5;
-                AsseTemp.MajorStep = 10;
-                AsseTemp.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseTemp.MajorGridlineColor = OxyPlot.OxyColors.LightSeaGreen;
-                AsseTemp.MinorGridlineStyle = OxyPlot.LineStyle.None;
-                //AsseTemp.MaximumPadding = 5;
-                AsseTemp.Minimum = 00;
-                AsseTemp.Maximum = 70;
-                AsseTemp.Key = "Temp";
-                AsseTemp.Unit = "°C";
-                AsseTemp.IsZoomEnabled = false;
-                AsseTemp.IsPanEnabled = false;
-                AsseTemp.PositionAtZeroCrossing = true;
-                AsseTemp.AxislineStyle = OxyPlot.LineStyle.Solid;
-                AsseTemp.AxislineColor = OxyPlot.OxyColors.LightSeaGreen;
-                AsseTemp.AxislineThickness = 20 ;
-
-
-
-                OxyPlot.Axes.LinearAxis AsseElAvail = new OxyPlot.Axes.LinearAxis();
-                //Asse spostato da .7 a 1
-                AsseElAvail.StartPosition = 0;
-                AsseElAvail.EndPosition = 0.05;
-
-                AsseElAvail.Minimum = 0;
-                AsseElAvail.Maximum = 5;
-                AsseElAvail.Key = "ElAvail";
-                AsseElAvail.Unit = "El.";
-                AsseElAvail.IsZoomEnabled = false;
-                AsseElAvail.IsPanEnabled = false;
-                AsseElAvail.TickStyle = OxyPlot.Axes.TickStyle.None;
-                AsseElAvail.TextColor = OxyPlot.OxyColors.Red;
-
-  
-
-                OxyPlot.Axes.CategoryAxis AsseLabelGiorni = new OxyPlot.Axes.CategoryAxis();
-                AsseLabelGiorni.MinorStep = 1;
-                AsseLabelGiorni.MinorStep = 3;
-                AsseLabelGiorni.Labels.Add(StringheComuni.Lunedi);
-                AsseLabelGiorni.Labels.Add(StringheComuni.Martedi);
-                AsseLabelGiorni.Labels.Add(StringheComuni.Mercoledi);
-                AsseLabelGiorni.Labels.Add(StringheComuni.Giovedi);
-                AsseLabelGiorni.Labels.Add(StringheComuni.Venerdi);
-                AsseLabelGiorni.Labels.Add(StringheComuni.Sabato);
-                AsseLabelGiorni.Labels.Add(StringheComuni.Domenica);
-                AsseLabelGiorni.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseLabelGiorni.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
-                AsseLabelGiorni.Position = OxyPlot.Axes.AxisPosition.Bottom;
-
-               
-                Grafico.Axes.Add(AsseGiorni);
-                Grafico.Axes.Add(AsseCarica);
-                Grafico.Axes.Add(AsseTemp);
-                Grafico.Axes.Add(AsseLabelGiorni);
-                Grafico.Axes.Add(AsseElAvail);
-
-
-                //Creo le serie:
-                OxyPlot.Series.RectangleBarSeries serCicli = new OxyPlot.Series.RectangleBarSeries();
-
-                // Creo le serie fittizie per la legenda
-                OxyPlot.Series.RectangleBarSeries serCarica = new OxyPlot.Series.RectangleBarSeries();
-                serCarica.Title = StringheComuni.FaseCarica;
-                serCarica.FillColor = OxyPlot.OxyColors.Green;
-                Grafico.Series.Add(serCarica);
-                OxyPlot.Series.RectangleBarSeries serEqual = new OxyPlot.Series.RectangleBarSeries();
-                serEqual.Title = StringheComuni.FaseEqualizzazione;
-                serEqual.FillColor = OxyPlot.OxyColors.LightGreen;
-                Grafico.Series.Add(serEqual);
-                OxyPlot.Series.RectangleBarSeries serScarica = new OxyPlot.Series.RectangleBarSeries();
-                serScarica.Title = StringheComuni.FaseScarica;
-                serScarica.FillColor = OxyPlot.OxyColors.LightYellow;
-                Grafico.Series.Add(serScarica);
-                OxyPlot.Series.RectangleBarSeries serElettrolita = new OxyPlot.Series.RectangleBarSeries();
-                serElettrolita.Title = StringheComuni.PresenzaElett;
-                serElettrolita.FillColor = OxyPlot.OxyColors.LightSkyBlue;
-                Grafico.Series.Add(serElettrolita);
-
-                // Creo le serie per le temperature
-                OxyPlot.Series.LineSeries serTmax = new OxyPlot.Series.LineSeries();
-                serTmax.Title = "Temp Max";
-                serTmax.Color = OxyPlot.OxyColors.Orange;
-                serTmax.YAxisKey = "Temp";
-                //Grafico.Series.Add(serTmax);
-
-                OxyPlot.Series.LineSeries serTmin = new OxyPlot.Series.LineSeries();
-                serTmin.Title = "Temp Min";
-                serTmin.Color = OxyPlot.OxyColors.Yellow;
-                serTmin.YAxisKey = "Temp";
-
-
-                OxyPlot.Series.LineSeries serTmed = new OxyPlot.Series.LineSeries();
-                serTmed.Title = "Temp Media";
-                serTmed.Color = OxyPlot.OxyColors.Red;
-                serTmed.YAxisKey = "Temp";
-
-
-                OxyPlot.Series.AreaSeries serTvar = new OxyPlot.Series.AreaSeries();
-                serTvar.Title = "Range Temp";
-                serTvar.Fill = OxyPlot.OxyColors.LightGray;
-                serTvar.YAxisKey = "Temp";
-
-                serTvar.DataFieldY2 = "Minimum";
-                serTvar.StrokeThickness = 0;
-                serTvar.DataFieldY = "Maximum";
-
-                // Creo la serie per la presenza elettrolita
-                OxyPlot.Series.RectangleBarSeries serElAvail = new OxyPlot.Series.RectangleBarSeries();
-                serElAvail.YAxisKey = "ElAvail";
-
-
-                OxyPlot.Series.RectangleBarItem OxyItem = new OxyPlot.Series.RectangleBarItem();
-                bool _marcaPunto = false;
-                bool _elPresente = false;
-           
-
-                foreach (_StatCicloSBPeriodo ciclo in DatiGraph.DatiPeriodo)
-                {
-                    _marcaPunto = false;
-                    switch (ciclo.TipoEvento)
-                    {
-                        case (byte)SerialMessage.TipoCiclo.Carica:
-                            OxyItem = new OxyPlot.Series.RectangleBarItem();
-                            OxyItem.Color = OxyPlot.OxyColors.Green;
-                            OxyItem.Y0 = 0;
-                            OxyItem.Y1 = ciclo.StatoCarica;
-                            OxyItem.X0 = ciclo.PeriodoTemporale.minutoInizio;
-                            OxyItem.X1 = ciclo.PeriodoTemporale.minutoFine;
-                            OxyItem.Title = ciclo.IdMemoriaLunga.ToString();
-                            serCicli.Items.Add(OxyItem);
-                            Log.Debug("Carica  - Ciclo " + ciclo.IdMemoriaLunga.ToString() + " " + OxyItem.X0.ToString() + " - " + OxyItem.X1.ToString()
-                                                                                          + " | " + ciclo.Durata.ToString() + " / " + ciclo.PeriodoTemporale.giornoInizio.ToString()
-                                                                                          + " - " + ciclo.PeriodoTemporale.giornoFine.ToString());
-                            _marcaPunto = true;
-                            break;
-
-                        case (byte)SerialMessage.TipoCiclo.Equal:
-                            OxyItem = new OxyPlot.Series.RectangleBarItem();
-                            OxyItem.Color = OxyPlot.OxyColors.LightGreen;
-                            OxyItem.Y0 = 0;
-                            OxyItem.Y1 = ciclo.StatoCarica;
-                            OxyItem.X0 = ciclo.PeriodoTemporale.minutoInizio;
-                            OxyItem.X1 = ciclo.PeriodoTemporale.minutoFine;
-                            OxyItem.Title = ciclo.IdMemoriaLunga.ToString();
-                            serCicli.Items.Add(OxyItem);
-                            Log.Debug("Carica  - Ciclo " + ciclo.IdMemoriaLunga.ToString() + " " + OxyItem.X0.ToString() + " - " + OxyItem.X1.ToString()
-                                                                                          + " | " + ciclo.Durata.ToString() + " / " + ciclo.PeriodoTemporale.giornoInizio.ToString()
-                                                                                          + " - " + ciclo.PeriodoTemporale.giornoFine.ToString());
-                            _marcaPunto = true;
-                            break;
-
-                        case (byte)SerialMessage.TipoCiclo.Scarica:
-
-                            OxyItem = new OxyPlot.Series.RectangleBarItem();
-                            OxyItem.Color = OxyPlot.OxyColors.LightYellow;
-                            OxyItem.Y0 = 0;
-                            OxyItem.Y1 = ciclo.StatoCarica;
-                            OxyItem.X0 = ciclo.PeriodoTemporale.minutoInizio;
-                            OxyItem.X1 = ciclo.PeriodoTemporale.minutoFine;
-                            OxyItem.Title = ciclo.IdMemoriaLunga.ToString();
-                            Log.Debug("Scarica - Ciclo " + ciclo.IdMemoriaLunga.ToString() + " " + OxyItem.X0.ToString() + " - " + OxyItem.X1.ToString()
-                                                                                          + " | " + ciclo.Durata.ToString() + " / " + ciclo.PeriodoTemporale.giornoInizio.ToString()
-                                                                                          + " - " + ciclo.PeriodoTemporale.giornoFine.ToString());
-                            serCicli.Items.Add(OxyItem);
-                            _marcaPunto = true;
-                            break;
-
-                        default:
-                            // non faccio nulla
-                            break;
-                    }
-
-                    // In ogni caso metto i punti temp.
-
-                    int puntomedio = (ciclo.PeriodoTemporale.minutoInizio + ciclo.PeriodoTemporale.minutoFine) / 2;
-                    int _durata = ciclo.PeriodoTemporale.minutoFine - ciclo.PeriodoTemporale.minutoInizio;
-                    int _posMin = ciclo.PeriodoTemporale.minutoInizio + (_durata / 10);
-                    int _posMax = ciclo.PeriodoTemporale.minutoInizio + (_durata * 9 / 10);
-
-                    //----------------------------------------------------------
-                    // Temperatura Massima
-                    //----------------------------------------------------------
-                    OxyPlot.DataPoint _puntoMax = new OxyPlot.DataPoint(_posMin, ciclo.TempMax);
-
-                    //_puntoMax.X = _posMin;
-                    //_puntoMax.Y = ciclo.TempMax;
-                    serTmax.Points.Add(_puntoMax);
-                    serTvar.Points2.Add(_puntoMax);
-                    _puntoMax = new OxyPlot.DataPoint(_posMax, ciclo.TempMax);
-                    //_puntoMax.X = _posMax;
-                    //_puntoMax.Y = ciclo.TempMax;
-                    serTmax.Points.Add(_puntoMax);
-                    serTvar.Points2.Add(_puntoMax);
-
-
-                    //----------------------------------------------------------
-                    // Temperatura Minima
-                    //----------------------------------------------------------
-                    OxyPlot.DataPoint _puntoMin = new OxyPlot.DataPoint(_posMin, ciclo.TempMin);
-                    //_puntoMin.X = _posMin;
-                    //_puntoMin.Y = ciclo.TempMin;
-                    serTmin.Points.Add(_puntoMin);
-                    serTvar.Points.Add(_puntoMin);
-                    _puntoMin = new OxyPlot.DataPoint(_posMax, ciclo.TempMin);
-                    //_puntoMin.X = _posMax;
-                    //_puntoMin.Y = ciclo.TempMin;
-                    serTmin.Points.Add(_puntoMin);
-                    serTvar.Points.Add(_puntoMin);
-
-
-                    //----------------------------------------------------------
-                    // Temperatura Media
-                    //----------------------------------------------------------
-
-                    OxyPlot.DataPoint _punto = new OxyPlot.DataPoint(_posMin, (double)(ciclo.TempMin + ciclo.TempMax) / 2);
-                    serTmed.Points.Add(_punto);
-                    _punto = new OxyPlot.DataPoint(_posMax, (double)(ciclo.TempMin + ciclo.TempMax) / 2);
-                    serTmed.Points.Add(_punto);
-
-                    //----------------------------------------------------------
-                    // Presenza Elettrolita
-                    //----------------------------------------------------------
-
-                    OxyItem = new OxyPlot.Series.RectangleBarItem();
-                    if (ciclo.PresenzaElettrolita == 0xF0)
-                    {
-                        OxyItem.Color = OxyPlot.OxyColors.LightSkyBlue;
-                    }
-                    else
-                    {
-                        OxyItem.Color = OxyPlot.OxyColors.Red;
-                    }
-
-
-                    OxyItem.Y0 = 1;
-                    OxyItem.Y1 = 4;
-                    OxyItem.X0 = ciclo.PeriodoTemporale.minutoInizio;
-                    OxyItem.X1 = ciclo.PeriodoTemporale.minutoFine;
-                    serElAvail.Items.Add(OxyItem);
-
-
-                    _marcaPunto = false;
-
-
-                    if (_marcaPunto == true)
-                    {
-                        OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
-                        NotaPunto.X = (OxyItem.X0 + OxyItem.X1) / 2;
-                        NotaPunto.Y = OxyItem.Y1;
-                        NotaPunto.Text = "Ciclo: " + ciclo.IdMemoriaLunga.ToString();
-                        //NotaPunto.Text += "\n" + _percCicli.ToString("P1");
-                        NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
-                        NotaPunto.Shape = OxyPlot.MarkerType.Cross;
-                        Grafico.Annotations.Add(NotaPunto);
-                    }
-
-
-                }
-
-
-
-                Grafico.Series.Add(serCicli);
-                Grafico.Series.Add(serTvar);
-                Grafico.Series.Add(serTmin);
-                Grafico.Series.Add(serTmax);
-                Grafico.Series.Add(serTmed);
-                Grafico.Series.Add(serElAvail);
-
-                serCicli.MouseDown += SerCicli_MouseDown;
-                serTmin.MouseDown += SerTmin_MouseDown;
-
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error("GraficoCiclo: " + Ex.Message);
-            }
-
-        }
 
         private void SerCicli_MouseDown(object sender, OxyPlot.OxyMouseDownEventArgs e)
         {
@@ -4183,7 +2735,7 @@ namespace PannelloCharger
 
         private void btnStatRicalcola_Click(object sender, EventArgs e)
         {
-            RicalcolaStatistiche();
+            
         }
 
         private void tabCb05_Click(object sender, EventArgs e)
@@ -4558,7 +3110,7 @@ namespace PannelloCharger
 
                 oxyContainer.Model = ModelloGR;
                 oxyContainer.BackColor = Color.Red;
-                tabStatComparazioni.Controls.Add(oxyContainer);
+                //tabStatComparazioni.Controls.Add(oxyContainer);
             }
 
             catch
@@ -4672,6 +3224,41 @@ namespace PannelloCharger
                     colonna.Color = OxyPlot.OxyColors.Red;
                     ColValore.Items.Add(colonna);
 
+
+
+                    /*
+                        double _percCicli = 0;
+
+                        if (DatiGraph.TotLetture > 0)
+                        {
+                            _percCicli = (double)DatiGraph.arrayValori[_ciclo] / (double)DatiGraph.TotLetture;
+                        }
+
+                        if (_ciclo >= DatiGraph.StepSoglia)
+                            colonna.Color = OxyPlot.OxyColors.Red;
+                        else
+                            colonna.Color = OxyPlot.OxyColors.Blue;
+                        if (colonna.Value > 0)
+                        {
+                            OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
+                            NotaPunto.X = _ciclo;
+                            NotaPunto.Y = colonna.Value;
+                            NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
+                            NotaPunto.Text += "\n" + _percCicli.ToString("P1");
+                            NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
+                            NotaPunto.Shape = OxyPlot.MarkerType.Cross;
+                            Grafico.Annotations.Add(NotaPunto);
+                        }
+
+                    */
+
+
+
+
+
+
+
+
                     Grafico.Axes.Add(AsseCat);
                     Grafico.Axes.Add(AsseConteggi);
 
@@ -4707,117 +3294,6 @@ namespace PannelloCharger
 
 
 
-
-
-        public void InizializzaCockpitStat()
-        {
-            buiStatCockpit.Frame.Clear();
-            Ic11 = new IndicatoreCruscotto();
-            Ic11.MinVal = 0;
-            Ic11.Lim1 = 30;
-            Ic11.Lim2 = 80;
-            Ic11.MaxVal = 100;
-            Ic11.Verso = IndicatoreCruscotto.VersoValori.Discendente;
-            Ic11.InizializzaIndicatore(this.buiStatCockpit, 30, 20, 280, "% S.o.H.");
-
-            double _etot = _stat.Etot();
-            if (_etot > 0)
-            {
-                double _eresidua = 100 * (_etot - _stat.EnScaricataNorm()) / _etot;
-                if (_eresidua > 100)
-                {
-                    Ic11.ImpostaValore((float)_eresidua);
-                }
-                else
-                    Ic11.ImpostaValore((float)_eresidua);
-            }
-
-
-
-            Ic12 = new IndicatoreCruscotto();
-            Ic12.MinVal = 0;
-            Ic12.Lim1 = 5;
-            Ic12.Lim2 = 10;
-            Ic12.MaxVal = 100;
-            Ic12.LabelOffset = 50;
-
-            Ic12.InizializzaIndicatore(this.buiStatCockpit, 330, 20, 280, "Assenza\nElettrolita");
-            double _fattoreME = 0;
-            if (_stat.SecondiTotali > 0)
-            {
-                 _fattoreME = 100 *  _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
-     
-            }
-
-             Ic12.ImpostaValore((float)_fattoreME);
-
-
-
-            Ic13 = new IndicatoreCruscotto();
-            Ic13.ValueMask = "0.0";
-            Ic13.MostraValore = true;
-            Ic13.MinVal = 0;
-            Ic13.Lim1 = 60;
-            Ic13.Lim2 = 80;
-            Ic13.MaxVal = 100;
-            Ic13.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-            Ic13.InizializzaIndicatore(this.buiStatCockpit, 630, 20, 280, "% D.o.D.");
-            Ic13.ImpostaValore((float)_stat.ProfonditaScaricaMedia());
-
-
-
-
-            Ic21 = new IndicatoreCruscotto();
-            Ic21.MinVal = 0;
-            Ic21.Lim1 = 5;
-            Ic21.Lim2 = 10;
-            Ic21.MaxVal = 100;
-            Ic21.LabelOffset = 40;
-            Ic21.InizializzaIndicatore(this.buiStatCockpit, 30, 300, 280, "% Tempo\nSbil.Celle");
-            double _fattoreSB = 0;
-            if (_stat.SecondiTotali > 0)
-            {
-                _fattoreSB = 100 * _stat.DurataSbilanciamento / _stat.SecondiTotali;
-
-            }
-            Ic21.ImpostaValore((float)_fattoreSB);
-
-            Ic22 = new IndicatoreCruscotto();
-            Ic22.MinVal = 0;
-            Ic22.Lim1 = 5;
-            Ic22.Lim2 = 10;
-            Ic22.MaxVal = 100;
-            Ic22.LabelOffset = 80;
-            Ic22.MostraValore = true;
-            Ic22.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-            Ic22.InizializzaIndicatore(this.buiStatCockpit, 330, 300, 280, "    % Scariche\nSovratemperatura");
-            if (_stat.NumeroScariche > 0)
-            {
-                _fattoreSB = 100 * _stat.NumeroScaricheSovraT / _stat.NumeroScariche;
-
-            }
-            Ic22.ImpostaValore((float)_fattoreSB);
-
-
-            Ic23 = new IndicatoreCruscotto();
-            Ic23.MinVal = 0;
-            Ic23.Lim1 = 5;
-            Ic23.Lim2 = 10;
-            Ic23.MaxVal = 100;
-            Ic23.LabelOffset = 80;
-            Ic23.MostraValore = true;
-            Ic23.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-            Ic23.InizializzaIndicatore(this.buiStatCockpit, 630, 300, 280, "    % Cariche\nSovratemperatura");
-            if (_stat.NumeroCariche > 0)
-            {
-                _fattoreSB = 100 *( _stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT) / _stat.NumeroCariche;
-
-            }
-            Ic23.ImpostaValore((float)_fattoreSB);
-
-
-
-        }
 
 
 
@@ -6398,7 +4874,7 @@ namespace PannelloCharger
                 double _fattoreCorrente = 0;
                 double _dtInSecondi;
 
-                tabStatGrafici.BackColor = Color.LightYellow;
+               // tabStatGrafici.BackColor = Color.LightYellow;
 
                 // Preparo le serie di valori
 
@@ -6515,7 +4991,7 @@ namespace PannelloCharger
                 double _fattoreCorrente = 0;
                 double _dtInSecondi;
 
-                tabStatGrafici.BackColor = Color.LightYellow;
+                //tabStatGrafici.BackColor = Color.LightYellow;
 
                 // Preparo le serie di valori
 
@@ -7013,34 +5489,22 @@ namespace PannelloCharger
         private void btnClonaScriviRecordTestata_Click(object sender, EventArgs e)
         {
             bool _esito;
-
-            if (_sbTemp == null )
-            {
-                txtClonaStatoAttuale.Text = "Dati Origine non caricati";
-                return ;
-            }
-
-
-
+      
             if (_sbTemp.sbData.valido)
             {
 
-                txtClonaStatoAttuale.Text = "Inizio Clonazione";
-
-                _esito = InizializzaClonazioneScheda();
+                //byte[] _tempHexData;
+                //_tempHexData = _sbTemp.sbData.DataArray;
+                _esito = EseguiClonazioneScheda();  //RiscriviTestata(_tempHexData);
 
                 if (_esito)
-                {
-                    _esito = EseguiClonazioneScheda();
+                    txtClonaRecordTestata.Text = "Testata Aggiornata";
+                else
+                    txtClonaRecordTestata.Text = "Scrittura fallita";
 
-                    if (_esito)
-                        txtClonaStatoAttuale.Text = "Testata Aggiornata";
-                    else
-                        txtClonaStatoAttuale.Text = "Scrittura fallita";
-                }
             }
             else
-                txtClonaStatoAttuale.Text = "Dati non validi";
+                txtClonaRecordTestata.Text = "Dati non validi";
         }
 
         private void btnResetScheda_Click(object sender, EventArgs e)
@@ -7089,6 +5553,339 @@ namespace PannelloCharger
 
         private void btnFwCheckArea_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnMemCicliCercaFileWr_Click(object sender, EventArgs e)
+        {
+            sfdExportDati.Filter = "RCF Regeneraton Cicles File (*.sbf)|*.rcf|All files (*.*)|*.*";
+            sfdExportDati.ShowDialog();
+            txtMemCicliNomeFile.Text = sfdExportDati.FileName;
+        }
+
+        private void btnMemCicliCercaFileRd_Click(object sender, EventArgs e)
+        {
+            sfdImportDati.Filter = "RCF Regeneraton Cicles File (*.sbf)|*.rcf|All files (*.*)|*.*";
+            sfdImportDati.ShowDialog();
+            txtMemCicliNomeFile.Text = sfdImportDati.FileName;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMemCicliSalvaImmagine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                uint _StartAddr;
+                uint _TmpAddr;
+                ushort _NumByte;
+                ushort _NumSequenze;
+                bool _esito;
+                byte[] _dataArray;
+                int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                byte[] _tempBuffer;
+
+                if (chkMemCicliStartAddHex.Checked)
+                {
+                    if (uint.TryParse(txtMemCicliStartAddr.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemCicliStartAddr.Text, out _StartAddr) != true) return;
+                }
+
+                if(txtMemCicliNomeFile.Text == "")
+                {
+                    MessageBox.Show("Inserire un nome file  di blocchi valido", "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+
+                if (ushort.TryParse(txtMemCicliNumBlocchi.Text, out _NumSequenze) != true) return;
+                if (_NumSequenze < 1) _NumSequenze = 1;
+                if (_NumSequenze >100 ) _NumSequenze = 100;
+
+                _numBytes = _NumSequenze * 0x1000;
+
+                _dataArray = new byte[_numBytes];
+
+                _cicliCompleti = _numBytes / DataBlock;
+                _byteResidui = _numBytes % DataBlock;
+
+                lblMemCicliStatoOp.Text = _cicliCompleti.ToString() + " pacchetti + " + _byteResidui.ToString() + " bytes";
+
+                // Leggo prima i pacchetti interi
+                _tempBuffer = new byte[DataBlock];
+
+                for (int _step = 0; _step < _cicliCompleti; _step++)
+                {
+                    _TmpAddr = (uint)(_step * DataBlock);
+                    _esito = _sb.LeggiBloccoMemoria(_StartAddr+ _TmpAddr, DataBlock, out _tempBuffer);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for(int _ii = 0; _ii< DataBlock; _ii++)
+                        {
+                            _dataArray[_TmpAddr + _ii] = _tempBuffer[_ii];
+                        }
+                        lblMemCicliStatoOp.Text = _step.ToString() + " di " + _cicliCompleti.ToString();
+                        Application.DoEvents();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Errore lettura pacchetto " + _step.ToString(), "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+
+
+
+                // Ora Leggo il residuo
+                if (_byteResidui > 0)
+                {
+                    _tempBuffer = new byte[_byteResidui];
+
+
+                    _TmpAddr = (uint)(_cicliCompleti * DataBlock);
+                    _esito = _sb.LeggiBloccoMemoria(_StartAddr + _TmpAddr, (ushort)_byteResidui, out _tempBuffer);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for (int _ii = 0; _ii < _byteResidui; _ii++)
+                        {
+                            _dataArray[_TmpAddr + _ii] = _tempBuffer[_ii];
+                        }
+                        lblMemCicliStatoOp.Text = "Pacchetto Finale";
+                        Application.DoEvents();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Errore lettura pacchetto finale ", "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                  
+                }
+                Log.Debug("--- Carica Immagine -------------------");
+                Log.Debug(FunzioniMR.hexdumpArray(_dataArray));
+                //ora salvo l'immagine
+            
+                File.WriteAllBytes(txtMemCicliNomeFile.Text, _dataArray);
+                lblMemCicliStatoOp.Text = "File Generato";
+                Application.DoEvents();
+
+                return;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+
+        }
+
+        private void btnMemCicliCaricaImmagine_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                uint _StartAddr;
+                uint _TmpAddr;
+                ushort _NumByte;
+                ushort _NumSequenze;
+                bool _esito;
+                byte[] _dataArray;
+                int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                byte[] _tempBuffer;
+
+                if (chkMemCicliStartAddHex.Checked)
+                {
+                    if (uint.TryParse(txtMemCicliStartAddr.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemCicliStartAddr.Text, out _StartAddr) != true) return;
+                }
+
+                if (txtMemCicliNomeFile.Text == "")
+                {
+                    MessageBox.Show("Inserire un nome file valido", "Importazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                DataBuffer = File.ReadAllBytes(txtMemCicliNomeFile.Text);
+
+                _numBytes = DataBuffer.Length;
+                _NumSequenze = (ushort)(_numBytes / 0x1000 );
+                _byteResidui = _numBytes % 0x1000;
+
+
+                if(_byteResidui != 0 )
+                {
+                    //formato non valido
+                    MessageBox.Show("Formato file non valido", "Importazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                lblMemCicliStatoOp.Text = _NumSequenze.ToString() + " Sequenze caricate";
+                Application.DoEvents();
+
+                txtMemCicliNumBlocchi.Text = _NumSequenze.ToString();
+                return;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+
+        }
+
+        private void btnMemCicliScriviImmagine_Click(object sender, EventArgs e)
+        {
+
+
+            try
+            {
+
+                uint _StartAddr;
+                uint _TmpAddr;
+                ushort _NumByte;
+                ushort _NumSequenze;
+                bool _esito;
+                byte[] _dataArray;
+                int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                byte[] _tempBuffer;
+
+                if (chkMemCicliStartAddHex.Checked)
+                {
+                    if (uint.TryParse(txtMemCicliStartAddr.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemCicliStartAddr.Text, out _StartAddr) != true) return;
+                }
+
+                DataBuffer = File.ReadAllBytes(txtMemCicliNomeFile.Text);
+
+                _numBytes = DataBuffer.Length;
+                _NumSequenze = (ushort)(_numBytes / 0x1000);
+                _byteResidui = _numBytes % 0x1000;
+
+
+                if (_byteResidui != 0)
+                {
+                    //formato non valido
+                    MessageBox.Show("Formato dati non valido", "Importazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                // Prima vuoto la memoria
+
+                if (_NumSequenze > 0)
+                {
+                    int _bloccoCorrente;
+                    _TmpAddr = _StartAddr;
+                    for (int _cicloBlocchi = 0; _cicloBlocchi < _NumSequenze; _cicloBlocchi++)
+                    {
+                        _bloccoCorrente = _cicloBlocchi + 1;
+                        _esito = _sb.CancellaBlocco4K(_TmpAddr);
+                        if (!_esito)
+                        {
+                            MessageBox.Show("Cancellazione del blocco " + _bloccoCorrente.ToString() + " non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            _TmpAddr += 0x1000;
+                            lblMemCicliStatoOp.Text = "Cancellazione Sequenza " + _bloccoCorrente.ToString();
+
+                            Application.DoEvents();
+                        }
+                    }
+
+                }
+                else
+                {
+                    return;
+                }
+
+
+                uint _stepSent = 0;
+                uint _posizione = 0;
+                uint _datiTrasferiti = 0;
+                byte[] _Tempbuffer = new byte[DataBlock];
+                _TmpAddr = _StartAddr;
+                while ((_numBytes - _datiTrasferiti) > DataBlock)
+                {
+
+                    for (int _blockStep = 0; _blockStep < DataBlock; _blockStep++)
+                    {
+                        _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                        _posizione++;
+                        _datiTrasferiti++;
+                    }
+                    _esito = _sb.ScriviBloccoMemoria(_TmpAddr, (ushort)DataBlock, _Tempbuffer);
+
+                    _TmpAddr += DataBlock;
+                    _stepSent++;
+                    lblMemCicliStatoOp.Text = "Pacchetto " + _stepSent.ToString();
+                    Application.DoEvents();
+
+                }
+
+
+                // Ora trasmetto il residuo
+                int _residuo = (int)(_numBytes - _datiTrasferiti);
+                _Tempbuffer = new byte[_residuo];
+                for (int _blockStep = 0; _blockStep < _residuo; _blockStep++)
+                {
+                    _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                    _posizione++;
+                    _datiTrasferiti++;
+                }
+                _esito = _sb.ScriviBloccoMemoria(_TmpAddr, (ushort)_residuo, _Tempbuffer);
+                _stepSent++;
+
+                lblMemCicliStatoOp.Text = "Pacchetto " + _stepSent.ToString();
+                Application.DoEvents();
+
+
+                lblMemCicliStatoOp.Text = _NumSequenze.ToString() + " Sequenze inserite";
+                Application.DoEvents();
+
+                return;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+
+
+
+
+
+
 
         }
     }

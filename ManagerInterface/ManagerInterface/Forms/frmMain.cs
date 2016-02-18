@@ -712,7 +712,7 @@ namespace PannelloCharger
                 _formCorrente = new frmSelettoreDevice();
                 int _numApparati = DispositiviUSB.NumDevSpyBatt + DispositiviUSB.NumDevLadeLight;
 
-                if (_numApparati == 1)
+                if (false ) //_numApparati == 1)
                 {
                     if (DispositiviUSB.NumDevSpyBatt > 0)
                     {

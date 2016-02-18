@@ -6,7 +6,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using System.IO;
@@ -24,7 +23,7 @@ using MdiHelper;
 
 namespace PannelloCharger
 {
-    public partial class frmSpyBat : Form
+    public partial class frmDesolfatatore : Form
     {
 
         FirmwareManager _firmMng = new FirmwareManager();
@@ -281,7 +280,7 @@ namespace PannelloCharger
                     txtFWRevA1LenN2.Text = "";
                     txtFWRevA1AddrP.Text = "";
                     txtFWRevA1LenP.Text = "";
-                    _area = 0x1E0000;
+                    _area = 0x1C0000;
                 }
                 else
                 {
@@ -356,27 +355,15 @@ namespace PannelloCharger
             try
             {
 
-                Cursor.Current = Cursors.WaitCursor;
 
                 _esito = _sb.SwitchFirmware( IdApparato, SerialeCollegata, IdArea);
 
 
                 if (_esito)
                 {
-                    // Switch riuscito aspetto 30 secondi, poi mi riconnetto
-                    Application.DoEvents();
-                    Thread.Sleep(20000);
-                    Application.DoEvents();
-                    _esito = reconnectSpyBat();
-                    Cursor.Current = Cursors.Default;
-                    if (!_esito)
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show(_parametri.lastError, "Riconnessione Fallita", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return false;
-                    }
+
                 }
-                Cursor.Current = Cursors.Default;
+
                 return _esito;
 
             }
@@ -396,23 +383,12 @@ namespace PannelloCharger
             try
             {
 
-                Cursor.Current = Cursors.WaitCursor;
+
                 _esito = _sb.SwitchToBootLoader(IdApparato, SerialeCollegata);
 
 
                 if (_esito)
                 {
-                    // Switch riuscito, mi riconnetto
-                    Application.DoEvents();
-                    Thread.Sleep(10000);
-                    Application.DoEvents();
-                    _esito = reconnectSpyBat();
-                    Cursor.Current = Cursors.Default;
-                    if (!_esito)
-                    {
-                        MessageBox.Show(_parametri.lastError, "Riconnessione Fallita", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return false;
-                    }
 
                 }
 

@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>1.10.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -298,6 +298,12 @@
     <Compile Include="Forms\frmSpyBatScarica.Designer.cs">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmUploadBootloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUploadBootloader.Designer.cs">
+      <DependentUpon>frmUploadBootloader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
     <Compile Include="Logiche\CaricaBatteria.cs" />
     <Compile Include="Logiche\cEventHelper.cs" />
@@ -394,6 +400,9 @@
     <EmbeddedResource Include="Forms\frmSpyBatScarica.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUploadBootloader.resx">
+      <DependentUpon>frmUploadBootloader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -460,12 +469,6 @@
     <Content Include="Resources\tre.png" />
     <Content Include="Resources\trec.png" />
     <Content Include="Resources\usb.jpg" />
-    <Content Include="x64\SQLite.Interop.dll">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Include="x86\SQLite.Interop.dll">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net40\System.Data.SQLite.Core.targets')" />

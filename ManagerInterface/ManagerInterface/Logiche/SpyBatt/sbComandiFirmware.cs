@@ -302,7 +302,7 @@ namespace ChargerLogic
                                 _pacchettoCorrente++;
                                 _tmpPacchettoCorrente = (ushort)(_pacchettoCorrente - 1);
 
-                                _tmpPacchettoCorrente = 999;
+                                //_tmpPacchettoCorrente = 999;
 
                                 _mS.ComponiMessaggioPacchettoDatiFW(_tmpPacchettoCorrente, (byte)_dataBlock.DimPacchetto, _dataBlock.PacchettoDati, _dataBlock.CRC);
                                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
@@ -476,6 +476,70 @@ namespace ChargerLogic
             }
         }
 
+
+
+        /// <summary>
+        /// Verifico il modulo attivo al momento
+        /// </summary>
+        /// <returns> 0 = BL  /  1 = APP area 1  /  2 = APP area 2 / -1 = Errore o BL non presente </returns>
+        public int FirmwareAttivo()
+        {
+            try
+            {
+
+                if (StatoFirmware == null)
+                {
+                    //Stato non verificato o BL non presente
+                    return -1;
+                }
+
+
+                if ((StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
+                {
+                    //Modo BOOTLOADER
+
+                    return 0;
+                }
+                else
+                {
+                    bool _esitoMicro1 = false;
+                    _esitoMicro1 = (StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco1InUso) == (byte)FirmwareManager.MascheraStato.Blocco1InUso;
+                    bool _esitoMicro2 = false;
+                    _esitoMicro2 = (StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco2InUso) == (byte)FirmwareManager.MascheraStato.Blocco2InUso;
+
+
+                    if (_esitoMicro1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (_esitoMicro2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+                }
+            }
+
+            catch (Exception EX)
+            {
+                Log.Error("FirmwareAttivo " + EX.Message);
+                return -1;
+            }
+        }
+
+
+
+
+
+
+
+
         /// <summary>
         /// Commuta L'app attiva se qualla dell'area indicata come parametro
         /// </summary>
@@ -532,7 +596,8 @@ namespace ChargerLogic
 
                     }
                 }
-                return true;
+                // APPARATO NON CONNESSO --> False
+                return false;
             }
             catch (Exception Ex)
             {
@@ -593,7 +658,7 @@ namespace ChargerLogic
                         //ricevuto ritorno, verifico la risposta 
                         if (_ultimaRisposta == SerialMessage.TipoRisposta.Ack)
                         {
-                            Log.Debug(" Switch BL completato area " );
+                            Log.Debug(" Switch to BL completato " );
                             return true;
                         }
 

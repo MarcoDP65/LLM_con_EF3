@@ -56,9 +56,9 @@ namespace ChargerLogic
             SB_R_APPCHECK = 0x5D,
             SB_W_RESETSCHEDA = 0X5F,
             BREAK = 0x1C,
-            ACK_SB = 0x6C,
-            ACK_SB_PKG = 0x6D,
-            NACK_SB = 0x71,
+            SB_ACK = 0x6C,
+            SB_ACK_PKG = 0x6D,
+            SB_NACK = 0x71,
             SB_W_MemProgrammed = 0x74
         };
         public enum ParametroLadeLight : byte

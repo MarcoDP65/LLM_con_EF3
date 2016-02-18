@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>19</ApplicationRevision>
     <ApplicationVersion>1.10.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -41,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -128,6 +129,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.99.0\lib\net40\System.Data.SQLite.dll</HintPath>
@@ -178,6 +180,18 @@
     <Compile Include="Database\sbVariabili.cs" />
     <Compile Include="Database\spybattData.cs" />
     <Compile Include="Database\utente.cs" />
+    <Compile Include="Forms\Forms Deso\frmDeso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Deso\frmDeso.Designer.cs">
+      <DependentUpon>frmDeso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms Deso\frmDesoFWUpg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Deso\frmDesoClonaScheda.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +312,12 @@
     <Compile Include="Forms\frmSpyBatScarica.Designer.cs">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmUploadBootloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUploadBootloader.Designer.cs">
+      <DependentUpon>frmUploadBootloader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
     <Compile Include="Logiche\CaricaBatteria.cs" />
     <Compile Include="Logiche\cEventHelper.cs" />
@@ -318,13 +338,32 @@
     <Compile Include="Logiche\utente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\StringheComuni.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringheComuni.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\StringheMessaggio.Designer.cs" />
+    <Compile Include="Resources\StringheMessaggio1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringheMessaggio.resx</DependentUpon>
+    </Compile>
     <Compile Include="Servizi\HexEncoding.cs" />
     <Compile Include="Servizi\ParametriSistema.cs" />
     <Compile Include="Servizi\ScannerPorte.cs" />
     <Compile Include="Servizi\ScannerUSB.cs" />
     <Compile Include="Servizi\usParameters.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.en.resx">
+      <DependentUpon>frmDeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.hi.resx">
+      <DependentUpon>frmDeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.resx">
+      <DependentUpon>frmDeso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.en.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
@@ -364,6 +403,9 @@
     <EmbeddedResource Include="Forms\frmLogin.en.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.hi.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,6 +436,9 @@
     <EmbeddedResource Include="Forms\frmSpyBatScarica.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUploadBootloader.resx">
+      <DependentUpon>frmUploadBootloader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -404,9 +449,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resources\StringheComuni.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringheComuni.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PannelloCharger</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\StringheMessaggio.en.resx" />
-    <EmbeddedResource Include="Resources\StringheMessaggio.resx" />
-    <None Include="app.config" />
+    <EmbeddedResource Include="Resources\StringheMessaggio.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringheMessaggio1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ManagerInterface_ChiaveTemporanea.pfx" />
     <None Include="ManagerInterface_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -469,6 +524,14 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.99.0\build\net40\System.Data.SQLite.Core.targets'))" />
   </Target>
+  <ItemGroup>
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

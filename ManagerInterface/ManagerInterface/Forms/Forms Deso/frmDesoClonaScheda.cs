@@ -23,12 +23,11 @@ using MdiHelper;
 
 namespace PannelloCharger
 {
-    public partial class frmSpyBat : Form
+    public partial class frmDesolfatatore : Form
     {
 
         UnitaSpyBatt _sbTemp;  // classe sb usata come buffer temporaneo per le operazioni di clonatura
         CloneSB DatiClone;
-        int _statoAppAttuale;
 
         public bool PreparaClonazioneScheda()
         {
@@ -86,14 +85,12 @@ namespace PannelloCharger
                 int _maxCicli = 10000000;
                 if (txtMaxCicli.Text != "")
                     int.TryParse(txtMaxCicli.Text, out _maxCicli);
+               
                 foreach (sbMemLunga _long in _sortedLong)
                 {
                     bool _primoCorto = true;
                     List<sbMemBreve> _sortedShort = _long.CicliMemoriaBreve.OrderBy(o => o.IdMemoriaBreve).ToList();
                     _long.PuntatorePrimoBreve = 0;
-                    Log.Warn(" ---------------------------------- Lungo " + _long.IdMemoriaLunga.ToString("000") +" -------------------------------");
-
-                    Log.Warn(" ---------------------------------- Brevi -----------------------------------");
 
                     foreach (sbMemBreve _short in _sortedShort)
                     {
@@ -108,12 +105,8 @@ namespace PannelloCharger
                     //--------------------------- fORZATO AL PRG 1
                     //_long.IdProgramma = 1;
                     //---------------------------
-                    Log.Warn(" ---------------------------------- Lungo -----------------------------------");
+
                     DatiClone.AggiungiCicloLungo(_long);
-                    Log.Warn(" ----------------------------------------------------------------------------");
-                    Log.Warn("");
-
-
                     if (++_contalunghi >= _maxCicli) break;
                 }
 
@@ -137,10 +130,10 @@ namespace PannelloCharger
                 _sbTemp.sbData.ContBrevi = (uint)DatiClone.NumCicliBrevi;
                 _sbTemp.sbData.PuntBrevi = (uint)DatiClone.NumCicliBrevi;
 
-               // Log.Warn(" ---------------------------------- Brevi -----------------------------------");
-               // Log.Warn(FunzioniMR.hexdumpArray(DatiClone.CicliBrevi, false));
-               // Log.Warn(" ---------------------------------- Lunghi -----------------------------------");
-               // Log.Warn(FunzioniMR.hexdumpArray(DatiClone.CicliLunghi, false));
+                Log.Warn(" ---------------------------------- Brevi -----------------------------------");
+                //Log.Warn(FunzioniMR.hexdumpArray(DatiClone.CicliBrevi, true));
+                Log.Warn(" ---------------------------------- Lunghi -----------------------------------");
+                //Log.Warn(FunzioniMR.hexdumpArray(DatiClone.CicliLunghi, true));
 
 
                 return true;
@@ -151,117 +144,6 @@ namespace PannelloCharger
                 return false;
             }
         }
-
-        public bool InizializzaClonazioneScheda()
-        {
-           
-
-            try
-            {
-
-                bool _esito;
-
-                lbxClonaListaStep.Items.Clear();
-                Application.DoEvents();
-
-                lbxClonaListaStep.Items.Add("Verifica dati");
-                if (_sbTemp.sbData.valido != true)
-                {
-                    txtClonaStatoAttuale.Text = "Dati Non Pronti";
-                    Application.DoEvents();
-                    return false;
-                }
-
-                Application.DoEvents();
-                // Mando la scheda in stato booltloader
-                _statoAppAttuale = _sb.FirmwareAttivo();
-                if (_statoAppAttuale<0)
-                {
-                    //Scheda non aggiornabile
-                    lbxClonaListaStep.Items.Add("Stato Firmware " + _statoAppAttuale + ": Scheda non clonabile ");
-                    return false;
-                }
-
-                lbxClonaListaStep.Items.Add("Stato Firmware: " + _statoAppAttuale );
-                Application.DoEvents();
-
-                if (_statoAppAttuale > 0)
-                {
-                    // Attiva una app --> vado in modo bl
-                    txtClonaStatoAttuale.Text = "Switch to bootloader";
-                    Application.DoEvents();
-                    _esito = SwitchAreaBl(_sb.Id, _sb.apparatoPresente);
-
-                    if (!_esito)
-                    {
-                        lbxClonaListaStep.Items.Add("Switch to bootloader fallito ");
-                        Application.DoEvents();
-                        return false;
-                    }
-                    else
-                    {
-                        lbxClonaListaStep.Items.Add("Switch to bootloader");
-                        Application.DoEvents();
-                    }
-
-                }
-
-
-                // Clear mem
-                txtClonaStatoAttuale.Text = "Cancellazione intera memoria";
-                Application.DoEvents();
-                _esito = _sb.CancellaInteraMemoria();
-                if (!_esito)
-                {
-                    lbxClonaListaStep.Items.Add("Cancellazione intera memoria fallita");
-                    return false;
-                }
-                else
-                {
-                    lbxClonaListaStep.Items.Add("Cancellazione intera memoria");
-                }
-                Application.DoEvents();
-                //Pulizia puntiale da 0x000000 a 0x1BBFFF
-
-                uint _StartAddr;
-                int _bloccoCorrente;
-                ushort _NumBlocchi;
-
-                _StartAddr = 0;
-                _NumBlocchi = 476;
-                lbxClonaListaStep.Items.Add("Cancellazione Puntuale memoria");
-                for (int _cicloBlocchi = 0; _cicloBlocchi < _NumBlocchi; _cicloBlocchi++)
-                {
-                    _bloccoCorrente = _cicloBlocchi + 1;
-                    _esito = _sb.CancellaBlocco4K(_StartAddr);
-                    if (!_esito)
-                    {
-                        MessageBox.Show("Cancellazione del blocco " + _bloccoCorrente.ToString() + " non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-                    else
-                    {
-                        _StartAddr += 0x1000;
-
-                        txtClonaStatoAttuale.Text = "Cancellazione blocco memoria " + _bloccoCorrente.ToString() + "/476";
-                        Application.DoEvents();
-                    }
-                }
-                lbxClonaListaStep.Items.Add("Cancellazione Completata");
-
-
-                return true;
-            }
-            catch ( Exception Ex)
-            {
-                Log.Error("SPYBATT InizializzaClonazioneScheda: " + Ex.Message);
-                return false;
-            }
-
-
-        }
-
-
 
 
 
@@ -279,8 +161,6 @@ namespace PannelloCharger
 
                 // step 0 Cliente
 
-                lbxClonaListaStep.Items.Add("Trasferimento Dati Cliente");
-                Application.DoEvents();
                 _numPacchetti = 0;
                 _step = DatiClone.DatiCliente.Length / 200;
                 if ((DatiClone.DatiCliente.Length % 200) > 0)
@@ -328,10 +208,8 @@ namespace PannelloCharger
 
                 }
 
-                // step 1 programmazioni
 
-                lbxClonaListaStep.Items.Add("Trasferimento Programmazioni");
-                Application.DoEvents();
+                // step 1 programmazioni
 
                 _numPacchetti = 0;
                 _step = DatiClone.Programmazioni.Length / 200;
@@ -363,7 +241,7 @@ namespace PannelloCharger
                             //trasmetto i 200 bytes, vuoto il buffer e riparto
                             _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
                             _numPacchetti++;
-                            txtClonaStatoAttuale.Text = "Scrittuta Programmazioni " + _numPacchetti.ToString() + "/" + _step.ToString();
+                            txtClonaPktProgr.Text = _numPacchetti.ToString() + "/" + _step.ToString();
                             Application.DoEvents();
                             _startSlot += _posizione;
                             _posizione = 0;
@@ -377,13 +255,11 @@ namespace PannelloCharger
                     // Ora trasmetto il residuo
                     _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
                     _numPacchetti++;
-                    txtClonaStatoAttuale.Text = "Scrittuta Programmazioni " + _numPacchetti.ToString() + "/" + _step.ToString();
+                    txtClonaPktProgr.Text = _numPacchetti.ToString() + "/" + _step.ToString();
                     Application.DoEvents();
                 }
 
                 // step 2 brevi
-
-                lbxClonaListaStep.Items.Add("Trasferimento cicli brevi");
 
                 _numPacchetti = 0;
                 _step = DatiClone.CicliBrevi.Length / 200;
@@ -415,7 +291,7 @@ namespace PannelloCharger
                             //trasmetto i 200 bytes, vuoto il buffer e riparto
                             _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
                             _numPacchetti++;
-                            txtClonaStatoAttuale.Text = "Scrittuta brevi " + _numPacchetti.ToString() + "/" + _step.ToString();
+                            txtClonaPktBrevi.Text = _numPacchetti.ToString() + "/" + _step.ToString();
                             Application.DoEvents();
                             _startSlot += _posizione;
                             _posizione = 0;
@@ -429,12 +305,11 @@ namespace PannelloCharger
                     // Ora trasmetto il residuo
                     _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
                     _numPacchetti++;
-                    txtClonaStatoAttuale.Text = "Scrittuta brevi " + _numPacchetti.ToString() + "/" + _step.ToString();
+                    txtClonaPktBrevi.Text = _numPacchetti.ToString() + "/" + _step.ToString();
                     Application.DoEvents();
                 }
 
                 // step 3 Lunghi
-                lbxClonaListaStep.Items.Add("Trasferimento cicli lunghi");
 
                 _numPacchetti = 0;
                 _step = DatiClone.CicliLunghi.Length / 200;
@@ -465,7 +340,7 @@ namespace PannelloCharger
                             //trasmetto i 200 bytes, vuoto il buffer e riparto
                             _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
                             _numPacchetti++;
-                            txtClonaStatoAttuale.Text = "Scrittuta lunghi " + _numPacchetti.ToString() + "/" + _step.ToString();
+                            txtClonaPktLunghi.Text = _numPacchetti.ToString() + "/" + _step.ToString();
                             Application.DoEvents();
                             _startSlot += _posizione;
                             _posizione = 0;
@@ -479,23 +354,15 @@ namespace PannelloCharger
                     // Ora trasmetto il residuo
                     _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
                     _numPacchetti++;
-                    txtClonaStatoAttuale.Text = "Scrittuta lunghi " + _numPacchetti.ToString() + "/" + _step.ToString();
+                    txtClonaPktLunghi.Text = _numPacchetti.ToString() + "/" + _step.ToString();
                     Application.DoEvents();
                 }
 
 
                 //e alla fine la testata
-                txtClonaStatoAttuale.Text = "Scrittuta testata ";
-                Application.DoEvents();
-
                 byte[] _tempHexData;
                 _tempHexData = _sbTemp.sbData.DataArray;
                 _esito = _sb.ScriviBloccoMemoria(0, 64, _tempHexData);
-
-                lbxClonaListaStep.Items.Add("Trasferimento testata");
-                lbxClonaListaStep.Items.Add("Operazione completata");
-                lbxClonaListaStep.Items.Add("Riattivare l'APP corrente");
-
 
 
                 return true;

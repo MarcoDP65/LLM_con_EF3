@@ -248,7 +248,13 @@ namespace ChargerLogic
             {
 
                 if (NomeFile == "") return ExitCode.FileAssente;
-                if (!File.Exists(NomeFile)) File.Create(NomeFile).Close();
+                if (!File.Exists(NomeFile))
+                    File.Create(NomeFile).Close();
+                else
+                {
+                    File.Delete(NomeFile);
+                    File.Create(NomeFile).Close();
+                }
 
                 FirmwareData.Release = VersioneFw;
                 FirmwareData.ReleaseDate = DataRilascio;

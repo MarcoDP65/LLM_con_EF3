@@ -124,7 +124,7 @@ namespace ChargerLogic
                 // ora in base al comando cambio lettura:
                 switch (_comando)
                 {
-                    case (byte)TipoComando.ACK_SB: // ACK
+                    case (byte)TipoComando.SB_ACK: // ACK
                         {
                             _startPos = 23;
                             if (_messaggio[_startPos] != serENDPAC)
@@ -146,7 +146,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.ACK_SB_PKG: // ACK Pacchetti in scrittura multipla
+                    case (byte)TipoComando.SB_ACK_PKG: // ACK Pacchetti in scrittura multipla
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -182,7 +182,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.NACK_SB: //NAK
+                    case (byte)TipoComando.SB_NACK: //NAK
                         {
                             _crc = 0;
                             Log.Warn("--- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK ---");

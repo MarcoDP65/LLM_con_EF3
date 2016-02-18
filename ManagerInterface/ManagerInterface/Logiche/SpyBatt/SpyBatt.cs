@@ -484,7 +484,7 @@ namespace ChargerLogic
                     _idCorrente = IdApparato;
                 }
 
-                if (ApparatoConnesso)
+                if (false) //ApparatoConnesso)
                 {
                     _mS.Comando = MessaggioSpyBatt.TipoComando.SB_DatiIniziali;
                     _mS.ComponiMessaggio();
@@ -3416,14 +3416,14 @@ namespace ChargerLogic
                         Log.Debug("Comando: --> 0x" + _mS._comando.ToString("X2"));
                        switch (_mS._comando)
                         {
-                           case (byte) SerialMessage.TipoComando.ACK_SB:  //0x6C: // ACK
+                           case (byte) SerialMessage.TipoComando.SB_ACK:  //0x6C: // ACK
                                 Log.Debug("Comando Ricevuto");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 TipoRisposta = 1;
                                 _inviaRisposta = false;
 
                                 break;
-                           case (byte) SerialMessage.TipoComando.ACK_SB_PKG:  // 0x6D: // ACK Pacchetto
+                           case (byte) SerialMessage.TipoComando.SB_ACK_PKG:  // 0x6D: // ACK Pacchetto
                                 Log.Debug("Esito Comando Ricevuto");
                                 //_datiRicevuti = SerialMessage.TipoRisposta.Ack;   ???????????????
                                 // 16/07/15 il messaggio 0x0D inviato dopo comando che prevede la scrittura su memoria flash esterna per indicare l'esito;
@@ -3446,7 +3446,7 @@ namespace ChargerLogic
                                 }
 
                                 break;
-                           case (byte)SerialMessage.TipoComando.NACK_SB:  //0x71: //NAK
+                           case (byte)SerialMessage.TipoComando.SB_NACK:  //0x71: //NAK
                                 TipoRisposta = 2;
                                 UltimaRisposta = SerialMessage.EsitoRisposta.NonRiconosciuto;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Nack;
