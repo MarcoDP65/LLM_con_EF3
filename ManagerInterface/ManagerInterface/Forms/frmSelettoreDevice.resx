@@ -117,4 +117,117 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="flvwListaDevices.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="flvwListaDevices.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 244</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flvwListaDevices.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flvwListaDevices.Name" xml:space="preserve">
+    <value>flvwListaDevices</value>
+  </data>
+  <data name="&gt;&gt;flvwListaDevices.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;flvwListaDevices.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flvwListaDevices.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnChiudi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 274</value>
+  </data>
+  <data name="btnChiudi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 32</value>
+  </data>
+  <data name="btnChiudi.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnChiudi.Text" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.Name" xml:space="preserve">
+    <value>btnChiudi</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnConnetti.Location" type="System.Drawing.Point, System.Drawing">
+    <value>302, 274</value>
+  </data>
+  <data name="btnConnetti.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 32</value>
+  </data>
+  <data name="btnConnetti.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnConnetti.Text" xml:space="preserve">
+    <value>Collega</value>
+  </data>
+  <data name="&gt;&gt;btnConnetti.Name" xml:space="preserve">
+    <value>btnConnetti</value>
+  </data>
+  <data name="&gt;&gt;btnConnetti.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnConnetti.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnConnetti.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnAggiorna.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 274</value>
+  </data>
+  <data name="btnAggiorna.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 32</value>
+  </data>
+  <data name="btnAggiorna.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnAggiorna.Text" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="&gt;&gt;btnAggiorna.Name" xml:space="preserve">
+    <value>btnAggiorna</value>
+  </data>
+  <data name="&gt;&gt;btnAggiorna.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAggiorna.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnAggiorna.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>556, 318</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Selezione Dispositivi</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmSelettoreDevice</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

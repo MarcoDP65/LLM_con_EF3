@@ -33,7 +33,8 @@ namespace PannelloCharger
         public frmSelettoreSpyBatt()
         {
             InitializeComponent();
-
+            applicaAutorizzazioni();
+            this.Width = 900;
         }
         
         public frmSelettoreSpyBatt(ref parametriSistema _par, LogicheBase Logiche)
@@ -44,6 +45,8 @@ namespace PannelloCharger
             _logiche = Logiche;
             _database = _logiche.dbDati.connessione;
             ListaSpyBatt = ListaApparati();
+            applicaAutorizzazioni();
+            this.Width = 900;
         }
         
         private void btnChiudi_Click(object sender, EventArgs e)
@@ -315,6 +318,39 @@ namespace PannelloCharger
         {
 
         }
+
+        public void applicaAutorizzazioni()
+        {
+            try
+            {
+                bool _enabled;
+                bool _readonly;
+                bool _visible;
+                int LivelloCorrente;
+                if (_logiche.currentUser != null)
+                {
+                    LivelloCorrente = _logiche.currentUser.livello;
+                }
+                else
+                {
+                    LivelloCorrente = 99;
+                }
+
+                if (LivelloCorrente < 2) _visible = true; else _visible = false;
+                txtIdScheda.Visible = _visible;
+                btnImportaDati.Visible = _visible;
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("applicaAutorizzazioni: " + Ex.Message);
+            }
+
+        }
+
+
+
 
         private void flvwListaApparati_MouseDoubleClick(object sender, MouseEventArgs e)
         {

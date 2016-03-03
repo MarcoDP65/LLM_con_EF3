@@ -184,9 +184,54 @@
     <value />
   </data>
   <data name="strVistaLunghiCol09" xml:space="preserve">
-    <value>a</value>
+    <value>I min</value>
   </data>
   <data name="strGiornoLun" xml:space="preserve">
     <value>Lun</value>
+  </data>
+  <data name="strVistaLunghiCol10" xml:space="preserve">
+    <value>I max</value>
+  </data>
+  <data name="strVistaLunghiCol11" xml:space="preserve">
+    <value>Elettrolita</value>
+  </data>
+  <data name="strVistaLunghiCol12" xml:space="preserve">
+    <value>Ah</value>
+  </data>
+  <data name="strVistaLunghiCol13" xml:space="preserve">
+    <value>KWh</value>
+  </data>
+  <data name="strVistaLunghiCol13C" xml:space="preserve">
+    <value>KWh C.</value>
+  </data>
+  <data name="strVistaLunghiCol13S" xml:space="preserve">
+    <value>KWh S.</value>
+  </data>
+  <data name="strVistaLunghiCol14" xml:space="preserve">
+    <value>S.o.C.</value>
+  </data>
+  <data name="strVistaLunghiCol15" xml:space="preserve">
+    <value>C.F.</value>
+  </data>
+  <data name="strVistaLunghiCol16" xml:space="preserve">
+    <value>Registrazioni</value>
+  </data>
+  <data name="strVistaLunghiCol17" xml:space="preserve">
+    <value>Registrazioni</value>
+  </data>
+  <data name="strVistaLunghiCol20" xml:space="preserve">
+    <value>max Sbil.</value>
+  </data>
+  <data name="strVistaLunghiColAhCaricati" xml:space="preserve">
+    <value>Ah Caricati</value>
+  </data>
+  <data name="strVistaLunghiColAhScaricati" xml:space="preserve">
+    <value>Ah Scaricati</value>
+  </data>
+  <data name="strVistaLunghiColCondStop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="strVistaLunghiColIdProgramma" xml:space="preserve">
+    <value>Conf</value>
   </data>
 </root>

@@ -38,6 +38,12 @@ namespace MoriData
         public byte BatteryCell_1 { get; set; }
         public byte BatteryCell_2 { get; set; }
         public byte BatteryCell_3 { get; set; }
+        public byte AbilitaPresElett { get; set; }
+        public byte TempMin { get; set; }
+        public byte TempMax { get; set; }
+        public byte VersoCorrente { get; set; }
+        public byte NumeroSpire { get; set; }
+
 
     }
 
@@ -313,6 +319,57 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+
+        public byte AbilitaPresElett
+        {
+            get { return _sbpr.AbilitaPresElett; }
+            set
+            {
+                _sbpr.AbilitaPresElett = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte TempMin
+        {
+            get { return _sbpr.TempMin; }
+            set
+            {
+                _sbpr.TempMin = value;
+                _datiSalvati = false;
+            }
+        }
+        public byte TempMax
+        {
+            get { return _sbpr.TempMax; }
+            set
+            {
+                _sbpr.TempMax = value;
+                _datiSalvati = false;
+            }
+        }
+        public byte VersoCorrente
+        {
+            get { return _sbpr.VersoCorrente; }
+            set
+            {
+                _sbpr.VersoCorrente = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte NumeroSpire
+        {
+            get { return _sbpr.NumeroSpire; }
+            set
+            {
+                _sbpr.NumeroSpire = value;
+                _datiSalvati = false;
+            }
+        }
+
 
 
 

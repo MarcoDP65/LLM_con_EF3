@@ -61,11 +61,47 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Carica.
+        /// </summary>
+        internal static string Carica {
+            get {
+                return ResourceManager.GetString("Carica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Dom.
         /// </summary>
         internal static string Domenica {
             get {
                 return ResourceManager.GetString("Domenica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Elettrolita.
+        /// </summary>
+        internal static string Elettrolita {
+            get {
+                return ResourceManager.GetString("Elettrolita", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Esportazione dati Apparato.
+        /// </summary>
+        internal static string EsportazioneDati {
+            get {
+                return ResourceManager.GetString("EsportazioneDati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Evento Anomalo.
+        /// </summary>
+        internal static string EventoAnomalo {
+            get {
+                return ResourceManager.GetString("EventoAnomalo", resourceCulture);
             }
         }
         
@@ -97,11 +133,29 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a File generato.
+        /// </summary>
+        internal static string FileGenerato {
+            get {
+                return ResourceManager.GetString("FileGenerato", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Gio.
         /// </summary>
         internal static string Giovedi {
             get {
                 return ResourceManager.GetString("Giovedi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Inserire un nome valido.
+        /// </summary>
+        internal static string InserireNome {
+            get {
+                return ResourceManager.GetString("InserireNome", resourceCulture);
             }
         }
         
@@ -133,6 +187,15 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Pausa.
+        /// </summary>
+        internal static string Pausa {
+            get {
+                return ResourceManager.GetString("Pausa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Pres Elettrolita.
         /// </summary>
         internal static string PresenzaElett {
@@ -147,6 +210,15 @@ namespace PannelloCharger {
         internal static string Sabato {
             get {
                 return ResourceManager.GetString("Sabato", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Scarica.
+        /// </summary>
+        internal static string Scarica {
+            get {
+                return ResourceManager.GetString("Scarica", resourceCulture);
             }
         }
         

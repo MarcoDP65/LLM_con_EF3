@@ -61,16 +61,16 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.btnLogin, "btnLogin");
+            this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnAnnulla
             // 
-            this.btnAnnulla.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.btnAnnulla, "btnAnnulla");
+            this.btnAnnulla.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnulla.Name = "btnAnnulla";
             this.btnAnnulla.UseVisualStyleBackColor = true;
             this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);

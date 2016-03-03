@@ -8,6 +8,8 @@ using NextUI.Component;
 using NextUI.Frame;
 using System.Drawing;
 
+using PannelloCharger;
+
 namespace ChargerLogic
 {
     public class IndicatoreCruscotto
@@ -179,9 +181,17 @@ namespace ChargerLogic
                 _frame.BackRenderer.CenterColor = Color.LightGray;
                 _frame.BackRenderer.EndColor = Color.DimGray;
                 _frame.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.None;
-                                _frame.FrameImage = Image.FromFile("C:\\log\\trec.png");
-                //              Stream s = this.GetType().Assembly.GetManifestResourceStream("PannelloCharger.Properties.Resources.trec.png");
-                //              _frame.FrameImage = Image.FromFile("PannelloCharger.Properties.Resources.trec.png");
+
+
+                //  _frame.FrameImage = Image.FromFile("C:\\log\\trec.png");
+                // Stream s = this.GetType().Assembly.GetManifestResourceStream("PannelloCharger.Properties.Resources.trec.png");
+                // _frame.FrameImage = Image.FromFile("PannelloCharger.Properties.Resources.trec.png");
+
+                Image _tempImg = PannelloCharger.Properties.Resources.trec;
+
+
+                _frame.FrameImage = _tempImg;
+
 
                 //_frame.BackImage = Image.FromFile("C:\\log\\due.png");
                 InizializzaSoglie();

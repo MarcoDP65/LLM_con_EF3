@@ -28,6 +28,9 @@ namespace PannelloCharger
             _logiche = Logiche;
             InitializeComponent();
 
+            cmbTipoBatteria.Items.Add("Pb");
+            cmbTipoBatteria.Items.Add("Gel");
+            cmbTipoBatteria.SelectedIndex = 0;
             ApplicaAutorizzazioni();
         }
 
@@ -53,9 +56,39 @@ namespace PannelloCharger
                     LivelloCorrente = 99;
                 }
 
-                if (LivelloCorrente < 3) chkMemProgrammed.Visible = true;
+                if (LivelloCorrente < 2)
+                {
+                    chkMemProgrammed.Visible = true;
+                    pbxInverso.Enabled = true;
+                    //optInversa.Enabled = true;
+                    lblNumSpire.Visible = true;
+                    txtNumSpire.Visible = true;
+                    chkSondaElPresente.Visible = true;
+                    txtTempMax.Visible = true;
+                    lblTempMax.Visible = true;
+                    txtTempMin.Visible = true;
+                    lblTempMin.Visible = true;
+
+
+                }
                 else
+                {
                     chkMemProgrammed.Visible = false;
+                    pbxInverso.Enabled = false;
+                    //optInversa.Enabled = false;
+                    lblNumSpire.Visible = false;
+                    txtNumSpire.Visible = false;
+                    chkSondaElPresente.Visible = false;
+                    txtTempMax.Visible = false;
+                    lblTempMax.Visible = false;
+                    txtTempMin.Visible = false;
+                    lblTempMin.Visible = false;
+
+
+                }
+
+
+
 
             }
             catch
@@ -69,7 +102,7 @@ namespace PannelloCharger
         {
             if (_sb == null)
             {
-                MessageBox.Show("Apparato Corrente non definito  /N Impossibile continuare","Programmazioe Apparato", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Apparato Corrente non definito  /N Impossibile continuare","Programmazione Apparato", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
             this.Text = "Nuovo Programma " + Convert.ToString(_sb.sbData.ProgramCount + 1);
@@ -93,6 +126,7 @@ namespace PannelloCharger
 
                 _nuovoProg.BatteryVdef = FunzioniMR.ConvertiUshort(txtProgcBattVdef.Text,100,0);
                 _nuovoProg.BatteryAhdef = FunzioniMR.ConvertiUshort(txtProgcBattAhDef.Text, 10, 0);
+                txtProgcBattType.Text = cmbTipoBatteria.SelectedIndex.ToString();
                 _nuovoProg.BatteryType = FunzioniMR.ConvertiByte(txtProgcBattType.Text,1,0);
                 _nuovoProg.BatteryCells = FunzioniMR.ConvertiByte(txtProgcCelleTot.Text, 1, 0);
                 _nuovoProg.BatteryCell3 = FunzioniMR.ConvertiByte(txtProgcCelleV3.Text, 1, 0);
@@ -127,6 +161,48 @@ namespace PannelloCharger
                 {
                     _sb.AttivaProgramma();
                 }
+            }
+        }
+
+        private void pbxInverso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNumSpire_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumSpire_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProgcBattVdef_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                ushort _tempTens = FunzioniMR.ConvertiUshort(txtProgcBattVdef.Text, 1, 0);
+                if (_tempTens < 24 )
+                {
+                    _tempTens = 24;
+                    txtProgcBattVdef.Text = "24";
+                }
+
+                if (_tempTens > 96)
+                {
+                    _tempTens = 96;
+                    txtProgcBattVdef.Text = "96";
+                }
+                ushort _tempCells = (ushort)(_tempTens / 2);
+
+                txtProgcCelleTot.Text = _tempCells.ToString();
+                txtProgcBattVdef.Text = (_tempCells*2).ToString();
+            }
+            catch
+            {
+
             }
         }
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PannelloCharger.Resources {
+namespace PannelloCharger {
     using System;
     
     
@@ -187,11 +187,146 @@ namespace PannelloCharger.Resources {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a a.
+        ///   Cerca una stringa localizzata simile a I min.
         /// </summary>
         internal static string strVistaLunghiCol09 {
             get {
                 return ResourceManager.GetString("strVistaLunghiCol09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a I max.
+        /// </summary>
+        internal static string strVistaLunghiCol10 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Elettrolita.
+        /// </summary>
+        internal static string strVistaLunghiCol11 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Ah.
+        /// </summary>
+        internal static string strVistaLunghiCol12 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a KWh.
+        /// </summary>
+        internal static string strVistaLunghiCol13 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a KWh C..
+        /// </summary>
+        internal static string strVistaLunghiCol13C {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol13C", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a KWh S..
+        /// </summary>
+        internal static string strVistaLunghiCol13S {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol13S", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a S.o.C..
+        /// </summary>
+        internal static string strVistaLunghiCol14 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a C.F..
+        /// </summary>
+        internal static string strVistaLunghiCol15 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Registrazioni.
+        /// </summary>
+        internal static string strVistaLunghiCol16 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Registrazioni.
+        /// </summary>
+        internal static string strVistaLunghiCol17 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a max Sbil..
+        /// </summary>
+        internal static string strVistaLunghiCol20 {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Ah Caricati.
+        /// </summary>
+        internal static string strVistaLunghiColAhCaricati {
+            get {
+                return ResourceManager.GetString("strVistaLunghiColAhCaricati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Ah Scaricati.
+        /// </summary>
+        internal static string strVistaLunghiColAhScaricati {
+            get {
+                return ResourceManager.GetString("strVistaLunghiColAhScaricati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Stop.
+        /// </summary>
+        internal static string strVistaLunghiColCondStop {
+            get {
+                return ResourceManager.GetString("strVistaLunghiColCondStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Conf.
+        /// </summary>
+        internal static string strVistaLunghiColIdProgramma {
+            get {
+                return ResourceManager.GetString("strVistaLunghiColIdProgramma", resourceCulture);
             }
         }
         

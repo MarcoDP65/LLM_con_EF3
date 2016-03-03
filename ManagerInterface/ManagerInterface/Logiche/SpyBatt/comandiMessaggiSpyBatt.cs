@@ -22,7 +22,7 @@ namespace ChargerLogic
     /// </summary>
     public partial class UnitaSpyBatt
     {
-        private bool aspettaRisposta(int timeout, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false)
+        private bool aspettaRisposta(int timeout, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false , bool modoDeso = false)
         {
             object vuoto;
             return aspettaRisposta(timeout, out vuoto, risposteAttese, aspettaAck, runAsync, elementiComuni.tipoMessaggio.NonDefinito);

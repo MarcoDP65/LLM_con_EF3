@@ -763,13 +763,21 @@ namespace ChargerLogic
             public string DataInstallazione;
             public byte[] dtInstallazione;
 
-            public ushort BatteryVdef;
-            public ushort BatteryAhdef;
-            public byte BatteryType;
-            public byte BatteryCells;
-            public byte BatteryCell1;
-            public byte BatteryCell2;
-            public byte BatteryCell3;
+            public ushort BatteryVdef { get; set; }
+            public ushort BatteryAhdef { get; set; }
+            public byte BatteryType { get; set; }
+            public byte BatteryCells { get; set; }
+            public byte BatteryCell1 { get; set; }
+            public byte BatteryCell2 { get; set; }
+            public byte BatteryCell3 { get; set; }
+            public byte AbilitaPresElett { get; set; }
+            public byte TempMin { get; set; }
+            public byte TempMax { get; set; }
+            public byte VersoCorrente { get; set; }
+            public byte NumeroSpire { get; set; }
+
+
+
 
             byte[] _dataBuffer;
             public byte[] dataBuffer;
@@ -829,6 +837,16 @@ namespace ChargerLogic
                         BatteryCell2 = _risposta[startByte];
                         startByte += 1;
                         BatteryCell1 = _risposta[startByte];
+                        startByte += 1;
+                        AbilitaPresElett = _risposta[startByte];
+                        startByte += 1;
+                        TempMin = _risposta[startByte];
+                        startByte += 1;
+                        TempMax = _risposta[startByte];
+                        startByte += 1;
+                        VersoCorrente = _risposta[startByte];
+                        startByte += 1;
+                        NumeroSpire = _risposta[startByte];
                         startByte += 1;
 
                         datiPronti = true;

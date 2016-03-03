@@ -74,4 +74,26 @@ namespace ChargerLogic
 
 
     }
+
+    public class LinguaUtente
+    {
+        public string Chiave { get; set; }
+        public string Descrizione { get; set; }
+        public int Ordine { get; set; }
+
+        public override string ToString()
+        {
+            return Descrizione + " (" + Chiave + ")";
+        }
+
+    }
+ 
+    public class TipoBatteria
+    {
+        public int Chiave { get; set; }
+        public string Descrizione { get; set; }
+        public string ChiaveDescLingua { get; set; }
+        public bool DivisibileInCelle { get; set; }
+        public int MilliVoltCellaNom { get; set; }
+    }
 }

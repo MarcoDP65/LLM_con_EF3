@@ -173,7 +173,7 @@
     <value>250, 26</value>
   </data>
   <data name="caricaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Device Coonect</value>
+    <value>Device Connect</value>
   </data>
   <data name="archivioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 26</value>
@@ -1276,5 +1276,20 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>LADE LIGHT Manager (EN)</value>
+  </data>
+  <data name="mnuPortaSeriale.Text" xml:space="preserve">
+    <value>Serial console</value>
+  </data>
+  <data name="tstBtnCercaRS232.Text" xml:space="preserve">
+    <value>RS 232 searching</value>
+  </data>
+  <data name="tstBtnClose.ToolTipText" xml:space="preserve">
+    <value>Close current record</value>
+  </data>
+  <data name="tstBtnCercaUsb.Text" xml:space="preserve">
+    <value>Usb search</value>
+  </data>
+  <data name="italianoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Italian</value>
   </data>
 </root>

@@ -312,7 +312,7 @@ namespace PannelloCharger
                 flvwCicliBrevi.AllColumns.Add(colTemp);
 
                 BrightIdeasSoftware.OLVColumn colElettrolita = new BrightIdeasSoftware.OLVColumn();
-                colElettrolita.Text = "Elettrolita";
+                colElettrolita.Text = StringheComuni.Elettrolita;
                 colElettrolita.AspectName = "PresenzaElettrolita";
                 colElettrolita.AspectGetter = delegate(object _Valore)
                 {
@@ -694,13 +694,13 @@ namespace PannelloCharger
 
                     case 0xF0:
                         _Flag = "Carica";
-                        _titoloGrafico = "Ciclo di Carica";
+                        _titoloGrafico = StringheStatistica.FaseCarica ;
                         _fattoreCorrente = 1;
 
                         break;
                     case 0x0F:
                         _Flag = "Scarica";
-                        _titoloGrafico = "Ciclo di Scarica";
+                        _titoloGrafico = StringheStatistica.FaseScarica;
                         _fattoreCorrente = -1;
                         break;
 
@@ -812,11 +812,11 @@ namespace PannelloCharger
                 Log.Debug("GraficoCiclo: fine testata inizio serie");
                 //Creo le serie:
                 OxyPlot.Series.LineSeries serTensione = new OxyPlot.Series.LineSeries();
-                serTensione.Title = "Tensione per Cella";
+                serTensione.Title = StringheStatistica.Tensione;
                 if (TempoRelativo == true)
                 {
                     serTensione.DataFieldX = "TimeLapse";
-                    serTensione.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm\\:ss}\n";
+                    serTensione.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm}\n";
                 }
                 else
                 {
@@ -831,12 +831,12 @@ namespace PannelloCharger
                 
 
                 OxyPlot.Series.LineSeries serCorrente = new OxyPlot.Series.LineSeries();
-                serCorrente.Title = "Corrente Media";
+                serCorrente.Title = StringheStatistica.Corrente;
 
                 if (TempoRelativo == true)
                 {
                     serCorrente.DataFieldX = "TimeLapse";
-                    serCorrente.TrackerFormatString = serCorrente.Title + "\n\nIstante:" + "{2:hh\\:mm\\:ss}\nI med={4:0.###} A";
+                    serCorrente.TrackerFormatString = serCorrente.Title + "\n\nIstante:" + "{2:hh\\:mm}\nI med={4:0.###} A";
                 }
                 else
                 {
@@ -851,12 +851,12 @@ namespace PannelloCharger
 
 
                 OxyPlot.Series.LineSeries serTemperatura = new OxyPlot.Series.LineSeries();
-                serTemperatura.Title = "Temperatura Media";
+                serTemperatura.Title = StringheStatistica.TemperaturaMedia;
 
                 if (TempoRelativo == true)
                 {
                     serTemperatura.DataFieldX = "TimeLapse";
-                    serTemperatura.TrackerFormatString = serTemperatura.Title + "\n\nIstante:" + "{2:hh\\:mm\\:ss}\nTemperatura: {4:0.###} °C";
+                    serTemperatura.TrackerFormatString = serTemperatura.Title + "\n\nIstante:" + "{2:hh\\:mm}\nTemperatura: {4:0.###} °C";
                 }
                 else
                 {
@@ -926,9 +926,7 @@ namespace PannelloCharger
                     Minimum = _vMin,
                     Maximum = _vMax,
                     PositionTier = 0,
-                    //Title = "Tensione Media per Cella (V)",
-                    Unit = " V ",
-                    //TitlePosition = -4,
+                    Unit = " V/el ",
                     TitleFontSize = 12,
                     TitleFontWeight = OxyPlot.FontWeights.Bold,
                     AxisDistance = 15,
@@ -936,15 +934,20 @@ namespace PannelloCharger
                     Key = "Tensione",
                     MajorGridlineColor = OxyPlot.OxyColors.LightBlue,
                     MinorGridlineColor = OxyPlot.OxyColors.LightBlue,
+                    AxislineColor = OxyPlot.OxyColors.Blue,
+                    TextColor = OxyPlot.OxyColors.Blue,
+                    TitleColor = OxyPlot.OxyColors.Blue,
+                    TicklineColor = OxyPlot.OxyColors.Blue,
+                    AxislineThickness = 2,
                 };
 
 
 
-                
+
                 OxyPlot.Axes.LinearAxis AAxisCorr = new OxyPlot.Axes.LinearAxis
                 {
-                    Position = OxyPlot.Axes.AxisPosition.Left, 
-                    MajorGridlineStyle = OxyPlot.LineStyle.Solid, 
+                    Position = OxyPlot.Axes.AxisPosition.Left,
+                    MajorGridlineStyle = OxyPlot.LineStyle.Solid,
                     //MinorGridlineStyle = OxyPlot.LineStyle.Dot, 
                     TickStyle = OxyPlot.Axes.TickStyle.Outside,
                     Minimum = _iMin,
@@ -958,6 +961,12 @@ namespace PannelloCharger
                     Key = "Corrente",
                     MajorGridlineColor = OxyPlot.OxyColors.LightPink,
                     MinorGridlineColor = OxyPlot.OxyColors.LightPink,
+                    AxislineColor = OxyPlot.OxyColors.Red,
+                    TextColor = OxyPlot.OxyColors.Red,
+                    TitleColor = OxyPlot.OxyColors.Red,
+                    TicklineColor = OxyPlot.OxyColors.Red,
+                    AxisTitleDistance = 2,
+                    AxislineThickness = 2,
 
 
                 };
@@ -979,6 +988,11 @@ namespace PannelloCharger
                     Key = "Temperatura",
                     MajorGridlineColor = OxyPlot.OxyColors.LightGreen,
                     MinorGridlineColor = OxyPlot.OxyColors.LightGreen,
+                    AxislineColor = OxyPlot.OxyColors.Green,
+                    TextColor = OxyPlot.OxyColors.Green,
+                    TitleColor = OxyPlot.OxyColors.Green,
+                    TicklineColor = OxyPlot.OxyColors.Green,
+                    AxislineThickness = 2,
 
                 };
 
@@ -1055,13 +1069,13 @@ namespace PannelloCharger
 
                     case 0xF0:
                         _Flag = "Carica";
-                        _titoloGrafico = "Grafico Tensioni in Carica";
+                        _titoloGrafico = StringheStatistica.TensioniCarica;
                         _fattoreCorrente = 1;
 
                         break;
                     case 0x0F:
                         _Flag = "Scarica";
-                        _titoloGrafico = "Grafico Tensioni in Scarica";
+                        _titoloGrafico = StringheStatistica.TensioniScarica;
                         _fattoreCorrente = -1;
                         break;
 
@@ -1218,11 +1232,11 @@ namespace PannelloCharger
 
                 // Tensione Media Batteria
                 OxyPlot.Series.LineSeries serTensione = new OxyPlot.Series.LineSeries();
-                serTensione.Title = "Tensione per Cella";
+                serTensione.Title = StringheStatistica.TensioneTotale;
                 if (TempoRelativo == true)
                 {
                     serTensione.DataFieldX = "TimeLapse";
-                    serTensione.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm\\:ss}\n";
+                    serTensione.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm}\n";
                 }
                 else
                 {
@@ -1237,11 +1251,11 @@ namespace PannelloCharger
 
                 // Tensione Sezione 1
                 OxyPlot.Series.LineSeries serTensSez1 = new OxyPlot.Series.LineSeries();
-                serTensSez1.Title = "Tensione per Cella / Sezione 1";
+                serTensSez1.Title = StringheStatistica.Tensione + " " + StringheStatistica.Sezione + " 1";
                 if (TempoRelativo == true)
                 {
                     serTensSez1.DataFieldX = "TimeLapse";
-                    serTensSez1.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm\\:ss}\n";
+                    serTensSez1.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm}\n";
                 }
                 else
                 {
@@ -1254,11 +1268,11 @@ namespace PannelloCharger
 
                 // Tensione Sezione 2
                 OxyPlot.Series.LineSeries serTensSez2 = new OxyPlot.Series.LineSeries();
-                serTensSez2.Title = "Tensione per Cella / Sezione 2";
+                serTensSez2.Title = StringheStatistica.Tensione + " / " + StringheStatistica.Sezione + " 2";
                 if (TempoRelativo == true)
                 {
                     serTensSez2.DataFieldX = "TimeLapse";
-                    serTensSez2.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm\\:ss}\n";
+                    serTensSez2.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm}\n";
                 }
                 else
                 {
@@ -1272,11 +1286,11 @@ namespace PannelloCharger
 
                 // Tensione Sezione 3
                 OxyPlot.Series.LineSeries serTensSez3 = new OxyPlot.Series.LineSeries();
-                serTensSez3.Title = "Tensione per Cella / Sezione 3";
+                serTensSez3.Title = StringheStatistica.Tensione + " / " + StringheStatistica.Sezione + " 3";
                 if (TempoRelativo == true)
                 {
                     serTensSez3.DataFieldX = "TimeLapse";
-                    serTensSez3.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm\\:ss}\n";
+                    serTensSez3.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm}\n";
                 }
                 else
                 {
@@ -1290,11 +1304,11 @@ namespace PannelloCharger
 
                 // Tensione Sezione 4
                 OxyPlot.Series.LineSeries serTensSez4 = new OxyPlot.Series.LineSeries();
-                serTensSez4.Title = "Tensione per Cella / Sezione 4";
+                serTensSez4.Title = StringheStatistica.Tensione + " / " + StringheStatistica.Sezione + " 4";
                 if (TempoRelativo == true)
                 {
                     serTensSez4.DataFieldX = "TimeLapse";
-                    serTensSez4.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm\\:ss}\n";
+                    serTensSez4.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm}\n";
                 }
                 else
                 {
@@ -1309,12 +1323,12 @@ namespace PannelloCharger
 
 
                 OxyPlot.Series.LineSeries serTemperatura = new OxyPlot.Series.LineSeries();
-                serTemperatura.Title = "Temperatura Media";
-
+                serTemperatura.Title = StringheStatistica.TemperaturaMedia;
+           
                 if (TempoRelativo == true)
                 {
                     serTemperatura.DataFieldX = "TimeLapse";
-                    serTemperatura.TrackerFormatString = serTemperatura.Title + "\n\nIstante:" + "{2:hh\\:mm\\:ss}\nTemperatura: {4:0.###} °C";
+                    serTemperatura.TrackerFormatString = serTemperatura.Title + "\n\nIstante:" + "{2:hh\\:mm}\nTemperatura: {4:0.###} °C";
                 }
                 else
                 {
@@ -1331,7 +1345,7 @@ namespace PannelloCharger
                 Log.Debug("GraficoCiclo: fine serie inizio assi");
                 if (TempoRelativo == true)
                 {
-                    string _titoloInizio = "Inizio Fase: ";
+                    string _titoloInizio = StringheStatistica.InizioFase + ": ";
                     _titoloInizio += CicloLungo.DataOraStart;
 
                     OxyPlot.Axes.TimeSpanAxis dtAxisTens = new OxyPlot.Axes.TimeSpanAxis
@@ -1379,13 +1393,11 @@ namespace PannelloCharger
                 {
                     Position = OxyPlot.Axes.AxisPosition.Left,
                     MajorGridlineStyle = OxyPlot.LineStyle.Solid,
-                    // MinorGridlineStyle = OxyPlot.LineStyle.Dot, 
                     TickStyle = OxyPlot.Axes.TickStyle.Outside,
                     Minimum = _vMin,
                     Maximum = _vMax,
                     PositionTier = 0,
-                    //Title = "Tensione Media per Cella (V)",
-                    Unit = " V ",
+                    Unit = " V/el ",
                     //TitlePosition = -4,
                     TitleFontSize = 12,
                     TitleFontWeight = OxyPlot.FontWeights.Bold,
@@ -1396,7 +1408,7 @@ namespace PannelloCharger
                     MinorGridlineColor = OxyPlot.OxyColors.LightBlue,
                 };
 
-
+                /*
                 
                 OxyPlot.Axes.LinearAxis CAxisTemp = new OxyPlot.Axes.LinearAxis
                 {
@@ -1417,12 +1429,13 @@ namespace PannelloCharger
                     MinorGridlineColor = OxyPlot.OxyColors.LightGreen,
 
                 };
+                */
                 
                 Log.Debug("GraficoCiclo: fine definizioni aggiunta elementi");
 
                 oxyGraficoTensioni.Axes.Add(VAxisTens);
                 //oxyGraficoCiclo.Axes.Add(AAxisCorr);
-                oxyGraficoTensioni.Axes.Add(CAxisTemp);
+                //oxyGraficoTensioni.Axes.Add(CAxisTemp);
 
                 serTensione.XAxisKey = "Tempi";
                 serTensione.YAxisKey = "Tensione";
@@ -1567,11 +1580,11 @@ namespace PannelloCharger
 
 
 
-                    MessageBox.Show("File generato", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(StringheComuni.FileGenerato, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Inserire un nome valido", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringheComuni.InserireNome, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 
@@ -1581,7 +1594,7 @@ namespace PannelloCharger
             catch ( Exception Ex )
             {
                 Log.Error("btnGeneraCsv_Click: " + Ex.Message);
-                MessageBox.Show(Ex.Message, "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Ex.Message, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Anidride" xml:space="preserve">
+    <value>Anidride</value>
+  </data>
+  <data name="CO2Risparmiata" xml:space="preserve">
+    <value>CO2 Risparmiata</value>
+  </data>
+  <data name="Energia" xml:space="preserve">
+    <value>Energia</value>
+  </data>
+  <data name="EnergiaConsumata" xml:space="preserve">
+    <value>Energia Consumata</value>
+  </data>
+  <data name="Numero" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="numRabbocchi" xml:space="preserve">
+    <value>Numero di Rabbocchi</value>
+  </data>
+  <data name="percResidua" xml:space="preserve">
+    <value>% Vita Residua</value>
+  </data>
+  <data name="Rabbocchi_breve" xml:space="preserve">
+    <value>Rabbocchi</value>
+  </data>
+  <data name="SoH_breve" xml:space="preserve">
+    <value>SoH</value>
+  </data>
+  <data name="FaseCarica" xml:space="preserve">
+    <value>Fase di Carica</value>
+  </data>
+  <data name="FaseScarica" xml:space="preserve">
+    <value>Fase di Scarica</value>
+  </data>
+  <data name="InizioFase" xml:space="preserve">
+    <value>Inizio Fase</value>
+  </data>
+  <data name="Sezione" xml:space="preserve">
+    <value>Sezione</value>
+  </data>
+  <data name="TemperaturaMedia" xml:space="preserve">
+    <value>Temperatura Media</value>
+  </data>
+  <data name="TensionePerCella" xml:space="preserve">
+    <value>Tensione per Cella</value>
+  </data>
+  <data name="Tipologia" xml:space="preserve">
+    <value>Tipologia Caricabatteria</value>
+  </data>
+  <data name="Cicli" xml:space="preserve">
+    <value>Cicli</value>
+  </data>
+  <data name="Corrente" xml:space="preserve">
+    <value>Corrente</value>
+  </data>
+  <data name="GrDODAsseX" xml:space="preserve">
+    <value>Profondità di Scarica</value>
+  </data>
+  <data name="GrDODAsseY" xml:space="preserve">
+    <value>Numero Cicli</value>
+  </data>
+  <data name="GrDODChiave" xml:space="preserve">
+    <value>D.o.D.</value>
+  </data>
+  <data name="GrDODTitolo" xml:space="preserve">
+    <value>Profondità di Scarica - D.o.D.</value>
+  </data>
+  <data name="GrTempChiave" xml:space="preserve">
+    <value>Grafico Temporale</value>
+  </data>
+  <data name="Settimana" xml:space="preserve">
+    <value>Settimana</value>
+  </data>
+  <data name="Temperatura" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Tensione" xml:space="preserve">
+    <value>Tensione</value>
+  </data>
+  <data name="TensioneTotale" xml:space="preserve">
+    <value>Tensione Totale</value>
+  </data>
+  <data name="TensioniCarica" xml:space="preserve">
+    <value>Tensioni Parziali in Carica</value>
+  </data>
+  <data name="TensioniScarica" xml:space="preserve">
+    <value>Tensioni Parziali in Scarica</value>
+  </data>
+  <data name="GrDuCCChiave" xml:space="preserve">
+    <value>Durata CC</value>
+  </data>
+  <data name="GrDuCCTitolo" xml:space="preserve">
+    <value>Durata Cariche Complete</value>
+  </data>
+  <data name="GrDuCPChiave" xml:space="preserve">
+    <value>Durata CP</value>
+  </data>
+  <data name="GrDuCPTitolo" xml:space="preserve">
+    <value>Durata Cariche Parziali</value>
+  </data>
+  <data name="GrDurCAsseX" xml:space="preserve">
+    <value>Durata (hh:mm)</value>
+  </data>
+  <data name="GrDurCAsseY" xml:space="preserve">
+    <value>Numero Cicli</value>
+  </data>
+  <data name="GrTempAttivaDelta" xml:space="preserve">
+    <value>Incremento Termico</value>
+  </data>
+  <data name="GrTempAttivaMax" xml:space="preserve">
+    <value>Tempertura Massima</value>
+  </data>
+  <data name="GrTempAttivaMin" xml:space="preserve">
+    <value>Tempertura Minima</value>
+  </data>
+  <data name="GrDeltaTCCChiave" xml:space="preserve">
+    <value>Incr T C.C.</value>
+  </data>
+  <data name="GrDeltaTCCTitolo" xml:space="preserve">
+    <value>Incremento Temperatura in Carica Completa</value>
+  </data>
+  <data name="GrDeltaTCPChiave" xml:space="preserve">
+    <value>Incr T C.P.</value>
+  </data>
+  <data name="GrDeltaTCPTitolo" xml:space="preserve">
+    <value>Incremento Temperatura in Carica Parziale</value>
+  </data>
+  <data name="GrDeltaTSChiave" xml:space="preserve">
+    <value>Incr T.S.</value>
+  </data>
+  <data name="GrDeltaTSTitolo" xml:space="preserve">
+    <value>Incremento Temperatura in Scarica</value>
+  </data>
+  <data name="GrTmaxCCChiave" xml:space="preserve">
+    <value>Tmax C.C.</value>
+  </data>
+  <data name="GrTmaxCCTitolo" xml:space="preserve">
+    <value>Temperature Massime in Carica Completa</value>
+  </data>
+  <data name="GrTmaxCPChiave" xml:space="preserve">
+    <value>Tmax C.P.</value>
+  </data>
+  <data name="GrTmaxCPTitolo" xml:space="preserve">
+    <value>Temperature Massime in Carica Parziale</value>
+  </data>
+  <data name="GrTmaxSChiave" xml:space="preserve">
+    <value>T Max S.</value>
+  </data>
+  <data name="GrTmaxSTitolo" xml:space="preserve">
+    <value>Temperature Massime in Scarica</value>
+  </data>
+  <data name="GrTminSChiave" xml:space="preserve">
+    <value>T Min S.</value>
+  </data>
+  <data name="GrTminSTitolo" xml:space="preserve">
+    <value>Temperature Minime in Scarica</value>
+  </data>
+  <data name="NumeroCicli" xml:space="preserve">
+    <value>NumeroCicli</value>
+  </data>
+  <data name="TitAxTDelta" xml:space="preserve">
+    <value>Incremento Termico (°C)</value>
+  </data>
+  <data name="TitAxTmax" xml:space="preserve">
+    <value>Tempertura Massima (°C)</value>
+  </data>
+  <data name="TitAxTmin" xml:space="preserve">
+    <value>Tempertura Minima (°C)</value>
+  </data>
+  <data name="PercCarica" xml:space="preserve">
+    <value>% Carica</value>
+  </data>
+</root>

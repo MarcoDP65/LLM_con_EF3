@@ -117,4 +117,189 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnApriSpybatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 454</value>
+  </data>
+  <data name="btnApriSpybatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 44</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnApriSpybatt.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnApriSpybatt.Text" xml:space="preserve">
+    <value>Apri Scheda</value>
+  </data>
+  <data name="&gt;&gt;btnApriSpybatt.Name" xml:space="preserve">
+    <value>btnApriSpybatt</value>
+  </data>
+  <data name="&gt;&gt;btnApriSpybatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnApriSpybatt.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnApriSpybatt.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnChiudi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>872, 454</value>
+  </data>
+  <data name="btnChiudi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 44</value>
+  </data>
+  <data name="btnChiudi.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnChiudi.Text" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.Name" xml:space="preserve">
+    <value>btnChiudi</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnChiudi.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="flvwListaApparati.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 12</value>
+  </data>
+  <data name="flvwListaApparati.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 423</value>
+  </data>
+  <data name="flvwListaApparati.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;flvwListaApparati.Name" xml:space="preserve">
+    <value>flvwListaApparati</value>
+  </data>
+  <data name="&gt;&gt;flvwListaApparati.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;flvwListaApparati.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flvwListaApparati.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnEsportaSpybatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 454</value>
+  </data>
+  <data name="btnEsportaSpybatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 44</value>
+  </data>
+  <data name="btnEsportaSpybatt.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnEsportaSpybatt.Text" xml:space="preserve">
+    <value>Esporta Dati</value>
+  </data>
+  <data name="&gt;&gt;btnEsportaSpybatt.Name" xml:space="preserve">
+    <value>btnEsportaSpybatt</value>
+  </data>
+  <data name="&gt;&gt;btnEsportaSpybatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEsportaSpybatt.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnEsportaSpybatt.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnEliminaDati.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 454</value>
+  </data>
+  <data name="btnEliminaDati.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 44</value>
+  </data>
+  <data name="btnEliminaDati.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnEliminaDati.Text" xml:space="preserve">
+    <value>Cancella Dati</value>
+  </data>
+  <data name="&gt;&gt;btnEliminaDati.Name" xml:space="preserve">
+    <value>btnEliminaDati</value>
+  </data>
+  <data name="&gt;&gt;btnEliminaDati.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEliminaDati.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnEliminaDati.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnImportaDati.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 454</value>
+  </data>
+  <data name="btnImportaDati.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 44</value>
+  </data>
+  <data name="btnImportaDati.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnImportaDati.Text" xml:space="preserve">
+    <value>Importa Dati</value>
+  </data>
+  <data name="&gt;&gt;btnImportaDati.Name" xml:space="preserve">
+    <value>btnImportaDati</value>
+  </data>
+  <data name="&gt;&gt;btnImportaDati.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnImportaDati.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnImportaDati.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtIdScheda.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtIdScheda.Location" type="System.Drawing.Point, System.Drawing">
+    <value>556, 454</value>
+  </data>
+  <data name="txtIdScheda.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 27</value>
+  </data>
+  <data name="txtIdScheda.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtIdScheda.Name" xml:space="preserve">
+    <value>txtIdScheda</value>
+  </data>
+  <data name="&gt;&gt;txtIdScheda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtIdScheda.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtIdScheda.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1020, 514</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Archivio Spy-Batt</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmSelettoreSpyBatt</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

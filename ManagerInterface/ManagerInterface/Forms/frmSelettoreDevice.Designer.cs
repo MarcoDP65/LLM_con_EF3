@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelettoreDevice));
             this.flvwListaDevices = new BrightIdeasSoftware.FastObjectListView();
             this.btnChiudi = new System.Windows.Forms.Button();
             this.btnConnetti = new System.Windows.Forms.Button();
@@ -37,11 +38,12 @@
             // 
             // flvwListaDevices
             // 
-            this.flvwListaDevices.Location = new System.Drawing.Point(12, 12);
+            this.flvwListaDevices.CellEditUseWholeCell = false;
+            this.flvwListaDevices.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwListaDevices.HighlightForegroundColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.flvwListaDevices, "flvwListaDevices");
             this.flvwListaDevices.Name = "flvwListaDevices";
             this.flvwListaDevices.ShowGroups = false;
-            this.flvwListaDevices.Size = new System.Drawing.Size(532, 244);
-            this.flvwListaDevices.TabIndex = 1;
             this.flvwListaDevices.UseCompatibleStateImageBehavior = false;
             this.flvwListaDevices.View = System.Windows.Forms.View.Details;
             this.flvwListaDevices.VirtualMode = true;
@@ -49,39 +51,29 @@
             // 
             // btnChiudi
             // 
-            this.btnChiudi.Location = new System.Drawing.Point(426, 274);
+            resources.ApplyResources(this.btnChiudi, "btnChiudi");
             this.btnChiudi.Name = "btnChiudi";
-            this.btnChiudi.Size = new System.Drawing.Size(118, 32);
-            this.btnChiudi.TabIndex = 6;
-            this.btnChiudi.Text = "Chiudi";
             this.btnChiudi.UseVisualStyleBackColor = true;
             this.btnChiudi.Click += new System.EventHandler(this.btnChiudi_Click);
             // 
             // btnConnetti
             // 
-            this.btnConnetti.Location = new System.Drawing.Point(302, 274);
+            resources.ApplyResources(this.btnConnetti, "btnConnetti");
             this.btnConnetti.Name = "btnConnetti";
-            this.btnConnetti.Size = new System.Drawing.Size(118, 32);
-            this.btnConnetti.TabIndex = 7;
-            this.btnConnetti.Text = "Collega";
             this.btnConnetti.UseVisualStyleBackColor = true;
             this.btnConnetti.Click += new System.EventHandler(this.btnConnetti_Click);
             // 
             // btnAggiorna
             // 
-            this.btnAggiorna.Location = new System.Drawing.Point(12, 274);
+            resources.ApplyResources(this.btnAggiorna, "btnAggiorna");
             this.btnAggiorna.Name = "btnAggiorna";
-            this.btnAggiorna.Size = new System.Drawing.Size(118, 32);
-            this.btnAggiorna.TabIndex = 8;
-            this.btnAggiorna.Text = "Aggiorna";
             this.btnAggiorna.UseVisualStyleBackColor = true;
             this.btnAggiorna.Click += new System.EventHandler(this.btnAggiorna_Click);
             // 
             // frmSelettoreDevice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 318);
             this.Controls.Add(this.btnAggiorna);
             this.Controls.Add(this.btnConnetti);
             this.Controls.Add(this.btnChiudi);
@@ -91,7 +83,6 @@
             this.MinimizeBox = false;
             this.Name = "frmSelettoreDevice";
             this.ShowIcon = false;
-            this.Text = "Selezione Dispositivi";
             this.Load += new System.EventHandler(this.frmSelettoreDevice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.flvwListaDevices)).EndInit();
             this.ResumeLayout(false);

@@ -126,7 +126,7 @@
   <data name="ConfermaDisconnessione" xml:space="preserve">
     <value>Disconnect the current User ? (This will close all the opened forms)</value>
   </data>
-    <data name="strVistaLunghiCol01" xml:space="preserve">
+  <data name="strVistaLunghiCol01" xml:space="preserve">
     <value>Ph.</value>
   </data>
   <data name="strVistaLunghiTtCol01" xml:space="preserve">
@@ -143,7 +143,8 @@
   </data>
   <data name="strVistaLunghiTtCol03" xml:space="preserve">
     <value>Date/Time of Start Phase</value>
-  </data>  <data name="strVistaLunghiCol04" xml:space="preserve">
+  </data>
+  <data name="strVistaLunghiCol04" xml:space="preserve">
     <value>Stop</value>
   </data>
   <data name="strVistaLunghiTtCol04" xml:space="preserve">
@@ -160,13 +161,13 @@
   </data>
   <data name="strVistaLunghiTtCol06m" xml:space="preserve">
     <value>Minimum Temperature</value>
-  </data>    
+  </data>
   <data name="strVistaLunghiCol06" xml:space="preserve">
     <value>°C Max</value>
   </data>
   <data name="strVistaLunghiTtCol06" xml:space="preserve">
     <value>Maximum Temperature</value>
-  </data>  
+  </data>
   <data name="strVistaLunghiCol07" xml:space="preserve">
     <value>V Min</value>
   </data>
@@ -179,5 +180,31 @@
   <data name="strVistaLunghiTtCol08" xml:space="preserve">
     <value>Maximum Voltage</value>
   </data>
-
+  <data name="strGiornoLun" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="strVistaLunghiCol11" xml:space="preserve">
+    <value>Electrolyte</value>
+  </data>
+  <data name="strVistaLunghiCol16" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="strVistaLunghiCol17" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="strVistaLunghiColAhCaricati" xml:space="preserve">
+    <value>Ah Chg.</value>
+  </data>
+  <data name="strVistaLunghiColAhScaricati" xml:space="preserve">
+    <value>Ah Disch.</value>
+  </data>
+  <data name="strVistaLunghiCol13C" xml:space="preserve">
+    <value>KWH C.</value>
+  </data>
+  <data name="strVistaLunghiCol13S" xml:space="preserve">
+    <value>KWH D.</value>
+  </data>
+  <data name="strVistaLunghiColIdProgramma" xml:space="preserve">
+    <value>Setup</value>
+  </data>
 </root>

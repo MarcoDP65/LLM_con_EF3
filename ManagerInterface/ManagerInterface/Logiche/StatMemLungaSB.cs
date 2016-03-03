@@ -7,6 +7,7 @@ using MoriData;
 using Utility;
 using log4net;
 using log4net.Config;
+using PannelloCharger;
 
 namespace ChargerLogic
 {
@@ -55,6 +56,7 @@ namespace ChargerLogic
         private int _numCaricheParziali;
         private int _numScariche;
         private int _numPause;
+        private int _numAnomali;
         private int _numCicliTot;
         private int _numCicliEff;
         private int _numSovraScariche;
@@ -133,25 +135,15 @@ namespace ChargerLogic
             _deltaTScarica = 12;              // 4
             _tMaxCaricaComp = 50;             // 5
             _tMaxCaricaParz = 50;             // 6
-
+            _deltaTCaricaComp = 12;           // 7
+            _deltaTCaricaParz = 12;           // 8
             _maxSbilanciamento = 0.05;        // 9
-            
-
-
-/*
-
-
-            int _deltaTCaricaComp;
-            int _deltaTCaricaParz;
-            double _maxSbilanciamento;
-            double _minFC;
-            int _orePausaDODFascia810;
-            int _orePausaDODFascia68;
-            int _orePausaDODFascia46;
-            int _orePausaDODFascia24;
-            int _orePausaDODFascia02;
-
-*/
+            _minFC = 1;                       // 10
+            _orePausaDODFascia810 = 5;        // 11
+            _orePausaDODFascia68 = 20;        // 12
+            _orePausaDODFascia46 = 72;        // 13
+            _orePausaDODFascia24 = 480;       // 14
+            _orePausaDODFascia02 = 480;       // 15
 
 
             if (SoglieAnalisi != null)
@@ -175,19 +167,36 @@ namespace ChargerLogic
                         case 5: //Tmax Carica Completa
                             _tMaxCaricaComp =  _sgl.ValoreInt;
                             break;
-                        case 6: //Tmax Carica Completa
+                        case 6: //Tmax Carica Parziale
                             _tMaxCaricaParz = _sgl.ValoreInt;
+                            break;
+                        case 7: //Diff T Carica Completa
+                            _deltaTCaricaComp = _sgl.ValoreInt;
+                            break;
+                        case 8: //Diff T Carica Parziale
+                            _deltaTCaricaParz = _sgl.ValoreInt;
                             break;
                         case 9: //Profondità DoD
                             _maxSbilanciamento =  _sgl.ValoreNum;
                             break;
-
-
-
-
-
-
-
+                        case 10: //Min CF
+                            _minFC = _sgl.ValoreInt;
+                            break;
+                        case 11: //Diff T Carica Parziale
+                            _orePausaDODFascia810 = _sgl.ValoreInt;
+                            break;
+                        case 12: //Diff T Carica Parziale
+                            _orePausaDODFascia68 = _sgl.ValoreInt;
+                            break;
+                        case 13: //Diff T Carica Parziale
+                            _orePausaDODFascia46 = _sgl.ValoreInt;
+                            break;
+                        case 14: //Diff T Carica Parziale
+                            _orePausaDODFascia24 = _sgl.ValoreInt;
+                            break;
+                        case 15: //Diff T Carica Parziale
+                            _orePausaDODFascia02 = _sgl.ValoreInt;
+                            break;
 
                     }
 
@@ -219,6 +228,7 @@ namespace ChargerLogic
             _numCaricheParziali = 0;
             _durataNoEl = 0;
             _numPause = 0;
+            _numAnomali = 0;
             _kWhtot = 0;
             _kWhCaricati = 0;
             _EnScaricataNorm = 0;
@@ -465,6 +475,8 @@ namespace ChargerLogic
 
                             break;
                         default:
+                            // se tipo ciclo non atalogato, lo conto nelle anomalie ma non nel totale
+                            _numAnomali += 1;
                             break;
 
                     }
@@ -708,6 +720,11 @@ namespace ChargerLogic
             get { return _numCicliEff; }
         }
 
+        public int NumeroAnomalie
+        {
+            get { return _numAnomali; }
+        }
+
 
         public int NumeroCariche
         {
@@ -875,6 +892,88 @@ namespace ChargerLogic
         }
 
 
+        //soglie
+        public int SogliaProfonditaDoD
+        {
+            get { return _profonditaDoD; }
+        }
+
+        public int SogliaTempMaxScarica
+        {
+            get { return _tMaxScarica; }
+        }
+
+        public int SogliaTempMinScarica
+        {
+            get { return _tMinScarica; }
+        }
+
+        public int SogliaDiffTempScarica
+        {
+            get { return _deltaTScarica; }
+        }
+
+        public int SogliaTempMaxCaricaCompleta
+        {
+            get { return _tMaxCaricaComp; }
+        }
+
+
+        public int SogliaTempMaxCaricaParziale
+        {
+            get { return _tMaxCaricaParz; }
+        }
+
+        public int SogliaDiffTempCaricaCompleta
+        {
+            get { return _deltaTCaricaComp; }
+        }
+
+
+        public int SogliaDiffTempCaricaParziale
+        {
+            get { return _deltaTCaricaParz; }
+        }
+
+        public double SogliaMassimoSbilanciamento
+        {
+            get { return _maxSbilanciamento; }
+        }
+
+        public double SogliaMinimoChargeFactor
+        {
+            get { return _minFC; }
+        }
+
+        public int SogliaOrePausaDOD0810
+        {
+            get { return _orePausaDODFascia810; }
+        }
+
+        public int SogliaOrePausaDOD0608
+        {
+            get { return _orePausaDODFascia68; }
+        }
+
+        public int SogliaOrePausaDOD0406
+        {
+            get { return _orePausaDODFascia46; }
+        }
+
+        public int SogliaOrePausaDOD0204
+        {
+            get { return _orePausaDODFascia24; }
+        }
+
+        public int SogliaOrePausaDOD0002
+        {
+            get { return _orePausaDODFascia02; }
+        }
+
+
+
+
+
         #endregion PARAMETRI
 
 
@@ -892,8 +991,8 @@ namespace ChargerLogic
                 _datiComp.MinX = 0;
                 _datiComp.MaxX = 10;
                 _datiComp.NumStep = 10;
-                _datiComp.TitoloAsseX = "Profondità di Scarica";
-                _datiComp.TitoloAsseY = "Numero Cicli";
+                _datiComp.TitoloAsseX = StringheStatistica.GrDODAsseX;
+                _datiComp.TitoloAsseY = StringheStatistica.GrDODAsseY;
 
                 //inizializzo gli array
                 _datiComp.arrayValori = new int[_passi];
@@ -906,9 +1005,9 @@ namespace ChargerLogic
                 {
                     _datiComp.arrayValori[_passo] = 0;
                     _tempValore = _passo * 10;
-                    _etichetta = _tempValore.ToString() + "% - ";
+                    _etichetta = _tempValore.ToString() + " ÷ ";
                     _tempValore = (_passo+1) * 10;
-                    _etichetta = _tempValore.ToString() + "%";
+                    _etichetta = _etichetta +_tempValore.ToString() + "%";
 
                     _datiComp.arrayLabel[_passo] = _etichetta;
                 }
@@ -966,8 +1065,8 @@ namespace ChargerLogic
                 _datiComp.MinX = 0;
                 _datiComp.MaxX = NumStep;
                 _datiComp.NumStep = NumStep;
-                _datiComp.TitoloAsseX = "Durata Ciclo (Minuti)";
-                _datiComp.TitoloAsseY = "Numero Cicli";
+                _datiComp.TitoloAsseX = StringheStatistica.GrDurCAsseX;
+                _datiComp.TitoloAsseY = StringheStatistica.GrDurCAsseY;
 
                 //inizializzo gli array
                 _datiComp.arrayValori = new int[_passi];
@@ -1008,7 +1107,7 @@ namespace ChargerLogic
                     }
 
                 }
-
+                _datiComp.StepSoglia = NumStep + 1; //La durata carica non ha soglia massima
                 _datiComp.MaxY = 0;
 
                 for (_passo = 0; _passo < _passi; _passo++)
@@ -1060,21 +1159,21 @@ namespace ChargerLogic
                 _datiComp.NumStep = _passi;
                 switch (TempAttiva)
                 {
-                    case 0:
-                        _datiComp.TitoloAsseX = "Tempertura Minima (°C)";
+                    case 0:  // "Tempertura Minima (°C)"
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTmin;
                         break;
-                    case 1:
-                        _datiComp.TitoloAsseX = "Tempertura Massima (°C)";
+                    case 1:  // "Tempertura Massima (°C)";
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTmax;
                         break;
-                    case 2:
-                        _datiComp.TitoloAsseX = "Incremento Termico (°C)";
+                    case 2:  // "Incremento Termico (°C)";
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTDelta;
                         break;
                     default:
-                        _datiComp.TitoloAsseX = "Tempertura Minima (°C)";
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTmin;
                         break;
                 }
 
-                _datiComp.TitoloAsseY = "Numero Cicli";
+                _datiComp.TitoloAsseY = StringheStatistica.NumeroCicli;
 
                 //inizializzo gli array
                 _datiComp.arrayValori = new int[_passi+1];
@@ -1314,6 +1413,7 @@ namespace ChargerLogic
 
     public class DatiEstrazione
     {
+        public enum  Direzione : byte { Ascendente = 0, Discendente = 1 }
         public string Titolo { get; set; }
         public string Misura { get; set; }
         public int TotLetture { get; set; }
@@ -1324,6 +1424,7 @@ namespace ChargerLogic
         public int MaxY { get; set; }
         public int NumStep { get; set; }
         public int StepSoglia { get; set; }
+        public Direzione VersoSoglia = Direzione.Ascendente;
         public bool DatiValidi { get; set; }
 
         public string TitoloAsseX { get; set; }

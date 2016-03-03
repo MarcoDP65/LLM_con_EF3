@@ -84,107 +84,10 @@
             this.lblCliModellpApp = new System.Windows.Forms.Label();
             this.lbNoteCliente = new System.Windows.Forms.Label();
             this.lblCliCliente = new System.Windows.Forms.Label();
-            this.tabCb04 = new System.Windows.Forms.TabPage();
-            this.grbMemCicliPulsanti = new System.Windows.Forms.GroupBox();
-            this.chkCaricaBrevi = new System.Windows.Forms.CheckBox();
-            this.chkInvertiCorreti = new System.Windows.Forms.CheckBox();
-            this.btnRigeneraLista = new System.Windows.Forms.Button();
-            this.btnCaricaListaUltimiLunghi = new System.Windows.Forms.Button();
-            this.btnCaricaDettaglioSel = new System.Windows.Forms.Button();
-            this.btnCaricaListaLunghi = new System.Windows.Forms.Button();
-            this.btnDettaglioCicliBrevi = new System.Windows.Forms.Button();
-            this.grbEsportaExcel = new System.Windows.Forms.GroupBox();
-            this.btnGeneraCsv = new System.Windows.Forms.Button();
-            this.btnSelFileCicli = new System.Windows.Forms.Button();
-            this.txtFileCicli = new System.Windows.Forms.TextBox();
-            this.grbMemCicliReadMem = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMemA = new System.Windows.Forms.TextBox();
-            this.txtMemDa = new System.Windows.Forms.TextBox();
-            this.btnCaricaDaMemoria = new System.Windows.Forms.Button();
-            this.flvwCicliBatteria = new BrightIdeasSoftware.FastObjectListView();
-            this.grbMemCicliContatori = new System.Windows.Forms.GroupBox();
-            this.txtCicliProgrammazione = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtEventiCSLunghi = new System.Windows.Forms.TextBox();
-            this.lblEventiTotali = new System.Windows.Forms.Label();
-            this.tabCb03 = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.grbComboSonda = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.cmbSonda01 = new System.Windows.Forms.ComboBox();
-            this.opSonda02 = new System.Windows.Forms.RadioButton();
-            this.opSonda01 = new System.Windows.Forms.RadioButton();
-            this.tabCb05 = new System.Windows.Forms.TabPage();
-            this.grbAccensione = new System.Windows.Forms.GroupBox();
-            this.lblOrarioAccensione = new System.Windows.Forms.Label();
-            this.cmbMinAccensione = new System.Windows.Forms.ComboBox();
-            this.cmbOraAccensione = new System.Windows.Forms.ComboBox();
-            this.rbtAccensione03 = new System.Windows.Forms.RadioButton();
-            this.lblOreRitardo = new System.Windows.Forms.Label();
-            this.cmbOreRitardo = new System.Windows.Forms.ComboBox();
-            this.rbtAccensione02 = new System.Windows.Forms.RadioButton();
-            this.rbtAccensione01 = new System.Windows.Forms.RadioButton();
-            this.grbOraCorrente = new System.Windows.Forms.GroupBox();
-            this.btnScriviRtc = new System.Windows.Forms.Button();
-            this.btnLeggiRtc = new System.Windows.Forms.Button();
-            this.txtOraRtc = new System.Windows.Forms.TextBox();
-            this.lblOraRTC = new System.Windows.Forms.Label();
-            this.txtDataRtc = new System.Windows.Forms.TextBox();
-            this.lblDataRTC = new System.Windows.Forms.Label();
-            this.tabCb02 = new System.Windows.Forms.TabPage();
-            this.btnAttivaProgrammazione = new System.Windows.Forms.Button();
-            this.btnNuovoProgramma = new System.Windows.Forms.Button();
-            this.btnRicaricaProgr = new System.Windows.Forms.Button();
-            this.grbProgrammazione = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtProgcBattType = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtProgcCelleV2 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtProgcCelleV3 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtProgcBattAhDef = new System.Windows.Forms.TextBox();
-            this.txtProgcCelleTot = new System.Windows.Forms.TextBox();
-            this.txtProgcCelleV1 = new System.Windows.Forms.TextBox();
-            this.lblCelleP1 = new System.Windows.Forms.Label();
-            this.txtProgcBattVdef = new System.Windows.Forms.TextBox();
-            this.txtTensioneNom = new System.Windows.Forms.Label();
-            this.flvwProgrammiCarica = new BrightIdeasSoftware.FastObjectListView();
-            this.tabStatistiche = new System.Windows.Forms.TabPage();
-            this.tbcStatistiche = new System.Windows.Forms.TabControl();
-            this.tabStatParametri = new System.Windows.Forms.TabPage();
-            this.btnStatProvaInserimento = new System.Windows.Forms.Button();
-            this.grbStatSelGrafici = new System.Windows.Forms.GroupBox();
-            this.chkStatGraficoPause = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoFC = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoDTCP = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoDTCC = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoTmaxCP = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoTmaxCC = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoDTS = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoTminS = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoTmaxS = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoDurCP = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoDurCC = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoDoD = new System.Windows.Forms.CheckBox();
-            this.chkStatGraficoTemporale = new System.Windows.Forms.CheckBox();
-            this.btnStatRicalcola = new System.Windows.Forms.Button();
-            this.grbStatSelPeriodo = new System.Windows.Forms.GroupBox();
-            this.grbStatDate = new System.Windows.Forms.GroupBox();
-            this.lblStatDataFine = new System.Windows.Forms.Label();
-            this.lblStatDataInizio = new System.Windows.Forms.Label();
-            this.dtpStatFine = new System.Windows.Forms.DateTimePicker();
-            this.dtpStatInizio = new System.Windows.Forms.DateTimePicker();
-            this.optStatPeriodoSel = new System.Windows.Forms.RadioButton();
-            this.optStatInteroIntervallo = new System.Windows.Forms.RadioButton();
             this.tabStatSintesi = new System.Windows.Forms.TabPage();
+            this.grbStatEventiAnomali = new System.Windows.Forms.GroupBox();
+            this.txtStatNAnomali = new System.Windows.Forms.TextBox();
+            this.label137 = new System.Windows.Forms.Label();
             this.grbStatEnergia = new System.Windows.Forms.GroupBox();
             this.txtStatEnergiaMediaAh = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
@@ -193,6 +96,8 @@
             this.txtStatTotEnergia = new System.Windows.Forms.TextBox();
             this.lblStatTotEnergia = new System.Windows.Forms.Label();
             this.grbStatCarica = new System.Windows.Forms.GroupBox();
+            this.label136 = new System.Windows.Forms.Label();
+            this.label135 = new System.Windows.Forms.Label();
             this.txtStatNumCarichePOverTemp = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.txtStatNumCaricheCOverTemp = new System.Windows.Forms.TextBox();
@@ -235,10 +140,107 @@
             this.buiStatCockpit = new NextUI.BaseUI.BaseUI();
             this.tabStatComparazioni = new System.Windows.Forms.TabPage();
             this.label49 = new System.Windows.Forms.Label();
-            this.tabStatGrafici = new System.Windows.Forms.TabPage();
-            this.tabStatTabelle = new System.Windows.Forms.TabPage();
+            this.tabStatistiche = new System.Windows.Forms.TabPage();
+            this.tbcStatistiche = new System.Windows.Forms.TabControl();
+            this.tabStatParametri = new System.Windows.Forms.TabPage();
+            this.grbStatSelGrafici = new System.Windows.Forms.GroupBox();
+            this.chkStatGraficoPause = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoFC = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoDTCP = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoDTCC = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoTmaxCP = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoTmaxCC = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoDTS = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoTminS = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoTmaxS = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoDurCP = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoDurCC = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoDoD = new System.Windows.Forms.CheckBox();
+            this.chkStatGraficoTemporale = new System.Windows.Forms.CheckBox();
+            this.btnStatRicalcola = new System.Windows.Forms.Button();
+            this.grbStatSelPeriodo = new System.Windows.Forms.GroupBox();
+            this.grbStatDate = new System.Windows.Forms.GroupBox();
+            this.lblStatDataFine = new System.Windows.Forms.Label();
+            this.lblStatDataInizio = new System.Windows.Forms.Label();
+            this.dtpStatFine = new System.Windows.Forms.DateTimePicker();
+            this.dtpStatInizio = new System.Windows.Forms.DateTimePicker();
+            this.optStatPeriodoSel = new System.Windows.Forms.RadioButton();
+            this.optStatInteroIntervallo = new System.Windows.Forms.RadioButton();
             this.tabStatSoglie = new System.Windows.Forms.TabPage();
             this.flvwListaSoglie = new BrightIdeasSoftware.FastObjectListView();
+            this.tabCb04 = new System.Windows.Forms.TabPage();
+            this.grbMemCicliPulsanti = new System.Windows.Forms.GroupBox();
+            this.chkCaricaBrevi = new System.Windows.Forms.CheckBox();
+            this.chkInvertiCorreti = new System.Windows.Forms.CheckBox();
+            this.btnRigeneraLista = new System.Windows.Forms.Button();
+            this.btnCaricaListaUltimiLunghi = new System.Windows.Forms.Button();
+            this.btnCaricaDettaglioSel = new System.Windows.Forms.Button();
+            this.btnCaricaListaLunghi = new System.Windows.Forms.Button();
+            this.btnDettaglioCicliBrevi = new System.Windows.Forms.Button();
+            this.grbEsportaExcel = new System.Windows.Forms.GroupBox();
+            this.btnGeneraCsv = new System.Windows.Forms.Button();
+            this.btnSelFileCicli = new System.Windows.Forms.Button();
+            this.txtFileCicli = new System.Windows.Forms.TextBox();
+            this.grbMemCicliReadMem = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMemA = new System.Windows.Forms.TextBox();
+            this.txtMemDa = new System.Windows.Forms.TextBox();
+            this.btnCaricaDaMemoria = new System.Windows.Forms.Button();
+            this.flvwCicliBatteria = new BrightIdeasSoftware.FastObjectListView();
+            this.grbMemCicliContatori = new System.Windows.Forms.GroupBox();
+            this.txtCicliProgrammazione = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtEventiCSLunghi = new System.Windows.Forms.TextBox();
+            this.lblEventiTotali = new System.Windows.Forms.Label();
+            this.tabCb02 = new System.Windows.Forms.TabPage();
+            this.btnAttivaProgrammazione = new System.Windows.Forms.Button();
+            this.btnNuovoProgramma = new System.Windows.Forms.Button();
+            this.btnRicaricaProgr = new System.Windows.Forms.Button();
+            this.grbProgrammazione = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtProgcBattType = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtProgcCelleV2 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtProgcCelleV3 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtProgcBattAhDef = new System.Windows.Forms.TextBox();
+            this.txtProgcCelleTot = new System.Windows.Forms.TextBox();
+            this.txtProgcCelleV1 = new System.Windows.Forms.TextBox();
+            this.lblCelleP1 = new System.Windows.Forms.Label();
+            this.txtProgcBattVdef = new System.Windows.Forms.TextBox();
+            this.txtTensioneNom = new System.Windows.Forms.Label();
+            this.flvwProgrammiCarica = new BrightIdeasSoftware.FastObjectListView();
+            this.tabCb05 = new System.Windows.Forms.TabPage();
+            this.grbAccensione = new System.Windows.Forms.GroupBox();
+            this.lblOrarioAccensione = new System.Windows.Forms.Label();
+            this.cmbMinAccensione = new System.Windows.Forms.ComboBox();
+            this.cmbOraAccensione = new System.Windows.Forms.ComboBox();
+            this.rbtAccensione03 = new System.Windows.Forms.RadioButton();
+            this.lblOreRitardo = new System.Windows.Forms.Label();
+            this.cmbOreRitardo = new System.Windows.Forms.ComboBox();
+            this.rbtAccensione02 = new System.Windows.Forms.RadioButton();
+            this.rbtAccensione01 = new System.Windows.Forms.RadioButton();
+            this.grbOraCorrente = new System.Windows.Forms.GroupBox();
+            this.btnScriviRtc = new System.Windows.Forms.Button();
+            this.btnLeggiRtc = new System.Windows.Forms.Button();
+            this.txtOraRtc = new System.Windows.Forms.TextBox();
+            this.lblOraRTC = new System.Windows.Forms.Label();
+            this.txtDataRtc = new System.Windows.Forms.TextBox();
+            this.lblDataRTC = new System.Windows.Forms.Label();
+            this.tabCb03 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grbComboSonda = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbSonda01 = new System.Windows.Forms.ComboBox();
+            this.opSonda02 = new System.Windows.Forms.RadioButton();
+            this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
             this.grbCalibrazionePulsanti = new System.Windows.Forms.GroupBox();
             this.btnAttivaCalibrazione = new System.Windows.Forms.Button();
@@ -585,36 +587,37 @@
             this.grbTestataContatori.SuspendLayout();
             this.grbTestata.SuspendLayout();
             this.grbDatiCliente.SuspendLayout();
-            this.tabCb04.SuspendLayout();
-            this.grbMemCicliPulsanti.SuspendLayout();
-            this.grbEsportaExcel.SuspendLayout();
-            this.grbMemCicliReadMem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flvwCicliBatteria)).BeginInit();
-            this.grbMemCicliContatori.SuspendLayout();
-            this.tabCb03.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.grbComboSonda.SuspendLayout();
-            this.tabCb05.SuspendLayout();
-            this.grbAccensione.SuspendLayout();
-            this.grbOraCorrente.SuspendLayout();
-            this.tabCb02.SuspendLayout();
-            this.grbProgrammazione.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).BeginInit();
-            this.tabStatistiche.SuspendLayout();
-            this.tbcStatistiche.SuspendLayout();
-            this.tabStatParametri.SuspendLayout();
-            this.grbStatSelGrafici.SuspendLayout();
-            this.grbStatSelPeriodo.SuspendLayout();
-            this.grbStatDate.SuspendLayout();
             this.tabStatSintesi.SuspendLayout();
+            this.grbStatEventiAnomali.SuspendLayout();
             this.grbStatEnergia.SuspendLayout();
             this.grbStatCarica.SuspendLayout();
             this.grbStatScariche.SuspendLayout();
             this.grbStatStato.SuspendLayout();
             this.tabStatCockpit.SuspendLayout();
             this.tabStatComparazioni.SuspendLayout();
+            this.tabStatistiche.SuspendLayout();
+            this.tbcStatistiche.SuspendLayout();
+            this.tabStatParametri.SuspendLayout();
+            this.grbStatSelGrafici.SuspendLayout();
+            this.grbStatSelPeriodo.SuspendLayout();
+            this.grbStatDate.SuspendLayout();
             this.tabStatSoglie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwListaSoglie)).BeginInit();
+            this.tabCb04.SuspendLayout();
+            this.grbMemCicliPulsanti.SuspendLayout();
+            this.grbEsportaExcel.SuspendLayout();
+            this.grbMemCicliReadMem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvwCicliBatteria)).BeginInit();
+            this.grbMemCicliContatori.SuspendLayout();
+            this.tabCb02.SuspendLayout();
+            this.grbProgrammazione.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).BeginInit();
+            this.tabCb05.SuspendLayout();
+            this.grbAccensione.SuspendLayout();
+            this.grbOraCorrente.SuspendLayout();
+            this.tabCb03.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.grbComboSonda.SuspendLayout();
             this.tabSbFact.SuspendLayout();
             this.grbCalibrazionePulsanti.SuspendLayout();
             this.grbCalibrazioni.SuspendLayout();
@@ -651,11 +654,14 @@
             // tabCaricaBatterie
             // 
             this.tabCaricaBatterie.Controls.Add(this.tabCb01);
-            this.tabCaricaBatterie.Controls.Add(this.tabCb04);
-            this.tabCaricaBatterie.Controls.Add(this.tabCb03);
-            this.tabCaricaBatterie.Controls.Add(this.tabCb05);
-            this.tabCaricaBatterie.Controls.Add(this.tabCb02);
+            this.tabCaricaBatterie.Controls.Add(this.tabStatSintesi);
+            this.tabCaricaBatterie.Controls.Add(this.tabStatCockpit);
+            this.tabCaricaBatterie.Controls.Add(this.tabStatComparazioni);
             this.tabCaricaBatterie.Controls.Add(this.tabStatistiche);
+            this.tabCaricaBatterie.Controls.Add(this.tabCb04);
+            this.tabCaricaBatterie.Controls.Add(this.tabCb02);
+            this.tabCaricaBatterie.Controls.Add(this.tabCb05);
+            this.tabCaricaBatterie.Controls.Add(this.tabCb03);
             this.tabCaricaBatterie.Controls.Add(this.tabSbFact);
             this.tabCaricaBatterie.Controls.Add(this.tabMemRead);
             this.tabCaricaBatterie.Controls.Add(this.tbpCalibrazioni);
@@ -1016,6 +1022,600 @@
             resources.ApplyResources(this.lblCliCliente, "lblCliCliente");
             this.lblCliCliente.Name = "lblCliCliente";
             // 
+            // tabStatSintesi
+            // 
+            this.tabStatSintesi.BackColor = System.Drawing.Color.LightYellow;
+            this.tabStatSintesi.Controls.Add(this.grbStatEventiAnomali);
+            this.tabStatSintesi.Controls.Add(this.grbStatEnergia);
+            this.tabStatSintesi.Controls.Add(this.grbStatCarica);
+            this.tabStatSintesi.Controls.Add(this.grbStatScariche);
+            this.tabStatSintesi.Controls.Add(this.grbStatStato);
+            resources.ApplyResources(this.tabStatSintesi, "tabStatSintesi");
+            this.tabStatSintesi.Name = "tabStatSintesi";
+            // 
+            // grbStatEventiAnomali
+            // 
+            this.grbStatEventiAnomali.BackColor = System.Drawing.Color.White;
+            this.grbStatEventiAnomali.Controls.Add(this.txtStatNAnomali);
+            this.grbStatEventiAnomali.Controls.Add(this.label137);
+            resources.ApplyResources(this.grbStatEventiAnomali, "grbStatEventiAnomali");
+            this.grbStatEventiAnomali.Name = "grbStatEventiAnomali";
+            this.grbStatEventiAnomali.TabStop = false;
+            // 
+            // txtStatNAnomali
+            // 
+            resources.ApplyResources(this.txtStatNAnomali, "txtStatNAnomali");
+            this.txtStatNAnomali.Name = "txtStatNAnomali";
+            // 
+            // label137
+            // 
+            resources.ApplyResources(this.label137, "label137");
+            this.label137.Name = "label137";
+            // 
+            // grbStatEnergia
+            // 
+            this.grbStatEnergia.BackColor = System.Drawing.Color.White;
+            this.grbStatEnergia.Controls.Add(this.txtStatEnergiaMediaAh);
+            this.grbStatEnergia.Controls.Add(this.label45);
+            this.grbStatEnergia.Controls.Add(this.txtStatEnergiaMediaKWh);
+            this.grbStatEnergia.Controls.Add(this.lblStatEnergiaMedia);
+            this.grbStatEnergia.Controls.Add(this.txtStatTotEnergia);
+            this.grbStatEnergia.Controls.Add(this.lblStatTotEnergia);
+            resources.ApplyResources(this.grbStatEnergia, "grbStatEnergia");
+            this.grbStatEnergia.Name = "grbStatEnergia";
+            this.grbStatEnergia.TabStop = false;
+            // 
+            // txtStatEnergiaMediaAh
+            // 
+            this.txtStatEnergiaMediaAh.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtStatEnergiaMediaAh, "txtStatEnergiaMediaAh");
+            this.txtStatEnergiaMediaAh.Name = "txtStatEnergiaMediaAh";
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.Name = "label45";
+            // 
+            // txtStatEnergiaMediaKWh
+            // 
+            this.txtStatEnergiaMediaKWh.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtStatEnergiaMediaKWh, "txtStatEnergiaMediaKWh");
+            this.txtStatEnergiaMediaKWh.Name = "txtStatEnergiaMediaKWh";
+            // 
+            // lblStatEnergiaMedia
+            // 
+            resources.ApplyResources(this.lblStatEnergiaMedia, "lblStatEnergiaMedia");
+            this.lblStatEnergiaMedia.Name = "lblStatEnergiaMedia";
+            // 
+            // txtStatTotEnergia
+            // 
+            resources.ApplyResources(this.txtStatTotEnergia, "txtStatTotEnergia");
+            this.txtStatTotEnergia.Name = "txtStatTotEnergia";
+            // 
+            // lblStatTotEnergia
+            // 
+            resources.ApplyResources(this.lblStatTotEnergia, "lblStatTotEnergia");
+            this.lblStatTotEnergia.Name = "lblStatTotEnergia";
+            // 
+            // grbStatCarica
+            // 
+            this.grbStatCarica.BackColor = System.Drawing.Color.White;
+            this.grbStatCarica.Controls.Add(this.label136);
+            this.grbStatCarica.Controls.Add(this.label135);
+            this.grbStatCarica.Controls.Add(this.txtStatNumCarichePOverTemp);
+            this.grbStatCarica.Controls.Add(this.label47);
+            this.grbStatCarica.Controls.Add(this.txtStatNumCaricheCOverTemp);
+            this.grbStatCarica.Controls.Add(this.label48);
+            this.grbStatCarica.Controls.Add(this.txtStatNumCariche);
+            this.grbStatCarica.Controls.Add(this.lblStatNumCariche);
+            this.grbStatCarica.Controls.Add(this.txtStatNumCaricheParz);
+            this.grbStatCarica.Controls.Add(this.lblStatNumCaricheParz);
+            this.grbStatCarica.Controls.Add(this.txtStatNumCaricheComp);
+            this.grbStatCarica.Controls.Add(this.lblStatNumCaricheComp);
+            this.grbStatCarica.Controls.Add(this.txtStatTempoInCarica);
+            this.grbStatCarica.Controls.Add(this.lblStatTempoInCarica);
+            resources.ApplyResources(this.grbStatCarica, "grbStatCarica");
+            this.grbStatCarica.Name = "grbStatCarica";
+            this.grbStatCarica.TabStop = false;
+            // 
+            // label136
+            // 
+            resources.ApplyResources(this.label136, "label136");
+            this.label136.Name = "label136";
+            // 
+            // label135
+            // 
+            resources.ApplyResources(this.label135, "label135");
+            this.label135.Name = "label135";
+            // 
+            // txtStatNumCarichePOverTemp
+            // 
+            resources.ApplyResources(this.txtStatNumCarichePOverTemp, "txtStatNumCarichePOverTemp");
+            this.txtStatNumCarichePOverTemp.Name = "txtStatNumCarichePOverTemp";
+            // 
+            // label47
+            // 
+            resources.ApplyResources(this.label47, "label47");
+            this.label47.Name = "label47";
+            // 
+            // txtStatNumCaricheCOverTemp
+            // 
+            this.txtStatNumCaricheCOverTemp.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtStatNumCaricheCOverTemp, "txtStatNumCaricheCOverTemp");
+            this.txtStatNumCaricheCOverTemp.Name = "txtStatNumCaricheCOverTemp";
+            // 
+            // label48
+            // 
+            resources.ApplyResources(this.label48, "label48");
+            this.label48.Name = "label48";
+            // 
+            // txtStatNumCariche
+            // 
+            this.txtStatNumCariche.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtStatNumCariche, "txtStatNumCariche");
+            this.txtStatNumCariche.Name = "txtStatNumCariche";
+            // 
+            // lblStatNumCariche
+            // 
+            resources.ApplyResources(this.lblStatNumCariche, "lblStatNumCariche");
+            this.lblStatNumCariche.Name = "lblStatNumCariche";
+            // 
+            // txtStatNumCaricheParz
+            // 
+            resources.ApplyResources(this.txtStatNumCaricheParz, "txtStatNumCaricheParz");
+            this.txtStatNumCaricheParz.Name = "txtStatNumCaricheParz";
+            // 
+            // lblStatNumCaricheParz
+            // 
+            resources.ApplyResources(this.lblStatNumCaricheParz, "lblStatNumCaricheParz");
+            this.lblStatNumCaricheParz.Name = "lblStatNumCaricheParz";
+            // 
+            // txtStatNumCaricheComp
+            // 
+            this.txtStatNumCaricheComp.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtStatNumCaricheComp, "txtStatNumCaricheComp");
+            this.txtStatNumCaricheComp.Name = "txtStatNumCaricheComp";
+            // 
+            // lblStatNumCaricheComp
+            // 
+            resources.ApplyResources(this.lblStatNumCaricheComp, "lblStatNumCaricheComp");
+            this.lblStatNumCaricheComp.Name = "lblStatNumCaricheComp";
+            this.lblStatNumCaricheComp.Click += new System.EventHandler(this.lblStatNumCaricheComp_Click);
+            // 
+            // txtStatTempoInCarica
+            // 
+            resources.ApplyResources(this.txtStatTempoInCarica, "txtStatTempoInCarica");
+            this.txtStatTempoInCarica.Name = "txtStatTempoInCarica";
+            this.txtStatTempoInCarica.TextChanged += new System.EventHandler(this.txtStatTempoInCarica_TextChanged);
+            // 
+            // lblStatTempoInCarica
+            // 
+            resources.ApplyResources(this.lblStatTempoInCarica, "lblStatTempoInCarica");
+            this.lblStatTempoInCarica.Name = "lblStatTempoInCarica";
+            // 
+            // grbStatScariche
+            // 
+            this.grbStatScariche.BackColor = System.Drawing.Color.White;
+            this.grbStatScariche.Controls.Add(this.txtStatNumScaricheOverT);
+            this.grbStatScariche.Controls.Add(this.label46);
+            this.grbStatScariche.Controls.Add(this.txtStatDoDMedia);
+            this.grbStatScariche.Controls.Add(this.lblStatMediaScarica);
+            this.grbStatScariche.Controls.Add(this.txtStatPauseSC);
+            this.grbStatScariche.Controls.Add(this.lblStatPauseSC);
+            this.grbStatScariche.Controls.Add(this.txtStatNumSovrascariche);
+            this.grbStatScariche.Controls.Add(this.lblStatNumSovrascariche);
+            this.grbStatScariche.Controls.Add(this.txtStatNumScariche);
+            this.grbStatScariche.Controls.Add(this.lblStatNumScariche);
+            this.grbStatScariche.Controls.Add(this.txtTempoInScarica);
+            this.grbStatScariche.Controls.Add(this.lblStatTempoInScarica);
+            resources.ApplyResources(this.grbStatScariche, "grbStatScariche");
+            this.grbStatScariche.Name = "grbStatScariche";
+            this.grbStatScariche.TabStop = false;
+            // 
+            // txtStatNumScaricheOverT
+            // 
+            resources.ApplyResources(this.txtStatNumScaricheOverT, "txtStatNumScaricheOverT");
+            this.txtStatNumScaricheOverT.Name = "txtStatNumScaricheOverT";
+            // 
+            // label46
+            // 
+            resources.ApplyResources(this.label46, "label46");
+            this.label46.Name = "label46";
+            // 
+            // txtStatDoDMedia
+            // 
+            resources.ApplyResources(this.txtStatDoDMedia, "txtStatDoDMedia");
+            this.txtStatDoDMedia.Name = "txtStatDoDMedia";
+            // 
+            // lblStatMediaScarica
+            // 
+            resources.ApplyResources(this.lblStatMediaScarica, "lblStatMediaScarica");
+            this.lblStatMediaScarica.Name = "lblStatMediaScarica";
+            this.lblStatMediaScarica.Click += new System.EventHandler(this.label45_Click);
+            // 
+            // txtStatPauseSC
+            // 
+            resources.ApplyResources(this.txtStatPauseSC, "txtStatPauseSC");
+            this.txtStatPauseSC.Name = "txtStatPauseSC";
+            // 
+            // lblStatPauseSC
+            // 
+            resources.ApplyResources(this.lblStatPauseSC, "lblStatPauseSC");
+            this.lblStatPauseSC.Name = "lblStatPauseSC";
+            // 
+            // txtStatNumSovrascariche
+            // 
+            resources.ApplyResources(this.txtStatNumSovrascariche, "txtStatNumSovrascariche");
+            this.txtStatNumSovrascariche.Name = "txtStatNumSovrascariche";
+            // 
+            // lblStatNumSovrascariche
+            // 
+            resources.ApplyResources(this.lblStatNumSovrascariche, "lblStatNumSovrascariche");
+            this.lblStatNumSovrascariche.Name = "lblStatNumSovrascariche";
+            // 
+            // txtStatNumScariche
+            // 
+            resources.ApplyResources(this.txtStatNumScariche, "txtStatNumScariche");
+            this.txtStatNumScariche.Name = "txtStatNumScariche";
+            // 
+            // lblStatNumScariche
+            // 
+            resources.ApplyResources(this.lblStatNumScariche, "lblStatNumScariche");
+            this.lblStatNumScariche.Name = "lblStatNumScariche";
+            // 
+            // txtTempoInScarica
+            // 
+            resources.ApplyResources(this.txtTempoInScarica, "txtTempoInScarica");
+            this.txtTempoInScarica.Name = "txtTempoInScarica";
+            this.txtTempoInScarica.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // lblStatTempoInScarica
+            // 
+            resources.ApplyResources(this.lblStatTempoInScarica, "lblStatTempoInScarica");
+            this.lblStatTempoInScarica.Name = "lblStatTempoInScarica";
+            this.lblStatTempoInScarica.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // grbStatStato
+            // 
+            this.grbStatStato.BackColor = System.Drawing.Color.White;
+            this.grbStatStato.Controls.Add(this.txtStatMancElettr);
+            this.grbStatStato.Controls.Add(this.lblStatMancElettr);
+            this.grbStatStato.Controls.Add(this.txtStatSbilCelle);
+            this.grbStatStato.Controls.Add(this.lblStatSbilCelle);
+            this.grbStatStato.Controls.Add(this.txtStatNCicli);
+            this.grbStatStato.Controls.Add(this.lblStatNumCicli);
+            this.grbStatStato.Controls.Add(this.txtStatSOH);
+            this.grbStatStato.Controls.Add(this.lblStatSOH);
+            this.grbStatStato.Controls.Add(this.txtStatGiorniAtt);
+            this.grbStatStato.Controls.Add(this.lblStatGiorniAtt);
+            this.grbStatStato.Controls.Add(this.txtStatAttivazione);
+            this.grbStatStato.Controls.Add(this.lblStatAttivazioe);
+            resources.ApplyResources(this.grbStatStato, "grbStatStato");
+            this.grbStatStato.Name = "grbStatStato";
+            this.grbStatStato.TabStop = false;
+            // 
+            // txtStatMancElettr
+            // 
+            resources.ApplyResources(this.txtStatMancElettr, "txtStatMancElettr");
+            this.txtStatMancElettr.Name = "txtStatMancElettr";
+            // 
+            // lblStatMancElettr
+            // 
+            resources.ApplyResources(this.lblStatMancElettr, "lblStatMancElettr");
+            this.lblStatMancElettr.Name = "lblStatMancElettr";
+            // 
+            // txtStatSbilCelle
+            // 
+            resources.ApplyResources(this.txtStatSbilCelle, "txtStatSbilCelle");
+            this.txtStatSbilCelle.Name = "txtStatSbilCelle";
+            // 
+            // lblStatSbilCelle
+            // 
+            resources.ApplyResources(this.lblStatSbilCelle, "lblStatSbilCelle");
+            this.lblStatSbilCelle.Name = "lblStatSbilCelle";
+            // 
+            // txtStatNCicli
+            // 
+            resources.ApplyResources(this.txtStatNCicli, "txtStatNCicli");
+            this.txtStatNCicli.Name = "txtStatNCicli";
+            // 
+            // lblStatNumCicli
+            // 
+            resources.ApplyResources(this.lblStatNumCicli, "lblStatNumCicli");
+            this.lblStatNumCicli.Name = "lblStatNumCicli";
+            // 
+            // txtStatSOH
+            // 
+            resources.ApplyResources(this.txtStatSOH, "txtStatSOH");
+            this.txtStatSOH.Name = "txtStatSOH";
+            // 
+            // lblStatSOH
+            // 
+            resources.ApplyResources(this.lblStatSOH, "lblStatSOH");
+            this.lblStatSOH.Name = "lblStatSOH";
+            // 
+            // txtStatGiorniAtt
+            // 
+            resources.ApplyResources(this.txtStatGiorniAtt, "txtStatGiorniAtt");
+            this.txtStatGiorniAtt.Name = "txtStatGiorniAtt";
+            // 
+            // lblStatGiorniAtt
+            // 
+            resources.ApplyResources(this.lblStatGiorniAtt, "lblStatGiorniAtt");
+            this.lblStatGiorniAtt.Name = "lblStatGiorniAtt";
+            // 
+            // txtStatAttivazione
+            // 
+            resources.ApplyResources(this.txtStatAttivazione, "txtStatAttivazione");
+            this.txtStatAttivazione.Name = "txtStatAttivazione";
+            // 
+            // lblStatAttivazioe
+            // 
+            resources.ApplyResources(this.lblStatAttivazioe, "lblStatAttivazioe");
+            this.lblStatAttivazioe.Name = "lblStatAttivazioe";
+            // 
+            // tabStatCockpit
+            // 
+            this.tabStatCockpit.BackColor = System.Drawing.Color.LightYellow;
+            this.tabStatCockpit.Controls.Add(this.buiStatCockpit);
+            resources.ApplyResources(this.tabStatCockpit, "tabStatCockpit");
+            this.tabStatCockpit.Name = "tabStatCockpit";
+            // 
+            // buiStatCockpit
+            // 
+            resources.ApplyResources(this.buiStatCockpit, "buiStatCockpit");
+            this.buiStatCockpit.BackColor = System.Drawing.Color.LightYellow;
+            this.buiStatCockpit.Interact = false;
+            this.buiStatCockpit.Name = "buiStatCockpit";
+            this.buiStatCockpit.Load += new System.EventHandler(this.buiStatCockpit_Load);
+            // 
+            // tabStatComparazioni
+            // 
+            this.tabStatComparazioni.BackColor = System.Drawing.Color.LightYellow;
+            this.tabStatComparazioni.Controls.Add(this.label49);
+            resources.ApplyResources(this.tabStatComparazioni, "tabStatComparazioni");
+            this.tabStatComparazioni.Name = "tabStatComparazioni";
+            // 
+            // label49
+            // 
+            resources.ApplyResources(this.label49, "label49");
+            this.label49.Name = "label49";
+            // 
+            // tabStatistiche
+            // 
+            this.tabStatistiche.BackColor = System.Drawing.Color.LightYellow;
+            this.tabStatistiche.Controls.Add(this.tbcStatistiche);
+            resources.ApplyResources(this.tabStatistiche, "tabStatistiche");
+            this.tabStatistiche.Name = "tabStatistiche";
+            // 
+            // tbcStatistiche
+            // 
+            this.tbcStatistiche.Controls.Add(this.tabStatParametri);
+            this.tbcStatistiche.Controls.Add(this.tabStatSoglie);
+            resources.ApplyResources(this.tbcStatistiche, "tbcStatistiche");
+            this.tbcStatistiche.Name = "tbcStatistiche";
+            this.tbcStatistiche.SelectedIndex = 0;
+            // 
+            // tabStatParametri
+            // 
+            this.tabStatParametri.BackColor = System.Drawing.Color.LightYellow;
+            this.tabStatParametri.Controls.Add(this.grbStatSelGrafici);
+            this.tabStatParametri.Controls.Add(this.btnStatRicalcola);
+            this.tabStatParametri.Controls.Add(this.grbStatSelPeriodo);
+            resources.ApplyResources(this.tabStatParametri, "tabStatParametri");
+            this.tabStatParametri.Name = "tabStatParametri";
+            // 
+            // grbStatSelGrafici
+            // 
+            this.grbStatSelGrafici.BackColor = System.Drawing.Color.White;
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoPause);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoFC);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDTCP);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDTCC);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTmaxCP);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTmaxCC);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDTS);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTminS);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTmaxS);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDurCP);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDurCC);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDoD);
+            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTemporale);
+            resources.ApplyResources(this.grbStatSelGrafici, "grbStatSelGrafici");
+            this.grbStatSelGrafici.Name = "grbStatSelGrafici";
+            this.grbStatSelGrafici.TabStop = false;
+            // 
+            // chkStatGraficoPause
+            // 
+            resources.ApplyResources(this.chkStatGraficoPause, "chkStatGraficoPause");
+            this.chkStatGraficoPause.Name = "chkStatGraficoPause";
+            this.chkStatGraficoPause.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoFC
+            // 
+            resources.ApplyResources(this.chkStatGraficoFC, "chkStatGraficoFC");
+            this.chkStatGraficoFC.Name = "chkStatGraficoFC";
+            this.chkStatGraficoFC.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoDTCP
+            // 
+            resources.ApplyResources(this.chkStatGraficoDTCP, "chkStatGraficoDTCP");
+            this.chkStatGraficoDTCP.Checked = true;
+            this.chkStatGraficoDTCP.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoDTCP.Name = "chkStatGraficoDTCP";
+            this.chkStatGraficoDTCP.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoDTCC
+            // 
+            resources.ApplyResources(this.chkStatGraficoDTCC, "chkStatGraficoDTCC");
+            this.chkStatGraficoDTCC.Checked = true;
+            this.chkStatGraficoDTCC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoDTCC.Name = "chkStatGraficoDTCC";
+            this.chkStatGraficoDTCC.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoTmaxCP
+            // 
+            resources.ApplyResources(this.chkStatGraficoTmaxCP, "chkStatGraficoTmaxCP");
+            this.chkStatGraficoTmaxCP.Checked = true;
+            this.chkStatGraficoTmaxCP.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoTmaxCP.Name = "chkStatGraficoTmaxCP";
+            this.chkStatGraficoTmaxCP.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoTmaxCC
+            // 
+            resources.ApplyResources(this.chkStatGraficoTmaxCC, "chkStatGraficoTmaxCC");
+            this.chkStatGraficoTmaxCC.Checked = true;
+            this.chkStatGraficoTmaxCC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoTmaxCC.Name = "chkStatGraficoTmaxCC";
+            this.chkStatGraficoTmaxCC.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoDTS
+            // 
+            resources.ApplyResources(this.chkStatGraficoDTS, "chkStatGraficoDTS");
+            this.chkStatGraficoDTS.Checked = true;
+            this.chkStatGraficoDTS.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoDTS.Name = "chkStatGraficoDTS";
+            this.chkStatGraficoDTS.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoTminS
+            // 
+            resources.ApplyResources(this.chkStatGraficoTminS, "chkStatGraficoTminS");
+            this.chkStatGraficoTminS.Checked = true;
+            this.chkStatGraficoTminS.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoTminS.Name = "chkStatGraficoTminS";
+            this.chkStatGraficoTminS.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoTmaxS
+            // 
+            resources.ApplyResources(this.chkStatGraficoTmaxS, "chkStatGraficoTmaxS");
+            this.chkStatGraficoTmaxS.Checked = true;
+            this.chkStatGraficoTmaxS.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoTmaxS.Name = "chkStatGraficoTmaxS";
+            this.chkStatGraficoTmaxS.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoDurCP
+            // 
+            resources.ApplyResources(this.chkStatGraficoDurCP, "chkStatGraficoDurCP");
+            this.chkStatGraficoDurCP.Checked = true;
+            this.chkStatGraficoDurCP.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoDurCP.Name = "chkStatGraficoDurCP";
+            this.chkStatGraficoDurCP.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoDurCC
+            // 
+            resources.ApplyResources(this.chkStatGraficoDurCC, "chkStatGraficoDurCC");
+            this.chkStatGraficoDurCC.Checked = true;
+            this.chkStatGraficoDurCC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoDurCC.Name = "chkStatGraficoDurCC";
+            this.chkStatGraficoDurCC.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoDoD
+            // 
+            resources.ApplyResources(this.chkStatGraficoDoD, "chkStatGraficoDoD");
+            this.chkStatGraficoDoD.Checked = true;
+            this.chkStatGraficoDoD.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoDoD.ForeColor = System.Drawing.Color.Black;
+            this.chkStatGraficoDoD.Name = "chkStatGraficoDoD";
+            this.chkStatGraficoDoD.UseVisualStyleBackColor = true;
+            // 
+            // chkStatGraficoTemporale
+            // 
+            resources.ApplyResources(this.chkStatGraficoTemporale, "chkStatGraficoTemporale");
+            this.chkStatGraficoTemporale.Checked = true;
+            this.chkStatGraficoTemporale.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatGraficoTemporale.Name = "chkStatGraficoTemporale";
+            this.chkStatGraficoTemporale.UseVisualStyleBackColor = true;
+            // 
+            // btnStatRicalcola
+            // 
+            resources.ApplyResources(this.btnStatRicalcola, "btnStatRicalcola");
+            this.btnStatRicalcola.Name = "btnStatRicalcola";
+            this.btnStatRicalcola.UseVisualStyleBackColor = true;
+            this.btnStatRicalcola.Click += new System.EventHandler(this.btnStatRicalcola_Click);
+            // 
+            // grbStatSelPeriodo
+            // 
+            this.grbStatSelPeriodo.BackColor = System.Drawing.Color.White;
+            this.grbStatSelPeriodo.Controls.Add(this.grbStatDate);
+            this.grbStatSelPeriodo.Controls.Add(this.optStatPeriodoSel);
+            this.grbStatSelPeriodo.Controls.Add(this.optStatInteroIntervallo);
+            resources.ApplyResources(this.grbStatSelPeriodo, "grbStatSelPeriodo");
+            this.grbStatSelPeriodo.Name = "grbStatSelPeriodo";
+            this.grbStatSelPeriodo.TabStop = false;
+            // 
+            // grbStatDate
+            // 
+            this.grbStatDate.Controls.Add(this.lblStatDataFine);
+            this.grbStatDate.Controls.Add(this.lblStatDataInizio);
+            this.grbStatDate.Controls.Add(this.dtpStatFine);
+            this.grbStatDate.Controls.Add(this.dtpStatInizio);
+            resources.ApplyResources(this.grbStatDate, "grbStatDate");
+            this.grbStatDate.Name = "grbStatDate";
+            this.grbStatDate.TabStop = false;
+            // 
+            // lblStatDataFine
+            // 
+            resources.ApplyResources(this.lblStatDataFine, "lblStatDataFine");
+            this.lblStatDataFine.Name = "lblStatDataFine";
+            // 
+            // lblStatDataInizio
+            // 
+            resources.ApplyResources(this.lblStatDataInizio, "lblStatDataInizio");
+            this.lblStatDataInizio.Name = "lblStatDataInizio";
+            // 
+            // dtpStatFine
+            // 
+            this.dtpStatFine.AllowDrop = true;
+            resources.ApplyResources(this.dtpStatFine, "dtpStatFine");
+            this.dtpStatFine.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStatFine.Name = "dtpStatFine";
+            // 
+            // dtpStatInizio
+            // 
+            this.dtpStatInizio.AllowDrop = true;
+            resources.ApplyResources(this.dtpStatInizio, "dtpStatInizio");
+            this.dtpStatInizio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStatInizio.Name = "dtpStatInizio";
+            // 
+            // optStatPeriodoSel
+            // 
+            resources.ApplyResources(this.optStatPeriodoSel, "optStatPeriodoSel");
+            this.optStatPeriodoSel.Name = "optStatPeriodoSel";
+            this.optStatPeriodoSel.UseVisualStyleBackColor = true;
+            // 
+            // optStatInteroIntervallo
+            // 
+            resources.ApplyResources(this.optStatInteroIntervallo, "optStatInteroIntervallo");
+            this.optStatInteroIntervallo.Checked = true;
+            this.optStatInteroIntervallo.Name = "optStatInteroIntervallo";
+            this.optStatInteroIntervallo.TabStop = true;
+            this.optStatInteroIntervallo.UseVisualStyleBackColor = true;
+            // 
+            // tabStatSoglie
+            // 
+            this.tabStatSoglie.BackColor = System.Drawing.Color.LightYellow;
+            this.tabStatSoglie.Controls.Add(this.flvwListaSoglie);
+            resources.ApplyResources(this.tabStatSoglie, "tabStatSoglie");
+            this.tabStatSoglie.Name = "tabStatSoglie";
+            // 
+            // flvwListaSoglie
+            // 
+            this.flvwListaSoglie.AllowColumnReorder = true;
+            this.flvwListaSoglie.AlternateRowBackColor = System.Drawing.Color.LightYellow;
+            this.flvwListaSoglie.CellEditUseWholeCell = false;
+            this.flvwListaSoglie.FullRowSelect = true;
+            this.flvwListaSoglie.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwListaSoglie.HighlightForegroundColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.flvwListaSoglie, "flvwListaSoglie");
+            this.flvwListaSoglie.Name = "flvwListaSoglie";
+            this.flvwListaSoglie.ShowGroups = false;
+            this.flvwListaSoglie.ShowImagesOnSubItems = true;
+            this.flvwListaSoglie.UseAlternatingBackColors = true;
+            this.flvwListaSoglie.UseCellFormatEvents = true;
+            this.flvwListaSoglie.UseCompatibleStateImageBehavior = false;
+            this.flvwListaSoglie.View = System.Windows.Forms.View.Details;
+            this.flvwListaSoglie.VirtualMode = true;
+            // 
             // tabCb04
             // 
             this.tabCb04.BackColor = System.Drawing.Color.LightYellow;
@@ -1214,114 +1814,148 @@
             resources.ApplyResources(this.lblEventiTotali, "lblEventiTotali");
             this.lblEventiTotali.Name = "lblEventiTotali";
             // 
-            // tabCb03
+            // tabCb02
             // 
-            this.tabCb03.Controls.Add(this.groupBox4);
-            resources.ApplyResources(this.tabCb03, "tabCb03");
-            this.tabCb03.Name = "tabCb03";
-            this.tabCb03.UseVisualStyleBackColor = true;
+            this.tabCb02.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCb02.Controls.Add(this.btnAttivaProgrammazione);
+            this.tabCb02.Controls.Add(this.btnNuovoProgramma);
+            this.tabCb02.Controls.Add(this.btnRicaricaProgr);
+            this.tabCb02.Controls.Add(this.grbProgrammazione);
+            this.tabCb02.Controls.Add(this.flvwProgrammiCarica);
+            resources.ApplyResources(this.tabCb02, "tabCb02");
+            this.tabCb02.Name = "tabCb02";
+            this.tabCb02.Click += new System.EventHandler(this.tabCb02_Click);
             // 
-            // groupBox4
+            // btnAttivaProgrammazione
             // 
-            this.groupBox4.Controls.Add(this.grbComboSonda);
-            this.groupBox4.Controls.Add(this.opSonda02);
-            this.groupBox4.Controls.Add(this.opSonda01);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
+            resources.ApplyResources(this.btnAttivaProgrammazione, "btnAttivaProgrammazione");
+            this.btnAttivaProgrammazione.Name = "btnAttivaProgrammazione";
+            this.btnAttivaProgrammazione.UseVisualStyleBackColor = true;
+            this.btnAttivaProgrammazione.Click += new System.EventHandler(this.btnAttivaProgrammazione_Click);
             // 
-            // grbComboSonda
+            // btnNuovoProgramma
             // 
-            this.grbComboSonda.Controls.Add(this.label11);
-            this.grbComboSonda.Controls.Add(this.label10);
-            this.grbComboSonda.Controls.Add(this.label9);
-            this.grbComboSonda.Controls.Add(this.comboBox3);
-            this.grbComboSonda.Controls.Add(this.comboBox2);
-            this.grbComboSonda.Controls.Add(this.cmbSonda01);
-            resources.ApplyResources(this.grbComboSonda, "grbComboSonda");
-            this.grbComboSonda.Name = "grbComboSonda";
-            this.grbComboSonda.TabStop = false;
+            resources.ApplyResources(this.btnNuovoProgramma, "btnNuovoProgramma");
+            this.btnNuovoProgramma.Name = "btnNuovoProgramma";
+            this.btnNuovoProgramma.UseVisualStyleBackColor = true;
+            this.btnNuovoProgramma.Click += new System.EventHandler(this.btnNuovoProgramma_Click);
             // 
-            // label11
+            // btnRicaricaProgr
             // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
+            resources.ApplyResources(this.btnRicaricaProgr, "btnRicaricaProgr");
+            this.btnRicaricaProgr.Name = "btnRicaricaProgr";
+            this.btnRicaricaProgr.UseVisualStyleBackColor = true;
+            this.btnRicaricaProgr.Click += new System.EventHandler(this.btnRicaricaProgr_Click);
             // 
-            // label10
+            // grbProgrammazione
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            this.grbProgrammazione.BackColor = System.Drawing.Color.White;
+            this.grbProgrammazione.Controls.Add(this.label5);
+            this.grbProgrammazione.Controls.Add(this.txtProgcBattType);
+            this.grbProgrammazione.Controls.Add(this.label13);
+            this.grbProgrammazione.Controls.Add(this.label14);
+            this.grbProgrammazione.Controls.Add(this.txtProgcCelleV2);
+            this.grbProgrammazione.Controls.Add(this.label15);
+            this.grbProgrammazione.Controls.Add(this.txtProgcCelleV3);
+            this.grbProgrammazione.Controls.Add(this.label16);
+            this.grbProgrammazione.Controls.Add(this.txtProgcBattAhDef);
+            this.grbProgrammazione.Controls.Add(this.txtProgcCelleTot);
+            this.grbProgrammazione.Controls.Add(this.txtProgcCelleV1);
+            this.grbProgrammazione.Controls.Add(this.lblCelleP1);
+            this.grbProgrammazione.Controls.Add(this.txtProgcBattVdef);
+            this.grbProgrammazione.Controls.Add(this.txtTensioneNom);
+            resources.ApplyResources(this.grbProgrammazione, "grbProgrammazione");
+            this.grbProgrammazione.Name = "grbProgrammazione";
+            this.grbProgrammazione.TabStop = false;
             // 
-            // label9
+            // label5
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
-            // comboBox3
+            // txtProgcBattType
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            resources.GetString("comboBox3.Items"),
-            resources.GetString("comboBox3.Items1"),
-            resources.GetString("comboBox3.Items2"),
-            resources.GetString("comboBox3.Items3"),
-            resources.GetString("comboBox3.Items4"),
-            resources.GetString("comboBox3.Items5"),
-            resources.GetString("comboBox3.Items6"),
-            resources.GetString("comboBox3.Items7"),
-            resources.GetString("comboBox3.Items8"),
-            resources.GetString("comboBox3.Items9"),
-            resources.GetString("comboBox3.Items10")});
-            resources.ApplyResources(this.comboBox3, "comboBox3");
-            this.comboBox3.Name = "comboBox3";
+            resources.ApplyResources(this.txtProgcBattType, "txtProgcBattType");
+            this.txtProgcBattType.Name = "txtProgcBattType";
+            this.txtProgcBattType.ReadOnly = true;
             // 
-            // comboBox2
+            // label13
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            resources.GetString("comboBox2.Items"),
-            resources.GetString("comboBox2.Items1"),
-            resources.GetString("comboBox2.Items2"),
-            resources.GetString("comboBox2.Items3"),
-            resources.GetString("comboBox2.Items4"),
-            resources.GetString("comboBox2.Items5"),
-            resources.GetString("comboBox2.Items6"),
-            resources.GetString("comboBox2.Items7"),
-            resources.GetString("comboBox2.Items8"),
-            resources.GetString("comboBox2.Items9"),
-            resources.GetString("comboBox2.Items10")});
-            resources.ApplyResources(this.comboBox2, "comboBox2");
-            this.comboBox2.Name = "comboBox2";
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
             // 
-            // cmbSonda01
+            // label14
             // 
-            this.cmbSonda01.FormattingEnabled = true;
-            this.cmbSonda01.Items.AddRange(new object[] {
-            resources.GetString("cmbSonda01.Items"),
-            resources.GetString("cmbSonda01.Items1"),
-            resources.GetString("cmbSonda01.Items2"),
-            resources.GetString("cmbSonda01.Items3"),
-            resources.GetString("cmbSonda01.Items4"),
-            resources.GetString("cmbSonda01.Items5"),
-            resources.GetString("cmbSonda01.Items6")});
-            resources.ApplyResources(this.cmbSonda01, "cmbSonda01");
-            this.cmbSonda01.Name = "cmbSonda01";
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
             // 
-            // opSonda02
+            // txtProgcCelleV2
             // 
-            resources.ApplyResources(this.opSonda02, "opSonda02");
-            this.opSonda02.Name = "opSonda02";
-            this.opSonda02.UseVisualStyleBackColor = true;
-            this.opSonda02.CheckedChanged += new System.EventHandler(this.opSonda02_CheckedChanged);
+            resources.ApplyResources(this.txtProgcCelleV2, "txtProgcCelleV2");
+            this.txtProgcCelleV2.Name = "txtProgcCelleV2";
+            this.txtProgcCelleV2.ReadOnly = true;
             // 
-            // opSonda01
+            // label15
             // 
-            resources.ApplyResources(this.opSonda01, "opSonda01");
-            this.opSonda01.Checked = true;
-            this.opSonda01.Name = "opSonda01";
-            this.opSonda01.TabStop = true;
-            this.opSonda01.UseVisualStyleBackColor = true;
-            this.opSonda01.CheckedChanged += new System.EventHandler(this.opSonda01_CheckedChanged);
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // txtProgcCelleV3
+            // 
+            resources.ApplyResources(this.txtProgcCelleV3, "txtProgcCelleV3");
+            this.txtProgcCelleV3.Name = "txtProgcCelleV3";
+            this.txtProgcCelleV3.ReadOnly = true;
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // txtProgcBattAhDef
+            // 
+            resources.ApplyResources(this.txtProgcBattAhDef, "txtProgcBattAhDef");
+            this.txtProgcBattAhDef.Name = "txtProgcBattAhDef";
+            this.txtProgcBattAhDef.ReadOnly = true;
+            // 
+            // txtProgcCelleTot
+            // 
+            resources.ApplyResources(this.txtProgcCelleTot, "txtProgcCelleTot");
+            this.txtProgcCelleTot.Name = "txtProgcCelleTot";
+            this.txtProgcCelleTot.ReadOnly = true;
+            // 
+            // txtProgcCelleV1
+            // 
+            resources.ApplyResources(this.txtProgcCelleV1, "txtProgcCelleV1");
+            this.txtProgcCelleV1.Name = "txtProgcCelleV1";
+            this.txtProgcCelleV1.ReadOnly = true;
+            // 
+            // lblCelleP1
+            // 
+            resources.ApplyResources(this.lblCelleP1, "lblCelleP1");
+            this.lblCelleP1.Name = "lblCelleP1";
+            // 
+            // txtProgcBattVdef
+            // 
+            resources.ApplyResources(this.txtProgcBattVdef, "txtProgcBattVdef");
+            this.txtProgcBattVdef.Name = "txtProgcBattVdef";
+            this.txtProgcBattVdef.ReadOnly = true;
+            // 
+            // txtTensioneNom
+            // 
+            resources.ApplyResources(this.txtTensioneNom, "txtTensioneNom");
+            this.txtTensioneNom.Name = "txtTensioneNom";
+            // 
+            // flvwProgrammiCarica
+            // 
+            this.flvwProgrammiCarica.CellEditUseWholeCell = false;
+            this.flvwProgrammiCarica.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwProgrammiCarica.HighlightForegroundColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.flvwProgrammiCarica, "flvwProgrammiCarica");
+            this.flvwProgrammiCarica.Name = "flvwProgrammiCarica";
+            this.flvwProgrammiCarica.ShowGroups = false;
+            this.flvwProgrammiCarica.UseCompatibleStateImageBehavior = false;
+            this.flvwProgrammiCarica.View = System.Windows.Forms.View.Details;
+            this.flvwProgrammiCarica.VirtualMode = true;
             // 
             // tabCb05
             // 
@@ -1497,733 +2131,114 @@
             resources.ApplyResources(this.lblDataRTC, "lblDataRTC");
             this.lblDataRTC.Name = "lblDataRTC";
             // 
-            // tabCb02
-            // 
-            this.tabCb02.BackColor = System.Drawing.Color.LightYellow;
-            this.tabCb02.Controls.Add(this.btnAttivaProgrammazione);
-            this.tabCb02.Controls.Add(this.btnNuovoProgramma);
-            this.tabCb02.Controls.Add(this.btnRicaricaProgr);
-            this.tabCb02.Controls.Add(this.grbProgrammazione);
-            this.tabCb02.Controls.Add(this.flvwProgrammiCarica);
-            resources.ApplyResources(this.tabCb02, "tabCb02");
-            this.tabCb02.Name = "tabCb02";
-            this.tabCb02.Click += new System.EventHandler(this.tabCb02_Click);
-            // 
-            // btnAttivaProgrammazione
-            // 
-            resources.ApplyResources(this.btnAttivaProgrammazione, "btnAttivaProgrammazione");
-            this.btnAttivaProgrammazione.Name = "btnAttivaProgrammazione";
-            this.btnAttivaProgrammazione.UseVisualStyleBackColor = true;
-            this.btnAttivaProgrammazione.Click += new System.EventHandler(this.btnAttivaProgrammazione_Click);
-            // 
-            // btnNuovoProgramma
-            // 
-            resources.ApplyResources(this.btnNuovoProgramma, "btnNuovoProgramma");
-            this.btnNuovoProgramma.Name = "btnNuovoProgramma";
-            this.btnNuovoProgramma.UseVisualStyleBackColor = true;
-            this.btnNuovoProgramma.Click += new System.EventHandler(this.btnNuovoProgramma_Click);
-            // 
-            // btnRicaricaProgr
-            // 
-            resources.ApplyResources(this.btnRicaricaProgr, "btnRicaricaProgr");
-            this.btnRicaricaProgr.Name = "btnRicaricaProgr";
-            this.btnRicaricaProgr.UseVisualStyleBackColor = true;
-            this.btnRicaricaProgr.Click += new System.EventHandler(this.btnRicaricaProgr_Click);
-            // 
-            // grbProgrammazione
-            // 
-            this.grbProgrammazione.BackColor = System.Drawing.Color.White;
-            this.grbProgrammazione.Controls.Add(this.label5);
-            this.grbProgrammazione.Controls.Add(this.txtProgcBattType);
-            this.grbProgrammazione.Controls.Add(this.label13);
-            this.grbProgrammazione.Controls.Add(this.label14);
-            this.grbProgrammazione.Controls.Add(this.txtProgcCelleV2);
-            this.grbProgrammazione.Controls.Add(this.label15);
-            this.grbProgrammazione.Controls.Add(this.txtProgcCelleV3);
-            this.grbProgrammazione.Controls.Add(this.label16);
-            this.grbProgrammazione.Controls.Add(this.txtProgcBattAhDef);
-            this.grbProgrammazione.Controls.Add(this.txtProgcCelleTot);
-            this.grbProgrammazione.Controls.Add(this.txtProgcCelleV1);
-            this.grbProgrammazione.Controls.Add(this.lblCelleP1);
-            this.grbProgrammazione.Controls.Add(this.txtProgcBattVdef);
-            this.grbProgrammazione.Controls.Add(this.txtTensioneNom);
-            resources.ApplyResources(this.grbProgrammazione, "grbProgrammazione");
-            this.grbProgrammazione.Name = "grbProgrammazione";
-            this.grbProgrammazione.TabStop = false;
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // txtProgcBattType
-            // 
-            resources.ApplyResources(this.txtProgcBattType, "txtProgcBattType");
-            this.txtProgcBattType.Name = "txtProgcBattType";
-            this.txtProgcBattType.ReadOnly = true;
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            // 
-            // txtProgcCelleV2
-            // 
-            resources.ApplyResources(this.txtProgcCelleV2, "txtProgcCelleV2");
-            this.txtProgcCelleV2.Name = "txtProgcCelleV2";
-            this.txtProgcCelleV2.ReadOnly = true;
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
-            // txtProgcCelleV3
-            // 
-            resources.ApplyResources(this.txtProgcCelleV3, "txtProgcCelleV3");
-            this.txtProgcCelleV3.Name = "txtProgcCelleV3";
-            this.txtProgcCelleV3.ReadOnly = true;
-            // 
-            // label16
-            // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            // 
-            // txtProgcBattAhDef
-            // 
-            resources.ApplyResources(this.txtProgcBattAhDef, "txtProgcBattAhDef");
-            this.txtProgcBattAhDef.Name = "txtProgcBattAhDef";
-            this.txtProgcBattAhDef.ReadOnly = true;
-            // 
-            // txtProgcCelleTot
-            // 
-            resources.ApplyResources(this.txtProgcCelleTot, "txtProgcCelleTot");
-            this.txtProgcCelleTot.Name = "txtProgcCelleTot";
-            this.txtProgcCelleTot.ReadOnly = true;
-            // 
-            // txtProgcCelleV1
-            // 
-            resources.ApplyResources(this.txtProgcCelleV1, "txtProgcCelleV1");
-            this.txtProgcCelleV1.Name = "txtProgcCelleV1";
-            this.txtProgcCelleV1.ReadOnly = true;
-            // 
-            // lblCelleP1
-            // 
-            resources.ApplyResources(this.lblCelleP1, "lblCelleP1");
-            this.lblCelleP1.Name = "lblCelleP1";
-            // 
-            // txtProgcBattVdef
-            // 
-            resources.ApplyResources(this.txtProgcBattVdef, "txtProgcBattVdef");
-            this.txtProgcBattVdef.Name = "txtProgcBattVdef";
-            this.txtProgcBattVdef.ReadOnly = true;
-            // 
-            // txtTensioneNom
-            // 
-            resources.ApplyResources(this.txtTensioneNom, "txtTensioneNom");
-            this.txtTensioneNom.Name = "txtTensioneNom";
-            // 
-            // flvwProgrammiCarica
-            // 
-            this.flvwProgrammiCarica.CellEditUseWholeCell = false;
-            this.flvwProgrammiCarica.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwProgrammiCarica.HighlightForegroundColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.flvwProgrammiCarica, "flvwProgrammiCarica");
-            this.flvwProgrammiCarica.Name = "flvwProgrammiCarica";
-            this.flvwProgrammiCarica.ShowGroups = false;
-            this.flvwProgrammiCarica.UseCompatibleStateImageBehavior = false;
-            this.flvwProgrammiCarica.View = System.Windows.Forms.View.Details;
-            this.flvwProgrammiCarica.VirtualMode = true;
-            // 
-            // tabStatistiche
-            // 
-            this.tabStatistiche.BackColor = System.Drawing.Color.LightYellow;
-            this.tabStatistiche.Controls.Add(this.tbcStatistiche);
-            resources.ApplyResources(this.tabStatistiche, "tabStatistiche");
-            this.tabStatistiche.Name = "tabStatistiche";
-            // 
-            // tbcStatistiche
-            // 
-            this.tbcStatistiche.Controls.Add(this.tabStatParametri);
-            this.tbcStatistiche.Controls.Add(this.tabStatSintesi);
-            this.tbcStatistiche.Controls.Add(this.tabStatCockpit);
-            this.tbcStatistiche.Controls.Add(this.tabStatComparazioni);
-            this.tbcStatistiche.Controls.Add(this.tabStatGrafici);
-            this.tbcStatistiche.Controls.Add(this.tabStatTabelle);
-            this.tbcStatistiche.Controls.Add(this.tabStatSoglie);
-            resources.ApplyResources(this.tbcStatistiche, "tbcStatistiche");
-            this.tbcStatistiche.Name = "tbcStatistiche";
-            this.tbcStatistiche.SelectedIndex = 0;
-            // 
-            // tabStatParametri
-            // 
-            this.tabStatParametri.BackColor = System.Drawing.Color.LightYellow;
-            this.tabStatParametri.Controls.Add(this.btnStatProvaInserimento);
-            this.tabStatParametri.Controls.Add(this.grbStatSelGrafici);
-            this.tabStatParametri.Controls.Add(this.btnStatRicalcola);
-            this.tabStatParametri.Controls.Add(this.grbStatSelPeriodo);
-            resources.ApplyResources(this.tabStatParametri, "tabStatParametri");
-            this.tabStatParametri.Name = "tabStatParametri";
-            // 
-            // btnStatProvaInserimento
-            // 
-            resources.ApplyResources(this.btnStatProvaInserimento, "btnStatProvaInserimento");
-            this.btnStatProvaInserimento.Name = "btnStatProvaInserimento";
-            this.btnStatProvaInserimento.UseVisualStyleBackColor = true;
-            this.btnStatProvaInserimento.Click += new System.EventHandler(this.btnStatProvaInserimento_Click);
-            // 
-            // grbStatSelGrafici
-            // 
-            this.grbStatSelGrafici.BackColor = System.Drawing.Color.White;
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoPause);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoFC);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDTCP);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDTCC);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTmaxCP);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTmaxCC);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDTS);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTminS);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTmaxS);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDurCP);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDurCC);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoDoD);
-            this.grbStatSelGrafici.Controls.Add(this.chkStatGraficoTemporale);
-            resources.ApplyResources(this.grbStatSelGrafici, "grbStatSelGrafici");
-            this.grbStatSelGrafici.Name = "grbStatSelGrafici";
-            this.grbStatSelGrafici.TabStop = false;
-            // 
-            // chkStatGraficoPause
-            // 
-            resources.ApplyResources(this.chkStatGraficoPause, "chkStatGraficoPause");
-            this.chkStatGraficoPause.Name = "chkStatGraficoPause";
-            this.chkStatGraficoPause.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoFC
-            // 
-            resources.ApplyResources(this.chkStatGraficoFC, "chkStatGraficoFC");
-            this.chkStatGraficoFC.Name = "chkStatGraficoFC";
-            this.chkStatGraficoFC.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoDTCP
-            // 
-            resources.ApplyResources(this.chkStatGraficoDTCP, "chkStatGraficoDTCP");
-            this.chkStatGraficoDTCP.Checked = true;
-            this.chkStatGraficoDTCP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoDTCP.Name = "chkStatGraficoDTCP";
-            this.chkStatGraficoDTCP.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoDTCC
-            // 
-            resources.ApplyResources(this.chkStatGraficoDTCC, "chkStatGraficoDTCC");
-            this.chkStatGraficoDTCC.Checked = true;
-            this.chkStatGraficoDTCC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoDTCC.Name = "chkStatGraficoDTCC";
-            this.chkStatGraficoDTCC.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoTmaxCP
-            // 
-            resources.ApplyResources(this.chkStatGraficoTmaxCP, "chkStatGraficoTmaxCP");
-            this.chkStatGraficoTmaxCP.Checked = true;
-            this.chkStatGraficoTmaxCP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoTmaxCP.Name = "chkStatGraficoTmaxCP";
-            this.chkStatGraficoTmaxCP.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoTmaxCC
-            // 
-            resources.ApplyResources(this.chkStatGraficoTmaxCC, "chkStatGraficoTmaxCC");
-            this.chkStatGraficoTmaxCC.Checked = true;
-            this.chkStatGraficoTmaxCC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoTmaxCC.Name = "chkStatGraficoTmaxCC";
-            this.chkStatGraficoTmaxCC.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoDTS
-            // 
-            resources.ApplyResources(this.chkStatGraficoDTS, "chkStatGraficoDTS");
-            this.chkStatGraficoDTS.Checked = true;
-            this.chkStatGraficoDTS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoDTS.Name = "chkStatGraficoDTS";
-            this.chkStatGraficoDTS.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoTminS
-            // 
-            resources.ApplyResources(this.chkStatGraficoTminS, "chkStatGraficoTminS");
-            this.chkStatGraficoTminS.Checked = true;
-            this.chkStatGraficoTminS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoTminS.Name = "chkStatGraficoTminS";
-            this.chkStatGraficoTminS.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoTmaxS
-            // 
-            resources.ApplyResources(this.chkStatGraficoTmaxS, "chkStatGraficoTmaxS");
-            this.chkStatGraficoTmaxS.Checked = true;
-            this.chkStatGraficoTmaxS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoTmaxS.Name = "chkStatGraficoTmaxS";
-            this.chkStatGraficoTmaxS.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoDurCP
-            // 
-            resources.ApplyResources(this.chkStatGraficoDurCP, "chkStatGraficoDurCP");
-            this.chkStatGraficoDurCP.Checked = true;
-            this.chkStatGraficoDurCP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoDurCP.Name = "chkStatGraficoDurCP";
-            this.chkStatGraficoDurCP.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoDurCC
-            // 
-            resources.ApplyResources(this.chkStatGraficoDurCC, "chkStatGraficoDurCC");
-            this.chkStatGraficoDurCC.Checked = true;
-            this.chkStatGraficoDurCC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoDurCC.Name = "chkStatGraficoDurCC";
-            this.chkStatGraficoDurCC.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoDoD
-            // 
-            resources.ApplyResources(this.chkStatGraficoDoD, "chkStatGraficoDoD");
-            this.chkStatGraficoDoD.Checked = true;
-            this.chkStatGraficoDoD.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoDoD.ForeColor = System.Drawing.Color.Black;
-            this.chkStatGraficoDoD.Name = "chkStatGraficoDoD";
-            this.chkStatGraficoDoD.UseVisualStyleBackColor = true;
-            // 
-            // chkStatGraficoTemporale
-            // 
-            resources.ApplyResources(this.chkStatGraficoTemporale, "chkStatGraficoTemporale");
-            this.chkStatGraficoTemporale.Checked = true;
-            this.chkStatGraficoTemporale.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatGraficoTemporale.Name = "chkStatGraficoTemporale";
-            this.chkStatGraficoTemporale.UseVisualStyleBackColor = true;
-            // 
-            // btnStatRicalcola
-            // 
-            resources.ApplyResources(this.btnStatRicalcola, "btnStatRicalcola");
-            this.btnStatRicalcola.Name = "btnStatRicalcola";
-            this.btnStatRicalcola.UseVisualStyleBackColor = true;
-            this.btnStatRicalcola.Click += new System.EventHandler(this.btnStatRicalcola_Click);
-            // 
-            // grbStatSelPeriodo
-            // 
-            this.grbStatSelPeriodo.BackColor = System.Drawing.Color.White;
-            this.grbStatSelPeriodo.Controls.Add(this.grbStatDate);
-            this.grbStatSelPeriodo.Controls.Add(this.optStatPeriodoSel);
-            this.grbStatSelPeriodo.Controls.Add(this.optStatInteroIntervallo);
-            resources.ApplyResources(this.grbStatSelPeriodo, "grbStatSelPeriodo");
-            this.grbStatSelPeriodo.Name = "grbStatSelPeriodo";
-            this.grbStatSelPeriodo.TabStop = false;
-            // 
-            // grbStatDate
-            // 
-            this.grbStatDate.Controls.Add(this.lblStatDataFine);
-            this.grbStatDate.Controls.Add(this.lblStatDataInizio);
-            this.grbStatDate.Controls.Add(this.dtpStatFine);
-            this.grbStatDate.Controls.Add(this.dtpStatInizio);
-            resources.ApplyResources(this.grbStatDate, "grbStatDate");
-            this.grbStatDate.Name = "grbStatDate";
-            this.grbStatDate.TabStop = false;
-            // 
-            // lblStatDataFine
-            // 
-            resources.ApplyResources(this.lblStatDataFine, "lblStatDataFine");
-            this.lblStatDataFine.Name = "lblStatDataFine";
-            // 
-            // lblStatDataInizio
-            // 
-            resources.ApplyResources(this.lblStatDataInizio, "lblStatDataInizio");
-            this.lblStatDataInizio.Name = "lblStatDataInizio";
-            // 
-            // dtpStatFine
-            // 
-            this.dtpStatFine.AllowDrop = true;
-            resources.ApplyResources(this.dtpStatFine, "dtpStatFine");
-            this.dtpStatFine.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStatFine.Name = "dtpStatFine";
-            // 
-            // dtpStatInizio
-            // 
-            this.dtpStatInizio.AllowDrop = true;
-            resources.ApplyResources(this.dtpStatInizio, "dtpStatInizio");
-            this.dtpStatInizio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStatInizio.Name = "dtpStatInizio";
-            // 
-            // optStatPeriodoSel
-            // 
-            resources.ApplyResources(this.optStatPeriodoSel, "optStatPeriodoSel");
-            this.optStatPeriodoSel.Name = "optStatPeriodoSel";
-            this.optStatPeriodoSel.UseVisualStyleBackColor = true;
-            // 
-            // optStatInteroIntervallo
-            // 
-            resources.ApplyResources(this.optStatInteroIntervallo, "optStatInteroIntervallo");
-            this.optStatInteroIntervallo.Checked = true;
-            this.optStatInteroIntervallo.Name = "optStatInteroIntervallo";
-            this.optStatInteroIntervallo.TabStop = true;
-            this.optStatInteroIntervallo.UseVisualStyleBackColor = true;
-            // 
-            // tabStatSintesi
-            // 
-            this.tabStatSintesi.BackColor = System.Drawing.Color.LightYellow;
-            this.tabStatSintesi.Controls.Add(this.grbStatEnergia);
-            this.tabStatSintesi.Controls.Add(this.grbStatCarica);
-            this.tabStatSintesi.Controls.Add(this.grbStatScariche);
-            this.tabStatSintesi.Controls.Add(this.grbStatStato);
-            resources.ApplyResources(this.tabStatSintesi, "tabStatSintesi");
-            this.tabStatSintesi.Name = "tabStatSintesi";
-            // 
-            // grbStatEnergia
-            // 
-            this.grbStatEnergia.BackColor = System.Drawing.Color.White;
-            this.grbStatEnergia.Controls.Add(this.txtStatEnergiaMediaAh);
-            this.grbStatEnergia.Controls.Add(this.label45);
-            this.grbStatEnergia.Controls.Add(this.txtStatEnergiaMediaKWh);
-            this.grbStatEnergia.Controls.Add(this.lblStatEnergiaMedia);
-            this.grbStatEnergia.Controls.Add(this.txtStatTotEnergia);
-            this.grbStatEnergia.Controls.Add(this.lblStatTotEnergia);
-            resources.ApplyResources(this.grbStatEnergia, "grbStatEnergia");
-            this.grbStatEnergia.Name = "grbStatEnergia";
-            this.grbStatEnergia.TabStop = false;
-            // 
-            // txtStatEnergiaMediaAh
-            // 
-            this.txtStatEnergiaMediaAh.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.txtStatEnergiaMediaAh, "txtStatEnergiaMediaAh");
-            this.txtStatEnergiaMediaAh.Name = "txtStatEnergiaMediaAh";
-            // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
-            // 
-            // txtStatEnergiaMediaKWh
-            // 
-            this.txtStatEnergiaMediaKWh.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.txtStatEnergiaMediaKWh, "txtStatEnergiaMediaKWh");
-            this.txtStatEnergiaMediaKWh.Name = "txtStatEnergiaMediaKWh";
-            // 
-            // lblStatEnergiaMedia
-            // 
-            resources.ApplyResources(this.lblStatEnergiaMedia, "lblStatEnergiaMedia");
-            this.lblStatEnergiaMedia.Name = "lblStatEnergiaMedia";
-            // 
-            // txtStatTotEnergia
-            // 
-            resources.ApplyResources(this.txtStatTotEnergia, "txtStatTotEnergia");
-            this.txtStatTotEnergia.Name = "txtStatTotEnergia";
-            // 
-            // lblStatTotEnergia
-            // 
-            resources.ApplyResources(this.lblStatTotEnergia, "lblStatTotEnergia");
-            this.lblStatTotEnergia.Name = "lblStatTotEnergia";
-            // 
-            // grbStatCarica
-            // 
-            this.grbStatCarica.BackColor = System.Drawing.Color.White;
-            this.grbStatCarica.Controls.Add(this.txtStatNumCarichePOverTemp);
-            this.grbStatCarica.Controls.Add(this.label47);
-            this.grbStatCarica.Controls.Add(this.txtStatNumCaricheCOverTemp);
-            this.grbStatCarica.Controls.Add(this.label48);
-            this.grbStatCarica.Controls.Add(this.txtStatNumCariche);
-            this.grbStatCarica.Controls.Add(this.lblStatNumCariche);
-            this.grbStatCarica.Controls.Add(this.txtStatNumCaricheParz);
-            this.grbStatCarica.Controls.Add(this.lblStatNumCaricheParz);
-            this.grbStatCarica.Controls.Add(this.txtStatNumCaricheComp);
-            this.grbStatCarica.Controls.Add(this.lblStatNumCaricheComp);
-            this.grbStatCarica.Controls.Add(this.txtStatTempoInCarica);
-            this.grbStatCarica.Controls.Add(this.lblStatTempoInCarica);
-            resources.ApplyResources(this.grbStatCarica, "grbStatCarica");
-            this.grbStatCarica.Name = "grbStatCarica";
-            this.grbStatCarica.TabStop = false;
-            // 
-            // txtStatNumCarichePOverTemp
-            // 
-            resources.ApplyResources(this.txtStatNumCarichePOverTemp, "txtStatNumCarichePOverTemp");
-            this.txtStatNumCarichePOverTemp.Name = "txtStatNumCarichePOverTemp";
-            // 
-            // label47
-            // 
-            resources.ApplyResources(this.label47, "label47");
-            this.label47.Name = "label47";
-            // 
-            // txtStatNumCaricheCOverTemp
-            // 
-            this.txtStatNumCaricheCOverTemp.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.txtStatNumCaricheCOverTemp, "txtStatNumCaricheCOverTemp");
-            this.txtStatNumCaricheCOverTemp.Name = "txtStatNumCaricheCOverTemp";
-            // 
-            // label48
-            // 
-            resources.ApplyResources(this.label48, "label48");
-            this.label48.Name = "label48";
-            // 
-            // txtStatNumCariche
-            // 
-            this.txtStatNumCariche.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.txtStatNumCariche, "txtStatNumCariche");
-            this.txtStatNumCariche.Name = "txtStatNumCariche";
-            // 
-            // lblStatNumCariche
-            // 
-            resources.ApplyResources(this.lblStatNumCariche, "lblStatNumCariche");
-            this.lblStatNumCariche.Name = "lblStatNumCariche";
-            // 
-            // txtStatNumCaricheParz
-            // 
-            resources.ApplyResources(this.txtStatNumCaricheParz, "txtStatNumCaricheParz");
-            this.txtStatNumCaricheParz.Name = "txtStatNumCaricheParz";
-            // 
-            // lblStatNumCaricheParz
-            // 
-            resources.ApplyResources(this.lblStatNumCaricheParz, "lblStatNumCaricheParz");
-            this.lblStatNumCaricheParz.Name = "lblStatNumCaricheParz";
-            // 
-            // txtStatNumCaricheComp
-            // 
-            this.txtStatNumCaricheComp.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.txtStatNumCaricheComp, "txtStatNumCaricheComp");
-            this.txtStatNumCaricheComp.Name = "txtStatNumCaricheComp";
-            // 
-            // lblStatNumCaricheComp
-            // 
-            resources.ApplyResources(this.lblStatNumCaricheComp, "lblStatNumCaricheComp");
-            this.lblStatNumCaricheComp.Name = "lblStatNumCaricheComp";
-            // 
-            // txtStatTempoInCarica
-            // 
-            resources.ApplyResources(this.txtStatTempoInCarica, "txtStatTempoInCarica");
-            this.txtStatTempoInCarica.Name = "txtStatTempoInCarica";
-            // 
-            // lblStatTempoInCarica
-            // 
-            resources.ApplyResources(this.lblStatTempoInCarica, "lblStatTempoInCarica");
-            this.lblStatTempoInCarica.Name = "lblStatTempoInCarica";
-            // 
-            // grbStatScariche
-            // 
-            this.grbStatScariche.BackColor = System.Drawing.Color.White;
-            this.grbStatScariche.Controls.Add(this.txtStatNumScaricheOverT);
-            this.grbStatScariche.Controls.Add(this.label46);
-            this.grbStatScariche.Controls.Add(this.txtStatDoDMedia);
-            this.grbStatScariche.Controls.Add(this.lblStatMediaScarica);
-            this.grbStatScariche.Controls.Add(this.txtStatPauseSC);
-            this.grbStatScariche.Controls.Add(this.lblStatPauseSC);
-            this.grbStatScariche.Controls.Add(this.txtStatNumSovrascariche);
-            this.grbStatScariche.Controls.Add(this.lblStatNumSovrascariche);
-            this.grbStatScariche.Controls.Add(this.txtStatNumScariche);
-            this.grbStatScariche.Controls.Add(this.lblStatNumScariche);
-            this.grbStatScariche.Controls.Add(this.txtTempoInScarica);
-            this.grbStatScariche.Controls.Add(this.lblStatTempoInScarica);
-            resources.ApplyResources(this.grbStatScariche, "grbStatScariche");
-            this.grbStatScariche.Name = "grbStatScariche";
-            this.grbStatScariche.TabStop = false;
-            // 
-            // txtStatNumScaricheOverT
-            // 
-            resources.ApplyResources(this.txtStatNumScaricheOverT, "txtStatNumScaricheOverT");
-            this.txtStatNumScaricheOverT.Name = "txtStatNumScaricheOverT";
-            // 
-            // label46
-            // 
-            resources.ApplyResources(this.label46, "label46");
-            this.label46.Name = "label46";
-            // 
-            // txtStatDoDMedia
-            // 
-            resources.ApplyResources(this.txtStatDoDMedia, "txtStatDoDMedia");
-            this.txtStatDoDMedia.Name = "txtStatDoDMedia";
-            // 
-            // lblStatMediaScarica
-            // 
-            resources.ApplyResources(this.lblStatMediaScarica, "lblStatMediaScarica");
-            this.lblStatMediaScarica.Name = "lblStatMediaScarica";
-            this.lblStatMediaScarica.Click += new System.EventHandler(this.label45_Click);
-            // 
-            // txtStatPauseSC
-            // 
-            resources.ApplyResources(this.txtStatPauseSC, "txtStatPauseSC");
-            this.txtStatPauseSC.Name = "txtStatPauseSC";
-            // 
-            // lblStatPauseSC
-            // 
-            resources.ApplyResources(this.lblStatPauseSC, "lblStatPauseSC");
-            this.lblStatPauseSC.Name = "lblStatPauseSC";
-            // 
-            // txtStatNumSovrascariche
-            // 
-            resources.ApplyResources(this.txtStatNumSovrascariche, "txtStatNumSovrascariche");
-            this.txtStatNumSovrascariche.Name = "txtStatNumSovrascariche";
-            // 
-            // lblStatNumSovrascariche
-            // 
-            resources.ApplyResources(this.lblStatNumSovrascariche, "lblStatNumSovrascariche");
-            this.lblStatNumSovrascariche.Name = "lblStatNumSovrascariche";
-            // 
-            // txtStatNumScariche
-            // 
-            resources.ApplyResources(this.txtStatNumScariche, "txtStatNumScariche");
-            this.txtStatNumScariche.Name = "txtStatNumScariche";
-            // 
-            // lblStatNumScariche
-            // 
-            resources.ApplyResources(this.lblStatNumScariche, "lblStatNumScariche");
-            this.lblStatNumScariche.Name = "lblStatNumScariche";
-            // 
-            // txtTempoInScarica
-            // 
-            resources.ApplyResources(this.txtTempoInScarica, "txtTempoInScarica");
-            this.txtTempoInScarica.Name = "txtTempoInScarica";
-            this.txtTempoInScarica.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // lblStatTempoInScarica
-            // 
-            resources.ApplyResources(this.lblStatTempoInScarica, "lblStatTempoInScarica");
-            this.lblStatTempoInScarica.Name = "lblStatTempoInScarica";
-            this.lblStatTempoInScarica.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // grbStatStato
-            // 
-            this.grbStatStato.BackColor = System.Drawing.Color.White;
-            this.grbStatStato.Controls.Add(this.txtStatMancElettr);
-            this.grbStatStato.Controls.Add(this.lblStatMancElettr);
-            this.grbStatStato.Controls.Add(this.txtStatSbilCelle);
-            this.grbStatStato.Controls.Add(this.lblStatSbilCelle);
-            this.grbStatStato.Controls.Add(this.txtStatNCicli);
-            this.grbStatStato.Controls.Add(this.lblStatNumCicli);
-            this.grbStatStato.Controls.Add(this.txtStatSOH);
-            this.grbStatStato.Controls.Add(this.lblStatSOH);
-            this.grbStatStato.Controls.Add(this.txtStatGiorniAtt);
-            this.grbStatStato.Controls.Add(this.lblStatGiorniAtt);
-            this.grbStatStato.Controls.Add(this.txtStatAttivazione);
-            this.grbStatStato.Controls.Add(this.lblStatAttivazioe);
-            resources.ApplyResources(this.grbStatStato, "grbStatStato");
-            this.grbStatStato.Name = "grbStatStato";
-            this.grbStatStato.TabStop = false;
-            // 
-            // txtStatMancElettr
-            // 
-            resources.ApplyResources(this.txtStatMancElettr, "txtStatMancElettr");
-            this.txtStatMancElettr.Name = "txtStatMancElettr";
-            // 
-            // lblStatMancElettr
-            // 
-            resources.ApplyResources(this.lblStatMancElettr, "lblStatMancElettr");
-            this.lblStatMancElettr.Name = "lblStatMancElettr";
-            // 
-            // txtStatSbilCelle
-            // 
-            resources.ApplyResources(this.txtStatSbilCelle, "txtStatSbilCelle");
-            this.txtStatSbilCelle.Name = "txtStatSbilCelle";
-            // 
-            // lblStatSbilCelle
-            // 
-            resources.ApplyResources(this.lblStatSbilCelle, "lblStatSbilCelle");
-            this.lblStatSbilCelle.Name = "lblStatSbilCelle";
-            // 
-            // txtStatNCicli
-            // 
-            resources.ApplyResources(this.txtStatNCicli, "txtStatNCicli");
-            this.txtStatNCicli.Name = "txtStatNCicli";
-            // 
-            // lblStatNumCicli
-            // 
-            resources.ApplyResources(this.lblStatNumCicli, "lblStatNumCicli");
-            this.lblStatNumCicli.Name = "lblStatNumCicli";
-            // 
-            // txtStatSOH
-            // 
-            resources.ApplyResources(this.txtStatSOH, "txtStatSOH");
-            this.txtStatSOH.Name = "txtStatSOH";
-            // 
-            // lblStatSOH
-            // 
-            resources.ApplyResources(this.lblStatSOH, "lblStatSOH");
-            this.lblStatSOH.Name = "lblStatSOH";
-            // 
-            // txtStatGiorniAtt
-            // 
-            resources.ApplyResources(this.txtStatGiorniAtt, "txtStatGiorniAtt");
-            this.txtStatGiorniAtt.Name = "txtStatGiorniAtt";
-            // 
-            // lblStatGiorniAtt
-            // 
-            resources.ApplyResources(this.lblStatGiorniAtt, "lblStatGiorniAtt");
-            this.lblStatGiorniAtt.Name = "lblStatGiorniAtt";
-            // 
-            // txtStatAttivazione
-            // 
-            resources.ApplyResources(this.txtStatAttivazione, "txtStatAttivazione");
-            this.txtStatAttivazione.Name = "txtStatAttivazione";
-            // 
-            // lblStatAttivazioe
-            // 
-            resources.ApplyResources(this.lblStatAttivazioe, "lblStatAttivazioe");
-            this.lblStatAttivazioe.Name = "lblStatAttivazioe";
-            // 
-            // tabStatCockpit
-            // 
-            this.tabStatCockpit.BackColor = System.Drawing.Color.LightYellow;
-            this.tabStatCockpit.Controls.Add(this.buiStatCockpit);
-            resources.ApplyResources(this.tabStatCockpit, "tabStatCockpit");
-            this.tabStatCockpit.Name = "tabStatCockpit";
-            // 
-            // buiStatCockpit
-            // 
-            resources.ApplyResources(this.buiStatCockpit, "buiStatCockpit");
-            this.buiStatCockpit.BackColor = System.Drawing.Color.LightYellow;
-            this.buiStatCockpit.Interact = false;
-            this.buiStatCockpit.Name = "buiStatCockpit";
-            this.buiStatCockpit.Load += new System.EventHandler(this.buiStatCockpit_Load);
-            // 
-            // tabStatComparazioni
-            // 
-            this.tabStatComparazioni.BackColor = System.Drawing.Color.LightYellow;
-            this.tabStatComparazioni.Controls.Add(this.label49);
-            resources.ApplyResources(this.tabStatComparazioni, "tabStatComparazioni");
-            this.tabStatComparazioni.Name = "tabStatComparazioni";
-            // 
-            // label49
-            // 
-            resources.ApplyResources(this.label49, "label49");
-            this.label49.Name = "label49";
-            // 
-            // tabStatGrafici
-            // 
-            this.tabStatGrafici.BackColor = System.Drawing.Color.LightYellow;
-            resources.ApplyResources(this.tabStatGrafici, "tabStatGrafici");
-            this.tabStatGrafici.Name = "tabStatGrafici";
-            // 
-            // tabStatTabelle
-            // 
-            this.tabStatTabelle.BackColor = System.Drawing.Color.LightYellow;
-            resources.ApplyResources(this.tabStatTabelle, "tabStatTabelle");
-            this.tabStatTabelle.Name = "tabStatTabelle";
-            // 
-            // tabStatSoglie
-            // 
-            this.tabStatSoglie.BackColor = System.Drawing.Color.LightYellow;
-            this.tabStatSoglie.Controls.Add(this.flvwListaSoglie);
-            resources.ApplyResources(this.tabStatSoglie, "tabStatSoglie");
-            this.tabStatSoglie.Name = "tabStatSoglie";
-            // 
-            // flvwListaSoglie
-            // 
-            this.flvwListaSoglie.AllowColumnReorder = true;
-            this.flvwListaSoglie.AlternateRowBackColor = System.Drawing.Color.LightYellow;
-            this.flvwListaSoglie.CellEditUseWholeCell = false;
-            this.flvwListaSoglie.FullRowSelect = true;
-            this.flvwListaSoglie.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwListaSoglie.HighlightForegroundColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.flvwListaSoglie, "flvwListaSoglie");
-            this.flvwListaSoglie.Name = "flvwListaSoglie";
-            this.flvwListaSoglie.ShowGroups = false;
-            this.flvwListaSoglie.ShowImagesOnSubItems = true;
-            this.flvwListaSoglie.UseAlternatingBackColors = true;
-            this.flvwListaSoglie.UseCellFormatEvents = true;
-            this.flvwListaSoglie.UseCompatibleStateImageBehavior = false;
-            this.flvwListaSoglie.View = System.Windows.Forms.View.Details;
-            this.flvwListaSoglie.VirtualMode = true;
+            // tabCb03
+            // 
+            this.tabCb03.Controls.Add(this.groupBox4);
+            resources.ApplyResources(this.tabCb03, "tabCb03");
+            this.tabCb03.Name = "tabCb03";
+            this.tabCb03.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.grbComboSonda);
+            this.groupBox4.Controls.Add(this.opSonda02);
+            this.groupBox4.Controls.Add(this.opSonda01);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // grbComboSonda
+            // 
+            this.grbComboSonda.Controls.Add(this.label11);
+            this.grbComboSonda.Controls.Add(this.label10);
+            this.grbComboSonda.Controls.Add(this.label9);
+            this.grbComboSonda.Controls.Add(this.comboBox3);
+            this.grbComboSonda.Controls.Add(this.comboBox2);
+            this.grbComboSonda.Controls.Add(this.cmbSonda01);
+            resources.ApplyResources(this.grbComboSonda, "grbComboSonda");
+            this.grbComboSonda.Name = "grbComboSonda";
+            this.grbComboSonda.TabStop = false;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            resources.GetString("comboBox3.Items"),
+            resources.GetString("comboBox3.Items1"),
+            resources.GetString("comboBox3.Items2"),
+            resources.GetString("comboBox3.Items3"),
+            resources.GetString("comboBox3.Items4"),
+            resources.GetString("comboBox3.Items5"),
+            resources.GetString("comboBox3.Items6"),
+            resources.GetString("comboBox3.Items7"),
+            resources.GetString("comboBox3.Items8"),
+            resources.GetString("comboBox3.Items9"),
+            resources.GetString("comboBox3.Items10")});
+            resources.ApplyResources(this.comboBox3, "comboBox3");
+            this.comboBox3.Name = "comboBox3";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            resources.GetString("comboBox2.Items"),
+            resources.GetString("comboBox2.Items1"),
+            resources.GetString("comboBox2.Items2"),
+            resources.GetString("comboBox2.Items3"),
+            resources.GetString("comboBox2.Items4"),
+            resources.GetString("comboBox2.Items5"),
+            resources.GetString("comboBox2.Items6"),
+            resources.GetString("comboBox2.Items7"),
+            resources.GetString("comboBox2.Items8"),
+            resources.GetString("comboBox2.Items9"),
+            resources.GetString("comboBox2.Items10")});
+            resources.ApplyResources(this.comboBox2, "comboBox2");
+            this.comboBox2.Name = "comboBox2";
+            // 
+            // cmbSonda01
+            // 
+            this.cmbSonda01.FormattingEnabled = true;
+            this.cmbSonda01.Items.AddRange(new object[] {
+            resources.GetString("cmbSonda01.Items"),
+            resources.GetString("cmbSonda01.Items1"),
+            resources.GetString("cmbSonda01.Items2"),
+            resources.GetString("cmbSonda01.Items3"),
+            resources.GetString("cmbSonda01.Items4"),
+            resources.GetString("cmbSonda01.Items5"),
+            resources.GetString("cmbSonda01.Items6")});
+            resources.ApplyResources(this.cmbSonda01, "cmbSonda01");
+            this.cmbSonda01.Name = "cmbSonda01";
+            // 
+            // opSonda02
+            // 
+            resources.ApplyResources(this.opSonda02, "opSonda02");
+            this.opSonda02.Name = "opSonda02";
+            this.opSonda02.UseVisualStyleBackColor = true;
+            this.opSonda02.CheckedChanged += new System.EventHandler(this.opSonda02_CheckedChanged);
+            // 
+            // opSonda01
+            // 
+            resources.ApplyResources(this.opSonda01, "opSonda01");
+            this.opSonda01.Checked = true;
+            this.opSonda01.Name = "opSonda01";
+            this.opSonda01.TabStop = true;
+            this.opSonda01.UseVisualStyleBackColor = true;
+            this.opSonda01.CheckedChanged += new System.EventHandler(this.opSonda01_CheckedChanged);
             // 
             // tabSbFact
             // 
@@ -4494,40 +4509,9 @@
             this.grbTestata.PerformLayout();
             this.grbDatiCliente.ResumeLayout(false);
             this.grbDatiCliente.PerformLayout();
-            this.tabCb04.ResumeLayout(false);
-            this.grbMemCicliPulsanti.ResumeLayout(false);
-            this.grbMemCicliPulsanti.PerformLayout();
-            this.grbEsportaExcel.ResumeLayout(false);
-            this.grbEsportaExcel.PerformLayout();
-            this.grbMemCicliReadMem.ResumeLayout(false);
-            this.grbMemCicliReadMem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flvwCicliBatteria)).EndInit();
-            this.grbMemCicliContatori.ResumeLayout(false);
-            this.grbMemCicliContatori.PerformLayout();
-            this.tabCb03.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.grbComboSonda.ResumeLayout(false);
-            this.grbComboSonda.PerformLayout();
-            this.tabCb05.ResumeLayout(false);
-            this.grbAccensione.ResumeLayout(false);
-            this.grbAccensione.PerformLayout();
-            this.grbOraCorrente.ResumeLayout(false);
-            this.grbOraCorrente.PerformLayout();
-            this.tabCb02.ResumeLayout(false);
-            this.grbProgrammazione.ResumeLayout(false);
-            this.grbProgrammazione.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).EndInit();
-            this.tabStatistiche.ResumeLayout(false);
-            this.tbcStatistiche.ResumeLayout(false);
-            this.tabStatParametri.ResumeLayout(false);
-            this.grbStatSelGrafici.ResumeLayout(false);
-            this.grbStatSelGrafici.PerformLayout();
-            this.grbStatSelPeriodo.ResumeLayout(false);
-            this.grbStatSelPeriodo.PerformLayout();
-            this.grbStatDate.ResumeLayout(false);
-            this.grbStatDate.PerformLayout();
             this.tabStatSintesi.ResumeLayout(false);
+            this.grbStatEventiAnomali.ResumeLayout(false);
+            this.grbStatEventiAnomali.PerformLayout();
             this.grbStatEnergia.ResumeLayout(false);
             this.grbStatEnergia.PerformLayout();
             this.grbStatCarica.ResumeLayout(false);
@@ -4540,8 +4524,41 @@
             this.tabStatCockpit.PerformLayout();
             this.tabStatComparazioni.ResumeLayout(false);
             this.tabStatComparazioni.PerformLayout();
+            this.tabStatistiche.ResumeLayout(false);
+            this.tbcStatistiche.ResumeLayout(false);
+            this.tabStatParametri.ResumeLayout(false);
+            this.grbStatSelGrafici.ResumeLayout(false);
+            this.grbStatSelGrafici.PerformLayout();
+            this.grbStatSelPeriodo.ResumeLayout(false);
+            this.grbStatSelPeriodo.PerformLayout();
+            this.grbStatDate.ResumeLayout(false);
+            this.grbStatDate.PerformLayout();
             this.tabStatSoglie.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flvwListaSoglie)).EndInit();
+            this.tabCb04.ResumeLayout(false);
+            this.grbMemCicliPulsanti.ResumeLayout(false);
+            this.grbMemCicliPulsanti.PerformLayout();
+            this.grbEsportaExcel.ResumeLayout(false);
+            this.grbEsportaExcel.PerformLayout();
+            this.grbMemCicliReadMem.ResumeLayout(false);
+            this.grbMemCicliReadMem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvwCicliBatteria)).EndInit();
+            this.grbMemCicliContatori.ResumeLayout(false);
+            this.grbMemCicliContatori.PerformLayout();
+            this.tabCb02.ResumeLayout(false);
+            this.grbProgrammazione.ResumeLayout(false);
+            this.grbProgrammazione.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).EndInit();
+            this.tabCb05.ResumeLayout(false);
+            this.grbAccensione.ResumeLayout(false);
+            this.grbAccensione.PerformLayout();
+            this.grbOraCorrente.ResumeLayout(false);
+            this.grbOraCorrente.PerformLayout();
+            this.tabCb03.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.grbComboSonda.ResumeLayout(false);
+            this.grbComboSonda.PerformLayout();
             this.tabSbFact.ResumeLayout(false);
             this.tabSbFact.PerformLayout();
             this.grbCalibrazionePulsanti.ResumeLayout(false);
@@ -4727,8 +4744,6 @@
         private System.Windows.Forms.TabPage tabStatParametri;
         private System.Windows.Forms.TabPage tabStatSintesi;
         private System.Windows.Forms.TabPage tabStatCockpit;
-        private System.Windows.Forms.TabPage tabStatGrafici;
-        private System.Windows.Forms.TabPage tabStatTabelle;
         private System.Windows.Forms.GroupBox grbStatSelPeriodo;
         private System.Windows.Forms.GroupBox grbStatDate;
         private System.Windows.Forms.DateTimePicker dtpStatFine;
@@ -4791,7 +4806,6 @@
         private System.Windows.Forms.CheckBox chkStatGraficoDurCC;
         private System.Windows.Forms.CheckBox chkStatGraficoDoD;
         private System.Windows.Forms.CheckBox chkStatGraficoTemporale;
-        private System.Windows.Forms.Button btnStatProvaInserimento;
         private System.Windows.Forms.TabControl tabCaricaBatterie;
         private System.Windows.Forms.TabPage tabMemRead;
         private System.Windows.Forms.GroupBox grbMemLettura;
@@ -5151,5 +5165,10 @@
         private System.Windows.Forms.ListBox lbxClonaListaStep;
         private System.Windows.Forms.TextBox txtClonaStatoAttuale;
         private System.Windows.Forms.Label label134;
+        private System.Windows.Forms.GroupBox grbStatEventiAnomali;
+        private System.Windows.Forms.TextBox txtStatNAnomali;
+        private System.Windows.Forms.Label label137;
+        private System.Windows.Forms.Label label136;
+        private System.Windows.Forms.Label label135;
     }
 }

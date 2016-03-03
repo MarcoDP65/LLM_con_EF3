@@ -117,60 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="benvenuto" xml:space="preserve">
-    <value>Benvenuto</value>
+  <data name="btnChiudi.Text" xml:space="preserve">
+    <value>Close</value>
   </data>
-  <data name="ConfermaCambioLingua" xml:space="preserve">
-    <value>L'operazione comporta la chiusura di tutte le schede aperte.</value>
+  <data name="tbpAndamentoOxy.Text" xml:space="preserve">
+    <value>Phase Chart</value>
   </data>
-  <data name="ConfermaDisconnessione" xml:space="preserve">
-    <value>Disconnettere l'utente corrente ?  (L'operazione chiuderà tutte le finestre aperte)</value>
+  <data name="tbpTensioniCiclo.Text" xml:space="preserve">
+    <value>Partial voltage</value>
   </data>
-  <data name="strVistaLunghiCol01" xml:space="preserve">
-    <value>F.</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Cells</value>
   </data>
-  <data name="strVistaLunghiTtCol01" xml:space="preserve">
-    <value>Progressivo Fase</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Cells V3</value>
   </data>
-  <data name="strVistaLunghiCol02" xml:space="preserve">
-    <value>Tipo Fase</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Cells V2</value>
   </data>
-  <data name="strVistaLunghiTtCol02" xml:space="preserve">
-    <value>Tipo Fase</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Nom. Capacity</value>
   </data>
-  <data name="strVistaLunghiCol03" xml:space="preserve">
-    <value>Start</value>
+  <data name="lblCelleP1.Text" xml:space="preserve">
+    <value>Cells V1</value>
   </data>
-  <data name="strVistaLunghiTtCol03" xml:space="preserve">
-    <value>Data/Ora Inizio Fase</value>
-  </data>  <data name="strVistaLunghiCol04" xml:space="preserve">
+  <data name="txtTensioneNom.Text" xml:space="preserve">
+    <value>Nom. Voltage</value>
+  </data>
+  <data name="grbProgrammazione.Text" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
     <value>Stop</value>
   </data>
-  <data name="strVistaLunghiTtCol04" xml:space="preserve">
-    <value>Data/Ora Fine Fase</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Start</value>
   </data>
-  <data name="strVistaLunghiCol05" xml:space="preserve">
-    <value>Durata</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Event Id</value>
   </data>
-  <data name="strVistaLunghiTtCol05" xml:space="preserve">
-    <value>Durata Fase</value>
+  <data name="grbContatori.Text" xml:space="preserve">
+    <value>Counters</value>
   </data>
-  <data name="strVistaLunghiCol06" xml:space="preserve">
-    <value>Tipo Fase</value>
+  <data name="tbpDatiCiclo.Text" xml:space="preserve">
+    <value>Data</value>
   </data>
-  <data name="strVistaLunghiTtCol06" xml:space="preserve">
-    <value>Tipo Fase</value>
-  </data>  
-  <data name="strVistaLunghiCol07" xml:space="preserve">
-    <value>Tipo Fase</value>
+  <data name="chkIntervalloRelativo.Text" xml:space="preserve">
+    <value>Relative time interval</value>
   </data>
-  <data name="strVistaLunghiTtCol07" xml:space="preserve">
-    <value>Tipo Fase</value>
+  <data name="btnGeneraCsv.Text" xml:space="preserve">
+    <value>Create File</value>
   </data>
-  <data name="strVistaLunghiCol08" xml:space="preserve">
-    <value>Tipo Fase</value>
-  </data>
-  <data name="strVistaLunghiTtCol08" xml:space="preserve">
-    <value>Tipo Fase</value>
+  <data name="grbGeneraExcel.Text" xml:space="preserve">
+    <value>Excel data export</value>
   </data>
 </root>

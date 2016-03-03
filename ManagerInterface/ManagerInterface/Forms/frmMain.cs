@@ -133,12 +133,30 @@ namespace PannelloCharger
                
                 mnuCaricabatteria.Visible = false;
                 if ((byte)Livello < 0x01) mnuCaricabatteria.Visible = true;
+
+                //---------------- Menu Spy-batt
                 mnuSpybat.Visible = false;
+                toolStripMenuItem1.Visible = false;
+                importaFileToolStripMenuItem.Visible = false;
+                toolStripMenuItem4.Visible = false;
+                alimentatoreToolStripMenuItem.Visible = false;
+
                 if ((byte)Livello < 0x04) mnuSpybat.Visible = true;
+                if ((byte)Livello < 0x02)
+                {
+                    toolStripMenuItem1.Visible = true;
+                    importaFileToolStripMenuItem.Visible = true;
+                    toolStripMenuItem4.Visible = true;
+                }
+                if ((byte)Livello < 0x01)
+                {
+                    alimentatoreToolStripMenuItem.Visible = true;
+                }
+                    
                 mnuImpostazioni.Visible = false;
-                if ((byte)Livello < 0x04) mnuImpostazioni.Visible = true;
+                if ((byte)Livello < 0x02) mnuImpostazioni.Visible = true;
                 mnuCercaDispositiviUSB.Visible = false;
-                if ((byte)Livello < 0x04) mnuCercaDispositiviUSB.Visible = true;
+                if ((byte)Livello < 0x02) mnuCercaDispositiviUSB.Visible = true;
                 mnuCercaDispositiviCOM.Visible = false;
                 if ((byte)Livello < 0x02) mnuCercaDispositiviCOM.Visible = true;
                 mnuSelezionePorta.Visible = false;

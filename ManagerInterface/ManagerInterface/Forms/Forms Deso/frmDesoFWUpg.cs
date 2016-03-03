@@ -294,7 +294,7 @@ namespace PannelloCharger
                     txtFWRevA2LenN2.Text = "";
                     txtFWRevA2AddrP.Text = "";
                     txtFWRevA2LenP.Text = "";
-                    _area = 0x1F0000;
+                    _area = 0x1E0000;
 
                 }
 

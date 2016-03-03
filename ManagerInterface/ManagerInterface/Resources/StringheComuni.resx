@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Carica" xml:space="preserve">
+    <value>Carica</value>
+  </data>
   <data name="Domenica" xml:space="preserve">
     <value>Dom</value>
+  </data>
+  <data name="Elettrolita" xml:space="preserve">
+    <value>Elettrolita</value>
+  </data>
+  <data name="EsportazioneDati" xml:space="preserve">
+    <value>Esportazione dati Apparato</value>
+  </data>
+  <data name="EventoAnomalo" xml:space="preserve">
+    <value>Evento Anomalo</value>
   </data>
   <data name="FaseCarica" xml:space="preserve">
     <value>Fase di Carica</value>
@@ -129,8 +141,14 @@
   <data name="FaseScarica" xml:space="preserve">
     <value>Fase di Scarica</value>
   </data>
+  <data name="FileGenerato" xml:space="preserve">
+    <value>File generato</value>
+  </data>
   <data name="Giovedi" xml:space="preserve">
     <value>Gio</value>
+  </data>
+  <data name="InserireNome" xml:space="preserve">
+    <value>Inserire un nome valido</value>
   </data>
   <data name="Lunedi" xml:space="preserve">
     <value>Lun</value>
@@ -141,11 +159,17 @@
   <data name="Mercoledi" xml:space="preserve">
     <value>Mer</value>
   </data>
+  <data name="Pausa" xml:space="preserve">
+    <value>Pausa</value>
+  </data>
   <data name="PresenzaElett" xml:space="preserve">
     <value>Pres Elettrolita</value>
   </data>
   <data name="Sabato" xml:space="preserve">
     <value>Sab</value>
+  </data>
+  <data name="Scarica" xml:space="preserve">
+    <value>Scarica</value>
   </data>
   <data name="Venerdi" xml:space="preserve">
     <value>Ven</value>

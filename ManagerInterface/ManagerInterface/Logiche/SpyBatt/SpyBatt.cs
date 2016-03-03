@@ -484,7 +484,7 @@ namespace ChargerLogic
                     _idCorrente = IdApparato;
                 }
 
-                if (false) //ApparatoConnesso)
+                if (ApparatoConnesso)
                 {
                     _mS.Comando = MessaggioSpyBatt.TipoComando.SB_DatiIniziali;
                     _mS.ComponiMessaggio();
@@ -2378,7 +2378,7 @@ namespace ChargerLogic
         /// <param name="NumByte">The number of byte.</param>
         /// <param name="Dati">The data.</param>
         /// <returns></returns>
-        public bool ScriviBloccoMemoria(uint StartAddr, ushort NumByte, byte[] Dati)
+        public bool ScriviBloccoMemoria(uint StartAddr, ushort NumByte, byte[] Dati, bool modoDeso = false)
         {
 
 
@@ -2404,7 +2404,15 @@ namespace ChargerLogic
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                if (modoDeso != true)
+                {
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                }
+                else
+                {
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false,false,modoDeso);
+
+                }
 
                 Log.Debug(_mS.hexdumpMessaggio());
 
@@ -2706,16 +2714,16 @@ namespace ChargerLogic
                 switch (Valore)
                 {
                     case 0xF0:
-                        _Flag = "Carica";
+                        _Flag = PannelloCharger.StringheComuni.Carica; // "Carica";
                         break;
                     case 0x0F:
-                        _Flag = "Scarica";
+                        _Flag = PannelloCharger.StringheComuni.Scarica; //"Scarica";
                         break;
                     case 0xAA:
-                        _Flag = "Pausa";
+                        _Flag = PannelloCharger.StringheComuni.Pausa; //"Pausa";
                         break;
                     default:
-                        _Flag = "Evento Anomalo (" + Valore.ToString("x2") + ")";
+                        _Flag = PannelloCharger.StringheComuni.EventoAnomalo +  "(" + Valore.ToString("x2") + ")";
                         break;
                 }
 
@@ -3427,13 +3435,18 @@ namespace ChargerLogic
                                 Log.Debug("Esito Comando Ricevuto");
                                 //_datiRicevuti = SerialMessage.TipoRisposta.Ack;   ???????????????
                                 // 16/07/15 il messaggio 0x0D inviato dopo comando che prevede la scrittura su memoria flash esterna per indicare l'esito;
-                                //          richiede ACK con una eccezione: 
+                                //          richiede ACK con due eccezioni: 
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 TipoRisposta = 1;
                                 _inviaRisposta = true;
                                 switch (_mS.EsitoComando.CodiceEvento)
                                 {
                                     case (byte)SerialMessage.TipoComando.SB_W_DatiCliente:
+                                        {
+                                            _inviaRisposta = false;
+                                            break;
+                                        }
+                                    case (byte)SerialMessage.TipoComando.SB_W_ScriviMemoria:
                                         {
                                             _inviaRisposta = false;
                                             break;

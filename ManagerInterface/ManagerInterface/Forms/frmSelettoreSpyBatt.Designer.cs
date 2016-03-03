@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelettoreSpyBatt));
             this.btnApriSpybatt = new System.Windows.Forms.Button();
             this.btnChiudi = new System.Windows.Forms.Button();
             this.flvwListaApparati = new BrightIdeasSoftware.FastObjectListView();
@@ -40,31 +41,26 @@
             // 
             // btnApriSpybatt
             // 
-            this.btnApriSpybatt.Location = new System.Drawing.Point(22, 454);
+            resources.ApplyResources(this.btnApriSpybatt, "btnApriSpybatt");
             this.btnApriSpybatt.Name = "btnApriSpybatt";
-            this.btnApriSpybatt.Size = new System.Drawing.Size(125, 44);
-            this.btnApriSpybatt.TabIndex = 1;
-            this.btnApriSpybatt.Text = "Apri Scheda";
             this.btnApriSpybatt.UseVisualStyleBackColor = true;
             this.btnApriSpybatt.Click += new System.EventHandler(this.btnApriSpybatt_Click);
             // 
             // btnChiudi
             // 
-            this.btnChiudi.Location = new System.Drawing.Point(872, 454);
+            resources.ApplyResources(this.btnChiudi, "btnChiudi");
             this.btnChiudi.Name = "btnChiudi";
-            this.btnChiudi.Size = new System.Drawing.Size(125, 44);
-            this.btnChiudi.TabIndex = 2;
-            this.btnChiudi.Text = "Chiudi";
             this.btnChiudi.UseVisualStyleBackColor = true;
             this.btnChiudi.Click += new System.EventHandler(this.btnChiudi_Click);
             // 
             // flvwListaApparati
             // 
-            this.flvwListaApparati.Location = new System.Drawing.Point(22, 12);
+            this.flvwListaApparati.CellEditUseWholeCell = false;
+            this.flvwListaApparati.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwListaApparati.HighlightForegroundColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.flvwListaApparati, "flvwListaApparati");
             this.flvwListaApparati.Name = "flvwListaApparati";
             this.flvwListaApparati.ShowGroups = false;
-            this.flvwListaApparati.Size = new System.Drawing.Size(975, 423);
-            this.flvwListaApparati.TabIndex = 3;
             this.flvwListaApparati.UseCompatibleStateImageBehavior = false;
             this.flvwListaApparati.View = System.Windows.Forms.View.Details;
             this.flvwListaApparati.VirtualMode = true;
@@ -73,48 +69,35 @@
             // 
             // btnEsportaSpybatt
             // 
-            this.btnEsportaSpybatt.Location = new System.Drawing.Point(284, 454);
+            resources.ApplyResources(this.btnEsportaSpybatt, "btnEsportaSpybatt");
             this.btnEsportaSpybatt.Name = "btnEsportaSpybatt";
-            this.btnEsportaSpybatt.Size = new System.Drawing.Size(125, 44);
-            this.btnEsportaSpybatt.TabIndex = 4;
-            this.btnEsportaSpybatt.Text = "Esporta Dati";
             this.btnEsportaSpybatt.UseVisualStyleBackColor = true;
             this.btnEsportaSpybatt.Click += new System.EventHandler(this.btnEsportaSpybatt_Click);
             // 
             // btnEliminaDati
             // 
-            this.btnEliminaDati.Location = new System.Drawing.Point(153, 454);
+            resources.ApplyResources(this.btnEliminaDati, "btnEliminaDati");
             this.btnEliminaDati.Name = "btnEliminaDati";
-            this.btnEliminaDati.Size = new System.Drawing.Size(125, 44);
-            this.btnEliminaDati.TabIndex = 5;
-            this.btnEliminaDati.Text = "Cancella Dati";
             this.btnEliminaDati.UseVisualStyleBackColor = true;
             this.btnEliminaDati.Click += new System.EventHandler(this.btnEliminaDati_Click);
             // 
             // btnImportaDati
             // 
-            this.btnImportaDati.Location = new System.Drawing.Point(415, 454);
+            resources.ApplyResources(this.btnImportaDati, "btnImportaDati");
             this.btnImportaDati.Name = "btnImportaDati";
-            this.btnImportaDati.Size = new System.Drawing.Size(125, 44);
-            this.btnImportaDati.TabIndex = 6;
-            this.btnImportaDati.Text = "Importa Dati";
             this.btnImportaDati.UseVisualStyleBackColor = true;
             this.btnImportaDati.Click += new System.EventHandler(this.btnImportaDati_Click);
             // 
             // txtIdScheda
             // 
-            this.txtIdScheda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdScheda.Location = new System.Drawing.Point(556, 462);
+            resources.ApplyResources(this.txtIdScheda, "txtIdScheda");
             this.txtIdScheda.Name = "txtIdScheda";
             this.txtIdScheda.ReadOnly = true;
-            this.txtIdScheda.Size = new System.Drawing.Size(260, 27);
-            this.txtIdScheda.TabIndex = 7;
             // 
             // frmSelettoreSpyBatt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 514);
             this.Controls.Add(this.txtIdScheda);
             this.Controls.Add(this.btnImportaDati);
             this.Controls.Add(this.btnEliminaDati);
@@ -126,7 +109,6 @@
             this.MinimizeBox = false;
             this.Name = "frmSelettoreSpyBatt";
             this.ShowIcon = false;
-            this.Text = "Archivio Spy-Batt";
             this.Load += new System.EventHandler(this.frmSelettoreSpyBatt_Load);
             this.Shown += new System.EventHandler(this.frmSelettoreSpyBatt_Shown);
             this.Resize += new System.EventHandler(this.frmSelettoreSpyBatt_Resize);

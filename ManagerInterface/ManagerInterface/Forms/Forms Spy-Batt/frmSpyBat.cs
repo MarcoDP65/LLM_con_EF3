@@ -1299,7 +1299,7 @@ namespace PannelloCharger
                         LivelloCorrente = 99;
                     }
 
-                    if (LivelloCorrente < 3) _readonly = true; else _readonly = false;
+                    if (LivelloCorrente < 2) _readonly = true; else _readonly = false;
 
 
                     if (_readonly)
@@ -1312,9 +1312,10 @@ namespace PannelloCharger
                     grbMemCicliReadMem.Top = this.Height - 250;
                     grbMemCicliPulsanti.Top = this.Height - 170;
 
-
-
-
+                    if (tabStatComparazioni != null)
+                    {
+                      //  InizializzaSchedaConfronti();
+                    }
                     /*
                     btnCaricaListaLunghi.Top = this.Height - 140;
                     btnRigeneraLista.Top = this.Height - 140;
@@ -1760,7 +1761,7 @@ namespace PannelloCharger
                     LivelloCorrente = 99;
                 }
 
-                if (LivelloCorrente < 3) _colonnaNascosta = true; else _colonnaNascosta = false;
+                if (LivelloCorrente < 1) _colonnaNascosta = true; else _colonnaNascosta = false;
 
                 _stile.SetBackColor(Color.DarkGray);
                 _stile.SetForeColor(Color.Yellow);
@@ -1786,6 +1787,7 @@ namespace PannelloCharger
                 Colonna1.HeaderTextAlign = HorizontalAlignment.Left;
                 Colonna1.TextAlign = HorizontalAlignment.Left;
                 //               Colonna1.CheckBoxes = false;
+
                 flvwCicliBatteria.AllColumns.Add(Colonna1);
 
 
@@ -1873,7 +1875,7 @@ namespace PannelloCharger
 
 
                 BrightIdeasSoftware.OLVColumn Colonna9 = new BrightIdeasSoftware.OLVColumn();
-                Colonna9.Text = "I min";
+                Colonna9.Text = StringheMessaggio.strVistaLunghiCol09;  //"I min";
                 Colonna9.AspectName = "olvAmin";
                 Colonna9.Sortable = false;
                 Colonna9.ToolTipText = "Valore minimo Ampere caricati (nero) o scaricati (rosso)";
@@ -1884,7 +1886,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna9);
 
                 BrightIdeasSoftware.OLVColumn Colonna10 = new BrightIdeasSoftware.OLVColumn();
-                Colonna10.Text = "I max";
+                Colonna10.Text = StringheMessaggio.strVistaLunghiCol10; //"I max";
                 Colonna10.Sortable = false;
                 Colonna10.AspectName = "olvAmax";
                 Colonna10.ToolTipText = "Valore massimo Ampere caricati (nero) o scaricati (rosso)";
@@ -1895,7 +1897,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna10);
 
                 BrightIdeasSoftware.OLVColumn Colonna11 = new BrightIdeasSoftware.OLVColumn();
-                Colonna11.Text = "Elettrolita";
+                Colonna11.Text = StringheMessaggio.strVistaLunghiCol11; // "Elettrolita";
                 Colonna11.Sortable = false;
                 Colonna11.AspectName = "PresenzaElettrolita";
                 Colonna11.AspectGetter = delegate (object _Valore)
@@ -1909,7 +1911,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna11);
 
                 BrightIdeasSoftware.OLVColumn Colonna12 = new BrightIdeasSoftware.OLVColumn();
-                Colonna12.Text = "Ah";
+                Colonna12.Text = StringheMessaggio.strVistaLunghiCol12; // "Ah";
                 Colonna12.AspectName = "strAh";
                 Colonna12.Sortable = false;
                 /*
@@ -1932,7 +1934,7 @@ namespace PannelloCharger
 
 
                 BrightIdeasSoftware.OLVColumn ColAhCaricati = new BrightIdeasSoftware.OLVColumn();
-                ColAhCaricati.Text = "Ah C.";
+                ColAhCaricati.Text = StringheMessaggio.strVistaLunghiColAhCaricati; //"Ah C.";
                 ColAhCaricati.Sortable = false;
                 ColAhCaricati.ToolTipText = "Ah Caricati";
                 ColAhCaricati.AspectName = "strAhCaricati";
@@ -1943,7 +1945,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(ColAhCaricati);
 
                 BrightIdeasSoftware.OLVColumn ColAhScaricati = new BrightIdeasSoftware.OLVColumn();
-                ColAhScaricati.Text = "Ah Sc.";
+                ColAhScaricati.Text = StringheMessaggio.strVistaLunghiColAhScaricati; //"Ah Sc.";
                 ColAhScaricati.Sortable = false;
                 ColAhScaricati.ToolTipText = "Ah Scaricati";
                 ColAhScaricati.AspectName = "strAhScaricati";
@@ -1964,7 +1966,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna13);
 
                 BrightIdeasSoftware.OLVColumn Colonna13C = new BrightIdeasSoftware.OLVColumn();
-                Colonna13C.Text = "KWh C.";
+                Colonna13C.Text = StringheMessaggio.strVistaLunghiCol13C; //"KWh C.";
                 Colonna13C.AspectName = "strKWhCaricati";
                 Colonna13C.Sortable = false;
 
@@ -1974,7 +1976,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna13C);
 
                 BrightIdeasSoftware.OLVColumn Colonna13S = new BrightIdeasSoftware.OLVColumn();
-                Colonna13S.Text = "KWh S.";
+                Colonna13S.Text = StringheMessaggio.strVistaLunghiCol13S; //"KWh S.";
                 Colonna13S.AspectName = "strKWhScaricati";
                 Colonna13S.Sortable = false;
 
@@ -2031,7 +2033,7 @@ namespace PannelloCharger
 
                 //strVMaxSbilanciamentoC
                 BrightIdeasSoftware.OLVColumn Colonna20 = new BrightIdeasSoftware.OLVColumn();
-                Colonna20.Text = "max Sbil.";
+                Colonna20.Text = StringheMessaggio.strVistaLunghiCol20; // "max Sbil.";
                 Colonna20.Sortable = false;
                 Colonna20.AspectName = "strVMaxSbilanciamentoC";
                 Colonna20.Width = 50;
@@ -2051,7 +2053,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(colCondStop);
 
                 BrightIdeasSoftware.OLVColumn colIdProgramma = new BrightIdeasSoftware.OLVColumn();
-                colIdProgramma.Text = "Conf";
+                colIdProgramma.Text = StringheMessaggio.strVistaLunghiColIdProgramma; //"Conf";
                 colIdProgramma.Sortable = false;
                 colIdProgramma.AspectName = "strIdProgramma";
                 colIdProgramma.Width = 40;
@@ -2060,7 +2062,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(colIdProgramma);
 
                 BrightIdeasSoftware.OLVColumn Colonna16 = new BrightIdeasSoftware.OLVColumn();
-                Colonna16.Text = "Registrazioni";
+                Colonna16.Text = StringheMessaggio.strVistaLunghiCol16; // "Registrazioni";
                 Colonna16.Sortable = false;
                 Colonna16.AspectName = "strNumEventiBrevi";
                 Colonna16.Width = 60;
@@ -2071,7 +2073,369 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna16);
 
                 BrightIdeasSoftware.OLVColumn Colonna17 = new BrightIdeasSoftware.OLVColumn();
-                Colonna17.Text = "Registrazioni";
+                Colonna17.Text = StringheMessaggio.strVistaLunghiCol17; // "Registrazioni";
+                Colonna17.Sortable = false;
+                Colonna17.AspectName = "PercEventiBreviCaricati";
+                Colonna17.Renderer = _barraCortiCaricati;
+                Colonna17.Width = 100;
+                _barraCortiCaricati.BackgroundColor = System.Drawing.Color.Green;
+                _barraCortiCaricati.MaximumValue = 100;
+                _barraCortiCaricati.UseStandardBar = true;
+                Colonna17.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(Colonna17);
+
+                BrightIdeasSoftware.OLVColumn Colonna18 = new BrightIdeasSoftware.OLVColumn();
+                Colonna18.Text = "";
+                Colonna18.Width = 500;
+                Colonna18.Sortable = false;
+                Colonna18.FillsFreeSpace = true;
+                flvwCicliBatteria.AllColumns.Add(Colonna18);
+
+
+                flvwCicliBatteria.RebuildColumns();
+
+                this.flvwCicliBatteria.SetObjects(_sb.CicliMemoriaLunga);
+                flvwCicliBatteria.BuildList();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaVistaLunghi: " + Ex.Message);
+            }
+        }
+
+
+        private void InizializzaVistaStat()
+        {
+            try
+            {
+                HeaderFormatStyle _stile = new HeaderFormatStyle();
+                BarRenderer _barraCortiCaricati = new BarRenderer();
+                ColumnHeaderStyle _chsLunghi = new ColumnHeaderStyle();
+
+                bool _colonnaNascosta = true;
+                int LivelloCorrente;
+                if (_logiche.currentUser != null)
+                {
+                    LivelloCorrente = _logiche.currentUser.livello;
+                }
+                else
+                {
+                    LivelloCorrente = 99;
+                }
+
+                if (LivelloCorrente < 1) _colonnaNascosta = true; else _colonnaNascosta = false;
+
+                _stile.SetBackColor(Color.DarkGray);
+                _stile.SetForeColor(Color.Yellow);
+                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
+                _stile.SetFont(_carattere);
+
+
+                flvwCicliBatteria.HeaderUsesThemes = false;
+                flvwCicliBatteria.HeaderFormatStyle = _stile;
+
+                flvwCicliBatteria.AllColumns.Clear();
+
+
+                flvwCicliBatteria.View = View.Details;
+                flvwCicliBatteria.ShowGroups = false;
+                flvwCicliBatteria.GridLines = true;
+
+
+                BrightIdeasSoftware.OLVColumn Colonna1 = new BrightIdeasSoftware.OLVColumn();
+                Colonna1.Text = StringheMessaggio.strVistaLunghiCol01;
+                Colonna1.AspectName = "IdMemoriaLunga";
+                Colonna1.Width = 60;
+                Colonna1.HeaderTextAlign = HorizontalAlignment.Left;
+                Colonna1.TextAlign = HorizontalAlignment.Left;
+                //               Colonna1.CheckBoxes = false;
+
+                flvwCicliBatteria.AllColumns.Add(Colonna1);
+
+
+                BrightIdeasSoftware.OLVColumn Colonna2 = new BrightIdeasSoftware.OLVColumn();
+                Colonna2.Text = StringheMessaggio.strVistaLunghiCol02;
+                Colonna2.Sortable = false;
+                Colonna2.AspectName = "TipoEvento";
+                Colonna2.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    return _sb.StringaTipoEvento(_tempVal.TipoEvento);
+                };
+                Colonna2.Width = 100;
+                Colonna2.HeaderTextAlign = HorizontalAlignment.Left;
+                Colonna2.TextAlign = HorizontalAlignment.Left;
+                flvwCicliBatteria.AllColumns.Add(Colonna2);
+
+                BrightIdeasSoftware.OLVColumn Colonna3 = new BrightIdeasSoftware.OLVColumn();
+                Colonna3.Text = StringheMessaggio.strVistaLunghiCol03;
+                Colonna3.AspectName = "DataOraStart";
+                Colonna3.Sortable = false;
+                Colonna3.Width = 100;
+                Colonna3.HeaderTextAlign = HorizontalAlignment.Left;
+                Colonna3.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna3);
+
+                BrightIdeasSoftware.OLVColumn Colonna4 = new BrightIdeasSoftware.OLVColumn();
+                Colonna4.Text = StringheMessaggio.strVistaLunghiCol04;
+                Colonna4.AspectName = "DataOraFine";
+                Colonna4.Sortable = false;
+                Colonna4.Width = 100;
+                Colonna4.HeaderTextAlign = HorizontalAlignment.Left;
+                Colonna4.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna4);
+
+                BrightIdeasSoftware.OLVColumn Colonna5 = new BrightIdeasSoftware.OLVColumn();
+                Colonna5.Text = StringheMessaggio.strVistaLunghiCol05;
+                Colonna5.AspectName = "Durata";
+                Colonna5.Sortable = false;
+                Colonna5.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    return _sb.StringaDurata(_tempVal.Durata);
+                };
+                Colonna5.Width = 60;
+                Colonna5.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna5.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna5);
+
+                BrightIdeasSoftware.OLVColumn Colonna6m = new BrightIdeasSoftware.OLVColumn();
+                Colonna6m.Text = StringheMessaggio.strVistaLunghiCol06m;
+                Colonna6m.AspectName = "TempMin";
+                Colonna6m.Sortable = false;
+                Colonna6m.Width = 60;
+                Colonna6m.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna6m.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna6m);
+
+                BrightIdeasSoftware.OLVColumn Colonna6 = new BrightIdeasSoftware.OLVColumn();
+                Colonna6.Text = StringheMessaggio.strVistaLunghiCol06;
+                Colonna6.AspectName = "TempMax";
+                Colonna6.Sortable = false;
+                Colonna6.Width = 60;
+                Colonna6.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna6.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna6);
+
+                BrightIdeasSoftware.OLVColumn Colonna7 = new BrightIdeasSoftware.OLVColumn();
+                Colonna7.Text = StringheMessaggio.strVistaLunghiCol07;
+                Colonna7.AspectName = "strVmin";
+                Colonna7.Sortable = false;
+                Colonna7.Width = 50;
+                Colonna7.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna7.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna7);
+
+                BrightIdeasSoftware.OLVColumn Colonna8 = new BrightIdeasSoftware.OLVColumn();
+                Colonna8.Text = StringheMessaggio.strVistaLunghiCol08;
+                Colonna8.AspectName = "strVmax";
+                Colonna8.Sortable = false;
+                Colonna8.Width = 50;
+                Colonna8.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna8.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna8);
+
+
+                BrightIdeasSoftware.OLVColumn Colonna9 = new BrightIdeasSoftware.OLVColumn();
+                Colonna9.Text = StringheMessaggio.strVistaLunghiCol09;  //"I min";
+                Colonna9.AspectName = "olvAmin";
+                Colonna9.Sortable = false;
+                Colonna9.ToolTipText = "Valore minimo Ampere caricati (nero) o scaricati (rosso)";
+                Colonna9.Width = 50;
+                Colonna9.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna9.TextAlign = HorizontalAlignment.Right;
+                Colonna9.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(Colonna9);
+
+                BrightIdeasSoftware.OLVColumn Colonna10 = new BrightIdeasSoftware.OLVColumn();
+                Colonna10.Text = StringheMessaggio.strVistaLunghiCol10; //"I max";
+                Colonna10.Sortable = false;
+                Colonna10.AspectName = "olvAmax";
+                Colonna10.ToolTipText = "Valore massimo Ampere caricati (nero) o scaricati (rosso)";
+                Colonna10.Width = 50;
+                Colonna10.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna10.TextAlign = HorizontalAlignment.Right;
+                Colonna10.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(Colonna10);
+
+                BrightIdeasSoftware.OLVColumn Colonna11 = new BrightIdeasSoftware.OLVColumn();
+                Colonna11.Text = StringheMessaggio.strVistaLunghiCol11; // "Elettrolita";
+                Colonna11.Sortable = false;
+                Colonna11.AspectName = "PresenzaElettrolita";
+                Colonna11.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    return FunzioniMR.StringaPresenza(_tempVal.PresenzaElettrolita);
+                };
+                Colonna11.Width = 60;
+                Colonna11.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna11.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna11);
+
+                BrightIdeasSoftware.OLVColumn Colonna12 = new BrightIdeasSoftware.OLVColumn();
+                Colonna12.Text = StringheMessaggio.strVistaLunghiCol12; // "Ah";
+                Colonna12.AspectName = "strAh";
+                Colonna12.Sortable = false;
+                /*
+                Colonna12.AspectGetter = delegate(object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strAh;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };*/
+                Colonna12.Width = 50;
+                Colonna12.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna12.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna12);
+
+
+                BrightIdeasSoftware.OLVColumn ColAhCaricati = new BrightIdeasSoftware.OLVColumn();
+                ColAhCaricati.Text = StringheMessaggio.strVistaLunghiColAhCaricati; //"Ah C.";
+                ColAhCaricati.Sortable = false;
+                ColAhCaricati.ToolTipText = "Ah Caricati";
+                ColAhCaricati.AspectName = "strAhCaricati";
+                ColAhCaricati.Width = 50;
+                ColAhCaricati.HeaderTextAlign = HorizontalAlignment.Center;
+                ColAhCaricati.TextAlign = HorizontalAlignment.Right;
+                ColAhCaricati.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(ColAhCaricati);
+
+                BrightIdeasSoftware.OLVColumn ColAhScaricati = new BrightIdeasSoftware.OLVColumn();
+                ColAhScaricati.Text = StringheMessaggio.strVistaLunghiColAhScaricati; //"Ah Sc.";
+                ColAhScaricati.Sortable = false;
+                ColAhScaricati.ToolTipText = "Ah Scaricati";
+                ColAhScaricati.AspectName = "strAhScaricati";
+                ColAhScaricati.Width = 50;
+                ColAhScaricati.HeaderTextAlign = HorizontalAlignment.Center;
+                ColAhScaricati.TextAlign = HorizontalAlignment.Right;
+                ColAhScaricati.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(ColAhScaricati);
+
+                BrightIdeasSoftware.OLVColumn Colonna13 = new BrightIdeasSoftware.OLVColumn();
+                Colonna13.Text = "KWh";
+                Colonna13.AspectName = "strKWh";
+                Colonna13.Sortable = false;
+
+                Colonna13.Width = 50;
+                Colonna13.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna13.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna13);
+
+                BrightIdeasSoftware.OLVColumn Colonna13C = new BrightIdeasSoftware.OLVColumn();
+                Colonna13C.Text = StringheMessaggio.strVistaLunghiCol13C; //"KWh C.";
+                Colonna13C.AspectName = "strKWhCaricati";
+                Colonna13C.Sortable = false;
+
+                Colonna13C.Width = 60;
+                Colonna13C.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna13C.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna13C);
+
+                BrightIdeasSoftware.OLVColumn Colonna13S = new BrightIdeasSoftware.OLVColumn();
+                Colonna13S.Text = StringheMessaggio.strVistaLunghiCol13S; //"KWh S.";
+                Colonna13S.AspectName = "strKWhScaricati";
+                Colonna13S.Sortable = false;
+
+                Colonna13S.Width = 60;
+                Colonna13S.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna13S.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna13S);
+
+
+
+
+
+                BrightIdeasSoftware.OLVColumn Colonna14 = new BrightIdeasSoftware.OLVColumn();
+                Colonna14.Text = "S.o.C.";
+                Colonna14.AspectName = "strStatoCarica";
+                Colonna14.Sortable = false;
+                Colonna14.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strStatoCarica;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
+                Colonna14.Width = 60;
+                Colonna14.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna14.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna14);
+
+                BrightIdeasSoftware.OLVColumn Colonna15 = new BrightIdeasSoftware.OLVColumn();
+                Colonna15.Text = "C.F.";
+                Colonna15.Sortable = false;
+                Colonna15.AspectName = "strFattoreCarica";
+                Colonna15.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0)
+                    {
+                        return _tempVal.strFattoreCarica;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
+                Colonna15.Width = 60;
+                Colonna15.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna15.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna15);
+
+                //strVMaxSbilanciamentoC
+                BrightIdeasSoftware.OLVColumn Colonna20 = new BrightIdeasSoftware.OLVColumn();
+                Colonna20.Text = StringheMessaggio.strVistaLunghiCol20; // "max Sbil.";
+                Colonna20.Sortable = false;
+                Colonna20.AspectName = "strVMaxSbilanciamentoC";
+                Colonna20.Width = 50;
+                Colonna20.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna20.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna20);
+
+
+                BrightIdeasSoftware.OLVColumn colCondStop = new BrightIdeasSoftware.OLVColumn();
+                colCondStop.Text = "Stop";
+                colCondStop.AspectName = "strCondizioneStop";
+                colCondStop.Sortable = false;
+                colCondStop.Width = 40;
+                colCondStop.HeaderTextAlign = HorizontalAlignment.Center;
+                colCondStop.TextAlign = HorizontalAlignment.Center;
+                colCondStop.IsVisible = false;
+                flvwCicliBatteria.AllColumns.Add(colCondStop);
+
+                BrightIdeasSoftware.OLVColumn colIdProgramma = new BrightIdeasSoftware.OLVColumn();
+                colIdProgramma.Text = StringheMessaggio.strVistaLunghiColIdProgramma; //"Conf";
+                colIdProgramma.Sortable = false;
+                colIdProgramma.AspectName = "strIdProgramma";
+                colIdProgramma.Width = 40;
+                colIdProgramma.HeaderTextAlign = HorizontalAlignment.Center;
+                colIdProgramma.TextAlign = HorizontalAlignment.Center;
+                flvwCicliBatteria.AllColumns.Add(colIdProgramma);
+
+                BrightIdeasSoftware.OLVColumn Colonna16 = new BrightIdeasSoftware.OLVColumn();
+                Colonna16.Text = StringheMessaggio.strVistaLunghiCol16; // "Registrazioni";
+                Colonna16.Sortable = false;
+                Colonna16.AspectName = "strNumEventiBrevi";
+                Colonna16.Width = 60;
+                Colonna16.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna16.TextAlign = HorizontalAlignment.Center;
+                Colonna16.IsVisible = _colonnaNascosta;
+
+                flvwCicliBatteria.AllColumns.Add(Colonna16);
+
+                BrightIdeasSoftware.OLVColumn Colonna17 = new BrightIdeasSoftware.OLVColumn();
+                Colonna17.Text = StringheMessaggio.strVistaLunghiCol17; // "Registrazioni";
                 Colonna17.Sortable = false;
                 Colonna17.AspectName = "PercEventiBreviCaricati";
                 Colonna17.Renderer = _barraCortiCaricati;
@@ -2707,15 +3071,7 @@ namespace PannelloCharger
                 InizializzaCockpitStat();
                 InizializzaSchedaConfronti();
         
-                    CaricaSchedeGrafico(_stat);
-
-
-                //TempStat = _stat.CalcolaArrayGraficoDeepChg(SerialMessage.TipoCiclo.Scarica, "D.o.D. Scariche");
-
-                //InizializzaOxyGrSingolo();
-                //GraficoCicloOxy("D.o.D. Scariche", TempStat);_cicliAttesi
-                // Simplemodel();
-                //oxyContainerGrSingolo.Model = due;
+                CaricaSchedeGrafico(_stat);
 
             }
             catch (Exception Ex)
@@ -2774,14 +3130,17 @@ namespace PannelloCharger
                         double _fattoreME = _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
                         txtStatMancElettr.Text = _fattoreME.ToString("p2");
                     }
+
                     //Energia
                     double _kwtot = _stat.WHtotali / 100;
 
                     txtStatTotEnergia.Text = _kwtot.ToString("0.0");
+                    /*
                     if (_stat.SuperatoMassimoSbilanciamento)
                         txtStatSbilCelle.ForeColor = Color.Red;
                     else
                         txtStatSbilCelle.ForeColor = Color.Black;
+                        */
 
                     if (_stat.NumeroScariche > 0)
                     {
@@ -2807,6 +3166,9 @@ namespace PannelloCharger
                     else
                         txtStatSbilCelle.Text = "";
 
+
+                    //Anomalie
+                    txtStatNAnomali.Text = _stat.NumeroAnomalie.ToString();
 
                 }
                 else
@@ -2953,7 +3315,7 @@ namespace PannelloCharger
                 this.oxyContainerGrSingolo.Click += new System.EventHandler(this.oxyContainerGrSingolo_Click);
                 // 
 
-                tabStatGrafici.Controls.Add(this.oxyContainerGrSingolo);
+               // tabStatGrafici.Controls.Add(this.oxyContainerGrSingolo);
 
                 oxyGraficoSingolo = new OxyPlot.PlotModel
                 {
@@ -2985,7 +3347,7 @@ namespace PannelloCharger
         /// <param name="DatiStat">Classe con i dati preaggregati in base ai parametri.</param>
         public void CaricaSchedeGrafico(StatMemLungaSB DatiStat)
         {
-            int  _primaScheda = 4;
+            int  _primaScheda = 1;
             try
             {
 
@@ -2996,144 +3358,193 @@ namespace PannelloCharger
                         tbcStatistiche.TabPages.Remove(_pagina);
                 }
 
+
+                /***************************************************************************************************************************/
+                /*   GRAFICO Differenza Temperature in Carica Parziale                                                                     */
+                /***************************************************************************************************************************/
+
                 if (chkStatGraficoDTCP.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("Diff T C.P.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrDeltaTCPChiave);
                     _grafico.ToolTipText = chkStatGraficoTminS.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 2, 2, 0, 20, 0, "Differenza Temperature in Carica Parziale");
-                    GraficoTemperaturaCiclo("Differenza Temperature in Carica Parziale", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 2, 2, 0, 20, 0, StringheStatistica.GrDeltaTCPTitolo);
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaDiffTempScarica) / 2;
+                    _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
+                    GraficoTemperaturaCiclo(StringheStatistica.GrDeltaTCPTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
+
+                /***************************************************************************************************************************/
+                /*   GRAFICO Differenza Temperature in Carica Completa                                                                     */
+                /***************************************************************************************************************************/
 
                 if (chkStatGraficoDTCC.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("Diff T C.C.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrDeltaTCCChiave);
                     _grafico.ToolTipText = chkStatGraficoTminS.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 2, 2, 0, 20, 1, "Differenza Temperature in Carica Completa");
-                    GraficoTemperaturaCiclo("Differenza Temperature in Carica Completa", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 2, 2, 0, 20, 1, StringheStatistica.GrDeltaTCCTitolo);
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaDiffTempScarica) / 2;
+                    _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
+                    GraficoTemperaturaCiclo(StringheStatistica.GrDeltaTCCTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
 
-
+                /***************************************************************************************************************************/
+                /*   GRAFICO TEMP MAX Carica Parziale                                                                                      */
+                /***************************************************************************************************************************/
                 if (chkStatGraficoTmaxCP.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("Tmax C.P.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrTmaxCPChiave);
                     _grafico.ToolTipText = chkStatGraficoTminS.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 0, "Temperature Massime in Carica Parziale");
-                    GraficoTemperaturaCiclo("Temperature Massime in Carica Completa", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 0, StringheStatistica.GrTmaxCPTitolo);
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMaxCaricaParziale+10) / 5;
+                    _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
+                    GraficoTemperaturaCiclo(StringheStatistica.GrTmaxCPTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
 
+                /***************************************************************************************************************************/
+                /*   GRAFICO TEMP MAX Carica Completa                                                                                      */
+                /***************************************************************************************************************************/
 
                 if (chkStatGraficoTmaxCC.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("Tmax C.C.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrTmaxCCChiave);
                     _grafico.ToolTipText = chkStatGraficoTminS.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 1, "Temperature Massime in Carica Completa");
-                    GraficoTemperaturaCiclo("Temperature Massime in Carica Completa", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 1, StringheStatistica.GrTmaxCCTitolo);
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMaxCaricaCompleta+10) / 5;
+                    _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
+                    GraficoTemperaturaCiclo(StringheStatistica.GrTmaxCCTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
-
+                /***************************************************************************************************************************/
+                /*   GRAFICO Differenza Temperature in Scarica                                                                             */
+                /***************************************************************************************************************************/
                 if (chkStatGraficoDTS.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("Diff T S.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrDeltaTSChiave);
                     _grafico.ToolTipText = chkStatGraficoTminS.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 2, 2, 0, 20, -1, "Differenza Temperature in Scarica");
-                    GraficoTemperaturaCiclo("Differenza Temperature in Scarica", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 2, 2, 0, 20, -1, StringheStatistica.GrDeltaTSTitolo);
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaDiffTempScarica) / 2;
+                    _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
+                    GraficoTemperaturaCiclo(StringheStatistica.GrDeltaTSTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
 
+                /***************************************************************************************************************************/
+                /*   GRAFICO TEMP MIN SCARICA                                                                                              */
+                /***************************************************************************************************************************/
                 if (chkStatGraficoTminS.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("T Min S.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrTminSChiave);
                     _grafico.ToolTipText = chkStatGraficoTminS.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 0, 5, -20, 70, -1, "Temperature Minime in Scarica");
-                    GraficoTemperaturaCiclo("Temperature Minime in Scarica", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 0, 5, -20, 70, -1, StringheStatistica.GrTminSTitolo);
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMinScarica + 20) / 5;
+                    _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Discendente;
+                    GraficoTemperaturaCiclo(StringheStatistica.GrTminSTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
 
+                /***************************************************************************************************************************/
+                /*   GRAFICO TEMP MAX SCARICA                                                                                              */
+                /***************************************************************************************************************************/
                 if (chkStatGraficoTmaxS.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("T Max S.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrTmaxSChiave);
                     _grafico.ToolTipText = chkStatGraficoTmaxS.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 1, 5, -10, 80, -1, "Temperature Massime in Scarica");
-                    GraficoTemperaturaCiclo("Temperature Massime in Scarica", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Scarica, 1, 5, -10, 80, -1, StringheStatistica.GrTmaxSTitolo);
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMaxScarica + 10) / 5;
+                    _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
+                    GraficoTemperaturaCiclo(StringheStatistica.GrTmaxSTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
+                /***************************************************************************************************************************/
+                /*   GRAFICO DURATA CARICHE PARZIALI                                                                                      */
+                /***************************************************************************************************************************/
 
 
                 if (chkStatGraficoDurCP.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("Durata C.P.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrDuCPChiave);
                     _grafico.ToolTipText = chkStatGraficoDurCC.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo.Carica, 0, 15, 16, "Durata Cariche Parziali");
-                    GraficoDurataCiclo("Durata Cariche Parziali", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo.Carica, 0, 15, 16, StringheStatistica.GrDuCPTitolo);
+                    GraficoDurataCiclo(StringheStatistica.GrDuCPTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
+
+                /***************************************************************************************************************************/
+                /*   GRAFICO DURATA CARICHE COMPLETE                                                                                       */
+                /***************************************************************************************************************************/
 
                 if (chkStatGraficoDurCC.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("Durata CC");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrDuCCChiave);
                     _grafico.ToolTipText = chkStatGraficoDurCC.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo.Carica, 1, 30, 28, "Durata Cariche Complete");
-                    GraficoDurataCiclo("Durata Cariche Complete", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo.Carica, 1, 30, 28, StringheStatistica.GrDuCCTitolo);
+                    GraficoDurataCiclo(StringheStatistica.GrDuCCTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
 
-
+                /***************************************************************************************************************************/
+                /*   GRAFICO D.O.D.                                                                                                        */
+                /***************************************************************************************************************************/
 
                 if (chkStatGraficoDoD.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage("D.o.D.");
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrDODChiave);
                     _grafico.ToolTipText = chkStatGraficoDoD.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
-                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDeepChg(SerialMessage.TipoCiclo.Scarica, "D.o.D. Scariche");
-                    GraficoLivelliOxy("D.o.D. Scariche", _grafico.DatiGrafico, ref _grafico.GraficoBase);
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoDeepChg(SerialMessage.TipoCiclo.Scarica, StringheStatistica.GrDODTitolo);
+                    GraficoLivelliOxy(StringheStatistica.GrDODTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
                     tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
 
                 }
 
+                /***************************************************************************************************************************/
+                /*   GRAFICO TEMPORALE                                                                                                     */
+                /***************************************************************************************************************************/
+
                 if (chkStatGraficoTemporale.Checked == true)
                 {
-                    TabPage _HostTemporale = new TabPage("Grafico Temporale");
+                    TabPage _HostTemporale = new TabPage(StringheStatistica.GrTempChiave);
                     _HostTemporale.Tag = "GRAFICO";
                     _HostTemporale.BackColor = Color.LightYellow;
                     _HostTemporale.ToolTipText = chkStatGraficoTemporale.Text;
@@ -3156,7 +3567,7 @@ namespace PannelloCharger
                     foreach (SettimanaMR _sett in DatiStat.SettimanePresenti)
                     {
                         oxyTabPage _grafico = new oxyTabPage(_sett.settimana.ToString() + "/" + _sett.anno.ToString("0000"));
-                        _grafico.ToolTipText = "Settimana " + _sett.settimana.ToString() + "/" + _sett.anno.ToString("0000");
+                        _grafico.ToolTipText = StringheStatistica.Settimana + _sett.settimana.ToString() + "/" + _sett.anno.ToString("0000");
                         _grafico.Tag = "GRAFICO";
                         _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoSettimana(_sett.chiaveSettimana, _grafico.ToolTipText);
                         _grafico.BackColor = Color.LightYellow;
@@ -3190,7 +3601,7 @@ namespace PannelloCharger
                 double _fattoreCorrente = 0;
                 double _dtInSecondi;
 
-                tabStatGrafici.BackColor = Color.LightYellow;
+                //tabStatGrafici.BackColor = Color.LightYellow;
 
                 // Preparo le serie di valori
 
@@ -3341,6 +3752,7 @@ namespace PannelloCharger
                 Grafico.Title = TitoloGrafico;
                 Grafico.TitleFont = "Utopia";
                 Grafico.TitleFontSize = 18;
+                Grafico.IsLegendVisible = false;
 
 
                 // Creo gli Assi
@@ -3357,6 +3769,10 @@ namespace PannelloCharger
                 AsseConteggi.Maximum = ValMaxY;
                 AsseConteggi.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
                 AsseConteggi.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
+                AsseCat.IsZoomEnabled = false;
+                AsseCat.IsPanEnabled = false;
+                AsseConteggi.IsZoomEnabled = false;
+                AsseConteggi.IsPanEnabled = false;
 
                 AsseConteggi.Title = DatiGraph.TitoloAsseY;
 
@@ -3391,18 +3807,28 @@ namespace PannelloCharger
                     {
                         _percCicli = (double)DatiGraph.arrayValori[_ciclo] / (double)DatiGraph.TotLetture;
                     }
-
-                    if (_ciclo >= DatiGraph.StepSoglia)
-                        colonna.Color = OxyPlot.OxyColors.Red;
+                    if (DatiGraph.VersoSoglia == DatiEstrazione.Direzione.Ascendente)
+                    {
+                        if (_ciclo >= DatiGraph.StepSoglia)
+                            colonna.Color = OxyPlot.OxyColors.Red;
+                        else
+                            colonna.Color = OxyPlot.OxyColors.Blue;
+                    }
                     else
-                        colonna.Color = OxyPlot.OxyColors.Blue;
+                    {
+                        if (_ciclo < DatiGraph.StepSoglia)
+                            colonna.Color = OxyPlot.OxyColors.Red;
+                        else
+                            colonna.Color = OxyPlot.OxyColors.Blue;
+                    }
+
 
                     if (colonna.Value > 0)
                     {
                         OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
                         NotaPunto.X = _ciclo;
                         NotaPunto.Y = colonna.Value;
-                        NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
+                        NotaPunto.Text = StringheStatistica.Cicli + ": " + colonna.Value.ToString();
                         NotaPunto.Text += "\n" + _percCicli.ToString("P1");
                         NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
                         NotaPunto.Shape = OxyPlot.MarkerType.Cross;
@@ -3475,6 +3901,7 @@ namespace PannelloCharger
                 Grafico.Background = OxyPlot.OxyColors.LightYellow;
                 Grafico.PlotAreaBackground = OxyPlot.OxyColors.White;
                 Grafico.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
+                Grafico.IsLegendVisible = false;
 
 
                 Grafico.Title = TitoloGrafico;
@@ -3499,6 +3926,11 @@ namespace PannelloCharger
 
                 AsseConteggi.Title = DatiGraph.TitoloAsseY;
 
+                AsseCat.IsZoomEnabled = false;
+                AsseCat.IsPanEnabled = false;
+                AsseConteggi.IsZoomEnabled = false;
+                AsseConteggi.IsPanEnabled = false;
+
 
 
                 //Creo le serie:
@@ -3513,8 +3945,6 @@ namespace PannelloCharger
                 ColValore.StrokeThickness = 1;
                 ColValore.Title = DatiGraph.TitoloAsseY;
                 ColValore.FillColor = OxyPlot.OxyColors.Blue;
-
-                //ColValore.YAxis.Maximum = DatiGraph.MaxY * 1.5;
 
                 // carico il Dataset
 
@@ -3544,7 +3974,7 @@ namespace PannelloCharger
                         OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
                         NotaPunto.X = _ciclo;
                         NotaPunto.Y = colonna.Value;
-                        NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
+                        NotaPunto.Text = StringheStatistica.Cicli + ": " + colonna.Value.ToString();
                         NotaPunto.Text += "\n" + _percCicli.ToString("P1");
                         NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
                         NotaPunto.Shape = OxyPlot.MarkerType.Cross;
@@ -3622,6 +4052,7 @@ namespace PannelloCharger
                 Grafico.Title = TitoloGrafico;
                 Grafico.TitleFont = "Utopia";
                 Grafico.TitleFontSize = 18;
+                Grafico.IsLegendVisible = false;
 
 
                 // Creo gli Assi
@@ -3640,6 +4071,12 @@ namespace PannelloCharger
                 AsseConteggi.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
 
                 AsseConteggi.Title = DatiGraph.TitoloAsseY;
+
+                AsseCat.IsZoomEnabled = false;
+                AsseCat.IsPanEnabled = false;
+                AsseConteggi.IsZoomEnabled = false;
+                AsseConteggi.IsPanEnabled = false;
+
 
 
 
@@ -3676,17 +4113,28 @@ namespace PannelloCharger
                         _percCicli = (double)DatiGraph.arrayValori[_ciclo] / (double)DatiGraph.TotLetture;
                     }
 
-                    if (_ciclo >= DatiGraph.StepSoglia)
-                       colonna.Color = OxyPlot.OxyColors.Red;
+                    if (DatiGraph.VersoSoglia == DatiEstrazione.Direzione.Ascendente)
+                    {
+                        if (_ciclo >= DatiGraph.StepSoglia)
+                            colonna.Color = OxyPlot.OxyColors.Red;
+                        else
+                            colonna.Color = OxyPlot.OxyColors.Blue;
+                    }
                     else
-                        colonna.Color = OxyPlot.OxyColors.Blue;
+                    {
+                        if (_ciclo < DatiGraph.StepSoglia)
+                            colonna.Color = OxyPlot.OxyColors.Red;
+                        else
+                            colonna.Color = OxyPlot.OxyColors.Blue;
+                    }
 
+                    
                     if (colonna.Value > 0)
                     {
                         OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
                         NotaPunto.X = _ciclo;
                         NotaPunto.Y = colonna.Value;
-                        NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
+                        NotaPunto.Text = StringheStatistica.Cicli + ": " + colonna.Value.ToString();
                         NotaPunto.Text += "\n" + _percCicli.ToString("P1");
                         NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
                         NotaPunto.Shape = OxyPlot.MarkerType.Cross;
@@ -3792,13 +4240,13 @@ namespace PannelloCharger
                 //Asse spostato da .1 a .7
                 AsseCarica.StartPosition = 0.05;
                 AsseCarica.EndPosition = 0.7;
-                AsseCarica.AxislineThickness = 20;
+                AsseCarica.AxislineThickness = 10;
                 AsseCarica.AxislineStyle = OxyPlot.LineStyle.Solid;
                 AsseCarica.AxislineColor = OxyPlot.OxyColors.Green;
                 AsseCarica.IsZoomEnabled = false;
                 AsseCarica.IsPanEnabled = false;
                 AsseCarica.MinorStep = 5;
-                AsseCarica.MajorStep = 20;
+                AsseCarica.MajorStep = 10;
                 AsseCarica.MaximumPadding = 5;
                 AsseCarica.Minimum = 0;
                 ValMaxY = 110;
@@ -3828,7 +4276,7 @@ namespace PannelloCharger
                 AsseTemp.PositionAtZeroCrossing = true;
                 AsseTemp.AxislineStyle = OxyPlot.LineStyle.Solid;
                 AsseTemp.AxislineColor = OxyPlot.OxyColors.LightSeaGreen;
-                AsseTemp.AxislineThickness = 20 ;
+                AsseTemp.AxislineThickness = 10 ;
 
 
 
@@ -4191,21 +4639,6 @@ namespace PannelloCharger
 
         }
 
-        private void btnStatProvaInserimento_Click(object sender, EventArgs e)
-        {
-            // CaricaSchedeGrafico(_stat);
-            Log.Info("------------------------------------------------");
-            for (int _step = 0; _step < 101; _step++)
-            {
-                int _stepCarica = (100 - _step) / 10;
-                int _stepScarica = ( _step) / 10;
-
-                Log.Info("Step " + _step.ToString("000") + ": " + _stepCarica.ToString() + " / " + _stepScarica.ToString());
-
-            }
-            Log.Info("------------------------------------------------");
-
-        }
 
         private void cmdMemRead_Click(object sender, EventArgs e)
         {
@@ -4505,22 +4938,49 @@ namespace PannelloCharger
 
         public void InizializzaSchedaConfronti()
         {
+            int largScheda = tbcStatistiche.Width;
+            int altScheda = tbcStatistiche.Height;
+            /*
+                        // prima vuoto la pagina
+                        foreach(var _elemento in tabStatComparazioni.Controls)
+                        {
+                            if (typeof(_elemento) == null)
+                            {
 
-            creaContainerOxy(ref grCompSOH, new Point(100, 50), new Size(500, 280), "SoH");
-            creaGraficoStimaOxy(ref grCompSOH, "SoH","% Residua", 80, 70, 60, 0, 100);
+                            }
+                        }
+            */
+            //tabStatComparazioni.Controls.Add(oxyContainer);
+            double _eresidua;
+            double _etot = _stat.Etot();
+            if (_etot > 0)
+            {
+                 _eresidua = (_etot - _stat.EnScaricataNorm()) / _etot;
+                if (_eresidua > 100)
+                    _eresidua = 100;
+            }
+            else
+            {
+                _eresidua = 0;
+            }
+
+            _eresidua = _eresidua * 100;
+            creaContainerOxy(ref grCompSOH, new Point(100, 50), new Size(500, 220), StringheStatistica.SoH_breve);
+            creaGraficoStimaOxy(ref grCompSOH, StringheStatistica.SoH_breve, StringheStatistica.percResidua, _eresidua, (int)(_eresidua*85/100), (int)(_eresidua * 70/100 ), 0, 100);
+            //creaGraficoStimaOxy(ref grCompSOH, StringheStatistica.SoH_breve, StringheStatistica.percResidua, 80, 70, 60, 0, 100);
 
             int _ciclisimulati = _stat.NumeroCariche * 10;
 
-            creaContainerOxy(ref grCompRabb, new Point(650, 50), new Size(500, 280), "Rabbocchi");
-            creaGraficoStimaOxy(ref grCompRabb, "Numero di Rabbocchi", "Numero", (int)(_ciclisimulati/30), (int)(_ciclisimulati / 7.5), (int)(_ciclisimulati / 6), 0, (int)(_ciclisimulati / 5));
+            creaContainerOxy(ref grCompRabb, new Point(650, 50), new Size(500, 220), StringheStatistica.Rabbocchi_breve);
+            creaGraficoStimaOxy(ref grCompRabb, StringheStatistica.numRabbocchi, StringheStatistica.Numero, (int)(_ciclisimulati/30), (int)(_ciclisimulati / 7.5), (int)(_ciclisimulati / 6), 0, (int)(_ciclisimulati / 5));
             
-            creaContainerOxy(ref grCompEnConsumata, new Point(100, 360), new Size(500, 280), "Energia");
-            creaGraficoStimaOxy(ref grCompEnConsumata, "Energia Consumata","KWh", (_stat.KWhCaricati/0.9), (_stat.KWhCaricati/0.814), (_stat.KWhCaricati/0.745), _stat.KWhCaricati, (_stat.KWhCaricati*1.5));
+            creaContainerOxy(ref grCompEnConsumata, new Point(100, 300), new Size(500, 220), StringheStatistica.Energia);
+            creaGraficoStimaOxy(ref grCompEnConsumata, StringheStatistica.EnergiaConsumata, "KWh", (_stat.KWhCaricati/0.9), (_stat.KWhCaricati/0.814), (_stat.KWhCaricati/0.745), _stat.KWhCaricati, (_stat.KWhCaricati*1.5));
 
             double KgCo2 = _stat.KWhCaricati*0.53705;
 
-            creaContainerOxy(ref grCompCO2, new Point(650, 360), new Size(500, 280), "Anidride");
-            creaGraficoStimaOxy(ref grCompCO2, "CO2 Risparmiata","Kg CO2", KgCo2 * 0.2311, KgCo2*0.1137,0, 0, KgCo2/2);
+            creaContainerOxy(ref grCompCO2, new Point(650, 300), new Size(500, 220), StringheStatistica.Anidride);
+            creaGraficoStimaOxy(ref grCompCO2, StringheStatistica.CO2Risparmiata, "Kg CO2", KgCo2 * 0.2311, KgCo2*0.1137,0, 0, KgCo2/2);
 
 
         }
@@ -4616,7 +5076,7 @@ namespace PannelloCharger
                     OxyPlot.Axes.CategoryAxis AsseCat = new OxyPlot.Axes.CategoryAxis();
                     AsseCat.MinorStep = 1;
                     AsseCat.MajorGridlineStyle = OxyPlot.LineStyle.Dash;
-                    AsseCat.Title = "Tipologia Caricabatteria";
+                    AsseCat.Title = StringheStatistica.Tipologia;
 
 
 
@@ -4699,8 +5159,9 @@ namespace PannelloCharger
 
             }
 
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("GraficoCiclo: " + Ex.Message);
 
             }
         }
@@ -6398,7 +6859,7 @@ namespace PannelloCharger
                 double _fattoreCorrente = 0;
                 double _dtInSecondi;
 
-                tabStatGrafici.BackColor = Color.LightYellow;
+                //tabStatGrafici.BackColor = Color.LightYellow;
 
                 // Preparo le serie di valori
 
@@ -6515,7 +6976,7 @@ namespace PannelloCharger
                 double _fattoreCorrente = 0;
                 double _dtInSecondi;
 
-                tabStatGrafici.BackColor = Color.LightYellow;
+                //tabStatGrafici.BackColor = Color.LightYellow;
 
                 // Preparo le serie di valori
 
@@ -6672,6 +7133,7 @@ namespace PannelloCharger
 
             }
         }
+
         /// <summary>
         /// Genero il file Excel con i valiri rilevati 
         /// </summary>
@@ -7088,6 +7550,16 @@ namespace PannelloCharger
         }
 
         private void btnFwCheckArea_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStatTempoInCarica_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStatNumCaricheComp_Click(object sender, EventArgs e)
         {
 
         }
