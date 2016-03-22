@@ -133,6 +133,177 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a % Assenza.
+        /// </summary>
+        internal static string GougeAssElr1 {
+            get {
+                return ResourceManager.GetString("GougeAssElr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Elettrolita.
+        /// </summary>
+        internal static string GougeAssElr2 {
+            get {
+                return ResourceManager.GetString("GougeAssElr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % Cariche.
+        /// </summary>
+        internal static string GougeCIncr1 {
+            get {
+                return ResourceManager.GetString("GougeCIncr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Parziali.
+        /// </summary>
+        internal static string GougeCIncr2 {
+            get {
+                return ResourceManager.GetString("GougeCIncr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a .
+        /// </summary>
+        internal static string GougeDODr1 {
+            get {
+                return ResourceManager.GetString("GougeDODr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % D.O.D..
+        /// </summary>
+        internal static string GougeDODr2 {
+            get {
+                return ResourceManager.GetString("GougeDODr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % Fasi in.
+        /// </summary>
+        internal static string GougeOverTr1 {
+            get {
+                return ResourceManager.GetString("GougeOverTr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Sovratemp..
+        /// </summary>
+        internal static string GougeOverTr2 {
+            get {
+                return ResourceManager.GetString("GougeOverTr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % Pause.
+        /// </summary>
+        internal static string GougePauser1 {
+            get {
+                return ResourceManager.GetString("GougePauser1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Critiche.
+        /// </summary>
+        internal static string GougePauser2 {
+            get {
+                return ResourceManager.GetString("GougePauser2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % Tempo.
+        /// </summary>
+        internal static string GougeSbilr1 {
+            get {
+                return ResourceManager.GetString("GougeSbilr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Sbil.Celle.
+        /// </summary>
+        internal static string GougeSbilr2 {
+            get {
+                return ResourceManager.GetString("GougeSbilr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % S.o.H..
+        /// </summary>
+        internal static string GougeSOH {
+            get {
+                return ResourceManager.GetString("GougeSOH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a .
+        /// </summary>
+        internal static string GougeSOHr1 {
+            get {
+                return ResourceManager.GetString("GougeSOHr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % S.o.H..
+        /// </summary>
+        internal static string GougeSOHr2 {
+            get {
+                return ResourceManager.GetString("GougeSOHr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a .
+        /// </summary>
+        internal static string GougeSovrar1 {
+            get {
+                return ResourceManager.GetString("GougeSovrar1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % Sovrascariche.
+        /// </summary>
+        internal static string GougeSovrar2 {
+            get {
+                return ResourceManager.GetString("GougeSovrar2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Ass.El..
+        /// </summary>
+        internal static string GrAssenzaElChiave {
+            get {
+                return ResourceManager.GetString("GrAssenzaElChiave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Percentuale Assenza Elettrolita sul Numero Fasi.
+        /// </summary>
+        internal static string GrAssenzaElTitolo {
+            get {
+                return ResourceManager.GetString("GrAssenzaElTitolo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Incr T C.C..
         /// </summary>
         internal static string GrDeltaTCCChiave {
@@ -273,6 +444,60 @@ namespace PannelloCharger {
         internal static string GrDurCAsseY {
             get {
                 return ResourceManager.GetString("GrDurCAsseY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Ciclo.
+        /// </summary>
+        internal static string GrSettNotaPunto {
+            get {
+                return ResourceManager.GetString("GrSettNotaPunto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Temp Max.
+        /// </summary>
+        internal static string GrSettserTmax {
+            get {
+                return ResourceManager.GetString("GrSettserTmax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Temp Media.
+        /// </summary>
+        internal static string GrSettserTmed {
+            get {
+                return ResourceManager.GetString("GrSettserTmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Temp Min.
+        /// </summary>
+        internal static string GrSettserTmin {
+            get {
+                return ResourceManager.GetString("GrSettserTmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Range Temp.
+        /// </summary>
+        internal static string GrSettserTvar {
+            get {
+                return ResourceManager.GetString("GrSettserTvar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a % Carica.
+        /// </summary>
+        internal static string GrSettTitoloAsseY {
+            get {
+                return ResourceManager.GetString("GrSettTitoloAsseY", resourceCulture);
             }
         }
         

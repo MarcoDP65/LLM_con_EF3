@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 using SQLite.Net;
 using log4net;
@@ -736,6 +737,7 @@ namespace ChargerLogic
                         sbCliente.Client = _mS.CustomerData.Client;
                         sbCliente.ClientNote = _mS.CustomerData.ClientNote;
                         sbCliente.CicliAttesi = _mS.CustomerData.CicliAttesi;
+                        sbCliente.SerialNumber = _mS.CustomerData.SerialNumber;
                         sbCliente.salvaDati();
                     }
                 }
@@ -2494,10 +2496,16 @@ namespace ChargerLogic
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, true);
+                // prima di proseguire aspetto 1 secondo
+                System.Threading.Thread.Sleep(1000);
+                Application.DoEvents();
+
 
                 if (_esito)
                 {
+
+
                     sbData.cancellaDati(_idCorrente);
                 }
                 Log.Debug(_mS.hexdumpMessaggio());
@@ -3093,6 +3101,7 @@ namespace ChargerLogic
                 _mS.CustomerData.BatteryId = sbCliente.BatteryId;
                 _mS.CustomerData.BatteryModel = sbCliente.BatteryModel;
                 _mS.CustomerData.CicliAttesi = (ushort)sbCliente.CicliAttesi;
+                _mS.CustomerData.SerialNumber = sbCliente.SerialNumber;
 
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 _mS.Comando = SerialMessage.TipoComando.SB_W_DatiCliente;
@@ -3451,6 +3460,7 @@ namespace ChargerLogic
                                             _inviaRisposta = false;
                                             break;
                                         }
+
                                     default:
                                         {
                                             _inviaRisposta = true;
@@ -3565,6 +3575,7 @@ namespace ChargerLogic
 
                             case (byte)SerialMessage.TipoComando.SB_CancellaInteraMemoria:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                Log.Debug("Cancella Intera Memoria");
                                 //_inviaRisposta = _mS.variabiliScheda.datiPronti;
                                 break;
 

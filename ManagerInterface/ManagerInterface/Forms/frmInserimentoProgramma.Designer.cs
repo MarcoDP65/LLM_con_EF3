@@ -41,7 +41,7 @@
             this.txtProgcCelleTot = new System.Windows.Forms.TextBox();
             this.txtProgcCelleV3 = new System.Windows.Forms.TextBox();
             this.txtProgcCelleV2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTipoBatteria = new System.Windows.Forms.Label();
             this.txtProgcBattType = new System.Windows.Forms.TextBox();
             this.chkMemProgrammed = new System.Windows.Forms.CheckBox();
             this.btnInserisciProgramma = new System.Windows.Forms.Button();
@@ -55,18 +55,18 @@
             this.lblTempMax = new System.Windows.Forms.Label();
             this.txtTempMax = new System.Windows.Forms.TextBox();
             this.grbVersoCorrente = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbxInverso = new System.Windows.Forms.PictureBox();
             this.pbxDiretto = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.txtNumSpire = new System.Windows.Forms.TextBox();
             this.lblNumSpire = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.grbVersoCorrente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInverso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDiretto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtProgcBattVdef
@@ -184,14 +184,14 @@
             this.txtProgcCelleV2.Text = "0";
             this.txtProgcCelleV2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label5
+            // lblTipoBatteria
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 96);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Tipo Batteria";
+            this.lblTipoBatteria.AutoSize = true;
+            this.lblTipoBatteria.Location = new System.Drawing.Point(39, 96);
+            this.lblTipoBatteria.Name = "lblTipoBatteria";
+            this.lblTipoBatteria.Size = new System.Drawing.Size(89, 17);
+            this.lblTipoBatteria.TabIndex = 13;
+            this.lblTipoBatteria.Text = "Tipo Batteria";
             // 
             // txtProgcBattType
             // 
@@ -329,6 +329,26 @@
             this.grbVersoCorrente.TabStop = false;
             this.grbVersoCorrente.Text = "Verso Installazione";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(76, 83);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(34, 33);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(217, 83);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 33);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // pbxInverso
             // 
             this.pbxInverso.Image = ((System.Drawing.Image)(resources.GetObject("pbxInverso.Image")));
@@ -375,26 +395,6 @@
             this.lblNumSpire.Text = "Numero Spire";
             this.lblNumSpire.Click += new System.EventHandler(this.lblNumSpire_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(217, 83);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(76, 83);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
             // frmInserimentoProgramma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -415,7 +415,7 @@
             this.Controls.Add(this.btnAnnulla);
             this.Controls.Add(this.btnInserisciProgramma);
             this.Controls.Add(this.chkMemProgrammed);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblTipoBatteria);
             this.Controls.Add(this.txtProgcBattType);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtProgcCelleV1);
@@ -436,10 +436,10 @@
             this.Text = "Nuova Configurazione";
             this.Load += new System.EventHandler(this.frmInserimentoProgramma_Load);
             this.grbVersoCorrente.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInverso)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDiretto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,7 +459,7 @@
         private System.Windows.Forms.TextBox txtProgcCelleTot;
         private System.Windows.Forms.TextBox txtProgcCelleV3;
         private System.Windows.Forms.TextBox txtProgcCelleV2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTipoBatteria;
         private System.Windows.Forms.TextBox txtProgcBattType;
         private System.Windows.Forms.CheckBox chkMemProgrammed;
         private System.Windows.Forms.Button btnInserisciProgramma;

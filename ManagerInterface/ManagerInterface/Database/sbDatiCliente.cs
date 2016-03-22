@@ -45,6 +45,7 @@ namespace MoriData
         public string ClientNote { get; set; }
         public byte ClientCounter{ get; set; }
         public int CicliAttesi { get; set; }
+        public string SerialNumber { get; set; }
 
     }
 
@@ -215,6 +216,33 @@ namespace MoriData
         }
 
 
+        public bool VuotaRecord( bool SalvaSeriale = false)
+        {
+            try
+            {
+
+                _sbdc.Client = "";
+                _sbdc.BatteryBrand = "";
+                _sbdc.BatteryModel = "";
+                _sbdc.BatteryId = "";
+                _sbdc.ClientNote = "";
+                _sbdc.ClientCounter += 1;
+                _sbdc.CicliAttesi = 0;
+                if (!SalvaSeriale)
+                _sbdc.SerialNumber = "";
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VuotaRecord: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+
+        }
+
+
         #region Class Parameters
 
         public int IdLocale
@@ -290,6 +318,18 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+
+        public string SerialNumber
+        {
+            get { return _sbdc.SerialNumber; }
+            set
+            {
+                _sbdc.SerialNumber = FunzioniMR.StringaMax(value, 20);
+                _datiSalvati = false;
+            }
+        }
+
 
         public string BatteryBrand
         {
@@ -396,8 +436,10 @@ namespace MoriData
 
                 _datamap[_arrayInit++] = 0x22;
 
-                //Id pachhetto
+                //Id pacchetto
                 _datamap[_arrayInit++] = 0x01;
+
+                // Zona Dati
                 _tempArr = FunzioniComuni.StringToArray(_sbdc.Client, 110);
                 for (int _i = 0; _i < 110; _i++)
                     _datamap[_arrayInit++] = _tempArr[_i];
@@ -426,7 +468,7 @@ namespace MoriData
 
                 //Id pacchetto
                 _datamap[_arrayInit++] = 0x02;
-
+                // Zona Dati
                 _tempArr = FunzioniComuni.StringToArray(_sbdc.BatteryBrand, 110);
                 for (int _i = 0; _i < 110; _i++)
                     _datamap[_arrayInit++] = _tempArr[_i];
@@ -447,7 +489,7 @@ namespace MoriData
 
                 _arrayInit += 11;
 
-                // Testata BLOCCO 23
+                // Testata BLOCCO 3
                 _datamap[_arrayInit++] = 0x00;
                 _datamap[_arrayInit++] = 0x00;
                 _datamap[_arrayInit++] = 0x00;
@@ -464,12 +506,17 @@ namespace MoriData
 
                 //Id pacchetto
                 _datamap[_arrayInit++] = 0x03;
+                // Zona Dati
+                _tempArr = FunzioniComuni.StringToArray(_sbdc.SerialNumber, 20);
+                for (int _i = 0; _i < 20; _i++)
+                    _datamap[_arrayInit++] = _tempArr[_i];
+
 
                 // Mi porto al blocco 4
 
-                _arrayInit += 228;
+                _arrayInit += 208;
 
-                // Testata BLOCCO 23
+                // Testata BLOCCO 4
                 _datamap[_arrayInit++] = 0x00;
                 _datamap[_arrayInit++] = 0x00;
                 _datamap[_arrayInit++] = 0x00;
@@ -486,7 +533,7 @@ namespace MoriData
 
                 //Id pacchetto
                 _datamap[_arrayInit++] = 0x04;
-
+                // Zona Dati
 
 
 

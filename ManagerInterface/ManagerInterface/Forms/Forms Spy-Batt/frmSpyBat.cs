@@ -49,9 +49,11 @@ namespace PannelloCharger
         private IndicatoreCruscotto Ic11;
         private IndicatoreCruscotto Ic12;
         private IndicatoreCruscotto Ic13;
+        private IndicatoreCruscotto Ic14;
         private IndicatoreCruscotto Ic21;
         private IndicatoreCruscotto Ic22;
         private IndicatoreCruscotto Ic23;
+        private IndicatoreCruscotto Ic24;
 
         /*--------------------*/
         private OxyPlot.PlotModel grCompSOH;
@@ -94,6 +96,11 @@ namespace PannelloCharger
                 System.Threading.Thread.CurrentThread.CurrentUICulture = _parametri.currentCulture;
 
                 InitializeComponent();
+                // Setto il bordo invisibile ai due groupbox dell'upd FW
+                grbFWdettUpload.Paint+= PaintBorderlessGroupBox;
+                grbFWDettStato.Paint += PaintBorderlessGroupBox;
+
+
                 InizializzaOxyGrAnalisi();
                 ResizeRedraw = true;
                 _logiche = Logiche;
@@ -152,7 +159,15 @@ namespace PannelloCharger
 
                 IdCorrente = _sb.Id;
                 _apparatoPresente = SerialeCollegata;
+                // se l'apparato è presente e le configurazioni su scheda superano quelle in mem, aggiorno
+                if(_apparatoPresente)
+                    if (_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
+                    {
 
+                        RicaricaProgrammazioni();
+                    }
+
+                CaricaProgrammazioni();
 
                 InizializzaOxyGrSingolo();
                 applicaAutorizzazioni();
@@ -168,10 +183,118 @@ namespace PannelloCharger
 
         }
 
+
+        public void RileggiSpyBat()
+        {
+            bool _esito;
+            try
+            {
+                /*
+
+                Non reinizializzo i componenti
+
+                InitializeComponent();
+                // Setto il bordo invisibile ai due groupbox dell'upd FW
+                grbFWdettUpload.Paint += PaintBorderlessGroupBox;
+                grbFWDettStato.Paint += PaintBorderlessGroupBox;
+                InizializzaOxyGrAnalisi();
+                ResizeRedraw = true;
+
+                Log.Debug("----------------------- frmSpyBat ---------------------------");
+
+                */
+
+                string IdApparato = IdCorrente;
+                LogicheBase Logiche = _logiche;
+                bool SerialeCollegata = _apparatoPresente;
+
+
+
+                _msg = new MessaggioSpyBatt();
+                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+
+                _stat = new StatMemLungaSB();
+                abilitaSalvataggi(false);
+
+                // in futuro, inserire quì il precaricamento delle statistiche
+                //CaricaTestata(IdApparato, Logiche, SerialeCollegata);
+
+                // 12/10/15: inizio leggendo lo stato del bootloader, per verificare se c'è un firmware caricato
+                _esito = CaricaStatoFirmware(ref IdApparato, Logiche, SerialeCollegata);
+                if (!_esito)
+                {
+                    // Se non ho il firmware state potrebbe essere una versione precedente
+                    // provo a legere la testata
+                    _esito = ApriComunicazione(IdApparato, Logiche, SerialeCollegata);
+                    if (IdApparato != "")
+                    {
+                        CaricaTestata(IdApparato, Logiche, SerialeCollegata);
+                    }
+
+                }
+                else
+                {
+
+                    if (_sb.FirmwarePresente)
+                    {
+                        // Se sono in stato BL lo evidenzio e mi fermo, altrimenti leggo la testata
+                        if ((_sb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
+                        {
+                            MostraTestata();
+                            txtRevSWSb.Text = "BOOTLOADER";
+                            txtRevSWSb.ForeColor = Color.Red;
+                            Log.Info("Stato scheda SPY-BATT: LD OK, MODO BOOTLOADER ");
+                        }
+                        else
+                        {
+                            //TODO: gestire io DB se la scheda è già in archivio
+                            CaricaTestata(IdApparato, Logiche, SerialeCollegata);
+                        }
+
+
+                    }
+                    else
+                    {
+                        MostraTestata();
+                    }
+                }
+
+                IdCorrente = _sb.Id;
+                _apparatoPresente = SerialeCollegata;
+                // se l'apparato è presente e le configurazioni su scheda superano quelle in mem, aggiorno
+                if (_apparatoPresente)
+                    if (_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
+                    {
+
+                        RicaricaProgrammazioni();
+                    }
+
+                CaricaProgrammazioni();
+
+                InizializzaOxyGrSingolo();
+                applicaAutorizzazioni();
+                RicalcolaStatistiche();
+                InizializzaCalibrazioni();
+                InizializzaVistaCorrenti();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat: " + Ex.Message + " [" + Ex.TargetSite.ToString() + "]");
+            }
+
+        }
+
+
         public frmSpyBat()
         {
             Log.Debug("----------------------- frmSpyBat  Easy ---------------------------");
             InitializeComponent();
+
+            // Setto il bordo invisibile ai due groupbox dell'upd FW
+            grbFWdettUpload.Paint += PaintBorderlessGroupBox;
+            grbFWDettStato.Paint += PaintBorderlessGroupBox;
+
             InizializzaOxyGrAnalisi();
             InizializzaOxyGrSingolo();
             RicalcolaStatistiche();
@@ -205,6 +328,7 @@ namespace PannelloCharger
             btnCaricaDettaglioSel.Enabled = _apparatoPresente;
             btnLeggiVariabili.Enabled = _apparatoPresente;
             chkParLetturaAuto.Enabled = _apparatoPresente;
+            grbVarResetScheda.Enabled = _apparatoPresente;
 
 
 
@@ -296,6 +420,12 @@ namespace PannelloCharger
         }
 
 
+        private void PaintBorderlessGroupBox(object sender, PaintEventArgs p)
+        {
+            GroupBox box = (GroupBox)sender;
+            p.Graphics.Clear(box.BackColor);//SystemColors.Control);
+            p.Graphics.DrawString(box.Text, box.Font, Brushes.Black, 0, 0);
+        }
 
 
         public bool caricaDati(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
@@ -407,112 +537,6 @@ namespace PannelloCharger
         }
 
 
-        /*
-                public void stampaScheda()
-                {
-
-                    try
-                    {
-                        daReport.DaPrintDocument daPrintDocument;
-                        daPrintDocument = new daReport.DaPrintDocument();
-
-                        // Carico i parametri di testata:
-                        // (parameter names are case sensitive)
-                        Hashtable parameters = new Hashtable();
-                        parameters.Add("matricola", FunzioniMR.StringaSeriale(_sb.Id));
-                        parameters.Add("modello", _sb.sbData.ProductId);
-                        parameters.Add("revHw", _sb.sbData.HwVersion.ToString());
-                        parameters.Add("revSw", _sb.sbData.SwVersion.ToString());
-                        parameters.Add("cliCliente", _sb.sbCliente.Client);
-                        parameters.Add("cliMarca", _sb.sbCliente.BatteryBrand);
-                        parameters.Add("cliModBatteria", _sb.sbCliente.BatteryModel);
-                        parameters.Add("cliIdBatteria", _sb.sbCliente.BatteryId);
-                        parameters.Add("cliNote", _sb.sbCliente.ClientNote);
-                        daPrintDocument.SetParameters(parameters);
-
-
-                        //Carico le tabelle
-                        //1. Programmazioni
-                        DataTable tblProgrammazioni = new DataTable("tblProgrammazioni");
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgNumProg"));
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgVdef"));
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgAdef"));
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgType"));
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgTotCelle"));
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgCelle3"));
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgCelle2"));
-                        tblProgrammazioni.Columns.Add(new DataColumn("prgCelle1"));
-                        //Carico i dati:
-                        foreach (sbProgrammaRicarica _programma in _sb.Programmazioni)
-                        {
-                            tblProgrammazioni.Rows.Add(new object[] {_programma.IdProgramma.ToString(),
-                                                                     _programma.BatteryVdef.ToString(),
-                                                                     _programma.BatteryAhdef.ToString(),
-                                                                     _programma.BatteryType.ToString(),
-                                                                     _programma.BatteryCells.ToString(),
-                                                                     _programma.BatteryCell3.ToString(),
-                                                                     _programma.BatteryCell2.ToString(),
-                                                                     _programma.BatteryCell1.ToString()
-                                                                     });
-                        }
-
-                        daPrintDocument.AddData(tblProgrammazioni);
-
-                        //2. Cicli Lunghi
-                        DataTable tblCicli = new DataTable("cicliLunghi");
-                        tblCicli.Columns.Add(new DataColumn("NumLungo"));
-                        tblCicli.Columns.Add(new DataColumn("TipoCiclo"));
-                        tblCicli.Columns.Add(new DataColumn("StartCiclo"));
-                        tblCicli.Columns.Add(new DataColumn("EndCiclo"));
-                        tblCicli.Columns.Add(new DataColumn("DurataCiclo"));
-                        tblCicli.Columns.Add(new DataColumn("TempMin"));
-                        tblCicli.Columns.Add(new DataColumn("TempMax"));
-                        tblCicli.Columns.Add(new DataColumn("vmin"));
-                        tblCicli.Columns.Add(new DataColumn("vmax"));
-                        tblCicli.Columns.Add(new DataColumn("imin"));
-                        tblCicli.Columns.Add(new DataColumn("imax"));
-                        //Carico i dati:
-                        int _maxRighe = 0;
-                        foreach (sbMemLunga _ciclo in _sb.CicliMemoriaLunga)
-                        {
-                            tblCicli.Rows.Add(new object[] {_ciclo.IdMemoriaLunga.ToString(),
-                                                            _sb.StringaTipoEvento( _ciclo.TipoEvento),
-                                                            _ciclo.DataOraStart,
-                                                            _ciclo.DataOraFine,
-                                                            _sb.StringaDurata( _ciclo.Durata),
-                                                            _ciclo.strTempMin,
-                                                            _ciclo.strTempMax,
-                                                            _ciclo.strVmin,
-                                                            _ciclo.strVmax,
-                                                            _ciclo.strAmin,
-                                                            _ciclo.strAmax
-                                                            });
-                            _maxRighe++;
-                            if (_maxRighe > 50) break;
-                        }
-
-                        daPrintDocument.AddData(tblCicli);
-
-
-
-
-                        // set .xml file for printing
-                        daPrintDocument.setXML("SpyBattTemplate.xml");
-
-                        // print preview
-                        printPreviewDialogSB = new PrintPreviewDialog();
-                        printPreviewDialogSB.Document = daPrintDocument;
-                        printPreviewDialogSB.PrintPreviewControl.Zoom = 1.0;
-                        printPreviewDialogSB.WindowState = FormWindowState.Maximized;
-                        printPreviewDialogSB.ShowDialog(this);
-
-                    }
-                    catch (Exception Ex)
-                    {
-                        Log.Error("MostraTestata: " + Ex.Message);
-                    }
-                }
-        */
 
         public bool MostraTestata()
         {
@@ -600,15 +624,18 @@ namespace PannelloCharger
                 txtIdBat.ReadOnly = _readonly;
                 txtNoteCliente.ReadOnly = _readonly;
                 btnSalvaCliente.Visible = (_readonly == false);
+                txtSerialNumber.ReadOnly = _readonly;
 
                 grbMainDlOptions.Visible = false;
                 btnResetScheda.Visible = false;
                 grbTestataContatori.Visible = false;
+                txtSerialNumber.ReadOnly = true;
                 if (LivelloCorrente == 0)
                 {
                     grbMainDlOptions.Visible = true;
                     btnResetScheda.Visible = true;
                     grbTestataContatori.Visible = true;
+                    txtSerialNumber.ReadOnly = false;
                 }
 
                 #endregion
@@ -661,6 +688,19 @@ namespace PannelloCharger
                 _enabled = (_readonly == false);
                 #endregion
 
+                #region "Statistiche"
+                if (LivelloCorrente < 2)
+                    _readonly = false;
+                else
+                {
+                    tbcStatistiche.TabPages.Remove(tabStatSoglie);
+                    _readonly = true;
+                }
+                _enabled = (_readonly == false);
+                #endregion
+
+
+
                 #region "Orologio"
                 if (LivelloCorrente < 3)
                     _readonly = false;
@@ -691,8 +731,8 @@ namespace PannelloCharger
                 }
 
 
-                #endregion
 
+                #endregion
 
                 #region "Variabili"
                 if (LivelloCorrente < 1)
@@ -703,6 +743,7 @@ namespace PannelloCharger
                 }
                 _enabled = (_readonly == false);
                 chkDatiDiretti.Visible = _enabled;
+                grbVariabiliConnVOK.Visible = _enabled;
                 btnDumpMemoria.Visible = _enabled;
                 btnStampaScheda.Visible = _enabled;
 
@@ -710,6 +751,9 @@ namespace PannelloCharger
                 grbCalibrazioni.Visible = _enabled;
 
                 chkDatiDiretti.Visible = _enabled;
+
+                if (LivelloCorrente > 2)
+                    grbVarResetScheda.Visible = false;
 
                 #endregion
 
@@ -755,11 +799,40 @@ namespace PannelloCharger
 
 
                 #region "Firmware"
-                // accessibile solo a Factory 
-                if (LivelloCorrente > 0)
+                // accessibile a power user nuovo file solo a Factory 
+
+
+                if (LivelloCorrente > 2)
                 {
                     tabCaricaBatterie.TabPages.Remove(tbpFirmware);
                     _readonly = true;
+                }
+                else
+                {
+                    grbStatoFirmware.Visible = true;
+                    grbFWAggiornamento.Visible = true;
+                    // Nascondo tutto poi riattvo se serve
+                    grbFwAttivazioneArea.Visible = false;
+                    GrbFWArea1.Visible = false;
+                    grbFWArea2.Visible = false;
+                    grbFWPreparaFile.Visible = false;
+                    grbFWDettStato.Visible = true;
+                    grbFWdettUpload.Visible = true;
+
+                    if (LivelloCorrente < 2 )
+                    {
+                        // Factory o service
+                        grbFwAttivazioneArea.Visible = true;
+                        GrbFWArea1.Visible = true;
+                        grbFWArea2.Visible = true;
+                        grbFWDettStato.Visible = false;
+                        grbFWdettUpload.Visible = false;
+                    }
+                    if (LivelloCorrente < 1)
+                    {
+                        // Factory
+                        grbFWPreparaFile.Visible = true;
+                    }
                 }
 
                 _enabled = (_readonly == false);
@@ -805,7 +878,15 @@ namespace PannelloCharger
                 {
                     IdApparato = _sb.Id;
                     MostraTestata();
+                    if (_sb.sbData.fwLevel < 0)
+                    {
+                        //Firmware non valido
+                        _apparatoPresente = false;
+                        Log.Debug("CaricaTestata: Firmware non valido " + _sb.sbData.SwVersion.ToString());
+                    }
+                    
                     CaricaCicli();
+
                     if (caricaCliente(IdApparato, Logiche, SerialeCollegata)) mostraCliente();
                     _apparatoPresente = _sb.apparatoPresente;
                     // se l'apparato è collegato abilito i salvataggi
@@ -875,6 +956,7 @@ namespace PannelloCharger
                 txtModelloBat.Text = _sb.sbCliente.BatteryModel;
                 txtIdBat.Text = _sb.sbCliente.BatteryId;
                 txtCliCicliAttesi.Text = _sb.sbCliente.CicliAttesi.ToString();
+                txtSerialNumber.Text = _sb.sbCliente.SerialNumber;
                 if (_sb.sbCliente.BatteryId != "")
                 {
                     this.Text = _sb.sbCliente.BatteryId;
@@ -971,65 +1053,75 @@ namespace PannelloCharger
                 {
                     if (ValoriReali)
                     {
+
+                        // Prima i valori sempre validi
                         txtVarVBattT.Text = _sb.sbVariabili.TensioneTampone.ToString();
                         txtVarVBatt.Text = _sb.sbVariabili.TensioneIstantanea.ToString();
-                        txtVarV3.Text = _sb.sbVariabili.Tensione3.ToString();
-                        txtVarV2.Text = _sb.sbVariabili.Tensione2.ToString();
-                        txtVarV1.Text = _sb.sbVariabili.Tensione1.ToString();
-                        txtVaIbatt.Text = _sb.sbVariabili.CorrenteBatteria.ToString();
-                        txtVarAhCarica.Text = _sb.sbVariabili.AhCaricati.ToString();
-                        txtVarAhScarica.Text = _sb.sbVariabili.AhScaricati.ToString();
                         txtVarTempNTC.Text = _sb.sbVariabili.TempNTC.ToString();
-                        txtVarElettrolita.Text = _sb.sbVariabili.PresenzaElettrolita.ToString();
-                        txtVarSoC.Text = _sb.sbVariabili.SoC.ToString();
-                        txtVarRF.Text = _sb.sbVariabili.RF.ToString();
-                        txtVarWhCarica.Text = _sb.sbVariabili.WhCaricati.ToString();
-                        txtVarWhScarica.Text = _sb.sbVariabili.WhScaricati.ToString();
-                        txtVarMemProgrammed.Text = _sb.sbVariabili.MemProgrammed.ToString();
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x01) == 0x01) grbVariabiliConnVbatt.CheckState = CheckState.Checked;
-                        else grbVariabiliConnVbatt.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x02) == 0x02) grbVariabiliConnV3.CheckState = CheckState.Checked;
-                        else grbVariabiliConnV3.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x04) == 0x04) grbVariabiliConnV2.CheckState = CheckState.Checked;
-                        else grbVariabiliConnV2.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x08) == 0x08) grbVariabiliConnV1.CheckState = CheckState.Checked;
-                        else grbVariabiliConnV1.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x10) == 0x10) grbVariabiliConnVOK.CheckState = CheckState.Checked;
-                        else grbVariabiliConnVOK.CheckState = CheckState.Unchecked;
-
+                        //poi, se ho Vbatt
+                        if (_sb.sbVariabili.TensioneIstantanea > 9)
+                        {
+                            txtVarV3.Text = _sb.sbVariabili.Tensione3.ToString();
+                            txtVarV2.Text = _sb.sbVariabili.Tensione2.ToString();
+                            txtVarV1.Text = _sb.sbVariabili.Tensione1.ToString();
+                            txtVaIbatt.Text = _sb.sbVariabili.CorrenteBatteria.ToString();
+                            txtVarAhCarica.Text = FunzioniMR.StringaCorrente((short)_sb.sbVariabili.AhCaricati);
+                            txtVarAhScarica.Text = FunzioniMR.StringaCorrente((short)_sb.sbVariabili.AhScaricati);
+                            txtVarElettrolita.Text = _sb.sbVariabili.PresenzaElettrolita.ToString();
+                            txtVarSoC.Text = _sb.sbVariabili.SoC.ToString();
+                            txtVarRF.Text = _sb.sbVariabili.RF.ToString();
+                            txtVarWhCarica.Text = _sb.sbVariabili.WhCaricati.ToString();
+                            txtVarWhScarica.Text = _sb.sbVariabili.WhScaricati.ToString();
+                            txtVarMemProgrammed.Text = _sb.sbVariabili.MemProgrammed.ToString();
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x01) == 0x01) grbVariabiliConnVbatt.CheckState = CheckState.Checked;
+                            else grbVariabiliConnVbatt.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x02) == 0x02) grbVariabiliConnV3.CheckState = CheckState.Checked;
+                            else grbVariabiliConnV3.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x04) == 0x04) grbVariabiliConnV2.CheckState = CheckState.Checked;
+                            else grbVariabiliConnV2.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x08) == 0x08) grbVariabiliConnV1.CheckState = CheckState.Checked;
+                            else grbVariabiliConnV1.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x10) == 0x10) grbVariabiliConnVOK.CheckState = CheckState.Checked;
+                            else grbVariabiliConnVOK.CheckState = CheckState.Unchecked;
+                        }
 
                     }
                     else
                     {
                         txtVarVBattT.Text = _sb.sbVariabili.strTensioneTampone;
                         txtVarVBatt.Text = _sb.sbVariabili.strTensioneIstantanea;
-                        txtVarV3.Text = _sb.sbVariabili.strTensione3;
-                        txtVarV2.Text = _sb.sbVariabili.strTensione2;
-                        txtVarV1.Text = _sb.sbVariabili.strTensione1;
-                        txtVaIbatt.Text = _sb.sbVariabili.strCorrenteBatteria;
-                        if (_sb.sbVariabili.CorrenteBatteria < 0) txtVaIbatt.ForeColor = Color.Red;
-                        else txtVaIbatt.ForeColor = Color.Black;
-                        txtVarAhCarica.Text = _sb.sbVariabili.strAhCaricati;
-                        txtVarAhScarica.Text = _sb.sbVariabili.strAhScaricati;
                         txtVarTempNTC.Text = _sb.sbVariabili.strTempNTC;
-                        txtVarElettrolita.Text = _sb.sbVariabili.strPresenzaElettrolita;
-                        txtVarSoC.Text = _sb.sbVariabili.strSoC;
-                        txtVarRF.Text = _sb.sbVariabili.strRF;
-                        txtVarWhCarica.Text = _sb.sbVariabili.strWhCaricati;
-                        txtVarWhScarica.Text = _sb.sbVariabili.strWhScaricati;
-                        txtVarMemProgrammed.Text = _sb.sbVariabili.strMemProgrammed;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x01) == 0x01) grbVariabiliConnVbatt.CheckState = CheckState.Checked;
-                        else grbVariabiliConnVbatt.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x02) == 0x02) grbVariabiliConnV3.CheckState = CheckState.Checked;
-                        else grbVariabiliConnV3.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x04) == 0x04) grbVariabiliConnV2.CheckState = CheckState.Checked;
-                        else grbVariabiliConnV2.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x08) == 0x08) grbVariabiliConnV1.CheckState = CheckState.Checked;
-                        else grbVariabiliConnV1.CheckState = CheckState.Unchecked;
-                        if ((_sb.sbVariabili.ConnectionStatus & 0x10) == 0x10) grbVariabiliConnVOK.CheckState = CheckState.Checked;
-                        else grbVariabiliConnVOK.CheckState = CheckState.Unchecked;
 
+                        //poi, se ho Vbatt
+                        if (_sb.sbVariabili.TensioneIstantanea > 9)
+                        {
+                            txtVarV3.Text = _sb.sbVariabili.strTensione3;
+                            txtVarV2.Text = _sb.sbVariabili.strTensione2;
+                            txtVarV1.Text = _sb.sbVariabili.strTensione1;
+                            txtVaIbatt.Text = _sb.sbVariabili.strCorrenteBatteria;
+                            if (_sb.sbVariabili.CorrenteBatteria < 0) txtVaIbatt.ForeColor = Color.Red;
+                            else txtVaIbatt.ForeColor = Color.Black;
+                            txtVarAhCarica.Text = _sb.sbVariabili.strAhCaricati;
+                            txtVarAhScarica.Text = _sb.sbVariabili.strAhScaricati;
+                            txtVarElettrolita.Text = _sb.sbVariabili.strPresenzaElettrolita;
+                            txtVarSoC.Text = _sb.sbVariabili.strSoC;
+                            txtVarRF.Text = _sb.sbVariabili.strRF;
+                            txtVarWhCarica.Text = _sb.sbVariabili.strWhCaricati;
+                            txtVarWhScarica.Text = _sb.sbVariabili.strWhScaricati;
+                            txtVarMemProgrammed.Text = _sb.sbVariabili.strMemProgrammed;
 
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x01) == 0x01) grbVariabiliConnVbatt.CheckState = CheckState.Checked;
+                            else grbVariabiliConnVbatt.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x02) == 0x02) grbVariabiliConnV3.CheckState = CheckState.Checked;
+                            else grbVariabiliConnV3.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x04) == 0x04) grbVariabiliConnV2.CheckState = CheckState.Checked;
+                            else grbVariabiliConnV2.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x08) == 0x08) grbVariabiliConnV1.CheckState = CheckState.Checked;
+                            else grbVariabiliConnV1.CheckState = CheckState.Unchecked;
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x10) == 0x10) grbVariabiliConnVOK.CheckState = CheckState.Checked;
+                            else grbVariabiliConnVOK.CheckState = CheckState.Unchecked;
+
+                        }
 
                     }
 
@@ -1143,31 +1235,7 @@ namespace PannelloCharger
             {
                 bool _esito;
 
-                //frmAvanzamentoCicli AvCicli = new frmAvanzamentoCicli();
-
-                //AvCicli.MdiParent = this.MdiParent;
-                //AvCicli.StartPosition = FormStartPosition.CenterScreen;
-
-
-
-
-
-
-                //frmAvanzamentoCicli AvCicli = new frmAvanzamentoCicli();
-                //AvCicli.TopLevel = true;
-
-
-                //AvCicli.Show();
-
-                Application.DoEvents();
-
-                //impostaAvanzamento(Convert.ToInt32(txtMemDa.Text), Convert.ToInt32(txtMemA.Text));
-                //mostraAvanzamento(true);
-
-
-
-
-
+                 Application.DoEvents();
 
 
 
@@ -1175,10 +1243,6 @@ namespace PannelloCharger
 
                 _esito = _sb.CaricaCicliMemLungaDaMem(Convert.ToUInt32(txtMemDa.Text), Convert.ToUInt32(txtMemA.Text));
 
-
-
-                //mostraAvanzamento(false);
-                //AvCicli.Close();
                 Application.DoEvents();
                 InizializzaVistaLunghi();
                 // flvwCicliBatteria.BuildList();
@@ -1207,6 +1271,32 @@ namespace PannelloCharger
                 txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
 
                 InizializzaVistaProgrammazioni();
+                txtProgcBattVdef.Text = "";
+                txtProgcBattAhDef.Text = "";
+                txtProgcCelleTot.Text = "";
+                txtProgcCelleV3.Text = "";
+                txtProgcCelleV2.Text = "";
+                txtProgcCelleV1.Text = "";
+
+
+                foreach ( sbProgrammaRicarica _tempProg in _sb.Programmazioni)
+                {
+                    if (_tempProg.IdProgramma == (ushort)_sb.sbData.ProgramCount )
+                    {
+                        txtProgcBattVdef.Text = FunzioniMR.StringaTensione(_tempProg.BatteryVdef) + " V";
+                        txtProgcBattAhDef.Text = FunzioniMR.StringaCapacita(_tempProg.BatteryAhdef,10) + " Ah";
+                        txtProgcCelleTot.Text = _tempProg.BatteryCells.ToString();
+                        txtProgcCelleV3.Text = _tempProg.BatteryCell3.ToString();
+                        txtProgcCelleV2.Text = _tempProg.BatteryCell2.ToString();
+                        txtProgcCelleV1.Text = _tempProg.BatteryCell1.ToString();
+
+
+                        break;
+                    }
+                }
+
+
+
 
             }
             catch (Exception Ex)
@@ -1688,6 +1778,7 @@ namespace PannelloCharger
                 _sb.sbCliente.BatteryBrand = txtMarcaBat.Text;
                 _sb.sbCliente.BatteryModel = txtModelloBat.Text;
                 _sb.sbCliente.BatteryId = txtIdBat.Text;
+                _sb.sbCliente.SerialNumber = txtSerialNumber.Text;
                 int _tempInt;
                 if (int.TryParse(txtCliCicliAttesi.Text, out _tempInt))
                 { _sb.sbCliente.CicliAttesi = (int)_tempInt; }
@@ -1839,7 +1930,7 @@ namespace PannelloCharger
 
                 BrightIdeasSoftware.OLVColumn Colonna6m = new BrightIdeasSoftware.OLVColumn();
                 Colonna6m.Text = StringheMessaggio.strVistaLunghiCol06m;
-                Colonna6m.AspectName = "TempMin";
+                Colonna6m.AspectName = "strTempMin";
                 Colonna6m.Sortable = false;
                 Colonna6m.Width = 60;
                 Colonna6m.HeaderTextAlign = HorizontalAlignment.Center;
@@ -1848,7 +1939,7 @@ namespace PannelloCharger
 
                 BrightIdeasSoftware.OLVColumn Colonna6 = new BrightIdeasSoftware.OLVColumn();
                 Colonna6.Text = StringheMessaggio.strVistaLunghiCol06;
-                Colonna6.AspectName = "TempMax";
+                Colonna6.AspectName = "strTempMax";
                 Colonna6.Sortable = false;
                 Colonna6.Width = 60;
                 Colonna6.HeaderTextAlign = HorizontalAlignment.Center;
@@ -1899,12 +1990,7 @@ namespace PannelloCharger
                 BrightIdeasSoftware.OLVColumn Colonna11 = new BrightIdeasSoftware.OLVColumn();
                 Colonna11.Text = StringheMessaggio.strVistaLunghiCol11; // "Elettrolita";
                 Colonna11.Sortable = false;
-                Colonna11.AspectName = "PresenzaElettrolita";
-                Colonna11.AspectGetter = delegate (object _Valore)
-                {
-                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
-                    return FunzioniMR.StringaPresenza(_tempVal.PresenzaElettrolita);
-                };
+                Colonna11.AspectName = "strPresenzaElettrolita";
                 Colonna11.Width = 60;
                 Colonna11.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna11.TextAlign = HorizontalAlignment.Right;
@@ -1914,19 +2000,6 @@ namespace PannelloCharger
                 Colonna12.Text = StringheMessaggio.strVistaLunghiCol12; // "Ah";
                 Colonna12.AspectName = "strAh";
                 Colonna12.Sortable = false;
-                /*
-                Colonna12.AspectGetter = delegate(object _Valore)
-                {
-                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
-                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
-                    {
-                        return _tempVal.strAh;
-                    }
-                    else
-                    {
-                        return "";
-                    }
-                };*/
                 Colonna12.Width = 50;
                 Colonna12.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna12.TextAlign = HorizontalAlignment.Right;
@@ -2201,7 +2274,7 @@ namespace PannelloCharger
 
                 BrightIdeasSoftware.OLVColumn Colonna6m = new BrightIdeasSoftware.OLVColumn();
                 Colonna6m.Text = StringheMessaggio.strVistaLunghiCol06m;
-                Colonna6m.AspectName = "TempMin";
+                Colonna6m.AspectName = "strTempMin";
                 Colonna6m.Sortable = false;
                 Colonna6m.Width = 60;
                 Colonna6m.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2210,7 +2283,7 @@ namespace PannelloCharger
 
                 BrightIdeasSoftware.OLVColumn Colonna6 = new BrightIdeasSoftware.OLVColumn();
                 Colonna6.Text = StringheMessaggio.strVistaLunghiCol06;
-                Colonna6.AspectName = "TempMax";
+                Colonna6.AspectName = "strTempMax";
                 Colonna6.Sortable = false;
                 Colonna6.Width = 60;
                 Colonna6.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2261,12 +2334,7 @@ namespace PannelloCharger
                 BrightIdeasSoftware.OLVColumn Colonna11 = new BrightIdeasSoftware.OLVColumn();
                 Colonna11.Text = StringheMessaggio.strVistaLunghiCol11; // "Elettrolita";
                 Colonna11.Sortable = false;
-                Colonna11.AspectName = "PresenzaElettrolita";
-                Colonna11.AspectGetter = delegate (object _Valore)
-                {
-                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
-                    return FunzioniMR.StringaPresenza(_tempVal.PresenzaElettrolita);
-                };
+                Colonna11.AspectName = "strPresenzaElettrolita";
                 Colonna11.Width = 60;
                 Colonna11.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna11.TextAlign = HorizontalAlignment.Right;
@@ -2276,19 +2344,6 @@ namespace PannelloCharger
                 Colonna12.Text = StringheMessaggio.strVistaLunghiCol12; // "Ah";
                 Colonna12.AspectName = "strAh";
                 Colonna12.Sortable = false;
-                /*
-                Colonna12.AspectGetter = delegate(object _Valore)
-                {
-                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
-                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
-                    {
-                        return _tempVal.strAh;
-                    }
-                    else
-                    {
-                        return "";
-                    }
-                };*/
                 Colonna12.Width = 50;
                 Colonna12.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna12.TextAlign = HorizontalAlignment.Right;
@@ -2500,7 +2555,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.GridLines = true;
 
                 BrightIdeasSoftware.OLVColumn colIdBreve = new BrightIdeasSoftware.OLVColumn();
-                colIdBreve.Text = "Prog.";
+                colIdBreve.Text = "Setup";
                 colIdBreve.AspectName = "IdProgramma";
                 colIdBreve.Width = 60;
                 colIdBreve.HeaderTextAlign = HorizontalAlignment.Left;
@@ -2552,7 +2607,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colBattType);
 
                 BrightIdeasSoftware.OLVColumn colCelleTot = new BrightIdeasSoftware.OLVColumn();
-                colCelleTot.Text = "Tot Celle";
+                colCelleTot.Text = "Tot Cells";
                 colCelleTot.AspectName = "BatteryCells";
                 colCelleTot.Width = 90;
                 colCelleTot.HeaderTextAlign = HorizontalAlignment.Center;
@@ -3061,8 +3116,6 @@ namespace PannelloCharger
                 {
                     _stat.CicliMemoriaLunga = _sb.CicliMemoriaLunga;
                     _stat.aggregaValori(optStatPeriodoSel.Checked, dtpStatInizio.Value, dtpStatFine.Value);
-
-
                 }
 
                 InizializzaVistaSoglie();
@@ -3358,7 +3411,22 @@ namespace PannelloCharger
                         tbcStatistiche.TabPages.Remove(_pagina);
                 }
 
+                /***************************************************************************************************************************/
+                /*   GRAFICO Differenza Temperature in Carica Parziale                                                                     */
+                /***************************************************************************************************************************/
 
+                if (chkStatGraficoAssEl.Checked == true)
+                {
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrAssenzaElChiave, new Size(300,200));
+                    _grafico.ToolTipText = chkStatGraficoAssEl.Text;
+                    _grafico.Tag = "GRAFICO";
+                    _grafico.DatiGrafico = new DatiEstrazione();
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoMancanzaEl(StringheStatistica.GrAssenzaElTitolo);
+                    GraficoTorta(StringheStatistica.GrAssenzaElTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
+
+                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
+
+                }
                 /***************************************************************************************************************************/
                 /*   GRAFICO Differenza Temperature in Carica Parziale                                                                     */
                 /***************************************************************************************************************************/
@@ -4173,6 +4241,71 @@ namespace PannelloCharger
         }
 
 
+        public void GraficoTorta(string TitoloGrafico, DatiEstrazione DatiGraph, ref OxyPlot.PlotModel Grafico)
+        {
+            try
+            {
+                string _Flag;
+                string _titoloGrafico = "";
+                string _modelloIntervallo;
+                double _fattoreCorrente = 0;
+                double _dtInSecondi;
+
+                // Preparo le serie di valori
+
+                ValoriPuntualiGrafico.Clear();
+
+                if (DatiGraph == null) return;
+                if (DatiGraph.DatiValidi != true) return;
+
+                double ValMinX;
+                double ValMaxX;
+
+                double ValMinY;
+                double ValMaxY;
+
+                ValMinX = 0;
+                ValMinY = 0;
+                ValMaxX = 100;
+
+
+                // Inizializzo il controllo OxyPlot.PlotModel ( oxyGraficoCiclo )
+                Grafico.Series.Clear();
+                Grafico.Axes.Clear();
+
+                Grafico.Background = OxyPlot.OxyColors.LightYellow;
+                Grafico.PlotAreaBackground = OxyPlot.OxyColors.White;
+                Grafico.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
+
+
+                Grafico.Title = TitoloGrafico;
+                Grafico.TitleFont = "Utopia";
+                Grafico.TitleFontSize = 18;
+                Grafico.IsLegendVisible = false;
+                Grafico.PlotMargins = new OxyPlot.OxyThickness(50, 50, 50, 50);
+
+                //Creo le serie:
+                OxyPlot.Series.PieSeries serValore = new OxyPlot.Series.PieSeries();
+                serValore.Title = DatiGraph.Titolo;
+
+                serValore.Slices.Add(new OxyPlot.Series.PieSlice("OK", DatiGraph.NumEvOK) { IsExploded = true, Fill = OxyPlot.OxyColors.LightSkyBlue });
+                serValore.Slices.Add(new OxyPlot.Series.PieSlice("KO", DatiGraph.NumEvErrore) { IsExploded = true, Fill = OxyPlot.OxyColors.Red });
+
+                Grafico.Series.Add(serValore);
+
+
+                //Grafico.InvalidatePlot(true);
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("GraficoCiclo: " + Ex.Message);
+            }
+
+        }
+
+
         public void GraficoTemporaleSett(string TitoloGrafico, DatiEstrazione DatiGraph, ref OxyPlot.PlotModel Grafico)
         {
             try
@@ -4341,25 +4474,25 @@ namespace PannelloCharger
 
                 // Creo le serie per le temperature
                 OxyPlot.Series.LineSeries serTmax = new OxyPlot.Series.LineSeries();
-                serTmax.Title = "Temp Max";
+                serTmax.Title = StringheStatistica.GrSettserTmax;  // "Temp Max";
                 serTmax.Color = OxyPlot.OxyColors.Orange;
                 serTmax.YAxisKey = "Temp";
                 //Grafico.Series.Add(serTmax);
 
                 OxyPlot.Series.LineSeries serTmin = new OxyPlot.Series.LineSeries();
-                serTmin.Title = "Temp Min";
+                serTmin.Title = StringheStatistica.GrSettserTmin;  //"Temp Min";
                 serTmin.Color = OxyPlot.OxyColors.Yellow;
                 serTmin.YAxisKey = "Temp";
 
 
                 OxyPlot.Series.LineSeries serTmed = new OxyPlot.Series.LineSeries();
-                serTmed.Title = "Temp Media";
+                serTmed.Title = StringheStatistica.GrSettserTmed;  //"Temp Media";
                 serTmed.Color = OxyPlot.OxyColors.Red;
                 serTmed.YAxisKey = "Temp";
 
 
                 OxyPlot.Series.AreaSeries serTvar = new OxyPlot.Series.AreaSeries();
-                serTvar.Title = "Range Temp";
+                serTvar.Title = StringheStatistica.GrSettserTvar;  //"Range Temp";
                 serTvar.Fill = OxyPlot.OxyColors.LightGray;
                 serTvar.YAxisKey = "Temp";
 
@@ -4540,6 +4673,7 @@ namespace PannelloCharger
             }
 
         }
+
 
         private void SerCicli_MouseDown(object sender, OxyPlot.OxyMouseDownEventArgs e)
         {
@@ -4735,18 +4869,49 @@ namespace PannelloCharger
 
         private void cmdMemClear_Click(object sender, EventArgs e)
         {
+            CancellaMemoria(chkMemClearMantieniCliente.Checked);
+        }
+
+
+
+         void CancellaMemoria(bool MantieniCliente = false)
+        {
             try
             {
                 bool _esito;
-                DialogResult risposta = MessageBox.Show("Vuoi veramente azzerare la memoria ?\nATTENZIONE: l'operazione cancellerà anche i dati in archivio",
-                "Cancellazione Memoria",
+                DialogResult risposta = MessageBox.Show(StringheComuni.CancellaMemoriaR1 + "\n" + StringheComuni.CancellaMemoriaR2,
+                StringheComuni.CancellaMemoria,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
                 if (risposta == System.Windows.Forms.DialogResult.Yes)
                 {
+                    string _tmpSernum = _sb.sbCliente.SerialNumber;
+
                     _esito = _sb.CancellaInteraMemoria();
-                    if (_esito) MessageBox.Show("Memoria Azzerata", "Cancellazione Memoria", MessageBoxButtons.OK);
+                    if (_esito)
+                    {
+                        if (!MantieniCliente)
+                        {
+                            _sb.sbCliente.VuotaRecord(MantieniCliente);
+                        }
+                        _sb.sbCliente.SerialNumber = _tmpSernum;
+                        _sb.ScriviDatiCliente();
+
+                        // e ora ricarico i dati
+                        //.....
+
+                        RileggiSpyBat();
+
+                        MessageBox.Show(StringheComuni.MemoriaCancellata, StringheComuni.CancellaMemoria, MessageBoxButtons.OK);
+
+                    }
+
+
+
+
+
+
 
                 }
             }
@@ -5172,111 +5337,235 @@ namespace PannelloCharger
 
         public void InizializzaCockpitStat()
         {
-            buiStatCockpit.Frame.Clear();
-            Ic11 = new IndicatoreCruscotto();
-            Ic11.MinVal = 0;
-            Ic11.Lim1 = 30;
-            Ic11.Lim2 = 80;
-            Ic11.MaxVal = 100;
-            Ic11.Verso = IndicatoreCruscotto.VersoValori.Discendente;
-            Ic11.InizializzaIndicatore(this.buiStatCockpit, 30, 20, 280, "% S.o.H.");
-
-            double _etot = _stat.Etot();
-            if (_etot > 0)
+            try
             {
-                double _eresidua = 100 * (_etot - _stat.EnScaricataNorm()) / _etot;
-                if (_eresidua > 100)
+
+                // Prima riga
+                // 1.1  -  S.o.H.
+
+                buiStatCockpit.Frame.Clear();
+                Ic11 = new IndicatoreCruscotto();
+                Ic11.MinVal = 0;
+                Ic11.Lim1 = 50;
+                Ic11.Lim2 = 80;
+                Ic11.MaxVal = 100;
+                Ic11.Verso = IndicatoreCruscotto.VersoValori.Discendente;
+                Ic11.InizializzaIndicatore(this.buiStatCockpit, 30, 20, 280, StringheStatistica.GougeSOHr1 + "\n" + StringheStatistica.GougeSOHr2);
+
+                double _etot = _stat.Etot();
+                if (_etot > 0)
                 {
-                    Ic11.ImpostaValore((float)_eresidua);
+                    double _eresidua = 100 * (_etot - _stat.EnScaricataNorm()) / _etot;
+                    if (_eresidua > 100)
+                    {
+                        Ic11.ImpostaValore((float)_eresidua);
+                    }
+                    else
+                        Ic11.ImpostaValore((float)_eresidua);
                 }
-                else
-                    Ic11.ImpostaValore((float)_eresidua);
+
+
+                //  1.2 - D.o.D.
+
+                Ic12 = new IndicatoreCruscotto();
+                Ic12.ValueMask = "0.0";
+                Ic12.MostraValore = true;
+                Ic12.MinVal = 0;
+                Ic12.Lim1 = 50;
+                Ic12.Lim2 = 80;
+                Ic12.MaxVal = 100;
+                Ic12.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic12.InizializzaIndicatore(this.buiStatCockpit, 330, 20, 280, StringheStatistica.GougeDODr1 + "\n" + StringheStatistica.GougeDODr2);
+                Ic12.ImpostaValore((float)_stat.ProfonditaMacroScaricaMedia());
+
+
+
+                //  1.3  Sovrascariche
+                Ic13 = new IndicatoreCruscotto();
+                Ic13.ValueMask = "0.0";
+                Ic13.MostraValore = true;
+                Ic13.MinVal = 0;
+                Ic13.Lim1 = 50;
+                Ic13.Lim2 = 80;
+                Ic13.MaxVal = 100;
+                Ic13.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic13.InizializzaIndicatore(this.buiStatCockpit, 630, 20, 280, StringheStatistica.GougeSovrar1 + "\n" + StringheStatistica.GougeSovrar2);
+                Ic13.ImpostaValore((float)_stat.MacroScaricheCritiche());
+
+
+                //  1.4  Cariche Incomplete
+
+                Ic14 = new IndicatoreCruscotto();
+                Ic14.ValueMask = "0.0";
+                Ic14.MostraValore = true;
+                Ic14.MinVal = 0;
+                Ic14.Lim1 = 60;
+                Ic14.Lim2 = 80;
+                Ic14.MaxVal = 100;
+                Ic14.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic14.InizializzaIndicatore(this.buiStatCockpit, 930, 20, 280, StringheStatistica.GougeCIncr1 + "\n" + StringheStatistica.GougeCIncr2);
+                Ic14.ImpostaValore((float)_stat.CaricheParziali());
+
+
+
+                
+               
+      
+
+                /*
+
+                Ic13 = new IndicatoreCruscotto();
+                Ic13.MinVal = 0;
+                Ic13.Lim1 = 5;
+                Ic13.Lim2 = 10;
+                Ic13.MaxVal = 100;
+                Ic13.LabelOffset = 50;
+
+                Ic13.InizializzaIndicatore(this.buiStatCockpit, 630, 20, 280, "Assenza\nElettrolita");
+                double _fattoreME = 0;
+                if (_stat.SecondiTotali > 0)
+                {
+                    _fattoreME = 100 * _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
+
+                }
+
+                Ic13.ImpostaValore((float)_fattoreME);
+
+
+
+                Ic14 = new IndicatoreCruscotto();
+                Ic14.ValueMask = "0.0";
+                Ic14.MostraValore = true;
+                Ic14.MinVal = 0;
+                Ic14.Lim1 = 60;
+                Ic14.Lim2 = 80;
+                Ic14.MaxVal = 100;
+                Ic14.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic14.InizializzaIndicatore(this.buiStatCockpit, 930, 20, 280, "% D.o.D.");
+                Ic14.ImpostaValore((float)_stat.ProfonditaScaricaMedia());
+
+                */
+
+
+                //  2.1  Sbilanciamento
+
+                Ic21 = new IndicatoreCruscotto();
+                Ic21.MinVal = 0;
+                Ic21.Lim1 = 10;
+                Ic21.Lim2 = 20;
+                Ic21.MaxVal = 100;
+                Ic21.LabelOffset = 40;
+                Ic21.InizializzaIndicatore(this.buiStatCockpit, 30, 300, 280, StringheStatistica.GougeSbilr1 + "\n" + StringheStatistica.GougeSbilr2);
+                double _fattoreSB = 0;
+                if (_stat.SecondiTotali > 0)
+                {
+                    _fattoreSB = 100 * _stat.DurataSbilanciamento / _stat.SecondiTotali;
+
+                }
+                Ic21.ImpostaValore((float)_fattoreSB);
+
+
+                //  2.2  Overtemp
+                Ic22 = new IndicatoreCruscotto();
+                Ic22.MinVal = 0;
+                Ic22.Lim1 = 5;
+                Ic22.Lim2 = 10;
+                Ic22.MaxVal = 100;
+                Ic22.LabelOffset = 80;
+                Ic22.MostraValore = true;
+                Ic22.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic22.InizializzaIndicatore(this.buiStatCockpit, 330, 300, 280, StringheStatistica.GougeOverTr1 + "\n" + StringheStatistica.GougeOverTr2);
+                if ((_stat.NumeroScariche + _stat.NumeroCariche) > 0)
+                {
+                    _fattoreSB = 100 * (_stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT+ _stat.NumeroScaricheSovraT ) / (_stat.NumeroScariche + _stat.NumeroCariche);
+
+                }
+                Ic22.ImpostaValore((float)_fattoreSB);
+
+
+
+
+                /*
+                Ic22 = new IndicatoreCruscotto();
+                Ic22.MinVal = 0;
+                Ic22.Lim1 = 5;
+                Ic22.Lim2 = 10;
+                Ic22.MaxVal = 100;
+                Ic22.LabelOffset = 80;
+                Ic22.MostraValore = true;
+                Ic22.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic22.InizializzaIndicatore(this.buiStatCockpit, 330, 300, 280, "    % Scariche\nSovratemperatura");
+                if (_stat.NumeroScariche > 0)
+                {
+                    _fattoreSB = 100 * _stat.NumeroScaricheSovraT / _stat.NumeroScariche;
+
+                }
+                Ic22.ImpostaValore((float)_fattoreSB);
+
+
+                Ic23 = new IndicatoreCruscotto();
+                Ic23.MinVal = 0;
+                Ic23.Lim1 = 5;
+                Ic23.Lim2 = 10;
+                Ic23.MaxVal = 100;
+                Ic23.LabelOffset = 80;
+                Ic23.MostraValore = true;
+                Ic23.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic23.InizializzaIndicatore(this.buiStatCockpit, 630, 300, 280, "    % Cariche\nSovratemperatura");
+                if (_stat.NumeroCariche > 0)
+                {
+                    _fattoreSB = 100 * (_stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT) / _stat.NumeroCariche;
+
+                }
+                Ic23.ImpostaValore((float)_fattoreSB);
+                */
+
+
+                //  2.3  Assenza Elettrolita
+
+                Ic23 = new IndicatoreCruscotto();
+                Ic23.MinVal = 0;
+                Ic23.Lim1 = 5;
+                Ic23.Lim2 = 10;
+                Ic23.MaxVal = 100;
+                Ic23.LabelOffset = 50;
+
+                Ic23.InizializzaIndicatore(this.buiStatCockpit, 630, 300, 280, StringheStatistica.GougeAssElr1 + "\n" + StringheStatistica.GougeAssElr2);
+                double _fattoreME = 0;
+                if (_stat.SecondiTotali > 0)
+                {
+                    _fattoreME = 100 * _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
+
+                }
+
+                Ic23.ImpostaValore((float)_fattoreME);
+
+
+
+                //  2.4  Pause Critiche
+
+                Ic24 = new IndicatoreCruscotto();
+                Ic24.MinVal = 0;
+                Ic24.Lim1 = 5;
+                Ic24.Lim2 = 10;
+                Ic24.MaxVal = 100;
+                Ic24.LabelOffset = 80;
+                Ic24.MostraValore = true;
+                Ic24.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
+                Ic24.InizializzaIndicatore(this.buiStatCockpit, 930, 300, 280, StringheStatistica.GougePauser1 + "\n" + StringheStatistica.GougePauser2);
+                if (_stat.NumeroCariche > 0)
+                {
+                    _fattoreSB = 100 * (_stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT) / _stat.NumeroCariche;
+
+                }
+                Ic24.ImpostaValore((float)_fattoreSB);
+
             }
 
-
-
-            Ic12 = new IndicatoreCruscotto();
-            Ic12.MinVal = 0;
-            Ic12.Lim1 = 5;
-            Ic12.Lim2 = 10;
-            Ic12.MaxVal = 100;
-            Ic12.LabelOffset = 50;
-
-            Ic12.InizializzaIndicatore(this.buiStatCockpit, 330, 20, 280, "Assenza\nElettrolita");
-            double _fattoreME = 0;
-            if (_stat.SecondiTotali > 0)
+            catch (Exception Ex)
             {
-                 _fattoreME = 100 *  _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
-     
+                Log.Error("Inizializza Cockpit: " + Ex.Message);
             }
-
-             Ic12.ImpostaValore((float)_fattoreME);
-
-
-
-            Ic13 = new IndicatoreCruscotto();
-            Ic13.ValueMask = "0.0";
-            Ic13.MostraValore = true;
-            Ic13.MinVal = 0;
-            Ic13.Lim1 = 60;
-            Ic13.Lim2 = 80;
-            Ic13.MaxVal = 100;
-            Ic13.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-            Ic13.InizializzaIndicatore(this.buiStatCockpit, 630, 20, 280, "% D.o.D.");
-            Ic13.ImpostaValore((float)_stat.ProfonditaScaricaMedia());
-
-
-
-
-            Ic21 = new IndicatoreCruscotto();
-            Ic21.MinVal = 0;
-            Ic21.Lim1 = 5;
-            Ic21.Lim2 = 10;
-            Ic21.MaxVal = 100;
-            Ic21.LabelOffset = 40;
-            Ic21.InizializzaIndicatore(this.buiStatCockpit, 30, 300, 280, "% Tempo\nSbil.Celle");
-            double _fattoreSB = 0;
-            if (_stat.SecondiTotali > 0)
-            {
-                _fattoreSB = 100 * _stat.DurataSbilanciamento / _stat.SecondiTotali;
-
-            }
-            Ic21.ImpostaValore((float)_fattoreSB);
-
-            Ic22 = new IndicatoreCruscotto();
-            Ic22.MinVal = 0;
-            Ic22.Lim1 = 5;
-            Ic22.Lim2 = 10;
-            Ic22.MaxVal = 100;
-            Ic22.LabelOffset = 80;
-            Ic22.MostraValore = true;
-            Ic22.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-            Ic22.InizializzaIndicatore(this.buiStatCockpit, 330, 300, 280, "    % Scariche\nSovratemperatura");
-            if (_stat.NumeroScariche > 0)
-            {
-                _fattoreSB = 100 * _stat.NumeroScaricheSovraT / _stat.NumeroScariche;
-
-            }
-            Ic22.ImpostaValore((float)_fattoreSB);
-
-
-            Ic23 = new IndicatoreCruscotto();
-            Ic23.MinVal = 0;
-            Ic23.Lim1 = 5;
-            Ic23.Lim2 = 10;
-            Ic23.MaxVal = 100;
-            Ic23.LabelOffset = 80;
-            Ic23.MostraValore = true;
-            Ic23.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-            Ic23.InizializzaIndicatore(this.buiStatCockpit, 630, 300, 280, "    % Cariche\nSovratemperatura");
-            if (_stat.NumeroCariche > 0)
-            {
-                _fattoreSB = 100 *( _stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT) / _stat.NumeroCariche;
-
-            }
-            Ic23.ImpostaValore((float)_fattoreSB);
-
-
 
         }
 
@@ -5429,7 +5718,7 @@ namespace PannelloCharger
                     output = new string[][]
                     {
                          new string[]{"Num Ev.","IdTipo Ev.","Data/Ora Inizio", "Data/Ora Fine", "Durata",
-                                      "C° min", "C° max", "V Min", "V max", "I min", "I max",
+                                      "°C min", "°C max", "V Min", "V max", "I min", "I max",
                                       "Pres. El.", "Ah","Val. Ah", "Ah caricati", "Ah scaricati","KWh", "val KWh", "SoC","RF", "STOP","Prog","Num Brevi","Quota SoH" } /*add the values that you want inside a csv file. Mostly this function can be used in a foreach loop.*/
                     };
 
@@ -7291,11 +7580,24 @@ namespace PannelloCharger
             sfdImportDati.Filter = "SBF SPY-BATT Firmware File (*.sbf)|*.sbf|All files (*.*)|*.*";
             sfdImportDati.ShowDialog();
             txtFWFileSBFrd.Text = sfdImportDati.FileName;
+            bool _preview = CaricafileSBF();
         }
 
         private void btnFWFileSBFLoad_Click(object sender, EventArgs e)
         {
             CaricafileSBF();
+            PreparaTrasmissioneFW();
+            bool _esitocella = false;
+        
+            _esitocella = ((byte)FirmwareManager.MascheraStato.Blocco1HW & _sb.StatoFirmware.Stato) == (byte)FirmwareManager.MascheraStato.Blocco1HW;
+            if (_esitocella == true)
+            {
+                txtFWSBFArea.Text = "1";
+            }
+            else
+            {
+                txtFWSBFArea.Text = "2";
+            }
         }
 
         private void btnFwCaricaStato_Click(object sender, EventArgs e)
@@ -7560,6 +7862,21 @@ namespace PannelloCharger
         }
 
         private void lblStatNumCaricheComp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFSerCancellaMemoria_Click(object sender, EventArgs e)
+        {
+            CancellaMemoria(chkFSerMantieniCliente.Checked);
+        }
+
+        private void lblCelleP1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProgcCelleV1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -88,6 +88,15 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Versione Firmware non riconosciuta.
+        /// </summary>
+        internal static string strFirmwareNonValido {
+            get {
+                return ResourceManager.GetString("strFirmwareNonValido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Lun.
         /// </summary>
         internal static string strGiornoLun {

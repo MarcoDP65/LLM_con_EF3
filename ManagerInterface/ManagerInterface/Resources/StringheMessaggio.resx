@@ -234,4 +234,7 @@
   <data name="strVistaLunghiColIdProgramma" xml:space="preserve">
     <value>Conf</value>
   </data>
+  <data name="strFirmwareNonValido" xml:space="preserve">
+    <value>Versione Firmware non riconosciuta</value>
+  </data>
 </root>

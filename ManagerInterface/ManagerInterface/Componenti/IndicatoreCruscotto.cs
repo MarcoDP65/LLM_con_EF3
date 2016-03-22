@@ -180,14 +180,15 @@ namespace ChargerLogic
                 cruscotto.Frame.Add(_frame);
                 _frame.BackRenderer.CenterColor = Color.LightGray;
                 _frame.BackRenderer.EndColor = Color.DimGray;
+                //_frame.BackRenderer.CenterColor = Color.White;
+                //_frame.BackRenderer.EndColor = Color.WhiteSmoke;
+
                 _frame.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.None;
 
 
-                //  _frame.FrameImage = Image.FromFile("C:\\log\\trec.png");
-                // Stream s = this.GetType().Assembly.GetManifestResourceStream("PannelloCharger.Properties.Resources.trec.png");
-                // _frame.FrameImage = Image.FromFile("PannelloCharger.Properties.Resources.trec.png");
 
                 Image _tempImg = PannelloCharger.Properties.Resources.trec;
+                //Image _tempImg = PannelloCharger.Properties.Resources.cinquea;
 
 
                 _frame.FrameImage = _tempImg;
@@ -202,6 +203,7 @@ namespace ChargerLogic
                 bar.FillGradientType = NextUI.Renderer.RendererGradient.GradientType.DiagonalRight;
                 bar.ScaleBarSize = 4;
                 bar.FillColor = Color.DarkGray;
+
                 bar.StartValue = MinVal;
                 bar.EndValue = MaxVal;
                 bar.StartAngle = 30;
@@ -211,6 +213,7 @@ namespace ChargerLogic
                 bar.TickMajor.EnableGradient = false;
                 bar.TickMajor.EnableBorder = false;
                 bar.TickMajor.FillColor = Color.White;
+                //bar.TickMajor.FillColor = Color.Black;
                 bar.TickMajor.Height = size / 20; // 15;
                 bar.TickMajor.Width = 2;
                 bar.TickMajor.Type = TickBase.TickType.RoundedRect;
@@ -223,17 +226,27 @@ namespace ChargerLogic
                 bar.TickLabel.OffsetFromScale = size / 8; //35;
                 bar.TickLabel.LabelFont = new Font(FontFamily.GenericMonospace, FontSize() - 1, FontStyle.Bold);
                 bar.TickLabel.FontColor = Color.LightYellow;
-
+                //bar.TickLabel.FontColor = Color.DarkGray;
                 _frame.ScaleCollection.Add(bar);
 
-
+                double _textWidth;
                 if (Etichetta != "")
                 {
-                    int _labelX = _frame.Rect.Width / 2 - (FontSize() * Etichetta.Length) / 3 + LabelOffset;
-                    int _labelY = _frame.Rect.Height * 7 / 12;
+                  
+                    using (Bitmap tempImage = new Bitmap(400, 400))
+                    {
+                        SizeF stringSize = Graphics.FromImage(tempImage).MeasureString(Etichetta, bar.TickLabel.LabelFont);
+                        _textWidth = stringSize.Width;
+                    }
 
+
+
+                    int _labelX = (int)((_frame.Rect.Width / 2) - ( _textWidth /  2 )) + 8 ;
+                    int _labelY = _frame.Rect.Height * 7 / 12;
+   
 
                     FrameLabel _titleLabel = new FrameLabel(new Point(_labelX, _labelY), _frame);
+                   
                     _titleLabel.LabelText = Etichetta;
                     _titleLabel.LabelFont = new Font(FontFamily.GenericSansSerif, FontSize() + 2, FontStyle.Bold);
                    
@@ -271,17 +284,22 @@ namespace ChargerLogic
                 bar.Pointer.Add(pointer);
                 if (MostraValore)
                 {
-                    NumericalFrame nframe = new NumericalFrame(new Rectangle(_frame.Rect.Width / 2 - 50, _frame.Rect.Height - 80, 100, 30));
-                    nframe.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.Type1;
-                    nframe.FrameRenderer.FrameWidth = 1;
+                    NumericalFrame nframe = new NumericalFrame(new Rectangle(_frame.Rect.Width / 2 - 50, _frame.Rect.Height - 75,100, 25));
+                    nframe.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.Type3;
+                    nframe.FrameRenderer.FrameWidth = 0;
 
                     for (int i = 0; i < 6; i++)
                     {
                         DigitalPanel7Segment seg = new DigitalPanel7Segment(nframe);
                         //DigitalPanel14Segment seg = new DigitalPanel14Segment(nframe);
-                        seg.BackColor = Color.DarkSlateGray;
+                        seg.BackColor = Color.Black;
                         seg.FontThickness = 3;
+                        seg.BorderColor = Color.Black;
                         seg.MainColor = Color.Yellow;
+                        seg.EnableBorder = true;
+                        seg.EnableGlare = false;
+                        seg.EnableGradient = false;
+                        seg.BackOpacity = 0;
                         //seg.EnableGlare = true;
                         nframe.Indicator.Panels.Add(seg);
 

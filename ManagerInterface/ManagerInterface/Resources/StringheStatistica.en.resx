@@ -160,7 +160,7 @@
     <value>Voltage per cell</value>
   </data>
   <data name="Tipologia" xml:space="preserve">
-    <value>type charger</value>
+    <value>Charger Type</value>
   </data>
   <data name="Cicli" xml:space="preserve">
     <value>Cycles</value>
@@ -262,18 +262,78 @@
     <value>T Min D.</value>
   </data>
   <data name="TitAxTDelta" xml:space="preserve">
-    <value>Thermal Increase (C°)</value>
+    <value>Thermal Increase (°C)</value>
   </data>
   <data name="TitAxTmax" xml:space="preserve">
-    <value>Max Temperature (C°)</value>
+    <value>Max Temperature (°C)</value>
   </data>
   <data name="TitAxTmin" xml:space="preserve">
-    <value>Min Temperature (C°)</value>
+    <value>Min Temperature (°C)</value>
   </data>
   <data name="NumeroCicli" xml:space="preserve">
     <value>Cycles number</value>
   </data>
   <data name="PercCarica" xml:space="preserve">
     <value>% of charge</value>
+  </data>
+  <data name="GrAssenzaElTitolo" xml:space="preserve">
+    <value>Percentage of Electrolyte Absence (No. of Phases)</value>
+  </data>
+  <data name="GougeAssElr1" xml:space="preserve">
+    <value>% Absence</value>
+  </data>
+  <data name="GougeAssElr2" xml:space="preserve">
+    <value>Electrolyte</value>
+  </data>
+  <data name="GougeCIncr1" xml:space="preserve">
+    <value>% Partial</value>
+  </data>
+  <data name="GougeCIncr2" xml:space="preserve">
+    <value>Charge</value>
+  </data>
+  <data name="GougeOverTr1" xml:space="preserve">
+    <value>% Overtemp.</value>
+  </data>
+  <data name="GougeOverTr2" xml:space="preserve">
+    <value>Phases</value>
+  </data>
+  <data name="GougePauser1" xml:space="preserve">
+    <value>% Critical</value>
+  </data>
+  <data name="GougePauser2" xml:space="preserve">
+    <value>Pauses</value>
+  </data>
+  <data name="GougeSbilr1" xml:space="preserve">
+    <value>% Time</value>
+  </data>
+  <data name="GougeSbilr2" xml:space="preserve">
+    <value>Cell Unbal.</value>
+  </data>
+  <data name="GougeSOHr2" xml:space="preserve">
+    <value>% S.o.H.</value>
+  </data>
+  <data name="GougeDODr2" xml:space="preserve">
+    <value>% D.O.D.</value>
+  </data>
+  <data name="GougeSovrar2" xml:space="preserve">
+    <value>% Overdischarge</value>
+  </data>
+  <data name="GrSettTitoloAsseY" xml:space="preserve">
+    <value>% Charge</value>
+  </data>
+  <data name="GrSettserTvar" xml:space="preserve">
+    <value>Temp. Range</value>
+  </data>
+  <data name="GrSettserTmin" xml:space="preserve">
+    <value>Min Temp.</value>
+  </data>
+  <data name="GrSettserTmed" xml:space="preserve">
+    <value>Avg Temp.</value>
+  </data>
+  <data name="GrSettserTmax" xml:space="preserve">
+    <value>Max Temp.</value>
+  </data>
+  <data name="GrSettNotaPunto" xml:space="preserve">
+    <value>Cycle</value>
   </data>
 </root>

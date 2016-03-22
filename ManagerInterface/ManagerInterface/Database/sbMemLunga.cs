@@ -860,7 +860,15 @@ namespace MoriData
 
         public string strTempMin
         {
-            get { return FunzioniMR.StringaTemperatura(_sblm.TempMin); }
+            get
+            {
+                if (_sblm.TempMin > 110)
+                {
+                    return "N.D.";
+                }
+                else
+                 return FunzioniMR.StringaTemperatura(_sblm.TempMin);
+            }
 
         }
 
@@ -876,7 +884,16 @@ namespace MoriData
 
         public string strTempMax
         {
-            get { return FunzioniMR.StringaTemperatura(_sblm.TempMax); }
+            get
+            {
+                if (_sblm.TempMax > 110)
+                {
+                    return "N.D.";
+                }
+                else
+
+                    return FunzioniMR.StringaTemperatura(_sblm.TempMax);
+            }
 
         }
         
@@ -892,7 +909,21 @@ namespace MoriData
 
         public string strVmin
         {
-            get { return FunzioniMR.StringaTensione(_sblm.Vmin); }
+            get
+            {
+                switch(_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaTensione(_sblm.Vmin);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
         }
 
         public UInt32 Vmax
@@ -907,7 +938,22 @@ namespace MoriData
 
         public string strVmax
         {
-            get { return FunzioniMR.StringaTensione(_sblm.Vmax); }
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaTensione(_sblm.Vmax);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmax);
+            }
+
         }
 
 
@@ -928,15 +974,34 @@ namespace MoriData
         {
             get
             {
+                string _valore = "";
                 if (VersoScarica == elementiComuni.VersoCorrenti.Diretto || _sblm.TipoEvento == 0xF0)
                 {
-                    return FunzioniMR.StringaCorrenteOLV((short)_sblm.Amin);
+                    _valore = FunzioniMR.StringaCorrenteOLV((short)_sblm.Amin);
                 }
                 else
                 {
-                    return FunzioniMR.StringaCorrenteOLV((short)-_sblm.Amax);
+                    _valore = FunzioniMR.StringaCorrenteOLV((short)-_sblm.Amin);
                 }
+
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return _valore;
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+
             }
+
+
+
+
+
         }
 
         public string strAmax
@@ -947,14 +1012,28 @@ namespace MoriData
         {
             get
             {
+                string _valore = "";
                 if (VersoScarica == elementiComuni.VersoCorrenti.Diretto || _sblm.TipoEvento == 0xF0)
                 {
-                    return FunzioniMR.StringaCorrenteOLV((short)_sblm.Amax);
+                    _valore = FunzioniMR.StringaCorrenteOLV((short)_sblm.Amax);
                 }
                 else
                 {
-                    return FunzioniMR.StringaCorrenteOLV((short)-_sblm.Amin);
+                    _valore = FunzioniMR.StringaCorrenteOLV((short)-_sblm.Amin);
                 }
+
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return _valore;
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+
             }
         }
 
@@ -978,6 +1057,26 @@ namespace MoriData
             }
         }
 
+        public string strPresenzaElettrolita
+        {
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaPresenza(_sblm.PresenzaElettrolita);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+            }
+
+        }
+
+
         public int Ah
         {
             get { return _sblm.Ah; }
@@ -998,7 +1097,22 @@ namespace MoriData
 
         public string strAh
         {
-            get { return FunzioniMR.StringaCapacita(_sblm.Ah, DivisoreCorrente, DecimaliCorrente); }
+
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaCapacita(_sblm.Ah, DivisoreCorrente, DecimaliCorrente);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+
+            }
         }
 
         public float ValAh
@@ -1019,7 +1133,21 @@ namespace MoriData
 
         public string strAhCaricati
         {
-            get { return FunzioniMR.StringaCapacita(_sblm.AhCaricati, DivisoreCorrente, DecimaliCorrente); }
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaCapacita(_sblm.AhCaricati, DivisoreCorrente, DecimaliCorrente);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
         }
 
         public float ValAhCaricati
@@ -1039,7 +1167,22 @@ namespace MoriData
 
         public string strAhScaricati
         {
-            get { return FunzioniMR.StringaCapacita(_sblm.AhScaricati, DivisoreCorrente, DecimaliCorrente); }
+
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaCapacita(_sblm.AhScaricati, DivisoreCorrente, DecimaliCorrente);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
         }
 
         public float ValAhScaricati
@@ -1059,7 +1202,21 @@ namespace MoriData
 
         public string strKWh
         {
-            get { return FunzioniMR.StringaPotenza(_sblm.Wh,DivisorePotenza,DecimaliPotenza); }
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaPotenza(_sblm.Wh, DivisorePotenza, DecimaliPotenza);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
         }
 
         public float ValKWh
@@ -1079,7 +1236,21 @@ namespace MoriData
 
         public string strKWhCaricati
         {
-            get { return FunzioniMR.StringaPotenza(_sblm.WhCaricati, DivisorePotenza, DecimaliPotenza); }
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaPotenza(_sblm.WhCaricati, DivisorePotenza, DecimaliPotenza);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
         }
 
         public float ValKWhCaricati
@@ -1099,7 +1270,21 @@ namespace MoriData
 
         public string strKWhScaricati
         {
-            get { return FunzioniMR.StringaPotenza(_sblm.WhScaricati, DivisorePotenza, DecimaliPotenza); }
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaPotenza(_sblm.WhScaricati, DivisorePotenza, DecimaliPotenza);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
         }
 
         public float ValKWhScaricati
@@ -1120,7 +1305,21 @@ namespace MoriData
 
         public string strCondizioneStop
         {
-            get { return _sblm.CondizioneStop.ToString("X2"); }
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return _sblm.CondizioneStop.ToString("X2");
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
         }
 
         public byte FattoreCarica
@@ -1193,7 +1392,21 @@ namespace MoriData
 
         public string  strVMaxSbilanciamentoC
         {
-            get { return FunzioniMR.StringaTensioneCella( _sblm.VMaxSbilanciamentoC); }
+            get
+            {
+                switch (_sblm.TipoEvento)
+                {
+                    case 0xF0: // "Carica"
+                    case 0x0F: // "Scarica"
+                        return FunzioniMR.StringaTensioneCella(_sblm.VMaxSbilanciamentoC);
+
+                    case 0xAA: // "Pausa
+                        return "";
+                    default:
+                        return "";
+                }
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+            }
 
         }
 

@@ -521,6 +521,8 @@ namespace MoriData
 
                         case "1.10":
                         case "1.11":
+                        case "1.12":
+
                             return 4;
 
                         default:
@@ -562,6 +564,7 @@ namespace MoriData
 
                         case "1.10":
                         case "1.11":
+                        case "1.12":
                             return 8666;
 
                         default:

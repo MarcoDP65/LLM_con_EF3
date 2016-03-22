@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SQLite.Net;
 using SQLite.Net.Attributes;
+using SQLite.Net.Cipher;
 using SQLite.Net.Interop;
 using SQLite.Net.Platform.Win32;
 using System.IO;
@@ -11,6 +12,7 @@ using log4net;
 using log4net.Config;
 using ChargerLogic;
 using Utility;
+using PannelloCharger;
 
 namespace MoriData
 {
@@ -399,7 +401,7 @@ namespace MoriData
 
         public string strWhScaricati
         {
-            get { return FunzioniMR.StringaPotenza(_sbPar.WhScaricati); }
+            get { return FunzioniMR.StringaPotenza(_sbPar.WhScaricati,10); }
         }
 
 
@@ -415,7 +417,7 @@ namespace MoriData
 
         public string strWhCaricati
         {
-            get { return FunzioniMR.StringaPotenza((short)_sbPar.WhCaricati); }
+            get { return FunzioniMR.StringaPotenza(_sbPar.WhCaricati,10); }
         }
 
         public byte MemProgrammed
@@ -437,19 +439,19 @@ namespace MoriData
                 switch ( _sbPar.MemProgrammed )
                 {
                     case 0:
-                        _StatoPrg = "Programmazione NON ATTIVA";
+                        _StatoPrg = StringheComuni.StatoPrg00; //"Programmazione NON ATTIVA";
                         break;
                     case 1:
-                        _StatoPrg = "Programmazione ATTIVA; Registrazione NON ATTIVA";
+                        _StatoPrg = StringheComuni.StatoPrg01; //"Programmazione ATTIVA; Registrazione NON ATTIVA";
                         break;
                     case 2:
-                        _StatoPrg = "Programmazione ATTIVA; Registrazione ATTIVA";
+                        _StatoPrg = StringheComuni.StatoPrg02; //"Programmazione ATTIVA; Registrazione ATTIVA";
                         break;
                     case 3:
-                        _StatoPrg = "Calibrazione ATTIVA";
+                        _StatoPrg = StringheComuni.StatoPrg03; //"Calibrazione ATTIVA";
                         break;
                     default:
-                        _StatoPrg = "Stato NON DEFINITO (" + _sbPar.MemProgrammed.ToString("X2") + ")" ;
+                        _StatoPrg = StringheComuni.StatoPrgND + " " + _sbPar.MemProgrammed.ToString("X2"); //"Stato NON DEFINITO (" + _sbPar.MemProgrammed.ToString("X2") + ")" ;
                         break;
                 }
               

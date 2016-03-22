@@ -138,7 +138,7 @@ namespace PannelloCharger
                     }
                 case elementiComuni.tipoMessaggio.DumpMemoria:
                     {
-                        _stepBg.Titolo = "Caricamento Memoria Dati";
+                        _stepBg.Titolo = StringheComuni.AvTitolo01Dati;  // "Caricamento Memoria Dati";
                         _stepBg.Step = -1;
                         // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
                         sbWorker.ReportProgress(0, _stepBg);
@@ -148,7 +148,7 @@ namespace PannelloCharger
                     }
                 case elementiComuni.tipoMessaggio.MemLunga:
                     {
-                        _stepBg.Titolo = "Caricamento Eventi Lunghi";
+                        _stepBg.Titolo = StringheComuni.AvTitolo02Lunghi;  // "Caricamento Eventi Lunghi";
                         _stepBg.Step = -1;
                         // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
                         sbWorker.ReportProgress(0, _stepBg);
@@ -159,7 +159,7 @@ namespace PannelloCharger
                     }
                 case elementiComuni.tipoMessaggio.MemBreve:
                     {
-                        _stepBg.Titolo = "Caricamento Eventi Brevi";
+                        _stepBg.Titolo = StringheComuni.AvTitolo03Brevi;  // "Caricamento Eventi Brevi";
                         _stepBg.Step = -1;
 
                         _stepEv = new ProgressChangedEventArgs(0, _stepBg);
@@ -221,7 +221,7 @@ namespace PannelloCharger
                     }
                 case elementiComuni.tipoMessaggio.AggiornamentoFirmware:
                     {
-                        _stepBg.Titolo = "Aggiornamento Firmware";
+                        _stepBg.Titolo = StringheComuni.AvTitolo04Firmware;  // "Aggiornamento Firmware";
                         _stepBg.Step = -1;
                         // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
                         sbWorker.ReportProgress(0, _stepBg);
@@ -282,11 +282,11 @@ namespace PannelloCharger
                                 TimeSpan _durata = _firstRecord.Subtract(_startCompute);
                                 if (_statoE == null)
                                 {
-                                    _messaggio2 = "Evento non formato - tempo: " + _durata.TotalSeconds.ToString("0.000");
+                                    _messaggio2 = "Evento non formato - tempo: " + _durata.TotalSeconds.ToString("0.00");
                                 }
                                 else
                                 {
-                                    _messaggio2 = "Primo Evento: step " + _statoE.Step.ToString() + " - tempo: " + _durata.TotalSeconds.ToString("0.000");
+                                    _messaggio2 = "Primo Evento: step " + _statoE.Step.ToString() + " - tempo: " + _durata.TotalSeconds.ToString("0.00");
                                     _firstRecordReceived = true;
                                 }
                                 lblMsg02.Text = _messaggio2;
@@ -310,7 +310,7 @@ namespace PannelloCharger
 
                                 if (_statoE.TipoDati == elementiComuni.tipoMessaggio.MemLunga)
                                 {
-                                    _messaggio1 = "Step: " + _statoE.Step.ToString() + " di " + _statoE.Eventi.ToString() + " - tempo: " + _tTrascorso.TotalSeconds.ToString("0.000") + " s di " + _previsto.ToString("0.000") + " s";
+                                    _messaggio1 = "Step: " + _statoE.Step.ToString() + " di " + _statoE.Eventi.ToString() + " - tempo: " + _tTrascorso.TotalSeconds.ToString("0.00") + " s di " + _previsto.ToString("0.000") + " s";
                                 }
                                 else
                                 {
@@ -335,7 +335,7 @@ namespace PannelloCharger
                             TimeSpan _tTrascorso = DateTime.Now.Subtract(_startCompute);
                             if (_statoE == null)
                             {
-                                _messaggio1 = "Evento non formato - tempo: " + _tTrascorso.TotalSeconds.ToString("0.000");
+                                _messaggio1 = "Evento non formato - tempo: " + _tTrascorso.TotalSeconds.ToString("0.00");
                             }
                             else
                             {
@@ -500,6 +500,10 @@ namespace PannelloCharger
                         //lblAvanzmentoL.Text = "Task Completato";
                         lblMsg01.Text = _messaggio1;
                         lblMessaggioAvanzamento.Text = "Operazione Completata.";
+
+                        // Task Completato aspetto 5 secondi poi chiudo
+
+                        this.Close();
 
                     }
                     else

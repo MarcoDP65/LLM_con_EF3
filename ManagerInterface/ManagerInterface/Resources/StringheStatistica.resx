@@ -288,4 +288,79 @@
   <data name="PercCarica" xml:space="preserve">
     <value>% Carica</value>
   </data>
+  <data name="GrAssenzaElChiave" xml:space="preserve">
+    <value>Ass.El.</value>
+  </data>
+  <data name="GrAssenzaElTitolo" xml:space="preserve">
+    <value>Percentuale Assenza Elettrolita sul Numero Fasi</value>
+  </data>
+  <data name="GougeSOH" xml:space="preserve">
+    <value>% S.o.H.</value>
+  </data>
+  <data name="GougeSOHr1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GougeSOHr2" xml:space="preserve">
+    <value>% S.o.H.</value>
+  </data>
+  <data name="GougeAssElr1" xml:space="preserve">
+    <value>% Assenza</value>
+  </data>
+  <data name="GougeAssElr2" xml:space="preserve">
+    <value>Elettrolita</value>
+  </data>
+  <data name="GougeCIncr1" xml:space="preserve">
+    <value>% Cariche</value>
+  </data>
+  <data name="GougeCIncr2" xml:space="preserve">
+    <value>Parziali</value>
+  </data>
+  <data name="GougeDODr1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GougeOverTr1" xml:space="preserve">
+    <value>% Fasi in</value>
+  </data>
+  <data name="GougeOverTr2" xml:space="preserve">
+    <value>Sovratemp.</value>
+  </data>
+  <data name="GougePauser1" xml:space="preserve">
+    <value>% Pause</value>
+  </data>
+  <data name="GougePauser2" xml:space="preserve">
+    <value>Critiche</value>
+  </data>
+  <data name="GougeSbilr1" xml:space="preserve">
+    <value>% Tempo</value>
+  </data>
+  <data name="GougeSbilr2" xml:space="preserve">
+    <value>Sbil.Celle</value>
+  </data>
+  <data name="GougeSovrar1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GougeSovrar2" xml:space="preserve">
+    <value>% Sovrascariche</value>
+  </data>
+  <data name="GougeDODr2" xml:space="preserve">
+    <value>% D.O.D.</value>
+  </data>
+  <data name="GrSettNotaPunto" xml:space="preserve">
+    <value>Ciclo</value>
+  </data>
+  <data name="GrSettserTmax" xml:space="preserve">
+    <value>Temp Max</value>
+  </data>
+  <data name="GrSettserTmed" xml:space="preserve">
+    <value>Temp Media</value>
+  </data>
+  <data name="GrSettserTmin" xml:space="preserve">
+    <value>Temp Min</value>
+  </data>
+  <data name="GrSettserTvar" xml:space="preserve">
+    <value>Range Temp</value>
+  </data>
+  <data name="GrSettTitoloAsseY" xml:space="preserve">
+    <value>% Carica</value>
+  </data>
 </root>

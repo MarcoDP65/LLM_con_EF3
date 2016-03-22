@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using SQLite.Net;
 using SQLite.Net.Attributes;
+using SQLite.Net.Cipher;
 using SQLite.Net.Interop;
 using SQLite.Net.Platform.Win32;
 using System.IO;
 using log4net;
 using log4net.Config;
+using SQLite.Net.Cipher.Model;
 
 namespace MoriData
 {
@@ -24,6 +26,7 @@ namespace MoriData
         public string Password { get; set; }
         [MaxLength(255)]
         public string NomeUtente { get; set; }
+        [Secure]
         public int Livello { get; set; }
         public int Lingua { get; set; }
         public int Attivo { get; set; }

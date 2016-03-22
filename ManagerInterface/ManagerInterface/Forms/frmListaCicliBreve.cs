@@ -147,6 +147,7 @@ namespace PannelloCharger
                 colIdBreve.Width = 60;
                 colIdBreve.HeaderTextAlign = HorizontalAlignment.Left;
                 colIdBreve.TextAlign = HorizontalAlignment.Left;
+                colIdBreve.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colIdBreve);
 
                 BrightIdeasSoftware.OLVColumn colDataOra = new BrightIdeasSoftware.OLVColumn();
@@ -155,6 +156,7 @@ namespace PannelloCharger
                 colDataOra.Width = 100;
                 colDataOra.HeaderTextAlign = HorizontalAlignment.Left;
                 colDataOra.TextAlign = HorizontalAlignment.Right;
+                colDataOra.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colDataOra);
 
                 BrightIdeasSoftware.OLVColumn colVbat = new BrightIdeasSoftware.OLVColumn();
@@ -163,6 +165,7 @@ namespace PannelloCharger
                 colVbat.Width = 60;
                 colVbat.HeaderTextAlign = HorizontalAlignment.Center;
                 colVbat.TextAlign = HorizontalAlignment.Right;
+                colVbat.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colVbat);
 
                 //CicloBreve.ValoriIntermedi.strTensioniCellaAssolute.Vbatt
@@ -173,6 +176,7 @@ namespace PannelloCharger
                 colV3.HeaderTextAlign = HorizontalAlignment.Center;
                 colV3.TextAlign = HorizontalAlignment.Right;
                 colV3.IsVisible = AttivaIntermedi[3]; 
+                colV3.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV3);
 
                 BrightIdeasSoftware.OLVColumn colV2 = new BrightIdeasSoftware.OLVColumn();
@@ -182,6 +186,7 @@ namespace PannelloCharger
                 colV2.HeaderTextAlign = HorizontalAlignment.Center;
                 colV2.TextAlign = HorizontalAlignment.Right;
                 colV2.IsVisible = AttivaIntermedi[2]; 
+                colV2.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV2);
 
                 BrightIdeasSoftware.OLVColumn colV1 = new BrightIdeasSoftware.OLVColumn();
@@ -191,6 +196,7 @@ namespace PannelloCharger
                 colV1.HeaderTextAlign = HorizontalAlignment.Center;
                 colV1.TextAlign = HorizontalAlignment.Right;
                 colV1.IsVisible = AttivaIntermedi[1]; 
+                colV1.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV1); 
                 
                 
@@ -202,6 +208,7 @@ namespace PannelloCharger
                 colVbatCAss.Width = 60;
                 colVbatCAss.HeaderTextAlign = HorizontalAlignment.Center;
                 colVbatCAss.TextAlign = HorizontalAlignment.Right;
+                colVbatCAss.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colVbatCAss);
 
                 
@@ -212,6 +219,7 @@ namespace PannelloCharger
                 colV3CAss.HeaderTextAlign = HorizontalAlignment.Center;
                 colV3CAss.TextAlign = HorizontalAlignment.Right;
                 colV3CAss.IsVisible = AttivaIntermedi[3];
+                colV3CAss.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV3CAss);
 
 
@@ -223,6 +231,7 @@ namespace PannelloCharger
                 colV2CAss.HeaderTextAlign = HorizontalAlignment.Center;
                 colV2CAss.TextAlign = HorizontalAlignment.Right;
                 colV2CAss.IsVisible = AttivaIntermedi[2]; 
+                colV2CAss.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV2CAss);
 
 
@@ -233,6 +242,7 @@ namespace PannelloCharger
                 colV1CAss.HeaderTextAlign = HorizontalAlignment.Center;
                 colV1CAss.TextAlign = HorizontalAlignment.Right;
                 colV1CAss.IsVisible = AttivaIntermedi[1]; 
+                colV1CAss.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV1CAss);
 
                 // Tensioni Cella Relative
@@ -243,6 +253,7 @@ namespace PannelloCharger
                 colVbatCRel.Width = 80;
                 colVbatCRel.HeaderTextAlign = HorizontalAlignment.Center;
                 colVbatCRel.TextAlign = HorizontalAlignment.Right;
+                colVbatCRel.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colVbatCRel);
 
                 BrightIdeasSoftware.OLVColumn colV3CRel = new BrightIdeasSoftware.OLVColumn();
@@ -253,6 +264,7 @@ namespace PannelloCharger
                 colV3CRel.HeaderTextAlign = HorizontalAlignment.Center;
                 colV3CRel.TextAlign = HorizontalAlignment.Right;
                 colV3CRel.IsVisible = AttivaIntermedi[3]; 
+                colV3CRel.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV3CRel);
 
                 BrightIdeasSoftware.OLVColumn colV2CRel = new BrightIdeasSoftware.OLVColumn();
@@ -261,7 +273,8 @@ namespace PannelloCharger
                 colV2CRel.Width = 60;
                 colV2CRel.HeaderTextAlign = HorizontalAlignment.Center;
                 colV2CRel.TextAlign = HorizontalAlignment.Right;
-                colV2CRel.IsVisible = AttivaIntermedi[2]; 
+                colV2CRel.IsVisible = AttivaIntermedi[2];
+                colV2CRel.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV2CRel);
 
 
@@ -272,6 +285,7 @@ namespace PannelloCharger
                 colV1CRel.HeaderTextAlign = HorizontalAlignment.Center;
                 colV1CRel.TextAlign = HorizontalAlignment.Right;
                 colV1CRel.IsVisible = AttivaIntermedi[1]; 
+                colV1CRel.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colV1CRel);
 
 
@@ -282,6 +296,7 @@ namespace PannelloCharger
                 colImed.Width = 60;
                 colImed.HeaderTextAlign = HorizontalAlignment.Center;
                 colImed.TextAlign = HorizontalAlignment.Right;
+                colImed.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colImed);
 
 
@@ -291,6 +306,7 @@ namespace PannelloCharger
                 colImin.Width = 60;
                 colImin.HeaderTextAlign = HorizontalAlignment.Center;
                 colImin.TextAlign = HorizontalAlignment.Right;
+                colImin.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colImin);
                 _idxAmin = colImin.Index;
 
@@ -300,15 +316,17 @@ namespace PannelloCharger
                 colImax.Width = 60;
                 colImax.HeaderTextAlign = HorizontalAlignment.Center;
                 colImax.TextAlign = HorizontalAlignment.Right;
+                colImax.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colImax);
                 _idxAmax = colImax.Index;
 
                 BrightIdeasSoftware.OLVColumn colTemp = new BrightIdeasSoftware.OLVColumn();
-                colTemp.Text = "C°";
+                colTemp.Text = "°C";
                 colTemp.AspectName = "strTemp";
                 colTemp.Width = 60;
                 colTemp.HeaderTextAlign = HorizontalAlignment.Center;
                 colTemp.TextAlign = HorizontalAlignment.Right;
+                colTemp.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colTemp);
 
                 BrightIdeasSoftware.OLVColumn colElettrolita = new BrightIdeasSoftware.OLVColumn();
@@ -322,6 +340,7 @@ namespace PannelloCharger
                 colElettrolita.Width = 80;
                 colElettrolita.HeaderTextAlign = HorizontalAlignment.Center;
                 colElettrolita.TextAlign = HorizontalAlignment.Right;
+                colElettrolita.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colElettrolita);
 
                 BrightIdeasSoftware.OLVColumn colVback = new BrightIdeasSoftware.OLVColumn();
@@ -338,6 +357,7 @@ namespace PannelloCharger
                 colFiller.FillsFreeSpace = true;
                 colFiller.HeaderTextAlign = HorizontalAlignment.Center;
                 colFiller.TextAlign = HorizontalAlignment.Right;
+                colFiller.Sortable = false;
                 flvwCicliBrevi.AllColumns.Add(colFiller);           
 
 
@@ -872,7 +892,7 @@ namespace PannelloCharger
                 Log.Debug("GraficoCiclo: fine serie inizio assi");
                 if (TempoRelativo == true)
                 {
-                    string _titoloInizio = "Inizio Fase: ";
+                    string _titoloInizio = StringheStatistica.InizioFase + ": ";//"Inizio Fase: ";
                     _titoloInizio += CicloLungo.DataOraStart;
                     OxyPlot.Axes.TimeSpanAxis dtAxisTens = new OxyPlot.Axes.TimeSpanAxis
                     {
@@ -1268,7 +1288,7 @@ namespace PannelloCharger
 
                 // Tensione Sezione 2
                 OxyPlot.Series.LineSeries serTensSez2 = new OxyPlot.Series.LineSeries();
-                serTensSez2.Title = StringheStatistica.Tensione + " / " + StringheStatistica.Sezione + " 2";
+                serTensSez2.Title = StringheStatistica.Tensione + " " + StringheStatistica.Sezione + " 2";
                 if (TempoRelativo == true)
                 {
                     serTensSez2.DataFieldX = "TimeLapse";
@@ -1286,7 +1306,7 @@ namespace PannelloCharger
 
                 // Tensione Sezione 3
                 OxyPlot.Series.LineSeries serTensSez3 = new OxyPlot.Series.LineSeries();
-                serTensSez3.Title = StringheStatistica.Tensione + " / " + StringheStatistica.Sezione + " 3";
+                serTensSez3.Title = StringheStatistica.Tensione + " " + StringheStatistica.Sezione + " 3";
                 if (TempoRelativo == true)
                 {
                     serTensSez3.DataFieldX = "TimeLapse";
@@ -1304,7 +1324,7 @@ namespace PannelloCharger
 
                 // Tensione Sezione 4
                 OxyPlot.Series.LineSeries serTensSez4 = new OxyPlot.Series.LineSeries();
-                serTensSez4.Title = StringheStatistica.Tensione + " / " + StringheStatistica.Sezione + " 4";
+                serTensSez4.Title = StringheStatistica.Tensione + " " + StringheStatistica.Sezione + " 4";
                 if (TempoRelativo == true)
                 {
                     serTensSez4.DataFieldX = "TimeLapse";

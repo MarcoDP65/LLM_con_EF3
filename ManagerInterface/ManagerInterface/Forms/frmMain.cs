@@ -251,29 +251,9 @@ namespace PannelloCharger
                 }
                 else
                 {
-                    DialogResult risposta = MessageBox.Show("Nessun dispositivo collegato ", "LADE LIGHT", MessageBoxButtons.OK);
+                    DialogResult risposta = MessageBox.Show(StringheComuni.NoDevice, "LADE LIGHT", MessageBoxButtons.OK);
                 }
 
-                
-/*                
-                if (!varGlobali.serialeSpyBatt.IsOpen)
-                    varGlobali.apriSpyBat();
-
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form.GetType() == typeof(frmSpyBat))
-                    {
-                        form.Activate();
-                        return;
-                    }
-                }
-
-                frmSpyBat sbCorrente = new frmSpyBat();
-                sbCorrente.MdiParent = this;
-                sbCorrente.StartPosition = FormStartPosition.CenterParent;
-                sbCorrente.Show();
-
-                */
 
             }
             catch (Exception Ex)
@@ -299,7 +279,7 @@ namespace PannelloCharger
                 {
                     if (Dispositivi.PorteSpyBatt > 0)
                     {
-                        DialogResult risposta = MessageBox.Show("Trovato dispositivo SPY-BATT collegato alla porta " + Dispositivi.PortaSpyBatt + "\n Apro il collegamento ? ", "SPY-BATT", MessageBoxButtons.YesNo);
+                        DialogResult risposta = MessageBox.Show( StringheComuni.TrovatoDispositivo + " SPY-BATT "+ StringheComuni.Collegato +" " + Dispositivi.PortaSpyBatt + "\n " + StringheComuni.AproCollegamento +" ? ", "SPY-BATT", MessageBoxButtons.YesNo);
 
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
                         {
@@ -327,7 +307,7 @@ namespace PannelloCharger
                 }
                 else
                 {
-                    DialogResult risposta = MessageBox.Show("Nessun dispositivo collegato ", "LADE LIGHT", MessageBoxButtons.OK);
+                    DialogResult risposta = MessageBox.Show(StringheComuni.NoDevice, "LADE LIGHT", MessageBoxButtons.OK);
                 }
             }
             catch (Exception Ex)
@@ -531,7 +511,7 @@ namespace PannelloCharger
                 }
                 else
                 {
-                    DialogResult risposta = MessageBox.Show("Nessun dispositivo collegato ", "LADE LIGHT", MessageBoxButtons.OK);
+                    DialogResult risposta = MessageBox.Show(StringheComuni.NoDevice, "LADE LIGHT", MessageBoxButtons.OK);
                 }
 
             }

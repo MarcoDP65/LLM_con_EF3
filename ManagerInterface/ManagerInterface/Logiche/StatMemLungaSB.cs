@@ -18,6 +18,7 @@ namespace ChargerLogic
         public System.Collections.Generic.List<sbMemLunga> CicliMemoriaLunga = new System.Collections.Generic.List<sbMemLunga>();
         public System.Collections.Generic.List<sbProgrammaRicarica> Programmazioni = new System.Collections.Generic.List<sbProgrammaRicarica>();
         public System.Collections.Generic.List<_StatMemLungaSB> CicliStatMemLunga = new System.Collections.Generic.List<_StatMemLungaSB>();
+        public System.Collections.Generic.List<_StatMemLungaSB> MacrofasiScarica = new System.Collections.Generic.List<_StatMemLungaSB>();
         public System.Collections.Generic.List<_StatCicloSBPeriodo> CicliStatPeriodo = new System.Collections.Generic.List<_StatCicloSBPeriodo>();
         public System.Collections.Generic.List<_sbSoglie> SoglieStatSys = new System.Collections.Generic.List<_sbSoglie>();
         public System.Collections.Generic.List<SettimanaMR> SettimanePresenti = new System.Collections.Generic.List<SettimanaMR>();
@@ -43,6 +44,10 @@ namespace ChargerLogic
         int _orePausaDODFascia46;
         int _orePausaDODFascia24;
         int _orePausaDODFascia02;
+
+        int _macroScariche;
+        int _totDodScariche;
+
 
 
 
@@ -85,7 +90,13 @@ namespace ChargerLogic
         private double _EnScaricataNorm = 0;
         private int _totaleScaricato;
         private double _maxSbil;
-        
+
+        private int _numFasiAttive = 0;
+        private int _mancanzaElFasiAttive = 0;
+        private int _numMacrofasiScarica = 0;
+        private int _macroSovrascariche = 0;
+
+
 
         public StatMemLungaSB()
         {
@@ -94,6 +105,7 @@ namespace ChargerLogic
                 CicliMemoriaLunga.Clear();
                 CicliStatMemLunga.Clear();
                 CicliStatPeriodo.Clear();
+                MacrofasiScarica.Clear();
                 SettimanePresenti.Clear();
                 azzeraValori();
 
@@ -112,6 +124,7 @@ namespace ChargerLogic
                 CicliMemoriaLunga.Clear();
                 CicliStatMemLunga.Clear();
                 CicliStatPeriodo.Clear();
+                MacrofasiScarica.Clear();
                 SettimanePresenti.Clear();
                 azzeraValori();
 
@@ -240,6 +253,13 @@ namespace ChargerLogic
             _numScaricaOver = 0;
             _numCaricaCOver = 0;
             _numCaricaPOver = 0;
+            _numFasiAttive = 0;
+            _mancanzaElFasiAttive = 0;
+            _numMacrofasiScarica = 0;
+            _macroScariche = 0;
+            _totDodScariche = 0;
+            _macroSovrascariche = 0;
+
 
             DatiCorrenti = new DatiEstrazione();
 
@@ -260,6 +280,7 @@ namespace ChargerLogic
             try
             {
                 CicliStatMemLunga.Clear();
+                MacrofasiScarica.Clear();
                 SettimanePresenti.Clear();
                 DateTime _tempDT;
 
@@ -273,6 +294,7 @@ namespace ChargerLogic
                 _tmpCMemoriaLunga = CicliMemoriaLunga.OrderBy(x => x.IdMemoriaLunga).ToList();
                 HashSet<string> _listaSett = new HashSet<string>();
                 byte _statoCaricaPrec = 100 ;
+                _StatMemLungaSB valMacroScarica = new _StatMemLungaSB();
 
 
                 foreach (sbMemLunga ciclo in _tmpCMemoriaLunga)
@@ -298,6 +320,7 @@ namespace ChargerLogic
                     // Inizializzo comunque deta e ora dell'interruzione per evitare errori di compilazione
                     DataOraBreve = ciclo.DataOraFine;
                     dtDataOraBreve = ciclo.dtDataOraFine;
+
                     //Log.Debug("Ciclo n° " + valCiclo.IdMemoriaLunga.ToString() + " IN ANALISI BASE ");
                     if (AttivaPeriodo != true)
                     {
@@ -342,9 +365,13 @@ namespace ChargerLogic
                     switch (valCiclo.TipoEvento)
                     {
                         case (byte)SerialMessage.TipoCiclo.Carica:
+                            _numFasiAttive += 1;
                             _numCicliEff += 1;
                             _numCicliTot += 1;
                             _numCariche += 1;
+                            //Controllo la presenza elettrolita
+                            if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
+
                             // Verifico se esiste una fase di equalizzazione
 
                             // Creo una lista brevi ordinata
@@ -355,7 +382,7 @@ namespace ChargerLogic
                             //Cerco il primo breve a corrente 0
                             foreach (sbMemBreve _tmpBreve in _tmpCMemoriaBreve)
                             {
-                                if (_tmpBreve.Amed < 10 & _tmpBreve.Amed > -10)
+                                if (_tmpBreve.Amed < 15 & _tmpBreve.Amed > -15)
                                 {
 
                                     // trovato il primo breve
@@ -369,7 +396,7 @@ namespace ChargerLogic
                                         for (int _idxEqual = 0; _idxEqual < 6; _idxEqual++)
                                         {
                                             sbMemBreve _tmpBreveZero = _tmpCMemoriaBreve.ElementAt(_idxEqual + _posPrimo);
-                                            if ((_tmpBreve.Amed > 10 | _tmpBreve.Amed < -10))
+                                            if ((_tmpBreve.Amed > 15 | _tmpBreve.Amed < -15))
                                             {
                                                 _trovatoEqual = false;
                                                 break;
@@ -441,14 +468,22 @@ namespace ChargerLogic
                             valCiclo.StatoCaricaIniziale = _statoCaricaPrec;
                             _statoCaricaPrec = ciclo.StatoCarica;
                             _kWhCaricati += valCiclo.Wh;
-
+                            _macroScariche += 1;  //Ogni carica chiude una macroscarica
+                            _totDodScariche += valCiclo.StatoCaricaIniziale; //Determino la profondità di scarica dal livello di carica all'inizio della carica
+                            if (valCiclo.StatoCaricaIniziale < 20 )  _macroSovrascariche += 1;
                             //_totaleScaricato += (valCiclo.StatoCaricaIniziale - valCiclo.StatoCarica);
+
+                                // ad ogni carica creo la relativa MacroScarica con profindità pari all'inizio prrecedente
+
 
                             break;
                         case (byte)SerialMessage.TipoCiclo.Scarica:
                             double _tmed;
+                            _numFasiAttive += 1;
                             _numCicliTot += 1;
                             _numScariche += 1;
+                            if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
+
                             if (valCiclo.StatoCarica <= _profonditaDoD) _numSovraScariche += 1;
                             _kWhtot += valCiclo.Wh;
                             //TODO: Risistemare con AH caricati e scaricati
@@ -853,6 +888,44 @@ namespace ChargerLogic
             return _valmedio;
         }
 
+        public float ProfonditaMacroScaricaMedia()
+        {
+
+            float _valmedio = 0;
+            if (_macroScariche < 1) _valmedio = 0;
+            else
+            {
+                _valmedio = (float)(100 - (_totDodScariche / _macroScariche));
+            }
+
+            return _valmedio;
+        }
+
+        public float MacroScaricheCritiche()
+        {
+
+            float _valmedio = 0;
+            if (_macroScariche < 1) _valmedio = 0;
+            else
+            {
+                _valmedio = (float)((_macroSovrascariche / _macroScariche));
+            }
+
+            return _valmedio;
+        }
+
+        public float CaricheParziali()
+        {
+
+            float _valmedio = 0;
+            if (_numCariche < 1) _valmedio = 0;
+            else
+            {
+                _valmedio = (float)((_numCaricheParziali / _numCariche));
+            }
+
+            return _valmedio;
+        }
 
         public double Etot()
         {
@@ -971,7 +1044,15 @@ namespace ChargerLogic
         }
 
 
+        public int NumeroFasiAttive
+        {
+            get { return _numFasiAttive; }
+        }
 
+        public int NumeroFasiMancanzaElettrolita
+        {
+            get { return _mancanzaElFasiAttive; }
+        }
 
 
         #endregion PARAMETRI
@@ -1005,7 +1086,8 @@ namespace ChargerLogic
                 {
                     _datiComp.arrayValori[_passo] = 0;
                     _tempValore = _passo * 10;
-                    _etichetta = _tempValore.ToString() + " ÷ ";
+                    if (_tempValore > 0) _tempValore += 1;
+                     _etichetta = _tempValore.ToString() + " ÷ ";
                     _tempValore = (_passo+1) * 10;
                     _etichetta = _etichetta +_tempValore.ToString() + "%";
 
@@ -1051,7 +1133,44 @@ namespace ChargerLogic
             }
         }
 
-        public DatiEstrazione CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo TipoInAnalisi,int Modocarica, int MinStep, int NumStep, string Titolo)
+        public DatiEstrazione CalcolaArrayGraficoMancanzaEl(string Titolo)
+        {
+            DatiEstrazione _datiComp = new DatiEstrazione();
+            try
+            {
+                //int _passo;
+                //int _passi = NumStep + 1;
+                //int _tempValore;
+
+                _datiComp.Titolo = Titolo;
+                _datiComp.TotLetture = 0;
+                _datiComp.MinX = 0;
+                _datiComp.MaxX = 0;
+                //_datiComp.NumStep = 0;
+                _datiComp.TitoloAsseX = StringheStatistica.GrDurCAsseX;
+                _datiComp.TitoloAsseY = StringheStatistica.GrDurCAsseY;
+
+                //inizializzo gli array
+
+                _datiComp.NumEvTotali = _numFasiAttive;
+                _datiComp.NumEvOK = _numFasiAttive - _mancanzaElFasiAttive;
+                _datiComp.NumEvErrore = _mancanzaElFasiAttive;
+
+
+                _datiComp.DatiValidi = true;
+
+
+                return _datiComp;
+
+            }
+            catch
+            {
+                return _datiComp;
+
+            }
+        }
+
+        public DatiEstrazione CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo TipoInAnalisi, int Modocarica, int MinStep, int NumStep, string Titolo)
         {
             DatiEstrazione _datiComp = new DatiEstrazione();
             try
@@ -1080,8 +1199,8 @@ namespace ChargerLogic
                     _datiComp.arrayValori[_passo] = 0;
                     _tempValore = _passo * MinStep;
 
-                    _etichetta = string.Format("{0:00}:{1:00}", (_tempValore / 60) , _tempValore % 60);
-                   // _etichetta = _tempValore.ToString() ;
+                    _etichetta = string.Format("{0:00}:{1:00}", (_tempValore / 60), _tempValore % 60);
+                    // _etichetta = _tempValore.ToString() ;
 
 
                     _datiComp.arrayLabel[_passo] = _etichetta;
@@ -1271,7 +1390,7 @@ namespace ChargerLogic
                // _datiComp.MaxX = MaxTemp;
                 _datiComp.NumStep = _passi;
 
-                _datiComp.TitoloAsseY = "% Carica";
+                _datiComp.TitoloAsseY = StringheStatistica.GrSettTitoloAsseY;
 
                 //inizializzo gli array
                 _datiComp.DatiPeriodo.Clear();
@@ -1354,6 +1473,7 @@ namespace ChargerLogic
         public double deltaVmax { get; set; }
 
         public int ModoCarica { get; set; } // 1 Completa, 0 Parziale , -1 tutto 
+        public int LivelloScarica { get; set; } // da fasce scarica ... 0 0/20 1 21/40.... 5 oltre 80% --> sovrascarica
         public bool PeriodoValido { get; set; }
 
 
@@ -1438,6 +1558,12 @@ namespace ChargerLogic
         public int[] arrayValori;
         public int[] arrayIntervalli;
         public string[] arrayLabel;
+
+        // per diagrammi torta
+        public int NumEvTotali { get; set; }
+        public int NumEvErrore { get; set; }
+        public int NumEvOK { get; set; }
+
         public List<_StatCicloSBPeriodo> DatiPeriodo = new List<_StatCicloSBPeriodo>();
 
 

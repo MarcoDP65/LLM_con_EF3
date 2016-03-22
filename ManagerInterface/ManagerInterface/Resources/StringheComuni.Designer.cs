@@ -61,11 +61,128 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Apro il collegamento.
+        /// </summary>
+        internal static string AproCollegamento {
+            get {
+                return ResourceManager.GetString("AproCollegamento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Caricamento Memoria Dati.
+        /// </summary>
+        internal static string AvTitolo01Dati {
+            get {
+                return ResourceManager.GetString("AvTitolo01Dati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Caricamento Riepilogo Fasi.
+        /// </summary>
+        internal static string AvTitolo02Lunghi {
+            get {
+                return ResourceManager.GetString("AvTitolo02Lunghi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Caricamento Dettaglio Fasi.
+        /// </summary>
+        internal static string AvTitolo03Brevi {
+            get {
+                return ResourceManager.GetString("AvTitolo03Brevi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Aggiornamento Firmware.
+        /// </summary>
+        internal static string AvTitolo04Firmware {
+            get {
+                return ResourceManager.GetString("AvTitolo04Firmware", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Cancellazione Memoria.
+        /// </summary>
+        internal static string CancellaMemoria {
+            get {
+                return ResourceManager.GetString("CancellaMemoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Vuoi veramente azzerare la memoria ?.
+        /// </summary>
+        internal static string CancellaMemoriaR1 {
+            get {
+                return ResourceManager.GetString("CancellaMemoriaR1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a ATTENZIONE: l&apos;operazione cancellerà anche tutti i dati archiviati.
+        /// </summary>
+        internal static string CancellaMemoriaR2 {
+            get {
+                return ResourceManager.GetString("CancellaMemoriaR2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Carica.
         /// </summary>
         internal static string Carica {
             get {
                 return ResourceManager.GetString("Carica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Carica Dati.
+        /// </summary>
+        internal static string CaricaDati {
+            get {
+                return ResourceManager.GetString("CaricaDati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a collegato alla porta.
+        /// </summary>
+        internal static string Collegato {
+            get {
+                return ResourceManager.GetString("Collegato", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a collegato alla porta USB.
+        /// </summary>
+        internal static string CollegatoUSB {
+            get {
+                return ResourceManager.GetString("CollegatoUSB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Sono già presenti dati relativi all&apos;apparato.
+        /// </summary>
+        internal static string DatiGiaPresenti {
+            get {
+                return ResourceManager.GetString("DatiGiaPresenti", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Dati non Validi.
+        /// </summary>
+        internal static string DatiNonValidi {
+            get {
+                return ResourceManager.GetString("DatiNonValidi", resourceCulture);
             }
         }
         
@@ -84,6 +201,15 @@ namespace PannelloCharger {
         internal static string Elettrolita {
             get {
                 return ResourceManager.GetString("Elettrolita", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Esporta Dati.
+        /// </summary>
+        internal static string EsportaDati {
+            get {
+                return ResourceManager.GetString("EsportaDati", resourceCulture);
             }
         }
         
@@ -133,6 +259,15 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a File danneggiato: impossibile caricare i dati.
+        /// </summary>
+        internal static string FileDanneggiato {
+            get {
+                return ResourceManager.GetString("FileDanneggiato", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a File generato.
         /// </summary>
         internal static string FileGenerato {
@@ -147,6 +282,24 @@ namespace PannelloCharger {
         internal static string Giovedi {
             get {
                 return ResourceManager.GetString("Giovedi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Importa Dati.
+        /// </summary>
+        internal static string ImportaDati {
+            get {
+                return ResourceManager.GetString("ImportaDati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Informazioni su.
+        /// </summary>
+        internal static string InformazioniSu {
+            get {
+                return ResourceManager.GetString("InformazioniSu", resourceCulture);
             }
         }
         
@@ -178,11 +331,29 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Memoria Cancellata.
+        /// </summary>
+        internal static string MemoriaCancellata {
+            get {
+                return ResourceManager.GetString("MemoriaCancellata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Mer.
         /// </summary>
         internal static string Mercoledi {
             get {
                 return ResourceManager.GetString("Mercoledi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Nessun dispositivo collegato.
+        /// </summary>
+        internal static string NoDevice {
+            get {
+                return ResourceManager.GetString("NoDevice", resourceCulture);
             }
         }
         
@@ -205,11 +376,29 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Vuoi realmente cancellare tutti i dati relativi all&apos;apparato.
+        /// </summary>
+        internal static string RichConfermaCanc {
+            get {
+                return ResourceManager.GetString("RichConfermaCanc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Sab.
         /// </summary>
         internal static string Sabato {
             get {
                 return ResourceManager.GetString("Sabato", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Salva Dati.
+        /// </summary>
+        internal static string SalvaDati {
+            get {
+                return ResourceManager.GetString("SalvaDati", resourceCulture);
             }
         }
         
@@ -223,11 +412,74 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Configurazione NON ATTIVA.
+        /// </summary>
+        internal static string StatoPrg00 {
+            get {
+                return ResourceManager.GetString("StatoPrg00", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Configurazione ATTIVA; Registrazione NON ATTIVA.
+        /// </summary>
+        internal static string StatoPrg01 {
+            get {
+                return ResourceManager.GetString("StatoPrg01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Programmazione ATTIVA; Registrazione ATTIVA.
+        /// </summary>
+        internal static string StatoPrg02 {
+            get {
+                return ResourceManager.GetString("StatoPrg02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Calibrazione ATTIVA.
+        /// </summary>
+        internal static string StatoPrg03 {
+            get {
+                return ResourceManager.GetString("StatoPrg03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Stato NON DEFINITO: .
+        /// </summary>
+        internal static string StatoPrgND {
+            get {
+                return ResourceManager.GetString("StatoPrgND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Trovato dispositivo.
+        /// </summary>
+        internal static string TrovatoDispositivo {
+            get {
+                return ResourceManager.GetString("TrovatoDispositivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Ven.
         /// </summary>
         internal static string Venerdi {
             get {
                 return ResourceManager.GetString("Venerdi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Versione.
+        /// </summary>
+        internal static string Versione {
+            get {
+                return ResourceManager.GetString("Versione", resourceCulture);
             }
         }
     }

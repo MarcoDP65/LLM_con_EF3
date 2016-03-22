@@ -68,6 +68,8 @@ namespace PannelloCharger
                     lblTempMax.Visible = true;
                     txtTempMin.Visible = true;
                     lblTempMin.Visible = true;
+                    lblTipoBatteria.Visible = true;
+                    cmbTipoBatteria.Visible = true;
 
 
                 }
@@ -83,7 +85,9 @@ namespace PannelloCharger
                     lblTempMax.Visible = false;
                     txtTempMin.Visible = false;
                     lblTempMin.Visible = false;
-
+                    lblTipoBatteria.Visible = false;
+                    cmbTipoBatteria.Visible = false;
+                    cmbTipoBatteria.SelectedIndex = 0;
 
                 }
 

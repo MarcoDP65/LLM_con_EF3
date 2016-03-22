@@ -40,6 +40,8 @@ namespace MoriData
             public string BatteryId { get; set; }
             [MaxLength(120)]
             public string ClientNote { get; set; }
+            [MaxLength(20)]
+            public string SerialNumber { get; set; }
 
             public override string ToString()
             {

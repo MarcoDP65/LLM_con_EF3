@@ -146,7 +146,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_ACK_PKG: // ACK Pacchetti in scrittura multipla
+                    case (byte)TipoComando.SB_ACK_PKG: // 0x6D  ACK Pacchetti in scrittura multipla
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -189,6 +189,8 @@ namespace ChargerLogic
                             return EsitoRisposta.ErroreGenerico;
                             break;
                         }
+
+
 
                     case (byte)TipoComando.SB_DatiIniziali:  //risposta parametri iniziali
                         {
@@ -1221,6 +1223,36 @@ namespace ChargerLogic
                             _arrayInit += 2;
                         }
                         break;
+
+
+                    case 0x03:
+                        // id pacchetto
+                        splitUshort(codificaByte(NumPacchetto), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // Serial Number
+                        for (_i = 0; _i < 20; _i++)
+                        {
+
+                            splitUshort(_codificaSubString(CustomerData.SerialNumber, _i), ref lsb, ref msb);
+                            MessageBuffer[_arrayInit + 1] = msb;
+                            MessageBuffer[_arrayInit + 2] = lsb;
+                            _arrayInit += 2;
+
+                        }
+
+                        // Chiudo a 252 byte effettivi
+                        for (_i = _arrayInit; _i < _arrayLen; _i += 2)
+                        {
+                            splitUshort(_codificaSubString("", _i), ref lsb, ref msb);
+                            MessageBuffer[_arrayInit + 1] = msb;
+                            MessageBuffer[_arrayInit + 2] = lsb;
+                            _arrayInit += 2;
+                        }
+                        break;
+
 
 
                     default:

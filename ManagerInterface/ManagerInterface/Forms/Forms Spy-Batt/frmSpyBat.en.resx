@@ -233,7 +233,7 @@
     <value>New Setup</value>
   </data>
   <data name="btnRicaricaProgr.Text" xml:space="preserve">
-    <value>Read Setup History</value>
+    <value>Read Setup</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Battery Type</value>
@@ -440,7 +440,7 @@
     <value>Selection graphs</value>
   </data>
   <data name="btnStatRicalcola.Text" xml:space="preserve">
-    <value>Recalculate</value>
+    <value>Calculate</value>
   </data>
   <data name="lblStatDataFine.Text" xml:space="preserve">
     <value>End</value>
@@ -563,13 +563,13 @@
     <value>Calibration</value>
   </data>
   <data name="chkParLetturaAuto.Text" xml:space="preserve">
-    <value>Automatic load</value>
+    <value>Automatic read</value>
   </data>
   <data name="chkDatiDiretti.Text" xml:space="preserve">
     <value>Actual values</value>
   </data>
   <data name="btnLeggiVariabili.Text" xml:space="preserve">
-    <value>Immediate loading of parameters</value>
+    <value>Read</value>
   </data>
   <data name="grbVariabiliConnVOK.Text" xml:space="preserve">
     <value>Ok connection</value>
@@ -584,10 +584,10 @@
     <value>SPY_BATT status</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
-    <value>Wh charged</value>
+    <value>KWh charged</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
-    <value>Wh discharged</value>
+    <value>KWh discharged</value>
   </data>
   <data name="label25.Text" xml:space="preserve">
     <value>Electrolyte</value>
@@ -644,7 +644,7 @@
     <value>Deletion</value>
   </data>
   <data name="grbMemCancellazione.Text" xml:space="preserve">
-    <value>Delete memory</value>
+    <value>Memory Erase</value>
   </data>
   <data name="lblReadMemStartAddr.Text" xml:space="preserve">
     <value>initial address</value>
@@ -767,7 +767,7 @@
     <value>Prepare</value>
   </data>
   <data name="btnFWFileSBFLoad.Text" xml:space="preserve">
-    <value>Charge file</value>
+    <value>Load file</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Updating</value>
@@ -831,5 +831,17 @@
   </data>
   <data name="label130.Text" xml:space="preserve">
     <value>Stored Phases</value>
+  </data>
+  <data name="chkStatGraficoAssEl.Text" xml:space="preserve">
+    <value>Percentage of Electrolyte Absence</value>
+  </data>
+  <data name="grbVarResetScheda.Text" xml:space="preserve">
+    <value>Memory Erase</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.Text" xml:space="preserve">
+    <value>Erase</value>
+  </data>
+  <data name="txtTensioneNom.Text" xml:space="preserve">
+    <value>Nominal Voltage</value>
   </data>
 </root>

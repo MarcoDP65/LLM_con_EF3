@@ -154,7 +154,7 @@
     <value>Start</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Event Id</value>
+    <value>Event</value>
   </data>
   <data name="grbContatori.Text" xml:space="preserve">
     <value>Counters</value>
@@ -170,5 +170,8 @@
   </data>
   <data name="grbGeneraExcel.Text" xml:space="preserve">
     <value>Excel data export</value>
+  </data>
+  <data name="tbpUtilita.Text" xml:space="preserve">
+    <value>Uility</value>
   </data>
 </root>

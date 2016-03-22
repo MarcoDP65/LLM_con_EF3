@@ -208,6 +208,7 @@ namespace MoriData
                                   new _utente { Id = 6, Username = "ServiceEn", Password = "service", NomeUtente = "Livello Service", Livello = 1, Lingua = 1, Attivo = 1 },
                                   new _utente { Id = 7, Username = "PowerUserEn", Password = "poweruser", NomeUtente = "Livello Power User", Livello = 2, Lingua = 1, Attivo = 1 },
                                   new _utente { Id = 8, Username = "UserEn", Password = "user", NomeUtente = "Livello User", Livello = 3, Lingua = 1, Attivo = 1 }};
+ 
                 InsertAll(usr);
             }
         }

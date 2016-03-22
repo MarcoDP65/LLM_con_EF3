@@ -240,7 +240,7 @@ namespace Utility
             {
                 string _correnti = "";
                 float _inGradi;
-                _inGradi = Temperatura; // / 10;
+                _inGradi = Temperatura; 
                 _correnti = _inGradi.ToString("0");
                 return _correnti;
             }

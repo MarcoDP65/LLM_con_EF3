@@ -46,16 +46,16 @@ namespace PannelloCharger
                 modo = azione;
                 if (azione == elementiComuni.modoDati.Import)
                 {
-                    this.Text = "Importa Dati";
-                    btnDataExport.Text = "Carica Dati";
+                    this.Text = StringheComuni.ImportaDati;           // "Importa Dati";
+                    btnDataExport.Text = StringheComuni.CaricaDati;   // "Carica Dati";
                     modo = elementiComuni.modoDati.Import;
                     btnDataExport.Enabled = false;
                     btnAnteprima.Visible = true;
                 }
                 else
                 {
-                    this.Text = "Esporta Dati";
-                    btnDataExport.Text = "Salva Dati";
+                    this.Text = StringheComuni.EsportaDati;           // "Esporta Dati";
+                    btnDataExport.Text = StringheComuni.SalvaDati;    // "Salva Dati";
                     modo = elementiComuni.modoDati.Output;
                     btnDataExport.Enabled = true;
                     btnAnteprima.Visible = false;
@@ -137,11 +137,13 @@ namespace PannelloCharger
 
                 File.AppendAllText(filePath, JsonData);
 
-                MessageBox.Show("File generato", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//                MessageBox.Show("File generato", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(StringheComuni.FileGenerato, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Inserire un nome valido", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                MessageBox.Show("Inserire un nome valido", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show( StringheComuni.InserireNome, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -186,25 +188,27 @@ namespace PannelloCharger
                         }
                         else
                         {
-                            MessageBox.Show("File danneggiato: impossibile caricare i dati", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                            MessageBox.Show("File danneggiato: impossibile caricare i dati", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(StringheComuni.FileDanneggiato, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return false;
                         }
 
                     }
 
-                    //MessageBox.Show("File Valido", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show("Inserire un nome valido", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                    MessageBox.Show("Inserire un nome valido", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringheComuni.InserireNome, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
 
             catch (Exception Ex)
             {
-                MessageBox.Show("Dati non validi", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                MessageBox.Show("Dati non validi", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(StringheComuni.DatiNonValidi, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error("MostraDati: " + Ex.Message);
                 return false;
 
@@ -218,7 +222,7 @@ namespace PannelloCharger
                 _sb.importaModello(_logiche.dbDati.connessione,true, true, true, true, true);
                 if (_sb.recordPresente(_sb.ModelloDati.ID, _logiche.dbDati.connessione))
                 {
-                    DialogResult risposta = MessageBox.Show("Sono già presenti dati relativi all'apparato\n " + FunzioniMR.StringaSeriale(_sb.ModelloDati.ID) + "  -  " + _sb.ModelloDati.Cliente.ClientNote + " \n Rimpiazzo i dati esistenti ? ", "SPY-BATT", MessageBoxButtons.YesNo);
+                    DialogResult risposta = MessageBox.Show(StringheComuni.DatiGiaPresenti + "\n " + FunzioniMR.StringaSeriale(_sb.ModelloDati.ID) + "  -  " + _sb.ModelloDati.Cliente.ClientNote + " \n Rimpiazzo i dati esistenti ? ", "SPY-BATT", MessageBoxButtons.YesNo);
 
                     if (risposta == System.Windows.Forms.DialogResult.Yes)
                     {
@@ -259,7 +263,7 @@ namespace PannelloCharger
 
             catch (Exception Ex)
             {
-                MessageBox.Show("Dati non validi", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(StringheComuni.DatiNonValidi, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error("MostraDati: " + Ex.Message);
                 return false;
 
@@ -284,16 +288,6 @@ namespace PannelloCharger
             this.Cursor = Cursors.Default;
         }
 
-
-
-
-
-//           sbDataModel _test;
-//            string TestJson = JsonConvert.SerializeObject(_sb.sbData._sb);
-//            string TestJson = JsonConvert.SerializeObject(_sb.ModelloDati);           
- //           _test = JsonConvert.DeserializeObject<sbDataModel>(TestJson);
-
-
       
 
         private void btnSfoglia_Click(object sender, EventArgs e)
@@ -302,14 +296,15 @@ namespace PannelloCharger
 
             if (modo == elementiComuni.modoDati.Output)
             {
-                sfdExportDati.Title = "Export Dati";
+                sfdExportDati.Title = StringheComuni.EsportaDati;
                 sfdExportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
                 sfdExportDati.ShowDialog();
                 txtNuovoFile.Text = sfdExportDati.FileName;
+    
             }
             else
             {
-                ofdImportDati.Title = "Import Dati";
+                ofdImportDati.Title = StringheComuni.ImportaDati;
                 ofdImportDati.CheckFileExists = false;
                 ofdImportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
                 ofdImportDati.ShowDialog();
@@ -321,6 +316,11 @@ namespace PannelloCharger
         private void btnAnteprima_Click(object sender, EventArgs e)
         {
             if (importaDati()) btnDataExport.Enabled = true;
+        }
+
+        private void frmSbExport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

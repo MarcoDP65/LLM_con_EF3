@@ -3444,7 +3444,7 @@ namespace PannelloCharger
                     output = new string[][]
                     {
                          new string[]{"Num Ev.","IdTipo Ev.","Data/Ora Inizio", "Data/Ora Fine", "Durata",
-                                      "C° min", "C° max", "V Min", "V max", "I min", "I max",
+                                      "°C min", "°C max", "V Min", "V max", "I min", "I max",
                                       "Pres. El.", "Ah","Val. Ah", "Ah caricati", "Ah scaricati","KWh", "val KWh", "SoC","RF", "STOP","Prog","Num Brevi","Quota SoH" } /*add the values that you want inside a csv file. Mostly this function can be used in a foreach loop.*/
                     };
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PannelloCharger.Properties {
+namespace PannelloCharger {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace PannelloCharger.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class StringheColonneTabelle {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal StringheColonneTabelle() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PannelloCharger.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PannelloCharger.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PannelloCharger.Resources.StringheColonneTabelle", typeof(StringheColonneTabelle).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,65 @@ namespace PannelloCharger.Properties {
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        ///   Cerca una stringa localizzata simile a Cliente.
         /// </summary>
-        internal static System.Drawing.Bitmap cinquea {
+        internal static string ListaApp01Cliente {
             get {
-                object obj = ResourceManager.GetObject("cinquea", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ListaApp01Cliente", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        ///   Cerca una stringa localizzata simile a ID Batt..
         /// </summary>
-        internal static System.Drawing.Bitmap duec {
+        internal static string ListaApp02IdBatt {
             get {
-                object obj = ResourceManager.GetObject("duec", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ListaApp02IdBatt", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        ///   Cerca una stringa localizzata simile a Batteria.
         /// </summary>
-        internal static System.Drawing.Bitmap Grf_Car {
+        internal static string ListaApp03Batt {
             get {
-                object obj = ResourceManager.GetObject("Grf_Car", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ListaApp03Batt", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        ///   Cerca una stringa localizzata simile a Modello.
         /// </summary>
-        internal static System.Drawing.Bitmap Grf_Scar {
+        internal static string ListaApp04Mod {
             get {
-                object obj = ResourceManager.GetObject("Grf_Scar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ListaApp04Mod", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        ///   Cerca una stringa localizzata simile a Note.
         /// </summary>
-        internal static System.Drawing.Bitmap Grf_V_Car {
+        internal static string ListaApp05Note {
             get {
-                object obj = ResourceManager.GetObject("Grf_V_Car", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ListaApp05Note", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        ///   Cerca una stringa localizzata simile a ID SPY-BATT.
         /// </summary>
-        internal static System.Drawing.Bitmap Grf_V_Scar {
+        internal static string ListaApp06IdSb {
             get {
-                object obj = ResourceManager.GetObject("Grf_V_Scar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ListaApp06IdSb", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        ///   Cerca una stringa localizzata simile a S.N..
         /// </summary>
-        internal static System.Drawing.Bitmap IUIa {
+        internal static string ListaApp07SN {
             get {
-                object obj = ResourceManager.GetObject("IUIa", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap IWa {
-            get {
-                object obj = ResourceManager.GetObject("IWa", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap trec {
-            get {
-                object obj = ResourceManager.GetObject("trec", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ListaApp07SN", resourceCulture);
             }
         }
     }

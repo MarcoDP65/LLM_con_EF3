@@ -876,6 +876,7 @@ namespace ChargerLogic
             public string BatteryId = "";
             public string ClientNote = "";
             public ushort CicliAttesi = 0;
+            public string SerialNumber = "";
             public byte[] DataOraUpdate;
             public byte ClientCounter = 0;
 
@@ -953,6 +954,8 @@ namespace ChargerLogic
                                 PartReceived[1] = true;
                                 break;
                             case 3:
+                                SerialNumber = ArrayToString(_risposta, startByte, 20);
+                                startByte += 20;
                                 PartReceived[2] = true;
                                 break;
                             case 4:
@@ -1373,6 +1376,8 @@ namespace ChargerLogic
 
                     if (decodificaArray(_messaggio, ref _risposta))
                     {
+
+
                         Log.Debug(" ---------------------- VariabiliSpybatt -----------------------------------------");
                         Log.Debug(FunzioniMR.hexdumpArray(_risposta));
 
@@ -1396,10 +1401,10 @@ namespace ChargerLogic
                         if (fwLevel > 0)
                         {
                             AhScaricati = ArrayToShort(_risposta, startByte, 2);
-                            AhScaricati = (short)(AhScaricati / 10);
+                            //AhScaricati = (short)(AhScaricati / 10);
                             startByte += 2;
                             AhCaricati = ArrayToShort(_risposta, startByte, 2);
-                            AhCaricati = (short)(AhCaricati / 10);
+                            //AhCaricati = (short)(AhCaricati / 10);
                             startByte += 2;
                         }
                         else
@@ -1456,9 +1461,21 @@ namespace ChargerLogic
                     }
 
                     _risposta = new byte[(_messaggio.Length / 2)];
-
+                    
                     if (decodificaArray(_messaggio, ref _risposta))
                     {
+                        /*
+                        // Dati di prova
+                        _risposta = new byte[29]{ 0x12,
+                        0x7C,     0x0D,     0xDD,     0x09,
+                        0x3C,     0x04,     0x9D,     0xFD,
+                        0x50,     0x15,     0x0F,     0x13,
+                        0xB6,     0x00,     0x00,     0x64,
+                        0xA3,     0x00,     0x03,     0xBD,
+                        0x63,     0x00,     0x00,     0x05,
+                        0x21,     0x02,     0x3A,     0x1F};
+                       */
+
                         Log.Debug(" ---------------------- VariabiliSpybatt -----------------------------------------");
                         Log.Debug(FunzioniMR.hexdumpArray(_risposta));
 
@@ -1478,23 +1495,13 @@ namespace ChargerLogic
                         startByte += 1;
                         PresenzaElettrolita = _risposta[startByte];
                         startByte += 1;
-                        // Verificare decimali in base al FW
-                        if (fwLevel > 0)
-                        {
-                            AhScaricati = ArrayToShort(_risposta, startByte, 2);
-                            AhScaricati = (short)(AhScaricati / 10);
-                            startByte += 2;
-                            AhCaricati = ArrayToShort(_risposta, startByte, 2);
-                            AhCaricati = (short)(AhCaricati / 10);
-                            startByte += 2;
-                        }
-                        else
-                        {
-                            AhScaricati = (short)ArrayToUshort(_risposta, startByte, 2);
-                            startByte += 2;
-                            AhCaricati = (short)ArrayToUshort(_risposta, startByte, 2);
-                            startByte += 2;
-                        }
+
+                        AhScaricati = ArrayToShort(_risposta, startByte, 2);
+                        //AhScaricati = (short)(AhScaricati / 10);
+                        startByte += 2;
+                        AhCaricati = ArrayToShort(_risposta, startByte, 2);
+                        //AhCaricati = (short)(AhCaricati / 10);
+                        startByte += 2;
 
                         SoC = _risposta[startByte];
                         startByte += 1;

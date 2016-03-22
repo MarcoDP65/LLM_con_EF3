@@ -72,7 +72,7 @@ namespace PannelloCharger
             try
             {
                 string _sql = "";
-                _sql += "select t1.Id, t1.SwVersion, t1.ProductId, t1.HwVersion, t2.DataInstall, t2.Client, t2.BatteryBrand, t2.BatteryModel, t2.BatteryId, t2.ClientNote ";
+                _sql += "select t1.Id, t1.SwVersion, t1.ProductId, t1.HwVersion, t2.DataInstall, t2.Client, t2.BatteryBrand, t2.BatteryModel, t2.BatteryId, t2.ClientNote,t2.SerialNumber ";
                 _sql += "from _spybatt as t1 left outer join _sbDatiCliente as t2 on t1.Id = t2.IdApparato order by t2.ClientNote,t1.Id ";
  
                 Log.Info(_sql);
@@ -110,7 +110,7 @@ namespace PannelloCharger
 
 
                 BrightIdeasSoftware.OLVColumn colCli = new BrightIdeasSoftware.OLVColumn();
-                colCli.Text = "Cliente";
+                colCli.Text = StringheColonneTabelle.ListaApp01Cliente; //"Cliente";
                 colCli.AspectName = "Client";
                 colCli.Width = 200;
                 colCli.HeaderTextAlign = HorizontalAlignment.Left;
@@ -118,7 +118,7 @@ namespace PannelloCharger
                 flvwListaApparati.AllColumns.Add(colCli);
 
                 BrightIdeasSoftware.OLVColumn idBatt = new BrightIdeasSoftware.OLVColumn();
-                idBatt.Text = "ID Batt.";
+                idBatt.Text = StringheColonneTabelle.ListaApp02IdBatt; //"ID Batt.";
                 idBatt.AspectName = "BatteryId";
                 idBatt.Width = 100;
                 idBatt.HeaderTextAlign = HorizontalAlignment.Center;
@@ -126,7 +126,7 @@ namespace PannelloCharger
                 flvwListaApparati.AllColumns.Add(idBatt);
 
                 BrightIdeasSoftware.OLVColumn colBatt = new BrightIdeasSoftware.OLVColumn();
-                colBatt.Text = "Batteria";
+                colBatt.Text = StringheColonneTabelle.ListaApp03Batt; // "Batteria";
                 colBatt.AspectName = "BatteryBrand";
                 colBatt.Width = 100;
                 colBatt.HeaderTextAlign = HorizontalAlignment.Center;
@@ -134,7 +134,7 @@ namespace PannelloCharger
                 flvwListaApparati.AllColumns.Add(colBatt);
 
                 BrightIdeasSoftware.OLVColumn colBattMod = new BrightIdeasSoftware.OLVColumn();
-                colBattMod.Text = "Modello";
+                colBattMod.Text = StringheColonneTabelle.ListaApp04Mod; // "Modello";
                 colBattMod.AspectName = "BatteryModel";
                 colBattMod.Width = 100;
                 colBattMod.HeaderTextAlign = HorizontalAlignment.Center;
@@ -142,15 +142,23 @@ namespace PannelloCharger
                 flvwListaApparati.AllColumns.Add(colBattMod);
 
                 BrightIdeasSoftware.OLVColumn colNote = new BrightIdeasSoftware.OLVColumn();
-                colNote.Text = "Note";
+                colNote.Text = StringheColonneTabelle.ListaApp05Note; // "Note";
                 colNote.AspectName = "ClientNote";
                 colNote.Width = 200;
                 colNote.HeaderTextAlign = HorizontalAlignment.Center;
                 colNote.TextAlign = HorizontalAlignment.Left;
                 flvwListaApparati.AllColumns.Add(colNote);
 
+                BrightIdeasSoftware.OLVColumn colSN = new BrightIdeasSoftware.OLVColumn();
+                colSN.Text = StringheColonneTabelle.ListaApp07SN; // "Note";
+                colSN.AspectName = "SerialNumber";
+                colSN.Width = 100;
+                colSN.HeaderTextAlign = HorizontalAlignment.Center;
+                colSN.TextAlign = HorizontalAlignment.Left;
+                flvwListaApparati.AllColumns.Add(colSN);
+
                 BrightIdeasSoftware.OLVColumn colId = new BrightIdeasSoftware.OLVColumn();
-                colId.Text = "ID SPY-BATT";
+                colId.Text = StringheColonneTabelle.ListaApp06IdSb;  // "ID SPY-BATT";
                 colId.AspectName = "Id";
                 colId.Width = 120;
                 colId.HeaderTextAlign = HorizontalAlignment.Left;
@@ -265,7 +273,8 @@ namespace PannelloCharger
                     if (_tempSpybat.Id != null)
                     {
 
-                        DialogResult risposta = MessageBox.Show("Vuoi realmente cancellare tutti i dati relativi all'apparato\n " + FunzioniMR.StringaSeriale(_tempSpybat.Id) + "  -  " + _tempSpybat.ClientNote + " ? ", "SPY-BATT", MessageBoxButtons.YesNo);
+//                        DialogResult risposta = MessageBox.Show("Vuoi realmente cancellare tutti i dati relativi all'apparato\n " + FunzioniMR.StringaSeriale(_tempSpybat.Id) + "  -  " + _tempSpybat.ClientNote + " ? ", "SPY-BATT", MessageBoxButtons.YesNo);
+                        DialogResult risposta = MessageBox.Show(StringheComuni.RichConfermaCanc + "\n " + FunzioniMR.StringaSeriale(_tempSpybat.Id) + "  -  " + _tempSpybat.ClientNote + " ? ", "SPY-BATT", MessageBoxButtons.YesNo);
 
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
                         {
@@ -338,6 +347,8 @@ namespace PannelloCharger
 
                 if (LivelloCorrente < 2) _visible = true; else _visible = false;
                 txtIdScheda.Visible = _visible;
+
+                if (LivelloCorrente < 3) _visible = true; else _visible = false;
                 btnImportaDati.Visible = _visible;
 
 

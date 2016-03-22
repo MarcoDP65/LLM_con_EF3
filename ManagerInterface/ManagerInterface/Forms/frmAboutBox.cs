@@ -13,9 +13,9 @@ namespace PannelloCharger
         public frmAboutBox()
         {
             InitializeComponent();
-            this.Text = String.Format("Informazioni su {0}", AssemblyTitle);
+            this.Text = String.Format(StringheComuni.InformazioniSu +  " {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Versione {0}", AssemblyVersion);
+            this.labelVersion.Text = String.Format(StringheComuni.Versione + " {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;

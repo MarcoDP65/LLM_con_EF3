@@ -100,7 +100,7 @@ namespace PannelloCharger
 
 
 
-        public void CaricafileSBF()
+        public bool CaricafileSBF()
         {
             FirmwareManager.ExitCode _esito;
             try
@@ -118,7 +118,7 @@ namespace PannelloCharger
                 if (txtFWFileSBFrd.Text == "")
                 {
                     //messagebox
-                    return;
+                    return false;
                 }
 
                 _esito = _firmMng.CaricaFileSBF(txtFWFileSBFrd.Text);
@@ -133,12 +133,14 @@ namespace PannelloCharger
                     txtFWTxFileLenN2.Text = _firmMng.FirmwareData.LenFlash2.ToString();
                     txtFWTxFileLenP.Text = _firmMng.FirmwareData.LenProxy.ToString();
 
+                    return true;
 
                 }
+                return false;
             }
             catch
             {
-
+                return false;
             }
         }
 

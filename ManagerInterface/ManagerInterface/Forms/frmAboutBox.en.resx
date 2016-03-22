@@ -117,130 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Domenica" xml:space="preserve">
-    <value>Sun</value>
+  <data name="textBoxDescription.Text" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="Elettrolita" xml:space="preserve">
-    <value>Electrolyte</value>
-  </data>
-  <data name="EsportazioneDati" xml:space="preserve">
-    <value>Export device data</value>
-  </data>
-  <data name="FaseCarica" xml:space="preserve">
-    <value>Charge phase</value>
-  </data>
-  <data name="FaseEqualizzazione" xml:space="preserve">
-    <value>Equal Phase</value>
-  </data>
-  <data name="FaseScarica" xml:space="preserve">
-    <value>Discharge phase</value>
-  </data>
-  <data name="FileGenerato" xml:space="preserve">
-    <value>File Created</value>
-  </data>
-  <data name="Giovedi" xml:space="preserve">
-    <value>Thu</value>
-  </data>
-  <data name="InserireNome" xml:space="preserve">
-    <value>Enter a valid name</value>
-  </data>
-  <data name="Lunedi" xml:space="preserve">
-    <value>Mon</value>
-  </data>
-  <data name="Martedi" xml:space="preserve">
-    <value>Tues</value>
-  </data>
-  <data name="Mercoledi" xml:space="preserve">
-    <value>Wed</value>
-  </data>
-  <data name="PresenzaElett" xml:space="preserve">
-    <value>Electrolyte</value>
-  </data>
-  <data name="Sabato" xml:space="preserve">
-    <value>Sat</value>
-  </data>
-  <data name="Venerdi" xml:space="preserve">
-    <value>Fri</value>
-  </data>
-  <data name="Carica" xml:space="preserve">
-    <value>Charge</value>
-  </data>
-  <data name="Scarica" xml:space="preserve">
-    <value>Discharge</value>
-  </data>
-  <data name="Pausa" xml:space="preserve">
-    <value>Pause</value>
-  </data>
-  <data name="EventoAnomalo" xml:space="preserve">
-    <value>Anomalous Event</value>
-  </data>
-  <data name="AproCollegamento" xml:space="preserve">
-    <value>Open the connection</value>
-  </data>
-  <data name="Collegato" xml:space="preserve">
-    <value>Connected to the port </value>
-  </data>
-  <data name="CollegatoUSB" xml:space="preserve">
-    <value>Connected to the USB port </value>
-  </data>
-  <data name="NoDevice" xml:space="preserve">
-    <value>No Device Connected</value>
-  </data>
-  <data name="TrovatoDispositivo" xml:space="preserve">
-    <value>Found Device</value>
-  </data>
-  <data name="CancellaMemoria" xml:space="preserve">
-    <value>Memory Erase</value>
-  </data>
-  <data name="CancellaMemoriaR1" xml:space="preserve">
-    <value>Do you really want to Erase ALL DATA  ?</value>
-  </data>
-  <data name="CancellaMemoriaR2" xml:space="preserve">
-    <value>WARNING: This operation will delete also all saved data.</value>
-  </data>
-  <data name="CaricaDati" xml:space="preserve">
-    <value>Charge Data</value>
-  </data>
-  <data name="Versione" xml:space="preserve">
+  <data name="labelVersion.Text" xml:space="preserve">
     <value>Version</value>
   </data>
-  <data name="InformazioniSu" xml:space="preserve">
-    <value>About</value>
+  <data name="labelProductName.Text" xml:space="preserve">
+    <value>Product Name</value>
   </data>
-  <data name="EsportaDati" xml:space="preserve">
-    <value>Export Data</value>
-  </data>
-  <data name="SalvaDati" xml:space="preserve">
-    <value>Save Data</value>
-  </data>
-  <data name="RichConfermaCanc" xml:space="preserve">
-    <value>Do you really want to delete all data ?</value>
-  </data>
-  <data name="MemoriaCancellata" xml:space="preserve">
-    <value>Memory Cleaned</value>
-  </data>
-  <data name="ImportaDati" xml:space="preserve">
-    <value>Import Data</value>
-  </data>
-  <data name="FileDanneggiato" xml:space="preserve">
-    <value>Corrupted File: Can't load data</value>
-  </data>
-  <data name="DatiNonValidi" xml:space="preserve">
-    <value>Not Valid Data</value>
-  </data>
-  <data name="DatiGiaPresenti" xml:space="preserve">
-    <value>Data already present</value>
-  </data>
-  <data name="StatoPrg00" xml:space="preserve">
-    <value>Setup NOT READY</value>
-  </data>
-  <data name="StatoPrg01" xml:space="preserve">
-    <value>Setup READY; Recording DISABLED</value>
-  </data>
-  <data name="StatoPrg03" xml:space="preserve">
-    <value>Setup READY; Recording ENABLED</value>
-  </data>
-  <data name="StatoPrgND" xml:space="preserve">
-    <value>State NOT DEFINED:</value>
+  <data name="labelCompanyName.Text" xml:space="preserve">
+    <value>Company Name</value>
   </data>
 </root>

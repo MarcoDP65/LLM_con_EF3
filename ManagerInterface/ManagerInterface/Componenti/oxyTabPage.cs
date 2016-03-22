@@ -34,7 +34,16 @@ namespace ChargerLogic
             _inizializzaControllo();
             base.Text = Page;
         }
-        
+
+        public oxyTabPage(string Page, Size Dimensione)
+        {
+            _inizializzaControllo();
+            //this.oxyContainer.Size = Dimensione;
+            this.oxyContainer.Margin = new Padding(100);
+            //this.oxyContainer.
+            base.Text = Page;
+        }
+
         protected void _inizializzaControllo()
         {
             InitializeComponent();

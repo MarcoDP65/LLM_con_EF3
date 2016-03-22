@@ -37,7 +37,7 @@ namespace PannelloCharger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Factory")]
+        [global::System.Configuration.DefaultSettingValueAttribute("User")]
         public string utente {
             get {
                 return ((string)(this["utente"]));
@@ -49,7 +49,7 @@ namespace PannelloCharger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Factory")]
+        [global::System.Configuration.DefaultSettingValueAttribute("User")]
         public string password {
             get {
                 return ((string)(this["password"]));
