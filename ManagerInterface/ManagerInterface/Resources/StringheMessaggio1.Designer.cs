@@ -268,7 +268,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a C.F..
+        ///   Cerca una stringa localizzata simile a F.C..
         /// </summary>
         internal static string strVistaLunghiCol15 {
             get {

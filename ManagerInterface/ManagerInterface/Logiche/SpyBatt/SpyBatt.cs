@@ -83,6 +83,7 @@ namespace ChargerLogic
         static bool _rxRisposta ;
         bool skipHead = false;
 
+        public byte LivelloUser = 2;
         public DateTime UltimaScrittura;   // Registro l'istante dell'ultima scrittura
 
         public SerialMessage.EsitoRisposta UltimaRisposta;
@@ -1758,6 +1759,7 @@ namespace ChargerLogic
                 {
                     sbMemLunga _cLoc;
                     _cLoc = new sbMemLunga(dbCorrente);
+                    _cLoc.LivelloUser = LivelloUser;
                     if (_cLoc.caricaDati(Elemento.IdLocale))
                     {
                         _cLoc.VersoScarica = VersoScarica;
@@ -1846,6 +1848,7 @@ namespace ChargerLogic
                     EventoLungo.StatoCarica = MsgCiclo.StatoCatica;
                     EventoLungo.TipoCariatore = MsgCiclo.TipoCariatore;
                     EventoLungo.IdCaricatore = MsgCiclo.IdCaricatore;
+                    EventoLungo.DataLastDownload = DateTime.Now;
                     EventoLungo.salvaDati();
                 }
                 return true;
@@ -2664,11 +2667,16 @@ namespace ChargerLogic
             }
         }
 
-        public string StringaDurata(uint Secondi)
+        public string StringaDurata(uint Secondi, bool BlankIfZero = false )
         {
             try
             {
                 string _tempo = "";
+                if (Secondi < 60 & BlankIfZero)
+                {
+                    return "";
+                }
+                
                 TimeSpan t = TimeSpan.FromSeconds(Secondi);
                 if (Secondi > 86400)
                 {
@@ -2687,6 +2695,8 @@ namespace ChargerLogic
                 return "";
             }
         }
+
+
 
         public string StringaPresenza(byte Valore)
         {

@@ -117,81 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnResetScheda.Text" xml:space="preserve">
-    <value>SPY-BATT Reset</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label115.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 17</value>
   </data>
-  <data name="label115.Text" xml:space="preserve">
-    <value>Ptr. Short Record</value>
-  </data>
   <data name="label113.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 17</value>
   </data>
-  <data name="label113.Text" xml:space="preserve">
-    <value>Ptr. Long Record</value>
+  <data name="label91.Text" xml:space="preserve">
+    <value>AES key</value>
   </data>
-  <data name="btnRicaricaDati.Text" xml:space="preserve">
-    <value>Dowload SPY-BATT Data</value>
+  <data name="btnStatProvaInserimento.Text" xml:space="preserve">
+    <value>Data test</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>SBF file preparing</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="chkAESEncript.Text" xml:space="preserve">
+    <value>AES encoding</value>
+  </data>
+  <data name="grbClonaRecordTestata.Text" xml:space="preserve">
+    <value>Header record</value>
+  </data>
+  <data name="grbTracciaClonazione.Text" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="grbMainDlOptions.Text" xml:space="preserve">
+    <value>DOWNLOAD PARAMETERS</value>
+  </data>
+  <data name="btnResetScheda.Text" xml:space="preserve">
+    <value>SPY-BATT Reset</value>
   </data>
   <data name="btnSalvaCliente.Text" xml:space="preserve">
     <value>Save Customer Info</value>
-  </data>
-  <data name="label131.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 17</value>
-  </data>
-  <data name="label131.Text" xml:space="preserve">
-    <value>Active Setup</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Serial Number</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 17</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Model</value>
-  </data>
-  <data name="lblCliCicliAttesi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 17</value>
-  </data>
-  <data name="lblCliCicliAttesi.Text" xml:space="preserve">
-    <value>Expected Cycles</value>
-  </data>
-  <data name="lblCliIdBatteria.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
-  </data>
-  <data name="lblCliIdBatteria.Text" xml:space="preserve">
-    <value>Battery Identifier</value>
-  </data>
-  <data name="lblCliMarcaBatt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 17</value>
-  </data>
-  <data name="lblCliMarcaBatt.Text" xml:space="preserve">
-    <value>Battery Brand</value>
-  </data>
-  <data name="lblCliModellpApp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 17</value>
-  </data>
-  <data name="lblCliModellpApp.Text" xml:space="preserve">
-    <value>Battery Model</value>
-  </data>
-  <data name="lbNoteCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 17</value>
-  </data>
-  <data name="lbNoteCliente.Text" xml:space="preserve">
-    <value>Notes</value>
-  </data>
-  <data name="lblCliCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
-  </data>
-  <data name="lblCliCliente.Text" xml:space="preserve">
-    <value>Customer</value>
   </data>
   <data name="grbDatiCliente.Text" xml:space="preserve">
     <value>Customer Info</value>
@@ -199,77 +160,32 @@
   <data name="tabCb01.Text" xml:space="preserve">
     <value>General</value>
   </data>
+  <data name="tabStatSintesi.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="tabStatCockpit.Text" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="tabStatComparazioni.Text" xml:space="preserve">
+    <value>Comparisons</value>
+  </data>
+  <data name="tabStatistiche.Text" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
   <data name="tabCb04.Text" xml:space="preserve">
     <value>Phases Data</value>
-  </data>
-  <data name="tabCb03.Text" xml:space="preserve">
-    <value>Thermal Probe</value>
-  </data>
-  <data name="btnScriviRtc.Text" xml:space="preserve">
-    <value>Set Clock</value>
-  </data>
-  <data name="btnLeggiRtc.Text" xml:space="preserve">
-    <value>Read Clock</value>
-  </data>
-  <data name="lblOraRTC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
-  </data>
-  <data name="lblOraRTC.Text" xml:space="preserve">
-    <value>Time</value>
-  </data>
-  <data name="lblDataRTC.Text" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="grbOraCorrente.Text" xml:space="preserve">
-    <value>SPY-BATT Clock</value>
-  </data>
-  <data name="tabCb05.Text" xml:space="preserve">
-    <value>Real Time Clock</value>
-  </data>
-  <data name="btnAttivaProgrammazione.Text" xml:space="preserve">
-    <value>Enable Setup</value>
-  </data>
-  <data name="btnNuovoProgramma.Text" xml:space="preserve">
-    <value>New Setup</value>
-  </data>
-  <data name="btnRicaricaProgr.Text" xml:space="preserve">
-    <value>Read Setup</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Battery Type</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value># of Cells</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Cells V3</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Cells V2</value>
-  </data>
-  <data name="lblCelleP1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 17</value>
-  </data>
-  <data name="lblCelleP1.Text" xml:space="preserve">
-    <value>Cellls V1</value>
-  </data>
-  <data name="grbProgrammazione.Text" xml:space="preserve">
-    <value>Active Setup</value>
   </data>
   <data name="tabCb02.Text" xml:space="preserve">
     <value>Setup</value>
   </data>
-  <data name="tabStatistiche.Text" xml:space="preserve">
-    <value>Statistics</value>
+  <data name="tabCb05.Text" xml:space="preserve">
+    <value>Real Time Clock</value>
+  </data>
+  <data name="tabCb03.Text" xml:space="preserve">
+    <value>Thermal Probe</value>
+  </data>
+  <data name="tabSbFact.Text" xml:space="preserve">
+    <value>Service Functions</value>
   </data>
   <data name="tabMemRead.Text" xml:space="preserve">
     <value>Direct Memory Access</value>
@@ -280,11 +196,8 @@
   <data name="tbpClonaScheda.Text" xml:space="preserve">
     <value>Cloning</value>
   </data>
-  <data name="tabCaricaBatterie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 12</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1788, 751</value>
+  <data name="btnRicaricaDati.Text" xml:space="preserve">
+    <value>Dowload SPY-BATT Data</value>
   </data>
   <data name="chkSaveHexDump.Text" xml:space="preserve">
     <value>Save image</value>
@@ -298,14 +211,50 @@
   <data name="chkAckDumpMem.Text" xml:space="preserve">
     <value>Send ACK packet</value>
   </data>
-  <data name="grbMainDlOptions.Text" xml:space="preserve">
-    <value>DOWNLOAD PARAMETERS</value>
+  <data name="label115.Text" xml:space="preserve">
+    <value>Ptr. Short Record</value>
+  </data>
+  <data name="label113.Text" xml:space="preserve">
+    <value>Ptr. Long Record</value>
+  </data>
+  <data name="label131.Text" xml:space="preserve">
+    <value>Active Setup</value>
+  </data>
+  <data name="label130.Text" xml:space="preserve">
+    <value>Stored Phases</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Serial Number</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="lblCliCicliAttesi.Text" xml:space="preserve">
+    <value>Expected Cycles</value>
+  </data>
+  <data name="lblCliIdBatteria.Text" xml:space="preserve">
+    <value>Battery Identifier</value>
+  </data>
+  <data name="lblCliMarcaBatt.Text" xml:space="preserve">
+    <value>Battery Brand</value>
+  </data>
+  <data name="lblCliModellpApp.Text" xml:space="preserve">
+    <value>Battery Model</value>
+  </data>
+  <data name="lbNoteCliente.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="lblCliCliente.Text" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="grbStatEventiAnomali.Text" xml:space="preserve">
+    <value>Anomalous events</value>
   </data>
   <data name="label137.Text" xml:space="preserve">
     <value>Number</value>
   </data>
-  <data name="grbStatEventiAnomali.Text" xml:space="preserve">
-    <value>Anomalous events</value>
+  <data name="grbStatEnergia.Text" xml:space="preserve">
+    <value>Energy from Battery</value>
   </data>
   <data name="label45.Text" xml:space="preserve">
     <value>Cycle Average (Ah)</value>
@@ -316,8 +265,8 @@
   <data name="lblStatTotEnergia.Text" xml:space="preserve">
     <value>Total energy (KWh)</value>
   </data>
-  <data name="grbStatEnergia.Text" xml:space="preserve">
-    <value>Energy from Battery</value>
+  <data name="grbStatCarica.Text" xml:space="preserve">
+    <value>Charge</value>
   </data>
   <data name="label136.Text" xml:space="preserve">
     <value>Number</value>
@@ -343,8 +292,8 @@
   <data name="lblStatTempoInCarica.Text" xml:space="preserve">
     <value>Time in charge</value>
   </data>
-  <data name="grbStatCarica.Text" xml:space="preserve">
-    <value>Charge</value>
+  <data name="grbStatScariche.Text" xml:space="preserve">
+    <value>Discharge</value>
   </data>
   <data name="label46.Text" xml:space="preserve">
     <value>Overtemperature</value>
@@ -364,8 +313,8 @@
   <data name="lblStatTempoInScarica.Text" xml:space="preserve">
     <value>Time in discharge</value>
   </data>
-  <data name="grbStatScariche.Text" xml:space="preserve">
-    <value>Discharge</value>
+  <data name="grbStatStato.Text" xml:space="preserve">
+    <value>Battery status</value>
   </data>
   <data name="lblStatMancElettr.Text" xml:space="preserve">
     <value>No electrolyte</value>
@@ -382,23 +331,17 @@
   <data name="lblStatAttivazioe.Text" xml:space="preserve">
     <value>Activation</value>
   </data>
-  <data name="grbStatStato.Text" xml:space="preserve">
-    <value>Battery status</value>
-  </data>
-  <data name="tabStatSintesi.Text" xml:space="preserve">
-    <value>Summary</value>
-  </data>
-  <data name="tabStatCockpit.Text" xml:space="preserve">
-    <value>Dashboard</value>
-  </data>
   <data name="label49.Text" xml:space="preserve">
     <value>Comparing benefits</value>
   </data>
-  <data name="tabStatComparazioni.Text" xml:space="preserve">
-    <value>Comparisons</value>
+  <data name="tabStatParametri.Text" xml:space="preserve">
+    <value>Parameter selection</value>
   </data>
-  <data name="btnStatProvaInserimento.Text" xml:space="preserve">
-    <value>Data test</value>
+  <data name="grbStatSelGrafici.Text" xml:space="preserve">
+    <value>Selection graphs</value>
+  </data>
+  <data name="chkStatGraficoAssEl.Text" xml:space="preserve">
+    <value>Percentage of Electrolyte Absence</value>
   </data>
   <data name="chkStatGraficoPause.Text" xml:space="preserve">
     <value>Breaks with low battery</value>
@@ -436,11 +379,11 @@
   <data name="chkStatGraficoTemporale.Text" xml:space="preserve">
     <value>Time graph</value>
   </data>
-  <data name="grbStatSelGrafici.Text" xml:space="preserve">
-    <value>Selection graphs</value>
-  </data>
   <data name="btnStatRicalcola.Text" xml:space="preserve">
     <value>Calculate</value>
+  </data>
+  <data name="grbStatSelPeriodo.Text" xml:space="preserve">
+    <value>Periode selection</value>
   </data>
   <data name="lblStatDataFine.Text" xml:space="preserve">
     <value>End</value>
@@ -453,12 +396,6 @@
   </data>
   <data name="optStatInteroIntervallo.Text" xml:space="preserve">
     <value>Total Period</value>
-  </data>
-  <data name="grbStatSelPeriodo.Text" xml:space="preserve">
-    <value>Periode selection</value>
-  </data>
-  <data name="tabStatParametri.Text" xml:space="preserve">
-    <value>Parameter selection</value>
   </data>
   <data name="tabStatSoglie.Text" xml:space="preserve">
     <value>Thresholds</value>
@@ -484,11 +421,14 @@
   <data name="btnDettaglioCicliBrevi.Text" xml:space="preserve">
     <value>Show details</value>
   </data>
+  <data name="grbEsportaExcel.Text" xml:space="preserve">
+    <value>Export cycles to Excel</value>
+  </data>
   <data name="btnGeneraCsv.Text" xml:space="preserve">
     <value>Create file</value>
   </data>
-  <data name="grbEsportaExcel.Text" xml:space="preserve">
-    <value>Export cycles to Excel</value>
+  <data name="grbMemCicliReadMem.Text" xml:space="preserve">
+    <value>Direct access to memory</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>To cycle</value>
@@ -499,8 +439,8 @@
   <data name="btnCaricaDaMemoria.Text" xml:space="preserve">
     <value>Direct loading</value>
   </data>
-  <data name="grbMemCicliReadMem.Text" xml:space="preserve">
-    <value>Direct access to memory</value>
+  <data name="grbMemCicliContatori.Text" xml:space="preserve">
+    <value>Counters</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Total programming events</value>
@@ -508,11 +448,41 @@
   <data name="lblEventiTotali.Text" xml:space="preserve">
     <value>Total events</value>
   </data>
-  <data name="grbMemCicliContatori.Text" xml:space="preserve">
-    <value>Counters</value>
+  <data name="btnAttivaProgrammazione.Text" xml:space="preserve">
+    <value>Enable Setup</value>
+  </data>
+  <data name="btnNuovoProgramma.Text" xml:space="preserve">
+    <value>New Setup</value>
+  </data>
+  <data name="btnRicaricaProgr.Text" xml:space="preserve">
+    <value>Read Setup</value>
+  </data>
+  <data name="grbProgrammazione.Text" xml:space="preserve">
+    <value>Active Setup</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Battery Type</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value># of Cells</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Cells V3</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Cells V2</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Nominal Capacity</value>
+  </data>
+  <data name="lblCelleP1.Text" xml:space="preserve">
+    <value>Cellls V1</value>
+  </data>
+  <data name="txtTensioneNom.Text" xml:space="preserve">
+    <value>Nominal Voltage</value>
+  </data>
+  <data name="grbAccensione.Text" xml:space="preserve">
+    <value>Start</value>
   </data>
   <data name="lblOrarioAccensione.Text" xml:space="preserve">
     <value>Time</value>
@@ -529,11 +499,32 @@
   <data name="rbtAccensione01.Text" xml:space="preserve">
     <value>Immediate</value>
   </data>
-  <data name="grbAccensione.Text" xml:space="preserve">
-    <value>Start</value>
+  <data name="grbOraCorrente.Text" xml:space="preserve">
+    <value>SPY-BATT Clock</value>
+  </data>
+  <data name="btnScriviRtc.Text" xml:space="preserve">
+    <value>Set Clock</value>
+  </data>
+  <data name="btnLeggiRtc.Text" xml:space="preserve">
+    <value>Read Clock</value>
+  </data>
+  <data name="lblOraRTC.Text" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="lblDataRTC.Text" xml:space="preserve">
+    <value>Date</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Thermal Probe</value>
+  </data>
+  <data name="grbVarResetScheda.Text" xml:space="preserve">
+    <value>Memory Clean</value>
+  </data>
+  <data name="chkFSerMantieniCliente.Text" xml:space="preserve">
+    <value>Keep Customer Data</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.Text" xml:space="preserve">
+    <value>Erase</value>
   </data>
   <data name="btnAttivaCalibrazione.Text" xml:space="preserve">
     <value>Activate calibration</value>
@@ -547,6 +538,12 @@
   <data name="btnStampaScheda.Text" xml:space="preserve">
     <value>Print record</value>
   </data>
+  <data name="grbCalibrazioni.Text" xml:space="preserve">
+    <value>Calibration</value>
+  </data>
+  <data name="grbComandiCalibrazione.Text" xml:space="preserve">
+    <value>Input calibration</value>
+  </data>
   <data name="btnCalScriviParametro.Text" xml:space="preserve">
     <value>Write parameter</value>
   </data>
@@ -555,12 +552,6 @@
   </data>
   <data name="label43.Text" xml:space="preserve">
     <value>Parametner</value>
-  </data>
-  <data name="grbComandiCalibrazione.Text" xml:space="preserve">
-    <value>Input calibration</value>
-  </data>
-  <data name="grbCalibrazioni.Text" xml:space="preserve">
-    <value>Calibration</value>
   </data>
   <data name="chkParLetturaAuto.Text" xml:space="preserve">
     <value>Automatic read</value>
@@ -571,11 +562,14 @@
   <data name="btnLeggiVariabili.Text" xml:space="preserve">
     <value>Read</value>
   </data>
-  <data name="grbVariabiliConnVOK.Text" xml:space="preserve">
-    <value>Ok connection</value>
+  <data name="grbVariabiliImmediate.Text" xml:space="preserve">
+    <value>Variables record</value>
   </data>
   <data name="grbVariabiliStatoConn.Text" xml:space="preserve">
     <value>Connection staus</value>
+  </data>
+  <data name="grbVariabiliConnVOK.Text" xml:space="preserve">
+    <value>Ok connection</value>
   </data>
   <data name="lblVarVBattT.Text" xml:space="preserve">
     <value>V backup battery</value>
@@ -601,11 +595,8 @@
   <data name="label23.Text" xml:space="preserve">
     <value>Ah discharged</value>
   </data>
-  <data name="grbVariabiliImmediate.Text" xml:space="preserve">
-    <value>Variables record</value>
-  </data>
-  <data name="tabSbFact.Text" xml:space="preserve">
-    <value>Service Functions</value>
+  <data name="grbMemCancFisica.Text" xml:space="preserve">
+    <value>Delete 4k memory</value>
   </data>
   <data name="rbtMemAreaLibera.Text" xml:space="preserve">
     <value>Custom zone</value>
@@ -619,14 +610,14 @@
   <data name="btnMemCFExec.Text" xml:space="preserve">
     <value>Execute</value>
   </data>
-  <data name="grbMemCancFisica.Text" xml:space="preserve">
-    <value>Delete 4k memory</value>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Complete memory loading</value>
   </data>
   <data name="btnDumpMemoria.Text" xml:space="preserve">
     <value>memory dump</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>Complete memory loading</value>
+  <data name="grbMemScrittura.Text" xml:space="preserve">
+    <value>Memory writing</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>HEX Value</value>
@@ -637,14 +628,17 @@
   <data name="cmdMemWrite.Text" xml:space="preserve">
     <value>Direct writing</value>
   </data>
-  <data name="grbMemScrittura.Text" xml:space="preserve">
-    <value>Memory writing</value>
+  <data name="grbMemCancellazione.Text" xml:space="preserve">
+    <value>Memory Erase</value>
+  </data>
+  <data name="chkMemClearMantieniCliente.Text" xml:space="preserve">
+    <value>Keep Customer Data</value>
   </data>
   <data name="cmdMemClear.Text" xml:space="preserve">
     <value>Deletion</value>
   </data>
-  <data name="grbMemCancellazione.Text" xml:space="preserve">
-    <value>Memory Erase</value>
+  <data name="grbMemLettura.Text" xml:space="preserve">
+    <value>Memory loading</value>
   </data>
   <data name="lblReadMemStartAddr.Text" xml:space="preserve">
     <value>initial address</value>
@@ -652,20 +646,20 @@
   <data name="cmdMemRead.Text" xml:space="preserve">
     <value>Direct loading</value>
   </data>
-  <data name="grbMemLettura.Text" xml:space="preserve">
-    <value>Memory loading</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Export cycles to Excel</value>
   </data>
   <data name="tctCalGeneraExcel.Text" xml:space="preserve">
     <value>Create file</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Export cycles to Excel</value>
   </data>
   <data name="label59.Text" xml:space="preserve">
     <value>Kernel number</value>
   </data>
   <data name="label58.Text" xml:space="preserve">
     <value>Cycle number</value>
+  </data>
+  <data name="grbQuadroSequenza.Text" xml:space="preserve">
+    <value>Current sequence</value>
   </data>
   <data name="chkCalRitornoVeloce.Text" xml:space="preserve">
     <value>Fast return</value>
@@ -703,14 +697,14 @@
   <data name="btnCalEseguiSeq.Text" xml:space="preserve">
     <value>Execute</value>
   </data>
-  <data name="grbQuadroSequenza.Text" xml:space="preserve">
-    <value>Current sequence</value>
-  </data>
   <data name="lblCalConnessione.Text" xml:space="preserve">
     <value>Not connected</value>
   </data>
   <data name="btnCalCollegaTdk.Text" xml:space="preserve">
     <value>Connect power supply</value>
+  </data>
+  <data name="grbFwAttivazioneArea.Text" xml:space="preserve">
+    <value>Activate area</value>
   </data>
   <data name="btnFwCheckArea.Text" xml:space="preserve">
     <value>Check</value>
@@ -718,17 +712,8 @@
   <data name="btnFwSwitchArea.Text" xml:space="preserve">
     <value>Activate</value>
   </data>
-  <data name="grbFwAttivazioneArea.Text" xml:space="preserve">
-    <value>Activate area</value>
-  </data>
-  <data name="chkAESEncript.Text" xml:space="preserve">
-    <value>AES encoding</value>
-  </data>
   <data name="label96.Text" xml:space="preserve">
     <value>Public firmware file</value>
-  </data>
-  <data name="label91.Text" xml:space="preserve">
-    <value>AES key</value>
   </data>
   <data name="label92.Text" xml:space="preserve">
     <value>Release date</value>
@@ -738,9 +723,6 @@
   </data>
   <data name="btnFWFileCCSLoad.Text" xml:space="preserve">
     <value>Load file</value>
-  </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>SBF file preparing</value>
   </data>
   <data name="label109.Text" xml:space="preserve">
     <value>Release date</value>
@@ -769,23 +751,26 @@
   <data name="btnFWFileSBFLoad.Text" xml:space="preserve">
     <value>Load file</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Updating</value>
+  <data name="grbStatoFirmware.Text" xml:space="preserve">
+    <value>Record status</value>
   </data>
   <data name="btnFwCaricaStato.Text" xml:space="preserve">
     <value>Reload</value>
   </data>
-  <data name="grbStatoFirmware.Text" xml:space="preserve">
-    <value>Record status</value>
+  <data name="label120.Text" xml:space="preserve">
+    <value>Id Origin</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Record origin</value>
   </data>
   <data name="label134.Text" xml:space="preserve">
     <value>Actual status</value>
   </data>
-  <data name="grbTracciaClonazione.Text" xml:space="preserve">
-    <value>Progress</value>
-  </data>
   <data name="btnClonaScriviRecordTestata.Text" xml:space="preserve">
     <value>SPY-BATT updating</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Record data</value>
   </data>
   <data name="label133.Text" xml:space="preserve">
     <value>Customer info</value>
@@ -808,14 +793,8 @@
   <data name="label124.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Record data</value>
-  </data>
   <data name="btnClonaGeneraRecordTestata.Text" xml:space="preserve">
     <value>Create record</value>
-  </data>
-  <data name="grbClonaRecordTestata.Text" xml:space="preserve">
-    <value>Header record</value>
   </data>
   <data name="btnClonaSchedVuota.Text" xml:space="preserve">
     <value>Empty record</value>
@@ -823,25 +802,61 @@
   <data name="btnClonaCaricaOrigine.Text" xml:space="preserve">
     <value>Load data</value>
   </data>
-  <data name="label120.Text" xml:space="preserve">
-    <value>Id Origin</value>
+  <data name="label131.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 17</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>Record origin</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
   </data>
-  <data name="label130.Text" xml:space="preserve">
-    <value>Stored Phases</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 17</value>
   </data>
-  <data name="chkStatGraficoAssEl.Text" xml:space="preserve">
-    <value>Percentage of Electrolyte Absence</value>
+  <data name="lblCliCicliAttesi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 17</value>
   </data>
-  <data name="grbVarResetScheda.Text" xml:space="preserve">
-    <value>Memory Erase</value>
+  <data name="lblCliIdBatteria.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 17</value>
   </data>
-  <data name="btnFSerCancellaMemoria.Text" xml:space="preserve">
-    <value>Erase</value>
+  <data name="lblCliMarcaBatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 17</value>
   </data>
-  <data name="txtTensioneNom.Text" xml:space="preserve">
-    <value>Nominal Voltage</value>
+  <data name="lblCliModellpApp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 17</value>
+  </data>
+  <data name="lbNoteCliente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="lblCliCliente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 17</value>
+  </data>
+  <data name="lblOraRTC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 17</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="lblCelleP1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 17</value>
+  </data>
+  <data name="tabCaricaBatterie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1788, 751</value>
+  </data>
+  <data name="btnGeneraCodice.Text" xml:space="preserve">
+    <value>Genetratete Code</value>
+  </data>
+  <data name="label139.Text" xml:space="preserve">
+    <value>Unlocking Code</value>
+  </data>
+  <data name="grbAbilitazioneReset.Text" xml:space="preserve">
+    <value>Enable Memory Cleaning</value>
   </data>
 </root>

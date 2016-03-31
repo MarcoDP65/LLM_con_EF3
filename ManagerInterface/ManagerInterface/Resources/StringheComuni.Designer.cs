@@ -133,6 +133,33 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Codice non valido:  Codice non corretto.
+        /// </summary>
+        internal static string CancellaMemoriaR3 {
+            get {
+                return ResourceManager.GetString("CancellaMemoriaR3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Codice non valido:  Dati richiesta non aggiornati.
+        /// </summary>
+        internal static string CancellaMemoriaR4 {
+            get {
+                return ResourceManager.GetString("CancellaMemoriaR4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Codice non valido:  Dispositivo non corrispondente.
+        /// </summary>
+        internal static string CancellaMemoriaR5 {
+            get {
+                return ResourceManager.GetString("CancellaMemoriaR5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Carica.
         /// </summary>
         internal static string Carica {
@@ -147,6 +174,15 @@ namespace PannelloCharger {
         internal static string CaricaDati {
             get {
                 return ResourceManager.GetString("CaricaDati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Configurazione non riuscita.
+        /// </summary>
+        internal static string CfgFallita {
+            get {
+                return ResourceManager.GetString("CfgFallita", resourceCulture);
             }
         }
         
@@ -295,6 +331,15 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Impossibile continuare.
+        /// </summary>
+        internal static string ImpossibileContinuare {
+            get {
+                return ResourceManager.GetString("ImpossibileContinuare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Informazioni su.
         /// </summary>
         internal static string InformazioniSu {
@@ -354,6 +399,24 @@ namespace PannelloCharger {
         internal static string NoDevice {
             get {
                 return ResourceManager.GetString("NoDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Apparato Corrente non definito.
+        /// </summary>
+        internal static string NotDefined {
+            get {
+                return ResourceManager.GetString("NotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Nuova Configurazione.
+        /// </summary>
+        internal static string NuovaCfg {
+            get {
+                return ResourceManager.GetString("NuovaCfg", resourceCulture);
             }
         }
         
@@ -430,7 +493,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Programmazione ATTIVA; Registrazione ATTIVA.
+        ///   Cerca una stringa localizzata simile a Configurazione ATTIVA; Registrazione ATTIVA.
         /// </summary>
         internal static string StatoPrg02 {
             get {
@@ -453,6 +516,15 @@ namespace PannelloCharger {
         internal static string StatoPrgND {
             get {
                 return ResourceManager.GetString("StatoPrgND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Configurazione SPY-BATT.
+        /// </summary>
+        internal static string TitoloCfg {
+            get {
+                return ResourceManager.GetString("TitoloCfg", resourceCulture);
             }
         }
         

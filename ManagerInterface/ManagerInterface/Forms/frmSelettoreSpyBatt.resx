@@ -264,7 +264,7 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtIdScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>556, 454</value>
+    <value>584, 462</value>
   </data>
   <data name="txtIdScheda.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 27</value>

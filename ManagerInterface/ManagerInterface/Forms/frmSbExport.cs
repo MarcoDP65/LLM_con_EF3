@@ -131,13 +131,19 @@ namespace PannelloCharger
             {
                 filePath = txtNuovoFile.Text;
                 if (!File.Exists(filePath)) File.Create(filePath).Close();
-
+                Log.Debug("file prepara esportazione");
                 _sb.PreparaEsportazione(true, true, true, true,true);
                 string JsonData = JsonConvert.SerializeObject(_sb.ModelloDati);
+                Log.Debug("file generato");
+                // Ora cifro i dati
+                string JsonEncript = StringCipher.Encrypt(JsonData);
 
-                File.AppendAllText(filePath, JsonData);
+                Log.Debug("file criptato");
+                File.AppendAllText(filePath, JsonEncript);
 
-//                MessageBox.Show("File generato", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Log.Debug("file salvato");
+
+                //                MessageBox.Show("File generato", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show(StringheComuni.FileGenerato, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -164,12 +170,27 @@ namespace PannelloCharger
                     filePath = txtNuovoFile.Text;
                     if (File.Exists(filePath))
                     {
+                        Log.Debug("Inizio Import");
+                        string _fileDecripted = "";
                         string _fileImport = File.ReadAllText(filePath);
+                        Log.Debug("file caricato: len = " + _fileImport.Length.ToString());
+
+                        _fileDecripted = StringCipher.Decrypt(_fileImport);
+                        if(_fileDecripted != "")
+                        {
+                            //il file è cifrato
+                            Log.Debug("file criptato");
+                            _fileImport = _fileDecripted;
+                        }
+                        Log.Debug("file decriptato");
                         sbDataModel _importData;
                         elementiComuni.Crc16Ccitt codCrc = new elementiComuni.Crc16Ccitt(elementiComuni.InitialCrcValue.NonZero1);
                         ushort _crc;
 
                         _importData = JsonConvert.DeserializeObject<sbDataModel>(_fileImport);
+
+                        Log.Debug("file convertito");
+
                         ushort _tempCRC = _importData.CRC;
                         _importData.CRC = 0;
 
@@ -178,6 +199,8 @@ namespace PannelloCharger
 
                         // rivedere il controllo crc
                         _crc = _tempCRC;  // codCrc.ComputeChecksum(_tempBSer);
+                        Log.Debug("file verificato");
+
 
                         if (_crc == _tempCRC)
                         { // I CRC ciincidono: dati validi
@@ -298,6 +321,15 @@ namespace PannelloCharger
             {
                 sfdExportDati.Title = StringheComuni.EsportaDati;
                 sfdExportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
+
+                // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                if (!Directory.Exists(_pathTeorico))
+                {
+                    Directory.CreateDirectory(_pathTeorico);
+                }
+                sfdExportDati.InitialDirectory = _pathTeorico;
                 sfdExportDati.ShowDialog();
                 txtNuovoFile.Text = sfdExportDati.FileName;
     
@@ -307,6 +339,14 @@ namespace PannelloCharger
                 ofdImportDati.Title = StringheComuni.ImportaDati;
                 ofdImportDati.CheckFileExists = false;
                 ofdImportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
+                // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                if (!Directory.Exists(_pathTeorico))
+                {
+                    Directory.CreateDirectory(_pathTeorico);
+                }
+                sfdExportDati.InitialDirectory = _pathTeorico;
                 ofdImportDati.ShowDialog();
                 txtNuovoFile.Text = ofdImportDati.FileName;
                 if (importaDati()) btnDataExport.Enabled = true;

@@ -203,11 +203,8 @@ namespace MoriData
                 _utente[] usr = { new _utente { Id = 1, Username = "Factory", Password = "factory", NomeUtente = "Livello Factory", Livello = 0, Lingua = 0, Attivo = 1 },
                                   new _utente { Id = 2, Username = "Service", Password = "service", NomeUtente = "Livello Service", Livello = 1, Lingua = 0, Attivo = 1 },
                                   new _utente { Id = 3, Username = "PowerUser", Password = "poweruser", NomeUtente = "Livello Power User", Livello = 2, Lingua = 0, Attivo = 1 },
-                                  new _utente { Id = 4, Username = "User", Password = "user", NomeUtente = "Livello User", Livello = 3, Lingua = 0, Attivo = 1 },
-                                  new _utente { Id = 5, Username = "FactoryEn", Password = "factory", NomeUtente = "Livello Factory", Livello = 0, Lingua = 1, Attivo = 1 },
-                                  new _utente { Id = 6, Username = "ServiceEn", Password = "service", NomeUtente = "Livello Service", Livello = 1, Lingua = 1, Attivo = 1 },
-                                  new _utente { Id = 7, Username = "PowerUserEn", Password = "poweruser", NomeUtente = "Livello Power User", Livello = 2, Lingua = 1, Attivo = 1 },
-                                  new _utente { Id = 8, Username = "UserEn", Password = "user", NomeUtente = "Livello User", Livello = 3, Lingua = 1, Attivo = 1 }};
+                                  new _utente { Id = 4, Username = "User", Password = "user", NomeUtente = "Livello User", Livello = 3, Lingua = 0, Attivo = 1 }
+                                };
  
                 InsertAll(usr);
             }
@@ -261,9 +258,14 @@ namespace MoriData
 
 
 
+
         public void inizializzaSoglie()
         {
             bool TabellaCompilata = checkInit("_sbSoglie");
+
+            // Verifico se le soglie sono aggiornate
+
+
             if (!TabellaCompilata)
             {
                 _sbSoglie[] _sgl = 
@@ -271,18 +273,18 @@ namespace MoriData
                     new _sbSoglie { IdLocale = 1, Username = "#default#", IdApparato = "#base#", IdMisura= 1, TipoMisura = 0 ,ValoreInt = 80},
                     new _sbSoglie { IdLocale = 2, Username = "#default#", IdApparato = "#base#", IdMisura= 2, TipoMisura = 0 ,ValoreInt = 55},
                     new _sbSoglie { IdLocale = 3, Username = "#default#", IdApparato = "#base#", IdMisura= 3, TipoMisura = 0 ,ValoreInt = 0},
-                    new _sbSoglie { IdLocale = 4, Username = "#default#", IdApparato = "#base#", IdMisura= 4, TipoMisura = 0 ,ValoreInt = 12},
+                    new _sbSoglie { IdLocale = 4, Username = "#default#", IdApparato = "#base#", IdMisura= 4, TipoMisura = 0 ,ValoreInt = 10},
                     new _sbSoglie { IdLocale = 5, Username = "#default#", IdApparato = "#base#", IdMisura= 5, TipoMisura = 0 ,ValoreInt = 55},
                     new _sbSoglie { IdLocale = 6, Username = "#default#", IdApparato = "#base#", IdMisura= 6, TipoMisura = 0 ,ValoreInt = 55},
-                    new _sbSoglie { IdLocale = 7, Username = "#default#", IdApparato = "#base#", IdMisura= 7, TipoMisura = 0 ,ValoreInt = 12},
-                    new _sbSoglie { IdLocale = 8, Username = "#default#", IdApparato = "#base#", IdMisura= 8, TipoMisura = 0 ,ValoreInt = 12},
+                    new _sbSoglie { IdLocale = 7, Username = "#default#", IdApparato = "#base#", IdMisura= 7, TipoMisura = 0 ,ValoreInt = 15},
+                    new _sbSoglie { IdLocale = 8, Username = "#default#", IdApparato = "#base#", IdMisura= 8, TipoMisura = 0 ,ValoreInt = 15},
                     new _sbSoglie { IdLocale = 9, Username = "#default#", IdApparato = "#base#", IdMisura= 9, TipoMisura = 1 ,ValoreNum = 0.05},
                     new _sbSoglie { IdLocale = 10, Username = "#default#", IdApparato = "#base#", IdMisura= 10, TipoMisura = 0 ,ValoreInt = 1},
-                    new _sbSoglie { IdLocale = 11, Username = "#default#", IdApparato = "#base#", IdMisura= 11, TipoMisura = 0 ,ValoreInt = 5},
-                    new _sbSoglie { IdLocale = 12, Username = "#default#", IdApparato = "#base#", IdMisura= 12, TipoMisura = 0 ,ValoreInt = 20},
-                    new _sbSoglie { IdLocale = 13, Username = "#default#", IdApparato = "#base#", IdMisura= 13, TipoMisura = 0 ,ValoreInt = 72},
-                    new _sbSoglie { IdLocale = 14, Username = "#default#", IdApparato = "#base#", IdMisura= 14, TipoMisura = 0 ,ValoreInt = 480},
-                    new _sbSoglie { IdLocale = 15, Username = "#default#", IdApparato = "#base#", IdMisura= 15, TipoMisura = 0 ,ValoreInt = 480},
+                    new _sbSoglie { IdLocale = 11, Username = "#default#", IdApparato = "#base#", IdMisura= 11, TipoMisura = 0 ,ValoreInt = 24},
+                    new _sbSoglie { IdLocale = 12, Username = "#default#", IdApparato = "#base#", IdMisura= 12, TipoMisura = 0 ,ValoreInt = 72},
+                    new _sbSoglie { IdLocale = 13, Username = "#default#", IdApparato = "#base#", IdMisura= 13, TipoMisura = 0 ,ValoreInt = 168},
+                    new _sbSoglie { IdLocale = 14, Username = "#default#", IdApparato = "#base#", IdMisura= 14, TipoMisura = 0 ,ValoreInt = 360},
+                    new _sbSoglie { IdLocale = 15, Username = "#default#", IdApparato = "#base#", IdMisura= 15, TipoMisura = 0 ,ValoreInt = 960},
                 };
 
 

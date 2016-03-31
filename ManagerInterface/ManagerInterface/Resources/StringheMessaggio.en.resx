@@ -207,4 +207,7 @@
   <data name="strVistaLunghiColIdProgramma" xml:space="preserve">
     <value>Setup</value>
   </data>
+  <data name="strVistaLunghiCol15" xml:space="preserve">
+    <value>C.F.</value>
+  </data>
 </root>

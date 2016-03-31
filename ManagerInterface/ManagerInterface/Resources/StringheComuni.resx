@@ -147,115 +147,139 @@
   <data name="CaricaDati" xml:space="preserve">
     <value>Carica Dati</value>
   </data>
-  <data name="Collegato" xml:space="preserve">
-    <value>collegato alla porta</value>
-  </data>
-  <data name="CollegatoUSB" xml:space="preserve">
-    <value>collegato alla porta USB</value>
-  </data>
-  <data name="DatiGiaPresenti" xml:space="preserve">
-    <value>Sono già presenti dati relativi all'apparato</value>
-  </data>
-  <data name="DatiNonValidi" xml:space="preserve">
-    <value>Dati non Validi</value>
-  </data>
-  <data name="Domenica" xml:space="preserve">
-    <value>Dom</value>
-  </data>
-  <data name="Elettrolita" xml:space="preserve">
-    <value>Elettrolita</value>
-  </data>
-  <data name="EsportaDati" xml:space="preserve">
-    <value>Esporta Dati</value>
-  </data>
-  <data name="EsportazioneDati" xml:space="preserve">
-    <value>Esportazione dati Apparato</value>
-  </data>
-  <data name="EventoAnomalo" xml:space="preserve">
-    <value>Evento Anomalo</value>
-  </data>
-  <data name="FaseCarica" xml:space="preserve">
-    <value>Fase di Carica</value>
-  </data>
-  <data name="FaseEqualizzazione" xml:space="preserve">
-    <value>Fase di Equalizzazione</value>
-  </data>
-  <data name="FaseScarica" xml:space="preserve">
-    <value>Fase di Scarica</value>
-  </data>
-  <data name="FileDanneggiato" xml:space="preserve">
-    <value>File danneggiato: impossibile caricare i dati</value>
-  </data>
-  <data name="FileGenerato" xml:space="preserve">
-    <value>File generato</value>
-  </data>
-  <data name="Giovedi" xml:space="preserve">
-    <value>Gio</value>
+  <data name="CfgFallita" xml:space="preserve">
+    <value>Configurazione non riuscita</value>
   </data>
   <data name="ImportaDati" xml:space="preserve">
     <value>Importa Dati</value>
   </data>
-  <data name="InformazioniSu" xml:space="preserve">
-    <value>Informazioni su</value>
+  <data name="Giovedi" xml:space="preserve">
+    <value>Gio</value>
   </data>
-  <data name="InserireNome" xml:space="preserve">
-    <value>Inserire un nome valido</value>
+  <data name="FileGenerato" xml:space="preserve">
+    <value>File generato</value>
   </data>
-  <data name="Lunedi" xml:space="preserve">
-    <value>Lun</value>
+  <data name="FileDanneggiato" xml:space="preserve">
+    <value>File danneggiato: impossibile caricare i dati</value>
   </data>
-  <data name="Martedi" xml:space="preserve">
-    <value>Mar</value>
+  <data name="FaseScarica" xml:space="preserve">
+    <value>Fase di Scarica</value>
   </data>
-  <data name="MemoriaCancellata" xml:space="preserve">
-    <value>Memoria Cancellata</value>
+  <data name="FaseEqualizzazione" xml:space="preserve">
+    <value>Fase di Equalizzazione</value>
   </data>
-  <data name="Mercoledi" xml:space="preserve">
-    <value>Mer</value>
+  <data name="FaseCarica" xml:space="preserve">
+    <value>Fase di Carica</value>
+  </data>
+  <data name="EventoAnomalo" xml:space="preserve">
+    <value>Evento Anomalo</value>
+  </data>
+  <data name="EsportazioneDati" xml:space="preserve">
+    <value>Esportazione dati Apparato</value>
+  </data>
+  <data name="EsportaDati" xml:space="preserve">
+    <value>Esporta Dati</value>
+  </data>
+  <data name="Elettrolita" xml:space="preserve">
+    <value>Elettrolita</value>
+  </data>
+  <data name="Domenica" xml:space="preserve">
+    <value>Dom</value>
+  </data>
+  <data name="DatiNonValidi" xml:space="preserve">
+    <value>Dati non Validi</value>
+  </data>
+  <data name="DatiGiaPresenti" xml:space="preserve">
+    <value>Sono già presenti dati relativi all'apparato</value>
+  </data>
+  <data name="CollegatoUSB" xml:space="preserve">
+    <value>collegato alla porta USB</value>
+  </data>
+  <data name="Collegato" xml:space="preserve">
+    <value>collegato alla porta</value>
+  </data>
+  <data name="ImpossibileContinuare" xml:space="preserve">
+    <value>Impossibile continuare</value>
   </data>
   <data name="NoDevice" xml:space="preserve">
     <value>Nessun dispositivo collegato</value>
   </data>
-  <data name="Pausa" xml:space="preserve">
-    <value>Pausa</value>
+  <data name="Mercoledi" xml:space="preserve">
+    <value>Mer</value>
   </data>
-  <data name="PresenzaElett" xml:space="preserve">
-    <value>Pres Elettrolita</value>
+  <data name="MemoriaCancellata" xml:space="preserve">
+    <value>Memoria Cancellata</value>
   </data>
-  <data name="RichConfermaCanc" xml:space="preserve">
-    <value>Vuoi realmente cancellare tutti i dati relativi all'apparato</value>
+  <data name="Martedi" xml:space="preserve">
+    <value>Mar</value>
   </data>
-  <data name="Sabato" xml:space="preserve">
-    <value>Sab</value>
+  <data name="Lunedi" xml:space="preserve">
+    <value>Lun</value>
   </data>
-  <data name="SalvaDati" xml:space="preserve">
-    <value>Salva Dati</value>
+  <data name="InserireNome" xml:space="preserve">
+    <value>Inserire un nome valido</value>
   </data>
-  <data name="Scarica" xml:space="preserve">
-    <value>Scarica</value>
+  <data name="InformazioniSu" xml:space="preserve">
+    <value>Informazioni su</value>
   </data>
-  <data name="StatoPrg00" xml:space="preserve">
-    <value>Configurazione NON ATTIVA</value>
+  <data name="NotDefined" xml:space="preserve">
+    <value>Apparato Corrente non definito</value>
   </data>
-  <data name="StatoPrg01" xml:space="preserve">
-    <value>Configurazione ATTIVA; Registrazione NON ATTIVA</value>
-  </data>
-  <data name="StatoPrg02" xml:space="preserve">
-    <value>Programmazione ATTIVA; Registrazione ATTIVA</value>
-  </data>
-  <data name="StatoPrg03" xml:space="preserve">
-    <value>Calibrazione ATTIVA</value>
+  <data name="NuovaCfg" xml:space="preserve">
+    <value>Nuova Configurazione</value>
   </data>
   <data name="StatoPrgND" xml:space="preserve">
     <value>Stato NON DEFINITO: </value>
   </data>
-  <data name="TrovatoDispositivo" xml:space="preserve">
-    <value>Trovato dispositivo</value>
+  <data name="StatoPrg03" xml:space="preserve">
+    <value>Calibrazione ATTIVA</value>
+  </data>
+  <data name="StatoPrg02" xml:space="preserve">
+    <value>Configurazione ATTIVA; Registrazione ATTIVA</value>
+  </data>
+  <data name="StatoPrg01" xml:space="preserve">
+    <value>Configurazione ATTIVA; Registrazione NON ATTIVA</value>
+  </data>
+  <data name="StatoPrg00" xml:space="preserve">
+    <value>Configurazione NON ATTIVA</value>
+  </data>
+  <data name="Scarica" xml:space="preserve">
+    <value>Scarica</value>
+  </data>
+  <data name="SalvaDati" xml:space="preserve">
+    <value>Salva Dati</value>
+  </data>
+  <data name="Sabato" xml:space="preserve">
+    <value>Sab</value>
+  </data>
+  <data name="RichConfermaCanc" xml:space="preserve">
+    <value>Vuoi realmente cancellare tutti i dati relativi all'apparato</value>
+  </data>
+  <data name="PresenzaElett" xml:space="preserve">
+    <value>Pres Elettrolita</value>
+  </data>
+  <data name="Pausa" xml:space="preserve">
+    <value>Pausa</value>
+  </data>
+  <data name="TitoloCfg" xml:space="preserve">
+    <value>Configurazione SPY-BATT</value>
+  </data>
+  <data name="Versione" xml:space="preserve">
+    <value>Versione</value>
   </data>
   <data name="Venerdi" xml:space="preserve">
     <value>Ven</value>
   </data>
-  <data name="Versione" xml:space="preserve">
-    <value>Versione</value>
+  <data name="TrovatoDispositivo" xml:space="preserve">
+    <value>Trovato dispositivo</value>
+  </data>
+  <data name="CancellaMemoriaR3" xml:space="preserve">
+    <value>Codice non valido:  Codice non corretto</value>
+  </data>
+  <data name="CancellaMemoriaR4" xml:space="preserve">
+    <value>Codice non valido:  Dati richiesta non aggiornati</value>
+  </data>
+  <data name="CancellaMemoriaR5" xml:space="preserve">
+    <value>Codice non valido:  Dispositivo non corrispondente</value>
   </data>
 </root>

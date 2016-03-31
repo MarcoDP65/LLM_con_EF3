@@ -205,7 +205,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a % Pause.
+        ///   Cerca una stringa localizzata simile a N° Pause.
         /// </summary>
         internal static string GougePauser1 {
             get {
@@ -300,6 +300,42 @@ namespace PannelloCharger {
         internal static string GrAssenzaElTitolo {
             get {
                 return ResourceManager.GetString("GrAssenzaElTitolo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Numero Cicli.
+        /// </summary>
+        internal static string GrCfAsseX {
+            get {
+                return ResourceManager.GetString("GrCfAsseX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Fattore di Carica.
+        /// </summary>
+        internal static string GrCfAsseY {
+            get {
+                return ResourceManager.GetString("GrCfAsseY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a C.F..
+        /// </summary>
+        internal static string GrCfChiave {
+            get {
+                return ResourceManager.GetString("GrCfChiave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Fattore di Carica.
+        /// </summary>
+        internal static string GrCfTitolo {
+            get {
+                return ResourceManager.GetString("GrCfTitolo", resourceCulture);
             }
         }
         

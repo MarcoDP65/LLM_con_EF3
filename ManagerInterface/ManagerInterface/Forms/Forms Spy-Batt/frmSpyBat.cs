@@ -61,8 +61,6 @@ namespace PannelloCharger
         private OxyPlot.PlotModel grCompEnConsumata;
         private OxyPlot.PlotModel grCompCO2;
 
-
-
         private OxyPlot.WindowsForms.PlotView oxyContainerGrSingolo;
         private OxyPlot.WindowsForms.PlotView oxyContainerGrAnalisi;
         private OxyPlot.PlotModel oxyGraficoSingolo;
@@ -86,11 +84,13 @@ namespace PannelloCharger
 
         public string IdCorrente;
 
+
         public frmSpyBat(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
         {
             bool _esito;
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
 
                 _parametri = _par;
                 System.Threading.Thread.CurrentThread.CurrentUICulture = _parametri.currentCulture;
@@ -179,6 +179,10 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("frmSpyBat: " + Ex.Message + " [" + Ex.TargetSite.ToString() + "]");
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
 
         }
@@ -329,10 +333,13 @@ namespace PannelloCharger
             btnLeggiVariabili.Enabled = _apparatoPresente;
             chkParLetturaAuto.Enabled = _apparatoPresente;
             grbVarResetScheda.Enabled = _apparatoPresente;
-
+            grbFWAggiornamento.Enabled = _apparatoPresente;
+            grbFwAttivazioneArea.Enabled = _apparatoPresente;
+            grbStatoFirmware.Enabled = _apparatoPresente;
 
 
         }
+
 
         public bool reconnectSpyBat()
         {
@@ -629,12 +636,14 @@ namespace PannelloCharger
                 grbMainDlOptions.Visible = false;
                 btnResetScheda.Visible = false;
                 grbTestataContatori.Visible = false;
+                grbAbilitazioneReset.Visible = false;
                 txtSerialNumber.ReadOnly = true;
                 if (LivelloCorrente == 0)
                 {
                     grbMainDlOptions.Visible = true;
                     btnResetScheda.Visible = true;
                     grbTestataContatori.Visible = true;
+                    grbAbilitazioneReset.Visible = true;
                     txtSerialNumber.ReadOnly = false;
                 }
 
@@ -1946,6 +1955,22 @@ namespace PannelloCharger
                 Colonna6.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna6);
 
+                //Tempo Sovreatemperatura
+                BrightIdeasSoftware.OLVColumn ColDurataOverTemp = new BrightIdeasSoftware.OLVColumn();
+                ColDurataOverTemp.Text = "T OverT"; // StringheMessaggio.strVistaLunghiCol05;
+                ColDurataOverTemp.AspectName = "DurataOverTemp";
+                ColDurataOverTemp.Sortable = false;
+                ColDurataOverTemp.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    return _sb.StringaDurata(_tempVal.DurataOverTemp,true);
+                };
+                ColDurataOverTemp.Width = 60;
+                ColDurataOverTemp.HeaderTextAlign = HorizontalAlignment.Center;
+                ColDurataOverTemp.TextAlign = HorizontalAlignment.Right;
+                ColDurataOverTemp.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(ColDurataOverTemp);
+
                 BrightIdeasSoftware.OLVColumn Colonna7 = new BrightIdeasSoftware.OLVColumn();
                 Colonna7.Text = StringheMessaggio.strVistaLunghiCol07;
                 Colonna7.AspectName = "strVmin";
@@ -1995,6 +2020,25 @@ namespace PannelloCharger
                 Colonna11.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna11.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna11);
+
+
+                //Tempo Mancanza Elettrolita 
+                BrightIdeasSoftware.OLVColumn ColDurataAssEl = new BrightIdeasSoftware.OLVColumn();
+                ColDurataAssEl.Text = "T AssEl"; // StringheMessaggio.strVistaLunghiCol05;
+                ColDurataAssEl.AspectName = "DurataMancanzaElettrolita";
+                ColDurataAssEl.Sortable = false;
+                ColDurataAssEl.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    return _sb.StringaDurata(_tempVal.DurataMancanzaElettrolita,true);
+                };
+                ColDurataAssEl.Width = 60;
+                ColDurataAssEl.HeaderTextAlign = HorizontalAlignment.Center;
+                ColDurataAssEl.TextAlign = HorizontalAlignment.Right;
+                ColDurataAssEl.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(ColDurataAssEl);
+
+
 
                 BrightIdeasSoftware.OLVColumn Colonna12 = new BrightIdeasSoftware.OLVColumn();
                 Colonna12.Text = StringheMessaggio.strVistaLunghiCol12; // "Ah";
@@ -2103,6 +2147,23 @@ namespace PannelloCharger
                 Colonna15.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna15.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna15);
+
+                //Tempo Sbilanciamento celle 
+                BrightIdeasSoftware.OLVColumn ColDurataSbil = new BrightIdeasSoftware.OLVColumn();
+                ColDurataSbil.Text = "T Sbil"; // StringheMessaggio.strVistaLunghiCol05;
+                ColDurataSbil.AspectName = "DurataSbilCelle";
+                ColDurataSbil.Sortable = false;
+                ColDurataSbil.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    return _sb.StringaDurata(_tempVal.DurataSbilCelle,true);
+                };
+                ColDurataSbil.Width = 60;
+                ColDurataSbil.HeaderTextAlign = HorizontalAlignment.Center;
+                ColDurataSbil.TextAlign = HorizontalAlignment.Right;
+                ColDurataSbil.IsVisible = _colonnaNascosta;
+                flvwCicliBatteria.AllColumns.Add(ColDurataSbil);
+
 
                 //strVMaxSbilanciamentoC
                 BrightIdeasSoftware.OLVColumn Colonna20 = new BrightIdeasSoftware.OLVColumn();
@@ -2984,6 +3045,7 @@ namespace PannelloCharger
                     CaricaCicli();
 
                     btnCaricaDettaglioSel.Enabled = _apparatoPresente;
+                    RicalcolaStatistiche();
                     //_avCicli.Dispose();
                     this.Cursor = Cursors.Default;
                 }
@@ -3223,6 +3285,14 @@ namespace PannelloCharger
                     //Anomalie
                     txtStatNAnomali.Text = _stat.NumeroAnomalie.ToString();
 
+
+                    //Ultima Lettura
+                    if (_stat.UltimaLettura > DateTime.MinValue)
+                        txtDataLastDownload.Text = _stat.UltimaLettura.ToShortDateString();
+                    else
+                        txtDataLastDownload.Text = "";
+
+
                 }
                 else
                 {
@@ -3410,6 +3480,24 @@ namespace PannelloCharger
                     if (_pagina.Tag == "GRAFICO")
                         tbcStatistiche.TabPages.Remove(_pagina);
                 }
+
+                /***************************************************************************************************************************/
+                /*   GRAFICO C.F..                                                                                                        */
+                /***************************************************************************************************************************/
+
+                if (chkStatGraficoFC.Checked == true)
+                {
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrCfChiave);
+                    _grafico.ToolTipText = chkStatGraficoFC.Text;
+                    _grafico.Tag = "GRAFICO";
+                    _grafico.DatiGrafico = new DatiEstrazione();
+                    _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoChargeFactor(StringheStatistica.GrCfTitolo);
+                    GraficoLivelliOxy(StringheStatistica.GrCfTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
+
+                    tbcStatistiche.TabPages.Insert(_primaScheda, _grafico);
+
+                }
+
 
                 /***************************************************************************************************************************/
                 /*   GRAFICO Differenza Temperature in Carica Parziale                                                                     */
@@ -4879,6 +4967,104 @@ namespace PannelloCharger
             try
             {
                 bool _esito;
+                SerialMessage.Crc16Ccitt codCrc = new SerialMessage.Crc16Ccitt(SerialMessage.InitialCrcValue.NonZero1);
+
+                // Prima chiedo il codice di autorizzazione, se ho meno di 30 cicli registrati
+                if (_sb.sbData.LongMem > 30)
+                {
+                    frmRichiestaCodice _richiesta = new frmRichiestaCodice();
+                    _richiesta.ShowDialog();
+                    if (_richiesta.DialogResult == DialogResult.OK)
+                    {
+                        if (_richiesta.CodiceAutorizzazione.Length != 16)
+                        {
+                            // Lunghezza codice errata. Esco
+                            MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            _richiesta.Dispose();
+                            return;
+                        }
+                        else
+                        {
+                            //La lunghezza è giusta, tento la decodifica
+                            string _codice = "";
+                            string _cR = _richiesta.CodiceAutorizzazione;
+
+                            // step 1, riordino
+                            _codice = "" + _cR[0] + _cR[15] + _cR[1] + _cR[14] + _cR[2] + _cR[13] + _cR[3] + _cR[12] + _cR[4] + _cR[11] + _cR[5] + _cR[10] + _cR[6] + _cR[9] + _cR[7] + _cR[8];
+
+
+                            //Step 2,confronto il crc
+                            string _dati = _codice.Substring(0, 12);
+                            string _crcOrigine = _codice.Substring(12, 4);
+
+                            byte[] PrimaCodifica = Encoding.ASCII.GetBytes(_dati);
+                            ushort _crcEsito = codCrc.ComputeChecksum(PrimaCodifica);
+                            string _strcrcEsito = _crcEsito.ToString("x4");
+                            _strcrcEsito = _strcrcEsito.ToUpper();
+                            if (_crcOrigine != _strcrcEsito)
+                            {
+                                MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                _richiesta.Dispose();
+                                return;
+                            }
+                            // Il crc corrisponde, proseguo: Confronto l'ID spybatt
+
+
+                            int _hexId = 0;
+                            byte[] array = Encoding.ASCII.GetBytes(_sb.Id);
+
+                            // Loop through contents of the array.
+                            int _step = 0;
+                            foreach (byte element in array)
+                            {
+                                _step += 9;
+                                _hexId += (element * _step);
+                            }
+                            string _codiceSB = _hexId.ToString("x6");
+                            _codiceSB = _codiceSB.ToUpper();
+                            if (_codice.Substring(0, 6) != _codiceSB)
+                            {
+                                // Codice Spybatt non corrispondente
+
+                                MessageBox.Show(StringheComuni.CancellaMemoriaR5, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                _richiesta.Dispose();
+                                return;
+                            }
+
+                            // Lo spybatt è corretto: se il N° cicli non si scosta di più di 5, cancello
+                            uint _cicliOrigine;
+                            if (uint.TryParse(_codice.Substring(6, 6), NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _cicliOrigine) != true)
+                            {
+                                // La conversione in numero è fallita, esco
+                                MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                _richiesta.Dispose();
+                                return;
+
+
+                            }
+
+                            //ora vedo lo scostamento
+                            if ((_sb.sbData.LongMem - _cicliOrigine) > 5)
+                            {
+                                // i cicli non corrispondono
+                                MessageBox.Show(StringheComuni.CancellaMemoriaR4, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                _richiesta.Dispose();
+                                return;
+
+                            }
+
+                            // TUTTO OK, il codice è valido, proseguo
+                            _richiesta.Dispose();
+
+                        }
+
+                    }
+                    else
+                    {
+                        _richiesta.Dispose();
+                        return;
+                    }
+                }
                 DialogResult risposta = MessageBox.Show(StringheComuni.CancellaMemoriaR1 + "\n" + StringheComuni.CancellaMemoriaR2,
                 StringheComuni.CancellaMemoria,
                 MessageBoxButtons.YesNo,
@@ -5345,6 +5531,7 @@ namespace PannelloCharger
 
                 buiStatCockpit.Frame.Clear();
                 Ic11 = new IndicatoreCruscotto();
+                Ic11.ValueMask = "0";
                 Ic11.MinVal = 0;
                 Ic11.Lim1 = 50;
                 Ic11.Lim2 = 80;
@@ -5368,7 +5555,7 @@ namespace PannelloCharger
                 //  1.2 - D.o.D.
 
                 Ic12 = new IndicatoreCruscotto();
-                Ic12.ValueMask = "0.0";
+                Ic12.ValueMask = "0";
                 Ic12.MostraValore = true;
                 Ic12.MinVal = 0;
                 Ic12.Lim1 = 50;
@@ -5381,12 +5568,13 @@ namespace PannelloCharger
 
 
                 //  1.3  Sovrascariche
+                
                 Ic13 = new IndicatoreCruscotto();
-                Ic13.ValueMask = "0.0";
+                Ic13.ValueMask = "0";
                 Ic13.MostraValore = true;
                 Ic13.MinVal = 0;
-                Ic13.Lim1 = 50;
-                Ic13.Lim2 = 80;
+                Ic13.Lim1 = 5;
+                Ic13.Lim2 = 10;
                 Ic13.MaxVal = 100;
                 Ic13.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
                 Ic13.InizializzaIndicatore(this.buiStatCockpit, 630, 20, 280, StringheStatistica.GougeSovrar1 + "\n" + StringheStatistica.GougeSovrar2);
@@ -5396,11 +5584,11 @@ namespace PannelloCharger
                 //  1.4  Cariche Incomplete
 
                 Ic14 = new IndicatoreCruscotto();
-                Ic14.ValueMask = "0.0";
+                Ic14.ValueMask = "0";
                 Ic14.MostraValore = true;
                 Ic14.MinVal = 0;
-                Ic14.Lim1 = 60;
-                Ic14.Lim2 = 80;
+                Ic14.Lim1 = 10;
+                Ic14.Lim2 = 20;
                 Ic14.MaxVal = 100;
                 Ic14.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
                 Ic14.InizializzaIndicatore(this.buiStatCockpit, 930, 20, 280, StringheStatistica.GougeCIncr1 + "\n" + StringheStatistica.GougeCIncr2);
@@ -5409,47 +5597,12 @@ namespace PannelloCharger
 
 
                 
-               
-      
-
-                /*
-
-                Ic13 = new IndicatoreCruscotto();
-                Ic13.MinVal = 0;
-                Ic13.Lim1 = 5;
-                Ic13.Lim2 = 10;
-                Ic13.MaxVal = 100;
-                Ic13.LabelOffset = 50;
-
-                Ic13.InizializzaIndicatore(this.buiStatCockpit, 630, 20, 280, "Assenza\nElettrolita");
-                double _fattoreME = 0;
-                if (_stat.SecondiTotali > 0)
-                {
-                    _fattoreME = 100 * _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
-
-                }
-
-                Ic13.ImpostaValore((float)_fattoreME);
-
-
-
-                Ic14 = new IndicatoreCruscotto();
-                Ic14.ValueMask = "0.0";
-                Ic14.MostraValore = true;
-                Ic14.MinVal = 0;
-                Ic14.Lim1 = 60;
-                Ic14.Lim2 = 80;
-                Ic14.MaxVal = 100;
-                Ic14.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-                Ic14.InizializzaIndicatore(this.buiStatCockpit, 930, 20, 280, "% D.o.D.");
-                Ic14.ImpostaValore((float)_stat.ProfonditaScaricaMedia());
-
-                */
-
+           
 
                 //  2.1  Sbilanciamento
 
                 Ic21 = new IndicatoreCruscotto();
+                Ic21.ValueMask = "0";
                 Ic21.MinVal = 0;
                 Ic21.Lim1 = 10;
                 Ic21.Lim2 = 20;
@@ -5457,16 +5610,27 @@ namespace PannelloCharger
                 Ic21.LabelOffset = 40;
                 Ic21.InizializzaIndicatore(this.buiStatCockpit, 30, 300, 280, StringheStatistica.GougeSbilr1 + "\n" + StringheStatistica.GougeSbilr2);
                 double _fattoreSB = 0;
+
+/*
                 if (_stat.SecondiTotali > 0)
                 {
                     _fattoreSB = 100 * _stat.DurataSbilanciamento / _stat.SecondiTotali;
 
                 }
+                */
+                if (_stat.DurataFasiAttive > 0)
+                {
+                    _fattoreSB = 100 * _stat.DurataSbilanciamentoFA / _stat.DurataFasiAttive;
+
+                }
+
+
                 Ic21.ImpostaValore((float)_fattoreSB);
 
 
                 //  2.2  Overtemp
                 Ic22 = new IndicatoreCruscotto();
+                Ic22.ValueMask = "0";
                 Ic22.MinVal = 0;
                 Ic22.Lim1 = 5;
                 Ic22.Lim2 = 10;
@@ -5475,55 +5639,20 @@ namespace PannelloCharger
                 Ic22.MostraValore = true;
                 Ic22.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
                 Ic22.InizializzaIndicatore(this.buiStatCockpit, 330, 300, 280, StringheStatistica.GougeOverTr1 + "\n" + StringheStatistica.GougeOverTr2);
-                if ((_stat.NumeroScariche + _stat.NumeroCariche) > 0)
+                if (_stat.DurataFasiAttive > 0)
                 {
-                    _fattoreSB = 100 * (_stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT+ _stat.NumeroScaricheSovraT ) / (_stat.NumeroScariche + _stat.NumeroCariche);
+                    _fattoreSB = 100 * _stat.DurataOverTempMax / _stat.DurataFasiAttive;
 
                 }
                 Ic22.ImpostaValore((float)_fattoreSB);
 
 
-
-
-                /*
-                Ic22 = new IndicatoreCruscotto();
-                Ic22.MinVal = 0;
-                Ic22.Lim1 = 5;
-                Ic22.Lim2 = 10;
-                Ic22.MaxVal = 100;
-                Ic22.LabelOffset = 80;
-                Ic22.MostraValore = true;
-                Ic22.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-                Ic22.InizializzaIndicatore(this.buiStatCockpit, 330, 300, 280, "    % Scariche\nSovratemperatura");
-                if (_stat.NumeroScariche > 0)
-                {
-                    _fattoreSB = 100 * _stat.NumeroScaricheSovraT / _stat.NumeroScariche;
-
-                }
-                Ic22.ImpostaValore((float)_fattoreSB);
-
-
-                Ic23 = new IndicatoreCruscotto();
-                Ic23.MinVal = 0;
-                Ic23.Lim1 = 5;
-                Ic23.Lim2 = 10;
-                Ic23.MaxVal = 100;
-                Ic23.LabelOffset = 80;
-                Ic23.MostraValore = true;
-                Ic23.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
-                Ic23.InizializzaIndicatore(this.buiStatCockpit, 630, 300, 280, "    % Cariche\nSovratemperatura");
-                if (_stat.NumeroCariche > 0)
-                {
-                    _fattoreSB = 100 * (_stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT) / _stat.NumeroCariche;
-
-                }
-                Ic23.ImpostaValore((float)_fattoreSB);
-                */
 
 
                 //  2.3  Assenza Elettrolita
 
                 Ic23 = new IndicatoreCruscotto();
+                Ic23.ValueMask = "0";
                 Ic23.MinVal = 0;
                 Ic23.Lim1 = 5;
                 Ic23.Lim2 = 10;
@@ -5532,9 +5661,9 @@ namespace PannelloCharger
 
                 Ic23.InizializzaIndicatore(this.buiStatCockpit, 630, 300, 280, StringheStatistica.GougeAssElr1 + "\n" + StringheStatistica.GougeAssElr2);
                 double _fattoreME = 0;
-                if (_stat.SecondiTotali > 0)
+                if (_stat.DurataFasiAttive > 0)
                 {
-                    _fattoreME = 100 * _stat.DurataMancanzaElettrolita / _stat.SecondiTotali;
+                    _fattoreME = 100 * _stat.DurataMancanzaElettrolita / _stat.DurataFasiAttive;
 
                 }
 
@@ -5545,17 +5674,18 @@ namespace PannelloCharger
                 //  2.4  Pause Critiche
 
                 Ic24 = new IndicatoreCruscotto();
+                Ic24.ValueMask = "0";
                 Ic24.MinVal = 0;
                 Ic24.Lim1 = 5;
-                Ic24.Lim2 = 10;
-                Ic24.MaxVal = 100;
+                Ic24.Lim2 = 8;
+                Ic24.MaxVal = 10;
                 Ic24.LabelOffset = 80;
                 Ic24.MostraValore = true;
                 Ic24.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
                 Ic24.InizializzaIndicatore(this.buiStatCockpit, 930, 300, 280, StringheStatistica.GougePauser1 + "\n" + StringheStatistica.GougePauser2);
                 if (_stat.NumeroCariche > 0)
                 {
-                    _fattoreSB = 100 * (_stat.NumeroCaricheCompSovraT + _stat.NumeroCaricheParzSovraT) / _stat.NumeroCariche;
+                    _fattoreSB = 0;
 
                 }
                 Ic24.ImpostaValore((float)_fattoreSB);
@@ -7880,6 +8010,76 @@ namespace PannelloCharger
         {
 
         }
+
+        private void label139_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGeneraCodice_Click(object sender, EventArgs e)
+        {
+            txtCodiceSblocco.Text = CodiceSblocco();
+        }
+
+        private string CodiceSblocco()
+        {
+            try
+            {
+                string _codice = "";
+                SerialMessage.Crc16Ccitt codCrc = new SerialMessage.Crc16Ccitt(SerialMessage.InitialCrcValue.NonZero1);
+
+                //Step 1 Genero l'esadecimale dell'ID
+                int _hexId = 0;
+                byte[] array = Encoding.ASCII.GetBytes(_sb.Id);
+
+                // Loop through contents of the array.
+                int _step = 0;
+                foreach (byte element in array)
+                {
+                    _step += 9;
+                    _hexId += ( element * _step);
+                }
+                _codice = _hexId.ToString("x6");
+
+                //poi aggiungo il numeo ciclilunghi
+                _codice += _sb.sbData.LongMem.ToString("x6");
+                _codice = _codice.ToUpper();
+                byte[] PrimaCodifica = Encoding.ASCII.GetBytes(_codice);
+
+                //Quindi metto il CRC
+                ushort _crc = codCrc.ComputeChecksum(PrimaCodifica);
+                _codice += _crc.ToString("x4");
+                _codice = _codice.ToUpper();
+
+                // Ultimo passo permuto i caratteri - 6+6+4
+
+                string _permutato = "";
+
+                for (int _ciclo = 0; _ciclo < 8;_ciclo++)
+                {
+                    // Prima i pari
+                    _permutato += _codice[_ciclo * 2];
+
+                }
+
+                for (int _ciclo = 0; _ciclo < 8; _ciclo++)
+                {
+                    // poi i dispari alla rovescia
+                    _permutato += _codice[15-(_ciclo * 2)];
+
+                }
+
+                //txtCodiceBase.Text = _codice;
+                return _permutato;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+
+
     }
 
 }

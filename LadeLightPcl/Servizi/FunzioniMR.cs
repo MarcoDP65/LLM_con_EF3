@@ -242,7 +242,10 @@ namespace Utility
                 float _inGradi;
                 _inGradi = Temperatura; 
                 _correnti = _inGradi.ToString("0");
-                return _correnti;
+                if (Temperatura < 150)
+                    return _correnti;
+                else
+                    return "-";
             }
             catch
             {

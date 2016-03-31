@@ -71,249 +71,140 @@
             // 
             // txtProgcBattVdef
             // 
-            this.txtProgcBattVdef.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgcBattVdef.Location = new System.Drawing.Point(42, 50);
+            resources.ApplyResources(this.txtProgcBattVdef, "txtProgcBattVdef");
             this.txtProgcBattVdef.Name = "txtProgcBattVdef";
-            this.txtProgcBattVdef.Size = new System.Drawing.Size(91, 30);
-            this.txtProgcBattVdef.TabIndex = 2;
-            this.txtProgcBattVdef.Text = "0";
-            this.txtProgcBattVdef.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtProgcBattVdef.Leave += new System.EventHandler(this.txtProgcBattVdef_Leave);
             // 
             // txtTensioneNom
             // 
-            this.txtTensioneNom.AutoSize = true;
-            this.txtTensioneNom.Location = new System.Drawing.Point(39, 30);
+            resources.ApplyResources(this.txtTensioneNom, "txtTensioneNom");
             this.txtTensioneNom.Name = "txtTensioneNom";
-            this.txtTensioneNom.Size = new System.Drawing.Size(128, 17);
-            this.txtTensioneNom.TabIndex = 1;
-            this.txtTensioneNom.Text = "Tensione nominale";
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(210, 29);
+            resources.ApplyResources(this.label16, "label16");
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(124, 17);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Capacità nominale";
             // 
             // txtProgcBattAhDef
             // 
-            this.txtProgcBattAhDef.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgcBattAhDef.Location = new System.Drawing.Point(212, 50);
+            resources.ApplyResources(this.txtProgcBattAhDef, "txtProgcBattAhDef");
             this.txtProgcBattAhDef.Name = "txtProgcBattAhDef";
-            this.txtProgcBattAhDef.Size = new System.Drawing.Size(91, 30);
-            this.txtProgcBattAhDef.TabIndex = 4;
-            this.txtProgcBattAhDef.Text = "0";
-            this.txtProgcBattAhDef.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtProgcCelleV1
             // 
-            this.txtProgcCelleV1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgcCelleV1.Location = new System.Drawing.Point(560, 116);
+            resources.ApplyResources(this.txtProgcCelleV1, "txtProgcCelleV1");
             this.txtProgcCelleV1.Name = "txtProgcCelleV1";
-            this.txtProgcCelleV1.Size = new System.Drawing.Size(57, 24);
-            this.txtProgcCelleV1.TabIndex = 12;
-            this.txtProgcCelleV1.Text = "0";
-            this.txtProgcCelleV1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCelleP1
             // 
-            this.lblCelleP1.AutoSize = true;
-            this.lblCelleP1.Location = new System.Drawing.Point(567, 96);
+            resources.ApplyResources(this.lblCelleP1, "lblCelleP1");
             this.lblCelleP1.Name = "lblCelleP1";
-            this.lblCelleP1.Size = new System.Drawing.Size(60, 17);
-            this.lblCelleP1.TabIndex = 11;
-            this.lblCelleP1.Text = "Celle V1";
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(431, 29);
+            resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 17);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Celle Tot";
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(435, 96);
+            resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 17);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Celle V3";
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(501, 96);
+            resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 17);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Celle V2";
             // 
             // txtProgcCelleTot
             // 
-            this.txtProgcCelleTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgcCelleTot.Location = new System.Drawing.Point(434, 49);
+            resources.ApplyResources(this.txtProgcCelleTot, "txtProgcCelleTot");
             this.txtProgcCelleTot.Name = "txtProgcCelleTot";
-            this.txtProgcCelleTot.Size = new System.Drawing.Size(57, 30);
-            this.txtProgcCelleTot.TabIndex = 6;
-            this.txtProgcCelleTot.Text = "0";
-            this.txtProgcCelleTot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtProgcCelleV3
             // 
-            this.txtProgcCelleV3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgcCelleV3.Location = new System.Drawing.Point(434, 116);
+            resources.ApplyResources(this.txtProgcCelleV3, "txtProgcCelleV3");
             this.txtProgcCelleV3.Name = "txtProgcCelleV3";
-            this.txtProgcCelleV3.Size = new System.Drawing.Size(57, 24);
-            this.txtProgcCelleV3.TabIndex = 8;
-            this.txtProgcCelleV3.Text = "0";
-            this.txtProgcCelleV3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtProgcCelleV2
             // 
-            this.txtProgcCelleV2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgcCelleV2.Location = new System.Drawing.Point(497, 116);
+            resources.ApplyResources(this.txtProgcCelleV2, "txtProgcCelleV2");
             this.txtProgcCelleV2.Name = "txtProgcCelleV2";
-            this.txtProgcCelleV2.Size = new System.Drawing.Size(57, 24);
-            this.txtProgcCelleV2.TabIndex = 10;
-            this.txtProgcCelleV2.Text = "0";
-            this.txtProgcCelleV2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblTipoBatteria
             // 
-            this.lblTipoBatteria.AutoSize = true;
-            this.lblTipoBatteria.Location = new System.Drawing.Point(39, 96);
+            resources.ApplyResources(this.lblTipoBatteria, "lblTipoBatteria");
             this.lblTipoBatteria.Name = "lblTipoBatteria";
-            this.lblTipoBatteria.Size = new System.Drawing.Size(89, 17);
-            this.lblTipoBatteria.TabIndex = 13;
-            this.lblTipoBatteria.Text = "Tipo Batteria";
             // 
             // txtProgcBattType
             // 
-            this.txtProgcBattType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgcBattType.Location = new System.Drawing.Point(578, 342);
+            resources.ApplyResources(this.txtProgcBattType, "txtProgcBattType");
             this.txtProgcBattType.Name = "txtProgcBattType";
-            this.txtProgcBattType.Size = new System.Drawing.Size(99, 24);
-            this.txtProgcBattType.TabIndex = 14;
-            this.txtProgcBattType.Text = "0";
-            this.txtProgcBattType.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtProgcBattType.Visible = false;
             // 
             // chkMemProgrammed
             // 
-            this.chkMemProgrammed.AutoSize = true;
+            resources.ApplyResources(this.chkMemProgrammed, "chkMemProgrammed");
             this.chkMemProgrammed.Checked = true;
             this.chkMemProgrammed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMemProgrammed.Location = new System.Drawing.Point(410, 303);
             this.chkMemProgrammed.Name = "chkMemProgrammed";
-            this.chkMemProgrammed.Size = new System.Drawing.Size(164, 21);
-            this.chkMemProgrammed.TabIndex = 15;
-            this.chkMemProgrammed.Text = "Attiva Configurazione";
             this.chkMemProgrammed.UseVisualStyleBackColor = true;
             // 
             // btnInserisciProgramma
             // 
-            this.btnInserisciProgramma.Location = new System.Drawing.Point(139, 374);
+            resources.ApplyResources(this.btnInserisciProgramma, "btnInserisciProgramma");
             this.btnInserisciProgramma.Name = "btnInserisciProgramma";
-            this.btnInserisciProgramma.Size = new System.Drawing.Size(172, 38);
-            this.btnInserisciProgramma.TabIndex = 16;
-            this.btnInserisciProgramma.Text = "Inserisci Configurazione";
             this.btnInserisciProgramma.UseVisualStyleBackColor = true;
             this.btnInserisciProgramma.Click += new System.EventHandler(this.btnInserisciProgramma_Click);
             // 
             // btnAnnulla
             // 
-            this.btnAnnulla.Location = new System.Drawing.Point(347, 374);
+            resources.ApplyResources(this.btnAnnulla, "btnAnnulla");
             this.btnAnnulla.Name = "btnAnnulla";
-            this.btnAnnulla.Size = new System.Drawing.Size(172, 38);
-            this.btnAnnulla.TabIndex = 17;
-            this.btnAnnulla.Text = "Annulla";
             this.btnAnnulla.UseVisualStyleBackColor = true;
             this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
             // 
             // lblUMVolt
             // 
-            this.lblUMVolt.AutoSize = true;
-            this.lblUMVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUMVolt.Location = new System.Drawing.Point(139, 55);
+            resources.ApplyResources(this.lblUMVolt, "lblUMVolt");
             this.lblUMVolt.Name = "lblUMVolt";
-            this.lblUMVolt.Size = new System.Drawing.Size(23, 24);
-            this.lblUMVolt.TabIndex = 18;
-            this.lblUMVolt.Text = "V";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(310, 55);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 24);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Ah";
             // 
             // cmbTipoBatteria
             // 
-            this.cmbTipoBatteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.cmbTipoBatteria, "cmbTipoBatteria");
             this.cmbTipoBatteria.FormattingEnabled = true;
-            this.cmbTipoBatteria.Location = new System.Drawing.Point(42, 116);
             this.cmbTipoBatteria.Name = "cmbTipoBatteria";
-            this.cmbTipoBatteria.Size = new System.Drawing.Size(125, 26);
-            this.cmbTipoBatteria.TabIndex = 20;
             // 
             // chkSondaElPresente
             // 
-            this.chkSondaElPresente.AutoSize = true;
+            resources.ApplyResources(this.chkSondaElPresente, "chkSondaElPresente");
             this.chkSondaElPresente.Checked = true;
             this.chkSondaElPresente.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSondaElPresente.Location = new System.Drawing.Point(410, 250);
             this.chkSondaElPresente.Name = "chkSondaElPresente";
-            this.chkSondaElPresente.Size = new System.Drawing.Size(194, 21);
-            this.chkSondaElPresente.TabIndex = 21;
-            this.chkSondaElPresente.Text = "Sonda Elettrolita Installata";
             this.chkSondaElPresente.UseVisualStyleBackColor = true;
             // 
             // lblTempMin
             // 
-            this.lblTempMin.AutoSize = true;
-            this.lblTempMin.Location = new System.Drawing.Point(431, 160);
+            resources.ApplyResources(this.lblTempMin, "lblTempMin");
             this.lblTempMin.Name = "lblTempMin";
-            this.lblTempMin.Size = new System.Drawing.Size(43, 17);
-            this.lblTempMin.TabIndex = 23;
-            this.lblTempMin.Text = "T Min";
             // 
             // txtTempMin
             // 
-            this.txtTempMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTempMin.Location = new System.Drawing.Point(434, 180);
+            resources.ApplyResources(this.txtTempMin, "txtTempMin");
             this.txtTempMin.Name = "txtTempMin";
-            this.txtTempMin.Size = new System.Drawing.Size(57, 24);
-            this.txtTempMin.TabIndex = 24;
-            this.txtTempMin.Text = "0";
-            this.txtTempMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblTempMax
             // 
-            this.lblTempMax.AutoSize = true;
-            this.lblTempMax.Location = new System.Drawing.Point(508, 160);
+            resources.ApplyResources(this.lblTempMax, "lblTempMax");
             this.lblTempMax.Name = "lblTempMax";
-            this.lblTempMax.Size = new System.Drawing.Size(46, 17);
-            this.lblTempMax.TabIndex = 25;
-            this.lblTempMax.Text = "T Max";
             // 
             // txtTempMax
             // 
-            this.txtTempMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTempMax.Location = new System.Drawing.Point(511, 180);
+            resources.ApplyResources(this.txtTempMax, "txtTempMax");
             this.txtTempMax.Name = "txtTempMax";
-            this.txtTempMax.Size = new System.Drawing.Size(57, 24);
-            this.txtTempMax.TabIndex = 26;
-            this.txtTempMax.Text = "0";
-            this.txtTempMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // grbVersoCorrente
             // 
@@ -322,52 +213,32 @@
             this.grbVersoCorrente.Controls.Add(this.pictureBox1);
             this.grbVersoCorrente.Controls.Add(this.pbxInverso);
             this.grbVersoCorrente.Controls.Add(this.pbxDiretto);
-            this.grbVersoCorrente.Location = new System.Drawing.Point(42, 198);
+            resources.ApplyResources(this.grbVersoCorrente, "grbVersoCorrente");
             this.grbVersoCorrente.Name = "grbVersoCorrente";
-            this.grbVersoCorrente.Size = new System.Drawing.Size(322, 139);
-            this.grbVersoCorrente.TabIndex = 27;
             this.grbVersoCorrente.TabStop = false;
-            this.grbVersoCorrente.Text = "Verso Installazione";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(76, 83);
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(217, 83);
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
             // pbxInverso
             // 
-            this.pbxInverso.Image = ((System.Drawing.Image)(resources.GetObject("pbxInverso.Image")));
-            this.pbxInverso.Location = new System.Drawing.Point(171, 32);
+            resources.ApplyResources(this.pbxInverso, "pbxInverso");
             this.pbxInverso.Name = "pbxInverso";
-            this.pbxInverso.Size = new System.Drawing.Size(122, 67);
-            this.pbxInverso.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxInverso.TabIndex = 4;
             this.pbxInverso.TabStop = false;
             // 
             // pbxDiretto
             // 
-            this.pbxDiretto.Image = ((System.Drawing.Image)(resources.GetObject("pbxDiretto.Image")));
-            this.pbxDiretto.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbxDiretto.InitialImage")));
-            this.pbxDiretto.Location = new System.Drawing.Point(27, 32);
+            resources.ApplyResources(this.pbxDiretto, "pbxDiretto");
             this.pbxDiretto.Name = "pbxDiretto";
-            this.pbxDiretto.Size = new System.Drawing.Size(121, 67);
-            this.pbxDiretto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxDiretto.TabIndex = 0;
             this.pbxDiretto.TabStop = false;
             // 
             // openFileDialog1
@@ -376,31 +247,21 @@
             // 
             // txtNumSpire
             // 
-            this.txtNumSpire.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumSpire.Location = new System.Drawing.Point(213, 116);
+            resources.ApplyResources(this.txtNumSpire, "txtNumSpire");
             this.txtNumSpire.Name = "txtNumSpire";
-            this.txtNumSpire.Size = new System.Drawing.Size(90, 30);
-            this.txtNumSpire.TabIndex = 29;
-            this.txtNumSpire.Text = "1";
-            this.txtNumSpire.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumSpire.TextChanged += new System.EventHandler(this.txtNumSpire_TextChanged);
             // 
             // lblNumSpire
             // 
-            this.lblNumSpire.AutoSize = true;
-            this.lblNumSpire.Location = new System.Drawing.Point(209, 96);
+            resources.ApplyResources(this.lblNumSpire, "lblNumSpire");
             this.lblNumSpire.Name = "lblNumSpire";
-            this.lblNumSpire.Size = new System.Drawing.Size(95, 17);
-            this.lblNumSpire.TabIndex = 28;
-            this.lblNumSpire.Text = "Numero Spire";
             this.lblNumSpire.Click += new System.EventHandler(this.lblNumSpire_Click);
             // 
             // frmInserimentoProgramma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
-            this.ClientSize = new System.Drawing.Size(689, 441);
             this.Controls.Add(this.txtNumSpire);
             this.Controls.Add(this.lblNumSpire);
             this.Controls.Add(this.grbVersoCorrente);
@@ -433,7 +294,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmInserimentoProgramma";
-            this.Text = "Nuova Configurazione";
             this.Load += new System.EventHandler(this.frmInserimentoProgramma_Load);
             this.grbVersoCorrente.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

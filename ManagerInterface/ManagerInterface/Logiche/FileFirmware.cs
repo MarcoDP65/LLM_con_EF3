@@ -272,11 +272,13 @@ namespace ChargerLogic
                 string JsonData = JsonConvert.SerializeObject(FirmwareData);
 
 
-                // TODO: implementare la cifratura
+                // Cifro i dati
 
+
+                string JsonEncript = StringCipher.Encrypt(JsonData);
 
                 // ora salvo il file 
-                File.AppendAllText(NomeFile, JsonData);
+                File.AppendAllText(NomeFile, JsonEncript);
                 _esito = ExitCode.OK;
                 return _esito;
             }
@@ -298,6 +300,26 @@ namespace ChargerLogic
                 if (File.Exists(NomeFile))
                 {
                     string _fileImport = File.ReadAllText(NomeFile);
+
+                    string _fileDecripted = StringCipher.Decrypt(_fileImport);
+                    if (_fileDecripted != "")
+                    {
+                        //il file è cifrato
+                      
+                        _fileImport = _fileDecripted;
+                    }
+                    /*
+                     
+                    Nella versione pubblica rifiutare i files non cifrati
+
+                    else
+                    {
+                        //MessageBox.Show("File danneggiato: impossibile caricare i dati", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        _esito = ExitCode.FormatoFileErrato;
+                        return _esito;
+                    }
+                    */
+
                     FileFirmware _tmpFirmwareData;
                     elementiComuni.Crc16Ccitt codCrc = new elementiComuni.Crc16Ccitt(elementiComuni.InitialCrcValue.NonZero1);
                     ushort _crc;

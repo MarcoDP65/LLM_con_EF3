@@ -298,7 +298,7 @@
     <value>Phases</value>
   </data>
   <data name="GougePauser1" xml:space="preserve">
-    <value>% Critical</value>
+    <value># Critical</value>
   </data>
   <data name="GougePauser2" xml:space="preserve">
     <value>Pauses</value>
@@ -335,5 +335,14 @@
   </data>
   <data name="GrSettNotaPunto" xml:space="preserve">
     <value>Cycle</value>
+  </data>
+  <data name="GrCfTitolo" xml:space="preserve">
+    <value>Charge Factor</value>
+  </data>
+  <data name="GrCfAsseY" xml:space="preserve">
+    <value>Charge Factor</value>
+  </data>
+  <data name="GrCfAsseX" xml:space="preserve">
+    <value>Cycles number</value>
   </data>
 </root>

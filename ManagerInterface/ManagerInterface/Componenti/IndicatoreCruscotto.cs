@@ -171,8 +171,43 @@ namespace ChargerLogic
             }
         }
 
+        public void InizializzaIndicatore(int IdTemplate = 5)
+        {
+            try
+            {
+                
 
-        public void InizializzaIndicatore()
+                switch (IdTemplate)
+                {
+                    case 3:
+                        InizializzaIndicatoreTre();
+                        break;
+                    case 4:
+                        InizializzaIndicatoreQuattro();
+                        break;
+                    case 5:
+                        InizializzaIndicatoreCinque();
+                        break;
+
+                    default:
+                        InizializzaIndicatoreCinque();
+                        break;
+
+                }
+
+
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+
+
+        public void InizializzaIndicatoreCinque()
         {
             try
             {
@@ -187,14 +222,11 @@ namespace ChargerLogic
 
 
 
-                Image _tempImg = PannelloCharger.Properties.Resources.trec;
-                //Image _tempImg = PannelloCharger.Properties.Resources.cinquea;
+                Image _tempImg = PannelloCharger.Properties.Resources.cinquea;
 
 
                 _frame.FrameImage = _tempImg;
 
-
-                //_frame.BackImage = Image.FromFile("C:\\log\\due.png");
                 InizializzaSoglie();
 
                 CircularScaleBar bar = new CircularScaleBar(_frame);
@@ -285,6 +317,295 @@ namespace ChargerLogic
                 if (MostraValore)
                 {
                     NumericalFrame nframe = new NumericalFrame(new Rectangle(_frame.Rect.Width / 2 - 50, _frame.Rect.Height - 75,100, 25));
+                    nframe.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.Type3;
+                    nframe.FrameRenderer.FrameWidth = 0;
+
+                    for (int i = 0; i < 6; i++)
+                    {
+                        DigitalPanel7Segment seg = new DigitalPanel7Segment(nframe);
+                        //DigitalPanel14Segment seg = new DigitalPanel14Segment(nframe);
+                        seg.BackColor = Color.Black;
+                        seg.FontThickness = 3;
+                        seg.BorderColor = Color.Black;
+                        seg.MainColor = Color.Yellow;
+                        seg.EnableBorder = true;
+                        seg.EnableGlare = false;
+                        seg.EnableGradient = false;
+                        seg.BackOpacity = 0;
+                        //seg.EnableGlare = true;
+                        nframe.Indicator.Panels.Add(seg);
+
+
+                    }
+                    _frame.FrameCollection.Add(nframe);
+
+                }
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public void InizializzaIndicatoreQuattro()
+        {
+            try
+            {
+                _frame = new CircularFrame(new Point(PosX, PosY), size);
+                cruscotto.Frame.Add(_frame);
+                _frame.BackRenderer.CenterColor = Color.White;
+                _frame.BackRenderer.EndColor = Color.WhiteSmoke;
+                //_frame.BackRenderer.CenterColor = Color.White;
+                //_frame.BackRenderer.EndColor = Color.WhiteSmoke;
+
+                _frame.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.None;
+
+
+
+                Image _tempImg = PannelloCharger.Properties.Resources.cinquea;
+
+
+                _frame.FrameImage = _tempImg;
+
+                InizializzaSoglie();
+
+                CircularScaleBar bar = new CircularScaleBar(_frame);
+                bar.OffsetFromFrame = size * 1 / 10;
+                //bar.
+                bar.FillGradientType = NextUI.Renderer.RendererGradient.GradientType.DiagonalRight;
+                bar.ScaleBarSize = 4;
+                bar.FillColor = Color.DarkGray;
+
+                bar.StartValue = MinVal;
+                bar.EndValue = MaxVal;
+                bar.StartAngle = 30;
+                bar.SweepAngle = 120;
+                bar.MajorTickNumber = 11;
+                bar.MinorTicknumber = 2;
+                bar.TickMajor.EnableGradient = false;
+                bar.TickMajor.EnableBorder = false;
+                bar.TickMajor.FillColor = Color.Black;
+                //bar.TickMajor.FillColor = Color.Black;
+                bar.TickMajor.Height = size / 20; // 15;
+                bar.TickMajor.Width = 2;
+                bar.TickMajor.Type = TickBase.TickType.RoundedRect;
+                bar.TickMinor.EnableGradient = false;
+                bar.TickMinor.EnableBorder = false;
+                bar.TickMinor.FillColor = Color.Gray;
+                bar.TickMajor.TickPosition = TickBase.Position.Inner;
+                bar.TickMinor.TickPosition = TickBase.Position.Inner;
+                bar.TickLabel.TextDirection = CircularLabel.Direction.Horizontal;
+                bar.TickLabel.OffsetFromScale = size / 8; //35;
+                bar.TickLabel.LabelFont = new Font(FontFamily.GenericMonospace, FontSize() - 1, FontStyle.Bold);
+                bar.TickLabel.FontColor = Color.Black;
+                //bar.TickLabel.FontColor = Color.DarkGray;
+                _frame.ScaleCollection.Add(bar);
+
+                double _textWidth;
+                if (Etichetta != "")
+                {
+
+                    using (Bitmap tempImage = new Bitmap(400, 400))
+                    {
+                        SizeF stringSize = Graphics.FromImage(tempImage).MeasureString(Etichetta, bar.TickLabel.LabelFont);
+                        _textWidth = stringSize.Width;
+                    }
+
+
+
+                    int _labelX = (int)((_frame.Rect.Width / 2) - (_textWidth / 2)) + 8;
+                    int _labelY = _frame.Rect.Height * 7 / 12;
+
+
+                    FrameLabel _titleLabel = new FrameLabel(new Point(_labelX, _labelY), _frame);
+
+                    _titleLabel.LabelText = Etichetta;
+                    _titleLabel.LabelFont = new Font(FontFamily.GenericSansSerif, FontSize() + 2, FontStyle.Bold);
+
+                    // Titolo Indicatore
+                    _titleLabel.FontColor = Color.Black;
+
+                    _frame.FrameLabelCollection.Add(_titleLabel);
+
+                }
+
+
+                for (int _ciclor = 0; _ciclor < _NumSezioni; _ciclor++)
+                {
+                    CircularRange _tempRange = new CircularRange(_frame);
+                    _tempRange.EnableGradient = false;
+                    _tempRange.StartValue = Sezioni[_ciclor].minimo;
+                    _tempRange.EndValue = Sezioni[_ciclor].massimo;
+                    _tempRange.StartWidth = 10;
+                    _tempRange.EndWidth = 10;
+                    _tempRange.RangePosition = RangeBase.Position.Inner;
+                    _tempRange.FillColor = Sezioni[_ciclor].coloreSezione;
+
+                    bar.Range.Add(_tempRange);
+                }
+
+
+                CircularPointer pointer = new CircularPointer(_frame);
+                pointer.CapPointer.Visible = true;
+                pointer.CapOnTop = false;
+                pointer.BasePointer.Length = size * 2 / 5; // 150;
+                pointer.BasePointer.FillColor = Color.Red;
+                pointer.BasePointer.PointerShapeType = Pointerbase.PointerType.Type2;
+                pointer.BasePointer.OffsetFromCenter = -size / 10; // - 30;
+
+                bar.Pointer.Add(pointer);
+                if (MostraValore)
+                {
+                    NumericalFrame nframe = new NumericalFrame(new Rectangle(_frame.Rect.Width / 2 - 50, _frame.Rect.Height - 75, 100, 25));
+                    nframe.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.Type3;
+                    nframe.FrameRenderer.FrameWidth = 0;
+
+                    for (int i = 0; i < 6; i++)
+                    {
+                        DigitalPanel7Segment seg = new DigitalPanel7Segment(nframe);
+                        //DigitalPanel14Segment seg = new DigitalPanel14Segment(nframe);
+                        seg.BackColor = Color.Black;
+                        seg.FontThickness = 3;
+                        seg.BorderColor = Color.Black;
+                        seg.MainColor = Color.Yellow;
+                        seg.EnableBorder = true;
+                        seg.EnableGlare = false;
+                        seg.EnableGradient = false;
+                        seg.BackOpacity = 0;
+                        //seg.EnableGlare = true;
+                        nframe.Indicator.Panels.Add(seg);
+
+
+                    }
+                    _frame.FrameCollection.Add(nframe);
+
+                }
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+
+
+        public void InizializzaIndicatoreTre()
+        {
+            try
+            {
+                _frame = new CircularFrame(new Point(PosX, PosY), size);
+                cruscotto.Frame.Add(_frame);
+                _frame.BackRenderer.CenterColor = Color.LightGray;
+                _frame.BackRenderer.EndColor = Color.DimGray;
+                //_frame.BackRenderer.CenterColor = Color.White;
+                //_frame.BackRenderer.EndColor = Color.WhiteSmoke;
+
+                _frame.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.None;
+
+
+
+                Image _tempImg = PannelloCharger.Properties.Resources.trec;
+                //Image _tempImg = PannelloCharger.Properties.Resources.cinquea;
+
+
+                _frame.FrameImage = _tempImg;
+
+
+                //_frame.BackImage = Image.FromFile("C:\\log\\due.png");
+                InizializzaSoglie();
+
+                CircularScaleBar bar = new CircularScaleBar(_frame);
+                bar.OffsetFromFrame = size * 1 / 10;
+                //bar.
+                bar.FillGradientType = NextUI.Renderer.RendererGradient.GradientType.DiagonalRight;
+                bar.ScaleBarSize = 4;
+                bar.FillColor = Color.DarkGray;
+
+                bar.StartValue = MinVal;
+                bar.EndValue = MaxVal;
+                bar.StartAngle = 30;
+                bar.SweepAngle = 120;
+                bar.MajorTickNumber = 11;
+                bar.MinorTicknumber = 2;
+                bar.TickMajor.EnableGradient = false;
+                bar.TickMajor.EnableBorder = false;
+                bar.TickMajor.FillColor = Color.White;
+                //bar.TickMajor.FillColor = Color.Black;
+                bar.TickMajor.Height = size / 20; // 15;
+                bar.TickMajor.Width = 2;
+                bar.TickMajor.Type = TickBase.TickType.RoundedRect;
+                bar.TickMinor.EnableGradient = false;
+                bar.TickMinor.EnableBorder = false;
+                bar.TickMinor.FillColor = Color.Gray;
+                bar.TickMajor.TickPosition = TickBase.Position.Inner;
+                bar.TickMinor.TickPosition = TickBase.Position.Inner;
+                bar.TickLabel.TextDirection = CircularLabel.Direction.Horizontal;
+                bar.TickLabel.OffsetFromScale = size / 8; //35;
+                bar.TickLabel.LabelFont = new Font(FontFamily.GenericMonospace, FontSize() - 1, FontStyle.Bold);
+                bar.TickLabel.FontColor = Color.LightYellow;
+                //bar.TickLabel.FontColor = Color.DarkGray;
+                _frame.ScaleCollection.Add(bar);
+
+                double _textWidth;
+                if (Etichetta != "")
+                {
+
+                    using (Bitmap tempImage = new Bitmap(400, 400))
+                    {
+                        SizeF stringSize = Graphics.FromImage(tempImage).MeasureString(Etichetta, bar.TickLabel.LabelFont);
+                        _textWidth = stringSize.Width;
+                    }
+
+
+
+                    int _labelX = (int)((_frame.Rect.Width / 2) - (_textWidth / 2)) + 8;
+                    int _labelY = _frame.Rect.Height * 7 / 12;
+
+
+                    FrameLabel _titleLabel = new FrameLabel(new Point(_labelX, _labelY), _frame);
+
+                    _titleLabel.LabelText = Etichetta;
+                    _titleLabel.LabelFont = new Font(FontFamily.GenericSansSerif, FontSize() + 2, FontStyle.Bold);
+
+
+                    _titleLabel.FontColor = Color.Yellow;
+
+                    _frame.FrameLabelCollection.Add(_titleLabel);
+
+                }
+
+
+                for (int _ciclor = 0; _ciclor < _NumSezioni; _ciclor++)
+                {
+                    CircularRange _tempRange = new CircularRange(_frame);
+                    _tempRange.EnableGradient = false;
+                    _tempRange.StartValue = Sezioni[_ciclor].minimo;
+                    _tempRange.EndValue = Sezioni[_ciclor].massimo;
+                    _tempRange.StartWidth = 10;
+                    _tempRange.EndWidth = 10;
+                    _tempRange.RangePosition = RangeBase.Position.Inner;
+                    _tempRange.FillColor = Sezioni[_ciclor].coloreSezione;
+
+                    bar.Range.Add(_tempRange);
+                }
+
+
+                CircularPointer pointer = new CircularPointer(_frame);
+                pointer.CapPointer.Visible = true;
+                pointer.CapOnTop = false;
+                pointer.BasePointer.Length = size * 2 / 5; // 150;
+                pointer.BasePointer.FillColor = Color.Red;
+                pointer.BasePointer.PointerShapeType = Pointerbase.PointerType.Type2;
+                pointer.BasePointer.OffsetFromCenter = -size / 10; // - 30;
+
+                bar.Pointer.Add(pointer);
+                if (MostraValore)
+                {
+                    NumericalFrame nframe = new NumericalFrame(new Rectangle(_frame.Rect.Width / 2 - 50, _frame.Rect.Height - 75, 100, 25));
                     nframe.FrameRenderer.Outline = NextUI.Renderer.FrameRender.FrameOutline.Type3;
                     nframe.FrameRenderer.FrameWidth = 0;
 

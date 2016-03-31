@@ -186,16 +186,21 @@ namespace PannelloCharger
             try
             {
 
-
+                Log.Error("ApriSpyBatt: 1");
                 frmSpyBat sbCorrente = new frmSpyBat(ref _parametri, true, IdApparato, _logiche, false, false);
+                Log.Error("ApriSpyBatt: 2" );
                 sbCorrente.MdiParent = this.MdiParent;
+                Log.Error("ApriSpyBatt: 3" );
                 sbCorrente.StartPosition = FormStartPosition.CenterParent;
+                Log.Error("ApriSpyBatt: 4" );
                 sbCorrente.Show();
+                Log.Error("ApriSpyBatt: 5" );
 
 
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("ApriSpyBatt: " + Ex.Message);
             }
 
         }
@@ -213,11 +218,12 @@ namespace PannelloCharger
                sbExport.Show();
 
            }
-           catch
-           {
-           }
+            catch (Exception Ex)
+            {
+                Log.Error("ApriExportSpyBatt: " + Ex.Message);
+            }
 
-       }
+        }
 
 
        private void ApriImportSpyBatt()
@@ -257,8 +263,10 @@ namespace PannelloCharger
 
                 }
             }
-            catch
-            { }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDettaglioRiga: " + Ex.Message);
+            }
 
         }
 

@@ -32,6 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSpyBat));
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
             this.tabCb01 = new System.Windows.Forms.TabPage();
+            this.grbAbilitazioneReset = new System.Windows.Forms.GroupBox();
+            this.btnGeneraCodice = new System.Windows.Forms.Button();
+            this.txtCodiceSblocco = new System.Windows.Forms.TextBox();
+            this.label139 = new System.Windows.Forms.Label();
+            this.grbDownloadDati = new System.Windows.Forms.GroupBox();
+            this.btnRicaricaDati = new System.Windows.Forms.Button();
+            this.txtDataLastDownload = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
             this.grbMainDlOptions = new System.Windows.Forms.GroupBox();
             this.btnSfoglia = new System.Windows.Forms.Button();
             this.txtNomeFileImmagine = new System.Windows.Forms.TextBox();
@@ -54,7 +62,6 @@
             this.label113 = new System.Windows.Forms.Label();
             this.txtTestataContLunghi = new System.Windows.Forms.TextBox();
             this.label114 = new System.Windows.Forms.Label();
-            this.btnRicaricaDati = new System.Windows.Forms.Button();
             this.btnSalvaCliente = new System.Windows.Forms.Button();
             this.grbTestata = new System.Windows.Forms.GroupBox();
             this.txtSerialNumber = new System.Windows.Forms.TextBox();
@@ -418,7 +425,6 @@
             this.rbtFwArea1 = new System.Windows.Forms.RadioButton();
             this.grbFWPreparaFile = new System.Windows.Forms.GroupBox();
             this.txtFWInFileRevData = new System.Windows.Forms.MaskedTextBox();
-            this.chkAESEncript = new System.Windows.Forms.CheckBox();
             this.label97 = new System.Windows.Forms.Label();
             this.txtFWInFileLenP = new System.Windows.Forms.TextBox();
             this.txtFWInFileAddrP = new System.Windows.Forms.TextBox();
@@ -434,8 +440,6 @@
             this.label96 = new System.Windows.Forms.Label();
             this.btnFWFileSBFsearch = new System.Windows.Forms.Button();
             this.txtFWFileSBFwr = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.label91 = new System.Windows.Forms.Label();
             this.label92 = new System.Windows.Forms.Label();
             this.btnFWFilePubSave = new System.Windows.Forms.Button();
             this.txtFWInFileRev = new System.Windows.Forms.TextBox();
@@ -592,6 +596,8 @@
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
+            this.grbAbilitazioneReset.SuspendLayout();
+            this.grbDownloadDati.SuspendLayout();
             this.grbMainDlOptions.SuspendLayout();
             this.grbTestataContatori.SuspendLayout();
             this.grbTestata.SuspendLayout();
@@ -686,16 +692,75 @@
             // 
             this.tabCb01.AllowDrop = true;
             this.tabCb01.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCb01.Controls.Add(this.grbAbilitazioneReset);
+            this.tabCb01.Controls.Add(this.grbDownloadDati);
             this.tabCb01.Controls.Add(this.grbMainDlOptions);
             this.tabCb01.Controls.Add(this.btnResetScheda);
             this.tabCb01.Controls.Add(this.grbTestataContatori);
-            this.tabCb01.Controls.Add(this.btnRicaricaDati);
             this.tabCb01.Controls.Add(this.btnSalvaCliente);
             this.tabCb01.Controls.Add(this.grbTestata);
             this.tabCb01.Controls.Add(this.grbDatiCliente);
             this.tabCb01.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.tabCb01, "tabCb01");
             this.tabCb01.Name = "tabCb01";
+            // 
+            // grbAbilitazioneReset
+            // 
+            this.grbAbilitazioneReset.BackColor = System.Drawing.Color.White;
+            this.grbAbilitazioneReset.Controls.Add(this.btnGeneraCodice);
+            this.grbAbilitazioneReset.Controls.Add(this.txtCodiceSblocco);
+            this.grbAbilitazioneReset.Controls.Add(this.label139);
+            resources.ApplyResources(this.grbAbilitazioneReset, "grbAbilitazioneReset");
+            this.grbAbilitazioneReset.Name = "grbAbilitazioneReset";
+            this.grbAbilitazioneReset.TabStop = false;
+            // 
+            // btnGeneraCodice
+            // 
+            resources.ApplyResources(this.btnGeneraCodice, "btnGeneraCodice");
+            this.btnGeneraCodice.Name = "btnGeneraCodice";
+            this.btnGeneraCodice.UseVisualStyleBackColor = true;
+            this.btnGeneraCodice.Click += new System.EventHandler(this.btnGeneraCodice_Click);
+            // 
+            // txtCodiceSblocco
+            // 
+            resources.ApplyResources(this.txtCodiceSblocco, "txtCodiceSblocco");
+            this.txtCodiceSblocco.ForeColor = System.Drawing.Color.Red;
+            this.txtCodiceSblocco.Name = "txtCodiceSblocco";
+            this.txtCodiceSblocco.ReadOnly = true;
+            // 
+            // label139
+            // 
+            resources.ApplyResources(this.label139, "label139");
+            this.label139.Name = "label139";
+            this.label139.Click += new System.EventHandler(this.label139_Click);
+            // 
+            // grbDownloadDati
+            // 
+            this.grbDownloadDati.BackColor = System.Drawing.Color.White;
+            this.grbDownloadDati.Controls.Add(this.btnRicaricaDati);
+            this.grbDownloadDati.Controls.Add(this.txtDataLastDownload);
+            this.grbDownloadDati.Controls.Add(this.label91);
+            resources.ApplyResources(this.grbDownloadDati, "grbDownloadDati");
+            this.grbDownloadDati.Name = "grbDownloadDati";
+            this.grbDownloadDati.TabStop = false;
+            // 
+            // btnRicaricaDati
+            // 
+            resources.ApplyResources(this.btnRicaricaDati, "btnRicaricaDati");
+            this.btnRicaricaDati.Name = "btnRicaricaDati";
+            this.btnRicaricaDati.UseVisualStyleBackColor = true;
+            this.btnRicaricaDati.Click += new System.EventHandler(this.cmdRicaricaDati_Click);
+            // 
+            // txtDataLastDownload
+            // 
+            resources.ApplyResources(this.txtDataLastDownload, "txtDataLastDownload");
+            this.txtDataLastDownload.Name = "txtDataLastDownload";
+            this.txtDataLastDownload.ReadOnly = true;
+            // 
+            // label91
+            // 
+            resources.ApplyResources(this.label91, "label91");
+            this.label91.Name = "label91";
             // 
             // grbMainDlOptions
             // 
@@ -845,13 +910,6 @@
             // 
             resources.ApplyResources(this.label114, "label114");
             this.label114.Name = "label114";
-            // 
-            // btnRicaricaDati
-            // 
-            resources.ApplyResources(this.btnRicaricaDati, "btnRicaricaDati");
-            this.btnRicaricaDati.Name = "btnRicaricaDati";
-            this.btnRicaricaDati.UseVisualStyleBackColor = true;
-            this.btnRicaricaDati.Click += new System.EventHandler(this.cmdRicaricaDati_Click);
             // 
             // btnSalvaCliente
             // 
@@ -1472,6 +1530,8 @@
             // chkStatGraficoFC
             // 
             resources.ApplyResources(this.chkStatGraficoFC, "chkStatGraficoFC");
+            this.chkStatGraficoFC.Checked = true;
+            this.chkStatGraficoFC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkStatGraficoFC.Name = "chkStatGraficoFC";
             this.chkStatGraficoFC.UseVisualStyleBackColor = true;
             // 
@@ -2307,14 +2367,14 @@
             // chkFSerMantieniCliente
             // 
             resources.ApplyResources(this.chkFSerMantieniCliente, "chkFSerMantieniCliente");
-            this.chkFSerMantieniCliente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.chkFSerMantieniCliente.ForeColor = System.Drawing.SystemColors.ControlText;
             this.chkFSerMantieniCliente.Name = "chkFSerMantieniCliente";
             this.chkFSerMantieniCliente.UseVisualStyleBackColor = true;
             // 
             // btnFSerCancellaMemoria
             // 
             resources.ApplyResources(this.btnFSerCancellaMemoria, "btnFSerCancellaMemoria");
-            this.btnFSerCancellaMemoria.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnFSerCancellaMemoria.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnFSerCancellaMemoria.Name = "btnFSerCancellaMemoria";
             this.btnFSerCancellaMemoria.UseVisualStyleBackColor = true;
             this.btnFSerCancellaMemoria.Click += new System.EventHandler(this.btnFSerCancellaMemoria_Click);
@@ -3472,7 +3532,6 @@
             // 
             this.grbFWPreparaFile.BackColor = System.Drawing.Color.White;
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRevData);
-            this.grbFWPreparaFile.Controls.Add(this.chkAESEncript);
             this.grbFWPreparaFile.Controls.Add(this.label97);
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileLenP);
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileAddrP);
@@ -3488,8 +3547,6 @@
             this.grbFWPreparaFile.Controls.Add(this.label96);
             this.grbFWPreparaFile.Controls.Add(this.btnFWFileSBFsearch);
             this.grbFWPreparaFile.Controls.Add(this.txtFWFileSBFwr);
-            this.grbFWPreparaFile.Controls.Add(this.textBox30);
-            this.grbFWPreparaFile.Controls.Add(this.label91);
             this.grbFWPreparaFile.Controls.Add(this.label92);
             this.grbFWPreparaFile.Controls.Add(this.btnFWFilePubSave);
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRev);
@@ -3507,14 +3564,6 @@
             resources.ApplyResources(this.txtFWInFileRevData, "txtFWInFileRevData");
             this.txtFWInFileRevData.Name = "txtFWInFileRevData";
             this.txtFWInFileRevData.ValidatingType = typeof(System.DateTime);
-            // 
-            // chkAESEncript
-            // 
-            resources.ApplyResources(this.chkAESEncript, "chkAESEncript");
-            this.chkAESEncript.Checked = true;
-            this.chkAESEncript.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAESEncript.Name = "chkAESEncript";
-            this.chkAESEncript.UseVisualStyleBackColor = true;
             // 
             // label97
             // 
@@ -3598,17 +3647,6 @@
             // 
             resources.ApplyResources(this.txtFWFileSBFwr, "txtFWFileSBFwr");
             this.txtFWFileSBFwr.Name = "txtFWFileSBFwr";
-            // 
-            // textBox30
-            // 
-            resources.ApplyResources(this.textBox30, "textBox30");
-            this.textBox30.Name = "textBox30";
-            this.textBox30.ReadOnly = true;
-            // 
-            // label91
-            // 
-            resources.ApplyResources(this.label91, "label91");
-            this.label91.Name = "label91";
             // 
             // label92
             // 
@@ -4589,6 +4627,10 @@
             this.Resize += new System.EventHandler(this.frmSpyBat_Resize);
             this.tabCaricaBatterie.ResumeLayout(false);
             this.tabCb01.ResumeLayout(false);
+            this.grbAbilitazioneReset.ResumeLayout(false);
+            this.grbAbilitazioneReset.PerformLayout();
+            this.grbDownloadDati.ResumeLayout(false);
+            this.grbDownloadDati.PerformLayout();
             this.grbMainDlOptions.ResumeLayout(false);
             this.grbMainDlOptions.PerformLayout();
             this.grbTestataContatori.ResumeLayout(false);
@@ -4827,7 +4869,6 @@
         private System.Windows.Forms.CheckBox chkDatiDiretti;
         private System.Windows.Forms.Button btnNuovoProgramma;
         private System.Windows.Forms.CheckBox chkParLetturaAuto;
-        private System.Windows.Forms.Button btnRicaricaDati;
         private System.Windows.Forms.Button btnAttivaProgrammazione;
         private System.Windows.Forms.TabPage tabStatistiche;
         private System.Windows.Forms.TabControl tbcStatistiche;
@@ -5091,8 +5132,6 @@
         private System.Windows.Forms.Label label96;
         private System.Windows.Forms.Button btnFWFileSBFsearch;
         private System.Windows.Forms.TextBox txtFWFileSBFwr;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.Label label91;
         private System.Windows.Forms.Label label92;
         public System.Windows.Forms.Button btnFWFilePubSave;
         private System.Windows.Forms.TextBox txtFWInFileRev;
@@ -5102,7 +5141,6 @@
         private System.Windows.Forms.Button btnFWFileCCSsearch;
         private System.Windows.Forms.TextBox txtFwFileCCS;
         private System.Windows.Forms.OpenFileDialog sfdImportDati;
-        private System.Windows.Forms.CheckBox chkAESEncript;
         private System.Windows.Forms.CheckBox chkCalSoloAndata;
         private System.Windows.Forms.CheckBox chkCalRitornoVeloce;
         private System.Windows.Forms.TextBox txtFWTxDataLenP;
@@ -5269,5 +5307,13 @@
         private System.Windows.Forms.Label label138;
         private System.Windows.Forms.CheckBox chkFSerMantieniCliente;
         private System.Windows.Forms.CheckBox chkMemClearMantieniCliente;
+        private System.Windows.Forms.GroupBox grbDownloadDati;
+        private System.Windows.Forms.Button btnRicaricaDati;
+        private System.Windows.Forms.TextBox txtDataLastDownload;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.GroupBox grbAbilitazioneReset;
+        private System.Windows.Forms.TextBox txtCodiceSblocco;
+        private System.Windows.Forms.Label label139;
+        private System.Windows.Forms.Button btnGeneraCodice;
     }
 }

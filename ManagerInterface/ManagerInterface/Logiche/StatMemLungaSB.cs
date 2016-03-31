@@ -81,6 +81,10 @@ namespace ChargerLogic
         private uint _durataPause;
         private uint _durataNoEl;
         private uint _durataSbil;
+        private uint _durataOverTempMax;
+
+        private uint _durataFasiAttive;
+
         private DateTime _dtStart;
         private DateTime _dtFine;
         private int _numGiorni;
@@ -95,7 +99,7 @@ namespace ChargerLogic
         private int _mancanzaElFasiAttive = 0;
         private int _numMacrofasiScarica = 0;
         private int _macroSovrascariche = 0;
-
+        private DateTime _ultimaLettura = DateTime.MinValue;
 
 
         public StatMemLungaSB()
@@ -259,7 +263,9 @@ namespace ChargerLogic
             _macroScariche = 0;
             _totDodScariche = 0;
             _macroSovrascariche = 0;
-
+            _durataFasiAttive = 0;
+            _durataOverTempMax = 0;
+            _ultimaLettura = DateTime.MinValue;
 
             DatiCorrenti = new DatiEstrazione();
 
@@ -286,6 +292,7 @@ namespace ChargerLogic
 
                 string DataOraBreve;
                 DateTime dtDataOraBreve;
+
                 bool _trovatoEqual = false;
 
                 Log.Debug(" AGGREGA VALORI ");
@@ -321,6 +328,8 @@ namespace ChargerLogic
                     DataOraBreve = ciclo.DataOraFine;
                     dtDataOraBreve = ciclo.dtDataOraFine;
 
+                    if (ciclo.DataLastDownload > _ultimaLettura) _ultimaLettura = ciclo.DataLastDownload;
+
                     //Log.Debug("Ciclo n° " + valCiclo.IdMemoriaLunga.ToString() + " IN ANALISI BASE ");
                     if (AttivaPeriodo != true)
                     {
@@ -335,6 +344,9 @@ namespace ChargerLogic
 
                     valCiclo.Durata = ciclo.Durata;
                     valCiclo.PresenzaElettrolita = ciclo.PresenzaElettrolita;
+                    valCiclo.DurataSbilCelle = ciclo.DurataSbilCelle;
+                    valCiclo.DurataMancanzaElettrolita = ciclo.DurataMancanzaElettrolita;
+
 
                     valCiclo.TempMin = ciclo.TempMin;
                     valCiclo.TempMax = ciclo.TempMax;
@@ -358,9 +370,9 @@ namespace ChargerLogic
                     if (ciclo.EffMaxSbilanciamentoC > _maxSbil) _maxSbil = ciclo.VMaxSbilanciamentoC;
                     if (ciclo.IdProgramma > _lastProg.IdProgramma) _lastProg = ciclo.ProgrammaAttivo;
                     // Se lo sbilaciamento celle supera il limite, agiungo la durata al tempo totale di sbilanciamento
-                    if (ciclo.EffMaxSbilanciamentoC > _maxSbilanciamento) _durataSbil += valCiclo.Durata;
+                    //if (ciclo.EffMaxSbilanciamentoC > _maxSbilanciamento) _durataSbil += valCiclo.Durata;
                     // Se lmanca elettrolita (valore 0x0F), agiungo la durata al tempo totale mancanza el.
-                    if (ciclo.PresenzaElettrolita == 0x0F) _durataNoEl += valCiclo.Durata;
+                    //if (ciclo.PresenzaElettrolita == 0x0F) _durataNoEl += valCiclo.Durata;
 
                     switch (valCiclo.TipoEvento)
                     {
@@ -369,6 +381,11 @@ namespace ChargerLogic
                             _numCicliEff += 1;
                             _numCicliTot += 1;
                             _numCariche += 1;
+                            _durataFasiAttive += ciclo.Durata;
+                            _durataSbil += ciclo.DurataSbilCelle;
+                            _durataNoEl += ciclo.DurataMancanzaElettrolita;
+                            _durataOverTempMax += ciclo.DurataOverTemp;
+
                             //Controllo la presenza elettrolita
                             if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
 
@@ -450,7 +467,7 @@ namespace ChargerLogic
 
 
                             _durataCarica += valCiclo.Durata;
-                            if (valCiclo.StatoCarica >= 99)
+                            if (valCiclo.FattoreCarica >= 100)
                             {
                                 _numCaricheComplete += 1;
                                 valCiclo.ModoCarica = 1;
@@ -468,6 +485,7 @@ namespace ChargerLogic
                             valCiclo.StatoCaricaIniziale = _statoCaricaPrec;
                             _statoCaricaPrec = ciclo.StatoCarica;
                             _kWhCaricati += valCiclo.Wh;
+                            _numMacrofasiScarica  += 1;  //Ogni carica chiude una macroscarica
                             _macroScariche += 1;  //Ogni carica chiude una macroscarica
                             _totDodScariche += valCiclo.StatoCaricaIniziale; //Determino la profondità di scarica dal livello di carica all'inizio della carica
                             if (valCiclo.StatoCaricaIniziale < 20 )  _macroSovrascariche += 1;
@@ -492,6 +510,12 @@ namespace ChargerLogic
                             _tmed = (double)(valCiclo.TempMax + valCiclo.TempMin) / 2;
 
                             if (valCiclo.TempMax >= _tMaxScarica) _numScaricaOver += 1;
+
+                            _durataFasiAttive += ciclo.Durata;
+                            _durataSbil += ciclo.DurataSbilCelle;
+                            _durataNoEl += ciclo.DurataMancanzaElettrolita;
+                            _durataOverTempMax += ciclo.DurataOverTemp;
+
 
                             _EnScaricataNorm += valCiclo.Wh * FunzioniAnalisi.FattoreTermicoSOH(_tmed);
                             // imposto lo ststo carica iniziale pari allo stato carica del ciclo precedente
@@ -850,6 +874,27 @@ namespace ChargerLogic
             get { return (double)_durataNoEl; }
         }
 
+        public uint DurataFasiAttive
+        {
+            get { return _durataFasiAttive; }
+        }
+        public uint DurataMancanzaElFA
+        {
+            get { return _durataNoEl; }
+        }
+
+        public uint DurataSbilanciamentoFA
+        {
+            get { return _durataSbil; }
+        }
+
+        public uint DurataOverTempMax
+        {
+            get { return _durataOverTempMax; }
+        }
+
+        
+
         public int CicliAttesi
         {
             get { return _cicliAttesi; }
@@ -882,7 +927,7 @@ namespace ChargerLogic
             if ( NumeroScariche < 1) _valmedio = 0;
             else
             {
-                _valmedio = (float)(_totaleScaricato / NumeroScariche);
+                _valmedio = (float)((float)_totaleScaricato / (float)NumeroScariche);
             }
 
             return _valmedio;
@@ -895,7 +940,7 @@ namespace ChargerLogic
             if (_macroScariche < 1) _valmedio = 0;
             else
             {
-                _valmedio = (float)(100 - (_totDodScariche / _macroScariche));
+                _valmedio = (float)(100 - ((float)_totDodScariche / (float)_macroScariche));
             }
 
             return _valmedio;
@@ -908,7 +953,7 @@ namespace ChargerLogic
             if (_macroScariche < 1) _valmedio = 0;
             else
             {
-                _valmedio = (float)((_macroSovrascariche / _macroScariche));
+                _valmedio = (float)(((float)_macroSovrascariche / (float)_macroScariche)) * 100;
             }
 
             return _valmedio;
@@ -921,7 +966,7 @@ namespace ChargerLogic
             if (_numCariche < 1) _valmedio = 0;
             else
             {
-                _valmedio = (float)((_numCaricheParziali / _numCariche));
+                _valmedio = (float)(((float)_numCaricheParziali / (float)_numCariche)) * 100;
             }
 
             return _valmedio;
@@ -1054,8 +1099,90 @@ namespace ChargerLogic
             get { return _mancanzaElFasiAttive; }
         }
 
+        public DateTime UltimaLettura
+        {
+            get { return _ultimaLettura; }
+        }
+        
 
         #endregion PARAMETRI
+
+
+        public DatiEstrazione CalcolaArrayGraficoChargeFactor(string Titolo)
+        {
+            DatiEstrazione _datiComp = new DatiEstrazione();
+            try
+            {
+                int _passo;
+                int _passi = 16;
+                int _tempValore;
+
+                _datiComp.Titolo = Titolo;
+                _datiComp.TotLetture = 0;
+                _datiComp.MinX = 0;
+                _datiComp.MaxX = 150;
+                _datiComp.NumStep = 16;
+                _datiComp.TitoloAsseX = StringheStatistica.GrCfAsseX;
+                _datiComp.TitoloAsseY = StringheStatistica.GrCfAsseY;
+
+                //inizializzo gli array
+                _datiComp.arrayValori = new int[_passi];
+                _datiComp.arrayIntervalli = new int[_passi];
+                _datiComp.arrayLabel = new string[_passi];
+                _datiComp.StepSoglia = (int)(_minFC*10);
+                _datiComp.VersoSoglia = DatiEstrazione.Direzione.Discendente;
+                string _etichetta;
+
+                for (_passo = 0; _passo < _passi; _passo++)
+                {
+                    _datiComp.arrayValori[_passo] = 0;
+                    _tempValore = _passo * 10;
+                    if (_tempValore > 0) _tempValore += 1;
+                    _etichetta = ((Double)(_tempValore) /100).ToString("0.00") + " ÷ ";
+                    _tempValore = (_passo + 1) * 10;
+                    _etichetta = _etichetta + ((Double)(_tempValore) / 100).ToString("0.00");
+
+                    _datiComp.arrayLabel[_passo] = _etichetta;
+                }
+
+
+                foreach (_StatMemLungaSB ciclo in CicliStatMemLunga)
+                {
+                    if (ciclo.PeriodoValido)
+                    {
+
+                        if (ciclo.TipoEvento == (byte)SerialMessage.TipoCiclo.Carica)
+                        {
+                            _datiComp.TotLetture += 1;
+                            int _stepCarica = (int)(ciclo.FattoreCarica / 10);
+                            if (_stepCarica > 15) _stepCarica = 15;
+                            if (_stepCarica < 0) _stepCarica = 0;
+                            _datiComp.arrayValori[_stepCarica] += 1;
+
+                        }
+                    }
+                }
+
+                _datiComp.MaxY = 0;
+
+                for (_passo = 0; _passo < _passi; _passo++)
+                {
+                    if (_datiComp.arrayValori[_passo] > _datiComp.MaxY)
+                        _datiComp.MaxY = _datiComp.arrayValori[_passo];
+                }
+
+                _datiComp.DatiValidi = true;
+
+
+                return _datiComp;
+
+            }
+            catch
+            {
+                return _datiComp;
+
+            }
+        }
 
 
         public DatiEstrazione CalcolaArrayGraficoDeepChg(SerialMessage.TipoCiclo TipoInAnalisi, string Titolo)
@@ -1458,6 +1585,8 @@ namespace ChargerLogic
         public short Amin { get; set; }
         public short Amax { get; set; }
         public byte PresenzaElettrolita { get; set; }
+        public UInt32 DurataSbilCelle { get; set; }
+        public UInt32 DurataMancanzaElettrolita { get; set; }
         public int Ah { get; set; }
         public Int32 Wh { get; set; }
         public byte CondizioneStop { get; set; }
@@ -1523,6 +1652,10 @@ namespace ChargerLogic
         public double deltaV34 { get; set; }
 
         public double deltaVmax { get; set; }
+
+        public UInt32 DurataSbilCelle { get; set; }
+        public UInt32 DurataMancanzaElettrolita { get; set; }
+        public UInt32 DurataOverTempMax { get; set; }
 
         public int ModoCarica { get; set; } // 1 Completa, 0 Parziale , -1 tutto 
         public bool PeriodoValido { get; set; }

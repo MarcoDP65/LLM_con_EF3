@@ -106,10 +106,11 @@ namespace PannelloCharger
         {
             if (_sb == null)
             {
-                MessageBox.Show("Apparato Corrente non definito  /N Impossibile continuare","Programmazione Apparato", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //MessageBox.Show("Apparato Corrente non definito  /N Impossibile continuare", "Programmazione Apparato", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(StringheComuni.NotDefined + "/N " + StringheComuni.ImpossibileContinuare,StringheComuni.TitoloCfg, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
-            this.Text = "Nuovo Programma " + Convert.ToString(_sb.sbData.ProgramCount + 1);
+            this.Text = StringheComuni.NuovaCfg + " " + Convert.ToString(_sb.sbData.ProgramCount + 1);
         }
 
         public void salvaProgramma()
@@ -141,7 +142,8 @@ namespace PannelloCharger
 
                 if (_sb.UltimaRisposta != SerialMessage.EsitoRisposta.MessaggioOk)
                 {
-                    MessageBox.Show("Programmazione non riuscita", "Programmazioe Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   // MessageBox.Show("Programmazione non riuscita", "Programmazioe Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringheComuni.CfgFallita, StringheComuni.TitoloCfg, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

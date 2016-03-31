@@ -325,7 +325,7 @@
     <value>Sovratemp.</value>
   </data>
   <data name="GougePauser1" xml:space="preserve">
-    <value>% Pause</value>
+    <value>N° Pause</value>
   </data>
   <data name="GougePauser2" xml:space="preserve">
     <value>Critiche</value>
@@ -362,5 +362,17 @@
   </data>
   <data name="GrSettTitoloAsseY" xml:space="preserve">
     <value>% Carica</value>
+  </data>
+  <data name="GrCfChiave" xml:space="preserve">
+    <value>C.F.</value>
+  </data>
+  <data name="GrCfTitolo" xml:space="preserve">
+    <value>Fattore di Carica</value>
+  </data>
+  <data name="GrCfAsseX" xml:space="preserve">
+    <value>Numero Cicli</value>
+  </data>
+  <data name="GrCfAsseY" xml:space="preserve">
+    <value>Fattore di Carica</value>
   </data>
 </root>

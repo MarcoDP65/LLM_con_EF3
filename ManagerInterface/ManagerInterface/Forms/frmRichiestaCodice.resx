@@ -117,169 +117,127 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="InformazioniSu" xml:space="preserve">
-    <value>About</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblCodiceAutorizzazione.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="InserireNome" xml:space="preserve">
-    <value>Enter a valid name</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblCodiceAutorizzazione.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 44</value>
   </data>
-  <data name="Lunedi" xml:space="preserve">
-    <value>Mon</value>
+  <data name="lblCodiceAutorizzazione.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 17</value>
   </data>
-  <data name="MemoriaCancellata" xml:space="preserve">
-    <value>Memory Cleaned</value>
+  <data name="lblCodiceAutorizzazione.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="Pausa" xml:space="preserve">
-    <value>Pause</value>
+  <data name="lblCodiceAutorizzazione.Text" xml:space="preserve">
+    <value>Codice Autorizzazione</value>
   </data>
-  <data name="Carica" xml:space="preserve">
-    <value>Charge</value>
+  <data name="&gt;&gt;lblCodiceAutorizzazione.Name" xml:space="preserve">
+    <value>lblCodiceAutorizzazione</value>
   </data>
-  <data name="RichConfermaCanc" xml:space="preserve">
-    <value>Do you really want to delete all data ?</value>
+  <data name="&gt;&gt;lblCodiceAutorizzazione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NoDevice" xml:space="preserve">
-    <value>No Device Connected</value>
+  <data name="&gt;&gt;lblCodiceAutorizzazione.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="AproCollegamento" xml:space="preserve">
-    <value>Open the connection</value>
+  <data name="&gt;&gt;lblCodiceAutorizzazione.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="Mercoledi" xml:space="preserve">
-    <value>Wed</value>
+  <data name="txtCodice.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
-  <data name="StatoPrg02" xml:space="preserve">
-    <value>Setup READY; Recording ENABLED</value>
+  <data name="txtCodice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 64</value>
   </data>
-  <data name="Versione" xml:space="preserve">
-    <value>Version</value>
+  <data name="txtCodice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 27</value>
   </data>
-  <data name="Venerdi" xml:space="preserve">
-    <value>Fri</value>
+  <data name="txtCodice.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="TrovatoDispositivo" xml:space="preserve">
-    <value>Found Device</value>
+  <data name="&gt;&gt;txtCodice.Name" xml:space="preserve">
+    <value>txtCodice</value>
   </data>
-  <data name="StatoPrgND" xml:space="preserve">
-    <value>State NOT DEFINED:</value>
+  <data name="&gt;&gt;txtCodice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="StatoPrg03" xml:space="preserve">
-    <value>Calibration ENABLED</value>
+  <data name="&gt;&gt;txtCodice.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="CancellaMemoria" xml:space="preserve">
-    <value>Memory Erase</value>
+  <data name="&gt;&gt;txtCodice.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="CancellaMemoriaR1" xml:space="preserve">
-    <value>Do you really want to Erase ALL DATA  ?</value>
+  <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 160</value>
   </data>
-  <data name="CancellaMemoriaR2" xml:space="preserve">
-    <value>WARNING: This operation will delete also all saved data.</value>
+  <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 36</value>
   </data>
-  <data name="CaricaDati" xml:space="preserve">
-    <value>Charge Data</value>
+  <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="Collegato" xml:space="preserve">
-    <value>Connected to the port </value>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="CollegatoUSB" xml:space="preserve">
-    <value>Connected to the USB port </value>
+  <data name="&gt;&gt;btnOk.Name" xml:space="preserve">
+    <value>btnOk</value>
   </data>
-  <data name="DatiGiaPresenti" xml:space="preserve">
-    <value>Data already present</value>
+  <data name="&gt;&gt;btnOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DatiNonValidi" xml:space="preserve">
-    <value>Not Valid Data</value>
+  <data name="&gt;&gt;btnOk.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="Domenica" xml:space="preserve">
-    <value>Sun</value>
+  <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="Elettrolita" xml:space="preserve">
-    <value>Electrolyte</value>
+  <data name="btnAnnulla.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 160</value>
   </data>
-  <data name="EsportaDati" xml:space="preserve">
-    <value>Export Data</value>
+  <data name="btnAnnulla.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 36</value>
   </data>
-  <data name="EsportazioneDati" xml:space="preserve">
-    <value>Export device data</value>
+  <data name="btnAnnulla.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="EventoAnomalo" xml:space="preserve">
-    <value>Anomalous Event</value>
+  <data name="btnAnnulla.Text" xml:space="preserve">
+    <value>Annulla</value>
   </data>
-  <data name="FaseCarica" xml:space="preserve">
-    <value>Charge phase</value>
+  <data name="&gt;&gt;btnAnnulla.Name" xml:space="preserve">
+    <value>btnAnnulla</value>
   </data>
-  <data name="FaseEqualizzazione" xml:space="preserve">
-    <value>Equal Phase</value>
+  <data name="&gt;&gt;btnAnnulla.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="FaseScarica" xml:space="preserve">
-    <value>Discharge phase</value>
+  <data name="&gt;&gt;btnAnnulla.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="FileDanneggiato" xml:space="preserve">
-    <value>Corrupted File: Can't load data</value>
+  <data name="&gt;&gt;btnAnnulla.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="FileGenerato" xml:space="preserve">
-    <value>File Created</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
   </data>
-  <data name="Giovedi" xml:space="preserve">
-    <value>Thu</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>452, 234</value>
   </data>
-  <data name="ImportaDati" xml:space="preserve">
-    <value>Import Data</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
-  <data name="PresenzaElett" xml:space="preserve">
-    <value>Electrolyte</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Inserire il Codice Autorizzazione</value>
   </data>
-  <data name="Martedi" xml:space="preserve">
-    <value>Tues</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmRichiestaCodice</value>
   </data>
-  <data name="Sabato" xml:space="preserve">
-    <value>Sat</value>
-  </data>
-  <data name="SalvaDati" xml:space="preserve">
-    <value>Save Data</value>
-  </data>
-  <data name="StatoPrg01" xml:space="preserve">
-    <value>Setup READY; Recording DISABLED</value>
-  </data>
-  <data name="StatoPrg00" xml:space="preserve">
-    <value>Setup NOT READY</value>
-  </data>
-  <data name="Scarica" xml:space="preserve">
-    <value>Discharge</value>
-  </data>
-  <data name="NotDefined" xml:space="preserve">
-    <value>Current Device Not Defined</value>
-  </data>
-  <data name="NuovaCfg" xml:space="preserve">
-    <value>New Setup</value>
-  </data>
-  <data name="TitoloCfg" xml:space="preserve">
-    <value>SPY-BATT Setup</value>
-  </data>
-  <data name="ImpossibileContinuare" xml:space="preserve">
-    <value>Can't Continue</value>
-  </data>
-  <data name="CfgFallita" xml:space="preserve">
-    <value>Setup Failed</value>
-  </data>
-  <data name="AvTitolo01Dati" xml:space="preserve">
-    <value>Download Data</value>
-  </data>
-  <data name="AvTitolo02Lunghi" xml:space="preserve">
-    <value>Download Phases List</value>
-  </data>
-  <data name="AvTitolo03Brevi" xml:space="preserve">
-    <value>Downloas Phases Detail</value>
-  </data>
-  <data name="AvTitolo04Firmware" xml:space="preserve">
-    <value>Firmware Update</value>
-  </data>
-  <data name="CancellaMemoriaR3" xml:space="preserve">
-    <value>Not valid Code: Wrong Code</value>
-  </data>
-  <data name="CancellaMemoriaR4" xml:space="preserve">
-    <value>Not valid Code: Request data not updated</value>
-  </data>
-  <data name="CancellaMemoriaR5" xml:space="preserve">
-    <value>Not valid Code: Not Corresponding Device</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

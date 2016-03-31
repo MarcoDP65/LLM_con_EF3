@@ -25,9 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>34</ApplicationRevision>
+    <ProductName>LADE LIGHT Manager</ProductName>
+    <ApplicationRevision>40</ApplicationRevision>
     <ApplicationVersion>1.10.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -73,6 +75,8 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
@@ -287,6 +291,12 @@
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRichiestaCodice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRichiestaCodice.Designer.cs">
+      <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmSbExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,6 +389,7 @@
     <Compile Include="Servizi\ParametriSistema.cs" />
     <Compile Include="Servizi\ScannerPorte.cs" />
     <Compile Include="Servizi\ScannerUSB.cs" />
+    <Compile Include="Servizi\StringCipher.cs" />
     <Compile Include="Servizi\usParameters.cs" />
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\Forms Deso\frmDeso.de.resx">
@@ -492,6 +503,9 @@
     <EmbeddedResource Include="Forms\frmGraficoCiclo.resx">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInserimentoProgramma.en.resx">
+      <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInserimentoProgramma.es.resx">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </EmbeddedResource>
@@ -554,6 +568,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRichiestaCodice.en.resx">
+      <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRichiestaCodice.resx">
+      <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSbExport.en.resx">
       <DependentUpon>frmSbExport.cs</DependentUpon>
