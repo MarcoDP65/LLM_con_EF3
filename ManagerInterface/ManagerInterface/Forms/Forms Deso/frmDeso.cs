@@ -106,7 +106,7 @@ namespace PannelloCharger
                 Log.Debug("----------------------- frmSpyBat ---------------------------");
 
                 _msg = new MessaggioSpyBatt();
-                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
        
                 _stat = new StatMemLungaSB();
                 string _idCorrente = IdApparato;
@@ -5548,7 +5548,7 @@ namespace PannelloCharger
         private void btnClonaSchedVuota_Click(object sender, EventArgs e)
         {
 
-            _sbTemp = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+            _sbTemp = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
         }
 
         private void btnFwCheckArea_Click(object sender, EventArgs e)

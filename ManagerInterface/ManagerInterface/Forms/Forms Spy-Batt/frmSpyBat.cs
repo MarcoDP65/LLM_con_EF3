@@ -108,7 +108,7 @@ namespace PannelloCharger
                 Log.Debug("----------------------- frmSpyBat ---------------------------");
 
                 _msg = new MessaggioSpyBatt();
-                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
        
                 _stat = new StatMemLungaSB();
                 string _idCorrente = IdApparato;
@@ -215,7 +215,7 @@ namespace PannelloCharger
 
 
                 _msg = new MessaggioSpyBatt();
-                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
 
                 _stat = new StatMemLungaSB();
                 abilitaSalvataggi(false);
@@ -7702,6 +7702,7 @@ namespace PannelloCharger
             sfdExportDati.Filter = "SBF SPY-BATT Firmware File (*.sbf)|*.sbf|All files (*.*)|*.*";
             sfdExportDati.ShowDialog();
             txtFWFileSBFwr.Text = sfdExportDati.FileName;
+            btnFWLanciaTrasmissione.Enabled = false;
 
         }
 
@@ -7710,11 +7711,13 @@ namespace PannelloCharger
             sfdImportDati.Filter = "SBF SPY-BATT Firmware File (*.sbf)|*.sbf|All files (*.*)|*.*";
             sfdImportDati.ShowDialog();
             txtFWFileSBFrd.Text = sfdImportDati.FileName;
+
             bool _preview = CaricafileSBF();
         }
 
         private void btnFWFileSBFLoad_Click(object sender, EventArgs e)
         {
+            btnFWLanciaTrasmissione.Enabled = false;
             CaricafileSBF();
             PreparaTrasmissioneFW();
             bool _esitocella = false;
@@ -7978,7 +7981,7 @@ namespace PannelloCharger
         private void btnClonaSchedVuota_Click(object sender, EventArgs e)
         {
 
-            _sbTemp = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+            _sbTemp = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
         }
 
         private void btnFwCheckArea_Click(object sender, EventArgs e)

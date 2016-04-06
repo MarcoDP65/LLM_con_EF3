@@ -82,7 +82,7 @@ namespace PannelloCharger
                 _logiche = Logiche;
                 if (CaricaDati)
                 {
-                    _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+                    _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, Logiche.currentUser.livello);
                     string _idCorrente = IdApparato;
                     _esito = _sb.CaricaCompleto(IdApparato, _logiche.dbDati.connessione);
                     if (_esito) btnDataExport.Enabled = true;

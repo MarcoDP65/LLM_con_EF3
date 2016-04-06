@@ -61,6 +61,21 @@ namespace MoriData
             _database = connessione;
         }
 
+        public bool cancellaDati()
+        {
+            try
+            {
+                SQLiteCommand CancellaRecord = _database.CreateCommand("delete from _utente ");
+                int esito = CancellaRecord.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cancellaDati: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
         public int verificaUtente(string login, string password)
         {
             try
@@ -73,11 +88,29 @@ namespace MoriData
                 }
                 else
                 {
-                    Log.Debug(_usr.ToString());
-                    username = _usr.NomeUtente;
-                    login = _usr.Username;
-                    livello = _usr.Livello;
-                    return _usr.Livello;
+                    string _decripted = Utility.StringCipher.PasswordDecrypt(_usr.Password);
+                    if (_decripted == password)
+                    {
+                        Log.Debug(_usr.ToString());
+                        username = _usr.NomeUtente;
+                        login = _usr.Username;
+
+                        if (_usr.Livello == 2 | _usr.Livello == 3)
+                        {
+                            livello = _usr.Livello;
+                            return _usr.Livello;
+                        }
+                        else
+                        {
+                            livello = 3;
+                            return 3;
+                        }
+
+                    }
+                    else
+                    {
+                        return -2;
+                    }
                 }
 
             }

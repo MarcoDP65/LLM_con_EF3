@@ -419,15 +419,8 @@ namespace ChargerLogic
                 // Attivo gli eventi sia USB che COM
 
                 FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
+                
                 // USB
-                /*
-                new Thread(LL_UsbWaiter).Start();
-                Log.Debug("ll UsbWaiter Started");
-                LL_USBeventWait = new EventWaitHandle(false, EventResetMode.AutoReset);
-                ftStatus = _parametri.usbLadeLight.SetEventNotification(FTDI.FT_EVENTS.FT_EVENT_RXCHAR, LL_USBeventWait);
-                Log.Debug("ll ftStatus Set");
-                */
-                // COM
                 cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
                 Log.Debug("cEventHelper.RemoveEventHandler serialeApparato");
 
@@ -790,21 +783,25 @@ namespace ChargerLogic
             {
                 //string testom = "Dati Ricevuti SB: " + serialeApparato.BytesToRead.ToString();
                 bool _trovatoETX = false;
-                byte[] data = new byte[serialeApparato.BytesToRead];
-                serialeApparato.Read(data, 0, data.Length);
-                Log.Debug("Dati Ricevuti CB " + data.Length.ToString());
-                for (int _i = 0; _i < data.Length; _i++)
+                if (serialeApparato != null)
                 {
-                    codaDatiSER.Enqueue(data[_i]);
-                    if (data[_i] == SerialMessage.serETX)
+                    byte[] data = new byte[serialeApparato.BytesToRead];
+                    serialeApparato.Read(data, 0, data.Length);
+                    Log.Debug("Dati Ricevuti CB " + data.Length.ToString());
+                    for (int _i = 0; _i < data.Length; _i++)
                     {
-                        _trovatoETX = true;
+                        codaDatiSER.Enqueue(data[_i]);
+                        if (data[_i] == SerialMessage.serETX)
+                        {
+                            _trovatoETX = true;
+                        }
                     }
-                }
-                if (_trovatoETX)
-                {
-                    Log.Debug("trovato ETX");
-                    analizzaCoda();
+                    if (_trovatoETX)
+                    {
+                        Log.Debug("trovato ETX");
+                        analizzaCoda();
+                    }
+
                 }
             }
             catch (Exception Ex)

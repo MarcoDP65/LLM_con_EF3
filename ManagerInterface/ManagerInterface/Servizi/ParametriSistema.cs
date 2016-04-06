@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.IO.Ports;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Globalization;
 using log4net;
 using log4net.Config;
 using FTD2XX_NET;
+
 
 namespace ChargerLogic
 {
@@ -48,25 +50,63 @@ namespace ChargerLogic
         public string currentCultureValue = "it";
         public bool currentSaveLogin = true;
         public bool firstRun = false;
+        public bool FtdiCaricato = false;
         public static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
 
         public  parametriSistema()
         {
-            lastError = "";
-            serialeCorrente = new SerialPort();
-            serialeLadeLight = new SerialPort();
-            serialeSpyBatt = new SerialPort();
-
-            usbCorrente = new FTDI();
-            usbLadeLight = new FTDI();
-            usbSpyBatt = new FTDI();
-
-            CaricaImpostazioniDefault();
-            if (currentCultureValue !="" )
+            try
             {
-                currentCulture = new CultureInfo(currentCultureValue);
+                lastError = "";
+
+                InizializzaFTDI();
+
+                CaricaImpostazioniDefault();
+                if (currentCultureValue != "")
+                {
+                    currentCulture = new CultureInfo(currentCultureValue);
+                }
             }
+            catch (Exception Ex)
+            {
+                Log.Error("parametriSistema: " + Ex.Message);
+            }
+
+
+
+
+        }
+
+
+        private void InizializzaFTDI()
+        {
+            try
+            {
+                lastError = "";
+                string _path = Environment.GetFolderPath(Environment.SpecialFolder.System);
+                bool _installed = File.Exists(_path + Path.DirectorySeparatorChar + "FTD2XX.DLL");
+                Log.Debug("Presenza FTDIXX.dll: " + _installed.ToString() + " - " + _path);
+                FtdiCaricato = _installed;
+                if (_installed)
+                {
+                    serialeCorrente = new SerialPort();
+                    serialeLadeLight = new SerialPort();
+                    serialeSpyBatt = new SerialPort();
+
+                    usbCorrente = new FTDI();
+                    usbLadeLight = new FTDI();
+                    usbSpyBatt = new FTDI();
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaFTDI: " + Ex.Message);
+                lastError = Ex.Message;
+            }
+
+
 
 
         }
@@ -82,9 +122,9 @@ namespace ChargerLogic
                 currentSaveLogin = PannelloCharger.Properties.Settings.Default.autoLogin;
                 firstRun = PannelloCharger.Properties.Settings.Default.firstRun;
             }
-            catch
+            catch (Exception Ex)
             {
-
+                Log.Error(Ex.Message);
             }
         }
 

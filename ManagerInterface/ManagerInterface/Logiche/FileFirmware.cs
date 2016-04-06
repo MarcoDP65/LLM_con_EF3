@@ -397,6 +397,13 @@ namespace ChargerLogic
                 FirmwareBlock.Release = FirmwareData.Release;
                 FirmwareBlock.ReleaseDate = FirmwareData.ReleaseDate;
 
+                if (FirmwareData.Release.Substring(0,4) != "1.11")
+                {
+                    _esito = ExitCode.ErroreGenerico;
+                    return _esito;
+                }
+
+
                 FirmwareBlock.AddrFlash1 = FirmwareData.AddrFlash1;
                 FirmwareBlock.AddrFlash2 = FirmwareData.AddrFlash2;
                 FirmwareBlock.AddrProxy = FirmwareData.AddrProxy;

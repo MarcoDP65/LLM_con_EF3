@@ -287,7 +287,7 @@ namespace PannelloCharger
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
                         {
 
-                            UnitaSpyBatt _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+                            UnitaSpyBatt _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
                             _sb.sbData.cancellaDati(_tempSpybat.Id);
                             ListaSpyBatt = ListaApparati();
                             MostraLista();

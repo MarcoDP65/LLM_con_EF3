@@ -6,10 +6,10 @@
       <Value Profile="(Default)">uno</Value>
     </Setting>
     <Setting Name="utente" Type="System.String" Scope="User">
-      <Value Profile="(Default)">User</Value>
+      <Value Profile="(Default)">USER</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">User</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="cultureinfo" Type="System.String" Scope="User">
       <Value Profile="(Default)">it</Value>

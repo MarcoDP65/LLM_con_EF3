@@ -98,7 +98,7 @@ namespace MoriData
         public UInt32 PuntatorePrimoBreveEff = 0;
         public elementiComuni.VersoCorrenti VersoScarica = elementiComuni.VersoCorrenti.Diretto;
         public UInt32 DurataBreve = 300;
-        public byte LivelloUser = 2;
+        public int LivelloUser = 2;
 
 
         // Visualizzazione Correnti

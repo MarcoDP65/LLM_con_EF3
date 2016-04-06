@@ -121,23 +121,14 @@
   <data name="mnuStampa.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 26</value>
   </data>
-  <data name="mnuStampa.Text" xml:space="preserve">
-    <value>Print</value>
-  </data>
   <data name="impostaStampanteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 26</value>
-  </data>
-  <data name="impostaStampanteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Printer Setting</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 6</value>
   </data>
   <data name="linguaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 26</value>
-  </data>
-  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Language</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 6</value>
@@ -148,20 +139,11 @@
   <data name="mnuEsci.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 26</value>
   </data>
-  <data name="mnuEsci.Text" xml:space="preserve">
-    <value>Exit</value>
-  </data>
   <data name="mnuConnettiCb.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 26</value>
   </data>
-  <data name="mnuConnettiCb.Text" xml:space="preserve">
-    <value>Connect</value>
-  </data>
   <data name="apparatiToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 26</value>
-  </data>
-  <data name="apparatiToolStripMenuItem.Text" xml:space="preserve">
-    <value>Devices</value>
   </data>
   <data name="orologioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 26</value>
@@ -172,14 +154,8 @@
   <data name="caricaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 26</value>
   </data>
-  <data name="caricaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Device Connect</value>
-  </data>
   <data name="archivioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 26</value>
-  </data>
-  <data name="archivioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Archive</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>247, 6</value>
@@ -187,41 +163,23 @@
   <data name="importaFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 26</value>
   </data>
-  <data name="importaFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File Import</value>
-  </data>
   <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
     <value>247, 6</value>
   </data>
   <data name="alimentatoreToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 26</value>
   </data>
-  <data name="alimentatoreToolStripMenuItem.Text" xml:space="preserve">
-    <value>Calibration Power Supply</value>
-  </data>
   <data name="mnuServizi.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
-  </data>
-  <data name="mnuServizi.Text" xml:space="preserve">
-    <value>SERVICES</value>
   </data>
   <data name="mnuCercaDispositiviUSB.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 26</value>
   </data>
-  <data name="mnuCercaDispositiviUSB.Text" xml:space="preserve">
-    <value>USB Scan</value>
-  </data>
   <data name="mnuCercaDispositiviCOM.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 26</value>
   </data>
-  <data name="mnuCercaDispositiviCOM.Text" xml:space="preserve">
-    <value>COM Port Search</value>
-  </data>
   <data name="mnuSelezionePorta.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 26</value>
-  </data>
-  <data name="mnuSelezionePorta.Text" xml:space="preserve">
-    <value>COM Port Config</value>
   </data>
   <data name="mnuPortaSeriale.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 26</value>
@@ -232,14 +190,8 @@
   <data name="mnuImpostazioni.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 24</value>
   </data>
-  <data name="mnuImpostazioni.Text" xml:space="preserve">
-    <value>Device Search</value>
-  </data>
   <data name="mnuInformazioniSu.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 26</value>
-  </data>
-  <data name="mnuInformazioniSu.Text" xml:space="preserve">
-    <value>About Lade Light Manager</value>
   </data>
   <data name="tstBtnCercaUsb.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -726,9 +678,6 @@
         6Od/ZMMXFzDtrOKPC8kCuhj4YheBHiUzPlhtYZuaf/+KFtSF/EItqEnJSx64TV31hKvW83DhBFeQu4FZ
         rLOse6xwy/oHh1wgoX8o00YAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="tstBtnClose.Text" xml:space="preserve">
-    <value>Close the active form</value>
   </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1274,22 +1223,73 @@
         JgAAACYAAAAmAAAAJgAAACYAAAAmAAAAJgAAACYAAAAmAAAAJgA=
 </value>
   </data>
+  <data name="mnuStampa.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="mnuCercaDispositiviCOM.Text" xml:space="preserve">
+    <value>COM Port Search</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>LADE LIGHT Manager (EN)</value>
-  </data>
-  <data name="mnuPortaSeriale.Text" xml:space="preserve">
-    <value>Serial console</value>
-  </data>
-  <data name="tstBtnCercaRS232.Text" xml:space="preserve">
-    <value>RS 232 searching</value>
   </data>
   <data name="tstBtnClose.ToolTipText" xml:space="preserve">
     <value>Close current record</value>
   </data>
+  <data name="tstBtnClose.Text" xml:space="preserve">
+    <value>Close the active form</value>
+  </data>
+  <data name="tstBtnCercaRS232.Text" xml:space="preserve">
+    <value>RS 232 searching</value>
+  </data>
   <data name="tstBtnCercaUsb.Text" xml:space="preserve">
     <value>Usb search</value>
   </data>
+  <data name="mnuInformazioniSu.Text" xml:space="preserve">
+    <value>About Lade Light Manager</value>
+  </data>
+  <data name="mnuPortaSeriale.Text" xml:space="preserve">
+    <value>Serial console</value>
+  </data>
+  <data name="mnuSelezionePorta.Text" xml:space="preserve">
+    <value>COM Port Config</value>
+  </data>
+  <data name="mnuCercaDispositiviUSB.Text" xml:space="preserve">
+    <value>USB Scan</value>
+  </data>
+  <data name="alimentatoreToolStripMenuItem.Text" xml:space="preserve">
+    <value>Calibration Power Supply</value>
+  </data>
+  <data name="importaFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File Import</value>
+  </data>
+  <data name="archivioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="caricaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Device Connect</value>
+  </data>
+  <data name="apparatiToolStripMenuItem.Text" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="mnuConnettiCb.Text" xml:space="preserve">
+    <value>Connect</value>
+  </data>
   <data name="italianoToolStripMenuItem.Text" xml:space="preserve">
     <value>Italian</value>
+  </data>
+  <data name="mnuImpostazioni.Text" xml:space="preserve">
+    <value>Device Search</value>
+  </data>
+  <data name="mnuServizi.Text" xml:space="preserve">
+    <value>SERVICES</value>
+  </data>
+  <data name="mnuEsci.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="impostaStampanteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Printer Setting</value>
   </data>
 </root>

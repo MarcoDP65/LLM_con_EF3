@@ -83,7 +83,7 @@ namespace ChargerLogic
         static bool _rxRisposta ;
         bool skipHead = false;
 
-        public byte LivelloUser = 2;
+        public int LivelloUser = 2;
         public DateTime UltimaScrittura;   // Registro l'istante dell'ultima scrittura
 
         public SerialMessage.EsitoRisposta UltimaRisposta;
@@ -127,10 +127,11 @@ namespace ChargerLogic
         public delegate void LongMemListHandler(UnitaSpyBatt sb, sbListaLunghiEvt lme);
 
  
-        public UnitaSpyBatt(ref parametriSistema parametri) 
+        public UnitaSpyBatt(ref parametriSistema parametri, int LivelloAutorizzazione ) 
         {
 
             _parametri = parametri;
+            LivelloUser = LivelloAutorizzazione;
             _mS = new MessaggioSpyBatt();
             _mS.Dispositivo = MessaggioSpyBatt.TipoDispositivo.Charger;
              byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -152,8 +153,9 @@ namespace ChargerLogic
             dbCollegato = false;
         }
 
-        public UnitaSpyBatt(ref parametriSistema parametri,MoriData._db dbCorrente )
+        public UnitaSpyBatt(ref parametriSistema parametri,MoriData._db dbCorrente, int LivelloAutorizzazione)
         {
+            LivelloUser = LivelloAutorizzazione;
             _parametri = parametri;
             _mS = new MessaggioSpyBatt();
             _mS.Dispositivo = MessaggioSpyBatt.TipoDispositivo.Charger;

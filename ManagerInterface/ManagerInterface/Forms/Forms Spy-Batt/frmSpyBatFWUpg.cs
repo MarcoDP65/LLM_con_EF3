@@ -447,6 +447,7 @@ namespace PannelloCharger
                 txtFWTxDataNumN2.Text = "";
                 txtFWTxDataNumP.Text = "";
                 txtFWTxDataNumTot.Text = "";
+                btnFWLanciaTrasmissione.Enabled = false;
 
                 _esito = _firmMng.PreparaUpgradeFw();
                 if (_esito == FirmwareManager.ExitCode.OK)
@@ -548,7 +549,7 @@ namespace PannelloCharger
             {
                 parametriSistema _tmpParametri = new parametriSistema();
 
-                _sbTemp = new UnitaSpyBatt(ref _tmpParametri, dbCorrente);
+                _sbTemp = new UnitaSpyBatt(ref _tmpParametri, dbCorrente, _logiche.currentUser.livello);
                 _esitoDati = _sbTemp.CaricaCompleto(IdApparato, dbCorrente, ApparatoConnesso);
 
                 _esito = _esitoDati;

@@ -40,9 +40,22 @@ namespace PannelloCharger
         {
             try
             {
+               
                 XmlConfigurator.Configure();
+                Log.Info("");
+                Log.Info("");
+                Log.Info("");
+                Log.Info("----------------------------------------------------------------------------------------------------------------------");
+                Log.Info("----    LADELIGHT Manager Session Start                                                                           ----");
+                Log.Info("----------------------------------------------------------------------------------------------------------------------");
+                Log.Info("");
+                
                 varGlobali = new parametriSistema();
+
+                Log.Info("Main - Step 3");
                 Thread.CurrentThread.CurrentUICulture = varGlobali.currentCulture;
+
+                Log.Info("Main - Step 4");
                 InitializeComponent();
                 Log.Debug("Startup Applicazione");
                 frmMainInitialize();
@@ -163,6 +176,17 @@ namespace PannelloCharger
                 if ((byte)Livello < 0x02) mnuSelezionePorta.Visible = true;
                 mnuServizi.Visible = false;
                 if ((byte)Livello < 0x02) mnuServizi.Visible = true;
+
+
+                // Già in questa fase, se non ho i driver FTDI installati, disabilito la scansione USB
+
+                if(!varGlobali.FtdiCaricato)
+                {
+                    tstBtnCercaUsb.Enabled = false;
+                    caricaToolStripMenuItem.Enabled = false;
+
+                }
+
 
 
 
@@ -462,49 +486,6 @@ namespace PannelloCharger
 
                 if (DispositiviUSB.cercaPorte())
                 {
-                    /*
-                    if (DispositiviUSB.NumDevSpyBatt > 0)
-                    {
-                        DialogResult risposta = MessageBox.Show("Trovato dispositivo SPY-BATT collegato alla porta USB \n Apro il collegamento ? ", "SPY-BATT", MessageBoxButtons.YesNo);
-
-                        if (risposta == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            varGlobali.usbSpyBattSerNum = DispositiviUSB.SpyBattUsbSerialNo;
-                            varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
-                            ApriSpyBatt();
-                            return;
-                        }
-
-                    }
-                    if (DispositiviUSB.NumDevLadeLight > 0)
-                    {
-                        DialogResult risposta = MessageBox.Show("Trovato dispositivo LADE LIGHT colegato alla porta USB \n Apro il collegamento ? ", "LADE LIGHT", MessageBoxButtons.YesNo);
-
-                        if (risposta == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            varGlobali.usbLadeLightSerNum = DispositiviUSB.LadeLightUsbSerialNo;
-                            varGlobali.CanaleLadeLight = parametriSistema.CanaleDispositivo.USB;
-                            ApriLadeLight();
-                            return;
-                        }
-
-                    }
-
-                    if (DispositiviUSB.NumDevFTDInoInit > 0)
-                    {
-                        DialogResult risposta = MessageBox.Show("Trovato dispositivo FTDI non inizializzato collegato alla porta USB \n Inizializzo la scheda ? ", "FTDI", MessageBoxButtons.YesNo);
-
-                        if (risposta == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            //varGlobali.usbLadeLightSerNum = DispositiviUSB.LadeLightUsbSerialNo;
-                            //varGlobali.CanaleLadeLight = parametriSistema.CanaleDispositivo.USB;
-                            //ApriLadeLight();
-                            return;
-                        }
-
-                    }
-
-*/
 
                     ApriSelettoreDevices();
 
@@ -855,6 +836,11 @@ namespace PannelloCharger
             {
                 Log.Error("frmMain - tstBtnRefresh_Click: " + Ex.Message);
             }
+        }
+
+        private void impostaStampanteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

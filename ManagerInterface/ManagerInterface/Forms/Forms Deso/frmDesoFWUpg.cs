@@ -522,7 +522,7 @@ namespace PannelloCharger
             {
                 parametriSistema _tmpParametri = new parametriSistema();
 
-                _sbTemp = new UnitaSpyBatt(ref _tmpParametri, dbCorrente);
+                _sbTemp = new UnitaSpyBatt(ref _tmpParametri, dbCorrente, _logiche.currentUser.livello);
                 _esitoDati = _sbTemp.CaricaCompleto(IdApparato, dbCorrente, ApparatoConnesso);
 
                 _esito = _esitoDati;
