@@ -71,6 +71,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
+            this.tstBtnPrint = new System.Windows.Forms.ToolStripButton();
+            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -105,8 +107,9 @@
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuStampa,
             this.impostaStampanteToolStripMenuItem,
+            this.printPreviewToolStripMenuItem,
+            this.mnuStampa,
             this.toolStripSeparator1,
             this.linguaToolStripMenuItem,
             this.toolStripMenuItem5,
@@ -117,14 +120,14 @@
             // 
             // mnuStampa
             // 
-            resources.ApplyResources(this.mnuStampa, "mnuStampa");
             this.mnuStampa.Name = "mnuStampa";
-            this.mnuStampa.Click += new System.EventHandler(this.mnuStampa_Click_1);
+            resources.ApplyResources(this.mnuStampa, "mnuStampa");
+            this.mnuStampa.Click += new System.EventHandler(this.mnuStampa_Click);
             // 
             // impostaStampanteToolStripMenuItem
             // 
-            resources.ApplyResources(this.impostaStampanteToolStripMenuItem, "impostaStampanteToolStripMenuItem");
             this.impostaStampanteToolStripMenuItem.Name = "impostaStampanteToolStripMenuItem";
+            resources.ApplyResources(this.impostaStampanteToolStripMenuItem, "impostaStampanteToolStripMenuItem");
             this.impostaStampanteToolStripMenuItem.Click += new System.EventHandler(this.impostaStampanteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -320,6 +323,7 @@
             this.tstPulsanti.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tstBtnCercaUsb,
             this.tstBtnCercaRS232,
+            this.tstBtnPrint,
             this.tstBtnRefresh,
             this.toolStripSeparator2,
             this.tstBtnClose});
@@ -357,6 +361,19 @@
             resources.ApplyResources(this.tstBtnClose, "tstBtnClose");
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
+            // 
+            // tstBtnPrint
+            // 
+            this.tstBtnPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.tstBtnPrint, "tstBtnPrint");
+            this.tstBtnPrint.Name = "tstBtnPrint";
+            this.tstBtnPrint.Click += new System.EventHandler(this.tstBtnPrint_Click);
+            // 
+            // printPreviewToolStripMenuItem
+            // 
+            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
+            resources.ApplyResources(this.printPreviewToolStripMenuItem, "printPreviewToolStripMenuItem");
+            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -430,6 +447,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tstBtnClose;
         private System.Drawing.Printing.PrintDocument pdoStampaForm;
+        private System.Windows.Forms.ToolStripButton tstBtnPrint;
+        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
     }
 }
 

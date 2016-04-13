@@ -65,17 +65,17 @@
             this.btnSalvaCliente = new System.Windows.Forms.Button();
             this.grbTestata = new System.Windows.Forms.GroupBox();
             this.txtSerialNumber = new System.Windows.Forms.TextBox();
-            this.label138 = new System.Windows.Forms.Label();
+            this.lblGenSerNum = new System.Windows.Forms.Label();
             this.txtMainNumProgr = new System.Windows.Forms.TextBox();
-            this.label131 = new System.Windows.Forms.Label();
+            this.lblGenConf = new System.Windows.Forms.Label();
             this.txtMainNumLunghi = new System.Windows.Forms.TextBox();
-            this.label130 = new System.Windows.Forms.Label();
+            this.lblGenFasi = new System.Windows.Forms.Label();
             this.txtRevLdrSb = new System.Windows.Forms.TextBox();
             this.lblBootLdrDisp = new System.Windows.Forms.Label();
             this.txtMatrSB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblGenID = new System.Windows.Forms.Label();
             this.txtManufcturedBy = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblGenMod = new System.Windows.Forms.Label();
             this.txtRevSWSb = new System.Windows.Forms.TextBox();
             this.lblFirmwDisp = new System.Windows.Forms.Label();
             this.txtRevHWSb = new System.Windows.Forms.TextBox();
@@ -922,17 +922,17 @@
             // 
             this.grbTestata.BackColor = System.Drawing.Color.White;
             this.grbTestata.Controls.Add(this.txtSerialNumber);
-            this.grbTestata.Controls.Add(this.label138);
+            this.grbTestata.Controls.Add(this.lblGenSerNum);
             this.grbTestata.Controls.Add(this.txtMainNumProgr);
-            this.grbTestata.Controls.Add(this.label131);
+            this.grbTestata.Controls.Add(this.lblGenConf);
             this.grbTestata.Controls.Add(this.txtMainNumLunghi);
-            this.grbTestata.Controls.Add(this.label130);
+            this.grbTestata.Controls.Add(this.lblGenFasi);
             this.grbTestata.Controls.Add(this.txtRevLdrSb);
             this.grbTestata.Controls.Add(this.lblBootLdrDisp);
             this.grbTestata.Controls.Add(this.txtMatrSB);
-            this.grbTestata.Controls.Add(this.label6);
+            this.grbTestata.Controls.Add(this.lblGenID);
             this.grbTestata.Controls.Add(this.txtManufcturedBy);
-            this.grbTestata.Controls.Add(this.label7);
+            this.grbTestata.Controls.Add(this.lblGenMod);
             this.grbTestata.Controls.Add(this.txtRevSWSb);
             this.grbTestata.Controls.Add(this.lblFirmwDisp);
             this.grbTestata.Controls.Add(this.txtRevHWSb);
@@ -946,10 +946,10 @@
             resources.ApplyResources(this.txtSerialNumber, "txtSerialNumber");
             this.txtSerialNumber.Name = "txtSerialNumber";
             // 
-            // label138
+            // lblGenSerNum
             // 
-            resources.ApplyResources(this.label138, "label138");
-            this.label138.Name = "label138";
+            resources.ApplyResources(this.lblGenSerNum, "lblGenSerNum");
+            this.lblGenSerNum.Name = "lblGenSerNum";
             // 
             // txtMainNumProgr
             // 
@@ -957,10 +957,10 @@
             this.txtMainNumProgr.Name = "txtMainNumProgr";
             this.txtMainNumProgr.ReadOnly = true;
             // 
-            // label131
+            // lblGenConf
             // 
-            resources.ApplyResources(this.label131, "label131");
-            this.label131.Name = "label131";
+            resources.ApplyResources(this.lblGenConf, "lblGenConf");
+            this.lblGenConf.Name = "lblGenConf";
             // 
             // txtMainNumLunghi
             // 
@@ -968,10 +968,10 @@
             this.txtMainNumLunghi.Name = "txtMainNumLunghi";
             this.txtMainNumLunghi.ReadOnly = true;
             // 
-            // label130
+            // lblGenFasi
             // 
-            resources.ApplyResources(this.label130, "label130");
-            this.label130.Name = "label130";
+            resources.ApplyResources(this.lblGenFasi, "lblGenFasi");
+            this.lblGenFasi.Name = "lblGenFasi";
             // 
             // txtRevLdrSb
             // 
@@ -990,10 +990,10 @@
             this.txtMatrSB.Name = "txtMatrSB";
             this.txtMatrSB.ReadOnly = true;
             // 
-            // label6
+            // lblGenID
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.lblGenID, "lblGenID");
+            this.lblGenID.Name = "lblGenID";
             // 
             // txtManufcturedBy
             // 
@@ -1001,11 +1001,11 @@
             this.txtManufcturedBy.Name = "txtManufcturedBy";
             this.txtManufcturedBy.ReadOnly = true;
             // 
-            // label7
+            // lblGenMod
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            resources.ApplyResources(this.lblGenMod, "lblGenMod");
+            this.lblGenMod.Name = "lblGenMod";
+            this.lblGenMod.Click += new System.EventHandler(this.label7_Click);
             // 
             // txtRevSWSb
             // 
@@ -1108,6 +1108,7 @@
             // 
             resources.ApplyResources(this.lblCliCliente, "lblCliCliente");
             this.lblCliCliente.Name = "lblCliCliente";
+            this.lblCliCliente.Click += new System.EventHandler(this.lblCliCliente_Click);
             // 
             // tabStatSintesi
             // 
@@ -1235,6 +1236,7 @@
             // 
             resources.ApplyResources(this.label48, "label48");
             this.label48.Name = "label48";
+            this.label48.Click += new System.EventHandler(this.label48_Click);
             // 
             // txtStatNumCariche
             // 
@@ -4755,9 +4757,9 @@
         private System.Windows.Forms.TabPage tabCb04;
         private System.Windows.Forms.GroupBox grbTestata;
         private System.Windows.Forms.TextBox txtMatrSB;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblGenID;
         private System.Windows.Forms.TextBox txtManufcturedBy;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblGenMod;
         private System.Windows.Forms.TextBox txtRevSWSb;
         private System.Windows.Forms.Label lblFirmwDisp;
         private System.Windows.Forms.TextBox txtRevHWSb;
@@ -5248,9 +5250,9 @@
         public System.Windows.Forms.Button btnClonaPreparaMatrici;
         public System.Windows.Forms.Button btnClonaScriviRecordTestata;
         private System.Windows.Forms.TextBox txtMainNumProgr;
-        private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.Label lblGenConf;
         private System.Windows.Forms.TextBox txtMainNumLunghi;
-        private System.Windows.Forms.Label label130;
+        private System.Windows.Forms.Label lblGenFasi;
         private System.Windows.Forms.GroupBox grbMainDlOptions;
         private System.Windows.Forms.Button btnSfoglia;
         private System.Windows.Forms.TextBox txtNomeFileImmagine;
@@ -5304,7 +5306,7 @@
         private System.Windows.Forms.GroupBox grbFWdettUpload;
         private System.Windows.Forms.GroupBox grbFWDettStato;
         private System.Windows.Forms.TextBox txtSerialNumber;
-        private System.Windows.Forms.Label label138;
+        private System.Windows.Forms.Label lblGenSerNum;
         private System.Windows.Forms.CheckBox chkFSerMantieniCliente;
         private System.Windows.Forms.CheckBox chkMemClearMantieniCliente;
         private System.Windows.Forms.GroupBox grbDownloadDati;

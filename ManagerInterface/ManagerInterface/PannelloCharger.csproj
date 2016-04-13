@@ -219,6 +219,9 @@
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBat.Designer.cs">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBatFunzioniStampa.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBatFWUpg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -762,6 +765,7 @@
     <Content Include="App-ladelight32.ico" />
     <None Include="Resources\duec.png" />
     <None Include="Resources\cinquea.png" />
+    <None Include="Resources\fondino.jpg" />
     <Content Include="Resources\Grf-Car.bmp" />
     <Content Include="Resources\Grf-Scar.bmp" />
     <Content Include="Resources\Grf-V-Car.bmp" />
@@ -770,7 +774,9 @@
     <Content Include="Resources\ind_tre.png" />
     <Content Include="Resources\IUIa.bmp" />
     <Content Include="Resources\IWa.bmp" />
+    <None Include="Resources\LogoSpyBatt.bmp" />
     <Content Include="Resources\rs232.jpg" />
+    <None Include="Resources\spyBatt.png" />
     <Content Include="Resources\tre.png" />
     <None Include="Resources\trec.png" />
     <Content Include="Resources\usb.jpg" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -1545,7 +1546,6 @@ namespace Utility
         {
             string _tempString = "";
 
-
             try
             {
                 byte[] _tempBuf = new byte[ArrayLen];
@@ -1567,6 +1567,10 @@ namespace Utility
                 return null;
             }
         }
+
+
+
+
     }
 
 }

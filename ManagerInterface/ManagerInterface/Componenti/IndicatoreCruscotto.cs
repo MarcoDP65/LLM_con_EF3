@@ -40,6 +40,8 @@ namespace ChargerLogic
 
 
 
+
+
         // definisco un formato testo 'anglosassone' per la formattazione dei nueri nei pannelli grafici ... separatore decimale 'obbligato' è il punto
         public NumberFormatInfo Nfi = new CultureInfo("en-US", false).NumberFormat;
 
@@ -407,7 +409,7 @@ namespace ChargerLogic
                 if (Etichetta != "")
                 {
 
-                    using (Bitmap tempImage = new Bitmap(400, 400))
+                    using (Bitmap tempImage = new Bitmap(size, size))  // 400, 400))
                     {
                         SizeF stringSize = Graphics.FromImage(tempImage).MeasureString(Etichetta, bar.TickLabel.LabelFont);
                         _textWidth = stringSize.Width;
@@ -676,6 +678,39 @@ namespace ChargerLogic
             _fsize = size / 20;
             if (_fsize < 6) _fsize = 6;
             return _fsize;
+        }
+
+
+        private Bitmap CropImage(Bitmap source, Rectangle section)
+        {
+
+            Bitmap bmp = source.Clone(section, source.PixelFormat);
+            return bmp;
+        }
+
+
+        /// <summary>
+        /// Ritorna il bitmap dell'indicatore 
+        /// </summary>
+        /// <returns></returns>
+        public Image immagine()
+        {
+            Region _tempReg = cruscotto.Region;
+            Image _tempImg;
+
+            Bitmap _bitmap = new Bitmap(cruscotto.ClientSize.Width, cruscotto.ClientSize.Height);
+            cruscotto.DrawToBitmap(_bitmap, cruscotto.ClientRectangle);
+            // Get the color of a background pixel.
+            Color backColor = _bitmap.GetPixel(1, 1);
+            // Make backColor transparent for myBitmap.
+            _bitmap.MakeTransparent(backColor);
+            Graphics g = Graphics.FromImage(_bitmap);
+            g.DrawImage(_bitmap, 0, 0,  cruscotto.ClientRectangle, GraphicsUnit.Pixel);
+
+            _tempImg = CropImage(_bitmap,new Rectangle(PosX,PosY,size,size)) ;
+
+
+            return _tempImg;
         }
 
 

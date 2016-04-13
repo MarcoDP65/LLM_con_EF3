@@ -83,6 +83,16 @@ namespace PannelloCharger.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondino {
+            get {
+                object obj = ResourceManager.GetObject("fondino", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Grf_Car {
             get {
                 object obj = ResourceManager.GetObject("Grf_Car", resourceCulture);
@@ -136,6 +146,16 @@ namespace PannelloCharger.Properties {
         internal static System.Drawing.Bitmap IWa {
             get {
                 object obj = ResourceManager.GetObject("IWa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spyBatt {
+            get {
+                object obj = ResourceManager.GetObject("spyBatt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

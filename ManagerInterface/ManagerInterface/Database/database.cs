@@ -203,8 +203,8 @@ namespace MoriData
             if (!TabellaCompilata)
             {
                 _utente[] usr = {
-                                  //new _utente { Id = 1, Username = "FACTORY", Password = Utility.StringCipher.PasswordEncrypt("factory"), NomeUtente = "Livello Factory", Livello = 0, Lingua = 0, Attivo = 1 },
-                                  //new _utente { Id = 2, Username = "SERVICE", Password = Utility.StringCipher.PasswordEncrypt("service"), NomeUtente = "Livello Service", Livello = 1, Lingua = 0, Attivo = 1 },
+                                  new _utente { Id = 1, Username = "FACTORY", Password = Utility.StringCipher.PasswordEncrypt("factory"), NomeUtente = "Livello Factory", Livello = 0, Lingua = 0, Attivo = 1 },
+                                  new _utente { Id = 2, Username = "SERVICE", Password = Utility.StringCipher.PasswordEncrypt("service"), NomeUtente = "Livello Service", Livello = 1, Lingua = 0, Attivo = 1 },
                                   new _utente { Id = 3, Username = "POWERUSER", Password = Utility.StringCipher.PasswordEncrypt("PU51KSX33R"), NomeUtente = "Livello Power User", Livello = 2, Lingua = 0, Attivo = 1 },
                                   new _utente { Id = 4, Username = "USER", Password = Utility.StringCipher.PasswordEncrypt("UT16MR28"), NomeUtente = "Livello User", Livello = 3, Lingua = 0, Attivo = 1 }
                                 };
@@ -219,8 +219,8 @@ namespace MoriData
             if (!TabellaCompilata)
             {
                 _parametri[] usr = { new _parametri { Id = 10, Parametro = "Autologin", Tipo = 1, idMessaggio= 10, valInt = 1},
-                                     new _parametri { Id = 11, Parametro = "Username", Tipo = 2,idMessaggio = 11, valTesto = "USER"},
-                                     new _parametri { Id = 12, Parametro = "Password", Tipo = 2,idMessaggio = 12, valTesto = ""}};
+                                     new _parametri { Id = 11, Parametro = "Username", Tipo = 2,idMessaggio = 11, valTesto = "FACTORY"},
+                                     new _parametri { Id = 12, Parametro = "Password", Tipo = 2,idMessaggio = 12, valTesto = "factory"}};
 
                 InsertAll(usr);
             }

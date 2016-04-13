@@ -3701,6 +3701,7 @@ namespace PannelloCharger
                 if (chkStatGraficoTemporale.Checked == true)
                 {
                     TabPage _HostTemporale = new TabPage(StringheStatistica.GrTempChiave);
+                    _HostTemporale.Name = "tabTemporale";
                     _HostTemporale.Tag = "GRAFICO";
                     _HostTemporale.BackColor = Color.LightYellow;
                     _HostTemporale.ToolTipText = chkStatGraficoTemporale.Text;
@@ -5530,6 +5531,7 @@ namespace PannelloCharger
                 // 1.1  -  S.o.H.
 
                 buiStatCockpit.Frame.Clear();
+                
                 Ic11 = new IndicatoreCruscotto();
                 Ic11.ValueMask = "0";
                 Ic11.MinVal = 0;
@@ -5565,10 +5567,10 @@ namespace PannelloCharger
                 Ic12.InizializzaIndicatore(this.buiStatCockpit, 330, 20, 280, StringheStatistica.GougeDODr1 + "\n" + StringheStatistica.GougeDODr2);
                 Ic12.ImpostaValore((float)_stat.ProfonditaMacroScaricaMedia());
 
-
+                
 
                 //  1.3  Sovrascariche
-                
+
                 Ic13 = new IndicatoreCruscotto();
                 Ic13.ValueMask = "0";
                 Ic13.MostraValore = true;
@@ -8081,8 +8083,15 @@ namespace PannelloCharger
             }
         }
 
+        private void lblCliCliente_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void label48_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

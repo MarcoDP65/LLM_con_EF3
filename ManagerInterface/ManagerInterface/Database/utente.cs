@@ -95,16 +95,16 @@ namespace MoriData
                         username = _usr.NomeUtente;
                         login = _usr.Username;
 
-                        if (_usr.Livello == 2 | _usr.Livello == 3)
-                        {
+                        //if (_usr.Livello == 2 | _usr.Livello == 3)
+                        //{
                             livello = _usr.Livello;
                             return _usr.Livello;
-                        }
-                        else
-                        {
-                            livello = 3;
-                            return 3;
-                        }
+                        //}
+                        //else
+                       // {
+                       //     livello = 3;
+                       //     return 3;
+                       // }
 
                     }
                     else

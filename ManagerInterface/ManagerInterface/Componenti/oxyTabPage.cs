@@ -8,8 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using OxyPlot;
 using OxyPlot.WindowsForms;
-
-
+using System.IO;
 
 namespace ChargerLogic
 {
@@ -43,6 +42,26 @@ namespace ChargerLogic
             //this.oxyContainer.
             base.Text = Page;
         }
+
+
+        public Image immmagine(int width = 1200, int heigth = 800)
+        {
+            try
+            {
+                MemoryStream memStream = new MemoryStream();
+
+                PngExporter _pngExporter = new PngExporter { Width = width, Height = heigth, Background = OxyColors.White };
+                _pngExporter.Export(GraficoBase, memStream);
+
+                return Image.FromStream(memStream);
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
 
         protected void _inizializzaControllo()
         {
@@ -104,5 +123,9 @@ namespace ChargerLogic
                 
             }
         }
+
+
+
+
     }
 }

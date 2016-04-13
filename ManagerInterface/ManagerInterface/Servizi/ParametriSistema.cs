@@ -8,7 +8,7 @@ using System.Globalization;
 using log4net;
 using log4net.Config;
 using FTD2XX_NET;
-
+using System.Drawing.Printing;
 
 namespace ChargerLogic
 {
@@ -51,6 +51,10 @@ namespace ChargerLogic
         public bool currentSaveLogin = true;
         public bool firstRun = false;
         public bool FtdiCaricato = false;
+
+        // Gestione Impostazioni Stampante
+        public PrinterSettings ImpostazioniStampante { get; set; }
+
         public static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
 

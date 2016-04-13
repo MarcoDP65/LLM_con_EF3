@@ -565,7 +565,13 @@ namespace PannelloCharger
 
         private void mnuStampa_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                stampa(false,true);
+            }
+            catch
+            {
+            }
         }
 
         private void mnuEsci_Click(object sender, EventArgs e)
@@ -581,21 +587,6 @@ namespace PannelloCharger
 
         }
 
-        private void mnuStampa_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ActiveMdiChild is frmSpyBat)
-                {
-                   // (ActiveMdiChild as frmSpyBat).stampaScheda();
-                }
-
-            }
-            catch
-            {
-            }
-
-        }
 
         private void mnuLogout_Click(object sender, EventArgs e)
         {
@@ -840,7 +831,63 @@ namespace PannelloCharger
 
         private void impostaStampanteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PrintDialog _printDialog = new PrintDialog();
+            if (varGlobali.ImpostazioniStampante != null)
+            {
+                _printDialog.PrinterSettings = varGlobali.ImpostazioniStampante;
+            }
 
+            DialogResult _result = _printDialog.ShowDialog();
+            if (_result == DialogResult.OK)
+            {
+                varGlobali.ImpostazioniStampante = _printDialog.PrinterSettings;
+            }
+        }
+
+        private void tstBtnPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                stampa(false,false);
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain - tstBtnRefresh_Click: " + Ex.Message);
+            }
+        }
+
+
+        public void stampa(bool preview = false, bool SelPrinter = false)
+        {
+            try
+            {
+                Form _tempChild = this.ActiveMdiChild;
+
+                // Se non ho finestre figlio aperte esco
+                if (_tempChild == null) return;
+                if (_tempChild is frmSpyBat)
+                {
+                    frmSpyBat _tempF = (frmSpyBat)_tempChild;
+                    _tempF.stampa(preview, SelPrinter);
+                    return;
+                }
+
+
+
+}
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain - stampa: " + Ex.Message);
+            }
+        }
+
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            stampa(true, false);
         }
     }
 }
