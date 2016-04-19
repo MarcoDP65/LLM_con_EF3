@@ -303,7 +303,7 @@ namespace PannelloCharger
         }
 
 
-        private void EsportaDatiRiga()
+        public void EsportaDatiRiga()
         {
             try
             {

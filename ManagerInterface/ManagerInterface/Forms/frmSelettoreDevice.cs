@@ -290,9 +290,8 @@ namespace PannelloCharger
 
                 this.Cursor = Cursors.Default;
 
-                Log.Debug("PRIMA");
                 sbCorrente.Show();
-                Log.Debug("DOPO");
+
 
             }
             catch (Exception Ex)

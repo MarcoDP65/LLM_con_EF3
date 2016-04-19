@@ -50,6 +50,8 @@ namespace PannelloCharger
         public System.Collections.Generic.List<mrDataPoint> ValoriTensioniCellaS4 = new List<mrDataPoint>();
 
         private sbMemBreve CicloBreve;
+        private parametriSistema _parametri;
+
 
         int _idxAmin;
         int _idxAmax;
@@ -57,13 +59,33 @@ namespace PannelloCharger
         
         public frmListaCicliBreve()
         {
-            Log.Debug("frmListaCicliBreve start");
-            InitializeComponent();
-            Log.Debug("frmListaCicliBreve InitializeComponent");
-            InizializzaOxyPlotControl();
-            Log.Debug("frmListaCicliBreve InizializzaOxyPlotControl");
-
+            try
+            {
+                Log.Debug("frmListaCicliBreve start");
+                InitializeComponent();
+                Log.Debug("frmListaCicliBreve InitializeComponent");
+                InizializzaOxyPlotControl();
+                Log.Debug("frmListaCicliBreve InizializzaOxyPlotControl");
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmListaCicliBreve(): " + Ex.Message);
+            }
         }
+
+
+        public parametriSistema parametri
+        {
+            get
+            {
+                return _parametri;
+            }
+            set
+            {
+                _parametri = value;
+            }
+        }
+
 
 
         private void frmListaCicliBreve_Resize(object sender, EventArgs e)
@@ -74,12 +96,10 @@ namespace PannelloCharger
                 {
                     tabCicloBreve.Width = this.Width - 50;
 
-                    //crtGraficoCiclo.Width = this.Width - 90;
-                    //crtGraficoTensioni.Width = this.Width - 90;
                     flvwCicliBrevi.Width = this.Width - 90;
                     
                     btnChiudi.Left = this.Width - 200;
-                    //lvwCicliBatteriaOld.Width = this.Width - 120;
+
                     if(oxyContainerCiclo != null)
                     {
                         oxyContainerCiclo.Width = this.Width - 90;
@@ -383,14 +403,21 @@ namespace PannelloCharger
 
         private void flvwCicliBrevi_FormatCell(object sender, FormatCellEventArgs e)
         {
-            string _text = e.SubItem.Text;
-            if (_text.Contains("** - "))
+            try
             {
-                e.SubItem.Text = e.SubItem.Text.Substring(5);
-                e.SubItem.ForeColor = Color.Red;
+                string _text = e.SubItem.Text;
+                if (_text.Contains("** - "))
+                {
+                    e.SubItem.Text = e.SubItem.Text.Substring(5);
+                    e.SubItem.ForeColor = Color.Red;
 
+                }
             }
-            
+            catch (Exception Ex)
+            {
+                Log.Error("frmListaCicliBreve_Resize: " + Ex.Message);
+            }
+
 
         }
 
@@ -433,8 +460,6 @@ namespace PannelloCharger
 
                 string _Flag;
 
-                //rigeneraListaCicli();
-
                 int _ciclo = 0;
   
             // Prima Carico la testata
@@ -447,14 +472,13 @@ namespace PannelloCharger
                 this.Text = "Dettaglio Ciclo " + CicloLungo.IdMemoriaLunga.ToString();
                 //Programma
                 txtNumProgramma.Text = CicloLungo.ProgrammaAttivo.IdProgramma.ToString();
-                txtCapacitaNominale.Text = FunzioniMR.StringaCorrente( (short)CicloLungo.ProgrammaAttivo.BatteryAhdef );
-                txtTensioneNominale.Text = FunzioniMR.StringaTensione( CicloLungo.ProgrammaAttivo.BatteryVdef);
+                txtCapacitaNominale.Text = FunzioniMR.StringaCorrente( (short)CicloLungo.ProgrammaAttivo.BatteryAhdef ) + " Ah";
+                txtTensioneNominale.Text = FunzioniMR.StringaTensione( CicloLungo.ProgrammaAttivo.BatteryVdef) + " V";
                 txtCelleV1.Text = CicloLungo.ProgrammaAttivo.BatteryCell1.ToString();
                 txtCelleV2.Text = CicloLungo.ProgrammaAttivo.BatteryCell2.ToString();
                 txtCelleV3.Text = CicloLungo.ProgrammaAttivo.BatteryCell3.ToString();
                 txtCelleTot.Text = CicloLungo.ProgrammaAttivo.BatteryCells.ToString();
 
-                //CicloLungo.CalcolaIntermediBrevi();
 
                 //Calcolo la matrice attivazione celle
                 AttivaIntermedi[0] = (CicloLungo.ProgrammaAttivo.BatteryCells > 0);
@@ -610,66 +634,75 @@ namespace PannelloCharger
         /// <param name="labelsSize">Extra space for new Y axis labels in relative coordinates.</param>
         public void CreateYAxis(Chart chart, ChartArea area, Series series, float axisOffset, float labelsSize, string Titolo)
         {
-            // Create new chart area for original series
-            ChartArea areaSeries = chart.ChartAreas.Add("ChartArea_" + series.Name);
-            areaSeries.BackColor = Color.Transparent;
-            areaSeries.BorderColor = Color.Transparent;
-            areaSeries.Position.FromRectangleF(area.Position.ToRectangleF());
-            areaSeries.InnerPlotPosition.FromRectangleF(area.InnerPlotPosition.ToRectangleF());
-            areaSeries.AxisX.MajorGrid.Enabled = false;
-            areaSeries.AxisX.MajorTickMark.Enabled = false;
-            areaSeries.AxisX.LabelStyle.Enabled = false;
-            areaSeries.AxisY.MajorGrid.Enabled = false;
-            areaSeries.AxisY.MajorTickMark.Enabled = false;
-            areaSeries.AxisY.LabelStyle.Enabled = false;
-            areaSeries.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
-
-            series.ChartArea = areaSeries.Name;
-
-            // Create new chart area for axis
-            ChartArea areaAxis = chart.ChartAreas.Add("AxisY_" + series.ChartArea);
-            areaAxis.BackColor = Color.Transparent;
-            areaAxis.BorderColor = Color.Transparent;
-            areaAxis.Position.FromRectangleF(chart.ChartAreas[series.ChartArea].Position.ToRectangleF());
-            areaAxis.InnerPlotPosition.FromRectangleF(chart.ChartAreas[series.ChartArea].InnerPlotPosition.ToRectangleF());
-
-            // Create a copy of specified series
-            Series seriesCopy = chart.Series.Add(series.Name + "_Copy");
-            seriesCopy.ChartType = series.ChartType;
-            foreach (DataPoint point in series.Points)
+            try
             {
-                seriesCopy.Points.AddXY(point.XValue, point.YValues[0]);
+                // Create new chart area for original series
+                ChartArea areaSeries = chart.ChartAreas.Add("ChartArea_" + series.Name);
+                areaSeries.BackColor = Color.Transparent;
+                areaSeries.BorderColor = Color.Transparent;
+                areaSeries.Position.FromRectangleF(area.Position.ToRectangleF());
+                areaSeries.InnerPlotPosition.FromRectangleF(area.InnerPlotPosition.ToRectangleF());
+                areaSeries.AxisX.MajorGrid.Enabled = false;
+                areaSeries.AxisX.MajorTickMark.Enabled = false;
+                areaSeries.AxisX.LabelStyle.Enabled = false;
+                areaSeries.AxisY.MajorGrid.Enabled = false;
+                areaSeries.AxisY.MajorTickMark.Enabled = false;
+                areaSeries.AxisY.LabelStyle.Enabled = false;
+                areaSeries.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
+
+                series.ChartArea = areaSeries.Name;
+
+                // Create new chart area for axis
+                ChartArea areaAxis = chart.ChartAreas.Add("AxisY_" + series.ChartArea);
+                areaAxis.BackColor = Color.Transparent;
+                areaAxis.BorderColor = Color.Transparent;
+                areaAxis.Position.FromRectangleF(chart.ChartAreas[series.ChartArea].Position.ToRectangleF());
+                areaAxis.InnerPlotPosition.FromRectangleF(chart.ChartAreas[series.ChartArea].InnerPlotPosition.ToRectangleF());
+
+                // Create a copy of specified series
+                Series seriesCopy = chart.Series.Add(series.Name + "_Copy");
+                seriesCopy.ChartType = series.ChartType;
+                foreach (DataPoint point in series.Points)
+                {
+                    seriesCopy.Points.AddXY(point.XValue, point.YValues[0]);
+                }
+
+                // Hide copied series
+                seriesCopy.IsVisibleInLegend = false;
+                seriesCopy.Color = Color.Transparent;
+                seriesCopy.BorderColor = Color.Transparent;
+                seriesCopy.ChartArea = areaAxis.Name;
+
+                // Disable grid lines & tickmarks
+                areaAxis.AxisX.LineWidth = 0;
+                areaAxis.AxisX.MajorGrid.Enabled = false;
+                areaAxis.AxisX.MajorTickMark.Enabled = false;
+                areaAxis.AxisX.LabelStyle.Enabled = false;
+                areaAxis.AxisY.MajorGrid.Enabled = false;
+                areaAxis.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
+
+                // Adjust area position
+                areaAxis.Position.X -= axisOffset;
+                areaAxis.InnerPlotPosition.X += labelsSize;
+                if (Titolo != "")
+                {
+                    // Set axis title
+                    areaAxis.AxisY.TextOrientation = TextOrientation.Horizontal;
+                    areaAxis.AxisY.Title = Titolo;
+                    // Set Title font
+                    areaAxis.AxisY.TitleFont = new Font("Utopia", 10, FontStyle.Bold);
+                    // Set Title color
+                    areaAxis.AxisY.TitleForeColor = Color.Black;
+                    areaAxis.AxisY.IsLabelAutoFit = false;
+                    areaAxis.AxisY.LabelStyle.Font = new Font("Utopia", 8, FontStyle.Regular);
+                    areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                }
+
             }
 
-            // Hide copied series
-            seriesCopy.IsVisibleInLegend = false;
-            seriesCopy.Color = Color.Transparent;
-            seriesCopy.BorderColor = Color.Transparent;
-            seriesCopy.ChartArea = areaAxis.Name;
-
-            // Disable grid lines & tickmarks
-            areaAxis.AxisX.LineWidth = 0;
-            areaAxis.AxisX.MajorGrid.Enabled = false;
-            areaAxis.AxisX.MajorTickMark.Enabled = false;
-            areaAxis.AxisX.LabelStyle.Enabled = false;
-            areaAxis.AxisY.MajorGrid.Enabled = false;
-            areaAxis.AxisY.IsStartedFromZero = area.AxisY.IsStartedFromZero;
-
-            // Adjust area position
-            areaAxis.Position.X -= axisOffset;
-            areaAxis.InnerPlotPosition.X += labelsSize;
-            if (Titolo != "")
+            catch (Exception Ex)
             {
-                // Set axis title
-                areaAxis.AxisY.TextOrientation = TextOrientation.Horizontal;
-                areaAxis.AxisY.Title = Titolo;
-                // Set Title font
-                areaAxis.AxisY.TitleFont = new Font("Utopia", 10, FontStyle.Bold);
-                // Set Title color
-                areaAxis.AxisY.TitleForeColor = Color.Black;
-                areaAxis.AxisY.IsLabelAutoFit = false;
-                areaAxis.AxisY.LabelStyle.Font = new Font("Utopia", 8, FontStyle.Regular);
-                areaAxis.AxisY.TitleAlignment = StringAlignment.Far;
+                Log.Error("CreateYAxis: " + Ex.Message);
             }
 
         }
@@ -1036,7 +1069,6 @@ namespace PannelloCharger
                 serTemperatura.YAxisKey = "Temperatura";
                 serTemperatura.ItemsSource = ValoriCicloTemp;
                 oxyGraficoCiclo.Series.Add(serTemperatura);
-
                 oxyGraficoCiclo.InvalidatePlot(true);
                 Log.Debug("GraficoCiclo: fine generazione");
             }
@@ -1081,7 +1113,7 @@ namespace PannelloCharger
                 double _tempVal;
 
                 oxyGraficoTensioni.InvalidatePlot(false);
-
+                oxyGraficoTensioni.PlotMargins = new OxyPlot.OxyThickness(190, 0, 0, 50);
                 DateTime _istanteLettura;
 
                 switch (TipoCiclo)
@@ -1507,12 +1539,20 @@ namespace PannelloCharger
 
         private bool mascheraColonne(int sezione, bool visibile)
         {
-            foreach (OLVColumn Colonna in flvwCicliBrevi.Columns)
+            try
             {
-                Log.Debug(Colonna.Index.ToString() + " - " + Colonna.Name);
-            }
+                foreach (OLVColumn Colonna in flvwCicliBrevi.Columns)
+                {
+                    Log.Debug(Colonna.Index.ToString() + " - " + Colonna.Name);
+                }
 
-            return true;
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("mascheraColonne: " + Ex.Message);
+                return false;
+            }
         }
 
         private void btnChiudi_Click(object sender, EventArgs e)
@@ -1522,11 +1562,18 @@ namespace PannelloCharger
 
         private void btnSfoglia_Click(object sender, EventArgs e)
         {
-            sfdNuovoCSV.Filter = "Comma Separed (*.csv)|*.csv|All files (*.*)|*.*";
-            sfdNuovoCSV.ShowDialog();
-            txtNuovoFile.Text = sfdNuovoCSV.FileName;
-
+            try
+            {
+                sfdNuovoCSV.Filter = "Comma Separed (*.csv)|*.csv|All files (*.*)|*.*";
+                sfdNuovoCSV.ShowDialog();
+                txtNuovoFile.Text = sfdNuovoCSV.FileName;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnSfoglia_Click: " + Ex.Message);
+            }
         }
+    
 
         private void btnGeneraCsv_Click(object sender, EventArgs e)
         {
@@ -1638,10 +1685,16 @@ namespace PannelloCharger
 
         private void chkIntervalloRelativo_CheckedChanged(object sender, EventArgs e)
         {
-            MostraCicli();
-            tabCicloBreve.SelectedTab = tbpDatiCiclo;
-            tabCicloBreve.SelectedTab = tbpUtilita;
-
+            try
+            {
+                MostraCicli();
+                tabCicloBreve.SelectedTab = tbpDatiCiclo;
+                tabCicloBreve.SelectedTab = tbpUtilita;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkIntervalloRelativo_CheckedChanged: " + Ex.Message);
+            }
         }
 
         private void tbpAndamentoOxy_Click(object sender, EventArgs e)
@@ -1652,6 +1705,69 @@ namespace PannelloCharger
         private void txtNuovoFile_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        public void Reset()
+        {
+            try
+            {
+               // foreach (OxyPlot.Axes.Axis axis in oxyGraficoTensioni.Axes)
+               //     axis.Reset();
+                oxyGraficoTensioni.ResetAllAxes();
+                oxyGraficoTensioni.InvalidatePlot(false);
+
+                // foreach (OxyPlot.Axes.Axis axis in oxyGraficoCiclo.Axes)
+                //     axis.Reset();
+                oxyGraficoCiclo.ResetAllAxes();
+                oxyGraficoCiclo.InvalidatePlot(false);
+
+
+
+            }
+
+            catch ( Exception Ex )
+            {
+                Log.Error("Reset: " + Ex.Message);
+            }
+        }
+
+        private void frmListaCicliBreve_Activated(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMain _parent = (frmMain)this.MdiParent;
+                _parent.Toolbar.reset();
+
+                _parent.Toolbar.StampaAttiva = true;
+                _parent.Toolbar.StampaVisibile = true;
+
+                _parent.Toolbar.ExportAttivo = false;
+                _parent.Toolbar.ExportVisibile = true;
+
+                _parent.Toolbar.RefreshAttivo = true;
+                _parent.Toolbar.RefreshVisibile = true;
+                _parent.AggiornaToolbar(_parent.Toolbar);
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat_Activated: " + Ex.Message);
+            }
+        }
+
+        private void frmListaCicliBreve_Deactivate(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMain _parent = (frmMain)this.MdiParent;
+                _parent.Toolbar.reset();
+                _parent.AggiornaToolbar(_parent.Toolbar);
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat_Activated: " + Ex.Message);
+            }
         }
     }
 

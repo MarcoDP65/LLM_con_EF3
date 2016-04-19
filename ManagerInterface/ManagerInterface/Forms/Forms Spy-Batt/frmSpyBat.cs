@@ -132,7 +132,7 @@ namespace PannelloCharger
                 }
                 else
                 {
-
+                    
                     if (_sb.FirmwarePresente)
                     {
                         // Se sono in stato BL lo evidenzio e mi fermo, altrimenti leggo la testata
@@ -141,6 +141,8 @@ namespace PannelloCharger
                             MostraTestata();
                             txtRevSWSb.Text = "BOOTLOADER";
                             txtRevSWSb.ForeColor = Color.Red;
+                            _apparatoPresente = _sb.apparatoPresente;
+                            abilitaSalvataggi(_sb.apparatoPresente);
                             Log.Info("Stato scheda SPY-BATT: LD OK, MODO BOOTLOADER ");
                         }
                         else
@@ -391,7 +393,12 @@ namespace PannelloCharger
                             MostraTestata();
                             txtRevSWSb.Text = "BOOTLOADER";
                             txtRevSWSb.ForeColor = Color.Red;
+
+                            // se l'apparato è collegato abilito i salvataggi
+                            abilitaSalvataggi(_sb.apparatoPresente);
+
                             Log.Info("Stato scheda SPY-BATT: LD OK, MODO BOOTLOADER ");
+
                         }
                         else
                         {
@@ -563,7 +570,7 @@ namespace PannelloCharger
                 {
                     //scheda senza booloader
                     txtRevSWSb.Text = _sb.sbData.SwVersion.ToString();
-                    txtRevLdrSb.Text = "";
+                    //txtRevLdrSb.Text =  ""_sb.sbData.f;
 
                 }
                 
@@ -887,12 +894,14 @@ namespace PannelloCharger
                 {
                     IdApparato = _sb.Id;
                     MostraTestata();
+                    /*
                     if (_sb.sbData.fwLevel < 0)
                     {
                         //Firmware non valido
                         _apparatoPresente = false;
                         Log.Debug("CaricaTestata: Firmware non valido " + _sb.sbData.SwVersion.ToString());
                     }
+                    */
                     
                     CaricaCicli();
 
@@ -1476,6 +1485,7 @@ namespace PannelloCharger
                         frmListaCicliBreve CicliBreve = new frmListaCicliBreve();
                         CicliBreve.MdiParent = this.MdiParent;
                         CicliBreve.StartPosition = FormStartPosition.CenterParent;
+                        CicliBreve.parametri = _parametri;
 
                         //CicliBreve.CicliMemoriaBreve = _sb.CicliMemoriaBreve;
                         CicliBreve.CicloLungo = _tempLunga;
@@ -1513,6 +1523,7 @@ namespace PannelloCharger
                         frmListaCicliBreve CicliBreve = new frmListaCicliBreve();
                         CicliBreve.MdiParent = this.MdiParent;
                         CicliBreve.StartPosition = FormStartPosition.CenterParent;
+                        CicliBreve.parametri = _parametri;
 
                         //CicliBreve.CicliMemoriaBreve = _sb.CicliMemoriaBreve;
                         CicliBreve.CicloLungo = _tempLunga;
@@ -8077,8 +8088,9 @@ namespace PannelloCharger
                 //txtCodiceBase.Text = _codice;
                 return _permutato;
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("CodiceSblocco: " + Ex.Message);
                 return "";
             }
         }
@@ -8092,6 +8104,81 @@ namespace PannelloCharger
         {
 
         }
-    }
 
-}
+        private void frmSpyBat_Activated(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMain _parent = (frmMain)this.MdiParent;
+                _parent.Toolbar.reset();
+
+                _parent.Toolbar.StampaAttiva = true;
+                _parent.Toolbar.StampaVisibile = true;
+
+                _parent.Toolbar.ExportAttivo = true;
+                _parent.Toolbar.ExportVisibile = true;
+
+                _parent.Toolbar.RefreshAttivo = false;
+                _parent.Toolbar.RefreshVisibile = true;
+                _parent.AggiornaToolbar(_parent.Toolbar);
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat_Activated: " + Ex.Message);
+            }
+        }
+
+        private void frmSpyBat_Deactivate(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMain _parent = (frmMain)this.MdiParent;
+                _parent.Toolbar.reset();
+                _parent.AggiornaToolbar(_parent.Toolbar);
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat_Activated: " + Ex.Message);
+            }
+        }
+
+        public void export()
+        {
+            try
+            {
+                if (IdCorrente != "")
+                {
+                    ApriExportSpyBatt(IdCorrente);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat_Activated: " + Ex.Message);
+            }
+        }
+
+
+
+        private void ApriExportSpyBatt(string IdApparato)
+        {
+            try
+            {
+
+                frmSbExport sbExport = new frmSbExport(ref _parametri, true, IdApparato, _logiche, false, false);
+                sbExport.MdiParent = this.MdiParent;
+                sbExport.StartPosition = FormStartPosition.CenterParent;
+                sbExport.Setmode(elementiComuni.modoDati.Output);
+                sbExport.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ApriExportSpyBatt: " + Ex.Message);
+            }
+
+        }
+    }
+    }

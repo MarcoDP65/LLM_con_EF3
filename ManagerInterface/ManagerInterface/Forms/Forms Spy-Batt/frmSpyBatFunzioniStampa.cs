@@ -31,12 +31,13 @@ namespace PannelloCharger
         private PrintDocument _docStampa = new PrintDocument();
 
         public const int DeltaIntestazione = 15;
-        public const int DeltaRiga = 40;
-        public const int DeltaZona = 100;
+        public const int DeltaRiga = 38;
+        public const int DeltaZona = 70;
 
 
         private int _paginaCorrente = 0;
         private int _modelloStampa = 0;
+        private int _pagineStampate = 0;
 
         /// <summary>
         /// lancio la stampa del form.
@@ -67,13 +68,14 @@ namespace PannelloCharger
                     case "tabCb04":
                     case "tabCb05":
                         {
+                            _pagineStampate = 0;
                             _modelloStampa = 1;
                             break;
                         }
                     case "tabStatistiche":
                         {
                             // Se ho più di 2 pagine OK, ho generato le statistiche
-
+                            _pagineStampate = 0;
                             int _tabStatCorrente = tbcStatistiche.SelectedIndex;
                             string _paginaStatAttiva = tbcStatistiche.TabPages[_tabStatCorrente].Name;
 
@@ -83,7 +85,10 @@ namespace PannelloCharger
                             }
                             else
                             {
-                                _modelloStampa = 2;
+
+                                // Se voglio che stampi solo le statistiche --> =2
+                                // Altrimenti --> =1 così stampa anche la testata
+                                _modelloStampa = 1;
                             }
                             break;
                         }
@@ -141,7 +146,9 @@ namespace PannelloCharger
                     if (preview)
                     {
                         ppdlg = new PrintPreviewDialog();
+                  
                         ppdlg.Document = _docStampa;
+                        ppdlg.Document.PrinterSettings = _parametri.ImpostazioniStampante;
                         ppdlg.ShowDialog();
                     }
 
@@ -169,8 +176,7 @@ namespace PannelloCharger
             try
             {
                 _paginaCorrente++;
-
-                switch(_modelloStampa)
+                switch (_modelloStampa)
                 {
                     case 1:  // Stampa scheda base
                         {
@@ -185,12 +191,25 @@ namespace PannelloCharger
                                 case 2:
                                     {
                                         _docStampaCruscotto(doc, _paginaCorrente);
-                                        doc.HasMorePages = false;
+                                        //dopo la testata lancio la setampa statistiche
+                                        if (StatistichePresenti() > 0)
+                                        {
+                                            doc.HasMorePages = true;
+                                            _modelloStampa = 2;
+                                        }
+                                        else
+                                        {
+                                            doc.HasMorePages = false;
+                                            _paginaCorrente = 0;
+                                            _pagineStampate = 0;
+                                        }
                                         break;
                                     }
                                 default:
                                     {
                                         doc.HasMorePages = false;
+                                        _paginaCorrente = 0;
+                                        _pagineStampate = 0;
                                         break;
                                     }
                             }
@@ -216,6 +235,8 @@ namespace PannelloCharger
                                 else
                                 {
                                     doc.HasMorePages = false;
+                                    _paginaCorrente = 0;
+                                    _pagineStampate = 0;
                                 }
 
                             }
@@ -228,6 +249,8 @@ namespace PannelloCharger
 
                             _docStampaPaginaAndamento(doc, _paginaCorrente);
                             doc.HasMorePages = false;
+                            _paginaCorrente = 0;
+                            _pagineStampate = 0;
 
                             break;
                         }
@@ -256,10 +279,10 @@ namespace PannelloCharger
                 Image _tempImg = PannelloCharger.Properties.Resources.spyBatt;
                 Bitmap logo =   new Bitmap(_tempImg);
 
-
+                
                 //Stampo la filigrana
-                Image _tempFiligrana = PannelloCharger.Properties.Resources.fondino;
-                graphcs.DrawImage(_tempFiligrana, 0, 0);
+                //Image _tempFiligrana = PannelloCharger.Properties.Resources.fondino;
+                //graphcs.DrawImage(_tempFiligrana, 0, 0);
                 // doc.PageSettings
                 int _rigaLabel = 100;
                 int rigaTesto = 120; 
@@ -268,7 +291,7 @@ namespace PannelloCharger
 
 
 
-                Font _etichette = new Font("Arial", 8);
+                Font _etichette = new Font("Arial", 7);
                 Font _valoriBase = new Font("Arial", 10);
                 Font _valoriBold = new Font("Arial", 10,FontStyle.Bold);
                 Font _titoloBold = new Font("Arial", 24, FontStyle.Bold);
@@ -277,9 +300,11 @@ namespace PannelloCharger
 
                 SolidBrush _pennaBase = new SolidBrush(Color.Black);
 
-
+                //preparo la pagina
+                _pagineStampate++;
+                PreparaPagina(graphcs, _pagineStampate);
                 //Logo:
-                graphcs.DrawImage(logo, 577, 25, 200, 80);
+                //graphcs.DrawImage(logo, 577, 25, 200, 80);
 
 
 
@@ -290,51 +315,63 @@ namespace PannelloCharger
 
 
                 // Dati Testata
-                _rigaLabel = DeltaZona;
-                graphcs.DrawString(lblGenID.Text, _etichette, _pennaBase, 50,_rigaLabel);
-                graphcs.DrawString(txtMatrSB.Text, _valoriBold, _pennaBase, 50,_rigaLabel + DeltaIntestazione);
+                _rigaLabel = 200;
 
-                _rigaLabel += DeltaRiga;
-                graphcs.DrawString(lblFirmwCb.Text, _etichette, _pennaBase, 50,_rigaLabel);
-                graphcs.DrawString(txtRevHWSb.Text, _valoriBase, _pennaBase, 50,_rigaLabel + DeltaIntestazione);
-
-                graphcs.DrawString(lblBootLdrDisp.Text, _etichette, _pennaBase, 200,_rigaLabel);
-                graphcs.DrawString(txtRevLdrSb.Text, _valoriBase, _pennaBase, 200,_rigaLabel + DeltaIntestazione);
-
-                graphcs.DrawString(lblFirmwDisp.Text, _etichette, _pennaBase, 350,_rigaLabel);
-                graphcs.DrawString(txtRevSWSb.Text, _valoriBase, _pennaBase, 350,_rigaLabel + DeltaIntestazione);
-
-
-                _rigaLabel += DeltaRiga;
-                graphcs.DrawString(lblGenSerNum.Text, _etichette, _pennaBase, 50, _rigaLabel);
-                graphcs.DrawString(txtSerialNumber.Text, _valoriBase, _pennaBase, 50, _rigaLabel + DeltaIntestazione);
-
-                graphcs.DrawString(lblGenFasi.Text, _etichette, _pennaBase, 200, _rigaLabel);
-                graphcs.DrawString(txtMainNumLunghi.Text, _valoriBase, _pennaBase, 200, _rigaLabel + DeltaIntestazione);
-
-                graphcs.DrawString(lblGenConf.Text, _etichette, _pennaBase, 350, _rigaLabel);
-                graphcs.DrawString(txtMainNumProgr.Text, _valoriBase, _pennaBase, 350, _rigaLabel + DeltaIntestazione);
 
 
                 //Dati Cliente
+               
+                graphcs.DrawString(grbDatiCliente.Text, _valoriBold, _pennaBase, 50, _rigaLabel);
+
+                _rigaLabel += DeltaRiga;
+                graphcs.DrawString(lblCliCliente.Text, _etichette, _pennaBase, 100, _rigaLabel);
+                graphcs.DrawString(txtCliente.Text, _valoriBase, _pennaBase, 100, _rigaLabel + DeltaIntestazione);
+
+                _rigaLabel += DeltaRiga;
+                graphcs.DrawString(lblCliMarcaBatt.Text, _etichette, _pennaBase, 100, _rigaLabel);
+                graphcs.DrawString(txtMarcaBat.Text, _valoriBase, _pennaBase, 100, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(lblCliModellpApp.Text, _etichette, _pennaBase, 400, _rigaLabel);
+                graphcs.DrawString(txtModelloBat.Text, _valoriBase, _pennaBase, 400, _rigaLabel + DeltaIntestazione);
+
+                _rigaLabel += DeltaRiga;
+                graphcs.DrawString(lblCliIdBatteria.Text, _etichette, _pennaBase, 100, _rigaLabel);
+                graphcs.DrawString(txtIdBat.Text, _valoriBold, _pennaBase, 100, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(lblCliCicliAttesi.Text, _etichette, _pennaBase, 400, _rigaLabel);
+                graphcs.DrawString(txtCliCicliAttesi.Text, _valoriBase, _pennaBase, 400, _rigaLabel + DeltaIntestazione);
+
+
+
+                //Dati Spy BATT
+
                 _rigaLabel += DeltaZona;
-                graphcs.DrawString(lblCliCliente.Text, _etichette, _pennaBase, 50, _rigaLabel);
-                graphcs.DrawString(txtCliente.Text, _valoriBase, _pennaBase, 50, _rigaLabel + DeltaIntestazione);
+                graphcs.DrawString(grbTestata.Text, _valoriBold, _pennaBase, 50, _rigaLabel);
 
                 _rigaLabel += DeltaRiga;
-                graphcs.DrawString(lblCliMarcaBatt.Text, _etichette, _pennaBase, 50, _rigaLabel);
-                graphcs.DrawString(txtMarcaBat.Text, _valoriBase, _pennaBase, 50, _rigaLabel + DeltaIntestazione);
-
-                graphcs.DrawString(lblCliModellpApp.Text, _etichette, _pennaBase, 350, _rigaLabel);
-                graphcs.DrawString(txtModelloBat.Text, _valoriBase, _pennaBase, 350, _rigaLabel + DeltaIntestazione);
+                graphcs.DrawString(lblGenID.Text, _etichette, _pennaBase, 100, _rigaLabel);
+                graphcs.DrawString(txtMatrSB.Text, _valoriBold, _pennaBase, 100, _rigaLabel + DeltaIntestazione);
 
                 _rigaLabel += DeltaRiga;
-                graphcs.DrawString(lblCliIdBatteria.Text, _etichette, _pennaBase, 50, _rigaLabel);
-                graphcs.DrawString(txtIdBat.Text, _valoriBold, _pennaBase, 50, _rigaLabel + DeltaIntestazione);
+                graphcs.DrawString(lblFirmwCb.Text, _etichette, _pennaBase, 100 ,_rigaLabel);
+                graphcs.DrawString(txtRevHWSb.Text, _valoriBase, _pennaBase, 100, _rigaLabel + DeltaIntestazione);
 
-                graphcs.DrawString(lblCliCicliAttesi.Text, _etichette, _pennaBase, 350, _rigaLabel);
-                graphcs.DrawString(txtCliCicliAttesi.Text, _valoriBase, _pennaBase, 350, _rigaLabel + DeltaIntestazione);
+                graphcs.DrawString(lblBootLdrDisp.Text, _etichette, _pennaBase, 300,_rigaLabel);
+                graphcs.DrawString(txtRevLdrSb.Text, _valoriBase, _pennaBase, 300,_rigaLabel + DeltaIntestazione);
 
+                graphcs.DrawString(lblFirmwDisp.Text, _etichette, _pennaBase, 500,_rigaLabel);
+                graphcs.DrawString(txtRevSWSb.Text, _valoriBase, _pennaBase, 500,_rigaLabel + DeltaIntestazione);
+
+
+                _rigaLabel += DeltaRiga;
+                graphcs.DrawString(lblGenSerNum.Text, _etichette, _pennaBase, 100, _rigaLabel);
+                graphcs.DrawString(txtSerialNumber.Text, _valoriBase, _pennaBase, 100, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(lblGenFasi.Text, _etichette, _pennaBase, 300, _rigaLabel);
+                graphcs.DrawString(txtMainNumLunghi.Text, _valoriBase, _pennaBase, 300, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(lblGenConf.Text, _etichette, _pennaBase, 500, _rigaLabel);
+                graphcs.DrawString(txtMainNumProgr.Text, _valoriBase, _pennaBase, 500, _rigaLabel + DeltaIntestazione);
 
 
                 // Dati Riepilogo
@@ -442,6 +479,31 @@ namespace PannelloCharger
 
 
 
+                // Configurazione
+                _rigaLabel += DeltaZona;
+                graphcs.DrawString(grbProgrammazione.Text, _valoriBold, _pennaBase, 50, _rigaLabel);
+
+
+                _rigaLabel += DeltaRiga;
+                graphcs.DrawString(txtTensioneNom.Text, _etichette, _pennaBase, 100, _rigaLabel);
+                graphcs.DrawString(txtProgcBattVdef.Text, _valoriBase, _pennaBase, 100, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(label16.Text, _etichette, _pennaBase, 200, _rigaLabel);
+                graphcs.DrawString(txtProgcBattAhDef.Text, _valoriBase, _pennaBase, 200, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(label13.Text, _etichette, _pennaBase, 300, _rigaLabel);
+                graphcs.DrawString(txtProgcCelleTot.Text, _valoriBase, _pennaBase, 300, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(label14.Text, _etichette, _pennaBase, 400, _rigaLabel);
+                graphcs.DrawString(txtProgcCelleV3.Text, _valoriBase, _pennaBase, 400, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(label15.Text, _etichette, _pennaBase, 500, _rigaLabel);
+                graphcs.DrawString(txtProgcCelleV2.Text, _valoriBase, _pennaBase, 500, _rigaLabel + DeltaIntestazione);
+
+                graphcs.DrawString(lblCelleP1.Text, _etichette, _pennaBase, 600, _rigaLabel);
+                graphcs.DrawString(txtProgcCelleV1.Text, _valoriBase, _pennaBase, 600, _rigaLabel + DeltaIntestazione);
+
+    
 
 
 
@@ -468,8 +530,8 @@ namespace PannelloCharger
 
 
                 //Stampo la filigrana
-                Image _tempFiligrana = PannelloCharger.Properties.Resources.fondino;
-                graphcs.DrawImage(_tempFiligrana, 0, 0);
+                //Image _tempFiligrana = PannelloCharger.Properties.Resources.fondino;
+                //graphcs.DrawImage(_tempFiligrana, 0, 0);
                 // doc.PageSettings
                 int _rigaLabel = 100;
                 int rigaTesto = 120;
@@ -490,37 +552,26 @@ namespace PannelloCharger
                 Image _tempGauge;
 
                 //Logo:
-                graphcs.DrawImage(logo, 577, 25, 200, 80);
-
-
-
-                Font myfont = new Font("Arial", 12);
-                SolidBrush Mybrash = new SolidBrush(Color.Gray);
-                float fontHeight = myfont.GetHeight();
-
-
-
-                // Dati Testata
-                _rigaLabel = 100;
-                graphcs.DrawString(lblGenID.Text, _etichette, _pennaBase, 50, _rigaLabel);
-                graphcs.DrawString(txtMatrSB.Text, _valoriBold, _pennaBase, 50, _rigaLabel + DeltaIntestazione);
+                //graphcs.DrawImage(logo, 577, 25, 200, 80);
+                _pagineStampate++;
+                PreparaPagina(graphcs, _pagineStampate);
 
                 //Cruscotti
-                graphcs.DrawImage(Ic11.immagine(), 150, 180, 210, 210);
+                graphcs.DrawImage(Ic11.immagine(), 150, 190, 210, 210);
 
-                graphcs.DrawImage(Ic12.immagine(), 450, 180, 210, 210);
+                graphcs.DrawImage(Ic12.immagine(), 450, 190, 210, 210);
 
-                graphcs.DrawImage(Ic13.immagine(), 150, 410, 210, 210);
+                graphcs.DrawImage(Ic13.immagine(), 150, 415, 210, 210);
 
-                graphcs.DrawImage(Ic14.immagine(), 450, 410, 210, 210);
+                graphcs.DrawImage(Ic14.immagine(), 450, 415, 210, 210);
 
                 graphcs.DrawImage(Ic21.immagine(), 150, 640, 210, 210);
 
                 graphcs.DrawImage(Ic22.immagine(), 450, 640, 210, 210);
+           
+                graphcs.DrawImage(Ic23.immagine(), 150, 865, 210, 210);
 
-                graphcs.DrawImage(Ic23.immagine(), 150, 870, 210, 210);
-
-                graphcs.DrawImage(Ic24.immagine(), 450, 870, 210, 210);
+                graphcs.DrawImage(Ic24.immagine(), 450, 865, 210, 210);
 
 
                 // Dati Sintesi
@@ -538,7 +589,7 @@ namespace PannelloCharger
 
 
         /// <summary>
-        /// Stampa la scheda intestazione e sintesi
+        /// Stampa dei grafici generati
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="pagina"></param>
@@ -551,15 +602,9 @@ namespace PannelloCharger
                 Bitmap logo = new Bitmap(_tempImg);
 
 
-                //Stampo la filigrana
-                Image _tempFiligrana = PannelloCharger.Properties.Resources.fondino;
-                graphcs.DrawImage(_tempFiligrana, 0, 0);
                 // doc.PageSettings
                 int _rigaLabel = 100;
                 int rigaTesto = 120;
-
-                RectangleF printableArea = doc.PageSettings.PrintableArea;
-
 
 
                 Font _etichette = new Font("Arial", 8);
@@ -567,28 +612,15 @@ namespace PannelloCharger
                 Font _valoriBold = new Font("Arial", 10, FontStyle.Bold);
                 Font _titoloBold = new Font("Arial", 24, FontStyle.Bold);
                 Font _sottoTitoloBold = new Font("Arial", 18, FontStyle.Bold);
+                Font _testoSmall = new Font("Arial", 8, FontStyle.Regular);
+                Font _testoSmallBold = new Font("Arial", 8, FontStyle.Bold);
 
 
-                SolidBrush _pennaBase = new SolidBrush(Color.Black);
-                
-
-                //Logo:
-                graphcs.DrawImage(logo, 577, 25, 200, 80);
-
-                //---------------------------------------------------------
-
-                //Calcolo Gli indicatori previsti per questa pagina
-
-                Font myfont = new Font("Arial", 12);
-                SolidBrush Mybrash = new SolidBrush(Color.Gray);
-                float fontHeight = myfont.GetHeight();
+                SolidBrush _stileBase = new SolidBrush(Color.Black);
+                _pagineStampate++;
 
 
-
-                // Dati Testata
-                _rigaLabel = DeltaZona;
-                graphcs.DrawString(lblGenID.Text, _etichette, _pennaBase, 50, _rigaLabel);
-                graphcs.DrawString(txtMatrSB.Text, _valoriBold, _pennaBase, 50, _rigaLabel + DeltaIntestazione);
+                PreparaPagina(graphcs, _pagineStampate);
 
                 Image _tmpGraph;
 
@@ -597,7 +629,7 @@ namespace PannelloCharger
                 _tmpGraph = GraficoInstampa(pagina, 0);
                 if (_tmpGraph != null)
                 {
-                    graphcs.DrawImage(_tmpGraph, 120, 150, 600, 400);
+                    graphcs.DrawImage(_tmpGraph, 120, 190, 600, 400);
                 }
 
 
@@ -605,11 +637,25 @@ namespace PannelloCharger
                 _tmpGraph = GraficoInstampa(pagina, 1);
                 if (_tmpGraph != null)
                 {
-                    graphcs.DrawImage(_tmpGraph, 120, 650, 600, 400);
+                    graphcs.DrawImage(_tmpGraph, 120, 640, 600, 400);
 
                 }
 
-
+                graphcs.DrawString(stringheStampa.txtPeriodoAttivo, _testoSmall, _stileBase, 50, 1080);
+                // Verifico se ho attivato il periodo temporale
+                if (optStatPeriodoSel.Checked)
+                {
+                    string StringaPeriodo = stringheStampa.txtPeriodoDal + " ";
+                    StringaPeriodo += dtpStatInizio.Value.ToString("MMM yyyy");
+                    StringaPeriodo += " " + stringheStampa.txtPeriodoA + " ";
+                    StringaPeriodo += dtpStatFine.Value.ToString("MMM yyyy");
+                    graphcs.DrawString(StringaPeriodo, _testoSmallBold, _stileBase, 180, 1080);
+                }
+                else
+                {
+                    graphcs.DrawString(optStatInteroIntervallo.Text, _testoSmallBold, _stileBase, 180, 1080);
+                }
+                
             }
             catch (Exception Ex)
             {
@@ -631,16 +677,12 @@ namespace PannelloCharger
                 Image _tempImg = PannelloCharger.Properties.Resources.spyBatt;
                 Bitmap logo = new Bitmap(_tempImg);
 
+                PreparaPagina(graphcs, pagina);
 
-                //Stampo la filigrana
-                Image _tempFiligrana = PannelloCharger.Properties.Resources.fondino;
-                graphcs.DrawImage(_tempFiligrana, 0, 0);
-                // doc.PageSettings
                 int _rigaLabel = 100;
                 int rigaTesto = 120;
-
-                RectangleF printableArea = doc.PageSettings.PrintableArea;
-
+                _pagineStampate++;
+                
 
 
                 Font _etichette = new Font("Arial", 8);
@@ -651,20 +693,14 @@ namespace PannelloCharger
 
 
                 SolidBrush _pennaBase = new SolidBrush(Color.Black);
+                String _titoloPagina = stringheStampa.titGraficoTemporale + "  ";
+                oxyTabPage _tempOxy = (oxyTabPage)TbcStatSettimane.SelectedTab;
+                _titoloPagina += _tempOxy.Text;
 
-
-                //Logo:
-                graphcs.DrawImage(logo, 577, 25, 200, 80);
-
-                //---------------------------------------------------------
+                graphcs.DrawString(_titoloPagina, _sottoTitoloBold, _pennaBase, 50, 190);
 
                 //Calcolo Gli indicatori previsti per questa pagina
 
-
-                // Dati Testata
-                _rigaLabel = DeltaZona;
-                graphcs.DrawString(lblGenID.Text, _etichette, _pennaBase, 50, _rigaLabel);
-                graphcs.DrawString(txtMatrSB.Text, _valoriBold, _pennaBase, 50, _rigaLabel + DeltaIntestazione);
 
                 Image _tmpGraph;
 
@@ -675,7 +711,7 @@ namespace PannelloCharger
 
                 if (_tmpGraph != null)
                 {
-                    graphcs.DrawImage(_tmpGraph, 150, 200, 500, 800);
+                    graphcs.DrawImage(_tmpGraph, 150, 250, 500, 800);
                 }
 
 
@@ -686,9 +722,6 @@ namespace PannelloCharger
                 Log.Error("_docStampaScheda: " + Ex.Message + " [" + Ex.TargetSite.ToString() + "]");
             }
         }
-
-
-
 
 
         /// <summary>
@@ -808,6 +841,90 @@ namespace PannelloCharger
             }
         }
 
+
+        /// <summary>
+        /// Inizializzo la pagina con loghi, filigrana e intestazione
+        /// </summary>
+        /// <param name="Pagina"></param>
+        /// <param name="NumeroPagina">Numero della pagina; Non stampato se 0</param>
+        private void PreparaPagina(Graphics Pagina, int NumeroPagina)
+        {
+            try
+            {
+
+                Image _tempImg = PannelloCharger.Properties.Resources.spyBatt;
+                Bitmap logo = new Bitmap(_tempImg);
+
+
+                //Stampo la filigrana
+                Image _tempFiligrana = PannelloCharger.Properties.Resources.fondino_chiaro;
+                Pagina.DrawImage(_tempFiligrana, 0, 0);
+                // doc.PageSettings
+                int _rigaLabel = 50;
+                int rigaTesto = 120;
+
+
+
+                Font _etichette = new Font("Arial", 7);
+                Font _valoriBase = new Font("Arial", 10);
+                Font _valoriBold = new Font("Arial", 10, FontStyle.Bold);
+                Font _titolo = new Font("Arial", 24, FontStyle.Regular);
+                Font _titoloBold = new Font("Arial", 24, FontStyle.Bold);
+                Font _sottoTitolo = new Font("Arial", 16, FontStyle.Regular);
+                Font _sottoTitoloBold = new Font("Arial", 18, FontStyle.Bold);
+
+                Font _testoHeadBase = new Font("Arial", 10, FontStyle.Regular);
+
+                Font _testoHead = new Font("Arial", 10, FontStyle.Regular);
+                Font _testoHeadBold = new Font("Arial", 12, FontStyle.Bold);
+
+                Font _testoSmall = new Font("Arial", 8, FontStyle.Regular);
+                Font _testoSmallBold = new Font("Arial", 8, FontStyle.Bold);
+
+
+                SolidBrush _stileBase = new SolidBrush(Color.Black);
+                Pen _pennaBase = new Pen(_stileBase, 1);
+
+                //Logo:
+                Pagina.DrawImage(logo, 577, 25, 200, 80);
+
+                //---------------------------------------------------------
+
+                //Calcolo Gli indicatori previsti per questa pagina
+
+
+                // Dati Testata
+                _rigaLabel = 30;
+                Pagina.DrawString(stringheStampa.titCliente, _testoSmall, _stileBase, 50, _rigaLabel);
+                Pagina.DrawString(txtCliente.Text, _sottoTitoloBold, _stileBase, 50, _rigaLabel + 11);
+
+                _rigaLabel += 40;
+                Pagina.DrawString(stringheStampa.titSpybattID, _testoSmall, _stileBase, 50, _rigaLabel);
+                string TestoId = txtSerialNumber.Text;
+                if (TestoId == "") TestoId = txtMatrSB.Text;
+                Pagina.DrawString(TestoId, _sottoTitoloBold, _stileBase, 50, _rigaLabel + 11);
+
+                _rigaLabel += 40;
+                Pagina.DrawString(stringheStampa.titBatteria, _testoSmall, _stileBase, 50, _rigaLabel);
+                Pagina.DrawString(txtIdBat.Text, _testoHeadBold, _stileBase, 50, _rigaLabel + 11);
+                Pagina.DrawLine(_pennaBase, new Point(50, _rigaLabel + 50), new Point(777, _rigaLabel + 50));
+
+                Pagina.DrawString(stringheStampa.titData, _testoSmall, _stileBase, 50, 1100);
+                Pagina.DrawString(DateTime.Now.ToShortDateString(), _testoSmallBold, _stileBase, 150, 1100);
+
+                if (NumeroPagina > 0)
+                {
+                    Pagina.DrawString(stringheStampa.txtNumPagina, _testoSmall, _stileBase, 680, 1100);
+                    Pagina.DrawString(NumeroPagina.ToString(), _testoSmallBold, _stileBase, 720, 1100);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("PreparaPagina: " + Ex.Message + " [" + Ex.TargetSite.ToString() + "]");
+            }
+
+        }
 
 
     }

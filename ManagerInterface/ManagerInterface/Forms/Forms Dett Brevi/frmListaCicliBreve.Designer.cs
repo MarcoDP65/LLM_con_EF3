@@ -335,6 +335,8 @@
             this.Controls.Add(this.btnChiudi);
             this.Controls.Add(this.lvwCicliBrevi);
             this.Name = "frmListaCicliBreve";
+            this.Activated += new System.EventHandler(this.frmListaCicliBreve_Activated);
+            this.Deactivate += new System.EventHandler(this.frmListaCicliBreve_Deactivate);
             this.Load += new System.EventHandler(this.frmListaCicliBreve_Load);
             this.Resize += new System.EventHandler(this.frmListaCicliBreve_Resize);
             this.tabCicloBreve.ResumeLayout(false);

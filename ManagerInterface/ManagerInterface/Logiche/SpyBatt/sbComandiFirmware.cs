@@ -72,7 +72,7 @@ namespace ChargerLogic
                         StatoFirmware.RevBootloader = _mS.StatoFirmwareScheda.RevBootloader;
                         StatoFirmware.RevFirmware = _mS.StatoFirmwareScheda.RevFirmware;
 
-                        if ((_mS.StatoFirmwareScheda.RevBootloader != "") && (_mS.StatoFirmwareScheda.RevFirmware != "??????"))
+                        //if ((_mS.StatoFirmwareScheda.RevBootloader != "") && (_mS.StatoFirmwareScheda.RevFirmware != "??????"))
                             _firmwarePresente = true;
                         StatoFirmware.CRCFirmware = _mS.StatoFirmwareScheda.CRCFirmware;
                         StatoFirmware.AddrFlash = _mS.StatoFirmwareScheda.AddrFlash;

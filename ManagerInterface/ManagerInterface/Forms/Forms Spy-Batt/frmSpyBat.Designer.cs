@@ -594,6 +594,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.tabCalibrazione = new System.Windows.Forms.TabPage();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -683,6 +684,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tbpCalibrazioni);
             this.tabCaricaBatterie.Controls.Add(this.tbpFirmware);
             this.tabCaricaBatterie.Controls.Add(this.tbpClonaScheda);
+            this.tabCaricaBatterie.Controls.Add(this.tabCalibrazione);
             resources.ApplyResources(this.tabCaricaBatterie, "tabCaricaBatterie");
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
@@ -4616,6 +4618,12 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // tabCalibrazione
+            // 
+            resources.ApplyResources(this.tabCalibrazione, "tabCalibrazione");
+            this.tabCalibrazione.Name = "tabCalibrazione";
+            this.tabCalibrazione.UseVisualStyleBackColor = true;
+            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -4624,6 +4632,8 @@
             this.Controls.Add(this.tabCaricaBatterie);
             this.Name = "frmSpyBat";
             this.ShowIcon = false;
+            this.Activated += new System.EventHandler(this.frmSpyBat_Activated);
+            this.Deactivate += new System.EventHandler(this.frmSpyBat_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSpyBat_FormClosing);
             this.Load += new System.EventHandler(this.frmSpyBat_Load);
             this.Resize += new System.EventHandler(this.frmSpyBat_Resize);
@@ -5317,5 +5327,6 @@
         private System.Windows.Forms.TextBox txtCodiceSblocco;
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.Button btnGeneraCodice;
+        private System.Windows.Forms.TabPage tabCalibrazione;
     }
 }

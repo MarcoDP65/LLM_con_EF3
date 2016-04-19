@@ -823,6 +823,9 @@ namespace ChargerLogic
                         IdProgramma = ArrayToUshort(_risposta, startByte, 2);
                         startByte += 2;
                         dtInstallazione = SubArray(_risposta, startByte, 3);
+
+                        DataInstallazione = FunzioniMR.StringaDataTS(dtInstallazione);
+
                         startByte += 3;
                         BatteryVdef = ArrayToUshort(_risposta, startByte, 2);
                         startByte += 2;

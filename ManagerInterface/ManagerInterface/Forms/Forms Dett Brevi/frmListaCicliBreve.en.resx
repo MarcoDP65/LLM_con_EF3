@@ -117,56 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="reset" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnChiudi.Text" xml:space="preserve">
+    <value>Close</value>
   </data>
-  <data name="Grf_Car" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Grf-Car.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tbpAndamentoOxy.Text" xml:space="preserve">
+    <value>Phase Chart</value>
   </data>
-  <data name="fondino_chiaro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fondino chiaro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tbpTensioniCiclo.Text" xml:space="preserve">
+    <value>Partial voltage</value>
   </data>
-  <data name="fondino" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fondino.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tbpDatiCiclo.Text" xml:space="preserve">
+    <value>Data</value>
   </data>
-  <data name="export" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\export.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tbpUtilita.Text" xml:space="preserve">
+    <value>Uility</value>
   </data>
-  <data name="trec" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="grbProgrammazione.Text" xml:space="preserve">
+    <value>Setup</value>
   </data>
-  <data name="IWa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IWa.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Cells</value>
   </data>
-  <data name="usb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Cells V3</value>
   </data>
-  <data name="duec" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\duec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Cells V2</value>
   </data>
-  <data name="Grf_V_Car" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Grf-V-Car.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Nom. Capacity</value>
   </data>
-  <data name="spyBatt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\spyBatt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="txtTensioneNom.Text" xml:space="preserve">
+    <value>Nom. Voltage</value>
   </data>
-  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="grbContatori.Text" xml:space="preserve">
+    <value>Counters</value>
   </data>
-  <data name="Grf_Scar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Grf-Scar.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Stop</value>
   </data>
-  <data name="cinquea" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cinquea.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Start</value>
   </data>
-  <data name="Grf_V_Scar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Grf-V-Scar.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Event</value>
   </data>
-  <data name="IUIa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IUIa.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="chkIntervalloRelativo.Text" xml:space="preserve">
+    <value>Relative time interval</value>
   </data>
-  <data name="export 01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\export 01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="grbGeneraExcel.Text" xml:space="preserve">
+    <value>Excel data export</value>
+  </data>
+  <data name="btnGeneraCsv.Text" xml:space="preserve">
+    <value>Create File</value>
+  </data>
+  <data name="lblCelleP1.Text" xml:space="preserve">
+    <value>Cells V1</value>
   </data>
 </root>

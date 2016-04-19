@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.10.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -213,6 +213,9 @@
     <Compile Include="Forms\Forms Deso\frmDesoClonaScheda.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,10 +279,10 @@
     <Compile Include="Forms\frmInserimentoProgramma.Designer.cs">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmListaCicliBreve.cs">
+    <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreve.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmListaCicliBreve.Designer.cs">
+    <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreve.Designer.cs">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmLogin.cs">
@@ -382,6 +385,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StringheMessaggio.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\stringheStampa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stringheStampa.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\StringheStatistica.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -518,22 +526,22 @@
     <EmbeddedResource Include="Forms\frmInserimentoProgramma.resx">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmListaCicliBreve.de.resx">
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.de.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmListaCicliBreve.en.resx">
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.en.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmListaCicliBreve.es.resx">
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.es.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmListaCicliBreve.hi-IN.resx">
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.hi-IN.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmListaCicliBreve.hi.resx">
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.hi.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmListaCicliBreve.resx">
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.de.resx">
@@ -709,6 +717,12 @@
       <LastGenOutput>StringheMessaggio1.Designer.cs</LastGenOutput>
       <CustomToolNamespace>PannelloCharger</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\stringheStampa.en.resx" />
+    <EmbeddedResource Include="Resources\stringheStampa.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>stringheStampa.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PannelloCharger</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\StringheStatistica.de.resx" />
     <EmbeddedResource Include="Resources\StringheStatistica.en.resx" />
     <EmbeddedResource Include="Resources\StringheStatistica.es.resx" />
@@ -766,6 +780,10 @@
     <None Include="Resources\duec.png" />
     <None Include="Resources\cinquea.png" />
     <None Include="Resources\fondino.jpg" />
+    <None Include="Resources\fondino chiaro.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\export.png" />
+    <None Include="Resources\export 01.png" />
     <Content Include="Resources\Grf-Car.bmp" />
     <Content Include="Resources\Grf-Scar.bmp" />
     <Content Include="Resources\Grf-V-Car.bmp" />
@@ -775,6 +793,7 @@
     <Content Include="Resources\IUIa.bmp" />
     <Content Include="Resources\IWa.bmp" />
     <None Include="Resources\LogoSpyBatt.bmp" />
+    <None Include="Resources\reset.png" />
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
     <Content Include="Resources\tre.png" />
@@ -790,6 +809,7 @@
     <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.99.0\build\net40\System.Data.SQLite.Core.targets'))" />
   </Target>
   <ItemGroup>
+    <None Include="Resources\usb.png" />
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -756,7 +756,7 @@ namespace ChargerLogic
 
         public string AvvioSistemaSt
         {
-            get { return _dtStart.ToString("dd/MM/yyyy HH:mm"); }
+            get { return _dtStart.ToString("dd/MM/yyyy"); }
         }
 
         public int NumeroGiorni

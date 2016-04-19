@@ -2292,14 +2292,6 @@ namespace ChargerLogic
                                 Log.Debug("Saltato Programma " + _ciclo.IdProgramma.ToString() + " (" + _Programmazioni.IndexOf(_ciclo) + " )");
                             }
 
-                            //if (LMListChange != null)
-                            //{
-                            //    sbListaLunghiEvt eventoLM = new sbListaLunghiEvt();
-                            //    eventoLM.EventiLunghi = CicliMemoriaLunga.Count;
-                            //    LMListChange(this, eventoLM);
-                            //}
-                            //RicaricaCaricaCicliMemBreve(_ciclo.IdEvento, (uint)_ciclo.PuntatorePrimoBreve, _ciclo.NumEventiBrevi, dbCorrente);
-
                         }
 
                     }

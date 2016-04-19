@@ -32,8 +32,10 @@ namespace PannelloCharger
         public ScannerPorte Dispositivi;
         public ScannerUSB DispositiviUSB;
 
+        public StatoPulsanti Toolbar { get; set; } = new StatoPulsanti();
+
         // artificio per forzare il caricamento delle DLL Interop
-        private System.Data.SQLite.SQLiteCommand _tampone = new SQLiteCommand();
+        // private System.Data.SQLite.SQLiteCommand _tampone = new SQLiteCommand();
       
 
         public frmMain()
@@ -51,17 +53,19 @@ namespace PannelloCharger
                 Log.Info("");
                 
                 varGlobali = new parametriSistema();
+             
 
-                Log.Info("Main - Step 3");
-                Thread.CurrentThread.CurrentUICulture = varGlobali.currentCulture;
 
-                Log.Info("Main - Step 4");
+                Thread.CurrentThread.CurrentUICulture = varGlobali.currentCulture;            
                 InitializeComponent();
                 Log.Debug("Startup Applicazione");
                 frmMainInitialize();
-                 varGlobali = new parametriSistema();
+                
+                varGlobali = new parametriSistema();
                 logiche = new LogicheBase();
                 cbCorrente = new CaricaBatteria(ref varGlobali);
+                Toolbar.reset();
+                AggiornaToolbar(Toolbar);
                 Log.Debug("Main Caricato ");
 
                 //logiche.currentUser.verificaUtente
@@ -87,9 +91,6 @@ namespace PannelloCharger
                 Log.Error("frmMainInitialize: " + Ex.Message);
             }
         }
-
-
-
 
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -137,8 +138,36 @@ namespace PannelloCharger
                 Log.Error("frmLogin_DialogReturned: " + Ex.Message);
             }
         }
-        
 
+        /// <summary>
+        /// Aggiorno la toolbar in base alle impostazioni
+        /// </summary>
+        /// <param name="tb">Impostazioni da applicare
+        public void AggiornaToolbar(StatoPulsanti tb)
+        {
+            try
+            {
+                tstBtnExport.Visible = tb.ExportVisibile;
+                tstBtnExport.Enabled = tb.ExportAttivo;
+
+                tstBtnPrint.Visible = tb.StampaVisibile;
+                tstBtnPrint.Enabled = tb.StampaAttiva;
+
+                tstBtnRefresh.Visible = tb.RefreshVisibile;
+                tstBtnRefresh.Enabled = tb.RefreshAttivo;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain: " + Ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Applica le autorizzazioni in base al livello dell'utente
+        /// </summary>
+        /// <param name="Livello">Livello utente corrente</param>
         public void ApplicaAutorizzazioni(settings.LivelloUtente Livello)
         {
             try
@@ -643,7 +672,7 @@ namespace PannelloCharger
 
             catch (Exception Ex)
             {
-                //Log.Error("frmMain: " + Ex.Message);
+                Log.Error("frmMain: " + Ex.Message);
             }
         }
 
@@ -737,14 +766,23 @@ namespace PannelloCharger
             try
             {
                 Form _tempChild = this.ActiveMdiChild;
-                frmSelettoreDevice _TempLista;
+                
 
                 if (_tempChild == null) return;
 
                 if (this.ActiveMdiChild.GetType().Name == "frmSelettoreDevice")
                 {
+                    frmSelettoreDevice _TempLista;
                     _TempLista = (frmSelettoreDevice)_tempChild;
                     _TempLista.Aggiorna();
+
+                }
+                // Se dettaglio ciclo resetto lo zoom
+                if (this.ActiveMdiChild.GetType().Name == "frmListaCicliBreve")
+                {
+                    frmListaCicliBreve _TempLista;
+                    _TempLista = (frmListaCicliBreve)_tempChild;
+                    _TempLista.Reset();
 
                 }
 
@@ -831,16 +869,24 @@ namespace PannelloCharger
 
         private void impostaStampanteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintDialog _printDialog = new PrintDialog();
-            if (varGlobali.ImpostazioniStampante != null)
-            {
-                _printDialog.PrinterSettings = varGlobali.ImpostazioniStampante;
-            }
 
-            DialogResult _result = _printDialog.ShowDialog();
-            if (_result == DialogResult.OK)
+            try
             {
-                varGlobali.ImpostazioniStampante = _printDialog.PrinterSettings;
+                PrintDialog _printDialog = new PrintDialog();
+                if (varGlobali.ImpostazioniStampante != null)
+                {
+                    _printDialog.PrinterSettings = varGlobali.ImpostazioniStampante;
+                }
+
+                DialogResult _result = _printDialog.ShowDialog();
+                if (_result == DialogResult.OK)
+                {
+                    varGlobali.ImpostazioniStampante = _printDialog.PrinterSettings;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain - impostaStampanteToolStripMenuItem_Click: " + Ex.Message);
             }
         }
 
@@ -875,10 +921,15 @@ namespace PannelloCharger
                     _tempF.stampa(preview, SelPrinter);
                     return;
                 }
+                if (_tempChild is frmListaCicliBreve)
+                {
+                    frmListaCicliBreve _tempF = (frmListaCicliBreve)_tempChild;
+                    _tempF.stampa(preview, SelPrinter);
+                    return;
+                }
 
 
-
-}
+            }
             catch (Exception Ex)
             {
                 Log.Error("frmMain - stampa: " + Ex.Message);
@@ -889,5 +940,68 @@ namespace PannelloCharger
         {
             stampa(true, false);
         }
+
+        private void tstBtnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form _tempChild = this.ActiveMdiChild;
+
+                // Se non ho finestre figlio aperte esco
+                if (_tempChild == null) return;
+                if (_tempChild is frmSpyBat)
+                {
+                    frmSpyBat _tempF = (frmSpyBat)_tempChild;
+                    _tempF.export();
+                    return;
+                }
+                if (_tempChild is frmSelettoreSpyBatt)
+                {
+                    frmSelettoreSpyBatt _tempF = (frmSelettoreSpyBatt)_tempChild;
+                    _tempF.EsportaDatiRiga();
+                    return;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain - stampa: " + Ex.Message);
+            }
+        }
+    }
+
+    public class StatoPulsanti
+    {
+        public bool StampaAttiva { get; set; }
+        public bool StampaVisibile { get; set; }
+
+        public bool RefreshAttivo { get; set; }
+        public bool RefreshVisibile { get; set; }
+
+
+        public bool ExportAttivo { get; set; }
+        public bool ExportVisibile { get; set; }
+
+
+        public StatoPulsanti()
+        {
+            reset();
+        }
+
+        public void reset()
+        {
+            StampaAttiva = false;
+            StampaVisibile = true;
+
+            RefreshAttivo = false;
+            RefreshVisibile = true;
+
+            ExportAttivo = false;
+            ExportVisibile = true;
+
+        }
+
+
     }
 }

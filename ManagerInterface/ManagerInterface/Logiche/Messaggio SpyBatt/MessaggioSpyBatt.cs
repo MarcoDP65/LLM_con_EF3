@@ -1315,6 +1315,7 @@ namespace ChargerLogic
         {
             ushort _esito = 0;
             ushort _tempUshort;
+            byte _tempByte;
             byte _comando;
             byte msbDisp = 0;
             byte lsbDisp = 0;
@@ -1382,18 +1383,23 @@ namespace ChargerLogic
                 MessageBuffer[(_arrayInit + 4)] = lsb;
                 _arrayInit += 4;
 
-                // Data Installazione  al momento fisso 1/1/14
-                splitUshort(codificaByte(0x01), ref lsb, ref msb);
+                // Data Installazione
+
+                _tempByte = (byte)DateTime.Now.Day;
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
 
-                splitUshort(codificaByte(0x01), ref lsb, ref msb);
+                _tempByte = (byte)DateTime.Now.Month;
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
 
-                splitUshort(codificaByte(0x0E), ref lsb, ref msb);
+                int _tempAnno = DateTime.Now.Year;
+                _tempByte = (byte)(_tempAnno % 100);
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;

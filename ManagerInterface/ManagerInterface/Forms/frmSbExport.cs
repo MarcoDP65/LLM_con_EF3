@@ -87,6 +87,26 @@ namespace PannelloCharger
                     _esito = _sb.CaricaCompleto(IdApparato, _logiche.dbDati.connessione);
                     if (_esito) btnDataExport.Enabled = true;
                     MostraDati();
+
+                    string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+
+                    string _nomeProposto;
+                    if (_sb.sbCliente.SerialNumber != "" & _sb.sbCliente.SerialNumber!= null)
+                        _nomeProposto = _sb.sbCliente.SerialNumber;
+                    else
+                    {
+                        if (_sb.sbCliente.BatteryId != "")
+                            _nomeProposto = _sb.sbCliente.BatteryId;
+                        else
+                            _nomeProposto = _sb.Id;
+
+                    }
+                    _nomeProposto += ".sbdata";
+
+                    txtNuovoFile.Text = _pathTeorico + "\\" + _nomeProposto;
+
+
                 }
 
             }
@@ -319,9 +339,10 @@ namespace PannelloCharger
 
             if (modo == elementiComuni.modoDati.Output)
             {
+                string _filename = "";
+
                 sfdExportDati.Title = StringheComuni.EsportaDati;
                 sfdExportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
-
                 // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
                 string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
@@ -330,9 +351,20 @@ namespace PannelloCharger
                     Directory.CreateDirectory(_pathTeorico);
                 }
                 sfdExportDati.InitialDirectory = _pathTeorico;
+
+                if (txtNuovoFile.Text != "")
+                {
+                    sfdExportDati.FileName = txtNuovoFile.Text;
+
+                }
+
                 sfdExportDati.ShowDialog();
                 txtNuovoFile.Text = sfdExportDati.FileName;
-    
+
+
+             
+
+
             }
             else
             {
