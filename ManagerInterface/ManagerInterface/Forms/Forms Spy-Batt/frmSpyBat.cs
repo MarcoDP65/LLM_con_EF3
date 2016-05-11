@@ -10,14 +10,15 @@ using System.Text;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using System.IO;
-using MoriData;
-using ChargerLogic;
+
 using NextUI.Component;
 using NextUI.Frame;
 
 //using Common.Logging;
 using BrightIdeasSoftware;
 using Utility;
+using MoriData;
+using ChargerLogic;
 using MdiHelper;
 using log4net;
 using log4net.Config;
@@ -63,8 +64,10 @@ namespace PannelloCharger
 
         private OxyPlot.WindowsForms.PlotView oxyContainerGrSingolo;
         private OxyPlot.WindowsForms.PlotView oxyContainerGrAnalisi;
+        private OxyPlot.WindowsForms.PlotView oxyContainerGrCalVerifica;
         private OxyPlot.PlotModel oxyGraficoSingolo;
         private OxyPlot.PlotModel oxyGraficoAnalisi;
+        private OxyPlot.PlotModel oxyGraficoCalVerifica;
 
         private OxyPlot.PlotModel due;
         public frmAlimentatore Lambda;
@@ -79,6 +82,7 @@ namespace PannelloCharger
 
         public System.Collections.Generic.List<sbAnalisiCorrente> ValoriTestCorrente = new List<sbAnalisiCorrente>();
         public System.Collections.Generic.List<mrDataPoint> ValoriPuntualiGrCorrenti = new List<mrDataPoint>();
+        public System.Collections.Generic.List<mrDataPoint> ValoriPuntualiGrCalCorrenti = new List<mrDataPoint>();
 
 
 
@@ -97,11 +101,12 @@ namespace PannelloCharger
 
                 InitializeComponent();
                 // Setto il bordo invisibile ai due groupbox dell'upd FW
-                grbFWdettUpload.Paint+= PaintBorderlessGroupBox;
+                grbFWdettUpload.Paint += PaintBorderlessGroupBox;
                 grbFWDettStato.Paint += PaintBorderlessGroupBox;
 
 
                 InizializzaOxyGrAnalisi();
+                InizializzaOxyGrCalibrazione();
                 ResizeRedraw = true;
                 _logiche = Logiche;
 
@@ -109,7 +114,7 @@ namespace PannelloCharger
 
                 _msg = new MessaggioSpyBatt();
                 _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
-       
+
                 _stat = new StatMemLungaSB();
                 string _idCorrente = IdApparato;
                 abilitaSalvataggi(false);
@@ -126,13 +131,13 @@ namespace PannelloCharger
                     _esito = ApriComunicazione(IdApparato, Logiche, SerialeCollegata);
                     if (IdApparato != "")
                     {
-                    CaricaTestata(IdApparato, Logiche, SerialeCollegata);
+                        CaricaTestata(IdApparato, Logiche, SerialeCollegata);
                     }
 
                 }
                 else
                 {
-                    
+
                     if (_sb.FirmwarePresente)
                     {
                         // Se sono in stato BL lo evidenzio e mi fermo, altrimenti leggo la testata
@@ -162,7 +167,7 @@ namespace PannelloCharger
                 IdCorrente = _sb.Id;
                 _apparatoPresente = SerialeCollegata;
                 // se l'apparato è presente e le configurazioni su scheda superano quelle in mem, aggiorno
-                if(_apparatoPresente)
+                if (_apparatoPresente)
                     if (_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
                     {
 
@@ -172,10 +177,14 @@ namespace PannelloCharger
                 CaricaProgrammazioni();
 
                 InizializzaOxyGrSingolo();
+                //InizializzaOxyGrCalibrazione();
                 applicaAutorizzazioni();
                 RicalcolaStatistiche();
                 InizializzaCalibrazioni();
                 InizializzaVistaCorrenti();
+                InizializzaVistaCorrentiCal();
+                CaricaComboCalibrazioni();
+                CaricaComboGrafici();
 
             }
             catch (Exception Ex)
@@ -282,6 +291,9 @@ namespace PannelloCharger
                 RicalcolaStatistiche();
                 InizializzaCalibrazioni();
                 InizializzaVistaCorrenti();
+                InizializzaVistaCorrentiCal();
+                CaricaComboCalibrazioni();
+                CaricaComboGrafici();
 
             }
             catch (Exception Ex)
@@ -303,9 +315,13 @@ namespace PannelloCharger
 
             InizializzaOxyGrAnalisi();
             InizializzaOxyGrSingolo();
+            InizializzaOxyGrCalibrazione();
             RicalcolaStatistiche();
             InizializzaCalibrazioni();
             InizializzaVistaCorrenti();
+            InizializzaVistaCorrentiCal();
+            CaricaComboCalibrazioni();
+            CaricaComboGrafici();
         }
 
         /// <summary>
@@ -468,7 +484,7 @@ namespace PannelloCharger
                     byte[] vuoto = { 1, 2, 3, 4, 5, 6, 7, 8 };
                     _sb.numeroSeriale = vuoto;
                     _esito = _sb.VerificaPresenza();
-                    
+
                     if (_esito)
                     {
                         _idCorrente = _sb.Id;
@@ -528,7 +544,7 @@ namespace PannelloCharger
                     {
                         _idCorrente = _sb.Id;
                         _connessioneAttiva = true;
-                        
+
                         Log.Info("Apparato Collegato: ID Corrente: " + FunzioniMR.StringaSeriale(_idCorrente));
                     }
 
@@ -573,7 +589,7 @@ namespace PannelloCharger
                     //txtRevLdrSb.Text =  ""_sb.sbData.f;
 
                 }
-                
+
 
 
                 txtManufcturedBy.Text = _sb.sbData.ProductId;
@@ -594,7 +610,7 @@ namespace PannelloCharger
                 txtTestataContProgr.Text = "";
                 txtTestataPtrProgr.Text = "";
 
-                if (_sb.IntestazioneSb != null )
+                if (_sb.IntestazioneSb != null)
                 {
                     txtTestataContLunghi.Text = _sb.IntestazioneSb.longRecordCounter.ToString();
                     txtTestataPtrLunghi.Text = _sb.IntestazioneSb.longRecordPoiter.ToString();
@@ -679,7 +695,7 @@ namespace PannelloCharger
                     chkCaricaBrevi.Enabled = true;
 
                 }
-                
+
                 /*    
                 _enabled = (_readonly == false);
                 grbMemCicliReadMem.Visible = _enabled;
@@ -734,7 +750,7 @@ namespace PannelloCharger
                 btnNuovoProgramma.Visible = false;
                 btnAttivaProgrammazione.Visible = false;
 
-                switch(LivelloCorrente)
+                switch (LivelloCorrente)
                 {
                     case 0:
                     case 1:
@@ -797,7 +813,7 @@ namespace PannelloCharger
                     tabCaricaBatterie.TabPages.Remove(tbpCalibrazioni);
                     _readonly = true;
                 }
-             
+
                 _enabled = (_readonly == false);
                 #endregion
 
@@ -835,7 +851,7 @@ namespace PannelloCharger
                     grbFWDettStato.Visible = true;
                     grbFWdettUpload.Visible = true;
 
-                    if (LivelloCorrente < 2 )
+                    if (LivelloCorrente < 2)
                     {
                         // Factory o service
                         grbFwAttivazioneArea.Visible = true;
@@ -902,7 +918,7 @@ namespace PannelloCharger
                         Log.Debug("CaricaTestata: Firmware non valido " + _sb.sbData.SwVersion.ToString());
                     }
                     */
-                    
+
                     CaricaCicli();
 
                     if (caricaCliente(IdApparato, Logiche, SerialeCollegata)) mostraCliente();
@@ -1253,7 +1269,7 @@ namespace PannelloCharger
             {
                 bool _esito;
 
-                 Application.DoEvents();
+                Application.DoEvents();
 
 
 
@@ -1297,12 +1313,12 @@ namespace PannelloCharger
                 txtProgcCelleV1.Text = "";
 
 
-                foreach ( sbProgrammaRicarica _tempProg in _sb.Programmazioni)
+                foreach (sbProgrammaRicarica _tempProg in _sb.Programmazioni)
                 {
-                    if (_tempProg.IdProgramma == (ushort)_sb.sbData.ProgramCount )
+                    if (_tempProg.IdProgramma == (ushort)_sb.sbData.ProgramCount)
                     {
                         txtProgcBattVdef.Text = FunzioniMR.StringaTensione(_tempProg.BatteryVdef) + " V";
-                        txtProgcBattAhDef.Text = FunzioniMR.StringaCapacita(_tempProg.BatteryAhdef,10) + " Ah";
+                        txtProgcBattAhDef.Text = FunzioniMR.StringaCapacita(_tempProg.BatteryAhdef, 10) + " Ah";
                         txtProgcCelleTot.Text = _tempProg.BatteryCells.ToString();
                         txtProgcCelleV3.Text = _tempProg.BatteryCell3.ToString();
                         txtProgcCelleV2.Text = _tempProg.BatteryCell2.ToString();
@@ -1379,11 +1395,19 @@ namespace PannelloCharger
                     }
                 }
 
-                if (tbpCalibrazioni.Width > 600 )
+                if (tbpCalibrazioni.Width > 600)
                 {
                     pnlCalGrafico.Width = tbpCalibrazioni.Width - 540;
                 }
 
+                if (tabCalibrazione.Width > 620)
+                {
+                    pnlCalVerifica.Width = tabCalibrazione.Width - 300;
+                }
+                if (tabCalibrazione.Height > 400)
+                {
+                    pnlCalVerifica.Height = tabCalibrazione.Height - 240;
+                }
 
                 if (this.Height > 250)
                 {
@@ -1422,7 +1446,7 @@ namespace PannelloCharger
 
                     if (tabStatComparazioni != null)
                     {
-                      //  InizializzaSchedaConfronti();
+                        //  InizializzaSchedaConfronti();
                     }
                     /*
                     btnCaricaListaLunghi.Top = this.Height - 140;
@@ -1434,7 +1458,7 @@ namespace PannelloCharger
                     //Ridimensiono i tab grafici
                     tbcStatistiche.Height = tabCaricaBatterie.Height - 30;
                     // buiStatCockpit.Height = tabStatCockpit.Height;
-                    
+
                     if (TbcStatSettimane != null)
                     {
                         TbcStatSettimane.Height = tbcStatistiche.Height - 30;
@@ -1506,7 +1530,7 @@ namespace PannelloCharger
         }
 
 
-        private void MostraDettaglioFase( UInt32 IdCiclo )
+        private void MostraDettaglioFase(UInt32 IdCiclo)
         {
             try
             {
@@ -1612,7 +1636,7 @@ namespace PannelloCharger
                 {
 
 
-                    frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma( _logiche);
+                    frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma(_logiche);
                     NuovoProgramma._sb = _sb;
                     //NuovoProgramma.MdiParent = this.MdiParent;
                     NuovoProgramma.StartPosition = FormStartPosition.CenterParent;
@@ -1878,7 +1902,7 @@ namespace PannelloCharger
                 _stile.SetForeColor(Color.Yellow);
                 Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
                 _stile.SetFont(_carattere);
-                
+
 
                 flvwCicliBatteria.HeaderUsesThemes = false;
                 flvwCicliBatteria.HeaderFormatStyle = _stile;
@@ -1974,7 +1998,7 @@ namespace PannelloCharger
                 ColDurataOverTemp.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
-                    return _sb.StringaDurata(_tempVal.DurataOverTemp,true);
+                    return _sb.StringaDurata(_tempVal.DurataOverTemp, true);
                 };
                 ColDurataOverTemp.Width = 60;
                 ColDurataOverTemp.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2041,7 +2065,7 @@ namespace PannelloCharger
                 ColDurataAssEl.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
-                    return _sb.StringaDurata(_tempVal.DurataMancanzaElettrolita,true);
+                    return _sb.StringaDurata(_tempVal.DurataMancanzaElettrolita, true);
                 };
                 ColDurataAssEl.Width = 60;
                 ColDurataAssEl.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2167,7 +2191,7 @@ namespace PannelloCharger
                 ColDurataSbil.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
-                    return _sb.StringaDurata(_tempVal.DurataSbilCelle,true);
+                    return _sb.StringaDurata(_tempVal.DurataSbilCelle, true);
                 };
                 ColDurataSbil.Width = 60;
                 ColDurataSbil.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2906,7 +2930,7 @@ namespace PannelloCharger
 
             // 18/11/15 - Prima di ricaricare la lista, ricarico la restata per leggere il contatore aggiornato
 
-            
+
             txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
 
             RicaricaProgrammazioni();
@@ -3023,7 +3047,7 @@ namespace PannelloCharger
             try
             {
 
-                if ((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) < 25 )
+                if ((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) < 25)
                 {
                     uint _primoElemento = 1;
                     sbMemLunga _tempLungo;
@@ -3196,7 +3220,7 @@ namespace PannelloCharger
                 MostraSintesiStatistiche();
                 InizializzaCockpitStat();
                 InizializzaSchedaConfronti();
-        
+
                 CaricaSchedeGrafico(_stat);
 
             }
@@ -3272,7 +3296,7 @@ namespace PannelloCharger
                     {
                         double _kwMed = _stat.WHtotali / (100 * _stat.NumeroScariche);
                         txtStatEnergiaMediaKWh.Text = _kwMed.ToString("0.0");
-                        _kwMed = _stat.AhTotali / ( _stat.NumeroScariche);
+                        _kwMed = _stat.AhTotali / (_stat.NumeroScariche);
                         txtStatEnergiaMediaAh.Text = _kwMed.ToString("0.0");
 
                     }
@@ -3350,7 +3374,7 @@ namespace PannelloCharger
                 colIdSoglia.AspectName = "IdLocale";
                 colIdSoglia.Width = 30;
                 colIdSoglia.HeaderTextAlign = HorizontalAlignment.Left;
-                colIdSoglia.TextAlign = HorizontalAlignment.Right ;
+                colIdSoglia.TextAlign = HorizontalAlignment.Right;
                 flvwListaSoglie.AllColumns.Add(colIdSoglia);
 
                 BrightIdeasSoftware.OLVColumn colNomeSoglia = new BrightIdeasSoftware.OLVColumn();
@@ -3408,11 +3432,11 @@ namespace PannelloCharger
                 {
                     if (_sb.IntestazioneSb.numeroProgramma < 1)
                     {
-                       // btnAttivaProgrammazione.Enabled = false;
+                        // btnAttivaProgrammazione.Enabled = false;
                     }
                     else
                     {
-                      // btnAttivaProgrammazione.Enabled = true;
+                        // btnAttivaProgrammazione.Enabled = true;
                     }
                 }
                 if (e.TabPage == tabStatistiche)
@@ -3449,7 +3473,7 @@ namespace PannelloCharger
                 this.oxyContainerGrSingolo.Click += new System.EventHandler(this.oxyContainerGrSingolo_Click);
                 // 
 
-               // tabStatGrafici.Controls.Add(this.oxyContainerGrSingolo);
+                // tabStatGrafici.Controls.Add(this.oxyContainerGrSingolo);
 
                 oxyGraficoSingolo = new OxyPlot.PlotModel
                 {
@@ -3481,7 +3505,7 @@ namespace PannelloCharger
         /// <param name="DatiStat">Classe con i dati preaggregati in base ai parametri.</param>
         public void CaricaSchedeGrafico(StatMemLungaSB DatiStat)
         {
-            int  _primaScheda = 1;
+            int _primaScheda = 1;
             try
             {
 
@@ -3516,7 +3540,7 @@ namespace PannelloCharger
 
                 if (chkStatGraficoAssEl.Checked == true)
                 {
-                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrAssenzaElChiave, new Size(300,200));
+                    oxyTabPage _grafico = new oxyTabPage(StringheStatistica.GrAssenzaElChiave, new Size(300, 200));
                     _grafico.ToolTipText = chkStatGraficoAssEl.Text;
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
@@ -3574,7 +3598,7 @@ namespace PannelloCharger
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
                     _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 0, StringheStatistica.GrTmaxCPTitolo);
-                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMaxCaricaParziale+10) / 5;
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMaxCaricaParziale + 10) / 5;
                     _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
                     GraficoTemperaturaCiclo(StringheStatistica.GrTmaxCPTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
@@ -3593,7 +3617,7 @@ namespace PannelloCharger
                     _grafico.Tag = "GRAFICO";
                     _grafico.DatiGrafico = new DatiEstrazione();
                     _grafico.DatiGrafico = DatiStat.CalcolaArrayGraficoTempertureCicli(SerialMessage.TipoCiclo.Carica, 1, 5, -10, 80, 1, StringheStatistica.GrTmaxCCTitolo);
-                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMaxCaricaCompleta+10) / 5;
+                    _grafico.DatiGrafico.StepSoglia = (DatiStat.SogliaTempMaxCaricaCompleta + 10) / 5;
                     _grafico.DatiGrafico.VersoSoglia = DatiEstrazione.Direzione.Ascendente;
                     GraficoTemperaturaCiclo(StringheStatistica.GrTmaxCCTitolo, _grafico.DatiGrafico, ref _grafico.GraficoBase);
 
@@ -4296,7 +4320,7 @@ namespace PannelloCharger
                             colonna.Color = OxyPlot.OxyColors.Blue;
                     }
 
-                    
+
                     if (colonna.Value > 0)
                     {
                         OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
@@ -4509,7 +4533,7 @@ namespace PannelloCharger
                 AsseTemp.PositionAtZeroCrossing = true;
                 AsseTemp.AxislineStyle = OxyPlot.LineStyle.Solid;
                 AsseTemp.AxislineColor = OxyPlot.OxyColors.LightSeaGreen;
-                AsseTemp.AxislineThickness = 10 ;
+                AsseTemp.AxislineThickness = 10;
 
 
 
@@ -4527,7 +4551,7 @@ namespace PannelloCharger
                 AsseElAvail.TickStyle = OxyPlot.Axes.TickStyle.None;
                 AsseElAvail.TextColor = OxyPlot.OxyColors.Red;
 
-  
+
 
                 OxyPlot.Axes.CategoryAxis AsseLabelGiorni = new OxyPlot.Axes.CategoryAxis();
                 AsseLabelGiorni.MinorStep = 1;
@@ -4543,7 +4567,7 @@ namespace PannelloCharger
                 AsseLabelGiorni.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
                 AsseLabelGiorni.Position = OxyPlot.Axes.AxisPosition.Bottom;
 
-               
+
                 Grafico.Axes.Add(AsseGiorni);
                 Grafico.Axes.Add(AsseCarica);
                 Grafico.Axes.Add(AsseTemp);
@@ -4608,7 +4632,7 @@ namespace PannelloCharger
                 OxyPlot.Series.RectangleBarItem OxyItem = new OxyPlot.Series.RectangleBarItem();
                 bool _marcaPunto = false;
                 bool _elPresente = false;
-           
+
 
                 foreach (_StatCicloSBPeriodo ciclo in DatiGraph.DatiPeriodo)
                 {
@@ -4790,16 +4814,16 @@ namespace PannelloCharger
                         double _px = serie.InverseTransform(e.Position).X;
                         double _py = serie.InverseTransform(e.Position).Y;
 
-                        if ((_px > cella.X0 ) & (_px < cella.X1) & (_py > cella.Y0) & (_py < cella.Y1))
+                        if ((_px > cella.X0) & (_px < cella.X1) & (_py > cella.Y0) & (_py < cella.Y1))
                         {
                             UInt32 _TempId;
-                            if (UInt32.TryParse(cella.Title,out _TempId))
+                            if (UInt32.TryParse(cella.Title, out _TempId))
                             {
                                 MostraDettaglioFase(_TempId);
                             }
 
                             return;
-                        }                  
+                        }
                     }
                 }
             }
@@ -4974,7 +4998,7 @@ namespace PannelloCharger
 
 
 
-         void CancellaMemoria(bool MantieniCliente = false)
+        void CancellaMemoria(bool MantieniCliente = false)
         {
             try
             {
@@ -5293,7 +5317,7 @@ namespace PannelloCharger
                     bool _esito;
 
                     _esito = _sb.ScriviParametroCal(_idParametro, _valore);
-                    if (_esito) txtCalValoreParametro.Text = "Cal " + _idParametro.ToString() +  " Ok";
+                    if (_esito) txtCalValoreParametro.Text = "Cal " + _idParametro.ToString() + " Ok";
 
                 }
             }
@@ -5318,7 +5342,7 @@ namespace PannelloCharger
             double _etot = _stat.Etot();
             if (_etot > 0)
             {
-                 _eresidua = (_etot - _stat.EnScaricataNorm()) / _etot;
+                _eresidua = (_etot - _stat.EnScaricataNorm()) / _etot;
                 if (_eresidua > 100)
                     _eresidua = 100;
             }
@@ -5329,21 +5353,21 @@ namespace PannelloCharger
 
             _eresidua = _eresidua * 100;
             creaContainerOxy(ref grCompSOH, new Point(100, 50), new Size(500, 220), StringheStatistica.SoH_breve);
-            creaGraficoStimaOxy(ref grCompSOH, StringheStatistica.SoH_breve, StringheStatistica.percResidua, _eresidua, (int)(_eresidua*85/100), (int)(_eresidua * 70/100 ), 0, 100);
+            creaGraficoStimaOxy(ref grCompSOH, StringheStatistica.SoH_breve, StringheStatistica.percResidua, _eresidua, (int)(_eresidua * 85 / 100), (int)(_eresidua * 70 / 100), 0, 100);
             //creaGraficoStimaOxy(ref grCompSOH, StringheStatistica.SoH_breve, StringheStatistica.percResidua, 80, 70, 60, 0, 100);
 
             int _ciclisimulati = _stat.NumeroCariche * 10;
 
             creaContainerOxy(ref grCompRabb, new Point(650, 50), new Size(500, 220), StringheStatistica.Rabbocchi_breve);
-            creaGraficoStimaOxy(ref grCompRabb, StringheStatistica.numRabbocchi, StringheStatistica.Numero, (int)(_ciclisimulati/30), (int)(_ciclisimulati / 7.5), (int)(_ciclisimulati / 6), 0, (int)(_ciclisimulati / 5));
-            
-            creaContainerOxy(ref grCompEnConsumata, new Point(100, 300), new Size(500, 220), StringheStatistica.Energia);
-            creaGraficoStimaOxy(ref grCompEnConsumata, StringheStatistica.EnergiaConsumata, "KWh", (_stat.KWhCaricati/0.9), (_stat.KWhCaricati/0.814), (_stat.KWhCaricati/0.745), _stat.KWhCaricati, (_stat.KWhCaricati*1.5));
+            creaGraficoStimaOxy(ref grCompRabb, StringheStatistica.numRabbocchi, StringheStatistica.Numero, (int)(_ciclisimulati / 30), (int)(_ciclisimulati / 7.5), (int)(_ciclisimulati / 6), 0, (int)(_ciclisimulati / 5));
 
-            double KgCo2 = _stat.KWhCaricati*0.53705;
+            creaContainerOxy(ref grCompEnConsumata, new Point(100, 300), new Size(500, 220), StringheStatistica.Energia);
+            creaGraficoStimaOxy(ref grCompEnConsumata, StringheStatistica.EnergiaConsumata, "KWh", (_stat.KWhCaricati / 0.9), (_stat.KWhCaricati / 0.814), (_stat.KWhCaricati / 0.745), _stat.KWhCaricati, (_stat.KWhCaricati * 1.5));
+
+            double KgCo2 = _stat.KWhCaricati * 0.53705;
 
             creaContainerOxy(ref grCompCO2, new Point(650, 300), new Size(500, 220), StringheStatistica.Anidride);
-            creaGraficoStimaOxy(ref grCompCO2, StringheStatistica.CO2Risparmiata, "Kg CO2", KgCo2 * 0.2311, KgCo2*0.1137,0, 0, KgCo2/2);
+            creaGraficoStimaOxy(ref grCompCO2, StringheStatistica.CO2Risparmiata, "Kg CO2", KgCo2 * 0.2311, KgCo2 * 0.1137, 0, 0, KgCo2 / 2);
 
 
         }
@@ -5391,7 +5415,7 @@ namespace PannelloCharger
         }
 
 
-        void creaGraficoStimaOxy(ref OxyPlot.PlotModel Grafico, string TitoloGrafico,string TitoloMisura, double ValLL, double ValPSW, double ValEDM, double ValMin, double ValMax)
+        void creaGraficoStimaOxy(ref OxyPlot.PlotModel Grafico, string TitoloGrafico, string TitoloMisura, double ValLL, double ValPSW, double ValEDM, double ValMin, double ValMax)
         {
             try
             {
@@ -5455,13 +5479,13 @@ namespace PannelloCharger
 
 
                     //Creo le serie:
-                    
+
                     OxyPlot.Series.LineSeries serValore = new OxyPlot.Series.LineSeries();
                     serValore.Title = "Serie";
                     serValore.DataFieldX = "Tipologia";
                     serValore.DataFieldY = "Numero";
                     serValore.Color = OxyPlot.OxyColors.Blue;
-                    
+
 
                     OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
                     //ColValore.StrokeThickness = 1;
@@ -5542,7 +5566,7 @@ namespace PannelloCharger
                 // 1.1  -  S.o.H.
 
                 buiStatCockpit.Frame.Clear();
-                
+
                 Ic11 = new IndicatoreCruscotto();
                 Ic11.ValueMask = "0";
                 Ic11.MinVal = 0;
@@ -5578,7 +5602,7 @@ namespace PannelloCharger
                 Ic12.InizializzaIndicatore(this.buiStatCockpit, 330, 20, 280, StringheStatistica.GougeDODr1 + "\n" + StringheStatistica.GougeDODr2);
                 Ic12.ImpostaValore((float)_stat.ProfonditaMacroScaricaMedia());
 
-                
+
 
                 //  1.3  Sovrascariche
 
@@ -5609,8 +5633,8 @@ namespace PannelloCharger
 
 
 
-                
-           
+
+
 
                 //  2.1  Sbilanciamento
 
@@ -5624,13 +5648,13 @@ namespace PannelloCharger
                 Ic21.InizializzaIndicatore(this.buiStatCockpit, 30, 300, 280, StringheStatistica.GougeSbilr1 + "\n" + StringheStatistica.GougeSbilr2);
                 double _fattoreSB = 0;
 
-/*
-                if (_stat.SecondiTotali > 0)
-                {
-                    _fattoreSB = 100 * _stat.DurataSbilanciamento / _stat.SecondiTotali;
+                /*
+                                if (_stat.SecondiTotali > 0)
+                                {
+                                    _fattoreSB = 100 * _stat.DurataSbilanciamento / _stat.SecondiTotali;
 
-                }
-                */
+                                }
+                                */
                 if (_stat.DurataFasiAttive > 0)
                 {
                     _fattoreSB = 100 * _stat.DurataSbilanciamentoFA / _stat.DurataFasiAttive;
@@ -5844,7 +5868,7 @@ namespace PannelloCharger
         {
             string[][] output;
             int _ciclo;
-           // try
+            // try
             {
                 string filePath = "";
                 _ciclo = 0;
@@ -5882,7 +5906,7 @@ namespace PannelloCharger
                         if (_evento.TipoEvento == 0x0F) //Scarica
                         {
                             double _tmed = (double)(_evento.TempMax + _evento.TempMin) / 2;
-                            double _coeffTermico = _evento.Wh * FunzioniAnalisi.FattoreTermicoSOH(_tmed)/100;
+                            double _coeffTermico = _evento.Wh * FunzioniAnalisi.FattoreTermicoSOH(_tmed) / 100;
                             _valSoH = _coeffTermico.ToString();
                         }
 
@@ -5974,6 +5998,7 @@ namespace PannelloCharger
                         Lambda = (frmAlimentatore)form;
                         form.Activate();
                         lblCalConnessione.Text = "COLLEGATO";
+                        lblCalStatoAlim.Text = "COLLEGATO";
                         return;
                     }
                 }
@@ -5984,7 +6009,7 @@ namespace PannelloCharger
 
                 Alimentatore.Show();
                 Lambda = Alimentatore;
-       
+
             }
 
             catch (Exception Ex)
@@ -6002,7 +6027,7 @@ namespace PannelloCharger
         private void btnCalEseguiSeq_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-              LanciaSequenza();
+            LanciaSequenza();
             this.Cursor = Cursors.Default;
 
         }
@@ -6014,1098 +6039,6 @@ namespace PannelloCharger
         }
 
 
-        private void LanciaSequenza()
-        {
-            try
-            {
-
-
-                int _ciclo;
-                int _start;
-                int _stop;
-                int _passo;
-                int _spire = 1;
-                int _stepCount = 0;
-                int _millisecondi = 1000;
-                bool _esito;
-
-                int.TryParse(txtCalImin.Text, out _start);
-                int.TryParse(txtCalImax.Text, out _stop);
-                int.TryParse(txtCalIstep.Text, out _passo);
-                int.TryParse(txtCalDelay.Text, out _millisecondi);
-
-                int.TryParse(txtCalSpire.Text, out _spire);
-
-
-                txtCalCurr.Text = "";
-                txtCalCurrStep.Text = "";
-
-                txtCalErrore.Text = "";
-                txtCalSb.Text = "";
-
-                if (Lambda == null)
-                {
-                    return;
-                }
-
-                // Preparo la lista valori
-                ValoriTestCorrente.Clear();
-                flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                flvwLettureCorrente.BuildList();
-                sbAnalisiCorrente _vac;
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.Alimentatatore.ImpostaStato(true);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-
-                flvwLettureCorrente.Refresh();
-                Application.DoEvents();
-
-                for (_ciclo = _start; _ciclo <= _stop; _ciclo += _passo)
-                {
-                    _vac = new sbAnalisiCorrente();
-
-                    _vac.Lettura = (uint)_stepCount;
-                    txtCalCurr.Text = _ciclo.ToString();
-                    txtCalCurrStep.Text = _stepCount.ToString();
-                    Lambda.Alimentatatore.ImpostaCorrente(_ciclo);
-                    Lambda.MostraCorrenti();
-
-                    System.Threading.Thread.Sleep(_millisecondi);
-
-                    _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                    Lambda.MostraCorrenti();
-                    txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                    if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                    else txtCalSb.ForeColor = Color.Black;
-
-                    txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                    float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-                    _vac.Spire = (uint)_spire;
-                    _vac.Ateorici = Lambda.Alimentatatore.Aimpostati;
-                    _vac.Areali = Lambda.Alimentatatore.Arilevati;
-                    _vac.Aspybatt = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
-
-
-
-                    
-                
-
-                    txtCalErrore.Text = "";
-                    if (_corrBase != 0)
-                    {
-                        float _errore = ((float)(_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                        txtCalErrore.Text = _errore.ToString("p2");
-                    }
-
-                    _stepCount++;
-
-                    ValoriTestCorrente.Add(_vac);
-                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                    //flvwLettureCorrente.Refresh();
-                    //flvwLettureCorrente.BuildList();
-                    Application.DoEvents();
-                    
-                    System.Threading.Thread.Sleep(500);
-
-                }
-
-                flvwLettureCorrente.Refresh();
-                txtCalCurr.Text = _ciclo.ToString();
-                txtCalCurrStep.Text = _stepCount.ToString();
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-                flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                flvwLettureCorrente.BuildList();
-                GraficoCorrentiOxy();
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("frmSpyBatt.LanciaSequenza: " + Ex.Message);
-            }
-        }
-
-        private void LanciaSequenzaEstesa()
-        {
-
-
-            try
-            {
-
-                DialogResult _risposta;
-                int _ciclo;
-                int _start;
-                int _stop;
-                int _passo;
-                int _spire = 1;
-                int _stepCount = 0;
-                int _millisecondi = 1000;
-                bool _esito;
-                bool _apparatoPronto = false;
-
-                float _maxErrPos = 0;
-                float _maxErrNeg = 0;
-
-                int.TryParse(txtCalImin.Text, out _start);
-                int.TryParse(txtCalImax.Text, out _stop);
-                int.TryParse(txtCalIstep.Text, out _passo);
-                int.TryParse(txtCalDelay.Text, out _millisecondi);
-
-                int.TryParse(txtCalSpire.Text, out _spire);
-                int _passoTest = 0;
-                sbAnalisiCorrente _vac;
-
-                txtCalCurr.Text = "";
-                txtCalCurrStep.Text = "";
-
-                txtCalErrore.Text = "";
-                txtCalSb.Text = "";
-                
-                if (Lambda == null)
-                {
-                    return;
-                }
-                
-
-
-                // Prima Preparo la lista valori
-                ValoriTestCorrente.Clear();
-                flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                flvwLettureCorrente.BuildList();
-
-
-                flvwLettureCorrente.Refresh();
-                Application.DoEvents();
-
-                for (_ciclo = _start; _ciclo <= _stop; _ciclo += _passo)
-                {
-                    _vac = new sbAnalisiCorrente();
-                    _vac.Lettura = (uint)_stepCount ++;
-                    _vac.Spire = (uint)_spire;
-                    _vac.Ateorici = _ciclo;
-                    _vac.Areali = _ciclo;
-                    _vac.AspybattAN = 0;
-                    _vac.AspybattAP = 0;
-                    _vac.AspybattDN = 0;
-                    _vac.AspybattDP = 0;
-                    ValoriTestCorrente.Add(_vac);
-                }
-
-
-                flvwLettureCorrente.Refresh();
-                Application.DoEvents();
-
-                // Ora comincio le corse:
-                // Ascendente
-                
-                 _risposta = MessageBox.Show("Collegare lo SPY-BATT per letture nel verso diretto\n(Nucleo verso il positivo)", "Verifica Polarità", MessageBoxButtons.OKCancel);
-                if (_risposta == DialogResult.OK)
-                {
-
-
-                    // se previsto, attivo la linea
-                    if (chkCalAccendiAlim.Checked)
-                    {
-                        // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                        Lambda.Alimentatatore.ImpostaStato(false);
-                        Lambda.Alimentatatore.ImpostaCorrente(0);
-                        Lambda.Alimentatatore.ImpostaStato(true);
-                        Lambda.MostraCorrenti();
-                        Lambda.MostraStato();
-                    }
-                    flvwLettureCorrente.Refresh();
-                    GraficoCorrentiComplOxy();
-                    Application.DoEvents();
-                    _apparatoPronto = false;
-                    //poi verifico che lo spybatt sia montato correttamente mandando una corrente di prova
-                    do
-                    {
-
-                        Lambda.Alimentatatore.ImpostaCorrente(10);
-                        Lambda.MostraCorrenti();
-                        System.Threading.Thread.Sleep(_millisecondi);
-                        _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                        Lambda.MostraCorrenti();
-
-                        if (_sb.sbVariabili.CorrenteBatteria <= 0)
-                        {
-                            Lambda.Alimentatatore.ImpostaCorrente(0);
-                            Lambda.MostraCorrenti();
-
-                            _risposta = MessageBox.Show("SPY-BATT non collegato correttamente\nCollegare lo SPY-BATT per letture nel verso diretto\n(Nucleo verso il positivo)", "Verifica Polarità", MessageBoxButtons.RetryCancel);
-                            if (_risposta == DialogResult.Cancel)
-                            {
-                                Lambda.Alimentatatore.ImpostaCorrente(0);
-                                Lambda.MostraCorrenti();
-                                if (chkCalAccendiAlim.Checked)
-                                {
-                                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                    Lambda.Alimentatatore.ImpostaStato(false);
-                                    Lambda.MostraStato();
-                                    return;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            _apparatoPronto = true;
-
-                            if (chkCalAccendiAlim.Checked & !Lambda.Alimentatatore.UscitaAttiva)
-                            {
-                                // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                Lambda.Alimentatatore.ImpostaStato(true);
-                                Lambda.MostraStato();
-                                return;
-                            }
-                        }
-                    }
-                    while (!_apparatoPronto);
-
-                    // ordine ascendente
-                    ValoriTestCorrente.OrderBy(par => par.Lettura);
-                    _passoTest = 0;
-                    foreach (sbAnalisiCorrente _test in ValoriTestCorrente)
-                    {
-                        //txtCalCurr.Text = _ciclo.ToString();
-                        //txtCalCurrStep.Text = _stepCount.ToString();
-                        Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                        Lambda.MostraCorrenti();
-
-                        System.Threading.Thread.Sleep(_millisecondi);
-                        _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                        Lambda.MostraCorrenti();
-                        txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                        if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                        else txtCalSb.ForeColor = Color.Black;
-
-                        txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                        float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                        _test.AspybattAP = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
-
-                        txtCalErrore.Text = "";
-                        if (_corrBase != 0)
-                        {
-                            float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                            txtCalErrore.Text = _errore.ToString("p2");
-                            if (_corrBase > 10)
-                            {
-                                if (_errore > _maxErrPos) _maxErrPos = _errore;
-                                txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
-                            }
-
-                        }
-
-                        _stepCount++;
-
-
-                        flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                        //flvwLettureCorrente.Refresh();
-                        //flvwLettureCorrente.BuildList();
-                        Application.DoEvents();
-
-                        System.Threading.Thread.Sleep(200);
-
-                    }
-
-                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                    GraficoCorrentiComplOxy();
-                    Application.DoEvents();
-
-                    // ordine discendente
-            
-                    foreach (sbAnalisiCorrente _test in ValoriTestCorrente.OrderByDescending(par => par.Lettura))
-                    {
-                        Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                        Lambda.MostraCorrenti();
-
-                        System.Threading.Thread.Sleep(_millisecondi);
-                        _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                        Lambda.MostraCorrenti();
-                        txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                        if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                        else txtCalSb.ForeColor = Color.Black;
-
-                        txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                        float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                        _test.AspybattDP = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
-
-                        txtCalErrore.Text = "";
-                        if (_corrBase != 0)
-                        {
-                            float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                            txtCalErrore.Text = _errore.ToString("p2");
-                            if (_corrBase > 10)
-                            {
-                                if (_errore > _maxErrPos) _maxErrPos = _errore;
-                                txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
-                            }
-                        }
-
-                        _stepCount++;
-
-
-                        flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                        //flvwLettureCorrente.Refresh();
-                        //flvwLettureCorrente.BuildList();
-                        Application.DoEvents();
-
-                        System.Threading.Thread.Sleep(200);
-
-                    }
-                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                    GraficoCorrentiComplOxy();
-                    Application.DoEvents();
-
-                }
-
-                flvwLettureCorrente.BuildList();
-
-
-                flvwLettureCorrente.Refresh();
-                Application.DoEvents();
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-                // Ora faccio invertire il collegamento poi rifaccio il test
-
-                _risposta = MessageBox.Show("Collegare lo SPY-BATT per nel verso inverso\n(Nucleo verso il negativo)", "Verifica Polarità", MessageBoxButtons.OKCancel);
-                if (_risposta == DialogResult.OK)
-
-                _apparatoPronto = false;
-                //poi verifico che lo spybatt sia montato correttamente mandando una corrente di prova
-                do
-                {
-                    if (chkCalAccendiAlim.Checked)
-                    {
-                        // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                        Lambda.Alimentatatore.ImpostaStato(true);
-                        Lambda.MostraCorrenti();
-                        Lambda.MostraStato();
-                    }
-                    Lambda.Alimentatatore.ImpostaCorrente(10);
-                    Lambda.MostraCorrenti();
-                    System.Threading.Thread.Sleep(_millisecondi);
-                    _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                    Lambda.MostraCorrenti();
-
-                    if (_sb.sbVariabili.CorrenteBatteria >= 0)
-                    {
-                        Lambda.Alimentatatore.ImpostaCorrente(0);
-                        Lambda.MostraCorrenti();
-                        if (chkCalAccendiAlim.Checked)
-                        {
-                            // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                            Lambda.Alimentatatore.ImpostaStato(false);
-                            Lambda.MostraStato();
-                            return;
-                        }
-
-                        _risposta = MessageBox.Show("SPY-BATT non collegato correttamente\nCollegare lo SPY-BATT per letture nel verso diretto\n(Nucleo verso il positivo)", "Verifica Polarità", MessageBoxButtons.RetryCancel);
-                        if (_risposta == DialogResult.Cancel)
-                        {
-                            Lambda.Alimentatatore.ImpostaCorrente(0);
-                            Lambda.MostraCorrenti();
-                            if (chkCalAccendiAlim.Checked)
-                            {
-                                // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                Lambda.Alimentatatore.ImpostaStato(false);
-                                Lambda.MostraStato();
-                                return;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        _apparatoPronto = true;
-                        if (chkCalAccendiAlim.Checked & !Lambda.Alimentatatore.UscitaAttiva)
-                        {
-                            // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                            Lambda.Alimentatatore.ImpostaStato(true);
-                            Lambda.MostraStato();
-                            return;
-                        }
-                    }
-                }
-                while (!_apparatoPronto);
-
-                { 
-                    // ordine ascendente  
-                    foreach (sbAnalisiCorrente _test in ValoriTestCorrente.OrderBy(par => par.Lettura))
-                    {
-
-                        {
-
-                            //txtCalCurr.Text = _ciclo.ToString();
-                            //txtCalCurrStep.Text = _stepCount.ToString();
-                            Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                            Lambda.MostraCorrenti();
-
-                            System.Threading.Thread.Sleep(_millisecondi);
-                            _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                            Lambda.MostraCorrenti();
-                            txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                            if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                            else txtCalSb.ForeColor = Color.Black;
-
-                            txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                            float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                            _test.AspybattAN = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
-
-                            txtCalErrore.Text = "";
-                            if (_corrBase != 0)
-                            {
-                                float _errore = Math.Abs((float)( - _sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                                txtCalErrore.Text = _errore.ToString("p2");
-                                if (_corrBase > 10)
-                                {
-                                    if (_errore > _maxErrNeg ) _maxErrNeg = _errore;
-                                    txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
-                                }
-                            }
-
-                            _stepCount++;
-
-
-                            flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-
-                            //flvwLettureCorrente.Refresh();
-                            //flvwLettureCorrente.BuildList();
-                            Application.DoEvents();
-
-                            System.Threading.Thread.Sleep(100);
-
-                        }
-                        GraficoCorrentiComplOxy();
-                        Application.DoEvents();
-                    }
-
-                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                    GraficoCorrentiComplOxy();
-                    Application.DoEvents();
-
-                    // ordine discendente
-                    foreach (sbAnalisiCorrente _test in ValoriTestCorrente.OrderByDescending(par => par.Lettura))
-                    {
-                        
-                        {
-
-                            //txtCalCurr.Text = _ciclo.ToString();
-                            //txtCalCurrStep.Text = _stepCount.ToString();
-                            Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                            Lambda.MostraCorrenti();
-
-                            System.Threading.Thread.Sleep(_millisecondi);
-                            _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                            Lambda.MostraCorrenti();
-                            txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                            if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                            else txtCalSb.ForeColor = Color.Black;
-
-                            txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                            float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                            _test.AspybattDN =(float)(_sb.sbVariabili.CorrenteBatteria / 10);
-
-                            txtCalErrore.Text = "";
-                            if (_corrBase != 0)
-                            {
-                                float _errore = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                                txtCalErrore.Text = _errore.ToString("p2");
-                                if (_corrBase > 10)
-                                {
-                                    if (_errore > _maxErrNeg) _maxErrNeg = _errore;
-                                    txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
-                                }
-                            }
-
-                            _stepCount++;
-
-
-                            flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-
-                            //flvwLettureCorrente.Refresh();
-                            //flvwLettureCorrente.BuildList();
-                            Application.DoEvents();
-
-                            System.Threading.Thread.Sleep(100);
-
-                        }
-                        GraficoCorrentiComplOxy();
-                        Application.DoEvents();
-                    }
-
-                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                    GraficoCorrentiComplOxy();
-                    Application.DoEvents();
-                }
-
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-
-
-                flvwLettureCorrente.Refresh();
-                txtCalCurr.Text = _ciclo.ToString();
-                txtCalCurrStep.Text = _stepCount.ToString();
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-                flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                flvwLettureCorrente.BuildList();
-              
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("frmSpyBatt.LanciaSequenza: " + Ex.Message);
-            }
-        }
-
-
-        private void LanciaSequenzaAssoluta()
-        {
-
-
-            try
-            {
-
-                DialogResult _risposta;
-                int _ciclo;
-                int _start;
-                int _stop;
-                int _passo;
-                int _spire = 1;
-                int _stepCount = 0;
-                int _millisecondi = 1000;
-                bool _esito;
-                bool _apparatoPronto = false;
-
-                float _maxErrPos = 0;
-                float _maxErrNeg = 0;
-
-                int.TryParse(txtCalImin.Text, out _start);
-                int.TryParse(txtCalImax.Text, out _stop);
-                int.TryParse(txtCalIstep.Text, out _passo);
-                int.TryParse(txtCalDelay.Text, out _millisecondi);
-
-                int.TryParse(txtCalSpire.Text, out _spire);
-                int _passoTest = 0;
-                sbAnalisiCorrente _vac;
-
-                txtCalCurr.Text = "";
-                txtCalCurrStep.Text = "";
-
-                txtCalErrore.Text = "";
-                txtCalSb.Text = "";
-
-                if (Lambda == null)
-                {
-                    return;
-                }
-
-
-
-                // Prima Preparo la lista valori
-                ValoriTestCorrente.Clear();
-                flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                flvwLettureCorrente.BuildList();
-
-
-                flvwLettureCorrente.Refresh();
-                Application.DoEvents();
-
-                for (_ciclo = _start; _ciclo <= _stop; _ciclo += _passo)
-                {
-                    _vac = new sbAnalisiCorrente();
-                    _vac.Lettura = (uint)_stepCount++;
-                    _vac.Spire = (uint)_spire;
-                    _vac.Ateorici = _ciclo;
-                    _vac.Areali = _ciclo;
-                    _vac.AspybattAN = 0;
-                    _vac.AspybattAP = 0;
-                    _vac.AspybattDN = 0;
-                    _vac.AspybattDP = 0;
-                    ValoriTestCorrente.Add(_vac);
-                }
-
-
-                flvwLettureCorrente.Refresh();
-                GraficoCorrentiComplOxy();
-                Application.DoEvents();
-
-                // Ora comincio le corse:
-                // Ascendente
-
-                _risposta = MessageBox.Show("Collegare lo SPY-BATT per letture nel verso diretto", "Verifica Polarità", MessageBoxButtons.OKCancel);
-                if (_risposta == DialogResult.OK)
-                {
-
-
-                    // se previsto, attivo la linea
-                    if (chkCalAccendiAlim.Checked)
-                    {
-                        // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                        Lambda.Alimentatatore.ImpostaStato(false);
-                        Lambda.Alimentatatore.ImpostaCorrente(0);
-                        Lambda.Alimentatatore.ImpostaStato(true);
-                        Lambda.MostraCorrenti();
-                        Lambda.MostraStato();
-                    }
-                    flvwLettureCorrente.Refresh();
-                    Application.DoEvents();
-                    _apparatoPronto = false;
-                    //poi verifico che lo spybatt sia montato correttamente mandando una corrente di prova
-                    do
-                    {
-
-                        Lambda.Alimentatatore.ImpostaCorrente(10);
-                        Lambda.MostraCorrenti();
-                        System.Threading.Thread.Sleep(_millisecondi);
-                        _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                        Lambda.MostraCorrenti();
-
-                        if (_sb.sbVariabili.CorrenteBatteria == 0)
-                        {
-                            Lambda.Alimentatatore.ImpostaCorrente(0);
-                            Lambda.MostraCorrenti();
-
-                            _risposta = MessageBox.Show("SPY-BATT non collegato correttamente", "Verifica Collegamenti", MessageBoxButtons.RetryCancel);
-                            if (_risposta == DialogResult.Cancel)
-                            {
-                                Lambda.Alimentatatore.ImpostaCorrente(0);
-                                Lambda.MostraCorrenti();
-                                if (chkCalAccendiAlim.Checked)
-                                {
-                                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                    Lambda.Alimentatatore.ImpostaStato(false);
-                                    Lambda.MostraStato();
-                                    return;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            _apparatoPronto = true;
-
-                            if (chkCalAccendiAlim.Checked & !Lambda.Alimentatatore.UscitaAttiva)
-                            {
-                                // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                Lambda.Alimentatatore.ImpostaStato(true);
-                                Lambda.MostraStato();
-                                return;
-                            }
-                        }
-                    }
-                    while (!_apparatoPronto);
-
-                    // ordine ascendente
-                    ValoriTestCorrente.OrderBy(par => par.Lettura);
-                    _passoTest = 0;
-                    foreach (sbAnalisiCorrente _test in ValoriTestCorrente)
-                    {
-                        //txtCalCurr.Text = _ciclo.ToString();
-                        //txtCalCurrStep.Text = _stepCount.ToString();
-                        Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                        Lambda.MostraCorrenti();
-
-                        System.Threading.Thread.Sleep(_millisecondi);
-                        _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                        Lambda.MostraCorrenti();
-                        txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                        if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                        else txtCalSb.ForeColor = Color.Black;
-
-                        txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                        float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                        _test.AspybattAP = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10));
-
-                        txtCalErrore.Text = "";
-                        if (_corrBase != 0)
-                        {
-                            float _errore = Math.Abs(Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10)) - (_corrBase * _spire)) / (_corrBase * _spire);
-                            txtCalErrore.Text = _errore.ToString("p2");
-                            if (_corrBase > 10)
-                            {
-                                if (_errore > _maxErrPos) _maxErrPos = _errore;
-                                txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
-                            }
-
-                        }
-
-                        _stepCount++;
-
-
-                        flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                        //flvwLettureCorrente.Refresh();
-                        //flvwLettureCorrente.BuildList();
-                        Application.DoEvents();
-
-                        System.Threading.Thread.Sleep(200);
-
-                    }
-
-                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                    GraficoCorrentiComplOxy();
-                    Application.DoEvents();
-
-                    // ordine discendente
-                    if (chkCalRitornoVeloce.Checked)
-                    {
-                        // Torno a 0 in 4 passi veloci
-                        Lambda.MostraCorrenti();
-                        int _stepDiscesa = (int)Lambda.Alimentatatore.Arilevati / 4;
-                        for (int _passoDisc = (int)Lambda.Alimentatatore.Arilevati; _passoDisc > 0; _passoDisc-= _stepDiscesa)
-                        {
-                            if (_passoDisc < 0)
-                                _passoDisc = 0;
-                            Lambda.Alimentatatore.ImpostaCorrente(_passoDisc);
-                            Lambda.MostraCorrenti();
-                            System.Threading.Thread.Sleep(500);
-                            txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                            Application.DoEvents();
-                        }
-
-
-                    }
-                    else
-                    {
-                        foreach (sbAnalisiCorrente _test in ValoriTestCorrente.OrderByDescending(par => par.Lettura))
-                        {
-                            Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                            Lambda.MostraCorrenti();
-
-                            System.Threading.Thread.Sleep(_millisecondi);
-                            _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                            Lambda.MostraCorrenti();
-                            txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                            if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                            else txtCalSb.ForeColor = Color.Black;
-
-                            txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                            float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                            _test.AspybattDP = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10));
-
-                            txtCalErrore.Text = "";
-                            if (_corrBase != 0)
-                            {
-                                float _errore = Math.Abs(Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10)) - (_corrBase * _spire)) / (_corrBase * _spire);
-                                txtCalErrore.Text = _errore.ToString("p2");
-                                if (_corrBase > 10)
-                                {
-                                    if (_errore > _maxErrPos) _maxErrPos = _errore;
-                                    txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
-                                }
-                            }
-
-                            _stepCount++;
-
-
-                            flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                            //flvwLettureCorrente.Refresh();
-                            //flvwLettureCorrente.BuildList();
-                            Application.DoEvents();
-
-                            System.Threading.Thread.Sleep(200);
-
-                        }
-                    }
-                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                    GraficoCorrentiComplOxy();
-                    Application.DoEvents();
-
-                }
-
-                flvwLettureCorrente.BuildList();
-
-
-                flvwLettureCorrente.Refresh();
-                Application.DoEvents();
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-                // Ora faccio invertire il collegamento poi rifaccio il test
-                if (!chkCalSoloAndata.Checked)
-                {
-                    _risposta = MessageBox.Show("Collegare il nucleo SPY-BATT nel verso inverso", "Verifica collegamenti", MessageBoxButtons.OKCancel);
-                    if (_risposta == DialogResult.OK)
-
-                        _apparatoPronto = false;
-                    //poi verifico che lo spybatt sia montato correttamente mandando una corrente di prova
-                    do
-                    {
-                        if (chkCalAccendiAlim.Checked)
-                        {
-                            // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                            Lambda.Alimentatatore.ImpostaStato(true);
-                            Lambda.MostraCorrenti();
-                            Lambda.MostraStato();
-                        }
-                        Lambda.Alimentatatore.ImpostaCorrente(10);
-                        Lambda.MostraCorrenti();
-                        System.Threading.Thread.Sleep(_millisecondi);
-                        _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                        Lambda.MostraCorrenti();
-
-                        if (_sb.sbVariabili.CorrenteBatteria == 0)
-                        {
-                            Lambda.Alimentatatore.ImpostaCorrente(0);
-                            Lambda.MostraCorrenti();
-                            if (chkCalAccendiAlim.Checked)
-                            {
-                                // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                Lambda.Alimentatatore.ImpostaStato(false);
-                                Lambda.MostraStato();
-                                return;
-                            }
-
-                            _risposta = MessageBox.Show("SPY-BATT non collegato correttamente", "Verifica ollegamenti", MessageBoxButtons.RetryCancel);
-                            if (_risposta == DialogResult.Cancel)
-                            {
-                                Lambda.Alimentatatore.ImpostaCorrente(0);
-                                Lambda.MostraCorrenti();
-                                if (chkCalAccendiAlim.Checked)
-                                {
-                                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                    Lambda.Alimentatatore.ImpostaStato(false);
-                                    Lambda.MostraStato();
-                                    return;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            _apparatoPronto = true;
-                            if (chkCalAccendiAlim.Checked & !Lambda.Alimentatatore.UscitaAttiva)
-                            {
-                                // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                                Lambda.Alimentatatore.ImpostaStato(true);
-                                Lambda.MostraStato();
-                                return;
-                            }
-                        }
-                    }
-                    while (!_apparatoPronto);
-
-                    {
-                        // ordine ascendente  
-                        foreach (sbAnalisiCorrente _test in ValoriTestCorrente.OrderBy(par => par.Lettura))
-                        {
-
-                            {
-
-                                //txtCalCurr.Text = _ciclo.ToString();
-                                //txtCalCurrStep.Text = _stepCount.ToString();
-                                Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                                Lambda.MostraCorrenti();
-
-                                System.Threading.Thread.Sleep(_millisecondi);
-                                _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                                Lambda.MostraCorrenti();
-                                txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                                if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                                else txtCalSb.ForeColor = Color.Black;
-
-                                txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                                float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                                _test.AspybattAN = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10));
-
-                                txtCalErrore.Text = "";
-                                if (_corrBase != 0)
-                                {
-                                    float _errore = Math.Abs(Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10)) - (_corrBase * _spire)) / (_corrBase * _spire);
-                                    txtCalErrore.Text = _errore.ToString("p2");
-                                    if (_corrBase > 10)
-                                    {
-                                        if (_errore > _maxErrNeg) _maxErrNeg = _errore;
-                                        txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
-                                    }
-                                }
-
-                                _stepCount++;
-
-
-                                flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-
-                                //flvwLettureCorrente.Refresh();
-                                //flvwLettureCorrente.BuildList();
-                                Application.DoEvents();
-
-                                System.Threading.Thread.Sleep(100);
-
-                            }
-                            GraficoCorrentiComplOxy();
-                            Application.DoEvents();
-                        }
-
-                        flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                        GraficoCorrentiComplOxy();
-                        Application.DoEvents();
-
-                        // ordine discendente
-                        if (chkCalRitornoVeloce.Checked)
-                        {
-                            // Torno a 0 in 4 passi veloci
-                            Lambda.MostraCorrenti();
-                            int _stepDiscesa = (int)Lambda.Alimentatatore.Arilevati/4;
-                            for ( int _passoDisc = (int)Lambda.Alimentatatore.Arilevati; _passoDisc > 0; _passoDisc -= _stepDiscesa)
-                            {
-                                if (_passoDisc < 0)
-                                    _passoDisc = 0;
-                                Lambda.Alimentatatore.ImpostaCorrente(_passoDisc);
-                                Lambda.MostraCorrenti();
-                                System.Threading.Thread.Sleep(500);
-                                txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                                Application.DoEvents(); 
-                            }
-
-
-                        }
-                        else
-                        {
-                            foreach (sbAnalisiCorrente _test in ValoriTestCorrente.OrderByDescending(par => par.Lettura))
-                            {
-
-                                {
-
-                                    //txtCalCurr.Text = _ciclo.ToString();
-                                    //txtCalCurrStep.Text = _stepCount.ToString();
-                                    Lambda.Alimentatatore.ImpostaCorrente(_test.Ateorici);
-                                    Lambda.MostraCorrenti();
-
-                                    System.Threading.Thread.Sleep(_millisecondi);
-                                    _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                                    Lambda.MostraCorrenti();
-                                    txtCalSb.Text = _sb.sbVariabili.strCorrenteBatteria;
-                                    if (_sb.sbVariabili.CorrenteBatteria < 0) txtCalSb.ForeColor = Color.Red;
-                                    else txtCalSb.ForeColor = Color.Black;
-
-                                    txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
-                                    float _corrBase = Lambda.Alimentatatore.Arilevati;
-
-
-                                    _test.AspybattDN = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10));
-
-                                    txtCalErrore.Text = "";
-                                    if (_corrBase != 0)
-                                    {
-                                        float _errore = Math.Abs(Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10)) - (_corrBase * _spire)) / (_corrBase * _spire);
-                                        txtCalErrore.Text = _errore.ToString("p2");
-                                        if (_corrBase > 10)
-                                        {
-                                            if (_errore > _maxErrNeg) _maxErrNeg = _errore;
-                                            txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
-                                        }
-                                    }
-
-                                    _stepCount++;
-
-
-                                    flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-
-                                    //flvwLettureCorrente.Refresh();
-                                    //flvwLettureCorrente.BuildList();
-                                    Application.DoEvents();
-
-                                    System.Threading.Thread.Sleep(100);
-
-                                }
-                                GraficoCorrentiComplOxy();
-                                Application.DoEvents();
-                            }
-                        }
-
-                        flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                        GraficoCorrentiComplOxy();
-                        Application.DoEvents();
-                    }
-                }
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-
-
-                flvwLettureCorrente.Refresh();
-                txtCalCurr.Text = _ciclo.ToString();
-                txtCalCurrStep.Text = _stepCount.ToString();
-
-                if (chkCalAccendiAlim.Checked)
-                {
-                    // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
-                    Lambda.Alimentatatore.ImpostaStato(false);
-                    Lambda.Alimentatatore.ImpostaCorrente(0);
-                    Lambda.MostraCorrenti();
-                    Lambda.MostraStato();
-                }
-                flvwLettureCorrente.SetObjects(ValoriTestCorrente);
-                flvwLettureCorrente.BuildList();
-                _risposta = MessageBox.Show("Ciclo Completato, salvo i risultati ?", "Analisi Nucleo", MessageBoxButtons.OKCancel);
-                if (_risposta == DialogResult.OK)
-                {
-                    tctCalGeneraExcel_Click(null, null);
-                }
-
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("frmSpyBatt.LanciaSequenza: " + Ex.Message);
-            }
-        }
 
 
         /// <summary>
@@ -7318,7 +6251,7 @@ namespace PannelloCharger
                 oxyGraficoAnalisi.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
 
 
-                oxyGraficoAnalisi.Title ="Correnti";
+                oxyGraficoAnalisi.Title = "Correnti";
                 oxyGraficoAnalisi.TitleFont = "Utopia";
                 oxyGraficoAnalisi.TitleFontSize = 14;
 
@@ -7326,12 +6259,12 @@ namespace PannelloCharger
                 // Creo gli Assi
 
                 OxyPlot.Axes.CategoryAxis AsseCat = new OxyPlot.Axes.CategoryAxis();
-               // AsseCat.MinorStep = 1;
+                // AsseCat.MinorStep = 1;
 
                 OxyPlot.Axes.LinearAxis AsseConteggi = new OxyPlot.Axes.LinearAxis();
-               // AsseCat.MinorStep = 1;
-               // AsseConteggi.Minimum = 0;
-               // AsseCo1nteggi.Maximum = 100;
+                // AsseCat.MinorStep = 1;
+                // AsseConteggi.Minimum = 0;
+                // AsseCo1nteggi.Maximum = 100;
 
 
 
@@ -7355,7 +6288,7 @@ namespace PannelloCharger
 
                 float _errore = 0;
 
-                foreach ( sbAnalisiCorrente _vac in ValoriTestCorrente)
+                foreach (sbAnalisiCorrente _vac in ValoriTestCorrente)
                 {
 
                     if (_vac.Areali != 0)
@@ -7544,10 +6477,10 @@ namespace PannelloCharger
 
 
 
-        private void si_DataReceived(string data1 )
+        private void si_DataReceived(string data1)
         {
             txtCalCurr.Text = data1;
-           //txtCalCurrStep.Text = data2;
+            //txtCalCurrStep.Text = data2;
         }
 
 
@@ -7589,7 +6522,7 @@ namespace PannelloCharger
                     string delimiter = ";";
                     string[][] output = new string[][]
                     {
-                         new string[]{"SPY-BATT","Nucleo","Ciclo", "Spire", "Err.Pos.","Err.Neg." } 
+                         new string[]{"SPY-BATT","Nucleo","Ciclo", "Spire", "Err.Pos.","Err.Neg." }
                     };
 
                     int length = output.GetLength(0);
@@ -7604,7 +6537,7 @@ namespace PannelloCharger
                     };
 
                     length = output.GetLength(0);
-                     sb = new StringBuilder();
+                    sb = new StringBuilder();
                     for (int index = 0; index < length; index++)
                         sb.AppendLine(string.Join(delimiter, output[index]));
                     File.AppendAllText(filePath, sb.ToString());
@@ -7616,7 +6549,7 @@ namespace PannelloCharger
                     };
 
                     length = output.GetLength(0);
-                     sb = new StringBuilder();
+                    sb = new StringBuilder();
                     for (int index = 0; index < length; index++)
                         sb.AppendLine(string.Join(delimiter, output[index]));
                     File.AppendAllText(filePath, sb.ToString());
@@ -7625,7 +6558,7 @@ namespace PannelloCharger
                     string[] arr;
 
                     foreach (sbAnalisiCorrente _vac in ValoriTestCorrente)
-                        {
+                    {
 
                         output = new string[][]
                           {
@@ -7703,7 +6636,7 @@ namespace PannelloCharger
                 if (txtFWInFileRev.Text == "")
                 {
                     MessageBox.Show("Inserire il numero di release", "Preperazione App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; 
+                    return;
                 }
 
                 SalvaFileSBF();
@@ -7734,7 +6667,7 @@ namespace PannelloCharger
             CaricafileSBF();
             PreparaTrasmissioneFW();
             bool _esitocella = false;
-        
+
             _esitocella = ((byte)FirmwareManager.MascheraStato.Blocco1HW & _sb.StatoFirmware.Stato) == (byte)FirmwareManager.MascheraStato.Blocco1HW;
             if (_esitocella == true)
             {
@@ -7812,7 +6745,7 @@ namespace PannelloCharger
                     {
                         _bloccoCorrente = _cicloBlocchi + 1;
                         _esito = _sb.CancellaBlocco4K(_StartAddr);
-                        if(!_esito)
+                        if (!_esito)
                         {
                             MessageBox.Show("Cancellazione del blocco " + _bloccoCorrente.ToString() + " non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -7850,7 +6783,7 @@ namespace PannelloCharger
         {
             try
             {
-                if(rbtFwArea1.Checked)
+                if (rbtFwArea1.Checked)
                 {
                     SwitchAreaFw(_sb.Id, _sb.apparatoPresente, 1);
                     return;
@@ -7924,10 +6857,10 @@ namespace PannelloCharger
         {
             bool _esito;
 
-            if (_sbTemp == null )
+            if (_sbTemp == null)
             {
                 txtClonaStatoAttuale.Text = "Dati Origine non caricati";
-                return ;
+                return;
             }
 
 
@@ -8053,7 +6986,7 @@ namespace PannelloCharger
                 foreach (byte element in array)
                 {
                     _step += 9;
-                    _hexId += ( element * _step);
+                    _hexId += (element * _step);
                 }
                 _codice = _hexId.ToString("x6");
 
@@ -8071,7 +7004,7 @@ namespace PannelloCharger
 
                 string _permutato = "";
 
-                for (int _ciclo = 0; _ciclo < 8;_ciclo++)
+                for (int _ciclo = 0; _ciclo < 8; _ciclo++)
                 {
                     // Prima i pari
                     _permutato += _codice[_ciclo * 2];
@@ -8081,7 +7014,7 @@ namespace PannelloCharger
                 for (int _ciclo = 0; _ciclo < 8; _ciclo++)
                 {
                     // poi i dispari alla rovescia
-                    _permutato += _codice[15-(_ciclo * 2)];
+                    _permutato += _codice[15 - (_ciclo * 2)];
 
                 }
 
@@ -8180,5 +7113,126 @@ namespace PannelloCharger
             }
 
         }
+
+        private void btnCalCollegaAlim_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmAlimentatore))
+                    {
+                        Lambda = (frmAlimentatore)form;
+                        form.Activate();
+                        lblCalStatoAlim.Text = "COLLEGATO";
+                        lblCalConnessione.Text = "COLLEGATO";
+                        btnCalStartSeq.Enabled = true;
+                        return;
+                    }
+                }
+
+                frmAlimentatore Alimentatore = new frmAlimentatore();
+                Alimentatore.MdiParent = this.MdiParent;
+                Alimentatore.StartPosition = FormStartPosition.CenterParent;
+
+                Alimentatore.Show();
+                Lambda = Alimentatore;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnCalCollegaAlim_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnCalStartSeq_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                sbTestataCalibrazione _sequenzaCorrente = new sbTestataCalibrazione(_logiche.dbDati.connessione);
+
+                int _AmaxCal = 300;
+                int _AmaxVer = 300;
+                int _spire = 2;
+
+
+                int.TryParse(txtCalAcal.Text, out _AmaxCal);
+                int.TryParse(txtCalAver.Text, out _AmaxVer);
+                int.TryParse(txtCalNumSpire.Text, out _spire);
+
+
+                txtCalAcal.Text = _AmaxCal.ToString();
+                txtCalAver.Text = _AmaxVer.ToString();
+                txtCalNumSpire.Text = _spire.ToString();
+
+
+
+                LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire);
+                if (chkCalRegistraSequenza.Checked)
+                {
+                    _sequenzaCorrente.LettureCorrente = ValoriTestCorrente;
+                    _sequenzaCorrente.salvaDati();
+                }
+                this.Cursor = Cursors.Default;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnCalStartSeq_Click: " + Ex.Message);
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void btnCalRicaricaSequenza_Click(object sender, EventArgs e)
+        {
+            // pnlCalVerifica.Width = tabCalibrazione.Width - 300;
+            // GraficoCorrentiCalComplOxy();
+            // TestSequenzaVerificaCalibrazione();
+            lbxCalListaStep.Items.Clear();
+            if (cmbCalListaEsecuzioni.SelectedItem != null)
+            {
+                _sbTestataCalibrazione _SelItem = (_sbTestataCalibrazione)cmbCalListaEsecuzioni.SelectedItem;
+
+                lbxCalListaStep.Items.Add("Ciclo Calibrazione " +_SelItem.IdEsecuzione.ToString());
+                lbxCalListaStep.Items.Add("del  " + _SelItem.DataEsecuzione.ToString());
+                lbxCalListaStep.Items.Add("F.W. " + _SelItem.FirmwareAttivo.ToString());
+                sbTestataCalibrazione _sequenzaCorrente = new sbTestataCalibrazione(_logiche.dbDati.connessione);
+                _sequenzaCorrente.caricaDati(_SelItem.IdLocale);
+                ValoriTestCorrente = _sequenzaCorrente.LettureCorrente;
+                GraficoCorrentiCalComplOxy();
+
+
+            }
+            else
+            {
+                lbxCalListaStep.Items.Add("Nessuna calibrazione selezionata");
+            }
+
+
+            //GraficoCorrentiCalComplOxy();
+        }
+
+        private void btnCalRefreshLista_Click(object sender, EventArgs e)
+        {
+            bool _esito;
+
+            _esito = CaricaTestateCalibrazioni(_sb.Id, _logiche.dbDati.connessione);
+
+            if(_esito)
+            {
+                cmbCalListaEsecuzioni.DataSource = _ListaCalibrazioni;
+                cmbCalListaEsecuzioni.DisplayMember = "IdEsecuzione";
+                cmbCalListaEsecuzioni.ValueMember = "IdLocale";
+            }
+
+        }
+
+        private void cmbCalTipoGrafico_SelectedValueChanged(object sender, EventArgs e)
+        {
+            GraficoCorrentiCalComplOxy();
+        }
     }
-    }
+}

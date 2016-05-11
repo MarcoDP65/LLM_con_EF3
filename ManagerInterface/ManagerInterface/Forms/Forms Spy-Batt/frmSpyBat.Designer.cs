@@ -589,12 +589,57 @@
             this.label119 = new System.Windows.Forms.Label();
             this.txtClonaIdOrigine = new System.Windows.Forms.TextBox();
             this.label120 = new System.Windows.Forms.Label();
+            this.tabCalibrazione = new System.Windows.Forms.TabPage();
+            this.cmbCalTipoGrafico = new System.Windows.Forms.ComboBox();
+            this.btnCalRefreshLista = new System.Windows.Forms.Button();
+            this.txtCalNumSpire = new System.Windows.Forms.TextBox();
+            this.label148 = new System.Windows.Forms.Label();
+            this.txtCalAver = new System.Windows.Forms.TextBox();
+            this.label147 = new System.Windows.Forms.Label();
+            this.txtCalAcal = new System.Windows.Forms.TextBox();
+            this.label146 = new System.Windows.Forms.Label();
+            this.chkCalRegistraSequenza = new System.Windows.Forms.CheckBox();
+            this.flvwCalCorrentiVerifica = new BrightIdeasSoftware.FastObjectListView();
+            this.chkCalAttivaAlim = new System.Windows.Forms.CheckBox();
+            this.cmbCalListaEsecuzioni = new System.Windows.Forms.ComboBox();
+            this.btnCalRicaricaSequenza = new System.Windows.Forms.Button();
+            this.grbCalValoriAttuali = new System.Windows.Forms.GroupBox();
+            this.txtCalTemp = new System.Windows.Forms.TextBox();
+            this.label145 = new System.Windows.Forms.Label();
+            this.txtCalElettr = new System.Windows.Forms.TextBox();
+            this.label138 = new System.Windows.Forms.Label();
+            this.txtCalErrMaxNeg = new System.Windows.Forms.TextBox();
+            this.label140 = new System.Windows.Forms.Label();
+            this.txtCalErrMaxPos = new System.Windows.Forms.TextBox();
+            this.label141 = new System.Windows.Forms.Label();
+            this.txtCalErrMax = new System.Windows.Forms.TextBox();
+            this.label142 = new System.Windows.Forms.Label();
+            this.txtCalCurrSB = new System.Windows.Forms.TextBox();
+            this.label143 = new System.Windows.Forms.Label();
+            this.txtCalCurrAlim = new System.Windows.Forms.TextBox();
+            this.label144 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label130 = new System.Windows.Forms.Label();
+            this.txtCalVbatt = new System.Windows.Forms.TextBox();
+            this.txtCalV3 = new System.Windows.Forms.TextBox();
+            this.txtCalV2 = new System.Windows.Forms.TextBox();
+            this.txtCalV1 = new System.Windows.Forms.TextBox();
+            this.label131 = new System.Windows.Forms.Label();
+            this.pnlCalVerifica = new System.Windows.Forms.Panel();
+            this.btnCalStartSeq = new System.Windows.Forms.Button();
+            this.lblCalStatoAlim = new System.Windows.Forms.Label();
+            this.btnCalCollegaAlim = new System.Windows.Forms.Button();
+            this.grbCalListaAttivita = new System.Windows.Forms.GroupBox();
+            this.txtCalLogBox = new System.Windows.Forms.TextBox();
+            this.lbxCalListaStep = new System.Windows.Forms.ListBox();
+            this.txtCalStepCorrente = new System.Windows.Forms.TextBox();
+            this.lblCalStepCorrente = new System.Windows.Forms.Label();
             this.lvwCicliBatteriaAA = new System.Windows.Forms.ListView();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.tabCalibrazione = new System.Windows.Forms.TabPage();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -666,6 +711,10 @@
             this.groupBox2.SuspendLayout();
             this.grbClonaRecordTestata.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.tabCalibrazione.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvwCalCorrentiVerifica)).BeginInit();
+            this.grbCalValoriAttuali.SuspendLayout();
+            this.grbCalListaAttivita.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCaricaBatterie
@@ -4602,6 +4651,321 @@
             resources.ApplyResources(this.label120, "label120");
             this.label120.Name = "label120";
             // 
+            // tabCalibrazione
+            // 
+            this.tabCalibrazione.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCalibrazione.Controls.Add(this.cmbCalTipoGrafico);
+            this.tabCalibrazione.Controls.Add(this.btnCalRefreshLista);
+            this.tabCalibrazione.Controls.Add(this.txtCalNumSpire);
+            this.tabCalibrazione.Controls.Add(this.label148);
+            this.tabCalibrazione.Controls.Add(this.txtCalAver);
+            this.tabCalibrazione.Controls.Add(this.label147);
+            this.tabCalibrazione.Controls.Add(this.txtCalAcal);
+            this.tabCalibrazione.Controls.Add(this.label146);
+            this.tabCalibrazione.Controls.Add(this.chkCalRegistraSequenza);
+            this.tabCalibrazione.Controls.Add(this.flvwCalCorrentiVerifica);
+            this.tabCalibrazione.Controls.Add(this.chkCalAttivaAlim);
+            this.tabCalibrazione.Controls.Add(this.cmbCalListaEsecuzioni);
+            this.tabCalibrazione.Controls.Add(this.btnCalRicaricaSequenza);
+            this.tabCalibrazione.Controls.Add(this.grbCalValoriAttuali);
+            this.tabCalibrazione.Controls.Add(this.pnlCalVerifica);
+            this.tabCalibrazione.Controls.Add(this.btnCalStartSeq);
+            this.tabCalibrazione.Controls.Add(this.lblCalStatoAlim);
+            this.tabCalibrazione.Controls.Add(this.btnCalCollegaAlim);
+            this.tabCalibrazione.Controls.Add(this.grbCalListaAttivita);
+            resources.ApplyResources(this.tabCalibrazione, "tabCalibrazione");
+            this.tabCalibrazione.Name = "tabCalibrazione";
+            // 
+            // cmbCalTipoGrafico
+            // 
+            this.cmbCalTipoGrafico.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbCalTipoGrafico, "cmbCalTipoGrafico");
+            this.cmbCalTipoGrafico.Name = "cmbCalTipoGrafico";
+            this.cmbCalTipoGrafico.SelectedValueChanged += new System.EventHandler(this.cmbCalTipoGrafico_SelectedValueChanged);
+            // 
+            // btnCalRefreshLista
+            // 
+            resources.ApplyResources(this.btnCalRefreshLista, "btnCalRefreshLista");
+            this.btnCalRefreshLista.Name = "btnCalRefreshLista";
+            this.btnCalRefreshLista.UseVisualStyleBackColor = true;
+            this.btnCalRefreshLista.Click += new System.EventHandler(this.btnCalRefreshLista_Click);
+            // 
+            // txtCalNumSpire
+            // 
+            resources.ApplyResources(this.txtCalNumSpire, "txtCalNumSpire");
+            this.txtCalNumSpire.Name = "txtCalNumSpire";
+            // 
+            // label148
+            // 
+            resources.ApplyResources(this.label148, "label148");
+            this.label148.Name = "label148";
+            // 
+            // txtCalAver
+            // 
+            resources.ApplyResources(this.txtCalAver, "txtCalAver");
+            this.txtCalAver.Name = "txtCalAver";
+            // 
+            // label147
+            // 
+            resources.ApplyResources(this.label147, "label147");
+            this.label147.Name = "label147";
+            // 
+            // txtCalAcal
+            // 
+            resources.ApplyResources(this.txtCalAcal, "txtCalAcal");
+            this.txtCalAcal.Name = "txtCalAcal";
+            // 
+            // label146
+            // 
+            resources.ApplyResources(this.label146, "label146");
+            this.label146.Name = "label146";
+            // 
+            // chkCalRegistraSequenza
+            // 
+            resources.ApplyResources(this.chkCalRegistraSequenza, "chkCalRegistraSequenza");
+            this.chkCalRegistraSequenza.Checked = true;
+            this.chkCalRegistraSequenza.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCalRegistraSequenza.Name = "chkCalRegistraSequenza";
+            this.chkCalRegistraSequenza.UseVisualStyleBackColor = true;
+            // 
+            // flvwCalCorrentiVerifica
+            // 
+            this.flvwCalCorrentiVerifica.AllowColumnReorder = true;
+            this.flvwCalCorrentiVerifica.AlternateRowBackColor = System.Drawing.Color.LightYellow;
+            this.flvwCalCorrentiVerifica.CellEditUseWholeCell = false;
+            this.flvwCalCorrentiVerifica.FullRowSelect = true;
+            this.flvwCalCorrentiVerifica.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwCalCorrentiVerifica.HighlightForegroundColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.flvwCalCorrentiVerifica, "flvwCalCorrentiVerifica");
+            this.flvwCalCorrentiVerifica.Name = "flvwCalCorrentiVerifica";
+            this.flvwCalCorrentiVerifica.ShowGroups = false;
+            this.flvwCalCorrentiVerifica.ShowImagesOnSubItems = true;
+            this.flvwCalCorrentiVerifica.UseAlternatingBackColors = true;
+            this.flvwCalCorrentiVerifica.UseCellFormatEvents = true;
+            this.flvwCalCorrentiVerifica.UseCompatibleStateImageBehavior = false;
+            this.flvwCalCorrentiVerifica.View = System.Windows.Forms.View.Details;
+            this.flvwCalCorrentiVerifica.VirtualMode = true;
+            // 
+            // chkCalAttivaAlim
+            // 
+            resources.ApplyResources(this.chkCalAttivaAlim, "chkCalAttivaAlim");
+            this.chkCalAttivaAlim.Checked = true;
+            this.chkCalAttivaAlim.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCalAttivaAlim.Name = "chkCalAttivaAlim";
+            this.chkCalAttivaAlim.UseVisualStyleBackColor = true;
+            // 
+            // cmbCalListaEsecuzioni
+            // 
+            this.cmbCalListaEsecuzioni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCalListaEsecuzioni.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbCalListaEsecuzioni, "cmbCalListaEsecuzioni");
+            this.cmbCalListaEsecuzioni.Name = "cmbCalListaEsecuzioni";
+            // 
+            // btnCalRicaricaSequenza
+            // 
+            resources.ApplyResources(this.btnCalRicaricaSequenza, "btnCalRicaricaSequenza");
+            this.btnCalRicaricaSequenza.Name = "btnCalRicaricaSequenza";
+            this.btnCalRicaricaSequenza.UseVisualStyleBackColor = true;
+            this.btnCalRicaricaSequenza.Click += new System.EventHandler(this.btnCalRicaricaSequenza_Click);
+            // 
+            // grbCalValoriAttuali
+            // 
+            this.grbCalValoriAttuali.BackColor = System.Drawing.Color.White;
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalTemp);
+            this.grbCalValoriAttuali.Controls.Add(this.label145);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalElettr);
+            this.grbCalValoriAttuali.Controls.Add(this.label138);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalErrMaxNeg);
+            this.grbCalValoriAttuali.Controls.Add(this.label140);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalErrMaxPos);
+            this.grbCalValoriAttuali.Controls.Add(this.label141);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalErrMax);
+            this.grbCalValoriAttuali.Controls.Add(this.label142);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalCurrSB);
+            this.grbCalValoriAttuali.Controls.Add(this.label143);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalCurrAlim);
+            this.grbCalValoriAttuali.Controls.Add(this.label144);
+            this.grbCalValoriAttuali.Controls.Add(this.label6);
+            this.grbCalValoriAttuali.Controls.Add(this.label7);
+            this.grbCalValoriAttuali.Controls.Add(this.label130);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalVbatt);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalV3);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalV2);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalV1);
+            this.grbCalValoriAttuali.Controls.Add(this.label131);
+            resources.ApplyResources(this.grbCalValoriAttuali, "grbCalValoriAttuali");
+            this.grbCalValoriAttuali.Name = "grbCalValoriAttuali";
+            this.grbCalValoriAttuali.TabStop = false;
+            // 
+            // txtCalTemp
+            // 
+            resources.ApplyResources(this.txtCalTemp, "txtCalTemp");
+            this.txtCalTemp.Name = "txtCalTemp";
+            // 
+            // label145
+            // 
+            resources.ApplyResources(this.label145, "label145");
+            this.label145.Name = "label145";
+            // 
+            // txtCalElettr
+            // 
+            resources.ApplyResources(this.txtCalElettr, "txtCalElettr");
+            this.txtCalElettr.Name = "txtCalElettr";
+            // 
+            // label138
+            // 
+            resources.ApplyResources(this.label138, "label138");
+            this.label138.Name = "label138";
+            // 
+            // txtCalErrMaxNeg
+            // 
+            resources.ApplyResources(this.txtCalErrMaxNeg, "txtCalErrMaxNeg");
+            this.txtCalErrMaxNeg.Name = "txtCalErrMaxNeg";
+            // 
+            // label140
+            // 
+            resources.ApplyResources(this.label140, "label140");
+            this.label140.Name = "label140";
+            // 
+            // txtCalErrMaxPos
+            // 
+            resources.ApplyResources(this.txtCalErrMaxPos, "txtCalErrMaxPos");
+            this.txtCalErrMaxPos.Name = "txtCalErrMaxPos";
+            // 
+            // label141
+            // 
+            resources.ApplyResources(this.label141, "label141");
+            this.label141.Name = "label141";
+            // 
+            // txtCalErrMax
+            // 
+            resources.ApplyResources(this.txtCalErrMax, "txtCalErrMax");
+            this.txtCalErrMax.Name = "txtCalErrMax";
+            // 
+            // label142
+            // 
+            resources.ApplyResources(this.label142, "label142");
+            this.label142.Name = "label142";
+            // 
+            // txtCalCurrSB
+            // 
+            resources.ApplyResources(this.txtCalCurrSB, "txtCalCurrSB");
+            this.txtCalCurrSB.Name = "txtCalCurrSB";
+            // 
+            // label143
+            // 
+            resources.ApplyResources(this.label143, "label143");
+            this.label143.Name = "label143";
+            // 
+            // txtCalCurrAlim
+            // 
+            resources.ApplyResources(this.txtCalCurrAlim, "txtCalCurrAlim");
+            this.txtCalCurrAlim.Name = "txtCalCurrAlim";
+            // 
+            // label144
+            // 
+            resources.ApplyResources(this.label144, "label144");
+            this.label144.Name = "label144";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // label130
+            // 
+            resources.ApplyResources(this.label130, "label130");
+            this.label130.Name = "label130";
+            // 
+            // txtCalVbatt
+            // 
+            resources.ApplyResources(this.txtCalVbatt, "txtCalVbatt");
+            this.txtCalVbatt.Name = "txtCalVbatt";
+            // 
+            // txtCalV3
+            // 
+            resources.ApplyResources(this.txtCalV3, "txtCalV3");
+            this.txtCalV3.Name = "txtCalV3";
+            // 
+            // txtCalV2
+            // 
+            resources.ApplyResources(this.txtCalV2, "txtCalV2");
+            this.txtCalV2.Name = "txtCalV2";
+            // 
+            // txtCalV1
+            // 
+            resources.ApplyResources(this.txtCalV1, "txtCalV1");
+            this.txtCalV1.Name = "txtCalV1";
+            // 
+            // label131
+            // 
+            resources.ApplyResources(this.label131, "label131");
+            this.label131.Name = "label131";
+            // 
+            // pnlCalVerifica
+            // 
+            this.pnlCalVerifica.BackColor = System.Drawing.Color.LightYellow;
+            resources.ApplyResources(this.pnlCalVerifica, "pnlCalVerifica");
+            this.pnlCalVerifica.Name = "pnlCalVerifica";
+            // 
+            // btnCalStartSeq
+            // 
+            resources.ApplyResources(this.btnCalStartSeq, "btnCalStartSeq");
+            this.btnCalStartSeq.Name = "btnCalStartSeq";
+            this.btnCalStartSeq.UseVisualStyleBackColor = true;
+            this.btnCalStartSeq.Click += new System.EventHandler(this.btnCalStartSeq_Click);
+            // 
+            // lblCalStatoAlim
+            // 
+            resources.ApplyResources(this.lblCalStatoAlim, "lblCalStatoAlim");
+            this.lblCalStatoAlim.Name = "lblCalStatoAlim";
+            // 
+            // btnCalCollegaAlim
+            // 
+            resources.ApplyResources(this.btnCalCollegaAlim, "btnCalCollegaAlim");
+            this.btnCalCollegaAlim.Name = "btnCalCollegaAlim";
+            this.btnCalCollegaAlim.UseVisualStyleBackColor = true;
+            this.btnCalCollegaAlim.Click += new System.EventHandler(this.btnCalCollegaAlim_Click);
+            // 
+            // grbCalListaAttivita
+            // 
+            this.grbCalListaAttivita.BackColor = System.Drawing.Color.White;
+            this.grbCalListaAttivita.Controls.Add(this.txtCalLogBox);
+            this.grbCalListaAttivita.Controls.Add(this.lbxCalListaStep);
+            this.grbCalListaAttivita.Controls.Add(this.txtCalStepCorrente);
+            this.grbCalListaAttivita.Controls.Add(this.lblCalStepCorrente);
+            resources.ApplyResources(this.grbCalListaAttivita, "grbCalListaAttivita");
+            this.grbCalListaAttivita.Name = "grbCalListaAttivita";
+            this.grbCalListaAttivita.TabStop = false;
+            // 
+            // txtCalLogBox
+            // 
+            resources.ApplyResources(this.txtCalLogBox, "txtCalLogBox");
+            this.txtCalLogBox.Name = "txtCalLogBox";
+            this.txtCalLogBox.ReadOnly = true;
+            // 
+            // lbxCalListaStep
+            // 
+            this.lbxCalListaStep.FormattingEnabled = true;
+            resources.ApplyResources(this.lbxCalListaStep, "lbxCalListaStep");
+            this.lbxCalListaStep.Name = "lbxCalListaStep";
+            // 
+            // txtCalStepCorrente
+            // 
+            resources.ApplyResources(this.txtCalStepCorrente, "txtCalStepCorrente");
+            this.txtCalStepCorrente.Name = "txtCalStepCorrente";
+            this.txtCalStepCorrente.ReadOnly = true;
+            // 
+            // lblCalStepCorrente
+            // 
+            resources.ApplyResources(this.lblCalStepCorrente, "lblCalStepCorrente");
+            this.lblCalStepCorrente.Name = "lblCalStepCorrente";
+            // 
             // lvwCicliBatteriaAA
             // 
             resources.ApplyResources(this.lvwCicliBatteriaAA, "lvwCicliBatteriaAA");
@@ -4617,12 +4981,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // tabCalibrazione
-            // 
-            resources.ApplyResources(this.tabCalibrazione, "tabCalibrazione");
-            this.tabCalibrazione.Name = "tabCalibrazione";
-            this.tabCalibrazione.UseVisualStyleBackColor = true;
             // 
             // frmSpyBat
             // 
@@ -4757,6 +5115,13 @@
             this.grbClonaRecordTestata.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            this.tabCalibrazione.ResumeLayout(false);
+            this.tabCalibrazione.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvwCalCorrentiVerifica)).EndInit();
+            this.grbCalValoriAttuali.ResumeLayout(false);
+            this.grbCalValoriAttuali.PerformLayout();
+            this.grbCalListaAttivita.ResumeLayout(false);
+            this.grbCalListaAttivita.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5328,5 +5693,50 @@
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.Button btnGeneraCodice;
         private System.Windows.Forms.TabPage tabCalibrazione;
+        private BrightIdeasSoftware.FastObjectListView flvwCalCorrentiVerifica;
+        private System.Windows.Forms.GroupBox grbCalValoriAttuali;
+        private System.Windows.Forms.TextBox txtCalErrMaxNeg;
+        private System.Windows.Forms.Label label140;
+        private System.Windows.Forms.TextBox txtCalErrMaxPos;
+        private System.Windows.Forms.Label label141;
+        private System.Windows.Forms.TextBox txtCalErrMax;
+        private System.Windows.Forms.Label label142;
+        private System.Windows.Forms.TextBox txtCalCurrSB;
+        private System.Windows.Forms.Label label143;
+        private System.Windows.Forms.TextBox txtCalCurrAlim;
+        private System.Windows.Forms.Label label144;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label130;
+        private System.Windows.Forms.TextBox txtCalVbatt;
+        private System.Windows.Forms.TextBox txtCalV3;
+        private System.Windows.Forms.TextBox txtCalV2;
+        private System.Windows.Forms.TextBox txtCalV1;
+        private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.Panel pnlCalVerifica;
+        private System.Windows.Forms.Button btnCalStartSeq;
+        private System.Windows.Forms.Label lblCalStatoAlim;
+        private System.Windows.Forms.Button btnCalCollegaAlim;
+        private System.Windows.Forms.GroupBox grbCalListaAttivita;
+        private System.Windows.Forms.TextBox txtCalLogBox;
+        private System.Windows.Forms.ListBox lbxCalListaStep;
+        private System.Windows.Forms.TextBox txtCalStepCorrente;
+        private System.Windows.Forms.Label lblCalStepCorrente;
+        private System.Windows.Forms.ComboBox cmbCalListaEsecuzioni;
+        private System.Windows.Forms.Button btnCalRicaricaSequenza;
+        private System.Windows.Forms.TextBox txtCalTemp;
+        private System.Windows.Forms.Label label145;
+        private System.Windows.Forms.TextBox txtCalElettr;
+        private System.Windows.Forms.Label label138;
+        private System.Windows.Forms.CheckBox chkCalAttivaAlim;
+        private System.Windows.Forms.CheckBox chkCalRegistraSequenza;
+        private System.Windows.Forms.TextBox txtCalNumSpire;
+        private System.Windows.Forms.Label label148;
+        private System.Windows.Forms.TextBox txtCalAver;
+        private System.Windows.Forms.Label label147;
+        private System.Windows.Forms.TextBox txtCalAcal;
+        private System.Windows.Forms.Label label146;
+        private System.Windows.Forms.Button btnCalRefreshLista;
+        private System.Windows.Forms.ComboBox cmbCalTipoGrafico;
     }
 }

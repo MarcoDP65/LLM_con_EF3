@@ -123,5 +123,43 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Indicazione del verso corrente da impostare o verificare
+        /// </summary>
+        public enum VersoCorrente : byte { Diretto = 0x0F, Inverso = 0xF0, NonDefinito = 0x00 };
+
+
+        public enum EsitoControlloValore : byte
+        {
+            EsitoPositivo = 0x00,
+            NonEffettuato = 0xFF,
+            IgnoraVerifica = 0xF1,
+            AnnullaVerifica = 0xF2,
+            Timeout = 0xF3,
+            ErroreGenerico = 0xEE,
+            CorrenteInversa = 0x01,
+            AlimentatoreScollegato = 0x02,
+            LetturaZero = 0x03,
+            LetturaNonCoerente = 0x04,
+            ErroreAlimentatore = 0x05,
+            ErroreLetturaSB = 0x06,
+            ErroreCorrente= 0x20,
+            ErroreCorrentePositiva = 0x21,
+            ErroreCorrenteNegativa = 0x22,
+            ErroreTensioni = 0x40,
+            ErroreV1 = 0x41,
+            ErroreV2 = 0x42,
+            ErroreV3 = 0x43,
+            ErroreVBatt = 0x44,
+            ErroreNTC = 0x45,
+            ErroreVBk = 0x46,
+            ErroreElettr = 0x47,
+        };
+
+
+
+
+
+
     }
 }

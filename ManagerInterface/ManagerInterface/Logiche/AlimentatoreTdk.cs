@@ -442,7 +442,10 @@ namespace PannelloCharger
 
 
 
-
+        /// <summary>
+        /// Legge dall'alimentatore corrente programmata e erogata (istantanea) e valorizza i relativi attributi.
+        /// </summary>
+        /// <returns></returns>
         public bool LeggiCorrenti()
         {
             try
@@ -563,7 +566,10 @@ namespace PannelloCharger
         }
 
 
-
+        /// <summary>
+        /// Legge lo stato dell'alimentatore: se true l'uscita è attiva.
+        /// </summary>
+        /// <returns></returns>
         public bool LeggiStato()
         {
             try
@@ -600,6 +606,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Imposta lo stato dell'uscita alimentatore
+        /// </summary>
+        /// <param name="Acceso">if set to <c>true</c> l'alimentatore attiva l'uscita (eroga corrente).</param>
+        /// <returns></returns>
         public bool ImpostaStato(bool Acceso)
         {
             try

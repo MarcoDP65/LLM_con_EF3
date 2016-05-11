@@ -96,4 +96,12 @@ namespace ChargerLogic
         public bool DivisibileInCelle { get; set; }
         public int MilliVoltCellaNom { get; set; }
     }
+
+    public class TipoGrafico
+    {
+        public int Progressivo { get; set; }
+        public string Descrizione { get; set; }
+        public byte Codice { get; set; }
+
+    }
 }

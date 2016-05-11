@@ -1392,8 +1392,6 @@ namespace PannelloCharger
                 serTemperatura.DataFieldY = "Value";
                 serTemperatura.Color = OxyPlot.OxyColors.Cornsilk;
 
-                //serTemperatura.TrackerFormatString = serTemperatura.Title + "\n\nIstante={2:" + _modelloIntervallo + "}\nTemperatura={4:0.0} °C";
-
                 Log.Debug("GraficoCiclo: fine serie inizio assi");
                 if (TempoRelativo == true)
                 {
@@ -1459,29 +1457,6 @@ namespace PannelloCharger
                     MajorGridlineColor = OxyPlot.OxyColors.LightBlue,
                     MinorGridlineColor = OxyPlot.OxyColors.LightBlue,
                 };
-
-                /*
-                
-                OxyPlot.Axes.LinearAxis CAxisTemp = new OxyPlot.Axes.LinearAxis
-                {
-                    Position = OxyPlot.Axes.AxisPosition.Left,
-                    MajorGridlineStyle = OxyPlot.LineStyle.Solid,
-                    //MinorGridlineStyle = OxyPlot.LineStyle.Dot,
-                    TickStyle = OxyPlot.Axes.TickStyle.Outside,
-                    Minimum = _tMin,
-                    Maximum = _tMax,
-                    PositionTier = 2,
-                    Unit = " °C ",
-                    TitleFontSize = 12,
-                    TitleFontWeight = OxyPlot.FontWeights.Bold,
-                    AxisDistance = 15,
-                    AxislineStyle = OxyPlot.LineStyle.Solid,
-                    Key = "Temperatura",
-                    MajorGridlineColor = OxyPlot.OxyColors.LightGreen,
-                    MinorGridlineColor = OxyPlot.OxyColors.LightGreen,
-
-                };
-                */
                 
                 Log.Debug("GraficoCiclo: fine definizioni aggiunta elementi");
 

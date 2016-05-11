@@ -111,7 +111,7 @@ namespace Utility
             }
         }
 
-        public static string StringaCorrente(short Corrente, string Formato = "0")
+        public static string StringaCorrente(short Corrente, string Formato = "0.0")
         {
             try
             {
@@ -150,7 +150,7 @@ namespace Utility
                 string _correnti = "";
                 float _inAmpere;
                 _inAmpere = Math.Abs((float)Corrente / 10);
-                _correnti = _inAmpere.ToString("0");
+                _correnti = _inAmpere.ToString("0.0");
                 if (Corrente < 0) _correnti = "-" + _correnti;
                 return _correnti;
             }

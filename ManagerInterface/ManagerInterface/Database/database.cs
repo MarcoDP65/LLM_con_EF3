@@ -115,6 +115,8 @@ namespace MoriData
             CreateTable<_sbMemBreve>();
             CreateTable<_sbProgrammaRicarica>();
             CreateTable<_sbDatiCliente>();
+            CreateTable<_sbTestataCalibrazione>();
+            CreateTable<_sbAnalisiCorrente>();
 
             inizializzaUtente();
             inizializzaDefSoglie(); 

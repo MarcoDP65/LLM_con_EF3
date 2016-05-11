@@ -211,5 +211,10 @@ namespace PannelloCharger
 
             }
         }
+
+        private void txtProgcCelleV3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

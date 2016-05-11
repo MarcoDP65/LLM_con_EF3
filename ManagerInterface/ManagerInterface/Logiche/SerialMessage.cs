@@ -1449,6 +1449,9 @@ namespace ChargerLogic
             {
                 string _risposta = "";
 
+                if (buffer == null)
+                    return "";
+
                 for (int _i = 0; _i < buffer.Length; _i++)
                 {
                     _risposta += buffer[_i].ToString("X2");

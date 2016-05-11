@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.10.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -198,6 +198,7 @@
     <Compile Include="Database\sbProgrammaRicarica.cs" />
     <Compile Include="Database\sbSoglie.cs" />
     <Compile Include="Database\sbStatoFirmware.cs" />
+    <Compile Include="Database\sbTestataCalibrazione.cs" />
     <Compile Include="Database\sbVariabili.cs" />
     <Compile Include="Database\spybattData.cs" />
     <Compile Include="Database\utente.cs" />
@@ -214,6 +215,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattCalibrazione.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBat.cs">
@@ -296,6 +300,12 @@
     </Compile>
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMessaggioElettrolita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMessaggioElettrolita.Designer.cs">
+      <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmRichiestaCodice.cs">
       <SubType>Form</SubType>
@@ -579,6 +589,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMessaggioElettrolita.resx">
+      <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRichiestaCodice.en.resx">
       <DependentUpon>frmRichiestaCodice.cs</DependentUpon>

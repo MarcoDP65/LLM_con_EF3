@@ -5888,6 +5888,23 @@ namespace PannelloCharger
 
 
         }
+
+        private void optMemSequenze_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCloneBaseAddress();
+        }
+
+        private void SetCloneBaseAddress()
+        {
+            if (optMemProcedure.Checked)
+            {
+                txtMemCicliStartAddr.Text = "12E000";
+            }
+            if (optMemSequenze.Checked)
+            {
+                txtMemCicliStartAddr.Text = "2000";
+            }
+        }
     }
 
 }

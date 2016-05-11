@@ -206,15 +206,6 @@
   <data name="mnuCercaDispositiviCOM.Text" xml:space="preserve">
     <value>Cerca Dispositivi su Porta COM</value>
   </data>
-  <data name="mnuServizi.Text" xml:space="preserve">
-    <value>SERVIZI</value>
-  </data>
-  <data name="flashSPYBATTToolStripMenuItem.Text" xml:space="preserve">
-    <value>Flash SPY-BATT</value>
-  </data>
-  <data name="flashFTDIToolStripMenuItem.Text" xml:space="preserve">
-    <value>Flash FTDI</value>
-  </data>
   <data name="mnuSpybat.Text" xml:space="preserve">
     <value>SPY-BATT</value>
   </data>
@@ -262,6 +253,15 @@
   </data>
   <data name="mnuCercaDispositiviUSB.Text" xml:space="preserve">
     <value>Cerca Dispositivi USB</value>
+  </data>
+  <data name="mnuServizi.Text" xml:space="preserve">
+    <value>SERVIZI</value>
+  </data>
+  <data name="flashSPYBATTToolStripMenuItem.Text" xml:space="preserve">
+    <value>Flash SPY-BATT</value>
+  </data>
+  <data name="flashFTDIToolStripMenuItem.Text" xml:space="preserve">
+    <value>Flash FTDI</value>
   </data>
   <data name="&gt;&gt;sstMain.Name" xml:space="preserve">
     <value>sstMain</value>

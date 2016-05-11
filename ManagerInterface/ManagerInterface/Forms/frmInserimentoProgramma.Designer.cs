@@ -124,6 +124,7 @@
             // 
             resources.ApplyResources(this.txtProgcCelleV3, "txtProgcCelleV3");
             this.txtProgcCelleV3.Name = "txtProgcCelleV3";
+            this.txtProgcCelleV3.TextChanged += new System.EventHandler(this.txtProgcCelleV3_TextChanged);
             // 
             // txtProgcCelleV2
             // 

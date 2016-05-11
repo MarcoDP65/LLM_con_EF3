@@ -221,11 +221,11 @@ namespace MoriData
             try
             {
 
-                _sbdc.Client = "";
-                _sbdc.BatteryBrand = "";
-                _sbdc.BatteryModel = "";
-                _sbdc.BatteryId = "";
-                _sbdc.ClientNote = "";
+                _sbdc.Client = " ";
+                _sbdc.BatteryBrand = " ";
+                _sbdc.BatteryModel = " ";
+                _sbdc.BatteryId = " ";
+                _sbdc.ClientNote = " ";
                 _sbdc.ClientCounter += 1;
                 _sbdc.CicliAttesi = 0;
                 if (!SalvaSeriale)

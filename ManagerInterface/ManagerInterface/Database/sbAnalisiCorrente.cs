@@ -21,6 +21,8 @@ namespace MoriData
         [MaxLength(24)]
         public string IdApparato { get; set; }
         public uint Progressivo { get; set; }
+
+        public ushort IdEsecuzione { get; set; }
         public uint Ciclo { get; set; }
         public uint Lettura { get; set; }
         public uint Spire { get; set; }
@@ -60,6 +62,14 @@ namespace MoriData
             valido = false;
             _sbAC = new _sbAnalisiCorrente();
             _database = connessione;
+            _datiSalvati = true;
+            _recordPresente = false;
+        }
+
+        public sbAnalisiCorrente(_sbAnalisiCorrente _dati)
+        {
+            _sbAC = _dati;
+            valido = false;
             _datiSalvati = true;
             _recordPresente = false;
         }
@@ -171,6 +181,16 @@ namespace MoriData
         float Aspybatt { get; set; }
 
         */
+
+        public ushort IdEsecuzione
+        {
+            get { return _sbAC.IdEsecuzione; }
+            set
+            {
+                _sbAC.IdEsecuzione = value;
+                _datiSalvati = false;
+            }
+        }
 
         public uint Progressivo
         {

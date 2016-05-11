@@ -248,6 +248,7 @@ namespace ChargerLogic
             } 
         }
 
+
         public bool ControllaAttesa(DateTime UltimoIstante, int SecondiTimeOut = 300)
         {
             bool _risposta = false;
@@ -3099,13 +3100,16 @@ namespace ChargerLogic
                 Log.Debug("---------------------------------------------------------------------------------------------------------------");
  
                 _rxRisposta = false;
-                _mS.CustomerData.Client = sbCliente.Client;
-                _mS.CustomerData.ClientNote = sbCliente.ClientNote;
-                _mS.CustomerData.BatteryBrand = sbCliente.BatteryBrand;
-                _mS.CustomerData.BatteryId = sbCliente.BatteryId;
-                _mS.CustomerData.BatteryModel = sbCliente.BatteryModel;
+
+            
+                _mS.CustomerData.Client = sbCliente.Client.ToString();
+                if (sbCliente.ClientNote == null) sbCliente.ClientNote = "";
+                _mS.CustomerData.ClientNote = sbCliente.ClientNote.ToString();
+                _mS.CustomerData.BatteryBrand = sbCliente.BatteryBrand.ToString();
+                _mS.CustomerData.BatteryId = sbCliente.BatteryId.ToString();
+                _mS.CustomerData.BatteryModel = sbCliente.BatteryModel.ToString();
                 _mS.CustomerData.CicliAttesi = (ushort)sbCliente.CicliAttesi;
-                _mS.CustomerData.SerialNumber = sbCliente.SerialNumber;
+                _mS.CustomerData.SerialNumber = sbCliente.SerialNumber.ToString();
 
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 _mS.Comando = SerialMessage.TipoComando.SB_W_DatiCliente;

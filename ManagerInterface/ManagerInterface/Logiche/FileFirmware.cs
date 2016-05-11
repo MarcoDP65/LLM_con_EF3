@@ -397,7 +397,7 @@ namespace ChargerLogic
                 FirmwareBlock.Release = FirmwareData.Release;
                 FirmwareBlock.ReleaseDate = FirmwareData.ReleaseDate;
 
-                if (FirmwareData.Release.Substring(0,4) != "1.11")
+                if (FirmwareData.Release.Substring(0,2) != "1.")
                 {
                     _esito = ExitCode.ErroreGenerico;
                     return _esito;
