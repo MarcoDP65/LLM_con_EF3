@@ -469,7 +469,7 @@ namespace PannelloCharger
                 txtIdEventoLungo.Text = CicloLungo.IdMemoriaLunga.ToString(); // EventoLungo.IdEvento.ToString();
                 txtInizioEvento.Text = CicloLungo.DataOraStart; //_sb.StringaTimestamp(EventoLungo.DataOraStart);
                 txtFineEvento.Text = CicloLungo.DataOraFine; //_sb.StringaTimestamp(EventoLungo.DataOraFine);
-                this.Text = "Dettaglio Ciclo " + CicloLungo.IdMemoriaLunga.ToString();
+                this.Text = StringheMessaggio.strTitoloListaBrevi + " " + CicloLungo.IdMemoriaLunga.ToString();
                 //Programma
                 txtNumProgramma.Text = CicloLungo.ProgrammaAttivo.IdProgramma.ToString();
                 txtCapacitaNominale.Text = FunzioniMR.StringaCorrente( (short)CicloLungo.ProgrammaAttivo.BatteryAhdef ) + " Ah";
@@ -1020,9 +1020,11 @@ namespace PannelloCharger
                     TicklineColor = OxyPlot.OxyColors.Red,
                     AxisTitleDistance = 2,
                     AxislineThickness = 2,
+                    ExtraGridlines = new Double[] { 0 },
+                    ExtraGridlineColor = OxyPlot.OxyColors.Black,
+                    ExtraGridlineThickness = 2,
 
-
-                };
+            };
 
                 OxyPlot.Axes.LinearAxis CAxisTemp = new OxyPlot.Axes.LinearAxis
                 {

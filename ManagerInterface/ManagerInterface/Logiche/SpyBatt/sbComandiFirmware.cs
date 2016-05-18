@@ -14,6 +14,7 @@ using FTD2XX_NET;
 using MoriData;
 using Utility;
 using Newtonsoft.Json;
+using PannelloCharger;
 
 namespace ChargerLogic
 {
@@ -105,7 +106,7 @@ namespace ChargerLogic
         /// <param name="Firmware"></param>
         /// <param name="RunAsinc"></param>
         /// <returns></returns>
-        public bool AggiornaFirmware(string IdApparato, bool ApparatoConnesso,byte Area, BloccoFirmware Firmware, bool RunAsinc = false )
+        public bool AggiornaFirmware(string IdApparato, bool ApparatoConnesso,byte Area, BloccoFirmware Firmware, bool RunAsinc = false, bool WaitReconnect = true )
         {
             try
             {
@@ -118,6 +119,7 @@ namespace ChargerLogic
 
                 bool _recordPresente;
 
+                Thread.CurrentThread.CurrentUICulture = _parametri.currentCulture;
 
                 if (true)  //ApparatoConnesso)
                 {
@@ -134,7 +136,7 @@ namespace ChargerLogic
                         {
                             sbWaitStep _passo = new sbWaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                            _passo.Titolo = "Fase 1 - Invio Testata";
+                            _passo.Titolo = StringheMessaggio.strMsgAggFWFase1;  // "Fase 1 - Invio Testata";
                             _passo.Eventi = 1;
                             _passo.Step = -1;
                             _passo.EsecuzioneInterrotta = false;
@@ -168,7 +170,7 @@ namespace ChargerLogic
                             {
                                 sbWaitStep _passo = new sbWaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                _passo.Titolo = "Caricamento Testata Fallito";
+                                _passo.Titolo = StringheMessaggio.strMsgAggFWFase1err1;  //"Caricamento Testata Fallito";
                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                 _passo.Step = -1;
                                 _passo.EsecuzioneInterrotta = true;
@@ -194,7 +196,7 @@ namespace ChargerLogic
                             {
                                 sbWaitStep _passo = new sbWaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                _passo.Titolo = "Fase 2 - Invio Dati";
+                                _passo.Titolo = StringheMessaggio.strMsgAggFWFase2;  //"Fase 2 - Invio Dati";
                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                 _passo.Step = -1;
                                 _passo.EsecuzioneInterrotta = false;
@@ -262,7 +264,7 @@ namespace ChargerLogic
                                                 Log.Error("FW Update: errore pacchetto flash 1 #" + _pacchettiInviati);
                                                 sbWaitStep _passo = new sbWaitStep();
                                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                                _passo.Titolo = "Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                                                _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                                 _passo.Step = -1;
                                                 _passo.EsecuzioneInterrotta = true;
@@ -348,7 +350,7 @@ namespace ChargerLogic
                                                 Log.Error("FW Update: errore pacchetto flash 1 #" + _pacchettiInviati);
                                                 sbWaitStep _passo = new sbWaitStep();
                                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                                _passo.Titolo = "Caricamento Applicazione fallito ( Blocco Flash 2 )";
+                                                _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err2;  //"Caricamento Applicazione fallito ( Blocco Flash 2 )";
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                                 _passo.Step = -1;
                                                 _passo.EsecuzioneInterrotta = true;
@@ -427,7 +429,7 @@ namespace ChargerLogic
                                                 Log.Error("FW Update: errore pacchetto Proxy #" + _pacchettiInviati);
                                                 sbWaitStep _passo = new sbWaitStep();
                                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                                _passo.Titolo = "Caricamento Applicazione fallito ( Blocco Proxy Table )";
+                                                _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err3;  //"Caricamento Applicazione fallito ( Blocco Proxy Table )";
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                                 _passo.Step = -1;
                                                 _passo.EsecuzioneInterrotta = true;
@@ -457,6 +459,62 @@ namespace ChargerLogic
                             Log.Debug("----------------------------------------------------------");
 
 
+
+                            //ora, se previsto aspetto il riavvio e ricollego
+                            if(WaitReconnect)
+                            {
+                                int _progress = 0;
+                                double _valProgress = 0;
+                                //  mi ricollego aspettando il riavvio
+                                //Application.DoEvents();
+
+                                if (Step != null)
+                                {
+                                    sbWaitStep _passo = new sbWaitStep();
+                                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                    _passo.Titolo = StringheMessaggio.strMsgAggFWFase3;  //"Fase 3 - riavvio SPY-BATT";
+                                    _passo.Eventi = 1;
+                                    _passo.Step = -1;
+                                    _passo.EsecuzioneInterrotta = false;
+                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                    Step(this, _stepEv);
+                                }
+
+                                _esito = false;
+                                int _tentativi = 0;
+                                _lastProgress = 0;
+                                while (!_esito)
+                                {
+                                    System.Threading.Thread.Sleep(500);
+                                    if (Step != null)
+                                    {
+                                        sbWaitStep _passo = new sbWaitStep();
+                                        _passo.Eventi = 20;
+                                        _passo.Step = _tentativi++;
+                                        _passo.EsecuzioneInterrotta = false;
+                                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                        _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                        _valProgress = (_tentativi * 5) ;
+
+                                        _progress = (int)_valProgress;
+                                        // if (_lastProgress != _progress)
+                                        {
+                                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                            //Log.Debug("Passo " + _risposteRicevute.ToString());
+                                            Step(this, _stepEv);
+                                            _lastProgress = _progress;
+                                        }
+                                    }
+
+                                    _esito = VerificaPresenza();
+
+                                }
+
+                                //dopo la riconnessione, sincronizzo l'orologio
+
+                                if(_esito) ScriviOrologio();
+
+                            }
 
 
                         }

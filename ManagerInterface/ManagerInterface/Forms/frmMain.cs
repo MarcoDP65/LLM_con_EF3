@@ -289,7 +289,8 @@ namespace PannelloCharger
                 {
                     if (DispositiviUSB.NumDevSpyBatt > 0)
                     {
-                        DialogResult risposta = MessageBox.Show("Trovato dispositivo SPY-BATT collegato alla porta USB \n Apro il collegamento ? ", "SPY-BATT", MessageBoxButtons.YesNo);
+                        DialogResult risposta = MessageBox.Show(StringheComuni.TrovatoDispositivo + " SPY-BATT " + StringheComuni.CollegatoUSB + " \n " + StringheComuni.AproCollegamento + " ? ", "SPY-BATT", MessageBoxButtons.YesNo);
+                        //DialogResult risposta = MessageBox.Show("Trovato dispositivo SPY-BATT collegato alla porta USB \n Apro il collegamento ? ", "SPY-BATT", MessageBoxButtons.YesNo)//;
 
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
                         {
@@ -345,7 +346,8 @@ namespace PannelloCharger
                     }
                     if (Dispositivi.PorteLadeLight > 0)
                     {
-                        DialogResult risposta = MessageBox.Show("Trovato dispositivo LADE LIGHT collegato alla porta " + Dispositivi.PortaLadeLight + "\n Apro il collegamento ? ", "LADE LIGHT", MessageBoxButtons.YesNo);
+                        DialogResult risposta = MessageBox.Show(StringheComuni.TrovatoDispositivo + " LADE LIGHT " + StringheComuni.CollegatoUSB + " \n " + StringheComuni.AproCollegamento + " ? ", " LADE LIGHT", MessageBoxButtons.YesNo);
+                       // DialogResult risposta = MessageBox.Show("Trovato dispositivo LADE LIGHT collegato alla porta " + Dispositivi.PortaLadeLight + "\n Apro il collegamento ? ", "LADE LIGHT", MessageBoxButtons.YesNo);
 
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
                         {

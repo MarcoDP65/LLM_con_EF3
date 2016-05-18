@@ -210,4 +210,37 @@
   <data name="strVistaLunghiCol15" xml:space="preserve">
     <value>C.F.</value>
   </data>
+  <data name="strVistaLunghiCol20" xml:space="preserve">
+    <value>Max Unbal.</value>
+  </data>
+  <data name="strMsgAggFWFase1" xml:space="preserve">
+    <value>Step 1: Send Header</value>
+  </data>
+  <data name="strMsgAggFWFase2" xml:space="preserve">
+    <value>Step 2: Send Data</value>
+  </data>
+  <data name="strMsgAggFWFase3" xml:space="preserve">
+    <value>Step 3: Device restart</value>
+  </data>
+  <data name="strMsgAggFWFase2err1" xml:space="preserve">
+    <value>App Upload Failed (Flash 1)</value>
+  </data>
+  <data name="strMsgAggFWFase2err2" xml:space="preserve">
+    <value>App Upload Failed (Flash 2)</value>
+  </data>
+  <data name="strMsgAggFWFase2err3" xml:space="preserve">
+    <value>App Upload Failed (Proxy Table)</value>
+  </data>
+  <data name="strMsgAggFWFase1err1" xml:space="preserve">
+    <value>Header Upload Failed</value>
+  </data>
+  <data name="strMsgAggiornamentoFirmware" xml:space="preserve">
+    <value>Firmware Update</value>
+  </data>
+  <data name="strVistaLunghiCol12" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="strTitoloListaBrevi" xml:space="preserve">
+    <value>Phase Detail</value>
+  </data>
 </root>

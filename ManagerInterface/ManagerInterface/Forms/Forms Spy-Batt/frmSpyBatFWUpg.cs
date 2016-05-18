@@ -488,6 +488,9 @@ namespace PannelloCharger
         {
             try
             {
+                bool _esito;
+                int _tentativi;
+
                 Log.Debug("Lancio aggiornamento firmware");
                 // verifico se ho caricato i dati
 
@@ -521,13 +524,30 @@ namespace PannelloCharger
                 _avCicli.InviaACK = InviaACK;
                 _avCicli.SalvaHexDump = false;
                 _avCicli.FileHexDump = "";
-                _avCicli.Text = "Aggiornamento Firmware";
+                _avCicli.Text = StringheMessaggio.strMsgAggiornamentoFirmware; // "Aggiornamento Firmware";
+
                 Log.Debug("FRM firmwareUPD : ");
 
 
                 // Apro il form con le progressbar
 
                 _avCicli.ShowDialog(this);
+
+
+                // aspetto 5 secondi poi mi ricollego
+                Application.DoEvents();
+                _esito = false;
+                _tentativi = 0;
+                while (!_esito)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    Application.DoEvents();
+                    _tentativi++;
+                    _esito = _sb.VerificaPresenza();
+                    Application.DoEvents();
+                }
+            
+
 
                 this.Cursor = Cursors.Default;
             }

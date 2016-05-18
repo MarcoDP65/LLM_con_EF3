@@ -16014,6 +16014,66 @@
   <data name="&gt;&gt;tbpClonaScheda.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="txtCalSecondiAttesa.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtCalSecondiAttesa.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 182</value>
+  </data>
+  <data name="txtCalSecondiAttesa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 30</value>
+  </data>
+  <data name="txtCalSecondiAttesa.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="txtCalSecondiAttesa.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtCalSecondiAttesa.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.Name" xml:space="preserve">
+    <value>txtCalSecondiAttesa</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label149.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label149.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label149.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 162</value>
+  </data>
+  <data name="label149.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="label149.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="label149.Text" xml:space="preserve">
+    <value>sec Cal</value>
+  </data>
+  <data name="&gt;&gt;label149.Name" xml:space="preserve">
+    <value>label149</value>
+  </data>
+  <data name="&gt;&gt;label149.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label149.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;label149.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="cmbCalTipoGrafico.Location" type="System.Drawing.Point, System.Drawing">
     <value>347, 243</value>
   </data>
@@ -16033,7 +16093,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;cmbCalTipoGrafico.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="btnCalRefreshLista.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16060,13 +16120,13 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;btnCalRefreshLista.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtCalNumSpire.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="txtCalNumSpire.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 182</value>
+    <value>205, 182</value>
   </data>
   <data name="txtCalNumSpire.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 30</value>
@@ -16090,7 +16150,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;txtCalNumSpire.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label148.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16099,7 +16159,7 @@
     <value>NoControl</value>
   </data>
   <data name="label148.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 162</value>
+    <value>205, 162</value>
   </data>
   <data name="label148.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 17</value>
@@ -16120,16 +16180,16 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;label148.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtCalAver.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="txtCalAver.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 182</value>
+    <value>112, 182</value>
   </data>
   <data name="txtCalAver.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 30</value>
+    <value>77, 30</value>
   </data>
   <data name="txtCalAver.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -16150,7 +16210,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;txtCalAver.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label147.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16159,7 +16219,7 @@
     <value>NoControl</value>
   </data>
   <data name="label147.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 162</value>
+    <value>109, 162</value>
   </data>
   <data name="label147.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 17</value>
@@ -16180,16 +16240,16 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;label147.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtCalAcal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="txtCalAcal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 182</value>
+    <value>25, 182</value>
   </data>
   <data name="txtCalAcal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 30</value>
+    <value>77, 30</value>
   </data>
   <data name="txtCalAcal.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -16210,7 +16270,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;txtCalAcal.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label146.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16222,13 +16282,13 @@
     <value>22, 162</value>
   </data>
   <data name="label146.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 17</value>
+    <value>61, 17</value>
   </data>
   <data name="label146.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
   </data>
   <data name="label146.Text" xml:space="preserve">
-    <value>A Calibrazione</value>
+    <value>A Calibr.</value>
   </data>
   <data name="&gt;&gt;label146.Name" xml:space="preserve">
     <value>label146</value>
@@ -16240,7 +16300,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;label146.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="chkCalRegistraSequenza.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16267,7 +16327,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;chkCalRegistraSequenza.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="flvwCalCorrentiVerifica.Location" type="System.Drawing.Point, System.Drawing">
     <value>777, 13</value>
@@ -16288,7 +16348,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;flvwCalCorrentiVerifica.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="chkCalAttivaAlim.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16318,7 +16378,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;chkCalAttivaAlim.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="cmbCalListaEsecuzioni.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 122</value>
@@ -16339,7 +16399,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;cmbCalListaEsecuzioni.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="btnCalRicaricaSequenza.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16366,7 +16426,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;btnCalRicaricaSequenza.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="txtCalTemp.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -17017,7 +17077,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;grbCalValoriAttuali.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="pnlCalVerifica.Location" type="System.Drawing.Point, System.Drawing">
     <value>347, 280</value>
@@ -17038,7 +17098,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;pnlCalVerifica.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="btnCalStartSeq.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -17068,7 +17128,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;btnCalStartSeq.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <metadata name="lblCalStatoAlim.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -17101,7 +17161,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;lblCalStatoAlim.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="btnCalCollegaAlim.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -17128,7 +17188,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;btnCalCollegaAlim.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="txtCalLogBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 6pt</value>
@@ -17260,7 +17320,7 @@
     <value>tabCalibrazione</value>
   </data>
   <data name="&gt;&gt;grbCalListaAttivita.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="tabCalibrazione.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>

@@ -2651,7 +2651,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.GridLines = true;
 
                 BrightIdeasSoftware.OLVColumn colIdBreve = new BrightIdeasSoftware.OLVColumn();
-                colIdBreve.Text = "Setup";
+                colIdBreve.Text = StringheColonneTabelle.ListaSetup01Id; // "Setup";
                 colIdBreve.AspectName = "IdProgramma";
                 colIdBreve.Width = 60;
                 colIdBreve.HeaderTextAlign = HorizontalAlignment.Left;
@@ -2659,7 +2659,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colIdBreve);
 
                 BrightIdeasSoftware.OLVColumn colDataOra = new BrightIdeasSoftware.OLVColumn();
-                colDataOra.Text = "Installazione";
+                colDataOra.Text = StringheColonneTabelle.ListaSetup02Data; //  "Installazione";
                 colDataOra.AspectName = "DataInstallazione";
                 colDataOra.Width = 100;
                 colDataOra.HeaderTextAlign = HorizontalAlignment.Left;
@@ -2667,7 +2667,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colDataOra);
 
                 BrightIdeasSoftware.OLVColumn colVdef = new BrightIdeasSoftware.OLVColumn();
-                colVdef.Text = "V def";
+                colVdef.Text = StringheColonneTabelle.ListaSetup03Vdef; // "V def";
                 colVdef.AspectName = "BatteryVdef";
 
                 colVdef.AspectGetter = delegate (object _Valore)
@@ -2681,7 +2681,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colVdef);
 
                 BrightIdeasSoftware.OLVColumn colAhdef = new BrightIdeasSoftware.OLVColumn();
-                colAhdef.Text = "Ah def";
+                colAhdef.Text = StringheColonneTabelle.ListaSetup04Adef; // "Ah def";
                 colAhdef.AspectName = "BatteryAhdef";
 
                 colAhdef.AspectGetter = delegate (object _Valore)
@@ -2695,7 +2695,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colAhdef);
 
                 BrightIdeasSoftware.OLVColumn colBattType = new BrightIdeasSoftware.OLVColumn();
-                colBattType.Text = "Type";
+                colBattType.Text = StringheColonneTabelle.ListaSetup05Type; // "Type";
                 colBattType.AspectName = "BatteryType";
                 colBattType.Width = 80;
                 colBattType.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2703,7 +2703,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colBattType);
 
                 BrightIdeasSoftware.OLVColumn colCelleTot = new BrightIdeasSoftware.OLVColumn();
-                colCelleTot.Text = "Tot Cells";
+                colCelleTot.Text = StringheColonneTabelle.ListaSetup06TCell; // "Tot Cells";
                 colCelleTot.AspectName = "BatteryCells";
                 colCelleTot.Width = 90;
                 colCelleTot.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2711,7 +2711,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colCelleTot);
 
                 BrightIdeasSoftware.OLVColumn colV3 = new BrightIdeasSoftware.OLVColumn();
-                colV3.Text = "Celle 3";
+                colV3.Text = StringheColonneTabelle.ListaSetup07Cel3; //  "Celle 3";
                 colV3.AspectName = "BatteryCell3";
                 colV3.Width = 80;
                 colV3.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2719,7 +2719,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colV3);
 
                 BrightIdeasSoftware.OLVColumn colV2 = new BrightIdeasSoftware.OLVColumn();
-                colV2.Text = "Celle 2";
+                colV2.Text = StringheColonneTabelle.ListaSetup08Cel2; // "Celle 2";
                 colV2.AspectName = "BatteryCell2";
                 colV2.Width = 80;
                 colV2.HeaderTextAlign = HorizontalAlignment.Center;
@@ -2727,7 +2727,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colV2);
 
                 BrightIdeasSoftware.OLVColumn colV1 = new BrightIdeasSoftware.OLVColumn();
-                colV1.Text = "Celle 1";
+                colV1.Text = StringheColonneTabelle.ListaSetup09Cel1; // "Celle 1";
                 colV1.AspectName = "BatteryCell1";
                 colV1.Width = 80;
                 colV1.HeaderTextAlign = HorizontalAlignment.Center;
@@ -7155,23 +7155,26 @@ namespace PannelloCharger
 
                 sbTestataCalibrazione _sequenzaCorrente = new sbTestataCalibrazione(_logiche.dbDati.connessione);
 
-                int _AmaxCal = 300;
+                int _AmaxCal = 250;
                 int _AmaxVer = 300;
                 int _spire = 2;
+                int _secAttesa = 5;
 
 
                 int.TryParse(txtCalAcal.Text, out _AmaxCal);
                 int.TryParse(txtCalAver.Text, out _AmaxVer);
                 int.TryParse(txtCalNumSpire.Text, out _spire);
-
+                int.TryParse(txtCalSecondiAttesa.Text, out _secAttesa);
+                if (_secAttesa < 1) _secAttesa = 1;
+                if (_secAttesa > 60) _secAttesa = 60;
 
                 txtCalAcal.Text = _AmaxCal.ToString();
                 txtCalAver.Text = _AmaxVer.ToString();
                 txtCalNumSpire.Text = _spire.ToString();
+                txtCalSecondiAttesa.Text = _secAttesa.ToString();
 
+                LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa);
 
-
-                LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire);
                 if (chkCalRegistraSequenza.Checked)
                 {
                     _sequenzaCorrente.LettureCorrente = ValoriTestCorrente;

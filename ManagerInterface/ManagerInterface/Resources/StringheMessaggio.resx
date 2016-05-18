@@ -237,4 +237,31 @@
   <data name="strFirmwareNonValido" xml:space="preserve">
     <value>Versione Firmware non riconosciuta</value>
   </data>
+  <data name="strMsgAggFWFase1" xml:space="preserve">
+    <value>Fase 1 - Invio Testata</value>
+  </data>
+  <data name="strMsgAggFWFase1err1" xml:space="preserve">
+    <value>Caricamento Testata Fallito</value>
+  </data>
+  <data name="strMsgAggFWFase2" xml:space="preserve">
+    <value>Fase 2 - Invio Dati</value>
+  </data>
+  <data name="strMsgAggFWFase2err1" xml:space="preserve">
+    <value>Caricamento Applicazione fallito ( Blocco Flash 1 )</value>
+  </data>
+  <data name="strMsgAggFWFase2err2" xml:space="preserve">
+    <value>Caricamento Applicazione fallito ( Blocco Flash 2 )</value>
+  </data>
+  <data name="strMsgAggFWFase2err3" xml:space="preserve">
+    <value>Caricamento Applicazione fallito ( Blocco Proxy Table )</value>
+  </data>
+  <data name="strMsgAggFWFase3" xml:space="preserve">
+    <value>Fase 3 - Riavvio SPY-BATT</value>
+  </data>
+  <data name="strMsgAggiornamentoFirmware" xml:space="preserve">
+    <value>Aggiornamento Firmware</value>
+  </data>
+  <data name="strTitoloListaBrevi" xml:space="preserve">
+    <value>Dettaglio Fase</value>
+  </data>
 </root>

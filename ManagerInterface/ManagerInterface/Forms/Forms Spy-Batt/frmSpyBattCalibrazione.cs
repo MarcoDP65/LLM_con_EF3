@@ -1192,7 +1192,7 @@ namespace PannelloCharger
             }
         }
 
-        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2)
+        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2, int SecondiAttesa = 5)
         {
 
 
@@ -1477,7 +1477,7 @@ namespace PannelloCharger
                 // Comincio con la calibrazione positiva:
 
                 Lambda.Alimentatatore.ImpostaCorrente(CorrenteMax);
-                System.Threading.Thread.Sleep(_millisecondi * 10);
+                System.Threading.Thread.Sleep(_millisecondi * SecondiAttesa);
                 Lambda.MostraCorrenti();
                 _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
                 MostraLetture();
@@ -1540,7 +1540,7 @@ namespace PannelloCharger
                 // Sono ancora in calibrazione, calibro a zero
                 System.Threading.Thread.Sleep(_millisecondi);
                 Lambda.Alimentatatore.ImpostaCorrente(0);
-                System.Threading.Thread.Sleep(_millisecondi * 10);
+                System.Threading.Thread.Sleep(_millisecondi * SecondiAttesa);
 
                 _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
                 MostraLetture();
@@ -1665,7 +1665,7 @@ namespace PannelloCharger
 
                 // Ora calibrazione negativa
                 Lambda.Alimentatatore.ImpostaCorrente(CorrenteMax);
-                System.Threading.Thread.Sleep(_millisecondi * 10 );
+                System.Threading.Thread.Sleep(_millisecondi * SecondiAttesa);
                 Lambda.MostraCorrenti();
                 _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
                 MostraLetture();
@@ -1785,10 +1785,10 @@ namespace PannelloCharger
                 lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
 
 
+                _risposta = MessageBox.Show("Calibrazione e Verifica SUPERATA", "Verifica Calibrazione", MessageBoxButtons.OK);
 
 
-
-                return false;
+                    return false;
                  }
             catch (Exception Ex)
             {
@@ -1858,10 +1858,10 @@ namespace PannelloCharger
                     _vac.AspybattDP = 0;
                     ValoriTestCorrente.Add(_vac);
                     if (_ciclo == 50) _passo = 10;
-                    //if (_ciclo == 100) _passo = 20;
+                    if (_ciclo >= 100) _passo = 20;
                 }
 
-
+                //flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                 flvwCalCorrentiVerifica.Refresh();
                 Application.DoEvents();
 
@@ -1973,6 +1973,8 @@ namespace PannelloCharger
 
 
                             GraficoCorrentiCalComplOxy();
+                            flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+
                             flvwCalCorrentiVerifica.Refresh();
                             flvwCalCorrentiVerifica.BuildList();
                             Application.DoEvents();
@@ -1980,6 +1982,7 @@ namespace PannelloCharger
                             System.Threading.Thread.Sleep(100);
 
                         }
+                        flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                         flvwCalCorrentiVerifica.Refresh();
                         flvwCalCorrentiVerifica.BuildList();
                         GraficoCorrentiComplOxy();
@@ -2031,6 +2034,7 @@ namespace PannelloCharger
 
 
                             GraficoCorrentiCalComplOxy();
+                            flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                             flvwCalCorrentiVerifica.Refresh();
                             flvwCalCorrentiVerifica.BuildList();
                             Application.DoEvents();
@@ -2038,13 +2042,22 @@ namespace PannelloCharger
                             System.Threading.Thread.Sleep(100);
 
                         }
+                        flvwCalCorrentiVerifica.Refresh();
+                        flvwCalCorrentiVerifica.BuildList();
                         GraficoCorrentiCalComplOxy();
                         Application.DoEvents();
                     }
 
-                    flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+
                     GraficoCorrentiCalComplOxy();
+                    flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+
+                    flvwCalCorrentiVerifica.Refresh();
+                    flvwCalCorrentiVerifica.BuildList();
                     Application.DoEvents();
+
+                    System.Threading.Thread.Sleep(100);
+
                 }
 
 
@@ -2166,17 +2179,23 @@ namespace PannelloCharger
                         _stepCount++;
 
 
-                        flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+                        //flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                         //flvwLettureCorrente.Refresh();
                         //flvwLettureCorrente.BuildList();
                         Application.DoEvents();
 
-                        System.Threading.Thread.Sleep(100);
-                        GraficoCorrentiComplOxy();
+                        GraficoCorrentiCalComplOxy();
+                        flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+                        flvwCalCorrentiVerifica.Refresh();
+                        flvwCalCorrentiVerifica.BuildList();
                         Application.DoEvents();
+                        System.Threading.Thread.Sleep(100);
+
                     }
 
-                    flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+
+                    flvwCalCorrentiVerifica.Refresh();
+                    flvwCalCorrentiVerifica.BuildList();
                     GraficoCorrentiCalComplOxy();
                     Application.DoEvents();
 
@@ -2217,24 +2236,36 @@ namespace PannelloCharger
                         _stepCount++;
 
 
-                        flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
-                        //flvwLettureCorrente.Refresh();
-                        //flvwLettureCorrente.BuildList();
+
+                        GraficoCorrentiCalComplOxy();
+                        flvwCalCorrentiVerifica.Refresh();
+                        flvwCalCorrentiVerifica.BuildList();
+                        Application.DoEvents();
+
+                        System.Threading.Thread.Sleep(100);
+
                         Application.DoEvents();
 
                         System.Threading.Thread.Sleep(100);
 
                     }
-                    flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+
+                    GraficoCorrentiCalComplOxy();
+                    flvwCalCorrentiVerifica.Refresh();
+                    flvwCalCorrentiVerifica.BuildList();
+                    Application.DoEvents();
+
+                    System.Threading.Thread.Sleep(100);
                     GraficoCorrentiCalComplOxy();
                     Application.DoEvents();
 
                 }
 
-                flvwCalCorrentiVerifica.BuildList();
 
-
+                GraficoCorrentiCalComplOxy();
                 flvwCalCorrentiVerifica.Refresh();
+
+                System.Threading.Thread.Sleep(100);
                 Application.DoEvents();
 
                 if (chkCalAccendiAlim.Checked)
@@ -2269,7 +2300,6 @@ namespace PannelloCharger
                 Log.Error("frmSpyBatt.LanciaSequenza: " + Ex.Message);
             }
         }
-
 
 
         private void TestSequenzaVerificaCalibrazione()
@@ -2354,8 +2384,6 @@ namespace PannelloCharger
                 Log.Error("frmSpyBatt.LanciaSequenza: " + Ex.Message);
             }
         }
-
-
 
 
         private void InizializzaVistaCorrentiCal()
@@ -2656,6 +2684,7 @@ namespace PannelloCharger
                 double _dtInSecondi;
 
                 byte _modelloAttivo = 0x01;
+                string _axesUnit = "";
 
                 //tabStatGrafici.BackColor = Color.LightYellow;
 
@@ -2694,22 +2723,26 @@ namespace PannelloCharger
                     case 0x01:
                         {
                             oxyGraficoCalVerifica.Title = "Errore Assoluto misura Corrente";
+                            _axesUnit = " A ";
                             break;
                         }
                     case 0x02:
                         {
                             oxyGraficoCalVerifica.Title = "Errore misura Corrente";
+                            _axesUnit = " A ";
                             break;
                         }
                     case 0x03:
                         {
                             oxyGraficoCalVerifica.Title = "% Errore misura Corrente";
+                            _axesUnit = " % Err ";
                             break;
                         }
                     case 0x04:
                     default:
                         {
                             oxyGraficoCalVerifica.Title = "Misura Corrente Rilevata";
+                            _axesUnit = " A ";
                             break;
                         }
                 }
@@ -2733,33 +2766,49 @@ namespace PannelloCharger
                 AsseCat.Unit = " A ";
                 AsseCat.StringFormat = "0";
 
+                /*
+                AsseCat.ExtraGridlines = new Double[] { 0 };
+                AsseCat.ExtraGridlineColor = OxyPlot.OxyColors.Black;
+                AsseCat.ExtraGridlineThickness = 1;
+                */
+
+
                 OxyPlot.Axes.LinearAxis AsseConteggi = new OxyPlot.Axes.LinearAxis();
                 AsseConteggi.AxislineColor = OxyPlot.OxyColors.Red;
                 
                 AsseConteggi.MajorGridlineStyle = OxyPlot.LineStyle.Solid;
-                AsseConteggi.MinorGridlineStyle = OxyPlot.LineStyle.Dot;
-                AsseCat.MinorStep = 1;
-                AsseConteggi.Minimum = -5;
-                AsseConteggi.Maximum = 5;
-                AsseConteggi.PositionAtZeroCrossing = true;
+                AsseConteggi.MinorGridlineStyle = OxyPlot.LineStyle.None;
+                AsseCat.MajorStep = 1;
+                //AsseConteggi.Minimum = -5;
+                //AsseConteggi.Maximum = 5;
+                //AsseConteggi.PositionAtZeroCrossing = true;
 
 
                 AsseConteggi.TickStyle = OxyPlot.Axes.TickStyle.Outside;
-                AsseConteggi.Unit = " % Err ";
+                AsseConteggi.Unit = _axesUnit;
 
                 AsseConteggi.AxislineStyle = OxyPlot.LineStyle.Solid;
 
                 AsseConteggi.MajorGridlineColor = OxyPlot.OxyColors.LightBlue;
-                AsseConteggi.MinorGridlineColor = OxyPlot.OxyColors.LightBlue;
+                //AsseConteggi.MinorGridlineColor = OxyPlot.OxyColors.LightBlue;
                 AsseConteggi.AxislineColor = OxyPlot.OxyColors.Blue;
                 AsseConteggi.TextColor = OxyPlot.OxyColors.Blue;
-                AsseConteggi.AxislineThickness = 2;
+                AsseConteggi.AxislineThickness = 1;
 
+                AsseConteggi.ExtraGridlines = new Double[] { 0 };
+                AsseConteggi.ExtraGridlineColor = OxyPlot.OxyColors.Black;
+                AsseConteggi.ExtraGridlineThickness = 2;
 
+                /*
 
-
-
-
+                OxyPlot.Axes.Add(new OxyPlot.Axes.LinearAxis()
+                {
+                    Title = "Percentage",
+                    Position = OxyPlot.Axes.AxisPosition.Left,
+                    // Magic Happens here we add the extra grid line on our Y Axis at zero
+                    ExtraGridlines = new Double[] { 0 }
+                });
+                */
 
 
 
@@ -2896,6 +2945,7 @@ namespace PannelloCharger
 
 
                 oxyGraficoCalVerifica.Axes.Add(AsseCat);
+                oxyGraficoCalVerifica.Axes.Add(AsseConteggi);
 
 
 
@@ -3195,6 +3245,49 @@ namespace PannelloCharger
                             _icona = MessageBoxIcon.Exclamation;
                             break;
                         }
+                    case EsitoControlloValore.ErroreVBatt:
+                        {
+                            _imageTitle = Titolo;
+                            _message = "Tensione Batteria Errata";
+                            _pulsanti = MessageBoxButtons.OK;
+                            _icona = MessageBoxIcon.Error;
+                            break;
+                        }
+                    case EsitoControlloValore.ErroreV3:
+                        {
+                            _imageTitle = Titolo;
+                            _message = "Tensione Presa Intermedia 3 Errata";
+                            _pulsanti = MessageBoxButtons.OK;
+                            _icona = MessageBoxIcon.Error;
+                            break;
+                        }
+                    case EsitoControlloValore.ErroreV2:
+                        {
+                            _imageTitle = Titolo;
+                            _message = "Tensione Presa Intermedia 2 Errata";
+                            _pulsanti = MessageBoxButtons.OK;
+                            _icona = MessageBoxIcon.Error;
+                            break;
+                        }
+                    case EsitoControlloValore.ErroreV1:
+                        {
+                            _imageTitle = Titolo;
+                            _message = "Tensione Presa Intermedia 1 Errata";
+                            _pulsanti = MessageBoxButtons.OK;
+                            _icona = MessageBoxIcon.Error;
+                            break;
+                        }
+
+                    case EsitoControlloValore.ErroreNTC:
+                        {
+                            _imageTitle = Titolo;
+                            _message = "Lettura Temperatura Errata";
+                            _pulsanti = MessageBoxButtons.OK;
+                            _icona = MessageBoxIcon.Error;
+                            break;
+                        }
+
+
                     default:
                         {
                             _imageTitle = Titolo;

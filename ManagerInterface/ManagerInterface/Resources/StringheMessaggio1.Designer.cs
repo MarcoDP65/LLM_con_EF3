@@ -106,11 +106,92 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Fase 1 - Invio Testata.
+        /// </summary>
+        internal static string strMsgAggFWFase1 {
+            get {
+                return ResourceManager.GetString("strMsgAggFWFase1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Caricamento Testata Fallito.
+        /// </summary>
+        internal static string strMsgAggFWFase1err1 {
+            get {
+                return ResourceManager.GetString("strMsgAggFWFase1err1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Fase 2 - Invio Dati.
+        /// </summary>
+        internal static string strMsgAggFWFase2 {
+            get {
+                return ResourceManager.GetString("strMsgAggFWFase2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Caricamento Applicazione fallito ( Blocco Flash 1 ).
+        /// </summary>
+        internal static string strMsgAggFWFase2err1 {
+            get {
+                return ResourceManager.GetString("strMsgAggFWFase2err1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Caricamento Applicazione fallito ( Blocco Flash 2 ).
+        /// </summary>
+        internal static string strMsgAggFWFase2err2 {
+            get {
+                return ResourceManager.GetString("strMsgAggFWFase2err2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Caricamento Applicazione fallito ( Blocco Proxy Table ).
+        /// </summary>
+        internal static string strMsgAggFWFase2err3 {
+            get {
+                return ResourceManager.GetString("strMsgAggFWFase2err3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Fase 3 - Riavvio SPY-BATT.
+        /// </summary>
+        internal static string strMsgAggFWFase3 {
+            get {
+                return ResourceManager.GetString("strMsgAggFWFase3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Aggiornamento Firmware.
+        /// </summary>
+        internal static string strMsgAggiornamentoFirmware {
+            get {
+                return ResourceManager.GetString("strMsgAggiornamentoFirmware", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a .
         /// </summary>
         internal static string strTipoEvento {
             get {
                 return ResourceManager.GetString("strTipoEvento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Dettaglio Fase.
+        /// </summary>
+        internal static string strTitoloListaBrevi {
+            get {
+                return ResourceManager.GetString("strTitoloListaBrevi", resourceCulture);
             }
         }
         

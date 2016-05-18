@@ -174,4 +174,7 @@
   <data name="lblCelleP1.Text" xml:space="preserve">
     <value>Cells V1</value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Phase Detail</value>
+  </data>
 </root>

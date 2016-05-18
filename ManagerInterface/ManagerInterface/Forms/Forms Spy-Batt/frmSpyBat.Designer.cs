@@ -640,6 +640,8 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.txtCalSecondiAttesa = new System.Windows.Forms.TextBox();
+            this.label149 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -4654,6 +4656,8 @@
             // tabCalibrazione
             // 
             this.tabCalibrazione.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCalibrazione.Controls.Add(this.txtCalSecondiAttesa);
+            this.tabCalibrazione.Controls.Add(this.label149);
             this.tabCalibrazione.Controls.Add(this.cmbCalTipoGrafico);
             this.tabCalibrazione.Controls.Add(this.btnCalRefreshLista);
             this.tabCalibrazione.Controls.Add(this.txtCalNumSpire);
@@ -4981,6 +4985,16 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
+            // 
+            // txtCalSecondiAttesa
+            // 
+            resources.ApplyResources(this.txtCalSecondiAttesa, "txtCalSecondiAttesa");
+            this.txtCalSecondiAttesa.Name = "txtCalSecondiAttesa";
+            // 
+            // label149
+            // 
+            resources.ApplyResources(this.label149, "label149");
+            this.label149.Name = "label149";
             // 
             // frmSpyBat
             // 
@@ -5738,5 +5752,7 @@
         private System.Windows.Forms.Label label146;
         private System.Windows.Forms.Button btnCalRefreshLista;
         private System.Windows.Forms.ComboBox cmbCalTipoGrafico;
+        private System.Windows.Forms.TextBox txtCalSecondiAttesa;
+        private System.Windows.Forms.Label label149;
     }
 }

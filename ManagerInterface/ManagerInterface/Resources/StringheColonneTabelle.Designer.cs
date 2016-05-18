@@ -122,5 +122,95 @@ namespace PannelloCharger {
                 return ResourceManager.GetString("ListaApp07SN", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Setup.
+        /// </summary>
+        internal static string ListaSetup01Id {
+            get {
+                return ResourceManager.GetString("ListaSetup01Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Data Creazione.
+        /// </summary>
+        internal static string ListaSetup02Data {
+            get {
+                return ResourceManager.GetString("ListaSetup02Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a V def.
+        /// </summary>
+        internal static string ListaSetup03Vdef {
+            get {
+                return ResourceManager.GetString("ListaSetup03Vdef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Ah def.
+        /// </summary>
+        internal static string ListaSetup04Adef {
+            get {
+                return ResourceManager.GetString("ListaSetup04Adef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Type.
+        /// </summary>
+        internal static string ListaSetup05Type {
+            get {
+                return ResourceManager.GetString("ListaSetup05Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Celle Tot.
+        /// </summary>
+        internal static string ListaSetup06TCell {
+            get {
+                return ResourceManager.GetString("ListaSetup06TCell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Celle V3.
+        /// </summary>
+        internal static string ListaSetup07Cel3 {
+            get {
+                return ResourceManager.GetString("ListaSetup07Cel3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Celle V2.
+        /// </summary>
+        internal static string ListaSetup08Cel2 {
+            get {
+                return ResourceManager.GetString("ListaSetup08Cel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Celle V1.
+        /// </summary>
+        internal static string ListaSetup09Cel1 {
+            get {
+                return ResourceManager.GetString("ListaSetup09Cel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Type.
+        /// </summary>
+        internal static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
     }
 }
