@@ -1192,7 +1192,7 @@ namespace PannelloCharger
             }
         }
 
-        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2, int SecondiAttesa = 5)
+        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2, int SecondiAttesa = 5, int MaxAerrore = 5)
         {
 
 
@@ -1200,6 +1200,8 @@ namespace PannelloCharger
             {
 
                 frmMessaggioElettrolita _msgElettro;
+                frmInputDialog _msgInput;
+
                 DialogResult _risposta;
                 int _ciclo;
                 int _start;
@@ -1241,6 +1243,10 @@ namespace PannelloCharger
                 Application.DoEvents();
 
 
+
+
+
+
                 txtCalCurr.Text = "";
                 txtCalStepCorrente.Text = "";
 
@@ -1252,7 +1258,7 @@ namespace PannelloCharger
                 txtCalStepCorrente.Text = "Verifica Alimentazione ";
                 lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
                 _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-                if (!_esito )
+                if (!_esito)
                 {
                     txtCalStepCorrente.Text = EsitoControllo(EsitoControlloValore.ErroreLetturaSB);
                     lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
@@ -1260,13 +1266,7 @@ namespace PannelloCharger
 
                     return false;
                 }
-                /*
-                txtCalV1.Text = "";
-                txtCalV2.Text = "";
-                txtCalV3.Text = "";
-                txtCalVbatt.Text = "";
-                txtCalTemp.Text = "";
-                */
+
                 MostraLetture(true);
 
                 _esitoCV = ControllaTensioni(24);
@@ -1299,7 +1299,7 @@ namespace PannelloCharger
 
                     txtCalStepCorrente.Text = "Rilevata temperatura anomala: " + _sb.sbVariabili.strTempNTC;
                     lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
-                    MessageBox.Show(txtCalStepCorrente.Text, "Verifica Scheda", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show(txtCalStepCorrente.Text, "Verifica Scheda", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     SequenzaCorrente.Esito = (byte)EsitoControlloValore.ErroreNTC;
                     SequenzaCorrente.Descrizione = txtCalStepCorrente.Text;
                     return false;
@@ -1318,7 +1318,7 @@ namespace PannelloCharger
                 //l'elettrolita non può essere presente
                 if (_sb.sbVariabili.PresenzaElettrolita == 0xF0)
                 {
-                    MessageBox.Show("Rilevata presenza elettrolita a vuoto: Probabile corto !","VERIFICA FALLITA", MessageBoxButtons.OK,  MessageBoxIcon.Error);
+                    MessageBox.Show("Rilevata presenza elettrolita a vuoto: Probabile corto !", "VERIFICA FALLITA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCalStepCorrente.Text = "Verifica Elettrolita fallita";
                     lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
                     lbxCalListaStep.Items.Add("Probabile corto sulla linea Pres.El.");
@@ -1395,7 +1395,7 @@ namespace PannelloCharger
                 }
 
 
-                 txtCalStepCorrente.Text = "Verifica verso SPY-BATT " + _sb.sbVariabili.strTempNTC;
+                txtCalStepCorrente.Text = "Verifica verso SPY-BATT " + _sb.sbVariabili.strTempNTC;
                 lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
 
 
@@ -1437,7 +1437,7 @@ namespace PannelloCharger
                         {
                             Lambda.Alimentatatore.ImpostaCorrente(0);
                             Lambda.MostraCorrenti();
-                            _risposta = MessageBox.Show("SPY-BATT non collegato correttamente; Verso Corrente errato", "Verifica Collegamenti", MessageBoxButtons.RetryCancel,MessageBoxIcon.Exclamation);
+                            _risposta = MessageBox.Show("SPY-BATT non collegato correttamente; Verso Corrente errato", "Verifica Collegamenti", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation);
                             if (_risposta == DialogResult.Cancel)
                             {
 
@@ -1481,7 +1481,7 @@ namespace PannelloCharger
                 Lambda.MostraCorrenti();
                 _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
                 MostraLetture();
-                if (_sb.sbVariabili.CorrenteBatteria < 100 )
+                if (_sb.sbVariabili.CorrenteBatteria < 100)
                 {
                     // qualcosa non va, non leggo abbastanza corrente. Spengo e mi fermo
                     Lambda.Alimentatatore.ImpostaCorrente(0);
@@ -1696,7 +1696,7 @@ namespace PannelloCharger
                         _esito = _sb.ScriviParametroCal(0x02, _correnteErogata);
                         if (_esito)
                         {
-                            txtCalStepCorrente.Text = "Calibrazione Negativa OK (" + _correnteErogata.ToString() + ")" ;
+                            txtCalStepCorrente.Text = "Calibrazione Negativa OK (" + _correnteErogata.ToString() + ")";
                             lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
                         }
                         else
@@ -1764,7 +1764,7 @@ namespace PannelloCharger
 
 
 
-                System.Threading.Thread.Sleep(_millisecondi );
+                System.Threading.Thread.Sleep(_millisecondi);
                 Lambda.Alimentatatore.ImpostaCorrente(0);
                 System.Threading.Thread.Sleep(_millisecondi);
 
@@ -1772,11 +1772,70 @@ namespace PannelloCharger
 
 
 
-                LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax,20,Spire);
+                _esito = LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax, 20, Spire, MaxAerrore);
 
 
 
+                if (!_esito)
+                {
+                    txtCalStepCorrente.Text = "Verifica correnti non superata";
+                    lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
+                    SequenzaCorrente.Esito = (byte)EsitoControlloValore.ErroreCorrente;
+                    SequenzaCorrente.Descrizione = txtCalStepCorrente.Text;
 
+                    Application.DoEvents();
+
+                    return false;
+                }
+
+
+                // Step finale Controllo il numero seriale
+
+
+                _esito = _sb.CaricaDatiCliente(_sb.Id, _apparatoPresente);
+                if (!_esito)
+                {
+                    txtCalStepCorrente.Text = EsitoControllo(EsitoControlloValore.ErroreLetturaSB);
+                    lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
+                    Application.DoEvents();
+
+                    return false;
+                }
+
+
+                while (_sb.sbCliente.SerialNumber == "")
+                {
+                    // carico e salvo direttamente il S.N.
+                    _msgInput = new frmInputDialog("Inserire il Numero di Serie", "Numero di Serie");
+                    _msgInput.Valore = "";
+                    _msgInput.ShowDialog();
+                    if (_msgInput.Valore != "")
+                    {
+                        _sb.sbCliente.SerialNumber = _msgInput.Valore;
+                        _sb.ScriviDatiCliente();
+                        if (caricaCliente(_sb.Id, _logiche, true)) mostraCliente();
+                    }
+                    if (_msgInput.TastoPremuto != EsitoControlloValore.EsitoPositivo)
+                    {
+                        // premuto annulla su richiesta seriale
+                        _msgInput.Dispose();
+
+                        txtCalStepCorrente.Text = "Annullato inserimento Seriale";
+                        lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
+                        SequenzaCorrente.Esito = (byte)EsitoControlloValore.AnnullaVerifica;
+                        SequenzaCorrente.Descrizione = txtCalStepCorrente.Text;
+
+                        Application.DoEvents();
+
+                        return false;
+
+                    }
+                    _msgInput.Dispose();
+
+
+                }
+                txtCalStepCorrente.Text = "Numero di serie: " + _sb.sbCliente.SerialNumber;
+                lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
 
 
 
@@ -1786,10 +1845,10 @@ namespace PannelloCharger
 
 
                 _risposta = MessageBox.Show("Calibrazione e Verifica SUPERATA", "Verifica Calibrazione", MessageBoxButtons.OK);
+    
 
-
-                    return false;
-                 }
+                return true;
+            }
             catch (Exception Ex)
             {
                 Log.Error("frmSpyBatt.LanciaSequenza: " + Ex.Message);
@@ -1797,7 +1856,7 @@ namespace PannelloCharger
             }
         }
 
-        private void LanciaSequenzaVerificaCalibrazione(int CorrenteBase,int CorrenteVerMax , int Passo, int Spire)
+        private bool LanciaSequenzaVerificaCalibrazione(int CorrenteBase,int CorrenteVerMax , int Passo, int Spire, int MaxErrore )
         {
 
 
@@ -1815,10 +1874,14 @@ namespace PannelloCharger
                 bool _esito;
                 bool _apparatoPronto = false;
 
+                float _maxErr = 0;
                 float _maxErrPos = 0;
                 float _maxErrNeg = 0;
 
                 int _passoTest = 0;
+
+                int _maxErroreAmmesso = MaxErrore;
+                int _maxErroreRilevato = 0;
                 sbAnalisiCorrente _vac;
 
                 txtCalCurr.Text = "";
@@ -1829,7 +1892,8 @@ namespace PannelloCharger
 
                 if (Lambda == null)
                 {
-                    return;
+                    // Alimentatore non disponibile
+                    return false;
                 }
 
 
@@ -1869,9 +1933,12 @@ namespace PannelloCharger
 
 
                 _risposta = MessageBox.Show("Collegare l'alimentatore alla presa INVERSA", "Verifica Polarità", MessageBoxButtons.OKCancel);
-                if (_risposta == DialogResult.OK)
+                if (_risposta != DialogResult.OK)
+                {
+                    return false;
+                }
 
-                    _apparatoPronto = false;
+                _apparatoPronto = false;
                 //poi verifico che lo spybatt sia montato correttamente mandando una corrente di prova
                 do
                 {
@@ -1888,6 +1955,7 @@ namespace PannelloCharger
                     _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
                     Lambda.MostraCorrenti();
                     MostraLetture();
+                    MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso,false);
 
                     if (_sb.sbVariabili.CorrenteBatteria >= 0)
                     {
@@ -1898,7 +1966,7 @@ namespace PannelloCharger
                             // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
                             Lambda.Alimentatatore.ImpostaStato(false);
                             Lambda.MostraStato();
-                            return;
+                            return false;
                         }
 
                         _risposta = MessageBox.Show("SPY-BATT non collegato correttamente\nCollegare lo SPY-BATT per letture nel verso diretto\n(Nucleo verso il positivo)", "Verifica Polarità", MessageBoxButtons.RetryCancel);
@@ -1911,7 +1979,7 @@ namespace PannelloCharger
                                 // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
                                 Lambda.Alimentatatore.ImpostaStato(false);
                                 Lambda.MostraStato();
-                                return;
+                                return false;
                             }
                         }
                     }
@@ -1923,7 +1991,7 @@ namespace PannelloCharger
                             // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
                             Lambda.Alimentatatore.ImpostaStato(true);
                             Lambda.MostraStato();
-                            return;
+                            return false;
                         }
                     }
                 }
@@ -1959,6 +2027,9 @@ namespace PannelloCharger
                             if (_corrBase != 0)
                             {
                                 float _errore = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
+                                int _erroreAss = Math.Abs((int)(-_sb.sbVariabili.CorrenteBatteria/10)  - (int)(_corrBase * _spire));
+                                if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
+
                                 txtCalErrore.Text = _errore.ToString("p2");
                                 txtCalErrMax.Text = _errore.ToString("p2");
                                 if (_corrBase > 10)
@@ -1967,6 +2038,8 @@ namespace PannelloCharger
                                     txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
                                     txtCalErrMaxNeg.Text = _maxErrNeg.ToString("p2");
                                 }
+                                MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
+
                             }
 
                             _stepCount++;
@@ -2022,12 +2095,15 @@ namespace PannelloCharger
                             if (_corrBase != 0)
                             {
                                 float _errore = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
+                                int _erroreAss = Math.Abs((int)(-_sb.sbVariabili.CorrenteBatteria / 10 ) - (int)(_corrBase * _spire));
+                                if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
                                 txtCalErrore.Text = _errore.ToString("p2");
                                 if (_corrBase > 10)
                                 {
                                     if (_errore > _maxErrNeg) _maxErrNeg = _errore;
                                     txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
                                 }
+                                MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
                             }
 
                             _stepCount++;
@@ -2119,7 +2195,7 @@ namespace PannelloCharger
                                     // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
                                     Lambda.Alimentatatore.ImpostaStato(false);
                                     Lambda.MostraStato();
-                                    return;
+                                    return false;
                                 }
                             }
                         }
@@ -2132,7 +2208,7 @@ namespace PannelloCharger
                                 // Spengo l'alimentatore, metto a 0 la corrente poi lo accendo e parto col ciclo
                                 Lambda.Alimentatatore.ImpostaStato(true);
                                 Lambda.MostraStato();
-                                return;
+                                return false;
                             }
                         }
                     }
@@ -2165,6 +2241,8 @@ namespace PannelloCharger
                         if (_corrBase != 0)
                         {
                             float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
+                            int _erroreAss = Math.Abs((int)(_sb.sbVariabili.CorrenteBatteria /10) - (int)(_corrBase * _spire));
+                            if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
                             txtCalErrore.Text = _errore.ToString("p2");
                             txtCalErrMax.Text = _errore.ToString("p2");
                             if (_corrBase > 10)
@@ -2173,6 +2251,7 @@ namespace PannelloCharger
                                 txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
                                 txtCalErrMaxPos.Text = _maxErrPos.ToString("p2");
                             }
+                            MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
 
                         }
 
@@ -2223,6 +2302,9 @@ namespace PannelloCharger
                         if (_corrBase != 0)
                         {
                             float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
+                            int _erroreAss = Math.Abs((int)(_sb.sbVariabili.CorrenteBatteria /10 ) - (int)(_corrBase * _spire));
+
+                            if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
                             txtCalErrore.Text = _errore.ToString("p2");
                             txtCalErrMax.Text = _errore.ToString("p2");
                             if (_corrBase > 10)
@@ -2231,6 +2313,7 @@ namespace PannelloCharger
                                 txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
                                 txtCalErrMaxPos.Text = _maxErrPos.ToString("p2");
                             }
+                            MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
                         }
 
                         _stepCount++;
@@ -2293,11 +2376,16 @@ namespace PannelloCharger
                 }
                 flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                 flvwCalCorrentiVerifica.BuildList();
-
+                if (_maxErroreRilevato > _maxErroreAmmesso)
+                    return false;
+                else
+                    return true;
+                
             }
             catch (Exception Ex)
             {
                 Log.Error("frmSpyBatt.LanciaSequenza: " + Ex.Message);
+                return false;
             }
         }
 
@@ -2686,10 +2774,7 @@ namespace PannelloCharger
                 byte _modelloAttivo = 0x01;
                 string _axesUnit = "";
 
-                //tabStatGrafici.BackColor = Color.LightYellow;
-
                 // Preparo le serie di valori
-
                 ValoriPuntualiGrCalCorrenti.Clear();
 
                 if (cmbCalTipoGrafico.SelectedValue != null)
@@ -2987,10 +3072,6 @@ namespace PannelloCharger
                 txtCalCurrAlim.Text = "";
                 txtCalCurrSB.Text = "";
 
-                txtCalErrMax.Text = "";
-                txtCalErrMaxPos.Text = "";
-                txtCalErrMaxNeg.Text = "";
-
 
                 if (ClearOnly)
                 {
@@ -3034,6 +3115,44 @@ namespace PannelloCharger
                 Log.Error("frmSpyBatt.MostraLetture: " + Ex.Message);
             }
         }
+
+        private void MostraErrore(float MaxErr, int MaxAErr, float MaxErrPos, float MaxErrNeg, int LimErrA, bool ClearOnly = false)
+        {
+            try
+            {
+                bool _esito;
+
+                txtCalErrMax.Text = "";
+                txtCalErrMaxPos.Text = "";
+                txtCalErrMaxNeg.Text = "";
+                txtCalErrMaxAss.Text = "";
+
+
+                if (ClearOnly)
+                {
+                    return;
+                }
+
+                txtCalErrMax.Text = MaxErr.ToString("0.0");
+                txtCalErrMaxPos.Text = MaxErrPos.ToString("0.0");
+                txtCalErrMaxNeg.Text = MaxErrNeg.ToString("0.0");
+
+                if (MaxAErr > LimErrA)
+                    txtCalErrMaxAss.ForeColor = Color.Red;
+                else
+                    txtCalErrMaxAss.ForeColor = Color.Black;
+
+                txtCalErrMaxAss.Text = MaxAErr.ToString("0");
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBatt.MostraLetture: " + Ex.Message);
+            }
+        }
+
+
 
         /// <summary>
         /// Controlla se la lettura in corrente è corrispondente al velore desiderato.

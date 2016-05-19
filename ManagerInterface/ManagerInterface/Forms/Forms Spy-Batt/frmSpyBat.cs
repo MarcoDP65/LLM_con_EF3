@@ -1404,7 +1404,7 @@ namespace PannelloCharger
                 {
                     pnlCalVerifica.Width = tabCalibrazione.Width - 300;
                 }
-                if (tabCalibrazione.Height > 400)
+                if (tabCalibrazione.Height > 300)
                 {
                     pnlCalVerifica.Height = tabCalibrazione.Height - 240;
                 }
@@ -3441,7 +3441,18 @@ namespace PannelloCharger
                 }
                 if (e.TabPage == tabStatistiche)
                     frmSpyBat_Resize(null, null);
-
+                if (e.TabPage == tabCalibrazione)
+                {
+                    if (_apparatoPresente) VerificaAlimentatore(false);
+                    if (tabCalibrazione.Height > 300)
+                    {
+                        pnlCalVerifica.Height = tabCalibrazione.Height - 240;
+                    }
+                    if (tbpCalibrazioni.Width > 600)
+                    {
+                        pnlCalGrafico.Width = tbpCalibrazioni.Width - 540;
+                    }
+                }
 
             }
             catch (Exception Ex)
@@ -4892,10 +4903,6 @@ namespace PannelloCharger
             RicalcolaStatistiche();
         }
 
-        private void tabCb05_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void cmdMemRead_Click(object sender, EventArgs e)
@@ -6705,6 +6712,7 @@ namespace PannelloCharger
                 bool _esito;
                 this.Cursor = Cursors.WaitCursor;
                 AggiornaFirmware();
+                _sb.VerificaPresenza();
                 this.Cursor = Cursors.Default;
             }
             catch
@@ -7118,12 +7126,29 @@ namespace PannelloCharger
         {
             try
             {
+                VerificaAlimentatore(true);
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnCalCollegaAlim_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void VerificaAlimentatore(bool Popup = true)
+        {
+            try
+            {
                 foreach (Form form in Application.OpenForms)
                 {
                     if (form.GetType() == typeof(frmAlimentatore))
                     {
                         Lambda = (frmAlimentatore)form;
-                        form.Activate();
+                        if (Popup)
+                        {
+                            form.Activate();
+                        }
                         lblCalStatoAlim.Text = "COLLEGATO";
                         lblCalConnessione.Text = "COLLEGATO";
                         btnCalStartSeq.Enabled = true;
@@ -7151,34 +7176,69 @@ namespace PannelloCharger
         {
             try
             {
+
                 this.Cursor = Cursors.WaitCursor;
 
+
+
                 sbTestataCalibrazione _sequenzaCorrente = new sbTestataCalibrazione(_logiche.dbDati.connessione);
+
+                if (tabCalibrazione.Height > 300)
+                {
+                    pnlCalVerifica.Height = tabCalibrazione.Height - 240;
+                }
+                if (tbpCalibrazioni.Width > 600)
+                {
+                    pnlCalGrafico.Width = tbpCalibrazioni.Width - 540;
+                }
+
 
                 int _AmaxCal = 250;
                 int _AmaxVer = 300;
                 int _spire = 2;
                 int _secAttesa = 5;
+                int _maxErrA = 5;
 
 
                 int.TryParse(txtCalAcal.Text, out _AmaxCal);
                 int.TryParse(txtCalAver.Text, out _AmaxVer);
                 int.TryParse(txtCalNumSpire.Text, out _spire);
                 int.TryParse(txtCalSecondiAttesa.Text, out _secAttesa);
+                int.TryParse(txtCalMaxAerr.Text, out _maxErrA);
+
                 if (_secAttesa < 1) _secAttesa = 1;
                 if (_secAttesa > 60) _secAttesa = 60;
+
+
+                // Prima di iniziare verifico che il FW sia aggiornato
+                if(_sb.sbData.SwVersion != txtCalFWRichiesto.Text)
+                {
+                    DialogResult _risposta = MessageBox.Show("Versione firmware non corretta; \nAggiornare la scheda prima di eseguire la calibrazione.", "Verifica Firmware", MessageBoxButtons.OKCancel);
+                    if (_risposta == DialogResult.OK)
+                    {
+                        tabCaricaBatterie.SelectedTab = tbpFirmware;
+                        this.Cursor = Cursors.Default;
+                        return;
+                    }
+                }
+
 
                 txtCalAcal.Text = _AmaxCal.ToString();
                 txtCalAver.Text = _AmaxVer.ToString();
                 txtCalNumSpire.Text = _spire.ToString();
                 txtCalSecondiAttesa.Text = _secAttesa.ToString();
 
-                LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa);
+                bool _esitoSeq = LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa, _maxErrA);
 
                 if (chkCalRegistraSequenza.Checked)
                 {
                     _sequenzaCorrente.LettureCorrente = ValoriTestCorrente;
                     _sequenzaCorrente.salvaDati();
+                }
+
+                if (!_esitoSeq)
+                {
+                   MessageBox.Show("Calibrazione e Verifica NON SUPERATA", "Verifica Calibrazione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 this.Cursor = Cursors.Default;
             }

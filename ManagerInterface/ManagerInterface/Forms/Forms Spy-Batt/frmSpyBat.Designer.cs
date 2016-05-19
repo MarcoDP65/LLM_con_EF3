@@ -590,6 +590,12 @@
             this.txtClonaIdOrigine = new System.Windows.Forms.TextBox();
             this.label120 = new System.Windows.Forms.Label();
             this.tabCalibrazione = new System.Windows.Forms.TabPage();
+            this.txtCalFWRichiesto = new System.Windows.Forms.TextBox();
+            this.label151 = new System.Windows.Forms.Label();
+            this.label150 = new System.Windows.Forms.Label();
+            this.txtCalMaxAerr = new System.Windows.Forms.TextBox();
+            this.txtCalSecondiAttesa = new System.Windows.Forms.TextBox();
+            this.label149 = new System.Windows.Forms.Label();
             this.cmbCalTipoGrafico = new System.Windows.Forms.ComboBox();
             this.btnCalRefreshLista = new System.Windows.Forms.Button();
             this.txtCalNumSpire = new System.Windows.Forms.TextBox();
@@ -604,6 +610,8 @@
             this.cmbCalListaEsecuzioni = new System.Windows.Forms.ComboBox();
             this.btnCalRicaricaSequenza = new System.Windows.Forms.Button();
             this.grbCalValoriAttuali = new System.Windows.Forms.GroupBox();
+            this.label152 = new System.Windows.Forms.Label();
+            this.txtCalErrMaxAss = new System.Windows.Forms.TextBox();
             this.txtCalTemp = new System.Windows.Forms.TextBox();
             this.label145 = new System.Windows.Forms.Label();
             this.txtCalElettr = new System.Windows.Forms.TextBox();
@@ -640,8 +648,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.txtCalSecondiAttesa = new System.Windows.Forms.TextBox();
-            this.label149 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -2119,7 +2125,6 @@
             resources.ApplyResources(this.tabCb05, "tabCb05");
             this.tabCb05.Name = "tabCb05";
             this.tabCb05.UseVisualStyleBackColor = true;
-            this.tabCb05.Click += new System.EventHandler(this.tabCb05_Click);
             // 
             // grbAccensione
             // 
@@ -4656,6 +4661,10 @@
             // tabCalibrazione
             // 
             this.tabCalibrazione.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCalibrazione.Controls.Add(this.txtCalFWRichiesto);
+            this.tabCalibrazione.Controls.Add(this.label151);
+            this.tabCalibrazione.Controls.Add(this.label150);
+            this.tabCalibrazione.Controls.Add(this.txtCalMaxAerr);
             this.tabCalibrazione.Controls.Add(this.txtCalSecondiAttesa);
             this.tabCalibrazione.Controls.Add(this.label149);
             this.tabCalibrazione.Controls.Add(this.cmbCalTipoGrafico);
@@ -4679,6 +4688,36 @@
             this.tabCalibrazione.Controls.Add(this.grbCalListaAttivita);
             resources.ApplyResources(this.tabCalibrazione, "tabCalibrazione");
             this.tabCalibrazione.Name = "tabCalibrazione";
+            // 
+            // txtCalFWRichiesto
+            // 
+            resources.ApplyResources(this.txtCalFWRichiesto, "txtCalFWRichiesto");
+            this.txtCalFWRichiesto.Name = "txtCalFWRichiesto";
+            // 
+            // label151
+            // 
+            resources.ApplyResources(this.label151, "label151");
+            this.label151.Name = "label151";
+            // 
+            // label150
+            // 
+            resources.ApplyResources(this.label150, "label150");
+            this.label150.Name = "label150";
+            // 
+            // txtCalMaxAerr
+            // 
+            resources.ApplyResources(this.txtCalMaxAerr, "txtCalMaxAerr");
+            this.txtCalMaxAerr.Name = "txtCalMaxAerr";
+            // 
+            // txtCalSecondiAttesa
+            // 
+            resources.ApplyResources(this.txtCalSecondiAttesa, "txtCalSecondiAttesa");
+            this.txtCalSecondiAttesa.Name = "txtCalSecondiAttesa";
+            // 
+            // label149
+            // 
+            resources.ApplyResources(this.label149, "label149");
+            this.label149.Name = "label149";
             // 
             // cmbCalTipoGrafico
             // 
@@ -4775,6 +4814,8 @@
             // grbCalValoriAttuali
             // 
             this.grbCalValoriAttuali.BackColor = System.Drawing.Color.White;
+            this.grbCalValoriAttuali.Controls.Add(this.label152);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalErrMaxAss);
             this.grbCalValoriAttuali.Controls.Add(this.txtCalTemp);
             this.grbCalValoriAttuali.Controls.Add(this.label145);
             this.grbCalValoriAttuali.Controls.Add(this.txtCalElettr);
@@ -4800,6 +4841,16 @@
             resources.ApplyResources(this.grbCalValoriAttuali, "grbCalValoriAttuali");
             this.grbCalValoriAttuali.Name = "grbCalValoriAttuali";
             this.grbCalValoriAttuali.TabStop = false;
+            // 
+            // label152
+            // 
+            resources.ApplyResources(this.label152, "label152");
+            this.label152.Name = "label152";
+            // 
+            // txtCalErrMaxAss
+            // 
+            resources.ApplyResources(this.txtCalErrMaxAss, "txtCalErrMaxAss");
+            this.txtCalErrMaxAss.Name = "txtCalErrMaxAss";
             // 
             // txtCalTemp
             // 
@@ -4985,16 +5036,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // txtCalSecondiAttesa
-            // 
-            resources.ApplyResources(this.txtCalSecondiAttesa, "txtCalSecondiAttesa");
-            this.txtCalSecondiAttesa.Name = "txtCalSecondiAttesa";
-            // 
-            // label149
-            // 
-            resources.ApplyResources(this.label149, "label149");
-            this.label149.Name = "label149";
             // 
             // frmSpyBat
             // 
@@ -5754,5 +5795,11 @@
         private System.Windows.Forms.ComboBox cmbCalTipoGrafico;
         private System.Windows.Forms.TextBox txtCalSecondiAttesa;
         private System.Windows.Forms.Label label149;
+        private System.Windows.Forms.TextBox txtCalFWRichiesto;
+        private System.Windows.Forms.Label label151;
+        private System.Windows.Forms.Label label150;
+        private System.Windows.Forms.TextBox txtCalMaxAerr;
+        private System.Windows.Forms.Label label152;
+        private System.Windows.Forms.TextBox txtCalErrMaxAss;
     }
 }
