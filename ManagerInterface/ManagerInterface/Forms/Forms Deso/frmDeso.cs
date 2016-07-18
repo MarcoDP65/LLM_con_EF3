@@ -2472,11 +2472,11 @@ namespace PannelloCharger
         {
             if (chkInvertiCorreti.Checked == true)
             {
-                _sb.InvertiVersoCorrentiML(elementiComuni.VersoCorrenti.Inverso);
+                _sb.InvertiVersoCorrentiML(elementiComuni.VersoCorrente.Inverso);
             }
             else
             {
-                _sb.InvertiVersoCorrentiML(elementiComuni.VersoCorrenti.Diretto);
+                _sb.InvertiVersoCorrentiML(elementiComuni.VersoCorrente.Diretto);
             }
             flvwCicliBatteria.RefreshObjects(_sb.CicliMemoriaLunga);
         }

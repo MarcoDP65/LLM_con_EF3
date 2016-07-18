@@ -75,6 +75,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
+            this.programmazioniAvanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -257,7 +258,8 @@
             // 
             this.mnuServizi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flashFTDIToolStripMenuItem,
-            this.flashSPYBATTToolStripMenuItem});
+            this.flashSPYBATTToolStripMenuItem,
+            this.programmazioniAvanzateToolStripMenuItem});
             this.mnuServizi.Name = "mnuServizi";
             resources.ApplyResources(this.mnuServizi, "mnuServizi");
             // 
@@ -395,6 +397,12 @@
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
             // 
+            // programmazioniAvanzateToolStripMenuItem
+            // 
+            this.programmazioniAvanzateToolStripMenuItem.Name = "programmazioniAvanzateToolStripMenuItem";
+            resources.ApplyResources(this.programmazioniAvanzateToolStripMenuItem, "programmazioniAvanzateToolStripMenuItem");
+            this.programmazioniAvanzateToolStripMenuItem.Click += new System.EventHandler(this.programmazioniAvanzateToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             resources.ApplyResources(this, "$this");
@@ -471,6 +479,7 @@
         private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tstBtnExport;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem programmazioniAvanzateToolStripMenuItem;
     }
 }
 

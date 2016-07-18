@@ -117,7 +117,7 @@ namespace ChargerLogic
         private bool _cbCollegato;
         private bool _inviaAckPacchettoDump = false;
         private SerialMessage.TipoRisposta _ultimaRisposta = SerialMessage.TipoRisposta.NonValido;   // flag per l'indicazioene del tipo dell'ultimo messaggio ricevuto dalla scheda
-        public elementiComuni.VersoCorrenti VersoScarica = elementiComuni.VersoCorrenti.Diretto;
+        public elementiComuni.VersoCorrente VersoScarica = elementiComuni.VersoCorrente.Diretto;
 
         // Eventi pubblici della classe spy Batt
 
@@ -474,6 +474,7 @@ namespace ChargerLogic
         /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
         /// <returns></returns>
         public bool CaricaTestata(string IdApparato,bool ApparatoConnesso)
+
         {
             try
             {
@@ -2566,6 +2567,65 @@ namespace ChargerLogic
         }
 
 
+        // -------------------------------
+        // strategia
+
+        public bool LanciaComandoTestStrategia(byte ComandoStrategia, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+
+
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.SB_W_chgst_Call;
+                _mS.ComandoStrat = new MessaggioSpyBatt.ComandoStrategia();
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio comando SB_W_chgst_Call -  " + ComandoStrategia.ToString("X2"));
+
+                _mS.ComponiMessaggioTestStrategia(ComandoStrategia);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
+
+                int _totDati = _mS.ComandoStrat.numBytes ;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati) ; _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
+
+
+
+
 
 
 
@@ -2690,8 +2750,6 @@ namespace ChargerLogic
                 return "";
             }
         }
-
-
 
         public string StringaPresenza(byte Valore)
         {
@@ -3063,6 +3121,42 @@ namespace ChargerLogic
             }
         }
 
+
+        public bool LanciaComandoStrategia()
+        {
+            try
+            {
+                bool _esito;
+                DateTime _now = DateTime.Now;
+
+                _mS.Comando = SerialMessage.TipoComando.SB_UpdateRTC;
+                _mS.DatiRTC = new SerialMessage.comandoRTC();
+                _mS.DatiRTC.anno = (ushort)_now.Year;
+                _mS.DatiRTC.mese = (byte)_now.Month;
+                _mS.DatiRTC.giorno = (byte)_now.Day;
+                _mS.DatiRTC.giornoSett = (byte)_now.DayOfWeek;
+                _mS.DatiRTC.ore = (byte)_now.Hour;
+                _mS.DatiRTC.minuti = (byte)_now.Minute;
+                _mS.DatiRTC.secondi = (byte)_now.Second;
+
+                _mS.ComponiMessaggioOra();
+                _rxRisposta = false;
+                Log.Debug("Scrivi SB RTC");
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                return _esito; //_esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
         public bool ScriviParametroCal(byte IdParametro, ushort ValoreCalibrazione)
         {
             try
@@ -3227,6 +3321,11 @@ namespace ChargerLogic
                 _mS.ProgRicarica.BatteryCell2 = NuovoProgramma.BatteryCell2;
                 _mS.ProgRicarica.BatteryCell1 = NuovoProgramma.BatteryCell1;
                 _mS.ProgRicarica.DataInstallazione = NuovoProgramma.DataInstallazione;
+                _mS.ProgRicarica.AbilitaPresElett = NuovoProgramma.AbilitaPresElett;
+                _mS.ProgRicarica.TempMin = NuovoProgramma.TempMin;
+                _mS.ProgRicarica.TempMax = NuovoProgramma.TempMax;
+                _mS.ProgRicarica.VersoCorrente = NuovoProgramma.VersoCorrente;
+                _mS.ProgRicarica.NumeroSpire = NuovoProgramma.NumeroSpire;
                 _mS.ProgRicarica.EsitoScrittura = 0x00;
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 _mS.Comando = SerialMessage.TipoComando.SB_W_Programmazione;
@@ -3511,6 +3610,12 @@ namespace ChargerLogic
                                 Log.Debug("Lettura Area Memoria");
                                 break;
 
+                            case (byte)SerialMessage.TipoComando.SB_W_chgst_Call:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                Log.Debug("Lettura Comando Strategia Memoria");
+                                break;
+
                             case (byte)SerialMessage.TipoComando.Start: // 0x0F:
                             case (byte)SerialMessage.TipoComando.Stop:  // 0xF0:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
@@ -3658,7 +3763,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool InvertiVersoCorrentiML(elementiComuni.VersoCorrenti Verso)
+        public bool InvertiVersoCorrentiML(elementiComuni.VersoCorrente Verso)
         {
             try
             {

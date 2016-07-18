@@ -296,6 +296,14 @@
             this.label76 = new System.Windows.Forms.Label();
             this.txtVarAhCarica = new System.Windows.Forms.TextBox();
             this.txtVarVBatt = new System.Windows.Forms.TextBox();
+            this.tbpProxySig60 = new System.Windows.Forms.TabPage();
+            this.lblSig60DataReceuved = new System.Windows.Forms.Label();
+            this.lblSig60DataSent = new System.Windows.Forms.Label();
+            this.txtStratDataGridRx = new System.Windows.Forms.TextBox();
+            this.grbStratComandiTest = new System.Windows.Forms.GroupBox();
+            this.btnStratTest02 = new System.Windows.Forms.Button();
+            this.btnStratTest01 = new System.Windows.Forms.Button();
+            this.txtStratDataGridTx = new System.Windows.Forms.TextBox();
             this.btnApparatoOk = new System.Windows.Forms.Button();
             this.btnSalvaCaricabatteria = new System.Windows.Forms.Button();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
@@ -341,6 +349,8 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
             this.grbVariabiliImmediate.SuspendLayout();
+            this.tbpProxySig60.SuspendLayout();
+            this.grbStratComandiTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProfiloAttuale
@@ -906,6 +916,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tabOrologio);
             this.tabCaricaBatterie.Controls.Add(this.tabCb04);
             this.tabCaricaBatterie.Controls.Add(this.tabMonitor);
+            this.tabCaricaBatterie.Controls.Add(this.tbpProxySig60);
             this.tabCaricaBatterie.Location = new System.Drawing.Point(12, 12);
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
@@ -3229,8 +3240,10 @@
             // 
             this.flvwLettureParametri.AllowColumnReorder = true;
             this.flvwLettureParametri.AlternateRowBackColor = System.Drawing.Color.LightYellow;
+            this.flvwLettureParametri.CellEditUseWholeCell = false;
             this.flvwLettureParametri.FullRowSelect = true;
-            this.flvwLettureParametri.HeaderUsesThemes = false;
+            this.flvwLettureParametri.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwLettureParametri.HighlightForegroundColor = System.Drawing.Color.Empty;
             this.flvwLettureParametri.Location = new System.Drawing.Point(572, 23);
             this.flvwLettureParametri.Name = "flvwLettureParametri";
             this.flvwLettureParametri.ShowGroups = false;
@@ -3406,6 +3419,92 @@
             this.txtVarVBatt.Text = "0";
             this.txtVarVBatt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // tbpProxySig60
+            // 
+            this.tbpProxySig60.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpProxySig60.Controls.Add(this.lblSig60DataReceuved);
+            this.tbpProxySig60.Controls.Add(this.lblSig60DataSent);
+            this.tbpProxySig60.Controls.Add(this.txtStratDataGridRx);
+            this.tbpProxySig60.Controls.Add(this.grbStratComandiTest);
+            this.tbpProxySig60.Controls.Add(this.txtStratDataGridTx);
+            this.tbpProxySig60.Location = new System.Drawing.Point(4, 25);
+            this.tbpProxySig60.Name = "tbpProxySig60";
+            this.tbpProxySig60.Size = new System.Drawing.Size(1203, 559);
+            this.tbpProxySig60.TabIndex = 9;
+            this.tbpProxySig60.Text = "SIG60 Proxy";
+            // 
+            // lblSig60DataReceuved
+            // 
+            this.lblSig60DataReceuved.AutoSize = true;
+            this.lblSig60DataReceuved.Location = new System.Drawing.Point(16, 347);
+            this.lblSig60DataReceuved.Name = "lblSig60DataReceuved";
+            this.lblSig60DataReceuved.Size = new System.Drawing.Size(101, 17);
+            this.lblSig60DataReceuved.TabIndex = 56;
+            this.lblSig60DataReceuved.Text = "Data Received";
+            // 
+            // lblSig60DataSent
+            // 
+            this.lblSig60DataSent.AutoSize = true;
+            this.lblSig60DataSent.Location = new System.Drawing.Point(16, 147);
+            this.lblSig60DataSent.Name = "lblSig60DataSent";
+            this.lblSig60DataSent.Size = new System.Drawing.Size(71, 17);
+            this.lblSig60DataSent.TabIndex = 55;
+            this.lblSig60DataSent.Text = "Data Sent";
+            // 
+            // txtStratDataGridRx
+            // 
+            this.txtStratDataGridRx.Font = new System.Drawing.Font("Courier New", 12F);
+            this.txtStratDataGridRx.Location = new System.Drawing.Point(19, 367);
+            this.txtStratDataGridRx.Multiline = true;
+            this.txtStratDataGridRx.Name = "txtStratDataGridRx";
+            this.txtStratDataGridRx.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtStratDataGridRx.Size = new System.Drawing.Size(1157, 163);
+            this.txtStratDataGridRx.TabIndex = 54;
+            // 
+            // grbStratComandiTest
+            // 
+            this.grbStratComandiTest.BackColor = System.Drawing.Color.White;
+            this.grbStratComandiTest.Controls.Add(this.btnStratTest02);
+            this.grbStratComandiTest.Controls.Add(this.btnStratTest01);
+            this.grbStratComandiTest.Location = new System.Drawing.Point(19, 18);
+            this.grbStratComandiTest.Name = "grbStratComandiTest";
+            this.grbStratComandiTest.Size = new System.Drawing.Size(659, 109);
+            this.grbStratComandiTest.TabIndex = 53;
+            this.grbStratComandiTest.TabStop = false;
+            this.grbStratComandiTest.Text = "Comandi Test";
+            // 
+            // btnStratTest02
+            // 
+            this.btnStratTest02.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratTest02.Location = new System.Drawing.Point(174, 32);
+            this.btnStratTest02.Name = "btnStratTest02";
+            this.btnStratTest02.Size = new System.Drawing.Size(149, 51);
+            this.btnStratTest02.TabIndex = 51;
+            this.btnStratTest02.Text = "CMD_TST2";
+            this.btnStratTest02.UseVisualStyleBackColor = true;
+            this.btnStratTest02.Click += new System.EventHandler(this.btnStratTest02_Click);
+            // 
+            // btnStratTest01
+            // 
+            this.btnStratTest01.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratTest01.Location = new System.Drawing.Point(19, 32);
+            this.btnStratTest01.Name = "btnStratTest01";
+            this.btnStratTest01.Size = new System.Drawing.Size(149, 51);
+            this.btnStratTest01.TabIndex = 50;
+            this.btnStratTest01.Text = "CMD_TST1";
+            this.btnStratTest01.UseVisualStyleBackColor = true;
+            this.btnStratTest01.Click += new System.EventHandler(this.btnStratTest01_Click);
+            // 
+            // txtStratDataGridTx
+            // 
+            this.txtStratDataGridTx.Font = new System.Drawing.Font("Courier New", 12F);
+            this.txtStratDataGridTx.Location = new System.Drawing.Point(19, 167);
+            this.txtStratDataGridTx.Multiline = true;
+            this.txtStratDataGridTx.Name = "txtStratDataGridTx";
+            this.txtStratDataGridTx.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtStratDataGridTx.Size = new System.Drawing.Size(1157, 163);
+            this.txtStratDataGridTx.TabIndex = 52;
+            // 
             // btnApparatoOk
             // 
             this.btnApparatoOk.Location = new System.Drawing.Point(1127, 622);
@@ -3434,7 +3533,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1527, 666);
+            this.ClientSize = new System.Drawing.Size(1575, 737);
             this.Controls.Add(this.btnSalvaCaricabatteria);
             this.Controls.Add(this.btnApparatoOk);
             this.Controls.Add(this.tabCaricaBatterie);
@@ -3513,6 +3612,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).EndInit();
             this.grbVariabiliImmediate.ResumeLayout(false);
             this.grbVariabiliImmediate.PerformLayout();
+            this.tbpProxySig60.ResumeLayout(false);
+            this.tbpProxySig60.PerformLayout();
+            this.grbStratComandiTest.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3790,5 +3892,13 @@
         private System.Windows.Forms.SaveFileDialog sfdExportDati;
         private System.Windows.Forms.TextBox txtPaParDivK;
         private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.TabPage tbpProxySig60;
+        private System.Windows.Forms.Label lblSig60DataReceuved;
+        private System.Windows.Forms.Label lblSig60DataSent;
+        private System.Windows.Forms.TextBox txtStratDataGridRx;
+        private System.Windows.Forms.GroupBox grbStratComandiTest;
+        private System.Windows.Forms.Button btnStratTest02;
+        private System.Windows.Forms.Button btnStratTest01;
+        private System.Windows.Forms.TextBox txtStratDataGridTx;
     }
 }

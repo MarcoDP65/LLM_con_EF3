@@ -19,9 +19,19 @@ namespace PannelloCharger
 {
     public partial class frmInserimentoProgramma : Form
     {
+        public bool TestMode = false;
         public UnitaSpyBatt _sb;
+
+        private ParametriSetupPro _parametriPro = new ParametriSetupPro();
+
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         LogicheBase _logiche;
+
+        private bool _attivaEstese = false;
+        private bool _attivaPRO = false;
+
+
+
 
         public frmInserimentoProgramma(LogicheBase Logiche)
         {
@@ -32,13 +42,15 @@ namespace PannelloCharger
             cmbTipoBatteria.Items.Add("Gel");
             cmbTipoBatteria.SelectedIndex = 0;
             ApplicaAutorizzazioni();
+
+            inizializzaPro();
+            inizializzaGrigliaTurni();
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
 
         private void ApplicaAutorizzazioni()
         {
@@ -104,13 +116,128 @@ namespace PannelloCharger
 
         private void frmInserimentoProgramma_Load(object sender, EventArgs e)
         {
+            if (TestMode)
+            {
+                this.Text = "NUOVA CONFIGURAZIONE";
+                btnInserisciProgramma.Enabled = false;
+                return;
+            }
+
             if (_sb == null)
             {
                 //MessageBox.Show("Apparato Corrente non definito  /N Impossibile continuare", "Programmazione Apparato", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 MessageBox.Show(StringheComuni.NotDefined + "/N " + StringheComuni.ImpossibileContinuare,StringheComuni.TitoloCfg, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
+                
             }
+
+            // A questo punto ho la SB caricata. inizializzo in base alla versione FW
+
+            _attivaEstese = _sb.sbData.fwParametriProgEstesa;
+            _attivaPRO = _sb.sbData.fwFunzioniPro;
+
+            // Parametri Estesi
+            pcbIcoDiretto.Visible = !_attivaEstese;
+            pcbIcoInverso.Visible = !_attivaEstese;
+            optVersoDiretto.Visible = _attivaEstese;
+            optVersoInverso.Visible = _attivaEstese;
+
+            pbxInverso.Enabled = _attivaEstese;            //optInversa.Enabled = false;
+            lblNumSpire.Visible = _attivaEstese;
+            txtNumSpire.Visible = _attivaEstese;
+            chkSondaElPresente.Visible = _attivaEstese;
+            txtTempMax.Visible = _attivaEstese;
+            lblTempMax.Visible = _attivaEstese;
+            txtTempMin.Visible = _attivaEstese;
+            lblTempMin.Visible = _attivaEstese;
+
+            if (!_attivaPRO)
+            {
+                tabImpostazioni.TabPages.Remove(tbpSetupPro);
+                tabImpostazioni.TabPages.Remove(tbpSetupTurni);
+                tabImpostazioni.TabPages.Remove(tbpSetupTempo);
+            }
+
             this.Text = StringheComuni.NuovaCfg + " " + Convert.ToString(_sb.sbData.ProgramCount + 1);
+
+
+ 
+        }
+
+        public bool verificaParametri()
+        {
+            try
+            {
+                sbProgrammaRicarica _nuovoProg = new sbProgrammaRicarica();
+
+
+                _nuovoProg.BatteryVdef = FunzioniMR.ConvertiUshort(txtProgcBattVdef.Text, 100, 0);
+                _nuovoProg.BatteryAhdef = FunzioniMR.ConvertiUshort(txtProgcBattAhDef.Text, 10, 0);
+                txtProgcBattType.Text = cmbTipoBatteria.SelectedIndex.ToString();
+                _nuovoProg.BatteryType = FunzioniMR.ConvertiByte(txtProgcBattType.Text, 1, 0);
+                _nuovoProg.BatteryCells = FunzioniMR.ConvertiByte(txtProgcCelleTot.Text, 1, 0);
+                _nuovoProg.BatteryCell3 = FunzioniMR.ConvertiByte(txtProgcCelleV3.Text, 1, 0);
+                _nuovoProg.BatteryCell2 = FunzioniMR.ConvertiByte(txtProgcCelleV2.Text, 1, 0);
+                _nuovoProg.BatteryCell1 = FunzioniMR.ConvertiByte(txtProgcCelleV1.Text, 1, 0);
+                _nuovoProg.VersoCorrente = (byte)elementiComuni.VersoCorrente.Diretto;  // se non impostabile >> diretto
+                _nuovoProg.AbilitaPresElett = (byte)elementiComuni.AbilitaElemento.Attivo;
+
+                if (_attivaEstese)
+                {
+                    if (optVersoInverso.Checked)
+                        _nuovoProg.VersoCorrente = (byte)elementiComuni.VersoCorrente.Inverso;
+                    if (!chkSondaElPresente.Checked)
+                        _nuovoProg.AbilitaPresElett = (byte)elementiComuni.AbilitaElemento.Non_Attivo;
+
+                    _nuovoProg.TempMin = FunzioniMR.ConvertiByte(txtTempMin.Text, 1, 60);
+                    _nuovoProg.TempMax = FunzioniMR.ConvertiByte(txtTempMax.Text, 1, 80);
+
+
+                }
+
+
+                if (_nuovoProg.BatteryCells < 1) return false;
+                if (_nuovoProg.BatteryCells > _nuovoProg.BatteryVdef ) return false;
+
+                if (_nuovoProg.BatteryCell3 != 0)
+                {
+                    if (_nuovoProg.BatteryCell3 >_nuovoProg.BatteryCells) return false;
+                }
+
+                if (_nuovoProg.BatteryCell2 != 0)
+                {
+                    if (_nuovoProg.BatteryCell3 != 0)
+                    {
+                        if (_nuovoProg.BatteryCell2 > _nuovoProg.BatteryCell2) return false;
+                    }
+                    else
+                    {
+                        if (_nuovoProg.BatteryCell2 > _nuovoProg.BatteryCells) return false;
+                    }
+                }
+
+
+                if (_nuovoProg.BatteryCell1 != 0)
+                {
+                    if (_nuovoProg.BatteryCell2 != 0)
+                    {
+                        if (_nuovoProg.BatteryCell1 > _nuovoProg.BatteryCell2) return false;
+                    }
+                    else
+                    {
+                        if (_nuovoProg.BatteryCell1 > _nuovoProg.BatteryCells) return false;
+                    }
+                }
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("salvaProgramma: " + Ex.Message);
+                return false;
+            }
+
         }
 
         public void salvaProgramma()
@@ -137,6 +264,21 @@ namespace PannelloCharger
                 _nuovoProg.BatteryCell3 = FunzioniMR.ConvertiByte(txtProgcCelleV3.Text, 1, 0);
                 _nuovoProg.BatteryCell2 = FunzioniMR.ConvertiByte(txtProgcCelleV2.Text, 1, 0);
                 _nuovoProg.BatteryCell1 = FunzioniMR.ConvertiByte(txtProgcCelleV1.Text, 1, 0);
+                _nuovoProg.VersoCorrente = (byte)elementiComuni.VersoCorrente.Diretto;  // se non impostabile >> diretto
+                _nuovoProg.AbilitaPresElett = (byte)elementiComuni.AbilitaElemento.Attivo;
+
+                if (_attivaEstese)
+                {
+                    if (optVersoInverso.Checked)
+                        _nuovoProg.VersoCorrente = (byte)elementiComuni.VersoCorrente.Inverso;
+                    if (!chkSondaElPresente.Checked)
+                        _nuovoProg.AbilitaPresElett = (byte)elementiComuni.AbilitaElemento.Non_Attivo;
+
+                    _nuovoProg.TempMin = FunzioniMR.ConvertiByte(txtTempMin.Text, 1, 60);
+                    _nuovoProg.TempMax = FunzioniMR.ConvertiByte(txtTempMax.Text, 1, 80);
+
+
+                }
 
                 _sb.ScriviProgramma( _nuovoProg ,(chkMemProgrammed.Checked == true ));
 
@@ -162,6 +304,15 @@ namespace PannelloCharger
         {
             if (_sb.apparatoPresente)
             {
+                bool _verifica = verificaParametri();
+
+                if(!_verifica)
+                {
+                    // MessageBox.Show("Programmazione non riuscita", "Programmazioe Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringheComuni.CfgNonValida, StringheComuni.TitoloCfg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
                 salvaProgramma();
                 if (chkMemProgrammed.Checked)
                 {
@@ -212,8 +363,159 @@ namespace PannelloCharger
             }
         }
 
+        private void inizializzaPro()
+        {
+            try
+            {
+                cmbProModoPianif.DataSource = _parametriPro.TipiPianificazione;
+                cmbProModoPianif.DisplayMember = "Descrizione";
+                cmbProModoPianif.ValueMember = "Codice";
+                cmbProModoPianif.SelectedIndex = 0;
+
+                cmbMaxSbil.DataSource = _parametriPro.MaxSbilanciamento;
+                cmbMaxSbil.DisplayMember = "strValore";
+                cmbMaxSbil.ValueMember = "ValoreB";
+
+                cmbBiberonaggio.DataSource = _parametriPro.OpzioniBib;
+                cmbBiberonaggio.DisplayMember = "Descrizione";
+                cmbBiberonaggio.ValueMember = "Codice";
+                cmbBiberonaggio.SelectedIndex = 0;
+
+                cmbRabboccatore.DataSource = _parametriPro.OpzioniRabb;
+                cmbRabboccatore.DisplayMember = "Descrizione";
+                cmbRabboccatore.ValueMember = "Codice";
+                cmbRabboccatore.SelectedIndex = 0;
+
+
+
+            }
+            catch
+            {
+
+            }
+        }
+
+
+        private void inizializzaGrigliaTurni()
+        {
+            try
+            {
+                OraTurnoMR _OraTempI;
+                OraTurnoMR _OraTempF;
+
+
+                for (int giorno = 1; giorno < 8; giorno++)
+                {
+
+                    PannelloTurno P1 = new PannelloTurno();
+                    _OraTempI = new OraTurnoMR(5, 45);
+                    _OraTempF = new OraTurnoMR(6, 15);
+                    P1.InizioCambioTurno = _OraTempI;
+                    P1.FineCambioTurno = _OraTempF;
+                    P1.BackColor = Color.LightYellow;
+                    tlpGrigliaTurni.Controls.Add(P1, 1, giorno+1);
+
+                    PannelloTurno P2 = new PannelloTurno();
+                    _OraTempI = new OraTurnoMR(13, 45);
+                    _OraTempF = new OraTurnoMR(14, 15);
+                    P2.InizioCambioTurno = _OraTempI;
+                    P2.FineCambioTurno = _OraTempF;
+                    P2.BackColor = Color.LightYellow;
+                    tlpGrigliaTurni.Controls.Add(P2, 2, giorno + 1);
+
+                    PannelloTurno P3 = new PannelloTurno();
+                    _OraTempI = new OraTurnoMR(21, 45);
+                    _OraTempF = new OraTurnoMR(22, 15);
+                    P3.InizioCambioTurno = _OraTempI;
+                    P3.FineCambioTurno = _OraTempF;
+                    P3.BackColor = Color.LightYellow;
+                    tlpGrigliaTurni.Controls.Add(P3, 3, giorno + 1);
+                }
+
+
+                lblTurno1.ForeColor = Color.White;
+                lblTurno2.ForeColor = Color.White;
+                lblTurno3.ForeColor = Color.White;
+
+            }
+            catch
+            {
+
+            }
+        }
+
         private void txtProgcCelleV3_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void tlpGrigliaTurni_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbBiberonaggio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTempMin_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                byte _tempTmin = FunzioniMR.ConvertiByte(txtTempMin.Text, 1, 0);
+                if (_tempTmin < 10)
+                {
+                    _tempTmin = 10;
+                    txtTempMin.Text = "10";
+                }
+
+                if (_tempTmin > 100)
+                {
+                    _tempTmin = 100;
+                    txtTempMin.Text = "100";
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtTempMin_Leave: " + Ex.Message);
+            }
+
+        }
+
+        private void txtTempMax_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                byte _tempTmax = FunzioniMR.ConvertiByte(txtTempMax.Text, 1, 0);
+                if (_tempTmax < 10)
+                {
+                    _tempTmax = 10;
+                    txtTempMax.Text = "10";
+                }
+
+                if (_tempTmax > 110)
+                {
+                    _tempTmax = 110;
+                    txtTempMax.Text = "110";
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtTempMin_Leave: " + Ex.Message);
+            }
 
         }
     }

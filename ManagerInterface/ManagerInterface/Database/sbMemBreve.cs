@@ -70,7 +70,7 @@ namespace MoriData
         public bool _recordPresente;
         private string _tempId;
         public tensioniIntermedie ValoriIntermedi = new tensioniIntermedie();
-        public elementiComuni.VersoCorrenti VersoScarica = elementiComuni.VersoCorrenti.Diretto;
+        public elementiComuni.VersoCorrente VersoScarica = elementiComuni.VersoCorrente.Diretto;
 
         public sbMemBreve()
         {
@@ -610,7 +610,7 @@ namespace MoriData
         {
             get 
             {
-                if (VersoScarica == elementiComuni.VersoCorrenti.Diretto)
+                if (VersoScarica == elementiComuni.VersoCorrente.Diretto)
                 {
                     return FunzioniMR.StringaCorrenteOLV((short)_sbsm.Amed);
                 }
@@ -639,7 +639,7 @@ namespace MoriData
         {
             get 
             {
-                if (VersoScarica == elementiComuni.VersoCorrenti.Diretto)
+                if (VersoScarica == elementiComuni.VersoCorrente.Diretto)
                 {
                     return FunzioniMR.StringaCorrenteOLV((short)_sbsm.Amin);
                 }
@@ -669,7 +669,7 @@ namespace MoriData
         {
             get
             {
-                if (VersoScarica == elementiComuni.VersoCorrenti.Diretto)
+                if (VersoScarica == elementiComuni.VersoCorrente.Diretto)
                 {
                     return FunzioniMR.StringaCorrenteOLV((short)_sbsm.Amax );
                 }

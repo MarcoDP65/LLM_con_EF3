@@ -1741,75 +1741,95 @@ namespace ChargerLogic
 
         }
 
-        /*
-        public class TestataFirmware
+        public class ComandoStrategia
         {
-
-            public string RevBootloader;
-            public string RevFirmware;
-            public ushort CRCFirmware;
-            public uint AddrFlash;
-            public uint LenFlash;
-            public uint AddrFlash2;
-            public uint LenFlash2;
-            public uint AddrProxy;
-            public uint LenProxy;
-            public byte Stato;
-            public DateTime IstanteLettura;
 
             byte[] _dataBuffer;
             public byte[] dataBuffer;
-            public bool datiPronti;
-            public string lastError;
+            public ushort numBytes;
+            public UInt32 memAddress;
+            public byte[] memData;
+            public byte[] memDataDecoded;
 
-            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            public byte ComandoLibreria;
+            public byte LunghezzaDati;
+            public byte EsitoChiamata;
+
+
+            public bool datiPronti;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio)
             {
 
                 byte[] _risposta;
                 int startByte = 0;
+                ushort _tempShort;
+                byte _tempByte;
 
                 try
                 {
                     datiPronti = false;
+                    LunghezzaDati = 0;
                     if (_messaggio.Length < 2)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
-
-                    _risposta = new byte[(_messaggio.Length / 2)];
+                    numBytes = (ushort)(_messaggio.Length / 2);
+                    _risposta = new byte[numBytes];
+                    memData = new byte[numBytes];
 
                     if (decodificaArray(_messaggio, ref _risposta))
                     {
                         startByte = 0;
-
-                        RevBootloader = ArrayToString(_risposta, startByte, 6);
-                        startByte += 6;
-                        RevFirmware = ArrayToString(_risposta, startByte, 6);
-                        startByte += 6;
-                        CRCFirmware = ArrayToUshort(_risposta, startByte, 2);
-                        startByte += 2;
-                        AddrFlash = ArrayToUint32(_risposta, startByte, 4);
-                        startByte += 4;
-                        LenFlash = ArrayToUint32(_risposta, startByte, 4);
-                        startByte += 4;
-                        AddrFlash2 = ArrayToUint32(_risposta, startByte, 4);
-                        startByte += 4;
-                        LenFlash2 = ArrayToUint32(_risposta, startByte, 4);
-                        startByte += 4;
-                        AddrProxy = ArrayToUint32(_risposta, startByte, 4);
-                        startByte += 4;
-                        LenProxy = ArrayToUshort(_risposta, startByte, 2);
-                        startByte += 2;
-
-                        Stato = _risposta[startByte];
-                        startByte += 1;
-
-                        datiPronti = true;
-                        IstanteLettura = DateTime.Now;
-
+                        memData = _messaggio;
+                        memDataDecoded = _risposta;
                     }
 
+                    if (memData.Length < 3)
+                        return EsitoRisposta.RispostaNonValida;
+
+
+
+                    ComandoLibreria = memData[0];
+                    LunghezzaDati = memData[1];
+                    if ((memData.Length - LunghezzaDati) != 3 )
+                        return EsitoRisposta.LunghezzaErrata;
+                    EsitoChiamata = memData[2];
+                    datiPronti = true;
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+
+
+
+            public EsitoRisposta componiMessaggio(byte[] _messaggio)
+            {
+                ushort _tempShort;
+                byte _tempByte;
+                byte[] _tempArray;
+                byte[] _tempMessaggio = new byte[10];
+                byte[] _tempFromShort = new byte[2];
+
+                try
+                {
+                    //l'intestazione deve essere pronta
+
+                    datiPronti = false;
+
+                    if (_messaggio.Length != 10) { return EsitoRisposta.NonRiconosciuto; }
+
+                    _tempByte = decodificaByte(_messaggio[0], _messaggio[1]);
+                    _tempShort = (ushort)(_tempByte);
+                    _tempByte = decodificaByte(_messaggio[2], _messaggio[3]);
+                    _tempShort = (ushort)((_tempShort << 8) + _tempByte);
 
                     return EsitoRisposta.MessaggioOk;
                 }
@@ -1821,8 +1841,9 @@ namespace ChargerLogic
             }
 
 
+
         }
-        */
+
 
 
         public class EsitoMessaggio

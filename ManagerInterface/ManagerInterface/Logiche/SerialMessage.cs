@@ -59,8 +59,10 @@ namespace ChargerLogic
             SB_ACK = 0x6C,
             SB_ACK_PKG = 0x6D,
             SB_NACK = 0x71,
-            SB_W_MemProgrammed = 0x74
-        };
+            SB_W_MemProgrammed = 0x74,
+            SB_W_chgst_Call = 0x80,
+            LL_SIG60_PROXY = 0x81,
+         };
         public enum ParametroLadeLight : byte
         {
             TempoMassimoCarica = 0x01,
@@ -89,22 +91,22 @@ namespace ChargerLogic
             IUIa = 0x03,
             Nullo = 0xFF,
         }
-
         public enum CondStopLadeLight : byte
         {
             ND = 0x00,
             Timer = 0x01,
             dVdt = 0x02,
         }
-
         public enum TipoRisposta : byte { NonValido = 0x00, Ack = 0x01, Nack = 0x02, Break = 0x03, Data = 0xFF };
-
         public enum EsitoRisposta : byte { 
             MessaggioVuoto = 1, 
             BadCRC = 2, 
             NonRiconosciuto = 3,
             ParametriErrati= 10,
             IdNonCoerente = 11,
+            RispostaNonValida = 0x20,
+            LunghezzaErrata = 0x21,
+            CodiceRispostaErrato = 0x22,
             ErroreGenerico = 99,
             MessaggioOk = 0 }
         public enum TipoCiclo : byte { Carica = 0xF0, Scarica = 0x0F, Pausa = 0xAA , Equal = 0xF1 };
@@ -137,12 +139,12 @@ namespace ChargerLogic
         public byte _comando;
  
         public TipoDispositivo Dispositivo;
-
         public comandoRTC DatiRTC;
         public comandoIniziale Intestazione;
         public cicliPresenti CicliPresenti;
         public cicloAttuale CicloInMacchina;
         public VariabiliLadeLight VariabiliAttuali;
+        public ProxyComandoStrategia DatiStrategia;
 
         public bool componiRisposta(byte[] _messaggio, EsitoRisposta Esito)
         {
@@ -473,6 +475,38 @@ namespace ChargerLogic
                         _risposta = VariabiliAttuali.analizzaMessaggio(_buffArray);
                         if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
                         break;
+
+                    case (byte)TipoComando.LL_SIG60_PROXY:
+                        _endPos = _messaggio.Length;
+                        _startPos = _endPos - 6;
+
+                        if (_messaggio[_startPos] != serENDPAC)
+                        {
+                            return EsitoRisposta.NonRiconosciuto;
+                        }
+                        _buffArray = new byte[_startPos - 1];
+
+                        // controllo CRC
+                        Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                        _startPos++;
+                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                        _tempShort = (ushort)(_ret);
+                        _startPos += 2;
+                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                        _tempShort = (ushort)((_tempShort << 8) + _ret);
+                        _crc = codCrc.ComputeChecksum(_buffArray);
+
+                        if (_crc != _tempShort)
+                        { return EsitoRisposta.BadCRC; }
+
+                        // ora leggo la parte dati
+                        DatiStrategia = new ProxyComandoStrategia();
+                        _buffArray = new byte[(_endPos - 29)];
+                        Array.Copy(_messaggio, 23, _buffArray, 0, _endPos - 29);
+                        _risposta = DatiStrategia.analizzaMessaggio(_buffArray);
+                        if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
+                        break;
+
                     default:
                         return EsitoRisposta.NonRiconosciuto;
                      break;
@@ -543,19 +577,19 @@ namespace ChargerLogic
 
             Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
 
-            try 
+            try
             {
                 //serial
                 for (int i = 0; i <= 7; i++)
                 {
                     splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
-                    _comandoBase[(i*2)] = msb;
-                    _comandoBase[(i*2)+1] = lsb;
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
                 }
                 //dispositivo
 
-                _dispositivo = (ushort)(Dispositivo );
-                splitUshort(_dispositivo,ref lsbDisp,ref msbDisp);
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
 
                 splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
                 _comandoBase[(16)] = msb;
@@ -589,7 +623,7 @@ namespace ChargerLogic
                 {
                     MessageBuffer[m + 1] = _comandoBase[m];
                 }
-                MessageBuffer[_arrayLen+1] = serENDPAC;
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
 
                 splitUshort(_crc, ref lsbDisp, ref msbDisp);
 
@@ -602,6 +636,98 @@ namespace ChargerLogic
 
 
                 MessageBuffer[_arrayLen + 6] = serETX;
+
+                return _esito;
+            }
+            catch { return _esito; }
+        }
+
+        public ushort ComponiMessaggioNew(byte[] _corpoMessaggio)
+        {
+            ushort _esito = 0;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try 
+            {
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i*2)] = msb;
+                    _comandoBase[(i*2)+1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo );
+                splitUshort(_dispositivo,ref lsbDisp,ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(Comando);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+
+                int _lenDati = _corpoMessaggio.Length;
+                _lenDati = _lenDati * 2;
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + _lenDati;
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+                _arrayInit += 1;
+
+                for (int _b = 0; _b < _corpoMessaggio.Length; _b++)
+                {
+                    splitUshort(codificaByte(_corpoMessaggio[_b]), ref lsb, ref msb);
+                    MessageBuffer[_arrayInit] = msb;
+                    MessageBuffer[_arrayInit+1] = lsb;
+                    _arrayInit += 2;
+                }
+
+
+                /// calcolo il crc
+                /// 
+
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+
 
                 return _esito;
             }
@@ -914,7 +1040,7 @@ namespace ChargerLogic
 
 
 
-                foreach( ParametroLL _par in CicloInMacchina.Parametri)
+                foreach (ParametroLL _par in CicloInMacchina.Parametri)
                 {
                     // Id Parametro
                     splitUshort(codificaByte(_par.idParametro), ref lsb, ref msb);
@@ -1993,11 +2119,6 @@ namespace ChargerLogic
 
                     if (decodificaArray(_messaggio, ref _risposta))
                     {
-                       /* startByte = 0;
-                        IdCiclo = ArrayToUint32(_risposta, startByte, 4);
-                        startByte += 4;
-                        Progressivo = ArrayToUshort(_risposta, startByte, 2);
-                        startByte += 2;*/
 
 
                         Errori = _risposta[startByte];
@@ -2021,6 +2142,55 @@ namespace ChargerLogic
 
 
         }
+
+        public class ProxyComandoStrategia
+        {
+
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public byte[] RxBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+
+                try
+                {
+                    datiPronti = false;
+                    if (_messaggio.Length < 2)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    RxBuffer = new byte[(_messaggio.Length / 2)];
+
+                    if (decodificaArray(_messaggio, ref RxBuffer))
+                    {
+
+
+                        datiPronti = true;
+
+                    }
+
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+        }
+
 
         public class VariabiliLadeLight
         {

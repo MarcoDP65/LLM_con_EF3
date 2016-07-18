@@ -152,6 +152,7 @@
             this.tabStatistiche = new System.Windows.Forms.TabPage();
             this.tbcStatistiche = new System.Windows.Forms.TabControl();
             this.tabStatParametri = new System.Windows.Forms.TabPage();
+            this.btnGraficiTest = new System.Windows.Forms.Button();
             this.grbStatSelGrafici = new System.Windows.Forms.GroupBox();
             this.chkStatGraficoAssEl = new System.Windows.Forms.CheckBox();
             this.chkStatGraficoPause = new System.Windows.Forms.CheckBox();
@@ -643,11 +644,16 @@
             this.lbxCalListaStep = new System.Windows.Forms.ListBox();
             this.txtCalStepCorrente = new System.Windows.Forms.TextBox();
             this.lblCalStepCorrente = new System.Windows.Forms.Label();
+            this.tbpStrategia = new System.Windows.Forms.TabPage();
+            this.grbStratComandiTest = new System.Windows.Forms.GroupBox();
+            this.btnStratTest01 = new System.Windows.Forms.Button();
+            this.txtStratDataGrid = new System.Windows.Forms.TextBox();
             this.lvwCicliBatteriaAA = new System.Windows.Forms.ListView();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.btnStratTest02 = new System.Windows.Forms.Button();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -723,6 +729,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvwCalCorrentiVerifica)).BeginInit();
             this.grbCalValoriAttuali.SuspendLayout();
             this.grbCalListaAttivita.SuspendLayout();
+            this.tbpStrategia.SuspendLayout();
+            this.grbStratComandiTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCaricaBatterie
@@ -742,6 +750,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tbpFirmware);
             this.tabCaricaBatterie.Controls.Add(this.tbpClonaScheda);
             this.tabCaricaBatterie.Controls.Add(this.tabCalibrazione);
+            this.tabCaricaBatterie.Controls.Add(this.tbpStrategia);
             resources.ApplyResources(this.tabCaricaBatterie, "tabCaricaBatterie");
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
@@ -1547,11 +1556,19 @@
             // tabStatParametri
             // 
             this.tabStatParametri.BackColor = System.Drawing.Color.LightYellow;
+            this.tabStatParametri.Controls.Add(this.btnGraficiTest);
             this.tabStatParametri.Controls.Add(this.grbStatSelGrafici);
             this.tabStatParametri.Controls.Add(this.btnStatRicalcola);
             this.tabStatParametri.Controls.Add(this.grbStatSelPeriodo);
             resources.ApplyResources(this.tabStatParametri, "tabStatParametri");
             this.tabStatParametri.Name = "tabStatParametri";
+            // 
+            // btnGraficiTest
+            // 
+            resources.ApplyResources(this.btnGraficiTest, "btnGraficiTest");
+            this.btnGraficiTest.Name = "btnGraficiTest";
+            this.btnGraficiTest.UseVisualStyleBackColor = true;
+            this.btnGraficiTest.Click += new System.EventHandler(this.btnGraficiTest_Click);
             // 
             // grbStatSelGrafici
             // 
@@ -5021,6 +5038,35 @@
             resources.ApplyResources(this.lblCalStepCorrente, "lblCalStepCorrente");
             this.lblCalStepCorrente.Name = "lblCalStepCorrente";
             // 
+            // tbpStrategia
+            // 
+            this.tbpStrategia.BackColor = System.Drawing.Color.LemonChiffon;
+            this.tbpStrategia.Controls.Add(this.grbStratComandiTest);
+            this.tbpStrategia.Controls.Add(this.txtStratDataGrid);
+            resources.ApplyResources(this.tbpStrategia, "tbpStrategia");
+            this.tbpStrategia.Name = "tbpStrategia";
+            // 
+            // grbStratComandiTest
+            // 
+            this.grbStratComandiTest.BackColor = System.Drawing.Color.White;
+            this.grbStratComandiTest.Controls.Add(this.btnStratTest02);
+            this.grbStratComandiTest.Controls.Add(this.btnStratTest01);
+            resources.ApplyResources(this.grbStratComandiTest, "grbStratComandiTest");
+            this.grbStratComandiTest.Name = "grbStratComandiTest";
+            this.grbStratComandiTest.TabStop = false;
+            // 
+            // btnStratTest01
+            // 
+            resources.ApplyResources(this.btnStratTest01, "btnStratTest01");
+            this.btnStratTest01.Name = "btnStratTest01";
+            this.btnStratTest01.UseVisualStyleBackColor = true;
+            this.btnStratTest01.Click += new System.EventHandler(this.btnStratTest01_Click);
+            // 
+            // txtStratDataGrid
+            // 
+            resources.ApplyResources(this.txtStratDataGrid, "txtStratDataGrid");
+            this.txtStratDataGrid.Name = "txtStratDataGrid";
+            // 
             // lvwCicliBatteriaAA
             // 
             resources.ApplyResources(this.lvwCicliBatteriaAA, "lvwCicliBatteriaAA");
@@ -5036,6 +5082,13 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
+            // 
+            // btnStratTest02
+            // 
+            resources.ApplyResources(this.btnStratTest02, "btnStratTest02");
+            this.btnStratTest02.Name = "btnStratTest02";
+            this.btnStratTest02.UseVisualStyleBackColor = true;
+            this.btnStratTest02.Click += new System.EventHandler(this.btnStratTest02_Click);
             // 
             // frmSpyBat
             // 
@@ -5177,6 +5230,9 @@
             this.grbCalValoriAttuali.PerformLayout();
             this.grbCalListaAttivita.ResumeLayout(false);
             this.grbCalListaAttivita.PerformLayout();
+            this.tbpStrategia.ResumeLayout(false);
+            this.tbpStrategia.PerformLayout();
+            this.grbStratComandiTest.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -5801,5 +5857,11 @@
         private System.Windows.Forms.TextBox txtCalMaxAerr;
         private System.Windows.Forms.Label label152;
         private System.Windows.Forms.TextBox txtCalErrMaxAss;
+        private System.Windows.Forms.Button btnGraficiTest;
+        private System.Windows.Forms.TabPage tbpStrategia;
+        private System.Windows.Forms.GroupBox grbStratComandiTest;
+        private System.Windows.Forms.Button btnStratTest01;
+        private System.Windows.Forms.TextBox txtStratDataGrid;
+        private System.Windows.Forms.Button btnStratTest02;
     }
 }

@@ -61,6 +61,7 @@ namespace PannelloCharger
                 // vGlobali.CaricaImpostazioniDefault();
                 vGlobali = VarGlobali;
                 Thread.CurrentThread.CurrentUICulture = vGlobali.currentCulture;
+
                 Logiche = _logiche;
                 InitializeComponent();
                 string path = Directory.GetCurrentDirectory();
@@ -128,6 +129,7 @@ namespace PannelloCharger
                         vGlobali.currentPassword = txtPassword.Text;
                         vGlobali.currentSaveLogin = chkSalvaPassword.Checked;
                         vGlobali.SalvaImpostazioniDefault();
+
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }

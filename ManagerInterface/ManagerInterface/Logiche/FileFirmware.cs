@@ -397,7 +397,7 @@ namespace ChargerLogic
                 FirmwareBlock.Release = FirmwareData.Release;
                 FirmwareBlock.ReleaseDate = FirmwareData.ReleaseDate;
 
-                if (FirmwareData.Release.Substring(0,2) != "1.")
+                if ((FirmwareData.Release.Substring(0,2) != "1.") && (FirmwareData.Release.Substring(0, 2) != "2."))
                 {
                     _esito = ExitCode.ErroreGenerico;
                     return _esito;
@@ -761,6 +761,72 @@ namespace ChargerLogic
                 return _esito;
             }
 
+        }
+
+        public bool VersioneAmmessa(string Versione, string HWversion = "4")
+        {
+            bool _esito = false;
+
+            try
+            {
+
+                string _LocalVer = ""; 
+
+                if (Versione == null) return false;
+                if (Versione.Length >= 4) _LocalVer = Versione.Substring(0, 4);
+
+                switch (_LocalVer)
+                {
+                    case "1.04":
+                    case "1.05":
+                    case "1.06":
+                        // Livello  0;
+                        return false;
+                    // break;
+
+                    case "1.07":
+                        // Livello 1;
+                        return false;
+                    // break;
+
+                    case "1.08":
+                        if (Versione == "1.08.01")
+                            // Livello 2;
+                            return false;
+                        else
+                            // Livello 3;
+                            return false;
+                    // break;
+                    case "1.09":
+                        // Livello 3;
+                        return false;
+
+                    case "1.10":
+                    case "1.11":
+
+                        // Livello 4;
+                        return true;
+                    case "1.12":
+                    case "1.13":
+                        // Livello 4 non pubblico;
+                        return true;
+
+                    case "2.01":
+                        // Livello 4;
+                        return true;
+
+
+                    default:
+                        return false;
+                        //  break;
+                }
+
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
         }
     }
 

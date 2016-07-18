@@ -96,7 +96,7 @@ namespace MoriData
         public sbProgrammaRicarica ProgrammaAttivo;
         public bool breviDaAgiornare = false;
         public UInt32 PuntatorePrimoBreveEff = 0;
-        public elementiComuni.VersoCorrenti VersoScarica = elementiComuni.VersoCorrenti.Diretto;
+        public elementiComuni.VersoCorrente VersoScarica = elementiComuni.VersoCorrente.Diretto;
         public UInt32 DurataBreve = 300;
         public int LivelloUser = 2;
 
@@ -627,7 +627,7 @@ namespace MoriData
             }
         }
 
-        public bool InvertiVersoCorrentiMB(elementiComuni.VersoCorrenti Verso)
+        public bool InvertiVersoCorrentiMB(elementiComuni.VersoCorrente Verso)
         {
             try
             {
@@ -1052,7 +1052,7 @@ namespace MoriData
             get
             {
                 string _valore = "";
-                if (VersoScarica == elementiComuni.VersoCorrenti.Diretto || _sblm.TipoEvento == 0xF0)
+                if (VersoScarica == elementiComuni.VersoCorrente.Diretto || _sblm.TipoEvento == 0xF0)
                 {
                     _valore = FunzioniMR.StringaCorrenteOLV((short)_sblm.Amin);
                 }
@@ -1097,7 +1097,7 @@ namespace MoriData
             get
             {
                 string _valore = "";
-                if (VersoScarica == elementiComuni.VersoCorrenti.Diretto || _sblm.TipoEvento == 0xF0)
+                if (VersoScarica == elementiComuni.VersoCorrente.Diretto || _sblm.TipoEvento == 0xF0)
                 {
                     _valore = FunzioniMR.StringaCorrenteOLV((short)_sblm.Amax);
                 }

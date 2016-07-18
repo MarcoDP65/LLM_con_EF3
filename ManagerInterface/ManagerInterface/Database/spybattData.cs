@@ -523,6 +523,8 @@ namespace MoriData
                         case "1.11":
                         case "1.12":
                         case "1.13":
+                        case "2.01":
+
 
                             return 4;
 
@@ -538,6 +540,69 @@ namespace MoriData
             }
 
         }
+
+        public bool fwFunzioniPro
+        {
+            get
+            {
+                try
+                {
+                    string _LocalVer = ""; // _sb.SwVersion.Substring(0, 4);  // controllo solo i primi 4 caratteri della versione perignorare la build
+
+                    if (_sb.SwVersion == null) return false;
+
+                    if (_sb.SwVersion.Length >= 4) _LocalVer = _sb.SwVersion.Substring(0, 4);
+
+                    switch (_LocalVer)
+                    {
+
+                        case "2.01":
+                            return true;
+
+                        default:
+                            return false;
+                            
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+        }
+
+        public bool fwParametriProgEstesa
+        {
+            get
+            {
+                try
+                {
+                    string _LocalVer = ""; // _sb.SwVersion.Substring(0, 4);  // controllo solo i primi 4 caratteri della versione perignorare la build
+
+                    if (_sb.SwVersion == null) return false;
+
+                    if (_sb.SwVersion.Length >= 4) _LocalVer = _sb.SwVersion.Substring(0, 4);
+
+                    switch (_LocalVer)
+                    {
+                        case "1.11":
+                        case "2.01":
+                            return true;
+
+                        default:
+                            return false;
+
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+        }
+
 
         public int NumPacchetti
         {
@@ -567,6 +632,7 @@ namespace MoriData
                         case "1.11":
                         case "1.12":
                         case "1.13":
+                        case "2.01":
                             return 8666;
 
                         default:

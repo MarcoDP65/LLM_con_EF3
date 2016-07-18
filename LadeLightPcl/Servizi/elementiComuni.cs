@@ -24,7 +24,7 @@ namespace ChargerLogic
  
 
         public enum modoDati : byte { Import = 0x00,Output = 0x01 };
-        public enum VersoCorrenti : byte { Diretto = 0x00 , Inverso = 0x01 };
+        public enum AbilitaElemento : byte { Attivo = 0x0F , Non_Attivo = 0xF0 };
 
         public enum InitialCrcValue : ushort { Zeros, NonZero1 = 0xffff, NonZero2 = 0x1D0F };
         public class Crc16Ccitt

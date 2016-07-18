@@ -15,7 +15,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\marco_000\Desktop\CLIENTI\Mori\Sviluppo\Ladelight Manager 3.0\LLm Deploy\</PublishUrl>
+    <PublishUrl>C:\Users\marco_000\Desktop\CLIENTI\Mori\Sviluppo\Ladelight Manager 4.0\LLm Deploy\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,8 +26,8 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>10</ApplicationRevision>
-    <ApplicationVersion>1.10.1.%2a</ApplicationVersion>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>2.00.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -183,6 +183,9 @@
     <Compile Include="Componenti\oxyTabPageOld.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Componenti\PannelloTurno.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Database\database.cs" />
     <Compile Include="Database\dataUtility.cs" />
     <Compile Include="Database\lingue.cs" />
@@ -233,6 +236,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattClonaScheda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattComandiStrategia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmAboutBox.cs">
@@ -312,6 +318,12 @@
     </Compile>
     <Compile Include="Forms\frmMessaggioElettrolita.Designer.cs">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPopupCambioTurmo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPopupCambioTurmo.designer.cs">
+      <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmRichiestaCodice.cs">
       <SubType>Form</SubType>
@@ -412,6 +424,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringheStatistica.resx</DependentUpon>
     </Compile>
+    <Compile Include="Servizi\GestioneTempi.cs" />
+    <Compile Include="Servizi\ParametriSetupPro.cs" />
     <Compile Include="Servizi\HexEncoding.cs" />
     <Compile Include="Servizi\ParametriSistema.cs" />
     <Compile Include="Servizi\ScannerPorte.cs" />
@@ -601,6 +615,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMessaggioElettrolita.resx">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPopupCambioTurmo.resx">
+      <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRichiestaCodice.en.resx">
       <DependentUpon>frmRichiestaCodice.cs</DependentUpon>

@@ -44,6 +44,25 @@ namespace MoriData
         public byte VersoCorrente { get; set; }
         public byte NumeroSpire { get; set; }
 
+        // Parametri PRO
+        // Testata
+        public byte ModoPianificazione { get; set; }
+        public ushort MaxCorrente { get; set; }
+        public byte FcBase { get; set; }
+        public byte FcProfondo { get; set; }
+        public byte Rabboccatore { get; set; }
+        public byte Biberonaggio { get; set; }
+        public byte FattorBiberonaggio { get; set; }
+        public byte TempAttenzione { get; set; }
+        public byte TempAllarme { get; set; }
+        public byte TempRipresa { get; set; }
+        public ushort MaxSbilanciamento { get; set; }
+        public ushort DurataSbilanciamento { get; set; }
+        public ushort TensioneGas { get; set; }
+        public ushort DerivaSuperiore { get; set; }
+        public ushort DerivaInferiore { get; set; }
+        public byte[] DatiPianificazione { get; set; }
+
 
     }
 
@@ -437,8 +456,164 @@ namespace MoriData
             }
 
         }
+   
+        
+        // Parametri PRO
 
 
+
+        public byte ModoPianificazione
+        {
+            get { return _sbpr.ModoPianificazione; }
+            set
+            {
+                _sbpr.ModoPianificazione = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte FcBase
+        {
+            get { return _sbpr.FcBase; }
+            set
+            {
+                _sbpr.FcBase = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte FcProfondo
+        {
+            get { return _sbpr.FcProfondo; }
+            set
+            {
+                _sbpr.FcProfondo = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte Rabboccatore
+        {
+            get { return _sbpr.Rabboccatore; }
+            set
+            {
+                _sbpr.Rabboccatore = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte Biberonaggio
+        {
+            get { return _sbpr.Biberonaggio; }
+            set
+            {
+                _sbpr.Biberonaggio = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte FattorBiberonaggio
+        {
+            get { return _sbpr.FattorBiberonaggio; }
+            set
+            {
+                _sbpr.FattorBiberonaggio = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte TempAttenzione
+        {
+            get { return _sbpr.TempAttenzione; }
+            set
+            {
+                _sbpr.TempAttenzione = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte TempAllarme
+        {
+            get { return _sbpr.TempAllarme; }
+            set
+            {
+                _sbpr.TempAllarme = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte TempRipresa
+        {
+            get { return _sbpr.TempRipresa; }
+            set
+            {
+                _sbpr.TempRipresa = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public ushort MaxSbilanciamento
+        {
+            get { return _sbpr.MaxSbilanciamento; }
+            set
+            {
+                MaxSbilanciamento = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public ushort DurataSbilanciamento
+        {
+            get { return _sbpr.DurataSbilanciamento; }
+            set
+            {
+                DurataSbilanciamento = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort TensioneGas
+        {
+            get { return _sbpr.TensioneGas; }
+            set
+            {
+                TensioneGas = value;
+                _datiSalvati = false;
+            }
+        }
+        public ushort DerivaSuperiore
+        {
+            get { return _sbpr.DerivaSuperiore; }
+            set
+            {
+                DerivaSuperiore = value;
+                _datiSalvati = false;
+            }
+        }
+        public ushort DerivaInferiore
+        {
+            get { return _sbpr.DerivaInferiore; }
+            set
+            {
+                DerivaInferiore = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte[] DatiPianificazione
+        {
+            get { return _sbpr.DatiPianificazione; }
+            set
+            {
+                DatiPianificazione = value;
+                _datiSalvati = false;
+            }
+        }
 
         #endregion Class Parameter
 

@@ -18,24 +18,6 @@ namespace Utility
         public enum TemperaturaAttiva : int { TMin = 0, TMax = 1, DifferenzaT = 2 };
     }
 
-    public class SettimanaMR
- {
-     public int anno { get; set; }
-     public int settimana { get; set; }
-     public int Inizio { get; set; }    
-     public string chiaveSettimana { get; set; }
-
- }
-
-    public class PeriodoMR
-    {
-        public int anno { get; set; }
-        public int settimana { get; set; }
-        public int minutoInizio { get; set; }
-        public int giornoInizio { get; set; }
-        public int minutoFine { get; set; }
-        public int giornoFine { get; set; }
-    }
 
     public class FunzioniMR
     {
@@ -204,8 +186,10 @@ namespace Utility
             {
                 string _risposta = "";
                 float _inDecimale;
-                // 28/07/2015  se RF è 0 o 255 il valore non è valido
-                if (Valore == 0xFF || Valore == 0x00) return "N.D.";
+                // 28/07/2015  se RF è 0 il valore non è valido
+                if (Valore == 0x00) return "N.D.";
+
+                if (Valore == 0xFF) return ">2.5";
 
                 _inDecimale = (float)Valore / 100;
                 _risposta = _inDecimale.ToString("0.00");

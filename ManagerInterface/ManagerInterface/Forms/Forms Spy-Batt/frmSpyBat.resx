@@ -1230,24 +1230,9 @@
   <data name="&gt;&gt;tbpClonaScheda.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="txtCalFWRichiesto.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtCalFWRichiesto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 133</value>
-  </data>
-  <data name="txtCalFWRichiesto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 27</value>
-  </data>
-  <data name="txtCalFWRichiesto.TabIndex" type="System.Int32, mscorlib">
-    <value>72</value>
-  </data>
-  <data name="txtCalFWRichiesto.Text" xml:space="preserve">
-    <value>1.11.05</value>
-  </data>
-  <data name="txtCalFWRichiesto.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
+  <metadata name="lblCalStatoAlim.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="&gt;&gt;txtCalFWRichiesto.Name" xml:space="preserve">
     <value>txtCalFWRichiesto</value>
   </data>
@@ -1259,24 +1244,6 @@
   </data>
   <data name="&gt;&gt;txtCalFWRichiesto.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="label151.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label151.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label151.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 113</value>
-  </data>
-  <data name="label151.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
-  </data>
-  <data name="label151.TabIndex" type="System.Int32, mscorlib">
-    <value>71</value>
-  </data>
-  <data name="label151.Text" xml:space="preserve">
-    <value>Firmware Richesto</value>
   </data>
   <data name="&gt;&gt;label151.Name" xml:space="preserve">
     <value>label151</value>
@@ -1290,24 +1257,6 @@
   <data name="&gt;&gt;label151.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label150.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label150.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label150.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 166</value>
-  </data>
-  <data name="label150.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 17</value>
-  </data>
-  <data name="label150.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="label150.Text" xml:space="preserve">
-    <value>Max ΔA</value>
-  </data>
   <data name="&gt;&gt;label150.Name" xml:space="preserve">
     <value>label150</value>
   </data>
@@ -1319,24 +1268,6 @@
   </data>
   <data name="&gt;&gt;label150.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="txtCalMaxAerr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="txtCalMaxAerr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 186</value>
-  </data>
-  <data name="txtCalMaxAerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 30</value>
-  </data>
-  <data name="txtCalMaxAerr.TabIndex" type="System.Int32, mscorlib">
-    <value>69</value>
-  </data>
-  <data name="txtCalMaxAerr.Text" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="txtCalMaxAerr.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
   </data>
   <data name="&gt;&gt;txtCalMaxAerr.Name" xml:space="preserve">
     <value>txtCalMaxAerr</value>
@@ -1350,24 +1281,6 @@
   <data name="&gt;&gt;txtCalMaxAerr.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="txtCalSecondiAttesa.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="txtCalSecondiAttesa.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 186</value>
-  </data>
-  <data name="txtCalSecondiAttesa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 30</value>
-  </data>
-  <data name="txtCalSecondiAttesa.TabIndex" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
-  <data name="txtCalSecondiAttesa.Text" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="txtCalSecondiAttesa.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
   <data name="&gt;&gt;txtCalSecondiAttesa.Name" xml:space="preserve">
     <value>txtCalSecondiAttesa</value>
   </data>
@@ -1379,24 +1292,6 @@
   </data>
   <data name="&gt;&gt;txtCalSecondiAttesa.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="label149.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label149.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label149.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 166</value>
-  </data>
-  <data name="label149.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 17</value>
-  </data>
-  <data name="label149.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="label149.Text" xml:space="preserve">
-    <value>sec</value>
   </data>
   <data name="&gt;&gt;label149.Name" xml:space="preserve">
     <value>label149</value>
@@ -1410,15 +1305,6 @@
   <data name="&gt;&gt;label149.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="cmbCalTipoGrafico.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 246</value>
-  </data>
-  <data name="cmbCalTipoGrafico.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 24</value>
-  </data>
-  <data name="cmbCalTipoGrafico.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
   <data name="&gt;&gt;cmbCalTipoGrafico.Name" xml:space="preserve">
     <value>cmbCalTipoGrafico</value>
   </data>
@@ -1430,21 +1316,6 @@
   </data>
   <data name="&gt;&gt;cmbCalTipoGrafico.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="btnCalRefreshLista.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnCalRefreshLista.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1211, 242</value>
-  </data>
-  <data name="btnCalRefreshLista.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 32</value>
-  </data>
-  <data name="btnCalRefreshLista.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="btnCalRefreshLista.Text" xml:space="preserve">
-    <value>Ricarica Risultati</value>
   </data>
   <data name="&gt;&gt;btnCalRefreshLista.Name" xml:space="preserve">
     <value>btnCalRefreshLista</value>
@@ -1458,24 +1329,6 @@
   <data name="&gt;&gt;btnCalRefreshLista.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="txtCalNumSpire.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="txtCalNumSpire.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 186</value>
-  </data>
-  <data name="txtCalNumSpire.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 30</value>
-  </data>
-  <data name="txtCalNumSpire.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <data name="txtCalNumSpire.Text" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtCalNumSpire.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
   <data name="&gt;&gt;txtCalNumSpire.Name" xml:space="preserve">
     <value>txtCalNumSpire</value>
   </data>
@@ -1487,24 +1340,6 @@
   </data>
   <data name="&gt;&gt;txtCalNumSpire.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="label148.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label148.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label148.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 166</value>
-  </data>
-  <data name="label148.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 17</value>
-  </data>
-  <data name="label148.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="label148.Text" xml:space="preserve">
-    <value>Spire</value>
   </data>
   <data name="&gt;&gt;label148.Name" xml:space="preserve">
     <value>label148</value>
@@ -1518,24 +1353,6 @@
   <data name="&gt;&gt;label148.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="txtCalAver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="txtCalAver.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 186</value>
-  </data>
-  <data name="txtCalAver.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 30</value>
-  </data>
-  <data name="txtCalAver.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="txtCalAver.Text" xml:space="preserve">
-    <value>300</value>
-  </data>
-  <data name="txtCalAver.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="&gt;&gt;txtCalAver.Name" xml:space="preserve">
     <value>txtCalAver</value>
   </data>
@@ -1547,24 +1364,6 @@
   </data>
   <data name="&gt;&gt;txtCalAver.ZOrder" xml:space="preserve">
     <value>10</value>
-  </data>
-  <data name="label147.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label147.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label147.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 166</value>
-  </data>
-  <data name="label147.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
-  </data>
-  <data name="label147.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
-  </data>
-  <data name="label147.Text" xml:space="preserve">
-    <value>A Verifica</value>
   </data>
   <data name="&gt;&gt;label147.Name" xml:space="preserve">
     <value>label147</value>
@@ -1578,24 +1377,6 @@
   <data name="&gt;&gt;label147.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="txtCalAcal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="txtCalAcal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 186</value>
-  </data>
-  <data name="txtCalAcal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 30</value>
-  </data>
-  <data name="txtCalAcal.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="txtCalAcal.Text" xml:space="preserve">
-    <value>250</value>
-  </data>
-  <data name="txtCalAcal.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="&gt;&gt;txtCalAcal.Name" xml:space="preserve">
     <value>txtCalAcal</value>
   </data>
@@ -1607,24 +1388,6 @@
   </data>
   <data name="&gt;&gt;txtCalAcal.ZOrder" xml:space="preserve">
     <value>12</value>
-  </data>
-  <data name="label146.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label146.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label146.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 166</value>
-  </data>
-  <data name="label146.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 17</value>
-  </data>
-  <data name="label146.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="label146.Text" xml:space="preserve">
-    <value>A Calibr.</value>
   </data>
   <data name="&gt;&gt;label146.Name" xml:space="preserve">
     <value>label146</value>
@@ -1638,21 +1401,6 @@
   <data name="&gt;&gt;label146.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="chkCalRegistraSequenza.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkCalRegistraSequenza.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 86</value>
-  </data>
-  <data name="chkCalRegistraSequenza.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 21</value>
-  </data>
-  <data name="chkCalRegistraSequenza.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="chkCalRegistraSequenza.Text" xml:space="preserve">
-    <value>Salva Sequenza</value>
-  </data>
   <data name="&gt;&gt;chkCalRegistraSequenza.Name" xml:space="preserve">
     <value>chkCalRegistraSequenza</value>
   </data>
@@ -1664,15 +1412,6 @@
   </data>
   <data name="&gt;&gt;chkCalRegistraSequenza.ZOrder" xml:space="preserve">
     <value>14</value>
-  </data>
-  <data name="flvwCalCorrentiVerifica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>777, 13</value>
-  </data>
-  <data name="flvwCalCorrentiVerifica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>601, 222</value>
-  </data>
-  <data name="flvwCalCorrentiVerifica.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
   </data>
   <data name="&gt;&gt;flvwCalCorrentiVerifica.Name" xml:space="preserve">
     <value>flvwCalCorrentiVerifica</value>
@@ -1686,24 +1425,6 @@
   <data name="&gt;&gt;flvwCalCorrentiVerifica.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="chkCalAttivaAlim.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkCalAttivaAlim.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkCalAttivaAlim.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 53</value>
-  </data>
-  <data name="chkCalAttivaAlim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 21</value>
-  </data>
-  <data name="chkCalAttivaAlim.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="chkCalAttivaAlim.Text" xml:space="preserve">
-    <value>Attivazione Uscita Automatica</value>
-  </data>
   <data name="&gt;&gt;chkCalAttivaAlim.Name" xml:space="preserve">
     <value>chkCalAttivaAlim</value>
   </data>
@@ -1715,15 +1436,6 @@
   </data>
   <data name="&gt;&gt;chkCalAttivaAlim.ZOrder" xml:space="preserve">
     <value>16</value>
-  </data>
-  <data name="cmbCalListaEsecuzioni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>950, 246</value>
-  </data>
-  <data name="cmbCalListaEsecuzioni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 24</value>
-  </data>
-  <data name="cmbCalListaEsecuzioni.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
   </data>
   <data name="&gt;&gt;cmbCalListaEsecuzioni.Name" xml:space="preserve">
     <value>cmbCalListaEsecuzioni</value>
@@ -1737,21 +1449,6 @@
   <data name="&gt;&gt;cmbCalListaEsecuzioni.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="btnCalRicaricaSequenza.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnCalRicaricaSequenza.Location" type="System.Drawing.Point, System.Drawing">
-    <value>777, 241</value>
-  </data>
-  <data name="btnCalRicaricaSequenza.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 32</value>
-  </data>
-  <data name="btnCalRicaricaSequenza.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="btnCalRicaricaSequenza.Text" xml:space="preserve">
-    <value>Ricarica da archivio</value>
-  </data>
   <data name="&gt;&gt;btnCalRicaricaSequenza.Name" xml:space="preserve">
     <value>btnCalRicaricaSequenza</value>
   </data>
@@ -1763,306 +1460,6 @@
   </data>
   <data name="&gt;&gt;btnCalRicaricaSequenza.ZOrder" xml:space="preserve">
     <value>18</value>
-  </data>
-  <data name="&gt;&gt;label152.Name" xml:space="preserve">
-    <value>label152</value>
-  </data>
-  <data name="&gt;&gt;label152.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label152.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label152.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxAss.Name" xml:space="preserve">
-    <value>txtCalErrMaxAss</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxAss.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxAss.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxAss.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtCalTemp.Name" xml:space="preserve">
-    <value>txtCalTemp</value>
-  </data>
-  <data name="&gt;&gt;txtCalTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalTemp.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalTemp.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label145.Name" xml:space="preserve">
-    <value>label145</value>
-  </data>
-  <data name="&gt;&gt;label145.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label145.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label145.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtCalElettr.Name" xml:space="preserve">
-    <value>txtCalElettr</value>
-  </data>
-  <data name="&gt;&gt;txtCalElettr.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalElettr.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalElettr.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label138.Name" xml:space="preserve">
-    <value>label138</value>
-  </data>
-  <data name="&gt;&gt;label138.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label138.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label138.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxNeg.Name" xml:space="preserve">
-    <value>txtCalErrMaxNeg</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxNeg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxNeg.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxNeg.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label140.Name" xml:space="preserve">
-    <value>label140</value>
-  </data>
-  <data name="&gt;&gt;label140.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label140.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label140.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxPos.Name" xml:space="preserve">
-    <value>txtCalErrMaxPos</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxPos.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxPos.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMaxPos.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label141.Name" xml:space="preserve">
-    <value>label141</value>
-  </data>
-  <data name="&gt;&gt;label141.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label141.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label141.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMax.Name" xml:space="preserve">
-    <value>txtCalErrMax</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMax.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalErrMax.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label142.Name" xml:space="preserve">
-    <value>label142</value>
-  </data>
-  <data name="&gt;&gt;label142.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label142.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label142.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrSB.Name" xml:space="preserve">
-    <value>txtCalCurrSB</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrSB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrSB.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrSB.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;label143.Name" xml:space="preserve">
-    <value>label143</value>
-  </data>
-  <data name="&gt;&gt;label143.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label143.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label143.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrAlim.Name" xml:space="preserve">
-    <value>txtCalCurrAlim</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrAlim.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrAlim.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalCurrAlim.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;label144.Name" xml:space="preserve">
-    <value>label144</value>
-  </data>
-  <data name="&gt;&gt;label144.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label144.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label144.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;label130.Name" xml:space="preserve">
-    <value>label130</value>
-  </data>
-  <data name="&gt;&gt;label130.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label130.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label130.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;txtCalVbatt.Name" xml:space="preserve">
-    <value>txtCalVbatt</value>
-  </data>
-  <data name="&gt;&gt;txtCalVbatt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalVbatt.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalVbatt.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;txtCalV3.Name" xml:space="preserve">
-    <value>txtCalV3</value>
-  </data>
-  <data name="&gt;&gt;txtCalV3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalV3.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalV3.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;txtCalV2.Name" xml:space="preserve">
-    <value>txtCalV2</value>
-  </data>
-  <data name="&gt;&gt;txtCalV2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalV2.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalV2.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;txtCalV1.Name" xml:space="preserve">
-    <value>txtCalV1</value>
-  </data>
-  <data name="&gt;&gt;txtCalV1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalV1.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;txtCalV1.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;label131.Name" xml:space="preserve">
-    <value>label131</value>
-  </data>
-  <data name="&gt;&gt;label131.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label131.Parent" xml:space="preserve">
-    <value>grbCalValoriAttuali</value>
-  </data>
-  <data name="&gt;&gt;label131.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="grbCalValoriAttuali.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 13</value>
-  </data>
-  <data name="grbCalValoriAttuali.Size" type="System.Drawing.Size, System.Drawing">
-    <value>399, 222</value>
-  </data>
-  <data name="grbCalValoriAttuali.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="grbCalValoriAttuali.Text" xml:space="preserve">
-    <value>Valori Attuali</value>
   </data>
   <data name="&gt;&gt;grbCalValoriAttuali.Name" xml:space="preserve">
     <value>grbCalValoriAttuali</value>
@@ -2076,15 +1473,6 @@
   <data name="&gt;&gt;grbCalValoriAttuali.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="pnlCalVerifica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 280</value>
-  </data>
-  <data name="pnlCalVerifica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1031, 386</value>
-  </data>
-  <data name="pnlCalVerifica.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
   <data name="&gt;&gt;pnlCalVerifica.Name" xml:space="preserve">
     <value>pnlCalVerifica</value>
   </data>
@@ -2096,24 +1484,6 @@
   </data>
   <data name="&gt;&gt;pnlCalVerifica.ZOrder" xml:space="preserve">
     <value>20</value>
-  </data>
-  <data name="btnCalStartSeq.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnCalStartSeq.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnCalStartSeq.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 80</value>
-  </data>
-  <data name="btnCalStartSeq.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 31</value>
-  </data>
-  <data name="btnCalStartSeq.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="btnCalStartSeq.Text" xml:space="preserve">
-    <value>Avvia Sequenza</value>
   </data>
   <data name="&gt;&gt;btnCalStartSeq.Name" xml:space="preserve">
     <value>btnCalStartSeq</value>
@@ -2127,27 +1497,6 @@
   <data name="&gt;&gt;btnCalStartSeq.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <metadata name="lblCalStatoAlim.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="lblCalStatoAlim.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblCalStatoAlim.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblCalStatoAlim.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 24</value>
-  </data>
-  <data name="lblCalStatoAlim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
-  </data>
-  <data name="lblCalStatoAlim.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="lblCalStatoAlim.Text" xml:space="preserve">
-    <value>Non Collegato</value>
-  </data>
   <data name="&gt;&gt;lblCalStatoAlim.Name" xml:space="preserve">
     <value>lblCalStatoAlim</value>
   </data>
@@ -2160,21 +1509,6 @@
   <data name="&gt;&gt;lblCalStatoAlim.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="btnCalCollegaAlim.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnCalCollegaAlim.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 13</value>
-  </data>
-  <data name="btnCalCollegaAlim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 34</value>
-  </data>
-  <data name="btnCalCollegaAlim.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="btnCalCollegaAlim.Text" xml:space="preserve">
-    <value>Collega Alimentatore</value>
-  </data>
   <data name="&gt;&gt;btnCalCollegaAlim.Name" xml:space="preserve">
     <value>btnCalCollegaAlim</value>
   </data>
@@ -2186,63 +1520,6 @@
   </data>
   <data name="&gt;&gt;btnCalCollegaAlim.ZOrder" xml:space="preserve">
     <value>23</value>
-  </data>
-  <data name="&gt;&gt;txtCalLogBox.Name" xml:space="preserve">
-    <value>txtCalLogBox</value>
-  </data>
-  <data name="&gt;&gt;txtCalLogBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalLogBox.Parent" xml:space="preserve">
-    <value>grbCalListaAttivita</value>
-  </data>
-  <data name="&gt;&gt;txtCalLogBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lbxCalListaStep.Name" xml:space="preserve">
-    <value>lbxCalListaStep</value>
-  </data>
-  <data name="&gt;&gt;lbxCalListaStep.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbxCalListaStep.Parent" xml:space="preserve">
-    <value>grbCalListaAttivita</value>
-  </data>
-  <data name="&gt;&gt;lbxCalListaStep.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtCalStepCorrente.Name" xml:space="preserve">
-    <value>txtCalStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtCalStepCorrente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCalStepCorrente.Parent" xml:space="preserve">
-    <value>grbCalListaAttivita</value>
-  </data>
-  <data name="&gt;&gt;txtCalStepCorrente.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblCalStepCorrente.Name" xml:space="preserve">
-    <value>lblCalStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;lblCalStepCorrente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblCalStepCorrente.Parent" xml:space="preserve">
-    <value>grbCalListaAttivita</value>
-  </data>
-  <data name="&gt;&gt;lblCalStepCorrente.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="grbCalListaAttivita.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 241</value>
-  </data>
-  <data name="grbCalListaAttivita.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 425</value>
-  </data>
-  <data name="grbCalListaAttivita.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
   </data>
   <data name="&gt;&gt;grbCalListaAttivita.Name" xml:space="preserve">
     <value>grbCalListaAttivita</value>
@@ -2279,6 +1556,135 @@
   </data>
   <data name="&gt;&gt;tabCalibrazione.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="btnStratTest02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStratTest02.Location" type="System.Drawing.Point, System.Drawing">
+    <value>174, 32</value>
+  </data>
+  <data name="btnStratTest02.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 51</value>
+  </data>
+  <data name="btnStratTest02.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="btnStratTest02.Text" xml:space="preserve">
+    <value>CMD_TST2</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest02.Name" xml:space="preserve">
+    <value>btnStratTest02</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest02.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest02.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest02.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnStratTest01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStratTest01.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 32</value>
+  </data>
+  <data name="btnStratTest01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 51</value>
+  </data>
+  <data name="btnStratTest01.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="btnStratTest01.Text" xml:space="preserve">
+    <value>CMD_TST1</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest01.Name" xml:space="preserve">
+    <value>btnStratTest01</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest01.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest01.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;btnStratTest01.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grbStratComandiTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="grbStratComandiTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>659, 109</value>
+  </data>
+  <data name="grbStratComandiTest.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="grbStratComandiTest.Text" xml:space="preserve">
+    <value>Comandi Test</value>
+  </data>
+  <data name="&gt;&gt;grbStratComandiTest.Name" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;grbStratComandiTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStratComandiTest.Parent" xml:space="preserve">
+    <value>tbpStrategia</value>
+  </data>
+  <data name="&gt;&gt;grbStratComandiTest.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratDataGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Courier New, 12pt</value>
+  </data>
+  <data name="txtStratDataGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 369</value>
+  </data>
+  <data name="txtStratDataGrid.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtStratDataGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 291</value>
+  </data>
+  <data name="txtStratDataGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;txtStratDataGrid.Name" xml:space="preserve">
+    <value>txtStratDataGrid</value>
+  </data>
+  <data name="&gt;&gt;txtStratDataGrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratDataGrid.Parent" xml:space="preserve">
+    <value>tbpStrategia</value>
+  </data>
+  <data name="&gt;&gt;txtStratDataGrid.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbpStrategia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tbpStrategia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1593, 678</value>
+  </data>
+  <data name="tbpStrategia.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="tbpStrategia.Text" xml:space="preserve">
+    <value>Comandi Strategia</value>
+  </data>
+  <data name="&gt;&gt;tbpStrategia.Name" xml:space="preserve">
+    <value>tbpStrategia</value>
+  </data>
+  <data name="&gt;&gt;tbpStrategia.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpStrategia.Parent" xml:space="preserve">
+    <value>tabCaricaBatterie</value>
+  </data>
+  <data name="&gt;&gt;tbpStrategia.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="tabCaricaBatterie.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
@@ -6741,6 +6147,18 @@
   <data name="&gt;&gt;tbcStatistiche.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;btnGraficiTest.Name" xml:space="preserve">
+    <value>btnGraficiTest</value>
+  </data>
+  <data name="&gt;&gt;btnGraficiTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGraficiTest.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;btnGraficiTest.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;grbStatSelGrafici.Name" xml:space="preserve">
     <value>grbStatSelGrafici</value>
   </data>
@@ -6751,7 +6169,7 @@
     <value>tabStatParametri</value>
   </data>
   <data name="&gt;&gt;grbStatSelGrafici.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;btnStatRicalcola.Name" xml:space="preserve">
     <value>btnStatRicalcola</value>
@@ -6763,7 +6181,7 @@
     <value>tabStatParametri</value>
   </data>
   <data name="&gt;&gt;btnStatRicalcola.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;grbStatSelPeriodo.Name" xml:space="preserve">
     <value>grbStatSelPeriodo</value>
@@ -6775,7 +6193,7 @@
     <value>tabStatParametri</value>
   </data>
   <data name="&gt;&gt;grbStatSelPeriodo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tabStatParametri.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -6802,6 +6220,33 @@
     <value>tbcStatistiche</value>
   </data>
   <data name="&gt;&gt;tabStatParametri.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnGraficiTest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnGraficiTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>628, 189</value>
+  </data>
+  <data name="btnGraficiTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 36</value>
+  </data>
+  <data name="btnGraficiTest.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="btnGraficiTest.Text" xml:space="preserve">
+    <value>Grafici Test</value>
+  </data>
+  <data name="&gt;&gt;btnGraficiTest.Name" xml:space="preserve">
+    <value>btnGraficiTest</value>
+  </data>
+  <data name="&gt;&gt;btnGraficiTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGraficiTest.Parent" xml:space="preserve">
+    <value>tabStatParametri</value>
+  </data>
+  <data name="&gt;&gt;btnGraficiTest.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;chkStatGraficoAssEl.Name" xml:space="preserve">
@@ -6994,7 +6439,7 @@
     <value>tabStatParametri</value>
   </data>
   <data name="&gt;&gt;grbStatSelGrafici.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="chkStatGraficoAssEl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7444,7 +6889,7 @@
     <value>tabStatParametri</value>
   </data>
   <data name="&gt;&gt;btnStatRicalcola.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;grbStatDate.Name" xml:space="preserve">
     <value>grbStatDate</value>
@@ -7507,7 +6952,7 @@
     <value>tabStatParametri</value>
   </data>
   <data name="&gt;&gt;grbStatSelPeriodo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;lblStatDataFine.Name" xml:space="preserve">
     <value>lblStatDataFine</value>
@@ -23622,6 +23067,852 @@
   <data name="&gt;&gt;label120.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="txtCalFWRichiesto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtCalFWRichiesto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 133</value>
+  </data>
+  <data name="txtCalFWRichiesto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 27</value>
+  </data>
+  <data name="txtCalFWRichiesto.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="txtCalFWRichiesto.Text" xml:space="preserve">
+    <value>1.11.05</value>
+  </data>
+  <data name="txtCalFWRichiesto.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalFWRichiesto.Name" xml:space="preserve">
+    <value>txtCalFWRichiesto</value>
+  </data>
+  <data name="&gt;&gt;txtCalFWRichiesto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalFWRichiesto.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;txtCalFWRichiesto.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label151.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label151.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label151.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 113</value>
+  </data>
+  <data name="label151.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 17</value>
+  </data>
+  <data name="label151.TabIndex" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="label151.Text" xml:space="preserve">
+    <value>Firmware Richesto</value>
+  </data>
+  <data name="&gt;&gt;label151.Name" xml:space="preserve">
+    <value>label151</value>
+  </data>
+  <data name="&gt;&gt;label151.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label151.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;label151.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label150.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label150.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label150.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 166</value>
+  </data>
+  <data name="label150.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 17</value>
+  </data>
+  <data name="label150.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="label150.Text" xml:space="preserve">
+    <value>Max ΔA</value>
+  </data>
+  <data name="&gt;&gt;label150.Name" xml:space="preserve">
+    <value>label150</value>
+  </data>
+  <data name="&gt;&gt;label150.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label150.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;label150.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtCalMaxAerr.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtCalMaxAerr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 186</value>
+  </data>
+  <data name="txtCalMaxAerr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 30</value>
+  </data>
+  <data name="txtCalMaxAerr.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="txtCalMaxAerr.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtCalMaxAerr.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalMaxAerr.Name" xml:space="preserve">
+    <value>txtCalMaxAerr</value>
+  </data>
+  <data name="&gt;&gt;txtCalMaxAerr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalMaxAerr.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;txtCalMaxAerr.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtCalSecondiAttesa.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtCalSecondiAttesa.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 186</value>
+  </data>
+  <data name="txtCalSecondiAttesa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 30</value>
+  </data>
+  <data name="txtCalSecondiAttesa.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="txtCalSecondiAttesa.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtCalSecondiAttesa.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.Name" xml:space="preserve">
+    <value>txtCalSecondiAttesa</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;txtCalSecondiAttesa.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label149.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label149.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label149.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 166</value>
+  </data>
+  <data name="label149.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 17</value>
+  </data>
+  <data name="label149.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="label149.Text" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="&gt;&gt;label149.Name" xml:space="preserve">
+    <value>label149</value>
+  </data>
+  <data name="&gt;&gt;label149.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label149.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;label149.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cmbCalTipoGrafico.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 246</value>
+  </data>
+  <data name="cmbCalTipoGrafico.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 24</value>
+  </data>
+  <data name="cmbCalTipoGrafico.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="&gt;&gt;cmbCalTipoGrafico.Name" xml:space="preserve">
+    <value>cmbCalTipoGrafico</value>
+  </data>
+  <data name="&gt;&gt;cmbCalTipoGrafico.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbCalTipoGrafico.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;cmbCalTipoGrafico.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnCalRefreshLista.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCalRefreshLista.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1211, 242</value>
+  </data>
+  <data name="btnCalRefreshLista.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 32</value>
+  </data>
+  <data name="btnCalRefreshLista.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="btnCalRefreshLista.Text" xml:space="preserve">
+    <value>Ricarica Risultati</value>
+  </data>
+  <data name="&gt;&gt;btnCalRefreshLista.Name" xml:space="preserve">
+    <value>btnCalRefreshLista</value>
+  </data>
+  <data name="&gt;&gt;btnCalRefreshLista.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCalRefreshLista.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;btnCalRefreshLista.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtCalNumSpire.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtCalNumSpire.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 186</value>
+  </data>
+  <data name="txtCalNumSpire.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 30</value>
+  </data>
+  <data name="txtCalNumSpire.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="txtCalNumSpire.Text" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtCalNumSpire.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalNumSpire.Name" xml:space="preserve">
+    <value>txtCalNumSpire</value>
+  </data>
+  <data name="&gt;&gt;txtCalNumSpire.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalNumSpire.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;txtCalNumSpire.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label148.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label148.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label148.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 166</value>
+  </data>
+  <data name="label148.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="label148.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="label148.Text" xml:space="preserve">
+    <value>Spire</value>
+  </data>
+  <data name="&gt;&gt;label148.Name" xml:space="preserve">
+    <value>label148</value>
+  </data>
+  <data name="&gt;&gt;label148.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label148.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;label148.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtCalAver.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtCalAver.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 186</value>
+  </data>
+  <data name="txtCalAver.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 30</value>
+  </data>
+  <data name="txtCalAver.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="txtCalAver.Text" xml:space="preserve">
+    <value>300</value>
+  </data>
+  <data name="txtCalAver.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtCalAver.Name" xml:space="preserve">
+    <value>txtCalAver</value>
+  </data>
+  <data name="&gt;&gt;txtCalAver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalAver.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;txtCalAver.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label147.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label147.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label147.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 166</value>
+  </data>
+  <data name="label147.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 17</value>
+  </data>
+  <data name="label147.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="label147.Text" xml:space="preserve">
+    <value>A Verifica</value>
+  </data>
+  <data name="&gt;&gt;label147.Name" xml:space="preserve">
+    <value>label147</value>
+  </data>
+  <data name="&gt;&gt;label147.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label147.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;label147.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtCalAcal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtCalAcal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 186</value>
+  </data>
+  <data name="txtCalAcal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 30</value>
+  </data>
+  <data name="txtCalAcal.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="txtCalAcal.Text" xml:space="preserve">
+    <value>250</value>
+  </data>
+  <data name="txtCalAcal.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtCalAcal.Name" xml:space="preserve">
+    <value>txtCalAcal</value>
+  </data>
+  <data name="&gt;&gt;txtCalAcal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalAcal.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;txtCalAcal.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label146.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label146.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label146.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 166</value>
+  </data>
+  <data name="label146.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 17</value>
+  </data>
+  <data name="label146.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="label146.Text" xml:space="preserve">
+    <value>A Calibr.</value>
+  </data>
+  <data name="&gt;&gt;label146.Name" xml:space="preserve">
+    <value>label146</value>
+  </data>
+  <data name="&gt;&gt;label146.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label146.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;label146.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="chkCalRegistraSequenza.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkCalRegistraSequenza.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 86</value>
+  </data>
+  <data name="chkCalRegistraSequenza.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 21</value>
+  </data>
+  <data name="chkCalRegistraSequenza.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="chkCalRegistraSequenza.Text" xml:space="preserve">
+    <value>Salva Sequenza</value>
+  </data>
+  <data name="&gt;&gt;chkCalRegistraSequenza.Name" xml:space="preserve">
+    <value>chkCalRegistraSequenza</value>
+  </data>
+  <data name="&gt;&gt;chkCalRegistraSequenza.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkCalRegistraSequenza.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;chkCalRegistraSequenza.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="flvwCalCorrentiVerifica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>777, 13</value>
+  </data>
+  <data name="flvwCalCorrentiVerifica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>601, 222</value>
+  </data>
+  <data name="flvwCalCorrentiVerifica.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;flvwCalCorrentiVerifica.Name" xml:space="preserve">
+    <value>flvwCalCorrentiVerifica</value>
+  </data>
+  <data name="&gt;&gt;flvwCalCorrentiVerifica.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;flvwCalCorrentiVerifica.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;flvwCalCorrentiVerifica.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="chkCalAttivaAlim.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkCalAttivaAlim.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkCalAttivaAlim.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 53</value>
+  </data>
+  <data name="chkCalAttivaAlim.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 21</value>
+  </data>
+  <data name="chkCalAttivaAlim.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="chkCalAttivaAlim.Text" xml:space="preserve">
+    <value>Attivazione Uscita Automatica</value>
+  </data>
+  <data name="&gt;&gt;chkCalAttivaAlim.Name" xml:space="preserve">
+    <value>chkCalAttivaAlim</value>
+  </data>
+  <data name="&gt;&gt;chkCalAttivaAlim.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkCalAttivaAlim.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;chkCalAttivaAlim.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="cmbCalListaEsecuzioni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>950, 246</value>
+  </data>
+  <data name="cmbCalListaEsecuzioni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 24</value>
+  </data>
+  <data name="cmbCalListaEsecuzioni.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="&gt;&gt;cmbCalListaEsecuzioni.Name" xml:space="preserve">
+    <value>cmbCalListaEsecuzioni</value>
+  </data>
+  <data name="&gt;&gt;cmbCalListaEsecuzioni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbCalListaEsecuzioni.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;cmbCalListaEsecuzioni.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="btnCalRicaricaSequenza.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCalRicaricaSequenza.Location" type="System.Drawing.Point, System.Drawing">
+    <value>777, 241</value>
+  </data>
+  <data name="btnCalRicaricaSequenza.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 32</value>
+  </data>
+  <data name="btnCalRicaricaSequenza.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="btnCalRicaricaSequenza.Text" xml:space="preserve">
+    <value>Ricarica da archivio</value>
+  </data>
+  <data name="&gt;&gt;btnCalRicaricaSequenza.Name" xml:space="preserve">
+    <value>btnCalRicaricaSequenza</value>
+  </data>
+  <data name="&gt;&gt;btnCalRicaricaSequenza.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCalRicaricaSequenza.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;btnCalRicaricaSequenza.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;label152.Name" xml:space="preserve">
+    <value>label152</value>
+  </data>
+  <data name="&gt;&gt;label152.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label152.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label152.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxAss.Name" xml:space="preserve">
+    <value>txtCalErrMaxAss</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxAss.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxAss.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxAss.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtCalTemp.Name" xml:space="preserve">
+    <value>txtCalTemp</value>
+  </data>
+  <data name="&gt;&gt;txtCalTemp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalTemp.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalTemp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label145.Name" xml:space="preserve">
+    <value>label145</value>
+  </data>
+  <data name="&gt;&gt;label145.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label145.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label145.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtCalElettr.Name" xml:space="preserve">
+    <value>txtCalElettr</value>
+  </data>
+  <data name="&gt;&gt;txtCalElettr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalElettr.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalElettr.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label138.Name" xml:space="preserve">
+    <value>label138</value>
+  </data>
+  <data name="&gt;&gt;label138.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label138.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label138.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxNeg.Name" xml:space="preserve">
+    <value>txtCalErrMaxNeg</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxNeg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxNeg.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxNeg.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label140.Name" xml:space="preserve">
+    <value>label140</value>
+  </data>
+  <data name="&gt;&gt;label140.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label140.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label140.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxPos.Name" xml:space="preserve">
+    <value>txtCalErrMaxPos</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxPos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxPos.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMaxPos.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label141.Name" xml:space="preserve">
+    <value>label141</value>
+  </data>
+  <data name="&gt;&gt;label141.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label141.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label141.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMax.Name" xml:space="preserve">
+    <value>txtCalErrMax</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMax.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalErrMax.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label142.Name" xml:space="preserve">
+    <value>label142</value>
+  </data>
+  <data name="&gt;&gt;label142.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label142.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label142.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrSB.Name" xml:space="preserve">
+    <value>txtCalCurrSB</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrSB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrSB.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrSB.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label143.Name" xml:space="preserve">
+    <value>label143</value>
+  </data>
+  <data name="&gt;&gt;label143.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label143.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label143.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrAlim.Name" xml:space="preserve">
+    <value>txtCalCurrAlim</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrAlim.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrAlim.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalCurrAlim.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label144.Name" xml:space="preserve">
+    <value>label144</value>
+  </data>
+  <data name="&gt;&gt;label144.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label144.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label144.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;label130.Name" xml:space="preserve">
+    <value>label130</value>
+  </data>
+  <data name="&gt;&gt;label130.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label130.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label130.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;txtCalVbatt.Name" xml:space="preserve">
+    <value>txtCalVbatt</value>
+  </data>
+  <data name="&gt;&gt;txtCalVbatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalVbatt.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalVbatt.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;txtCalV3.Name" xml:space="preserve">
+    <value>txtCalV3</value>
+  </data>
+  <data name="&gt;&gt;txtCalV3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalV3.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalV3.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;txtCalV2.Name" xml:space="preserve">
+    <value>txtCalV2</value>
+  </data>
+  <data name="&gt;&gt;txtCalV2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalV2.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalV2.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;txtCalV1.Name" xml:space="preserve">
+    <value>txtCalV1</value>
+  </data>
+  <data name="&gt;&gt;txtCalV1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalV1.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;txtCalV1.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;label131.Name" xml:space="preserve">
+    <value>label131</value>
+  </data>
+  <data name="&gt;&gt;label131.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label131.Parent" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;label131.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="grbCalValoriAttuali.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 13</value>
+  </data>
+  <data name="grbCalValoriAttuali.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 222</value>
+  </data>
+  <data name="grbCalValoriAttuali.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="grbCalValoriAttuali.Text" xml:space="preserve">
+    <value>Valori Attuali</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriAttuali.Name" xml:space="preserve">
+    <value>grbCalValoriAttuali</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriAttuali.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriAttuali.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriAttuali.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
   <data name="label152.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -24305,6 +24596,186 @@
   </data>
   <data name="&gt;&gt;label131.ZOrder" xml:space="preserve">
     <value>23</value>
+  </data>
+  <data name="pnlCalVerifica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 280</value>
+  </data>
+  <data name="pnlCalVerifica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1031, 386</value>
+  </data>
+  <data name="pnlCalVerifica.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="&gt;&gt;pnlCalVerifica.Name" xml:space="preserve">
+    <value>pnlCalVerifica</value>
+  </data>
+  <data name="&gt;&gt;pnlCalVerifica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlCalVerifica.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;pnlCalVerifica.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="btnCalStartSeq.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnCalStartSeq.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCalStartSeq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 80</value>
+  </data>
+  <data name="btnCalStartSeq.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 31</value>
+  </data>
+  <data name="btnCalStartSeq.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="btnCalStartSeq.Text" xml:space="preserve">
+    <value>Avvia Sequenza</value>
+  </data>
+  <data name="&gt;&gt;btnCalStartSeq.Name" xml:space="preserve">
+    <value>btnCalStartSeq</value>
+  </data>
+  <data name="&gt;&gt;btnCalStartSeq.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCalStartSeq.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;btnCalStartSeq.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <metadata name="lblCalStatoAlim.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblCalStatoAlim.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCalStatoAlim.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCalStatoAlim.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 24</value>
+  </data>
+  <data name="lblCalStatoAlim.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 17</value>
+  </data>
+  <data name="lblCalStatoAlim.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="lblCalStatoAlim.Text" xml:space="preserve">
+    <value>Non Collegato</value>
+  </data>
+  <data name="&gt;&gt;lblCalStatoAlim.Name" xml:space="preserve">
+    <value>lblCalStatoAlim</value>
+  </data>
+  <data name="&gt;&gt;lblCalStatoAlim.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCalStatoAlim.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;lblCalStatoAlim.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="btnCalCollegaAlim.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCalCollegaAlim.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 13</value>
+  </data>
+  <data name="btnCalCollegaAlim.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 34</value>
+  </data>
+  <data name="btnCalCollegaAlim.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="btnCalCollegaAlim.Text" xml:space="preserve">
+    <value>Collega Alimentatore</value>
+  </data>
+  <data name="&gt;&gt;btnCalCollegaAlim.Name" xml:space="preserve">
+    <value>btnCalCollegaAlim</value>
+  </data>
+  <data name="&gt;&gt;btnCalCollegaAlim.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCalCollegaAlim.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;btnCalCollegaAlim.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;txtCalLogBox.Name" xml:space="preserve">
+    <value>txtCalLogBox</value>
+  </data>
+  <data name="&gt;&gt;txtCalLogBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalLogBox.Parent" xml:space="preserve">
+    <value>grbCalListaAttivita</value>
+  </data>
+  <data name="&gt;&gt;txtCalLogBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lbxCalListaStep.Name" xml:space="preserve">
+    <value>lbxCalListaStep</value>
+  </data>
+  <data name="&gt;&gt;lbxCalListaStep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbxCalListaStep.Parent" xml:space="preserve">
+    <value>grbCalListaAttivita</value>
+  </data>
+  <data name="&gt;&gt;lbxCalListaStep.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtCalStepCorrente.Name" xml:space="preserve">
+    <value>txtCalStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtCalStepCorrente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalStepCorrente.Parent" xml:space="preserve">
+    <value>grbCalListaAttivita</value>
+  </data>
+  <data name="&gt;&gt;txtCalStepCorrente.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblCalStepCorrente.Name" xml:space="preserve">
+    <value>lblCalStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;lblCalStepCorrente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCalStepCorrente.Parent" xml:space="preserve">
+    <value>grbCalListaAttivita</value>
+  </data>
+  <data name="&gt;&gt;lblCalStepCorrente.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grbCalListaAttivita.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 241</value>
+  </data>
+  <data name="grbCalListaAttivita.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 425</value>
+  </data>
+  <data name="grbCalListaAttivita.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="&gt;&gt;grbCalListaAttivita.Name" xml:space="preserve">
+    <value>grbCalListaAttivita</value>
+  </data>
+  <data name="&gt;&gt;grbCalListaAttivita.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbCalListaAttivita.Parent" xml:space="preserve">
+    <value>tabCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;grbCalListaAttivita.ZOrder" xml:space="preserve">
+    <value>24</value>
   </data>
   <data name="txtCalLogBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 6pt</value>

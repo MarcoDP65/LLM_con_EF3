@@ -158,6 +158,8 @@ namespace MoriData
             }
         }
 
+
+        
         #region Class Parameters
 
         public int IdLocale

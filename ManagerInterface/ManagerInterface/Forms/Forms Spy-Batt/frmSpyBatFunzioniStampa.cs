@@ -38,6 +38,7 @@ namespace PannelloCharger
         private int _paginaCorrente = 0;
         private int _modelloStampa = 0;
         private int _pagineStampate = 0;
+        private int _paginaGrafico = 0;
 
         /// <summary>
         /// lancio la stampa del form.
@@ -69,6 +70,7 @@ namespace PannelloCharger
                     case "tabCb05":
                         {
                             _pagineStampate = 0;
+                            _paginaGrafico = 0;
                             _modelloStampa = 1;
                             break;
                         }
@@ -76,6 +78,7 @@ namespace PannelloCharger
                         {
                             // Se ho più di 2 pagine OK, ho generato le statistiche
                             _pagineStampate = 0;
+                            _paginaGrafico = 1;
                             int _tabStatCorrente = tbcStatistiche.SelectedIndex;
                             string _paginaStatAttiva = tbcStatistiche.TabPages[_tabStatCorrente].Name;
 
@@ -221,14 +224,14 @@ namespace PannelloCharger
 
                             int _paginePreviste = (StatistichePresenti() + 1) / 2;
 
-                            if (_paginaCorrente > _paginePreviste)
+                            if ( _paginaGrafico > _paginePreviste)   ///_paginaCorrente
                             {
                                 doc.HasMorePages = false;
                             }
                             else
                             {
                                 _docStampaPaginaGrafici(doc, _paginaCorrente);
-                                if (_paginaCorrente < _paginePreviste)
+                                if (_paginaGrafico <= _paginePreviste)
                                 {
                                     doc.HasMorePages = true;
                                 }
@@ -626,7 +629,7 @@ namespace PannelloCharger
 
 
                 // Parte alta
-                _tmpGraph = GraficoInstampa(pagina, 0);
+                _tmpGraph = GraficoInstampa(_paginaGrafico, 0);
                 if (_tmpGraph != null)
                 {
                     graphcs.DrawImage(_tmpGraph, 120, 190, 600, 400);
@@ -634,7 +637,7 @@ namespace PannelloCharger
 
 
                 //Parte Bassa
-                _tmpGraph = GraficoInstampa(pagina, 1);
+                _tmpGraph = GraficoInstampa(_paginaGrafico, 1);
                 if (_tmpGraph != null)
                 {
                     graphcs.DrawImage(_tmpGraph, 120, 640, 600, 400);
@@ -655,7 +658,8 @@ namespace PannelloCharger
                 {
                     graphcs.DrawString(optStatInteroIntervallo.Text, _testoSmallBold, _stileBase, 180, 1080);
                 }
-                
+                _paginaGrafico ++;
+
             }
             catch (Exception Ex)
             {
@@ -764,7 +768,7 @@ namespace PannelloCharger
                 int _paginePreviste = (StatistichePresenti() + 1) / 2;
                 int _tabRichiesto;
 
-                if (_paginaCorrente > _paginePreviste)
+                if (_paginaGrafico > _paginePreviste)
                 {
                     return null;
                 }

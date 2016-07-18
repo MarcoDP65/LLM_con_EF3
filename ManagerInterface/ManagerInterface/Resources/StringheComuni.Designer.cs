@@ -187,6 +187,15 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Parametri configurazione non validi.
+        /// </summary>
+        internal static string CfgNonValida {
+            get {
+                return ResourceManager.GetString("CfgNonValida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a collegato alla porta.
         /// </summary>
         internal static string Collegato {

@@ -56,6 +56,8 @@ namespace ChargerLogic
         private string _lastError;
         private bool _cbCollegato;
 
+        public byte[] DatiRisposta;
+
         public int AttesaTimeout = 25; // Tempo attesa in decimi di secondo
        
 
@@ -492,6 +494,7 @@ namespace ChargerLogic
             } 
         }
 
+
         public bool CaricaCicli()
         {
             try
@@ -612,6 +615,45 @@ namespace ChargerLogic
                 }
             
                 //CicloInMacchina = _mS.CicloInMacchina;
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+        public bool ProxySBSig60(byte[] PacchettoDati )
+        {
+            try
+            {
+                bool _esito;
+                _mS.DatiStrategia = new SerialMessage.ProxyComandoStrategia();
+                DatiRisposta = new byte[240];
+
+                _mS.Comando = SerialMessage.TipoComando.LL_SIG60_PROXY;
+                _mS.ComponiMessaggioNew(PacchettoDati);
+                _rxRisposta = false;
+                Log.Debug("Leggi ProxySBSig60 LL");
+                Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(AttesaTimeout, 1, true);
+
+                if (_esito)
+                {
+                    for (int _i= 0; _i<240; _i++)
+                    {
+                        DatiRisposta[_i] = _mS.DatiStrategia.RxBuffer[_i];
+                    }
+                    
+                }
 
 
                 return _esito;
@@ -941,18 +983,6 @@ namespace ChargerLogic
                         //UltimaRisposta = SerialMessage.EsitoRisposta.MessaggioOk;
                         _inviaRisposta = true;
                         Log.Debug("Comando LL: --> 0x" + _mS._comando.ToString("X2"));
-                        /*
-                        if ((_mS._comando != 0x44) && (_mS._comando != 0x45))
-                        {
-                            Log.Debug(_mS._comando.ToString());
-                            _mS._comando = 0x44;
-                            _mS.componiRisposta(_dataBuffer, _esito);
-
-
-                            serialeApparato.Write(_mS.messaggioRisposta, 0, _mS.messaggioRisposta.Length);
-                            Log.Debug("Mandato ACK");
-                        }
-                        */
 
                         switch (_mS._comando)
                         {
@@ -980,6 +1010,11 @@ namespace ChargerLogic
                                 break;
                             case (byte)SerialMessage.TipoComando.SB_R_Variabili:
                                 Log.Debug("Variabili");
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = true;
+                                break;
+                            case (byte)SerialMessage.TipoComando.LL_SIG60_PROXY:
+                                Log.Debug("Ciclo Programmato");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = true;
                                 break;

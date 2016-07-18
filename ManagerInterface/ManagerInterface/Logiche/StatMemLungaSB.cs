@@ -1114,6 +1114,113 @@ namespace ChargerLogic
             try
             {
                 int _passo;
+                int _passi = 17;
+                int _tempValore;
+
+                _datiComp.Titolo = Titolo;
+                _datiComp.TotLetture = 0;
+                _datiComp.MinX = 0;
+                _datiComp.MaxX = 150;
+                _datiComp.NumStep = 17;
+                _datiComp.TitoloAsseX = StringheStatistica.GrCfAsseX;
+                _datiComp.TitoloAsseY = StringheStatistica.GrCfAsseY;
+
+                //inizializzo gli array
+                _datiComp.arrayValori = new int[_passi];
+                _datiComp.arrayIntervalli = new int[_passi];
+                _datiComp.arrayLabel = new string[_passi];
+                _datiComp.StepSoglia = (int)(_minFC*10);
+                _datiComp.VersoSoglia = DatiEstrazione.Direzione.Discendente;
+                string _etichetta;
+
+                for (_passo = 0; _passo < ( _passi - 2 ); _passo++)
+                {
+                    _datiComp.arrayValori[_passo] = 0;
+                    _tempValore = _passo * 10;
+                    if (_tempValore > 0) _tempValore += 1;
+                    _etichetta = ((Double)(_tempValore) /100).ToString("0.00") + " ÷ ";
+                    _tempValore = (_passo + 1) * 10;
+                    _etichetta = _etichetta + ((Double)(_tempValore) / 100).ToString("0.00");
+
+                    _datiComp.arrayLabel[_passo] = _etichetta;
+                }
+
+                // Aggiungo i due periodi atipici, 1.50 - 2.50 e > 2.50
+
+                // colonna 15, 1.5 - 2.5
+                _datiComp.arrayValori[15] = 0;
+                _datiComp.arrayLabel[15] = "1.51 ÷ 2.50";
+
+
+                // colonna 16, > 2.5
+                _datiComp.arrayValori[16] = 0;
+                _datiComp.arrayLabel[16] = "> 2.50";
+
+
+
+
+
+
+                foreach (_StatMemLungaSB ciclo in CicliStatMemLunga)
+                {
+                    if (ciclo.PeriodoValido)
+                    {
+
+                        if (ciclo.TipoEvento == (byte)SerialMessage.TipoCiclo.Carica)
+                        {
+                            _datiComp.TotLetture += 1;
+                            if (ciclo.FattoreCarica < 151)
+                            {
+                                int _stepCarica = (int)(ciclo.FattoreCarica / 10);
+                                if (_stepCarica > 15) _stepCarica = 15;
+                                if (_stepCarica < 0) _stepCarica = 0;
+                                _datiComp.arrayValori[_stepCarica] += 1;
+                            }
+                            else
+                            {
+                                if (ciclo.FattoreCarica < 251)
+                                {
+                                    _datiComp.arrayValori[15] += 1;
+                                }
+                                else
+                                {
+                                    _datiComp.arrayValori[16] += 1;
+                                }
+                            }
+                            
+
+                        }
+                    }
+                }
+                _passi = 17;
+                _datiComp.MaxY = 0;
+
+                for (_passo = 0; _passo < _passi; _passo++)
+                {
+                    if (_datiComp.arrayValori[_passo] > _datiComp.MaxY)
+                        _datiComp.MaxY = _datiComp.arrayValori[_passo];
+                }
+
+                _datiComp.DatiValidi = true;
+
+
+                return _datiComp;
+
+            }
+            catch
+            {
+                return _datiComp;
+
+            }
+        }
+
+
+        public DatiEstrazione CalcolaArrayGraficoChargeFactorDEMO(string Titolo)
+        {
+            DatiEstrazione _datiComp = new DatiEstrazione();
+            try
+            {
+                int _passo;
                 int _passi = 16;
                 int _tempValore;
 
@@ -1129,7 +1236,7 @@ namespace ChargerLogic
                 _datiComp.arrayValori = new int[_passi];
                 _datiComp.arrayIntervalli = new int[_passi];
                 _datiComp.arrayLabel = new string[_passi];
-                _datiComp.StepSoglia = (int)(_minFC*10);
+                _datiComp.StepSoglia = (int)(_minFC * 10);
                 _datiComp.VersoSoglia = DatiEstrazione.Direzione.Discendente;
                 string _etichetta;
 
@@ -1138,7 +1245,7 @@ namespace ChargerLogic
                     _datiComp.arrayValori[_passo] = 0;
                     _tempValore = _passo * 10;
                     if (_tempValore > 0) _tempValore += 1;
-                    _etichetta = ((Double)(_tempValore) /100).ToString("0.00") + " ÷ ";
+                    _etichetta = ((Double)(_tempValore) / 100).ToString("0.00") + " ÷ ";
                     _tempValore = (_passo + 1) * 10;
                     _etichetta = _etichetta + ((Double)(_tempValore) / 100).ToString("0.00");
 
@@ -1146,22 +1253,15 @@ namespace ChargerLogic
                 }
 
 
-                foreach (_StatMemLungaSB ciclo in CicliStatMemLunga)
-                {
-                    if (ciclo.PeriodoValido)
-                    {
+                //ora i dati forzati
+                _datiComp.arrayValori[0] = 1;
+                _datiComp.arrayValori[1] = 6;
+                _datiComp.arrayValori[2] = 5;
+                _datiComp.arrayValori[10] = 27;
+                _datiComp.arrayValori[11] = 20;
+                _datiComp.arrayValori[12] = 18;
 
-                        if (ciclo.TipoEvento == (byte)SerialMessage.TipoCiclo.Carica)
-                        {
-                            _datiComp.TotLetture += 1;
-                            int _stepCarica = (int)(ciclo.FattoreCarica / 10);
-                            if (_stepCarica > 15) _stepCarica = 15;
-                            if (_stepCarica < 0) _stepCarica = 0;
-                            _datiComp.arrayValori[_stepCarica] += 1;
-
-                        }
-                    }
-                }
+                _datiComp.TotLetture = 77;
 
                 _datiComp.MaxY = 0;
 
@@ -1183,6 +1283,7 @@ namespace ChargerLogic
 
             }
         }
+
 
 
         public DatiEstrazione CalcolaArrayGraficoDeepChg(SerialMessage.TipoCiclo TipoInAnalisi, string Titolo)
@@ -1260,6 +1361,73 @@ namespace ChargerLogic
             }
         }
 
+
+        public DatiEstrazione CalcolaArrayGraficoDeepChgDEMO(SerialMessage.TipoCiclo TipoInAnalisi, string Titolo)
+        {
+            DatiEstrazione _datiComp = new DatiEstrazione();
+            try
+            {
+                int _passo;
+                int _passi = 10;
+                int _tempValore;
+
+                _datiComp.Titolo = Titolo;
+                _datiComp.TotLetture = 0;
+                _datiComp.MinX = 0;
+                _datiComp.MaxX = 10;
+                _datiComp.NumStep = 10;
+                _datiComp.TitoloAsseX = StringheStatistica.GrDODAsseX;
+                _datiComp.TitoloAsseY = StringheStatistica.GrDODAsseY;
+
+                //inizializzo gli array
+                _datiComp.arrayValori = new int[_passi];
+                _datiComp.arrayIntervalli = new int[_passi];
+                _datiComp.arrayLabel = new string[_passi];
+                _datiComp.StepSoglia = 8;// (100 - _profonditaDoD) / 10;
+                string _etichetta;
+
+                for (_passo = 0; _passo < _passi; _passo++)
+                {
+                    _datiComp.arrayValori[_passo] = 0;
+                    _tempValore = _passo * 10;
+                    if (_tempValore > 0) _tempValore += 1;
+                    _etichetta = _tempValore.ToString() + " ÷ ";
+                    _tempValore = (_passo + 1) * 10;
+                    _etichetta = _etichetta + _tempValore.ToString() + "%";
+
+                    _datiComp.arrayLabel[_passo] = _etichetta;
+                }
+
+                //ora i dati forzati
+                _datiComp.arrayValori[3] = 15;
+                _datiComp.arrayValori[4] = 22;
+                _datiComp.arrayValori[5] = 27;
+                _datiComp.arrayValori[6] = 18;
+                _datiComp.arrayValori[7] = 10;
+                _datiComp.arrayValori[8] = 23;
+                _datiComp.TotLetture = 125;
+                _datiComp.MaxY = 0;
+
+                for (_passo = 0; _passo < _passi; _passo++)
+                {
+                    if (_datiComp.arrayValori[_passo] > _datiComp.MaxY)
+                        _datiComp.MaxY = _datiComp.arrayValori[_passo];
+                }
+
+                _datiComp.DatiValidi = true;
+
+
+                return _datiComp;
+
+            }
+            catch
+            {
+                return _datiComp;
+
+            }
+        }
+
+
         public DatiEstrazione CalcolaArrayGraficoMancanzaEl(string Titolo)
         {
             DatiEstrazione _datiComp = new DatiEstrazione();
@@ -1296,6 +1464,45 @@ namespace ChargerLogic
 
             }
         }
+
+
+        public DatiEstrazione CalcolaArrayGraficoMancanzaElDEMO(string Titolo)
+        {
+            DatiEstrazione _datiComp = new DatiEstrazione();
+            try
+            {
+                //int _passo;
+                //int _passi = NumStep + 1;
+                //int _tempValore;
+
+                _datiComp.Titolo = Titolo;
+                _datiComp.TotLetture = 100;
+                _datiComp.MinX = 0;
+                _datiComp.MaxX = 0;
+                //_datiComp.NumStep = 0;
+                _datiComp.TitoloAsseX = StringheStatistica.GrDurCAsseX;
+                _datiComp.TitoloAsseY = StringheStatistica.GrDurCAsseY;
+
+                //inizializzo gli array
+
+                _datiComp.NumEvTotali = 100;
+                _datiComp.NumEvOK = 94;
+                _datiComp.NumEvErrore = 6;
+
+
+                _datiComp.DatiValidi = true;
+
+
+                return _datiComp;
+
+            }
+            catch
+            {
+                return _datiComp;
+
+            }
+        }
+
 
         public DatiEstrazione CalcolaArrayGraficoDurataCicli(SerialMessage.TipoCiclo TipoInAnalisi, int Modocarica, int MinStep, int NumStep, string Titolo)
         {
@@ -1499,6 +1706,97 @@ namespace ChargerLogic
 
             }
         }
+
+        public DatiEstrazione CalcolaArrayGraficoTempertureCicliDEMO(SerialMessage.TipoCiclo TipoInAnalisi, int TempAttiva, int StepTemp, int MinTemp, int MaxTemp, int ModoCarica, string Titolo)
+        {
+            DatiEstrazione _datiComp = new DatiEstrazione();
+            try
+            {
+                int _passo;
+                int _passi;
+                int _tempValore;
+
+                if (StepTemp < 1) StepTemp = 1;
+                _passi = ((MaxTemp - MinTemp) / StepTemp) + 1;
+
+                _datiComp.Titolo = Titolo;
+                _datiComp.TotLetture = 0;
+                _datiComp.MinX = MinTemp;
+                _datiComp.MaxX = MaxTemp;
+                _datiComp.NumStep = _passi;
+                switch (TempAttiva)
+                {
+                    case 0:  // "Tempertura Minima (°C)"
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTmin;
+                        break;
+                    case 1:  // "Tempertura Massima (°C)";
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTmax;
+                        break;
+                    case 2:  // "Incremento Termico (°C)";
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTDelta;
+                        break;
+                    default:
+                        _datiComp.TitoloAsseX = StringheStatistica.TitAxTmin;
+                        break;
+                }
+
+                _datiComp.TitoloAsseY = StringheStatistica.NumeroCicli;
+
+                //inizializzo gli array
+                _datiComp.arrayValori = new int[_passi + 1];
+                _datiComp.arrayIntervalli = new int[_passi + 1];
+                _datiComp.arrayLabel = new string[_passi + 1];
+                string _etichetta;
+
+                _tempValore = MinTemp;
+
+                for (_passo = 0; _passo < _passi; _passo++)
+                {
+                    _datiComp.arrayValori[_passo] = 0;
+
+                    _etichetta = _tempValore.ToString() + " °C";
+                    _datiComp.arrayLabel[_passo] = _etichetta;
+                    _tempValore += StepTemp;
+                }
+
+                _datiComp.arrayValori[2] = 6;
+                _datiComp.arrayValori[3] = 8;
+                _datiComp.arrayValori[4] = 10;
+                _datiComp.arrayValori[5] = 11;
+                _datiComp.arrayValori[6] = 12;
+                _datiComp.arrayValori[7] = 10;
+                _datiComp.arrayValori[8] = 8;
+
+
+                _datiComp.TotLetture = 65;
+
+
+                _datiComp.MaxY = 0;
+
+                for (_passo = 0; _passo < _passi; _passo++)
+                {
+                    if (_datiComp.arrayValori[_passo] > _datiComp.MaxY)
+                        _datiComp.MaxY = _datiComp.arrayValori[_passo];
+                }
+
+                _datiComp.DatiValidi = true;
+
+
+                return _datiComp;
+
+            }
+            catch
+            {
+                return _datiComp;
+
+            }
+        }
+
+
+
+
+
+
 
         public DatiEstrazione CalcolaArrayGraficoSettimana(String Settimana, string Titolo)
         {

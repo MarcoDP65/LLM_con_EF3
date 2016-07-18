@@ -40,9 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servizi\ByteBitwise.cs" />
     <Compile Include="Servizi\ClassiSupporto.cs" />
     <Compile Include="Servizi\elementiComuni.cs" />
     <Compile Include="Servizi\FunzioniMR.cs" />
+    <Compile Include="Servizi\GestioneTempi.cs" />
+    <Compile Include="Servizi\GestioneTurno.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing">

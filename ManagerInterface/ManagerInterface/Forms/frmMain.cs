@@ -971,6 +971,18 @@ namespace PannelloCharger
                 Log.Error("frmMain - stampa: " + Ex.Message);
             }
         }
+
+        private void programmazioniAvanzateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            //UnitaSpyBatt _sb = new UnitaSpyBatt(null,0 );
+            frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma(logiche);
+            //NuovoProgramma._sb = _sb;
+            //NuovoProgramma.MdiParent = this.MdiParent;
+            NuovoProgramma.TestMode = true;
+            NuovoProgramma.StartPosition = FormStartPosition.CenterParent;
+            NuovoProgramma.ShowDialog(this);
+        }
     }
 
     public class StatoPulsanti

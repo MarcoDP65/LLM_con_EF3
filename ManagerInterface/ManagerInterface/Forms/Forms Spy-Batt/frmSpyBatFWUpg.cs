@@ -84,7 +84,7 @@ namespace PannelloCharger
                         }
                         else
                         {
-                            MessageBox.Show("File non generato\r\nErroe generale", "Esportazione pacchetto Firmware", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("File non generato\r\nErrore generale", "Esportazione pacchetto Firmware", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
@@ -103,6 +103,7 @@ namespace PannelloCharger
         public bool CaricafileSBF()
         {
             FirmwareManager.ExitCode _esito;
+            bool _esitoBool;
             try
             {
                 txtFWInSBFRev.Text = "";
@@ -127,6 +128,16 @@ namespace PannelloCharger
 
                     txtFWInSBFRev.Text = _firmMng.FirmwareData.Release;
                     txtFWInSBFDtRev.Text = FunzioniMR.StringaDataTS(_firmMng.FirmwareData.ReleaseDateBlock);
+                    // verifico che il firmware sia accettabile
+                    _esitoBool = _firmMng.VersioneAmmessa(_firmMng.FirmwareData.Release);
+
+                    if(!_esitoBool)
+
+                    {
+                        MessageBox.Show(StringheMessaggio.strFirmwareNonValido, "Firmware", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+
                     btnFWPreparaTrasmissione.Enabled = true;
 
                     txtFWTxFileLenN1.Text = _firmMng.FirmwareData.LenFlash1.ToString();
@@ -477,11 +488,13 @@ namespace PannelloCharger
 
 
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("frmSpyBat.DumpInteraMemoria: " + Ex.Message);
 
             }
-        }
+  
+    }
 
 
         private void AggiornaFirmware(bool InviaACK = false)

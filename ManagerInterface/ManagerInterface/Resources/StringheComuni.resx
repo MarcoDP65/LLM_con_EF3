@@ -282,4 +282,7 @@
   <data name="CancellaMemoriaR5" xml:space="preserve">
     <value>Codice non valido:  Dispositivo non corrispondente</value>
   </data>
+  <data name="CfgNonValida" xml:space="preserve">
+    <value>Parametri configurazione non validi</value>
+  </data>
 </root>
