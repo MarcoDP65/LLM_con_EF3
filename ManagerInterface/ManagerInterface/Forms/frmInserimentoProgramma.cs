@@ -280,6 +280,27 @@ namespace PannelloCharger
 
                 }
 
+
+                if (_attivaPRO)
+                {
+                    _nuovoProg.ModoPianificazione = (byte)cmbProModoPianif.SelectedValue;
+                    _nuovoProg.CorrenteMinimaCHG = FunzioniMR.ConvertiUshort(txtProMinChargeCurr.Text, 10,0);
+                    _nuovoProg.CorrenteMassimaCHG = FunzioniMR.ConvertiUshort(txtProMaxChargeCurr.Text, 10, 0);
+                    _nuovoProg.Rabboccatore = (byte)cmbRabboccatore.SelectedValue;
+                    _nuovoProg.ImpulsiRabboccatore = FunzioniMR.ConvertiByte(txtProImpulsiRabb.Text, 1, 1);
+                    _nuovoProg.Biberonaggio = (byte)cmbBiberonaggio.SelectedValue;
+                    _nuovoProg.TempAttenzione = FunzioniMR.ConvertiByte(txtProTempAttenzione.Text, 1, 45);
+                    _nuovoProg.TempAllarme = FunzioniMR.ConvertiByte(txtProTempAllarme.Text, 1, 55);
+                    _nuovoProg.TempRipresa = FunzioniMR.ConvertiByte(txtProTempRiavvio.Text, 1, 45);
+                    //_nuovoProg.MaxSbilanciamento = (ushort)5; // cmbProMaxSbil.SelectedValue;
+                    _nuovoProg.DurataSbilanciamento = FunzioniMR.ConvertiUshort(txtProMaxMinutiSbil.Text, 1, 240);
+                    _nuovoProg.TensioneGas = FunzioniMR.ConvertiUshort(txtProTensioneGas.Text, 100, 240);
+                    _nuovoProg.DerivaInferiore = FunzioniMR.ConvertiMSshort(txtProDerivaUnder.Text, 10, 0x8027);
+                    _nuovoProg.DerivaSuperiore = FunzioniMR.ConvertiMSshort(txtProDerivaOver.Text, 10, 0x8027);
+
+
+                }
+
                 _sb.ScriviProgramma( _nuovoProg ,(chkMemProgrammed.Checked == true ));
 
                 if (_sb.UltimaRisposta != SerialMessage.EsitoRisposta.MessaggioOk)
@@ -372,9 +393,9 @@ namespace PannelloCharger
                 cmbProModoPianif.ValueMember = "Codice";
                 cmbProModoPianif.SelectedIndex = 0;
 
-                cmbMaxSbil.DataSource = _parametriPro.MaxSbilanciamento;
-                cmbMaxSbil.DisplayMember = "strValore";
-                cmbMaxSbil.ValueMember = "ValoreB";
+                cmbProMaxSbil.DataSource = _parametriPro.MaxSbilanciamento;
+                cmbProMaxSbil.DisplayMember = "strValore";
+                cmbProMaxSbil.ValueMember = "ValoreB";
 
                 cmbBiberonaggio.DataSource = _parametriPro.OpzioniBib;
                 cmbBiberonaggio.DisplayMember = "Descrizione";
@@ -517,6 +538,48 @@ namespace PannelloCharger
                 Log.Error("txtTempMin_Leave: " + Ex.Message);
             }
 
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProMaxMinutiSbil_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void txtProgcBattAhDef_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                ushort _tempCap = FunzioniMR.ConvertiUshort(txtProgcBattAhDef.Text, 1, 0);
+                if (_tempCap < 20)
+                {
+                    _tempCap = 10;
+                    txtProgcBattAhDef.Text = "10";
+                }
+
+                if (_tempCap > 2000)
+                {
+                    _tempCap = 2000;
+                    txtProgcBattAhDef.Text = "2000";
+                }
+                ushort _tempAmps = (ushort)(_tempCap / 15);
+                txtProMinChargeCurr .Text = _tempAmps.ToString();
+
+                 _tempAmps = (ushort)(_tempCap / 5);
+                txtProMaxChargeCurr.Text = _tempAmps.ToString();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtProgcBattAhDef_Leave: " + Ex.Message);
+
+            }
         }
     }
 }

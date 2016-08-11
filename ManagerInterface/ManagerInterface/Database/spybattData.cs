@@ -524,6 +524,7 @@ namespace MoriData
                         case "1.12":
                         case "1.13":
                         case "2.01":
+                        case "2.02":
 
 
                             return 4;
@@ -555,8 +556,9 @@ namespace MoriData
 
                     switch (_LocalVer)
                     {
-
+                        case "1.11":
                         case "2.01":
+                        case "2.02":
                             return true;
 
                         default:
@@ -588,6 +590,7 @@ namespace MoriData
                     {
                         case "1.11":
                         case "2.01":
+                        case "2.02":
                             return true;
 
                         default:
@@ -633,6 +636,7 @@ namespace MoriData
                         case "1.12":
                         case "1.13":
                         case "2.01":
+                        case "2.02":
                             return 8666;
 
                         default:

@@ -687,9 +687,11 @@ namespace PannelloCharger
         }
 
 
+  
         public void ChiamataProxySig60(int Comando)
         {
             bool _esito;
+            byte _comando = 0xF7;
             byte[] _tempBuffer = new byte[220];
             int _cmdlen = 220;
             try
@@ -699,9 +701,19 @@ namespace PannelloCharger
                 {
                     case 1:
                         _cmdlen = 220;
+                        _comando = 0x71;
                         break;
                     case 2:
-                        _cmdlen = 20;
+                        _cmdlen = 04;
+                        _comando = 0x72;
+                        break;
+                    case 3:
+                        _cmdlen = 04;
+                        _comando = 0x7F;
+                        break;
+                    case 4:
+                        _cmdlen = 02;
+                        _comando = 0xA0;
                         break;
                     default:
                         _cmdlen = 220;
@@ -713,20 +725,24 @@ namespace PannelloCharger
 
                 txtStratDataGridTx.Text = "";
                 txtStratDataGridRx.Text = "";
-                for (int _i = 0; _i < 220; _i++ )
+                for (int _i = 0; _i < _cmdlen; _i++ )
                 {
                     _tempBuffer[_i] = 0;
                 }
 
                 _tempBuffer[0] = 0x80;
-                _tempBuffer[1] = 0x71;
-                _tempBuffer[2] = 0x20;
-                _tempBuffer[3] = 0xFF;
 
+
+                _tempBuffer[1] = _comando;
+                if (_cmdlen > 3)
+                {
+                    _tempBuffer[2] = 0x20;
+                    _tempBuffer[3] = 0xFF;
+                }
 
                 for (int _i = 4; _i < _cmdlen; _i++)
                 {
-                    _tempBuffer[_i] = (byte)(_i-4);
+                    _tempBuffer[_i] = 0x00; // (byte)(_i-4);
                 }
 
 
@@ -751,7 +767,8 @@ namespace PannelloCharger
                     txtStratDataGridTx.Text = _risposta;
 
                 }
-                
+
+                Application.DoEvents();
 
                 _esito = _cb.ProxySBSig60(_tempBuffer);
                 if (_esito == true)
@@ -799,6 +816,7 @@ namespace PannelloCharger
                         break;
                     case 2:
                         _cmdlen = 20;
+
                         break;
                     default:
                         _cmdlen = 220;
@@ -1117,7 +1135,6 @@ namespace PannelloCharger
         {
             grbBoxPiombo.Enabled = false; 
             grbBoxWet.Enabled = true;
-
         }
 
         private void opbBatPB_CheckedChanged(object sender, EventArgs e)
@@ -1135,8 +1152,6 @@ namespace PannelloCharger
             gbEqualizzazione.Enabled = true;
             gbStopIWa.Visible = true;
             gbStopIUIa.Visible = false;
-
-
         }
 
         private void pbxIWAsmall_Click(object sender, EventArgs e)
@@ -1495,7 +1510,22 @@ namespace PannelloCharger
         {
             bool _esito;
             this.Cursor = Cursors.WaitCursor;
-            ChiamataProxySig60(36);
+            ChiamataProxySig60(2);
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnStratTestERR_Click(object sender, EventArgs e)
+        {
+            bool _esito;
+            this.Cursor = Cursors.WaitCursor;
+            ChiamataProxySig60(3);
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnStratQuery_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            ChiamataProxySig60(4);
             this.Cursor = Cursors.Default;
         }
     }

@@ -83,7 +83,7 @@ namespace PannelloCharger
         public System.Collections.Generic.List<sbAnalisiCorrente> ValoriTestCorrente = new List<sbAnalisiCorrente>();
         public System.Collections.Generic.List<mrDataPoint> ValoriPuntualiGrCorrenti = new List<mrDataPoint>();
         public System.Collections.Generic.List<mrDataPoint> ValoriPuntualiGrCalCorrenti = new List<mrDataPoint>();
-
+        public System.Collections.Generic.List<StepCarica> PassiStrategia = new List<StepCarica>();
 
 
         public string IdCorrente;
@@ -568,7 +568,7 @@ namespace PannelloCharger
 
 
 
-        public bool MostraTestata()
+        public bool MostraTestata() 
         {
             try
             {
@@ -581,12 +581,13 @@ namespace PannelloCharger
                     //scheda con booloader presente
                     txtRevLdrSb.Text = _sb.StatoFirmware.strRevBootloader;
                     txtRevSWSb.Text = _sb.StatoFirmware.strRevFirmware;
+
+                    //TODO: caricare e mostrare versione libreria
                 }
                 else
                 {
                     //scheda senza booloader
                     txtRevSWSb.Text = _sb.sbData.SwVersion.ToString();
-                    //txtRevLdrSb.Text =  ""_sb.sbData.f;
 
                 }
 
@@ -7658,7 +7659,70 @@ namespace PannelloCharger
 
         private void btnStratTest02_Click(object sender, EventArgs e)
         {
-            LanciaComandoTestStrategia(0x72);
+             
+        }
+
+        private void btnStratTestErr_Click(object sender, EventArgs e)
+        {
+            LanciaComandoTestStrategia(0x7F);
+        }
+
+        private void btnStratQuery_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategiaInfo(0xA0);
+        }
+
+        private void btnStratSetCharge_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategiaUpdCnt(0x51);
+        }
+    
+
+        private void btnStratSetDischarge_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategiaChechCnt(0x50);
+        }
+
+        private void btnStratCallIS_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategia();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnStratCallAv_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategiaAvanzametoFase();
+        }
+
+        private void label193_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label182_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbStratIsSelStep_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                StepCarica PassoSelezionato = (StepCarica) cmbStratIsSelStep.SelectedItem;
+                MostraPassoCorrente(PassoSelezionato);
+
+
+            }
+
+            catch
+            {
+                CancellaPassoCorrente();
+            }
+
         }
     }
 }

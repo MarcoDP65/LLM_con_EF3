@@ -62,6 +62,9 @@ namespace MoriData
         public ushort DerivaSuperiore { get; set; }
         public ushort DerivaInferiore { get; set; }
         public byte[] DatiPianificazione { get; set; }
+        public ushort MaxCorrenteCHG { get; set; }
+        public ushort MinCorrenteCHG { get; set; }
+        public byte ImpulsiRabboccatore { get; set; }
 
 
     }
@@ -472,6 +475,28 @@ namespace MoriData
             }
         }
 
+
+        public ushort CorrenteMinimaCHG
+        {
+            get { return _sbpr.MinCorrenteCHG; }
+            set
+            {
+                _sbpr.MinCorrenteCHG = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort CorrenteMassimaCHG
+        {
+            get { return _sbpr.MaxCorrenteCHG; }
+            set
+            {
+                _sbpr.MaxCorrenteCHG = value;
+                _datiSalvati = false;
+            }
+        }
+
+
         public byte FcBase
         {
             get { return _sbpr.FcBase; }
@@ -498,6 +523,16 @@ namespace MoriData
             set
             {
                 _sbpr.Rabboccatore = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte ImpulsiRabboccatore
+        {
+            get { return _sbpr.ImpulsiRabboccatore; }
+            set
+            {
+                _sbpr.ImpulsiRabboccatore = value;
                 _datiSalvati = false;
             }
         }
@@ -561,7 +596,7 @@ namespace MoriData
             get { return _sbpr.MaxSbilanciamento; }
             set
             {
-                MaxSbilanciamento = value;
+                _sbpr.MaxSbilanciamento = value;
                 _datiSalvati = false;
             }
         }
@@ -572,7 +607,7 @@ namespace MoriData
             get { return _sbpr.DurataSbilanciamento; }
             set
             {
-                DurataSbilanciamento = value;
+                _sbpr.DurataSbilanciamento = value;
                 _datiSalvati = false;
             }
         }
@@ -582,7 +617,7 @@ namespace MoriData
             get { return _sbpr.TensioneGas; }
             set
             {
-                TensioneGas = value;
+                _sbpr.TensioneGas = value;
                 _datiSalvati = false;
             }
         }
@@ -591,7 +626,7 @@ namespace MoriData
             get { return _sbpr.DerivaSuperiore; }
             set
             {
-                DerivaSuperiore = value;
+                _sbpr.DerivaSuperiore = value;
                 _datiSalvati = false;
             }
         }
@@ -600,7 +635,7 @@ namespace MoriData
             get { return _sbpr.DerivaInferiore; }
             set
             {
-                DerivaInferiore = value;
+                _sbpr.DerivaInferiore = value;
                 _datiSalvati = false;
             }
         }
@@ -610,7 +645,7 @@ namespace MoriData
             get { return _sbpr.DatiPianificazione; }
             set
             {
-                DatiPianificazione = value;
+                _sbpr.DatiPianificazione = value;
                 _datiSalvati = false;
             }
         }

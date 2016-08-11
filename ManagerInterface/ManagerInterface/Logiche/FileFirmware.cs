@@ -812,6 +812,7 @@ namespace ChargerLogic
                         return true;
 
                     case "2.01":
+                    case "2.02":
                         // Livello 4;
                         return true;
 

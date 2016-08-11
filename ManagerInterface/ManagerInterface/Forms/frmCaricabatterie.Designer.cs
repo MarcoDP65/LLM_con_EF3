@@ -301,6 +301,7 @@
             this.lblSig60DataSent = new System.Windows.Forms.Label();
             this.txtStratDataGridRx = new System.Windows.Forms.TextBox();
             this.grbStratComandiTest = new System.Windows.Forms.GroupBox();
+            this.btnStratTestERR = new System.Windows.Forms.Button();
             this.btnStratTest02 = new System.Windows.Forms.Button();
             this.btnStratTest01 = new System.Windows.Forms.Button();
             this.txtStratDataGridTx = new System.Windows.Forms.TextBox();
@@ -308,6 +309,7 @@
             this.btnSalvaCaricabatteria = new System.Windows.Forms.Button();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
+            this.btnStratQuery = new System.Windows.Forms.Button();
             this.tabProfiloAttuale.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
             this.tabCaricaBatterie.SuspendLayout();
@@ -3464,14 +3466,27 @@
             // grbStratComandiTest
             // 
             this.grbStratComandiTest.BackColor = System.Drawing.Color.White;
+            this.grbStratComandiTest.Controls.Add(this.btnStratQuery);
+            this.grbStratComandiTest.Controls.Add(this.btnStratTestERR);
             this.grbStratComandiTest.Controls.Add(this.btnStratTest02);
             this.grbStratComandiTest.Controls.Add(this.btnStratTest01);
             this.grbStratComandiTest.Location = new System.Drawing.Point(19, 18);
             this.grbStratComandiTest.Name = "grbStratComandiTest";
-            this.grbStratComandiTest.Size = new System.Drawing.Size(659, 109);
+            this.grbStratComandiTest.Size = new System.Drawing.Size(1157, 109);
             this.grbStratComandiTest.TabIndex = 53;
             this.grbStratComandiTest.TabStop = false;
             this.grbStratComandiTest.Text = "Comandi Test";
+            // 
+            // btnStratTestERR
+            // 
+            this.btnStratTestERR.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratTestERR.Location = new System.Drawing.Point(979, 32);
+            this.btnStratTestERR.Name = "btnStratTestERR";
+            this.btnStratTestERR.Size = new System.Drawing.Size(149, 51);
+            this.btnStratTestERR.TabIndex = 52;
+            this.btnStratTestERR.Text = "CMD_TSTERR";
+            this.btnStratTestERR.UseVisualStyleBackColor = true;
+            this.btnStratTestERR.Click += new System.EventHandler(this.btnStratTestERR_Click);
             // 
             // btnStratTest02
             // 
@@ -3528,6 +3543,17 @@
             // 
             this.tmrLetturaAutomatica.Interval = 30000;
             this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
+            // 
+            // btnStratQuery
+            // 
+            this.btnStratQuery.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratQuery.Location = new System.Drawing.Point(409, 32);
+            this.btnStratQuery.Name = "btnStratQuery";
+            this.btnStratQuery.Size = new System.Drawing.Size(121, 51);
+            this.btnStratQuery.TabIndex = 54;
+            this.btnStratQuery.Text = "CMD_QRY";
+            this.btnStratQuery.UseVisualStyleBackColor = true;
+            this.btnStratQuery.Click += new System.EventHandler(this.btnStratQuery_Click);
             // 
             // frmCaricabatterie
             // 
@@ -3900,5 +3926,7 @@
         private System.Windows.Forms.Button btnStratTest02;
         private System.Windows.Forms.Button btnStratTest01;
         private System.Windows.Forms.TextBox txtStratDataGridTx;
+        private System.Windows.Forms.Button btnStratTestERR;
+        private System.Windows.Forms.Button btnStratQuery;
     }
 }

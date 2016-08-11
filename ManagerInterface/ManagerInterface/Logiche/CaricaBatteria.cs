@@ -644,7 +644,8 @@ namespace ChargerLogic
                 Log.Debug("Leggi ProxySBSig60 LL");
                 Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(AttesaTimeout, 1, true);
+                //  _esito = aspettaRisposta(AttesaTimeout, 1, true);
+                _esito = aspettaRisposta(140, 1, true);
 
                 if (_esito)
                 {

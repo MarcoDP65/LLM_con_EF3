@@ -38,7 +38,7 @@ namespace Utility
             }
         }
 
-        public static string StringaTensione(int Tensione)
+        public static string StringaTensioneCella(uint Tensione)
         {
             try
             {
@@ -46,6 +46,22 @@ namespace Utility
                 float _inVolt;
                 _inVolt = (float)Tensione / 100;
                 _tensioni = _inVolt.ToString("0.0");
+                return _tensioni;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        public static string StringaTensione(int Tensione)
+        {
+            try
+            {
+                string _tensioni = "";
+                float _inVolt;
+                _inVolt = (float)Tensione / 100;
+                _tensioni = _inVolt.ToString("0.00");
                 return _tensioni;
             }
             catch
@@ -792,6 +808,39 @@ namespace Utility
                 return ValIfNull;
             }
         
+        }
+
+        public static ushort ConvertiMSshort(string Testo, int Fattore = 1, ushort ValIfNull = 0)
+        {
+            try
+            {
+                ushort _valore;
+                float number;
+                float _tempValue;
+                ushort _maskNegative = 0x8000;
+                bool result = float.TryParse(Testo, out number);
+                if (result)
+                {
+                    _tempValue = Math.Abs(number);
+                    _valore = (ushort)(_tempValue * Fattore);
+                    if (number < 0)
+                    {
+                        _valore = (ushort)(_valore | _maskNegative);
+                    }
+                }
+                else
+                {
+                    _valore = ValIfNull;
+                }
+
+                return _valore;
+
+            }
+            catch
+            {
+                return ValIfNull;
+            }
+
         }
 
         public static byte ConvertiByte(string Testo, int Fattore = 1, byte ValIfNull = 0)
@@ -1552,6 +1601,25 @@ namespace Utility
             }
         }
 
+        public static ushort UshortFromArray(byte[] data, int position)
+        {
+            ushort _tempValue = 0;
+
+            try
+            {
+                if (data.Length <= (position))
+                    return _tempValue;
+
+                _tempValue = (ushort)( data[position] << 8);
+                _tempValue += (ushort)(data[position+1] );
+
+                return _tempValue;
+            }
+            catch
+            {
+                return _tempValue;
+            }
+        }
 
 
 

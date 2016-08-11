@@ -61,10 +61,7 @@ namespace ChargerLogic
             int _endPos;
             byte[] _buffArray;
             ushort _tempShort;
-            //byte msbDisp = 0;
-            //byte lsbDisp = 0;
-            //byte msb = 0;
-            //byte lsb = 0;
+
             EsitoRisposta _risposta;
             Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
             int preambleLenght;
@@ -1499,14 +1496,14 @@ namespace ChargerLogic
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
 
-                // Temp Min
-                splitUshort(codificaByte(ProgRicarica.TempMin), ref lsb, ref msb);
+                // Temp Max
+                splitUshort(codificaByte(ProgRicarica.TempMax), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
 
-                // Temp Max
-                splitUshort(codificaByte(ProgRicarica.TempMax), ref lsb, ref msb);
+                // Temp Min
+                splitUshort(codificaByte(ProgRicarica.TempMin), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
@@ -1527,13 +1524,180 @@ namespace ChargerLogic
                 /* Parametri PRO                                                               */
                 /*******************************************************************************/
 
+                // Modo Pianificazione
+                splitUshort(codificaByte(ProgRicarica.ModoPianificazione), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
 
 
+                // Corrente Minima
+                splitUshort(ProgRicarica.CorrenteCaricaMin, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
 
 
+                // Corrente Massima
+                splitUshort(ProgRicarica.CorrenteCaricaMax, ref lsbDisp, ref msbDisp);
 
-                /*******************************************************************************/
-                /// calcolo il crc
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // Impulsi Rabboccatore
+                splitUshort(codificaByte(ProgRicarica.PulseRabboccatore), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                // Ripetizioni Rabboccatore
+                splitUshort(codificaByte(ProgRicarica.RipetizioniRabboccatore), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+
+                // Consenso Biberonaggio
+                splitUshort(codificaByte(ProgRicarica.FlagBiberonaggio), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+
+                // Coeff Biberonaggio
+                splitUshort(codificaByte(ProgRicarica.CoeffBiberonaggio), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                // Temp Attenzione
+                splitUshort(codificaByte(ProgRicarica.TempAttenzione), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                // Temp Allarme
+                splitUshort(codificaByte(ProgRicarica.TempAllarme), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                // Temp Ripresa
+                splitUshort(codificaByte(ProgRicarica.TempRipresa), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+
+                // Max Sbilanciamento
+                splitUshort(ProgRicarica.MaxSbilanciamento, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // Durata Sbilanciamento
+                splitUshort(ProgRicarica.TempoSbilanciamento, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // Tensione Gas
+                splitUshort(ProgRicarica.TensioneGas, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // deriva superiore
+                splitUshort(ProgRicarica.DerivaSuperiore, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // deriva inferiore
+                splitUshort(ProgRicarica.DerivaInferiore, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // dati pianificazione 
+                // Copio comunque i primi 84 bytes
+                for(int _cicloByte = 0; _cicloByte < 84; _cicloByte++)
+                {
+                    byte _tempB;
+                    if (ProgRicarica.DatiPianificazione == null)
+                    {
+                        _tempB = 0x00;
+                    }
+                    else
+                    {
+                        if (ProgRicarica.DatiPianificazione.Length > _cicloByte)
+                        {
+                            _tempB = ProgRicarica.DatiPianificazione[_cicloByte];
+                        }
+                        else
+                            _tempB = 0x00;
+                    }
+                    splitUshort(codificaByte(_tempB), ref lsb, ref msb);
+                    MessageBuffer[(_arrayInit + 1)] = msb;
+                    MessageBuffer[(_arrayInit + 2)] = lsb;
+                    _arrayInit += 2;
+                }
+
+
+                // dati pianificazione 
+                // Copio comunque i primi 84 bytes
+                for (int _cicloByte = 0; _cicloByte < 3; _cicloByte++)
+                {
+                    splitUshort(codificaByte(0x00), ref lsb, ref msb);
+                    MessageBuffer[(_arrayInit + 1)] = msb;
+                    MessageBuffer[(_arrayInit + 2)] = lsb;
+                    _arrayInit += 2;
+                }
+
+                        /*******************************************************************************/
+                        /// calcolo il crc
                 byte[] _tempMessaggio = new byte[_arrayLen];
                 Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
                 _crc = codCrc.ComputeChecksum(_tempMessaggio);
@@ -2938,6 +3102,203 @@ namespace ChargerLogic
                 MessageBuffer[_arrayInit + 1] = msb;
                 MessageBuffer[_arrayInit + 2] = lsb;
                 _arrayInit += 2;
+
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+
+
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+
+                return _esito;
+            }
+            catch { return _esito; }
+        }
+
+        public ushort ComponiMessaggioBaseStrategia(byte[] Parametri)
+        {
+            ushort _esito = 0;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            // Mi aspetto il comando di chiamata standard
+
+
+            try
+            {
+                if (Parametri.Length < 9)
+                    return _esito;
+
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.SB_W_chgst_Call);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 18;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+                // Prima il sottocomando
+
+                for (int _cmd = 0; _cmd < 9; _cmd++)
+                {
+
+                    splitUshort(codificaByte(Parametri[_cmd]), ref lsb, ref msb);
+                    MessageBuffer[_arrayInit + 1] = msb;
+                    MessageBuffer[_arrayInit + 2] = lsb;
+                    _arrayInit += 2;
+                }
+
+
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+
+
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+
+                return _esito;
+            }
+            catch { return _esito; }
+        }
+
+        public ushort ComponiMessaggioOpenStrategia(byte[] Parametri)
+        {
+            ushort _esito = 0;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+            int _extradata = Parametri.Length;
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            // Mi aspetto il comando di chiamata standard
+
+
+            try
+            {
+                if (Parametri.Length < 2)
+                    return _esito;
+
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.SB_W_chgst_Call);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + _extradata * 2 ;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+                // Prima il sottocomando
+
+                for (int _cmd = 0; _cmd < _extradata; _cmd++)
+                {
+
+                    splitUshort(codificaByte(Parametri[_cmd]), ref lsb, ref msb);
+                    MessageBuffer[_arrayInit + 1] = msb;
+                    MessageBuffer[_arrayInit + 2] = lsb;
+                    _arrayInit += 2;
+                }
+
 
                 /// calcolo il crc
                 byte[] _tempMessaggio = new byte[_arrayLen];

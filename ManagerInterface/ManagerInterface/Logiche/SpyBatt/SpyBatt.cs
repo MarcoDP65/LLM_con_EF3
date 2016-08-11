@@ -2622,8 +2622,198 @@ namespace ChargerLogic
             }
         }
 
+        public bool LanciaComandoStrategia(ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, out byte[] Dati)
+        {
 
 
+            try
+            {
+                bool _esito;
+                byte msb = 0;
+                byte lsb = 0;
+
+                byte[] _cmdStrat = new byte[10];
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.SB_W_chgst_Call;
+                _mS.ComandoStrat = new MessaggioSpyBatt.ComandoStrategia();
+
+
+                _cmdStrat[0] = 0x02;  //CMD_IS
+                _cmdStrat[1] = 0x0A;  // len
+
+                FunzioniComuni.SplitUshort(Vmin, ref lsb, ref msb);
+                _cmdStrat[2] = msb;
+                _cmdStrat[3] = lsb;
+                FunzioniComuni.SplitUshort(Vmax, ref lsb, ref msb);
+                _cmdStrat[4] = msb;
+                _cmdStrat[5] = lsb;
+                FunzioniComuni.SplitUshort(Imax, ref lsb, ref msb);
+                _cmdStrat[6] = msb;
+                _cmdStrat[7] = lsb;
+
+                _cmdStrat[8] = Rabb;
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio comando base SB_W_chgst_Call -  ");
+
+                _mS.ComponiMessaggioBaseStrategia(_cmdStrat);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
+
+                int _totDati = _mS.ComandoStrat.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
+        public bool ComandoStrategiaAggiornaContatori(ushort Capacity,ushort Dschg, ushort Chg, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+                byte msb = 0;
+                byte lsb = 0;
+
+                byte[] _cmdStrat = new byte[8];
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.SB_W_chgst_Call;
+                _mS.ComandoStrat = new MessaggioSpyBatt.ComandoStrategia();
+
+                //_cmdStrat[0] = 0x80;
+                _cmdStrat[0] = 0x51;
+                _cmdStrat[1] = 0x08;
+                //Capacity
+                FunzioniComuni.SplitUshort(Capacity, ref lsb, ref msb);
+                _cmdStrat[2] = msb;
+                _cmdStrat[3] = lsb;
+                //Scarica
+                FunzioniComuni.SplitUshort(Dschg, ref lsb, ref msb);
+                _cmdStrat[4] = msb;
+                _cmdStrat[5] = lsb;
+                //Carica
+                FunzioniComuni.SplitUshort(Chg, ref lsb, ref msb);
+                _cmdStrat[6] = msb;
+                _cmdStrat[7] = lsb;
+
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio comando base SB_W_chgst_Call - CMD_WRCHG ");
+
+                _mS.ComponiMessaggioOpenStrategia(_cmdStrat);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
+
+                int _totDati = _mS.ComandoStrat.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
+        public bool ComandoInfoStrategia(byte ComandoStrategia, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+
+
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.SB_W_chgst_Call;
+                _mS.ComandoStrat = new MessaggioSpyBatt.ComandoStrategia();
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio comando SB_W_chgst_Call -  " + ComandoStrategia.ToString("X2"));
+
+                _mS.ComponiMessaggioTestStrategia(ComandoStrategia);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
+
+                int _totDati = _mS.ComandoStrat.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
 
 
 
@@ -3326,6 +3516,29 @@ namespace ChargerLogic
                 _mS.ProgRicarica.TempMax = NuovoProgramma.TempMax;
                 _mS.ProgRicarica.VersoCorrente = NuovoProgramma.VersoCorrente;
                 _mS.ProgRicarica.NumeroSpire = NuovoProgramma.NumeroSpire;
+
+                //----------  Parametri PRO
+
+                _mS.ProgRicarica.ModoPianificazione = NuovoProgramma.ModoPianificazione;
+                _mS.ProgRicarica.CorrenteCaricaMin = NuovoProgramma.CorrenteMinimaCHG;
+                _mS.ProgRicarica.CorrenteCaricaMax = NuovoProgramma.CorrenteMassimaCHG;
+                _mS.ProgRicarica.PulseRabboccatore = NuovoProgramma.ImpulsiRabboccatore;
+                _mS.ProgRicarica.FlagBiberonaggio = NuovoProgramma.Biberonaggio;
+                _mS.ProgRicarica.CoeffBiberonaggio = NuovoProgramma.FattorBiberonaggio ;
+                _mS.ProgRicarica.TempAttenzione = NuovoProgramma.TempAttenzione;
+                _mS.ProgRicarica.TempAllarme = NuovoProgramma.TempAllarme;
+                _mS.ProgRicarica.TempRipresa = NuovoProgramma.TempRipresa;
+                _mS.ProgRicarica.MaxSbilanciamento = NuovoProgramma.MaxSbilanciamento;
+                _mS.ProgRicarica.TempoSbilanciamento = NuovoProgramma.DurataSbilanciamento;
+                _mS.ProgRicarica.TensioneGas = NuovoProgramma.TensioneGas;
+                _mS.ProgRicarica.DerivaInferiore = NuovoProgramma.DerivaInferiore;
+                _mS.ProgRicarica.DerivaSuperiore = NuovoProgramma.DerivaSuperiore;
+
+
+
+
+
+
                 _mS.ProgRicarica.EsitoScrittura = 0x00;
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 _mS.Comando = SerialMessage.TipoComando.SB_W_Programmazione;

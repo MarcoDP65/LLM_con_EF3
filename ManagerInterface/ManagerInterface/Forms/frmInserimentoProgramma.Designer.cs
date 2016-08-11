@@ -53,6 +53,8 @@
             this.lblTempMax = new System.Windows.Forms.Label();
             this.txtTempMax = new System.Windows.Forms.TextBox();
             this.grbVersoCorrente = new System.Windows.Forms.GroupBox();
+            this.optVersoInverso = new System.Windows.Forms.RadioButton();
+            this.optVersoDiretto = new System.Windows.Forms.RadioButton();
             this.pcbIcoDiretto = new System.Windows.Forms.PictureBox();
             this.pcbIcoInverso = new System.Windows.Forms.PictureBox();
             this.pbxInverso = new System.Windows.Forms.PictureBox();
@@ -66,39 +68,41 @@
             this.txtTensioneNom = new System.Windows.Forms.Label();
             this.tbpSetupPro = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtProMinChargeCurr = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbRabboccatore = new System.Windows.Forms.ComboBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtProTempRiavvio = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtProTempAllarme = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtProTempAttenzione = new System.Windows.Forms.TextBox();
+            this.pnlProParametriExt = new System.Windows.Forms.Panel();
+            this.lblProImpulsiRabb = new System.Windows.Forms.Label();
+            this.txtProImpulsiRabb = new System.Windows.Forms.TextBox();
+            this.lblProCoeffBiber = new System.Windows.Forms.Label();
+            this.txtProCoeffBiber = new System.Windows.Forms.TextBox();
+            this.lblProDerivaUnder = new System.Windows.Forms.Label();
+            this.txtProDerivaOver = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.lblProDerivaOver = new System.Windows.Forms.Label();
+            this.txtProDerivaUnder = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtProTensioneGas = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtProMaxMinutiSbil = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.cmbMaxSbil = new System.Windows.Forms.ComboBox();
+            this.cmbProMaxSbil = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtProMaxChargeCurr = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbBiberonaggio = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -163,8 +167,6 @@
             this.label61 = new System.Windows.Forms.Label();
             this.panel31 = new System.Windows.Forms.Panel();
             this.label62 = new System.Windows.Forms.Label();
-            this.optVersoDiretto = new System.Windows.Forms.RadioButton();
-            this.optVersoInverso = new System.Windows.Forms.RadioButton();
             this.grbVersoCorrente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcoDiretto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcoInverso)).BeginInit();
@@ -173,7 +175,7 @@
             this.tabImpostazioni.SuspendLayout();
             this.tbpParametri.SuspendLayout();
             this.tbpSetupPro.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.pnlProParametriExt.SuspendLayout();
             this.tbpSetupTurni.SuspendLayout();
             this.tlpGrigliaTurni.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -211,6 +213,7 @@
             // 
             resources.ApplyResources(this.txtProgcBattAhDef, "txtProgcBattAhDef");
             this.txtProgcBattAhDef.Name = "txtProgcBattAhDef";
+            this.txtProgcBattAhDef.Leave += new System.EventHandler(this.txtProgcBattAhDef_Leave);
             // 
             // txtProgcCelleV1
             // 
@@ -344,6 +347,20 @@
             this.grbVersoCorrente.Name = "grbVersoCorrente";
             this.grbVersoCorrente.TabStop = false;
             // 
+            // optVersoInverso
+            // 
+            resources.ApplyResources(this.optVersoInverso, "optVersoInverso");
+            this.optVersoInverso.Name = "optVersoInverso";
+            this.optVersoInverso.UseVisualStyleBackColor = true;
+            // 
+            // optVersoDiretto
+            // 
+            resources.ApplyResources(this.optVersoDiretto, "optVersoDiretto");
+            this.optVersoDiretto.Checked = true;
+            this.optVersoDiretto.Name = "optVersoDiretto";
+            this.optVersoDiretto.TabStop = true;
+            this.optVersoDiretto.UseVisualStyleBackColor = true;
+            // 
             // pcbIcoDiretto
             // 
             resources.ApplyResources(this.pcbIcoDiretto, "pcbIcoDiretto");
@@ -441,23 +458,23 @@
             // 
             this.tbpSetupPro.BackColor = System.Drawing.Color.LightYellow;
             this.tbpSetupPro.Controls.Add(this.label3);
-            this.tbpSetupPro.Controls.Add(this.textBox2);
+            this.tbpSetupPro.Controls.Add(this.txtProMinChargeCurr);
             this.tbpSetupPro.Controls.Add(this.label6);
             this.tbpSetupPro.Controls.Add(this.cmbRabboccatore);
             this.tbpSetupPro.Controls.Add(this.label32);
             this.tbpSetupPro.Controls.Add(this.label24);
             this.tbpSetupPro.Controls.Add(this.label25);
-            this.tbpSetupPro.Controls.Add(this.textBox7);
+            this.tbpSetupPro.Controls.Add(this.txtProTempRiavvio);
             this.tbpSetupPro.Controls.Add(this.label22);
             this.tbpSetupPro.Controls.Add(this.label23);
-            this.tbpSetupPro.Controls.Add(this.textBox6);
+            this.tbpSetupPro.Controls.Add(this.txtProTempAllarme);
             this.tbpSetupPro.Controls.Add(this.label21);
             this.tbpSetupPro.Controls.Add(this.label20);
-            this.tbpSetupPro.Controls.Add(this.textBox5);
-            this.tbpSetupPro.Controls.Add(this.panel4);
+            this.tbpSetupPro.Controls.Add(this.txtProTempAttenzione);
+            this.tbpSetupPro.Controls.Add(this.pnlProParametriExt);
             this.tbpSetupPro.Controls.Add(this.label12);
             this.tbpSetupPro.Controls.Add(this.label10);
-            this.tbpSetupPro.Controls.Add(this.textBox3);
+            this.tbpSetupPro.Controls.Add(this.txtProMaxChargeCurr);
             this.tbpSetupPro.Controls.Add(this.label11);
             this.tbpSetupPro.Controls.Add(this.cmbBiberonaggio);
             this.tbpSetupPro.Controls.Add(this.label9);
@@ -470,10 +487,10 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // textBox2
+            // txtProMinChargeCurr
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.txtProMinChargeCurr, "txtProMinChargeCurr");
+            this.txtProMinChargeCurr.Name = "txtProMinChargeCurr";
             // 
             // label6
             // 
@@ -501,10 +518,10 @@
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
             // 
-            // textBox7
+            // txtProTempRiavvio
             // 
-            resources.ApplyResources(this.textBox7, "textBox7");
-            this.textBox7.Name = "textBox7";
+            resources.ApplyResources(this.txtProTempRiavvio, "txtProTempRiavvio");
+            this.txtProTempRiavvio.Name = "txtProTempRiavvio";
             // 
             // label22
             // 
@@ -516,10 +533,10 @@
             resources.ApplyResources(this.label23, "label23");
             this.label23.Name = "label23";
             // 
-            // textBox6
+            // txtProTempAllarme
             // 
-            resources.ApplyResources(this.textBox6, "textBox6");
-            this.textBox6.Name = "textBox6";
+            resources.ApplyResources(this.txtProTempAllarme, "txtProTempAllarme");
+            this.txtProTempAllarme.Name = "txtProTempAllarme";
             // 
             // label21
             // 
@@ -531,77 +548,89 @@
             resources.ApplyResources(this.label20, "label20");
             this.label20.Name = "label20";
             // 
-            // textBox5
+            // txtProTempAttenzione
             // 
-            resources.ApplyResources(this.textBox5, "textBox5");
-            this.textBox5.Name = "textBox5";
+            resources.ApplyResources(this.txtProTempAttenzione, "txtProTempAttenzione");
+            this.txtProTempAttenzione.Name = "txtProTempAttenzione";
             // 
-            // panel4
+            // pnlProParametriExt
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.label29);
-            this.panel4.Controls.Add(this.textBox10);
-            this.panel4.Controls.Add(this.label30);
-            this.panel4.Controls.Add(this.label31);
-            this.panel4.Controls.Add(this.textBox9);
-            this.panel4.Controls.Add(this.label28);
-            this.panel4.Controls.Add(this.textBox8);
-            this.panel4.Controls.Add(this.label26);
-            this.panel4.Controls.Add(this.label27);
-            this.panel4.Controls.Add(this.textBox4);
-            this.panel4.Controls.Add(this.label19);
-            this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.cmbMaxSbil);
-            this.panel4.Controls.Add(this.label17);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
+            this.pnlProParametriExt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlProParametriExt.Controls.Add(this.lblProImpulsiRabb);
+            this.pnlProParametriExt.Controls.Add(this.txtProImpulsiRabb);
+            this.pnlProParametriExt.Controls.Add(this.lblProCoeffBiber);
+            this.pnlProParametriExt.Controls.Add(this.txtProCoeffBiber);
+            this.pnlProParametriExt.Controls.Add(this.lblProDerivaUnder);
+            this.pnlProParametriExt.Controls.Add(this.txtProDerivaOver);
+            this.pnlProParametriExt.Controls.Add(this.label30);
+            this.pnlProParametriExt.Controls.Add(this.lblProDerivaOver);
+            this.pnlProParametriExt.Controls.Add(this.txtProDerivaUnder);
+            this.pnlProParametriExt.Controls.Add(this.label28);
+            this.pnlProParametriExt.Controls.Add(this.txtProTensioneGas);
+            this.pnlProParametriExt.Controls.Add(this.label26);
+            this.pnlProParametriExt.Controls.Add(this.label27);
+            this.pnlProParametriExt.Controls.Add(this.txtProMaxMinutiSbil);
+            this.pnlProParametriExt.Controls.Add(this.label19);
+            this.pnlProParametriExt.Controls.Add(this.label18);
+            this.pnlProParametriExt.Controls.Add(this.cmbProMaxSbil);
+            this.pnlProParametriExt.Controls.Add(this.label17);
+            resources.ApplyResources(this.pnlProParametriExt, "pnlProParametriExt");
+            this.pnlProParametriExt.Name = "pnlProParametriExt";
             // 
-            // label4
+            // lblProImpulsiRabb
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.lblProImpulsiRabb, "lblProImpulsiRabb");
+            this.lblProImpulsiRabb.Name = "lblProImpulsiRabb";
             // 
-            // textBox1
+            // txtProImpulsiRabb
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.txtProImpulsiRabb, "txtProImpulsiRabb");
+            this.txtProImpulsiRabb.Name = "txtProImpulsiRabb";
             // 
-            // label29
+            // lblProCoeffBiber
             // 
-            resources.ApplyResources(this.label29, "label29");
-            this.label29.Name = "label29";
+            resources.ApplyResources(this.lblProCoeffBiber, "lblProCoeffBiber");
+            this.lblProCoeffBiber.Name = "lblProCoeffBiber";
             // 
-            // textBox10
+            // txtProCoeffBiber
             // 
-            resources.ApplyResources(this.textBox10, "textBox10");
-            this.textBox10.Name = "textBox10";
+            resources.ApplyResources(this.txtProCoeffBiber, "txtProCoeffBiber");
+            this.txtProCoeffBiber.Name = "txtProCoeffBiber";
+            // 
+            // lblProDerivaUnder
+            // 
+            resources.ApplyResources(this.lblProDerivaUnder, "lblProDerivaUnder");
+            this.lblProDerivaUnder.Name = "lblProDerivaUnder";
+            // 
+            // txtProDerivaOver
+            // 
+            resources.ApplyResources(this.txtProDerivaOver, "txtProDerivaOver");
+            this.txtProDerivaOver.Name = "txtProDerivaOver";
             // 
             // label30
             // 
             resources.ApplyResources(this.label30, "label30");
             this.label30.Name = "label30";
             // 
-            // label31
+            // lblProDerivaOver
             // 
-            resources.ApplyResources(this.label31, "label31");
-            this.label31.Name = "label31";
+            resources.ApplyResources(this.lblProDerivaOver, "lblProDerivaOver");
+            this.lblProDerivaOver.Name = "lblProDerivaOver";
             // 
-            // textBox9
+            // txtProDerivaUnder
             // 
-            resources.ApplyResources(this.textBox9, "textBox9");
-            this.textBox9.Name = "textBox9";
+            resources.ApplyResources(this.txtProDerivaUnder, "txtProDerivaUnder");
+            this.txtProDerivaUnder.Name = "txtProDerivaUnder";
             // 
             // label28
             // 
             resources.ApplyResources(this.label28, "label28");
             this.label28.Name = "label28";
             // 
-            // textBox8
+            // txtProTensioneGas
             // 
-            resources.ApplyResources(this.textBox8, "textBox8");
-            this.textBox8.Name = "textBox8";
+            resources.ApplyResources(this.txtProTensioneGas, "txtProTensioneGas");
+            this.txtProTensioneGas.Name = "txtProTensioneGas";
             // 
             // label26
             // 
@@ -613,26 +642,28 @@
             resources.ApplyResources(this.label27, "label27");
             this.label27.Name = "label27";
             // 
-            // textBox4
+            // txtProMaxMinutiSbil
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
+            resources.ApplyResources(this.txtProMaxMinutiSbil, "txtProMaxMinutiSbil");
+            this.txtProMaxMinutiSbil.Name = "txtProMaxMinutiSbil";
+            this.txtProMaxMinutiSbil.TextChanged += new System.EventHandler(this.txtProMaxMinutiSbil_TextChanged);
             // 
             // label19
             // 
             resources.ApplyResources(this.label19, "label19");
             this.label19.Name = "label19";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
             // 
-            // cmbMaxSbil
+            // cmbProMaxSbil
             // 
-            resources.ApplyResources(this.cmbMaxSbil, "cmbMaxSbil");
-            this.cmbMaxSbil.FormattingEnabled = true;
-            this.cmbMaxSbil.Name = "cmbMaxSbil";
+            resources.ApplyResources(this.cmbProMaxSbil, "cmbProMaxSbil");
+            this.cmbProMaxSbil.FormattingEnabled = true;
+            this.cmbProMaxSbil.Name = "cmbProMaxSbil";
             // 
             // label17
             // 
@@ -649,10 +680,10 @@
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
-            // textBox3
+            // txtProMaxChargeCurr
             // 
-            resources.ApplyResources(this.textBox3, "textBox3");
-            this.textBox3.Name = "textBox3";
+            resources.ApplyResources(this.txtProMaxChargeCurr, "txtProMaxChargeCurr");
+            this.txtProMaxChargeCurr.Name = "txtProMaxChargeCurr";
             // 
             // label11
             // 
@@ -1087,20 +1118,6 @@
             this.label62.ForeColor = System.Drawing.Color.White;
             this.label62.Name = "label62";
             // 
-            // optVersoDiretto
-            // 
-            resources.ApplyResources(this.optVersoDiretto, "optVersoDiretto");
-            this.optVersoDiretto.Checked = true;
-            this.optVersoDiretto.Name = "optVersoDiretto";
-            this.optVersoDiretto.TabStop = true;
-            this.optVersoDiretto.UseVisualStyleBackColor = true;
-            // 
-            // optVersoInverso
-            // 
-            resources.ApplyResources(this.optVersoInverso, "optVersoInverso");
-            this.optVersoInverso.Name = "optVersoInverso";
-            this.optVersoInverso.UseVisualStyleBackColor = true;
-            // 
             // frmInserimentoProgramma
             // 
             resources.ApplyResources(this, "$this");
@@ -1125,8 +1142,8 @@
             this.tbpParametri.PerformLayout();
             this.tbpSetupPro.ResumeLayout(false);
             this.tbpSetupPro.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.pnlProParametriExt.ResumeLayout(false);
+            this.pnlProParametriExt.PerformLayout();
             this.tbpSetupTurni.ResumeLayout(false);
             this.tlpGrigliaTurni.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -1203,7 +1220,7 @@
         private System.Windows.Forms.TextBox txtProgcBattVdef;
         private System.Windows.Forms.Label txtTensioneNom;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtProMaxChargeCurr;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbBiberonaggio;
         private System.Windows.Forms.Label label9;
@@ -1212,31 +1229,31 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtProTempRiavvio;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtProTempAllarme;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtProTempAttenzione;
+        private System.Windows.Forms.Panel pnlProParametriExt;
+        private System.Windows.Forms.TextBox txtProCoeffBiber;
+        private System.Windows.Forms.Label lblProDerivaUnder;
+        private System.Windows.Forms.TextBox txtProDerivaOver;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label lblProDerivaOver;
+        private System.Windows.Forms.TextBox txtProDerivaUnder;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtProTensioneGas;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtProMaxMinutiSbil;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox cmbMaxSbil;
+        private System.Windows.Forms.ComboBox cmbProMaxSbil;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblProCoeffBiber;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel10;
@@ -1271,7 +1288,7 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtProMinChargeCurr;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel19;
@@ -1298,5 +1315,7 @@
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.RadioButton optVersoInverso;
         private System.Windows.Forms.RadioButton optVersoDiretto;
+        private System.Windows.Forms.Label lblProImpulsiRabb;
+        private System.Windows.Forms.TextBox txtProImpulsiRabb;
     }
 }

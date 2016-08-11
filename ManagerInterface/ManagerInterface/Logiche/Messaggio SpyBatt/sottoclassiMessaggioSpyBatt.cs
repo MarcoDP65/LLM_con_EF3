@@ -776,8 +776,22 @@ namespace ChargerLogic
             public byte VersoCorrente { get; set; }
             public byte NumeroSpire { get; set; }
 
-
-
+            public byte ModoPianificazione { get; set; }
+            public ushort CorrenteCaricaMin { get; set; }
+            public ushort CorrenteCaricaMax { get; set; }
+            public byte PulseRabboccatore { get; set; }
+            public byte RipetizioniRabboccatore { get; set; }
+            public byte FlagBiberonaggio { get; set; }
+            public byte CoeffBiberonaggio { get; set; }
+            public byte TempAttenzione { get; set; }
+            public byte TempAllarme { get; set; }
+            public byte TempRipresa { get; set; }
+            public ushort MaxSbilanciamento { get; set; }
+            public ushort TempoSbilanciamento { get; set; }
+            public ushort TensioneGas { get; set; }
+            public ushort DerivaSuperiore { get; set; }
+            public ushort DerivaInferiore { get; set; }
+            public byte[] DatiPianificazione { get; set; }
 
             byte[] _dataBuffer;
             public byte[] dataBuffer;
@@ -843,9 +857,9 @@ namespace ChargerLogic
                         startByte += 1;
                         AbilitaPresElett = _risposta[startByte];
                         startByte += 1;
-                        TempMin = _risposta[startByte];
-                        startByte += 1;
                         TempMax = _risposta[startByte];
+                        startByte += 1;
+                        TempMin = _risposta[startByte];
                         startByte += 1;
                         VersoCorrente = _risposta[startByte];
                         startByte += 1;
@@ -869,7 +883,7 @@ namespace ChargerLogic
 
         }
 
-        public class DatiCliente
+        public class DatiCliente 
         {
 
             public UInt32 IdSpyBatt;

@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>2.00.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -390,12 +390,14 @@
     <Compile Include="Logiche\MappaSpybatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\MessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\sottoclassiMessaggioSpyBatt.cs" />
+    <Compile Include="Logiche\ModelloTurno.cs" />
     <Compile Include="Logiche\SerialMessage.cs" />
     <Compile Include="Logiche\SpyBatt\comandiMessaggiSpyBatt.cs" />
     <Compile Include="Logiche\SpyBatt\sbComandiFirmware.cs" />
     <Compile Include="Logiche\SpyBatt\sottoclassiSpyBatt.cs" />
     <Compile Include="Logiche\SpyBatt\SpyBatt.cs" />
     <Compile Include="Logiche\StatMemLungaSB.cs" />
+    <Compile Include="Logiche\StepCarica.cs" />
     <Compile Include="Logiche\utente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
