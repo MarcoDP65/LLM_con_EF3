@@ -983,6 +983,19 @@ namespace PannelloCharger
             NuovoProgramma.StartPosition = FormStartPosition.CenterParent;
             NuovoProgramma.ShowDialog(this);
         }
+
+        private void mnuConsole_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuLLDisplayManager_Click(object sender, EventArgs e)
+        {
+            frmDisplayManager frmDisplay = new frmDisplayManager();
+            frmDisplay.MdiParent = this;
+           // frmDisplay.vGlobali = varGlobali;
+            frmDisplay.Show();
+        }
     }
 
     public class StatoPulsanti

@@ -220,6 +220,9 @@
     <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Forms LadeLight\frmCaricaBatteriaComandiProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattCalibrazione.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,11 +262,17 @@
     <Compile Include="Forms\frmAvanzamentoCicli.Designer.cs">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmCaricabatterie.cs">
+    <Compile Include="Forms\Forms LadeLight\frmCaricabatterie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmCaricabatterie.Designer.cs">
+    <Compile Include="Forms\Forms LadeLight\frmCaricabatterie.Designer.cs">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDisplayManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDisplayManager.Designer.cs">
+      <DependentUpon>frmDisplayManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmFlashFTDI.cs">
       <SubType>Form</SubType>
@@ -385,11 +394,14 @@
     <Compile Include="Logiche\CloneSB.cs" />
     <Compile Include="Logiche\clsStatBloccoSoglie.cs" />
     <Compile Include="Logiche\DatiSpyBatt.cs" />
+    <Compile Include="Logiche\Display\comandiMessaggiDisplay.cs" />
+    <Compile Include="Logiche\Display\Display.cs" />
     <Compile Include="Logiche\FileFirmware.cs" />
     <Compile Include="Logiche\LogicheBase.cs" />
     <Compile Include="Logiche\MappaSpybatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\MessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\sottoclassiMessaggioSpyBatt.cs" />
+    <Compile Include="Logiche\MessaggioDisplay.cs" />
     <Compile Include="Logiche\ModelloTurno.cs" />
     <Compile Include="Logiche\SerialMessage.cs" />
     <Compile Include="Logiche\SpyBatt\comandiMessaggiSpyBatt.cs" />
@@ -510,14 +522,17 @@
     <EmbeddedResource Include="Forms\frmAvanzamentoCicli.resx">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCaricabatterie.es.resx">
+    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.es.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCaricabatterie.hi-IN.resx">
+    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.hi-IN.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCaricabatterie.resx">
+    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDisplayManager.resx">
+      <DependentUpon>frmDisplayManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFlashFTDI.es.resx">
       <DependentUpon>frmFlashFTDI.cs</DependentUpon>
@@ -859,6 +874,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

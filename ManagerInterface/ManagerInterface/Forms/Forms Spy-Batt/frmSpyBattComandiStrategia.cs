@@ -275,7 +275,7 @@ namespace PannelloCharger
                 _Dati = new byte[252];
                 _esito = _sb.ComandoInfoStrategia(_comandoInfo, out _Dati);
 
-                if (_esito == true)
+                if (_esito == true & _Dati.Length >3)
                 {
 
 
@@ -294,15 +294,26 @@ namespace PannelloCharger
                         }
                     }
                     txtStratDataGrid.Text = _risposta;
-
+                    ushort _Erogato;
+                    ushort _previsto;
                     // Mostro i valori
-                    txtStratAVErogati.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 3));
-                    //txtStratAVPrevisti.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 5));
-                    txtStratAVMinutiResidui.Text = FunzioniComuni.UshortFromArray(_Dati, 7).ToString();
+                    _Erogato = FunzioniComuni.UshortFromArray(_Dati, 3);
+                    _previsto = FunzioniComuni.UshortFromArray(_Dati, 5);
+                    txtStratAVErogati.Text = FunzioniMR.StringaCorrenteLL(_Erogato);
+                    txtStratAVPrevisti.Text = FunzioniMR.StringaCorrenteLL(_previsto);
+                    if (_Erogato <= _previsto)
+                        txtStratAVMancanti.Text = FunzioniMR.StringaCorrenteLL((ushort)(  _previsto - _Erogato));
+                    else
+                        txtStratAVMancanti.Text = "";
 
-                    txtStratAVTensioneIst.Text = FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 9));
-                    txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 11));
-                    txtStratAVTempIst.Text = FunzioniMR.StringaTemperatura(_Dati[13]);
+
+                    txtStratAVMinutiResidui.Text = FunzioniComuni.UshortFromArray(_Dati, 0x07).ToString();
+
+                    // Aggiungere i moìinuti trascorsi
+
+                    txtStratAVTensioneIst.Text = FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x0B));
+                    txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0D));
+                    txtStratAVTempIst.Text = FunzioniMR.StringaTemperatura(_Dati[0x0F]);
 
                 }
 
@@ -316,8 +327,7 @@ namespace PannelloCharger
             }
 
         }
-
-        public bool LanciaComandoStrategia()
+        public bool LanciaComandoStrategia(byte Modo)
         {
             try
             {
@@ -373,7 +383,7 @@ namespace PannelloCharger
 
 
 
-                _esito = _sb.LanciaComandoStrategia(_tempVmin, _tempVmax, _tempAmax, _tempRabb, out _Dati);
+                _esito = _sb.LanciaComandoStrategia(Modo, _tempVmin, _tempVmax, _tempAmax, _tempRabb, out _Dati);
 
                 if (_esito == true)
                 {

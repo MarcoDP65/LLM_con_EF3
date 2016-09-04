@@ -568,10 +568,10 @@ namespace PannelloCharger
                     _tempCap = 2000;
                     txtProgcBattAhDef.Text = "2000";
                 }
-                ushort _tempAmps = (ushort)(_tempCap / 15);
+                ushort _tempAmps = (ushort)(_tempCap / 12);
                 txtProMinChargeCurr .Text = _tempAmps.ToString();
 
-                 _tempAmps = (ushort)(_tempCap / 5);
+                 _tempAmps = (ushort)(_tempCap / 4);
                 txtProMaxChargeCurr.Text = _tempAmps.ToString();
 
             }

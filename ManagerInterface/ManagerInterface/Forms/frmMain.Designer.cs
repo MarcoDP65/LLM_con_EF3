@@ -57,6 +57,7 @@
             this.mnuServizi = new System.Windows.Forms.ToolStripMenuItem();
             this.flashFTDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flashSPYBATTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programmazioniAvanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImpostazioni = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCercaDispositiviUSB = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCercaDispositiviCOM = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +76,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.programmazioniAvanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLLDisplayManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -187,7 +189,9 @@
             this.mnuCaricabatteria.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuConnettiCb,
             this.apparatiToolStripMenuItem,
-            this.orologioToolStripMenuItem});
+            this.orologioToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.mnuLLDisplayManager});
             this.mnuCaricabatteria.Name = "mnuCaricabatteria";
             resources.ApplyResources(this.mnuCaricabatteria, "mnuCaricabatteria");
             // 
@@ -274,6 +278,12 @@
             this.flashSPYBATTToolStripMenuItem.Name = "flashSPYBATTToolStripMenuItem";
             resources.ApplyResources(this.flashSPYBATTToolStripMenuItem, "flashSPYBATTToolStripMenuItem");
             // 
+            // programmazioniAvanzateToolStripMenuItem
+            // 
+            this.programmazioniAvanzateToolStripMenuItem.Name = "programmazioniAvanzateToolStripMenuItem";
+            resources.ApplyResources(this.programmazioniAvanzateToolStripMenuItem, "programmazioniAvanzateToolStripMenuItem");
+            this.programmazioniAvanzateToolStripMenuItem.Click += new System.EventHandler(this.programmazioniAvanzateToolStripMenuItem_Click);
+            // 
             // mnuImpostazioni
             // 
             resources.ApplyResources(this.mnuImpostazioni, "mnuImpostazioni");
@@ -305,14 +315,15 @@
             // 
             // mnuPortaSeriale
             // 
-            resources.ApplyResources(this.mnuPortaSeriale, "mnuPortaSeriale");
             this.mnuPortaSeriale.Name = "mnuPortaSeriale";
+            resources.ApplyResources(this.mnuPortaSeriale, "mnuPortaSeriale");
             this.mnuPortaSeriale.Click += new System.EventHandler(this.portaSerialeToolStripMenuItem_Click);
             // 
             // mnuConsole
             // 
             this.mnuConsole.Name = "mnuConsole";
             resources.ApplyResources(this.mnuConsole, "mnuConsole");
+            this.mnuConsole.Click += new System.EventHandler(this.mnuConsole_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -397,11 +408,16 @@
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
             // 
-            // programmazioniAvanzateToolStripMenuItem
+            // mnuLLDisplayManager
             // 
-            this.programmazioniAvanzateToolStripMenuItem.Name = "programmazioniAvanzateToolStripMenuItem";
-            resources.ApplyResources(this.programmazioniAvanzateToolStripMenuItem, "programmazioniAvanzateToolStripMenuItem");
-            this.programmazioniAvanzateToolStripMenuItem.Click += new System.EventHandler(this.programmazioniAvanzateToolStripMenuItem_Click);
+            this.mnuLLDisplayManager.Name = "mnuLLDisplayManager";
+            resources.ApplyResources(this.mnuLLDisplayManager, "mnuLLDisplayManager");
+            this.mnuLLDisplayManager.Click += new System.EventHandler(this.mnuLLDisplayManager_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
             // 
             // frmMain
             // 
@@ -480,6 +496,8 @@
         private System.Windows.Forms.ToolStripButton tstBtnExport;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem programmazioniAvanzateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem mnuLLDisplayManager;
     }
 }
 

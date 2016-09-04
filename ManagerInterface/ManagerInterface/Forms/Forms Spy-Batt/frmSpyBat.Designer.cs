@@ -649,6 +649,25 @@
             this.tbpStrategia = new System.Windows.Forms.TabPage();
             this.label200 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.grbStratStepCorrente = new System.Windows.Forms.GroupBox();
+            this.label206 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepTipo = new System.Windows.Forms.TextBox();
+            this.label205 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepRipetizioni = new System.Windows.Forms.TextBox();
+            this.label203 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepTon = new System.Windows.Forms.TextBox();
+            this.txtStratCurrStepToff = new System.Windows.Forms.TextBox();
+            this.label204 = new System.Windows.Forms.Label();
+            this.label194 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepAh = new System.Windows.Forms.TextBox();
+            this.label191 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepVmax = new System.Windows.Forms.TextBox();
+            this.txtStratCurrStepVmin = new System.Windows.Forms.TextBox();
+            this.label192 = new System.Windows.Forms.Label();
+            this.label190 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepImax = new System.Windows.Forms.TextBox();
+            this.txtStratCurrStepImin = new System.Windows.Forms.TextBox();
+            this.label195 = new System.Windows.Forms.Label();
             this.label202 = new System.Windows.Forms.Label();
             this.cmbStratIsSelStep = new System.Windows.Forms.ComboBox();
             this.label199 = new System.Windows.Forms.Label();
@@ -741,6 +760,7 @@
             this.txtStratLLVmin = new System.Windows.Forms.TextBox();
             this.label153 = new System.Windows.Forms.Label();
             this.grbStratComandiTest = new System.Windows.Forms.GroupBox();
+            this.btnStratCallSIS = new System.Windows.Forms.Button();
             this.btnStratCallAv = new System.Windows.Forms.Button();
             this.btnStratSetDischarge = new System.Windows.Forms.Button();
             this.btnStratCallIS = new System.Windows.Forms.Button();
@@ -755,25 +775,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.grbStratStepCorrente = new System.Windows.Forms.GroupBox();
-            this.txtStratCurrStepImax = new System.Windows.Forms.TextBox();
-            this.txtStratCurrStepImin = new System.Windows.Forms.TextBox();
-            this.label195 = new System.Windows.Forms.Label();
-            this.label190 = new System.Windows.Forms.Label();
-            this.label191 = new System.Windows.Forms.Label();
-            this.txtStratCurrStepVmax = new System.Windows.Forms.TextBox();
-            this.txtStratCurrStepVmin = new System.Windows.Forms.TextBox();
-            this.label192 = new System.Windows.Forms.Label();
-            this.label194 = new System.Windows.Forms.Label();
-            this.txtStratCurrStepAh = new System.Windows.Forms.TextBox();
-            this.label203 = new System.Windows.Forms.Label();
-            this.txtStratCurrStepTon = new System.Windows.Forms.TextBox();
-            this.txtStratCurrStepToff = new System.Windows.Forms.TextBox();
-            this.label204 = new System.Windows.Forms.Label();
-            this.label205 = new System.Windows.Forms.Label();
-            this.txtStratCurrStepRipetizioni = new System.Windows.Forms.TextBox();
-            this.txtStratCurrStepTipo = new System.Windows.Forms.TextBox();
-            this.label206 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -851,6 +852,7 @@
             this.grbCalListaAttivita.SuspendLayout();
             this.tbpStrategia.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.grbStratStepCorrente.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -858,7 +860,6 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.grbStratComandiTest.SuspendLayout();
-            this.grbStratStepCorrente.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCaricaBatterie
@@ -5223,6 +5224,129 @@
             resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
             // 
+            // grbStratStepCorrente
+            // 
+            this.grbStratStepCorrente.Controls.Add(this.label206);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepTipo);
+            this.grbStratStepCorrente.Controls.Add(this.label205);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepRipetizioni);
+            this.grbStratStepCorrente.Controls.Add(this.label203);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepTon);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepToff);
+            this.grbStratStepCorrente.Controls.Add(this.label204);
+            this.grbStratStepCorrente.Controls.Add(this.label194);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepAh);
+            this.grbStratStepCorrente.Controls.Add(this.label191);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepVmax);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepVmin);
+            this.grbStratStepCorrente.Controls.Add(this.label192);
+            this.grbStratStepCorrente.Controls.Add(this.label190);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepImax);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepImin);
+            this.grbStratStepCorrente.Controls.Add(this.label195);
+            resources.ApplyResources(this.grbStratStepCorrente, "grbStratStepCorrente");
+            this.grbStratStepCorrente.Name = "grbStratStepCorrente";
+            this.grbStratStepCorrente.TabStop = false;
+            // 
+            // label206
+            // 
+            resources.ApplyResources(this.label206, "label206");
+            this.label206.Name = "label206";
+            // 
+            // txtStratCurrStepTipo
+            // 
+            resources.ApplyResources(this.txtStratCurrStepTipo, "txtStratCurrStepTipo");
+            this.txtStratCurrStepTipo.Name = "txtStratCurrStepTipo";
+            this.txtStratCurrStepTipo.ReadOnly = true;
+            // 
+            // label205
+            // 
+            resources.ApplyResources(this.label205, "label205");
+            this.label205.Name = "label205";
+            // 
+            // txtStratCurrStepRipetizioni
+            // 
+            resources.ApplyResources(this.txtStratCurrStepRipetizioni, "txtStratCurrStepRipetizioni");
+            this.txtStratCurrStepRipetizioni.Name = "txtStratCurrStepRipetizioni";
+            this.txtStratCurrStepRipetizioni.ReadOnly = true;
+            // 
+            // label203
+            // 
+            resources.ApplyResources(this.label203, "label203");
+            this.label203.Name = "label203";
+            // 
+            // txtStratCurrStepTon
+            // 
+            resources.ApplyResources(this.txtStratCurrStepTon, "txtStratCurrStepTon");
+            this.txtStratCurrStepTon.Name = "txtStratCurrStepTon";
+            this.txtStratCurrStepTon.ReadOnly = true;
+            // 
+            // txtStratCurrStepToff
+            // 
+            resources.ApplyResources(this.txtStratCurrStepToff, "txtStratCurrStepToff");
+            this.txtStratCurrStepToff.Name = "txtStratCurrStepToff";
+            this.txtStratCurrStepToff.ReadOnly = true;
+            // 
+            // label204
+            // 
+            resources.ApplyResources(this.label204, "label204");
+            this.label204.Name = "label204";
+            // 
+            // label194
+            // 
+            resources.ApplyResources(this.label194, "label194");
+            this.label194.Name = "label194";
+            // 
+            // txtStratCurrStepAh
+            // 
+            resources.ApplyResources(this.txtStratCurrStepAh, "txtStratCurrStepAh");
+            this.txtStratCurrStepAh.Name = "txtStratCurrStepAh";
+            this.txtStratCurrStepAh.ReadOnly = true;
+            // 
+            // label191
+            // 
+            resources.ApplyResources(this.label191, "label191");
+            this.label191.Name = "label191";
+            // 
+            // txtStratCurrStepVmax
+            // 
+            resources.ApplyResources(this.txtStratCurrStepVmax, "txtStratCurrStepVmax");
+            this.txtStratCurrStepVmax.Name = "txtStratCurrStepVmax";
+            this.txtStratCurrStepVmax.ReadOnly = true;
+            // 
+            // txtStratCurrStepVmin
+            // 
+            resources.ApplyResources(this.txtStratCurrStepVmin, "txtStratCurrStepVmin");
+            this.txtStratCurrStepVmin.Name = "txtStratCurrStepVmin";
+            this.txtStratCurrStepVmin.ReadOnly = true;
+            // 
+            // label192
+            // 
+            resources.ApplyResources(this.label192, "label192");
+            this.label192.Name = "label192";
+            // 
+            // label190
+            // 
+            resources.ApplyResources(this.label190, "label190");
+            this.label190.Name = "label190";
+            // 
+            // txtStratCurrStepImax
+            // 
+            resources.ApplyResources(this.txtStratCurrStepImax, "txtStratCurrStepImax");
+            this.txtStratCurrStepImax.Name = "txtStratCurrStepImax";
+            this.txtStratCurrStepImax.ReadOnly = true;
+            // 
+            // txtStratCurrStepImin
+            // 
+            resources.ApplyResources(this.txtStratCurrStepImin, "txtStratCurrStepImin");
+            this.txtStratCurrStepImin.Name = "txtStratCurrStepImin";
+            this.txtStratCurrStepImin.ReadOnly = true;
+            // 
+            // label195
+            // 
+            resources.ApplyResources(this.label195, "label195");
+            this.label195.Name = "label195";
+            // 
             // label202
             // 
             resources.ApplyResources(this.label202, "label202");
@@ -5782,6 +5906,7 @@
             // grbStratComandiTest
             // 
             this.grbStratComandiTest.BackColor = System.Drawing.Color.White;
+            this.grbStratComandiTest.Controls.Add(this.btnStratCallSIS);
             this.grbStratComandiTest.Controls.Add(this.btnStratCallAv);
             this.grbStratComandiTest.Controls.Add(this.btnStratSetDischarge);
             this.grbStratComandiTest.Controls.Add(this.btnStratCallIS);
@@ -5793,6 +5918,13 @@
             resources.ApplyResources(this.grbStratComandiTest, "grbStratComandiTest");
             this.grbStratComandiTest.Name = "grbStratComandiTest";
             this.grbStratComandiTest.TabStop = false;
+            // 
+            // btnStratCallSIS
+            // 
+            resources.ApplyResources(this.btnStratCallSIS, "btnStratCallSIS");
+            this.btnStratCallSIS.Name = "btnStratCallSIS";
+            this.btnStratCallSIS.UseVisualStyleBackColor = true;
+            this.btnStratCallSIS.Click += new System.EventHandler(this.btnStratCallSIS_Click);
             // 
             // btnStratCallAv
             // 
@@ -5870,129 +6002,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // grbStratStepCorrente
-            // 
-            this.grbStratStepCorrente.Controls.Add(this.label206);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepTipo);
-            this.grbStratStepCorrente.Controls.Add(this.label205);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepRipetizioni);
-            this.grbStratStepCorrente.Controls.Add(this.label203);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepTon);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepToff);
-            this.grbStratStepCorrente.Controls.Add(this.label204);
-            this.grbStratStepCorrente.Controls.Add(this.label194);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepAh);
-            this.grbStratStepCorrente.Controls.Add(this.label191);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepVmax);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepVmin);
-            this.grbStratStepCorrente.Controls.Add(this.label192);
-            this.grbStratStepCorrente.Controls.Add(this.label190);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepImax);
-            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepImin);
-            this.grbStratStepCorrente.Controls.Add(this.label195);
-            resources.ApplyResources(this.grbStratStepCorrente, "grbStratStepCorrente");
-            this.grbStratStepCorrente.Name = "grbStratStepCorrente";
-            this.grbStratStepCorrente.TabStop = false;
-            // 
-            // txtStratCurrStepImax
-            // 
-            resources.ApplyResources(this.txtStratCurrStepImax, "txtStratCurrStepImax");
-            this.txtStratCurrStepImax.Name = "txtStratCurrStepImax";
-            this.txtStratCurrStepImax.ReadOnly = true;
-            // 
-            // txtStratCurrStepImin
-            // 
-            resources.ApplyResources(this.txtStratCurrStepImin, "txtStratCurrStepImin");
-            this.txtStratCurrStepImin.Name = "txtStratCurrStepImin";
-            this.txtStratCurrStepImin.ReadOnly = true;
-            // 
-            // label195
-            // 
-            resources.ApplyResources(this.label195, "label195");
-            this.label195.Name = "label195";
-            // 
-            // label190
-            // 
-            resources.ApplyResources(this.label190, "label190");
-            this.label190.Name = "label190";
-            // 
-            // label191
-            // 
-            resources.ApplyResources(this.label191, "label191");
-            this.label191.Name = "label191";
-            // 
-            // txtStratCurrStepVmax
-            // 
-            resources.ApplyResources(this.txtStratCurrStepVmax, "txtStratCurrStepVmax");
-            this.txtStratCurrStepVmax.Name = "txtStratCurrStepVmax";
-            this.txtStratCurrStepVmax.ReadOnly = true;
-            // 
-            // txtStratCurrStepVmin
-            // 
-            resources.ApplyResources(this.txtStratCurrStepVmin, "txtStratCurrStepVmin");
-            this.txtStratCurrStepVmin.Name = "txtStratCurrStepVmin";
-            this.txtStratCurrStepVmin.ReadOnly = true;
-            // 
-            // label192
-            // 
-            resources.ApplyResources(this.label192, "label192");
-            this.label192.Name = "label192";
-            // 
-            // label194
-            // 
-            resources.ApplyResources(this.label194, "label194");
-            this.label194.Name = "label194";
-            // 
-            // txtStratCurrStepAh
-            // 
-            resources.ApplyResources(this.txtStratCurrStepAh, "txtStratCurrStepAh");
-            this.txtStratCurrStepAh.Name = "txtStratCurrStepAh";
-            this.txtStratCurrStepAh.ReadOnly = true;
-            // 
-            // label203
-            // 
-            resources.ApplyResources(this.label203, "label203");
-            this.label203.Name = "label203";
-            // 
-            // txtStratCurrStepTon
-            // 
-            resources.ApplyResources(this.txtStratCurrStepTon, "txtStratCurrStepTon");
-            this.txtStratCurrStepTon.Name = "txtStratCurrStepTon";
-            this.txtStratCurrStepTon.ReadOnly = true;
-            // 
-            // txtStratCurrStepToff
-            // 
-            resources.ApplyResources(this.txtStratCurrStepToff, "txtStratCurrStepToff");
-            this.txtStratCurrStepToff.Name = "txtStratCurrStepToff";
-            this.txtStratCurrStepToff.ReadOnly = true;
-            // 
-            // label204
-            // 
-            resources.ApplyResources(this.label204, "label204");
-            this.label204.Name = "label204";
-            // 
-            // label205
-            // 
-            resources.ApplyResources(this.label205, "label205");
-            this.label205.Name = "label205";
-            // 
-            // txtStratCurrStepRipetizioni
-            // 
-            resources.ApplyResources(this.txtStratCurrStepRipetizioni, "txtStratCurrStepRipetizioni");
-            this.txtStratCurrStepRipetizioni.Name = "txtStratCurrStepRipetizioni";
-            this.txtStratCurrStepRipetizioni.ReadOnly = true;
-            // 
-            // txtStratCurrStepTipo
-            // 
-            resources.ApplyResources(this.txtStratCurrStepTipo, "txtStratCurrStepTipo");
-            this.txtStratCurrStepTipo.Name = "txtStratCurrStepTipo";
-            this.txtStratCurrStepTipo.ReadOnly = true;
-            // 
-            // label206
-            // 
-            resources.ApplyResources(this.label206, "label206");
-            this.label206.Name = "label206";
             // 
             // frmSpyBat
             // 
@@ -6138,6 +6147,8 @@
             this.tbpStrategia.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.grbStratStepCorrente.ResumeLayout(false);
+            this.grbStratStepCorrente.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -6151,8 +6162,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.grbStratComandiTest.ResumeLayout(false);
-            this.grbStratStepCorrente.ResumeLayout(false);
-            this.grbStratStepCorrente.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -6903,5 +6912,6 @@
         private System.Windows.Forms.Label label204;
         private System.Windows.Forms.Label label194;
         private System.Windows.Forms.TextBox txtStratCurrStepAh;
+        private System.Windows.Forms.Button btnStratCallSIS;
     }
 }

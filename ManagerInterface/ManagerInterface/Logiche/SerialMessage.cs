@@ -17,6 +17,7 @@ namespace ChargerLogic
             Start = 0x0F,  
             Strobe = 0xFF, 
             Stop = 0xF0,
+
             ReadRTC = 0xD3, 
             UpdateRTC = 0xD2, 
             FirmwareUpdate = 0xD5,
@@ -61,6 +62,18 @@ namespace ChargerLogic
             SB_NACK = 0x71,
             SB_W_MemProgrammed = 0x74,
             SB_W_chgst_Call = 0x80,
+
+            DI_LedRGB = 0x1E,
+            DI_Stato = 0xE1,
+            DI_CancellaInteraMemoria = 0x3A,
+            DI_Cancella4K = 0x24,
+            DI_R_LeggiMemoria = 0x3C,
+            DI_W_ScriviMemoria = 0xC3,
+            DI_R_InvioImmagineMemoria = 0x4B,
+            DI_Backlight = 0xB3,
+            DI_DrawLine = 0xA5,
+            
+
             LL_SIG60_PROXY = 0x81,
          };
         public enum ParametroLadeLight : byte

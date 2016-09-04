@@ -130,5 +130,29 @@ namespace PannelloCharger.Properties {
                 this["LogLevel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM21")]
+        public string PortaDisplay {
+            get {
+                return ((string)(this["PortaDisplay"]));
+            }
+            set {
+                this["PortaDisplay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("115200")]
+        public string BaudRateDisplay {
+            get {
+                return ((string)(this["BaudRateDisplay"]));
+            }
+            set {
+                this["BaudRateDisplay"] = value;
+            }
+        }
     }
 }

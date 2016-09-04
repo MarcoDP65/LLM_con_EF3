@@ -248,7 +248,6 @@ namespace ChargerLogic
             } 
         }
 
-
         public bool ControllaAttesa(DateTime UltimoIstante, int SecondiTimeOut = 300)
         {
             bool _risposta = false;
@@ -274,8 +273,6 @@ namespace ChargerLogic
             }
 
         }
-
-
 
         public bool recordPresente(string IdApparato, MoriData._db dbCorrente)
         {
@@ -399,7 +396,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-
 
         public bool importaModello(MoriData._db dbCorrente, bool Testata, bool Cliente, bool Programmi, bool MemLunga, bool MemBreve)
         {
@@ -1740,9 +1736,6 @@ namespace ChargerLogic
         }
 
 
-
-
-
         public bool CaricaCicliMemLunga(string IdApparato, MoriData._db dbCorrente)
         {
             try
@@ -1781,6 +1774,7 @@ namespace ChargerLogic
                 return false;
             }
         }
+
 
         public bool CaricaProgrammazioni(string IdApparato, MoriData._db dbCorrente)
         {
@@ -2622,7 +2616,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool LanciaComandoStrategia(ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, out byte[] Dati)
+        public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, out byte[] Dati)
         {
 
 
@@ -2641,7 +2635,7 @@ namespace ChargerLogic
                 _mS.ComandoStrat = new MessaggioSpyBatt.ComandoStrategia();
 
 
-                _cmdStrat[0] = 0x02;  //CMD_IS
+                _cmdStrat[0] = Modo;  //CMD_IS
                 _cmdStrat[1] = 0x0A;  // len
 
                 FunzioniComuni.SplitUshort(Vmin, ref lsb, ref msb);

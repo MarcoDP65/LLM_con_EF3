@@ -297,10 +297,123 @@
             this.txtVarAhCarica = new System.Windows.Forms.TextBox();
             this.txtVarVBatt = new System.Windows.Forms.TextBox();
             this.tbpProxySig60 = new System.Windows.Forms.TabPage();
+            this.label176 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkStratLLRabb = new System.Windows.Forms.CheckBox();
+            this.txtStratLLAmax = new System.Windows.Forms.TextBox();
+            this.label155 = new System.Windows.Forms.Label();
+            this.txtStratLLVmax = new System.Windows.Forms.TextBox();
+            this.label154 = new System.Windows.Forms.Label();
+            this.txtStratLLVmin = new System.Windows.Forms.TextBox();
+            this.label153 = new System.Windows.Forms.Label();
+            this.label200 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.grbStratStepCorrente = new System.Windows.Forms.GroupBox();
+            this.label206 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepTipo = new System.Windows.Forms.TextBox();
+            this.label205 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepRipetizioni = new System.Windows.Forms.TextBox();
+            this.label203 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepTon = new System.Windows.Forms.TextBox();
+            this.txtStratCurrStepToff = new System.Windows.Forms.TextBox();
+            this.label204 = new System.Windows.Forms.Label();
+            this.label194 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepAh = new System.Windows.Forms.TextBox();
+            this.label191 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepVmax = new System.Windows.Forms.TextBox();
+            this.txtStratCurrStepVmin = new System.Windows.Forms.TextBox();
+            this.label192 = new System.Windows.Forms.Label();
+            this.label190 = new System.Windows.Forms.Label();
+            this.txtStratCurrStepImax = new System.Windows.Forms.TextBox();
+            this.txtStratCurrStepImin = new System.Windows.Forms.TextBox();
+            this.label195 = new System.Windows.Forms.Label();
+            this.label202 = new System.Windows.Forms.Label();
+            this.cmbStratIsSelStep = new System.Windows.Forms.ComboBox();
+            this.label199 = new System.Windows.Forms.Label();
+            this.txtStratIsNumSpire = new System.Windows.Forms.TextBox();
+            this.label198 = new System.Windows.Forms.Label();
+            this.txtStratIsStep = new System.Windows.Forms.TextBox();
+            this.txtStratIsEsito = new System.Windows.Forms.TextBox();
+            this.label197 = new System.Windows.Forms.Label();
+            this.txtStratIsMinuti = new System.Windows.Forms.TextBox();
+            this.txtStratIsAhRich = new System.Windows.Forms.TextBox();
+            this.label193 = new System.Windows.Forms.Label();
+            this.label196 = new System.Windows.Forms.Label();
+            this.label189 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtStratAVStop = new System.Windows.Forms.TextBox();
+            this.label201 = new System.Windows.Forms.Label();
+            this.label179 = new System.Windows.Forms.Label();
+            this.label177 = new System.Windows.Forms.Label();
+            this.txtStratAVTempIst = new System.Windows.Forms.TextBox();
+            this.txtStratAVCorrenteIst = new System.Windows.Forms.TextBox();
+            this.txtStratAVPrevisti = new System.Windows.Forms.TextBox();
+            this.label180 = new System.Windows.Forms.Label();
+            this.txtStratAVMancanti = new System.Windows.Forms.TextBox();
+            this.label181 = new System.Windows.Forms.Label();
+            this.txtStratAVTensioneIst = new System.Windows.Forms.TextBox();
+            this.label182 = new System.Windows.Forms.Label();
+            this.txtStratAVMinutiResidui = new System.Windows.Forms.TextBox();
+            this.label187 = new System.Windows.Forms.Label();
+            this.txtStratAVErogati = new System.Windows.Forms.TextBox();
+            this.label188 = new System.Windows.Forms.Label();
+            this.label185 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtStratLivcrgCapacityVer = new System.Windows.Forms.TextBox();
+            this.txtStratLivcrgDschgVer = new System.Windows.Forms.TextBox();
+            this.txtStratLivcrgChgVer = new System.Windows.Forms.TextBox();
+            this.txtStratLivcrgSetCapacity = new System.Windows.Forms.TextBox();
+            this.label178 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgSetDschg = new System.Windows.Forms.TextBox();
+            this.label183 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgSetChg = new System.Windows.Forms.TextBox();
+            this.label184 = new System.Windows.Forms.Label();
+            this.label166 = new System.Windows.Forms.Label();
+            this.pnlStratContatoriCarica = new System.Windows.Forms.Panel();
+            this.txtStratLivcrgCapNominale = new System.Windows.Forms.TextBox();
+            this.label165 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgCapResidua = new System.Windows.Forms.TextBox();
+            this.label164 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgDiscrgTot = new System.Windows.Forms.TextBox();
+            this.label162 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgCrgTot = new System.Windows.Forms.TextBox();
+            this.label163 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgDiscrg = new System.Windows.Forms.TextBox();
+            this.label160 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgCrg = new System.Windows.Forms.TextBox();
+            this.label161 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgNeg = new System.Windows.Forms.TextBox();
+            this.label159 = new System.Windows.Forms.Label();
+            this.txtStratLivcrgPos = new System.Windows.Forms.TextBox();
+            this.label158 = new System.Windows.Forms.Label();
+            this.label167 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtStratQryTrepr = new System.Windows.Forms.TextBox();
+            this.label175 = new System.Windows.Forms.Label();
+            this.txtStratQryTalm = new System.Windows.Forms.TextBox();
+            this.label174 = new System.Windows.Forms.Label();
+            this.txtStratQryTatt = new System.Windows.Forms.TextBox();
+            this.label173 = new System.Windows.Forms.Label();
+            this.txtStratQryTensGas = new System.Windows.Forms.TextBox();
+            this.label172 = new System.Windows.Forms.Label();
+            this.txtStratQryCapN = new System.Windows.Forms.TextBox();
+            this.label171 = new System.Windows.Forms.Label();
+            this.txtStratQryTensN = new System.Windows.Forms.TextBox();
+            this.label170 = new System.Windows.Forms.Label();
+            this.txtStratQryActSeup = new System.Windows.Forms.TextBox();
+            this.label169 = new System.Windows.Forms.Label();
+            this.txtStratQryVerLib = new System.Windows.Forms.TextBox();
+            this.label168 = new System.Windows.Forms.Label();
             this.lblSig60DataReceuved = new System.Windows.Forms.Label();
             this.lblSig60DataSent = new System.Windows.Forms.Label();
             this.txtStratDataGridRx = new System.Windows.Forms.TextBox();
             this.grbStratComandiTest = new System.Windows.Forms.GroupBox();
+            this.btnStratCallSIS = new System.Windows.Forms.Button();
+            this.btnStratCallAv = new System.Windows.Forms.Button();
+            this.btnStratSetDischarge = new System.Windows.Forms.Button();
+            this.btnStratCallIS = new System.Windows.Forms.Button();
+            this.btnStratSetCharge = new System.Windows.Forms.Button();
+            this.btnStratQuery = new System.Windows.Forms.Button();
             this.btnStratTestERR = new System.Windows.Forms.Button();
             this.btnStratTest02 = new System.Windows.Forms.Button();
             this.btnStratTest01 = new System.Windows.Forms.Button();
@@ -309,7 +422,6 @@
             this.btnSalvaCaricabatteria = new System.Windows.Forms.Button();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
-            this.btnStratQuery = new System.Windows.Forms.Button();
             this.tabProfiloAttuale.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
             this.tabCaricaBatterie.SuspendLayout();
@@ -352,6 +464,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
             this.grbVariabiliImmediate.SuspendLayout();
             this.tbpProxySig60.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.grbStratStepCorrente.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.pnlStratContatoriCarica.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.grbStratComandiTest.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -361,7 +480,7 @@
             this.tabProfiloAttuale.Controls.Add(this.grbCicloCorrente);
             this.tabProfiloAttuale.Location = new System.Drawing.Point(4, 25);
             this.tabProfiloAttuale.Name = "tabProfiloAttuale";
-            this.tabProfiloAttuale.Size = new System.Drawing.Size(1203, 559);
+            this.tabProfiloAttuale.Size = new System.Drawing.Size(1585, 688);
             this.tabProfiloAttuale.TabIndex = 5;
             this.tabProfiloAttuale.Text = "Profilo Attuale";
             // 
@@ -922,7 +1041,7 @@
             this.tabCaricaBatterie.Location = new System.Drawing.Point(12, 12);
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
-            this.tabCaricaBatterie.Size = new System.Drawing.Size(1211, 588);
+            this.tabCaricaBatterie.Size = new System.Drawing.Size(1593, 717);
             this.tabCaricaBatterie.TabIndex = 0;
             this.tabCaricaBatterie.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabCaricaBatterie_Selected);
             // 
@@ -952,7 +1071,7 @@
             this.tabGenerale.Location = new System.Drawing.Point(4, 25);
             this.tabGenerale.Name = "tabGenerale";
             this.tabGenerale.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGenerale.Size = new System.Drawing.Size(1203, 559);
+            this.tabGenerale.Size = new System.Drawing.Size(1585, 688);
             this.tabGenerale.TabIndex = 0;
             this.tabGenerale.Text = "Generale";
             this.tabGenerale.Click += new System.EventHandler(this.tabCb01_Click);
@@ -1127,7 +1246,7 @@
             this.tabCb08.Controls.Add(this.groupBox2);
             this.tabCb08.Location = new System.Drawing.Point(4, 25);
             this.tabCb08.Name = "tabCb08";
-            this.tabCb08.Size = new System.Drawing.Size(1203, 559);
+            this.tabCb08.Size = new System.Drawing.Size(1585, 688);
             this.tabCb08.TabIndex = 7;
             this.tabCb08.Text = "Program. per BATTERIA";
             this.tabCb08.UseVisualStyleBackColor = true;
@@ -1328,7 +1447,7 @@
             this.tabCb07.Controls.Add(this.grbIWa);
             this.tabCb07.Location = new System.Drawing.Point(4, 25);
             this.tabCb07.Name = "tabCb07";
-            this.tabCb07.Size = new System.Drawing.Size(1203, 559);
+            this.tabCb07.Size = new System.Drawing.Size(1585, 688);
             this.tabCb07.TabIndex = 6;
             this.tabCb07.Text = "Program. per CICLO";
             this.tabCb07.UseVisualStyleBackColor = true;
@@ -2521,7 +2640,7 @@
             this.tabCb02.Location = new System.Drawing.Point(4, 25);
             this.tabCb02.Name = "tabCb02";
             this.tabCb02.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCb02.Size = new System.Drawing.Size(1203, 559);
+            this.tabCb02.Size = new System.Drawing.Size(1585, 688);
             this.tabCb02.TabIndex = 1;
             this.tabCb02.Text = "Cavi";
             // 
@@ -2742,7 +2861,7 @@
             this.tabCb05.Location = new System.Drawing.Point(4, 25);
             this.tabCb05.Name = "tabCb05";
             this.tabCb05.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCb05.Size = new System.Drawing.Size(1203, 559);
+            this.tabCb05.Size = new System.Drawing.Size(1585, 688);
             this.tabCb05.TabIndex = 4;
             this.tabCb05.Text = "Sonda";
             this.tabCb05.UseVisualStyleBackColor = true;
@@ -2889,7 +3008,7 @@
             this.tabOrologio.Controls.Add(this.grbOraCorrente);
             this.tabOrologio.Location = new System.Drawing.Point(4, 25);
             this.tabOrologio.Name = "tabOrologio";
-            this.tabOrologio.Size = new System.Drawing.Size(1203, 559);
+            this.tabOrologio.Size = new System.Drawing.Size(1585, 688);
             this.tabOrologio.TabIndex = 2;
             this.tabOrologio.Text = "Orologio/Accensione";
             // 
@@ -3124,7 +3243,7 @@
             this.tabCb04.Controls.Add(this.lvwCicliMacchina);
             this.tabCb04.Location = new System.Drawing.Point(4, 25);
             this.tabCb04.Name = "tabCb04";
-            this.tabCb04.Size = new System.Drawing.Size(1203, 559);
+            this.tabCb04.Size = new System.Drawing.Size(1585, 688);
             this.tabCb04.TabIndex = 3;
             this.tabCb04.Text = "Memoria Cicli";
             this.tabCb04.UseVisualStyleBackColor = true;
@@ -3182,7 +3301,7 @@
             this.tabMonitor.Controls.Add(this.grbVariabiliImmediate);
             this.tabMonitor.Location = new System.Drawing.Point(4, 25);
             this.tabMonitor.Name = "tabMonitor";
-            this.tabMonitor.Size = new System.Drawing.Size(1203, 559);
+            this.tabMonitor.Size = new System.Drawing.Size(1585, 688);
             this.tabMonitor.TabIndex = 8;
             this.tabMonitor.Text = "Monitor";
             // 
@@ -3424,6 +3543,18 @@
             // tbpProxySig60
             // 
             this.tbpProxySig60.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpProxySig60.Controls.Add(this.label176);
+            this.tbpProxySig60.Controls.Add(this.panel1);
+            this.tbpProxySig60.Controls.Add(this.label200);
+            this.tbpProxySig60.Controls.Add(this.panel6);
+            this.tbpProxySig60.Controls.Add(this.label189);
+            this.tbpProxySig60.Controls.Add(this.panel5);
+            this.tbpProxySig60.Controls.Add(this.label185);
+            this.tbpProxySig60.Controls.Add(this.panel4);
+            this.tbpProxySig60.Controls.Add(this.label166);
+            this.tbpProxySig60.Controls.Add(this.pnlStratContatoriCarica);
+            this.tbpProxySig60.Controls.Add(this.label167);
+            this.tbpProxySig60.Controls.Add(this.panel3);
             this.tbpProxySig60.Controls.Add(this.lblSig60DataReceuved);
             this.tbpProxySig60.Controls.Add(this.lblSig60DataSent);
             this.tbpProxySig60.Controls.Add(this.txtStratDataGridRx);
@@ -3431,14 +3562,1159 @@
             this.tbpProxySig60.Controls.Add(this.txtStratDataGridTx);
             this.tbpProxySig60.Location = new System.Drawing.Point(4, 25);
             this.tbpProxySig60.Name = "tbpProxySig60";
-            this.tbpProxySig60.Size = new System.Drawing.Size(1203, 559);
+            this.tbpProxySig60.Size = new System.Drawing.Size(1585, 688);
             this.tbpProxySig60.TabIndex = 9;
             this.tbpProxySig60.Text = "SIG60 Proxy";
+            // 
+            // label176
+            // 
+            this.label176.AutoSize = true;
+            this.label176.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label176.Location = new System.Drawing.Point(953, 0);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(58, 17);
+            this.label176.TabIndex = 69;
+            this.label176.Text = "CMD_IS";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.chkStratLLRabb);
+            this.panel1.Controls.Add(this.txtStratLLAmax);
+            this.panel1.Controls.Add(this.label155);
+            this.panel1.Controls.Add(this.txtStratLLVmax);
+            this.panel1.Controls.Add(this.label154);
+            this.panel1.Controls.Add(this.txtStratLLVmin);
+            this.panel1.Controls.Add(this.label153);
+            this.panel1.Location = new System.Drawing.Point(936, 18);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(167, 158);
+            this.panel1.TabIndex = 68;
+            // 
+            // chkStratLLRabb
+            // 
+            this.chkStratLLRabb.AutoSize = true;
+            this.chkStratLLRabb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkStratLLRabb.Location = new System.Drawing.Point(16, 114);
+            this.chkStratLLRabb.Name = "chkStratLLRabb";
+            this.chkStratLLRabb.Size = new System.Drawing.Size(129, 21);
+            this.chkStratLLRabb.TabIndex = 45;
+            this.chkStratLLRabb.Text = "Rabb. Presente";
+            this.chkStratLLRabb.UseVisualStyleBackColor = true;
+            // 
+            // txtStratLLAmax
+            // 
+            this.txtStratLLAmax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratLLAmax.Location = new System.Drawing.Point(16, 80);
+            this.txtStratLLAmax.Name = "txtStratLLAmax";
+            this.txtStratLLAmax.Size = new System.Drawing.Size(61, 27);
+            this.txtStratLLAmax.TabIndex = 44;
+            this.txtStratLLAmax.Text = "200";
+            this.txtStratLLAmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label155
+            // 
+            this.label155.AutoSize = true;
+            this.label155.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label155.Location = new System.Drawing.Point(13, 61);
+            this.label155.Name = "label155";
+            this.label155.Size = new System.Drawing.Size(42, 17);
+            this.label155.TabIndex = 43;
+            this.label155.Text = "Amax";
+            // 
+            // txtStratLLVmax
+            // 
+            this.txtStratLLVmax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratLLVmax.Location = new System.Drawing.Point(93, 30);
+            this.txtStratLLVmax.Name = "txtStratLLVmax";
+            this.txtStratLLVmax.Size = new System.Drawing.Size(62, 27);
+            this.txtStratLLVmax.TabIndex = 42;
+            this.txtStratLLVmax.Text = "92";
+            this.txtStratLLVmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label154
+            // 
+            this.label154.AutoSize = true;
+            this.label154.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label154.Location = new System.Drawing.Point(90, 10);
+            this.label154.Name = "label154";
+            this.label154.Size = new System.Drawing.Size(42, 17);
+            this.label154.TabIndex = 41;
+            this.label154.Text = "Vmax";
+            // 
+            // txtStratLLVmin
+            // 
+            this.txtStratLLVmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratLLVmin.Location = new System.Drawing.Point(15, 30);
+            this.txtStratLLVmin.Name = "txtStratLLVmin";
+            this.txtStratLLVmin.Size = new System.Drawing.Size(62, 27);
+            this.txtStratLLVmin.TabIndex = 40;
+            this.txtStratLLVmin.Text = "24";
+            this.txtStratLLVmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label153
+            // 
+            this.label153.AutoSize = true;
+            this.label153.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label153.Location = new System.Drawing.Point(13, 10);
+            this.label153.Name = "label153";
+            this.label153.Size = new System.Drawing.Size(39, 17);
+            this.label153.TabIndex = 39;
+            this.label153.Text = "Vmin";
+            // 
+            // label200
+            // 
+            this.label200.AutoSize = true;
+            this.label200.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label200.Location = new System.Drawing.Point(1129, 0);
+            this.label200.Name = "label200";
+            this.label200.Size = new System.Drawing.Size(93, 17);
+            this.label200.TabIndex = 67;
+            this.label200.Text = "Esito CMD_IS";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.grbStratStepCorrente);
+            this.panel6.Controls.Add(this.label202);
+            this.panel6.Controls.Add(this.cmbStratIsSelStep);
+            this.panel6.Controls.Add(this.label199);
+            this.panel6.Controls.Add(this.txtStratIsNumSpire);
+            this.panel6.Controls.Add(this.label198);
+            this.panel6.Controls.Add(this.txtStratIsStep);
+            this.panel6.Controls.Add(this.txtStratIsEsito);
+            this.panel6.Controls.Add(this.label197);
+            this.panel6.Controls.Add(this.txtStratIsMinuti);
+            this.panel6.Controls.Add(this.txtStratIsAhRich);
+            this.panel6.Controls.Add(this.label193);
+            this.panel6.Controls.Add(this.label196);
+            this.panel6.Location = new System.Drawing.Point(1126, 18);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(410, 391);
+            this.panel6.TabIndex = 66;
+            // 
+            // grbStratStepCorrente
+            // 
+            this.grbStratStepCorrente.Controls.Add(this.label206);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepTipo);
+            this.grbStratStepCorrente.Controls.Add(this.label205);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepRipetizioni);
+            this.grbStratStepCorrente.Controls.Add(this.label203);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepTon);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepToff);
+            this.grbStratStepCorrente.Controls.Add(this.label204);
+            this.grbStratStepCorrente.Controls.Add(this.label194);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepAh);
+            this.grbStratStepCorrente.Controls.Add(this.label191);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepVmax);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepVmin);
+            this.grbStratStepCorrente.Controls.Add(this.label192);
+            this.grbStratStepCorrente.Controls.Add(this.label190);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepImax);
+            this.grbStratStepCorrente.Controls.Add(this.txtStratCurrStepImin);
+            this.grbStratStepCorrente.Controls.Add(this.label195);
+            this.grbStratStepCorrente.Location = new System.Drawing.Point(22, 115);
+            this.grbStratStepCorrente.Name = "grbStratStepCorrente";
+            this.grbStratStepCorrente.Size = new System.Drawing.Size(365, 244);
+            this.grbStratStepCorrente.TabIndex = 67;
+            this.grbStratStepCorrente.TabStop = false;
+            this.grbStratStepCorrente.Text = "Step Carica";
+            // 
+            // label206
+            // 
+            this.label206.AutoSize = true;
+            this.label206.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label206.Location = new System.Drawing.Point(23, 31);
+            this.label206.Name = "label206";
+            this.label206.Size = new System.Drawing.Size(79, 17);
+            this.label206.TabIndex = 70;
+            this.label206.Text = "Tipo Passo";
+            // 
+            // txtStratCurrStepTipo
+            // 
+            this.txtStratCurrStepTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepTipo.Location = new System.Drawing.Point(26, 51);
+            this.txtStratCurrStepTipo.Name = "txtStratCurrStepTipo";
+            this.txtStratCurrStepTipo.ReadOnly = true;
+            this.txtStratCurrStepTipo.Size = new System.Drawing.Size(194, 24);
+            this.txtStratCurrStepTipo.TabIndex = 69;
+            this.txtStratCurrStepTipo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label205
+            // 
+            this.label205.AutoSize = true;
+            this.label205.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label205.Location = new System.Drawing.Point(243, 176);
+            this.label205.Name = "label205";
+            this.label205.Size = new System.Drawing.Size(73, 17);
+            this.label205.TabIndex = 68;
+            this.label205.Text = "Ripetizioni";
+            this.label205.Click += new System.EventHandler(this.label205_Click);
+            // 
+            // txtStratCurrStepRipetizioni
+            // 
+            this.txtStratCurrStepRipetizioni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepRipetizioni.Location = new System.Drawing.Point(246, 196);
+            this.txtStratCurrStepRipetizioni.Name = "txtStratCurrStepRipetizioni";
+            this.txtStratCurrStepRipetizioni.ReadOnly = true;
+            this.txtStratCurrStepRipetizioni.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepRipetizioni.TabIndex = 67;
+            this.txtStratCurrStepRipetizioni.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtStratCurrStepRipetizioni.TextChanged += new System.EventHandler(this.txtStratCurrStepRipetizioni_TextChanged);
+            // 
+            // label203
+            // 
+            this.label203.AutoSize = true;
+            this.label203.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label203.Location = new System.Drawing.Point(124, 176);
+            this.label203.Name = "label203";
+            this.label203.Size = new System.Drawing.Size(40, 17);
+            this.label203.TabIndex = 66;
+            this.label203.Text = "T On";
+            // 
+            // txtStratCurrStepTon
+            // 
+            this.txtStratCurrStepTon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepTon.Location = new System.Drawing.Point(127, 196);
+            this.txtStratCurrStepTon.Name = "txtStratCurrStepTon";
+            this.txtStratCurrStepTon.ReadOnly = true;
+            this.txtStratCurrStepTon.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepTon.TabIndex = 65;
+            this.txtStratCurrStepTon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratCurrStepToff
+            // 
+            this.txtStratCurrStepToff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepToff.Location = new System.Drawing.Point(26, 196);
+            this.txtStratCurrStepToff.Name = "txtStratCurrStepToff";
+            this.txtStratCurrStepToff.ReadOnly = true;
+            this.txtStratCurrStepToff.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepToff.TabIndex = 64;
+            this.txtStratCurrStepToff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label204
+            // 
+            this.label204.AutoSize = true;
+            this.label204.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label204.Location = new System.Drawing.Point(23, 176);
+            this.label204.Name = "label204";
+            this.label204.Size = new System.Drawing.Size(40, 17);
+            this.label204.TabIndex = 63;
+            this.label204.Text = "T Off";
+            // 
+            // label194
+            // 
+            this.label194.AutoSize = true;
+            this.label194.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label194.Location = new System.Drawing.Point(243, 71);
+            this.label194.Name = "label194";
+            this.label194.Size = new System.Drawing.Size(58, 17);
+            this.label194.TabIndex = 62;
+            this.label194.Text = "Ah Step";
+            // 
+            // txtStratCurrStepAh
+            // 
+            this.txtStratCurrStepAh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepAh.Location = new System.Drawing.Point(246, 91);
+            this.txtStratCurrStepAh.Name = "txtStratCurrStepAh";
+            this.txtStratCurrStepAh.ReadOnly = true;
+            this.txtStratCurrStepAh.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepAh.TabIndex = 61;
+            this.txtStratCurrStepAh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label191
+            // 
+            this.label191.AutoSize = true;
+            this.label191.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label191.Location = new System.Drawing.Point(124, 124);
+            this.label191.Name = "label191";
+            this.label191.Size = new System.Drawing.Size(46, 17);
+            this.label191.TabIndex = 60;
+            this.label191.Text = "V Max";
+            // 
+            // txtStratCurrStepVmax
+            // 
+            this.txtStratCurrStepVmax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepVmax.Location = new System.Drawing.Point(127, 144);
+            this.txtStratCurrStepVmax.Name = "txtStratCurrStepVmax";
+            this.txtStratCurrStepVmax.ReadOnly = true;
+            this.txtStratCurrStepVmax.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepVmax.TabIndex = 59;
+            this.txtStratCurrStepVmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratCurrStepVmin
+            // 
+            this.txtStratCurrStepVmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepVmin.Location = new System.Drawing.Point(26, 144);
+            this.txtStratCurrStepVmin.Name = "txtStratCurrStepVmin";
+            this.txtStratCurrStepVmin.ReadOnly = true;
+            this.txtStratCurrStepVmin.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepVmin.TabIndex = 58;
+            this.txtStratCurrStepVmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label192
+            // 
+            this.label192.AutoSize = true;
+            this.label192.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label192.Location = new System.Drawing.Point(23, 124);
+            this.label192.Name = "label192";
+            this.label192.Size = new System.Drawing.Size(43, 17);
+            this.label192.TabIndex = 57;
+            this.label192.Text = "V Min";
+            // 
+            // label190
+            // 
+            this.label190.AutoSize = true;
+            this.label190.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label190.Location = new System.Drawing.Point(124, 76);
+            this.label190.Name = "label190";
+            this.label190.Size = new System.Drawing.Size(40, 17);
+            this.label190.TabIndex = 56;
+            this.label190.Text = "I Max";
+            // 
+            // txtStratCurrStepImax
+            // 
+            this.txtStratCurrStepImax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepImax.Location = new System.Drawing.Point(127, 96);
+            this.txtStratCurrStepImax.Name = "txtStratCurrStepImax";
+            this.txtStratCurrStepImax.ReadOnly = true;
+            this.txtStratCurrStepImax.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepImax.TabIndex = 55;
+            this.txtStratCurrStepImax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratCurrStepImin
+            // 
+            this.txtStratCurrStepImin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratCurrStepImin.Location = new System.Drawing.Point(26, 96);
+            this.txtStratCurrStepImin.Name = "txtStratCurrStepImin";
+            this.txtStratCurrStepImin.ReadOnly = true;
+            this.txtStratCurrStepImin.Size = new System.Drawing.Size(93, 24);
+            this.txtStratCurrStepImin.TabIndex = 54;
+            this.txtStratCurrStepImin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label195
+            // 
+            this.label195.AutoSize = true;
+            this.label195.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label195.Location = new System.Drawing.Point(23, 76);
+            this.label195.Name = "label195";
+            this.label195.Size = new System.Drawing.Size(37, 17);
+            this.label195.TabIndex = 53;
+            this.label195.Text = "I Min";
+            // 
+            // label202
+            // 
+            this.label202.AutoSize = true;
+            this.label202.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label202.Location = new System.Drawing.Point(19, 61);
+            this.label202.Name = "label202";
+            this.label202.Size = new System.Drawing.Size(37, 17);
+            this.label202.TabIndex = 66;
+            this.label202.Text = "Step";
+            // 
+            // cmbStratIsSelStep
+            // 
+            this.cmbStratIsSelStep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStratIsSelStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.cmbStratIsSelStep.FormattingEnabled = true;
+            this.cmbStratIsSelStep.Location = new System.Drawing.Point(22, 81);
+            this.cmbStratIsSelStep.Name = "cmbStratIsSelStep";
+            this.cmbStratIsSelStep.Size = new System.Drawing.Size(178, 28);
+            this.cmbStratIsSelStep.TabIndex = 65;
+            // 
+            // label199
+            // 
+            this.label199.AutoSize = true;
+            this.label199.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label199.Location = new System.Drawing.Point(307, 13);
+            this.label199.Name = "label199";
+            this.label199.Size = new System.Drawing.Size(41, 17);
+            this.label199.TabIndex = 64;
+            this.label199.Text = "Spire";
+            // 
+            // txtStratIsNumSpire
+            // 
+            this.txtStratIsNumSpire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratIsNumSpire.Location = new System.Drawing.Point(308, 33);
+            this.txtStratIsNumSpire.Name = "txtStratIsNumSpire";
+            this.txtStratIsNumSpire.Size = new System.Drawing.Size(53, 27);
+            this.txtStratIsNumSpire.TabIndex = 63;
+            this.txtStratIsNumSpire.Text = "0";
+            this.txtStratIsNumSpire.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label198
+            // 
+            this.label198.AutoSize = true;
+            this.label198.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label198.Location = new System.Drawing.Point(250, 13);
+            this.label198.Name = "label198";
+            this.label198.Size = new System.Drawing.Size(37, 17);
+            this.label198.TabIndex = 62;
+            this.label198.Text = "Step";
+            // 
+            // txtStratIsStep
+            // 
+            this.txtStratIsStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratIsStep.Location = new System.Drawing.Point(248, 33);
+            this.txtStratIsStep.Name = "txtStratIsStep";
+            this.txtStratIsStep.Size = new System.Drawing.Size(53, 27);
+            this.txtStratIsStep.TabIndex = 61;
+            this.txtStratIsStep.Text = "0";
+            this.txtStratIsStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratIsEsito
+            // 
+            this.txtStratIsEsito.AcceptsTab = true;
+            this.txtStratIsEsito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratIsEsito.Location = new System.Drawing.Point(22, 33);
+            this.txtStratIsEsito.Name = "txtStratIsEsito";
+            this.txtStratIsEsito.Size = new System.Drawing.Size(50, 27);
+            this.txtStratIsEsito.TabIndex = 60;
+            this.txtStratIsEsito.Text = "0";
+            this.txtStratIsEsito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label197
+            // 
+            this.label197.AutoSize = true;
+            this.label197.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label197.Location = new System.Drawing.Point(163, 13);
+            this.label197.Name = "label197";
+            this.label197.Size = new System.Drawing.Size(81, 17);
+            this.label197.TabIndex = 59;
+            this.label197.Text = "Tempo Max";
+            // 
+            // txtStratIsMinuti
+            // 
+            this.txtStratIsMinuti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratIsMinuti.Location = new System.Drawing.Point(163, 33);
+            this.txtStratIsMinuti.Name = "txtStratIsMinuti";
+            this.txtStratIsMinuti.Size = new System.Drawing.Size(79, 27);
+            this.txtStratIsMinuti.TabIndex = 58;
+            this.txtStratIsMinuti.Text = "0";
+            this.txtStratIsMinuti.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratIsAhRich
+            // 
+            this.txtStratIsAhRich.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratIsAhRich.Location = new System.Drawing.Point(78, 33);
+            this.txtStratIsAhRich.Name = "txtStratIsAhRich";
+            this.txtStratIsAhRich.Size = new System.Drawing.Size(79, 27);
+            this.txtStratIsAhRich.TabIndex = 57;
+            this.txtStratIsAhRich.Text = "0";
+            this.txtStratIsAhRich.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label193
+            // 
+            this.label193.AutoSize = true;
+            this.label193.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label193.Location = new System.Drawing.Point(75, 13);
+            this.label193.Name = "label193";
+            this.label193.Size = new System.Drawing.Size(82, 17);
+            this.label193.TabIndex = 49;
+            this.label193.Text = "Ah Richiesti";
+            // 
+            // label196
+            // 
+            this.label196.AutoSize = true;
+            this.label196.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label196.Location = new System.Drawing.Point(19, 13);
+            this.label196.Name = "label196";
+            this.label196.Size = new System.Drawing.Size(39, 17);
+            this.label196.TabIndex = 41;
+            this.label196.Text = "Esito";
+            // 
+            // label189
+            // 
+            this.label189.AutoSize = true;
+            this.label189.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label189.Location = new System.Drawing.Point(815, 184);
+            this.label189.Name = "label189";
+            this.label189.Size = new System.Drawing.Size(64, 17);
+            this.label189.TabIndex = 65;
+            this.label189.Text = "CMD_AV";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.txtStratAVStop);
+            this.panel5.Controls.Add(this.label201);
+            this.panel5.Controls.Add(this.label179);
+            this.panel5.Controls.Add(this.label177);
+            this.panel5.Controls.Add(this.txtStratAVTempIst);
+            this.panel5.Controls.Add(this.txtStratAVCorrenteIst);
+            this.panel5.Controls.Add(this.txtStratAVPrevisti);
+            this.panel5.Controls.Add(this.label180);
+            this.panel5.Controls.Add(this.txtStratAVMancanti);
+            this.panel5.Controls.Add(this.label181);
+            this.panel5.Controls.Add(this.txtStratAVTensioneIst);
+            this.panel5.Controls.Add(this.label182);
+            this.panel5.Controls.Add(this.txtStratAVMinutiResidui);
+            this.panel5.Controls.Add(this.label187);
+            this.panel5.Controls.Add(this.txtStratAVErogati);
+            this.panel5.Controls.Add(this.label188);
+            this.panel5.Location = new System.Drawing.Point(814, 204);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(289, 205);
+            this.panel5.TabIndex = 64;
+            // 
+            // txtStratAVStop
+            // 
+            this.txtStratAVStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVStop.Location = new System.Drawing.Point(199, 158);
+            this.txtStratAVStop.Name = "txtStratAVStop";
+            this.txtStratAVStop.Size = new System.Drawing.Size(74, 24);
+            this.txtStratAVStop.TabIndex = 63;
+            this.txtStratAVStop.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label201
+            // 
+            this.label201.AutoSize = true;
+            this.label201.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label201.Location = new System.Drawing.Point(200, 138);
+            this.label201.Name = "label201";
+            this.label201.Size = new System.Drawing.Size(46, 17);
+            this.label201.TabIndex = 62;
+            this.label201.Text = "STOP";
+            // 
+            // label179
+            // 
+            this.label179.AutoSize = true;
+            this.label179.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label179.Location = new System.Drawing.Point(196, 73);
+            this.label179.Name = "label179";
+            this.label179.Size = new System.Drawing.Size(41, 17);
+            this.label179.TabIndex = 61;
+            this.label179.Text = "°C Ist";
+            // 
+            // label177
+            // 
+            this.label177.AutoSize = true;
+            this.label177.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label177.Location = new System.Drawing.Point(106, 73);
+            this.label177.Name = "label177";
+            this.label177.Size = new System.Drawing.Size(35, 17);
+            this.label177.TabIndex = 60;
+            this.label177.Text = "A Ist";
+            // 
+            // txtStratAVTempIst
+            // 
+            this.txtStratAVTempIst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVTempIst.Location = new System.Drawing.Point(199, 93);
+            this.txtStratAVTempIst.Name = "txtStratAVTempIst";
+            this.txtStratAVTempIst.Size = new System.Drawing.Size(74, 24);
+            this.txtStratAVTempIst.TabIndex = 59;
+            this.txtStratAVTempIst.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratAVCorrenteIst
+            // 
+            this.txtStratAVCorrenteIst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVCorrenteIst.Location = new System.Drawing.Point(109, 93);
+            this.txtStratAVCorrenteIst.Name = "txtStratAVCorrenteIst";
+            this.txtStratAVCorrenteIst.Size = new System.Drawing.Size(74, 24);
+            this.txtStratAVCorrenteIst.TabIndex = 58;
+            this.txtStratAVCorrenteIst.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratAVPrevisti
+            // 
+            this.txtStratAVPrevisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVPrevisti.Location = new System.Drawing.Point(211, 36);
+            this.txtStratAVPrevisti.Name = "txtStratAVPrevisti";
+            this.txtStratAVPrevisti.Size = new System.Drawing.Size(62, 24);
+            this.txtStratAVPrevisti.TabIndex = 57;
+            this.txtStratAVPrevisti.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label180
+            // 
+            this.label180.AutoSize = true;
+            this.label180.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label180.Location = new System.Drawing.Point(208, 16);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(75, 17);
+            this.label180.TabIndex = 51;
+            this.label180.Text = "Ah Previsti";
+            // 
+            // txtStratAVMancanti
+            // 
+            this.txtStratAVMancanti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVMancanti.Location = new System.Drawing.Point(109, 36);
+            this.txtStratAVMancanti.Name = "txtStratAVMancanti";
+            this.txtStratAVMancanti.Size = new System.Drawing.Size(82, 24);
+            this.txtStratAVMancanti.TabIndex = 50;
+            this.txtStratAVMancanti.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label181
+            // 
+            this.label181.AutoSize = true;
+            this.label181.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label181.Location = new System.Drawing.Point(106, 16);
+            this.label181.Name = "label181";
+            this.label181.Size = new System.Drawing.Size(86, 17);
+            this.label181.TabIndex = 49;
+            this.label181.Text = "Ah Mancanti";
+            // 
+            // txtStratAVTensioneIst
+            // 
+            this.txtStratAVTensioneIst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVTensioneIst.Location = new System.Drawing.Point(16, 93);
+            this.txtStratAVTensioneIst.Name = "txtStratAVTensioneIst";
+            this.txtStratAVTensioneIst.Size = new System.Drawing.Size(74, 24);
+            this.txtStratAVTensioneIst.TabIndex = 48;
+            this.txtStratAVTensioneIst.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label182
+            // 
+            this.label182.AutoSize = true;
+            this.label182.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label182.Location = new System.Drawing.Point(16, 73);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(35, 17);
+            this.label182.TabIndex = 47;
+            this.label182.Text = "V Ist";
+            // 
+            // txtStratAVMinutiResidui
+            // 
+            this.txtStratAVMinutiResidui.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVMinutiResidui.Location = new System.Drawing.Point(15, 158);
+            this.txtStratAVMinutiResidui.Name = "txtStratAVMinutiResidui";
+            this.txtStratAVMinutiResidui.Size = new System.Drawing.Size(74, 24);
+            this.txtStratAVMinutiResidui.TabIndex = 44;
+            this.txtStratAVMinutiResidui.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label187
+            // 
+            this.label187.AutoSize = true;
+            this.label187.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label187.Location = new System.Drawing.Point(16, 138);
+            this.label187.Name = "label187";
+            this.label187.Size = new System.Drawing.Size(77, 17);
+            this.label187.TabIndex = 43;
+            this.label187.Text = "Minuti Rim.";
+            // 
+            // txtStratAVErogati
+            // 
+            this.txtStratAVErogati.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratAVErogati.Location = new System.Drawing.Point(16, 36);
+            this.txtStratAVErogati.Name = "txtStratAVErogati";
+            this.txtStratAVErogati.Size = new System.Drawing.Size(77, 24);
+            this.txtStratAVErogati.TabIndex = 42;
+            this.txtStratAVErogati.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label188
+            // 
+            this.label188.AutoSize = true;
+            this.label188.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label188.Location = new System.Drawing.Point(13, 16);
+            this.label188.Name = "label188";
+            this.label188.Size = new System.Drawing.Size(74, 17);
+            this.label188.TabIndex = 41;
+            this.label188.Text = "Ah Erogati";
+            // 
+            // label185
+            // 
+            this.label185.AutoSize = true;
+            this.label185.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label185.Location = new System.Drawing.Point(1335, 433);
+            this.label185.Name = "label185";
+            this.label185.Size = new System.Drawing.Size(99, 17);
+            this.label185.TabIndex = 63;
+            this.label185.Text = "CMD_WRCHG";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.txtStratLivcrgCapacityVer);
+            this.panel4.Controls.Add(this.txtStratLivcrgDschgVer);
+            this.panel4.Controls.Add(this.txtStratLivcrgChgVer);
+            this.panel4.Controls.Add(this.txtStratLivcrgSetCapacity);
+            this.panel4.Controls.Add(this.label178);
+            this.panel4.Controls.Add(this.txtStratLivcrgSetDschg);
+            this.panel4.Controls.Add(this.label183);
+            this.panel4.Controls.Add(this.txtStratLivcrgSetChg);
+            this.panel4.Controls.Add(this.label184);
+            this.panel4.Location = new System.Drawing.Point(1338, 453);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(198, 205);
+            this.panel4.TabIndex = 62;
+            // 
+            // txtStratLivcrgCapacityVer
+            // 
+            this.txtStratLivcrgCapacityVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.txtStratLivcrgCapacityVer.Location = new System.Drawing.Point(102, 155);
+            this.txtStratLivcrgCapacityVer.Name = "txtStratLivcrgCapacityVer";
+            this.txtStratLivcrgCapacityVer.ReadOnly = true;
+            this.txtStratLivcrgCapacityVer.Size = new System.Drawing.Size(69, 27);
+            this.txtStratLivcrgCapacityVer.TabIndex = 57;
+            this.txtStratLivcrgCapacityVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratLivcrgDschgVer
+            // 
+            this.txtStratLivcrgDschgVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgDschgVer.Location = new System.Drawing.Point(102, 93);
+            this.txtStratLivcrgDschgVer.Name = "txtStratLivcrgDschgVer";
+            this.txtStratLivcrgDschgVer.ReadOnly = true;
+            this.txtStratLivcrgDschgVer.Size = new System.Drawing.Size(67, 24);
+            this.txtStratLivcrgDschgVer.TabIndex = 56;
+            this.txtStratLivcrgDschgVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratLivcrgChgVer
+            // 
+            this.txtStratLivcrgChgVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgChgVer.Location = new System.Drawing.Point(100, 36);
+            this.txtStratLivcrgChgVer.Name = "txtStratLivcrgChgVer";
+            this.txtStratLivcrgChgVer.ReadOnly = true;
+            this.txtStratLivcrgChgVer.Size = new System.Drawing.Size(67, 24);
+            this.txtStratLivcrgChgVer.TabIndex = 55;
+            this.txtStratLivcrgChgVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtStratLivcrgSetCapacity
+            // 
+            this.txtStratLivcrgSetCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratLivcrgSetCapacity.Location = new System.Drawing.Point(27, 155);
+            this.txtStratLivcrgSetCapacity.Name = "txtStratLivcrgSetCapacity";
+            this.txtStratLivcrgSetCapacity.Size = new System.Drawing.Size(69, 27);
+            this.txtStratLivcrgSetCapacity.TabIndex = 54;
+            this.txtStratLivcrgSetCapacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label178
+            // 
+            this.label178.AutoSize = true;
+            this.label178.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label178.Location = new System.Drawing.Point(24, 134);
+            this.label178.Name = "label178";
+            this.label178.Size = new System.Drawing.Size(91, 17);
+            this.label178.TabIndex = 53;
+            this.label178.Text = "Batt Capacity";
+            // 
+            // txtStratLivcrgSetDschg
+            // 
+            this.txtStratLivcrgSetDschg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgSetDschg.Location = new System.Drawing.Point(27, 93);
+            this.txtStratLivcrgSetDschg.Name = "txtStratLivcrgSetDschg";
+            this.txtStratLivcrgSetDschg.Size = new System.Drawing.Size(69, 24);
+            this.txtStratLivcrgSetDschg.TabIndex = 44;
+            this.txtStratLivcrgSetDschg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label183
+            // 
+            this.label183.AutoSize = true;
+            this.label183.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label183.Location = new System.Drawing.Point(24, 73);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(45, 17);
+            this.label183.TabIndex = 43;
+            this.label183.Text = "Dscrg";
+            // 
+            // txtStratLivcrgSetChg
+            // 
+            this.txtStratLivcrgSetChg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgSetChg.Location = new System.Drawing.Point(27, 36);
+            this.txtStratLivcrgSetChg.Name = "txtStratLivcrgSetChg";
+            this.txtStratLivcrgSetChg.Size = new System.Drawing.Size(67, 24);
+            this.txtStratLivcrgSetChg.TabIndex = 42;
+            this.txtStratLivcrgSetChg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label184
+            // 
+            this.label184.AutoSize = true;
+            this.label184.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label184.Location = new System.Drawing.Point(24, 16);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(30, 17);
+            this.label184.TabIndex = 41;
+            this.label184.Text = "Crg";
+            // 
+            // label166
+            // 
+            this.label166.AutoSize = true;
+            this.label166.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label166.Location = new System.Drawing.Point(1007, 430);
+            this.label166.Name = "label166";
+            this.label166.Size = new System.Drawing.Size(96, 17);
+            this.label166.TabIndex = 61;
+            this.label166.Text = "CMD_RDCHG";
+            // 
+            // pnlStratContatoriCarica
+            // 
+            this.pnlStratContatoriCarica.BackColor = System.Drawing.Color.White;
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgCapNominale);
+            this.pnlStratContatoriCarica.Controls.Add(this.label165);
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgCapResidua);
+            this.pnlStratContatoriCarica.Controls.Add(this.label164);
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgDiscrgTot);
+            this.pnlStratContatoriCarica.Controls.Add(this.label162);
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgCrgTot);
+            this.pnlStratContatoriCarica.Controls.Add(this.label163);
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgDiscrg);
+            this.pnlStratContatoriCarica.Controls.Add(this.label160);
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgCrg);
+            this.pnlStratContatoriCarica.Controls.Add(this.label161);
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgNeg);
+            this.pnlStratContatoriCarica.Controls.Add(this.label159);
+            this.pnlStratContatoriCarica.Controls.Add(this.txtStratLivcrgPos);
+            this.pnlStratContatoriCarica.Controls.Add(this.label158);
+            this.pnlStratContatoriCarica.Location = new System.Drawing.Point(1010, 453);
+            this.pnlStratContatoriCarica.Name = "pnlStratContatoriCarica";
+            this.pnlStratContatoriCarica.Size = new System.Drawing.Size(289, 205);
+            this.pnlStratContatoriCarica.TabIndex = 60;
+            // 
+            // txtStratLivcrgCapNominale
+            // 
+            this.txtStratLivcrgCapNominale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratLivcrgCapNominale.Location = new System.Drawing.Point(162, 154);
+            this.txtStratLivcrgCapNominale.Name = "txtStratLivcrgCapNominale";
+            this.txtStratLivcrgCapNominale.ReadOnly = true;
+            this.txtStratLivcrgCapNominale.Size = new System.Drawing.Size(103, 27);
+            this.txtStratLivcrgCapNominale.TabIndex = 56;
+            this.txtStratLivcrgCapNominale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label165
+            // 
+            this.label165.AutoSize = true;
+            this.label165.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label165.Location = new System.Drawing.Point(159, 134);
+            this.label165.Name = "label165";
+            this.label165.Size = new System.Drawing.Size(117, 17);
+            this.label165.TabIndex = 55;
+            this.label165.Text = "Nominal Capacity";
+            // 
+            // txtStratLivcrgCapResidua
+            // 
+            this.txtStratLivcrgCapResidua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtStratLivcrgCapResidua.Location = new System.Drawing.Point(27, 154);
+            this.txtStratLivcrgCapResidua.Name = "txtStratLivcrgCapResidua";
+            this.txtStratLivcrgCapResidua.ReadOnly = true;
+            this.txtStratLivcrgCapResidua.Size = new System.Drawing.Size(103, 27);
+            this.txtStratLivcrgCapResidua.TabIndex = 54;
+            this.txtStratLivcrgCapResidua.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label164
+            // 
+            this.label164.AutoSize = true;
+            this.label164.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label164.Location = new System.Drawing.Point(24, 134);
+            this.label164.Name = "label164";
+            this.label164.Size = new System.Drawing.Size(91, 17);
+            this.label164.TabIndex = 53;
+            this.label164.Text = "Batt Capacity";
+            // 
+            // txtStratLivcrgDiscrgTot
+            // 
+            this.txtStratLivcrgDiscrgTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgDiscrgTot.Location = new System.Drawing.Point(187, 93);
+            this.txtStratLivcrgDiscrgTot.Name = "txtStratLivcrgDiscrgTot";
+            this.txtStratLivcrgDiscrgTot.ReadOnly = true;
+            this.txtStratLivcrgDiscrgTot.Size = new System.Drawing.Size(74, 24);
+            this.txtStratLivcrgDiscrgTot.TabIndex = 52;
+            this.txtStratLivcrgDiscrgTot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label162
+            // 
+            this.label162.AutoSize = true;
+            this.label162.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label162.Location = new System.Drawing.Point(184, 73);
+            this.label162.Name = "label162";
+            this.label162.Size = new System.Drawing.Size(70, 17);
+            this.label162.TabIndex = 51;
+            this.label162.Text = "Tot Dscrg";
+            // 
+            // txtStratLivcrgCrgTot
+            // 
+            this.txtStratLivcrgCrgTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgCrgTot.Location = new System.Drawing.Point(187, 36);
+            this.txtStratLivcrgCrgTot.Name = "txtStratLivcrgCrgTot";
+            this.txtStratLivcrgCrgTot.ReadOnly = true;
+            this.txtStratLivcrgCrgTot.Size = new System.Drawing.Size(74, 24);
+            this.txtStratLivcrgCrgTot.TabIndex = 50;
+            this.txtStratLivcrgCrgTot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label163
+            // 
+            this.label163.AutoSize = true;
+            this.label163.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label163.Location = new System.Drawing.Point(184, 16);
+            this.label163.Name = "label163";
+            this.label163.Size = new System.Drawing.Size(55, 17);
+            this.label163.TabIndex = 49;
+            this.label163.Text = "Crg Tot";
+            // 
+            // txtStratLivcrgDiscrg
+            // 
+            this.txtStratLivcrgDiscrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgDiscrg.Location = new System.Drawing.Point(107, 93);
+            this.txtStratLivcrgDiscrg.Name = "txtStratLivcrgDiscrg";
+            this.txtStratLivcrgDiscrg.ReadOnly = true;
+            this.txtStratLivcrgDiscrg.Size = new System.Drawing.Size(74, 24);
+            this.txtStratLivcrgDiscrg.TabIndex = 48;
+            this.txtStratLivcrgDiscrg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label160
+            // 
+            this.label160.AutoSize = true;
+            this.label160.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label160.Location = new System.Drawing.Point(104, 73);
+            this.label160.Name = "label160";
+            this.label160.Size = new System.Drawing.Size(45, 17);
+            this.label160.TabIndex = 47;
+            this.label160.Text = "Dscrg";
+            // 
+            // txtStratLivcrgCrg
+            // 
+            this.txtStratLivcrgCrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgCrg.Location = new System.Drawing.Point(107, 36);
+            this.txtStratLivcrgCrg.Name = "txtStratLivcrgCrg";
+            this.txtStratLivcrgCrg.ReadOnly = true;
+            this.txtStratLivcrgCrg.Size = new System.Drawing.Size(74, 24);
+            this.txtStratLivcrgCrg.TabIndex = 46;
+            this.txtStratLivcrgCrg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label161
+            // 
+            this.label161.AutoSize = true;
+            this.label161.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label161.Location = new System.Drawing.Point(104, 16);
+            this.label161.Name = "label161";
+            this.label161.Size = new System.Drawing.Size(30, 17);
+            this.label161.TabIndex = 45;
+            this.label161.Text = "Crg";
+            // 
+            // txtStratLivcrgNeg
+            // 
+            this.txtStratLivcrgNeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgNeg.Location = new System.Drawing.Point(27, 93);
+            this.txtStratLivcrgNeg.Name = "txtStratLivcrgNeg";
+            this.txtStratLivcrgNeg.ReadOnly = true;
+            this.txtStratLivcrgNeg.Size = new System.Drawing.Size(74, 24);
+            this.txtStratLivcrgNeg.TabIndex = 44;
+            this.txtStratLivcrgNeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label159
+            // 
+            this.label159.AutoSize = true;
+            this.label159.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label159.Location = new System.Drawing.Point(24, 73);
+            this.label159.Name = "label159";
+            this.label159.Size = new System.Drawing.Size(34, 17);
+            this.label159.TabIndex = 43;
+            this.label159.Text = "Neg";
+            // 
+            // txtStratLivcrgPos
+            // 
+            this.txtStratLivcrgPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratLivcrgPos.Location = new System.Drawing.Point(27, 36);
+            this.txtStratLivcrgPos.Name = "txtStratLivcrgPos";
+            this.txtStratLivcrgPos.ReadOnly = true;
+            this.txtStratLivcrgPos.Size = new System.Drawing.Size(74, 24);
+            this.txtStratLivcrgPos.TabIndex = 42;
+            this.txtStratLivcrgPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label158
+            // 
+            this.label158.AutoSize = true;
+            this.label158.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label158.Location = new System.Drawing.Point(24, 16);
+            this.label158.Name = "label158";
+            this.label158.Size = new System.Drawing.Size(32, 17);
+            this.label158.TabIndex = 41;
+            this.label158.Text = "Pos";
+            // 
+            // label167
+            // 
+            this.label167.AutoSize = true;
+            this.label167.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label167.Location = new System.Drawing.Point(735, 433);
+            this.label167.Name = "label167";
+            this.label167.Size = new System.Drawing.Size(76, 17);
+            this.label167.TabIndex = 59;
+            this.label167.Text = "CMD_QRY";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.txtStratQryTrepr);
+            this.panel3.Controls.Add(this.label175);
+            this.panel3.Controls.Add(this.txtStratQryTalm);
+            this.panel3.Controls.Add(this.label174);
+            this.panel3.Controls.Add(this.txtStratQryTatt);
+            this.panel3.Controls.Add(this.label173);
+            this.panel3.Controls.Add(this.txtStratQryTensGas);
+            this.panel3.Controls.Add(this.label172);
+            this.panel3.Controls.Add(this.txtStratQryCapN);
+            this.panel3.Controls.Add(this.label171);
+            this.panel3.Controls.Add(this.txtStratQryTensN);
+            this.panel3.Controls.Add(this.label170);
+            this.panel3.Controls.Add(this.txtStratQryActSeup);
+            this.panel3.Controls.Add(this.label169);
+            this.panel3.Controls.Add(this.txtStratQryVerLib);
+            this.panel3.Controls.Add(this.label168);
+            this.panel3.Location = new System.Drawing.Point(738, 453);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(238, 205);
+            this.panel3.TabIndex = 58;
+            // 
+            // txtStratQryTrepr
+            // 
+            this.txtStratQryTrepr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryTrepr.Location = new System.Drawing.Point(156, 154);
+            this.txtStratQryTrepr.Name = "txtStratQryTrepr";
+            this.txtStratQryTrepr.ReadOnly = true;
+            this.txtStratQryTrepr.Size = new System.Drawing.Size(64, 24);
+            this.txtStratQryTrepr.TabIndex = 58;
+            this.txtStratQryTrepr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label175
+            // 
+            this.label175.AutoSize = true;
+            this.label175.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label175.Location = new System.Drawing.Point(158, 134);
+            this.label175.Name = "label175";
+            this.label175.Size = new System.Drawing.Size(42, 17);
+            this.label175.TabIndex = 57;
+            this.label175.Text = "T ripr";
+            // 
+            // txtStratQryTalm
+            // 
+            this.txtStratQryTalm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryTalm.Location = new System.Drawing.Point(86, 154);
+            this.txtStratQryTalm.Name = "txtStratQryTalm";
+            this.txtStratQryTalm.ReadOnly = true;
+            this.txtStratQryTalm.Size = new System.Drawing.Size(64, 24);
+            this.txtStratQryTalm.TabIndex = 56;
+            this.txtStratQryTalm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label174
+            // 
+            this.label174.AutoSize = true;
+            this.label174.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label174.Location = new System.Drawing.Point(83, 134);
+            this.label174.Name = "label174";
+            this.label174.Size = new System.Drawing.Size(67, 17);
+            this.label174.TabIndex = 55;
+            this.label174.Text = "T allarme";
+            // 
+            // txtStratQryTatt
+            // 
+            this.txtStratQryTatt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryTatt.Location = new System.Drawing.Point(16, 154);
+            this.txtStratQryTatt.Name = "txtStratQryTatt";
+            this.txtStratQryTatt.ReadOnly = true;
+            this.txtStratQryTatt.Size = new System.Drawing.Size(64, 24);
+            this.txtStratQryTatt.TabIndex = 54;
+            this.txtStratQryTatt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label173
+            // 
+            this.label173.AutoSize = true;
+            this.label173.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label173.Location = new System.Drawing.Point(13, 134);
+            this.label173.Name = "label173";
+            this.label173.Size = new System.Drawing.Size(57, 17);
+            this.label173.TabIndex = 53;
+            this.label173.Text = "T att.ne";
+            // 
+            // txtStratQryTensGas
+            // 
+            this.txtStratQryTensGas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryTensGas.Location = new System.Drawing.Point(156, 93);
+            this.txtStratQryTensGas.Name = "txtStratQryTensGas";
+            this.txtStratQryTensGas.ReadOnly = true;
+            this.txtStratQryTensGas.Size = new System.Drawing.Size(64, 24);
+            this.txtStratQryTensGas.TabIndex = 52;
+            this.txtStratQryTensGas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label172
+            // 
+            this.label172.AutoSize = true;
+            this.label172.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label172.Location = new System.Drawing.Point(158, 73);
+            this.label172.Name = "label172";
+            this.label172.Size = new System.Drawing.Size(47, 17);
+            this.label172.TabIndex = 51;
+            this.label172.Text = "V Gas";
+            // 
+            // txtStratQryCapN
+            // 
+            this.txtStratQryCapN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryCapN.Location = new System.Drawing.Point(86, 93);
+            this.txtStratQryCapN.Name = "txtStratQryCapN";
+            this.txtStratQryCapN.ReadOnly = true;
+            this.txtStratQryCapN.Size = new System.Drawing.Size(64, 24);
+            this.txtStratQryCapN.TabIndex = 50;
+            this.txtStratQryCapN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label171
+            // 
+            this.label171.AutoSize = true;
+            this.label171.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label171.Location = new System.Drawing.Point(83, 73);
+            this.label171.Name = "label171";
+            this.label171.Size = new System.Drawing.Size(58, 17);
+            this.label171.TabIndex = 49;
+            this.label171.Text = "Ah Nom";
+            // 
+            // txtStratQryTensN
+            // 
+            this.txtStratQryTensN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryTensN.Location = new System.Drawing.Point(16, 93);
+            this.txtStratQryTensN.Name = "txtStratQryTensN";
+            this.txtStratQryTensN.ReadOnly = true;
+            this.txtStratQryTensN.Size = new System.Drawing.Size(64, 24);
+            this.txtStratQryTensN.TabIndex = 48;
+            this.txtStratQryTensN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label170
+            // 
+            this.label170.AutoSize = true;
+            this.label170.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label170.Location = new System.Drawing.Point(20, 73);
+            this.label170.Name = "label170";
+            this.label170.Size = new System.Drawing.Size(50, 17);
+            this.label170.TabIndex = 47;
+            this.label170.Text = "V Nom";
+            // 
+            // txtStratQryActSeup
+            // 
+            this.txtStratQryActSeup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryActSeup.Location = new System.Drawing.Point(156, 36);
+            this.txtStratQryActSeup.Name = "txtStratQryActSeup";
+            this.txtStratQryActSeup.ReadOnly = true;
+            this.txtStratQryActSeup.Size = new System.Drawing.Size(64, 24);
+            this.txtStratQryActSeup.TabIndex = 46;
+            this.txtStratQryActSeup.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label169
+            // 
+            this.label169.AutoSize = true;
+            this.label169.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label169.Location = new System.Drawing.Point(153, 16);
+            this.label169.Name = "label169";
+            this.label169.Size = new System.Drawing.Size(45, 17);
+            this.label169.TabIndex = 45;
+            this.label169.Text = "Setup";
+            // 
+            // txtStratQryVerLib
+            // 
+            this.txtStratQryVerLib.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStratQryVerLib.Location = new System.Drawing.Point(16, 36);
+            this.txtStratQryVerLib.Name = "txtStratQryVerLib";
+            this.txtStratQryVerLib.ReadOnly = true;
+            this.txtStratQryVerLib.Size = new System.Drawing.Size(134, 24);
+            this.txtStratQryVerLib.TabIndex = 44;
+            this.txtStratQryVerLib.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label168
+            // 
+            this.label168.AutoSize = true;
+            this.label168.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label168.Location = new System.Drawing.Point(13, 16);
+            this.label168.Name = "label168";
+            this.label168.Size = new System.Drawing.Size(91, 17);
+            this.label168.TabIndex = 43;
+            this.label168.Text = "Versione Lib.";
             // 
             // lblSig60DataReceuved
             // 
             this.lblSig60DataReceuved.AutoSize = true;
-            this.lblSig60DataReceuved.Location = new System.Drawing.Point(16, 347);
+            this.lblSig60DataReceuved.Location = new System.Drawing.Point(16, 433);
             this.lblSig60DataReceuved.Name = "lblSig60DataReceuved";
             this.lblSig60DataReceuved.Size = new System.Drawing.Size(101, 17);
             this.lblSig60DataReceuved.TabIndex = 56;
@@ -3447,7 +4723,7 @@
             // lblSig60DataSent
             // 
             this.lblSig60DataSent.AutoSize = true;
-            this.lblSig60DataSent.Location = new System.Drawing.Point(16, 147);
+            this.lblSig60DataSent.Location = new System.Drawing.Point(16, 189);
             this.lblSig60DataSent.Name = "lblSig60DataSent";
             this.lblSig60DataSent.Size = new System.Drawing.Size(71, 17);
             this.lblSig60DataSent.TabIndex = 55;
@@ -3455,34 +4731,101 @@
             // 
             // txtStratDataGridRx
             // 
-            this.txtStratDataGridRx.Font = new System.Drawing.Font("Courier New", 12F);
-            this.txtStratDataGridRx.Location = new System.Drawing.Point(19, 367);
+            this.txtStratDataGridRx.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStratDataGridRx.Location = new System.Drawing.Point(19, 453);
             this.txtStratDataGridRx.Multiline = true;
             this.txtStratDataGridRx.Name = "txtStratDataGridRx";
             this.txtStratDataGridRx.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtStratDataGridRx.Size = new System.Drawing.Size(1157, 163);
+            this.txtStratDataGridRx.Size = new System.Drawing.Size(670, 214);
             this.txtStratDataGridRx.TabIndex = 54;
             // 
             // grbStratComandiTest
             // 
             this.grbStratComandiTest.BackColor = System.Drawing.Color.White;
+            this.grbStratComandiTest.Controls.Add(this.btnStratCallSIS);
+            this.grbStratComandiTest.Controls.Add(this.btnStratCallAv);
+            this.grbStratComandiTest.Controls.Add(this.btnStratSetDischarge);
+            this.grbStratComandiTest.Controls.Add(this.btnStratCallIS);
+            this.grbStratComandiTest.Controls.Add(this.btnStratSetCharge);
             this.grbStratComandiTest.Controls.Add(this.btnStratQuery);
             this.grbStratComandiTest.Controls.Add(this.btnStratTestERR);
             this.grbStratComandiTest.Controls.Add(this.btnStratTest02);
             this.grbStratComandiTest.Controls.Add(this.btnStratTest01);
             this.grbStratComandiTest.Location = new System.Drawing.Point(19, 18);
             this.grbStratComandiTest.Name = "grbStratComandiTest";
-            this.grbStratComandiTest.Size = new System.Drawing.Size(1157, 109);
+            this.grbStratComandiTest.Size = new System.Drawing.Size(883, 126);
             this.grbStratComandiTest.TabIndex = 53;
             this.grbStratComandiTest.TabStop = false;
             this.grbStratComandiTest.Text = "Comandi Test";
             // 
+            // btnStratCallSIS
+            // 
+            this.btnStratCallSIS.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratCallSIS.Location = new System.Drawing.Point(431, 74);
+            this.btnStratCallSIS.Name = "btnStratCallSIS";
+            this.btnStratCallSIS.Size = new System.Drawing.Size(121, 35);
+            this.btnStratCallSIS.TabIndex = 63;
+            this.btnStratCallSIS.Text = "CMD_SIS";
+            this.btnStratCallSIS.UseVisualStyleBackColor = true;
+            // 
+            // btnStratCallAv
+            // 
+            this.btnStratCallAv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratCallAv.Location = new System.Drawing.Point(558, 30);
+            this.btnStratCallAv.Name = "btnStratCallAv";
+            this.btnStratCallAv.Size = new System.Drawing.Size(121, 35);
+            this.btnStratCallAv.TabIndex = 62;
+            this.btnStratCallAv.Text = "CMD_AV";
+            this.btnStratCallAv.UseVisualStyleBackColor = true;
+            // 
+            // btnStratSetDischarge
+            // 
+            this.btnStratSetDischarge.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratSetDischarge.Location = new System.Drawing.Point(273, 30);
+            this.btnStratSetDischarge.Name = "btnStratSetDischarge";
+            this.btnStratSetDischarge.Size = new System.Drawing.Size(121, 35);
+            this.btnStratSetDischarge.TabIndex = 61;
+            this.btnStratSetDischarge.Text = "CMD_RDCHG";
+            this.btnStratSetDischarge.UseVisualStyleBackColor = true;
+            // 
+            // btnStratCallIS
+            // 
+            this.btnStratCallIS.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratCallIS.Location = new System.Drawing.Point(431, 30);
+            this.btnStratCallIS.Name = "btnStratCallIS";
+            this.btnStratCallIS.Size = new System.Drawing.Size(121, 35);
+            this.btnStratCallIS.TabIndex = 60;
+            this.btnStratCallIS.Text = "CMD_IS";
+            this.btnStratCallIS.UseVisualStyleBackColor = true;
+            // 
+            // btnStratSetCharge
+            // 
+            this.btnStratSetCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratSetCharge.Location = new System.Drawing.Point(273, 74);
+            this.btnStratSetCharge.Name = "btnStratSetCharge";
+            this.btnStratSetCharge.Size = new System.Drawing.Size(121, 35);
+            this.btnStratSetCharge.TabIndex = 59;
+            this.btnStratSetCharge.Text = "CMD_WRCHG";
+            this.btnStratSetCharge.UseVisualStyleBackColor = true;
+            this.btnStratSetCharge.Click += new System.EventHandler(this.btnStratSetCharge_Click);
+            // 
+            // btnStratQuery
+            // 
+            this.btnStratQuery.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStratQuery.Location = new System.Drawing.Point(146, 29);
+            this.btnStratQuery.Name = "btnStratQuery";
+            this.btnStratQuery.Size = new System.Drawing.Size(121, 35);
+            this.btnStratQuery.TabIndex = 54;
+            this.btnStratQuery.Text = "CMD_QRY";
+            this.btnStratQuery.UseVisualStyleBackColor = true;
+            this.btnStratQuery.Click += new System.EventHandler(this.btnStratQuery_Click);
+            // 
             // btnStratTestERR
             // 
             this.btnStratTestERR.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnStratTestERR.Location = new System.Drawing.Point(979, 32);
+            this.btnStratTestERR.Location = new System.Drawing.Point(719, 29);
             this.btnStratTestERR.Name = "btnStratTestERR";
-            this.btnStratTestERR.Size = new System.Drawing.Size(149, 51);
+            this.btnStratTestERR.Size = new System.Drawing.Size(121, 36);
             this.btnStratTestERR.TabIndex = 52;
             this.btnStratTestERR.Text = "CMD_TSTERR";
             this.btnStratTestERR.UseVisualStyleBackColor = true;
@@ -3491,9 +4834,9 @@
             // btnStratTest02
             // 
             this.btnStratTest02.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnStratTest02.Location = new System.Drawing.Point(174, 32);
+            this.btnStratTest02.Location = new System.Drawing.Point(19, 74);
             this.btnStratTest02.Name = "btnStratTest02";
-            this.btnStratTest02.Size = new System.Drawing.Size(149, 51);
+            this.btnStratTest02.Size = new System.Drawing.Size(94, 35);
             this.btnStratTest02.TabIndex = 51;
             this.btnStratTest02.Text = "CMD_TST2";
             this.btnStratTest02.UseVisualStyleBackColor = true;
@@ -3502,9 +4845,9 @@
             // btnStratTest01
             // 
             this.btnStratTest01.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnStratTest01.Location = new System.Drawing.Point(19, 32);
+            this.btnStratTest01.Location = new System.Drawing.Point(19, 30);
             this.btnStratTest01.Name = "btnStratTest01";
-            this.btnStratTest01.Size = new System.Drawing.Size(149, 51);
+            this.btnStratTest01.Size = new System.Drawing.Size(94, 35);
             this.btnStratTest01.TabIndex = 50;
             this.btnStratTest01.Text = "CMD_TST1";
             this.btnStratTest01.UseVisualStyleBackColor = true;
@@ -3512,17 +4855,17 @@
             // 
             // txtStratDataGridTx
             // 
-            this.txtStratDataGridTx.Font = new System.Drawing.Font("Courier New", 12F);
-            this.txtStratDataGridTx.Location = new System.Drawing.Point(19, 167);
+            this.txtStratDataGridTx.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStratDataGridTx.Location = new System.Drawing.Point(19, 209);
             this.txtStratDataGridTx.Multiline = true;
             this.txtStratDataGridTx.Name = "txtStratDataGridTx";
             this.txtStratDataGridTx.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtStratDataGridTx.Size = new System.Drawing.Size(1157, 163);
+            this.txtStratDataGridTx.Size = new System.Drawing.Size(670, 200);
             this.txtStratDataGridTx.TabIndex = 52;
             // 
             // btnApparatoOk
             // 
-            this.btnApparatoOk.Location = new System.Drawing.Point(1127, 622);
+            this.btnApparatoOk.Location = new System.Drawing.Point(1483, 767);
             this.btnApparatoOk.Name = "btnApparatoOk";
             this.btnApparatoOk.Size = new System.Drawing.Size(118, 32);
             this.btnApparatoOk.TabIndex = 1;
@@ -3532,7 +4875,7 @@
             // 
             // btnSalvaCaricabatteria
             // 
-            this.btnSalvaCaricabatteria.Location = new System.Drawing.Point(988, 622);
+            this.btnSalvaCaricabatteria.Location = new System.Drawing.Point(1347, 767);
             this.btnSalvaCaricabatteria.Name = "btnSalvaCaricabatteria";
             this.btnSalvaCaricabatteria.Size = new System.Drawing.Size(118, 32);
             this.btnSalvaCaricabatteria.TabIndex = 3;
@@ -3544,22 +4887,11 @@
             this.tmrLetturaAutomatica.Interval = 30000;
             this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
             // 
-            // btnStratQuery
-            // 
-            this.btnStratQuery.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnStratQuery.Location = new System.Drawing.Point(409, 32);
-            this.btnStratQuery.Name = "btnStratQuery";
-            this.btnStratQuery.Size = new System.Drawing.Size(121, 51);
-            this.btnStratQuery.TabIndex = 54;
-            this.btnStratQuery.Text = "CMD_QRY";
-            this.btnStratQuery.UseVisualStyleBackColor = true;
-            this.btnStratQuery.Click += new System.EventHandler(this.btnStratQuery_Click);
-            // 
             // frmCaricabatterie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1575, 737);
+            this.ClientSize = new System.Drawing.Size(1640, 828);
             this.Controls.Add(this.btnSalvaCaricabatteria);
             this.Controls.Add(this.btnApparatoOk);
             this.Controls.Add(this.tabCaricaBatterie);
@@ -3640,6 +4972,20 @@
             this.grbVariabiliImmediate.PerformLayout();
             this.tbpProxySig60.ResumeLayout(false);
             this.tbpProxySig60.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.grbStratStepCorrente.ResumeLayout(false);
+            this.grbStratStepCorrente.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.pnlStratContatoriCarica.ResumeLayout(false);
+            this.pnlStratContatoriCarica.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.grbStratComandiTest.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -3928,5 +5274,117 @@
         private System.Windows.Forms.TextBox txtStratDataGridTx;
         private System.Windows.Forms.Button btnStratTestERR;
         private System.Windows.Forms.Button btnStratQuery;
+        private System.Windows.Forms.Button btnStratCallSIS;
+        private System.Windows.Forms.Button btnStratCallAv;
+        private System.Windows.Forms.Button btnStratSetDischarge;
+        private System.Windows.Forms.Button btnStratCallIS;
+        private System.Windows.Forms.Button btnStratSetCharge;
+        private System.Windows.Forms.Label label167;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtStratQryTrepr;
+        private System.Windows.Forms.Label label175;
+        private System.Windows.Forms.TextBox txtStratQryTalm;
+        private System.Windows.Forms.Label label174;
+        private System.Windows.Forms.TextBox txtStratQryTatt;
+        private System.Windows.Forms.Label label173;
+        private System.Windows.Forms.TextBox txtStratQryTensGas;
+        private System.Windows.Forms.Label label172;
+        private System.Windows.Forms.TextBox txtStratQryCapN;
+        private System.Windows.Forms.Label label171;
+        private System.Windows.Forms.TextBox txtStratQryTensN;
+        private System.Windows.Forms.Label label170;
+        private System.Windows.Forms.TextBox txtStratQryActSeup;
+        private System.Windows.Forms.Label label169;
+        private System.Windows.Forms.TextBox txtStratQryVerLib;
+        private System.Windows.Forms.Label label168;
+        private System.Windows.Forms.Label label166;
+        private System.Windows.Forms.Panel pnlStratContatoriCarica;
+        private System.Windows.Forms.TextBox txtStratLivcrgCapNominale;
+        private System.Windows.Forms.Label label165;
+        private System.Windows.Forms.TextBox txtStratLivcrgCapResidua;
+        private System.Windows.Forms.Label label164;
+        private System.Windows.Forms.TextBox txtStratLivcrgDiscrgTot;
+        private System.Windows.Forms.Label label162;
+        private System.Windows.Forms.TextBox txtStratLivcrgCrgTot;
+        private System.Windows.Forms.Label label163;
+        private System.Windows.Forms.TextBox txtStratLivcrgDiscrg;
+        private System.Windows.Forms.Label label160;
+        private System.Windows.Forms.TextBox txtStratLivcrgCrg;
+        private System.Windows.Forms.Label label161;
+        private System.Windows.Forms.TextBox txtStratLivcrgNeg;
+        private System.Windows.Forms.Label label159;
+        private System.Windows.Forms.TextBox txtStratLivcrgPos;
+        private System.Windows.Forms.Label label158;
+        private System.Windows.Forms.Label label185;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox txtStratLivcrgCapacityVer;
+        private System.Windows.Forms.TextBox txtStratLivcrgDschgVer;
+        private System.Windows.Forms.TextBox txtStratLivcrgChgVer;
+        private System.Windows.Forms.TextBox txtStratLivcrgSetCapacity;
+        private System.Windows.Forms.Label label178;
+        private System.Windows.Forms.TextBox txtStratLivcrgSetDschg;
+        private System.Windows.Forms.Label label183;
+        private System.Windows.Forms.TextBox txtStratLivcrgSetChg;
+        private System.Windows.Forms.Label label184;
+        private System.Windows.Forms.Label label189;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox txtStratAVStop;
+        private System.Windows.Forms.Label label201;
+        private System.Windows.Forms.Label label179;
+        private System.Windows.Forms.Label label177;
+        private System.Windows.Forms.TextBox txtStratAVTempIst;
+        private System.Windows.Forms.TextBox txtStratAVCorrenteIst;
+        private System.Windows.Forms.TextBox txtStratAVPrevisti;
+        private System.Windows.Forms.Label label180;
+        private System.Windows.Forms.TextBox txtStratAVMancanti;
+        private System.Windows.Forms.Label label181;
+        private System.Windows.Forms.TextBox txtStratAVTensioneIst;
+        private System.Windows.Forms.Label label182;
+        private System.Windows.Forms.TextBox txtStratAVMinutiResidui;
+        private System.Windows.Forms.Label label187;
+        private System.Windows.Forms.TextBox txtStratAVErogati;
+        private System.Windows.Forms.Label label188;
+        private System.Windows.Forms.Label label200;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.GroupBox grbStratStepCorrente;
+        private System.Windows.Forms.Label label206;
+        private System.Windows.Forms.TextBox txtStratCurrStepTipo;
+        private System.Windows.Forms.Label label205;
+        private System.Windows.Forms.TextBox txtStratCurrStepRipetizioni;
+        private System.Windows.Forms.Label label203;
+        private System.Windows.Forms.TextBox txtStratCurrStepTon;
+        private System.Windows.Forms.TextBox txtStratCurrStepToff;
+        private System.Windows.Forms.Label label204;
+        private System.Windows.Forms.Label label194;
+        private System.Windows.Forms.TextBox txtStratCurrStepAh;
+        private System.Windows.Forms.Label label191;
+        private System.Windows.Forms.TextBox txtStratCurrStepVmax;
+        private System.Windows.Forms.TextBox txtStratCurrStepVmin;
+        private System.Windows.Forms.Label label192;
+        private System.Windows.Forms.Label label190;
+        private System.Windows.Forms.TextBox txtStratCurrStepImax;
+        private System.Windows.Forms.TextBox txtStratCurrStepImin;
+        private System.Windows.Forms.Label label195;
+        private System.Windows.Forms.Label label202;
+        private System.Windows.Forms.ComboBox cmbStratIsSelStep;
+        private System.Windows.Forms.Label label199;
+        private System.Windows.Forms.TextBox txtStratIsNumSpire;
+        private System.Windows.Forms.Label label198;
+        private System.Windows.Forms.TextBox txtStratIsStep;
+        private System.Windows.Forms.TextBox txtStratIsEsito;
+        private System.Windows.Forms.Label label197;
+        private System.Windows.Forms.TextBox txtStratIsMinuti;
+        private System.Windows.Forms.TextBox txtStratIsAhRich;
+        private System.Windows.Forms.Label label193;
+        private System.Windows.Forms.Label label196;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox chkStratLLRabb;
+        private System.Windows.Forms.TextBox txtStratLLAmax;
+        private System.Windows.Forms.Label label155;
+        private System.Windows.Forms.TextBox txtStratLLVmax;
+        private System.Windows.Forms.Label label154;
+        private System.Windows.Forms.TextBox txtStratLLVmin;
+        private System.Windows.Forms.Label label153;
+        private System.Windows.Forms.Label label176;
     }
 }

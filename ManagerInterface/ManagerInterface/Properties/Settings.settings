@@ -29,5 +29,11 @@
     <Setting Name="LogLevel" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="PortaDisplay" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM21</Value>
+    </Setting>
+    <Setting Name="BaudRateDisplay" Type="System.String" Scope="User">
+      <Value Profile="(Default)">115200</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -7685,8 +7685,9 @@ namespace PannelloCharger
 
         private void btnStratCallIS_Click(object sender, EventArgs e)
         {
-            LanciaComandoStrategia();
+            LanciaComandoStrategia(0x02);
         }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -7723,6 +7724,11 @@ namespace PannelloCharger
                 CancellaPassoCorrente();
             }
 
+        }
+
+        private void btnStratCallSIS_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategia(0x05);
         }
     }
 }

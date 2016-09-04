@@ -687,216 +687,7 @@ namespace PannelloCharger
         }
 
 
-  
-        public void ChiamataProxySig60(int Comando)
-        {
-            bool _esito;
-            byte _comando = 0xF7;
-            byte[] _tempBuffer = new byte[220];
-            int _cmdlen = 220;
-            try
-            {
 
-                switch(Comando)
-                {
-                    case 1:
-                        _cmdlen = 220;
-                        _comando = 0x71;
-                        break;
-                    case 2:
-                        _cmdlen = 04;
-                        _comando = 0x72;
-                        break;
-                    case 3:
-                        _cmdlen = 04;
-                        _comando = 0x7F;
-                        break;
-                    case 4:
-                        _cmdlen = 02;
-                        _comando = 0xA0;
-                        break;
-                    default:
-                        _cmdlen = 220;
-                        break;
-
-                }
-
-                _tempBuffer = new byte[_cmdlen];
-
-                txtStratDataGridTx.Text = "";
-                txtStratDataGridRx.Text = "";
-                for (int _i = 0; _i < _cmdlen; _i++ )
-                {
-                    _tempBuffer[_i] = 0;
-                }
-
-                _tempBuffer[0] = 0x80;
-
-
-                _tempBuffer[1] = _comando;
-                if (_cmdlen > 3)
-                {
-                    _tempBuffer[2] = 0x20;
-                    _tempBuffer[3] = 0xFF;
-                }
-
-                for (int _i = 4; _i < _cmdlen; _i++)
-                {
-                    _tempBuffer[_i] = 0x00; // (byte)(_i-4);
-                }
-
-
-                if (true)
-                {
-
-
-                    string _risposta = "";
-                    int _colonne = 0;
-                    for (int _i = 0; _i < _tempBuffer.Length; _i++)
-                    {
-                        _risposta += _tempBuffer[_i].ToString("X2") + " ";
-                        _colonne += 1;
-                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
-                        if (_colonne > 23)
-                        {
-                            _risposta += "\r\n";
-                            _colonne = 0;
-
-                        }
-                    }
-                    txtStratDataGridTx.Text = _risposta;
-
-                }
-
-                Application.DoEvents();
-
-                _esito = _cb.ProxySBSig60(_tempBuffer);
-                if (_esito == true)
-                {
-
-
-                    string _risposta = "";
-                    int _colonne = 0;
-                    for (int _i = 0; _i < _cb.DatiRisposta.Length; _i++)
-                    {
-                        _risposta += _cb.DatiRisposta[_i].ToString("X2") + " ";
-                        _colonne += 1;
-                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
-                        if (_colonne > 23)
-                        {
-                            _risposta += "\r\n";
-                            _colonne = 0;
-
-                        }
-                    }
-                    txtStratDataGridRx.Text = _risposta;
-
-                }
-
-            }
-            catch
-            {
-            }
-        }
-
-
-        public void ChiamataProxySig60_02()
-        {
-            bool _esito;
-            int Comando = 4;
-            byte[] _tempBuffer = new byte[220];
-            int _cmdlen = 220;
-            try
-            {
-
-                switch (Comando)
-                {
-                    case 1:
-                        _cmdlen = 220;
-                        break;
-                    case 2:
-                        _cmdlen = 20;
-
-                        break;
-                    default:
-                        _cmdlen = 220;
-                        break;
-
-                }
-
-                _tempBuffer = new byte[_cmdlen];
-
-                txtStratDataGridTx.Text = "";
-                txtStratDataGridRx.Text = "";
-                for (int _i = 0; _i < 220; _i++)
-                {
-                    _tempBuffer[_i] = 0;
-                }
-
-                _tempBuffer[0] = 0x80;
-                _tempBuffer[1] = 0x72;
-                _tempBuffer[2] = 0x20;
-                _tempBuffer[3] = 0xFF;
-
-                /*
-                for (int _i = 4; _i < _cmdlen; _i++)
-                {
-                    _tempBuffer[_i] = (byte)(_i - 4);
-                }
-                */
-
-                if (true)
-                {
-
-
-                    string _risposta = "";
-                    int _colonne = 0;
-                    for (int _i = 0; _i < _tempBuffer.Length; _i++)
-                    {
-                        _risposta += _tempBuffer[_i].ToString("X2") + " ";
-                        _colonne += 1;
-                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
-                        if (_colonne > 23)
-                        {
-                            _risposta += "\r\n";
-                            _colonne = 0;
-
-                        }
-                    }
-                    txtStratDataGridTx.Text = _risposta;
-
-                }
-                Application.DoEvents();
-
-
-                _esito = _cb.ProxySBSig60(_tempBuffer);
-                if (_esito == true)
-                {
-
-
-                    string _risposta = "";
-                    int _colonne = 0;
-                    for (int _i = 0; _i < _cb.DatiRisposta.Length; _i++)
-                    {
-                        _risposta += _cb.DatiRisposta[_i].ToString("X2") + " ";
-                        _colonne += 1;
-                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
-                        if (_colonne > 23)
-                        {
-                            _risposta += "\r\n";
-                            _colonne = 0;
-
-                        }
-                    }
-                    txtStratDataGridRx.Text = _risposta;
-
-                }
-
-            }
-            catch
-            {
-            }
-        }
         private void chkParLetturaAuto_CheckedChanged(object sender, EventArgs e)
         {
             if (chkParLetturaAuto.Checked == true)
@@ -1525,8 +1316,25 @@ namespace PannelloCharger
         private void btnStratQuery_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            ChiamataProxySig60(4);
+
+            ChiamataProxySig60CSInfo(0xA0);
+
             this.Cursor = Cursors.Default;
+        }
+
+        private void label205_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStratCurrStepRipetizioni_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStratSetCharge_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

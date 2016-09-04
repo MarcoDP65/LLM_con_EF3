@@ -1587,234 +1587,6 @@
   <data name="&gt;&gt;label200.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label206.Name" xml:space="preserve">
-    <value>label206</value>
-  </data>
-  <data name="&gt;&gt;label206.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label206.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label206.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.Name" xml:space="preserve">
-    <value>txtStratCurrStepTipo</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label205.Name" xml:space="preserve">
-    <value>label205</value>
-  </data>
-  <data name="&gt;&gt;label205.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label205.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label205.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Name" xml:space="preserve">
-    <value>txtStratCurrStepRipetizioni</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label203.Name" xml:space="preserve">
-    <value>label203</value>
-  </data>
-  <data name="&gt;&gt;label203.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label203.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label203.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.Name" xml:space="preserve">
-    <value>txtStratCurrStepTon</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.Name" xml:space="preserve">
-    <value>txtStratCurrStepToff</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label204.Name" xml:space="preserve">
-    <value>label204</value>
-  </data>
-  <data name="&gt;&gt;label204.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label204.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label204.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label194.Name" xml:space="preserve">
-    <value>label194</value>
-  </data>
-  <data name="&gt;&gt;label194.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label194.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label194.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.Name" xml:space="preserve">
-    <value>txtStratCurrStepAh</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label191.Name" xml:space="preserve">
-    <value>label191</value>
-  </data>
-  <data name="&gt;&gt;label191.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label191.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label191.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.Name" xml:space="preserve">
-    <value>txtStratCurrStepVmax</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.Name" xml:space="preserve">
-    <value>txtStratCurrStepVmin</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;label192.Name" xml:space="preserve">
-    <value>label192</value>
-  </data>
-  <data name="&gt;&gt;label192.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label192.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label192.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;label190.Name" xml:space="preserve">
-    <value>label190</value>
-  </data>
-  <data name="&gt;&gt;label190.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label190.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label190.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.Name" xml:space="preserve">
-    <value>txtStratCurrStepImax</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.Name" xml:space="preserve">
-    <value>txtStratCurrStepImin</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;label195.Name" xml:space="preserve">
-    <value>label195</value>
-  </data>
-  <data name="&gt;&gt;label195.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label195.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label195.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="grbStratStepCorrente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 148</value>
-  </data>
-  <data name="grbStratStepCorrente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 269</value>
-  </data>
-  <data name="grbStratStepCorrente.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="grbStratStepCorrente.Text" xml:space="preserve">
-    <value>Step Carica</value>
-  </data>
   <data name="&gt;&gt;grbStratStepCorrente.Name" xml:space="preserve">
     <value>grbStratStepCorrente</value>
   </data>
@@ -1826,24 +1598,6 @@
   </data>
   <data name="&gt;&gt;grbStratStepCorrente.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="label202.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label202.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label202.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 76</value>
-  </data>
-  <data name="label202.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 17</value>
-  </data>
-  <data name="label202.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="label202.Text" xml:space="preserve">
-    <value>Step</value>
   </data>
   <data name="&gt;&gt;label202.Name" xml:space="preserve">
     <value>label202</value>
@@ -1857,18 +1611,6 @@
   <data name="&gt;&gt;label202.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="cmbStratIsSelStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="cmbStratIsSelStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 96</value>
-  </data>
-  <data name="cmbStratIsSelStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 28</value>
-  </data>
-  <data name="cmbStratIsSelStep.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
   <data name="&gt;&gt;cmbStratIsSelStep.Name" xml:space="preserve">
     <value>cmbStratIsSelStep</value>
   </data>
@@ -1880,24 +1622,6 @@
   </data>
   <data name="&gt;&gt;cmbStratIsSelStep.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="label199.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label199.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label199.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 13</value>
-  </data>
-  <data name="label199.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 17</value>
-  </data>
-  <data name="label199.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <data name="label199.Text" xml:space="preserve">
-    <value>Spire</value>
   </data>
   <data name="&gt;&gt;label199.Name" xml:space="preserve">
     <value>label199</value>
@@ -1911,24 +1635,6 @@
   <data name="&gt;&gt;label199.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="txtStratIsNumSpire.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratIsNumSpire.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 33</value>
-  </data>
-  <data name="txtStratIsNumSpire.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 27</value>
-  </data>
-  <data name="txtStratIsNumSpire.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="txtStratIsNumSpire.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtStratIsNumSpire.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="&gt;&gt;txtStratIsNumSpire.Name" xml:space="preserve">
     <value>txtStratIsNumSpire</value>
   </data>
@@ -1940,24 +1646,6 @@
   </data>
   <data name="&gt;&gt;txtStratIsNumSpire.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="label198.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label198.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label198.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 13</value>
-  </data>
-  <data name="label198.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 17</value>
-  </data>
-  <data name="label198.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="label198.Text" xml:space="preserve">
-    <value>Step</value>
   </data>
   <data name="&gt;&gt;label198.Name" xml:space="preserve">
     <value>label198</value>
@@ -1971,24 +1659,6 @@
   <data name="&gt;&gt;label198.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="txtStratIsStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratIsStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 33</value>
-  </data>
-  <data name="txtStratIsStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 27</value>
-  </data>
-  <data name="txtStratIsStep.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
-  </data>
-  <data name="txtStratIsStep.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtStratIsStep.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="&gt;&gt;txtStratIsStep.Name" xml:space="preserve">
     <value>txtStratIsStep</value>
   </data>
@@ -2000,24 +1670,6 @@
   </data>
   <data name="&gt;&gt;txtStratIsStep.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="txtStratIsEsito.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratIsEsito.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 33</value>
-  </data>
-  <data name="txtStratIsEsito.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 27</value>
-  </data>
-  <data name="txtStratIsEsito.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="txtStratIsEsito.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtStratIsEsito.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
   </data>
   <data name="&gt;&gt;txtStratIsEsito.Name" xml:space="preserve">
     <value>txtStratIsEsito</value>
@@ -2031,24 +1683,6 @@
   <data name="&gt;&gt;txtStratIsEsito.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="label197.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label197.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label197.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 13</value>
-  </data>
-  <data name="label197.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
-  </data>
-  <data name="label197.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="label197.Text" xml:space="preserve">
-    <value>Tempo Max</value>
-  </data>
   <data name="&gt;&gt;label197.Name" xml:space="preserve">
     <value>label197</value>
   </data>
@@ -2060,24 +1694,6 @@
   </data>
   <data name="&gt;&gt;label197.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="txtStratIsMinuti.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratIsMinuti.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 33</value>
-  </data>
-  <data name="txtStratIsMinuti.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 27</value>
-  </data>
-  <data name="txtStratIsMinuti.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="txtStratIsMinuti.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtStratIsMinuti.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
   </data>
   <data name="&gt;&gt;txtStratIsMinuti.Name" xml:space="preserve">
     <value>txtStratIsMinuti</value>
@@ -2091,24 +1707,6 @@
   <data name="&gt;&gt;txtStratIsMinuti.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="txtStratIsAhRich.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratIsAhRich.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 33</value>
-  </data>
-  <data name="txtStratIsAhRich.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 27</value>
-  </data>
-  <data name="txtStratIsAhRich.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="txtStratIsAhRich.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtStratIsAhRich.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="&gt;&gt;txtStratIsAhRich.Name" xml:space="preserve">
     <value>txtStratIsAhRich</value>
   </data>
@@ -2121,24 +1719,6 @@
   <data name="&gt;&gt;txtStratIsAhRich.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="label193.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label193.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label193.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 13</value>
-  </data>
-  <data name="label193.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
-  <data name="label193.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="label193.Text" xml:space="preserve">
-    <value>Ah Richiesti</value>
-  </data>
   <data name="&gt;&gt;label193.Name" xml:space="preserve">
     <value>label193</value>
   </data>
@@ -2150,24 +1730,6 @@
   </data>
   <data name="&gt;&gt;label193.ZOrder" xml:space="preserve">
     <value>11</value>
-  </data>
-  <data name="label196.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label196.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label196.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="label196.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
-  </data>
-  <data name="label196.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="label196.Text" xml:space="preserve">
-    <value>Esito</value>
   </data>
   <data name="&gt;&gt;label196.Name" xml:space="preserve">
     <value>label196</value>
@@ -2614,13 +2176,13 @@
     <value>842, 251</value>
   </data>
   <data name="label176.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 17</value>
+    <value>16, 17</value>
   </data>
   <data name="label176.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
   </data>
   <data name="label176.Text" xml:space="preserve">
-    <value>CMD_IS</value>
+    <value>  </value>
   </data>
   <data name="&gt;&gt;label176.Name" xml:space="preserve">
     <value>label176</value>
@@ -3166,7 +2728,7 @@
     <value>3</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1013, 17</value>
+    <value>1158, 15</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 205</value>
@@ -3189,6 +2751,21 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="chkStratLLRabb.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkStratLLRabb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 160</value>
+  </data>
+  <data name="chkStratLLRabb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 21</value>
+  </data>
+  <data name="chkStratLLRabb.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="chkStratLLRabb.Text" xml:space="preserve">
+    <value>Rabboccatore Presente</value>
+  </data>
   <data name="&gt;&gt;chkStratLLRabb.Name" xml:space="preserve">
     <value>chkStratLLRabb</value>
   </data>
@@ -3200,6 +2777,24 @@
   </data>
   <data name="&gt;&gt;chkStratLLRabb.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="txtStratLLAmax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratLLAmax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 116</value>
+  </data>
+  <data name="txtStratLLAmax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 27</value>
+  </data>
+  <data name="txtStratLLAmax.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="txtStratLLAmax.Text" xml:space="preserve">
+    <value>200</value>
+  </data>
+  <data name="txtStratLLAmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="&gt;&gt;txtStratLLAmax.Name" xml:space="preserve">
     <value>txtStratLLAmax</value>
@@ -3213,6 +2808,24 @@
   <data name="&gt;&gt;txtStratLLAmax.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="label155.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label155.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label155.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 96</value>
+  </data>
+  <data name="label155.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="label155.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="label155.Text" xml:space="preserve">
+    <value>Amax</value>
+  </data>
   <data name="&gt;&gt;label155.Name" xml:space="preserve">
     <value>label155</value>
   </data>
@@ -3224,6 +2837,24 @@
   </data>
   <data name="&gt;&gt;label155.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="txtStratLLVmax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratLLVmax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 46</value>
+  </data>
+  <data name="txtStratLLVmax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 27</value>
+  </data>
+  <data name="txtStratLLVmax.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="txtStratLLVmax.Text" xml:space="preserve">
+    <value>92</value>
+  </data>
+  <data name="txtStratLLVmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="&gt;&gt;txtStratLLVmax.Name" xml:space="preserve">
     <value>txtStratLLVmax</value>
@@ -3237,6 +2868,24 @@
   <data name="&gt;&gt;txtStratLLVmax.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label154.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label154.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label154.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 26</value>
+  </data>
+  <data name="label154.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="label154.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="label154.Text" xml:space="preserve">
+    <value>Vmax</value>
+  </data>
   <data name="&gt;&gt;label154.Name" xml:space="preserve">
     <value>label154</value>
   </data>
@@ -3249,6 +2898,24 @@
   <data name="&gt;&gt;label154.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="txtStratLLVmin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratLLVmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 46</value>
+  </data>
+  <data name="txtStratLLVmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 27</value>
+  </data>
+  <data name="txtStratLLVmin.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="txtStratLLVmin.Text" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="txtStratLLVmin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
   <data name="&gt;&gt;txtStratLLVmin.Name" xml:space="preserve">
     <value>txtStratLLVmin</value>
   </data>
@@ -3260,6 +2927,24 @@
   </data>
   <data name="&gt;&gt;txtStratLLVmin.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="label153.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label153.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label153.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 26</value>
+  </data>
+  <data name="label153.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 17</value>
+  </data>
+  <data name="label153.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="label153.Text" xml:space="preserve">
+    <value>Vmin</value>
   </data>
   <data name="&gt;&gt;label153.Name" xml:space="preserve">
     <value>label153</value>
@@ -3294,6 +2979,18 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="&gt;&gt;btnStratCallSIS.Name" xml:space="preserve">
+    <value>btnStratCallSIS</value>
+  </data>
+  <data name="&gt;&gt;btnStratCallSIS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStratCallSIS.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;btnStratCallSIS.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;btnStratCallAv.Name" xml:space="preserve">
     <value>btnStratCallAv</value>
   </data>
@@ -3304,7 +3001,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallAv.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;btnStratSetDischarge.Name" xml:space="preserve">
     <value>btnStratSetDischarge</value>
@@ -3316,7 +3013,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetDischarge.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;btnStratCallIS.Name" xml:space="preserve">
     <value>btnStratCallIS</value>
@@ -3328,7 +3025,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallIS.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;btnStratSetCharge.Name" xml:space="preserve">
     <value>btnStratSetCharge</value>
@@ -3340,7 +3037,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetCharge.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;btnStratQuery.Name" xml:space="preserve">
     <value>btnStratQuery</value>
@@ -3352,7 +3049,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratQuery.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;btnStratTestErr.Name" xml:space="preserve">
     <value>btnStratTestErr</value>
@@ -3364,7 +3061,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTestErr.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;btnStratTest02.Name" xml:space="preserve">
     <value>btnStratTest02</value>
@@ -3376,7 +3073,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest02.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;btnStratTest01.Name" xml:space="preserve">
     <value>btnStratTest01</value>
@@ -3388,13 +3085,13 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest01.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="grbStratComandiTest.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 17</value>
   </data>
   <data name="grbStratComandiTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>943, 203</value>
+    <value>1118, 203</value>
   </data>
   <data name="grbStratComandiTest.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -26745,6 +26442,1113 @@
   <data name="&gt;&gt;lblCalStepCorrente.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;label206.Name" xml:space="preserve">
+    <value>label206</value>
+  </data>
+  <data name="&gt;&gt;label206.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label206.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label206.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.Name" xml:space="preserve">
+    <value>txtStratCurrStepTipo</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label205.Name" xml:space="preserve">
+    <value>label205</value>
+  </data>
+  <data name="&gt;&gt;label205.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label205.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label205.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Name" xml:space="preserve">
+    <value>txtStratCurrStepRipetizioni</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label203.Name" xml:space="preserve">
+    <value>label203</value>
+  </data>
+  <data name="&gt;&gt;label203.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label203.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label203.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.Name" xml:space="preserve">
+    <value>txtStratCurrStepTon</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.Name" xml:space="preserve">
+    <value>txtStratCurrStepToff</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label204.Name" xml:space="preserve">
+    <value>label204</value>
+  </data>
+  <data name="&gt;&gt;label204.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label204.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label204.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label194.Name" xml:space="preserve">
+    <value>label194</value>
+  </data>
+  <data name="&gt;&gt;label194.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label194.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label194.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.Name" xml:space="preserve">
+    <value>txtStratCurrStepAh</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label191.Name" xml:space="preserve">
+    <value>label191</value>
+  </data>
+  <data name="&gt;&gt;label191.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label191.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label191.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.Name" xml:space="preserve">
+    <value>txtStratCurrStepVmax</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.Name" xml:space="preserve">
+    <value>txtStratCurrStepVmin</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label192.Name" xml:space="preserve">
+    <value>label192</value>
+  </data>
+  <data name="&gt;&gt;label192.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label192.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label192.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label190.Name" xml:space="preserve">
+    <value>label190</value>
+  </data>
+  <data name="&gt;&gt;label190.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label190.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label190.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.Name" xml:space="preserve">
+    <value>txtStratCurrStepImax</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.Name" xml:space="preserve">
+    <value>txtStratCurrStepImin</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label195.Name" xml:space="preserve">
+    <value>label195</value>
+  </data>
+  <data name="&gt;&gt;label195.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label195.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label195.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="grbStratStepCorrente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 148</value>
+  </data>
+  <data name="grbStratStepCorrente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 269</value>
+  </data>
+  <data name="grbStratStepCorrente.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="grbStratStepCorrente.Text" xml:space="preserve">
+    <value>Step Carica</value>
+  </data>
+  <data name="&gt;&gt;grbStratStepCorrente.Name" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;grbStratStepCorrente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbStratStepCorrente.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;grbStratStepCorrente.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label206.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label206.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label206.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 31</value>
+  </data>
+  <data name="label206.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="label206.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="label206.Text" xml:space="preserve">
+    <value>Tipo Passo</value>
+  </data>
+  <data name="&gt;&gt;label206.Name" xml:space="preserve">
+    <value>label206</value>
+  </data>
+  <data name="&gt;&gt;label206.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label206.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label206.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratCurrStepTipo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepTipo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 51</value>
+  </data>
+  <data name="txtStratCurrStepTipo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 24</value>
+  </data>
+  <data name="txtStratCurrStepTipo.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="txtStratCurrStepTipo.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.Name" xml:space="preserve">
+    <value>txtStratCurrStepTipo</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTipo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label205.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label205.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label205.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 201</value>
+  </data>
+  <data name="label205.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="label205.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="label205.Text" xml:space="preserve">
+    <value>Ripetizioni</value>
+  </data>
+  <data name="&gt;&gt;label205.Name" xml:space="preserve">
+    <value>label205</value>
+  </data>
+  <data name="&gt;&gt;label205.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label205.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label205.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtStratCurrStepRipetizioni.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepRipetizioni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 221</value>
+  </data>
+  <data name="txtStratCurrStepRipetizioni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepRipetizioni.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="txtStratCurrStepRipetizioni.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Name" xml:space="preserve">
+    <value>txtStratCurrStepRipetizioni</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepRipetizioni.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label203.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label203.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label203.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 201</value>
+  </data>
+  <data name="label203.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="label203.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="label203.Text" xml:space="preserve">
+    <value>T On</value>
+  </data>
+  <data name="&gt;&gt;label203.Name" xml:space="preserve">
+    <value>label203</value>
+  </data>
+  <data name="&gt;&gt;label203.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label203.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label203.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtStratCurrStepTon.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepTon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 221</value>
+  </data>
+  <data name="txtStratCurrStepTon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepTon.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="txtStratCurrStepTon.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.Name" xml:space="preserve">
+    <value>txtStratCurrStepTon</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepTon.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtStratCurrStepToff.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepToff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 221</value>
+  </data>
+  <data name="txtStratCurrStepToff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepToff.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="txtStratCurrStepToff.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.Name" xml:space="preserve">
+    <value>txtStratCurrStepToff</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepToff.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label204.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label204.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label204.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 201</value>
+  </data>
+  <data name="label204.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="label204.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="label204.Text" xml:space="preserve">
+    <value>T Off</value>
+  </data>
+  <data name="&gt;&gt;label204.Name" xml:space="preserve">
+    <value>label204</value>
+  </data>
+  <data name="&gt;&gt;label204.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label204.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label204.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label194.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label194.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label194.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 88</value>
+  </data>
+  <data name="label194.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
+  <data name="label194.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="label194.Text" xml:space="preserve">
+    <value>Ah Step</value>
+  </data>
+  <data name="&gt;&gt;label194.Name" xml:space="preserve">
+    <value>label194</value>
+  </data>
+  <data name="&gt;&gt;label194.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label194.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label194.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="txtStratCurrStepAh.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepAh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 108</value>
+  </data>
+  <data name="txtStratCurrStepAh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepAh.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="txtStratCurrStepAh.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.Name" xml:space="preserve">
+    <value>txtStratCurrStepAh</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepAh.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label191.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label191.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label191.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 144</value>
+  </data>
+  <data name="label191.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 17</value>
+  </data>
+  <data name="label191.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="label191.Text" xml:space="preserve">
+    <value>V Max</value>
+  </data>
+  <data name="&gt;&gt;label191.Name" xml:space="preserve">
+    <value>label191</value>
+  </data>
+  <data name="&gt;&gt;label191.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label191.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label191.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="txtStratCurrStepVmax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepVmax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 164</value>
+  </data>
+  <data name="txtStratCurrStepVmax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepVmax.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="txtStratCurrStepVmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.Name" xml:space="preserve">
+    <value>txtStratCurrStepVmax</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmax.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtStratCurrStepVmin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepVmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 164</value>
+  </data>
+  <data name="txtStratCurrStepVmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepVmin.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="txtStratCurrStepVmin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.Name" xml:space="preserve">
+    <value>txtStratCurrStepVmin</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepVmin.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label192.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label192.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label192.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 144</value>
+  </data>
+  <data name="label192.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 17</value>
+  </data>
+  <data name="label192.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="label192.Text" xml:space="preserve">
+    <value>V Min</value>
+  </data>
+  <data name="&gt;&gt;label192.Name" xml:space="preserve">
+    <value>label192</value>
+  </data>
+  <data name="&gt;&gt;label192.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label192.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label192.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label190.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label190.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label190.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 88</value>
+  </data>
+  <data name="label190.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="label190.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="label190.Text" xml:space="preserve">
+    <value>I Max</value>
+  </data>
+  <data name="&gt;&gt;label190.Name" xml:space="preserve">
+    <value>label190</value>
+  </data>
+  <data name="&gt;&gt;label190.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label190.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label190.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="txtStratCurrStepImax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepImax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 108</value>
+  </data>
+  <data name="txtStratCurrStepImax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepImax.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="txtStratCurrStepImax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.Name" xml:space="preserve">
+    <value>txtStratCurrStepImax</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImax.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="txtStratCurrStepImin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratCurrStepImin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 108</value>
+  </data>
+  <data name="txtStratCurrStepImin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="txtStratCurrStepImin.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="txtStratCurrStepImin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.Name" xml:space="preserve">
+    <value>txtStratCurrStepImin</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtStratCurrStepImin.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="label195.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label195.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label195.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 88</value>
+  </data>
+  <data name="label195.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="label195.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label195.Text" xml:space="preserve">
+    <value>I Min</value>
+  </data>
+  <data name="&gt;&gt;label195.Name" xml:space="preserve">
+    <value>label195</value>
+  </data>
+  <data name="&gt;&gt;label195.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label195.Parent" xml:space="preserve">
+    <value>grbStratStepCorrente</value>
+  </data>
+  <data name="&gt;&gt;label195.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="label202.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label202.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label202.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 76</value>
+  </data>
+  <data name="label202.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="label202.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="label202.Text" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="&gt;&gt;label202.Name" xml:space="preserve">
+    <value>label202</value>
+  </data>
+  <data name="&gt;&gt;label202.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label202.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label202.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmbStratIsSelStep.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="cmbStratIsSelStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 96</value>
+  </data>
+  <data name="cmbStratIsSelStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 28</value>
+  </data>
+  <data name="cmbStratIsSelStep.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="&gt;&gt;cmbStratIsSelStep.Name" xml:space="preserve">
+    <value>cmbStratIsSelStep</value>
+  </data>
+  <data name="&gt;&gt;cmbStratIsSelStep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbStratIsSelStep.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;cmbStratIsSelStep.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label199.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label199.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label199.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 13</value>
+  </data>
+  <data name="label199.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="label199.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="label199.Text" xml:space="preserve">
+    <value>Spire</value>
+  </data>
+  <data name="&gt;&gt;label199.Name" xml:space="preserve">
+    <value>label199</value>
+  </data>
+  <data name="&gt;&gt;label199.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label199.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label199.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtStratIsNumSpire.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratIsNumSpire.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 33</value>
+  </data>
+  <data name="txtStratIsNumSpire.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 27</value>
+  </data>
+  <data name="txtStratIsNumSpire.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="txtStratIsNumSpire.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratIsNumSpire.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsNumSpire.Name" xml:space="preserve">
+    <value>txtStratIsNumSpire</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsNumSpire.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsNumSpire.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsNumSpire.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label198.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label198.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label198.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 13</value>
+  </data>
+  <data name="label198.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="label198.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="label198.Text" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="&gt;&gt;label198.Name" xml:space="preserve">
+    <value>label198</value>
+  </data>
+  <data name="&gt;&gt;label198.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label198.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label198.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtStratIsStep.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratIsStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 33</value>
+  </data>
+  <data name="txtStratIsStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 27</value>
+  </data>
+  <data name="txtStratIsStep.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="txtStratIsStep.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratIsStep.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsStep.Name" xml:space="preserve">
+    <value>txtStratIsStep</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsStep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsStep.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsStep.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtStratIsEsito.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratIsEsito.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 33</value>
+  </data>
+  <data name="txtStratIsEsito.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 27</value>
+  </data>
+  <data name="txtStratIsEsito.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="txtStratIsEsito.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratIsEsito.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsEsito.Name" xml:space="preserve">
+    <value>txtStratIsEsito</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsEsito.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsEsito.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsEsito.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label197.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label197.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label197.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 13</value>
+  </data>
+  <data name="label197.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="label197.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="label197.Text" xml:space="preserve">
+    <value>Tempo Max</value>
+  </data>
+  <data name="&gt;&gt;label197.Name" xml:space="preserve">
+    <value>label197</value>
+  </data>
+  <data name="&gt;&gt;label197.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label197.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label197.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="txtStratIsMinuti.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratIsMinuti.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 33</value>
+  </data>
+  <data name="txtStratIsMinuti.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 27</value>
+  </data>
+  <data name="txtStratIsMinuti.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="txtStratIsMinuti.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratIsMinuti.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsMinuti.Name" xml:space="preserve">
+    <value>txtStratIsMinuti</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsMinuti.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsMinuti.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsMinuti.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtStratIsAhRich.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratIsAhRich.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 33</value>
+  </data>
+  <data name="txtStratIsAhRich.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 27</value>
+  </data>
+  <data name="txtStratIsAhRich.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="txtStratIsAhRich.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratIsAhRich.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsAhRich.Name" xml:space="preserve">
+    <value>txtStratIsAhRich</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsAhRich.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsAhRich.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;txtStratIsAhRich.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label193.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label193.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label193.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 13</value>
+  </data>
+  <data name="label193.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="label193.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="label193.Text" xml:space="preserve">
+    <value>Ah Richiesti</value>
+  </data>
+  <data name="&gt;&gt;label193.Name" xml:space="preserve">
+    <value>label193</value>
+  </data>
+  <data name="&gt;&gt;label193.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label193.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label193.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label196.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label196.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label196.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="label196.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 17</value>
+  </data>
+  <data name="label196.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="label196.Text" xml:space="preserve">
+    <value>Esito</value>
+  </data>
+  <data name="&gt;&gt;label196.Name" xml:space="preserve">
+    <value>label196</value>
+  </data>
+  <data name="&gt;&gt;label196.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label196.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label196.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <data name="txtStratAVStop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -28479,218 +29283,38 @@
   <data name="&gt;&gt;label156.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="chkStratLLRabb.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="btnStratCallSIS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="chkStratLLRabb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 160</value>
+  <data name="btnStratCallSIS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>551, 89</value>
   </data>
-  <data name="chkStratLLRabb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 21</value>
+  <data name="btnStratCallSIS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 51</value>
   </data>
-  <data name="chkStratLLRabb.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="btnStratCallSIS.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
   </data>
-  <data name="chkStratLLRabb.Text" xml:space="preserve">
-    <value>Rabboccatore Presente</value>
+  <data name="btnStratCallSIS.Text" xml:space="preserve">
+    <value>CMD_SIS</value>
   </data>
-  <data name="&gt;&gt;chkStratLLRabb.Name" xml:space="preserve">
-    <value>chkStratLLRabb</value>
+  <data name="&gt;&gt;btnStratCallSIS.Name" xml:space="preserve">
+    <value>btnStratCallSIS</value>
   </data>
-  <data name="&gt;&gt;chkStratLLRabb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnStratCallSIS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;chkStratLLRabb.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;btnStratCallSIS.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
   </data>
-  <data name="&gt;&gt;chkStratLLRabb.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnStratCallSIS.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="txtStratLLAmax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratLLAmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 116</value>
-  </data>
-  <data name="txtStratLLAmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
-  </data>
-  <data name="txtStratLLAmax.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="txtStratLLAmax.Text" xml:space="preserve">
-    <value>200</value>
-  </data>
-  <data name="txtStratLLAmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLAmax.Name" xml:space="preserve">
-    <value>txtStratLLAmax</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLAmax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLAmax.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLAmax.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label155.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label155.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label155.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 96</value>
-  </data>
-  <data name="label155.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 17</value>
-  </data>
-  <data name="label155.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
-  <data name="label155.Text" xml:space="preserve">
-    <value>Amax</value>
-  </data>
-  <data name="&gt;&gt;label155.Name" xml:space="preserve">
-    <value>label155</value>
-  </data>
-  <data name="&gt;&gt;label155.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label155.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label155.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtStratLLVmax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratLLVmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 46</value>
-  </data>
-  <data name="txtStratLLVmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
-  </data>
-  <data name="txtStratLLVmax.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="txtStratLLVmax.Text" xml:space="preserve">
-    <value>92</value>
-  </data>
-  <data name="txtStratLLVmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmax.Name" xml:space="preserve">
-    <value>txtStratLLVmax</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmax.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmax.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label154.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label154.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label154.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 26</value>
-  </data>
-  <data name="label154.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 17</value>
-  </data>
-  <data name="label154.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="label154.Text" xml:space="preserve">
-    <value>Vmax</value>
-  </data>
-  <data name="&gt;&gt;label154.Name" xml:space="preserve">
-    <value>label154</value>
-  </data>
-  <data name="&gt;&gt;label154.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label154.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label154.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtStratLLVmin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtStratLLVmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 46</value>
-  </data>
-  <data name="txtStratLLVmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
-  </data>
-  <data name="txtStratLLVmin.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="txtStratLLVmin.Text" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="txtStratLLVmin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmin.Name" xml:space="preserve">
-    <value>txtStratLLVmin</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmin.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;txtStratLLVmin.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label153.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label153.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label153.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 26</value>
-  </data>
-  <data name="label153.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
-  </data>
-  <data name="label153.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="label153.Text" xml:space="preserve">
-    <value>Vmin</value>
-  </data>
-  <data name="&gt;&gt;label153.Name" xml:space="preserve">
-    <value>label153</value>
-  </data>
-  <data name="&gt;&gt;label153.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label153.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label153.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="btnStratCallAv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratCallAv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>551, 89</value>
+    <value>695, 89</value>
   </data>
   <data name="btnStratCallAv.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -28711,7 +29335,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallAv.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnStratSetDischarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -28738,7 +29362,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetDischarge.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnStratCallIS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -28765,7 +29389,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallIS.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnStratSetCharge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -28792,7 +29416,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetCharge.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnStratQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -28819,13 +29443,13 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratQuery.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnStratTestErr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratTestErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>697, 32</value>
+    <value>954, 89</value>
   </data>
   <data name="btnStratTestErr.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -28846,7 +29470,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTestErr.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnStratTest02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -28873,7 +29497,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest02.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnStratTest01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -28900,7 +29524,7 @@
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest01.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lvwCicliBatteriaAA.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 158</value>
@@ -28929,519 +29553,6 @@
   <metadata name="sfdImportDati.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>519, 15</value>
   </metadata>
-  <data name="txtStratCurrStepImax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepImax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 108</value>
-  </data>
-  <data name="txtStratCurrStepImax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepImax.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="txtStratCurrStepImax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.Name" xml:space="preserve">
-    <value>txtStratCurrStepImax</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImax.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="txtStratCurrStepImin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepImin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 108</value>
-  </data>
-  <data name="txtStratCurrStepImin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepImin.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="txtStratCurrStepImin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.Name" xml:space="preserve">
-    <value>txtStratCurrStepImin</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepImin.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="label195.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label195.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label195.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 88</value>
-  </data>
-  <data name="label195.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 17</value>
-  </data>
-  <data name="label195.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="label195.Text" xml:space="preserve">
-    <value>I Min</value>
-  </data>
-  <data name="&gt;&gt;label195.Name" xml:space="preserve">
-    <value>label195</value>
-  </data>
-  <data name="&gt;&gt;label195.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label195.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label195.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="label190.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label190.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label190.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 88</value>
-  </data>
-  <data name="label190.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
-  </data>
-  <data name="label190.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="label190.Text" xml:space="preserve">
-    <value>I Max</value>
-  </data>
-  <data name="&gt;&gt;label190.Name" xml:space="preserve">
-    <value>label190</value>
-  </data>
-  <data name="&gt;&gt;label190.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label190.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label190.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label191.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label191.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label191.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 144</value>
-  </data>
-  <data name="label191.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 17</value>
-  </data>
-  <data name="label191.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="label191.Text" xml:space="preserve">
-    <value>V Max</value>
-  </data>
-  <data name="&gt;&gt;label191.Name" xml:space="preserve">
-    <value>label191</value>
-  </data>
-  <data name="&gt;&gt;label191.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label191.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label191.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="txtStratCurrStepVmax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepVmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 164</value>
-  </data>
-  <data name="txtStratCurrStepVmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepVmax.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="txtStratCurrStepVmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.Name" xml:space="preserve">
-    <value>txtStratCurrStepVmax</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmax.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="txtStratCurrStepVmin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepVmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 164</value>
-  </data>
-  <data name="txtStratCurrStepVmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepVmin.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="txtStratCurrStepVmin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.Name" xml:space="preserve">
-    <value>txtStratCurrStepVmin</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepVmin.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="label192.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label192.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label192.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 144</value>
-  </data>
-  <data name="label192.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 17</value>
-  </data>
-  <data name="label192.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="label192.Text" xml:space="preserve">
-    <value>V Min</value>
-  </data>
-  <data name="&gt;&gt;label192.Name" xml:space="preserve">
-    <value>label192</value>
-  </data>
-  <data name="&gt;&gt;label192.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label192.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label192.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="label194.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label194.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label194.Location" type="System.Drawing.Point, System.Drawing">
-    <value>247, 88</value>
-  </data>
-  <data name="label194.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 17</value>
-  </data>
-  <data name="label194.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="label194.Text" xml:space="preserve">
-    <value>Ah Step</value>
-  </data>
-  <data name="&gt;&gt;label194.Name" xml:space="preserve">
-    <value>label194</value>
-  </data>
-  <data name="&gt;&gt;label194.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label194.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label194.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="txtStratCurrStepAh.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepAh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 108</value>
-  </data>
-  <data name="txtStratCurrStepAh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepAh.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
-  </data>
-  <data name="txtStratCurrStepAh.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.Name" xml:space="preserve">
-    <value>txtStratCurrStepAh</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepAh.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label203.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label203.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label203.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 201</value>
-  </data>
-  <data name="label203.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
-  </data>
-  <data name="label203.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="label203.Text" xml:space="preserve">
-    <value>T On</value>
-  </data>
-  <data name="&gt;&gt;label203.Name" xml:space="preserve">
-    <value>label203</value>
-  </data>
-  <data name="&gt;&gt;label203.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label203.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label203.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtStratCurrStepTon.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepTon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 221</value>
-  </data>
-  <data name="txtStratCurrStepTon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepTon.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="txtStratCurrStepTon.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.Name" xml:space="preserve">
-    <value>txtStratCurrStepTon</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTon.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="txtStratCurrStepToff.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepToff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 221</value>
-  </data>
-  <data name="txtStratCurrStepToff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepToff.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <data name="txtStratCurrStepToff.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.Name" xml:space="preserve">
-    <value>txtStratCurrStepToff</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepToff.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label204.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label204.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label204.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 201</value>
-  </data>
-  <data name="label204.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
-  </data>
-  <data name="label204.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="label204.Text" xml:space="preserve">
-    <value>T Off</value>
-  </data>
-  <data name="&gt;&gt;label204.Name" xml:space="preserve">
-    <value>label204</value>
-  </data>
-  <data name="&gt;&gt;label204.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label204.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label204.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label205.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label205.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label205.Location" type="System.Drawing.Point, System.Drawing">
-    <value>247, 201</value>
-  </data>
-  <data name="label205.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
-  </data>
-  <data name="label205.TabIndex" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
-  <data name="label205.Text" xml:space="preserve">
-    <value>Ripetizioni</value>
-  </data>
-  <data name="&gt;&gt;label205.Name" xml:space="preserve">
-    <value>label205</value>
-  </data>
-  <data name="&gt;&gt;label205.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label205.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label205.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtStratCurrStepRipetizioni.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepRipetizioni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 221</value>
-  </data>
-  <data name="txtStratCurrStepRipetizioni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="txtStratCurrStepRipetizioni.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="txtStratCurrStepRipetizioni.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Name" xml:space="preserve">
-    <value>txtStratCurrStepRipetizioni</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepRipetizioni.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtStratCurrStepTipo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtStratCurrStepTipo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 51</value>
-  </data>
-  <data name="txtStratCurrStepTipo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 24</value>
-  </data>
-  <data name="txtStratCurrStepTipo.TabIndex" type="System.Int32, mscorlib">
-    <value>69</value>
-  </data>
-  <data name="txtStratCurrStepTipo.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.Name" xml:space="preserve">
-    <value>txtStratCurrStepTipo</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;txtStratCurrStepTipo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label206.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label206.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label206.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 31</value>
-  </data>
-  <data name="label206.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 17</value>
-  </data>
-  <data name="label206.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="label206.Text" xml:space="preserve">
-    <value>Tipo Passo</value>
-  </data>
-  <data name="&gt;&gt;label206.Name" xml:space="preserve">
-    <value>label206</value>
-  </data>
-  <data name="&gt;&gt;label206.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label206.Parent" xml:space="preserve">
-    <value>grbStratStepCorrente</value>
-  </data>
-  <data name="&gt;&gt;label206.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
