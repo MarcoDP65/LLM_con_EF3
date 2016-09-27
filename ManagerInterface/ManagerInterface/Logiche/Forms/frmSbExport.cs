@@ -157,9 +157,10 @@ namespace PannelloCharger
                 Log.Debug("file generato");
                 // Ora cifro i dati
                 string JsonEncript = StringCipher.Encrypt(JsonData);
-
+                //JsonEncript = JsonData;
                 Log.Debug("file criptato");
-                File.AppendAllText(filePath, JsonEncript);
+                File.WriteAllText(filePath, JsonEncript);
+                File.WriteAllText(filePath+ ".txt", JsonData);
 
                 Log.Debug("file salvato");
 

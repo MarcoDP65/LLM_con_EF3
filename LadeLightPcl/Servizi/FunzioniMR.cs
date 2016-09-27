@@ -18,7 +18,6 @@ namespace Utility
         public enum TemperaturaAttiva : int { TMin = 0, TMax = 1, DifferenzaT = 2 };
     }
 
-
     public class FunzioniMR
     {
 
@@ -1380,7 +1379,7 @@ namespace Utility
         }
 
         /// <summary>
-        /// Crea una stringa con la rappresentazione esadecimale dell'array passato
+        /// Crea una stringa con la rappresentazione esadecimaledell'array passato
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="SplitByte">Se True separa i bytes con uno spazio</param>
@@ -1403,7 +1402,33 @@ namespace Utility
                 return "";
             }
         }
-     
+
+
+        /// <summary>
+        /// Crea una stringa con la rappresentazione esadecimale della coda passata 
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="SplitByte">Se True separa i bytes con uno spazio</param>
+        /// <returns></returns>
+        public static string HexdumpQueue(Queue<byte> buffer, bool SplitByte = false)
+        {
+            try
+            {
+                string _risposta = "";
+
+                for (int _i = 0; _i < buffer.Count; _i++)
+                {
+                    _risposta += buffer.ElementAt(_i).ToString("X2");
+                    if (SplitByte & (_i != (buffer.Count - 1))) _risposta += " ";
+                }
+                return _risposta;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
         /// <summary>
         /// Suddivide il valore passato (Unsugned Short) in 2 byte
         /// </summary>

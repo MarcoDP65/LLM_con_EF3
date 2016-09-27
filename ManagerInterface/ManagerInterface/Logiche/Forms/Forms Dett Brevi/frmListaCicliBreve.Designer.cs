@@ -268,7 +268,7 @@
             this.flvwCicliBrevi.AlternateRowBackColor = System.Drawing.Color.WhiteSmoke;
             this.flvwCicliBrevi.CellEditUseWholeCell = false;
             this.flvwCicliBrevi.FullRowSelect = true;
-            this.flvwCicliBrevi.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwCicliBrevi.SelectedBackColor = System.Drawing.Color.Empty;
             this.flvwCicliBrevi.HighlightForegroundColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwCicliBrevi, "flvwCicliBrevi");
             this.flvwCicliBrevi.Name = "flvwCicliBrevi";

@@ -286,6 +286,8 @@ namespace PannelloCharger
                     _nuovoProg.ModoPianificazione = (byte)cmbProModoPianif.SelectedValue;
                     _nuovoProg.CorrenteMinimaCHG = FunzioniMR.ConvertiUshort(txtProMinChargeCurr.Text, 10,0);
                     _nuovoProg.CorrenteMassimaCHG = FunzioniMR.ConvertiUshort(txtProMaxChargeCurr.Text, 10, 0);
+
+
                     _nuovoProg.Rabboccatore = (byte)cmbRabboccatore.SelectedValue;
                     _nuovoProg.ImpulsiRabboccatore = FunzioniMR.ConvertiByte(txtProImpulsiRabb.Text, 1, 1);
                     _nuovoProg.Biberonaggio = (byte)cmbBiberonaggio.SelectedValue;
@@ -297,11 +299,16 @@ namespace PannelloCharger
                     _nuovoProg.TensioneGas = FunzioniMR.ConvertiUshort(txtProTensioneGas.Text, 100, 240);
                     _nuovoProg.DerivaInferiore = FunzioniMR.ConvertiMSshort(txtProDerivaUnder.Text, 10, 0x8027);
                     _nuovoProg.DerivaSuperiore = FunzioniMR.ConvertiMSshort(txtProDerivaOver.Text, 10, 0x8027);
+                    _nuovoProg.MinCorrenteW = FunzioniMR.ConvertiUshort(txtProMinCurrW.Text, 10, 0);
+                    _nuovoProg.MaxCorrenteW = FunzioniMR.ConvertiUshort(txtProMaxCurrW.Text, 10, 0);
+                    _nuovoProg.MaxCorrenteImp = FunzioniMR.ConvertiUshort(txtProMaxCurrImp.Text, 10, 0);
+                    _nuovoProg.TensioneRaccordo = FunzioniMR.ConvertiUshort(txtProTensioneRaccordo.Text, 100, 245);
+                    _nuovoProg.TensioneFinale = FunzioniMR.ConvertiUshort(txtProTensioneFinale.Text, 100, 265);
 
 
                 }
 
-                _sb.ScriviProgramma( _nuovoProg ,(chkMemProgrammed.Checked == true ));
+    _sb.ScriviProgramma( _nuovoProg ,(chkMemProgrammed.Checked == true ));
 
                 if (_sb.UltimaRisposta != SerialMessage.EsitoRisposta.MessaggioOk)
                 {

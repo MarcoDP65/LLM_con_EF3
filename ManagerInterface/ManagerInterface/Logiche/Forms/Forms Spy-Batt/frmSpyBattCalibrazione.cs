@@ -1192,7 +1192,7 @@ namespace PannelloCharger
             }
         }
 
-        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2, int SecondiAttesa = 5, int MaxAerrore = 5)
+        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2, int SecondiAttesa = 5, int MaxAerrore = 5, int SecondiPasso = 2, float CoeffPasso = 2)
         {
 
 
@@ -1244,7 +1244,9 @@ namespace PannelloCharger
 
 
 
-
+                // _esito = LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax, 20, Spire, MaxAerrore, SecondiPasso, CoeffPasso);
+                //
+                // return false;
 
 
                 txtCalCurr.Text = "";
@@ -1772,7 +1774,7 @@ namespace PannelloCharger
 
 
 
-                _esito = LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax, 20, Spire, MaxAerrore);
+                _esito = LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax, 20, Spire, MaxAerrore,SecondiPasso,CoeffPasso);
 
 
 
@@ -1856,7 +1858,7 @@ namespace PannelloCharger
             }
         }
 
-        private bool LanciaSequenzaVerificaCalibrazione(int CorrenteBase,int CorrenteVerMax , int Passo, int Spire, int MaxErrore )
+        private bool LanciaSequenzaVerificaCalibrazione(int CorrenteBase,int CorrenteVerMax , int Passo, int Spire, int MaxErrore , int Secondi, float FattorePasso )
         {
 
 
@@ -1870,7 +1872,7 @@ namespace PannelloCharger
                 int _passo = Passo;
                 int _spire = Spire;
                 int _stepCount = 0;
-                int _millisecondi = 1000;
+                int _millisecondi = Secondi * 1000;
                 bool _esito;
                 bool _apparatoPronto = false;
 
@@ -1907,7 +1909,7 @@ namespace PannelloCharger
                 flvwCalCorrentiVerifica.Refresh();
                 Application.DoEvents();
 
-                _passo = 5;
+                _passo = (int)( 5 * FattorePasso );
 
                 for (_ciclo = _start; _ciclo <= _stop; _ciclo += _passo)
                 {
@@ -1921,14 +1923,14 @@ namespace PannelloCharger
                     _vac.AspybattDN = 0;
                     _vac.AspybattDP = 0;
                     ValoriTestCorrente.Add(_vac);
-                    if (_ciclo == 50) _passo = 10;
-                    if (_ciclo >= 100) _passo = 20;
+                    if (_ciclo == 50) _passo = (int)(10 * FattorePasso);
+                    if (_ciclo >= 100) _passo = (int)(20 * FattorePasso);
                 }
 
-                //flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
+                flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                 flvwCalCorrentiVerifica.Refresh();
                 Application.DoEvents();
-
+                //return false;
                 // Ora comincio le corse: Arrivo dal test discendente per cui comincio in questo verso
 
 

@@ -39,8 +39,8 @@
             // flvwListaDevices
             // 
             this.flvwListaDevices.CellEditUseWholeCell = false;
-            this.flvwListaDevices.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwListaDevices.HighlightForegroundColor = System.Drawing.Color.Empty;
+            this.flvwListaDevices.SelectedBackColor = System.Drawing.Color.Empty;
+            this.flvwListaDevices.SelectedForeColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwListaDevices, "flvwListaDevices");
             this.flvwListaDevices.Name = "flvwListaDevices";
             this.flvwListaDevices.ShowGroups = false;

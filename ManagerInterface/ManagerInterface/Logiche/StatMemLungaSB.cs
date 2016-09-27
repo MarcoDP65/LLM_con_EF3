@@ -1805,7 +1805,7 @@ namespace ChargerLogic
             {
                 int _passo;
                 int _passi = 0;
-                int _tempValore;
+                //int _tempValore;
 
 
 

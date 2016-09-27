@@ -17,8 +17,9 @@ namespace ChargerLogic
         public enum TipoPianificazione : byte { NonDefinita = 0x00, Tempo = 0x01, Turni = 0x02 };
         public List<Pianificazione> TipiPianificazione = new List<Pianificazione>
                                {
-                                    new Pianificazione { Codice = 0, Descrizione  ="Tempo"},
-                                    new Pianificazione { Codice = 1, Descrizione = "Turni"}
+                                    new Pianificazione { Codice = 0, Descrizione  ="Non Attiva"},
+                                    new Pianificazione { Codice = 1, Descrizione  ="Tempo"},
+                                    new Pianificazione { Codice = 2, Descrizione = "Turni"}
                                };
 
         public List<Pianificazione> OpzioniBib = new List<Pianificazione>

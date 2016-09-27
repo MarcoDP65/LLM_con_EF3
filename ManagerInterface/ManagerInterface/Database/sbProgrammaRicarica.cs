@@ -65,6 +65,13 @@ namespace MoriData
         public ushort MaxCorrenteCHG { get; set; }
         public ushort MinCorrenteCHG { get; set; }
         public byte ImpulsiRabboccatore { get; set; }
+        public ushort MinCorrenteW { get; set; }
+        public ushort MaxCorrenteW { get; set; }
+        public ushort MaxCorrenteImp { get; set; }
+        public ushort TensioneRaccordo{ get; set; }
+        public ushort TensioneFinale { get; set; }
+
+
 
 
     }
@@ -492,6 +499,56 @@ namespace MoriData
             set
             {
                 _sbpr.MaxCorrenteCHG = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort MinCorrenteW
+        {
+            get { return _sbpr.MinCorrenteW; }
+            set
+            {
+                _sbpr.MinCorrenteW = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort MaxCorrenteW
+        {
+            get { return _sbpr.MaxCorrenteW; }
+            set
+            {
+                _sbpr.MaxCorrenteW = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort MaxCorrenteImp
+        {
+            get { return _sbpr.MaxCorrenteImp; }
+            set
+            {
+                _sbpr.MaxCorrenteImp = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort TensioneRaccordo
+        {
+            get { return _sbpr.TensioneRaccordo; }
+            set
+            {
+                _sbpr.TensioneRaccordo = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort TensioneFinale
+        {
+            get { return _sbpr.TensioneFinale; }
+            set
+            {
+                _sbpr.TensioneFinale = value;
                 _datiSalvati = false;
             }
         }

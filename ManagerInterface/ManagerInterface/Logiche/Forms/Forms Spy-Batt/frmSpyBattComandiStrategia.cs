@@ -381,7 +381,7 @@ namespace PannelloCharger
 
 
 
-
+                txtStratIsEsito.ForeColor = Color.Black;
 
                 _esito = _sb.LanciaComandoStrategia(Modo, _tempVmin, _tempVmax, _tempAmax, _tempRabb, out _Dati);
 
@@ -406,9 +406,16 @@ namespace PannelloCharger
                         }
                     }
                     txtStratDataGrid.Text = _risposta;
+                    if (_Dati.Length < 4 )
+                    {
+                        txtStratIsEsito.ForeColor = Color.Red;
+                        txtStratIsEsito.Text = "ERR";
+                        return false;
 
-                    // Mostro i valori
-                    txtStratIsEsito.Text = _Dati[0x02].ToString();
+                    }
+
+                        // Mostro i valori
+                        txtStratIsEsito.Text = _Dati[0x02].ToString();
                     if (_Dati[0x02] > 0)
                     {
                         txtStratIsAhRich.Text = "";

@@ -2306,10 +2306,10 @@ namespace ChargerLogic
         }
 
         /// <summary>
-        /// Carico direttamente da memoria i cicli lunghi da Start a fine
+        /// Carico direttamente da memoria l'area passata come parametro
         /// </summary>
         /// <param name="StartAddr">Indirizzo (iniziale) del blocco da leggere</param>
-        /// <param name="NumByte">Numero di byte da leggere</param>
+        /// <param name="NumByte">Numero di byte da leggere (max 242)</param>
         /// <param name="Dati">bytearray dati letti</param>
         /// <returns></returns>
         public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte, out byte[] Dati )

@@ -1284,6 +1284,22 @@ namespace ChargerLogic
                         }
                         break;
 
+                    case 0x04:
+                        // id pacchetto
+                        splitUshort(codificaByte(NumPacchetto), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // Chiudo a 252 byte effettivi
+                        for (_i = _arrayInit; _i < _arrayLen; _i += 2)
+                        {
+                            splitUshort(_codificaSubString("", _i), ref lsb, ref msb);
+                            MessageBuffer[_arrayInit + 1] = msb;
+                            MessageBuffer[_arrayInit + 2] = lsb;
+                            _arrayInit += 2;
+                        }
+                        break;
 
 
                     default:
@@ -1345,7 +1361,7 @@ namespace ChargerLogic
         public ushort ComponiMessaggioNuovoProgramma()
         {
             ushort _esito = 0;
-            ushort _tempUshort;
+            //ushort _tempUshort;
             byte _tempByte;
             byte _comando;
             byte msbDisp = 0;
@@ -1736,7 +1752,7 @@ namespace ChargerLogic
         public ushort ComponiMessaggioTestataFW(byte Blocco, byte[] Intestazione )
         {
             ushort _esito = 0;
-            ushort _tempUshort;
+            //ushort _tempUshort;
             byte _comando;
             byte msbDisp = 0;
             byte lsbDisp = 0;
@@ -1866,7 +1882,7 @@ namespace ChargerLogic
         public ushort ComponiMessaggioSwitchFW(byte Blocco)
         {
             ushort _esito = 0;
-            ushort _tempUshort;
+           // ushort _tempUshort;
             byte _comando;
             byte msbDisp = 0;
             byte lsbDisp = 0;
@@ -1974,7 +1990,7 @@ namespace ChargerLogic
         public ushort ComponiMessaggioSwitchBL()
         {
             ushort _esito = 0;
-            ushort _tempUshort;
+            //ushort _tempUshort;
             byte _comando;
             byte msbDisp = 0;
             byte lsbDisp = 0;
@@ -2077,7 +2093,7 @@ namespace ChargerLogic
         public ushort ComponiMessaggioPacchettoDatiFW(ushort NumPacchetto,byte NumBytes, byte[] Dati, ushort CRCPacchetto)
         {
             ushort _esito = 0;
-            ushort _tempUshort;
+            //ushort _tempUshort;
             byte _comando;
             byte msbDisp = 0;
             byte lsbDisp = 0;
@@ -2563,7 +2579,7 @@ namespace ChargerLogic
         public ushort ComponiMessaggioNuovoProgramma1()
         {
             ushort _esito = 0;
-            ushort _tempUshort;
+            //ushort _tempUshort;
             byte _comando;
             byte msbDisp = 0;
             byte lsbDisp = 0;

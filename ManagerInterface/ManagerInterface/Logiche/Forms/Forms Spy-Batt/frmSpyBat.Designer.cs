@@ -593,6 +593,10 @@
             this.txtClonaIdOrigine = new System.Windows.Forms.TextBox();
             this.label120 = new System.Windows.Forms.Label();
             this.tabCalibrazione = new System.Windows.Forms.TabPage();
+            this.label207 = new System.Windows.Forms.Label();
+            this.txtCalCoeffPasso = new System.Windows.Forms.TextBox();
+            this.txtCalSecondiPasso = new System.Windows.Forms.TextBox();
+            this.label208 = new System.Windows.Forms.Label();
             this.txtCalFWRichiesto = new System.Windows.Forms.TextBox();
             this.label151 = new System.Windows.Forms.Label();
             this.label150 = new System.Windows.Forms.Label();
@@ -1909,8 +1913,6 @@
             this.flvwListaSoglie.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwListaSoglie.CellEditUseWholeCell = false;
             this.flvwListaSoglie.FullRowSelect = true;
-            this.flvwListaSoglie.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwListaSoglie.HighlightForegroundColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwListaSoglie, "flvwListaSoglie");
             this.flvwListaSoglie.Name = "flvwListaSoglie";
             this.flvwListaSoglie.ShowGroups = false;
@@ -2071,8 +2073,6 @@
             this.flvwCicliBatteria.CellEditUseWholeCell = false;
             this.flvwCicliBatteria.CheckBoxes = true;
             this.flvwCicliBatteria.FullRowSelect = true;
-            this.flvwCicliBatteria.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwCicliBatteria.HighlightForegroundColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwCicliBatteria, "flvwCicliBatteria");
             this.flvwCicliBatteria.Name = "flvwCicliBatteria";
             this.flvwCicliBatteria.ShowGroups = false;
@@ -2255,8 +2255,6 @@
             // flvwProgrammiCarica
             // 
             this.flvwProgrammiCarica.CellEditUseWholeCell = false;
-            this.flvwProgrammiCarica.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwProgrammiCarica.HighlightForegroundColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwProgrammiCarica, "flvwProgrammiCarica");
             this.flvwProgrammiCarica.Name = "flvwProgrammiCarica";
             this.flvwProgrammiCarica.ShowGroups = false;
@@ -3656,8 +3654,6 @@
             this.flvwLettureCorrente.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwLettureCorrente.CellEditUseWholeCell = false;
             this.flvwLettureCorrente.FullRowSelect = true;
-            this.flvwLettureCorrente.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwLettureCorrente.HighlightForegroundColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwLettureCorrente, "flvwLettureCorrente");
             this.flvwLettureCorrente.Name = "flvwLettureCorrente";
             this.flvwLettureCorrente.ShowGroups = false;
@@ -4819,6 +4815,10 @@
             // tabCalibrazione
             // 
             this.tabCalibrazione.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCalibrazione.Controls.Add(this.label207);
+            this.tabCalibrazione.Controls.Add(this.txtCalCoeffPasso);
+            this.tabCalibrazione.Controls.Add(this.txtCalSecondiPasso);
+            this.tabCalibrazione.Controls.Add(this.label208);
             this.tabCalibrazione.Controls.Add(this.txtCalFWRichiesto);
             this.tabCalibrazione.Controls.Add(this.label151);
             this.tabCalibrazione.Controls.Add(this.label150);
@@ -4846,6 +4846,26 @@
             this.tabCalibrazione.Controls.Add(this.grbCalListaAttivita);
             resources.ApplyResources(this.tabCalibrazione, "tabCalibrazione");
             this.tabCalibrazione.Name = "tabCalibrazione";
+            // 
+            // label207
+            // 
+            resources.ApplyResources(this.label207, "label207");
+            this.label207.Name = "label207";
+            // 
+            // txtCalCoeffPasso
+            // 
+            resources.ApplyResources(this.txtCalCoeffPasso, "txtCalCoeffPasso");
+            this.txtCalCoeffPasso.Name = "txtCalCoeffPasso";
+            // 
+            // txtCalSecondiPasso
+            // 
+            resources.ApplyResources(this.txtCalSecondiPasso, "txtCalSecondiPasso");
+            this.txtCalSecondiPasso.Name = "txtCalSecondiPasso";
+            // 
+            // label208
+            // 
+            resources.ApplyResources(this.label208, "label208");
+            this.label208.Name = "label208";
             // 
             // txtCalFWRichiesto
             // 
@@ -4935,8 +4955,6 @@
             this.flvwCalCorrentiVerifica.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwCalCorrentiVerifica.CellEditUseWholeCell = false;
             this.flvwCalCorrentiVerifica.FullRowSelect = true;
-            this.flvwCalCorrentiVerifica.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwCalCorrentiVerifica.HighlightForegroundColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwCalCorrentiVerifica, "flvwCalCorrentiVerifica");
             this.flvwCalCorrentiVerifica.Name = "flvwCalCorrentiVerifica";
             this.flvwCalCorrentiVerifica.ShowGroups = false;
@@ -6913,5 +6931,9 @@
         private System.Windows.Forms.Label label194;
         private System.Windows.Forms.TextBox txtStratCurrStepAh;
         private System.Windows.Forms.Button btnStratCallSIS;
+        private System.Windows.Forms.Label label207;
+        private System.Windows.Forms.TextBox txtCalCoeffPasso;
+        private System.Windows.Forms.TextBox txtCalSecondiPasso;
+        private System.Windows.Forms.Label label208;
     }
 }

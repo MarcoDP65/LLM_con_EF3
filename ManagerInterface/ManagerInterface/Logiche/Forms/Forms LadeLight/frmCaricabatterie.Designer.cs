@@ -3363,7 +3363,7 @@
             this.flvwLettureParametri.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwLettureParametri.CellEditUseWholeCell = false;
             this.flvwLettureParametri.FullRowSelect = true;
-            this.flvwLettureParametri.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.flvwLettureParametri.SelectedBackColor = System.Drawing.Color.Empty;
             this.flvwLettureParametri.HighlightForegroundColor = System.Drawing.Color.Empty;
             this.flvwLettureParametri.Location = new System.Drawing.Point(572, 23);
             this.flvwLettureParametri.Name = "flvwLettureParametri";

@@ -47,6 +47,8 @@
             this.mnuConnettiCb = new System.Windows.Forms.ToolStripMenuItem();
             this.apparatiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orologioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLLDisplayManager = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSpybat = new System.Windows.Forms.ToolStripMenuItem();
             this.caricaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.archivioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,8 +78,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.mnuLLDisplayManager = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -210,6 +210,17 @@
             // 
             resources.ApplyResources(this.orologioToolStripMenuItem, "orologioToolStripMenuItem");
             this.orologioToolStripMenuItem.Name = "orologioToolStripMenuItem";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
+            // 
+            // mnuLLDisplayManager
+            // 
+            this.mnuLLDisplayManager.Name = "mnuLLDisplayManager";
+            resources.ApplyResources(this.mnuLLDisplayManager, "mnuLLDisplayManager");
+            this.mnuLLDisplayManager.Click += new System.EventHandler(this.mnuLLDisplayManager_Click);
             // 
             // mnuSpybat
             // 
@@ -407,17 +418,6 @@
             resources.ApplyResources(this.tstBtnClose, "tstBtnClose");
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
-            // 
-            // mnuLLDisplayManager
-            // 
-            this.mnuLLDisplayManager.Name = "mnuLLDisplayManager";
-            resources.ApplyResources(this.mnuLLDisplayManager, "mnuLLDisplayManager");
-            this.mnuLLDisplayManager.Click += new System.EventHandler(this.mnuLLDisplayManager_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
             // 
             // frmMain
             // 

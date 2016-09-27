@@ -67,20 +67,44 @@
             this.txtProgcBattVdef = new System.Windows.Forms.TextBox();
             this.txtTensioneNom = new System.Windows.Forms.Label();
             this.tbpSetupPro = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtProMinChargeCurr = new System.Windows.Forms.TextBox();
+            this.pnlProParametriBase = new System.Windows.Forms.Panel();
+            this.txtProTensioneRaccordo = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtProMaxCurrImp = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtProTensioneFinale = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtProTensioneGas = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtProMinCurrW = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtProMaxCurrW = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblPro02 = new System.Windows.Forms.Label();
+            this.txtProMinChargeCurr = new System.Windows.Forms.TextBox();
+            this.lblPro10 = new System.Windows.Forms.Label();
             this.cmbRabboccatore = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.lblPro08 = new System.Windows.Forms.Label();
+            this.lblPro14 = new System.Windows.Forms.Label();
+            this.lblPro06 = new System.Windows.Forms.Label();
             this.txtProTempRiavvio = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lblPro13 = new System.Windows.Forms.Label();
+            this.lblPro05 = new System.Windows.Forms.Label();
             this.txtProTempAllarme = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lblPro11 = new System.Windows.Forms.Label();
+            this.lblPro04 = new System.Windows.Forms.Label();
             this.txtProTempAttenzione = new System.Windows.Forms.TextBox();
+            this.lblPro03 = new System.Windows.Forms.Label();
+            this.txtProMaxChargeCurr = new System.Windows.Forms.TextBox();
+            this.lblPro12 = new System.Windows.Forms.Label();
+            this.cmbBiberonaggio = new System.Windows.Forms.ComboBox();
+            this.lblPro09 = new System.Windows.Forms.Label();
             this.pnlProParametriExt = new System.Windows.Forms.Panel();
             this.lblProImpulsiRabb = new System.Windows.Forms.Label();
             this.txtProImpulsiRabb = new System.Windows.Forms.TextBox();
@@ -92,20 +116,12 @@
             this.lblProDerivaOver = new System.Windows.Forms.Label();
             this.txtProDerivaUnder = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.txtProTensioneGas = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.txtProMaxMinutiSbil = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.cmbProMaxSbil = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtProMaxChargeCurr = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cmbBiberonaggio = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblPro01 = new System.Windows.Forms.Label();
             this.cmbProModoPianif = new System.Windows.Forms.ComboBox();
             this.tbpSetupTurni = new System.Windows.Forms.TabPage();
             this.tlpGrigliaTurni = new System.Windows.Forms.TableLayoutPanel();
@@ -144,7 +160,7 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.label48 = new System.Windows.Forms.Label();
             this.tbpSetupTempo = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpGrigliaTemporale = new System.Windows.Forms.TableLayoutPanel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
@@ -175,6 +191,7 @@
             this.tabImpostazioni.SuspendLayout();
             this.tbpParametri.SuspendLayout();
             this.tbpSetupPro.SuspendLayout();
+            this.pnlProParametriBase.SuspendLayout();
             this.pnlProParametriExt.SuspendLayout();
             this.tbpSetupTurni.SuspendLayout();
             this.tlpGrigliaTurni.SuspendLayout();
@@ -192,7 +209,7 @@
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
             this.tbpSetupTempo.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpGrigliaTemporale.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel23.SuspendLayout();
@@ -457,45 +474,159 @@
             // tbpSetupPro
             // 
             this.tbpSetupPro.BackColor = System.Drawing.Color.LightYellow;
-            this.tbpSetupPro.Controls.Add(this.label3);
-            this.tbpSetupPro.Controls.Add(this.txtProMinChargeCurr);
-            this.tbpSetupPro.Controls.Add(this.label6);
-            this.tbpSetupPro.Controls.Add(this.cmbRabboccatore);
-            this.tbpSetupPro.Controls.Add(this.label32);
-            this.tbpSetupPro.Controls.Add(this.label24);
-            this.tbpSetupPro.Controls.Add(this.label25);
-            this.tbpSetupPro.Controls.Add(this.txtProTempRiavvio);
-            this.tbpSetupPro.Controls.Add(this.label22);
-            this.tbpSetupPro.Controls.Add(this.label23);
-            this.tbpSetupPro.Controls.Add(this.txtProTempAllarme);
-            this.tbpSetupPro.Controls.Add(this.label21);
-            this.tbpSetupPro.Controls.Add(this.label20);
-            this.tbpSetupPro.Controls.Add(this.txtProTempAttenzione);
+            this.tbpSetupPro.Controls.Add(this.pnlProParametriBase);
             this.tbpSetupPro.Controls.Add(this.pnlProParametriExt);
-            this.tbpSetupPro.Controls.Add(this.label12);
-            this.tbpSetupPro.Controls.Add(this.label10);
-            this.tbpSetupPro.Controls.Add(this.txtProMaxChargeCurr);
-            this.tbpSetupPro.Controls.Add(this.label11);
-            this.tbpSetupPro.Controls.Add(this.cmbBiberonaggio);
-            this.tbpSetupPro.Controls.Add(this.label9);
+            this.tbpSetupPro.Controls.Add(this.lblPro01);
             this.tbpSetupPro.Controls.Add(this.cmbProModoPianif);
             resources.ApplyResources(this.tbpSetupPro, "tbpSetupPro");
             this.tbpSetupPro.Name = "tbpSetupPro";
+            // 
+            // pnlProParametriBase
+            // 
+            this.pnlProParametriBase.Controls.Add(this.txtProTensioneRaccordo);
+            this.pnlProParametriBase.Controls.Add(this.label10);
+            this.pnlProParametriBase.Controls.Add(this.label11);
+            this.pnlProParametriBase.Controls.Add(this.label8);
+            this.pnlProParametriBase.Controls.Add(this.txtProMaxCurrImp);
+            this.pnlProParametriBase.Controls.Add(this.label9);
+            this.pnlProParametriBase.Controls.Add(this.txtProTensioneFinale);
+            this.pnlProParametriBase.Controls.Add(this.label6);
+            this.pnlProParametriBase.Controls.Add(this.label7);
+            this.pnlProParametriBase.Controls.Add(this.txtProTensioneGas);
+            this.pnlProParametriBase.Controls.Add(this.label26);
+            this.pnlProParametriBase.Controls.Add(this.label27);
+            this.pnlProParametriBase.Controls.Add(this.label2);
+            this.pnlProParametriBase.Controls.Add(this.txtProMinCurrW);
+            this.pnlProParametriBase.Controls.Add(this.label3);
+            this.pnlProParametriBase.Controls.Add(this.label4);
+            this.pnlProParametriBase.Controls.Add(this.txtProMaxCurrW);
+            this.pnlProParametriBase.Controls.Add(this.label5);
+            this.pnlProParametriBase.Controls.Add(this.lblPro02);
+            this.pnlProParametriBase.Controls.Add(this.txtProMinChargeCurr);
+            this.pnlProParametriBase.Controls.Add(this.lblPro10);
+            this.pnlProParametriBase.Controls.Add(this.cmbRabboccatore);
+            this.pnlProParametriBase.Controls.Add(this.lblPro08);
+            this.pnlProParametriBase.Controls.Add(this.lblPro14);
+            this.pnlProParametriBase.Controls.Add(this.lblPro06);
+            this.pnlProParametriBase.Controls.Add(this.txtProTempRiavvio);
+            this.pnlProParametriBase.Controls.Add(this.lblPro13);
+            this.pnlProParametriBase.Controls.Add(this.lblPro05);
+            this.pnlProParametriBase.Controls.Add(this.txtProTempAllarme);
+            this.pnlProParametriBase.Controls.Add(this.lblPro11);
+            this.pnlProParametriBase.Controls.Add(this.lblPro04);
+            this.pnlProParametriBase.Controls.Add(this.txtProTempAttenzione);
+            this.pnlProParametriBase.Controls.Add(this.lblPro03);
+            this.pnlProParametriBase.Controls.Add(this.txtProMaxChargeCurr);
+            this.pnlProParametriBase.Controls.Add(this.lblPro12);
+            this.pnlProParametriBase.Controls.Add(this.cmbBiberonaggio);
+            this.pnlProParametriBase.Controls.Add(this.lblPro09);
+            resources.ApplyResources(this.pnlProParametriBase, "pnlProParametriBase");
+            this.pnlProParametriBase.Name = "pnlProParametriBase";
+            // 
+            // txtProTensioneRaccordo
+            // 
+            resources.ApplyResources(this.txtProTensioneRaccordo, "txtProTensioneRaccordo");
+            this.txtProTensioneRaccordo.Name = "txtProTensioneRaccordo";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // txtProMaxCurrImp
+            // 
+            resources.ApplyResources(this.txtProMaxCurrImp, "txtProMaxCurrImp");
+            this.txtProMaxCurrImp.Name = "txtProMaxCurrImp";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // txtProTensioneFinale
+            // 
+            resources.ApplyResources(this.txtProTensioneFinale, "txtProTensioneFinale");
+            this.txtProTensioneFinale.Name = "txtProTensioneFinale";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // txtProTensioneGas
+            // 
+            resources.ApplyResources(this.txtProTensioneGas, "txtProTensioneGas");
+            this.txtProTensioneGas.Name = "txtProTensioneGas";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // txtProMinCurrW
+            // 
+            resources.ApplyResources(this.txtProMinCurrW, "txtProMinCurrW");
+            this.txtProMinCurrW.Name = "txtProMinCurrW";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // txtProMaxCurrW
+            // 
+            resources.ApplyResources(this.txtProMaxCurrW, "txtProMaxCurrW");
+            this.txtProMaxCurrW.Name = "txtProMaxCurrW";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // lblPro02
+            // 
+            resources.ApplyResources(this.lblPro02, "lblPro02");
+            this.lblPro02.Name = "lblPro02";
+            // 
             // txtProMinChargeCurr
             // 
             resources.ApplyResources(this.txtProMinChargeCurr, "txtProMinChargeCurr");
             this.txtProMinChargeCurr.Name = "txtProMinChargeCurr";
             // 
-            // label6
+            // lblPro10
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.lblPro10, "lblPro10");
+            this.lblPro10.Name = "lblPro10";
             // 
             // cmbRabboccatore
             // 
@@ -503,55 +634,84 @@
             this.cmbRabboccatore.FormattingEnabled = true;
             this.cmbRabboccatore.Name = "cmbRabboccatore";
             // 
-            // label32
+            // lblPro08
             // 
-            resources.ApplyResources(this.label32, "label32");
-            this.label32.Name = "label32";
+            resources.ApplyResources(this.lblPro08, "lblPro08");
+            this.lblPro08.Name = "lblPro08";
             // 
-            // label24
+            // lblPro14
             // 
-            resources.ApplyResources(this.label24, "label24");
-            this.label24.Name = "label24";
+            resources.ApplyResources(this.lblPro14, "lblPro14");
+            this.lblPro14.Name = "lblPro14";
             // 
-            // label25
+            // lblPro06
             // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
+            resources.ApplyResources(this.lblPro06, "lblPro06");
+            this.lblPro06.Name = "lblPro06";
             // 
             // txtProTempRiavvio
             // 
             resources.ApplyResources(this.txtProTempRiavvio, "txtProTempRiavvio");
             this.txtProTempRiavvio.Name = "txtProTempRiavvio";
             // 
-            // label22
+            // lblPro13
             // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
+            resources.ApplyResources(this.lblPro13, "lblPro13");
+            this.lblPro13.Name = "lblPro13";
             // 
-            // label23
+            // lblPro05
             // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
+            resources.ApplyResources(this.lblPro05, "lblPro05");
+            this.lblPro05.Name = "lblPro05";
             // 
             // txtProTempAllarme
             // 
             resources.ApplyResources(this.txtProTempAllarme, "txtProTempAllarme");
             this.txtProTempAllarme.Name = "txtProTempAllarme";
             // 
-            // label21
+            // lblPro11
             // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
+            resources.ApplyResources(this.lblPro11, "lblPro11");
+            this.lblPro11.Name = "lblPro11";
             // 
-            // label20
+            // lblPro04
             // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
+            resources.ApplyResources(this.lblPro04, "lblPro04");
+            this.lblPro04.Name = "lblPro04";
             // 
             // txtProTempAttenzione
             // 
             resources.ApplyResources(this.txtProTempAttenzione, "txtProTempAttenzione");
             this.txtProTempAttenzione.Name = "txtProTempAttenzione";
+            // 
+            // lblPro03
+            // 
+            resources.ApplyResources(this.lblPro03, "lblPro03");
+            this.lblPro03.Name = "lblPro03";
+            // 
+            // txtProMaxChargeCurr
+            // 
+            resources.ApplyResources(this.txtProMaxChargeCurr, "txtProMaxChargeCurr");
+            this.txtProMaxChargeCurr.Name = "txtProMaxChargeCurr";
+            // 
+            // lblPro12
+            // 
+            resources.ApplyResources(this.lblPro12, "lblPro12");
+            this.lblPro12.Name = "lblPro12";
+            this.lblPro12.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // cmbBiberonaggio
+            // 
+            resources.ApplyResources(this.cmbBiberonaggio, "cmbBiberonaggio");
+            this.cmbBiberonaggio.FormattingEnabled = true;
+            this.cmbBiberonaggio.Name = "cmbBiberonaggio";
+            this.cmbBiberonaggio.SelectedIndexChanged += new System.EventHandler(this.cmbBiberonaggio_SelectedIndexChanged);
+            // 
+            // lblPro09
+            // 
+            resources.ApplyResources(this.lblPro09, "lblPro09");
+            this.lblPro09.Name = "lblPro09";
+            this.lblPro09.Click += new System.EventHandler(this.label9_Click);
             // 
             // pnlProParametriExt
             // 
@@ -566,9 +726,6 @@
             this.pnlProParametriExt.Controls.Add(this.lblProDerivaOver);
             this.pnlProParametriExt.Controls.Add(this.txtProDerivaUnder);
             this.pnlProParametriExt.Controls.Add(this.label28);
-            this.pnlProParametriExt.Controls.Add(this.txtProTensioneGas);
-            this.pnlProParametriExt.Controls.Add(this.label26);
-            this.pnlProParametriExt.Controls.Add(this.label27);
             this.pnlProParametriExt.Controls.Add(this.txtProMaxMinutiSbil);
             this.pnlProParametriExt.Controls.Add(this.label19);
             this.pnlProParametriExt.Controls.Add(this.label18);
@@ -627,21 +784,6 @@
             resources.ApplyResources(this.label28, "label28");
             this.label28.Name = "label28";
             // 
-            // txtProTensioneGas
-            // 
-            resources.ApplyResources(this.txtProTensioneGas, "txtProTensioneGas");
-            this.txtProTensioneGas.Name = "txtProTensioneGas";
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
-            // 
             // txtProMaxMinutiSbil
             // 
             resources.ApplyResources(this.txtProMaxMinutiSbil, "txtProMaxMinutiSbil");
@@ -670,39 +812,10 @@
             resources.ApplyResources(this.label17, "label17");
             this.label17.Name = "label17";
             // 
-            // label12
+            // lblPro01
             // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // txtProMaxChargeCurr
-            // 
-            resources.ApplyResources(this.txtProMaxChargeCurr, "txtProMaxChargeCurr");
-            this.txtProMaxChargeCurr.Name = "txtProMaxChargeCurr";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // cmbBiberonaggio
-            // 
-            resources.ApplyResources(this.cmbBiberonaggio, "cmbBiberonaggio");
-            this.cmbBiberonaggio.FormattingEnabled = true;
-            this.cmbBiberonaggio.Name = "cmbBiberonaggio";
-            this.cmbBiberonaggio.SelectedIndexChanged += new System.EventHandler(this.cmbBiberonaggio_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            resources.ApplyResources(this.lblPro01, "lblPro01");
+            this.lblPro01.Name = "lblPro01";
             // 
             // cmbProModoPianif
             // 
@@ -956,26 +1069,26 @@
             // 
             // tbpSetupTempo
             // 
-            this.tbpSetupTempo.Controls.Add(this.tableLayoutPanel1);
+            this.tbpSetupTempo.Controls.Add(this.tlpGrigliaTemporale);
             resources.ApplyResources(this.tbpSetupTempo, "tbpSetupTempo");
             this.tbpSetupTempo.Name = "tbpSetupTempo";
             this.tbpSetupTempo.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // tlpGrigliaTemporale
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.panel19, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel20, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel23, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel24, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel25, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel26, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel27, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel28, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.panel29, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.panel30, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.panel31, 0, 8);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            resources.ApplyResources(this.tlpGrigliaTemporale, "tlpGrigliaTemporale");
+            this.tlpGrigliaTemporale.Controls.Add(this.panel19, 1, 1);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel20, 0, 2);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel23, 1, 0);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel24, 0, 0);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel25, 0, 1);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel26, 0, 3);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel27, 0, 4);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel28, 0, 5);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel29, 0, 6);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel30, 0, 7);
+            this.tlpGrigliaTemporale.Controls.Add(this.panel31, 0, 8);
+            this.tlpGrigliaTemporale.Name = "tlpGrigliaTemporale";
             // 
             // panel19
             // 
@@ -1142,6 +1255,8 @@
             this.tbpParametri.PerformLayout();
             this.tbpSetupPro.ResumeLayout(false);
             this.tbpSetupPro.PerformLayout();
+            this.pnlProParametriBase.ResumeLayout(false);
+            this.pnlProParametriBase.PerformLayout();
             this.pnlProParametriExt.ResumeLayout(false);
             this.pnlProParametriExt.PerformLayout();
             this.tbpSetupTurni.ResumeLayout(false);
@@ -1163,7 +1278,7 @@
             this.panel15.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.tbpSetupTempo.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tlpGrigliaTemporale.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             this.panel20.ResumeLayout(false);
@@ -1219,22 +1334,22 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtProgcBattVdef;
         private System.Windows.Forms.Label txtTensioneNom;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblPro03;
         private System.Windows.Forms.TextBox txtProMaxChargeCurr;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblPro12;
         private System.Windows.Forms.ComboBox cmbBiberonaggio;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblPro09;
         private System.Windows.Forms.ComboBox cmbProModoPianif;
         private System.Windows.Forms.ComboBox cmbRabboccatore;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label lblPro08;
+        private System.Windows.Forms.Label lblPro14;
+        private System.Windows.Forms.Label lblPro06;
         private System.Windows.Forms.TextBox txtProTempRiavvio;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblPro13;
+        private System.Windows.Forms.Label lblPro05;
         private System.Windows.Forms.TextBox txtProTempAllarme;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblPro11;
+        private System.Windows.Forms.Label lblPro04;
         private System.Windows.Forms.TextBox txtProTempAttenzione;
         private System.Windows.Forms.Panel pnlProParametriExt;
         private System.Windows.Forms.TextBox txtProCoeffBiber;
@@ -1244,39 +1359,22 @@
         private System.Windows.Forms.Label lblProDerivaOver;
         private System.Windows.Forms.TextBox txtProDerivaUnder;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox txtProTensioneGas;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtProMaxMinutiSbil;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cmbProMaxSbil;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblPro01;
         private System.Windows.Forms.Label lblProCoeffBiber;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label lblTurno3;
-        private System.Windows.Forms.Label lblTurno2;
         private System.Windows.Forms.Label lblTurno1;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label lblMainOrari;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Panel panel13;
@@ -1287,10 +1385,10 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblPro02;
         private System.Windows.Forms.TextBox txtProMinChargeCurr;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lblPro10;
+        private System.Windows.Forms.TableLayoutPanel tlpGrigliaTemporale;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label51;
@@ -1317,5 +1415,38 @@
         private System.Windows.Forms.RadioButton optVersoDiretto;
         private System.Windows.Forms.Label lblProImpulsiRabb;
         private System.Windows.Forms.TextBox txtProImpulsiRabb;
+        private System.Windows.Forms.Panel pnlProParametriBase;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtProMaxCurrImp;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtProTensioneFinale;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtProTensioneGas;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtProMinCurrW;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtProMaxCurrW;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lblTurno3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label lblTurno2;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox txtProTensioneRaccordo;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

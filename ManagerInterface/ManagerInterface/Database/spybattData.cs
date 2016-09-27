@@ -494,7 +494,7 @@ namespace MoriData
                 try {
                     string _LocalVer = ""; // _sb.SwVersion.Substring(0, 4);  // controllo solo i primi 4 caratteri della versione perignorare la build
 
-                    if (_sb.SwVersion == null) return -1;
+                    if (_sb.SwVersion == null) return 4; // da -1 a 4 per Marco
 
                     if (_sb.SwVersion.Length >= 4) _LocalVer = _sb.SwVersion.Substring(0, 4);
 
@@ -530,7 +530,9 @@ namespace MoriData
                             return 4;
 
                         default:
-                            return -1;
+                            //variante per marco
+                            //return -1;
+                            return 4;
                             //  break;
                     }
                 }

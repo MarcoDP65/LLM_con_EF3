@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>2.00.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -44,6 +44,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -113,8 +114,8 @@
     <Reference Include="NextUI">
       <HintPath>..\packages\NextUI\bin\Release\NextUI.dll</HintPath>
     </Reference>
-    <Reference Include="ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
-      <HintPath>..\packages\ObjectListView.Official.2.9.0\lib\net20\ObjectListView.dll</HintPath>
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="OxyPlot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
@@ -205,187 +206,187 @@
     <Compile Include="Database\sbVariabili.cs" />
     <Compile Include="Database\spybattData.cs" />
     <Compile Include="Database\utente.cs" />
-    <Compile Include="Forms\Forms Deso\frmDeso.cs">
+    <Compile Include="Logiche\Forms\Forms Deso\frmDeso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Deso\frmDeso.Designer.cs">
+    <Compile Include="Logiche\Forms\Forms Deso\frmDeso.Designer.cs">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms Deso\frmDesoFWUpg.cs">
+    <Compile Include="Logiche\Forms\Forms Deso\frmDesoFWUpg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Deso\frmDesoClonaScheda.cs">
+    <Compile Include="Logiche\Forms\Forms Deso\frmDesoClonaScheda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
+    <Compile Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms LadeLight\frmCaricaBatteriaComandiProxy.cs">
+    <Compile Include="Logiche\Forms\Forms LadeLight\frmCaricaBatteriaComandiProxy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattCalibrazione.cs">
+    <Compile Include="Logiche\Forms\Forms Spy-Batt\frmSpyBattCalibrazione.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Spy-Batt\frmSpyBat.cs">
+    <Compile Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Spy-Batt\frmSpyBat.Designer.cs">
+    <Compile Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.Designer.cs">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms Spy-Batt\frmSpyBatFunzioniStampa.cs">
+    <Compile Include="Logiche\Forms\Forms Spy-Batt\frmSpyBatFunzioniStampa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Spy-Batt\frmSpyBatFWUpg.cs">
+    <Compile Include="Logiche\Forms\Forms Spy-Batt\frmSpyBatFWUpg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattClonaScheda.cs">
+    <Compile Include="Logiche\Forms\Forms Spy-Batt\frmSpyBattClonaScheda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattComandiStrategia.cs">
+    <Compile Include="Logiche\Forms\Forms Spy-Batt\frmSpyBattComandiStrategia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAboutBox.cs">
+    <Compile Include="Logiche\Forms\frmAboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAboutBox.Designer.cs">
+    <Compile Include="Logiche\Forms\frmAboutBox.Designer.cs">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmAlimentatore.cs">
+    <Compile Include="Logiche\Forms\frmAlimentatore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAlimentatore.designer.cs">
+    <Compile Include="Logiche\Forms\frmAlimentatore.designer.cs">
       <DependentUpon>frmAlimentatore.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmAvanzamentoCicli.cs">
+    <Compile Include="Logiche\Forms\frmAvanzamentoCicli.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAvanzamentoCicli.Designer.cs">
+    <Compile Include="Logiche\Forms\frmAvanzamentoCicli.Designer.cs">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms LadeLight\frmCaricabatterie.cs">
+    <Compile Include="Logiche\Forms\Forms LadeLight\frmCaricabatterie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms LadeLight\frmCaricabatterie.Designer.cs">
+    <Compile Include="Logiche\Forms\Forms LadeLight\frmCaricabatterie.Designer.cs">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmDisplayManager.cs">
+    <Compile Include="Logiche\Forms\frmDisplayManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmDisplayManager.Designer.cs">
+    <Compile Include="Logiche\Forms\frmDisplayManager.Designer.cs">
       <DependentUpon>frmDisplayManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmFlashFTDI.cs">
+    <Compile Include="Logiche\Forms\frmFlashFTDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmFlashFTDI.Designer.cs">
+    <Compile Include="Logiche\Forms\frmFlashFTDI.Designer.cs">
       <DependentUpon>frmFlashFTDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmFlashSpyBatt.cs">
+    <Compile Include="Logiche\Forms\frmFlashSpyBatt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmFlashSpyBatt.Designer.cs">
+    <Compile Include="Logiche\Forms\frmFlashSpyBatt.Designer.cs">
       <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmGraficoCiclo.cs">
+    <Compile Include="Logiche\Forms\frmGraficoCiclo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmGraficoCiclo.Designer.cs">
+    <Compile Include="Logiche\Forms\frmGraficoCiclo.Designer.cs">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmInputDialog.cs">
+    <Compile Include="Logiche\Forms\frmInputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmInputDialog.Designer.cs">
+    <Compile Include="Logiche\Forms\frmInputDialog.Designer.cs">
       <DependentUpon>frmInputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmInserimentoProgramma.cs">
+    <Compile Include="Logiche\Forms\frmInserimentoProgramma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmInserimentoProgramma.Designer.cs">
+    <Compile Include="Logiche\Forms\frmInserimentoProgramma.Designer.cs">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreve.cs">
+    <Compile Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreve.Designer.cs">
+    <Compile Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.Designer.cs">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLogin.cs">
+    <Compile Include="Logiche\Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.Designer.cs">
+    <Compile Include="Logiche\Forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMain.cs">
+    <Compile Include="Logiche\Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMain.Designer.cs">
+    <Compile Include="Logiche\Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMessaggioElettrolita.cs">
+    <Compile Include="Logiche\Forms\frmMessaggioElettrolita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMessaggioElettrolita.Designer.cs">
+    <Compile Include="Logiche\Forms\frmMessaggioElettrolita.Designer.cs">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmPopupCambioTurmo.cs">
+    <Compile Include="Logiche\Forms\frmPopupCambioTurmo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmPopupCambioTurmo.designer.cs">
+    <Compile Include="Logiche\Forms\frmPopupCambioTurmo.designer.cs">
       <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmRichiestaCodice.cs">
+    <Compile Include="Logiche\Forms\frmRichiestaCodice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmRichiestaCodice.Designer.cs">
+    <Compile Include="Logiche\Forms\frmRichiestaCodice.Designer.cs">
       <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSbExport.cs">
+    <Compile Include="Logiche\Forms\frmSbExport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSbExport.Designer.cs">
+    <Compile Include="Logiche\Forms\frmSbExport.Designer.cs">
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSelettoreCom.cs">
+    <Compile Include="Logiche\Forms\frmSelettoreCom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSelettoreCom.Designer.cs">
+    <Compile Include="Logiche\Forms\frmSelettoreCom.Designer.cs">
       <DependentUpon>frmSelettoreCom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSelettoreDevice.cs">
+    <Compile Include="Logiche\Forms\frmSelettoreDevice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSelettoreDevice.Designer.cs">
+    <Compile Include="Logiche\Forms\frmSelettoreDevice.Designer.cs">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSelettoreSpyBatt.cs">
+    <Compile Include="Logiche\Forms\frmSelettoreSpyBatt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSelettoreSpyBatt.Designer.cs">
+    <Compile Include="Logiche\Forms\frmSelettoreSpyBatt.Designer.cs">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSerialPanel.cs">
+    <Compile Include="Logiche\Forms\frmSerialPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSerialPanel.Designer.cs">
+    <Compile Include="Logiche\Forms\frmSerialPanel.Designer.cs">
       <DependentUpon>frmSerialPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSpyBatCarica.cs">
+    <Compile Include="Logiche\Forms\frmSpyBatCarica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSpyBatCarica.Designer.cs">
+    <Compile Include="Logiche\Forms\frmSpyBatCarica.Designer.cs">
       <DependentUpon>frmSpyBatCarica.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSpyBatScarica.cs">
+    <Compile Include="Logiche\Forms\frmSpyBatScarica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSpyBatScarica.Designer.cs">
+    <Compile Include="Logiche\Forms\frmSpyBatScarica.Designer.cs">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmUploadBootloader.cs">
+    <Compile Include="Logiche\Forms\frmUploadBootloader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmUploadBootloader.Designer.cs">
+    <Compile Include="Logiche\Forms\frmUploadBootloader.Designer.cs">
       <DependentUpon>frmUploadBootloader.cs</DependentUpon>
     </Compile>
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
@@ -396,12 +397,15 @@
     <Compile Include="Logiche\DatiSpyBatt.cs" />
     <Compile Include="Logiche\Display\comandiMessaggiDisplay.cs" />
     <Compile Include="Logiche\Display\Display.cs" />
+    <Compile Include="Logiche\Display\DisplaySetup.cs" />
+    <Compile Include="Logiche\Display\DisplaySetupComponents.cs" />
     <Compile Include="Logiche\FileFirmware.cs" />
     <Compile Include="Logiche\LogicheBase.cs" />
     <Compile Include="Logiche\MappaSpybatt.cs" />
+    <Compile Include="Logiche\Messaggio Display\sottoclassiMessaggioDisplay.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\MessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\sottoclassiMessaggioSpyBatt.cs" />
-    <Compile Include="Logiche\MessaggioDisplay.cs" />
+    <Compile Include="Logiche\Messaggio Display\MessaggioDisplay.cs" />
     <Compile Include="Logiche\ModelloTurno.cs" />
     <Compile Include="Logiche\SerialMessage.cs" />
     <Compile Include="Logiche\SpyBatt\comandiMessaggiSpyBatt.cs" />
@@ -447,292 +451,295 @@
     <Compile Include="Servizi\StringCipher.cs" />
     <Compile Include="Servizi\usParameters.cs" />
     <Compile Include="Settings.cs" />
-    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Deso\frmDeso.de.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Deso\frmDeso.en.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Deso\frmDeso.es.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Deso\frmDeso.hi-IN.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.hi.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Deso\frmDeso.hi.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Deso\frmDeso.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.de.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.en.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.es.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.hi-IN.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.hi.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.hi.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Spy-Batt\frmSpyBat.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAboutBox.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAboutBox.de.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAboutBox.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAboutBox.en.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAboutBox.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAboutBox.es.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAboutBox.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAboutBox.hi-IN.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAboutBox.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAboutBox.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAlimentatore.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAlimentatore.de.resx">
       <DependentUpon>frmAlimentatore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAlimentatore.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAlimentatore.es.resx">
       <DependentUpon>frmAlimentatore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAlimentatore.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAlimentatore.hi-IN.resx">
       <DependentUpon>frmAlimentatore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAlimentatore.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAlimentatore.resx">
       <DependentUpon>frmAlimentatore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAvanzamentoCicli.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAvanzamentoCicli.en.resx">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAvanzamentoCicli.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAvanzamentoCicli.es.resx">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAvanzamentoCicli.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAvanzamentoCicli.hi-IN.resx">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAvanzamentoCicli.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmAvanzamentoCicli.resx">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms LadeLight\frmCaricabatterie.es.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms LadeLight\frmCaricabatterie.hi-IN.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms LadeLight\frmCaricabatterie.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmDisplayManager.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmDisplayManager.resx">
       <DependentUpon>frmDisplayManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFlashFTDI.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmFlashFTDI.es.resx">
       <DependentUpon>frmFlashFTDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFlashFTDI.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmFlashFTDI.hi-IN.resx">
       <DependentUpon>frmFlashFTDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFlashFTDI.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmFlashFTDI.resx">
       <DependentUpon>frmFlashFTDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFlashSpyBatt.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmFlashSpyBatt.es.resx">
       <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFlashSpyBatt.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmFlashSpyBatt.hi-IN.resx">
       <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFlashSpyBatt.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmFlashSpyBatt.resx">
       <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGraficoCiclo.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmGraficoCiclo.es.resx">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGraficoCiclo.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmGraficoCiclo.hi-IN.resx">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGraficoCiclo.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmGraficoCiclo.resx">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInputDialog.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmInputDialog.resx">
       <DependentUpon>frmInputDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInserimentoProgramma.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmInserimentoProgramma.en.resx">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInserimentoProgramma.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmInserimentoProgramma.es.resx">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInserimentoProgramma.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmInserimentoProgramma.hi-IN.resx">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInserimentoProgramma.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmInserimentoProgramma.resx">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.de.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.en.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.es.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.hi-IN.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.hi.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.hi.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.resx">
+    <EmbeddedResource Include="Logiche\Forms\Forms Dett Brevi\frmListaCicliBreve.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmLogin.de.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmLogin.en.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmLogin.es.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmLogin.hi-IN.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.hi.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmLogin.hi.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmMain.de.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmMain.en.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logiche\Forms\frmMain.es.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmMain.hi-IN.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmMain.hi.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.hi.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMessaggioElettrolita.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmMessaggioElettrolita.resx">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmPopupCambioTurmo.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmPopupCambioTurmo.resx">
       <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmRichiestaCodice.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmRichiestaCodice.en.resx">
       <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmRichiestaCodice.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmRichiestaCodice.resx">
       <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSbExport.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSbExport.en.resx">
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSbExport.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSbExport.es.resx">
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSbExport.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSbExport.hi-IN.resx">
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSbExport.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSbExport.resx">
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreCom.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreCom.es.resx">
       <DependentUpon>frmSelettoreCom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreCom.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreCom.hi-IN.resx">
       <DependentUpon>frmSelettoreCom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreCom.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreCom.resx">
       <DependentUpon>frmSelettoreCom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreDevice.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreDevice.de.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreDevice.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreDevice.en.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreDevice.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreDevice.es.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreDevice.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreDevice.hi-IN.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreDevice.hi.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreDevice.hi.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreDevice.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreDevice.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.de.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreSpyBatt.de.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.en.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreSpyBatt.en.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreSpyBatt.es.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreSpyBatt.hi-IN.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.hi.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreSpyBatt.hi.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSelettoreSpyBatt.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSerialPanel.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSerialPanel.es.resx">
       <DependentUpon>frmSerialPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSerialPanel.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSerialPanel.hi-IN.resx">
       <DependentUpon>frmSerialPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSerialPanel.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSerialPanel.resx">
       <DependentUpon>frmSerialPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSpyBatCarica.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSpyBatCarica.es.resx">
       <DependentUpon>frmSpyBatCarica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSpyBatCarica.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSpyBatCarica.hi-IN.resx">
       <DependentUpon>frmSpyBatCarica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSpyBatCarica.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSpyBatCarica.resx">
       <DependentUpon>frmSpyBatCarica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSpyBatScarica.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSpyBatScarica.es.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSpyBatScarica.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSpyBatScarica.hi-IN.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSpyBatScarica.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmSpyBatScarica.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmUploadBootloader.es.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmUploadBootloader.es.resx">
       <DependentUpon>frmUploadBootloader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmUploadBootloader.hi-IN.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmUploadBootloader.hi-IN.resx">
       <DependentUpon>frmUploadBootloader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmUploadBootloader.resx">
+    <EmbeddedResource Include="Logiche\Forms\frmUploadBootloader.resx">
       <DependentUpon>frmUploadBootloader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.es.resx" />
@@ -841,16 +848,21 @@
     <None Include="Resources\close.png" />
     <None Include="Resources\export.png" />
     <None Include="Resources\export 01.png" />
+    <None Include="Resources\ebatt256.ico" />
+    <None Include="Resources\App-ladelight32.ico" />
+    <Content Include="e-proOK.ico" />
     <Content Include="Resources\Grf-Car.bmp" />
     <Content Include="Resources\Grf-Scar.bmp" />
     <Content Include="Resources\Grf-V-Car.bmp" />
     <Content Include="Resources\Grf-V-Scar.bmp" />
+    <None Include="Resources\IconaLadeLight.ico" />
     <Content Include="Resources\ind_due.png" />
     <Content Include="Resources\ind_tre.png" />
     <Content Include="Resources\IUIa.bmp" />
     <Content Include="Resources\IWa.bmp" />
     <None Include="Resources\LogoSpyBatt.bmp" />
     <None Include="Resources\reset.png" />
+    <None Include="Resources\Logo e-charger PRO sfondato.png" />
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
     <Content Include="Resources\tre.png" />

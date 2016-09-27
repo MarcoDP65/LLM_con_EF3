@@ -73,9 +73,9 @@ namespace ChargerLogic
         /// <returns></returns>
         public EsitoRisposta analizzaMessaggio(byte[] _messaggio, bool DatiPuri = false)
             {
-                ushort _tempShort;
-                byte _tempByte1;
-                byte _tempByte2;
+                //ushort _tempShort;
+                //byte _tempByte1;
+                //byte _tempByte2;
                 byte[] _risposta;
                 int startByte = 0;
 
@@ -791,6 +791,14 @@ namespace ChargerLogic
             public ushort TensioneGas { get; set; }
             public ushort DerivaSuperiore { get; set; }
             public ushort DerivaInferiore { get; set; }
+
+            public ushort MinCorrenteW { get; set; }
+            public ushort MaxCorrenteW { get; set; }
+            public ushort MaxCorrenteImp { get; set; }
+            public ushort TensioneRaccordo { get; set; }
+            public ushort TensioneFinale { get; set; }
+
+
             public byte[] DatiPianificazione { get; set; }
 
             byte[] _dataBuffer;
@@ -865,6 +873,49 @@ namespace ChargerLogic
                         startByte += 1;
                         NumeroSpire = _risposta[startByte];
                         startByte += 1;
+
+                        // Dati PRO           
+                                                                                               
+                        ModoPianificazione = _risposta[startByte];
+                        startByte += 1;
+                        CorrenteCaricaMin = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        CorrenteCaricaMax = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        PulseRabboccatore = _risposta[startByte];
+                        startByte += 1;
+                        RipetizioniRabboccatore = _risposta[startByte];
+                        startByte += 1;
+                        FlagBiberonaggio = _risposta[startByte];
+                        startByte += 1;
+                        CoeffBiberonaggio = _risposta[startByte];
+                        startByte += 1;
+                        TempAttenzione = _risposta[startByte];
+                        startByte += 1;
+                        TempAllarme = _risposta[startByte];
+                        startByte += 1;
+                        TempRipresa = _risposta[startByte];
+                        startByte += 1;
+                        MaxSbilanciamento = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        TempoSbilanciamento = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        TensioneGas = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        DerivaSuperiore = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        DerivaInferiore = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        MinCorrenteW = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        MaxCorrenteW = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        MaxCorrenteImp = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        TensioneRaccordo = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        TensioneFinale = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
 
                         datiPronti = true;
 
@@ -1003,7 +1054,7 @@ namespace ChargerLogic
 
         }
 
-        public class comandoRTC
+        public new class comandoRTC
         {
 
             byte[] _dataBuffer;
@@ -1219,8 +1270,8 @@ namespace ChargerLogic
 
                 byte[] _risposta;
                 int startByte = 0;
-                ushort _tempShort;
-                byte _tempByte;
+                //ushort _tempShort;
+                //byte _tempByte;
 
                 try
                 {
@@ -1857,8 +1908,6 @@ namespace ChargerLogic
 
 
         }
-
-
 
         public class EsitoMessaggio
         {

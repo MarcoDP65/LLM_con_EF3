@@ -69,10 +69,15 @@ namespace ChargerLogic
             DI_Cancella4K = 0x24,
             DI_R_LeggiMemoria = 0x3C,
             DI_W_ScriviMemoria = 0xC3,
-            DI_R_InvioImmagineMemoria = 0x4B,
+
+            DI_W_SalvaImmagineMemoria = 0x4B,
+            DI_W_SalvaSchermataMemoria = 0xB4,
+
+            DI_CancellaDisplay = 0x2D,
             DI_Backlight = 0xB3,
             DI_DrawLine = 0xA5,
-            
+            DI_MostraImmagine = 0x5A,
+
 
             LL_SIG60_PROXY = 0x81,
          };

@@ -55,6 +55,38 @@ namespace ChargerLogic
         */
 
 
+        public bool scriviMessaggio(byte[] messaggio, int Start, int NumByte)
+        {
+
+            try
+            {
+                //codaDatiSER.Clear();
+                echoDatiSER.Clear();
+                for (int i = 0; i < NumByte; i++)
+                {
+                    echoDatiSER.Enqueue(messaggio[i]);
+                }
+
+
+                if (serialeApparato.IsOpen)
+                {
+                    serialeApparato.Write(messaggio, Start, NumByte);
+                    return true;
+                }
+                else
+                    return false;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("scriviMessaggio: " + Ex.Message);
+                return false;
+            }
+        }
+
+
+
         private bool aspettaRisposta(int timeout, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false, bool modoDeso = false)
         {
             object vuoto;
@@ -110,10 +142,16 @@ namespace ChargerLogic
                 int _ackRicevuti = 0;
                 int _breakRicevuti = 0;
                 SerialMessage.TipoRisposta _msgRicevuto;
+                Queue<byte> _dumpDatiSER = new Queue<byte>();
 
                 Log.Debug("Inizio Ascolto " + timeout.ToString() + " - " + risposteAttese.ToString() + " - " + aspettaAck.ToString());
 
                 bool _inAttesa = true;
+                bool _echoRemoved = false;
+                bool _echoJump = false;
+              
+                byte[] _msgBase = new byte[_mD.MessageBuffer.Length];
+                _msgBase = _mD.MessageBuffer;
 
                 _startFunzione = DateTime.Now;
                 _startRicezione = DateTime.Now;
@@ -130,93 +168,145 @@ namespace ChargerLogic
                         byte[] readData = new byte[numBytesAvailable];
                         int numBytesRead = serialeApparato.Read(readData, 0, numBytesAvailable);
 
-                        Log.Debug("Dati Ricevuti Sa Display " + numBytesRead.ToString());
+                        Log.Debug("Dati Ricevuti da Display " + numBytesRead.ToString());
                         for (int _i = 0; _i < numBytesRead; _i++)
                         {
-
-                            codaDatiSER.Enqueue(readData[_i]);
+                            if (readData[_i] != 0x00)
+                            {
+                                codaDatiSER.Enqueue(readData[_i]);
+                            }
 
 
                             if (readData[_i] == SerialMessage.serETX)
                             {
-                                Log.Debug("Trovato Etx (USB), faccio ripartire il timeout");
+                                Log.Debug("Trovato Etx in pos " + _i.ToString() +  ", faccio ripartire il timeout");
                                 _trovatoETX = true;
-                                Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
+                                Log.Debug("Dati in coda DISP " + codaDatiSER.Count.ToString() + "; Echo Removed: " + _echoRemoved.ToString());
                                 _startFunzione = DateTime.Now;
                             }
 
                             if (_trovatoETX)
                             {
-                                Log.Debug("trovato ETX");
-                                _msgRicevuto = analizzaCodaDisplay();
-                                Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
-
+                                Log.Debug("trovato ETX (" + _i.ToString() + ")");
                                 _trovatoETX = false;
+                                _echoJump = false;
 
-                                switch (_msgRicevuto)
+                                // Verifico se è un echo e nel caso lo tolgo
+                                if ( !_echoRemoved)
                                 {
-                                    case SerialMessage.TipoRisposta.Ack:
-                                        _ackRicevuti++;
-                                        _ultimaRisposta = SerialMessage.TipoRisposta.Ack;
-                                        if (aspettaAck && _risposteRicevute >= risposteAttese) _inAttesa = false;
-                                        break;
-
-                                    case SerialMessage.TipoRisposta.Data:
-                                        _risposteRicevute++;
-                                        _ultimaRisposta = SerialMessage.TipoRisposta.Data;
-                                        if (TipoDati == elementiComuni.tipoMessaggio.DumpMemoria & _risposteRicevute >= risposteAttese - 1)
+                                    _echoRemoved = true;
+                                    bool _trovatoEcho = true;
+                                    for (int _y = 0; _y < echoDatiSER.Count; _y++)
+                                    {
+                                        if(codaDatiSER.ElementAt(_y) !=echoDatiSER.ElementAt(_y))
                                         {
-                                            _richiestaCancellata = true;
-                                            Log.Warn("Task cancellato al messaggio " + _risposteRicevute.ToString());
+                                            _trovatoEcho = false;
+                                            break;
                                         }
-                                        // se la gestione eventi è attiva, lancio un evento 
-                                        if (runAsync == true)
+                                    }
+
+                                    if (_trovatoEcho)
+                                    {
+                                        _dumpDatiSER.Clear();
+                                        for (int _y = 0; _y < echoDatiSER.Count; _y++)
                                         {
-                                         /*   if (Step != null)
+                                           byte _TempB = codaDatiSER.Dequeue();
+                                            _dumpDatiSER.Enqueue(_TempB);
+                                        }
+
+                                        Log.Debug("ECHO: " + FunzioniComuni.HexdumpQueue(_dumpDatiSER));
+                                        
+                                        _echoJump = true;
+                                        _trovatoETX = false;
+                                    }
+                                    else
+                                    {
+                                        Log.Debug("---------------------------  NO ECHO: ----------------------------------------");
+                                    }
+                                    _inAttesa = true;
+                                    //numBytesAvailable = serialeApparato.BytesToRead;
+
+                                    Log.Debug("Dati in coda post Echo " + codaDatiSER.Count.ToString());
+
+                                }
+
+                                if (!_echoJump)
+                                {
+
+                                    _msgRicevuto = analizzaCodaDisplay();
+
+
+                                    Log.Debug("Dati in coda SB (USB) No Echo" + codaDatiSER.Count.ToString());
+                                    Log.Debug(FunzioniComuni.HexdumpQueue(codaDatiSER));
+
+
+                                    switch (_msgRicevuto)
+                                    {
+                                        case SerialMessage.TipoRisposta.Ack:
+                                            _ackRicevuti++;
+                                            _ultimaRisposta = SerialMessage.TipoRisposta.Ack;
+                                            if (aspettaAck && _risposteRicevute >= risposteAttese) _inAttesa = false;
+                                            break;
+
+                                        case SerialMessage.TipoRisposta.Data:
+                                            _risposteRicevute++;
+                                            _ultimaRisposta = SerialMessage.TipoRisposta.Data;
+                                            if (TipoDati == elementiComuni.tipoMessaggio.DumpMemoria & _risposteRicevute >= risposteAttese - 1)
                                             {
-                                                int _progress = 0;
-                                                double _valProgress = 0;
-                                                sbWaitStep _passo = new sbWaitStep();
-                                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
-                                                _passo.TipoDati = TipoDati;
-                                                _passo.Eventi = risposteAttese;
-                                                _passo.Step = _risposteRicevute;
-                                                _passo.EsecuzioneInterrotta = false;
-                                                if (risposteAttese > 0)
-                                                {
-                                                    _valProgress = (_risposteRicevute * 100) / risposteAttese;
-                                                }
-                                                _progress = (int)_valProgress;
-                                                if (_lastProgress != _progress)
-                                                {
-                                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
-                                                    Log.Debug("Passo " + _risposteRicevute.ToString());
-                                                    Step(this, _stepEv);
-                                                    _lastProgress = _progress;
-                                                }
-                                            }*/
-                                        }
+                                                _richiestaCancellata = true;
+                                                Log.Warn("Task cancellato al messaggio " + _risposteRicevute.ToString());
+                                            }
+                                            // se la gestione eventi è attiva, lancio un evento 
+                                            if (runAsync == true)
+                                            {
+                                                /* 
+                                                   if (Step != null)
+                                                   {
+                                                       int _progress = 0;
+                                                       double _valProgress = 0;
+                                                       sbWaitStep _passo = new sbWaitStep();
+                                                       _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                                       _passo.TipoDati = TipoDati;
+                                                       _passo.Eventi = risposteAttese;
+                                                       _passo.Step = _risposteRicevute;
+                                                       _passo.EsecuzioneInterrotta = false;
+                                                       if (risposteAttese > 0)
+                                                       {
+                                                           _valProgress = (_risposteRicevute * 100) / risposteAttese;
+                                                       }
+                                                       _progress = (int)_valProgress;
+                                                       if (_lastProgress != _progress)
+                                                       {
+                                                           ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                                           Log.Debug("Passo " + _risposteRicevute.ToString());
+                                                           Step(this, _stepEv);
+                                                           _lastProgress = _progress;
+                                                       }
+                                                   }
+                                                */
+                                            }
 
-                                        if (_risposteRicevute >= risposteAttese)
-                                        {
+                                            if (_risposteRicevute >= risposteAttese)
+                                            {
+                                                _inAttesa = false;
+                                            }
+                                            break;
+
+                                        case SerialMessage.TipoRisposta.Break:
+                                            Log.Debug("Ricevuto BREAK");
+                                            _ultimaRisposta = SerialMessage.TipoRisposta.Break;
+                                            _breakRicevuti++;
                                             _inAttesa = false;
-                                        }
-                                        break;
+                                            break;
 
-                                    case SerialMessage.TipoRisposta.Break:
-                                        Log.Debug("Ricevuto BREAK");
-                                        _ultimaRisposta = SerialMessage.TipoRisposta.Break;
-                                        _breakRicevuti++;
-                                        _inAttesa = false;
-                                        break;
+                                        case SerialMessage.TipoRisposta.Nack:
+                                        case SerialMessage.TipoRisposta.NonValido:
+                                            _ultimaRisposta = _msgRicevuto;
+                                            _breakRicevuti++;
+                                            _inAttesa = false;
+                                            break;
 
-                                    case SerialMessage.TipoRisposta.Nack:
-                                    case SerialMessage.TipoRisposta.NonValido:
-                                        _ultimaRisposta = _msgRicevuto;
-                                        _breakRicevuti++;
-                                        _inAttesa = false;
-                                        break;
-
+                                    }
                                 }
                             }
                         }
@@ -389,6 +479,17 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Backlight");
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.DI_R_LeggiMemoria:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                Log.Debug("Lettura Area Memoria");
+                                break;
+                            case (byte)SerialMessage.TipoComando.DI_W_SalvaImmagineMemoria:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                Log.Debug("Scrittura Testata Immagine");
                                 break;
 
                             default:

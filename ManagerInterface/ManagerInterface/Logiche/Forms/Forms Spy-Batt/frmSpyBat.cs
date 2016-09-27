@@ -7240,6 +7240,8 @@ namespace PannelloCharger
                 int _spire = 2;
                 int _secAttesa = 5;
                 int _maxErrA = 5;
+                int _secPasso = 2;
+                float _coeffPasso = 2;
 
 
                 int.TryParse(txtCalAcal.Text, out _AmaxCal);
@@ -7247,6 +7249,8 @@ namespace PannelloCharger
                 int.TryParse(txtCalNumSpire.Text, out _spire);
                 int.TryParse(txtCalSecondiAttesa.Text, out _secAttesa);
                 int.TryParse(txtCalMaxAerr.Text, out _maxErrA);
+                int.TryParse(txtCalSecondiPasso.Text, out _secPasso);
+                float.TryParse(txtCalCoeffPasso.Text, out _coeffPasso);
 
                 if (_secAttesa < 1) _secAttesa = 1;
                 if (_secAttesa > 60) _secAttesa = 60;
@@ -7270,7 +7274,7 @@ namespace PannelloCharger
                 txtCalNumSpire.Text = _spire.ToString();
                 txtCalSecondiAttesa.Text = _secAttesa.ToString();
 
-                bool _esitoSeq = LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa, _maxErrA);
+                bool _esitoSeq = LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa, _maxErrA,_secPasso,_coeffPasso);
 
                 if (chkCalRegistraSequenza.Checked)
                 {
