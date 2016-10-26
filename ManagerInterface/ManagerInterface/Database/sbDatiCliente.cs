@@ -43,9 +43,16 @@ namespace MoriData
         public string BatteryId { get; set; }
         [MaxLength(120)]
         public string ClientNote { get; set; }
-        public byte ClientCounter{ get; set; }
+        public byte ClientCounter { get; set; }
         public int CicliAttesi { get; set; }
         public string SerialNumber { get; set; }
+
+        // Quarto blocco, dati pianificazione
+        public byte ModoPianificazione { get; set; }
+        public byte ModoRabboccatore { get; set; }
+        public byte ModoBiberonaggio { get; set; }
+        public byte[] MappaTurni { get; set; }
+
 
     }
 
@@ -60,11 +67,13 @@ namespace MoriData
         public bool _datiSalvati;
         public bool _recordPresente;
         private string _tempId;
+        public ModelloSettimana PianificazioneCorrente;
 
 
         public sbDatiCliente()
         {
             _sbdc = new _sbDatiCliente();
+            PianificazioneCorrente = new ModelloSettimana();
             valido = false;
             _datiSalvati = true;
             _recordPresente = false;
@@ -73,7 +82,8 @@ namespace MoriData
         public sbDatiCliente(_db connessione)
         {
             valido = false;
-            _sbdc = new _sbDatiCliente(); 
+            _sbdc = new _sbDatiCliente();
+            PianificazioneCorrente = new ModelloSettimana();
             _database = connessione;
             _datiSalvati = true;
             _recordPresente = false;
@@ -115,6 +125,7 @@ namespace MoriData
                 if (_sbdc == null)
                 {
                     _sbdc = new _sbDatiCliente();
+                    PianificazioneCorrente = new ModelloSettimana();
                     return false;
                 }
 
@@ -135,6 +146,7 @@ namespace MoriData
                 if (_sbdc == null)
                 {
                     _sbdc = new _sbDatiCliente();
+                    PianificazioneCorrente = new ModelloSettimana();
                     return false;
                 }
 
@@ -229,8 +241,14 @@ namespace MoriData
                 _sbdc.ClientCounter += 1;
                 _sbdc.CicliAttesi = 0;
                 if (!SalvaSeriale)
-                _sbdc.SerialNumber = "";
+                {
+                    _sbdc.SerialNumber = "";
+                }
 
+                _sbdc.ModoPianificazione = 0 ;
+                _sbdc.ModoRabboccatore = 0;
+                _sbdc.ModoBiberonaggio = 0;
+                _sbdc.MappaTurni = new byte[84];
                 return true;
 
             }
@@ -390,6 +408,51 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+        public byte ModoPianificazione
+        {
+            get { return _sbdc.ModoPianificazione; }
+            set
+            {
+                _sbdc.ModoPianificazione = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte ModoRabboccatore
+        {
+            get { return _sbdc.ModoRabboccatore; }
+            set
+            {
+                _sbdc.ModoRabboccatore = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte ModoBiberonaggio
+        {
+            get { return _sbdc.ModoBiberonaggio; }
+            set
+            {
+                _sbdc.ModoBiberonaggio = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte[] MappaTurni
+        {
+            get { return _sbdc.MappaTurni; }
+            set
+            {
+                _sbdc.MappaTurni = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+
 
         #endregion Class Parameter
 

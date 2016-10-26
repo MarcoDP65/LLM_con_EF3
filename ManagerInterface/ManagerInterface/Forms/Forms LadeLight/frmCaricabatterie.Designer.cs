@@ -3363,8 +3363,6 @@
             this.flvwLettureParametri.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwLettureParametri.CellEditUseWholeCell = false;
             this.flvwLettureParametri.FullRowSelect = true;
-            this.flvwLettureParametri.SelectedBackColor = System.Drawing.Color.Empty;
-            this.flvwLettureParametri.HighlightForegroundColor = System.Drawing.Color.Empty;
             this.flvwLettureParametri.Location = new System.Drawing.Point(572, 23);
             this.flvwLettureParametri.Name = "flvwLettureParametri";
             this.flvwLettureParametri.ShowGroups = false;
@@ -3570,7 +3568,7 @@
             // 
             this.label176.AutoSize = true;
             this.label176.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label176.Location = new System.Drawing.Point(953, 0);
+            this.label176.Location = new System.Drawing.Point(917, 0);
             this.label176.Name = "label176";
             this.label176.Size = new System.Drawing.Size(58, 17);
             this.label176.TabIndex = 69;
@@ -3586,7 +3584,7 @@
             this.panel1.Controls.Add(this.label154);
             this.panel1.Controls.Add(this.txtStratLLVmin);
             this.panel1.Controls.Add(this.label153);
-            this.panel1.Location = new System.Drawing.Point(936, 18);
+            this.panel1.Location = new System.Drawing.Point(914, 23);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(167, 158);
             this.panel1.TabIndex = 68;
@@ -4027,7 +4025,7 @@
             // 
             this.label189.AutoSize = true;
             this.label189.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label189.Location = new System.Drawing.Point(815, 184);
+            this.label189.Location = new System.Drawing.Point(735, 184);
             this.label189.Name = "label189";
             this.label189.Size = new System.Drawing.Size(64, 17);
             this.label189.TabIndex = 65;
@@ -4052,15 +4050,15 @@
             this.panel5.Controls.Add(this.label187);
             this.panel5.Controls.Add(this.txtStratAVErogati);
             this.panel5.Controls.Add(this.label188);
-            this.panel5.Location = new System.Drawing.Point(814, 204);
+            this.panel5.Location = new System.Drawing.Point(738, 204);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(289, 205);
+            this.panel5.Size = new System.Drawing.Size(343, 205);
             this.panel5.TabIndex = 64;
             // 
             // txtStratAVStop
             // 
             this.txtStratAVStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtStratAVStop.Location = new System.Drawing.Point(199, 158);
+            this.txtStratAVStop.Location = new System.Drawing.Point(247, 158);
             this.txtStratAVStop.Name = "txtStratAVStop";
             this.txtStratAVStop.Size = new System.Drawing.Size(74, 24);
             this.txtStratAVStop.TabIndex = 63;
@@ -4070,7 +4068,7 @@
             // 
             this.label201.AutoSize = true;
             this.label201.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label201.Location = new System.Drawing.Point(200, 138);
+            this.label201.Location = new System.Drawing.Point(244, 138);
             this.label201.Name = "label201";
             this.label201.Size = new System.Drawing.Size(46, 17);
             this.label201.TabIndex = 62;
@@ -4117,9 +4115,9 @@
             // txtStratAVPrevisti
             // 
             this.txtStratAVPrevisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtStratAVPrevisti.Location = new System.Drawing.Point(211, 36);
+            this.txtStratAVPrevisti.Location = new System.Drawing.Point(229, 36);
             this.txtStratAVPrevisti.Name = "txtStratAVPrevisti";
-            this.txtStratAVPrevisti.Size = new System.Drawing.Size(62, 24);
+            this.txtStratAVPrevisti.Size = new System.Drawing.Size(89, 24);
             this.txtStratAVPrevisti.TabIndex = 57;
             this.txtStratAVPrevisti.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -4127,7 +4125,7 @@
             // 
             this.label180.AutoSize = true;
             this.label180.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label180.Location = new System.Drawing.Point(208, 16);
+            this.label180.Location = new System.Drawing.Point(226, 16);
             this.label180.Name = "label180";
             this.label180.Size = new System.Drawing.Size(75, 17);
             this.label180.TabIndex = 51;
@@ -4753,7 +4751,7 @@
             this.grbStratComandiTest.Controls.Add(this.btnStratTest01);
             this.grbStratComandiTest.Location = new System.Drawing.Point(19, 18);
             this.grbStratComandiTest.Name = "grbStratComandiTest";
-            this.grbStratComandiTest.Size = new System.Drawing.Size(883, 126);
+            this.grbStratComandiTest.Size = new System.Drawing.Size(869, 126);
             this.grbStratComandiTest.TabIndex = 53;
             this.grbStratComandiTest.TabStop = false;
             this.grbStratComandiTest.Text = "Comandi Test";
@@ -4777,6 +4775,7 @@
             this.btnStratCallAv.TabIndex = 62;
             this.btnStratCallAv.Text = "CMD_AV";
             this.btnStratCallAv.UseVisualStyleBackColor = true;
+            this.btnStratCallAv.Click += new System.EventHandler(this.btnStratCallAv_Click);
             // 
             // btnStratSetDischarge
             // 

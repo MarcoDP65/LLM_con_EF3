@@ -1815,7 +1815,7 @@ namespace PannelloCharger
                     {
                         _sb.sbCliente.SerialNumber = _msgInput.Valore;
                         _sb.ScriviDatiCliente();
-                        if (caricaCliente(_sb.Id, _logiche, true)) mostraCliente();
+                        if (CaricaCliente(_sb.Id, _logiche, true)) mostraCliente();
                     }
                     if (_msgInput.TastoPremuto != EsitoControlloValore.EsitoPositivo)
                     {

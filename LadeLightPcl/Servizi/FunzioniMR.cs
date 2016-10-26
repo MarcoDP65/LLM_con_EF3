@@ -130,7 +130,15 @@ namespace Utility
             {
                 string _correnti = "";
                 float _inAmpere;
-                _inAmpere = Math.Abs((float)Corrente / 10);
+                bool _valNeg = ((Corrente & 0x8000) == 0x8000);
+                ushort _corrPos = (ushort)(Corrente & 0x7FFF);
+
+                _inAmpere = Math.Abs((float)_corrPos / 10);
+                if (_valNeg)
+                {
+                    _inAmpere *= -1;
+                }
+
                 _correnti = _inAmpere.ToString("0.0");
                 return _correnti;
             }
@@ -1646,7 +1654,64 @@ namespace Utility
             }
         }
 
+        public static short ArrayToShort(byte[] source, int start, int lenght)
+        {
+            short _tempVal16 = 0;
+            int _segno = 1;
+            byte _tempB;
+            try
+            {
+                for (int _i = start; _i < (start + lenght); _i++)
+                {
+                    if (_i < source.Length)
+                    {
+                        _tempB = source[_i];
+                        _tempVal16 = (short)(_tempVal16 << 8);
+                        _tempVal16 += _tempB;
+                    }
 
+                }
+                return _tempVal16;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public static short ArrayToSShort(byte[] source, int start, int lenght)
+        {
+            short _tempVal16 = 0;
+            int _segno = 1;
+            byte _tempB;
+            try
+            {
+                for (int _i = start; _i < (start + lenght); _i++)
+                {
+                    if (_i < source.Length)
+                    {
+                        _tempB = source[_i];
+                        if (_i == start)
+                        {
+                            if ((_tempB & 0x80) > 0)
+                                _segno = -1;
+                            else
+                                _segno = 1;
+
+                            _tempB = (byte)(_tempB & 0x7F);
+                        }
+                        _tempVal16 = (short)(_tempVal16 << 8);
+                        _tempVal16 += _tempB;
+                    }
+
+                }
+                return (short)(_tempVal16 * _segno);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
 
     }
 

@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 
-namespace PannelloCharger
+namespace ChargerLogic
 {
-    public class PannelloTurno :Panel
+    /// <summary>
+    /// Classe per la gestione informazioni del singolo turno
+    /// </summary>
+    public class PannelloTempo : Panel
     {
 
 
@@ -17,19 +20,15 @@ namespace PannelloCharger
         private Panel _pnlOpzioniTurno;
 
 
-        private MaskedTextBox _mtbInizioTurno;
-        private MaskedTextBox _mtbFineTurno;
+        private MaskedTextBox _mtbDurataFase;
 
-        private byte _oraInizioCambio;
-        private byte _oraFineCambio;
-
-        private byte _fattoreCarica = 100;
+        private byte _fattoreCarica = 101;
 
         private byte _opzioniTurno;
+        private byte _giorno;
 
-        private OraTurnoMR _InizioCambioTurno;
-        private OraTurnoMR _FineCambioTurno;
-
+        private ushort _minutiDurata = 480;
+        private bool _datiCambiati = false;
 
         private Label lblModoTempo;
         private Label lblStatoBiber;
@@ -37,6 +36,8 @@ namespace PannelloCharger
         private Label lblFcTurno;
         private NumericUpDown nudFcTurno;
 
+
+        private ModelloTurno _turno = new ModelloTurno();
 
         private bool _inEvidenza = false;
 
@@ -46,7 +47,7 @@ namespace PannelloCharger
 
         private Color _backcolor = new Color();
 
-        public PannelloTurno()
+        public PannelloTempo()
         {
             //_mtbInizioTurno = 0;
             SetStyle(ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
@@ -58,49 +59,37 @@ namespace PannelloCharger
         {
             try
             {
-                _backcolor = Color.Transparent;
+                _backcolor = Color.LightGoldenrodYellow;
 
                 // Inizializzazione oggetti
                 _pnlOrariCambio = new Panel();
-                _mtbInizioTurno = new MaskedTextBox();
-                _mtbFineTurno = new MaskedTextBox(); 
+                _mtbDurataFase = new MaskedTextBox();
+                this.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left);
 
                 // 
                 // pnlOrariCambio
                 // 
 
                 this._pnlOrariCambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                this._pnlOrariCambio.Controls.Add(this._mtbFineTurno);
-                this._pnlOrariCambio.Controls.Add(this._mtbInizioTurno);
-                this._pnlOrariCambio.Location = new System.Drawing.Point(12, 9);
+                this._pnlOrariCambio.Controls.Add(this._mtbDurataFase);
+
+                this._pnlOrariCambio.Location = new System.Drawing.Point(12, 12);
                 this._pnlOrariCambio.Name = "_pnlOrariCambio";
                 this._pnlOrariCambio.Size = new System.Drawing.Size(114, 30);
                 this._pnlOrariCambio.TabIndex = 3;
                 this.Controls.Add(_pnlOrariCambio);
 
                 // 
-                // mtbInizioTurno
+                // mtbDurataFase
                 // 
-                this._mtbInizioTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this._mtbInizioTurno.Location = new System.Drawing.Point(6, 4);
-                this._mtbInizioTurno.Mask = "00:00";
-                this._mtbInizioTurno.Name = "_mtbInizioTurno";
-                this._mtbInizioTurno.Size = new System.Drawing.Size(48, 24);
-                this._mtbInizioTurno.TabIndex = 0;
-                this._mtbInizioTurno.ValidatingType = typeof(System.DateTime);
-                this._mtbInizioTurno.Leave += new System.EventHandler(this.mtbInizioTurno_Leave);
-
-                // 
-                // mtbFineTurno
-                // 
-                this._mtbFineTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this._mtbFineTurno.Location = new System.Drawing.Point(58, 4);
-                this._mtbFineTurno.Mask = "00:00";
-                this._mtbFineTurno.Name = "_mtbFineTurno";
-                this._mtbFineTurno.Size = new System.Drawing.Size(48, 24);
-                this._mtbFineTurno.TabIndex = 1;
-                this._mtbFineTurno.ValidatingType = typeof(System.DateTime);
-                this._mtbFineTurno.Leave += new System.EventHandler(this.mtbFineTurno_Leave);
+                this._mtbDurataFase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this._mtbDurataFase.Location = new System.Drawing.Point(32, 4);
+                this._mtbDurataFase.Mask = "00:00";
+                this._mtbDurataFase.Name = "_mtbDurataFase";
+                this._mtbDurataFase.Size = new System.Drawing.Size(48, 24);
+                this._mtbDurataFase.TabIndex = 1;
+                this._mtbDurataFase.ValidatingType = typeof(System.DateTime);
+                this._mtbDurataFase.Leave += new System.EventHandler(this.mtbDurataFase_Leave);
 
 
 
@@ -123,7 +112,7 @@ namespace PannelloCharger
                 this._pnlOpzioniTurno.Controls.Add(this.lblStatoEqual);
                 this._pnlOpzioniTurno.Controls.Add(this.lblFcTurno);
                 this._pnlOpzioniTurno.Controls.Add(this.nudFcTurno);
-                this._pnlOpzioniTurno.Location = new System.Drawing.Point(138, 9);
+                this._pnlOpzioniTurno.Location = new System.Drawing.Point(138, 12);
                 this._pnlOpzioniTurno.Name = "pnlOpzioniTurno";
                 this._pnlOpzioniTurno.Size = new System.Drawing.Size(197, 30);
                 this._pnlOpzioniTurno.TabIndex = 6;
@@ -182,15 +171,17 @@ namespace PannelloCharger
                 // 
                 this.nudFcTurno.DecimalPlaces = 2;
                 this.nudFcTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.nudFcTurno.Increment = new decimal(new int[] { 1, 0, 0, 131072});
+                this.nudFcTurno.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
                 this.nudFcTurno.Location = new System.Drawing.Point(44, 4);
-                this.nudFcTurno.Maximum = new decimal(new int[] { 130, 0, 0, 131072});
-                this.nudFcTurno.Minimum = new decimal(new int[] {   1, 0, 0,      0});
+                this.nudFcTurno.Maximum = new decimal(new int[] { 130, 0, 0, 131072 });
+                this.nudFcTurno.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
                 this.nudFcTurno.Name = "nudFcTurno";
                 this.nudFcTurno.Size = new System.Drawing.Size(68, 22);
                 this.nudFcTurno.TabIndex = 1;
                 this.nudFcTurno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-                this.nudFcTurno.Value = new decimal(new int[] { 1, 0, 0, 0});
+                this.nudFcTurno.Value = new decimal(new int[] { 1, 0, 0, 0 });
+
+                this.nudFcTurno.ValueChanged += new System.EventHandler(this.nudFcTurno_ValueChanged);
 
                 this.BackColor = _backcolor;
                 this.Dock = DockStyle.Fill;
@@ -200,7 +191,7 @@ namespace PannelloCharger
             {
 
             }
-          
+
 
         }
 
@@ -208,7 +199,7 @@ namespace PannelloCharger
         {
             if (_inEvidenza)
             {
-                
+
                 using (SolidBrush brush = new SolidBrush(BackColor))
                     e.Graphics.FillRectangle(brush, ClientRectangle);
                 e.Graphics.DrawRectangle(Pens.Red, 0, 0, ClientSize.Width - 2, ClientSize.Height - 2);
@@ -237,9 +228,8 @@ namespace PannelloCharger
         {
             try
             {
-               _mtbInizioTurno.ReadOnly = stato;
-               _mtbFineTurno.ReadOnly = stato;
-               nudFcTurno.ReadOnly = stato;
+                _mtbDurataFase.ReadOnly = stato;
+                nudFcTurno.ReadOnly = stato;
                 nudFcTurno.Enabled = !stato;
             }
             catch
@@ -247,6 +237,7 @@ namespace PannelloCharger
 
             }
         }
+
 
 
         private void host_DoubleClick(object sender, EventArgs e)
@@ -374,24 +365,70 @@ namespace PannelloCharger
             }
         }
 
-        private void mtbInizioTurno_Leave(object sender, EventArgs e)
+
+
+        private void nudFcTurno_ValueChanged(object sender, EventArgs e)
         {
-            VerificaStatoTurno();
+            try
+            {
+                if(nudFcTurno.Value >= 0 && nudFcTurno.Value < 2)
+                {
+                    byte _nuovoValore = (byte)( nudFcTurno.Value * 100 );
+                    if (_fattoreCarica != _nuovoValore)
+                    {
+                        _fattoreCarica = _nuovoValore;
+                        _turno.FattoreCarica = _nuovoValore;
+                        _datiCambiati = true;
+
+                    }
+
+                }
+
+
+            }
+            catch
+            {
+
+            }
         }
 
-        private void mtbFineTurno_Leave(object sender, EventArgs e)
+        private void mtbDurataFase_Leave(object sender, EventArgs e)
         {
-            VerificaStatoTurno();
+            VerificaDurataFase();
         }
 
-        
 
-        private bool VerificaStatoTurno()
+
+
+
+
+        private bool VerificaDurataFase()
         {
             bool StatoTurno = false;
             try
             {
-                if (IsValidTime(_mtbInizioTurno.Text) || IsValidTime(_mtbFineTurno.Text))
+
+                int _tempOre;
+                int _tempMin;
+                bool _esito;
+                string _tempoT;
+                string _tempoIns = _mtbDurataFase.Text;
+                _tempoIns = _tempoIns.Replace("_", "0");
+
+                _tempoT = _tempoIns.Substring(0,2);
+                _esito = int.TryParse(_tempoT, out _tempOre);
+                if(_tempoIns.Length >3)
+                {
+                    _tempoT = _tempoIns.Substring(3, 2);
+                    _esito = int.TryParse(_tempoT, out _tempMin);
+                }
+                else
+                {
+                    _tempMin = 0;
+                }
+                _minutiDurata = (ushort)(_tempOre * 60 + _tempMin);
+                 
+                if (_minutiDurata >= 360)
                 {
                     StatoTurno = true;
                 }
@@ -399,7 +436,12 @@ namespace PannelloCharger
                 {
                     StatoTurno = false;
                 }
-
+                if (_turno.MinutiDurata != _minutiDurata)
+                {
+                    _turno.MinutiDurata = _minutiDurata;
+                    _datiCambiati = true;
+                }
+                _turno.MinutiDurata = _minutiDurata;
                 _pnlOpzioniTurno.Enabled = StatoTurno;
                 InEvidenza = StatoTurno;
 
@@ -467,49 +509,124 @@ namespace PannelloCharger
         }
 
 
-
-
-        public OraTurnoMR InizioCambioTurno
+        public  ModelloTurno Turno
         {
             get
             {
-                return _InizioCambioTurno;
+                return _turno;
             }
             set
             {
-                _InizioCambioTurno = value;
-                if (value != null)
-                {
-                    _mtbInizioTurno.Text = _InizioCambioTurno.Ore.ToString("00") + ":" + _InizioCambioTurno.Minuti.ToString("00");
-                }
-                else
-                {
-                    _mtbInizioTurno.Text = "";
-                }
-            }
-        }
-        public OraTurnoMR FineCambioTurno
-        {
-            get
-            {
-                return _FineCambioTurno;
-            }
-            set
-            {
-                _FineCambioTurno = value;
-                if (value != null)
-                {
-                    _mtbFineTurno.Text = _FineCambioTurno.Ore.ToString("00") + ":" + _FineCambioTurno.Minuti.ToString("00");
-                }
-                else
-                {
-                    _mtbFineTurno.Text = "";
-                }
+                _turno = value;
+                _minutiDurata = _turno.MinutiDurata;
+                MostraDurata(_turno.MinutiDurata);
+                _fattoreCarica = _turno.FattoreCarica;
+                MostraFC(_fattoreCarica);
+                _datiCambiati = false;
             }
         }
 
+        /// <summary>
+        /// Ritorna un valore indicante se i dati sono cambiati.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> se i dati sono stati cambiati localmente; otherwise, <c>false</c>.
+        /// </value>
+        public bool DatiCambiati
+        {
+            get
+            {
+                return _datiCambiati;
+            }
+
+        }
+
+
+        public ushort MinutiDurata
+        {
+            get
+            {
+                return _minutiDurata;
+            }
+            set
+            {
+                ushort _tempOre;
+                ushort _tempMinuti;
+                _minutiDurata = value;
+                MostraDurata(_minutiDurata);
+                _turno.MinutiDurata = _minutiDurata;
+                _datiCambiati = true;
+            }
+        }
+
+
+        public byte Giorno
+        {
+            get
+            {
+                return _giorno;
+            }
+            set
+            {
+                _giorno = value;
+                _datiCambiati = true;
+            }
+        }
+
+        private bool MostraDurata(ushort Minuti = 0)
+        {
+            bool _esito = false;
+            try
+            {
+                ushort _tempOre;
+                ushort _tempMinuti;
+                
+                if (Minuti != 0)
+                {
+                    _tempOre = (ushort)(Minuti / 60);
+                    _tempMinuti = (ushort)(Minuti % 60);
+                    _mtbDurataFase.Text = _tempOre.ToString("00") + ":" + _tempMinuti.ToString("00");
+                    _esito = true;
+                }
+                else
+                {
+                    _mtbDurataFase.Text = "";
+                    _esito = false;
+                }
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+        private bool MostraFC(byte fc = 0)
+        {
+            bool _esito = false;
+            try
+            {
+
+                if (fc != 0)
+                {
+
+                    nudFcTurno.Value = (decimal) fc / 100;
+
+                    _esito = true;
+                }
+                else
+                {
+                    nudFcTurno.Value = 1;
+                    _esito = false;
+                }
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
     }
-
 
 
 }

@@ -281,7 +281,7 @@ namespace PannelloCharger
                 }
 
 
-                if (_attivaPRO)
+                 if (_attivaPRO)
                 {
                     _nuovoProg.ModoPianificazione = (byte)cmbProModoPianif.SelectedValue;
                     _nuovoProg.CorrenteMinimaCHG = FunzioniMR.ConvertiUshort(txtProMinChargeCurr.Text, 10,0);
@@ -308,7 +308,7 @@ namespace PannelloCharger
 
                 }
 
-    _sb.ScriviProgramma( _nuovoProg ,(chkMemProgrammed.Checked == true ));
+                 _sb.ScriviProgramma( _nuovoProg ,(chkMemProgrammed.Checked == true ));
 
                 if (_sb.UltimaRisposta != SerialMessage.EsitoRisposta.MessaggioOk)
                 {
@@ -576,11 +576,20 @@ namespace PannelloCharger
                     txtProgcBattAhDef.Text = "2000";
                 }
                 ushort _tempAmps = (ushort)(_tempCap / 12);
-                txtProMinChargeCurr .Text = _tempAmps.ToString();
+                // 28/09/16 - Corrente minima fissa a 5A
+                txtProMinChargeCurr.Text = "5";  //_tempAmps.ToString();
 
                  _tempAmps = (ushort)(_tempCap / 4);
                 txtProMaxChargeCurr.Text = _tempAmps.ToString();
 
+                _tempAmps = (ushort)(_tempCap / 13);
+                txtProMaxCurrW.Text = _tempAmps.ToString();
+
+                _tempAmps = (ushort)(_tempCap / 24);
+                txtProMinCurrW.Text = _tempAmps.ToString();
+
+                _tempAmps = (ushort)(_tempCap / 2);
+                txtProMaxCurrImp.Text = _tempAmps.ToString();
             }
             catch (Exception Ex)
             {

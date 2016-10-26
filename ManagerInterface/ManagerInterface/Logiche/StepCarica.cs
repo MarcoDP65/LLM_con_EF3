@@ -23,6 +23,7 @@ namespace ChargerLogic
         public ushort valCapStep { get; set; }
         public ushort valToff { get; set; }
         public ushort valTon { get; set; }
+        public ushort valTBlocco { get; set; }
         public byte NumRipetizioni { get; set; }
 
         public ValoriStepCarica()
@@ -36,6 +37,7 @@ namespace ChargerLogic
             valCapStep = 0;
             valToff = 0;
             valTon = 0;
+            valTBlocco = 0;
             NumRipetizioni = 0;
         }
 
@@ -64,7 +66,7 @@ namespace ChargerLogic
                 Dati.valIMassima = FunzioniComuni.UshortFromArray(DatiStep, 3);
                 Dati.valVMinima = FunzioniComuni.UshortFromArray(DatiStep, 5);
                 Dati.valVMassima = FunzioniComuni.UshortFromArray(DatiStep, 7);
-                Dati.valCapStep = FunzioniComuni.UshortFromArray(DatiStep, 9);
+                Dati.valTBlocco = FunzioniComuni.UshortFromArray(DatiStep, 9);
                 Dati.valToff = FunzioniComuni.UshortFromArray(DatiStep, 11);
                 Dati.valTon = FunzioniComuni.UshortFromArray(DatiStep, 13);
                 Dati.NumRipetizioni = DatiStep[15];
@@ -113,6 +115,13 @@ namespace ChargerLogic
             }
         }
 
+        public string LabelStep
+        {
+            get
+            {
+                return Dati.IdStep.ToString();
+            }
+        }
 
 
 
@@ -156,6 +165,14 @@ namespace ChargerLogic
             get
             {
                 return FunzioniMR.StringaCorrenteLL(Dati.valCapStep);
+            }
+        }
+
+        public string strTBlocco
+        {
+            get
+            {
+                return Dati.valTBlocco.ToString();
             }
         }
 

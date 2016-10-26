@@ -1336,6 +1336,15 @@ namespace PannelloCharger
         {
 
         }
+
+        private void btnStratCallAv_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            ChiamataProxySig60CSAvanzamento(0x03);
+
+            this.Cursor = Cursors.Default;
+        }
     }
 
 }

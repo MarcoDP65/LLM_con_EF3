@@ -84,12 +84,13 @@ namespace ChargerLogic
             bool _richiestaCancellata = false;
             int _divider = 1;
             int _lastProgress = -1;
+            int _loopAttesa = 0;
             try
             {
 
                 // entro nel loop e aspetto 
                 esito = null;
-
+                _loopAttesa++;
                 if (_parametri.CanaleLadeLight == parametriSistema.CanaleDispositivo.USB)
                 {
                     // mi metto in ascolto sul canale USB fino a EOT o a timeout 
@@ -124,7 +125,8 @@ namespace ChargerLogic
                             // Errore nella lettura dati disponibili
                             Log.Warn("Failed to get number of bytes available to read (error " + ftStatus.ToString() + ")");
                         }
-                        Log.Debug("Dati disponibili LL (USB) " + numBytesAvailable.ToString());
+
+                        //Log.Debug("Dati disponibili LL (USB) " + numBytesAvailable.ToString());
                         if (numBytesAvailable > 0)
                         {
                             // Now that we have the amount of data we want available, read it
@@ -248,6 +250,8 @@ namespace ChargerLogic
                         //Log.Debug(DateTime.Now.ToShortTimeString());
                     }
                     while (_inAttesa);
+                    Log.Debug("Effettuati " + _loopAttesa.ToString() + " cicli di attesa: " + SecondiTrascorsi(_startFunzione).ToString("0.00"));
+
                     // se background mode attivo, lancio l'evento di fine elaborazione
                     if (runAsync == true)
                     {
@@ -324,6 +328,22 @@ namespace ChargerLogic
             }
             catch { return true; }
         }
+
+        private double SecondiTrascorsi(DateTime inizio)
+        {
+            try
+            {
+                DateTime _ora = DateTime.Now;
+                TimeSpan _durata = _ora.Subtract(inizio);
+                double _secondiEffettivi = _durata.TotalSeconds;
+
+                return _secondiEffettivi;
+
+
+            }
+            catch { return 0; }
+        }
+
 
         private void LL_UsbWaiter()
         {
@@ -630,7 +650,7 @@ namespace ChargerLogic
         }
 
 
-        public bool ProxySBSig60(byte[] PacchettoDati )
+        public bool ProxySBSig60(ref byte[] PacchettoDati )
         {
             try
             {
@@ -641,8 +661,11 @@ namespace ChargerLogic
                 _mS.Comando = SerialMessage.TipoComando.LL_SIG60_PROXY;
                 _mS.ComponiMessaggioNew(PacchettoDati);
                 _rxRisposta = false;
+                Log.Debug("---------------------------------------------------------------------------");
                 Log.Debug("Leggi ProxySBSig60 LL");
                 Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
+                Log.Debug("---------------------------------------------------------------------------");
+
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 //  _esito = aspettaRisposta(AttesaTimeout, 1, true);
                 _esito = aspettaRisposta(140, 1, true);
@@ -655,7 +678,7 @@ namespace ChargerLogic
                     }
                     
                 }
-
+                PacchettoDati = DatiRisposta;
 
                 return _esito;
 
@@ -1015,7 +1038,7 @@ namespace ChargerLogic
                                 _inviaRisposta = true;
                                 break;
                             case (byte)SerialMessage.TipoComando.LL_SIG60_PROXY:
-                                Log.Debug("Ciclo Programmato");
+                                Log.Debug("SIG60 Proxy");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = true;
                                 break;

@@ -407,7 +407,7 @@ namespace ChargerLogic
         /// <param name="TimeOn">The time on.</param>
         /// <param name="TimeOff">The time off.</param>
         /// <returns></returns>
-        public bool ComponiMessaggioLed(byte ValRed, byte ValGreen, byte ValBlue, byte TimeOn, byte TimeOff)
+        public bool ComponiMessaggioLed(byte ValRed, byte ValGreen, byte ValBlue, byte TimeOn, byte TimeOff, byte ValRedDx, byte ValGreenDx, byte ValBlueDx, byte TimeOnDx, byte TimeOffDx)
         {
             bool _esito = false;
             ushort _dispositivo;
@@ -460,8 +460,9 @@ namespace ChargerLogic
 
                 /// aggiungo il corpo
                 /// 
+                /// ATTENZIONE: Il canale BLU ha i lati DX/SX invertiti rispeto agli altri canali
 
-                splitUshort(codificaByte(ValBlue), ref lsb, ref msb);
+                splitUshort(codificaByte(ValBlueDx), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
@@ -487,20 +488,20 @@ namespace ChargerLogic
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
-                splitUshort(codificaByte(ValRed), ref lsb, ref msb);
+                splitUshort(codificaByte(ValRedDx), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
-                splitUshort(codificaByte(ValGreen), ref lsb, ref msb);
+                splitUshort(codificaByte(ValGreenDx), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
 
-                splitUshort(codificaByte(TimeOn), ref lsb, ref msb);
+                splitUshort(codificaByte(TimeOnDx), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
-                splitUshort(codificaByte(TimeOff), ref lsb, ref msb);
+                splitUshort(codificaByte(TimeOffDx), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;

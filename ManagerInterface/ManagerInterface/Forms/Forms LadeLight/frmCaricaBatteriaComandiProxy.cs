@@ -30,7 +30,7 @@ namespace PannelloCharger
 
                 byte[] _Dati;
                 bool _esito;
-                int _cmdlen = 220;
+                int _cmdlen = 3;
 
 
                 txtStratDataGridTx.Text = "Waiting to send CMD";
@@ -49,16 +49,32 @@ namespace PannelloCharger
                 _Dati[1] = 0xA0;   // CMD_QRY
                 _Dati[2] = 2;      // lunghezza comando
 
+
+                string _risposta = "";
+                int _colonne = 0;
+                for (int _i = 0; _i < _Dati.Length; _i++)
+                {
+                    _risposta += _Dati[_i].ToString("X2") + " ";
+                    _colonne += 1;
+                    if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                    if (_colonne > 15)
+                    {
+                        _risposta += "\r\n";
+                        _colonne = 0;
+
+                    }
+                }
+                txtStratDataGridTx.Text = _risposta;
                 Application.DoEvents();
 
-                _esito = _cb.ProxySBSig60(_Dati);
+                _esito = _cb.ProxySBSig60(ref _Dati);
                 
                 if (_esito == true)
                 {
 
 
-                    string _risposta = "";
-                    int _colonne = 0;
+                     _risposta = "";
+                     _colonne = 0;
                     for (int _i = 0; _i < _Dati.Length; _i++)
                     {
                         _risposta += _Dati[_i].ToString("X2") + " ";
@@ -82,6 +98,109 @@ namespace PannelloCharger
                     txtStratQryTatt.Text = FunzioniMR.StringaTemperatura(_Dati[0x13]);
                     txtStratQryTalm.Text = FunzioniMR.StringaTemperatura(_Dati[0x14]);
                     txtStratQryTrepr.Text = FunzioniMR.StringaTemperatura(_Dati[0x15]);
+
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LanciaComandoTestStrategia: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        public bool ChiamataProxySig60CSAvanzamento(byte ComandoStrategia)
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                int _cmdlen = 3;
+
+
+                txtStratDataGridTx.Text = "Waiting to send CMD_AV";
+                txtStratDataGridRx.Text = "Waiting for Answer";
+
+                _Dati = new byte[_cmdlen];
+
+
+                for (int _i = 0; _i < _cmdlen; _i++)
+                {
+                    _Dati[_i] = 0;
+                }
+
+                // Ora compongo il comando specifico 
+                _Dati[0] = 0x80;   // strategia
+                _Dati[1] = 0x03;   // CMD_AV
+                _Dati[2] = 03;      // lunghezza comando
+                string _risposta = "";
+                int _colonne = 0;
+                for (int _i = 0; _i < _Dati.Length; _i++)
+                {
+                    _risposta += _Dati[_i].ToString("X2") + " ";
+                    _colonne += 1;
+                    if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                    if (_colonne > 15)
+                    {
+                        _risposta += "\r\n";
+                        _colonne = 0;
+
+                    }
+                }
+                txtStratDataGridTx.Text = _risposta;
+
+                Application.DoEvents();
+
+                _esito = _cb.ProxySBSig60(ref _Dati);
+
+                if (_esito == true)
+                {
+
+
+                     _risposta = "";
+                     _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtStratDataGridRx.Text = _risposta;
+
+                    // Mostro i valori
+
+                    ushort _Erogato;
+                    ushort _previsto;
+                    // Mostro i valori
+                    _Erogato = FunzioniComuni.UshortFromArray(_Dati, 3);
+                    _previsto = FunzioniComuni.UshortFromArray(_Dati, 5);
+                    txtStratAVErogati.Text = FunzioniMR.StringaCorrenteLL(_Erogato);
+                    txtStratAVPrevisti.Text = FunzioniMR.StringaCorrenteLL(_previsto);
+                    if (_Erogato <= _previsto)
+                        txtStratAVMancanti.Text = FunzioniMR.StringaCorrenteLL((ushort)(_previsto - _Erogato));
+                    else
+                        txtStratAVMancanti.Text = "";
+
+
+                    txtStratAVMinutiResidui.Text = FunzioniComuni.UshortFromArray(_Dati, 0x07).ToString();
+
+                    // Aggiungere i moìinuti trascorsi
+
+                    txtStratAVTensioneIst.Text = FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x0B));
+                    //txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0D));
+                    //txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrente(FunzioniComuni.ArrayToShort(_Dati, 0x0D, 2));
+                    txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteSigned(FunzioniComuni.ArrayToShort(_Dati, 0x0D, 2));
+                    txtStratAVTempIst.Text = FunzioniMR.StringaTemperatura(_Dati[0x0F]);                    
 
                 }
 
@@ -179,7 +298,7 @@ namespace PannelloCharger
 
                 Application.DoEvents();
 
-                _esito = _cb.ProxySBSig60(_tempBuffer);
+                _esito = _cb.ProxySBSig60(ref _tempBuffer);
                 if (_esito == true)
                 {
 
@@ -272,7 +391,7 @@ namespace PannelloCharger
                 Application.DoEvents();
 
 
-                _esito = _cb.ProxySBSig60(_tempBuffer);
+                _esito = _cb.ProxySBSig60(ref _tempBuffer);
                 if (_esito == true)
                 {
 

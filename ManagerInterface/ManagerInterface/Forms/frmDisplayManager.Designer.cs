@@ -207,6 +207,13 @@
             this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.txtRtValBluDx = new System.Windows.Forms.TextBox();
+            this.txtRtValGreenDx = new System.Windows.Forms.TextBox();
+            this.txtRtValRedDx = new System.Windows.Forms.TextBox();
+            this.txtRtValTimeOffDx = new System.Windows.Forms.TextBox();
+            this.txtRtValTimeOnDx = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpArchivioModelli.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -841,6 +848,13 @@
             // tbpRealTime
             // 
             this.tbpRealTime.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpRealTime.Controls.Add(this.label46);
+            this.tbpRealTime.Controls.Add(this.label45);
+            this.tbpRealTime.Controls.Add(this.txtRtValTimeOffDx);
+            this.tbpRealTime.Controls.Add(this.txtRtValTimeOnDx);
+            this.tbpRealTime.Controls.Add(this.txtRtValBluDx);
+            this.tbpRealTime.Controls.Add(this.txtRtValGreenDx);
+            this.tbpRealTime.Controls.Add(this.txtRtValRedDx);
             this.tbpRealTime.Controls.Add(this.btnRtCLS);
             this.tbpRealTime.Controls.Add(this.btnRtDrawImage);
             this.tbpRealTime.Controls.Add(this.txtRtValImgColor);
@@ -887,7 +901,7 @@
             // 
             // btnRtCLS
             // 
-            this.btnRtCLS.Location = new System.Drawing.Point(703, 251);
+            this.btnRtCLS.Location = new System.Drawing.Point(704, 302);
             this.btnRtCLS.Name = "btnRtCLS";
             this.btnRtCLS.Size = new System.Drawing.Size(136, 41);
             this.btnRtCLS.TabIndex = 92;
@@ -897,7 +911,7 @@
             // 
             // btnRtDrawImage
             // 
-            this.btnRtDrawImage.Location = new System.Drawing.Point(561, 251);
+            this.btnRtDrawImage.Location = new System.Drawing.Point(562, 302);
             this.btnRtDrawImage.Name = "btnRtDrawImage";
             this.btnRtDrawImage.Size = new System.Drawing.Size(136, 41);
             this.btnRtDrawImage.TabIndex = 91;
@@ -908,7 +922,7 @@
             // txtRtValImgColor
             // 
             this.txtRtValImgColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgColor.Location = new System.Drawing.Point(453, 258);
+            this.txtRtValImgColor.Location = new System.Drawing.Point(454, 309);
             this.txtRtValImgColor.Name = "txtRtValImgColor";
             this.txtRtValImgColor.Size = new System.Drawing.Size(48, 24);
             this.txtRtValImgColor.TabIndex = 90;
@@ -918,7 +932,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label23.Location = new System.Drawing.Point(450, 238);
+            this.label23.Location = new System.Drawing.Point(451, 289);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(49, 17);
             this.label23.TabIndex = 89;
@@ -927,7 +941,7 @@
             // txtRtValImgPosY
             // 
             this.txtRtValImgPosY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgPosY.Location = new System.Drawing.Point(370, 258);
+            this.txtRtValImgPosY.Location = new System.Drawing.Point(371, 309);
             this.txtRtValImgPosY.Name = "txtRtValImgPosY";
             this.txtRtValImgPosY.Size = new System.Drawing.Size(48, 24);
             this.txtRtValImgPosY.TabIndex = 88;
@@ -937,7 +951,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label24.Location = new System.Drawing.Point(366, 238);
+            this.label24.Location = new System.Drawing.Point(367, 289);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(49, 17);
             this.label24.TabIndex = 87;
@@ -946,7 +960,7 @@
             // txtRtValImgPosX
             // 
             this.txtRtValImgPosX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgPosX.Location = new System.Drawing.Point(312, 258);
+            this.txtRtValImgPosX.Location = new System.Drawing.Point(313, 309);
             this.txtRtValImgPosX.Name = "txtRtValImgPosX";
             this.txtRtValImgPosX.Size = new System.Drawing.Size(48, 24);
             this.txtRtValImgPosX.TabIndex = 86;
@@ -956,7 +970,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label25.Location = new System.Drawing.Point(309, 238);
+            this.label25.Location = new System.Drawing.Point(310, 289);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(49, 17);
             this.label25.TabIndex = 85;
@@ -966,7 +980,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(64, 260);
+            this.label27.Location = new System.Drawing.Point(65, 311);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(100, 20);
             this.label27.TabIndex = 82;
@@ -975,7 +989,7 @@
             // txtRtValImgId
             // 
             this.txtRtValImgId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgId.Location = new System.Drawing.Point(177, 258);
+            this.txtRtValImgId.Location = new System.Drawing.Point(178, 309);
             this.txtRtValImgId.Name = "txtRtValImgId";
             this.txtRtValImgId.Size = new System.Drawing.Size(102, 24);
             this.txtRtValImgId.TabIndex = 81;
@@ -985,7 +999,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label28.Location = new System.Drawing.Point(174, 238);
+            this.label28.Location = new System.Drawing.Point(175, 289);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(21, 17);
             this.label28.TabIndex = 80;
@@ -993,7 +1007,7 @@
             // 
             // btnRtDrawLine
             // 
-            this.btnRtDrawLine.Location = new System.Drawing.Point(560, 188);
+            this.btnRtDrawLine.Location = new System.Drawing.Point(561, 239);
             this.btnRtDrawLine.Name = "btnRtDrawLine";
             this.btnRtDrawLine.Size = new System.Drawing.Size(136, 41);
             this.btnRtDrawLine.TabIndex = 79;
@@ -1004,7 +1018,7 @@
             // txtRtValLineColor
             // 
             this.txtRtValLineColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineColor.Location = new System.Drawing.Point(452, 195);
+            this.txtRtValLineColor.Location = new System.Drawing.Point(453, 246);
             this.txtRtValLineColor.Name = "txtRtValLineColor";
             this.txtRtValLineColor.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineColor.TabIndex = 78;
@@ -1014,7 +1028,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(449, 175);
+            this.label11.Location = new System.Drawing.Point(450, 226);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 17);
             this.label11.TabIndex = 77;
@@ -1023,7 +1037,7 @@
             // txtRtValLineYFine
             // 
             this.txtRtValLineYFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineYFine.Location = new System.Drawing.Point(369, 195);
+            this.txtRtValLineYFine.Location = new System.Drawing.Point(370, 246);
             this.txtRtValLineYFine.Name = "txtRtValLineYFine";
             this.txtRtValLineYFine.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineYFine.TabIndex = 76;
@@ -1033,7 +1047,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(365, 175);
+            this.label12.Location = new System.Drawing.Point(366, 226);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 17);
             this.label12.TabIndex = 75;
@@ -1042,7 +1056,7 @@
             // txtRtValLineXFine
             // 
             this.txtRtValLineXFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineXFine.Location = new System.Drawing.Point(311, 195);
+            this.txtRtValLineXFine.Location = new System.Drawing.Point(312, 246);
             this.txtRtValLineXFine.Name = "txtRtValLineXFine";
             this.txtRtValLineXFine.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineXFine.TabIndex = 74;
@@ -1052,7 +1066,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(308, 175);
+            this.label13.Location = new System.Drawing.Point(309, 226);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 17);
             this.label13.TabIndex = 73;
@@ -1061,7 +1075,7 @@
             // txtRtValLineYStart
             // 
             this.txtRtValLineYStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineYStart.Location = new System.Drawing.Point(230, 195);
+            this.txtRtValLineYStart.Location = new System.Drawing.Point(231, 246);
             this.txtRtValLineYStart.Name = "txtRtValLineYStart";
             this.txtRtValLineYStart.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineYStart.TabIndex = 72;
@@ -1071,7 +1085,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(227, 175);
+            this.label14.Location = new System.Drawing.Point(228, 226);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 17);
             this.label14.TabIndex = 71;
@@ -1081,7 +1095,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(63, 197);
+            this.label15.Location = new System.Drawing.Point(64, 248);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 20);
             this.label15.TabIndex = 70;
@@ -1090,7 +1104,7 @@
             // txtRtValLineXStart
             // 
             this.txtRtValLineXStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineXStart.Location = new System.Drawing.Point(176, 195);
+            this.txtRtValLineXStart.Location = new System.Drawing.Point(177, 246);
             this.txtRtValLineXStart.Name = "txtRtValLineXStart";
             this.txtRtValLineXStart.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineXStart.TabIndex = 69;
@@ -1100,7 +1114,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label16.Location = new System.Drawing.Point(173, 175);
+            this.label16.Location = new System.Drawing.Point(174, 226);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(49, 17);
             this.label16.TabIndex = 68;
@@ -1108,7 +1122,7 @@
             // 
             // btnRtStopLed
             // 
-            this.btnRtStopLed.Location = new System.Drawing.Point(703, 122);
+            this.btnRtStopLed.Location = new System.Drawing.Point(704, 134);
             this.btnRtStopLed.Name = "btnRtStopLed";
             this.btnRtStopLed.Size = new System.Drawing.Size(136, 41);
             this.btnRtStopLed.TabIndex = 67;
@@ -1118,7 +1132,7 @@
             // 
             // btnRtSetLed
             // 
-            this.btnRtSetLed.Location = new System.Drawing.Point(561, 122);
+            this.btnRtSetLed.Location = new System.Drawing.Point(561, 134);
             this.btnRtSetLed.Name = "btnRtSetLed";
             this.btnRtSetLed.Size = new System.Drawing.Size(136, 41);
             this.btnRtSetLed.TabIndex = 66;
@@ -1129,7 +1143,7 @@
             // txtRtValTimeOff
             // 
             this.txtRtValTimeOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOff.Location = new System.Drawing.Point(423, 129);
+            this.txtRtValTimeOff.Location = new System.Drawing.Point(422, 129);
             this.txtRtValTimeOff.Name = "txtRtValTimeOff";
             this.txtRtValTimeOff.Size = new System.Drawing.Size(48, 24);
             this.txtRtValTimeOff.TabIndex = 65;
@@ -1148,7 +1162,7 @@
             // txtRtValTimeOn
             // 
             this.txtRtValTimeOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOn.Location = new System.Drawing.Point(369, 129);
+            this.txtRtValTimeOn.Location = new System.Drawing.Point(368, 129);
             this.txtRtValTimeOn.Name = "txtRtValTimeOn";
             this.txtRtValTimeOn.Size = new System.Drawing.Size(48, 24);
             this.txtRtValTimeOn.TabIndex = 63;
@@ -1206,7 +1220,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(64, 131);
+            this.label6.Location = new System.Drawing.Point(65, 143);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 20);
             this.label6.TabIndex = 57;
@@ -2171,6 +2185,71 @@
             // 
             this.ofdImportDati.FileName = "openFileDialog1";
             // 
+            // txtRtValBluDx
+            // 
+            this.txtRtValBluDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValBluDx.Location = new System.Drawing.Point(286, 159);
+            this.txtRtValBluDx.Name = "txtRtValBluDx";
+            this.txtRtValBluDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValBluDx.TabIndex = 95;
+            this.txtRtValBluDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValGreenDx
+            // 
+            this.txtRtValGreenDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValGreenDx.Location = new System.Drawing.Point(232, 159);
+            this.txtRtValGreenDx.Name = "txtRtValGreenDx";
+            this.txtRtValGreenDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValGreenDx.TabIndex = 94;
+            this.txtRtValGreenDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValRedDx
+            // 
+            this.txtRtValRedDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValRedDx.Location = new System.Drawing.Point(178, 159);
+            this.txtRtValRedDx.Name = "txtRtValRedDx";
+            this.txtRtValRedDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValRedDx.TabIndex = 93;
+            this.txtRtValRedDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValTimeOffDx
+            // 
+            this.txtRtValTimeOffDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValTimeOffDx.Location = new System.Drawing.Point(422, 159);
+            this.txtRtValTimeOffDx.Name = "txtRtValTimeOffDx";
+            this.txtRtValTimeOffDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValTimeOffDx.TabIndex = 97;
+            this.txtRtValTimeOffDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValTimeOnDx
+            // 
+            this.txtRtValTimeOnDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValTimeOnDx.Location = new System.Drawing.Point(368, 159);
+            this.txtRtValTimeOnDx.Name = "txtRtValTimeOnDx";
+            this.txtRtValTimeOnDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValTimeOnDx.TabIndex = 96;
+            this.txtRtValTimeOnDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label45.Location = new System.Drawing.Point(145, 134);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(26, 17);
+            this.label45.TabIndex = 98;
+            this.label45.Text = "SX";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label46.Location = new System.Drawing.Point(146, 164);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(27, 17);
+            this.label46.TabIndex = 99;
+            this.label46.Text = "DX";
+            // 
             // frmDisplayManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2407,5 +2486,12 @@
         private System.Windows.Forms.TextBox txtVarIdVariabile;
         private System.Windows.Forms.Button btnVarCrea;
         private System.Windows.Forms.TextBox txtVarNomeVariabile;
+        private System.Windows.Forms.TextBox txtRtValBluDx;
+        private System.Windows.Forms.TextBox txtRtValGreenDx;
+        private System.Windows.Forms.TextBox txtRtValRedDx;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox txtRtValTimeOffDx;
+        private System.Windows.Forms.TextBox txtRtValTimeOnDx;
     }
 }

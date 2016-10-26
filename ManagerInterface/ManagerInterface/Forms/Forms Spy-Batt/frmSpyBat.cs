@@ -85,8 +85,13 @@ namespace PannelloCharger
         public System.Collections.Generic.List<mrDataPoint> ValoriPuntualiGrCalCorrenti = new List<mrDataPoint>();
         public System.Collections.Generic.List<StepCarica> PassiStrategia = new List<StepCarica>();
 
+        private ParametriSetupPro _parametriPro = new ParametriSetupPro();
 
         public string IdCorrente;
+        /// <summary>
+        /// Flag per la gestione della fase di caricamento. true finche in caricamento; usato per prevenire azioni sull'onChange in fase di apertura
+        /// </summary>
+        private bool _onUpload = true;  
 
 
         public frmSpyBat(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
@@ -95,11 +100,12 @@ namespace PannelloCharger
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-
+                _onUpload = true;
                 _parametri = _par;
                 System.Threading.Thread.CurrentThread.CurrentUICulture = _parametri.currentCulture;
 
                 InitializeComponent();
+                inizializzaComboPro();
                 // Setto il bordo invisibile ai due groupbox dell'upd FW
                 grbFWdettUpload.Paint += PaintBorderlessGroupBox;
                 grbFWDettStato.Paint += PaintBorderlessGroupBox;
@@ -185,6 +191,7 @@ namespace PannelloCharger
                 InizializzaVistaCorrentiCal();
                 CaricaComboCalibrazioni();
                 CaricaComboGrafici();
+                _onUpload = false;
 
             }
             catch (Exception Ex)
@@ -555,7 +562,6 @@ namespace PannelloCharger
                     _sb.CaricaTestata(_idCorrente, _connessioneAttiva);
                 }
 
-                //_sb.CaricaTestata(_idCorrente, _connessioneAttiva);
 
                 return true;
             }
@@ -933,7 +939,7 @@ namespace PannelloCharger
 
                     CaricaCicli();
 
-                    if (caricaCliente(IdApparato, Logiche, SerialeCollegata)) mostraCliente();
+                    if (CaricaCliente(IdApparato, Logiche, SerialeCollegata)) mostraCliente();
                     _apparatoPresente = _sb.apparatoPresente;
                     // se l'apparato è collegato abilito i salvataggi
                     abilitaSalvataggi(_apparatoPresente);
@@ -950,11 +956,11 @@ namespace PannelloCharger
             }
         }
 
-        public bool caricaCliente(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
+        public bool CaricaCliente(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
         {
             try
             {
-                //bool _esito;
+                bool _esito;
                 bool _connessioneAttiva = false;
 
                 //_sb = new UnitaSpyBatt(ref _parametri, Logiche.dbDati.connessione);
@@ -967,6 +973,10 @@ namespace PannelloCharger
 
                 _sb.CaricaDatiCliente(_idCorrente, _connessioneAttiva);
 
+                // carico anche i  parametri di pianificazione
+                _esito = AllineaComboPianificazione(_sb.sbCliente.ModoPianificazione);
+                _esito = MostraPianificazione(false);
+
                 return true;
             }
             catch (Exception Ex)
@@ -974,6 +984,36 @@ namespace PannelloCharger
                 Log.Error("caricaClente " + Ex.Message);
                 return false;
             }
+        }
+
+
+        private bool AllineaComboPianificazione(byte IdAttivo)
+        {
+            bool _esito = false;
+            try
+            {
+                bool _tempUpload = _onUpload;
+                _onUpload = true;
+
+                foreach (Pianificazione _tempP in cmbModoPianificazione.Items)
+                {
+                    if (_tempP.Codice == IdAttivo)
+                    {
+                        cmbModoPianificazione.SelectedItem = _tempP;
+                        _esito = true;
+                        break;
+                    }
+                }
+                _onUpload = _tempUpload;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("AllineaComboPianificazione " + Ex.Message);
+                return _esito;
+            }
+
         }
 
         private void ListaLunghiCambiata(UnitaSpyBatt usb, sbListaLunghiEvt sbe)
@@ -1317,6 +1357,7 @@ namespace PannelloCharger
                 txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
 
                 InizializzaVistaProgrammazioni();
+                txtProgcID.Text = "";
                 txtProgcBattVdef.Text = "";
                 txtProgcBattAhDef.Text = "";
                 txtProgcCelleTot.Text = "";
@@ -1329,13 +1370,36 @@ namespace PannelloCharger
                 {
                     if (_tempProg.IdProgramma == (ushort)_sb.sbData.ProgramCount)
                     {
+                        txtProgcID.Text = _tempProg.IdProgramma.ToString();
                         txtProgcBattVdef.Text = FunzioniMR.StringaTensione(_tempProg.BatteryVdef) + " V";
                         txtProgcBattAhDef.Text = FunzioniMR.StringaCapacita(_tempProg.BatteryAhdef, 10) + " Ah";
                         txtProgcCelleTot.Text = _tempProg.BatteryCells.ToString();
                         txtProgcCelleV3.Text = _tempProg.BatteryCell3.ToString();
                         txtProgcCelleV2.Text = _tempProg.BatteryCell2.ToString();
                         txtProgcCelleV1.Text = _tempProg.BatteryCell1.ToString();
+                        txtProgcNumSpire.Text = _tempProg.NumeroSpire.ToString();
+                        if(_tempProg.AbilitaPresElett == 0xF0)
+                        {
+                            txtProgcSondaEl.Text = "Non Abilitata";
+                            txtProgcSondaEl.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            txtProgcSondaEl.Text = "Abilitata";
+                            txtProgcSondaEl.ForeColor = Color.Black;
+                        }
 
+                        if (_tempProg.VersoCorrente == 0xF0)
+                        {
+                            txtProgcVersoCorrente.Text = "Inverso";
+                            txtProgcVersoCorrente.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            txtProgcVersoCorrente.Text = "Diretto";
+                            txtProgcVersoCorrente.ForeColor = Color.Black;
+
+                        }
 
                         break;
                     }
@@ -1829,6 +1893,7 @@ namespace PannelloCharger
         {
             try
             {
+                Pianificazione _tempP;
                 // prima salvo i dati nella classe
                 _sb.sbCliente.Client = txtCliente.Text;
                 _sb.sbCliente.ClientNote = txtNoteCliente.Text;
@@ -1836,6 +1901,11 @@ namespace PannelloCharger
                 _sb.sbCliente.BatteryModel = txtModelloBat.Text;
                 _sb.sbCliente.BatteryId = txtIdBat.Text;
                 _sb.sbCliente.SerialNumber = txtSerialNumber.Text;
+
+                _tempP = (Pianificazione)cmbModoPianificazione.SelectedItem;
+                _sb.sbCliente.ModoPianificazione = (byte)_tempP.CodiceTP;
+                SalvaGrigliaTempo();
+
                 int _tempInt;
                 if (int.TryParse(txtCliCicliAttesi.Text, out _tempInt))
                 { _sb.sbCliente.CicliAttesi = (int)_tempInt; }
@@ -1843,7 +1913,7 @@ namespace PannelloCharger
                 { _sb.sbCliente.CicliAttesi = 1000; }
 
                 _sb.ScriviDatiCliente();
-                if (caricaCliente(_sb.Id, _logiche, true)) mostraCliente();
+                if (CaricaCliente(_sb.Id, _logiche, true)) mostraCliente();
             }
             catch (Exception Ex)
             {
@@ -7194,8 +7264,9 @@ namespace PannelloCharger
                 frmAlimentatore Alimentatore = new frmAlimentatore();
                 Alimentatore.MdiParent = this.MdiParent;
                 Alimentatore.StartPosition = FormStartPosition.CenterParent;
+                if(Alimentatore!=null)
+                   Alimentatore.Show();
 
-                Alimentatore.Show();
                 Lambda = Alimentatore;
 
             }
@@ -7703,16 +7774,6 @@ namespace PannelloCharger
             LanciaComandoStrategiaAvanzametoFase();
         }
 
-        private void label193_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label182_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmbStratIsSelStep_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -7734,5 +7795,298 @@ namespace PannelloCharger
         {
             LanciaComandoStrategia(0x05);
         }
+
+        private void btnStratReadVar_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategiaLetturaVariabili();
+        }
+
+        private void cmbModoPianificazione_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool _esito;
+            try
+            {
+                if (_onUpload)
+                    return;
+
+                Pianificazione _tempP = (Pianificazione)cmbModoPianificazione.SelectedItem;
+
+                if (_sb.sbCliente.ModoPianificazione !=(byte) _tempP.CodiceTP)
+                {
+                    DialogResult risposta = MessageBox.Show("Vuoi cambiare la modalità di pianificazione delle cariche ? " + "\n" + "L'operazione cancellerà la pianificazione corrente",
+                    "Modo Pianificazione",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                    if (risposta == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        _esito =  _sb.sbCliente.PianificazioneCorrente.ImpostaModello(_tempP.CodiceTP);
+                        _sb.sbCliente.ModoPianificazione = (byte)_tempP.CodiceTP;
+                        _esito = MostraPianificazione();
+ 
+                    }
+
+                }
+
+
+            }
+
+            catch(Exception Ex)
+            {
+                Log.Error("cmbModoPianificazione_SelectedIndexChanged: " + Ex.Message);
+            }
+        }
+
+        private void btnPianRefresh_Click(object sender, EventArgs e)
+        {
+            MostraPianificazione();
+        }
+
+        private bool MostraPianificazione(bool InizializzaControllo = true)
+        {
+            bool _esito = false;
+            try
+            {
+                //_sb.sbCliente.MappaTurni = null;
+
+                switch (_sb.sbCliente.ModoPianificazione)
+                {
+                    case (byte) ParametriSetupPro.TipoPianificazione.NonDefinita:
+                        tlpGrigliaTurni.Visible = false;
+                        break;
+                    case (byte)ParametriSetupPro.TipoPianificazione.Tempo:
+                        MostraGrigliaTempo(InizializzaControllo);
+                        break;
+                    case (byte)ParametriSetupPro.TipoPianificazione.Turni:
+                        MostraGrigliaTurni(InizializzaControllo);
+                        break;
+                    default:
+                        break;
+                }
+
+                return _esito;
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error("MostraPianificazione: " + Ex.Message);
+                return _esito;
+            }
+
+        }
+
+        private bool MostraGrigliaTempo(bool InizializzaControllo = true)
+        {
+            bool _esito = false;
+            try
+            {
+                tlpGrigliaTurni.Visible = true;
+                if (InizializzaControllo)
+                {
+                    _sb.sbCliente.MappaTurni = null;
+                }
+
+
+                //  tlpGrigliaTurni.ColumnCount = 4;        
+                //  tlpGrigliaTurni.RowCount = 9;
+                PanelTestataColonnaTurno _testata;
+                PanelTestataColonnaTurno _testata2;
+                PanelGiornoTurno _giorno;
+                tlpGrigliaTurni.Controls.Clear();
+
+                _testata = new PanelTestataColonnaTurno("Carica Pianificata");
+                tlpGrigliaTurni.Controls.Add(_testata, 1, 0);
+                _testata2 = new PanelTestataColonnaTurno("Durata - F.C. - Opzioni");
+                tlpGrigliaTurni.Controls.Add(_testata, 1, 1);
+
+
+                // Se il cliente è caricato, uso la griglia definita
+                if (_sb.sbCliente.MappaTurni == null)
+                    _sb.sbCliente.MappaTurni = new byte[1];
+
+                if (_sb.sbCliente.MappaTurni.Length != 84)
+                {
+                    _sb.sbCliente.MappaTurni = new byte[84] { 0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x01, 0xFE, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,  };
+                }
+
+                byte[] _tempData = _sb.sbCliente.MappaTurni;
+                byte[] _datiTurno = new byte[4];
+
+                for (int _se = 0; _se < 7; _se++)
+                {
+                    _giorno = new PanelGiornoTurno(DataOraMR.SiglaGiorno(_se + 1));
+                    tlpGrigliaTurni.Controls.Add(_giorno, 0, _se + 2);
+
+                    PannelloTempo P1 = new PannelloTempo();
+                    ModelloTurno _mT = new ModelloTurno();
+                    Array.Copy(_tempData, _se * 12, _datiTurno, 0, 4);
+                    _mT.fromData(_datiTurno);
+                    P1.Turno = _mT;
+                    P1.Giorno = (byte)_se;
+                    P1.BackColor = Color.LightYellow;
+                    tlpGrigliaTurni.Controls.Add(P1, 1, _se + 2);
+
+
+                }
+
+
+
+
+
+
+                _esito = true;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("MostraGrigliaTempo: " + Ex.Message);
+                return _esito;
+            }
+
+        }
+
+
+
+
+        private bool SalvaGrigliaTempo(bool InizializzaMatrice = true)
+        {
+            bool _esito = false;
+            try
+            {
+                bool _arrayInit = InizializzaMatrice;
+
+                if (_sb.sbCliente.MappaTurni == null )
+                {
+                    _arrayInit = true;
+                }
+                else
+                {
+                    if (_sb.sbCliente.MappaTurni.Length  != 84 )
+                        _arrayInit = true;
+                }
+
+
+                if (_arrayInit)
+                {
+                    _sb.sbCliente.MappaTurni = new byte[84];
+                    for (int _arr = 0; _arr < 84; _arr++)
+                    {
+                        _sb.sbCliente.MappaTurni[_arr] = 0x00;
+
+                    }
+
+                }
+                byte Giornisalvati = 0;
+                foreach(Control _ctrl in tlpGrigliaTurni.Controls)
+                {
+                    if (_ctrl.GetType() == typeof(PannelloTempo))
+                    {
+                        byte[] _datiFase = new byte[4] { 0, 0, 0, 0 };
+                        PannelloTempo P1 = (PannelloTempo)_ctrl;
+                        _datiFase = P1.Turno.toData();
+                        Array.Copy(_datiFase,0,_sb.sbCliente.MappaTurni, P1.Giorno * 12,  4);
+                        Giornisalvati += 1;
+                    }
+                }
+                if(Giornisalvati== 7)
+                   _esito = true;
+
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("SalvaGrigliaTempo: " + Ex.Message);
+                return _esito;
+            }
+
+        }
+
+
+
+
+
+        private void inizializzaGrigliaTurni()
+        {
+            try
+            {
+                OraTurnoMR _OraTempI;
+                OraTurnoMR _OraTempF;
+
+
+                for (int giorno = 1; giorno < 8; giorno++)
+                {
+
+                    PannelloTurno P1 = new PannelloTurno();
+                    _OraTempI = new OraTurnoMR(5, 45);
+                    _OraTempF = new OraTurnoMR(6, 15);
+                    P1.InizioCambioTurno = _OraTempI;
+                    P1.FineCambioTurno = _OraTempF;
+                    P1.BackColor = Color.LightYellow;
+                    tlpGrigliaTurni.Controls.Add(P1, 1, giorno + 1);
+
+                    PannelloTurno P2 = new PannelloTurno();
+                    _OraTempI = new OraTurnoMR(13, 45);
+                    _OraTempF = new OraTurnoMR(14, 15);
+                    P2.InizioCambioTurno = _OraTempI;
+                    P2.FineCambioTurno = _OraTempF;
+                    P2.BackColor = Color.LightYellow;
+                    tlpGrigliaTurni.Controls.Add(P2, 2, giorno + 1);
+
+                    PannelloTurno P3 = new PannelloTurno();
+                    _OraTempI = new OraTurnoMR(21, 45);
+                    _OraTempF = new OraTurnoMR(22, 15);
+                    P3.InizioCambioTurno = _OraTempI;
+                    P3.FineCambioTurno = _OraTempF;
+                    P3.BackColor = Color.LightYellow;
+                    tlpGrigliaTurni.Controls.Add(P3, 3, giorno + 1);
+                }
+
+
+                lblTurno1.ForeColor = Color.White;
+                lblTurno2.ForeColor = Color.White;
+                lblTurno3.ForeColor = Color.White;
+
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
+        private bool MostraGrigliaTurni(bool InizializzaControllo = true)
+        {
+            bool _esito = false;
+            try
+            {
+                if (InizializzaControllo)
+                {
+                   // tlpGrigliaTurni.RowCount = 9;
+                  //  tlpGrigliaTurni.ColumnCount = 4;
+                    tlpGrigliaTurni.Controls.Clear();
+                }
+
+                _esito = true;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("MostraGrigliaTempo: " + Ex.Message);
+                return _esito;
+            }
+
+        }
+
     }
 }

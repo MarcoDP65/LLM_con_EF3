@@ -1290,6 +1290,34 @@ namespace ChargerLogic
                         MessageBuffer[_arrayInit + 1] = msb;
                         MessageBuffer[_arrayInit + 2] = lsb;
                         _arrayInit += 2;
+                        splitUshort(codificaByte(CustomerData.ModoPianificazione), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(CustomerData.ModoBiberonaggio), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+
+                        splitUshort(codificaByte(CustomerData.ModoRabboccatore), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // ora gli 84 bytes della mappa turni
+                        if(CustomerData.ModelloPianificazione.Length == 84)
+                        {
+                            for (int _mp = 0; _mp < 84; _mp++)
+                            {
+                                splitUshort(codificaByte(CustomerData.ModelloPianificazione[_mp]), ref lsb, ref msb);
+                                MessageBuffer[_arrayInit + 1] = msb;
+                                MessageBuffer[_arrayInit + 2] = lsb;
+                                _arrayInit += 2;
+                            }
+                        }
+
 
                         // Chiudo a 252 byte effettivi
                         for (_i = _arrayInit; _i < _arrayLen; _i += 2)
@@ -1677,32 +1705,70 @@ namespace ChargerLogic
                 MessageBuffer[(_arrayInit + 4)] = lsb;
                 _arrayInit += 4;
 
-                // dati pianificazione 
-                // Copio comunque i primi 84 bytes
-                for(int _cicloByte = 0; _cicloByte < 84; _cicloByte++)
-                {
-                    byte _tempB;
-                    if (ProgRicarica.DatiPianificazione == null)
-                    {
-                        _tempB = 0x00;
-                    }
-                    else
-                    {
-                        if (ProgRicarica.DatiPianificazione.Length > _cicloByte)
-                        {
-                            _tempB = ProgRicarica.DatiPianificazione[_cicloByte];
-                        }
-                        else
-                            _tempB = 0x00;
-                    }
-                    splitUshort(codificaByte(_tempB), ref lsb, ref msb);
-                    MessageBuffer[(_arrayInit + 1)] = msb;
-                    MessageBuffer[(_arrayInit + 2)] = lsb;
-                    _arrayInit += 2;
-                }
+                // Corrente Minima W
+                splitUshort(ProgRicarica.MinCorrenteW, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
 
 
-                // dati pianificazione 
+                // Corrente max W
+                splitUshort(ProgRicarica.MaxCorrenteW, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // Max Corremte IMP
+                splitUshort(ProgRicarica.MaxCorrenteImp, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // Tensione Raccordo
+                splitUshort(ProgRicarica.TensioneRaccordo , ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+                // Tensione Finale
+                splitUshort(ProgRicarica.TensioneFinale, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+
+                // dati pianificazione : Spostati nei dati cliente
+
                 // Copio comunque i primi 84 bytes
                 for (int _cicloByte = 0; _cicloByte < 3; _cicloByte++)
                 {
@@ -2576,7 +2642,7 @@ namespace ChargerLogic
             catch { return _esito; }
         }
 
-        public ushort ComponiMessaggioNuovoProgramma1()
+        public ushort ComponiMessaggioNuovoProgrammaOLD()
         {
             ushort _esito = 0;
             //ushort _tempUshort;
@@ -3164,7 +3230,7 @@ namespace ChargerLogic
 
             try
             {
-                if (Parametri.Length < 9)
+                if (Parametri.Length < 10)
                     return _esito;
 
                 //serial
@@ -3193,7 +3259,7 @@ namespace ChargerLogic
                 _comandoBase[(21)] = lsb;
 
                 int _arrayInit = _comandoBase.Length;
-                int _arrayLen = _arrayInit + 18;
+                int _arrayLen = _arrayInit + 20;
 
                 Array.Resize(ref MessageBuffer, _arrayLen + 7);
 
@@ -3207,7 +3273,7 @@ namespace ChargerLogic
                 /// 
                 // Prima il sottocomando
 
-                for (int _cmd = 0; _cmd < 9; _cmd++)
+                for (int _cmd = 0; _cmd < 10; _cmd++)
                 {
 
                     splitUshort(codificaByte(Parametri[_cmd]), ref lsb, ref msb);

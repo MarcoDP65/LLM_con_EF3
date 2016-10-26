@@ -289,10 +289,17 @@ namespace PannelloCharger
                 byte _valGreen = FunzioniMR.ConvertiByte(txtRtValGreen.Text, 1, 0);
                 byte _valBlu = FunzioniMR.ConvertiByte(txtRtValBlu.Text, 1, 0);
 
+                byte _valRedDx = FunzioniMR.ConvertiByte(txtRtValRedDx.Text, 1, 0);
+                byte _valGreenDx = FunzioniMR.ConvertiByte(txtRtValGreenDx.Text, 1, 0);
+                byte _valBluDx = FunzioniMR.ConvertiByte(txtRtValBluDx.Text, 1, 0);
+
                 byte _valOn = FunzioniMR.ConvertiByte(txtRtValTimeOn.Text, 1, 0);
                 byte _valOff = FunzioniMR.ConvertiByte(txtRtValTimeOff.Text, 1, 0);
 
-                verifica = _disp.ImpostaLed(_valRed, _valGreen, _valBlu, _valOn, _valOff);
+                byte _valOnDx = FunzioniMR.ConvertiByte(txtRtValTimeOnDx.Text, 1, 0);
+                byte _valOffDx = FunzioniMR.ConvertiByte(txtRtValTimeOffDx.Text, 1, 0);
+
+                verifica = _disp.ImpostaLed(_valRed, _valGreen, _valBlu, _valOn, _valOff, _valRedDx, _valGreenDx, _valBluDx, _valOnDx, _valOffDx);
 
             }
             catch (Exception Ex)
@@ -307,7 +314,7 @@ namespace PannelloCharger
             {
                 bool verifica;
 
-                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0,0,0,0,0,0);
 
             }
             catch (Exception Ex)

@@ -947,7 +947,10 @@ namespace ChargerLogic
             public string SerialNumber = "";
             public byte[] DataOraUpdate;
             public byte ClientCounter = 0;
-
+            public byte ModoPianificazione = 0 ;
+            public byte ModoBiberonaggio = 0;
+            public byte ModoRabboccatore = 0;
+            public byte[] ModelloPianificazione;
 
             byte[] _dataBuffer;
             public byte[] dataBuffer;
@@ -1027,6 +1030,20 @@ namespace ChargerLogic
                                 PartReceived[2] = true;
                                 break;
                             case 4:
+                                // carico i dati di pianificazione
+                                ModoPianificazione = _risposta[startByte];
+                                startByte += 1;
+                                ModoBiberonaggio = _risposta[startByte];
+                                startByte += 1;
+                                ModoRabboccatore = _risposta[startByte];
+                                startByte += 1;
+                                ModelloPianificazione = new byte[84];
+                                for (int _dt = 0; _dt < 84; _dt++)
+                                {
+                                    ModelloPianificazione[_dt] = _risposta[startByte];
+                                    startByte += 1;
+                                }
+
                                 PartReceived[3] = true;
                                 break;
                             default:

@@ -739,6 +739,11 @@ namespace ChargerLogic
                         sbCliente.ClientNote = _mS.CustomerData.ClientNote;
                         sbCliente.CicliAttesi = _mS.CustomerData.CicliAttesi;
                         sbCliente.SerialNumber = _mS.CustomerData.SerialNumber;
+                        sbCliente.ModoPianificazione = _mS.CustomerData.ModoPianificazione;
+                        sbCliente.ModoBiberonaggio = _mS.CustomerData.ModoBiberonaggio;
+                        sbCliente.ModoRabboccatore = _mS.CustomerData.ModoRabboccatore ;
+                        sbCliente.MappaTurni = _mS.CustomerData.ModelloPianificazione;
+
                         sbCliente.salvaDati();
                     }
                 }
@@ -2616,7 +2621,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, out byte[] Dati)
+        public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, byte FC, out byte[] Dati)
         {
 
 
@@ -2649,11 +2654,13 @@ namespace ChargerLogic
                 _cmdStrat[7] = lsb;
 
                 _cmdStrat[8] = Rabb;
+                _cmdStrat[9] = FC;
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
                 Log.Debug("Lancio comando base SB_W_chgst_Call -  ");
 
                 _mS.ComponiMessaggioBaseStrategia(_cmdStrat);
+                Log.Debug(FunzioniComuni.HexdumpArray(_cmdStrat));
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
@@ -3388,6 +3395,10 @@ namespace ChargerLogic
                 _mS.CustomerData.BatteryModel = sbCliente.BatteryModel.ToString();
                 _mS.CustomerData.CicliAttesi = (ushort)sbCliente.CicliAttesi;
                 _mS.CustomerData.SerialNumber = sbCliente.SerialNumber.ToString();
+                _mS.CustomerData.ModoPianificazione = sbCliente.ModoPianificazione;
+                _mS.CustomerData.ModoBiberonaggio = sbCliente.ModoBiberonaggio;
+                _mS.CustomerData.ModoRabboccatore = sbCliente.ModoRabboccatore;
+                _mS.CustomerData.ModelloPianificazione = sbCliente.MappaTurni;
 
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 _mS.Comando = SerialMessage.TipoComando.SB_W_DatiCliente;
@@ -3527,11 +3538,10 @@ namespace ChargerLogic
                 _mS.ProgRicarica.TensioneGas = NuovoProgramma.TensioneGas;
                 _mS.ProgRicarica.DerivaInferiore = NuovoProgramma.DerivaInferiore;
                 _mS.ProgRicarica.DerivaSuperiore = NuovoProgramma.DerivaSuperiore;
-
-
-
-
-
+                _mS.ProgRicarica.MinCorrenteW = NuovoProgramma.MinCorrenteW;
+                _mS.ProgRicarica.MaxCorrenteW = NuovoProgramma.MaxCorrenteW;
+                _mS.ProgRicarica.TensioneRaccordo = NuovoProgramma.TensioneRaccordo;
+                _mS.ProgRicarica.TensioneFinale = NuovoProgramma.TensioneFinale;
 
                 _mS.ProgRicarica.EsitoScrittura = 0x00;
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;

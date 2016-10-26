@@ -167,7 +167,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool ImpostaLed(byte Red,byte Green, byte Blu, byte On, byte Off)
+        public bool ImpostaLed(byte Red,byte Green, byte Blu, byte On, byte Off, byte RedDx, byte GreenDx, byte BluDx, byte OnDx, byte OffDx)
         {
             bool _risposta = false;
 
@@ -177,7 +177,7 @@ namespace ChargerLogic
 
                 _mD.Comando = SerialMessage.TipoComando.DI_LedRGB;
                 _mD._comando = (byte)SerialMessage.TipoComando.DI_LedRGB;
-                _mD.ComponiMessaggioLed(Red, Green, Blu, On, Off);
+                _mD.ComponiMessaggioLed(Red, Green, Blu, On, Off, RedDx , GreenDx, BluDx, OnDx, OffDx);
                 _rxRisposta = false;
                 Log.Debug("Display Led: ");
                 Log.Debug(_mD.hexdumpMessaggio());

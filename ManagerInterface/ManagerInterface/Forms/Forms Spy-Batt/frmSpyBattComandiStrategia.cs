@@ -298,6 +298,7 @@ namespace PannelloCharger
                     ushort _previsto;
                     // Mostro i valori
                     _Erogato = FunzioniComuni.UshortFromArray(_Dati, 3);
+
                     _previsto = FunzioniComuni.UshortFromArray(_Dati, 5);
                     txtStratAVErogati.Text = FunzioniMR.StringaCorrenteLL(_Erogato);
                     txtStratAVPrevisti.Text = FunzioniMR.StringaCorrenteLL(_previsto);
@@ -312,7 +313,10 @@ namespace PannelloCharger
                     // Aggiungere i moìinuti trascorsi
 
                     txtStratAVTensioneIst.Text = FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x0B));
-                    txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0D));
+
+                    //txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0D));
+                    txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteSigned(FunzioniComuni.ArrayToShort(_Dati, 0x0D,2));
+
                     txtStratAVTempIst.Text = FunzioniMR.StringaTemperatura(_Dati[0x0F]);
 
                 }
@@ -327,6 +331,77 @@ namespace PannelloCharger
             }
 
         }
+
+
+        public bool LanciaComandoStrategiaLetturaVariabili()
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                byte _comandoInfo = 0x52;
+
+                txtStratDataGrid.Text = "";
+                _Dati = new byte[252];
+                _esito = _sb.ComandoInfoStrategia(_comandoInfo, out _Dati);
+
+                if (_esito == true & _Dati.Length > 3)
+                {
+
+
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtStratDataGrid.Text = _risposta;
+                    /*
+                    ushort _Erogato;
+                    ushort _previsto;
+                    // Mostro i valori
+                    _Erogato = FunzioniComuni.UshortFromArray(_Dati, 3);
+                    _previsto = FunzioniComuni.UshortFromArray(_Dati, 5);
+                    txtStratAVErogati.Text = FunzioniMR.StringaCorrenteLL(_Erogato);
+                    txtStratAVPrevisti.Text = FunzioniMR.StringaCorrenteLL(_previsto);
+                    if (_Erogato <= _previsto)
+                        txtStratAVMancanti.Text = FunzioniMR.StringaCorrenteLL((ushort)(_previsto - _Erogato));
+                    else
+                        txtStratAVMancanti.Text = "";
+
+
+                    txtStratAVMinutiResidui.Text = FunzioniComuni.UshortFromArray(_Dati, 0x07).ToString();
+
+                    // Aggiungere i moìinuti trascorsi
+
+                    txtStratAVTensioneIst.Text = FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x0B));
+                    txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0D));
+                    txtStratAVTempIst.Text = FunzioniMR.StringaTemperatura(_Dati[0x0F]);
+                    */
+
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LanciaComandoTestStrategia: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+
         public bool LanciaComandoStrategia(byte Modo)
         {
             try
@@ -338,6 +413,7 @@ namespace PannelloCharger
                 ushort _tempVmin;
                 ushort _tempVmax;
                 ushort _tempAmax;
+                byte _tempFC;
                 byte _tempRabb;
                 byte[] _StepBuffer = new byte[16];
 
@@ -359,6 +435,17 @@ namespace PannelloCharger
                 {
                     _tempVmax = 0x03C0;
                 }
+
+                if (txtStratLLFC.Text != "")
+                {
+                    _tempFC = FunzioniMR.ConvertiByte(txtStratLLFC.Text, 100, 115);
+                }
+                else
+                {
+                    _tempFC = 115;
+                }
+
+
 
                 if (txtStratLLAmax.Text != "")
                 {
@@ -383,7 +470,7 @@ namespace PannelloCharger
 
                 txtStratIsEsito.ForeColor = Color.Black;
 
-                _esito = _sb.LanciaComandoStrategia(Modo, _tempVmin, _tempVmax, _tempAmax, _tempRabb, out _Dati);
+                _esito = _sb.LanciaComandoStrategia(Modo, _tempVmin, _tempVmax, _tempAmax, _tempRabb, _tempFC, out _Dati);
 
                 if (_esito == true)
                 {
@@ -416,7 +503,7 @@ namespace PannelloCharger
 
                         // Mostro i valori
                         txtStratIsEsito.Text = _Dati[0x02].ToString();
-                    if (_Dati[0x02] > 0)
+                    if (_Dati[0x02] > 255)
                     {
                         txtStratIsAhRich.Text = "";
                         txtStratIsMinuti.Text = "";
@@ -434,7 +521,7 @@ namespace PannelloCharger
 
                     // ora carico la struttura passi
                     PassiStrategia.Clear();
-                    for(byte _steps = 0; _steps < _Dati[0x08]; _steps++)
+                    for(byte _steps = 0; _steps < _Dati[0x07]; _steps++)
                     {
                         int _startpoint = 15 + _steps * 16;
                         if (_Dati.Length <(_startpoint+16))
@@ -451,7 +538,7 @@ namespace PannelloCharger
 
                     }
                     cmbStratIsSelStep.DisplayMember = "strPasso";
-                    cmbStratIsSelStep.ValueMember = "IdStep";
+                    //cmbStratIsSelStep.ValueMember = "Dati.IdStep";
                     cmbStratIsSelStep.DataSource = PassiStrategia;
                     cmbStratIsSelStep.Refresh();
                 }
@@ -510,6 +597,7 @@ namespace PannelloCharger
                 txtStratCurrStepImax.Text = StepCorrente.strIMassima;
                 txtStratCurrStepVmin.Text = StepCorrente.strVMinima;
                 txtStratCurrStepVmax.Text = StepCorrente.strVMassima;
+                txtStratCurrStepTBlocco.Text = StepCorrente.strTBlocco;
                 txtStratCurrStepToff.Text = StepCorrente.strToff;
                 txtStratCurrStepTon.Text = StepCorrente.strTon;
                 txtStratCurrStepRipetizioni.Text = StepCorrente.strPasso;
@@ -522,6 +610,37 @@ namespace PannelloCharger
                 return false;
             }
         }
+
+
+        
+        private void inizializzaComboPro()
+        {
+            try
+            {
+                cmbModoPianificazione.DataSource = _parametriPro.TipiPianificazione;
+                cmbModoPianificazione.DisplayMember = "Descrizione";
+                cmbModoPianificazione.ValueMember = "Codice";
+                cmbModoPianificazione.SelectedIndex = 0;
+
+                cmbBiberonaggio.DataSource = _parametriPro.OpzioniBib;
+                cmbBiberonaggio.DisplayMember = "Descrizione";
+                cmbBiberonaggio.ValueMember = "Codice";
+                cmbBiberonaggio.SelectedIndex = 0;
+
+                cmbRabboccatore.DataSource = _parametriPro.OpzioniRabb;
+                cmbRabboccatore.DisplayMember = "Descrizione";
+                cmbRabboccatore.ValueMember = "Codice";
+                cmbRabboccatore.SelectedIndex = 0;
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("inizializzaComboPro: " + Ex.Message);
+            }
+        }
+     
 
 
     }
