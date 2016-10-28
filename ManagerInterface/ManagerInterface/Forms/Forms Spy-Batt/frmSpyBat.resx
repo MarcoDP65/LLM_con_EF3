@@ -8089,7 +8089,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.0.1.16, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.0.2.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -12044,6 +12044,9 @@
   </data>
   <data name="txtMemDataGrid.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="txtMemDataGrid.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
   <data name="txtMemDataGrid.Size" type="System.Drawing.Size, System.Drawing">
     <value>884, 291</value>
@@ -22365,31 +22368,31 @@
   <data name="&gt;&gt;label247.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="txtStratQryOptChg.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="txtStratQryFC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="txtStratQryOptChg.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtStratQryFC.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 210</value>
   </data>
-  <data name="txtStratQryOptChg.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txtStratQryFC.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 24</value>
   </data>
-  <data name="txtStratQryOptChg.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtStratQryFC.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
   </data>
-  <data name="txtStratQryOptChg.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="txtStratQryFC.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;txtStratQryOptChg.Name" xml:space="preserve">
-    <value>txtStratQryOptChg</value>
+  <data name="&gt;&gt;txtStratQryFC.Name" xml:space="preserve">
+    <value>txtStratQryFC</value>
   </data>
-  <data name="&gt;&gt;txtStratQryOptChg.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtStratQryFC.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtStratQryOptChg.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtStratQryFC.Parent" xml:space="preserve">
     <value>panel3</value>
   </data>
-  <data name="&gt;&gt;txtStratQryOptChg.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtStratQryFC.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="label246.AutoSize" type="System.Boolean, mscorlib">
@@ -22402,13 +22405,13 @@
     <value>159, 190</value>
   </data>
   <data name="label246.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
+    <value>33, 17</value>
   </data>
   <data name="label246.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
   </data>
   <data name="label246.Text" xml:space="preserve">
-    <value>Opzioni</value>
+    <value>F.C.</value>
   </data>
   <data name="&gt;&gt;label246.Name" xml:space="preserve">
     <value>label246</value>

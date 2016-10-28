@@ -7897,8 +7897,8 @@ namespace PannelloCharger
 
                 _testata = new PanelTestataColonnaTurno("Carica Pianificata");
                 tlpGrigliaTurni.Controls.Add(_testata, 1, 0);
-                _testata2 = new PanelTestataColonnaTurno("Durata - F.C. - Opzioni");
-                tlpGrigliaTurni.Controls.Add(_testata, 1, 1);
+                _testata2 = new PanelTestataColonnaTurno("Durata   -   F.C.   -   Opzioni", new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                tlpGrigliaTurni.Controls.Add(_testata2, 1, 1);
 
 
                 // Se il cliente è caricato, uso la griglia definita

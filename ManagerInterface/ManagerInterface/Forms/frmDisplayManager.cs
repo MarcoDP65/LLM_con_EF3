@@ -41,6 +41,7 @@ namespace PannelloCharger
         bool readingMessage = false;
 
         public UnitaDisplay _disp;
+        private DisplaySetup.Immagine _tempImg = new DisplaySetup.Immagine();
 
         public frmDisplayManager()
         {
@@ -478,7 +479,8 @@ namespace PannelloCharger
             {
                 ofdImportDati.Title = StringheComuni.ImportaDati;
                 ofdImportDati.CheckFileExists = false;
-                //ofdImportDati.Filter = "Images (*.sbdata)|*.sbdata|All files (*.*)|*.*";
+                //"Image files (*.jpg, *.jpeg, *.bmp, *.png) | *.jpg; *.jpeg; *.bmp; *.png";
+                ofdImportDati.Filter = "Immagini (*.jpg, *.jpeg, *.bmp, *.png) | *.jpg; *.jpeg; *.bmp; *.png|All files (*.*)|*.*";
                 // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
                 string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 /*
@@ -502,13 +504,21 @@ namespace PannelloCharger
             {
                 if (txtNuovoFile.Text != "")
                 {
+                    _tempImg = new DisplaySetup.Immagine();
+                    _tempImg.bmpBase = new Bitmap(txtNuovoFile.Text);
+
+                    pbxImgImmagine.BackColor = Color.Aqua;
+                    pbxImgImmagine.Image = _tempImg.bmpBase;
+                    txtImgBaseSize.Text = _tempImg.bmpBase.Size.ToString();
+                    /*
+
                     Image image = Image.FromFile(txtNuovoFile.Text);
                     pbxImgImmagine.Image = image;
 
                     txtImgBaseDimX.Text = image.Width.ToString();
                     txtImgBaseDimY.Text = image.Height.ToString();
                     txtImgBaseSize.Text = image.Size.ToString();
-
+                    */
                     //pbxImgImmagine.SizeMode = PictureBoxSizeMode.Zoom;
                 }
             }

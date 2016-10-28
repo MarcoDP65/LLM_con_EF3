@@ -16,14 +16,23 @@ namespace PannelloCharger
         private string _titolo;
         private Label lblTitoloTurno;
         private bool _inEvidenza = false;
+        private Font _fontBase;
 
         public PanelTestataColonnaTurno(string Titolo)
         {
             _titolo = Titolo;
+            _fontBase = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             CreaClasse();
 
         }
 
+        public PanelTestataColonnaTurno(string Titolo,Font FontTitolo)
+        {
+            _titolo = Titolo;
+            _fontBase = FontTitolo;
+            CreaClasse();
+
+        }
 
         public PanelTestataColonnaTurno()
         {
@@ -62,7 +71,7 @@ namespace PannelloCharger
                 // lblFcTurno
                 // 
                 this.lblTitoloTurno.AutoSize = false;
-                this.lblTitoloTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.lblTitoloTurno.Font = _fontBase;  // new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
                 this.lblTitoloTurno.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left);
                 this.lblTitoloTurno.TextAlign = ContentAlignment.MiddleCenter;

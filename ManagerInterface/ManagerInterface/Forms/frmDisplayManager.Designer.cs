@@ -85,6 +85,13 @@
             this.cboPorts = new System.Windows.Forms.ComboBox();
             this.btnGetSerialPorts = new System.Windows.Forms.Button();
             this.tbpRealTime = new System.Windows.Forms.TabPage();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.txtRtValTimeOffDx = new System.Windows.Forms.TextBox();
+            this.txtRtValTimeOnDx = new System.Windows.Forms.TextBox();
+            this.txtRtValBluDx = new System.Windows.Forms.TextBox();
+            this.txtRtValGreenDx = new System.Windows.Forms.TextBox();
+            this.txtRtValRedDx = new System.Windows.Forms.TextBox();
             this.btnRtCLS = new System.Windows.Forms.Button();
             this.btnRtDrawImage = new System.Windows.Forms.Button();
             this.txtRtValImgColor = new System.Windows.Forms.TextBox();
@@ -207,13 +214,6 @@
             this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.txtRtValBluDx = new System.Windows.Forms.TextBox();
-            this.txtRtValGreenDx = new System.Windows.Forms.TextBox();
-            this.txtRtValRedDx = new System.Windows.Forms.TextBox();
-            this.txtRtValTimeOffDx = new System.Windows.Forms.TextBox();
-            this.txtRtValTimeOnDx = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpArchivioModelli.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -567,7 +567,7 @@
             this.pnlComandiImmediati.Controls.Add(this.btnPrimaLettura);
             this.pnlComandiImmediati.Controls.Add(this.cmdLeggiRTC);
             this.pnlComandiImmediati.Controls.Add(this.btnApriComunicazione);
-            this.pnlComandiImmediati.Location = new System.Drawing.Point(661, 38);
+            this.pnlComandiImmediati.Location = new System.Drawing.Point(875, 37);
             this.pnlComandiImmediati.Name = "pnlComandiImmediati";
             this.pnlComandiImmediati.Size = new System.Drawing.Size(298, 259);
             this.pnlComandiImmediati.TabIndex = 1;
@@ -637,7 +637,7 @@
             this.panel1.Controls.Add(this.cboBaudRate);
             this.panel1.Controls.Add(this.cboPorts);
             this.panel1.Controls.Add(this.btnGetSerialPorts);
-            this.panel1.Location = new System.Drawing.Point(33, 37);
+            this.panel1.Location = new System.Drawing.Point(310, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(537, 568);
             this.panel1.TabIndex = 0;
@@ -898,6 +898,71 @@
             this.tbpRealTime.Size = new System.Drawing.Size(1423, 668);
             this.tbpRealTime.TabIndex = 1;
             this.tbpRealTime.Text = "RealTime";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label46.Location = new System.Drawing.Point(146, 164);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(27, 17);
+            this.label46.TabIndex = 99;
+            this.label46.Text = "DX";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label45.Location = new System.Drawing.Point(145, 134);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(26, 17);
+            this.label45.TabIndex = 98;
+            this.label45.Text = "SX";
+            // 
+            // txtRtValTimeOffDx
+            // 
+            this.txtRtValTimeOffDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValTimeOffDx.Location = new System.Drawing.Point(422, 159);
+            this.txtRtValTimeOffDx.Name = "txtRtValTimeOffDx";
+            this.txtRtValTimeOffDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValTimeOffDx.TabIndex = 97;
+            this.txtRtValTimeOffDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValTimeOnDx
+            // 
+            this.txtRtValTimeOnDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValTimeOnDx.Location = new System.Drawing.Point(368, 159);
+            this.txtRtValTimeOnDx.Name = "txtRtValTimeOnDx";
+            this.txtRtValTimeOnDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValTimeOnDx.TabIndex = 96;
+            this.txtRtValTimeOnDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValBluDx
+            // 
+            this.txtRtValBluDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValBluDx.Location = new System.Drawing.Point(286, 159);
+            this.txtRtValBluDx.Name = "txtRtValBluDx";
+            this.txtRtValBluDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValBluDx.TabIndex = 95;
+            this.txtRtValBluDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValGreenDx
+            // 
+            this.txtRtValGreenDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValGreenDx.Location = new System.Drawing.Point(232, 159);
+            this.txtRtValGreenDx.Name = "txtRtValGreenDx";
+            this.txtRtValGreenDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValGreenDx.TabIndex = 94;
+            this.txtRtValGreenDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtValRedDx
+            // 
+            this.txtRtValRedDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValRedDx.Location = new System.Drawing.Point(178, 159);
+            this.txtRtValRedDx.Name = "txtRtValRedDx";
+            this.txtRtValRedDx.Size = new System.Drawing.Size(48, 24);
+            this.txtRtValRedDx.TabIndex = 93;
+            this.txtRtValRedDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnRtCLS
             // 
@@ -2184,71 +2249,6 @@
             // ofdImportDati
             // 
             this.ofdImportDati.FileName = "openFileDialog1";
-            // 
-            // txtRtValBluDx
-            // 
-            this.txtRtValBluDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValBluDx.Location = new System.Drawing.Point(286, 159);
-            this.txtRtValBluDx.Name = "txtRtValBluDx";
-            this.txtRtValBluDx.Size = new System.Drawing.Size(48, 24);
-            this.txtRtValBluDx.TabIndex = 95;
-            this.txtRtValBluDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtRtValGreenDx
-            // 
-            this.txtRtValGreenDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValGreenDx.Location = new System.Drawing.Point(232, 159);
-            this.txtRtValGreenDx.Name = "txtRtValGreenDx";
-            this.txtRtValGreenDx.Size = new System.Drawing.Size(48, 24);
-            this.txtRtValGreenDx.TabIndex = 94;
-            this.txtRtValGreenDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtRtValRedDx
-            // 
-            this.txtRtValRedDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValRedDx.Location = new System.Drawing.Point(178, 159);
-            this.txtRtValRedDx.Name = "txtRtValRedDx";
-            this.txtRtValRedDx.Size = new System.Drawing.Size(48, 24);
-            this.txtRtValRedDx.TabIndex = 93;
-            this.txtRtValRedDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtRtValTimeOffDx
-            // 
-            this.txtRtValTimeOffDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOffDx.Location = new System.Drawing.Point(422, 159);
-            this.txtRtValTimeOffDx.Name = "txtRtValTimeOffDx";
-            this.txtRtValTimeOffDx.Size = new System.Drawing.Size(48, 24);
-            this.txtRtValTimeOffDx.TabIndex = 97;
-            this.txtRtValTimeOffDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtRtValTimeOnDx
-            // 
-            this.txtRtValTimeOnDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOnDx.Location = new System.Drawing.Point(368, 159);
-            this.txtRtValTimeOnDx.Name = "txtRtValTimeOnDx";
-            this.txtRtValTimeOnDx.Size = new System.Drawing.Size(48, 24);
-            this.txtRtValTimeOnDx.TabIndex = 96;
-            this.txtRtValTimeOnDx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label45.Location = new System.Drawing.Point(145, 134);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(26, 17);
-            this.label45.TabIndex = 98;
-            this.label45.Text = "SX";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label46.Location = new System.Drawing.Point(146, 164);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(27, 17);
-            this.label46.TabIndex = 99;
-            this.label46.Text = "DX";
             // 
             // frmDisplayManager
             // 

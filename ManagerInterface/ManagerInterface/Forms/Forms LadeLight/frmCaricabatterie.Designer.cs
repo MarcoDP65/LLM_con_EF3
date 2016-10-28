@@ -1142,9 +1142,9 @@
             this.lblFirmwDisp.AutoSize = true;
             this.lblFirmwDisp.Location = new System.Drawing.Point(198, 342);
             this.lblFirmwDisp.Name = "lblFirmwDisp";
-            this.lblFirmwDisp.Size = new System.Drawing.Size(150, 17);
+            this.lblFirmwDisp.Size = new System.Drawing.Size(108, 17);
             this.lblFirmwDisp.TabIndex = 11;
-            this.lblFirmwDisp.Text = "Rev FW Caricabatterie";
+            this.lblFirmwDisp.Text = "Rev FW Display";
             // 
             // txtFwCb
             // 

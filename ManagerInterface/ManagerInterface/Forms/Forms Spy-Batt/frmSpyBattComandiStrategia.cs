@@ -82,6 +82,7 @@ namespace PannelloCharger
 
                 byte[] _Dati;
                 bool _esito;
+                ushort _tempMin;
 
                 txtStratDataGrid.Text = "";
                 _Dati = new byte[252];
@@ -116,6 +117,12 @@ namespace PannelloCharger
                     txtStratQryTatt.Text = FunzioniMR.StringaTemperatura(_Dati[0x13]);
                     txtStratQryTalm.Text = FunzioniMR.StringaTemperatura(_Dati[0x14]);
                     txtStratQryTrepr.Text = FunzioniMR.StringaTemperatura(_Dati[0x15]);
+                    txtStratQryModoPian.Text = _Dati[0x16].ToString();
+                    txtStratQryGg.Text = DataOraMR.SiglaGiorno(_Dati[0x17] + 1);
+                    _tempMin = (ushort)((_Dati[0x19] << 8) + _Dati[0x1A]);
+                    txtStratQryMinChg.Text = _tempMin.ToString();
+                    txtStratQryFC.Text = FunzioniMR.StringaFattoreCarica(_Dati[0x1B]);
+
 
                 }
 

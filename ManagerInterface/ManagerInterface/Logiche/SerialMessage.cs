@@ -2288,7 +2288,7 @@ namespace ChargerLogic
             public UInt32 Progressivo;
             public byte tensioneNominale;
             public ushort correnteNominale;
-            public string modello;
+            public string modello { get; set; }
             public string revSoftware;
             public string revDisplay;
             private byte _lenModello;
@@ -2343,7 +2343,28 @@ namespace ChargerLogic
                         startByte += 1;
                         correnteNominale = ArrayToUshort(_risposta, startByte, 2);
                         startByte += 2;
+                        revSoftware = "N.D.";
+                        revDisplay = "N.D.";
 
+                        if (_risposta.Length >= startByte + 8)
+                        {
+                            revSoftware = _risposta[startByte].ToString();
+                            startByte += 1;
+                            revSoftware += "." +_risposta[startByte].ToString("00");
+                            startByte += 1;
+                            _tempShort = ArrayToUshort(_risposta, startByte, 2);
+                            startByte += 2;
+                            revSoftware += "." + _tempShort.ToString("0000");
+
+                            revDisplay = _risposta[startByte].ToString();
+                            startByte += 1;
+                            revDisplay += "." + _risposta[startByte].ToString("00");
+                            startByte += 1;
+                            _tempShort = ArrayToUshort(_risposta, startByte, 2);
+                            startByte += 2;
+                            revDisplay += "." + _tempShort.ToString("0000");
+
+                        }
 
 
                         datiPronti = true;

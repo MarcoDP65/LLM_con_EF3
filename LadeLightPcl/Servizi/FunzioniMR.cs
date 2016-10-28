@@ -1713,6 +1713,58 @@ namespace Utility
             }
         }
 
+
+        // Convert the Bitmap to grayscale.
+        public static Bitmap ConvertToGrayscale(Bitmap Immagine, bool UseAverage)
+        {
+            try
+            {
+                Bitmap _tempBmp;
+
+                _tempBmp = new Bitmap(Immagine.Width, Immagine.Height, System.Drawing.Imaging.PixelFormat.Format16bppGrayScale);
+               // using (var gr = Graphics.FromImage(bmp))
+               //     gr.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height));
+               // return bmp;
+
+
+
+                return _tempBmp;
+            }
+            catch (Exception Ex)
+            {
+
+                return Immagine;
+            }
+
+
+            /*
+            // Make a Bitmap24 object.
+            Bitmap32 bm32 = new Bitmap32(bm);
+
+            // Lock the bitmap.
+            bm32.LockBitmap();
+
+            // Process the pixels.
+            for (int x = 0; x < bm.Width; x++)
+            {
+                for (int y = 0; y < bm.Height; y++)
+                {
+                    byte r = bm32.GetRed(x, y);
+                    byte g = bm32.GetGreen(x, y);
+                    byte b = bm32.GetBlue(x, y);
+                    byte gray = (use_average ?
+                        (byte)((r + g + b) / 3) :
+                        (byte)(0.3 * r + 0.5 * g + 0.2 * b));
+                    bm32.SetPixel(x, y, gray, gray, gray, 255);
+                }
+            }
+
+            // Unlock the bitmap.
+            bm32.UnlockBitmap();
+            */
+        }
+
+
     }
 
 }

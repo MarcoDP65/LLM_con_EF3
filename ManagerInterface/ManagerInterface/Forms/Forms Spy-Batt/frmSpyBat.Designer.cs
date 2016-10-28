@@ -807,6 +807,14 @@
             this.label176 = new System.Windows.Forms.Label();
             this.label167 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtStratQryModoPian = new System.Windows.Forms.TextBox();
+            this.label247 = new System.Windows.Forms.Label();
+            this.txtStratQryFC = new System.Windows.Forms.TextBox();
+            this.label246 = new System.Windows.Forms.Label();
+            this.txtStratQryMinChg = new System.Windows.Forms.TextBox();
+            this.label244 = new System.Windows.Forms.Label();
+            this.txtStratQryGg = new System.Windows.Forms.TextBox();
+            this.label245 = new System.Windows.Forms.Label();
             this.txtStratQryTrepr = new System.Windows.Forms.TextBox();
             this.label175 = new System.Windows.Forms.Label();
             this.txtStratQryTalm = new System.Windows.Forms.TextBox();
@@ -873,14 +881,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.txtStratQryMinChg = new System.Windows.Forms.TextBox();
-            this.label244 = new System.Windows.Forms.Label();
-            this.txtStratQryGg = new System.Windows.Forms.TextBox();
-            this.label245 = new System.Windows.Forms.Label();
-            this.txtStratQryOptChg = new System.Windows.Forms.TextBox();
-            this.label246 = new System.Windows.Forms.Label();
-            this.txtStratQryModoPian = new System.Windows.Forms.TextBox();
-            this.label247 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -6346,7 +6346,7 @@
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.txtStratQryModoPian);
             this.panel3.Controls.Add(this.label247);
-            this.panel3.Controls.Add(this.txtStratQryOptChg);
+            this.panel3.Controls.Add(this.txtStratQryFC);
             this.panel3.Controls.Add(this.label246);
             this.panel3.Controls.Add(this.txtStratQryMinChg);
             this.panel3.Controls.Add(this.label244);
@@ -6370,6 +6370,50 @@
             this.panel3.Controls.Add(this.label168);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
+            // 
+            // txtStratQryModoPian
+            // 
+            resources.ApplyResources(this.txtStratQryModoPian, "txtStratQryModoPian");
+            this.txtStratQryModoPian.Name = "txtStratQryModoPian";
+            this.txtStratQryModoPian.ReadOnly = true;
+            // 
+            // label247
+            // 
+            resources.ApplyResources(this.label247, "label247");
+            this.label247.Name = "label247";
+            // 
+            // txtStratQryFC
+            // 
+            resources.ApplyResources(this.txtStratQryFC, "txtStratQryFC");
+            this.txtStratQryFC.Name = "txtStratQryFC";
+            this.txtStratQryFC.ReadOnly = true;
+            // 
+            // label246
+            // 
+            resources.ApplyResources(this.label246, "label246");
+            this.label246.Name = "label246";
+            // 
+            // txtStratQryMinChg
+            // 
+            resources.ApplyResources(this.txtStratQryMinChg, "txtStratQryMinChg");
+            this.txtStratQryMinChg.Name = "txtStratQryMinChg";
+            this.txtStratQryMinChg.ReadOnly = true;
+            // 
+            // label244
+            // 
+            resources.ApplyResources(this.label244, "label244");
+            this.label244.Name = "label244";
+            // 
+            // txtStratQryGg
+            // 
+            resources.ApplyResources(this.txtStratQryGg, "txtStratQryGg");
+            this.txtStratQryGg.Name = "txtStratQryGg";
+            this.txtStratQryGg.ReadOnly = true;
+            // 
+            // label245
+            // 
+            resources.ApplyResources(this.label245, "label245");
+            this.label245.Name = "label245";
             // 
             // txtStratQryTrepr
             // 
@@ -6774,50 +6818,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // txtStratQryMinChg
-            // 
-            resources.ApplyResources(this.txtStratQryMinChg, "txtStratQryMinChg");
-            this.txtStratQryMinChg.Name = "txtStratQryMinChg";
-            this.txtStratQryMinChg.ReadOnly = true;
-            // 
-            // label244
-            // 
-            resources.ApplyResources(this.label244, "label244");
-            this.label244.Name = "label244";
-            // 
-            // txtStratQryGg
-            // 
-            resources.ApplyResources(this.txtStratQryGg, "txtStratQryGg");
-            this.txtStratQryGg.Name = "txtStratQryGg";
-            this.txtStratQryGg.ReadOnly = true;
-            // 
-            // label245
-            // 
-            resources.ApplyResources(this.label245, "label245");
-            this.label245.Name = "label245";
-            // 
-            // txtStratQryOptChg
-            // 
-            resources.ApplyResources(this.txtStratQryOptChg, "txtStratQryOptChg");
-            this.txtStratQryOptChg.Name = "txtStratQryOptChg";
-            this.txtStratQryOptChg.ReadOnly = true;
-            // 
-            // label246
-            // 
-            resources.ApplyResources(this.label246, "label246");
-            this.label246.Name = "label246";
-            // 
-            // txtStratQryModoPian
-            // 
-            resources.ApplyResources(this.txtStratQryModoPian, "txtStratQryModoPian");
-            this.txtStratQryModoPian.Name = "txtStratQryModoPian";
-            this.txtStratQryModoPian.ReadOnly = true;
-            // 
-            // label247
-            // 
-            resources.ApplyResources(this.label247, "label247");
-            this.label247.Name = "label247";
             // 
             // frmSpyBat
             // 
@@ -7852,7 +7852,7 @@
         private System.Windows.Forms.Button btnPianSalvaCliente;
         private System.Windows.Forms.TextBox txtStratQryModoPian;
         private System.Windows.Forms.Label label247;
-        private System.Windows.Forms.TextBox txtStratQryOptChg;
+        private System.Windows.Forms.TextBox txtStratQryFC;
         private System.Windows.Forms.Label label246;
         private System.Windows.Forms.TextBox txtStratQryMinChg;
         private System.Windows.Forms.Label label244;
