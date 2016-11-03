@@ -189,7 +189,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtImgNomeImmagine = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnImgGeneraArrrayImmagine = new System.Windows.Forms.Button();
+            this.btnImgGeneraArrayImmagine = new System.Windows.Forms.Button();
             this.btnImgSimulaFileImmagine = new System.Windows.Forms.Button();
             this.pbxImgImmagine1b = new System.Windows.Forms.PictureBox();
             this.pbxImgImmagine8b = new System.Windows.Forms.PictureBox();
@@ -214,6 +214,16 @@
             this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.tbpStatoScheda = new System.Windows.Forms.TabPage();
+            this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.btnStatoImgCarica = new System.Windows.Forms.Button();
+            this.txtStatoImgStart = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.txtStatoImgEnd = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.lblStatoImmagini = new System.Windows.Forms.Label();
+            this.chkStatoImgMostraTutto = new System.Windows.Forms.CheckBox();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpArchivioModelli.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -243,14 +253,18 @@
             this.groupBox2.SuspendLayout();
             this.tbpPagine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
+            this.tbpStatoScheda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).BeginInit();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcMainDisplayManager
             // 
-            this.tbcMainDisplayManager.Controls.Add(this.tbpArchivioModelli);
             this.tbcMainDisplayManager.Controls.Add(this.tbpConnessione);
             this.tbcMainDisplayManager.Controls.Add(this.tbpRealTime);
             this.tbcMainDisplayManager.Controls.Add(this.tbpAccesssoMemoria);
+            this.tbcMainDisplayManager.Controls.Add(this.tbpStatoScheda);
+            this.tbcMainDisplayManager.Controls.Add(this.tbpArchivioModelli);
             this.tbcMainDisplayManager.Controls.Add(this.tbpImmagini);
             this.tbcMainDisplayManager.Controls.Add(this.tbpVariabili);
             this.tbcMainDisplayManager.Controls.Add(this.tbpPagine);
@@ -567,7 +581,7 @@
             this.pnlComandiImmediati.Controls.Add(this.btnPrimaLettura);
             this.pnlComandiImmediati.Controls.Add(this.cmdLeggiRTC);
             this.pnlComandiImmediati.Controls.Add(this.btnApriComunicazione);
-            this.pnlComandiImmediati.Location = new System.Drawing.Point(875, 37);
+            this.pnlComandiImmediati.Location = new System.Drawing.Point(651, 37);
             this.pnlComandiImmediati.Name = "pnlComandiImmediati";
             this.pnlComandiImmediati.Size = new System.Drawing.Size(298, 259);
             this.pnlComandiImmediati.TabIndex = 1;
@@ -637,7 +651,7 @@
             this.panel1.Controls.Add(this.cboBaudRate);
             this.panel1.Controls.Add(this.cboPorts);
             this.panel1.Controls.Add(this.btnGetSerialPorts);
-            this.panel1.Location = new System.Drawing.Point(310, 37);
+            this.panel1.Location = new System.Drawing.Point(49, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(537, 568);
             this.panel1.TabIndex = 0;
@@ -1800,7 +1814,7 @@
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.txtImgNomeImmagine);
             this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.btnImgGeneraArrrayImmagine);
+            this.panel2.Controls.Add(this.btnImgGeneraArrayImmagine);
             this.panel2.Controls.Add(this.btnImgSimulaFileImmagine);
             this.panel2.Controls.Add(this.pbxImgImmagine1b);
             this.panel2.Controls.Add(this.pbxImgImmagine8b);
@@ -1815,7 +1829,7 @@
             // txtImgNomeImmagineLista
             // 
             this.txtImgNomeImmagineLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtImgNomeImmagineLista.Location = new System.Drawing.Point(364, 485);
+            this.txtImgNomeImmagineLista.Location = new System.Drawing.Point(366, 512);
             this.txtImgNomeImmagineLista.MaxLength = 8;
             this.txtImgNomeImmagineLista.Name = "txtImgNomeImmagineLista";
             this.txtImgNomeImmagineLista.Size = new System.Drawing.Size(180, 24);
@@ -1825,7 +1839,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label41.Location = new System.Drawing.Point(363, 465);
+            this.label41.Location = new System.Drawing.Point(363, 491);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(109, 17);
             this.label41.TabIndex = 87;
@@ -1834,7 +1848,7 @@
             // txtImgIdImmagine
             // 
             this.txtImgIdImmagine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtImgIdImmagine.Location = new System.Drawing.Point(366, 380);
+            this.txtImgIdImmagine.Location = new System.Drawing.Point(368, 415);
             this.txtImgIdImmagine.MaxLength = 8;
             this.txtImgIdImmagine.Name = "txtImgIdImmagine";
             this.txtImgIdImmagine.Size = new System.Drawing.Size(52, 24);
@@ -1846,7 +1860,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label40.Location = new System.Drawing.Point(363, 360);
+            this.label40.Location = new System.Drawing.Point(365, 395);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(19, 17);
             this.label40.TabIndex = 85;
@@ -1929,7 +1943,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label20.Location = new System.Drawing.Point(502, 407);
+            this.label20.Location = new System.Drawing.Point(503, 444);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(45, 17);
             this.label20.TabIndex = 77;
@@ -1938,7 +1952,7 @@
             // txtImgDimY
             // 
             this.txtImgDimY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtImgDimY.Location = new System.Drawing.Point(502, 427);
+            this.txtImgDimY.Location = new System.Drawing.Point(503, 464);
             this.txtImgDimY.MaxLength = 8;
             this.txtImgDimY.Name = "txtImgDimY";
             this.txtImgDimY.ReadOnly = true;
@@ -1950,7 +1964,7 @@
             // txtImgDimX
             // 
             this.txtImgDimX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtImgDimX.Location = new System.Drawing.Point(454, 427);
+            this.txtImgDimX.Location = new System.Drawing.Point(455, 464);
             this.txtImgDimX.MaxLength = 8;
             this.txtImgDimX.Name = "txtImgDimX";
             this.txtImgDimX.ReadOnly = true;
@@ -1963,7 +1977,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(452, 407);
+            this.label19.Location = new System.Drawing.Point(453, 444);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(44, 17);
             this.label19.TabIndex = 74;
@@ -1972,7 +1986,7 @@
             // txtImgDimImmagine
             // 
             this.txtImgDimImmagine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtImgDimImmagine.Location = new System.Drawing.Point(366, 427);
+            this.txtImgDimImmagine.Location = new System.Drawing.Point(367, 464);
             this.txtImgDimImmagine.MaxLength = 8;
             this.txtImgDimImmagine.Name = "txtImgDimImmagine";
             this.txtImgDimImmagine.ReadOnly = true;
@@ -1985,7 +1999,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(363, 407);
+            this.label18.Location = new System.Drawing.Point(364, 444);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 17);
             this.label18.TabIndex = 72;
@@ -1994,7 +2008,7 @@
             // txtImgNomeImmagine
             // 
             this.txtImgNomeImmagine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtImgNomeImmagine.Location = new System.Drawing.Point(443, 380);
+            this.txtImgNomeImmagine.Location = new System.Drawing.Point(445, 415);
             this.txtImgNomeImmagine.MaxLength = 8;
             this.txtImgNomeImmagine.Name = "txtImgNomeImmagine";
             this.txtImgNomeImmagine.ReadOnly = true;
@@ -2007,21 +2021,21 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label17.Location = new System.Drawing.Point(440, 360);
+            this.label17.Location = new System.Drawing.Point(442, 395);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 17);
             this.label17.TabIndex = 70;
             this.label17.Text = "Nome Testata";
             // 
-            // btnImgGeneraArrrayImmagine
+            // btnImgGeneraArrayImmagine
             // 
-            this.btnImgGeneraArrrayImmagine.Location = new System.Drawing.Point(361, 248);
-            this.btnImgGeneraArrrayImmagine.Name = "btnImgGeneraArrrayImmagine";
-            this.btnImgGeneraArrrayImmagine.Size = new System.Drawing.Size(176, 29);
-            this.btnImgGeneraArrrayImmagine.TabIndex = 5;
-            this.btnImgGeneraArrrayImmagine.Text = "Genera Array";
-            this.btnImgGeneraArrrayImmagine.UseVisualStyleBackColor = true;
-            this.btnImgGeneraArrrayImmagine.Click += new System.EventHandler(this.btnImgGeneraArrrayImmagine_Click);
+            this.btnImgGeneraArrayImmagine.Location = new System.Drawing.Point(361, 274);
+            this.btnImgGeneraArrayImmagine.Name = "btnImgGeneraArrayImmagine";
+            this.btnImgGeneraArrayImmagine.Size = new System.Drawing.Size(176, 29);
+            this.btnImgGeneraArrayImmagine.TabIndex = 5;
+            this.btnImgGeneraArrayImmagine.Text = "Genera Array";
+            this.btnImgGeneraArrayImmagine.UseVisualStyleBackColor = true;
+            this.btnImgGeneraArrayImmagine.Click += new System.EventHandler(this.btnImgGeneraArrayImmagine_Click);
             // 
             // btnImgSimulaFileImmagine
             // 
@@ -2250,6 +2264,115 @@
             // 
             this.ofdImportDati.FileName = "openFileDialog1";
             // 
+            // tbpStatoScheda
+            // 
+            this.tbpStatoScheda.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpStatoScheda.Controls.Add(this.lblStatoImmagini);
+            this.tbpStatoScheda.Controls.Add(this.panel11);
+            this.tbpStatoScheda.Controls.Add(this.flvStatoListaImg);
+            this.tbpStatoScheda.Location = new System.Drawing.Point(4, 25);
+            this.tbpStatoScheda.Name = "tbpStatoScheda";
+            this.tbpStatoScheda.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpStatoScheda.Size = new System.Drawing.Size(1423, 668);
+            this.tbpStatoScheda.TabIndex = 7;
+            this.tbpStatoScheda.Text = "Stato Scheda";
+            // 
+            // flvStatoListaImg
+            // 
+            this.flvStatoListaImg.CellEditUseWholeCell = false;
+            this.flvStatoListaImg.Location = new System.Drawing.Point(29, 140);
+            this.flvStatoListaImg.Name = "flvStatoListaImg";
+            this.flvStatoListaImg.ShowGroups = false;
+            this.flvStatoListaImg.Size = new System.Drawing.Size(382, 479);
+            this.flvStatoListaImg.TabIndex = 21;
+            this.flvStatoListaImg.UseCompatibleStateImageBehavior = false;
+            this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
+            this.flvStatoListaImg.VirtualMode = true;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.White;
+            this.panel11.Controls.Add(this.chkStatoImgMostraTutto);
+            this.panel11.Controls.Add(this.txtStatoImgEnd);
+            this.panel11.Controls.Add(this.label48);
+            this.panel11.Controls.Add(this.txtStatoImgStart);
+            this.panel11.Controls.Add(this.label47);
+            this.panel11.Controls.Add(this.btnStatoImgCarica);
+            this.panel11.Location = new System.Drawing.Point(29, 53);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(382, 69);
+            this.panel11.TabIndex = 22;
+            // 
+            // btnStatoImgCarica
+            // 
+            this.btnStatoImgCarica.Location = new System.Drawing.Point(265, 14);
+            this.btnStatoImgCarica.Name = "btnStatoImgCarica";
+            this.btnStatoImgCarica.Size = new System.Drawing.Size(103, 41);
+            this.btnStatoImgCarica.TabIndex = 80;
+            this.btnStatoImgCarica.Text = "Carica";
+            this.btnStatoImgCarica.UseVisualStyleBackColor = true;
+            this.btnStatoImgCarica.Click += new System.EventHandler(this.btnStatoImgCarica_Click);
+            // 
+            // txtStatoImgStart
+            // 
+            this.txtStatoImgStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStatoImgStart.Location = new System.Drawing.Point(11, 31);
+            this.txtStatoImgStart.Name = "txtStatoImgStart";
+            this.txtStatoImgStart.Size = new System.Drawing.Size(53, 24);
+            this.txtStatoImgStart.TabIndex = 82;
+            this.txtStatoImgStart.Text = "1";
+            this.txtStatoImgStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label47.Location = new System.Drawing.Point(8, 11);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(40, 17);
+            this.label47.TabIndex = 81;
+            this.label47.Text = "Inizio";
+            // 
+            // txtStatoImgEnd
+            // 
+            this.txtStatoImgEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStatoImgEnd.Location = new System.Drawing.Point(70, 31);
+            this.txtStatoImgEnd.Name = "txtStatoImgEnd";
+            this.txtStatoImgEnd.Size = new System.Drawing.Size(53, 24);
+            this.txtStatoImgEnd.TabIndex = 84;
+            this.txtStatoImgEnd.Text = "256";
+            this.txtStatoImgEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label48.Location = new System.Drawing.Point(67, 11);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(35, 17);
+            this.label48.TabIndex = 83;
+            this.label48.Text = "Fine";
+            // 
+            // lblStatoImmagini
+            // 
+            this.lblStatoImmagini.AutoSize = true;
+            this.lblStatoImmagini.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatoImmagini.Location = new System.Drawing.Point(25, 30);
+            this.lblStatoImmagini.Name = "lblStatoImmagini";
+            this.lblStatoImmagini.Size = new System.Drawing.Size(93, 20);
+            this.lblStatoImmagini.TabIndex = 23;
+            this.lblStatoImmagini.Text = "IMMAGINI";
+            // 
+            // chkStatoImgMostraTutto
+            // 
+            this.chkStatoImgMostraTutto.AutoSize = true;
+            this.chkStatoImgMostraTutto.Location = new System.Drawing.Point(129, 35);
+            this.chkStatoImgMostraTutto.Name = "chkStatoImgMostraTutto";
+            this.chkStatoImgMostraTutto.Size = new System.Drawing.Size(110, 21);
+            this.chkStatoImgMostraTutto.TabIndex = 85;
+            this.chkStatoImgMostraTutto.Text = "Mostra Tutto";
+            this.chkStatoImgMostraTutto.UseVisualStyleBackColor = true;
+            // 
             // frmDisplayManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2301,6 +2424,11 @@
             this.groupBox2.PerformLayout();
             this.tbpPagine.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
+            this.tbpStatoScheda.ResumeLayout(false);
+            this.tbpStatoScheda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2386,7 +2514,7 @@
         private System.Windows.Forms.Button btnImgSimulaFileImmagine;
         private System.Windows.Forms.PictureBox pbxImgImmagine1b;
         private System.Windows.Forms.PictureBox pbxImgImmagine8b;
-        private System.Windows.Forms.Button btnImgGeneraArrrayImmagine;
+        private System.Windows.Forms.Button btnImgGeneraArrayImmagine;
         private System.Windows.Forms.Button btnImgGeneraClasse;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtImgDimY;
@@ -2493,5 +2621,15 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox txtRtValTimeOffDx;
         private System.Windows.Forms.TextBox txtRtValTimeOnDx;
+        private System.Windows.Forms.TabPage tbpStatoScheda;
+        private System.Windows.Forms.Label lblStatoImmagini;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.CheckBox chkStatoImgMostraTutto;
+        private System.Windows.Forms.TextBox txtStatoImgEnd;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox txtStatoImgStart;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Button btnStatoImgCarica;
+        private BrightIdeasSoftware.FastObjectListView flvStatoListaImg;
     }
 }

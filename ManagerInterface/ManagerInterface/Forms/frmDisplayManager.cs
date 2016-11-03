@@ -507,9 +507,14 @@ namespace PannelloCharger
                     _tempImg = new DisplaySetup.Immagine();
                     _tempImg.bmpBase = new Bitmap(txtNuovoFile.Text);
 
-                    pbxImgImmagine.BackColor = Color.Aqua;
+                    pbxImgImmagine.BackColor = Color.Gray;
                     pbxImgImmagine.Image = _tempImg.bmpBase;
                     txtImgBaseSize.Text = _tempImg.bmpBase.Size.ToString();
+                    txtImgBaseDimX.Text = _tempImg.bmpBase.Width.ToString();
+                    txtImgBaseDimY.Text = _tempImg.bmpBase.Height.ToString();
+
+
+
                     /*
 
                     Image image = Image.FromFile(txtNuovoFile.Text);
@@ -532,19 +537,19 @@ namespace PannelloCharger
         {
             try
             {
-                Bitmap bmp = new Bitmap(240, 128);
-                int step;
-                for (int _y = 0; _y < 128; _y++)
-                {
-                    for (int _x = 0; _x < 240; _x++)
-                    {
+                // al momento copio semplicemente liimmagine caricata
 
+                _tempImg.bmp = _tempImg.bmpBase;
 
-                    }
-                }
+                pbxImgImmagine8b.BackColor = Color.Gray;
+                /*
+                _tempImg.bmp.SetPixel(0, 0, Color.Red);
+                _tempImg.bmp.SetPixel(1, 0, Color.Red);
+                _tempImg.bmp.SetPixel(2, 0, Color.Red);
+                */
+                pbxImgImmagine8b.Image = _tempImg.bmp;
+                pbxImgImmagine8b.SizeMode = PictureBoxSizeMode.Normal;
 
-                pbxImgImmagine8b.Image = bmp;
-                pbxImgImmagine8b.SizeMode = PictureBoxSizeMode.Zoom;
             }
             catch (Exception Ex)
             {
@@ -552,7 +557,7 @@ namespace PannelloCharger
             }
         }
 
-        private void btnImgGeneraArrrayImmagine_Click(object sender, EventArgs e)
+        private void btnImgGeneraArrayImmagine_Click(object sender, EventArgs e)
         {
             DisplaySetup.Immagine _img = new DisplaySetup.Immagine();
 
@@ -562,6 +567,7 @@ namespace PannelloCharger
             txtImgDimImmagine.Text = _img.Size.ToString();
             txtImgDimX.Text = _img.Width.ToString();
             txtImgDimY.Text = _img.Height.ToString();
+
 
 
 
@@ -1076,5 +1082,97 @@ namespace PannelloCharger
             }
         }
 
+        private void btnStatoImgCarica_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ushort _valStart = FunzioniMR.ConvertiUshort(txtStatoImgStart.Text, 1, 0);
+                ushort _valEnd = FunzioniMR.ConvertiUshort(txtStatoImgEnd.Text, 1,256);
+                _disp.CaricaListaImmaginiPresenti(_valStart, _valEnd);
+                InizializzaVistaImmaginiPresenti();
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnStatoImgCarica_Click: " + Ex.Message);
+            }
+        }
+
+        private void InizializzaVistaImmaginiPresenti()
+        {
+            try
+            {
+                HeaderFormatStyle _stile = new HeaderFormatStyle();
+                _stile.SetBackColor(Color.DarkGray);
+                _stile.SetForeColor(Color.Yellow);
+                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
+                _stile.SetFont(_carattere);
+                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
+
+                flvStatoListaImg.HeaderUsesThemes = false;
+                flvStatoListaImg.HeaderFormatStyle = _stile;
+                flvStatoListaImg.UseAlternatingBackColors = true;
+                flvStatoListaImg.AlternateRowBackColor = Color.LightGoldenrodYellow;
+
+                flvStatoListaImg.AllColumns.Clear();
+
+                flvStatoListaImg.View = View.Details;
+                flvStatoListaImg.ShowGroups = false;
+                flvStatoListaImg.GridLines = true;
+                flvStatoListaImg.CheckBoxes = false;
+
+                BrightIdeasSoftware.OLVColumn colIdImg = new BrightIdeasSoftware.OLVColumn();
+                colIdImg.Text = "ID";
+                colIdImg.AspectName = "Id";
+                colIdImg.Width = 30;
+                colIdImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colIdImg.TextAlign = HorizontalAlignment.Right;
+                flvStatoListaImg.AllColumns.Add(colIdImg);
+
+                BrightIdeasSoftware.OLVColumn colNomeImg = new BrightIdeasSoftware.OLVColumn();
+                colNomeImg.Text = "Nome";
+                colNomeImg.AspectName = "Nome";
+                colNomeImg.Width = 200;
+                colNomeImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colNomeImg.TextAlign = HorizontalAlignment.Left;
+                flvStatoListaImg.AllColumns.Add(colNomeImg);
+
+                BrightIdeasSoftware.OLVColumn colWidthImg = new BrightIdeasSoftware.OLVColumn();
+                colWidthImg.Text = "Largh";
+                colWidthImg.AspectName = "Width";
+                colWidthImg.Width = 50;
+                colWidthImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colWidthImg.TextAlign = HorizontalAlignment.Left;
+                flvStatoListaImg.AllColumns.Add(colWidthImg);
+
+
+                BrightIdeasSoftware.OLVColumn colHeightImg = new BrightIdeasSoftware.OLVColumn();
+                colHeightImg.Text = "Alt";
+                colHeightImg.AspectName = "Height";
+                colHeightImg.Width = 50;
+                colHeightImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colHeightImg.TextAlign = HorizontalAlignment.Left;
+                flvStatoListaImg.AllColumns.Add(colHeightImg);
+
+
+
+                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
+                colRowFiller.Text = "";
+                colRowFiller.Width = 60;
+                colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
+                colRowFiller.TextAlign = HorizontalAlignment.Right;
+                colRowFiller.FillsFreeSpace = true;
+                flvStatoListaImg.AllColumns.Add(colRowFiller);
+
+                flvStatoListaImg.RebuildColumns();
+                flvStatoListaImg.SetObjects(_disp.Immagini);
+                flvStatoListaImg.BuildList();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaVistaImmaginiPresenti: " + Ex.Message);
+            }
+        }
     }
 }

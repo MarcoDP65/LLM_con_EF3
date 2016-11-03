@@ -27,7 +27,7 @@ namespace ChargerLogic
             public Bitmap bmp;
             public Bitmap bmpBase;
             public string Nome;
-            public byte Id;
+            public ushort Id { get; set; }
             public byte Numero;
             public byte Lingua;
             /// <summary>
@@ -76,6 +76,13 @@ namespace ChargerLogic
             {
                 try
                 {
+
+                    byte _NumRow = 0;
+                    byte _NumCol = 0;
+                    byte _NumRowBlock = 0;
+
+
+
                     bmp = new Bitmap(Width, Height);
 
                     /*
@@ -92,9 +99,8 @@ namespace ChargerLogic
                     }
                     */
 
-                    byte _NumRowBlock = 0;
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
+                   
+
 
 
                     for (int _count = 0; _count < ImageBuffer.Length; _count++)
@@ -115,6 +121,67 @@ namespace ChargerLogic
                             }
                         }
                     }
+
+                }
+                catch
+                {
+
+                }
+            }
+
+            public void BmpToBuffer()
+            {
+                try
+                {
+                    int _tempWidth = bmp.Width;
+                    int _tempHeight = bmp.Height;
+                    int _arraysize = 0;
+
+                    byte _NumRowBlock = 0;
+
+                    _NumRowBlock = (byte)(_tempHeight / 8);
+
+                    if((_tempHeight % 8) != 0)
+                    {
+                        _NumRowBlock += 1;
+                    }
+                    _arraysize = _tempWidth * _NumRowBlock;
+
+                    ImageBuffer = new byte[_arraysize];
+
+
+                    for (int _rowBlock = 0; _rowBlock < _NumRowBlock; _rowBlock++)
+                    {
+                        for (int _CurrCol = 0; _CurrCol <= _tempWidth; _CurrCol++)
+                        {
+                            byte _actPix = 0x00;
+
+                            for (int _rBlock = 0; _rBlock < 8; _rBlock++)
+                            {
+                                int _rigacorrente = _rowBlock * 8 + _rBlock;
+                                
+                                if (_rigacorrente < _tempHeight)
+                                {
+                                    Color _pixelCorrente = bmp.GetPixel(_CurrCol, _rigacorrente);
+                                    int grayScale = (int)((_pixelCorrente.R * 0.3) + (_pixelCorrente.G * 0.59) + (_pixelCorrente.B * 0.11));
+
+                                    if (grayScale > 128)
+                                    {
+                                        int _tempBlock = (0x01 << _rBlock);
+                                        _actPix = (byte)(_actPix & _tempBlock);
+                                    }
+
+                                }
+
+
+                            }
+                            int _posCorrente = _rowBlock * _tempWidth + _CurrCol;
+                            ImageBuffer[_posCorrente] = _actPix;
+
+                        }
+
+                    }
+                    
 
                 }
                 catch
@@ -161,6 +228,44 @@ namespace ChargerLogic
 
                 }
             }
+
+            public bool BmpFromBuffer()
+            {
+                try
+                {
+                    bmp = new Bitmap(Width, Height);
+
+                    byte _NumRowBlock = 0;
+                    byte _NumRow = 0;
+                    byte _NumCol = 0;
+
+
+                    for (int _count = 0; _count < ImageBuffer.Length; _count++)
+                    {
+                        byte _currcol = (byte)(_count % Width);
+                        byte _currRowBlock = (byte)(_count / Width);
+                        for (byte _currRow = 0; _currRow < 8; _currRow++)
+                        {
+                            if (((byte)(ImageBuffer[_count] >> _currRow) & 0x01) == 0x01)
+                            {
+                                bmp.SetPixel(_currcol, (_currRowBlock * 8 + (_currRow)), Color.Black);
+                            }
+                            else
+                            {
+                                bmp.SetPixel(_currcol, (_currRowBlock * 8 + (_currRow)), Color.White);
+                            }
+                        }
+                    }
+                    return true;
+                }
+                
+                catch
+                {
+                    return false;
+                }
+            }
+
+
 
 
 

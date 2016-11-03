@@ -1679,6 +1679,31 @@ namespace Utility
             }
         }
 
+        public static ushort ArrayToUshort(byte[] source, int start, int lenght)
+        {
+            ushort _tempVal16 = 0;
+            int _segno = 1;
+            byte _tempB;
+            try
+            {
+                for (int _i = start; _i < (start + lenght); _i++)
+                {
+                    if (_i < source.Length)
+                    {
+                        _tempB = source[_i];
+                        _tempVal16 = (ushort)(_tempVal16 << 8);
+                        _tempVal16 += _tempB;
+                    }
+
+                }
+                return _tempVal16;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public static short ArrayToSShort(byte[] source, int start, int lenght)
         {
             short _tempVal16 = 0;
@@ -1714,6 +1739,32 @@ namespace Utility
         }
 
 
+        /// <summary>
+        /// Converte il subarray selezionato in stringa.
+        /// </summary>
+        /// <param name="source">Array origina.</param>
+        /// <param name="start">Inizio con base 0.</param>
+        /// <param name="lenght">Lunghezza.</param>
+        /// <returns></returns>
+        public static string ArrayToString(byte[] source, int start, int lenght)
+        {
+
+
+            try
+            {
+
+                string result = System.Text.Encoding.UTF8.GetString(source, start, lenght);
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+
+
+
         // Convert the Bitmap to grayscale.
         public static Bitmap ConvertToGrayscale(Bitmap Immagine, bool UseAverage)
         {
@@ -1736,32 +1787,7 @@ namespace Utility
                 return Immagine;
             }
 
-
-            /*
-            // Make a Bitmap24 object.
-            Bitmap32 bm32 = new Bitmap32(bm);
-
-            // Lock the bitmap.
-            bm32.LockBitmap();
-
-            // Process the pixels.
-            for (int x = 0; x < bm.Width; x++)
-            {
-                for (int y = 0; y < bm.Height; y++)
-                {
-                    byte r = bm32.GetRed(x, y);
-                    byte g = bm32.GetGreen(x, y);
-                    byte b = bm32.GetBlue(x, y);
-                    byte gray = (use_average ?
-                        (byte)((r + g + b) / 3) :
-                        (byte)(0.3 * r + 0.5 * g + 0.2 * b));
-                    bm32.SetPixel(x, y, gray, gray, gray, 255);
-                }
-            }
-
-            // Unlock the bitmap.
-            bm32.UnlockBitmap();
-            */
+            
         }
 
 

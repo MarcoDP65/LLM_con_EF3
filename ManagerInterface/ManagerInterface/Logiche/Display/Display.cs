@@ -28,6 +28,13 @@ namespace ChargerLogic
 
         private static Queue<byte> codaDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
         private static Queue<byte> echoDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
+
+
+        
+        public List<DisplaySetup.Immagine> Immagini = new List<DisplaySetup.Immagine>();
+        public List<DisplaySetup.Schermata> Schermate = new List<DisplaySetup.Schermata>();
+        public List<DisplaySetup.Variabile> Variabili = new List<DisplaySetup.Variabile>();
+        
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
         private int _timeOut = 10;
@@ -62,6 +69,9 @@ namespace ChargerLogic
             _mD.SerialNumber = Seriale;
             serialeApparato = PortaSeriale;
             //serialeApparato.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(port_DataReceivedDisplay);
+            Immagini.Clear();
+            Schermate.Clear();
+            Variabili.Clear();
 
 
         }
@@ -513,7 +523,56 @@ namespace ChargerLogic
         }
 
 
+        public bool CaricaListaImmaginiPresenti(ushort Start,ushort Stop, bool ElencaVuote = false, bool CaricaBitmap = false)
+        {
+            bool _risposta = false;
+            bool _esitoRead = false;
+            byte[] _buffDati = new byte[12];
+            try
+            {
 
+                if (Stop > 256)
+                {
+                    Stop = 256;
+                }
+
+                if (Start> Stop)
+                {
+                    Start = Stop;
+                }
+
+                Immagini.Clear();
+
+                for (ushort _imgCount = Start; _imgCount <= Stop; _imgCount++)
+                {
+                    uint _addrImg;
+                    _addrImg = (uint)( 0x2000 + (0x1000 * _imgCount));
+                    _esitoRead = LeggiBloccoMemoria(_addrImg, 12,out _buffDati);
+                    if(_esitoRead)
+                    {
+                        DisplaySetup.Immagine _tmpImg = new DisplaySetup.Immagine();
+                        _tmpImg.Id = _imgCount;
+                        _tmpImg.Nome = FunzioniComuni.ArrayToString(_buffDati, 0, 8);
+                        _tmpImg.Size = FunzioniComuni.ArrayToUshort(_buffDati, 8, 2);
+                        _tmpImg.Width = _buffDati[10];
+                        _tmpImg.Width = _buffDati[11];
+                        Immagini.Add(_tmpImg);
+                        _risposta = true;
+                        
+                    }
+
+                    Thread.Sleep(500);
+
+                }
+
+                return _risposta;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VerificaPresenza: " + Ex.Message);
+                return _risposta;
+            }
+        }
 
     }
 

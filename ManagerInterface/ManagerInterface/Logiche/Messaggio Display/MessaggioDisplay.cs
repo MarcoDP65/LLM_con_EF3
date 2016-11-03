@@ -12,70 +12,7 @@ namespace ChargerLogic
 {
     public partial class MessaggioDisplay : SerialMessage
     {
-        /*
-        public enum ComandoDisplay : byte
-        {
-            ACK = 0x44,
-            NACK = 0x45,
 
-
-            DI_Start = 0x0F,
-            DI_Strobe = 0xFF,
-            DI_Stop = 0xF0,
-
-            DI_LedRGB = 0x1E,
-            DI_Stato = 0xE1,
-            DI_CancellaInteraMemoria = 0x3A,
-            DI_Cancella4K = 0x24,
-            DI_R_LeggiMemoria = 0x3C,
-            DI_W_ScriviMemoria = 0xC3,
-            DI_R_InvioImmagineMemoria = 0x4B,
-
-            ReadRTC = 0xD3,
-            UpdateRTC = 0xD2,
-            FirmwareUpdate = 0xD5,
-            PrimaConnessione = 0x01,
-            CicloProgrammato = 0x02,
-            CicliCarica = 0x03,
-            DettagliCiclo = 0x04,
-            ProgrammazioneCiclo = 0x05,
-
-            SB_Sstart = 0x17,
-            SB_Strobe = 0x1B,
-            SB_Stop = 0x1D,
-            SB_DatiIniziali = 0x1F,
-            SB_R_DatiCliente = 0x20,
-            SB_R_Programmazione = 0x21,
-            SB_W_DatiCliente = 0x22,
-            SB_W_Programmazione = 0x23,
-            SB_R_CicloLungo = 0x25,
-            SB_R_CicloBreve = 0x26,
-            SB_R_Variabili = 0x27,
-
-            SB_R_LeggiMemoria = 0x33,
-            SB_W_ScriviMemoria = 0x35,
-            SB_R_DumpMemoria = 0x39,
-            SB_UpdateRTC = 0x47,
-            SB_ReadRTC = 0x48,
-            SB_Cal_Enable = 0x3B,
-            SB_Cal_InvioDato = 0x3E,
-            SB_Cal_LetturaGain = 0x3F,
-            SB_R_BootloaderInfo = 0x51,
-            SB_W_FirmwareUpdate = 0x53,
-            SB_W_FirmwareData = 0x57,
-            SB_W_FirmwareSelect = 0x58,
-            SB_W_BLON = 0x5B,
-            SB_R_APPCHECK = 0x5D,
-            SB_W_RESETSCHEDA = 0X5F,
-            BREAK = 0x1C,
-            SB_ACK = 0x6C,
-            SB_ACK_PKG = 0x6D,
-            SB_NACK = 0x71,
-            SB_W_MemProgrammed = 0x74,
-            SB_W_chgst_Call = 0x80,
-            LL_SIG60_PROXY = 0x81,
-        };
-        */
         public enum ComandoInvioSchermata : byte
         {
             DIS_ScriviTesto68 = 0x68,
@@ -266,7 +203,7 @@ namespace ChargerLogic
                             // ora leggo la parte dati
                             _pacchettoMem = new PacchettoReadMem();
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
-                            if (_comando != (byte)TipoComando.SB_R_LeggiMemoria)
+                            if (_comando != (byte)TipoComando.DI_R_LeggiMemoria)
                             {   // dove non ho la testata corretta recupero i 2 bytes del comando
                                 Array.Copy(_messaggio, preambleLenght - 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             }
