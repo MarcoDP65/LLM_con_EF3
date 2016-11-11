@@ -145,7 +145,7 @@ namespace PannelloCharger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("115200")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9600")]
         public string BaudRateDisplay {
             get {
                 return ((string)(this["BaudRateDisplay"]));

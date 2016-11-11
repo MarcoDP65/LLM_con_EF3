@@ -265,13 +265,20 @@ namespace Utility
         {
             try
             {
-                string _timestamp = "";
-                _timestamp += Dataora[0].ToString("00");
-                _timestamp += "/" + Dataora[1].ToString("00");
-                _timestamp += "/" + Dataora[2].ToString("00");
-                _timestamp += "  " + Dataora[3].ToString("00");
-                _timestamp += ":" + Dataora[4].ToString("00");
-                return _timestamp;
+                if (Dataora == null)
+                {
+                    return "N.D.";
+                }
+                else
+                {
+                    string _timestamp = "";
+                    _timestamp += Dataora[0].ToString("00");
+                    _timestamp += "/" + Dataora[1].ToString("00");
+                    _timestamp += "/" + Dataora[2].ToString("00");
+                    _timestamp += "  " + Dataora[3].ToString("00");
+                    _timestamp += ":" + Dataora[4].ToString("00");
+                    return _timestamp;
+                }
             }
             catch
             {

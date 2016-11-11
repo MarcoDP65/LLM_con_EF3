@@ -1871,6 +1871,7 @@ namespace ChargerLogic
 
         /// <summary>
         /// Rilegge direttamente da SPY-BATT l'elenco dei cicli lunghi, aggiornando sia la lista in memoria che i dati su DB
+        /// Se il firmware è 2.02.04 o successivo l'ultimo ciclo è END + 1 perche il fw chiude il ciclo corrente 
         /// </summary>
         /// <param name="cicloStart">Id primo ciclo da leggere</param>
         /// <param name="cicloEnd">Id ultimo ciclo da leggere</param>
@@ -1893,11 +1894,18 @@ namespace ChargerLogic
                 Log.Debug("Inizio Lettura - " + _CicliMemoriaLunga.Count.ToString() + " Cicli presenti (" + cicloEnd.ToString() + " - " + cicloStart.ToString() + ")"); 
                 _CicliMemoriaLunga.Clear();
                 RichiestaInterruzione = false;
+                if (sbData.fwLevel > 4)
+                {
+
+                    cicloStart -= 1;
+                    Log.Debug("Inizio Lettura: " + cicloStart.ToString());
+                }
+
                 string StringaLog = "";
                 int ultimoCiclo = 0;
                 Log.Debug("----------------------------------------------------------------------------------------------------------------------------");
                 EsitoCaricamento = null;
-                if (true)  //_mS.CicliPresenti.NumCicli > 0)
+                if (true)  
                 {
                     if (RunAsinc)
                     {
@@ -1918,6 +1926,7 @@ namespace ChargerLogic
 
                     _mS.Comando = SerialMessage.TipoComando.SB_R_CicloLungo;
                     //_mS.ComponiMessaggio();
+
                     _mS.ComponiMessaggioCicloLungo(cicloStart);
                     _rxRisposta = false;
                     _timeOut = (int)(( cicloEnd - cicloStart)/2) ;
@@ -1930,7 +1939,14 @@ namespace ChargerLogic
                     if (_parametri.CanaleSpyBat == parametriSistema.CanaleDispositivo.USB)
                     {
                         //_esito = aspettaRisposta(elementiComuni.TimeoutBase, (int)(cicloEnd - cicloStart + 1), false,true);+1 ????
-                        _esito = aspettaRisposta(elementiComuni.TimeoutBase, out _dataRx, (int)(cicloEnd - cicloStart + 1), false, true, elementiComuni.tipoMessaggio.MemLunga);
+                        int _cicliAttesi = (int)(cicloEnd - cicloStart + 1);
+
+                        if (sbData.fwLevel > 4)                                                   
+                        {
+                  
+                            _cicliAttesi += 1;
+                        }
+                        _esito = aspettaRisposta(elementiComuni.TimeoutBase, out _dataRx, _cicliAttesi, false, true, elementiComuni.tipoMessaggio.MemLunga);
                     }
                     else
                     {
@@ -2899,6 +2915,8 @@ namespace ChargerLogic
         {
             try
             {
+                if (Dataora == null)
+                    return "N.D.";
                 string _timestamp = "";
                 _timestamp += Dataora[0].ToString("00");
                 _timestamp += "/" + Dataora[1].ToString("00");

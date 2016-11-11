@@ -1062,6 +1062,7 @@ namespace ChargerLogic
             ushort _esito = 0;
             ushort _dispositivo;
             byte _comando;
+            ushort _tempShort;
             byte msbDisp = 0;
             byte lsbDisp = 0;
             byte msb = 0;
@@ -1230,7 +1231,6 @@ namespace ChargerLogic
                         }
 
                         // Cicli Attesi
-                        ushort _tempShort;
                         _tempShort = (ushort)(CustomerData.CicliAttesi);
                         splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
 
@@ -1318,6 +1318,123 @@ namespace ChargerLogic
                             }
                         }
 
+                        // Scrivo i dati simulati della struttura contatori
+                        // on/off
+                        splitUshort(codificaByte( 0x0F ), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // POS
+                        _tempShort = 0x0101;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+                        // NEG
+                        _tempShort = 0x0202;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // CHG
+                        _tempShort = 0x0303;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // DISCHG
+                        _tempShort = 0x0404;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // TOT_CHG
+                        _tempShort = 0x0505;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // TOT_DISCHG
+                        _tempShort = 0x0606;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // capacity
+                        _tempShort = 0x0707;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        // flag micro
+                        _tempShort = 0xFFFF;
+                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
+
+                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                        MessageBuffer[_arrayInit + 1] = msb;
+                        MessageBuffer[_arrayInit + 2] = lsb;
+                        _arrayInit += 2;
 
                         // Chiudo a 252 byte effettivi
                         for (_i = _arrayInit; _i < _arrayLen; _i += 2)

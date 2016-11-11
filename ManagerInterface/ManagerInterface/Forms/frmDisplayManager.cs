@@ -50,7 +50,7 @@ namespace PannelloCharger
             {
                 SerialPinChangedEventHandler1 = new SerialPinChangedEventHandler(PinChanged);
                 ComPort = new SerialPort();
-                _disp = new UnitaDisplay( ref ComPort);
+                _disp = new UnitaDisplay(ref ComPort);
                 InizializzaVistaVariabili();
                 InizializzaVistaImmagini();
             }
@@ -87,7 +87,7 @@ namespace PannelloCharger
                     {
                         index += 1;
                         cboPorts.Items.Add(ArrayComPortsNames[index]);
-                        if (ArrayComPortsNames[index] == _portaBase )
+                        if (ArrayComPortsNames[index] == _portaBase)
                         {
                             _portaPresente = true;
                             _currIndex = index;
@@ -251,7 +251,7 @@ namespace PannelloCharger
                     btnGetSerialPorts.Enabled = true;
                 }
 
-                
+
             }
             catch (Exception Ex)
             {
@@ -315,7 +315,7 @@ namespace PannelloCharger
             {
                 bool verifica;
 
-                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0,0,0,0,0,0);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
             }
             catch (Exception Ex)
@@ -492,7 +492,7 @@ namespace PannelloCharger
                 sfdExportDati.InitialDirectory = _pathTeorico;
                 */
                 ofdImportDati.ShowDialog();
-                
+
                 txtNuovoFile.Text = ofdImportDati.FileName;
                 //if (importaDati()) btnDataExport.Enabled = true;
             }
@@ -579,6 +579,9 @@ namespace PannelloCharger
             {
                 bool verifica;
 
+                bool _VerificaNumero;
+                ushort _nuovoid;
+                /*
                 DisplaySetup.Immagine _img = new DisplaySetup.Immagine();
 
                 _img.SetDemo5();
@@ -586,7 +589,39 @@ namespace PannelloCharger
                 pbxImgImmagine1b.Image = _img.bmp;
 
                 verifica = _disp.CaricaImmagine(_img);
+                */
 
+                //  Verifico che lID sia valido 
+
+
+                _VerificaNumero = ushort.TryParse(txtImgIdImmagine.Text, out _nuovoid);
+                if (!_VerificaNumero)
+                {
+                    // aggiungere messaggio
+                    return;
+                }
+                if (_nuovoid < 1)
+                    _nuovoid = 1;
+                if (_nuovoid > 255)
+                    _nuovoid = 255;
+                txtImgNomeImmagine.Text = "IMAGE" + _nuovoid.ToString("000");
+                txtImgIdImmagine.Text = _nuovoid.ToString();
+
+                // verifico se l'ID è presente e nel caso tolgo l'esistente
+                _VerificaNumero = false;
+                foreach (DisplaySetup.Immagine _item in _disp.Data.Modello.Immagini)
+                {
+                    if (_item.Id == _nuovoid)
+                    {
+                        // aggiungere messaggio per duplicato
+                        _disp.Data.Modello.Immagini.Remove(_item);
+                        break;
+                    }
+                }
+                _tempImg.Id = _nuovoid;
+                _tempImg.Nome = txtImgNomeImmagineLista.Text;
+                _disp.Data.Modello.Immagini.Add(_tempImg);
+                InizializzaVistaImmagini();
             }
             catch (Exception Ex)
             {
@@ -622,7 +657,7 @@ namespace PannelloCharger
                         MessageBox.Show(StringheComuni.MemoriaCancellata, StringheComuni.CancellaMemoria, MessageBoxButtons.OK);
                     }
 
-               
+
 
                 }
             }
@@ -679,7 +714,7 @@ namespace PannelloCharger
                 Log.Error(Ex.Message);
             }
         }
-    
+
 
         private void btnModCercaSalvaModello_Click(object sender, EventArgs e)
         {
@@ -939,7 +974,7 @@ namespace PannelloCharger
                 Log.Error("---------------- txtVarIdVariabile_Leave ------------");
                 Log.Error(Ex.Message);
             }
-           
+
         }
 
 
@@ -1087,9 +1122,11 @@ namespace PannelloCharger
             try
             {
                 ushort _valStart = FunzioniMR.ConvertiUshort(txtStatoImgStart.Text, 1, 0);
-                ushort _valEnd = FunzioniMR.ConvertiUshort(txtStatoImgEnd.Text, 1,256);
+                ushort _valEnd = FunzioniMR.ConvertiUshort(txtStatoImgEnd.Text, 1, 256);
+
                 _disp.CaricaListaImmaginiPresenti(_valStart, _valEnd);
                 InizializzaVistaImmaginiPresenti();
+
 
 
             }
@@ -1174,5 +1211,117 @@ namespace PannelloCharger
                 Log.Error("InizializzaVistaImmaginiPresenti: " + Ex.Message);
             }
         }
+
+        private void txtImgIdImmagine_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _VerificaNumero;
+                ushort _nuovoid;
+
+                _VerificaNumero = ushort.TryParse(txtImgIdImmagine.Text, out _nuovoid);
+                if (!_VerificaNumero)
+                    _nuovoid = 1;
+                if (_nuovoid < 1)
+                    _nuovoid = 1;
+                if (_nuovoid > 255)
+                    _nuovoid = 255;
+                txtImgNomeImmagine.Text = "IMAGE" + _nuovoid.ToString("000");
+                txtImgIdImmagine.Text = _nuovoid.ToString();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtImgIdImmagine_Leave: " + Ex.Message);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Se per il ciclo lungo corrente sono saricati i cicli  brevi, apre la finestra col dettaglio cicli
+        /// </summary>
+        private void MostraDettaglioImmagineSelezionata()
+        {
+            try
+            {
+                Log.Debug("MostraDettaglioImmagineSelezionata");
+
+                if (flvImgListaImmagini.SelectedObject != null)
+                {
+
+
+                    DisplaySetup.Immagine _tempImLoc = (DisplaySetup.Immagine)flvImgListaImmagini.SelectedObject;
+                    if (_tempImLoc.bmp != null)
+                    {
+
+                    }
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDettaglioImmagineSelezionata: " + Ex.Message);
+            }
+
+        }
+
+        private void MostraImmagine(DisplaySetup.Immagine Image)
+        {
+            try
+            {
+                Log.Debug("MostraImmagine");
+
+                if (Image != null)
+                {
+                    pbxImgImmagine.Image = Image.bmp;
+                    pbxImgImmagine8b.Image = Image.bmpBase;
+                    txtImgNomeImmagineLista.Text = Image.Nome;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraImmagine: " + Ex.Message);
+            }
+
+        }
+
+        private void flvImgListaImmagini_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = (FastObjectListView)sender;
+                
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Immagine Img = (DisplaySetup.Immagine)_lista.SelectedObject;
+                    MostraImmagine(Img);
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+
+        }
+
+        private void btnImgMostraImmagine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvImgListaImmagini;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Immagine Img = (DisplaySetup.Immagine)_lista.SelectedObject;
+                    MostraImmagine(Img);
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
     }
 }
+    

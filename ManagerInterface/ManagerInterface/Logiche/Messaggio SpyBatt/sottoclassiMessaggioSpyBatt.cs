@@ -238,6 +238,7 @@ namespace ChargerLogic
                             }
 
                         case 4:
+                        case 5:
                             {
                                 _esitoLocale = _analizzaMessaggioLev4(_messaggio, fwLevel, DatiPuri);
                                 break;
@@ -1420,6 +1421,7 @@ namespace ChargerLogic
                             }
 
                         case 4:
+                        case 5:
                             {
                                 _esitoLocale = analizzaMessaggioLev4(_messaggio, fwLevel);
                                 break;

@@ -26,13 +26,6 @@ namespace ChargerLogic
 
         private bool _datisalvati = true;
 
-        /*
-        public List<Immagine> Immagini = new List<Immagine>();
-        public List<Schermata> Schermate = new List<Schermata>();
-        public List<Schermata> Variabili = new List<Schermata>();
-        */
-
-
         public DisplaySetup()
         {
             Modello = new DataModel();
@@ -52,6 +45,12 @@ namespace ChargerLogic
             {
                 if (NomeFile != "")
                 {
+                    // Prima converto tutte le immagini in bytearray
+                    foreach (Immagine item in Modello.Immagini)
+                    {
+                        item.ImgToBytearray();
+                    }
+
                     Log.Debug("--- Esportazione Modello Display ---");
                     Modello.DataModifica = DateTime.Now;
                     Modello.CRC = 0;
@@ -143,6 +142,13 @@ namespace ChargerLogic
                         _crc = _tempCRC;  // codCrc.ComputeChecksum(_tempBSer);
                         Log.Debug("file verificato");
                         Modello = _importData;
+
+                        // Riconverto tutti i bytearray in immagini
+                        foreach (Immagine item in Modello.Immagini)
+                        {
+                            item.BytearrayToImg();
+                        }
+
 
                     }
 

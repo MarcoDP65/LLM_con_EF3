@@ -522,8 +522,9 @@ namespace MoriData
             try
             {
                 StruttureBase.ArrayCelle _celleRelative = new StruttureBase.ArrayCelle();
+                if(ProgrammaAttivo != null)
+                   _celleRelative = FunzioniMR.CalcolaCelleRelative(ProgrammaAttivo.CelleSensori);
 
-                _celleRelative = FunzioniMR.CalcolaCelleRelative(ProgrammaAttivo.CelleSensori);
 
                 float _tmpVMaxSbilanciamento = 0;
                 float _tmpSbil;

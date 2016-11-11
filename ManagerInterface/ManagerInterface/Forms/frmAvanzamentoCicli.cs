@@ -154,6 +154,7 @@ namespace PannelloCharger
                         sbWorker.ReportProgress(0, _stepBg);
                         Log.Debug("Lancio lettura: MemLunga " + ValStart.ToString() + " - " + ValFine.ToString());
                         object _esitoLunghi;
+
                         _esito = sbLocale.RicaricaCaricaCicliMemLunga((uint)ValStart, (uint)ValFine, DbDati, true, CaricaBrevi, out _esitoLunghi, true);
                         break;
                     }

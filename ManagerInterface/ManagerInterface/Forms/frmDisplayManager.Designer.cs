@@ -160,9 +160,20 @@
             this.txtMemLenR = new System.Windows.Forms.TextBox();
             this.txtMemAddrR = new System.Windows.Forms.TextBox();
             this.cmdMemRead = new System.Windows.Forms.Button();
+            this.tbpStatoScheda = new System.Windows.Forms.TabPage();
+            this.lblStatoImmagini = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.chkStatoImgMostraTutto = new System.Windows.Forms.CheckBox();
+            this.txtStatoImgEnd = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.txtStatoImgStart = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.btnStatoImgCarica = new System.Windows.Forms.Button();
+            this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
             this.tbpImmagini = new System.Windows.Forms.TabPage();
             this.label42 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btnImgMostraImmagine = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.flvImgListaImmagini = new BrightIdeasSoftware.FastObjectListView();
@@ -207,23 +218,33 @@
             this.txtVarIdVariabile = new System.Windows.Forms.TextBox();
             this.btnVarCrea = new System.Windows.Forms.Button();
             this.txtVarNomeVariabile = new System.Windows.Forms.TextBox();
-            this.tbpPagine = new System.Windows.Forms.TabPage();
+            this.tbpSchermate = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.tbpStatoScheda = new System.Windows.Forms.TabPage();
-            this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.btnStatoImgCarica = new System.Windows.Forms.Button();
-            this.txtStatoImgStart = new System.Windows.Forms.TextBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.txtStatoImgEnd = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.lblStatoImmagini = new System.Windows.Forms.Label();
-            this.chkStatoImgMostraTutto = new System.Windows.Forms.CheckBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.fastObjectListView2 = new BrightIdeasSoftware.FastObjectListView();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpArchivioModelli.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -239,6 +260,9 @@
             this.grbMemCancFisica.SuspendLayout();
             this.grbMemCancellazione.SuspendLayout();
             this.grbMemLettura.SuspendLayout();
+            this.tbpStatoScheda.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).BeginInit();
             this.tbpImmagini.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvImgListaImmagini)).BeginInit();
@@ -251,23 +275,22 @@
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvVarListaVariabili)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.tbpPagine.SuspendLayout();
+            this.tbpSchermate.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
-            this.tbpStatoScheda.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).BeginInit();
-            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcMainDisplayManager
             // 
+            this.tbcMainDisplayManager.Controls.Add(this.tbpArchivioModelli);
             this.tbcMainDisplayManager.Controls.Add(this.tbpConnessione);
             this.tbcMainDisplayManager.Controls.Add(this.tbpRealTime);
             this.tbcMainDisplayManager.Controls.Add(this.tbpAccesssoMemoria);
             this.tbcMainDisplayManager.Controls.Add(this.tbpStatoScheda);
-            this.tbcMainDisplayManager.Controls.Add(this.tbpArchivioModelli);
             this.tbcMainDisplayManager.Controls.Add(this.tbpImmagini);
             this.tbcMainDisplayManager.Controls.Add(this.tbpVariabili);
-            this.tbcMainDisplayManager.Controls.Add(this.tbpPagine);
+            this.tbcMainDisplayManager.Controls.Add(this.tbpSchermate);
             this.tbcMainDisplayManager.Location = new System.Drawing.Point(12, 12);
             this.tbcMainDisplayManager.Name = "tbcMainDisplayManager";
             this.tbcMainDisplayManager.SelectedIndex = 0;
@@ -539,7 +562,7 @@
             this.btnModSalvaModello.Name = "btnModSalvaModello";
             this.btnModSalvaModello.Size = new System.Drawing.Size(169, 54);
             this.btnModSalvaModello.TabIndex = 0;
-            this.btnModSalvaModello.Text = "Salva Modello";
+            this.btnModSalvaModello.Text = " Salva Modello";
             this.btnModSalvaModello.UseVisualStyleBackColor = true;
             this.btnModSalvaModello.Click += new System.EventHandler(this.btnModSalvaModello_Click);
             // 
@@ -862,6 +885,17 @@
             // tbpRealTime
             // 
             this.tbpRealTime.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpRealTime.Controls.Add(this.button4);
+            this.tbpRealTime.Controls.Add(this.button7);
+            this.tbpRealTime.Controls.Add(this.textBox1);
+            this.tbpRealTime.Controls.Add(this.label54);
+            this.tbpRealTime.Controls.Add(this.textBox2);
+            this.tbpRealTime.Controls.Add(this.label55);
+            this.tbpRealTime.Controls.Add(this.textBox4);
+            this.tbpRealTime.Controls.Add(this.label56);
+            this.tbpRealTime.Controls.Add(this.label57);
+            this.tbpRealTime.Controls.Add(this.textBox5);
+            this.tbpRealTime.Controls.Add(this.label58);
             this.tbpRealTime.Controls.Add(this.label46);
             this.tbpRealTime.Controls.Add(this.label45);
             this.tbpRealTime.Controls.Add(this.txtRtValTimeOffDx);
@@ -1697,6 +1731,115 @@
             this.cmdMemRead.UseVisualStyleBackColor = true;
             this.cmdMemRead.Click += new System.EventHandler(this.cmdMemRead_Click);
             // 
+            // tbpStatoScheda
+            // 
+            this.tbpStatoScheda.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpStatoScheda.Controls.Add(this.lblStatoImmagini);
+            this.tbpStatoScheda.Controls.Add(this.panel11);
+            this.tbpStatoScheda.Controls.Add(this.flvStatoListaImg);
+            this.tbpStatoScheda.Location = new System.Drawing.Point(4, 25);
+            this.tbpStatoScheda.Name = "tbpStatoScheda";
+            this.tbpStatoScheda.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpStatoScheda.Size = new System.Drawing.Size(1423, 668);
+            this.tbpStatoScheda.TabIndex = 7;
+            this.tbpStatoScheda.Text = "Stato Scheda";
+            // 
+            // lblStatoImmagini
+            // 
+            this.lblStatoImmagini.AutoSize = true;
+            this.lblStatoImmagini.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatoImmagini.Location = new System.Drawing.Point(25, 30);
+            this.lblStatoImmagini.Name = "lblStatoImmagini";
+            this.lblStatoImmagini.Size = new System.Drawing.Size(93, 20);
+            this.lblStatoImmagini.TabIndex = 23;
+            this.lblStatoImmagini.Text = "IMMAGINI";
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.White;
+            this.panel11.Controls.Add(this.chkStatoImgMostraTutto);
+            this.panel11.Controls.Add(this.txtStatoImgEnd);
+            this.panel11.Controls.Add(this.label48);
+            this.panel11.Controls.Add(this.txtStatoImgStart);
+            this.panel11.Controls.Add(this.label47);
+            this.panel11.Controls.Add(this.btnStatoImgCarica);
+            this.panel11.Location = new System.Drawing.Point(29, 53);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(382, 69);
+            this.panel11.TabIndex = 22;
+            // 
+            // chkStatoImgMostraTutto
+            // 
+            this.chkStatoImgMostraTutto.AutoSize = true;
+            this.chkStatoImgMostraTutto.Location = new System.Drawing.Point(129, 35);
+            this.chkStatoImgMostraTutto.Name = "chkStatoImgMostraTutto";
+            this.chkStatoImgMostraTutto.Size = new System.Drawing.Size(110, 21);
+            this.chkStatoImgMostraTutto.TabIndex = 85;
+            this.chkStatoImgMostraTutto.Text = "Mostra Tutto";
+            this.chkStatoImgMostraTutto.UseVisualStyleBackColor = true;
+            // 
+            // txtStatoImgEnd
+            // 
+            this.txtStatoImgEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStatoImgEnd.Location = new System.Drawing.Point(70, 31);
+            this.txtStatoImgEnd.Name = "txtStatoImgEnd";
+            this.txtStatoImgEnd.Size = new System.Drawing.Size(53, 24);
+            this.txtStatoImgEnd.TabIndex = 84;
+            this.txtStatoImgEnd.Text = "256";
+            this.txtStatoImgEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label48.Location = new System.Drawing.Point(67, 11);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(35, 17);
+            this.label48.TabIndex = 83;
+            this.label48.Text = "Fine";
+            // 
+            // txtStatoImgStart
+            // 
+            this.txtStatoImgStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtStatoImgStart.Location = new System.Drawing.Point(11, 31);
+            this.txtStatoImgStart.Name = "txtStatoImgStart";
+            this.txtStatoImgStart.Size = new System.Drawing.Size(53, 24);
+            this.txtStatoImgStart.TabIndex = 82;
+            this.txtStatoImgStart.Text = "1";
+            this.txtStatoImgStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label47.Location = new System.Drawing.Point(8, 11);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(40, 17);
+            this.label47.TabIndex = 81;
+            this.label47.Text = "Inizio";
+            // 
+            // btnStatoImgCarica
+            // 
+            this.btnStatoImgCarica.Location = new System.Drawing.Point(265, 14);
+            this.btnStatoImgCarica.Name = "btnStatoImgCarica";
+            this.btnStatoImgCarica.Size = new System.Drawing.Size(103, 41);
+            this.btnStatoImgCarica.TabIndex = 80;
+            this.btnStatoImgCarica.Text = "Carica";
+            this.btnStatoImgCarica.UseVisualStyleBackColor = true;
+            this.btnStatoImgCarica.Click += new System.EventHandler(this.btnStatoImgCarica_Click);
+            // 
+            // flvStatoListaImg
+            // 
+            this.flvStatoListaImg.CellEditUseWholeCell = false;
+            this.flvStatoListaImg.Location = new System.Drawing.Point(29, 140);
+            this.flvStatoListaImg.Name = "flvStatoListaImg";
+            this.flvStatoListaImg.ShowGroups = false;
+            this.flvStatoListaImg.Size = new System.Drawing.Size(382, 479);
+            this.flvStatoListaImg.TabIndex = 21;
+            this.flvStatoListaImg.UseCompatibleStateImageBehavior = false;
+            this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
+            this.flvStatoListaImg.VirtualMode = true;
+            // 
             // tbpImmagini
             // 
             this.tbpImmagini.BackColor = System.Drawing.Color.LightYellow;
@@ -1724,6 +1867,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.btnImgMostraImmagine);
             this.panel9.Controls.Add(this.button3);
             this.panel9.Controls.Add(this.button2);
             this.panel9.Location = new System.Drawing.Point(704, 493);
@@ -1731,9 +1875,19 @@
             this.panel9.Size = new System.Drawing.Size(526, 69);
             this.panel9.TabIndex = 21;
             // 
+            // btnImgMostraImmagine
+            // 
+            this.btnImgMostraImmagine.Location = new System.Drawing.Point(22, 14);
+            this.btnImgMostraImmagine.Name = "btnImgMostraImmagine";
+            this.btnImgMostraImmagine.Size = new System.Drawing.Size(103, 41);
+            this.btnImgMostraImmagine.TabIndex = 81;
+            this.btnImgMostraImmagine.Text = "Mostra Img";
+            this.btnImgMostraImmagine.UseVisualStyleBackColor = true;
+            this.btnImgMostraImmagine.Click += new System.EventHandler(this.btnImgMostraImmagine_Click);
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(127, 14);
+            this.button3.Location = new System.Drawing.Point(393, 14);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 41);
             this.button3.TabIndex = 80;
@@ -1742,7 +1896,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(18, 14);
+            this.button2.Location = new System.Drawing.Point(284, 14);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 41);
             this.button2.TabIndex = 79;
@@ -1752,7 +1906,9 @@
             // flvImgListaImmagini
             // 
             this.flvImgListaImmagini.CellEditUseWholeCell = false;
+            this.flvImgListaImmagini.FullRowSelect = true;
             this.flvImgListaImmagini.Location = new System.Drawing.Point(704, 177);
+            this.flvImgListaImmagini.MultiSelect = false;
             this.flvImgListaImmagini.Name = "flvImgListaImmagini";
             this.flvImgListaImmagini.ShowGroups = false;
             this.flvImgListaImmagini.Size = new System.Drawing.Size(526, 290);
@@ -1760,6 +1916,7 @@
             this.flvImgListaImmagini.UseCompatibleStateImageBehavior = false;
             this.flvImgListaImmagini.View = System.Windows.Forms.View.Details;
             this.flvImgListaImmagini.VirtualMode = true;
+            this.flvImgListaImmagini.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.flvImgListaImmagini_MouseDoubleClick);
             // 
             // grbGeneraExcel
             // 
@@ -1830,7 +1987,7 @@
             // 
             this.txtImgNomeImmagineLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtImgNomeImmagineLista.Location = new System.Drawing.Point(366, 512);
-            this.txtImgNomeImmagineLista.MaxLength = 8;
+            this.txtImgNomeImmagineLista.MaxLength = 50;
             this.txtImgNomeImmagineLista.Name = "txtImgNomeImmagineLista";
             this.txtImgNomeImmagineLista.Size = new System.Drawing.Size(180, 24);
             this.txtImgNomeImmagineLista.TabIndex = 88;
@@ -1855,6 +2012,7 @@
             this.txtImgIdImmagine.TabIndex = 86;
             this.txtImgIdImmagine.Text = "0";
             this.txtImgIdImmagine.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtImgIdImmagine.Leave += new System.EventHandler(this.txtImgIdImmagine_Leave);
             // 
             // label40
             // 
@@ -2211,50 +2369,59 @@
             this.txtVarNomeVariabile.Size = new System.Drawing.Size(307, 27);
             this.txtVarNomeVariabile.TabIndex = 4;
             // 
-            // tbpPagine
+            // tbpSchermate
             // 
-            this.tbpPagine.BackColor = System.Drawing.Color.LightYellow;
-            this.tbpPagine.Controls.Add(this.panel5);
-            this.tbpPagine.Controls.Add(this.panel4);
-            this.tbpPagine.Controls.Add(this.panel3);
-            this.tbpPagine.Controls.Add(this.fastObjectListView1);
-            this.tbpPagine.Location = new System.Drawing.Point(4, 25);
-            this.tbpPagine.Name = "tbpPagine";
-            this.tbpPagine.Size = new System.Drawing.Size(1423, 668);
-            this.tbpPagine.TabIndex = 4;
-            this.tbpPagine.Text = "Pagine";
+            this.tbpSchermate.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpSchermate.Controls.Add(this.panel14);
+            this.tbpSchermate.Controls.Add(this.panel13);
+            this.tbpSchermate.Controls.Add(this.panel12);
+            this.tbpSchermate.Controls.Add(this.fastObjectListView2);
+            this.tbpSchermate.Controls.Add(this.label53);
+            this.tbpSchermate.Controls.Add(this.label51);
+            this.tbpSchermate.Controls.Add(this.label50);
+            this.tbpSchermate.Controls.Add(this.label49);
+            this.tbpSchermate.Controls.Add(this.panel5);
+            this.tbpSchermate.Controls.Add(this.panel4);
+            this.tbpSchermate.Controls.Add(this.panel3);
+            this.tbpSchermate.Controls.Add(this.fastObjectListView1);
+            this.tbpSchermate.Location = new System.Drawing.Point(4, 25);
+            this.tbpSchermate.Name = "tbpSchermate";
+            this.tbpSchermate.Size = new System.Drawing.Size(1423, 668);
+            this.tbpSchermate.TabIndex = 4;
+            this.tbpSchermate.Text = "Schermate";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(740, 404);
+            this.panel5.Location = new System.Drawing.Point(943, 519);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(605, 70);
+            this.panel5.Size = new System.Drawing.Size(354, 49);
             this.panel5.TabIndex = 3;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(66, 78);
+            this.panel4.Location = new System.Drawing.Point(66, 60);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(605, 70);
+            this.panel4.Size = new System.Drawing.Size(354, 80);
             this.panel4.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(66, 177);
+            this.panel3.Controls.Add(this.label52);
+            this.panel3.Location = new System.Drawing.Point(66, 271);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(605, 297);
+            this.panel3.Size = new System.Drawing.Size(354, 297);
             this.panel3.TabIndex = 1;
             // 
             // fastObjectListView1
             // 
             this.fastObjectListView1.CellEditUseWholeCell = false;
-            this.fastObjectListView1.Location = new System.Drawing.Point(739, 78);
+            this.fastObjectListView1.Location = new System.Drawing.Point(943, 60);
             this.fastObjectListView1.Name = "fastObjectListView1";
             this.fastObjectListView1.ShowGroups = false;
-            this.fastObjectListView1.Size = new System.Drawing.Size(606, 308);
+            this.fastObjectListView1.Size = new System.Drawing.Size(354, 432);
             this.fastObjectListView1.TabIndex = 0;
             this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
             this.fastObjectListView1.View = System.Windows.Forms.View.Details;
@@ -2264,114 +2431,195 @@
             // 
             this.ofdImportDati.FileName = "openFileDialog1";
             // 
-            // tbpStatoScheda
+            // label49
             // 
-            this.tbpStatoScheda.BackColor = System.Drawing.Color.LightYellow;
-            this.tbpStatoScheda.Controls.Add(this.lblStatoImmagini);
-            this.tbpStatoScheda.Controls.Add(this.panel11);
-            this.tbpStatoScheda.Controls.Add(this.flvStatoListaImg);
-            this.tbpStatoScheda.Location = new System.Drawing.Point(4, 25);
-            this.tbpStatoScheda.Name = "tbpStatoScheda";
-            this.tbpStatoScheda.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpStatoScheda.Size = new System.Drawing.Size(1423, 668);
-            this.tbpStatoScheda.TabIndex = 7;
-            this.tbpStatoScheda.Text = "Stato Scheda";
+            this.label49.AutoSize = true;
+            this.label49.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label49.Location = new System.Drawing.Point(940, 40);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(110, 17);
+            this.label49.TabIndex = 81;
+            this.label49.Text = "Lista Schermate";
             // 
-            // flvStatoListaImg
+            // label50
             // 
-            this.flvStatoListaImg.CellEditUseWholeCell = false;
-            this.flvStatoListaImg.Location = new System.Drawing.Point(29, 140);
-            this.flvStatoListaImg.Name = "flvStatoListaImg";
-            this.flvStatoListaImg.ShowGroups = false;
-            this.flvStatoListaImg.Size = new System.Drawing.Size(382, 479);
-            this.flvStatoListaImg.TabIndex = 21;
-            this.flvStatoListaImg.UseCompatibleStateImageBehavior = false;
-            this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
-            this.flvStatoListaImg.VirtualMode = true;
+            this.label50.AutoSize = true;
+            this.label50.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label50.Location = new System.Drawing.Point(63, 40);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(110, 17);
+            this.label50.TabIndex = 82;
+            this.label50.Text = "Lista Schermate";
             // 
-            // panel11
+            // label51
             // 
-            this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.Controls.Add(this.chkStatoImgMostraTutto);
-            this.panel11.Controls.Add(this.txtStatoImgEnd);
-            this.panel11.Controls.Add(this.label48);
-            this.panel11.Controls.Add(this.txtStatoImgStart);
-            this.panel11.Controls.Add(this.label47);
-            this.panel11.Controls.Add(this.btnStatoImgCarica);
-            this.panel11.Location = new System.Drawing.Point(29, 53);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(382, 69);
-            this.panel11.TabIndex = 22;
+            this.label51.AutoSize = true;
+            this.label51.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label51.Location = new System.Drawing.Point(63, 174);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(68, 17);
+            this.label51.TabIndex = 83;
+            this.label51.Text = "Immagine";
             // 
-            // btnStatoImgCarica
+            // label52
             // 
-            this.btnStatoImgCarica.Location = new System.Drawing.Point(265, 14);
-            this.btnStatoImgCarica.Name = "btnStatoImgCarica";
-            this.btnStatoImgCarica.Size = new System.Drawing.Size(103, 41);
-            this.btnStatoImgCarica.TabIndex = 80;
-            this.btnStatoImgCarica.Text = "Carica";
-            this.btnStatoImgCarica.UseVisualStyleBackColor = true;
-            this.btnStatoImgCarica.Click += new System.EventHandler(this.btnStatoImgCarica_Click);
+            this.label52.AutoSize = true;
+            this.label52.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label52.Location = new System.Drawing.Point(-3, -20);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(68, 17);
+            this.label52.TabIndex = 84;
+            this.label52.Text = "Immagine";
             // 
-            // txtStatoImgStart
+            // label53
             // 
-            this.txtStatoImgStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtStatoImgStart.Location = new System.Drawing.Point(11, 31);
-            this.txtStatoImgStart.Name = "txtStatoImgStart";
-            this.txtStatoImgStart.Size = new System.Drawing.Size(53, 24);
-            this.txtStatoImgStart.TabIndex = 82;
-            this.txtStatoImgStart.Text = "1";
-            this.txtStatoImgStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label53.AutoSize = true;
+            this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label53.Location = new System.Drawing.Point(497, 40);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(63, 17);
+            this.label53.TabIndex = 84;
+            this.label53.Text = "Comandi";
             // 
-            // label47
+            // fastObjectListView2
             // 
-            this.label47.AutoSize = true;
-            this.label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label47.Location = new System.Drawing.Point(8, 11);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(40, 17);
-            this.label47.TabIndex = 81;
-            this.label47.Text = "Inizio";
+            this.fastObjectListView2.CellEditUseWholeCell = false;
+            this.fastObjectListView2.Location = new System.Drawing.Point(500, 60);
+            this.fastObjectListView2.Name = "fastObjectListView2";
+            this.fastObjectListView2.ShowGroups = false;
+            this.fastObjectListView2.Size = new System.Drawing.Size(352, 202);
+            this.fastObjectListView2.TabIndex = 85;
+            this.fastObjectListView2.UseCompatibleStateImageBehavior = false;
+            this.fastObjectListView2.View = System.Windows.Forms.View.Details;
+            this.fastObjectListView2.VirtualMode = true;
             // 
-            // txtStatoImgEnd
+            // panel12
             // 
-            this.txtStatoImgEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtStatoImgEnd.Location = new System.Drawing.Point(70, 31);
-            this.txtStatoImgEnd.Name = "txtStatoImgEnd";
-            this.txtStatoImgEnd.Size = new System.Drawing.Size(53, 24);
-            this.txtStatoImgEnd.TabIndex = 84;
-            this.txtStatoImgEnd.Text = "256";
-            this.txtStatoImgEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.panel12.BackColor = System.Drawing.Color.White;
+            this.panel12.Location = new System.Drawing.Point(500, 286);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(354, 41);
+            this.panel12.TabIndex = 86;
             // 
-            // label48
+            // panel13
             // 
-            this.label48.AutoSize = true;
-            this.label48.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label48.Location = new System.Drawing.Point(67, 11);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(35, 17);
-            this.label48.TabIndex = 83;
-            this.label48.Text = "Fine";
+            this.panel13.BackColor = System.Drawing.Color.White;
+            this.panel13.Location = new System.Drawing.Point(500, 348);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(354, 220);
+            this.panel13.TabIndex = 87;
             // 
-            // lblStatoImmagini
+            // panel14
             // 
-            this.lblStatoImmagini.AutoSize = true;
-            this.lblStatoImmagini.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatoImmagini.Location = new System.Drawing.Point(25, 30);
-            this.lblStatoImmagini.Name = "lblStatoImmagini";
-            this.lblStatoImmagini.Size = new System.Drawing.Size(93, 20);
-            this.lblStatoImmagini.TabIndex = 23;
-            this.lblStatoImmagini.Text = "IMMAGINI";
+            this.panel14.BackColor = System.Drawing.Color.White;
+            this.panel14.Location = new System.Drawing.Point(66, 194);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(354, 68);
+            this.panel14.TabIndex = 88;
             // 
-            // chkStatoImgMostraTutto
+            // button4
             // 
-            this.chkStatoImgMostraTutto.AutoSize = true;
-            this.chkStatoImgMostraTutto.Location = new System.Drawing.Point(129, 35);
-            this.chkStatoImgMostraTutto.Name = "chkStatoImgMostraTutto";
-            this.chkStatoImgMostraTutto.Size = new System.Drawing.Size(110, 21);
-            this.chkStatoImgMostraTutto.TabIndex = 85;
-            this.chkStatoImgMostraTutto.Text = "Mostra Tutto";
-            this.chkStatoImgMostraTutto.UseVisualStyleBackColor = true;
+            this.button4.Location = new System.Drawing.Point(704, 386);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(136, 41);
+            this.button4.TabIndex = 110;
+            this.button4.Text = "CLS";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(562, 384);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(136, 41);
+            this.button7.TabIndex = 109;
+            this.button7.Text = "Disegna Schermata";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox1.Location = new System.Drawing.Point(454, 393);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(48, 24);
+            this.textBox1.TabIndex = 108;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label54.Location = new System.Drawing.Point(451, 373);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(49, 17);
+            this.label54.TabIndex = 107;
+            this.label54.Text = "Colore";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox2.Location = new System.Drawing.Point(371, 393);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(48, 24);
+            this.textBox2.TabIndex = 106;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label55.Location = new System.Drawing.Point(367, 373);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(49, 17);
+            this.label55.TabIndex = 105;
+            this.label55.Text = "Pos. Y";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox4.Location = new System.Drawing.Point(313, 393);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(48, 24);
+            this.textBox4.TabIndex = 104;
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label56.Location = new System.Drawing.Point(310, 373);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(49, 17);
+            this.label56.TabIndex = 103;
+            this.label56.Text = "Pos. X";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(65, 395);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(123, 20);
+            this.label57.TabIndex = 102;
+            this.label57.Text = "SCHERMATA";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox5.Location = new System.Drawing.Point(205, 391);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(74, 24);
+            this.textBox5.TabIndex = 101;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label58.Location = new System.Drawing.Point(204, 371);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(21, 17);
+            this.label58.TabIndex = 100;
+            this.label58.Text = "ID";
             // 
             // frmDisplayManager
             // 
@@ -2405,6 +2653,11 @@
             this.grbMemCancellazione.ResumeLayout(false);
             this.grbMemLettura.ResumeLayout(false);
             this.grbMemLettura.PerformLayout();
+            this.tbpStatoScheda.ResumeLayout(false);
+            this.tbpStatoScheda.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).EndInit();
             this.tbpImmagini.ResumeLayout(false);
             this.tbpImmagini.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -2422,13 +2675,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvVarListaVariabili)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tbpPagine.ResumeLayout(false);
+            this.tbpSchermate.ResumeLayout(false);
+            this.tbpSchermate.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
-            this.tbpStatoScheda.ResumeLayout(false);
-            this.tbpStatoScheda.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).EndInit();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2441,7 +2693,7 @@
         private System.Windows.Forms.TabPage tbpRealTime;
         private System.Windows.Forms.TabPage tbpImmagini;
         private System.Windows.Forms.TabPage tbpVariabili;
-        private System.Windows.Forms.TabPage tbpPagine;
+        private System.Windows.Forms.TabPage tbpSchermate;
         private System.Windows.Forms.Button btnPortState;
         private System.Windows.Forms.ComboBox cboHandShaking;
         private System.Windows.Forms.ComboBox cboParity;
@@ -2631,5 +2883,26 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Button btnStatoImgCarica;
         private BrightIdeasSoftware.FastObjectListView flvStatoListaImg;
+        private System.Windows.Forms.Button btnImgMostraImmagine;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel12;
+        private BrightIdeasSoftware.FastObjectListView fastObjectListView2;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label52;
     }
 }
