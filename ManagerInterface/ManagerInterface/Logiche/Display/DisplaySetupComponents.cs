@@ -463,6 +463,30 @@ namespace ChargerLogic
         public class Schermata
         {
             public List<Comando> Comandi = new List<Comando>();
+
+            public byte[] ImageBuffer { get; set; }
+            [JsonIgnore]
+            public Bitmap bmp;
+            public byte[] _bmpArray;
+
+            public string Nome;
+            public ushort Id { get; set; }
+            public byte Numero;
+            public byte Lingua;
+            /// <summary>
+            /// Larghezza in pixel dell'immagine
+            /// </summary>
+            public byte Width;
+            /// <summary>
+            /// Altezza in Pixel dell'immagine
+            /// </summary>
+            public byte Height;
+            /// <summary>
+            /// Dimensione in Bytes dell'Immagine
+            /// Ogni pixel è codificato con un singolo bit
+            /// </summary>
+            public ushort Size;
+
         }
 
         public class Comando

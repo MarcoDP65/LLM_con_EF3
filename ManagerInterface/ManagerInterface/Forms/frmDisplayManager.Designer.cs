@@ -85,6 +85,10 @@
             this.cboPorts = new System.Windows.Forms.ComboBox();
             this.btnGetSerialPorts = new System.Windows.Forms.Button();
             this.tbpRealTime = new System.Windows.Forms.TabPage();
+            this.btnRtDrawSchermata = new System.Windows.Forms.Button();
+            this.label57 = new System.Windows.Forms.Label();
+            this.txtRtValSchId = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.txtRtValTimeOffDx = new System.Windows.Forms.TextBox();
@@ -161,6 +165,15 @@
             this.txtMemAddrR = new System.Windows.Forms.TextBox();
             this.cmdMemRead = new System.Windows.Forms.Button();
             this.tbpStatoScheda = new System.Windows.Forms.TabPage();
+            this.label54 = new System.Windows.Forms.Label();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.btnStatoSchCarica = new System.Windows.Forms.Button();
+            this.flvStatoListaSch = new BrightIdeasSoftware.FastObjectListView();
             this.lblStatoImmagini = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.chkStatoImgMostraTutto = new System.Windows.Forms.CheckBox();
@@ -219,32 +232,37 @@
             this.btnVarCrea = new System.Windows.Forms.Button();
             this.txtVarNomeVariabile = new System.Windows.Forms.TextBox();
             this.tbpSchermate = new System.Windows.Forms.TabPage();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.btnSchCaricaFile = new System.Windows.Forms.Button();
+            this.btnSchCercaFile = new System.Windows.Forms.Button();
+            this.txtSchNuovoFile = new System.Windows.Forms.TextBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.fastObjectListView2 = new BrightIdeasSoftware.FastObjectListView();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
+            this.pnlSchImmagineSchermata = new System.Windows.Forms.Panel();
+            this.txtSchBaseNomeLista = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.txtSchBaseID = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.cmdSchGeneraClasse = new System.Windows.Forms.Button();
+            this.label60 = new System.Windows.Forms.Label();
+            this.txtSchBaseHeigh = new System.Windows.Forms.TextBox();
+            this.txtSchBaseWidth = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.txtSchBaseSize = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.txtSchBaseName = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.pbxSchImmagine = new System.Windows.Forms.PictureBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.flvSchListaSchermate = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.fastObjectListView2 = new BrightIdeasSoftware.FastObjectListView();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label58 = new System.Windows.Forms.Label();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpArchivioModelli.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -261,6 +279,8 @@
             this.grbMemCancellazione.SuspendLayout();
             this.grbMemLettura.SuspendLayout();
             this.tbpStatoScheda.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaSch)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).BeginInit();
             this.tbpImmagini.SuspendLayout();
@@ -276,9 +296,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvVarListaVariabili)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tbpSchermate.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
+            this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView2)).BeginInit();
+            this.pnlSchImmagineSchermata.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSchImmagine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flvSchListaSchermate)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcMainDisplayManager
@@ -294,7 +316,7 @@
             this.tbcMainDisplayManager.Location = new System.Drawing.Point(12, 12);
             this.tbcMainDisplayManager.Name = "tbcMainDisplayManager";
             this.tbcMainDisplayManager.SelectedIndex = 0;
-            this.tbcMainDisplayManager.Size = new System.Drawing.Size(1431, 697);
+            this.tbcMainDisplayManager.Size = new System.Drawing.Size(1633, 697);
             this.tbcMainDisplayManager.TabIndex = 0;
             // 
             // tbpArchivioModelli
@@ -306,7 +328,7 @@
             this.tbpArchivioModelli.Controls.Add(this.groupBox1);
             this.tbpArchivioModelli.Location = new System.Drawing.Point(4, 25);
             this.tbpArchivioModelli.Name = "tbpArchivioModelli";
-            this.tbpArchivioModelli.Size = new System.Drawing.Size(1423, 668);
+            this.tbpArchivioModelli.Size = new System.Drawing.Size(1625, 668);
             this.tbpArchivioModelli.TabIndex = 6;
             this.tbpArchivioModelli.Text = "Modello";
             // 
@@ -593,7 +615,7 @@
             this.tbpConnessione.Location = new System.Drawing.Point(4, 25);
             this.tbpConnessione.Name = "tbpConnessione";
             this.tbpConnessione.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpConnessione.Size = new System.Drawing.Size(1423, 668);
+            this.tbpConnessione.Size = new System.Drawing.Size(1625, 668);
             this.tbpConnessione.TabIndex = 0;
             this.tbpConnessione.Text = "Connessione";
             // 
@@ -885,16 +907,9 @@
             // tbpRealTime
             // 
             this.tbpRealTime.BackColor = System.Drawing.Color.LightYellow;
-            this.tbpRealTime.Controls.Add(this.button4);
-            this.tbpRealTime.Controls.Add(this.button7);
-            this.tbpRealTime.Controls.Add(this.textBox1);
-            this.tbpRealTime.Controls.Add(this.label54);
-            this.tbpRealTime.Controls.Add(this.textBox2);
-            this.tbpRealTime.Controls.Add(this.label55);
-            this.tbpRealTime.Controls.Add(this.textBox4);
-            this.tbpRealTime.Controls.Add(this.label56);
+            this.tbpRealTime.Controls.Add(this.btnRtDrawSchermata);
             this.tbpRealTime.Controls.Add(this.label57);
-            this.tbpRealTime.Controls.Add(this.textBox5);
+            this.tbpRealTime.Controls.Add(this.txtRtValSchId);
             this.tbpRealTime.Controls.Add(this.label58);
             this.tbpRealTime.Controls.Add(this.label46);
             this.tbpRealTime.Controls.Add(this.label45);
@@ -943,15 +958,54 @@
             this.tbpRealTime.Location = new System.Drawing.Point(4, 25);
             this.tbpRealTime.Name = "tbpRealTime";
             this.tbpRealTime.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpRealTime.Size = new System.Drawing.Size(1423, 668);
+            this.tbpRealTime.Size = new System.Drawing.Size(1625, 668);
             this.tbpRealTime.TabIndex = 1;
             this.tbpRealTime.Text = "RealTime";
+            // 
+            // btnRtDrawSchermata
+            // 
+            this.btnRtDrawSchermata.Location = new System.Drawing.Point(562, 370);
+            this.btnRtDrawSchermata.Name = "btnRtDrawSchermata";
+            this.btnRtDrawSchermata.Size = new System.Drawing.Size(177, 41);
+            this.btnRtDrawSchermata.TabIndex = 109;
+            this.btnRtDrawSchermata.Text = "Disegna Schermata";
+            this.btnRtDrawSchermata.UseVisualStyleBackColor = true;
+            this.btnRtDrawSchermata.Click += new System.EventHandler(this.btnRtDrawSchermata_Click);
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(64, 384);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(123, 20);
+            this.label57.TabIndex = 102;
+            this.label57.Text = "SCHERMATA";
+            // 
+            // txtRtValSchId
+            // 
+            this.txtRtValSchId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtValSchId.Location = new System.Drawing.Point(213, 380);
+            this.txtRtValSchId.Name = "txtRtValSchId";
+            this.txtRtValSchId.Size = new System.Drawing.Size(74, 24);
+            this.txtRtValSchId.TabIndex = 101;
+            this.txtRtValSchId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label58.Location = new System.Drawing.Point(214, 360);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(21, 17);
+            this.label58.TabIndex = 100;
+            this.label58.Text = "ID";
             // 
             // label46
             // 
             this.label46.AutoSize = true;
             this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label46.Location = new System.Drawing.Point(146, 164);
+            this.label46.Location = new System.Drawing.Point(209, 157);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(27, 17);
             this.label46.TabIndex = 99;
@@ -961,7 +1015,7 @@
             // 
             this.label45.AutoSize = true;
             this.label45.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label45.Location = new System.Drawing.Point(145, 134);
+            this.label45.Location = new System.Drawing.Point(208, 127);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(26, 17);
             this.label45.TabIndex = 98;
@@ -970,7 +1024,7 @@
             // txtRtValTimeOffDx
             // 
             this.txtRtValTimeOffDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOffDx.Location = new System.Drawing.Point(422, 159);
+            this.txtRtValTimeOffDx.Location = new System.Drawing.Point(485, 152);
             this.txtRtValTimeOffDx.Name = "txtRtValTimeOffDx";
             this.txtRtValTimeOffDx.Size = new System.Drawing.Size(48, 24);
             this.txtRtValTimeOffDx.TabIndex = 97;
@@ -979,7 +1033,7 @@
             // txtRtValTimeOnDx
             // 
             this.txtRtValTimeOnDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOnDx.Location = new System.Drawing.Point(368, 159);
+            this.txtRtValTimeOnDx.Location = new System.Drawing.Point(431, 152);
             this.txtRtValTimeOnDx.Name = "txtRtValTimeOnDx";
             this.txtRtValTimeOnDx.Size = new System.Drawing.Size(48, 24);
             this.txtRtValTimeOnDx.TabIndex = 96;
@@ -988,7 +1042,7 @@
             // txtRtValBluDx
             // 
             this.txtRtValBluDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValBluDx.Location = new System.Drawing.Point(286, 159);
+            this.txtRtValBluDx.Location = new System.Drawing.Point(349, 152);
             this.txtRtValBluDx.Name = "txtRtValBluDx";
             this.txtRtValBluDx.Size = new System.Drawing.Size(48, 24);
             this.txtRtValBluDx.TabIndex = 95;
@@ -997,7 +1051,7 @@
             // txtRtValGreenDx
             // 
             this.txtRtValGreenDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValGreenDx.Location = new System.Drawing.Point(232, 159);
+            this.txtRtValGreenDx.Location = new System.Drawing.Point(295, 152);
             this.txtRtValGreenDx.Name = "txtRtValGreenDx";
             this.txtRtValGreenDx.Size = new System.Drawing.Size(48, 24);
             this.txtRtValGreenDx.TabIndex = 94;
@@ -1006,7 +1060,7 @@
             // txtRtValRedDx
             // 
             this.txtRtValRedDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValRedDx.Location = new System.Drawing.Point(178, 159);
+            this.txtRtValRedDx.Location = new System.Drawing.Point(241, 152);
             this.txtRtValRedDx.Name = "txtRtValRedDx";
             this.txtRtValRedDx.Size = new System.Drawing.Size(48, 24);
             this.txtRtValRedDx.TabIndex = 93;
@@ -1014,9 +1068,9 @@
             // 
             // btnRtCLS
             // 
-            this.btnRtCLS.Location = new System.Drawing.Point(704, 302);
+            this.btnRtCLS.Location = new System.Drawing.Point(767, 239);
             this.btnRtCLS.Name = "btnRtCLS";
-            this.btnRtCLS.Size = new System.Drawing.Size(136, 41);
+            this.btnRtCLS.Size = new System.Drawing.Size(68, 172);
             this.btnRtCLS.TabIndex = 92;
             this.btnRtCLS.Text = "CLS";
             this.btnRtCLS.UseVisualStyleBackColor = true;
@@ -1026,7 +1080,7 @@
             // 
             this.btnRtDrawImage.Location = new System.Drawing.Point(562, 302);
             this.btnRtDrawImage.Name = "btnRtDrawImage";
-            this.btnRtDrawImage.Size = new System.Drawing.Size(136, 41);
+            this.btnRtDrawImage.Size = new System.Drawing.Size(176, 41);
             this.btnRtDrawImage.TabIndex = 91;
             this.btnRtDrawImage.Text = "Disegna Immagine";
             this.btnRtDrawImage.UseVisualStyleBackColor = true;
@@ -1035,7 +1089,7 @@
             // txtRtValImgColor
             // 
             this.txtRtValImgColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgColor.Location = new System.Drawing.Point(454, 309);
+            this.txtRtValImgColor.Location = new System.Drawing.Point(485, 310);
             this.txtRtValImgColor.Name = "txtRtValImgColor";
             this.txtRtValImgColor.Size = new System.Drawing.Size(48, 24);
             this.txtRtValImgColor.TabIndex = 90;
@@ -1045,7 +1099,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label23.Location = new System.Drawing.Point(451, 289);
+            this.label23.Location = new System.Drawing.Point(482, 290);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(49, 17);
             this.label23.TabIndex = 89;
@@ -1054,7 +1108,7 @@
             // txtRtValImgPosY
             // 
             this.txtRtValImgPosY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgPosY.Location = new System.Drawing.Point(371, 309);
+            this.txtRtValImgPosY.Location = new System.Drawing.Point(410, 310);
             this.txtRtValImgPosY.Name = "txtRtValImgPosY";
             this.txtRtValImgPosY.Size = new System.Drawing.Size(48, 24);
             this.txtRtValImgPosY.TabIndex = 88;
@@ -1064,7 +1118,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label24.Location = new System.Drawing.Point(367, 289);
+            this.label24.Location = new System.Drawing.Point(406, 290);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(49, 17);
             this.label24.TabIndex = 87;
@@ -1073,7 +1127,7 @@
             // txtRtValImgPosX
             // 
             this.txtRtValImgPosX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgPosX.Location = new System.Drawing.Point(313, 309);
+            this.txtRtValImgPosX.Location = new System.Drawing.Point(352, 310);
             this.txtRtValImgPosX.Name = "txtRtValImgPosX";
             this.txtRtValImgPosX.Size = new System.Drawing.Size(48, 24);
             this.txtRtValImgPosX.TabIndex = 86;
@@ -1083,7 +1137,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label25.Location = new System.Drawing.Point(310, 289);
+            this.label25.Location = new System.Drawing.Point(349, 290);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(49, 17);
             this.label25.TabIndex = 85;
@@ -1093,7 +1147,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(65, 311);
+            this.label27.Location = new System.Drawing.Point(63, 313);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(100, 20);
             this.label27.TabIndex = 82;
@@ -1102,7 +1156,7 @@
             // txtRtValImgId
             // 
             this.txtRtValImgId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValImgId.Location = new System.Drawing.Point(178, 309);
+            this.txtRtValImgId.Location = new System.Drawing.Point(212, 310);
             this.txtRtValImgId.Name = "txtRtValImgId";
             this.txtRtValImgId.Size = new System.Drawing.Size(102, 24);
             this.txtRtValImgId.TabIndex = 81;
@@ -1112,7 +1166,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label28.Location = new System.Drawing.Point(175, 289);
+            this.label28.Location = new System.Drawing.Point(209, 290);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(21, 17);
             this.label28.TabIndex = 80;
@@ -1122,7 +1176,7 @@
             // 
             this.btnRtDrawLine.Location = new System.Drawing.Point(561, 239);
             this.btnRtDrawLine.Name = "btnRtDrawLine";
-            this.btnRtDrawLine.Size = new System.Drawing.Size(136, 41);
+            this.btnRtDrawLine.Size = new System.Drawing.Size(177, 41);
             this.btnRtDrawLine.TabIndex = 79;
             this.btnRtDrawLine.Text = "Disegna Linea";
             this.btnRtDrawLine.UseVisualStyleBackColor = true;
@@ -1131,7 +1185,7 @@
             // txtRtValLineColor
             // 
             this.txtRtValLineColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineColor.Location = new System.Drawing.Point(453, 246);
+            this.txtRtValLineColor.Location = new System.Drawing.Point(484, 247);
             this.txtRtValLineColor.Name = "txtRtValLineColor";
             this.txtRtValLineColor.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineColor.TabIndex = 78;
@@ -1141,7 +1195,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(450, 226);
+            this.label11.Location = new System.Drawing.Point(481, 227);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 17);
             this.label11.TabIndex = 77;
@@ -1150,7 +1204,7 @@
             // txtRtValLineYFine
             // 
             this.txtRtValLineYFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineYFine.Location = new System.Drawing.Point(370, 246);
+            this.txtRtValLineYFine.Location = new System.Drawing.Point(409, 247);
             this.txtRtValLineYFine.Name = "txtRtValLineYFine";
             this.txtRtValLineYFine.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineYFine.TabIndex = 76;
@@ -1160,7 +1214,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(366, 226);
+            this.label12.Location = new System.Drawing.Point(405, 227);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 17);
             this.label12.TabIndex = 75;
@@ -1169,7 +1223,7 @@
             // txtRtValLineXFine
             // 
             this.txtRtValLineXFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineXFine.Location = new System.Drawing.Point(312, 246);
+            this.txtRtValLineXFine.Location = new System.Drawing.Point(351, 247);
             this.txtRtValLineXFine.Name = "txtRtValLineXFine";
             this.txtRtValLineXFine.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineXFine.TabIndex = 74;
@@ -1179,7 +1233,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(309, 226);
+            this.label13.Location = new System.Drawing.Point(348, 227);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 17);
             this.label13.TabIndex = 73;
@@ -1188,7 +1242,7 @@
             // txtRtValLineYStart
             // 
             this.txtRtValLineYStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineYStart.Location = new System.Drawing.Point(231, 246);
+            this.txtRtValLineYStart.Location = new System.Drawing.Point(265, 247);
             this.txtRtValLineYStart.Name = "txtRtValLineYStart";
             this.txtRtValLineYStart.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineYStart.TabIndex = 72;
@@ -1198,7 +1252,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(228, 226);
+            this.label14.Location = new System.Drawing.Point(262, 227);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 17);
             this.label14.TabIndex = 71;
@@ -1217,7 +1271,7 @@
             // txtRtValLineXStart
             // 
             this.txtRtValLineXStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValLineXStart.Location = new System.Drawing.Point(177, 246);
+            this.txtRtValLineXStart.Location = new System.Drawing.Point(211, 247);
             this.txtRtValLineXStart.Name = "txtRtValLineXStart";
             this.txtRtValLineXStart.Size = new System.Drawing.Size(48, 24);
             this.txtRtValLineXStart.TabIndex = 69;
@@ -1227,7 +1281,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label16.Location = new System.Drawing.Point(174, 226);
+            this.label16.Location = new System.Drawing.Point(208, 227);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(49, 17);
             this.label16.TabIndex = 68;
@@ -1235,7 +1289,7 @@
             // 
             // btnRtStopLed
             // 
-            this.btnRtStopLed.Location = new System.Drawing.Point(704, 134);
+            this.btnRtStopLed.Location = new System.Drawing.Point(767, 122);
             this.btnRtStopLed.Name = "btnRtStopLed";
             this.btnRtStopLed.Size = new System.Drawing.Size(136, 41);
             this.btnRtStopLed.TabIndex = 67;
@@ -1245,9 +1299,9 @@
             // 
             // btnRtSetLed
             // 
-            this.btnRtSetLed.Location = new System.Drawing.Point(561, 134);
+            this.btnRtSetLed.Location = new System.Drawing.Point(562, 122);
             this.btnRtSetLed.Name = "btnRtSetLed";
-            this.btnRtSetLed.Size = new System.Drawing.Size(136, 41);
+            this.btnRtSetLed.Size = new System.Drawing.Size(177, 41);
             this.btnRtSetLed.TabIndex = 66;
             this.btnRtSetLed.Text = "Set Led";
             this.btnRtSetLed.UseVisualStyleBackColor = true;
@@ -1256,7 +1310,7 @@
             // txtRtValTimeOff
             // 
             this.txtRtValTimeOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOff.Location = new System.Drawing.Point(422, 129);
+            this.txtRtValTimeOff.Location = new System.Drawing.Point(485, 122);
             this.txtRtValTimeOff.Name = "txtRtValTimeOff";
             this.txtRtValTimeOff.Size = new System.Drawing.Size(48, 24);
             this.txtRtValTimeOff.TabIndex = 65;
@@ -1266,7 +1320,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(420, 109);
+            this.label10.Location = new System.Drawing.Point(483, 102);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 17);
             this.label10.TabIndex = 64;
@@ -1275,7 +1329,7 @@
             // txtRtValTimeOn
             // 
             this.txtRtValTimeOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValTimeOn.Location = new System.Drawing.Point(368, 129);
+            this.txtRtValTimeOn.Location = new System.Drawing.Point(431, 122);
             this.txtRtValTimeOn.Name = "txtRtValTimeOn";
             this.txtRtValTimeOn.Size = new System.Drawing.Size(48, 24);
             this.txtRtValTimeOn.TabIndex = 63;
@@ -1285,7 +1339,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(366, 109);
+            this.label9.Location = new System.Drawing.Point(429, 102);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 17);
             this.label9.TabIndex = 62;
@@ -1294,7 +1348,7 @@
             // txtRtValBlu
             // 
             this.txtRtValBlu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValBlu.Location = new System.Drawing.Point(285, 129);
+            this.txtRtValBlu.Location = new System.Drawing.Point(348, 122);
             this.txtRtValBlu.Name = "txtRtValBlu";
             this.txtRtValBlu.Size = new System.Drawing.Size(48, 24);
             this.txtRtValBlu.TabIndex = 61;
@@ -1304,7 +1358,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(285, 109);
+            this.label8.Location = new System.Drawing.Point(348, 102);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 17);
             this.label8.TabIndex = 60;
@@ -1313,7 +1367,7 @@
             // txtRtValGreen
             // 
             this.txtRtValGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValGreen.Location = new System.Drawing.Point(231, 129);
+            this.txtRtValGreen.Location = new System.Drawing.Point(294, 122);
             this.txtRtValGreen.Name = "txtRtValGreen";
             this.txtRtValGreen.Size = new System.Drawing.Size(48, 24);
             this.txtRtValGreen.TabIndex = 59;
@@ -1323,7 +1377,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(228, 109);
+            this.label7.Location = new System.Drawing.Point(291, 102);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 17);
             this.label7.TabIndex = 58;
@@ -1342,7 +1396,7 @@
             // txtRtValRed
             // 
             this.txtRtValRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtValRed.Location = new System.Drawing.Point(177, 129);
+            this.txtRtValRed.Location = new System.Drawing.Point(240, 122);
             this.txtRtValRed.Name = "txtRtValRed";
             this.txtRtValRed.Size = new System.Drawing.Size(48, 24);
             this.txtRtValRed.TabIndex = 56;
@@ -1352,7 +1406,7 @@
             // 
             this.label182.AutoSize = true;
             this.label182.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label182.Location = new System.Drawing.Point(174, 109);
+            this.label182.Location = new System.Drawing.Point(237, 102);
             this.label182.Name = "label182";
             this.label182.Size = new System.Drawing.Size(37, 17);
             this.label182.TabIndex = 55;
@@ -1379,7 +1433,7 @@
             this.tbpAccesssoMemoria.Controls.Add(this.grbMemLettura);
             this.tbpAccesssoMemoria.Location = new System.Drawing.Point(4, 25);
             this.tbpAccesssoMemoria.Name = "tbpAccesssoMemoria";
-            this.tbpAccesssoMemoria.Size = new System.Drawing.Size(1423, 668);
+            this.tbpAccesssoMemoria.Size = new System.Drawing.Size(1625, 668);
             this.tbpAccesssoMemoria.TabIndex = 5;
             this.tbpAccesssoMemoria.Text = "Accesso Memoria";
             // 
@@ -1734,15 +1788,113 @@
             // tbpStatoScheda
             // 
             this.tbpStatoScheda.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpStatoScheda.Controls.Add(this.label54);
+            this.tbpStatoScheda.Controls.Add(this.panel15);
+            this.tbpStatoScheda.Controls.Add(this.flvStatoListaSch);
             this.tbpStatoScheda.Controls.Add(this.lblStatoImmagini);
             this.tbpStatoScheda.Controls.Add(this.panel11);
             this.tbpStatoScheda.Controls.Add(this.flvStatoListaImg);
             this.tbpStatoScheda.Location = new System.Drawing.Point(4, 25);
             this.tbpStatoScheda.Name = "tbpStatoScheda";
             this.tbpStatoScheda.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpStatoScheda.Size = new System.Drawing.Size(1423, 668);
+            this.tbpStatoScheda.Size = new System.Drawing.Size(1625, 668);
             this.tbpStatoScheda.TabIndex = 7;
             this.tbpStatoScheda.Text = "Stato Scheda";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(467, 30);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(123, 20);
+            this.label54.TabIndex = 26;
+            this.label54.Text = "SCHERMATE";
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.White;
+            this.panel15.Controls.Add(this.checkBox1);
+            this.panel15.Controls.Add(this.textBox1);
+            this.panel15.Controls.Add(this.label55);
+            this.panel15.Controls.Add(this.textBox2);
+            this.panel15.Controls.Add(this.label56);
+            this.panel15.Controls.Add(this.btnStatoSchCarica);
+            this.panel15.Location = new System.Drawing.Point(471, 53);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(382, 69);
+            this.panel15.TabIndex = 25;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(129, 35);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(110, 21);
+            this.checkBox1.TabIndex = 85;
+            this.checkBox1.Text = "Mostra Tutto";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox1.Location = new System.Drawing.Point(70, 31);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(53, 24);
+            this.textBox1.TabIndex = 84;
+            this.textBox1.Text = "256";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label55.Location = new System.Drawing.Point(67, 11);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(35, 17);
+            this.label55.TabIndex = 83;
+            this.label55.Text = "Fine";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox2.Location = new System.Drawing.Point(11, 31);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(53, 24);
+            this.textBox2.TabIndex = 82;
+            this.textBox2.Text = "1";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label56.Location = new System.Drawing.Point(8, 11);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(40, 17);
+            this.label56.TabIndex = 81;
+            this.label56.Text = "Inizio";
+            // 
+            // btnStatoSchCarica
+            // 
+            this.btnStatoSchCarica.Location = new System.Drawing.Point(265, 14);
+            this.btnStatoSchCarica.Name = "btnStatoSchCarica";
+            this.btnStatoSchCarica.Size = new System.Drawing.Size(103, 41);
+            this.btnStatoSchCarica.TabIndex = 80;
+            this.btnStatoSchCarica.Text = "Carica";
+            this.btnStatoSchCarica.UseVisualStyleBackColor = true;
+            // 
+            // flvStatoListaSch
+            // 
+            this.flvStatoListaSch.CellEditUseWholeCell = false;
+            this.flvStatoListaSch.Location = new System.Drawing.Point(471, 140);
+            this.flvStatoListaSch.Name = "flvStatoListaSch";
+            this.flvStatoListaSch.ShowGroups = false;
+            this.flvStatoListaSch.Size = new System.Drawing.Size(382, 479);
+            this.flvStatoListaSch.TabIndex = 24;
+            this.flvStatoListaSch.UseCompatibleStateImageBehavior = false;
+            this.flvStatoListaSch.View = System.Windows.Forms.View.Details;
+            this.flvStatoListaSch.VirtualMode = true;
             // 
             // lblStatoImmagini
             // 
@@ -1850,7 +2002,7 @@
             this.tbpImmagini.Controls.Add(this.panel2);
             this.tbpImmagini.Location = new System.Drawing.Point(4, 25);
             this.tbpImmagini.Name = "tbpImmagini";
-            this.tbpImmagini.Size = new System.Drawing.Size(1423, 668);
+            this.tbpImmagini.Size = new System.Drawing.Size(1625, 668);
             this.tbpImmagini.TabIndex = 2;
             this.tbpImmagini.Text = "Immagini";
             // 
@@ -2253,7 +2405,7 @@
             this.tbpVariabili.Controls.Add(this.groupBox2);
             this.tbpVariabili.Location = new System.Drawing.Point(4, 25);
             this.tbpVariabili.Name = "tbpVariabili";
-            this.tbpVariabili.Size = new System.Drawing.Size(1423, 668);
+            this.tbpVariabili.Size = new System.Drawing.Size(1625, 668);
             this.tbpVariabili.TabIndex = 3;
             this.tbpVariabili.Text = "Variabili";
             // 
@@ -2378,22 +2530,120 @@
             this.tbpSchermate.Controls.Add(this.fastObjectListView2);
             this.tbpSchermate.Controls.Add(this.label53);
             this.tbpSchermate.Controls.Add(this.label51);
-            this.tbpSchermate.Controls.Add(this.label50);
             this.tbpSchermate.Controls.Add(this.label49);
             this.tbpSchermate.Controls.Add(this.panel5);
             this.tbpSchermate.Controls.Add(this.panel4);
-            this.tbpSchermate.Controls.Add(this.panel3);
-            this.tbpSchermate.Controls.Add(this.fastObjectListView1);
+            this.tbpSchermate.Controls.Add(this.pnlSchImmagineSchermata);
+            this.tbpSchermate.Controls.Add(this.flvSchListaSchermate);
             this.tbpSchermate.Location = new System.Drawing.Point(4, 25);
             this.tbpSchermate.Name = "tbpSchermate";
-            this.tbpSchermate.Size = new System.Drawing.Size(1423, 668);
+            this.tbpSchermate.Size = new System.Drawing.Size(1625, 668);
             this.tbpSchermate.TabIndex = 4;
             this.tbpSchermate.Text = "Schermate";
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.White;
+            this.panel14.Controls.Add(this.btnSchCaricaFile);
+            this.panel14.Controls.Add(this.btnSchCercaFile);
+            this.panel14.Controls.Add(this.txtSchNuovoFile);
+            this.panel14.Location = new System.Drawing.Point(66, 60);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(473, 77);
+            this.panel14.TabIndex = 88;
+            // 
+            // btnSchCaricaFile
+            // 
+            this.btnSchCaricaFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSchCaricaFile.Location = new System.Drawing.Point(16, 42);
+            this.btnSchCaricaFile.Name = "btnSchCaricaFile";
+            this.btnSchCaricaFile.Size = new System.Drawing.Size(235, 24);
+            this.btnSchCaricaFile.TabIndex = 9;
+            this.btnSchCaricaFile.Text = "Carica Immagine";
+            this.btnSchCaricaFile.UseVisualStyleBackColor = true;
+            this.btnSchCaricaFile.Click += new System.EventHandler(this.btnSchCaricaFile_Click);
+            // 
+            // btnSchCercaFile
+            // 
+            this.btnSchCercaFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSchCercaFile.Location = new System.Drawing.Point(424, 12);
+            this.btnSchCercaFile.Name = "btnSchCercaFile";
+            this.btnSchCercaFile.Size = new System.Drawing.Size(33, 24);
+            this.btnSchCercaFile.TabIndex = 8;
+            this.btnSchCercaFile.Text = " ...";
+            this.btnSchCercaFile.UseVisualStyleBackColor = true;
+            this.btnSchCercaFile.Click += new System.EventHandler(this.btnSchCercaFile_Click);
+            // 
+            // txtSchNuovoFile
+            // 
+            this.txtSchNuovoFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchNuovoFile.Location = new System.Drawing.Point(16, 11);
+            this.txtSchNuovoFile.Name = "txtSchNuovoFile";
+            this.txtSchNuovoFile.Size = new System.Drawing.Size(402, 24);
+            this.txtSchNuovoFile.TabIndex = 7;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.White;
+            this.panel13.Location = new System.Drawing.Point(740, 348);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(354, 220);
+            this.panel13.TabIndex = 87;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.White;
+            this.panel12.Location = new System.Drawing.Point(740, 286);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(354, 41);
+            this.panel12.TabIndex = 86;
+            // 
+            // fastObjectListView2
+            // 
+            this.fastObjectListView2.CellEditUseWholeCell = false;
+            this.fastObjectListView2.Location = new System.Drawing.Point(740, 60);
+            this.fastObjectListView2.Name = "fastObjectListView2";
+            this.fastObjectListView2.ShowGroups = false;
+            this.fastObjectListView2.Size = new System.Drawing.Size(352, 202);
+            this.fastObjectListView2.TabIndex = 85;
+            this.fastObjectListView2.UseCompatibleStateImageBehavior = false;
+            this.fastObjectListView2.View = System.Windows.Forms.View.Details;
+            this.fastObjectListView2.VirtualMode = true;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label53.Location = new System.Drawing.Point(737, 40);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(63, 17);
+            this.label53.TabIndex = 84;
+            this.label53.Text = "Comandi";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label51.Location = new System.Drawing.Point(63, 40);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(68, 17);
+            this.label51.TabIndex = 83;
+            this.label51.Text = "Immagine";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label49.Location = new System.Drawing.Point(1200, 40);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(110, 17);
+            this.label49.TabIndex = 81;
+            this.label49.Text = "Lista Schermate";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(943, 519);
+            this.panel5.Location = new System.Drawing.Point(1203, 519);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(354, 49);
             this.panel5.TabIndex = 3;
@@ -2401,65 +2651,182 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(66, 60);
+            this.panel4.Location = new System.Drawing.Point(742, 574);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(354, 80);
             this.panel4.TabIndex = 2;
             // 
-            // panel3
+            // pnlSchImmagineSchermata
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label52);
-            this.panel3.Location = new System.Drawing.Point(66, 271);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(354, 297);
-            this.panel3.TabIndex = 1;
+            this.pnlSchImmagineSchermata.BackColor = System.Drawing.Color.White;
+            this.pnlSchImmagineSchermata.Controls.Add(this.txtSchBaseNomeLista);
+            this.pnlSchImmagineSchermata.Controls.Add(this.label50);
+            this.pnlSchImmagineSchermata.Controls.Add(this.txtSchBaseID);
+            this.pnlSchImmagineSchermata.Controls.Add(this.label59);
+            this.pnlSchImmagineSchermata.Controls.Add(this.cmdSchGeneraClasse);
+            this.pnlSchImmagineSchermata.Controls.Add(this.label60);
+            this.pnlSchImmagineSchermata.Controls.Add(this.txtSchBaseHeigh);
+            this.pnlSchImmagineSchermata.Controls.Add(this.txtSchBaseWidth);
+            this.pnlSchImmagineSchermata.Controls.Add(this.label61);
+            this.pnlSchImmagineSchermata.Controls.Add(this.txtSchBaseSize);
+            this.pnlSchImmagineSchermata.Controls.Add(this.label62);
+            this.pnlSchImmagineSchermata.Controls.Add(this.txtSchBaseName);
+            this.pnlSchImmagineSchermata.Controls.Add(this.label63);
+            this.pnlSchImmagineSchermata.Controls.Add(this.pbxSchImmagine);
+            this.pnlSchImmagineSchermata.Controls.Add(this.label52);
+            this.pnlSchImmagineSchermata.Location = new System.Drawing.Point(66, 158);
+            this.pnlSchImmagineSchermata.Name = "pnlSchImmagineSchermata";
+            this.pnlSchImmagineSchermata.Size = new System.Drawing.Size(473, 377);
+            this.pnlSchImmagineSchermata.TabIndex = 1;
             // 
-            // fastObjectListView1
+            // txtSchBaseNomeLista
             // 
-            this.fastObjectListView1.CellEditUseWholeCell = false;
-            this.fastObjectListView1.Location = new System.Drawing.Point(943, 60);
-            this.fastObjectListView1.Name = "fastObjectListView1";
-            this.fastObjectListView1.ShowGroups = false;
-            this.fastObjectListView1.Size = new System.Drawing.Size(354, 432);
-            this.fastObjectListView1.TabIndex = 0;
-            this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
-            this.fastObjectListView1.View = System.Windows.Forms.View.Details;
-            this.fastObjectListView1.VirtualMode = true;
-            // 
-            // ofdImportDati
-            // 
-            this.ofdImportDati.FileName = "openFileDialog1";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label49.Location = new System.Drawing.Point(940, 40);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(110, 17);
-            this.label49.TabIndex = 81;
-            this.label49.Text = "Lista Schermate";
+            this.txtSchBaseNomeLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchBaseNomeLista.Location = new System.Drawing.Point(13, 311);
+            this.txtSchBaseNomeLista.MaxLength = 50;
+            this.txtSchBaseNomeLista.Name = "txtSchBaseNomeLista";
+            this.txtSchBaseNomeLista.Size = new System.Drawing.Size(309, 24);
+            this.txtSchBaseNomeLista.TabIndex = 101;
             // 
             // label50
             // 
             this.label50.AutoSize = true;
             this.label50.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label50.Location = new System.Drawing.Point(63, 40);
+            this.label50.Location = new System.Drawing.Point(13, 291);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(110, 17);
-            this.label50.TabIndex = 82;
-            this.label50.Text = "Lista Schermate";
+            this.label50.Size = new System.Drawing.Size(109, 17);
+            this.label50.TabIndex = 100;
+            this.label50.Text = "Nome Immagine";
             // 
-            // label51
+            // txtSchBaseID
             // 
-            this.label51.AutoSize = true;
-            this.label51.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label51.Location = new System.Drawing.Point(63, 174);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(68, 17);
-            this.label51.TabIndex = 83;
-            this.label51.Text = "Immagine";
+            this.txtSchBaseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchBaseID.Location = new System.Drawing.Point(13, 255);
+            this.txtSchBaseID.MaxLength = 8;
+            this.txtSchBaseID.Name = "txtSchBaseID";
+            this.txtSchBaseID.Size = new System.Drawing.Size(52, 24);
+            this.txtSchBaseID.TabIndex = 99;
+            this.txtSchBaseID.Text = "0";
+            this.txtSchBaseID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSchBaseID.Leave += new System.EventHandler(this.txtSchBaseID_Leave);
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label59.Location = new System.Drawing.Point(13, 233);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(19, 17);
+            this.label59.TabIndex = 98;
+            this.label59.Text = "Id";
+            // 
+            // cmdSchGeneraClasse
+            // 
+            this.cmdSchGeneraClasse.Location = new System.Drawing.Point(328, 310);
+            this.cmdSchGeneraClasse.Name = "cmdSchGeneraClasse";
+            this.cmdSchGeneraClasse.Size = new System.Drawing.Size(129, 29);
+            this.cmdSchGeneraClasse.TabIndex = 97;
+            this.cmdSchGeneraClasse.Text = "Genera Classe";
+            this.cmdSchGeneraClasse.UseVisualStyleBackColor = true;
+            this.cmdSchGeneraClasse.Click += new System.EventHandler(this.cmdSchGeneraClasse_Click);
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label60.Location = new System.Drawing.Point(410, 235);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(45, 17);
+            this.label60.TabIndex = 96;
+            this.label60.Text = "Heigh";
+            // 
+            // txtSchBaseHeigh
+            // 
+            this.txtSchBaseHeigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchBaseHeigh.Location = new System.Drawing.Point(410, 255);
+            this.txtSchBaseHeigh.MaxLength = 8;
+            this.txtSchBaseHeigh.Name = "txtSchBaseHeigh";
+            this.txtSchBaseHeigh.ReadOnly = true;
+            this.txtSchBaseHeigh.Size = new System.Drawing.Size(42, 24);
+            this.txtSchBaseHeigh.TabIndex = 95;
+            this.txtSchBaseHeigh.Text = "0";
+            this.txtSchBaseHeigh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtSchBaseWidth
+            // 
+            this.txtSchBaseWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchBaseWidth.Location = new System.Drawing.Point(362, 255);
+            this.txtSchBaseWidth.MaxLength = 8;
+            this.txtSchBaseWidth.Name = "txtSchBaseWidth";
+            this.txtSchBaseWidth.ReadOnly = true;
+            this.txtSchBaseWidth.Size = new System.Drawing.Size(42, 24);
+            this.txtSchBaseWidth.TabIndex = 94;
+            this.txtSchBaseWidth.Text = "0";
+            this.txtSchBaseWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label61.Location = new System.Drawing.Point(360, 235);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(44, 17);
+            this.label61.TabIndex = 93;
+            this.label61.Text = "Width";
+            // 
+            // txtSchBaseSize
+            // 
+            this.txtSchBaseSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchBaseSize.Location = new System.Drawing.Point(231, 255);
+            this.txtSchBaseSize.MaxLength = 8;
+            this.txtSchBaseSize.Name = "txtSchBaseSize";
+            this.txtSchBaseSize.ReadOnly = true;
+            this.txtSchBaseSize.Size = new System.Drawing.Size(78, 24);
+            this.txtSchBaseSize.TabIndex = 92;
+            this.txtSchBaseSize.Text = "0";
+            this.txtSchBaseSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label62.Location = new System.Drawing.Point(228, 235);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(35, 17);
+            this.label62.TabIndex = 91;
+            this.label62.Text = "Size";
+            // 
+            // txtSchBaseName
+            // 
+            this.txtSchBaseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchBaseName.Location = new System.Drawing.Point(80, 255);
+            this.txtSchBaseName.MaxLength = 8;
+            this.txtSchBaseName.Name = "txtSchBaseName";
+            this.txtSchBaseName.ReadOnly = true;
+            this.txtSchBaseName.Size = new System.Drawing.Size(101, 24);
+            this.txtSchBaseName.TabIndex = 90;
+            this.txtSchBaseName.Text = "IMAGE001";
+            this.txtSchBaseName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label63.Location = new System.Drawing.Point(77, 233);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(97, 17);
+            this.label63.TabIndex = 89;
+            this.label63.Text = "Nome Testata";
+            // 
+            // pbxSchImmagine
+            // 
+            this.pbxSchImmagine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbxSchImmagine.Location = new System.Drawing.Point(80, 16);
+            this.pbxSchImmagine.Margin = new System.Windows.Forms.Padding(0);
+            this.pbxSchImmagine.Name = "pbxSchImmagine";
+            this.pbxSchImmagine.Size = new System.Drawing.Size(313, 165);
+            this.pbxSchImmagine.TabIndex = 85;
+            this.pbxSchImmagine.TabStop = false;
             // 
             // label52
             // 
@@ -2471,161 +2838,29 @@
             this.label52.TabIndex = 84;
             this.label52.Text = "Immagine";
             // 
-            // label53
+            // flvSchListaSchermate
             // 
-            this.label53.AutoSize = true;
-            this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label53.Location = new System.Drawing.Point(497, 40);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(63, 17);
-            this.label53.TabIndex = 84;
-            this.label53.Text = "Comandi";
+            this.flvSchListaSchermate.CellEditUseWholeCell = false;
+            this.flvSchListaSchermate.FullRowSelect = true;
+            this.flvSchListaSchermate.Location = new System.Drawing.Point(1203, 60);
+            this.flvSchListaSchermate.MultiSelect = false;
+            this.flvSchListaSchermate.Name = "flvSchListaSchermate";
+            this.flvSchListaSchermate.ShowGroups = false;
+            this.flvSchListaSchermate.Size = new System.Drawing.Size(354, 432);
+            this.flvSchListaSchermate.TabIndex = 0;
+            this.flvSchListaSchermate.UseCompatibleStateImageBehavior = false;
+            this.flvSchListaSchermate.View = System.Windows.Forms.View.Details;
+            this.flvSchListaSchermate.VirtualMode = true;
             // 
-            // fastObjectListView2
+            // ofdImportDati
             // 
-            this.fastObjectListView2.CellEditUseWholeCell = false;
-            this.fastObjectListView2.Location = new System.Drawing.Point(500, 60);
-            this.fastObjectListView2.Name = "fastObjectListView2";
-            this.fastObjectListView2.ShowGroups = false;
-            this.fastObjectListView2.Size = new System.Drawing.Size(352, 202);
-            this.fastObjectListView2.TabIndex = 85;
-            this.fastObjectListView2.UseCompatibleStateImageBehavior = false;
-            this.fastObjectListView2.View = System.Windows.Forms.View.Details;
-            this.fastObjectListView2.VirtualMode = true;
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.White;
-            this.panel12.Location = new System.Drawing.Point(500, 286);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(354, 41);
-            this.panel12.TabIndex = 86;
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.Color.White;
-            this.panel13.Location = new System.Drawing.Point(500, 348);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(354, 220);
-            this.panel13.TabIndex = 87;
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.White;
-            this.panel14.Location = new System.Drawing.Point(66, 194);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(354, 68);
-            this.panel14.TabIndex = 88;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(704, 386);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(136, 41);
-            this.button4.TabIndex = 110;
-            this.button4.Text = "CLS";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(562, 384);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(136, 41);
-            this.button7.TabIndex = 109;
-            this.button7.Text = "Disegna Schermata";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBox1.Location = new System.Drawing.Point(454, 393);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(48, 24);
-            this.textBox1.TabIndex = 108;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label54.Location = new System.Drawing.Point(451, 373);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(49, 17);
-            this.label54.TabIndex = 107;
-            this.label54.Text = "Colore";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBox2.Location = new System.Drawing.Point(371, 393);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(48, 24);
-            this.textBox2.TabIndex = 106;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label55.Location = new System.Drawing.Point(367, 373);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(49, 17);
-            this.label55.TabIndex = 105;
-            this.label55.Text = "Pos. Y";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBox4.Location = new System.Drawing.Point(313, 393);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(48, 24);
-            this.textBox4.TabIndex = 104;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label56.Location = new System.Drawing.Point(310, 373);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(49, 17);
-            this.label56.TabIndex = 103;
-            this.label56.Text = "Pos. X";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label57.Location = new System.Drawing.Point(65, 395);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(123, 20);
-            this.label57.TabIndex = 102;
-            this.label57.Text = "SCHERMATA";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBox5.Location = new System.Drawing.Point(205, 391);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(74, 24);
-            this.textBox5.TabIndex = 101;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label58.Location = new System.Drawing.Point(204, 371);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(21, 17);
-            this.label58.TabIndex = 100;
-            this.label58.Text = "ID";
+            this.ofdImportDati.FileName = "openFileDialog1";
             // 
             // frmDisplayManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1464, 735);
+            this.ClientSize = new System.Drawing.Size(1657, 735);
             this.Controls.Add(this.tbcMainDisplayManager);
             this.Name = "frmDisplayManager";
             this.Text = "frmDisplayManager";
@@ -2655,6 +2890,9 @@
             this.grbMemLettura.PerformLayout();
             this.tbpStatoScheda.ResumeLayout(false);
             this.tbpStatoScheda.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaSch)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).EndInit();
@@ -2677,10 +2915,13 @@
             this.groupBox2.PerformLayout();
             this.tbpSchermate.ResumeLayout(false);
             this.tbpSchermate.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView2)).EndInit();
+            this.pnlSchImmagineSchermata.ResumeLayout(false);
+            this.pnlSchImmagineSchermata.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSchImmagine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flvSchListaSchermate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2818,8 +3059,8 @@
         private BrightIdeasSoftware.FastObjectListView flvImgListaImmagini;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private BrightIdeasSoftware.FastObjectListView fastObjectListView1;
+        private System.Windows.Forms.Panel pnlSchImmagineSchermata;
+        private BrightIdeasSoftware.FastObjectListView flvSchListaSchermate;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnModCercaCaricaModello;
@@ -2884,16 +3125,9 @@
         private System.Windows.Forms.Button btnStatoImgCarica;
         private BrightIdeasSoftware.FastObjectListView flvStatoListaImg;
         private System.Windows.Forms.Button btnImgMostraImmagine;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Button btnRtDrawSchermata;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtRtValSchId;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel13;
@@ -2901,8 +3135,33 @@
         private BrightIdeasSoftware.FastObjectListView fastObjectListView2;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Button btnStatoSchCarica;
+        private BrightIdeasSoftware.FastObjectListView flvStatoListaSch;
+        private System.Windows.Forms.Button btnSchCaricaFile;
+        private System.Windows.Forms.Button btnSchCercaFile;
+        private System.Windows.Forms.TextBox txtSchNuovoFile;
+        private System.Windows.Forms.PictureBox pbxSchImmagine;
+        private System.Windows.Forms.TextBox txtSchBaseNomeLista;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.TextBox txtSchBaseID;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Button cmdSchGeneraClasse;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.TextBox txtSchBaseHeigh;
+        private System.Windows.Forms.TextBox txtSchBaseWidth;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox txtSchBaseSize;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.TextBox txtSchBaseName;
+        private System.Windows.Forms.Label label63;
     }
 }

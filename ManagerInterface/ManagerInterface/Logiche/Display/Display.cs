@@ -483,6 +483,36 @@ namespace ChargerLogic
             }
         }
 
+        public bool MostraSchermata(ushort Id)
+        {
+            bool _risposta = false;
+
+            try
+            {
+                bool _esito = false;
+
+                _mD.Comando = SerialMessage.TipoComando.DI_MostraSchermata;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_MostraSchermata;
+                _mD.ComponiMessaggioMostraSchermata(Id);
+                _rxRisposta = false;
+                Log.Debug("Display mostra Schermata: ");
+                Log.Debug(_mD.hexdumpMessaggio());
+                echoDatiSER.Clear();
+                for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                {
+                    echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                }
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("DisegnaLinea: " + Ex.Message);
+                return _risposta;
+            }
+        }
 
         public bool PulisciSchermo()
         {

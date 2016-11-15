@@ -42,6 +42,7 @@ namespace PannelloCharger
 
         public UnitaDisplay _disp;
         private DisplaySetup.Immagine _tempImg = new DisplaySetup.Immagine();
+        private DisplaySetup.Schermata _tempSch = new DisplaySetup.Schermata();
 
         public frmDisplayManager()
         {
@@ -706,6 +707,10 @@ namespace PannelloCharger
                 pbxImgImmagine1b.Height = 128;
                 pbxImgImmagine8b.Width = 240;
                 pbxImgImmagine8b.Height = 128;
+                pbxSchImmagine.Width = 240;
+                pbxSchImmagine.Height = 128;
+
+
 
             }
             catch (Exception Ex)
@@ -834,6 +839,8 @@ namespace PannelloCharger
                     flvVarListaVariabili.BuildList();
                     flvImgListaImmagini.SetObjects(_disp.Data.Modello.Immagini);
                     flvImgListaImmagini.BuildList();
+                    flvSchListaSchermate.SetObjects(_disp.Data.Modello.Schermate);
+                    flvSchListaSchermate.BuildList();
 
                 }
 
@@ -1117,6 +1124,86 @@ namespace PannelloCharger
             }
         }
 
+
+        /// <summary>
+        /// Carico la lista delle variabili definite
+        /// </summary>
+        private void InizializzaVistaSchermate()
+        {
+            try
+            {
+                HeaderFormatStyle _stile = new HeaderFormatStyle();
+                _stile.SetBackColor(Color.DarkGray);
+                _stile.SetForeColor(Color.Yellow);
+                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
+                _stile.SetFont(_carattere);
+                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
+
+                flvSchListaSchermate.HeaderUsesThemes = false;
+                flvSchListaSchermate.HeaderFormatStyle = _stile;
+                flvSchListaSchermate.UseAlternatingBackColors = true;
+                flvSchListaSchermate.AlternateRowBackColor = Color.LightGoldenrodYellow;
+
+                flvSchListaSchermate.AllColumns.Clear();
+
+                flvSchListaSchermate.View = View.Details;
+                flvSchListaSchermate.ShowGroups = false; 
+                flvSchListaSchermate.GridLines = true;
+
+                BrightIdeasSoftware.OLVColumn colIdImg = new BrightIdeasSoftware.OLVColumn();
+                colIdImg.Text = "ID";
+                colIdImg.AspectName = "Id";
+                colIdImg.Width = 30;
+                colIdImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colIdImg.TextAlign = HorizontalAlignment.Right;
+                flvSchListaSchermate.AllColumns.Add(colIdImg);
+
+                BrightIdeasSoftware.OLVColumn colNomeImg = new BrightIdeasSoftware.OLVColumn();
+                colNomeImg.Text = "Nome";
+                colNomeImg.AspectName = "Nome";
+                colNomeImg.Width = 200;
+                colNomeImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colNomeImg.TextAlign = HorizontalAlignment.Left;
+                flvSchListaSchermate.AllColumns.Add(colNomeImg);
+
+                BrightIdeasSoftware.OLVColumn colWidthImg = new BrightIdeasSoftware.OLVColumn();
+                colWidthImg.Text = "Largh";
+                colWidthImg.AspectName = "Width";
+                colWidthImg.Width = 50;
+                colWidthImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colWidthImg.TextAlign = HorizontalAlignment.Left;
+                flvSchListaSchermate.AllColumns.Add(colWidthImg);
+
+
+                BrightIdeasSoftware.OLVColumn colHeightImg = new BrightIdeasSoftware.OLVColumn();
+                colHeightImg.Text = "Alt";
+                colHeightImg.AspectName = "Height";
+                colHeightImg.Width = 50;
+                colHeightImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colHeightImg.TextAlign = HorizontalAlignment.Left;
+                flvSchListaSchermate.AllColumns.Add(colHeightImg);
+
+
+
+                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
+                colRowFiller.Text = "";
+                colRowFiller.Width = 60;
+                colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
+                colRowFiller.TextAlign = HorizontalAlignment.Right;
+                colRowFiller.FillsFreeSpace = true;
+                flvSchListaSchermate.AllColumns.Add(colRowFiller);
+
+                flvSchListaSchermate.RebuildColumns();
+                flvSchListaSchermate.SetObjects(_disp.Data.Modello.Schermate);
+                flvSchListaSchermate.BuildList();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaVistaSchermate: " + Ex.Message);
+            }
+        }
+
+
         private void btnStatoImgCarica_Click(object sender, EventArgs e)
         {
             try
@@ -1321,6 +1408,151 @@ namespace PannelloCharger
             {
                 Log.Error("CaricaCicli: " + Ex.Message);
             }
+        }
+
+        private void btnRtDrawSchermata_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool verifica;
+                ushort _idImgs = FunzioniMR.ConvertiUshort(txtRtValSchId.Text, 1, 0);
+
+                verifica = _disp.MostraSchermata(_idImgs );
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("---------------- btnRtDrawImage_Click ------------");
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void btnSchCercaFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ofdImportDati.Title = StringheComuni.ImportaDati;
+                ofdImportDati.CheckFileExists = false;
+                //"Image files (*.jpg, *.jpeg, *.bmp, *.png) | *.jpg; *.jpeg; *.bmp; *.png";
+                ofdImportDati.Filter = "Immagini (*.jpg, *.jpeg, *.bmp, *.png) | *.jpg; *.jpeg; *.bmp; *.png|All files (*.*)|*.*";
+                // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                /*
+                _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                if (!Directory.Exists(_pathTeorico))
+                {
+                    Directory.CreateDirectory(_pathTeorico);
+                }
+                sfdExportDati.InitialDirectory = _pathTeorico;
+                */
+                ofdImportDati.ShowDialog();
+
+                txtSchNuovoFile.Text = ofdImportDati.FileName;
+                //if (importaDati()) btnDataExport.Enabled = true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("---------------- btnSchCercaFile_Click ------------");
+                Log.Error(Ex.Message);
+
+            }
+        }
+
+        private void btnSchCaricaFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSchNuovoFile.Text != "")
+                {
+                    _tempSch = new DisplaySetup.Schermata();
+                    _tempSch.bmp = new Bitmap(txtSchNuovoFile.Text);
+
+                    pbxSchImmagine.BackColor = Color.Gray;
+                    pbxSchImmagine.Image = _tempSch.bmp;
+                    txtSchBaseSize.Text = _tempSch.bmp.Size.ToString();
+                    txtSchBaseWidth.Text = _tempSch.bmp.Width.ToString();
+                    txtSchBaseHeigh.Text = _tempSch.bmp.Height.ToString();
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void cmdSchGeneraClasse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool verifica;
+
+                bool _VerificaNumero;
+                ushort _nuovoid;
+
+                //  Verifico che lID sia valido 
+
+                _VerificaNumero = ushort.TryParse(txtImgIdImmagine.Text, out _nuovoid);
+                if (!_VerificaNumero)
+                {
+                    // aggiungere messaggio
+                    return;
+                }
+                _VerificaNumero = ushort.TryParse(txtSchBaseID.Text, out _nuovoid);
+                if (!_VerificaNumero)
+                    _nuovoid = 1;
+                if (_nuovoid < 1)
+                    _nuovoid = 1;
+                if (_nuovoid > 255)
+                    _nuovoid = 255;
+                txtSchBaseName.Text = "SCREN" + _nuovoid.ToString("000");
+                txtSchBaseID.Text = _nuovoid.ToString();
+
+                // verifico se l'ID è presente e nel caso tolgo l'esistente
+                _VerificaNumero = false;
+                foreach (DisplaySetup.Schermata _item in _disp.Data.Modello.Schermate)
+                {
+                    if (_item.Id == _nuovoid)
+                    {
+                        // aggiungere messaggio per duplicato
+                        _disp.Data.Modello.Schermate.Remove(_item);
+                        break;
+                    }
+                }
+                _tempSch.Id = _nuovoid;
+                _tempSch.Nome = txtSchBaseNomeLista.Text;
+                _disp.Data.Modello.Schermate.Add(_tempSch);
+                InizializzaVistaSchermate();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void txtSchBaseID_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _VerificaNumero;
+                ushort _nuovoid;
+
+                _VerificaNumero = ushort.TryParse(txtSchBaseID.Text, out _nuovoid);
+                if (!_VerificaNumero)
+                    _nuovoid = 1;
+                if (_nuovoid < 1)
+                    _nuovoid = 1;
+                if (_nuovoid > 255)
+                    _nuovoid = 255;
+                txtSchBaseName.Text = "SCREN" + _nuovoid.ToString("000");
+                txtSchBaseID.Text = _nuovoid.ToString();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtImgIdImmagine_Leave: " + Ex.Message);
+            }
+
         }
     }
 }

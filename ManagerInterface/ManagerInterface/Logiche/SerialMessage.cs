@@ -77,6 +77,7 @@ namespace ChargerLogic
             DI_Backlight = 0xB3,
             DI_DrawLine = 0xA5,
             DI_MostraImmagine = 0x5A,
+            DI_MostraSchermata = 0x96,
 
 
             LL_SIG60_PROXY = 0x81,
