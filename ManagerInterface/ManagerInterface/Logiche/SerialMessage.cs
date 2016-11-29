@@ -63,6 +63,9 @@ namespace ChargerLogic
             SB_W_MemProgrammed = 0x74,
             SB_W_chgst_Call = 0x80,
 
+            SB_R_ParametriLettura = 0x4F,
+            SB_W_ParametriLettura = 0x4E,
+
             DI_LedRGB = 0x1E,
             DI_Stato = 0xE1,
             DI_CancellaInteraMemoria = 0x3A,

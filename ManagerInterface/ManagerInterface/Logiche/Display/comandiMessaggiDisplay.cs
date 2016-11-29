@@ -87,10 +87,10 @@ namespace ChargerLogic
 
 
 
-        private bool aspettaRisposta(int timeout, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false, bool modoDeso = false)
+        private bool aspettaRisposta(int timeout, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false, bool modoDeso = false, bool IgnoraContenuto = false, bool SkipHead = false)
         {
             object vuoto;
-            return aspettaRisposta(timeout, out vuoto, risposteAttese, aspettaAck, runAsync, elementiComuni.tipoMessaggio.NonDefinito);
+            return aspettaRisposta(timeout, out vuoto, risposteAttese, aspettaAck, runAsync, elementiComuni.tipoMessaggio.NonDefinito,IgnoraContenuto, SkipHead);
         }
 
 
@@ -104,7 +104,7 @@ namespace ChargerLogic
         /// </summary>
         /// <param name="timeout">numero di cicli di attasa da 500 millisecondi l'uno</param>
         /// <returns>true se ricevuta risposta, altrimenti false se interrotto per timeout</returns>
-        private bool aspettaRisposta(int timeout, out object esito, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false, elementiComuni.tipoMessaggio TipoDati = elementiComuni.tipoMessaggio.NonDefinito)
+        private bool aspettaRisposta(int timeout, out object esito, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false, elementiComuni.tipoMessaggio TipoDati = elementiComuni.tipoMessaggio.NonDefinito, bool IgnoraContenuto = false, bool SkipHead = false)
         {
             DateTime _startRicezione;
             DateTime _startFunzione;
@@ -230,10 +230,10 @@ namespace ChargerLogic
 
                                 }
 
-                                if (!_echoJump)
+                                if (!_echoJump && !IgnoraContenuto)
                                 {
 
-                                    _msgRicevuto = analizzaCodaDisplay();
+                                    _msgRicevuto = analizzaCodaDisplay(SkipHead);
 
 
                                     Log.Debug("Dati in coda SB (USB) No Echo" + codaDatiSER.Count.ToString());
@@ -308,6 +308,8 @@ namespace ChargerLogic
 
                                     }
                                 }
+                                if(IgnoraContenuto)
+                                    _inAttesa = false;
                             }
                         }
                     }
@@ -384,7 +386,7 @@ namespace ChargerLogic
         /// In base al messaggio ricevuto (codice comando) definisce l'azione e l'eventuale risposta
         /// </summary>
         /// <returns></returns>
-        private SerialMessage.TipoRisposta analizzaCodaDisplay()
+        private SerialMessage.TipoRisposta analizzaCodaDisplay(bool SkipHead = false)
         {
 
             SerialMessage.EsitoRisposta _esito;
@@ -435,7 +437,7 @@ namespace ChargerLogic
                         //-----------------------------------------------------------------------------------------
                         // Analizzo il contenuto del messaggio 
                         //-----------------------------------------------------------------------------------------
-                        _esito = _mD.analizzaMessaggio(_dataBuffer);
+                        _esito = _mD.analizzaMessaggio(_dataBuffer,SkipHead);
                         UltimaRisposta = _esito; // SerialMessage.EsitoRisposta.MessaggioOk;
                         //-----------------------------------------------------------------------------------------
 

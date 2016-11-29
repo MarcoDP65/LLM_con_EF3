@@ -187,8 +187,8 @@
             this.label42 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnImgMostraImmagine = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnImgRimuoviImmagine = new System.Windows.Forms.Button();
+            this.btnImgInviaImmagine = new System.Windows.Forms.Button();
             this.flvImgListaImmagini = new BrightIdeasSoftware.FastObjectListView();
             this.grbGeneraExcel = new System.Windows.Forms.GroupBox();
             this.btnSfoglia = new System.Windows.Forms.Button();
@@ -221,9 +221,9 @@
             this.pbxImgImmagine = new System.Windows.Forms.PictureBox();
             this.tbpVariabili = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.txtVarValore = new System.Windows.Forms.TextBox();
+            this.btnVarCancellaVariabile = new System.Windows.Forms.Button();
+            this.btnVarInviaValore = new System.Windows.Forms.Button();
             this.flvVarListaVariabili = new BrightIdeasSoftware.FastObjectListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label44 = new System.Windows.Forms.Label();
@@ -232,18 +232,54 @@
             this.btnVarCrea = new System.Windows.Forms.Button();
             this.txtVarNomeVariabile = new System.Windows.Forms.TextBox();
             this.tbpSchermate = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cmdSchNuovaSchermata = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSchCmdNew = new System.Windows.Forms.Button();
+            this.btnSchCmdLoad = new System.Windows.Forms.Button();
+            this.btnSchCmdDel = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.btnSchCaricaFile = new System.Windows.Forms.Button();
             this.btnSchCercaFile = new System.Windows.Forms.Button();
             this.txtSchNuovoFile = new System.Windows.Forms.TextBox();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.fastObjectListView2 = new BrightIdeasSoftware.FastObjectListView();
+            this.label75 = new System.Windows.Forms.Label();
+            this.txtSchCmdTempoOFF = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.txtSchCmdTempoON = new System.Windows.Forms.TextBox();
+            this.btnSchCmdAdd = new System.Windows.Forms.Button();
+            this.label74 = new System.Windows.Forms.Label();
+            this.txtSchCmdNum = new System.Windows.Forms.TextBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.txtSchCmdText = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.txtSchCmdLenVarChar = new System.Windows.Forms.TextBox();
+            this.txtSchCmdNumImg = new System.Windows.Forms.TextBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.txtSchCmdLenVarPix = new System.Windows.Forms.TextBox();
+            this.txtSchCmdNumVar = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.txtSchCmdColor = new System.Windows.Forms.TextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.txtSchCmdPosY = new System.Windows.Forms.TextBox();
+            this.txtSchCmdPosX = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.txtSchCmdHeigh = new System.Windows.Forms.TextBox();
+            this.txtSchCmdWidth = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.cmbSchTipoComando = new System.Windows.Forms.ComboBox();
+            this.flvSchListaComandi = new BrightIdeasSoftware.FastObjectListView();
             this.label53 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.cmdSchGeneraByteArray = new System.Windows.Forms.Button();
+            this.cmdSchMostrtaSch = new System.Windows.Forms.Button();
+            this.cmdSchRimuoviElemento = new System.Windows.Forms.Button();
+            this.cmdSchInviaSch = new System.Windows.Forms.Button();
             this.pnlSchImmagineSchermata = new System.Windows.Forms.Panel();
             this.txtSchBaseNomeLista = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
@@ -296,8 +332,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvVarListaVariabili)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tbpSchermate.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView2)).BeginInit();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvSchListaComandi)).BeginInit();
+            this.panel5.SuspendLayout();
             this.pnlSchImmagineSchermata.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSchImmagine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flvSchListaSchermate)).BeginInit();
@@ -2020,8 +2060,8 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.btnImgMostraImmagine);
-            this.panel9.Controls.Add(this.button3);
-            this.panel9.Controls.Add(this.button2);
+            this.panel9.Controls.Add(this.btnImgRimuoviImmagine);
+            this.panel9.Controls.Add(this.btnImgInviaImmagine);
             this.panel9.Location = new System.Drawing.Point(704, 493);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(526, 69);
@@ -2037,29 +2077,31 @@
             this.btnImgMostraImmagine.UseVisualStyleBackColor = true;
             this.btnImgMostraImmagine.Click += new System.EventHandler(this.btnImgMostraImmagine_Click);
             // 
-            // button3
+            // btnImgRimuoviImmagine
             // 
-            this.button3.Location = new System.Drawing.Point(393, 14);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 41);
-            this.button3.TabIndex = 80;
-            this.button3.Text = "Rimuovi";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnImgRimuoviImmagine.Location = new System.Drawing.Point(141, 14);
+            this.btnImgRimuoviImmagine.Name = "btnImgRimuoviImmagine";
+            this.btnImgRimuoviImmagine.Size = new System.Drawing.Size(103, 41);
+            this.btnImgRimuoviImmagine.TabIndex = 80;
+            this.btnImgRimuoviImmagine.Text = "Rimuovi";
+            this.btnImgRimuoviImmagine.UseVisualStyleBackColor = true;
+            this.btnImgRimuoviImmagine.Click += new System.EventHandler(this.btnImgRimuoviImmagine_Click);
             // 
-            // button2
+            // btnImgInviaImmagine
             // 
-            this.button2.Location = new System.Drawing.Point(284, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 41);
-            this.button2.TabIndex = 79;
-            this.button2.Text = "Invia Img";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnImgInviaImmagine.Location = new System.Drawing.Point(401, 14);
+            this.btnImgInviaImmagine.Name = "btnImgInviaImmagine";
+            this.btnImgInviaImmagine.Size = new System.Drawing.Size(103, 41);
+            this.btnImgInviaImmagine.TabIndex = 79;
+            this.btnImgInviaImmagine.Text = "Invia Img";
+            this.btnImgInviaImmagine.UseVisualStyleBackColor = true;
+            this.btnImgInviaImmagine.Click += new System.EventHandler(this.btnImgInviaImmagine_Click);
             // 
             // flvImgListaImmagini
             // 
             this.flvImgListaImmagini.CellEditUseWholeCell = false;
             this.flvImgListaImmagini.FullRowSelect = true;
-            this.flvImgListaImmagini.Location = new System.Drawing.Point(704, 177);
+            this.flvImgListaImmagini.Location = new System.Drawing.Point(704, 164);
             this.flvImgListaImmagini.MultiSelect = false;
             this.flvImgListaImmagini.Name = "flvImgListaImmagini";
             this.flvImgListaImmagini.ShowGroups = false;
@@ -2241,9 +2283,9 @@
             // 
             // btnImgGeneraClasse
             // 
-            this.btnImgGeneraClasse.Location = new System.Drawing.Point(369, 542);
+            this.btnImgGeneraClasse.Location = new System.Drawing.Point(366, 542);
             this.btnImgGeneraClasse.Name = "btnImgGeneraClasse";
-            this.btnImgGeneraClasse.Size = new System.Drawing.Size(178, 29);
+            this.btnImgGeneraClasse.Size = new System.Drawing.Size(180, 29);
             this.btnImgGeneraClasse.TabIndex = 78;
             this.btnImgGeneraClasse.Text = "Genera Classe";
             this.btnImgGeneraClasse.UseVisualStyleBackColor = true;
@@ -2339,7 +2381,7 @@
             // 
             // btnImgGeneraArrayImmagine
             // 
-            this.btnImgGeneraArrayImmagine.Location = new System.Drawing.Point(361, 274);
+            this.btnImgGeneraArrayImmagine.Location = new System.Drawing.Point(361, 257);
             this.btnImgGeneraArrayImmagine.Name = "btnImgGeneraArrayImmagine";
             this.btnImgGeneraArrayImmagine.Size = new System.Drawing.Size(176, 29);
             this.btnImgGeneraArrayImmagine.TabIndex = 5;
@@ -2349,6 +2391,7 @@
             // 
             // btnImgSimulaFileImmagine
             // 
+            this.btnImgSimulaFileImmagine.Enabled = false;
             this.btnImgSimulaFileImmagine.Location = new System.Drawing.Point(361, 213);
             this.btnImgSimulaFileImmagine.Name = "btnImgSimulaFileImmagine";
             this.btnImgSimulaFileImmagine.Size = new System.Drawing.Size(178, 29);
@@ -2412,39 +2455,39 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.White;
-            this.panel10.Controls.Add(this.textBox3);
-            this.panel10.Controls.Add(this.button5);
-            this.panel10.Controls.Add(this.button6);
+            this.panel10.Controls.Add(this.txtVarValore);
+            this.panel10.Controls.Add(this.btnVarCancellaVariabile);
+            this.panel10.Controls.Add(this.btnVarInviaValore);
             this.panel10.Location = new System.Drawing.Point(32, 481);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(526, 69);
             this.panel10.TabIndex = 22;
             // 
-            // textBox3
+            // txtVarValore
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(127, 20);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(90, 27);
-            this.textBox3.TabIndex = 81;
+            this.txtVarValore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVarValore.Location = new System.Drawing.Point(127, 20);
+            this.txtVarValore.Name = "txtVarValore";
+            this.txtVarValore.Size = new System.Drawing.Size(90, 27);
+            this.txtVarValore.TabIndex = 81;
             // 
-            // button5
+            // btnVarCancellaVariabile
             // 
-            this.button5.Location = new System.Drawing.Point(389, 14);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(103, 41);
-            this.button5.TabIndex = 80;
-            this.button5.Text = "Rimuovi";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnVarCancellaVariabile.Location = new System.Drawing.Point(389, 14);
+            this.btnVarCancellaVariabile.Name = "btnVarCancellaVariabile";
+            this.btnVarCancellaVariabile.Size = new System.Drawing.Size(103, 41);
+            this.btnVarCancellaVariabile.TabIndex = 80;
+            this.btnVarCancellaVariabile.Text = "Rimuovi";
+            this.btnVarCancellaVariabile.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnVarInviaValore
             // 
-            this.button6.Location = new System.Drawing.Point(18, 14);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(103, 41);
-            this.button6.TabIndex = 79;
-            this.button6.Text = "Invia Valore";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnVarInviaValore.Location = new System.Drawing.Point(18, 14);
+            this.btnVarInviaValore.Name = "btnVarInviaValore";
+            this.btnVarInviaValore.Size = new System.Drawing.Size(103, 41);
+            this.btnVarInviaValore.TabIndex = 79;
+            this.btnVarInviaValore.Text = "Invia Valore";
+            this.btnVarInviaValore.UseVisualStyleBackColor = true;
             // 
             // flvVarListaVariabili
             // 
@@ -2524,15 +2567,15 @@
             // tbpSchermate
             // 
             this.tbpSchermate.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpSchermate.Controls.Add(this.panel4);
+            this.tbpSchermate.Controls.Add(this.panel3);
             this.tbpSchermate.Controls.Add(this.panel14);
             this.tbpSchermate.Controls.Add(this.panel13);
-            this.tbpSchermate.Controls.Add(this.panel12);
-            this.tbpSchermate.Controls.Add(this.fastObjectListView2);
+            this.tbpSchermate.Controls.Add(this.flvSchListaComandi);
             this.tbpSchermate.Controls.Add(this.label53);
             this.tbpSchermate.Controls.Add(this.label51);
             this.tbpSchermate.Controls.Add(this.label49);
             this.tbpSchermate.Controls.Add(this.panel5);
-            this.tbpSchermate.Controls.Add(this.panel4);
             this.tbpSchermate.Controls.Add(this.pnlSchImmagineSchermata);
             this.tbpSchermate.Controls.Add(this.flvSchListaSchermate);
             this.tbpSchermate.Location = new System.Drawing.Point(4, 25);
@@ -2541,13 +2584,74 @@
             this.tbpSchermate.TabIndex = 4;
             this.tbpSchermate.Text = "Schermate";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.cmdSchNuovaSchermata);
+            this.panel4.Location = new System.Drawing.Point(57, 60);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(473, 72);
+            this.panel4.TabIndex = 90;
+            // 
+            // cmdSchNuovaSchermata
+            // 
+            this.cmdSchNuovaSchermata.Location = new System.Drawing.Point(132, 14);
+            this.cmdSchNuovaSchermata.Name = "cmdSchNuovaSchermata";
+            this.cmdSchNuovaSchermata.Size = new System.Drawing.Size(224, 41);
+            this.cmdSchNuovaSchermata.TabIndex = 84;
+            this.cmdSchNuovaSchermata.Text = "Nuova Schermata";
+            this.cmdSchNuovaSchermata.UseVisualStyleBackColor = true;
+            this.cmdSchNuovaSchermata.Click += new System.EventHandler(this.cmdSchNuovaSchermata_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.btnSchCmdNew);
+            this.panel3.Controls.Add(this.btnSchCmdLoad);
+            this.panel3.Controls.Add(this.btnSchCmdDel);
+            this.panel3.Location = new System.Drawing.Point(619, 249);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(507, 72);
+            this.panel3.TabIndex = 89;
+            // 
+            // btnSchCmdNew
+            // 
+            this.btnSchCmdNew.BackColor = System.Drawing.Color.Transparent;
+            this.btnSchCmdNew.Location = new System.Drawing.Point(387, 14);
+            this.btnSchCmdNew.Name = "btnSchCmdNew";
+            this.btnSchCmdNew.Size = new System.Drawing.Size(107, 41);
+            this.btnSchCmdNew.TabIndex = 85;
+            this.btnSchCmdNew.Text = "Nuovo Cmd";
+            this.btnSchCmdNew.UseVisualStyleBackColor = false;
+            this.btnSchCmdNew.Click += new System.EventHandler(this.btnSchCmdNew_Click);
+            // 
+            // btnSchCmdLoad
+            // 
+            this.btnSchCmdLoad.Location = new System.Drawing.Point(15, 14);
+            this.btnSchCmdLoad.Name = "btnSchCmdLoad";
+            this.btnSchCmdLoad.Size = new System.Drawing.Size(103, 41);
+            this.btnSchCmdLoad.TabIndex = 84;
+            this.btnSchCmdLoad.Text = "Mostra Cmd";
+            this.btnSchCmdLoad.UseVisualStyleBackColor = true;
+            this.btnSchCmdLoad.Click += new System.EventHandler(this.btnSchCmdLoad_Click);
+            // 
+            // btnSchCmdDel
+            // 
+            this.btnSchCmdDel.Location = new System.Drawing.Point(199, 14);
+            this.btnSchCmdDel.Name = "btnSchCmdDel";
+            this.btnSchCmdDel.Size = new System.Drawing.Size(107, 41);
+            this.btnSchCmdDel.TabIndex = 83;
+            this.btnSchCmdDel.Text = "Rimuovi Cmd";
+            this.btnSchCmdDel.UseVisualStyleBackColor = true;
+            this.btnSchCmdDel.Click += new System.EventHandler(this.btnSchCmdDel_Click);
+            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.White;
             this.panel14.Controls.Add(this.btnSchCaricaFile);
             this.panel14.Controls.Add(this.btnSchCercaFile);
             this.panel14.Controls.Add(this.txtSchNuovoFile);
-            this.panel14.Location = new System.Drawing.Point(66, 60);
+            this.panel14.Location = new System.Drawing.Point(57, 159);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(473, 77);
             this.panel14.TabIndex = 88;
@@ -2555,9 +2659,9 @@
             // btnSchCaricaFile
             // 
             this.btnSchCaricaFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSchCaricaFile.Location = new System.Drawing.Point(16, 42);
+            this.btnSchCaricaFile.Location = new System.Drawing.Point(157, 41);
             this.btnSchCaricaFile.Name = "btnSchCaricaFile";
-            this.btnSchCaricaFile.Size = new System.Drawing.Size(235, 24);
+            this.btnSchCaricaFile.Size = new System.Drawing.Size(165, 24);
             this.btnSchCaricaFile.TabIndex = 9;
             this.btnSchCaricaFile.Text = "Carica Immagine";
             this.btnSchCaricaFile.UseVisualStyleBackColor = true;
@@ -2585,36 +2689,348 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.White;
-            this.panel13.Location = new System.Drawing.Point(740, 348);
+            this.panel13.Controls.Add(this.label75);
+            this.panel13.Controls.Add(this.txtSchCmdTempoOFF);
+            this.panel13.Controls.Add(this.label76);
+            this.panel13.Controls.Add(this.txtSchCmdTempoON);
+            this.panel13.Controls.Add(this.btnSchCmdAdd);
+            this.panel13.Controls.Add(this.label74);
+            this.panel13.Controls.Add(this.txtSchCmdNum);
+            this.panel13.Controls.Add(this.label73);
+            this.panel13.Controls.Add(this.txtSchCmdText);
+            this.panel13.Controls.Add(this.label71);
+            this.panel13.Controls.Add(this.txtSchCmdLenVarChar);
+            this.panel13.Controls.Add(this.txtSchCmdNumImg);
+            this.panel13.Controls.Add(this.label72);
+            this.panel13.Controls.Add(this.label69);
+            this.panel13.Controls.Add(this.txtSchCmdLenVarPix);
+            this.panel13.Controls.Add(this.txtSchCmdNumVar);
+            this.panel13.Controls.Add(this.label70);
+            this.panel13.Controls.Add(this.label68);
+            this.panel13.Controls.Add(this.txtSchCmdColor);
+            this.panel13.Controls.Add(this.label66);
+            this.panel13.Controls.Add(this.txtSchCmdPosY);
+            this.panel13.Controls.Add(this.txtSchCmdPosX);
+            this.panel13.Controls.Add(this.label67);
+            this.panel13.Controls.Add(this.label64);
+            this.panel13.Controls.Add(this.txtSchCmdHeigh);
+            this.panel13.Controls.Add(this.txtSchCmdWidth);
+            this.panel13.Controls.Add(this.label65);
+            this.panel13.Controls.Add(this.cmbSchTipoComando);
+            this.panel13.Location = new System.Drawing.Point(619, 346);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(354, 220);
+            this.panel13.Size = new System.Drawing.Size(507, 289);
             this.panel13.TabIndex = 87;
             // 
-            // panel12
+            // label75
             // 
-            this.panel12.BackColor = System.Drawing.Color.White;
-            this.panel12.Location = new System.Drawing.Point(740, 286);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(354, 41);
-            this.panel12.TabIndex = 86;
+            this.label75.AutoSize = true;
+            this.label75.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label75.Location = new System.Drawing.Point(205, 172);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(40, 17);
+            this.label75.TabIndex = 123;
+            this.label75.Text = "T Off";
             // 
-            // fastObjectListView2
+            // txtSchCmdTempoOFF
             // 
-            this.fastObjectListView2.CellEditUseWholeCell = false;
-            this.fastObjectListView2.Location = new System.Drawing.Point(740, 60);
-            this.fastObjectListView2.Name = "fastObjectListView2";
-            this.fastObjectListView2.ShowGroups = false;
-            this.fastObjectListView2.Size = new System.Drawing.Size(352, 202);
-            this.fastObjectListView2.TabIndex = 85;
-            this.fastObjectListView2.UseCompatibleStateImageBehavior = false;
-            this.fastObjectListView2.View = System.Windows.Forms.View.Details;
-            this.fastObjectListView2.VirtualMode = true;
+            this.txtSchCmdTempoOFF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdTempoOFF.Location = new System.Drawing.Point(208, 192);
+            this.txtSchCmdTempoOFF.MaxLength = 8;
+            this.txtSchCmdTempoOFF.Name = "txtSchCmdTempoOFF";
+            this.txtSchCmdTempoOFF.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdTempoOFF.TabIndex = 122;
+            this.txtSchCmdTempoOFF.Text = "0";
+            this.txtSchCmdTempoOFF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label76.Location = new System.Drawing.Point(157, 172);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(40, 17);
+            this.label76.TabIndex = 121;
+            this.label76.Text = "T On";
+            // 
+            // txtSchCmdTempoON
+            // 
+            this.txtSchCmdTempoON.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdTempoON.Location = new System.Drawing.Point(160, 192);
+            this.txtSchCmdTempoON.MaxLength = 8;
+            this.txtSchCmdTempoON.Name = "txtSchCmdTempoON";
+            this.txtSchCmdTempoON.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdTempoON.TabIndex = 120;
+            this.txtSchCmdTempoON.Text = "0";
+            this.txtSchCmdTempoON.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnSchCmdAdd
+            // 
+            this.btnSchCmdAdd.Location = new System.Drawing.Point(387, 233);
+            this.btnSchCmdAdd.Name = "btnSchCmdAdd";
+            this.btnSchCmdAdd.Size = new System.Drawing.Size(107, 37);
+            this.btnSchCmdAdd.TabIndex = 119;
+            this.btnSchCmdAdd.Text = "Aggiungi";
+            this.btnSchCmdAdd.UseVisualStyleBackColor = true;
+            this.btnSchCmdAdd.Click += new System.EventHandler(this.btnSchCmdAdd_Click);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label74.Location = new System.Drawing.Point(336, 222);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(37, 17);
+            this.label74.TabIndex = 118;
+            this.label74.Text = "Num";
+            // 
+            // txtSchCmdNum
+            // 
+            this.txtSchCmdNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdNum.Location = new System.Drawing.Point(339, 242);
+            this.txtSchCmdNum.MaxLength = 8;
+            this.txtSchCmdNum.Name = "txtSchCmdNum";
+            this.txtSchCmdNum.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdNum.TabIndex = 117;
+            this.txtSchCmdNum.Text = "0";
+            this.txtSchCmdNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label73.Location = new System.Drawing.Point(18, 226);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(116, 17);
+            this.label73.TabIndex = 116;
+            this.label73.Text = "Testo Messaggio";
+            // 
+            // txtSchCmdText
+            // 
+            this.txtSchCmdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdText.Location = new System.Drawing.Point(19, 243);
+            this.txtSchCmdText.MaxLength = 50;
+            this.txtSchCmdText.Name = "txtSchCmdText";
+            this.txtSchCmdText.Size = new System.Drawing.Size(314, 24);
+            this.txtSchCmdText.TabIndex = 115;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label71.Location = new System.Drawing.Point(205, 119);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(45, 17);
+            this.label71.TabIndex = 114;
+            this.label71.Text = "Len C";
+            // 
+            // txtSchCmdLenVarChar
+            // 
+            this.txtSchCmdLenVarChar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdLenVarChar.Location = new System.Drawing.Point(208, 139);
+            this.txtSchCmdLenVarChar.MaxLength = 8;
+            this.txtSchCmdLenVarChar.Name = "txtSchCmdLenVarChar";
+            this.txtSchCmdLenVarChar.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdLenVarChar.TabIndex = 113;
+            this.txtSchCmdLenVarChar.Text = "0";
+            this.txtSchCmdLenVarChar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtSchCmdNumImg
+            // 
+            this.txtSchCmdNumImg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdNumImg.Location = new System.Drawing.Point(18, 192);
+            this.txtSchCmdNumImg.MaxLength = 8;
+            this.txtSchCmdNumImg.Name = "txtSchCmdNumImg";
+            this.txtSchCmdNumImg.Size = new System.Drawing.Size(137, 24);
+            this.txtSchCmdNumImg.TabIndex = 112;
+            this.txtSchCmdNumImg.Text = "0";
+            this.txtSchCmdNumImg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label72.Location = new System.Drawing.Point(16, 172);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(66, 17);
+            this.label72.TabIndex = 111;
+            this.label72.Text = "Num IMG";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label69.Location = new System.Drawing.Point(157, 119);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(49, 17);
+            this.label69.TabIndex = 110;
+            this.label69.Text = "Len  P";
+            // 
+            // txtSchCmdLenVarPix
+            // 
+            this.txtSchCmdLenVarPix.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdLenVarPix.Location = new System.Drawing.Point(160, 139);
+            this.txtSchCmdLenVarPix.MaxLength = 8;
+            this.txtSchCmdLenVarPix.Name = "txtSchCmdLenVarPix";
+            this.txtSchCmdLenVarPix.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdLenVarPix.TabIndex = 109;
+            this.txtSchCmdLenVarPix.Text = "0";
+            this.txtSchCmdLenVarPix.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtSchCmdNumVar
+            // 
+            this.txtSchCmdNumVar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdNumVar.Location = new System.Drawing.Point(17, 139);
+            this.txtSchCmdNumVar.MaxLength = 8;
+            this.txtSchCmdNumVar.Name = "txtSchCmdNumVar";
+            this.txtSchCmdNumVar.Size = new System.Drawing.Size(137, 24);
+            this.txtSchCmdNumVar.TabIndex = 108;
+            this.txtSchCmdNumVar.Text = "0";
+            this.txtSchCmdNumVar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label70.Location = new System.Drawing.Point(15, 119);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(69, 17);
+            this.label70.TabIndex = 107;
+            this.label70.Text = "Num VAR";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label68.Location = new System.Drawing.Point(238, 58);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(41, 17);
+            this.label68.TabIndex = 106;
+            this.label68.Text = "Color";
+            // 
+            // txtSchCmdColor
+            // 
+            this.txtSchCmdColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdColor.Location = new System.Drawing.Point(238, 78);
+            this.txtSchCmdColor.MaxLength = 8;
+            this.txtSchCmdColor.Name = "txtSchCmdColor";
+            this.txtSchCmdColor.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdColor.TabIndex = 105;
+            this.txtSchCmdColor.Text = "0";
+            this.txtSchCmdColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label66.Location = new System.Drawing.Point(178, 58);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(45, 17);
+            this.label66.TabIndex = 104;
+            this.label66.Text = "Pos Y";
+            // 
+            // txtSchCmdPosY
+            // 
+            this.txtSchCmdPosY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdPosY.Location = new System.Drawing.Point(178, 78);
+            this.txtSchCmdPosY.MaxLength = 8;
+            this.txtSchCmdPosY.Name = "txtSchCmdPosY";
+            this.txtSchCmdPosY.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdPosY.TabIndex = 103;
+            this.txtSchCmdPosY.Text = "0";
+            this.txtSchCmdPosY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtSchCmdPosX
+            // 
+            this.txtSchCmdPosX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdPosX.Location = new System.Drawing.Point(130, 78);
+            this.txtSchCmdPosX.MaxLength = 8;
+            this.txtSchCmdPosX.Name = "txtSchCmdPosX";
+            this.txtSchCmdPosX.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdPosX.TabIndex = 102;
+            this.txtSchCmdPosX.Text = "0";
+            this.txtSchCmdPosX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label67.Location = new System.Drawing.Point(128, 58);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(45, 17);
+            this.label67.TabIndex = 101;
+            this.label67.Text = "Pos X";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label64.Location = new System.Drawing.Point(65, 58);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(45, 17);
+            this.label64.TabIndex = 100;
+            this.label64.Text = "Heigh";
+            // 
+            // txtSchCmdHeigh
+            // 
+            this.txtSchCmdHeigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdHeigh.Location = new System.Drawing.Point(65, 78);
+            this.txtSchCmdHeigh.MaxLength = 8;
+            this.txtSchCmdHeigh.Name = "txtSchCmdHeigh";
+            this.txtSchCmdHeigh.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdHeigh.TabIndex = 99;
+            this.txtSchCmdHeigh.Text = "0";
+            this.txtSchCmdHeigh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtSchCmdWidth
+            // 
+            this.txtSchCmdWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtSchCmdWidth.Location = new System.Drawing.Point(17, 78);
+            this.txtSchCmdWidth.MaxLength = 8;
+            this.txtSchCmdWidth.Name = "txtSchCmdWidth";
+            this.txtSchCmdWidth.Size = new System.Drawing.Size(42, 24);
+            this.txtSchCmdWidth.TabIndex = 98;
+            this.txtSchCmdWidth.Text = "0";
+            this.txtSchCmdWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label65.Location = new System.Drawing.Point(15, 58);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(44, 17);
+            this.label65.TabIndex = 97;
+            this.label65.Text = "Width";
+            // 
+            // cmbSchTipoComando
+            // 
+            this.cmbSchTipoComando.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSchTipoComando.FormattingEnabled = true;
+            this.cmbSchTipoComando.Location = new System.Drawing.Point(17, 20);
+            this.cmbSchTipoComando.Name = "cmbSchTipoComando";
+            this.cmbSchTipoComando.Size = new System.Drawing.Size(316, 24);
+            this.cmbSchTipoComando.TabIndex = 0;
+            // 
+            // flvSchListaComandi
+            // 
+            this.flvSchListaComandi.CellEditUseWholeCell = false;
+            this.flvSchListaComandi.FullRowSelect = true;
+            this.flvSchListaComandi.Location = new System.Drawing.Point(619, 60);
+            this.flvSchListaComandi.MultiSelect = false;
+            this.flvSchListaComandi.Name = "flvSchListaComandi";
+            this.flvSchListaComandi.ShowGroups = false;
+            this.flvSchListaComandi.Size = new System.Drawing.Size(507, 165);
+            this.flvSchListaComandi.TabIndex = 85;
+            this.flvSchListaComandi.UseCompatibleStateImageBehavior = false;
+            this.flvSchListaComandi.View = System.Windows.Forms.View.Details;
+            this.flvSchListaComandi.VirtualMode = true;
             // 
             // label53
             // 
             this.label53.AutoSize = true;
             this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label53.Location = new System.Drawing.Point(737, 40);
+            this.label53.Location = new System.Drawing.Point(616, 40);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(63, 17);
             this.label53.TabIndex = 84;
@@ -2624,7 +3040,7 @@
             // 
             this.label51.AutoSize = true;
             this.label51.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label51.Location = new System.Drawing.Point(63, 40);
+            this.label51.Location = new System.Drawing.Point(54, 139);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(68, 17);
             this.label51.TabIndex = 83;
@@ -2643,18 +3059,54 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.cmdSchGeneraByteArray);
+            this.panel5.Controls.Add(this.cmdSchMostrtaSch);
+            this.panel5.Controls.Add(this.cmdSchRimuoviElemento);
+            this.panel5.Controls.Add(this.cmdSchInviaSch);
             this.panel5.Location = new System.Drawing.Point(1203, 519);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(354, 49);
+            this.panel5.Size = new System.Drawing.Size(354, 116);
             this.panel5.TabIndex = 3;
             // 
-            // panel4
+            // cmdSchGeneraByteArray
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(742, 574);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(354, 80);
-            this.panel4.TabIndex = 2;
+            this.cmdSchGeneraByteArray.Location = new System.Drawing.Point(124, 63);
+            this.cmdSchGeneraByteArray.Name = "cmdSchGeneraByteArray";
+            this.cmdSchGeneraByteArray.Size = new System.Drawing.Size(103, 41);
+            this.cmdSchGeneraByteArray.TabIndex = 85;
+            this.cmdSchGeneraByteArray.Text = "Genera Byte";
+            this.cmdSchGeneraByteArray.UseVisualStyleBackColor = true;
+            this.cmdSchGeneraByteArray.Click += new System.EventHandler(this.cmdSchGeneraByteArray_Click);
+            // 
+            // cmdSchMostrtaSch
+            // 
+            this.cmdSchMostrtaSch.Location = new System.Drawing.Point(15, 14);
+            this.cmdSchMostrtaSch.Name = "cmdSchMostrtaSch";
+            this.cmdSchMostrtaSch.Size = new System.Drawing.Size(103, 41);
+            this.cmdSchMostrtaSch.TabIndex = 84;
+            this.cmdSchMostrtaSch.Text = "Mostra Sch";
+            this.cmdSchMostrtaSch.UseVisualStyleBackColor = true;
+            this.cmdSchMostrtaSch.Click += new System.EventHandler(this.cmdSchMostrtaSch_Click);
+            // 
+            // cmdSchRimuoviElemento
+            // 
+            this.cmdSchRimuoviElemento.Location = new System.Drawing.Point(124, 14);
+            this.cmdSchRimuoviElemento.Name = "cmdSchRimuoviElemento";
+            this.cmdSchRimuoviElemento.Size = new System.Drawing.Size(103, 41);
+            this.cmdSchRimuoviElemento.TabIndex = 83;
+            this.cmdSchRimuoviElemento.Text = "Rimuovi";
+            this.cmdSchRimuoviElemento.UseVisualStyleBackColor = true;
+            this.cmdSchRimuoviElemento.Click += new System.EventHandler(this.cmdSchRimuoviElemento_Click);
+            // 
+            // cmdSchInviaSch
+            // 
+            this.cmdSchInviaSch.Location = new System.Drawing.Point(233, 63);
+            this.cmdSchInviaSch.Name = "cmdSchInviaSch";
+            this.cmdSchInviaSch.Size = new System.Drawing.Size(103, 41);
+            this.cmdSchInviaSch.TabIndex = 82;
+            this.cmdSchInviaSch.Text = "Invia Sch";
+            this.cmdSchInviaSch.UseVisualStyleBackColor = true;
+            this.cmdSchInviaSch.Click += new System.EventHandler(this.cmdSchInviaSch_Click);
             // 
             // pnlSchImmagineSchermata
             // 
@@ -2674,7 +3126,7 @@
             this.pnlSchImmagineSchermata.Controls.Add(this.label63);
             this.pnlSchImmagineSchermata.Controls.Add(this.pbxSchImmagine);
             this.pnlSchImmagineSchermata.Controls.Add(this.label52);
-            this.pnlSchImmagineSchermata.Location = new System.Drawing.Point(66, 158);
+            this.pnlSchImmagineSchermata.Location = new System.Drawing.Point(57, 257);
             this.pnlSchImmagineSchermata.Name = "pnlSchImmagineSchermata";
             this.pnlSchImmagineSchermata.Size = new System.Drawing.Size(473, 377);
             this.pnlSchImmagineSchermata.TabIndex = 1;
@@ -2714,7 +3166,7 @@
             // 
             this.label59.AutoSize = true;
             this.label59.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label59.Location = new System.Drawing.Point(13, 233);
+            this.label59.Location = new System.Drawing.Point(13, 235);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(19, 17);
             this.label59.TabIndex = 98;
@@ -2777,11 +3229,11 @@
             // txtSchBaseSize
             // 
             this.txtSchBaseSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtSchBaseSize.Location = new System.Drawing.Point(231, 255);
+            this.txtSchBaseSize.Location = new System.Drawing.Point(207, 255);
             this.txtSchBaseSize.MaxLength = 8;
             this.txtSchBaseSize.Name = "txtSchBaseSize";
             this.txtSchBaseSize.ReadOnly = true;
-            this.txtSchBaseSize.Size = new System.Drawing.Size(78, 24);
+            this.txtSchBaseSize.Size = new System.Drawing.Size(149, 24);
             this.txtSchBaseSize.TabIndex = 92;
             this.txtSchBaseSize.Text = "0";
             this.txtSchBaseSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -2790,7 +3242,7 @@
             // 
             this.label62.AutoSize = true;
             this.label62.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label62.Location = new System.Drawing.Point(228, 235);
+            this.label62.Location = new System.Drawing.Point(204, 235);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(35, 17);
             this.label62.TabIndex = 91;
@@ -2799,20 +3251,19 @@
             // txtSchBaseName
             // 
             this.txtSchBaseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtSchBaseName.Location = new System.Drawing.Point(80, 255);
+            this.txtSchBaseName.Location = new System.Drawing.Point(71, 255);
             this.txtSchBaseName.MaxLength = 8;
             this.txtSchBaseName.Name = "txtSchBaseName";
             this.txtSchBaseName.ReadOnly = true;
-            this.txtSchBaseName.Size = new System.Drawing.Size(101, 24);
+            this.txtSchBaseName.Size = new System.Drawing.Size(130, 24);
             this.txtSchBaseName.TabIndex = 90;
-            this.txtSchBaseName.Text = "IMAGE001";
             this.txtSchBaseName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label63
             // 
             this.label63.AutoSize = true;
             this.label63.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label63.Location = new System.Drawing.Point(77, 233);
+            this.label63.Location = new System.Drawing.Point(68, 235);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(97, 17);
             this.label63.TabIndex = 89;
@@ -2851,10 +3302,7 @@
             this.flvSchListaSchermate.UseCompatibleStateImageBehavior = false;
             this.flvSchListaSchermate.View = System.Windows.Forms.View.Details;
             this.flvSchListaSchermate.VirtualMode = true;
-            // 
-            // ofdImportDati
-            // 
-            this.ofdImportDati.FileName = "openFileDialog1";
+            this.flvSchListaSchermate.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.flvSchListaSchermate_MouseDoubleClick);
             // 
             // frmDisplayManager
             // 
@@ -2915,9 +3363,14 @@
             this.groupBox2.PerformLayout();
             this.tbpSchermate.ResumeLayout(false);
             this.tbpSchermate.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView2)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvSchListaComandi)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.pnlSchImmagineSchermata.ResumeLayout(false);
             this.pnlSchImmagineSchermata.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSchImmagine)).EndInit();
@@ -3058,7 +3511,6 @@
         private System.Windows.Forms.Label label30;
         private BrightIdeasSoftware.FastObjectListView flvImgListaImmagini;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel pnlSchImmagineSchermata;
         private BrightIdeasSoftware.FastObjectListView flvSchListaSchermate;
         private System.Windows.Forms.Panel panel7;
@@ -3094,12 +3546,12 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnImgRimuoviImmagine;
+        private System.Windows.Forms.Button btnImgInviaImmagine;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox txtVarValore;
+        private System.Windows.Forms.Button btnVarCancellaVariabile;
+        private System.Windows.Forms.Button btnVarInviaValore;
         private BrightIdeasSoftware.FastObjectListView flvVarListaVariabili;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label44;
@@ -3131,8 +3583,7 @@
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Panel panel12;
-        private BrightIdeasSoftware.FastObjectListView fastObjectListView2;
+        private BrightIdeasSoftware.FastObjectListView flvSchListaComandi;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label49;
@@ -3163,5 +3614,43 @@
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.TextBox txtSchBaseName;
         private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Button cmdSchMostrtaSch;
+        private System.Windows.Forms.Button cmdSchRimuoviElemento;
+        private System.Windows.Forms.Button cmdSchInviaSch;
+        private System.Windows.Forms.Button cmdSchGeneraByteArray;
+        private System.Windows.Forms.ComboBox cmbSchTipoComando;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnSchCmdLoad;
+        private System.Windows.Forms.Button btnSchCmdDel;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.TextBox txtSchCmdTempoOFF;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.TextBox txtSchCmdTempoON;
+        private System.Windows.Forms.Button btnSchCmdAdd;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox txtSchCmdNum;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.TextBox txtSchCmdText;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox txtSchCmdLenVarChar;
+        private System.Windows.Forms.TextBox txtSchCmdNumImg;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.TextBox txtSchCmdLenVarPix;
+        private System.Windows.Forms.TextBox txtSchCmdNumVar;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox txtSchCmdColor;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox txtSchCmdPosY;
+        private System.Windows.Forms.TextBox txtSchCmdPosX;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox txtSchCmdHeigh;
+        private System.Windows.Forms.TextBox txtSchCmdWidth;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button cmdSchNuovaSchermata;
+        private System.Windows.Forms.Button btnSchCmdNew;
     }
 }

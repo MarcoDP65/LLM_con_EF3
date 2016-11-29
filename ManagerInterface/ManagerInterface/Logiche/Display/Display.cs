@@ -29,18 +29,30 @@ namespace ChargerLogic
         private static Queue<byte> codaDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
         private static Queue<byte> echoDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
 
-
+        
         
         public List<DisplaySetup.Immagine> Immagini = new List<DisplaySetup.Immagine>();
         public List<DisplaySetup.Schermata> Schermate = new List<DisplaySetup.Schermata>();
         public List<DisplaySetup.Variabile> Variabili = new List<DisplaySetup.Variabile>();
-        
+        /*
+        public List<DisplaySetup.ModelloComando> ListaComandi = new List<DisplaySetup.ModelloComando>
+        {
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviTesto6x8,    Nome = "Scrivi Testo 6x8",     ValoreStringa = true,   LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviOra6x8,      Nome = "Scrivi Ora 6x8",       ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviData6x8,     Nome = "Scrivi Data 6x8",      ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviTesto16,     Nome = "Scrivi Testo 16",      ValoreStringa = true,   LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviVariabile6x8,Nome = "Scrivi Variabile 6x8", ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviVariabile16, Nome = "Scrivi Variabile 16",  ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.DisegnaImmagine,   Nome = "Disegna Immagine",     ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScrollImmagini,    Nome = "Scroll Immagini",      ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
+        };
+        */
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
         private int _timeOut = 10;
         private DateTime _startRead;
         private SerialMessage.TipoRisposta _ultimaRisposta = SerialMessage.TipoRisposta.NonValido;   // flag per l'indicazioene del tipo dell'ultimo messaggio ricevuto dalla scheda
-        public const byte DimBloccoDati = 200;
+        public const ushort DimBloccoDati = 256;
 
 
         //internal delegate void SerialDataReceivedEventHandlerDelegate(object sender, SerialDataReceivedEventArgs e);
@@ -372,6 +384,10 @@ namespace ChargerLogic
             try
             {
                 bool _esito = false;
+                int NumBlocco = 0;
+
+                //Prima mi accerto che il bytearray sia pronto
+
 
                 _mD.Comando = SerialMessage.TipoComando.DI_W_SalvaImmagineMemoria;
                 _mD._comando = (byte)SerialMessage.TipoComando.DI_W_SalvaImmagineMemoria;
@@ -391,7 +407,7 @@ namespace ChargerLogic
                     // se la testata è arrivata, mando il corpo dell'immagine
                     byte[] _tmpBlocco;
                     ushort _currPos = 0;
-                    byte _dimCorrente = 0;
+                    ushort _dimCorrente = 0;
 
                     if (Img.Size > DimBloccoDati)
                     {
@@ -410,6 +426,9 @@ namespace ChargerLogic
 
                         _mD.ComponiMessaggioPacchettoImmagine(_dimCorrente, _tmpBlocco);
                         _rxRisposta = false;
+                        Log.Debug("----------------------------------------------------------------------------------------------------");
+                        Log.Debug("- Blocco Immagine N° " + ++NumBlocco);
+                        Log.Debug("----------------------------------------------------------------------------------------------------");
                         Log.Debug("Display - Invio Corpo immagine; trasmissione di " + _dimCorrente.ToString() + " bites dal punto " + _currPos.ToString());
                         Log.Debug(_mD.hexdumpMessaggio());
                         echoDatiSER.Clear();
@@ -603,6 +622,137 @@ namespace ChargerLogic
                 return _risposta;
             }
         }
+
+
+        public bool CaricaSchermata (DisplaySetup.Schermata Screen)
+        {
+            bool _risposta = false;
+
+            try
+            {
+                bool _esito = false;
+
+                if (Screen == null)
+                {
+                    Log.Info("CaricaSchermata: richiesto inserimento schermata nulla");
+                    return false;
+                }
+                else
+                {
+                    Log.Info("CaricaSchermata: richiesto inserimento schermata " + Screen.Id.ToString());
+                }
+
+                if (Screen.Id != 0)
+                {
+
+                    // Step 0 - verificare se necessario: cancellazione memoria
+
+                    // Step 1 : testata schermata
+                    
+                _mD.Comando = SerialMessage.TipoComando.DI_W_SalvaSchermataMemoria;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_W_SalvaSchermataMemoria;
+                _mD.ComponiMessaggioInviaTestataSchermata(Screen);
+                _rxRisposta = false;
+                Log.Debug("Display- Invio Testata Schermata");
+                Log.Debug(_mD.hexdumpMessaggio());
+                echoDatiSER.Clear();
+                for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                {
+                    echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                }
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                    if (_esito)
+                    {
+                        // se la testata è arrivata, mando il corpo dell'immagine
+                        byte[] _tmpBlocco;
+                        ushort _currPos = 0;
+                        ushort _dimCorrente = 0;
+
+                        if (Screen.Size > DimBloccoDati)
+                        {
+                            _dimCorrente = DimBloccoDati;
+                        }
+                        else
+                        {
+                            _dimCorrente = Screen.Size;
+                        }
+
+
+                        while (_dimCorrente > 0)
+                        {
+                            //_tmpBlocco = new byte[_dimCorrente];
+
+                            // Comunque compongo un pacchetto alla dimensione max
+                            _tmpBlocco = new byte[DimBloccoDati];
+
+                            Array.Copy(Screen.ImageBuffer, _currPos, _tmpBlocco, 0, _dimCorrente);
+
+                            _mD.ComponiMessaggioPacchettoImmagineScreen(DimBloccoDati, _tmpBlocco);
+                            _rxRisposta = false;
+                            Log.Debug("Display - Invio Corpo immagine; trasmissione di " + _dimCorrente.ToString() + " bites dal punto " + _currPos.ToString());
+                            Log.Debug(_mD.hexdumpMessaggio());
+                            echoDatiSER.Clear();
+                            for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                            {
+                                echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                            }
+                            scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                            _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true, false, false, false, true);
+
+                            _currPos += _dimCorrente;
+                            int _residuo = Screen.Size - _currPos;
+
+                            if (_residuo > DimBloccoDati)
+                            {
+                                _dimCorrente = DimBloccoDati;
+                            }
+                            else
+                            {
+                                _dimCorrente = (ushort)_residuo;
+                            }
+
+
+                        }
+
+                        // 2 comandi fissi
+                        foreach (DisplaySetup.Comando _tmpCmd in Screen.Comandi)
+                        {
+                            byte LenPacchetto = _tmpCmd.ComponiByteArray();
+                  
+                            _mD.ComponiMessaggioPacchettoImmagineScreen(LenPacchetto, _tmpCmd.ArrayComando);
+                            _rxRisposta = false;
+                            Log.Debug("Display - Invio pacchetto Comando " + _tmpCmd.Numero.ToString() + " - " + _tmpCmd.DescAttivita);
+                            Log.Debug(_mD.hexdumpMessaggio());
+                            echoDatiSER.Clear();
+                            for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                            {
+                                echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                            }
+                            scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                            _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true,false,false,false,true);
+                        }
+
+
+                    }
+
+
+
+
+                }
+
+
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaSchermata: " + Ex.Message);
+                return _risposta;
+            }
+
+        }
+               
 
     }
 

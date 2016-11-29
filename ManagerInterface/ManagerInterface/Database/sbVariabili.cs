@@ -343,7 +343,7 @@ namespace MoriData
 
         public string strTempNTC
         {
-            get { return FunzioniMR.StringaTemperatura((short)_sbPar.TempNTC); }
+            get { return FunzioniMR.StringaByteTemp(_sbPar.TempNTC); }
         }
 
 

@@ -313,6 +313,14 @@
             this.lblTurno3 = new System.Windows.Forms.Label();
             this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
+            this.grbCalData = new System.Windows.Forms.GroupBox();
+            this.btnCalScriviGiorno = new System.Windows.Forms.Button();
+            this.txtCalAnno = new System.Windows.Forms.TextBox();
+            this.label250 = new System.Windows.Forms.Label();
+            this.txtCalMese = new System.Windows.Forms.TextBox();
+            this.label249 = new System.Windows.Forms.Label();
+            this.txtCalGiorno = new System.Windows.Forms.TextBox();
+            this.label248 = new System.Windows.Forms.Label();
             this.grbAccensione = new System.Windows.Forms.GroupBox();
             this.lblOrarioAccensione = new System.Windows.Forms.Label();
             this.cmbMinAccensione = new System.Windows.Forms.ComboBox();
@@ -341,6 +349,15 @@
             this.opSonda02 = new System.Windows.Forms.RadioButton();
             this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
+            this.grbSvcParametriMedie = new System.Windows.Forms.GroupBox();
+            this.txtSvcSecDurataPause = new System.Windows.Forms.MaskedTextBox();
+            this.label253 = new System.Windows.Forms.Label();
+            this.btnSvcScriviParametriMedie = new System.Windows.Forms.Button();
+            this.btnSvcLeggiParametriMedie = new System.Windows.Forms.Button();
+            this.label252 = new System.Windows.Forms.Label();
+            this.txtSvcNumLettureTens = new System.Windows.Forms.TextBox();
+            this.label251 = new System.Windows.Forms.Label();
+            this.txtSvcNumLettureCorr = new System.Windows.Forms.TextBox();
             this.grbVarResetScheda = new System.Windows.Forms.GroupBox();
             this.chkFSerMantieniCliente = new System.Windows.Forms.CheckBox();
             this.btnFSerCancellaMemoria = new System.Windows.Forms.Button();
@@ -934,12 +951,14 @@
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
             this.tabCb05.SuspendLayout();
+            this.grbCalData.SuspendLayout();
             this.grbAccensione.SuspendLayout();
             this.grbOraCorrente.SuspendLayout();
             this.tabCb03.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.grbComboSonda.SuspendLayout();
             this.tabSbFact.SuspendLayout();
+            this.grbSvcParametriMedie.SuspendLayout();
             this.grbVarResetScheda.SuspendLayout();
             this.grbCalibrazionePulsanti.SuspendLayout();
             this.grbCalibrazioni.SuspendLayout();
@@ -2972,11 +2991,62 @@
             // 
             // tabCb05
             // 
+            this.tabCb05.Controls.Add(this.grbCalData);
             this.tabCb05.Controls.Add(this.grbAccensione);
             this.tabCb05.Controls.Add(this.grbOraCorrente);
             resources.ApplyResources(this.tabCb05, "tabCb05");
             this.tabCb05.Name = "tabCb05";
             this.tabCb05.UseVisualStyleBackColor = true;
+            // 
+            // grbCalData
+            // 
+            this.grbCalData.Controls.Add(this.btnCalScriviGiorno);
+            this.grbCalData.Controls.Add(this.txtCalAnno);
+            this.grbCalData.Controls.Add(this.label250);
+            this.grbCalData.Controls.Add(this.txtCalMese);
+            this.grbCalData.Controls.Add(this.label249);
+            this.grbCalData.Controls.Add(this.txtCalGiorno);
+            this.grbCalData.Controls.Add(this.label248);
+            resources.ApplyResources(this.grbCalData, "grbCalData");
+            this.grbCalData.Name = "grbCalData";
+            this.grbCalData.TabStop = false;
+            // 
+            // btnCalScriviGiorno
+            // 
+            resources.ApplyResources(this.btnCalScriviGiorno, "btnCalScriviGiorno");
+            this.btnCalScriviGiorno.Name = "btnCalScriviGiorno";
+            this.btnCalScriviGiorno.UseVisualStyleBackColor = true;
+            this.btnCalScriviGiorno.Click += new System.EventHandler(this.btnCalScriviGiorno_Click);
+            // 
+            // txtCalAnno
+            // 
+            resources.ApplyResources(this.txtCalAnno, "txtCalAnno");
+            this.txtCalAnno.Name = "txtCalAnno";
+            // 
+            // label250
+            // 
+            resources.ApplyResources(this.label250, "label250");
+            this.label250.Name = "label250";
+            // 
+            // txtCalMese
+            // 
+            resources.ApplyResources(this.txtCalMese, "txtCalMese");
+            this.txtCalMese.Name = "txtCalMese";
+            // 
+            // label249
+            // 
+            resources.ApplyResources(this.label249, "label249");
+            this.label249.Name = "label249";
+            // 
+            // txtCalGiorno
+            // 
+            resources.ApplyResources(this.txtCalGiorno, "txtCalGiorno");
+            this.txtCalGiorno.Name = "txtCalGiorno";
+            // 
+            // label248
+            // 
+            resources.ApplyResources(this.label248, "label248");
+            this.label248.Name = "label248";
             // 
             // grbAccensione
             // 
@@ -3255,6 +3325,7 @@
             // tabSbFact
             // 
             this.tabSbFact.BackColor = System.Drawing.Color.LightYellow;
+            this.tabSbFact.Controls.Add(this.grbSvcParametriMedie);
             this.tabSbFact.Controls.Add(this.grbVarResetScheda);
             this.tabSbFact.Controls.Add(this.grbCalibrazionePulsanti);
             this.tabSbFact.Controls.Add(this.grbCalibrazioni);
@@ -3265,6 +3336,68 @@
             resources.ApplyResources(this.tabSbFact, "tabSbFact");
             this.tabSbFact.Name = "tabSbFact";
             this.tabSbFact.Click += new System.EventHandler(this.tabSbFact_Click);
+            // 
+            // grbSvcParametriMedie
+            // 
+            this.grbSvcParametriMedie.BackColor = System.Drawing.Color.White;
+            this.grbSvcParametriMedie.Controls.Add(this.txtSvcSecDurataPause);
+            this.grbSvcParametriMedie.Controls.Add(this.label253);
+            this.grbSvcParametriMedie.Controls.Add(this.btnSvcScriviParametriMedie);
+            this.grbSvcParametriMedie.Controls.Add(this.btnSvcLeggiParametriMedie);
+            this.grbSvcParametriMedie.Controls.Add(this.label252);
+            this.grbSvcParametriMedie.Controls.Add(this.txtSvcNumLettureTens);
+            this.grbSvcParametriMedie.Controls.Add(this.label251);
+            this.grbSvcParametriMedie.Controls.Add(this.txtSvcNumLettureCorr);
+            resources.ApplyResources(this.grbSvcParametriMedie, "grbSvcParametriMedie");
+            this.grbSvcParametriMedie.Name = "grbSvcParametriMedie";
+            this.grbSvcParametriMedie.TabStop = false;
+            // 
+            // txtSvcSecDurataPause
+            // 
+            resources.ApplyResources(this.txtSvcSecDurataPause, "txtSvcSecDurataPause");
+            this.txtSvcSecDurataPause.Name = "txtSvcSecDurataPause";
+            this.txtSvcSecDurataPause.Leave += new System.EventHandler(this.txtSvcSecDurataPause_Leave);
+            // 
+            // label253
+            // 
+            resources.ApplyResources(this.label253, "label253");
+            this.label253.Name = "label253";
+            // 
+            // btnSvcScriviParametriMedie
+            // 
+            resources.ApplyResources(this.btnSvcScriviParametriMedie, "btnSvcScriviParametriMedie");
+            this.btnSvcScriviParametriMedie.Name = "btnSvcScriviParametriMedie";
+            this.btnSvcScriviParametriMedie.UseVisualStyleBackColor = true;
+            this.btnSvcScriviParametriMedie.Click += new System.EventHandler(this.btnSvcScriviParametriMedie_Click);
+            // 
+            // btnSvcLeggiParametriMedie
+            // 
+            resources.ApplyResources(this.btnSvcLeggiParametriMedie, "btnSvcLeggiParametriMedie");
+            this.btnSvcLeggiParametriMedie.Name = "btnSvcLeggiParametriMedie";
+            this.btnSvcLeggiParametriMedie.UseVisualStyleBackColor = true;
+            this.btnSvcLeggiParametriMedie.Click += new System.EventHandler(this.btnSvcLeggiParametriMedie_Click);
+            // 
+            // label252
+            // 
+            resources.ApplyResources(this.label252, "label252");
+            this.label252.Name = "label252";
+            // 
+            // txtSvcNumLettureTens
+            // 
+            resources.ApplyResources(this.txtSvcNumLettureTens, "txtSvcNumLettureTens");
+            this.txtSvcNumLettureTens.Name = "txtSvcNumLettureTens";
+            this.txtSvcNumLettureTens.Leave += new System.EventHandler(this.txtSvcNumLettureTens_Leave);
+            // 
+            // label251
+            // 
+            resources.ApplyResources(this.label251, "label251");
+            this.label251.Name = "label251";
+            // 
+            // txtSvcNumLettureCorr
+            // 
+            resources.ApplyResources(this.txtSvcNumLettureCorr, "txtSvcNumLettureCorr");
+            this.txtSvcNumLettureCorr.Name = "txtSvcNumLettureCorr";
+            this.txtSvcNumLettureCorr.Leave += new System.EventHandler(this.txtSvcNumLettureCorr_Leave);
             // 
             // grbVarResetScheda
             // 
@@ -6909,6 +7042,8 @@
             this.panel13.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.tabCb05.ResumeLayout(false);
+            this.grbCalData.ResumeLayout(false);
+            this.grbCalData.PerformLayout();
             this.grbAccensione.ResumeLayout(false);
             this.grbAccensione.PerformLayout();
             this.grbOraCorrente.ResumeLayout(false);
@@ -6920,6 +7055,8 @@
             this.grbComboSonda.PerformLayout();
             this.tabSbFact.ResumeLayout(false);
             this.tabSbFact.PerformLayout();
+            this.grbSvcParametriMedie.ResumeLayout(false);
+            this.grbSvcParametriMedie.PerformLayout();
             this.grbVarResetScheda.ResumeLayout(false);
             this.grbVarResetScheda.PerformLayout();
             this.grbCalibrazionePulsanti.ResumeLayout(false);
@@ -7858,5 +7995,22 @@
         private System.Windows.Forms.Label label244;
         private System.Windows.Forms.TextBox txtStratQryGg;
         private System.Windows.Forms.Label label245;
+        private System.Windows.Forms.GroupBox grbCalData;
+        private System.Windows.Forms.Button btnCalScriviGiorno;
+        private System.Windows.Forms.TextBox txtCalAnno;
+        private System.Windows.Forms.Label label250;
+        private System.Windows.Forms.TextBox txtCalMese;
+        private System.Windows.Forms.Label label249;
+        private System.Windows.Forms.TextBox txtCalGiorno;
+        private System.Windows.Forms.Label label248;
+        private System.Windows.Forms.GroupBox grbSvcParametriMedie;
+        private System.Windows.Forms.MaskedTextBox txtSvcSecDurataPause;
+        private System.Windows.Forms.Label label253;
+        private System.Windows.Forms.Button btnSvcScriviParametriMedie;
+        private System.Windows.Forms.Button btnSvcLeggiParametriMedie;
+        private System.Windows.Forms.Label label252;
+        private System.Windows.Forms.TextBox txtSvcNumLettureTens;
+        private System.Windows.Forms.Label label251;
+        private System.Windows.Forms.TextBox txtSvcNumLettureCorr;
     }
 }

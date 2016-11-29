@@ -1715,6 +1715,71 @@ namespace ChargerLogic
 
         }
 
+        public class ParametriSpybatt
+        {
+
+            public ushort LettureTensione { get; set; }
+            public ushort LettureCorrente { get; set; }
+            public ushort DurataPausa { get; set; }
+
+            public DateTime IstanteLettura { get; set; }
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+
+                try
+                {
+                    datiPronti = false;
+                    if (_messaggio.Length < 2)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    _risposta = new byte[(_messaggio.Length / 2)];
+
+                    if (decodificaArray(_messaggio, ref _risposta))
+                    {
+                        Log.Debug(" ---------------------- ParametriSpybatt -----------------------------------------");
+                        Log.Debug(FunzioniMR.hexdumpArray(_risposta));
+
+                        startByte = 0;
+
+                        LettureCorrente = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        LettureTensione = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        DurataPausa = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+
+
+
+                        datiPronti = true;
+                        IstanteLettura = DateTime.Now;
+
+                    }
+
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+        }
+
         public class StatoFirmware
         {
 

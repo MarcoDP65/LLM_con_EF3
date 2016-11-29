@@ -50,6 +50,11 @@ namespace ChargerLogic
                     {
                         item.ImgToBytearray();
                     }
+                    // Converto anche tutte le immagini delle schermate
+                    foreach (Schermata item in Modello.Schermate)
+                    {
+                        item.ImgToBytearray();
+                    }
 
                     Log.Debug("--- Esportazione Modello Display ---");
                     Modello.DataModifica = DateTime.Now;
@@ -149,7 +154,11 @@ namespace ChargerLogic
                             item.BytearrayToImg();
                         }
 
-
+                        // Riconverto tutti i bytearray in immagini (schermate)
+                        foreach (Schermata item in Modello.Schermate)
+                        {
+                            item.BytearrayToImg();
+                        }
                     }
 
                     return true;

@@ -10,6 +10,7 @@ using System.Text;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 using NextUI.Component;
 using NextUI.Frame;
@@ -945,6 +946,10 @@ namespace PannelloCharger
                     abilitaSalvataggi(_apparatoPresente);
 
                     CaricaProgrammazioni();
+
+                    _sb.CaricaParametri(_sb.Id, _apparatoPresente);
+                    MostraParametriGenerali();
+
                 }
 
                 return true;
@@ -3161,7 +3166,7 @@ namespace PannelloCharger
                     //bool _caricaBrevi = ( chkCaricaBrevi.Checked == true );
                     //RicaricaCicli(1, _caricaBrevi);
                     CaricaCicli();
-
+                    CaricaTestata(_sb.Id, _logiche, _apparatoPresente);
                     btnCaricaDettaglioSel.Enabled = _apparatoPresente;
                     RicalcolaStatistiche();
                     //_avCicli.Dispose();
@@ -8088,5 +8093,198 @@ namespace PannelloCharger
 
         }
 
+        private void btnCalScriviGiorno_Click(object sender, EventArgs e)
+        {
+            bool _esito;
+            try
+            {
+                int _giorno = int.Parse(txtCalGiorno.Text);
+                int _mese = int.Parse(txtCalMese.Text);
+                int _anno = int.Parse(txtCalAnno.Text);
+                _esito = _sb.ForzaOrologio(_giorno,_mese,_anno);
+                if (_esito)
+                {
+
+                    _esito = _sb.LeggiOrologio();
+                    if (_esito)
+                    {
+                        txtOraRtc.Text = _sb.OrologioSistema.ore.ToString("00") + ":" + _sb.OrologioSistema.minuti.ToString("00");
+                        txtDataRtc.Text = _sb.OrologioSistema.giorno.ToString("00") + "/" + _sb.OrologioSistema.mese.ToString("00") + "/" + _sb.OrologioSistema.anno.ToString("0000");
+                    }
+
+                }
+
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnSvcLeggiParametriMedie_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _sb.CaricaParametri(_sb.Id, _apparatoPresente);
+                MostraParametriGenerali();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnSvcLeggiParametriMedie_Click: " + Ex.Message);
+            }
+        }
+
+        public bool MostraParametriGenerali()
+        {
+            try
+            {
+                TimeSpan _durata;
+                txtSvcNumLettureCorr.Text = "";
+                txtSvcNumLettureTens.Text = "";
+                txtSvcSecDurataPause.Text = "";
+
+                if (_sb.ParametriGenerali != null)
+                {
+                    txtSvcNumLettureCorr.Text = _sb.ParametriGenerali.LettureCorrente.ToString();
+                    txtSvcNumLettureCorr.ForeColor = Color.Black;
+                    txtSvcNumLettureTens.Text = _sb.ParametriGenerali.LettureTensione.ToString();
+                    txtSvcNumLettureTens.ForeColor = Color.Black;
+
+
+                    _durata = TimeSpan.FromSeconds(_sb.ParametriGenerali.DurataPausa);
+                    txtSvcSecDurataPause.Text = _durata.ToString();
+                    txtSvcSecDurataPause.ForeColor = Color.Black;
+
+
+                }
+
+
+
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraParametriGenerali: " + Ex.Message);
+                return false;
+            }
+        }
+
+        private void txtSvcNumLettureCorr_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _VerificaNumero;
+                ushort _nuovoValore;
+
+                _VerificaNumero = ushort.TryParse(txtSvcNumLettureCorr.Text, out _nuovoValore);
+                if (!_VerificaNumero)
+                    _nuovoValore = _sb.ParametriGenerali.LettureCorrente;
+
+                txtSvcNumLettureCorr.Text = _nuovoValore.ToString();
+                if (_nuovoValore != _sb.ParametriGenerali.LettureCorrente)
+                    txtSvcNumLettureCorr.ForeColor = Color.Red;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtSvcNumLettureCorr_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtSvcNumLettureTens_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _VerificaNumero;
+                ushort _nuovoValore;
+
+                _VerificaNumero = ushort.TryParse(txtSvcNumLettureTens.Text, out _nuovoValore);
+                if (!_VerificaNumero)
+                    _nuovoValore = _sb.ParametriGenerali.LettureTensione;
+
+                txtSvcNumLettureTens.Text = _nuovoValore.ToString();
+                if (_nuovoValore != _sb.ParametriGenerali.LettureTensione)
+                    txtSvcNumLettureTens.ForeColor = Color.Red;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtSvcNumLettureCorr_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void btnSvcScriviParametriMedie_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _VerificaNumero;
+                TimeSpan _tsRead;
+                ushort _nuovoValoreTens;
+                ushort _nuovoValoreCorr;
+                ushort _nuovoValorePausa;
+                _VerificaNumero = ushort.TryParse(txtSvcNumLettureCorr.Text, out _nuovoValoreCorr);
+                if (!_VerificaNumero)
+                    return;
+                _VerificaNumero = ushort.TryParse(txtSvcNumLettureTens.Text, out _nuovoValoreTens);
+                if (!_VerificaNumero)
+                    return;
+                
+
+                _VerificaNumero = TimeSpan.TryParse(txtSvcSecDurataPause.Text, out _tsRead);
+                if (!_VerificaNumero)
+                {
+                    _nuovoValorePausa = _sb.ParametriGenerali.DurataPausa;
+                }
+                else
+                {
+                    _nuovoValorePausa = (ushort)_tsRead.TotalSeconds;
+                }
+
+
+                _sb.ScriviParametriLettura(_nuovoValoreCorr, _nuovoValoreTens, _nuovoValorePausa);
+                //Thread.Sleep(500);
+                _sb.CaricaParametri(_sb.Id, _apparatoPresente);
+                MostraParametriGenerali();
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnSvcScriviParametriMedie_Click: " + Ex.Message);
+
+            }
+        }
+
+        private void txtSvcSecDurataPause_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _VerificaNumero;
+                ushort _nuovoValore;
+                TimeSpan _tsRead;
+
+                _VerificaNumero = TimeSpan.TryParse(txtSvcSecDurataPause.Text, out _tsRead);
+                if (!_VerificaNumero)
+                {
+                    _nuovoValore = _sb.ParametriGenerali.DurataPausa;
+                }
+                else
+                {
+                    _nuovoValore = (ushort)_tsRead.TotalSeconds;
+                }
+
+                _tsRead = TimeSpan.FromSeconds(_nuovoValore);
+                txtSvcSecDurataPause.Text = _tsRead.ToString();
+                if (_nuovoValore != _sb.ParametriGenerali.DurataPausa)
+                    txtSvcNumLettureTens.ForeColor = Color.Red;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtSvcSecDurataPause_Leave: " + Ex.Message);
+
+            }
+        }
     }
 }

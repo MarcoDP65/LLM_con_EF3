@@ -4968,6 +4968,9 @@
   <data name="&gt;&gt;btnPianSalvaCliente.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnPianRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnPianRefresh.Location" type="System.Drawing.Point, System.Drawing">
     <value>286, 9</value>
   </data>
@@ -5896,7 +5899,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 187</value>
+    <value>348, 183</value>
   </data>
   <data name="lblPro14.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 18</value>
@@ -5926,7 +5929,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro06.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 166</value>
+    <value>275, 162</value>
   </data>
   <data name="lblPro06.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 17</value>
@@ -5953,7 +5956,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtProTempRiavvio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 184</value>
+    <value>278, 180</value>
   </data>
   <data name="txtProTempRiavvio.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 24</value>
@@ -5989,7 +5992,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 187</value>
+    <value>219, 183</value>
   </data>
   <data name="lblPro13.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 18</value>
@@ -6019,7 +6022,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro05.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 166</value>
+    <value>146, 162</value>
   </data>
   <data name="lblPro05.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 17</value>
@@ -6046,7 +6049,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtProTempAllarme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 186</value>
+    <value>149, 182</value>
   </data>
   <data name="txtProTempAllarme.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 24</value>
@@ -6082,7 +6085,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 189</value>
+    <value>97, 185</value>
   </data>
   <data name="lblPro11.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 18</value>
@@ -6112,7 +6115,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro04.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 166</value>
+    <value>24, 162</value>
   </data>
   <data name="lblPro04.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 17</value>
@@ -6139,7 +6142,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtProTempAttenzione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 186</value>
+    <value>27, 182</value>
   </data>
   <data name="txtProTempAttenzione.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 24</value>
@@ -6442,7 +6445,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>588, 163</value>
+    <value>910, 163</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 17</value>
@@ -6472,7 +6475,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtProgcBattType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 182</value>
+    <value>913, 182</value>
   </data>
   <data name="txtProgcBattType.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 24</value>
@@ -8089,7 +8092,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.0.2.1, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.5, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -8198,6 +8201,237 @@
   </data>
   <data name="&gt;&gt;tabCb02.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="btnCalScriviGiorno.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCalScriviGiorno.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 82</value>
+  </data>
+  <data name="btnCalScriviGiorno.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 27</value>
+  </data>
+  <data name="btnCalScriviGiorno.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnCalScriviGiorno.Text" xml:space="preserve">
+    <value>Imposta Orologio</value>
+  </data>
+  <data name="&gt;&gt;btnCalScriviGiorno.Name" xml:space="preserve">
+    <value>btnCalScriviGiorno</value>
+  </data>
+  <data name="&gt;&gt;btnCalScriviGiorno.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCalScriviGiorno.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;btnCalScriviGiorno.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtCalAnno.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtCalAnno.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 49</value>
+  </data>
+  <data name="txtCalAnno.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 27</value>
+  </data>
+  <data name="txtCalAnno.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="txtCalAnno.Text" xml:space="preserve">
+    <value>2016</value>
+  </data>
+  <data name="txtCalAnno.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalAnno.Name" xml:space="preserve">
+    <value>txtCalAnno</value>
+  </data>
+  <data name="&gt;&gt;txtCalAnno.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalAnno.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;txtCalAnno.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label250.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label250.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label250.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 29</value>
+  </data>
+  <data name="label250.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="label250.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label250.Text" xml:space="preserve">
+    <value>Anno</value>
+  </data>
+  <data name="&gt;&gt;label250.Name" xml:space="preserve">
+    <value>label250</value>
+  </data>
+  <data name="&gt;&gt;label250.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label250.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;label250.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtCalMese.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtCalMese.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 49</value>
+  </data>
+  <data name="txtCalMese.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 27</value>
+  </data>
+  <data name="txtCalMese.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtCalMese.Text" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtCalMese.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalMese.Name" xml:space="preserve">
+    <value>txtCalMese</value>
+  </data>
+  <data name="&gt;&gt;txtCalMese.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalMese.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;txtCalMese.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label249.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label249.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label249.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 29</value>
+  </data>
+  <data name="label249.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="label249.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label249.Text" xml:space="preserve">
+    <value>Mese</value>
+  </data>
+  <data name="&gt;&gt;label249.Name" xml:space="preserve">
+    <value>label249</value>
+  </data>
+  <data name="&gt;&gt;label249.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label249.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;label249.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtCalGiorno.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtCalGiorno.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 49</value>
+  </data>
+  <data name="txtCalGiorno.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 27</value>
+  </data>
+  <data name="txtCalGiorno.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="txtCalGiorno.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtCalGiorno.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalGiorno.Name" xml:space="preserve">
+    <value>txtCalGiorno</value>
+  </data>
+  <data name="&gt;&gt;txtCalGiorno.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalGiorno.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;txtCalGiorno.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label248.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label248.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label248.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 29</value>
+  </data>
+  <data name="label248.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 17</value>
+  </data>
+  <data name="label248.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label248.Text" xml:space="preserve">
+    <value>Giorno</value>
+  </data>
+  <data name="&gt;&gt;label248.Name" xml:space="preserve">
+    <value>label248</value>
+  </data>
+  <data name="&gt;&gt;label248.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label248.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;label248.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="grbCalData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 191</value>
+  </data>
+  <data name="grbCalData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 126</value>
+  </data>
+  <data name="grbCalData.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="grbCalData.Text" xml:space="preserve">
+    <value>Forza Data</value>
+  </data>
+  <data name="&gt;&gt;grbCalData.Name" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;grbCalData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbCalData.Parent" xml:space="preserve">
+    <value>tabCb05</value>
+  </data>
+  <data name="&gt;&gt;grbCalData.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="lblOrarioAccensione.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8575,7 +8809,7 @@
     <value>7</value>
   </data>
   <data name="grbAccensione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 220</value>
+    <value>38, 361</value>
   </data>
   <data name="grbAccensione.Size" type="System.Drawing.Size, System.Drawing">
     <value>401, 171</value>
@@ -8596,7 +8830,7 @@
     <value>tabCb05</value>
   </data>
   <data name="&gt;&gt;grbAccensione.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnScriviRtc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -8788,7 +9022,7 @@
     <value>tabCb05</value>
   </data>
   <data name="&gt;&gt;grbOraCorrente.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tabCb05.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -9186,6 +9420,267 @@
   <data name="&gt;&gt;tabCb03.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="txtSvcSecDurataPause.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtSvcSecDurataPause.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 180</value>
+  </data>
+  <data name="txtSvcSecDurataPause.Mask" xml:space="preserve">
+    <value>00:00:00</value>
+  </data>
+  <data name="txtSvcSecDurataPause.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 27</value>
+  </data>
+  <data name="txtSvcSecDurataPause.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="txtSvcSecDurataPause.Text" xml:space="preserve">
+    <value>180000</value>
+  </data>
+  <data name="txtSvcSecDurataPause.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtSvcSecDurataPause.Name" xml:space="preserve">
+    <value>txtSvcSecDurataPause</value>
+  </data>
+  <data name="&gt;&gt;txtSvcSecDurataPause.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSvcSecDurataPause.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;txtSvcSecDurataPause.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label253.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label253.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label253.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 160</value>
+  </data>
+  <data name="label253.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 17</value>
+  </data>
+  <data name="label253.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="label253.Text" xml:space="preserve">
+    <value>Durata Pausa</value>
+  </data>
+  <data name="&gt;&gt;label253.Name" xml:space="preserve">
+    <value>label253</value>
+  </data>
+  <data name="&gt;&gt;label253.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label253.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;label253.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSvcScriviParametriMedie.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSvcScriviParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 233</value>
+  </data>
+  <data name="btnSvcScriviParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 36</value>
+  </data>
+  <data name="btnSvcScriviParametriMedie.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="btnSvcScriviParametriMedie.Text" xml:space="preserve">
+    <value>Imposta</value>
+  </data>
+  <data name="&gt;&gt;btnSvcScriviParametriMedie.Name" xml:space="preserve">
+    <value>btnSvcScriviParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;btnSvcScriviParametriMedie.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSvcScriviParametriMedie.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;btnSvcScriviParametriMedie.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnSvcLeggiParametriMedie.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSvcLeggiParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 233</value>
+  </data>
+  <data name="btnSvcLeggiParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 36</value>
+  </data>
+  <data name="btnSvcLeggiParametriMedie.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="btnSvcLeggiParametriMedie.Text" xml:space="preserve">
+    <value>Verifica</value>
+  </data>
+  <data name="&gt;&gt;btnSvcLeggiParametriMedie.Name" xml:space="preserve">
+    <value>btnSvcLeggiParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;btnSvcLeggiParametriMedie.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSvcLeggiParametriMedie.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;btnSvcLeggiParametriMedie.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label252.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label252.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label252.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 87</value>
+  </data>
+  <data name="label252.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 17</value>
+  </data>
+  <data name="label252.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="label252.Text" xml:space="preserve">
+    <value>Num Letture Tensione/Temp.</value>
+  </data>
+  <data name="&gt;&gt;label252.Name" xml:space="preserve">
+    <value>label252</value>
+  </data>
+  <data name="&gt;&gt;label252.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label252.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;label252.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtSvcNumLettureTens.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtSvcNumLettureTens.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 107</value>
+  </data>
+  <data name="txtSvcNumLettureTens.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 27</value>
+  </data>
+  <data name="txtSvcNumLettureTens.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="txtSvcNumLettureTens.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtSvcNumLettureTens.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureTens.Name" xml:space="preserve">
+    <value>txtSvcNumLettureTens</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureTens.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureTens.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureTens.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label251.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label251.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label251.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 35</value>
+  </data>
+  <data name="label251.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 17</value>
+  </data>
+  <data name="label251.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="label251.Text" xml:space="preserve">
+    <value>Numero Letture Corrente</value>
+  </data>
+  <data name="&gt;&gt;label251.Name" xml:space="preserve">
+    <value>label251</value>
+  </data>
+  <data name="&gt;&gt;label251.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label251.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;label251.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtSvcNumLettureCorr.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtSvcNumLettureCorr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 55</value>
+  </data>
+  <data name="txtSvcNumLettureCorr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 27</value>
+  </data>
+  <data name="txtSvcNumLettureCorr.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="txtSvcNumLettureCorr.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtSvcNumLettureCorr.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureCorr.Name" xml:space="preserve">
+    <value>txtSvcNumLettureCorr</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureCorr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureCorr.Parent" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;txtSvcNumLettureCorr.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="grbSvcParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1175, 33</value>
+  </data>
+  <data name="grbSvcParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 291</value>
+  </data>
+  <data name="grbSvcParametriMedie.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="grbSvcParametriMedie.Text" xml:space="preserve">
+    <value>Parametri Sistema</value>
+  </data>
+  <data name="&gt;&gt;grbSvcParametriMedie.Name" xml:space="preserve">
+    <value>grbSvcParametriMedie</value>
+  </data>
+  <data name="&gt;&gt;grbSvcParametriMedie.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbSvcParametriMedie.Parent" xml:space="preserve">
+    <value>tabSbFact</value>
+  </data>
+  <data name="&gt;&gt;grbSvcParametriMedie.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="chkFSerMantieniCliente.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9268,7 +9763,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbVarResetScheda.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnAttivaCalibrazione.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9427,7 +9922,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbCalibrazionePulsanti.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnCalScriviParametro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -10459,7 +10954,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbCalibrazioni.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkParLetturaAuto.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10489,7 +10984,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;chkParLetturaAuto.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkDatiDiretti.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10519,7 +11014,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;chkDatiDiretti.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnLeggiVariabili.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -10546,7 +11041,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;btnLeggiVariabili.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="grbVariabiliConnVOK.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11638,7 +12133,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbVariabiliImmediate.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="tabSbFact.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -19317,6 +19812,9 @@
   <data name="chkCalRegistraSequenza.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="chkCalRegistraSequenza.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="chkCalRegistraSequenza.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 86</value>
   </data>
@@ -22375,7 +22873,7 @@
     <value>161, 210</value>
   </data>
   <data name="txtStratQryFC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 24</value>
+    <value>59, 24</value>
   </data>
   <data name="txtStratQryFC.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
@@ -22402,7 +22900,7 @@
     <value>NoControl</value>
   </data>
   <data name="label246.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 190</value>
+    <value>158, 190</value>
   </data>
   <data name="label246.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 17</value>
@@ -22429,10 +22927,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtStratQryMinChg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 210</value>
+    <value>95, 210</value>
   </data>
   <data name="txtStratQryMinChg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 24</value>
+    <value>60, 24</value>
   </data>
   <data name="txtStratQryMinChg.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -22486,10 +22984,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtStratQryGg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 210</value>
+    <value>50, 210</value>
   </data>
   <data name="txtStratQryGg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 24</value>
+    <value>39, 24</value>
   </data>
   <data name="txtStratQryGg.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -23018,6 +23516,9 @@
   </data>
   <data name="label166.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label166.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label166.Location" type="System.Drawing.Point, System.Drawing">
     <value>284, 251</value>
@@ -23720,6 +24221,9 @@
   </data>
   <data name="chkStratLLRabb.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="chkStratLLRabb.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="chkStratLLRabb.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 160</value>

@@ -18,6 +18,7 @@ using log4net.Config;
 using MoriData;
 using Utility;
 
+
 namespace PannelloCharger
 {
     public partial class frmDisplayManager : Form
@@ -43,6 +44,12 @@ namespace PannelloCharger
         public UnitaDisplay _disp;
         private DisplaySetup.Immagine _tempImg = new DisplaySetup.Immagine();
         private DisplaySetup.Schermata _tempSch = new DisplaySetup.Schermata();
+        private DisplaySetup.Comando _tempCmd = new DisplaySetup.Comando();
+
+        public List<ModelloComando> ModComandi;
+
+        BindingSource bsComandi = new BindingSource();
+
 
         public frmDisplayManager()
         {
@@ -52,9 +59,42 @@ namespace PannelloCharger
                 SerialPinChangedEventHandler1 = new SerialPinChangedEventHandler(PinChanged);
                 ComPort = new SerialPort();
                 _disp = new UnitaDisplay(ref ComPort);
+                CaricaModelliComando();
                 InizializzaVistaVariabili();
                 InizializzaVistaImmagini();
+                InizializzaVistaSchermate();
+                bsComandi.DataSource = ModComandi;
+                cmbSchTipoComando.DataSource = bsComandi.DataSource;
+  
+                cmbSchTipoComando.DisplayMember = "Nome";
+                cmbSchTipoComando.ValueMember = "Codice";
+
             }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+
+        public void CaricaModelliComando()
+        {
+            try
+            {
+                ModComandi = new List<ModelloComando>();
+
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.ScriviTesto6x8,    Nome = "Scrivi Testo 6x8",     ValoreStringa = true,   LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true, TempoOn = false, TempoOff = false, NumeroVariabile = false, NumeroImmagine = false });
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.ScriviOra6x8,      Nome = "Scrivi Ora 6x8",       ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false});
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.ScriviData6x8,     Nome = "Scrivi Data 6x8",      ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false});
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.ScriviTesto16,     Nome = "Scrivi Testo 16",      ValoreStringa = true,   LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false});
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.ScriviVariabile6x8,Nome = "Scrivi Variabile 6x8", ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false});
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.ScriviVariabile16, Nome = "Scrivi Variabile 16",  ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false});
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.DisegnaImmagine,   Nome = "Disegna Immagine",     ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false});
+                ModComandi.Add(new ModelloComando { Codice=ModelloComando.TipoComando.ScrollImmagini,    Nome = "Scroll Immagini",      ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false});
+
+
+            }
+
             catch (Exception Ex)
             {
                 Log.Error(Ex.Message);
@@ -514,18 +554,13 @@ namespace PannelloCharger
                     txtImgBaseDimX.Text = _tempImg.bmpBase.Width.ToString();
                     txtImgBaseDimY.Text = _tempImg.bmpBase.Height.ToString();
 
+                    // genero direttamente l'immagine trasformata
+                    _tempImg.bmp = _tempImg.bmpBase;
 
+                    pbxImgImmagine8b.BackColor = Color.Gray;
+                    pbxImgImmagine8b.Image = _tempImg.bmp;
+                    pbxImgImmagine8b.SizeMode = PictureBoxSizeMode.Normal;
 
-                    /*
-
-                    Image image = Image.FromFile(txtNuovoFile.Text);
-                    pbxImgImmagine.Image = image;
-
-                    txtImgBaseDimX.Text = image.Width.ToString();
-                    txtImgBaseDimY.Text = image.Height.ToString();
-                    txtImgBaseSize.Text = image.Size.ToString();
-                    */
-                    //pbxImgImmagine.SizeMode = PictureBoxSizeMode.Zoom;
                 }
             }
             catch (Exception Ex)
@@ -562,15 +597,12 @@ namespace PannelloCharger
         {
             DisplaySetup.Immagine _img = new DisplaySetup.Immagine();
 
-            _img.SetDemo5();
+            //_img.SetDemo5();
             _img.GeneraImmagine();
             pbxImgImmagine1b.Image = _img.bmp;
             txtImgDimImmagine.Text = _img.Size.ToString();
             txtImgDimX.Text = _img.Width.ToString();
             txtImgDimY.Text = _img.Height.ToString();
-
-
-
 
         }
 
@@ -1153,36 +1185,26 @@ namespace PannelloCharger
                 BrightIdeasSoftware.OLVColumn colIdImg = new BrightIdeasSoftware.OLVColumn();
                 colIdImg.Text = "ID";
                 colIdImg.AspectName = "Id";
-                colIdImg.Width = 30;
+                colIdImg.Width = 20;
                 colIdImg.HeaderTextAlign = HorizontalAlignment.Left;
                 colIdImg.TextAlign = HorizontalAlignment.Right;
                 flvSchListaSchermate.AllColumns.Add(colIdImg);
 
                 BrightIdeasSoftware.OLVColumn colNomeImg = new BrightIdeasSoftware.OLVColumn();
                 colNomeImg.Text = "Nome";
-                colNomeImg.AspectName = "Nome";
-                colNomeImg.Width = 200;
+                colNomeImg.AspectName = "NomeLista";
+                colNomeImg.Width = 100;
                 colNomeImg.HeaderTextAlign = HorizontalAlignment.Left;
                 colNomeImg.TextAlign = HorizontalAlignment.Left;
                 flvSchListaSchermate.AllColumns.Add(colNomeImg);
 
                 BrightIdeasSoftware.OLVColumn colWidthImg = new BrightIdeasSoftware.OLVColumn();
-                colWidthImg.Text = "Largh";
-                colWidthImg.AspectName = "Width";
-                colWidthImg.Width = 50;
+                colWidthImg.Text = "Cmd";
+                colWidthImg.AspectName = "strNumComandi";
+                colWidthImg.Width = 20;
                 colWidthImg.HeaderTextAlign = HorizontalAlignment.Left;
                 colWidthImg.TextAlign = HorizontalAlignment.Left;
                 flvSchListaSchermate.AllColumns.Add(colWidthImg);
-
-
-                BrightIdeasSoftware.OLVColumn colHeightImg = new BrightIdeasSoftware.OLVColumn();
-                colHeightImg.Text = "Alt";
-                colHeightImg.AspectName = "Height";
-                colHeightImg.Width = 50;
-                colHeightImg.HeaderTextAlign = HorizontalAlignment.Left;
-                colHeightImg.TextAlign = HorizontalAlignment.Left;
-                flvSchListaSchermate.AllColumns.Add(colHeightImg);
-
 
 
                 BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
@@ -1196,6 +1218,83 @@ namespace PannelloCharger
                 flvSchListaSchermate.RebuildColumns();
                 flvSchListaSchermate.SetObjects(_disp.Data.Modello.Schermate);
                 flvSchListaSchermate.BuildList();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaVistaSchermate: " + Ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Carico la lista dei comandi definiti per la schermata
+        /// </summary>
+        private void InizializzaVistaComandi()
+        {
+            try
+            {
+                HeaderFormatStyle _stile = new HeaderFormatStyle();
+                _stile.SetBackColor(Color.DarkGray);
+                _stile.SetForeColor(Color.Yellow);
+                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
+                _stile.SetFont(_carattere);
+                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
+
+                flvSchListaComandi.HeaderUsesThemes = false;
+                flvSchListaComandi.HeaderFormatStyle = _stile;
+                flvSchListaComandi.UseAlternatingBackColors = true;
+                flvSchListaComandi.AlternateRowBackColor = Color.LightGoldenrodYellow;
+
+                flvSchListaComandi.AllColumns.Clear();
+
+                flvSchListaComandi.View = View.Details;
+                flvSchListaComandi.ShowGroups = false;
+                flvSchListaComandi.GridLines = true;
+
+                BrightIdeasSoftware.OLVColumn colIdImg = new BrightIdeasSoftware.OLVColumn();
+                colIdImg.Text = "N°";
+                colIdImg.AspectName = "Numero";
+                colIdImg.Width = 20;
+                colIdImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colIdImg.TextAlign = HorizontalAlignment.Right;
+                flvSchListaComandi.AllColumns.Add(colIdImg);
+
+                BrightIdeasSoftware.OLVColumn colNomeImg = new BrightIdeasSoftware.OLVColumn();
+                colNomeImg.Text = "Nome";
+                colNomeImg.AspectName = "DescAttivita";
+                colNomeImg.Width = 100;
+                colNomeImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colNomeImg.TextAlign = HorizontalAlignment.Left;
+                flvSchListaComandi.AllColumns.Add(colNomeImg);
+
+                BrightIdeasSoftware.OLVColumn colWidthImg = new BrightIdeasSoftware.OLVColumn();
+                colWidthImg.Text = "Pos";
+                colWidthImg.AspectName = "Posizione";
+                colWidthImg.Width = 60;
+                colWidthImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colWidthImg.TextAlign = HorizontalAlignment.Center;
+                flvSchListaComandi.AllColumns.Add(colWidthImg);
+
+
+                BrightIdeasSoftware.OLVColumn colColorImg = new BrightIdeasSoftware.OLVColumn();
+                colColorImg.Text = "Col";
+                colColorImg.AspectName = "Colore";
+                colColorImg.Width = 40;
+                colColorImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colColorImg.TextAlign = HorizontalAlignment.Center;
+                flvSchListaComandi.AllColumns.Add(colColorImg);
+
+                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
+                colRowFiller.Text = "";
+                colRowFiller.Width = 60;
+                colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
+                colRowFiller.TextAlign = HorizontalAlignment.Right;
+                colRowFiller.FillsFreeSpace = true;
+                flvSchListaComandi.AllColumns.Add(colRowFiller);
+
+                flvSchListaComandi.RebuildColumns();
+                flvSchListaComandi.SetObjects(_tempSch.Comandi);
+                flvSchListaComandi.BuildList();
             }
             catch (Exception Ex)
             {
@@ -1410,6 +1509,26 @@ namespace PannelloCharger
             }
         }
 
+        private void btnImgRimuoviImmagine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvImgListaImmagini;
+
+                if (_lista.SelectedObject != null)
+                {
+
+                    _disp.Data.Modello.Immagini.Remove((DisplaySetup.Immagine)_lista.SelectedObject);
+                   // _lista.RemoveObject(_lista.SelectedObject);
+                }
+                InizializzaVistaImmagini();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
+
         private void btnRtDrawSchermata_Click(object sender, EventArgs e)
         {
             try
@@ -1520,7 +1639,8 @@ namespace PannelloCharger
                     }
                 }
                 _tempSch.Id = _nuovoid;
-                _tempSch.Nome = txtSchBaseNomeLista.Text;
+                _tempSch.Nome = "SCREN" + _nuovoid.ToString("000");
+                _tempSch.NomeLista = txtSchBaseNomeLista.Text;
                 _disp.Data.Modello.Schermate.Add(_tempSch);
                 InizializzaVistaSchermate();
             }
@@ -1554,6 +1674,412 @@ namespace PannelloCharger
             }
 
         }
+
+        private void flvSchListaSchermate_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = (FastObjectListView)sender;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Schermata Sch = (DisplaySetup.Schermata)_lista.SelectedObject;
+                    _tempSch = Sch;
+                    MostraSchermata(_tempSch);
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
+        private void MostraSchermata(DisplaySetup.Schermata Screen)
+        {
+            try
+            {
+                Log.Debug("MostraSchermata");
+
+                if (Screen != null)
+                {
+                    pbxSchImmagine.Image = Screen.bmp;
+                    txtSchBaseNomeLista.Text = Screen.NomeLista;
+                    txtSchBaseName.Text = Screen.Nome;
+                    txtSchBaseID.Text = Screen.Id.ToString();
+                    txtSchBaseWidth.Text = Screen.Width.ToString();
+
+                }
+                InizializzaVistaComandi();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraSchermata: " + Ex.Message);
+            }
+
+        }
+
+        private void cmdSchMostrtaSch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvSchListaSchermate;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Schermata Screen = (DisplaySetup.Schermata)_lista.SelectedObject;
+                    _tempSch = Screen;
+                    MostraSchermata(Screen);
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdSchMostrtaSch_Click: " + Ex.Message);
+            }
+        }
+
+        private void cmdSchInviaSch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // se ho  una schermata valida, compongo il bytearray e spedisco
+                FastObjectListView _lista = flvSchListaSchermate;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Schermata Screen = (DisplaySetup.Schermata)_lista.SelectedObject;
+                    if (Screen.bmp != null)
+                    {
+                        Screen.BmpToBuffer();
+                        _disp.CaricaSchermata(Screen);
+                        _disp.ImpostaBacklight(true);
+                        _disp.MostraSchermata(Screen.Id);
+                        _disp.ImpostaBacklight(true);
+
+
+                    }
+                    MostraSchermata(Screen);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdSchInviaSch_Click: " + Ex.Message);
+            }
+        }
+
+        private void cmdSchRimuoviElemento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // se ho  una schermata valida, compongo il bytearray e spedisco
+                FastObjectListView _lista = flvSchListaSchermate;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Schermata Screen = (DisplaySetup.Schermata)_lista.SelectedObject;
+                    if (Screen.Id > 0 )
+                    {
+                        foreach (DisplaySetup.Schermata _item in _disp.Data.Modello.Schermate)
+                        {
+                            if (_item.Id == Screen.Id)
+                            {
+                                // aggiungere messaggio per duplicato
+                                _disp.Data.Modello.Schermate.Remove(_item);
+                                break;
+                            }
+                        }
+
+                    }
+
+                }
+                InizializzaVistaSchermate();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdSchInviaSch_Click: " + Ex.Message);
+            }
+        }
+
+        private void cmdSchGeneraByteArray_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvSchListaSchermate;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Schermata Screen = (DisplaySetup.Schermata)_lista.SelectedObject;
+                    Screen.BmpToBuffer();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdSchGeneraByteArray_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnSchCmdAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SalvaComando();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void cmdSchNuovaSchermata_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool verifica;
+
+                bool _VerificaNumero;
+                ushort _nuovoid;
+
+                _tempSch = new DisplaySetup.Schermata();
+
+                MostraSchermata(_tempSch);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void btnSchCmdNew_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool verifica;
+
+                bool _VerificaNumero;
+                ushort _nuovoid;
+
+                _tempCmd = new DisplaySetup.Comando();
+                MostraComando();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void btnSchCmdDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvSchListaComandi;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Comando Cmd = (DisplaySetup.Comando)_lista.SelectedObject;
+
+                    _tempSch.Comandi.Remove(Cmd);
+
+                    InizializzaVistaComandi(); 
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
+
+        private void btnSchCmdLoad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = (FastObjectListView)sender;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Comando Cmd = (DisplaySetup.Comando)_lista.SelectedObject;
+                    _tempCmd = Cmd;
+                    MostraComando();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
+
+        public void MostraComando()
+        {
+            try
+            {
+                bool verifica;
+
+                // Prima vuoto tutto
+
+                txtSchCmdWidth.Text = "";
+                txtSchCmdHeigh.Text = "";
+                txtSchCmdPosX.Text = "";
+                txtSchCmdPosY.Text = "";
+                txtSchCmdColor.Text = "";
+                txtSchCmdNumVar.Text = "";
+                txtSchCmdLenVarChar.Text = "";
+                txtSchCmdLenVarPix.Text = "";
+                txtSchCmdNumImg.Text = "";
+                txtSchCmdTempoON.Text = "";
+                txtSchCmdTempoOFF.Text = "";
+                txtSchCmdText.Text = "";
+                txtSchCmdNum.Text = "0";
+
+                if( _tempCmd != null )
+                {
+                    cmbSchTipoComando.SelectedItem = null;
+                    foreach (ModelloComando _cmd in cmbSchTipoComando.Items)
+                    {
+                        if(_cmd.Codice == _tempCmd.Attivita)
+                        {
+                            cmbSchTipoComando.SelectedItem = _cmd;
+                            break;
+                        }
+                    }
+                    txtSchCmdWidth.Text = _tempCmd.LenPixStringa.ToString();
+                    txtSchCmdHeigh.Text = _tempCmd.HighPixStringa.ToString();
+                    txtSchCmdPosX.Text = _tempCmd.PosX.ToString();
+                    txtSchCmdPosY.Text = _tempCmd.PosY.ToString();
+                    txtSchCmdColor.Text = _tempCmd.Colore.ToString();
+                    txtSchCmdNumVar.Text = _tempCmd.IdVariabile.ToString();
+                    txtSchCmdLenVarChar.Text = _tempCmd.LenStringa.ToString();
+                    //txtSchCmdLenVarPix.Text = "";
+                    txtSchCmdNumImg.Text = _tempCmd.NumImg.ToString();
+                    txtSchCmdTempoON.Text = _tempCmd.TimeOnVar.ToString();
+                    txtSchCmdTempoOFF.Text = _tempCmd.TimeOffVar.ToString();
+                    txtSchCmdText.Text = _tempCmd.Messaggio;
+                    txtSchCmdNum.Text = _tempCmd.Numero.ToString();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        public void SalvaComando()
+        {
+            try
+            {
+                bool verifica;
+                byte _tempVal;
+
+
+                // se non è selezionato un tipo comando esco
+                if (cmbSchTipoComando.SelectedItem == null)
+                    return;
+                ModelloComando _cmd = (ModelloComando)cmbSchTipoComando.SelectedItem;
+                _tempCmd.Attivita = _cmd.Codice;
+                _tempCmd.DescAttivita = _cmd.Nome;
+
+                if (_tempCmd == null)
+                {
+                    _tempCmd = new DisplaySetup.Comando();
+                }
+
+
+                if (byte.TryParse(txtSchCmdWidth.Text, out _tempVal))
+                    _tempCmd.LenPixStringa = _tempVal;
+
+                if (byte.TryParse(txtSchCmdHeigh.Text, out _tempVal))
+                    _tempCmd.HighPixStringa = _tempVal;
+
+                if (byte.TryParse(txtSchCmdPosX.Text, out _tempVal))
+                    _tempCmd.PosX = _tempVal;
+
+                if (byte.TryParse(txtSchCmdPosY.Text, out _tempVal))
+                    _tempCmd.PosY = _tempVal;
+
+                if (byte.TryParse(txtSchCmdColor.Text, out _tempVal))
+                    _tempCmd.Colore = _tempVal;
+
+                if (byte.TryParse(txtSchCmdNumVar.Text, out _tempVal))
+                    _tempCmd.IdVariabile = _tempVal;
+
+                if (byte.TryParse(txtSchCmdLenVarChar.Text, out _tempVal))
+                    _tempCmd.LenStringa = _tempVal;
+
+                if (byte.TryParse(txtSchCmdNumImg.Text, out _tempVal))
+                    _tempCmd.NumImg = _tempVal;
+
+                if (byte.TryParse(txtSchCmdTempoON.Text, out _tempVal))
+                    _tempCmd.TimeOnVar = _tempVal;
+
+                if (byte.TryParse(txtSchCmdTempoOFF.Text, out _tempVal))
+                    _tempCmd.TimeOffVar = _tempVal;
+
+                _tempCmd.Messaggio = txtSchCmdText.Text;
+
+                if (byte.TryParse(txtSchCmdNum.Text, out _tempVal))
+                    _tempCmd.Numero = _tempVal;
+
+
+                // Per ora aggiungo e basta
+                _tempSch.Comandi.Add(_tempCmd);
+                MostraComando();
+                InizializzaVistaComandi();
+               
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void btnImgInviaImmagine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvImgListaImmagini;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Immagine Img = (DisplaySetup.Immagine)_lista.SelectedObject;
+                    _tempImg = Img;
+                    InviaImmagine();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnImgInviaImmagine_Click: " + Ex.Message);
+            }
+        }
+
+        private void InviaImmagine()
+        {
+            try
+            {
+                if (_tempImg == null)
+                    return ;
+                if (_tempImg.Id < 1)
+                    return;
+
+                _tempImg.Nome = "IMAGE" + _tempImg.Id.ToString("000");
+                _tempImg.Width = (byte)_tempImg.bmp.Width;
+                _tempImg.Height = (byte)_tempImg.bmp.Height;
+
+                _tempImg.BmpToBuffer();
+
+                _disp.CaricaImmagine(_tempImg);
+                MostraImmagine(_tempImg);
+                txtImgDimImmagine.Text = _tempImg.Size.ToString();
+                txtImgDimX.Text = _tempImg.Width.ToString();
+                txtImgDimY.Text = _tempImg.Height.ToString();
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("InviaImmagine: " + Ex.Message);
+            }
+        }
     }
+
+
 }
     

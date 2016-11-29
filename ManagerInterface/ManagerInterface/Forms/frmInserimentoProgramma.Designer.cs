@@ -402,10 +402,6 @@
             this.pbxDiretto.Name = "pbxDiretto";
             this.pbxDiretto.TabStop = false;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // txtNumSpire
             // 
             resources.ApplyResources(this.txtNumSpire, "txtNumSpire");

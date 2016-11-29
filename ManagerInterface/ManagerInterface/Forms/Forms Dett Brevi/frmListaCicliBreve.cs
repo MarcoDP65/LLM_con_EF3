@@ -738,6 +738,11 @@ namespace PannelloCharger
 
                 double _tempVal;
 
+                bool _eventoEsterno ;
+
+                int _numIterazioni;
+                int _iterazioneCorrente;
+
                 oxyGraficoCiclo.InvalidatePlot(false); 
 
                 DateTime _istanteLettura;
@@ -792,8 +797,11 @@ namespace PannelloCharger
                  _tMax = double.MinValue;
 
                  Log.Debug("GraficoCiclo: Inizio loop dati");
+                _eventoEsterno = true;
+                _iterazioneCorrente = 0;
+                _numIterazioni = CicloLungo.CicliMemoriaBreve.Count - 1;
 
-                 foreach (sbMemBreve lettura in CicloLungo.CicliMemoriaBreve)
+                foreach (sbMemBreve lettura in CicloLungo.CicliMemoriaBreve)
                  {
 
 
@@ -820,6 +828,15 @@ namespace PannelloCharger
                      //***************************************************************************************
 
                      _tempVal = (double)(_fattoreCorrente * lettura.Amed / 10);
+                    if(_iterazioneCorrente == 0 || _iterazioneCorrente >= _numIterazioni)
+                        _eventoEsterno = true;
+
+                    if (_eventoEsterno == true)
+                    {
+                        _eventoEsterno = false;
+                        if (_tempVal < 0)
+                            _tempVal = 0;
+                    }
                      ValoriCicloCorrenti.Add(new mrDataPoint { Date = _istanteLettura, TimeLapse = _IntervalloLettura, Value = _tempVal });
                      if (_tempVal < _iMin) _iMin = _tempVal;
                      if (_tempVal > _iMax) _iMax = _tempVal;

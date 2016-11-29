@@ -41,6 +41,7 @@ namespace ChargerLogic
         public sbVariabili sbVariabili = new sbVariabili();
         public sbCalibrazioni Calibrazioni = new sbCalibrazioni();
         public sbStatoFirmware StatoFirmware = new sbStatoFirmware();
+        public sbParametriGenerali ParametriGenerali = new sbParametriGenerali();
         public sbProgrammaRicarica ProgrammaCorrente;
     
 
@@ -345,6 +346,8 @@ namespace ChargerLogic
                 ModelloDati.programmazioni = Programmi;
                 ModelloDati.cicliLunghi = MemLunga;
                 ModelloDati.cicliBrevi = MemBreve;
+                // 20/11  - ParametriGenerali
+
 
                 if (Testata) ModelloDati.Testata = sbData._sb; else ModelloDati.Testata = null;
                 if (Cliente) ModelloDati.Cliente = sbCliente._sbdc; else ModelloDati.Cliente = null;
@@ -612,6 +615,56 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+        /// <summary>
+        /// Legge direttamente dallo SPY-BATT collegato i valori dei parametri generali
+        /// </summary>
+        /// <param name="IdApparato">ID dell'apparato collegato</param>
+        /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
+        /// <returns></returns>
+        public bool CaricaParametri(string IdApparato, bool ApparatoConnesso)
+        {
+            try
+            {
+                bool _esito;
+                //
+                //                _idCorrente = IdApparato;
+                //                
+                _esito = false;
+
+                if (ApparatoConnesso)
+                {
+                    // Eseguo solo se la connessione all'apparato è attiva
+                    _mS.ParametriGenerali = new MessaggioSpyBatt.ParametriSpybatt();
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_ParametriLettura;
+                    _mS.ComponiMessaggio();
+                    _rxRisposta = false;
+                    skipHead = true;
+                    Log.Debug("SB Lettura Parametri");
+                    Log.Debug(_mS.hexdumpMessaggio());
+                    _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                    if (_esito)
+                    {
+                        ParametriGenerali = new MoriData.sbParametriGenerali();
+                        ParametriGenerali.IdApparato = _idCorrente;
+                        ParametriGenerali.LettureCorrente = _mS.ParametriGenerali.LettureCorrente;
+                        ParametriGenerali.LettureTensione = _mS.ParametriGenerali.LettureTensione;
+                        ParametriGenerali.DurataPausa = _mS.ParametriGenerali.DurataPausa;
+                        ParametriGenerali.DataInserimento = _mS.ParametriGenerali.IstanteLettura;
+
+                    }
+                }
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCalibrazioni: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
 
 
 
@@ -2004,7 +2057,7 @@ namespace ChargerLogic
                     }
 
                     uint _lastId = 0;
-                    int _stepCorrente = 0;
+                     int _stepCorrente = 0;
 
                     foreach (MessaggioSpyBatt.MemoriaPeriodoLungo _ciclo in _CicliMemoriaLunga)
                     {
@@ -2657,7 +2710,7 @@ namespace ChargerLogic
 
 
                 _cmdStrat[0] = Modo;  //CMD_IS
-                _cmdStrat[1] = 0x0A;  // len
+                _cmdStrat[1] = 0x0B;  // len
 
                 FunzioniComuni.SplitUshort(Vmin, ref lsb, ref msb);
                 _cmdStrat[2] = msb;
@@ -3330,6 +3383,40 @@ namespace ChargerLogic
             }
         }
 
+        public bool ForzaOrologio(int Giorno, int Mese, int Anno)
+        {
+            try
+            {
+                bool _esito;
+                DateTime _now = DateTime.Now;
+
+                DateTime dateValue = new DateTime(Anno, Mese, Giorno);
+                _mS.Comando = SerialMessage.TipoComando.SB_UpdateRTC;
+                _mS.DatiRTC = new SerialMessage.comandoRTC();
+                _mS.DatiRTC.anno = (ushort)Anno;
+                _mS.DatiRTC.mese = (byte)Mese;
+                _mS.DatiRTC.giorno = (byte)Giorno;
+                _mS.DatiRTC.giornoSett = (byte)dateValue.DayOfWeek;
+                _mS.DatiRTC.ore = (byte)_now.Hour;
+                _mS.DatiRTC.minuti = (byte)_now.Minute;
+                _mS.DatiRTC.secondi = (byte)_now.Second;
+
+                _mS.ComponiMessaggioOra();
+                _rxRisposta = false;
+                Log.Debug("Scrivi SB RTC");
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                return _esito; //_esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
 
         public bool LanciaComandoStrategia()
         {
@@ -3364,7 +3451,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-
 
         public bool ScriviParametroCal(byte IdParametro, ushort ValoreCalibrazione)
         {
@@ -3712,6 +3798,72 @@ namespace ChargerLogic
 
         }
 
+        public bool LeggiParametriLettura()
+        {
+            try
+            {
+                bool _esito;
+
+                _mS.Comando = SerialMessage.TipoComando.SB_R_ParametriLettura;
+                _mS.ComponiMessaggio();
+                _rxRisposta = false;
+                Log.Debug("Leggi SB Parametri Lettura");
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase);
+
+                // Carico i valori nel record parametri
+
+
+                return _esito;
+
+                //   }
+                //  return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+        public bool ScriviParametriLettura(ushort LettureCorrente, ushort LettureTensione, ushort DurataPausa )
+        {
+            try
+            {
+                bool _esito;
+                DateTime _now = DateTime.Now;
+
+                _mS.Comando = SerialMessage.TipoComando.SB_W_ParametriLettura;
+
+                _mS.ComponiMessaggioScriviParametriLettura(LettureCorrente, LettureTensione, DurataPausa);
+               _rxRisposta = false;
+                Log.Debug("Scrivi Parametri lettura");
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                return _esito; //_esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// In base al messaggio ricevuto (codice comando) definisce l'azione e l'eventuale risposta
         /// </summary>
@@ -3937,6 +4089,20 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = true;
                                 break;
+
+                            case (byte)SerialMessage.TipoComando.SB_R_ParametriLettura:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                Log.Debug("Lettura Parametri Lettura");
+                                _inviaRisposta = false;
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.SB_W_ParametriLettura:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                Log.Debug("Scrittura Parametri Lettura");
+                                _inviaRisposta = false;
+                                break;
+
+
 
                             default:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;

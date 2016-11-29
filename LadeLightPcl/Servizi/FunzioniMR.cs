@@ -261,6 +261,26 @@ namespace Utility
             }
         }
 
+        public static string StringaByteTemp(byte Temperatura)
+        {
+            try
+            {
+                string _gradi = "";
+                float _inGradi;
+                sbyte _sigTemp = (sbyte)Temperatura;
+                _inGradi = _sigTemp;
+                _gradi = _inGradi.ToString();
+               // if (Temperatura < 150)
+                    return _gradi;
+              //  else
+              //      return "-";
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
         public static string StringaTimestamp(byte[] Dataora)
         {
             try
@@ -862,8 +882,8 @@ namespace Utility
             try
             {
                 byte _valore;
-                int number;
-                bool result = Int32.TryParse(Testo, out number);
+                float number;
+                bool result = float.TryParse(Testo, out number);
                 if (result)
                 {
                     _valore = (byte)(number * Fattore);
@@ -1615,17 +1635,21 @@ namespace Utility
 
 
 
-        public static byte[] StringToArray(string source, int ArrayLen)
+        public static byte[] StringToArray(string source, int ArrayLen,int Start = 0)
         {
             string _tempString = "";
 
             try
             {
-                byte[] _tempBuf = new byte[ArrayLen];
+                byte[] _tempBuf = new byte[ArrayLen + Start];
+                for (int _i = 0; _i < Start; _i++)
+                {
+                    _tempBuf[_i] = 0x00;
+                }
                 Encoding enc = Encoding.GetEncoding("ASCII");
 
                 byte[] _tempData = enc.GetBytes(source);
-                for (int _i = 0; _i < ArrayLen; _i++)
+                for (int _i = Start; _i < ArrayLen; _i++)
                 {
                     if (_i < _tempData.Length)
                         _tempBuf[_i] = _tempData[_i];

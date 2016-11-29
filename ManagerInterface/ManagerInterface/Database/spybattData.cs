@@ -527,10 +527,23 @@ namespace MoriData
                         case "2.01":
                             return 4;
                         case "2.02":
-                            if (_sb.SwVersion == "2.02.04" || _sb.SwVersion == "2.02.05")
-                                return 5;
-                            else
-                                return 4;
+                            {
+                                switch (_sb.SwVersion)
+                                {
+                                    case "2.02.01":
+                                    case "2.02.02":
+                                    case "2.02.03":
+                                        return 4;
+                                    case "2.02.04":
+                                    case "2.02.05":
+                                    case "2.02.06":
+                                    case "2.02.07":
+                                        return 5;
+                                    default:
+                                        return 5;
+                                }
+
+                            }
 
 
                         default:
