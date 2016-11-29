@@ -538,6 +538,7 @@ namespace MoriData
                                     case "2.02.05":
                                     case "2.02.06":
                                     case "2.02.07":
+                                    case "2.02.08":
                                         return 5;
                                     default:
                                         return 5;

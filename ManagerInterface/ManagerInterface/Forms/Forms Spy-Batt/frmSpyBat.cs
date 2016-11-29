@@ -2119,6 +2119,18 @@ namespace PannelloCharger
                 Colonna9.Sortable = false;
                 Colonna9.ToolTipText = "Valore minimo Ampere caricati (nero) o scaricati (rosso)";
                 Colonna9.Width = 50;
+                Colonna9.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.olvAmin;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 Colonna9.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna9.TextAlign = HorizontalAlignment.Right;
                 Colonna9.IsVisible = _colonnaNascosta;
@@ -2130,6 +2142,18 @@ namespace PannelloCharger
                 Colonna10.AspectName = "olvAmax";
                 Colonna10.ToolTipText = "Valore massimo Ampere caricati (nero) o scaricati (rosso)";
                 Colonna10.Width = 50;
+                Colonna10.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.olvAmax;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 Colonna10.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna10.TextAlign = HorizontalAlignment.Right;
                 Colonna10.IsVisible = _colonnaNascosta;
@@ -2168,6 +2192,18 @@ namespace PannelloCharger
                 Colonna12.AspectName = "strAh";
                 Colonna12.Sortable = false;
                 Colonna12.Width = 50;
+                Colonna12.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strAh;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 Colonna12.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna12.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna12);
@@ -2179,6 +2215,18 @@ namespace PannelloCharger
                 ColAhCaricati.ToolTipText = "Ah Caricati";
                 ColAhCaricati.AspectName = "strAhCaricati";
                 ColAhCaricati.Width = 50;
+                ColAhCaricati.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strAhCaricati;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 ColAhCaricati.HeaderTextAlign = HorizontalAlignment.Center;
                 ColAhCaricati.TextAlign = HorizontalAlignment.Right;
                 ColAhCaricati.IsVisible = _colonnaNascosta;
@@ -2190,6 +2238,18 @@ namespace PannelloCharger
                 ColAhScaricati.ToolTipText = "Ah Scaricati";
                 ColAhScaricati.AspectName = "strAhScaricati";
                 ColAhScaricati.Width = 50;
+                ColAhScaricati.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strAhScaricati;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 ColAhScaricati.HeaderTextAlign = HorizontalAlignment.Center;
                 ColAhScaricati.TextAlign = HorizontalAlignment.Right;
                 ColAhScaricati.IsVisible = _colonnaNascosta;
@@ -2201,6 +2261,18 @@ namespace PannelloCharger
                 Colonna13.Sortable = false;
 
                 Colonna13.Width = 50;
+                Colonna13.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strKWh;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 Colonna13.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna13.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna13);
@@ -2211,6 +2283,18 @@ namespace PannelloCharger
                 Colonna13C.Sortable = false;
 
                 Colonna13C.Width = 60;
+                Colonna13C.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strKWhCaricati;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 Colonna13C.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna13C.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna13C);
@@ -2221,6 +2305,18 @@ namespace PannelloCharger
                 Colonna13S.Sortable = false;
 
                 Colonna13S.Width = 60;
+                Colonna13S.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strKWhScaricati;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
                 Colonna13S.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna13S.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna13S);
@@ -5815,12 +5911,7 @@ namespace PannelloCharger
                 Ic24.MostraValore = true;
                 Ic24.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
                 Ic24.InizializzaIndicatore(this.buiStatCockpit, 930, 300, 280, StringheStatistica.GougePauser1 + "\n" + StringheStatistica.GougePauser2);
-                if (_stat.NumeroCariche > 0)
-                {
-                    _fattoreSB = 0;
-
-                }
-                Ic24.ImpostaValore((float)_fattoreSB);
+                Ic24.ImpostaValore((float)_stat.NumeroSovrascariche);
 
             }
 
