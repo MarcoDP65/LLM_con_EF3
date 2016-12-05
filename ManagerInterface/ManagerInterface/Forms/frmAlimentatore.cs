@@ -380,6 +380,11 @@ namespace PannelloCharger
                 MessageBox.Show("ImpostaTensione: " + ex.Message, " Error!");
             }
         }
+
+        private void frmAlimentatore_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

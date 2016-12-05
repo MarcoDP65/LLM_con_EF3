@@ -250,22 +250,71 @@ namespace PannelloCharger
             {
                 if (btnPortState.Text == "Apri Porta")
                 {
-                    //btnPortState.Text = "Chiudi";
-                    ComPort.PortName = Convert.ToString(cboPorts.Text);
-                    ComPort.BaudRate = Convert.ToInt32(cboBaudRate.Text);
-                    ComPort.DataBits = Convert.ToInt16(cboDataBits.Text);
-                    ComPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), cboStopBits.Text);
-                    ComPort.Handshake = (Handshake)Enum.Parse(typeof(Handshake), cboHandShaking.Text);
-                    ComPort.Parity = (Parity)Enum.Parse(typeof(Parity), cboParity.Text);
-                    _dataBuffer = new byte[0];
-                    ComPort.Open();
+                    ApriPorta();
                 }
                 else if (btnPortState.Text == "Chiudi")
                 {
-                    //btnPortState.Text = "Apri Porta";
-                    ComPort.Close();
-
+                    ChiudiPorta();
                 }
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+
+        private bool ChiudiPorta()
+        {
+            try
+            {
+
+                ComPort.Close();
+                VerificaStatoPorta();
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VerificaStatoPorta: " + Ex.Message);
+                return false;
+            }
+        }
+
+        private bool ApriPorta()
+        {
+            try
+            {
+                if (cboPorts.Text == "")
+                    return false;
+                //btnPortState.Text = "Chiudi";
+                ComPort.PortName = Convert.ToString(cboPorts.Text);
+                ComPort.BaudRate = Convert.ToInt32(cboBaudRate.Text);
+                ComPort.DataBits = Convert.ToInt16(cboDataBits.Text);
+                ComPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), cboStopBits.Text);
+                ComPort.Handshake = (Handshake)Enum.Parse(typeof(Handshake), cboHandShaking.Text);
+                ComPort.Parity = (Parity)Enum.Parse(typeof(Parity), cboParity.Text);
+                _dataBuffer = new byte[0];
+                ComPort.Open();
+
+                VerificaStatoPorta();
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VerificaStatoPorta: " + Ex.Message);
+                return false;
+            }
+        }
+
+        private bool VerificaStatoPorta()
+        {
+            try
+            {
 
                 if (ComPort.IsOpen)
                 {
@@ -292,13 +341,15 @@ namespace PannelloCharger
                     btnGetSerialPorts.Enabled = true;
                 }
 
-
+                return true;
             }
             catch (Exception Ex)
             {
-                Log.Error(Ex.Message);
+                Log.Error("VerificaStatoPorta: " + Ex.Message);
+                return false;
             }
         }
+
 
         private void btnApriComunicazione_Click(object sender, EventArgs e)
         {
@@ -874,6 +925,13 @@ namespace PannelloCharger
                     flvSchListaSchermate.SetObjects(_disp.Data.Modello.Schermate);
                     flvSchListaSchermate.BuildList();
 
+                    cmbRtValVariabile.DataSource = _disp.Data.Modello.Variabili;
+                    cmbRtValVariabile.DisplayMember = "Nome";
+                    cmbRtValVariabile.ValueMember = "Id";
+
+                    cmbSchIdVariabile.DataSource = _disp.Data.Modello.Variabili;
+                    cmbSchIdVariabile.DisplayMember = "Nome";
+                    cmbSchIdVariabile.ValueMember = "Id";
                 }
 
             }
@@ -1193,7 +1251,7 @@ namespace PannelloCharger
                 BrightIdeasSoftware.OLVColumn colNomeImg = new BrightIdeasSoftware.OLVColumn();
                 colNomeImg.Text = "Nome";
                 colNomeImg.AspectName = "NomeLista";
-                colNomeImg.Width = 100;
+                colNomeImg.Width = 200;
                 colNomeImg.HeaderTextAlign = HorizontalAlignment.Left;
                 colNomeImg.TextAlign = HorizontalAlignment.Left;
                 flvSchListaSchermate.AllColumns.Add(colNomeImg);
@@ -1893,7 +1951,7 @@ namespace PannelloCharger
         {
             try
             {
-                FastObjectListView _lista = (FastObjectListView)sender;
+                FastObjectListView _lista = flvSchListaComandi;
 
                 if (_lista.SelectedObject != null)
                 {
@@ -1948,6 +2006,7 @@ namespace PannelloCharger
                     txtSchCmdColor.Text = _tempCmd.Colore.ToString();
                     txtSchCmdNumVar.Text = _tempCmd.IdVariabile.ToString();
                     txtSchCmdLenVarChar.Text = _tempCmd.LenStringa.ToString();
+                    cmbSchIdVariabile.SelectedValue = _tempCmd.IdVariabile;
                     //txtSchCmdLenVarPix.Text = "";
                     txtSchCmdNumImg.Text = _tempCmd.NumImg.ToString();
                     txtSchCmdTempoON.Text = _tempCmd.TimeOnVar.ToString();
@@ -1968,7 +2027,7 @@ namespace PannelloCharger
             {
                 bool verifica;
                 byte _tempVal;
-
+                _tempCmd = new DisplaySetup.Comando();
 
                 // se non è selezionato un tipo comando esco
                 if (cmbSchTipoComando.SelectedItem == null)
@@ -1977,10 +2036,6 @@ namespace PannelloCharger
                 _tempCmd.Attivita = _cmd.Codice;
                 _tempCmd.DescAttivita = _cmd.Nome;
 
-                if (_tempCmd == null)
-                {
-                    _tempCmd = new DisplaySetup.Comando();
-                }
 
 
                 if (byte.TryParse(txtSchCmdWidth.Text, out _tempVal))
@@ -2017,6 +2072,17 @@ namespace PannelloCharger
 
                 if (byte.TryParse(txtSchCmdNum.Text, out _tempVal))
                     _tempCmd.Numero = _tempVal;
+
+                // se nella lista c'è già lo stesso id, lo elimino
+                foreach (DisplaySetup.Comando _item in _tempSch.Comandi)
+                {
+                    if (_item.Numero == _tempCmd.Numero)
+                    {
+                        _tempSch.Comandi.Remove(_item);
+                        break;
+                    }
+                }
+
 
 
                 // Per ora aggiungo e basta
@@ -2076,6 +2142,214 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("InviaImmagine: " + Ex.Message);
+            }
+        }
+
+
+
+
+        private void btnRtSetRTC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _disp.ImpostaRTC();
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("InviaImmagine: " + Ex.Message);
+            }
+        }
+
+        private void btnRtSetBaudRate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                DisplaySetup.BaudRate Velocita = (DisplaySetup.BaudRate)cmbRtBaudRate.SelectedIndex;
+                _disp.ImpostaBaudrate(Velocita);
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("InviaImmagine: " + Ex.Message);
+            }
+        }
+
+        private void cmbRtValVariabile_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbRtValVariabile.SelectedValue != null)
+                    txtRtIdVariabile.Text = cmbRtValVariabile.SelectedValue.ToString();
+                else
+                    txtVarIdVariabile.Text = "";
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbRtValVariabile_SelectedValueChanged: " + Ex.Message);
+            }
+        }
+
+        private void cmbSchIdVariabile_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbSchIdVariabile.SelectedValue != null)
+                    txtSchCmdNumVar.Text = cmbSchIdVariabile.SelectedValue.ToString();
+                else
+                    txtSchCmdNumVar.Text = "";
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbRtValVariabile_SelectedValueChanged: " + Ex.Message);
+            }
+        }
+
+        private void btnRtImpostaVariabile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool verifica;
+                byte _idVar = FunzioniMR.ConvertiByte(txtRtIdVariabile.Text, 1, 0);
+
+                verifica = _disp.ImpostaVariabile(_idVar,txtRtValVariabile.Text);
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("---------------- btnRtDrawImage_Click ------------");
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void AggiornaScheda (bool Immagini, bool Schermate)
+        {
+            try
+            {
+                int _counter = 0;
+
+                if (Immagini)
+                {
+                    pgbModStatoInvio.Minimum = 0;
+                    pgbModStatoInvio.Value = 0;
+                    pgbModStatoInvio.Maximum = _disp.Data.Modello.Immagini.Count;
+
+
+                    txtModImmaginiTrasmesse.Text = _counter.ToString();
+                    Application.DoEvents();
+
+                     foreach (DisplaySetup.Immagine _img in _disp.Data.Modello.Immagini)
+                    {
+                        _img.BmpToBuffer();
+                        if (_disp.CaricaImmagine(_img))
+                        {
+                            _counter++;
+                            pgbModStatoInvio.Value = _counter;
+                            txtModImmaginiTrasmesse.Text = _counter.ToString();
+                            Application.DoEvents();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                _counter = 0;
+
+                if (Schermate)
+                {
+                    byte[] _sequenza = new byte[_disp.Data.Modello.Schermate.Count] ;
+                    pgbModStatoInvio.Minimum = 0;
+                    pgbModStatoInvio.Value = 0;
+                    pgbModStatoInvio.Maximum = _disp.Data.Modello.Schermate.Count;
+
+                    txtModSchermateTrasmesse.Text = _counter.ToString();
+                    Application.DoEvents();
+
+                    foreach (DisplaySetup.Schermata _sch in _disp.Data.Modello.Schermate)
+                    {
+                        _sch.BmpToBuffer();
+
+                        if (_disp.CaricaSchermata(_sch))
+                        {
+                            _sequenza[_counter] = (byte)_sch.Id;
+
+                            _counter++;
+                            pgbModStatoInvio.Value = _counter;
+                            txtModSchermateTrasmesse.Text = _counter.ToString();
+                            Application.DoEvents();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    _disp.ScrollSchermate(_sequenza, 10);
+
+
+                }
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("AggiornaScheda: " + Ex.Message);
+            }
+        }
+
+        private void btnModInviaImmagini_Click(object sender, EventArgs e)
+        {
+            AggiornaScheda(true, false);
+        }
+
+        private void btnModInviaSchermate_Click(object sender, EventArgs e)
+        {
+            AggiornaScheda(false, true);
+
+        }
+
+        private void btnModAggiornaDisplay_Click(object sender, EventArgs e)
+        {
+            AggiornaScheda(true, true);
+        }
+
+        private void btnRtDrawSchSequence_Click(object sender, EventArgs e)
+        {
+            byte[] ListaSch;
+            byte Attesa;
+            try
+            {
+
+                if (txtRtSeqSchId.Text != "")
+                {
+                    ListaSch = FunzioniComuni.ToByteValueArray(txtRtSeqSchId.Text, ';', 1);
+                    Attesa = FunzioniMR.ConvertiByte(txtRtSeqSchTime.Text, 1, 0);
+
+                    _disp.ScrollSchermate(ListaSch, Attesa);
+                }
+
+                else
+                {
+                    return;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnRtDrawSchSequence_Click: " + Ex.Message);
             }
         }
     }

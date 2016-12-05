@@ -996,6 +996,31 @@ namespace PannelloCharger
            // frmDisplay.vGlobali = varGlobali;
             frmDisplay.Show();
         }
+
+        private void mSP430FlasherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmMspFlasher))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                frmMspFlasher flasMSP430 = new frmMspFlasher();//ref varGlobali);
+                flasMSP430.MdiParent = this;
+                flasMSP430.StartPosition = FormStartPosition.CenterParent;
+                flasMSP430.Show();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain.flasMSP430 : " + Ex.Message);
+            }
+        }
     }
 
     public class StatoPulsanti

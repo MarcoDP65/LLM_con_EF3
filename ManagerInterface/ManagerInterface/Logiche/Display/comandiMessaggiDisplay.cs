@@ -20,39 +20,6 @@ namespace ChargerLogic
 {
     public partial class UnitaDisplay
     {
-        /*
-                /// <summary>
-                /// Mette il task principale in attesa risposta da seriale 
-                /// </summary>
-                /// <param name="timeout">numero di cicli di attasa da 500 millisecondi l'uno</param>
-                /// <returns>true se ricevuta risposta, altrimenti false se interrotto per timeout</returns>
-                private bool aspettaRisposta(int timeout)
-                {
-                    try
-                    {
-                        int _cicli = 0;
-                        //_rxRisposta = false;
-                        System.Threading.Thread.Sleep(250);
-                        do
-                        {
-                            _cicli++;
-                            if (_rxRisposta)
-                            {
-                                return true;
-                            }
-                            System.Threading.Thread.Sleep(100);
-                        }
-                        while (_rxRisposta == false & (_cicli < (timeout * 10)));
-                        return _rxRisposta;
-                    }
-                    catch (Exception Ex)
-                    {
-                        Log.Debug("aspettaRisposta: " + Ex.Message);
-                        return false;
-                    }
-                }
-
-        */
 
 
         public bool scriviMessaggio(byte[] messaggio, int Start, int NumByte)

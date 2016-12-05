@@ -144,7 +144,9 @@ namespace ChargerLogic
                 Log.Debug("Messaggio Display ricevuto: " + _comando.ToString("X2"));
 
                 //preparo la risposta: il preambolo è uguale al messaggio 
+                if (!skipHead)
                 Array.Copy(_messaggio, messaggioRisposta, 20);
+
 
                 // ora in base al comando cambio faccio lettura:
                 switch (_comando)
@@ -335,6 +337,253 @@ namespace ChargerLogic
             }
             catch { return _esito; }
         }
+
+
+        public bool ComponiMessaggioBaudRate(DisplaySetup.BaudRate Velocita)
+        {
+            bool _esito = false;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try
+            {
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.DI_SwitchBaudRate);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 2;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+
+                // id programma: Stato Illuminazione 00-> Spento / FF -> Acceso
+
+                splitUshort(codificaByte((byte)Velocita), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+
+                return true;
+            }
+            catch { return _esito; }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Compone il messaggio per l'invio all' RTC del display l'ora locale del PC.
+        /// </summary>
+        /// <returns></returns>
+        public bool ComponiMessaggioSetRTC()
+        {
+            bool _esito = false;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try
+            {
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.DI_W_SetRTC);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 16;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+
+                DateTime OraPC = DateTime.Now;
+
+                ushort _tempUs = (ushort)OraPC.Year;
+
+                // Anno
+                splitUshort(_tempUs, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayInit + 1] = msb;
+                MessageBuffer[_arrayInit + 2] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayInit + 3] = msb;
+                MessageBuffer[_arrayInit + 4] = lsb;
+                _arrayInit += 4;
+
+                byte _tempByte;
+
+                //Mese
+                _tempByte = (byte)OraPC.Month;
+
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                //Giorno
+                _tempByte = (byte)OraPC.Day;
+
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                //Giorno della settimana
+                _tempByte = (byte)OraPC.DayOfWeek;
+
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                //ore
+                _tempByte = (byte)OraPC.Hour;
+
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+
+                //Minuti
+                _tempByte = (byte)OraPC.Minute;
+
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+                //secondi
+                _tempByte = (byte)OraPC.Second;
+
+                splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+
+
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+
+                return true;
+            }
+            catch { return _esito; }
+        }
+
+
+
 
         /// <summary>
         /// Compone il messaggio di comando LED. I ai due canali vengono inviati gli stessi valori.
@@ -780,7 +1029,106 @@ namespace ChargerLogic
             catch { return _esito; }
         }
 
+        public bool ComponiMessaggioInviaVariabile(byte Id, string Messaggio)
+        {
+            bool _esito = false;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
 
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try
+            {
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.DI_W_ScriviVariabile);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 18;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+                // ID
+
+                splitUshort(codificaByte(Id), ref lsb, ref msb);
+                MessageBuffer[_arrayInit + 1] = msb;
+                MessageBuffer[_arrayInit + 2] = lsb;
+                _arrayInit += 2;
+
+                // i primo 8 * 2 caratteri sono il nome
+                //Dal FW 1.0.6 num bytes e 1 solo byte
+                byte[] _tmpName = new byte[8];
+                Messaggio += "        ";
+                _tmpName = FunzioniComuni.StringToArray(Messaggio , 8);
+                for (int _cicloStr = 0; _cicloStr < 8; _cicloStr++)
+                {
+
+                    splitUshort(codificaByte(_tmpName[_cicloStr]), ref lsb, ref msb);
+                    MessageBuffer[_arrayInit + 1] = msb;
+                    MessageBuffer[_arrayInit + 2] = lsb;
+                    _arrayInit += 2;
+                }
+
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+
+                return true;
+            }
+            catch { return _esito; }
+        }
+ 
         public bool ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes)
         {
             bool _esito = false;
@@ -1514,6 +1862,113 @@ namespace ChargerLogic
             }
 
         }
+
+        public bool ComponiMessaggioScrollSchermate(byte[] ListaId, byte Attesa)
+        {
+            bool _esito = false;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try
+            {
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.DI_ScrollSchermate);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + ( ListaId.Length + 2) * 2;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+
+                //  Prima la sequenza
+
+                for (int _cicloStr = 0; _cicloStr < ListaId.Length ; _cicloStr++)
+                {
+                    splitUshort(codificaByte(ListaId[_cicloStr]), ref lsb, ref msb);
+                    MessageBuffer[_arrayInit + 1] = msb;
+                    MessageBuffer[_arrayInit + 2] = lsb;
+                    _arrayInit += 2;
+                }
+
+                // Poi il terminatore, 0x00
+                splitUshort(codificaByte(0x00), ref lsb, ref msb);
+                MessageBuffer[_arrayInit + 1] = msb;
+                MessageBuffer[_arrayInit + 2] = lsb;
+                _arrayInit += 2;
+
+                // Tempo di attesa
+                splitUshort(codificaByte(Attesa), ref lsb, ref msb);
+                MessageBuffer[_arrayInit + 1] = msb;
+                MessageBuffer[_arrayInit + 2] = lsb;
+                _arrayInit += 2;
+
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+
+
+                MessageBuffer[_arrayLen + 6] = serETX;
+                _esito = true;
+
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
 
 
 

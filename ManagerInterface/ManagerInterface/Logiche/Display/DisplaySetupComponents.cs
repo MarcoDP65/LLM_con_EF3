@@ -51,6 +51,15 @@ namespace ChargerLogic
 
     public partial class DisplaySetup
     { 
+        public enum BaudRate: byte
+        {
+            BD_9600   = 0x00,
+            BD_19200  = 0x01,
+            BD_38400  = 0x02,
+            BD_57600  = 0x03,
+            BD_115200 = 0x04 
+        }
+
         public class Immagine
         {
             public byte[] ImageBuffer { get; set; }
@@ -849,15 +858,24 @@ namespace ChargerLogic
 
                             break;
                         case ModelloComando.TipoComando.ScrollImmagini:
-                            _len = (byte)(_strlen);
-                            _tempData = FunzioniComuni.StringToArray(Messaggio, _strlen, 6);
-                            _tempData[0] = (byte)Attivita;
-                            _tempData[1] = LenPixStringa;
-                            _tempData[2] = HighPixStringa;
-                            _tempData[3] = PosX;
-                            _tempData[4] = PosY;
-                            _tempData[5] = Colore;
+                            // prima determino il numero dei frame
+                            byte[] _sequenza;
 
+                            _sequenza = FunzioniComuni.ToByteValueArray(Messaggio, ';', 1);
+                            int _seqLen = _sequenza.Length;
+                            _len =(byte)(_seqLen + 6 );
+
+                            _tempData[0] = (byte)Attivita;
+                            for (int _i = 0; _i < _seqLen; _i++)
+                            {
+                                _tempData[_i+1] = _sequenza[_i];
+                            }
+
+                            _tempData[_seqLen+1] =0x00;  // Fine Sequenza
+                            _tempData[_seqLen + 2] = PosX;
+                            _tempData[_seqLen + 3] = PosY;
+                            _tempData[_seqLen + 4] = Colore;
+                            _tempData[_seqLen + 5] = TimeOnVar;
                             break;
                         default:
                             _len = 1;

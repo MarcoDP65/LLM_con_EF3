@@ -34,19 +34,6 @@ namespace ChargerLogic
         public List<DisplaySetup.Immagine> Immagini = new List<DisplaySetup.Immagine>();
         public List<DisplaySetup.Schermata> Schermate = new List<DisplaySetup.Schermata>();
         public List<DisplaySetup.Variabile> Variabili = new List<DisplaySetup.Variabile>();
-        /*
-        public List<DisplaySetup.ModelloComando> ListaComandi = new List<DisplaySetup.ModelloComando>
-        {
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviTesto6x8,    Nome = "Scrivi Testo 6x8",     ValoreStringa = true,   LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviOra6x8,      Nome = "Scrivi Ora 6x8",       ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviData6x8,     Nome = "Scrivi Data 6x8",      ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviTesto16,     Nome = "Scrivi Testo 16",      ValoreStringa = true,   LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviVariabile6x8,Nome = "Scrivi Variabile 6x8", ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScriviVariabile16, Nome = "Scrivi Variabile 16",  ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.DisegnaImmagine,   Nome = "Disegna Immagine",     ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-            new DisplaySetup.ModelloComando() { Codice=DisplaySetup.ModelloComando.TipoComando.ScrollImmagini,    Nome = "Scroll Immagini",      ValoreStringa = false,  LunghezzaStringaChr = false, AltezzaStringaPix = false, CoordX = true, CoordY = true, Colore = true,TempoOn = false,TempoOff = false,NumeroVariabile = false,NumeroImmagine = false},
-        };
-        */
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
         private int _timeOut = 10;
@@ -158,6 +145,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Imposta la retroilluminazione del display (istantanea).
+        /// </summary>
+        /// <param name="Acceso">if set to <c>true</c> [acceso].</param>
+        /// <returns></returns>
         public bool ImpostaBacklight(bool Acceso)
         {
             bool _risposta = false;
@@ -189,6 +181,20 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Accende i led in base ai parametri passati.
+        /// </summary>
+        /// <param name="Red">LED red sx.</param>
+        /// <param name="Green">LED green sx.</param>
+        /// <param name="Blu">LED blu sx.</param>
+        /// <param name="On">Tempo accensione led SX.</param>
+        /// <param name="Off">Tempo spegnimento led SX.</param>
+        /// <param name="RedDx">LED red dx.</param>
+        /// <param name="GreenDx">LED green dx.</param>
+        /// <param name="BluDx">LED blu dx.</param>
+        /// <param name="OnDx">Tempo accensione led DX.</param>
+        /// <param name="OffDx">Tempo spegnimento led DX.</param>
+        /// <returns></returns>
         public bool ImpostaLed(byte Red,byte Green, byte Blu, byte On, byte Off, byte RedDx, byte GreenDx, byte BluDx, byte OnDx, byte OffDx)
         {
             bool _risposta = false;
@@ -451,11 +457,7 @@ namespace ChargerLogic
                             _dimCorrente = (byte)_residuo;
                         }
 
-
                     }
-
-
-
 
                 }
                 
@@ -465,12 +467,19 @@ namespace ChargerLogic
 
             catch (Exception Ex)
             {
-                Log.Error("DisegnaLinea: " + Ex.Message);
+                Log.Error("CaricaImmagine: " + Ex.Message);
                 return _risposta;
             }
         }
 
-
+        /// <summary>
+        /// Mostra l'immagine selezionata.
+        /// </summary>
+        /// <param name="Id">The identifier.</param>
+        /// <param name="PosX">The position x.</param>
+        /// <param name="PosY">The position y.</param>
+        /// <param name="Color">The color.</param>
+        /// <returns></returns>
         public bool MostraImmagine(ushort Id, byte PosX, byte PosY, byte Color)
         {
             bool _risposta = false;
@@ -497,7 +506,81 @@ namespace ChargerLogic
 
             catch (Exception Ex)
             {
-                Log.Error("DisegnaLinea: " + Ex.Message);
+                Log.Error("MostraImmagine: " + Ex.Message);
+                return _risposta;
+            }
+        }
+
+        /// <summary>
+        /// Imposta l'RTC del display con data/ora  locali del PC.
+        /// </summary>
+        /// <returns></returns>
+        public bool ImpostaRTC()
+        {
+            bool _risposta = false;
+
+            try
+            {
+                bool _esito = false;
+
+                _mD.Comando = SerialMessage.TipoComando.DI_W_SetRTC;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_W_SetRTC;
+                _mD.ComponiMessaggioSetRTC();
+                _rxRisposta = false;
+                Log.Debug("Display Set RTC: ");
+                Log.Debug(_mD.hexdumpMessaggio());
+                echoDatiSER.Clear();
+                for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                {
+                    echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                }
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("ImpostaRTC: " + Ex.Message);
+                return _risposta;
+            }
+        }
+
+
+        /// <summary>
+        /// Imposta il baudrate della porta 485 del display.
+        /// Il comando ritorna un ack alla velocità corrente poi chiude la comunicazione. 
+        /// La riconnessione dovrà avvenire alla nuova velocità
+        /// </summary>
+        /// <param name="Velocita">codice della nuova velocità.</param>
+        /// <returns></returns>
+        public bool ImpostaBaudrate(DisplaySetup.BaudRate Velocita)
+        {
+            bool _risposta = false;
+
+            try
+            {
+                bool _esito = false;
+
+                _mD.Comando = SerialMessage.TipoComando.DI_SwitchBaudRate;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_SwitchBaudRate;
+                _mD.ComponiMessaggioBaudRate(Velocita);
+                _rxRisposta = false;
+                Log.Debug("Display Set BaudRate: ");
+                Log.Debug(_mD.hexdumpMessaggio());
+                echoDatiSER.Clear();
+                for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                {
+                    echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                }
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("ImpostaBaudrate: " + Ex.Message);
                 return _risposta;
             }
         }
@@ -532,6 +615,38 @@ namespace ChargerLogic
                 return _risposta;
             }
         }
+
+        public bool ScrollSchermate(byte[] ListaSch , byte Attesa )
+        {
+            bool _risposta = false;
+
+            try
+            {
+                bool _esito = false;
+
+                _mD.Comando = SerialMessage.TipoComando.DI_ScrollSchermate;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_ScrollSchermate;
+                _mD.ComponiMessaggioScrollSchermate(ListaSch, Attesa);
+                _rxRisposta = false;
+                Log.Debug("ScrollSchermate: ");
+                Log.Debug(_mD.hexdumpMessaggio());
+                echoDatiSER.Clear();
+                for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                {
+                    echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                }
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("DisegnaLinea: " + Ex.Message);
+                return _risposta;
+            }
+        }
+
 
         public bool PulisciSchermo()
         {
@@ -730,7 +845,7 @@ namespace ChargerLogic
                                 echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
                             }
                             scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
-                            _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true,false,false,false,true);
+                            _esito = aspettaRisposta(elementiComuni.TimeoutBase,1, true,false,false,false,true);
                         }
 
 
@@ -752,7 +867,40 @@ namespace ChargerLogic
             }
 
         }
-               
+
+
+        public bool ImpostaVariabile(byte Id, string Valore)
+        {
+            bool _risposta = false;
+
+            try
+            {
+                bool _esito = false;
+
+                _mD.Comando = SerialMessage.TipoComando.DI_W_ScriviVariabile;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_W_ScriviVariabile;
+                _mD.ComponiMessaggioInviaVariabile(Id,Valore);
+                _rxRisposta = false;
+                Log.Debug("Display imposta Variabile: ");
+                Log.Debug(_mD.hexdumpMessaggio());
+                echoDatiSER.Clear();
+                for (int i = 0; i < _mD.MessageBuffer.Length; i++)
+                {
+                    echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
+                }
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("DisegnaLinea: " + Ex.Message);
+                return _risposta;
+            }
+        }
+
+
 
     }
 

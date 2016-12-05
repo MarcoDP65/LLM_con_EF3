@@ -491,6 +491,7 @@
             this.Controls.Add(this.grbPortaSeriale);
             this.Name = "frmAlimentatore";
             this.Text = "Alimentatore";
+            this.Load += new System.EventHandler(this.frmAlimentatore_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

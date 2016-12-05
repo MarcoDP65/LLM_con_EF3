@@ -1793,6 +1793,80 @@ namespace Utility
             }
         }
 
+        /// <summary>
+        /// Converte una stringa di interi separati da un simbolo in un Array di interi.
+        /// </summary>
+        /// <param name="value">Stringa Origine.</param>
+        /// <param name="separator">Carattere Separatore.</param>
+        /// <param name="DefaultVal">Valore di default se il frammento non è convertibile in intero.</param>
+        /// <returns></returns>
+        public static int[] ToIntValueArray( string value, char separator,int DefaultVal = 0)
+        {
+            int[] _intArray = new int[0];
+
+            try
+            {
+                string[] _valueArray = value.Split(separator);
+                _intArray = new int[_valueArray.Length];
+
+                for (int _i = 0; _i < _valueArray.Length; _i++)
+                {
+                    int _tempI;
+                    if (int.TryParse(_valueArray[_i], out _tempI))
+                        _intArray[_i] = _tempI;
+                    else
+                        _intArray[_i] = DefaultVal;
+
+                }
+
+
+                return _intArray;
+
+            }
+            catch
+            {
+                return _intArray;
+            }
+
+        }
+
+        /// <summary>
+        /// Converte una stringa di valori separati da un simbolo in un Array di bytes.
+        /// </summary>
+        /// <param name="value">Stringa Origine.</param>
+        /// <param name="separator">Carattere Separatore.</param>
+        /// <param name="DefaultVal">Valore di default se il frammento non è convertibile in intero.</param>
+        /// <returns></returns>
+        public static byte[] ToByteValueArray(string value, char separator, byte DefaultVal = 0)
+        {
+            byte[] _valArray = new byte[0];
+
+            try
+            {
+                string[] _valueArray = value.Split(separator);
+                _valArray = new byte[_valueArray.Length];
+
+                for (int _i = 0; _i < _valueArray.Length; _i++)
+                {
+                    byte _tempI;
+                    if (byte.TryParse(_valueArray[_i], out _tempI))
+                        _valArray[_i] = _tempI;
+                    else
+                        _valArray[_i] = DefaultVal;
+
+                }
+
+
+                return _valArray;
+
+            }
+            catch
+            {
+                return _valArray;
+            }
+
+        }
+
 
 
 
@@ -1820,6 +1894,8 @@ namespace Utility
 
             
         }
+
+
 
 
     }

@@ -72,7 +72,8 @@ namespace ChargerLogic
             DI_Cancella4K = 0x24,
             DI_R_LeggiMemoria = 0x3C,
             DI_W_ScriviMemoria = 0xC3,
-
+            DI_W_ScriviVariabile = 0xC4,
+            DI_W_SetRTC = 0xD2,
             DI_W_SalvaImmagineMemoria = 0x4B,
             DI_W_SalvaSchermataMemoria = 0xB4,
 
@@ -81,6 +82,8 @@ namespace ChargerLogic
             DI_DrawLine = 0xA5,
             DI_MostraImmagine = 0x5A,
             DI_MostraSchermata = 0x96,
+            DI_ScrollSchermate = 0x94,
+            DI_SwitchBaudRate = 0x74,
 
 
             LL_SIG60_PROXY = 0x81,

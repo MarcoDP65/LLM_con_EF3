@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>2.00.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -355,6 +355,12 @@
     <Compile Include="Forms\frmMessaggioElettrolita.Designer.cs">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMspFlasher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMspFlasher.Designer.cs">
+      <DependentUpon>frmMspFlasher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmPopupCambioTurmo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -665,6 +671,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMessaggioElettrolita.resx">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMspFlasher.resx">
+      <DependentUpon>frmMspFlasher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPopupCambioTurmo.resx">
       <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
