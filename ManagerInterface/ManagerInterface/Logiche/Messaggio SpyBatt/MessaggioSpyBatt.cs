@@ -1280,6 +1280,27 @@ namespace ChargerLogic
                         MessageBuffer[_arrayInit + 2] = lsb;
                         _arrayInit += 2;
 
+                        // ID batteria per Ladelight
+
+                        string _tempId;
+                        if(CustomerData.BatteryLLId =="")
+                        {
+                            _tempId = "1    ";
+                        }
+                        else
+                        {
+                            _tempId = CustomerData.BatteryLLId + "     ";
+                        }
+
+                        for (_i = 0; _i < 5; _i++)
+                        {
+                            splitUshort(_codificaSubString(_tempId, _i), ref lsb, ref msb);
+                            MessageBuffer[_arrayInit + 1] = msb;
+                            MessageBuffer[_arrayInit + 2] = lsb;
+                            _arrayInit += 2;
+                        }
+
+
 
                         // Chiudo a 252 byte effettivi
                         for (_i = _arrayInit; _i < _arrayLen; _i += 2)

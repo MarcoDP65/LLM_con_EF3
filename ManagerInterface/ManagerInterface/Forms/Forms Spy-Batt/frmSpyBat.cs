@@ -1048,6 +1048,8 @@ namespace PannelloCharger
                 txtIdBat.Text = _sb.sbCliente.BatteryId;
                 txtCliCicliAttesi.Text = _sb.sbCliente.CicliAttesi.ToString();
                 txtSerialNumber.Text = _sb.sbCliente.SerialNumber;
+                txtCliCodiceLL.Text = _sb.sbCliente.BatteryLLId;
+
                 if (_sb.sbCliente.BatteryId != "")
                 {
                     this.Text = _sb.sbCliente.BatteryId;
@@ -1905,7 +1907,9 @@ namespace PannelloCharger
                 _sb.sbCliente.BatteryBrand = txtMarcaBat.Text;
                 _sb.sbCliente.BatteryModel = txtModelloBat.Text;
                 _sb.sbCliente.BatteryId = txtIdBat.Text;
+                _sb.sbCliente.BatteryLLId = txtCliCodiceLL.Text;
                 _sb.sbCliente.SerialNumber = txtSerialNumber.Text;
+
 
                 _tempP = (Pianificazione)cmbModoPianificazione.SelectedItem;
                 _sb.sbCliente.ModoPianificazione = (byte)_tempP.CodiceTP;
@@ -5197,7 +5201,7 @@ namespace PannelloCharger
                 SerialMessage.Crc16Ccitt codCrc = new SerialMessage.Crc16Ccitt(SerialMessage.InitialCrcValue.NonZero1);
 
                 // Prima chiedo il codice di autorizzazione, se ho meno di 30 cicli registrati
-                if (_sb.sbData.LongMem > 30)
+                if ( false ) //_sb.sbData.LongMem > 30)
                 {
                     frmRichiestaCodice _richiesta = new frmRichiestaCodice();
                     _richiesta.ShowDialog();

@@ -53,7 +53,7 @@ namespace Utility
             }
         }
 
-        public static string StringaTensione(int Tensione)
+        public static string StringaTensione(int Tensione) 
         {
             try
             {

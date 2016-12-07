@@ -1369,7 +1369,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblFirmwDisp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>468, 98</value>
+    <value>467, 98</value>
   </data>
   <data name="lblFirmwDisp.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 17</value>
@@ -1470,14 +1470,74 @@
   <data name="&gt;&gt;grbTestata.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="label254.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label254.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label254.Location" type="System.Drawing.Point, System.Drawing">
+    <value>468, 150</value>
+  </data>
+  <data name="label254.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="label254.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="label254.Text" xml:space="preserve">
+    <value>Codice  L.L.</value>
+  </data>
+  <data name="&gt;&gt;label254.Name" xml:space="preserve">
+    <value>label254</value>
+  </data>
+  <data name="&gt;&gt;label254.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label254.Parent" xml:space="preserve">
+    <value>grbDatiCliente</value>
+  </data>
+  <data name="&gt;&gt;label254.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtCliCodiceLL.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtCliCodiceLL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>471, 170</value>
+  </data>
+  <data name="txtCliCodiceLL.MaxLength" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtCliCodiceLL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 27</value>
+  </data>
+  <data name="txtCliCodiceLL.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="txtCliCodiceLL.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCliCodiceLL.Name" xml:space="preserve">
+    <value>txtCliCodiceLL</value>
+  </data>
+  <data name="&gt;&gt;txtCliCodiceLL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCliCodiceLL.Parent" xml:space="preserve">
+    <value>grbDatiCliente</value>
+  </data>
+  <data name="&gt;&gt;txtCliCodiceLL.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="txtCliCicliAttesi.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtCliCicliAttesi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>554, 170</value>
+    <value>574, 170</value>
   </data>
   <data name="txtCliCicliAttesi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 27</value>
+    <value>73, 27</value>
   </data>
   <data name="txtCliCicliAttesi.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1495,7 +1555,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;txtCliCicliAttesi.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="lblCliCicliAttesi.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1504,7 +1564,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCliCicliAttesi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>551, 150</value>
+    <value>571, 150</value>
   </data>
   <data name="lblCliCicliAttesi.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 17</value>
@@ -1525,7 +1585,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;lblCliCicliAttesi.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtNoteCliente.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -1549,16 +1609,16 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;txtNoteCliente.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtIdBat.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtIdBat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 170</value>
+    <value>39, 170</value>
   </data>
   <data name="txtIdBat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>494, 27</value>
+    <value>416, 27</value>
   </data>
   <data name="txtIdBat.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1573,7 +1633,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;txtIdBat.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="lblCliIdBatteria.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1603,7 +1663,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;lblCliIdBatteria.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="txtCliente.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -1627,7 +1687,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;txtCliente.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtMarcaBat.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -1651,7 +1711,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;txtMarcaBat.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="lblCliMarcaBatt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1681,7 +1741,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;lblCliMarcaBatt.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="txtModelloBat.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -1705,7 +1765,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;txtModelloBat.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="lblCliModellpApp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1735,7 +1795,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;lblCliModellpApp.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="lbNoteCliente.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1765,7 +1825,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;lbNoteCliente.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="lblCliCliente.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1795,7 +1855,7 @@
     <value>grbDatiCliente</value>
   </data>
   <data name="&gt;&gt;lblCliCliente.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="grbDatiCliente.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 39</value>
@@ -8092,7 +8152,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.5, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.10, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -12895,7 +12955,7 @@
     <value>17, 31</value>
   </data>
   <data name="cmdMemClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 35</value>
+    <value>159, 35</value>
   </data>
   <data name="cmdMemClear.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -13123,7 +13183,7 @@
     <value>24, 20</value>
   </data>
   <data name="grbMemLettura.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 109</value>
+    <value>391, 109</value>
   </data>
   <data name="grbMemLettura.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -24854,6 +24914,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1724, 837</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>

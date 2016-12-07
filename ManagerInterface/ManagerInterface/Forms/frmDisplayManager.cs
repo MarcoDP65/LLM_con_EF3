@@ -327,6 +327,11 @@ namespace PannelloCharger
                     cboParity.Enabled = false;
                     cboHandShaking.Enabled = false;
                     btnGetSerialPorts.Enabled = false;
+                    btnApriComunicazione.ForeColor = Color.Black;
+                    btnApriComunicazione.Enabled = true;
+                    grbModInvioModello.Enabled = true;
+                    btnVarInviaValore.Enabled = true;
+                    cmdSchInviaSch.Enabled = true;
 
                 }
                 else
@@ -339,6 +344,10 @@ namespace PannelloCharger
                     cboParity.Enabled = true;
                     cboHandShaking.Enabled = true;
                     btnGetSerialPorts.Enabled = true;
+                    btnApriComunicazione.Enabled = false;
+                    grbModInvioModello.Enabled = false;
+                    btnVarInviaValore.Enabled = false;
+                    cmdSchInviaSch.Enabled = false;
                 }
 
                 return true;
@@ -1117,6 +1126,14 @@ namespace PannelloCharger
                 flvVarListaVariabili.AllColumns.Add(colNomeVaribile);
 
 
+                BrightIdeasSoftware.OLVColumn colValVaribile = new BrightIdeasSoftware.OLVColumn();
+                colValVaribile.Text = "Valore";
+                colValVaribile.AspectName = "Valore";
+                colValVaribile.Width = 200;
+                colValVaribile.HeaderTextAlign = HorizontalAlignment.Left;
+                colValVaribile.TextAlign = HorizontalAlignment.Left;
+                flvVarListaVariabili.AllColumns.Add(colValVaribile);
+
 
                 BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
                 colRowFiller.Text = "";
@@ -1341,6 +1358,22 @@ namespace PannelloCharger
                 colColorImg.HeaderTextAlign = HorizontalAlignment.Left;
                 colColorImg.TextAlign = HorizontalAlignment.Center;
                 flvSchListaComandi.AllColumns.Add(colColorImg);
+
+                BrightIdeasSoftware.OLVColumn colNumVar = new BrightIdeasSoftware.OLVColumn();
+                colNumVar.Text = "Var";
+                colNumVar.AspectName = "IdVariabile";
+                colNumVar.Width = 40;
+                colNumVar.HeaderTextAlign = HorizontalAlignment.Left;
+                colNumVar.TextAlign = HorizontalAlignment.Center;
+                flvSchListaComandi.AllColumns.Add(colNumVar);
+
+                BrightIdeasSoftware.OLVColumn colNumImg = new BrightIdeasSoftware.OLVColumn();
+                colNumImg.Text = "Img";
+                colNumImg.AspectName = "IdImmagine";
+                colNumImg.Width = 40;
+                colNumImg.HeaderTextAlign = HorizontalAlignment.Left;
+                colNumImg.TextAlign = HorizontalAlignment.Center;
+                flvSchListaComandi.AllColumns.Add(colNumImg);
 
                 BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
                 colRowFiller.Text = "";
@@ -2007,12 +2040,28 @@ namespace PannelloCharger
                     txtSchCmdNumVar.Text = _tempCmd.IdVariabile.ToString();
                     txtSchCmdLenVarChar.Text = _tempCmd.LenStringa.ToString();
                     cmbSchIdVariabile.SelectedValue = _tempCmd.IdVariabile;
-                    //txtSchCmdLenVarPix.Text = "";
                     txtSchCmdNumImg.Text = _tempCmd.NumImg.ToString();
                     txtSchCmdTempoON.Text = _tempCmd.TimeOnVar.ToString();
                     txtSchCmdTempoOFF.Text = _tempCmd.TimeOffVar.ToString();
                     txtSchCmdText.Text = _tempCmd.Messaggio;
                     txtSchCmdNum.Text = _tempCmd.Numero.ToString();
+                   // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX, _tempCmd.PosY, Color.Red);
+                  //  ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX +1, _tempCmd.PosY, Color.Red);
+                   // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX, _tempCmd.PosY +1, Color.Red);
+                  //  ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX+1, _tempCmd.PosY+1, Color.Red);
+
+                    Pen pen = new Pen(Color.Red);
+                    Graphics _g = pbxSchImmagine.CreateGraphics();
+                    _g.DrawRectangle(pen, _tempCmd.PosX, _tempCmd.PosY, 12, 12);
+
+                    System.Drawing.Font drawFont = new System.Drawing.Font("Calibri", 7);
+                    System.Drawing.SolidBrush drawBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                    float x = (float)_tempCmd.PosX+1 ;
+                    float y = _tempCmd.PosY+1 ;
+                    System.Drawing.StringFormat drawFormat = new System.Drawing.StringFormat();
+                    _g.DrawString(_tempCmd.Numero.ToString(), drawFont, drawBrush, x, y, drawFormat);
+
+
                 }
             }
             catch (Exception Ex)
@@ -2230,12 +2279,12 @@ namespace PannelloCharger
             }
         }
 
-        private void AggiornaScheda (bool Immagini, bool Schermate)
+        private void AggiornaScheda (bool Immagini, bool Schermate, bool Variabili)
         {
             try
             {
                 int _counter = 0;
-
+                pgbModStatoInvio.Visible = true;
                 if (Immagini)
                 {
                     pgbModStatoInvio.Minimum = 0;
@@ -2299,31 +2348,71 @@ namespace PannelloCharger
 
                 }
 
+                _counter = 0;
+
+                if (Variabili)
+                {
+
+                    pgbModStatoInvio.Minimum = 0;
+                    pgbModStatoInvio.Value = 0;
+                    pgbModStatoInvio.Maximum = _disp.Data.Modello.Variabili.Count;
+
+                    txtModSchermateTrasmesse.Text = _counter.ToString();
+                    Application.DoEvents();
+
+                    foreach (DisplaySetup.Variabile _var in _disp.Data.Modello.Variabili)
+                    {
+                       
 
 
+                        if (_disp.ImpostaVariabile(_var.Id, _var.Valore))
+                        {
+
+                            _counter++;
+                            pgbModStatoInvio.Value = _counter;
+                            txtModVariabiliTrasmesse.Text = _counter.ToString();
+                            Application.DoEvents();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+
+                }
+
+                pgbModStatoInvio.Visible = false;
             }
 
             catch (Exception Ex)
             {
                 Log.Error("AggiornaScheda: " + Ex.Message);
+                pgbModStatoInvio.Visible = false;
             }
         }
 
         private void btnModInviaImmagini_Click(object sender, EventArgs e)
         {
-            AggiornaScheda(true, false);
+            AggiornaScheda(true, false,false);
         }
 
         private void btnModInviaSchermate_Click(object sender, EventArgs e)
         {
-            AggiornaScheda(false, true);
+            AggiornaScheda(false, true, false);
+        }
 
+        private void btnModInviaVariabili_Click(object sender, EventArgs e)
+        {
+            AggiornaScheda(false, false, true);
         }
 
         private void btnModAggiornaDisplay_Click(object sender, EventArgs e)
         {
-            AggiornaScheda(true, true);
+            AggiornaScheda(true, true, true);
         }
+
+
 
         private void btnRtDrawSchSequence_Click(object sender, EventArgs e)
         {
@@ -2350,6 +2439,163 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("btnRtDrawSchSequence_Click: " + Ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flvSchListaComandi_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvSchListaComandi;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Comando Cmd = (DisplaySetup.Comando)_lista.SelectedObject;
+                    _tempCmd = Cmd;
+                    MostraComando();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
+
+        private void btnVarSalvaValore_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = flvVarListaVariabili;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Variabile _TempVar = (DisplaySetup.Variabile)_lista.SelectedObject;
+                    _TempVar.Valore = txtVarValore.Text;
+
+                    InizializzaVistaVariabili();
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
+
+        private void flvVarListaVariabili_DoubleClick(object sender, EventArgs e)
+        {
+
+            try
+            {
+                FastObjectListView _lista = flvVarListaVariabili;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Variabile _TempVar = (DisplaySetup.Variabile)_lista.SelectedObject; 
+                    txtVarValore.Text = _TempVar.Valore;
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+        }
+
+        private void btnMemCFExec_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVarInviaValore_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                FastObjectListView _lista = flvVarListaVariabili;
+
+                if (_lista.SelectedObject != null)
+                {
+                    DisplaySetup.Variabile _TempVar = (DisplaySetup.Variabile)_lista.SelectedObject;
+                    bool verifica;
+                    verifica = _disp.ImpostaVariabile(_TempVar.Id, _TempVar.Valore);
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+            }
+
+
+        }
+
+        private void btnRtTestLed_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool verifica;
+
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+                // 1 RED SX
+                txtRtValRed.Text = "*";
+                verifica = _disp.ImpostaLed(10, 0, 0, 10, 00, 0, 0, 0, 10, 0);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(2000);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                txtRtValRed.Text = "";
+
+                // 2 Green SX
+                txtRtValGreen.Text = "*";
+                verifica = _disp.ImpostaLed(0, 10, 0, 10, 00, 0, 0, 0, 10, 0);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(2000);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                txtRtValGreen.Text = "";
+
+                // 3 Blue SX
+                txtRtValBlu.Text = "*";
+                verifica = _disp.ImpostaLed(0, 0, 10, 10, 00, 0, 0, 0, 10, 0);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(2000);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                txtRtValBlu.Text = "";
+
+                // 4 RED DX
+                txtRtValRedDx.Text = "*";
+                verifica = _disp.ImpostaLed(0, 0, 0, 10, 0, 10, 0, 0, 10, 0);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(2000);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                txtRtValRedDx.Text = "";
+
+                // 5 RED DX
+                txtRtValGreenDx.Text = "*";
+                verifica = _disp.ImpostaLed(0, 0, 0, 10, 0, 0, 10, 0, 10, 0);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(2000);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                txtRtValGreenDx.Text = "";
+
+                // 6 RED DX
+                txtRtValBluDx.Text = "*";
+                verifica = _disp.ImpostaLed(0, 0, 0, 10, 0, 0, 0, 10, 10, 0);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(2000);
+                verifica = _disp.ImpostaLed(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                txtRtValBluDx.Text = "";
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
             }
         }
     }

@@ -52,6 +52,7 @@ namespace MoriData
         public byte ModoRabboccatore { get; set; }
         public byte ModoBiberonaggio { get; set; }
         public byte[] MappaTurni { get; set; }
+        public string BatteryLLId { get; set; }
 
 
     }
@@ -378,6 +379,18 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+
+        public string BatteryLLId
+        {
+            get { return _sbdc.BatteryLLId; }
+            set
+            {
+                _sbdc.BatteryLLId = FunzioniMR.StringaMax(value, 5);
+                _datiSalvati = false;
+            }
+        }
+
 
         public string ClientNote
         {

@@ -58,6 +58,13 @@
             this.cboPorts = new System.Windows.Forms.ComboBox();
             this.btnGetSerialPorts = new System.Windows.Forms.Button();
             this.tbpArchivioModelli = new System.Windows.Forms.TabPage();
+            this.grbModInvioModello = new System.Windows.Forms.GroupBox();
+            this.pgbModStatoInvio = new System.Windows.Forms.ProgressBar();
+            this.btnModAggiornaDisplay = new System.Windows.Forms.Button();
+            this.txtModSchermateTrasmesse = new System.Windows.Forms.TextBox();
+            this.txtModImmaginiTrasmesse = new System.Windows.Forms.TextBox();
+            this.btnModInviaSchermate = new System.Windows.Forms.Button();
+            this.btnModInviaImmagini = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnModNuovoModello = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -200,6 +207,10 @@
             this.btnVarCrea = new System.Windows.Forms.Button();
             this.txtVarNomeVariabile = new System.Windows.Forms.TextBox();
             this.tbpRealTime = new System.Windows.Forms.TabPage();
+            this.label79 = new System.Windows.Forms.Label();
+            this.txtRtSeqSchTime = new System.Windows.Forms.TextBox();
+            this.txtRtSeqSchId = new System.Windows.Forms.TextBox();
+            this.btnRtDrawSchSequence = new System.Windows.Forms.Button();
             this.txtRtIdVariabile = new System.Windows.Forms.TextBox();
             this.txtRtValVariabile = new System.Windows.Forms.TextBox();
             this.btnRtImpostaVariabile = new System.Windows.Forms.Button();
@@ -309,22 +320,16 @@
             this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.grbModInvioModello = new System.Windows.Forms.GroupBox();
-            this.btnModInviaImmagini = new System.Windows.Forms.Button();
-            this.btnModInviaSchermate = new System.Windows.Forms.Button();
-            this.txtModImmaginiTrasmesse = new System.Windows.Forms.TextBox();
-            this.txtModSchermateTrasmesse = new System.Windows.Forms.TextBox();
-            this.btnModAggiornaDisplay = new System.Windows.Forms.Button();
-            this.pgbModStatoInvio = new System.Windows.Forms.ProgressBar();
-            this.btnRtDrawSchSequence = new System.Windows.Forms.Button();
-            this.txtRtSeqSchId = new System.Windows.Forms.TextBox();
-            this.txtRtSeqSchTime = new System.Windows.Forms.TextBox();
-            this.label79 = new System.Windows.Forms.Label();
+            this.btnVarSalvaValore = new System.Windows.Forms.Button();
+            this.txtModVariabiliTrasmesse = new System.Windows.Forms.TextBox();
+            this.btnModInviaVariabili = new System.Windows.Forms.Button();
+            this.btnRtTestLed = new System.Windows.Forms.Button();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpConnessione.SuspendLayout();
             this.pnlComandiImmediati.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tbpArchivioModelli.SuspendLayout();
+            this.grbModInvioModello.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -362,7 +367,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaSch)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).BeginInit();
-            this.grbModInvioModello.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcMainDisplayManager
@@ -402,41 +406,46 @@
             this.pnlComandiImmediati.Controls.Add(this.btnApriComunicazione);
             this.pnlComandiImmediati.Location = new System.Drawing.Point(651, 37);
             this.pnlComandiImmediati.Name = "pnlComandiImmediati";
-            this.pnlComandiImmediati.Size = new System.Drawing.Size(298, 259);
+            this.pnlComandiImmediati.Size = new System.Drawing.Size(298, 198);
             this.pnlComandiImmediati.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(28, 60);
+            this.button1.Location = new System.Drawing.Point(28, 219);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(192, 28);
             this.button1.TabIndex = 36;
             this.button1.Text = "Stop Comunicazione";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnPrimaLettura
             // 
-            this.btnPrimaLettura.Location = new System.Drawing.Point(28, 197);
+            this.btnPrimaLettura.Location = new System.Drawing.Point(28, 299);
             this.btnPrimaLettura.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrimaLettura.Name = "btnPrimaLettura";
             this.btnPrimaLettura.Size = new System.Drawing.Size(136, 28);
             this.btnPrimaLettura.TabIndex = 35;
             this.btnPrimaLettura.Text = "Prima Lettura";
             this.btnPrimaLettura.UseVisualStyleBackColor = true;
+            this.btnPrimaLettura.Visible = false;
             // 
             // cmdLeggiRTC
             // 
-            this.cmdLeggiRTC.Location = new System.Drawing.Point(28, 161);
+            this.cmdLeggiRTC.Location = new System.Drawing.Point(28, 263);
             this.cmdLeggiRTC.Margin = new System.Windows.Forms.Padding(4);
             this.cmdLeggiRTC.Name = "cmdLeggiRTC";
             this.cmdLeggiRTC.Size = new System.Drawing.Size(136, 28);
             this.cmdLeggiRTC.TabIndex = 34;
             this.cmdLeggiRTC.Text = "Read RTC";
             this.cmdLeggiRTC.UseVisualStyleBackColor = true;
+            this.cmdLeggiRTC.Visible = false;
             // 
             // btnApriComunicazione
             // 
+            this.btnApriComunicazione.Enabled = false;
             this.btnApriComunicazione.Location = new System.Drawing.Point(28, 22);
             this.btnApriComunicazione.Margin = new System.Windows.Forms.Padding(4);
             this.btnApriComunicazione.Name = "btnApriComunicazione";
@@ -691,6 +700,80 @@
             this.tbpArchivioModelli.Size = new System.Drawing.Size(1625, 668);
             this.tbpArchivioModelli.TabIndex = 6;
             this.tbpArchivioModelli.Text = "Modello";
+            // 
+            // grbModInvioModello
+            // 
+            this.grbModInvioModello.BackColor = System.Drawing.Color.White;
+            this.grbModInvioModello.Controls.Add(this.txtModVariabiliTrasmesse);
+            this.grbModInvioModello.Controls.Add(this.btnModInviaVariabili);
+            this.grbModInvioModello.Controls.Add(this.pgbModStatoInvio);
+            this.grbModInvioModello.Controls.Add(this.btnModAggiornaDisplay);
+            this.grbModInvioModello.Controls.Add(this.txtModSchermateTrasmesse);
+            this.grbModInvioModello.Controls.Add(this.txtModImmaginiTrasmesse);
+            this.grbModInvioModello.Controls.Add(this.btnModInviaSchermate);
+            this.grbModInvioModello.Controls.Add(this.btnModInviaImmagini);
+            this.grbModInvioModello.Enabled = false;
+            this.grbModInvioModello.Location = new System.Drawing.Point(835, 275);
+            this.grbModInvioModello.Name = "grbModInvioModello";
+            this.grbModInvioModello.Size = new System.Drawing.Size(369, 325);
+            this.grbModInvioModello.TabIndex = 24;
+            this.grbModInvioModello.TabStop = false;
+            this.grbModInvioModello.Text = "UPLOAD";
+            // 
+            // pgbModStatoInvio
+            // 
+            this.pgbModStatoInvio.Location = new System.Drawing.Point(23, 220);
+            this.pgbModStatoInvio.Name = "pgbModStatoInvio";
+            this.pgbModStatoInvio.Size = new System.Drawing.Size(317, 27);
+            this.pgbModStatoInvio.TabIndex = 105;
+            // 
+            // btnModAggiornaDisplay
+            // 
+            this.btnModAggiornaDisplay.Location = new System.Drawing.Point(23, 269);
+            this.btnModAggiornaDisplay.Name = "btnModAggiornaDisplay";
+            this.btnModAggiornaDisplay.Size = new System.Drawing.Size(317, 40);
+            this.btnModAggiornaDisplay.TabIndex = 104;
+            this.btnModAggiornaDisplay.Text = "Aggiorna Display";
+            this.btnModAggiornaDisplay.UseVisualStyleBackColor = true;
+            this.btnModAggiornaDisplay.Click += new System.EventHandler(this.btnModAggiornaDisplay_Click);
+            // 
+            // txtModSchermateTrasmesse
+            // 
+            this.txtModSchermateTrasmesse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtModSchermateTrasmesse.Location = new System.Drawing.Point(266, 94);
+            this.txtModSchermateTrasmesse.Name = "txtModSchermateTrasmesse";
+            this.txtModSchermateTrasmesse.Size = new System.Drawing.Size(74, 24);
+            this.txtModSchermateTrasmesse.TabIndex = 103;
+            this.txtModSchermateTrasmesse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtModImmaginiTrasmesse
+            // 
+            this.txtModImmaginiTrasmesse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtModImmaginiTrasmesse.Location = new System.Drawing.Point(266, 36);
+            this.txtModImmaginiTrasmesse.Name = "txtModImmaginiTrasmesse";
+            this.txtModImmaginiTrasmesse.Size = new System.Drawing.Size(74, 24);
+            this.txtModImmaginiTrasmesse.TabIndex = 102;
+            this.txtModImmaginiTrasmesse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnModInviaSchermate
+            // 
+            this.btnModInviaSchermate.Location = new System.Drawing.Point(23, 87);
+            this.btnModInviaSchermate.Name = "btnModInviaSchermate";
+            this.btnModInviaSchermate.Size = new System.Drawing.Size(201, 40);
+            this.btnModInviaSchermate.TabIndex = 4;
+            this.btnModInviaSchermate.Text = "Invia Schermate";
+            this.btnModInviaSchermate.UseVisualStyleBackColor = true;
+            this.btnModInviaSchermate.Click += new System.EventHandler(this.btnModInviaSchermate_Click);
+            // 
+            // btnModInviaImmagini
+            // 
+            this.btnModInviaImmagini.Location = new System.Drawing.Point(23, 29);
+            this.btnModInviaImmagini.Name = "btnModInviaImmagini";
+            this.btnModInviaImmagini.Size = new System.Drawing.Size(201, 40);
+            this.btnModInviaImmagini.TabIndex = 3;
+            this.btnModInviaImmagini.Text = "Invia Immagini";
+            this.btnModInviaImmagini.UseVisualStyleBackColor = true;
+            this.btnModInviaImmagini.Click += new System.EventHandler(this.btnModInviaImmagini_Click);
             // 
             // panel8
             // 
@@ -1445,6 +1528,7 @@
             this.flvSchListaComandi.UseCompatibleStateImageBehavior = false;
             this.flvSchListaComandi.View = System.Windows.Forms.View.Details;
             this.flvSchListaComandi.VirtualMode = true;
+            this.flvSchListaComandi.DoubleClick += new System.EventHandler(this.flvSchListaComandi_DoubleClick);
             // 
             // label53
             // 
@@ -1520,6 +1604,7 @@
             // 
             // cmdSchInviaSch
             // 
+            this.cmdSchInviaSch.Enabled = false;
             this.cmdSchInviaSch.Location = new System.Drawing.Point(233, 63);
             this.cmdSchInviaSch.Name = "cmdSchInviaSch";
             this.cmdSchInviaSch.Size = new System.Drawing.Size(103, 41);
@@ -2147,51 +2232,57 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.White;
+            this.panel10.Controls.Add(this.btnVarSalvaValore);
             this.panel10.Controls.Add(this.txtVarValore);
             this.panel10.Controls.Add(this.btnVarCancellaVariabile);
             this.panel10.Controls.Add(this.btnVarInviaValore);
             this.panel10.Location = new System.Drawing.Point(32, 481);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(526, 69);
+            this.panel10.Size = new System.Drawing.Size(668, 69);
             this.panel10.TabIndex = 22;
             // 
             // txtVarValore
             // 
             this.txtVarValore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVarValore.Location = new System.Drawing.Point(127, 20);
+            this.txtVarValore.Location = new System.Drawing.Point(19, 22);
             this.txtVarValore.Name = "txtVarValore";
-            this.txtVarValore.Size = new System.Drawing.Size(90, 27);
+            this.txtVarValore.Size = new System.Drawing.Size(170, 27);
             this.txtVarValore.TabIndex = 81;
             // 
             // btnVarCancellaVariabile
             // 
-            this.btnVarCancellaVariabile.Location = new System.Drawing.Point(389, 14);
+            this.btnVarCancellaVariabile.Location = new System.Drawing.Point(539, 16);
             this.btnVarCancellaVariabile.Name = "btnVarCancellaVariabile";
-            this.btnVarCancellaVariabile.Size = new System.Drawing.Size(103, 41);
+            this.btnVarCancellaVariabile.Size = new System.Drawing.Size(103, 31);
             this.btnVarCancellaVariabile.TabIndex = 80;
             this.btnVarCancellaVariabile.Text = "Rimuovi";
             this.btnVarCancellaVariabile.UseVisualStyleBackColor = true;
             // 
             // btnVarInviaValore
             // 
-            this.btnVarInviaValore.Location = new System.Drawing.Point(18, 14);
+            this.btnVarInviaValore.Enabled = false;
+            this.btnVarInviaValore.Location = new System.Drawing.Point(334, 20);
             this.btnVarInviaValore.Name = "btnVarInviaValore";
-            this.btnVarInviaValore.Size = new System.Drawing.Size(103, 41);
+            this.btnVarInviaValore.Size = new System.Drawing.Size(103, 33);
             this.btnVarInviaValore.TabIndex = 79;
             this.btnVarInviaValore.Text = "Invia Valore";
             this.btnVarInviaValore.UseVisualStyleBackColor = true;
+            this.btnVarInviaValore.Click += new System.EventHandler(this.btnVarInviaValore_Click);
             // 
             // flvVarListaVariabili
             // 
             this.flvVarListaVariabili.CellEditUseWholeCell = false;
+            this.flvVarListaVariabili.FullRowSelect = true;
             this.flvVarListaVariabili.Location = new System.Drawing.Point(32, 165);
+            this.flvVarListaVariabili.MultiSelect = false;
             this.flvVarListaVariabili.Name = "flvVarListaVariabili";
             this.flvVarListaVariabili.ShowGroups = false;
-            this.flvVarListaVariabili.Size = new System.Drawing.Size(523, 290);
+            this.flvVarListaVariabili.Size = new System.Drawing.Size(668, 290);
             this.flvVarListaVariabili.TabIndex = 21;
             this.flvVarListaVariabili.UseCompatibleStateImageBehavior = false;
             this.flvVarListaVariabili.View = System.Windows.Forms.View.Details;
             this.flvVarListaVariabili.VirtualMode = true;
+            this.flvVarListaVariabili.DoubleClick += new System.EventHandler(this.flvVarListaVariabili_DoubleClick);
             // 
             // groupBox2
             // 
@@ -2203,7 +2294,7 @@
             this.groupBox2.Controls.Add(this.txtVarNomeVariabile);
             this.groupBox2.Location = new System.Drawing.Point(32, 41);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(523, 102);
+            this.groupBox2.Size = new System.Drawing.Size(668, 102);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nuova Variabile";
@@ -2240,7 +2331,7 @@
             // btnVarCrea
             // 
             this.btnVarCrea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnVarCrea.Location = new System.Drawing.Point(418, 47);
+            this.btnVarCrea.Location = new System.Drawing.Point(568, 46);
             this.btnVarCrea.Name = "btnVarCrea";
             this.btnVarCrea.Size = new System.Drawing.Size(74, 30);
             this.btnVarCrea.TabIndex = 6;
@@ -2253,12 +2344,13 @@
             this.txtVarNomeVariabile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVarNomeVariabile.Location = new System.Drawing.Point(86, 47);
             this.txtVarNomeVariabile.Name = "txtVarNomeVariabile";
-            this.txtVarNomeVariabile.Size = new System.Drawing.Size(307, 27);
+            this.txtVarNomeVariabile.Size = new System.Drawing.Size(458, 27);
             this.txtVarNomeVariabile.TabIndex = 4;
             // 
             // tbpRealTime
             // 
             this.tbpRealTime.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpRealTime.Controls.Add(this.btnRtTestLed);
             this.tbpRealTime.Controls.Add(this.label79);
             this.tbpRealTime.Controls.Add(this.txtRtSeqSchTime);
             this.tbpRealTime.Controls.Add(this.txtRtSeqSchId);
@@ -2326,6 +2418,44 @@
             this.tbpRealTime.Size = new System.Drawing.Size(1625, 668);
             this.tbpRealTime.TabIndex = 1;
             this.tbpRealTime.Text = "RealTime";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label79.Location = new System.Drawing.Point(483, 404);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(52, 17);
+            this.label79.TabIndex = 122;
+            this.label79.Text = "Tempo";
+            // 
+            // txtRtSeqSchTime
+            // 
+            this.txtRtSeqSchTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtSeqSchTime.Location = new System.Drawing.Point(485, 424);
+            this.txtRtSeqSchTime.Name = "txtRtSeqSchTime";
+            this.txtRtSeqSchTime.Size = new System.Drawing.Size(48, 24);
+            this.txtRtSeqSchTime.TabIndex = 121;
+            this.txtRtSeqSchTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRtSeqSchId
+            // 
+            this.txtRtSeqSchId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtRtSeqSchId.Location = new System.Drawing.Point(211, 424);
+            this.txtRtSeqSchId.Name = "txtRtSeqSchId";
+            this.txtRtSeqSchId.Size = new System.Drawing.Size(268, 24);
+            this.txtRtSeqSchId.TabIndex = 120;
+            this.txtRtSeqSchId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnRtDrawSchSequence
+            // 
+            this.btnRtDrawSchSequence.Location = new System.Drawing.Point(561, 417);
+            this.btnRtDrawSchSequence.Name = "btnRtDrawSchSequence";
+            this.btnRtDrawSchSequence.Size = new System.Drawing.Size(177, 41);
+            this.btnRtDrawSchSequence.TabIndex = 119;
+            this.btnRtDrawSchSequence.Text = "Sequenza Schermate";
+            this.btnRtDrawSchSequence.UseVisualStyleBackColor = true;
+            this.btnRtDrawSchSequence.Click += new System.EventHandler(this.btnRtDrawSchSequence_Click);
             // 
             // txtRtIdVariabile
             // 
@@ -2755,7 +2885,7 @@
             // 
             // btnRtStopLed
             // 
-            this.btnRtStopLed.Location = new System.Drawing.Point(767, 133);
+            this.btnRtStopLed.Location = new System.Drawing.Point(767, 103);
             this.btnRtStopLed.Name = "btnRtStopLed";
             this.btnRtStopLed.Size = new System.Drawing.Size(136, 41);
             this.btnRtStopLed.TabIndex = 67;
@@ -2765,7 +2895,7 @@
             // 
             // btnRtSetLed
             // 
-            this.btnRtSetLed.Location = new System.Drawing.Point(561, 133);
+            this.btnRtSetLed.Location = new System.Drawing.Point(561, 103);
             this.btnRtSetLed.Name = "btnRtSetLed";
             this.btnRtSetLed.Size = new System.Drawing.Size(177, 41);
             this.btnRtSetLed.TabIndex = 66;
@@ -3031,12 +3161,13 @@
             this.grbMemCancFisica.Controls.Add(this.txtMemCFStartAdd);
             this.grbMemCancFisica.Controls.Add(this.btnMemCFExec);
             this.grbMemCancFisica.Cursor = System.Windows.Forms.Cursors.Default;
-            this.grbMemCancFisica.Location = new System.Drawing.Point(943, 17);
+            this.grbMemCancFisica.Location = new System.Drawing.Point(944, 17);
             this.grbMemCancFisica.Name = "grbMemCancFisica";
             this.grbMemCancFisica.Size = new System.Drawing.Size(405, 237);
             this.grbMemCancFisica.TabIndex = 84;
             this.grbMemCancFisica.TabStop = false;
             this.grbMemCancFisica.Text = "Cancellazione 4K Memoria";
+            this.grbMemCancFisica.Visible = false;
             // 
             // rbtMemAreaApp2
             // 
@@ -3136,6 +3267,7 @@
             this.btnMemCFExec.TabIndex = 8;
             this.btnMemCFExec.Text = "Esegui";
             this.btnMemCFExec.UseVisualStyleBackColor = true;
+            this.btnMemCFExec.Click += new System.EventHandler(this.btnMemCFExec_Click);
             // 
             // grbMemCancellazione
             // 
@@ -3458,114 +3590,44 @@
             this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
             this.flvStatoListaImg.VirtualMode = true;
             // 
-            // grbModInvioModello
+            // btnVarSalvaValore
             // 
-            this.grbModInvioModello.BackColor = System.Drawing.Color.White;
-            this.grbModInvioModello.Controls.Add(this.pgbModStatoInvio);
-            this.grbModInvioModello.Controls.Add(this.btnModAggiornaDisplay);
-            this.grbModInvioModello.Controls.Add(this.txtModSchermateTrasmesse);
-            this.grbModInvioModello.Controls.Add(this.txtModImmaginiTrasmesse);
-            this.grbModInvioModello.Controls.Add(this.btnModInviaSchermate);
-            this.grbModInvioModello.Controls.Add(this.btnModInviaImmagini);
-            this.grbModInvioModello.Location = new System.Drawing.Point(835, 275);
-            this.grbModInvioModello.Name = "grbModInvioModello";
-            this.grbModInvioModello.Size = new System.Drawing.Size(369, 325);
-            this.grbModInvioModello.TabIndex = 24;
-            this.grbModInvioModello.TabStop = false;
-            this.grbModInvioModello.Text = "UPLOAD";
+            this.btnVarSalvaValore.Location = new System.Drawing.Point(209, 20);
+            this.btnVarSalvaValore.Name = "btnVarSalvaValore";
+            this.btnVarSalvaValore.Size = new System.Drawing.Size(103, 33);
+            this.btnVarSalvaValore.TabIndex = 82;
+            this.btnVarSalvaValore.Text = "Salva Valore";
+            this.btnVarSalvaValore.UseVisualStyleBackColor = true;
+            this.btnVarSalvaValore.Click += new System.EventHandler(this.btnVarSalvaValore_Click);
             // 
-            // btnModInviaImmagini
+            // txtModVariabiliTrasmesse
             // 
-            this.btnModInviaImmagini.Location = new System.Drawing.Point(23, 29);
-            this.btnModInviaImmagini.Name = "btnModInviaImmagini";
-            this.btnModInviaImmagini.Size = new System.Drawing.Size(201, 40);
-            this.btnModInviaImmagini.TabIndex = 3;
-            this.btnModInviaImmagini.Text = "Invia Immagini";
-            this.btnModInviaImmagini.UseVisualStyleBackColor = true;
-            this.btnModInviaImmagini.Click += new System.EventHandler(this.btnModInviaImmagini_Click);
+            this.txtModVariabiliTrasmesse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtModVariabiliTrasmesse.Location = new System.Drawing.Point(266, 152);
+            this.txtModVariabiliTrasmesse.Name = "txtModVariabiliTrasmesse";
+            this.txtModVariabiliTrasmesse.Size = new System.Drawing.Size(74, 24);
+            this.txtModVariabiliTrasmesse.TabIndex = 107;
+            this.txtModVariabiliTrasmesse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnModInviaSchermate
+            // btnModInviaVariabili
             // 
-            this.btnModInviaSchermate.Location = new System.Drawing.Point(23, 87);
-            this.btnModInviaSchermate.Name = "btnModInviaSchermate";
-            this.btnModInviaSchermate.Size = new System.Drawing.Size(201, 40);
-            this.btnModInviaSchermate.TabIndex = 4;
-            this.btnModInviaSchermate.Text = "Invia Schermate";
-            this.btnModInviaSchermate.UseVisualStyleBackColor = true;
-            this.btnModInviaSchermate.Click += new System.EventHandler(this.btnModInviaSchermate_Click);
+            this.btnModInviaVariabili.Location = new System.Drawing.Point(23, 145);
+            this.btnModInviaVariabili.Name = "btnModInviaVariabili";
+            this.btnModInviaVariabili.Size = new System.Drawing.Size(201, 40);
+            this.btnModInviaVariabili.TabIndex = 106;
+            this.btnModInviaVariabili.Text = "Invia Variabili";
+            this.btnModInviaVariabili.UseVisualStyleBackColor = true;
+            this.btnModInviaVariabili.Click += new System.EventHandler(this.btnModInviaVariabili_Click);
             // 
-            // txtModImmaginiTrasmesse
+            // btnRtTestLed
             // 
-            this.txtModImmaginiTrasmesse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtModImmaginiTrasmesse.Location = new System.Drawing.Point(266, 36);
-            this.txtModImmaginiTrasmesse.Name = "txtModImmaginiTrasmesse";
-            this.txtModImmaginiTrasmesse.Size = new System.Drawing.Size(74, 24);
-            this.txtModImmaginiTrasmesse.TabIndex = 102;
-            this.txtModImmaginiTrasmesse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtModSchermateTrasmesse
-            // 
-            this.txtModSchermateTrasmesse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtModSchermateTrasmesse.Location = new System.Drawing.Point(266, 94);
-            this.txtModSchermateTrasmesse.Name = "txtModSchermateTrasmesse";
-            this.txtModSchermateTrasmesse.Size = new System.Drawing.Size(74, 24);
-            this.txtModSchermateTrasmesse.TabIndex = 103;
-            this.txtModSchermateTrasmesse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnModAggiornaDisplay
-            // 
-            this.btnModAggiornaDisplay.Location = new System.Drawing.Point(23, 269);
-            this.btnModAggiornaDisplay.Name = "btnModAggiornaDisplay";
-            this.btnModAggiornaDisplay.Size = new System.Drawing.Size(317, 40);
-            this.btnModAggiornaDisplay.TabIndex = 104;
-            this.btnModAggiornaDisplay.Text = "Aggiorna Display";
-            this.btnModAggiornaDisplay.UseVisualStyleBackColor = true;
-            this.btnModAggiornaDisplay.Click += new System.EventHandler(this.btnModAggiornaDisplay_Click);
-            // 
-            // pgbModStatoInvio
-            // 
-            this.pgbModStatoInvio.Location = new System.Drawing.Point(23, 220);
-            this.pgbModStatoInvio.Name = "pgbModStatoInvio";
-            this.pgbModStatoInvio.Size = new System.Drawing.Size(317, 27);
-            this.pgbModStatoInvio.TabIndex = 105;
-            // 
-            // btnRtDrawSchSequence
-            // 
-            this.btnRtDrawSchSequence.Location = new System.Drawing.Point(561, 417);
-            this.btnRtDrawSchSequence.Name = "btnRtDrawSchSequence";
-            this.btnRtDrawSchSequence.Size = new System.Drawing.Size(177, 41);
-            this.btnRtDrawSchSequence.TabIndex = 119;
-            this.btnRtDrawSchSequence.Text = "Sequenza Schermate";
-            this.btnRtDrawSchSequence.UseVisualStyleBackColor = true;
-            this.btnRtDrawSchSequence.Click += new System.EventHandler(this.btnRtDrawSchSequence_Click);
-            // 
-            // txtRtSeqSchId
-            // 
-            this.txtRtSeqSchId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtSeqSchId.Location = new System.Drawing.Point(211, 424);
-            this.txtRtSeqSchId.Name = "txtRtSeqSchId";
-            this.txtRtSeqSchId.Size = new System.Drawing.Size(268, 24);
-            this.txtRtSeqSchId.TabIndex = 120;
-            this.txtRtSeqSchId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtRtSeqSchTime
-            // 
-            this.txtRtSeqSchTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtRtSeqSchTime.Location = new System.Drawing.Point(485, 424);
-            this.txtRtSeqSchTime.Name = "txtRtSeqSchTime";
-            this.txtRtSeqSchTime.Size = new System.Drawing.Size(48, 24);
-            this.txtRtSeqSchTime.TabIndex = 121;
-            this.txtRtSeqSchTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label79.Location = new System.Drawing.Point(483, 404);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(52, 17);
-            this.label79.TabIndex = 122;
-            this.label79.Text = "Tempo";
+            this.btnRtTestLed.Location = new System.Drawing.Point(562, 152);
+            this.btnRtTestLed.Name = "btnRtTestLed";
+            this.btnRtTestLed.Size = new System.Drawing.Size(177, 41);
+            this.btnRtTestLed.TabIndex = 123;
+            this.btnRtTestLed.Text = "Test Led";
+            this.btnRtTestLed.UseVisualStyleBackColor = true;
+            this.btnRtTestLed.Click += new System.EventHandler(this.btnRtTestLed_Click);
             // 
             // frmDisplayManager
             // 
@@ -3582,6 +3644,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tbpArchivioModelli.ResumeLayout(false);
+            this.grbModInvioModello.ResumeLayout(false);
+            this.grbModInvioModello.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -3638,8 +3702,6 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).EndInit();
-            this.grbModInvioModello.ResumeLayout(false);
-            this.grbModInvioModello.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3938,5 +4000,9 @@
         private System.Windows.Forms.TextBox txtRtSeqSchTime;
         private System.Windows.Forms.TextBox txtRtSeqSchId;
         private System.Windows.Forms.Button btnRtDrawSchSequence;
+        private System.Windows.Forms.Button btnVarSalvaValore;
+        private System.Windows.Forms.TextBox txtModVariabiliTrasmesse;
+        private System.Windows.Forms.Button btnModInviaVariabili;
+        private System.Windows.Forms.Button btnRtTestLed;
     }
 }

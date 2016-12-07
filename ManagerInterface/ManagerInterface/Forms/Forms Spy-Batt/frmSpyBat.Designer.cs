@@ -81,6 +81,8 @@
             this.txtRevHWSb = new System.Windows.Forms.TextBox();
             this.lblFirmwCb = new System.Windows.Forms.Label();
             this.grbDatiCliente = new System.Windows.Forms.GroupBox();
+            this.label254 = new System.Windows.Forms.Label();
+            this.txtCliCodiceLL = new System.Windows.Forms.TextBox();
             this.txtCliCicliAttesi = new System.Windows.Forms.TextBox();
             this.lblCliCicliAttesi = new System.Windows.Forms.Label();
             this.txtNoteCliente = new System.Windows.Forms.TextBox();
@@ -311,7 +313,6 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.btnCalScriviGiorno = new System.Windows.Forms.Button();
@@ -898,6 +899,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -1373,6 +1375,8 @@
             // grbDatiCliente
             // 
             this.grbDatiCliente.BackColor = System.Drawing.Color.White;
+            this.grbDatiCliente.Controls.Add(this.label254);
+            this.grbDatiCliente.Controls.Add(this.txtCliCodiceLL);
             this.grbDatiCliente.Controls.Add(this.txtCliCicliAttesi);
             this.grbDatiCliente.Controls.Add(this.lblCliCicliAttesi);
             this.grbDatiCliente.Controls.Add(this.txtNoteCliente);
@@ -1388,6 +1392,16 @@
             resources.ApplyResources(this.grbDatiCliente, "grbDatiCliente");
             this.grbDatiCliente.Name = "grbDatiCliente";
             this.grbDatiCliente.TabStop = false;
+            // 
+            // label254
+            // 
+            resources.ApplyResources(this.label254, "label254");
+            this.label254.Name = "label254";
+            // 
+            // txtCliCodiceLL
+            // 
+            resources.ApplyResources(this.txtCliCodiceLL, "txtCliCodiceLL");
+            this.txtCliCodiceLL.Name = "txtCliCodiceLL";
             // 
             // txtCliCicliAttesi
             // 
@@ -2977,17 +2991,6 @@
             resources.ApplyResources(this.lblTurno3, "lblTurno3");
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
-            // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
             // 
             // tabCb05
             // 
@@ -6952,6 +6955,17 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
+            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -8012,5 +8026,7 @@
         private System.Windows.Forms.TextBox txtSvcNumLettureTens;
         private System.Windows.Forms.Label label251;
         private System.Windows.Forms.TextBox txtSvcNumLettureCorr;
+        private System.Windows.Forms.Label label254;
+        private System.Windows.Forms.TextBox txtCliCodiceLL;
     }
 }

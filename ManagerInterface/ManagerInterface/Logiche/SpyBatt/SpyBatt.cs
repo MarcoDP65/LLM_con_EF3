@@ -787,6 +787,7 @@ namespace ChargerLogic
                         sbCliente.IdApparato = IdApparato;
                         sbCliente.BatteryBrand = _mS.CustomerData.BatteryBrand;
                         sbCliente.BatteryId = _mS.CustomerData.BatteryId;
+                        sbCliente.BatteryLLId = _mS.CustomerData.BatteryLLId;
                         sbCliente.BatteryModel = _mS.CustomerData.BatteryModel;
                         sbCliente.Client = _mS.CustomerData.Client;
                         sbCliente.ClientNote = _mS.CustomerData.ClientNote;
@@ -3496,6 +3497,7 @@ namespace ChargerLogic
                 _mS.CustomerData.ClientNote = sbCliente.ClientNote.ToString();
                 _mS.CustomerData.BatteryBrand = sbCliente.BatteryBrand.ToString();
                 _mS.CustomerData.BatteryId = sbCliente.BatteryId.ToString();
+                _mS.CustomerData.BatteryLLId = sbCliente.BatteryLLId.ToString();
                 _mS.CustomerData.BatteryModel = sbCliente.BatteryModel.ToString();
                 _mS.CustomerData.CicliAttesi = (ushort)sbCliente.CicliAttesi;
                 _mS.CustomerData.SerialNumber = sbCliente.SerialNumber.ToString();

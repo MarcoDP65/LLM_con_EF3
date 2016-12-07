@@ -779,6 +779,8 @@ namespace ChargerLogic
             {
                 try
                 {
+                    byte msb = 0;
+                    byte lsb = 0;
                     byte _len = 0;
                     int _strlen = Messaggio.Length;
                     if (_strlen > 40 )
@@ -848,10 +850,11 @@ namespace ChargerLogic
                             _tempData[7] = TimeOffVar;
                             break;
                         case ModelloComando.TipoComando.DisegnaImmagine:
+                            FunzioniComuni.SplitUshort(NumImg, ref lsb, ref msb); 
                             _len = 6;
                             _tempData[0] = (byte)Attivita;
-                            _tempData[1] = 0;
-                            _tempData[2] = 1;
+                            _tempData[1] = msb;
+                            _tempData[2] = lsb;
                             _tempData[3] = PosX;
                             _tempData[4] = PosY;
                             _tempData[5] = Colore;
@@ -915,6 +918,7 @@ namespace ChargerLogic
         {
             public string Nome { get; set; }
             public byte Id { get; set; }
+            public byte Lunghezza { get; set; }
             public string Valore { get; set; }
         }
 

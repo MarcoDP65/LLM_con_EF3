@@ -943,6 +943,7 @@ namespace ChargerLogic
             public string BatteryBrand = "";
             public string BatteryModel = "";
             public string BatteryId = "";
+            public string BatteryLLId = "";
             public string ClientNote = "";
             public ushort CicliAttesi = 0;
             public string SerialNumber = "";
@@ -1023,6 +1024,8 @@ namespace ChargerLogic
                                 startByte += 50;
                                 CicliAttesi = ArrayToUshort(_risposta, startByte, 2);
                                 startByte += 2;
+                                BatteryLLId = ArrayToString(_risposta, startByte, 5);
+                                startByte += 5;
                                 PartReceived[1] = true;
                                 break;
                             case 3:
