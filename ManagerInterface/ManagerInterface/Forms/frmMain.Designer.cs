@@ -59,6 +59,7 @@
             this.mnuServizi = new System.Windows.Forms.ToolStripMenuItem();
             this.flashFTDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flashSPYBATTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mSP430FlasherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmazioniAvanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImpostazioni = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCercaDispositiviUSB = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,7 +79,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.mSP430FlasherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importaHEXDUMPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -102,12 +103,12 @@
             this.mnuMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
+            this.toolStripMenuItem3,
             this.mnuCaricabatteria,
             this.mnuSpybat,
             this.mnuServizi,
             this.mnuImpostazioni,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem2});
             resources.ApplyResources(this.mnuMain, "mnuMain");
             this.mnuMain.Name = "mnuMain";
             // 
@@ -230,6 +231,7 @@
             this.archivioToolStripMenuItem,
             this.toolStripMenuItem1,
             this.importaFileToolStripMenuItem,
+            this.importaHEXDUMPToolStripMenuItem,
             this.toolStripMenuItem4,
             this.alimentatoreToolStripMenuItem});
             this.mnuSpybat.Name = "mnuSpybat";
@@ -290,6 +292,12 @@
             // 
             this.flashSPYBATTToolStripMenuItem.Name = "flashSPYBATTToolStripMenuItem";
             resources.ApplyResources(this.flashSPYBATTToolStripMenuItem, "flashSPYBATTToolStripMenuItem");
+            // 
+            // mSP430FlasherToolStripMenuItem
+            // 
+            this.mSP430FlasherToolStripMenuItem.Name = "mSP430FlasherToolStripMenuItem";
+            resources.ApplyResources(this.mSP430FlasherToolStripMenuItem, "mSP430FlasherToolStripMenuItem");
+            this.mSP430FlasherToolStripMenuItem.Click += new System.EventHandler(this.mSP430FlasherToolStripMenuItem_Click);
             // 
             // programmazioniAvanzateToolStripMenuItem
             // 
@@ -421,11 +429,11 @@
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
             // 
-            // mSP430FlasherToolStripMenuItem
+            // importaHEXDUMPToolStripMenuItem
             // 
-            this.mSP430FlasherToolStripMenuItem.Name = "mSP430FlasherToolStripMenuItem";
-            resources.ApplyResources(this.mSP430FlasherToolStripMenuItem, "mSP430FlasherToolStripMenuItem");
-            this.mSP430FlasherToolStripMenuItem.Click += new System.EventHandler(this.mSP430FlasherToolStripMenuItem_Click);
+            this.importaHEXDUMPToolStripMenuItem.Name = "importaHEXDUMPToolStripMenuItem";
+            resources.ApplyResources(this.importaHEXDUMPToolStripMenuItem, "importaHEXDUMPToolStripMenuItem");
+            this.importaHEXDUMPToolStripMenuItem.Click += new System.EventHandler(this.importaHEXDUMPToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -507,6 +515,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem mnuLLDisplayManager;
         private System.Windows.Forms.ToolStripMenuItem mSP430FlasherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importaHEXDUMPToolStripMenuItem;
     }
 }
 

@@ -112,6 +112,7 @@ namespace MoriData
         {
             _sblm = new _sbMemLunga();
             valido = false;
+            _database = null;
             _datiSalvati = true;
             _recordPresente = false;
             ProgrammaAttivo = new sbProgrammaRicarica();
@@ -407,6 +408,8 @@ namespace MoriData
             {
 
                 CicliMemoriaBreve.Clear();
+                if (_database == null)
+                    return false;
 
                 IEnumerable<_sbMemBreve> _TempCicli = _database.Query<_sbMemBreve>("select * from _sbMemBreve where IdApparato = ? and IdMemoriaLunga = ? order by IdMemoriaBreve ", _sblm.IdApparato, _sblm.IdMemoriaLunga);
 
@@ -443,7 +446,8 @@ namespace MoriData
             {
                 DateTime _start = DateTime.Now;
                 Log.Debug("Start SalvaBrevi ");
-
+                if (_database == null)
+                    return false;
 
                 CicliMemBreveDB.Clear();
                 SQLiteCommand CancellaCicli = _database.CreateCommand("delete from _sbMemBreve where IdApparato = ? and IdMemoriaLunga = ? ", _sblm.IdApparato, _sblm.IdMemoriaLunga);
@@ -481,6 +485,8 @@ namespace MoriData
         {
             try
             {
+                if (_database == null)
+                    return false;
                 SQLiteCommand CancellaCicli =  _database.CreateCommand("delete from _sbMemBreve where IdApparato = ? and IdMemoriaLunga = ? ", _sblm.IdApparato, _sblm.IdMemoriaLunga);
                 int esito = CancellaCicli.ExecuteNonQuery();
                 CaricaBrevi() ;
@@ -499,6 +505,8 @@ namespace MoriData
         {
             try
             {
+                if (_database == null)
+                    return false;
                 SQLiteCommand CancellaRecord = _database.CreateCommand("delete from _sbMemLunga where IdApparato = ? and IdMemoriaLunga = ? ", _sblm.IdApparato, _sblm.IdMemoriaLunga);
                 int esito = CancellaRecord.ExecuteNonQuery();
                 return true;
@@ -615,7 +623,7 @@ namespace MoriData
                 else
                 {
                     ProgrammaAttivo = null;
-                    Log.Debug("MemLunga.CaricaProgramma: Non Trovato (" + _sblm.IdApparato.ToString() + " - " + _sblm.IdProgramma.ToString() + ") " + _tempProgramma.ToString());
+                    //Log.Debug("MemLunga.CaricaProgramma: Non Trovato (" + _sblm.IdApparato.ToString() + " - " + _sblm.IdProgramma.ToString() + ") " + _tempProgramma.ToString());
                 }
 
                 return _esito;

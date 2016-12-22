@@ -176,7 +176,8 @@ namespace ChargerLogic
         public class MemoriaPeriodoLungo
         {
             public byte TipoEvento;
-            public UInt32 IdEvento;    //contatore, univoco per apparato
+            public UInt32 IdEvento;         //contatore, univoco per apparato
+            public UInt32 IdEventoReale;    //contatore, univoco per apparato, dato presente sul record fisico
             public ushort IdProgramma;
             public UInt32 PuntatorePrimoBreve;
             public ushort NumEventiBrevi;
@@ -301,6 +302,7 @@ namespace ChargerLogic
                         TipoEvento = _risposta[startByte];
                         startByte += 1;
                         IdEvento = ArrayToUint32(_risposta, startByte, 4);
+                        IdEventoReale = IdEvento;
                         startByte += 4;
                         IdProgramma = ArrayToUshort(_risposta, startByte, 2);
                         startByte += 2;
@@ -433,13 +435,14 @@ namespace ChargerLogic
                     }
                     if (_esito)
                     {
-                        Log.Debug(" ---------------------- MemoriaPeriodoLungo -----------------------------------------");
-                        Log.Debug(FunzioniMR.hexdumpArray(_risposta));
+                        // Log.Debug(" ---------------------- MemoriaPeriodoLungo -----------------------------------------");
+                        Log.Debug( "Lungo: " + FunzioniMR.hexdumpArray(_risposta));
 
                         startByte = 0;
                         TipoEvento = _risposta[startByte];
                         startByte += 1;
                         IdEvento = ArrayToUint32(_risposta, startByte, 4);
+                        IdEventoReale = IdEvento;
                         startByte += 4;
                         IdProgramma = ArrayToUshort(_risposta, startByte, 2);
                         startByte += 2;
@@ -594,7 +597,7 @@ namespace ChargerLogic
                     }
                     if (_esito)
                     {
-                        Log.Debug(" ---------------------- MemoriaPeriodoBreve -----------------------------------------");
+                        //Log.Debug(" ---------------------- MemoriaPeriodoBreve -----------------------------------------");
                         Log.Debug(FunzioniMR.hexdumpArray(_risposta));
 
 
@@ -1256,11 +1259,11 @@ namespace ChargerLogic
                     return EsitoRisposta.ErroreGenerico;
                 }
 
+
             }
 
-
-
         }
+
 
         public class ImmagineDumpMem
         {
@@ -1280,7 +1283,7 @@ namespace ChargerLogic
 
             public ImmagineDumpMem()
             {
-                memImage = new byte[4200000];//2097152];
+                memImage = new byte[2097152];
                 memPtr = 0;
                 NumStep = 0;
             }

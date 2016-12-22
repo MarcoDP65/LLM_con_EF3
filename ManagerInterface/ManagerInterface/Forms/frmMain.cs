@@ -508,6 +508,26 @@ namespace PannelloCharger
             }
         }
 
+        private void importaHEXDUMPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                frmSbExport sbExport = new frmSbExport(ref varGlobali, true, "", logiche, false, false);
+                sbExport.MdiParent = this;
+                sbExport.StartPosition = FormStartPosition.CenterParent;
+                sbExport.Setmode(elementiComuni.modoDati.HexDumpRecovery);
+                sbExport.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain: " + Ex.Message);
+            }
+        }
+
+
         private void cercaDispositiviUSBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1021,7 +1041,8 @@ namespace PannelloCharger
                 Log.Error("frmMain.flasMSP430 : " + Ex.Message);
             }
         }
-    }
+
+     }
 
     public class StatoPulsanti
     {

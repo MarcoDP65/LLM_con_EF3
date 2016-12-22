@@ -123,6 +123,9 @@ namespace ChargerLogic
         // Eventi pubblici della classe spy Batt
 
         private static EventWaitHandle SB_USBeventWait;
+        private bool _attivaLogger = false;
+        private string _fileLogger = "";
+
 
         public event LongMemListHandler LMListChange ;
         public delegate void LongMemListHandler(UnitaSpyBatt sb, sbListaLunghiEvt lme);
@@ -423,8 +426,9 @@ namespace ChargerLogic
                         sbProgrammaRicarica prog = new sbProgrammaRicarica(dbCorrente);
                         prog._sbpr = _prog;
                         Programmazioni.Add(prog);
+                        //prog.salvaDati();
                     }
-
+                   
                 }
 
                 Log.Warn("Fine CaricaProgrammazioni: " + ModelloDati.Programmazioni.Count.ToString());
@@ -436,6 +440,7 @@ namespace ChargerLogic
                     {
                         sbMemLunga _cicloL = new sbMemLunga(dbCorrente);
                         _cicloL._sblm = _memL.TestataCiclo;
+                        _cicloL._sblm.IdApparato = sbData.Id;
                         _cicloL.CicliMemoriaBreve.Clear();
                         //MemBreve = false;
                         if (MemBreve)
@@ -444,16 +449,18 @@ namespace ChargerLogic
                             {
                                 sbMemBreve _cicloB = new sbMemBreve(dbCorrente);
                                 _cicloB._sbsm = _memB;
-                                _cicloL.CicliMemoriaBreve.Add(_cicloB);
+                                _cicloB._sbsm.IdApparato = sbData.Id;
+                               _cicloL.CicliMemoriaBreve.Add(_cicloB);
                             }
                             Log.Warn("Fine CaricaBrevi: " + _memL.CicliBrevi.Count.ToString());
 
                         }
                         CicliMemoriaLunga.Add(_cicloL);
+                        //_cicloL.salvaDati();
                     }
                     Log.Warn("Fine CaricaLunghi: " + ModelloDati.CicliLunghi.Count.ToString());
                 }
-
+                
                 _esito = true;
                 return _esito;
             }
@@ -906,9 +913,26 @@ namespace ChargerLogic
                         // prima, se previsto salvo  l'immagine su file 
                         if(CreaHexDump == true)
                         {
+
                             if (HexDumpFile != "")
                             {
-                                File.WriteAllBytes(HexDumpFile, _mS.DumpMem.memImage);
+                                ImageDump _tempImg = new ImageDump();
+                                _tempImg.Apparato = ImageDump.TipoApparato.SpyBatt;
+                                _tempImg.Testata = sbData;
+                                _tempImg.DataBuffer = _mS.DumpMem.memImage;
+                                _tempImg.Timestamp= DateTime.Now;
+
+                                string _tempSer = JsonConvert.SerializeObject(_tempImg);
+
+                                if (!File.Exists(HexDumpFile)) File.Create(HexDumpFile).Close();
+                                File.WriteAllText(HexDumpFile, _tempSer);
+                                File.WriteAllBytes(HexDumpFile + ".txt", _mS.DumpMem.memImage);
+
+                                Log.Warn("---------------------- FILE GENERATI ------------------------------");
+                                Log.Warn(HexDumpFile);
+
+
+                                //                                File.WriteAllBytes(HexDumpFile, _mS.DumpMem.memImage);
                             }
                         }
 
@@ -1342,6 +1366,551 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+        private bool InizializzaLogger(string FileReport )
+        {
+            try
+            {
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaLogger: " + Ex.Message);
+                return false;
+            }
+
+
+        }
+
+
+
+
+
+        public bool AnalizzaHexDump(string IdApparato, MoriData._db dbCorrente, ImageDump Immagine, bool RunAsinc = false, bool ForzaRecupero = false, bool GeneraReport = false, string FileReport = "" )
+        {
+            try
+            {
+                bool _esito;
+                object _dataRx;
+
+                sbEndStep _esitoBg = new sbEndStep();
+                sbWaitStep _stepBg = new sbWaitStep();
+                SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
+                MappaMemoria _mappaCorrente = new MappaMemoria();
+                ModelloDati = new sbDataModel();
+                int _totBrevi = 0;
+
+                if (FileReport == "")
+                    GeneraReport = false;
+
+                bool _recordPresente;
+
+                if (Immagine != null && Immagine.Testata != null)
+                {
+
+                    if (Immagine.Apparato == ImageDump.TipoApparato.SpyBatt) 
+                    {
+                        //apro un'unica transazione sul DB
+
+                        // prima recupero la testata 
+                        ModelloDati.Testata = Immagine.Testata._sb;
+
+
+                        // Recupero la mappa di meoria del FW Attuale
+                        _mappaCorrente = Immagine.Testata.ModelloMemoria();
+
+
+                        //stutture per la decompressione memoria
+                        byte[] _TempMessaggio;  //frammento in analisi
+                        SerialMessage.EsitoRisposta _esitoLettura;
+                        int _areaSize = 0;
+                        int _areaStart = 0;
+                        int _areaBlock = 0;
+
+                        // Finito il download dalla scheda, comincio a spacchettare la memoria
+                        // -------------------------------------------------------------------------------------------
+                        // Step 2.1: Carico la testata                        
+                        if (RunAsinc)
+                        {
+                            //Preparo l'intestazione della finestra di avanzamento
+                            if (Step != null)
+                            {
+                                sbWaitStep _passo = new sbWaitStep();
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                _passo.Titolo = "Fase 2.1 - Scomposizione Memoria: Testata";
+                                _passo.Eventi = 10;
+                                _passo.Step = -1;
+                                _passo.EsecuzioneInterrotta = false;
+                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(1, _passo);
+                                Step(this, _stepEv);
+                            }
+
+                        }
+
+
+                        _areaSize = _mappaCorrente.Testata.ElemetSize;
+                        _areaStart = _mappaCorrente.Testata.StartAddress;
+                        _areaBlock = _mappaCorrente.Testata.NoOfElemets;
+
+                        _TempMessaggio = new byte[_areaSize];
+
+                        Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
+                        Log.Warn("---------------------- TESTATA (NON ATTIVA) ------------------------------");
+
+                        Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+
+                        // Non carico il record testata: i contatori non sono valorizzati: controllo solo che il record sia valido
+                        // TODO: 
+                        _mS.Intestazione = new MessaggioSpyBatt.comandoInizialeSB();
+                        _esitoLettura = _mS.Intestazione.analizzaMessaggio(_TempMessaggio, true);
+
+                        if (_esitoLettura != SerialMessage.EsitoRisposta.MessaggioOk)
+                        {
+                            return false;
+                        }
+
+                        if (RunAsinc)
+                        {
+                            //Preparo l'intestazione della finestra di avanzamento
+                            if (Step != null)
+                            {
+                                sbWaitStep _passo = new sbWaitStep();
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
+                                _passo.Eventi = 10;
+                                _passo.Step = -1;
+                                _passo.EsecuzioneInterrotta = false;
+                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                Step(this, _stepEv);
+                            }
+
+                        }
+
+
+                        // Step 2.2: Carico i dati cliente
+                        /*
+                        _areaSize = 251;
+                        _areaStart = 0X40;
+                        _areaBlock = 4;
+                        */
+
+                        _areaSize = _mappaCorrente.DatiCliente.ElemetSize;
+                        _areaStart = _mappaCorrente.DatiCliente.StartAddress;
+                        _areaBlock = _mappaCorrente.DatiCliente.NoOfElemets;
+
+
+                        Log.Warn("---------------------- CLIENTE ------------------------------");
+                        _TempMessaggio = new byte[_areaSize];
+
+
+                        if (RunAsinc)
+                        {
+                            //Preparo l'intestazione della finestra di avanzamento
+                            if (Step != null)
+                            {
+                                sbWaitStep _passo = new sbWaitStep();
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
+                                _passo.Eventi = 10;
+                                _passo.Step = 2;
+                                _passo.EsecuzioneInterrotta = false;
+                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                Step(this, _stepEv);
+                            }
+
+                        }
+
+
+                        _mS.CustomerData = new MessaggioSpyBatt.DatiCliente();
+                        for (int _cicloCli = 0; _cicloCli < _areaBlock; _cicloCli++)
+                        {
+                            Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
+                            Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+                            _esitoLettura = _mS.CustomerData.analizzaMessaggio(_TempMessaggio, true);
+                            _areaStart += _areaSize;
+                        }
+                       // _esitoLettura = _mS.Intestazione.analizzaMessaggio(_TempMessaggio, true);
+                        if (_mS.CustomerData.datiPronti)
+                        {
+                            ModelloDati.Cliente = new _sbDatiCliente();
+                            ModelloDati.Cliente.IdApparato = IdApparato;
+                            ModelloDati.Cliente.BatteryBrand = _mS.CustomerData.BatteryBrand;
+                            ModelloDati.Cliente.BatteryId = _mS.CustomerData.BatteryId;
+                            ModelloDati.Cliente.BatteryModel = _mS.CustomerData.BatteryModel;
+                            ModelloDati.Cliente.Client = _mS.CustomerData.Client;
+                            ModelloDati.Cliente.ClientNote = _mS.CustomerData.ClientNote;
+                           
+                        }
+
+                        // Step 2.3: Carico i dati programmazione
+
+                        /*
+                        _areaSize = 0x80;
+                        _areaStart = 0X440;
+                        _areaBlock = sbData.ProgramCount;
+                        */
+
+                        _areaSize = _mappaCorrente.Programmazioni.ElemetSize;
+                        _areaStart = _mappaCorrente.Programmazioni.StartAddress;
+                        _areaBlock = _mappaCorrente.Programmazioni.NoOfElemets;
+
+                        _Programmazioni.Clear();
+
+                        Log.Warn("---------------------- Programmazioni: " + _areaBlock.ToString() + " ------------------------------");
+
+                        _TempMessaggio = new byte[_areaSize];
+                        for (int _cicloCli = 0; _cicloCli < _areaBlock; _cicloCli++)
+                        {
+                            _mS.ProgRicarica = new MessaggioSpyBatt.ProgrammaRicarica();
+                            Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
+                            Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+                            _esitoLettura = _mS.ProgRicarica.analizzaMessaggio(_TempMessaggio, true);
+                            if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
+                            {
+                                if(_mS.ProgRicarica.IdProgramma == 0xFFFF)
+                                {
+                                    // Programma non inizializzato. esco dalla lettura programmi
+                                    ModelloDati.Testata.ProgramCount = _Programmazioni.Count;
+                                    break;
+                                }
+                                _Programmazioni.Add(_mS.ProgRicarica);
+                            }
+                            _areaStart += _areaSize;
+                        }
+                        if (_Programmazioni.Count > 0)
+                        {
+                            ModelloDati.Programmazioni.Clear();
+
+                            foreach (MessaggioSpyBatt.ProgrammaRicarica _ciclo in _Programmazioni)
+                            {
+                                //sbProgrammaRicarica _progR = new sbProgrammaRicarica(dbCorrente);
+                                sbProgrammaRicarica _progR = new sbProgrammaRicarica(null);
+                                _progR.caricaDati(_idCorrente, _ciclo.IdProgramma);
+
+                                if (_ciclo.IdProgramma != 0xFFFF)
+                                {
+                                    // Aggiorno la lunga e ricarico le brevi solo se cambia il N° di brevi o la data fine
+                                    // oppure se setto a true il flag AggiornaTutto
+                                    _progR.IdApparato = IdApparato;
+                                    _progR.IdProgramma = _ciclo.IdProgramma;
+                                    _progR.DataInstallazione = _ciclo.DataInstallazione;
+                                    _progR.BatteryType = _ciclo.BatteryType;
+                                    _progR.BatteryVdef = _ciclo.BatteryVdef;
+                                    _progR.BatteryAhdef = _ciclo.BatteryAhdef;
+                                    _progR.BatteryCells = _ciclo.BatteryCells;
+                                    _progR.BatteryCell1 = _ciclo.BatteryCell1;
+                                    _progR.BatteryCell2 = _ciclo.BatteryCell2;
+                                    _progR.BatteryCell3 = _ciclo.BatteryCell3;
+                                    //_progR.salvaDati();
+
+                                    ModelloDati.Programmazioni.Add(_progR._sbpr);
+                                    Log.Debug("Accodato Programma " + _ciclo.IdProgramma.ToString());
+
+                                }
+                                else
+                                {
+                                    Log.Debug("Saltato Programma " + _ciclo.IdProgramma.ToString() + " (" + _Programmazioni.IndexOf(_ciclo) + " )");
+                                }
+
+                            }
+                        }
+
+
+                        // Step 2.4: Carico i cicli lunghi
+                        /*
+                        _areaSize = 0x33;
+                        _areaStart = 0X134000;
+                        _areaBlock = sbData.LongMem;
+                        */
+
+                        _areaSize = _mappaCorrente.MemLunga.ElemetSize;
+                        _areaStart = _mappaCorrente.MemLunga.StartAddress;
+                        _areaBlock = _mappaCorrente.MemLunga.NoOfElemets; //   sbData.LongMem;
+
+                        _CicliMemoriaLunga.Clear();
+                        ModelloDati.CicliLunghi.Clear();
+
+                        MessaggioSpyBatt.MemoriaPeriodoLungo _tempLunga;
+                        MessaggioSpyBatt.MemoriaPeriodoBreve _tempBreve;
+
+                        if (_areaBlock > _mappaCorrente.MemLunga.NoOfElemets)
+                        {
+                            _areaBlock = _mappaCorrente.MemLunga.NoOfElemets;   //
+                        }
+
+                        Log.Warn("---------------------- Cicli Lunghi: " + _areaBlock.ToString() + " ------------------------------");
+                        // private System.Collections.Generic.List<MessaggioSpyBatt.MemoriaPeriodoLungo> _CicliMemoriaLunga = new System.Collections.Generic.List<MessaggioSpyBatt.MemoriaPeriodoLungo>();
+
+                        _TempMessaggio = new byte[_areaSize];
+
+                        //_areaBlock = 106;
+
+                        for (int _cicloCli = 0; _cicloCli < _areaBlock; _cicloCli++)
+                        {
+                            _tempLunga = new MessaggioSpyBatt.MemoriaPeriodoLungo();
+                            Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
+                            //Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+                            _esitoLettura = _tempLunga.analizzaMessaggio(_TempMessaggio, sbData.fwLevel, true);
+                            if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
+                            {
+                                if (_tempLunga.IdEvento == 0xFFFFFFFF)
+                                {
+                                    // Programma non inizializzato. esco dalla lettura programmi
+                                    ModelloDati.Testata.LongMem = _CicliMemoriaLunga.Count;
+                                    break;
+                                }
+
+                                _CicliMemoriaLunga.Add(_tempLunga);
+                            }
+                            _areaStart += _areaSize;
+                        }
+
+                        int risposteAttese = _CicliMemoriaLunga.Count;
+                        int _lastProgress = 0;
+
+                        if (risposteAttese > 0)
+                        {
+                            ModelloDati.CicliLunghi.Clear();
+
+
+                            uint _lastId = 0;
+                            int _stepCorrente = 0;
+
+                            foreach (MessaggioSpyBatt.MemoriaPeriodoLungo _ciclo in _CicliMemoriaLunga)
+                            {
+                                sbMemLunga _memLn = new sbMemLunga(dbCorrente);
+                                bool _breviPresenti = false;
+                                _stepCorrente++;
+                               // _memLn.I ??
+
+                                if (_ciclo.IdEvento >= (uint)0xFFFF)
+                                {
+                                    if (_lastId > 0)
+                                    {
+                                        // se il record è a FF e non ho un precedente valido salto al record sucessivo
+                                        Log.Warn("ID non valido " + _ciclo.IdEvento.ToString("X2") + " ! " + _lastId.ToString("X2"));
+                                        _ciclo.IdEvento = ++_lastId;
+                                    }
+                                    else
+                                    {
+
+                                        continue;
+                                    }
+                                }
+
+                                _memLn.caricaDati(_idCorrente, (uint)_ciclo.IdEvento);
+                                CaricaMessaggioMemLunga(_idCorrente, (uint)_ciclo.IdEvento, _ciclo, ref _memLn);
+                                _lastId = _ciclo.IdEvento;
+                                _CicliMemoriaBreve.Clear();
+                                // adesso preparo il modello da salvare
+                                sbDataCicloLungo _datiLungo = new sbDataCicloLungo();
+                                _datiLungo.TestataCiclo = _memLn._sblm;
+                                _datiLungo.CicliBrevi.Clear();
+
+                                _memLn.CaricaProgramma();
+                                _memLn.CicliMemoriaBreve.Clear();
+                                // Ora carico i brevi:
+                                if (_memLn.NumEventiBrevi > 00)
+                                {
+                                    if ((_memLn.NumEventiBrevi != 0xFFFF) & (_memLn.PuntatorePrimoBreve < 0xFFFFFF))
+                                    {
+
+                                        _breviPresenti = true;
+
+                                    }
+                                }
+
+
+                                if (_breviPresenti)
+                                {
+                                    /*
+                                    _areaSize = 0x1A;
+                                    _areaStart = 0x002000 + (int)( _memLn.PuntatorePrimoBreve *_areaSize) ;
+                                    _areaBlock =_memLn.NumEventiBrevi;
+                                    */
+
+                                    _areaSize = _mappaCorrente.MemBreve.ElemetSize;
+                                    _areaStart = _mappaCorrente.MemBreve.StartAddress + (int)(_memLn.PuntatorePrimoBreve * _areaSize);
+                                    _areaBlock = _memLn.NumEventiBrevi;
+
+
+                                    Log.Warn("---------------------- Cicli Brevi: " + _areaBlock.ToString() + " ------------------------------");
+
+                                    _TempMessaggio = new byte[_areaSize];
+
+                                    for (int _cicloBreve = 0; _cicloBreve < _areaBlock; _cicloBreve++)
+                                    {
+                                        _tempBreve = new MessaggioSpyBatt.MemoriaPeriodoBreve();
+                                        Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
+                                        //Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+                                        _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true);
+                                        if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
+                                        {
+                                            _CicliMemoriaBreve.Add(_tempBreve);
+                                        }
+                                        _areaStart += _areaSize;
+                                    }
+
+                                    // ora trasporto i messaggi nel modello
+                                    Log.Debug("----------------------------------------------------------------------------------------");
+                                    Log.Debug("Caricati gli eventi a breve (" + _CicliMemoriaBreve.Count.ToString() + ") aggiorno il DB");
+                                    Log.Debug("----------------------------------------------------------------------------------------");
+                                    string _testataLungo = "Eventi brevi per il lungo " + _ciclo.IdEvento.ToString();
+                                    _testataLungo += " Id reale 0x" + _ciclo.IdEventoReale.ToString("X8");
+                                    _testataLungo += " | Tipo Evento : (0x" + _ciclo.TipoEvento.ToString("X2") + ") " + FunzioniMR.StringaTipoEvento(_ciclo.TipoEvento);
+                                    _testataLungo += " | PTR primo breve: " + _ciclo.PuntatorePrimoBreve.ToString();
+                                    _testataLungo += ", num brevi: " + _ciclo.NumEventiBrevi.ToString();
+                                    _testataLungo += " | intervallo: " + FunzioniMR.StringaTimestamp(_ciclo.DataOraStart) + " - " + FunzioniMR.StringaTimestamp(_ciclo.DataOraFine);
+                                    _testataLungo += " | Durata: " + FunzioniMR.StringaDurataBase(_ciclo.Durata);
+
+                                    Log.Debug(_testataLungo);
+                                    Log.Debug("----------------------------------------------------------------------------------------");
+
+                                    _memLn.CancellaBrevi();
+                                    _datiLungo.CicliBrevi.Clear();
+                                    int _numCiclo = 1;
+                                    int _numerr = 0;
+                                    foreach (MessaggioSpyBatt.MemoriaPeriodoBreve _cicloBr in _CicliMemoriaBreve)
+                                    {
+                                        sbMemBreve _memBr = new sbMemBreve(dbCorrente);
+                                        //_memBr.caricaDati(_idCorrente, (int)IdCicloLungo, _numCiclo);
+                                        string _LogBreve = _numCiclo.ToString("000") + " / Id reale 0x" + _ciclo.IdEventoReale.ToString("X8");
+                                        _LogBreve += " - Id Lungo:  " + _cicloBr.IdEvento.ToString() + " / (0x" + _cicloBr.IdEvento.ToString("X8") + ") ";
+                                        _LogBreve += " | Timestamp: " + StringaTimestamp(_cicloBr.DataOraRegistrazione);
+                                        Log.Debug(_LogBreve);
+                                        // Aggiorno la lunga e ricarico le brevi
+                                        if (_cicloBr.IdEvento != ( _ciclo.IdEvento))
+                                        {
+                                            _numerr++;
+                                        }
+                                        _memBr.IdApparato = IdApparato;
+                                        _memBr.IdMemoriaLunga = (int)_memLn.IdMemoriaLunga;
+                                        _memBr.IdMemoriaBreve = _numCiclo;
+                                        _memBr.DataOraRegistrazione = StringaTimestamp(_cicloBr.DataOraRegistrazione);
+                                        _memBr.Vreg = _cicloBr.Vreg;
+                                        _memBr.V1 = _cicloBr.V1;
+                                        _memBr.V2 = _cicloBr.V2;
+                                        _memBr.V3 = _cicloBr.V3;
+                                        _memBr.Amed = _cicloBr.Amed;
+                                        _memBr.Amin = _cicloBr.Amin;
+                                        _memBr.Amax = _cicloBr.Amax;
+                                        _memBr.Tntc = _cicloBr.Tntc;
+                                        _memBr.PresenzaElettrolita = _cicloBr.PresenzaElettrolita;
+                                        _memBr.VbatBk = _cicloBr.VbatBk;
+                                        _numCiclo++;
+
+                                        _memLn.CicliMemoriaBreve.Add(_memBr);
+                                        _datiLungo.CicliBrevi.Add(_memBr._sbsm);
+                                    }
+
+                                    Log.Debug("----------------------------------------------------------------------------------------");
+                                    Log.Debug("");
+                                    _memLn.SalvaBrevi();
+                                    _totBrevi += _CicliMemoriaBreve.Count();
+                                    Log.Warn("CICLI Breve: Fine Salvataggio");
+                                }
+                                else
+                                {
+                                    // ora trasporto i messaggi nel modello
+                                    Log.Debug("");
+                                    Log.Debug("");
+                                    Log.Debug("----------------------------------------------------------------------------------------");
+                                    Log.Debug("Lungo senza brevi ");
+                                    Log.Debug("----------------------------------------------------------------------------------------");
+                                    string _testataLungo = "Eventi brevi per il lungo " + _ciclo.IdEvento.ToString();
+                                    _testataLungo += " Id reale 0x" + _ciclo.IdEventoReale.ToString("X8");
+                                    _testataLungo += " | Tipo Evento : (0x" + _ciclo.TipoEvento.ToString("X2") + ") " + FunzioniMR.StringaTipoEvento(_ciclo.TipoEvento);
+                                    _testataLungo += " | PTR primo breve: " + _ciclo.PuntatorePrimoBreve.ToString();
+                                    _testataLungo += ", num brevi: " + _ciclo.NumEventiBrevi.ToString();
+                                    _testataLungo += " | intervallo: " + FunzioniMR.StringaTimestamp(_ciclo.DataOraStart) + " - " + FunzioniMR.StringaTimestamp(_ciclo.DataOraFine);
+                                    _testataLungo += " | Durata: " + FunzioniMR.StringaDurataBase(_ciclo.Durata);
+
+                                    Log.Debug(_testataLungo);
+                                    Log.Debug("----------------------------------------------------------------------------------------");
+                                    Log.Debug("");
+                                    Log.Debug("");
+                                }
+
+
+
+                                // Il ciclo è completo, lo accodo
+                                ModelloDati.CicliLunghi.Add(_datiLungo);
+
+                                if (RunAsinc == true)
+                                {
+                                    if (Step != null)
+                                    {
+                                        int _progress = 0;
+                                        double _valProgress = 0;
+                                        sbWaitStep _passo = new sbWaitStep();
+                                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                        _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                        _passo.Eventi = risposteAttese;
+                                        _passo.Step = _stepCorrente;
+                                        _passo.EsecuzioneInterrotta = false;
+                                        if (risposteAttese > 0)
+                                        {
+                                            _valProgress = (_stepCorrente * 100) / risposteAttese;
+                                        }
+                                        _progress = (int)_valProgress;
+                                        if (_lastProgress != _progress)
+                                        {
+                                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                            //Log.Debug("Passo " + _risposteRicevute.ToString());
+                                            Step(this, _stepEv);
+                                            _lastProgress = _progress;
+                                        }
+                                    }
+                                }
+
+
+                            }
+
+                            //ora consolido gli intermedi
+                            ConsolidaBrevi();
+                        }
+
+
+
+                    }
+                    else
+                    {
+                        Log.Warn("DumpMem fallito: dati pronti = false  - Pacchetti: " + _mS.DumpMem.NumStep.ToString());
+                        return false;
+                    }
+
+
+
+                    //if (dbCorrente.IsInTransaction) dbCorrente.Commit();
+
+                }
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("Dump Memoria: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+                if (dbCorrente.IsInTransaction)
+                {
+                    try
+                    {
+                        dbCorrente.Rollback();
+
+                    }
+                    catch
+                    {
+                        Log.Error("Dump Memoria: fallito Rollback");
+
+                    }
+                }
+                return false;
+            }
+        }
+
+
+
+
+
 
 
         public bool SpacchettaMemoria(string IdApparato, byte[] Immagine, MoriData._db dbCorrente,  bool RunAsinc = false)

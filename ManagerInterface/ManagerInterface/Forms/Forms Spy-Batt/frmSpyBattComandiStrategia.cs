@@ -122,6 +122,7 @@ namespace PannelloCharger
                     _tempMin = (ushort)((_Dati[0x19] << 8) + _Dati[0x1A]);
                     txtStratQryMinChg.Text = _tempMin.ToString();
                     txtStratQryFC.Text = FunzioniMR.StringaFattoreCarica(_Dati[0x1B]);
+                    txtStratQryLLBattId.Text = FunzioniComuni.ArrayToString(_Dati, 0x1D, 5);
 
 
                 }

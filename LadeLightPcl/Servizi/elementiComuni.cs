@@ -23,7 +23,7 @@ namespace ChargerLogic
         public enum EsitoFunzione : byte { OK = 0x00, DatiNonVAlidi = 0x01,NonInSequenza = 0x02,ErroreGenerico = 0xFF}
  
 
-        public enum modoDati : byte { Import = 0x00,Output = 0x01 };
+        public enum modoDati : byte { Import = 0x00,Output = 0x01, HexDumpRecovery = 0x02 };
         public enum AbilitaElemento : byte { Attivo = 0x0F , Non_Attivo = 0xF0 };
 
         public enum InitialCrcValue : ushort { Zeros, NonZero1 = 0xffff, NonZero2 = 0x1D0F };

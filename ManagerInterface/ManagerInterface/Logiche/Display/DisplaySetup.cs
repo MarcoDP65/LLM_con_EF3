@@ -83,7 +83,7 @@ namespace ChargerLogic
 
 
                     File.WriteAllText(NomeFile, JsonEncript);
-                    File.WriteAllText(NomeFile + ".txt", JsonData);
+                  //  File.WriteAllText(NomeFile + ".txt", JsonData);
 
                     Log.Debug("file salvato");
 

@@ -825,6 +825,8 @@
             this.label176 = new System.Windows.Forms.Label();
             this.label167 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtStratQryLLBattId = new System.Windows.Forms.TextBox();
+            this.label255 = new System.Windows.Forms.Label();
             this.txtStratQryModoPian = new System.Windows.Forms.TextBox();
             this.label247 = new System.Windows.Forms.Label();
             this.txtStratQryFC = new System.Windows.Forms.TextBox();
@@ -4069,6 +4071,7 @@
             resources.ApplyResources(this.btnDumpMemoria, "btnDumpMemoria");
             this.btnDumpMemoria.Name = "btnDumpMemoria";
             this.btnDumpMemoria.UseVisualStyleBackColor = true;
+            this.btnDumpMemoria.Click += new System.EventHandler(this.btnDumpMemoria_Click);
             // 
             // txtMemDataGrid
             // 
@@ -6480,6 +6483,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.txtStratQryLLBattId);
+            this.panel3.Controls.Add(this.label255);
             this.panel3.Controls.Add(this.txtStratQryModoPian);
             this.panel3.Controls.Add(this.label247);
             this.panel3.Controls.Add(this.txtStratQryFC);
@@ -6506,6 +6511,17 @@
             this.panel3.Controls.Add(this.label168);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
+            // 
+            // txtStratQryLLBattId
+            // 
+            resources.ApplyResources(this.txtStratQryLLBattId, "txtStratQryLLBattId");
+            this.txtStratQryLLBattId.Name = "txtStratQryLLBattId";
+            this.txtStratQryLLBattId.ReadOnly = true;
+            // 
+            // label255
+            // 
+            resources.ApplyResources(this.label255, "label255");
+            this.label255.Name = "label255";
             // 
             // txtStratQryModoPian
             // 
@@ -8028,5 +8044,7 @@
         private System.Windows.Forms.TextBox txtSvcNumLettureCorr;
         private System.Windows.Forms.Label label254;
         private System.Windows.Forms.TextBox txtCliCodiceLL;
+        private System.Windows.Forms.TextBox txtStratQryLLBattId;
+        private System.Windows.Forms.Label label255;
     }
 }

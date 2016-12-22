@@ -26,8 +26,10 @@ namespace PannelloCharger
         //sbDataModel _tempDati;
 
         //bool _apparatoPresente = false;
-
+        ImageDump _Immagine;
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+       
+
         public elementiComuni.modoDati modo = elementiComuni.modoDati.Import;
         //static 
         UnitaSpyBatt _sb;
@@ -37,6 +39,7 @@ namespace PannelloCharger
         public frmSbExport()
         {
             InitializeComponent();
+ 
         }
 
         public void Setmode(elementiComuni.modoDati azione)
@@ -44,22 +47,53 @@ namespace PannelloCharger
             try 
             {
                 modo = azione;
-                if (azione == elementiComuni.modoDati.Import)
+
+                switch (azione)
                 {
-                    this.Text = StringheComuni.ImportaDati;           // "Importa Dati";
-                    btnDataExport.Text = StringheComuni.CaricaDati;   // "Carica Dati";
-                    modo = elementiComuni.modoDati.Import;
-                    btnDataExport.Enabled = false;
-                    btnAnteprima.Visible = true;
+                    case elementiComuni.modoDati.Import:
+                        {
+                            this.Text = StringheComuni.ImportaDati;           // "Importa Dati";
+                            btnDataExport.Text = StringheComuni.CaricaDati;   // "Carica Dati";
+                            modo = elementiComuni.modoDati.Import;
+                            btnDataExport.Enabled = false;
+                            btnAnteprima.Visible = true;
+                            btnEstract.Visible = false;
+                        }
+                        break;
+                    case elementiComuni.modoDati.Output:
+                        {
+                            this.Text = StringheComuni.EsportaDati;           // "Esporta Dati";
+                            btnDataExport.Text = StringheComuni.SalvaDati;    // "Salva Dati";
+                            modo = elementiComuni.modoDati.Output;
+                            btnEstract.Visible = false;
+                            btnDataExport.Enabled = true;
+                            btnAnteprima.Visible = false;
+                        }
+                        break;
+                    case elementiComuni.modoDati.HexDumpRecovery:
+                        {
+                            this.Text = "HEXDUMP Recovery";                    // "Importa HEXDUMP";
+                            btnDataExport.Text = StringheComuni.SalvaDati;     // "Carica Dati";
+                            modo = elementiComuni.modoDati.HexDumpRecovery;
+                            btnDataExport.Enabled = false;
+                            btnAnteprima.Visible = true;
+                            btnEstract.Visible = true;
+                            btnEstract.Enabled = false;
+
+                        }
+                        break;
+                    default:
+                        {
+                            this.Text = StringheComuni.EsportaDati;           // "Esporta Dati";
+                            btnDataExport.Text = StringheComuni.SalvaDati;    // "Salva Dati";
+                            modo = elementiComuni.modoDati.Output;
+                            btnDataExport.Enabled = true;
+                            btnAnteprima.Visible = false;
+                            btnEstract.Visible = false;
+                        }
+                        break;
                 }
-                else
-                {
-                    this.Text = StringheComuni.EsportaDati;           // "Esporta Dati";
-                    btnDataExport.Text = StringheComuni.SalvaDati;    // "Salva Dati";
-                    modo = elementiComuni.modoDati.Output;
-                    btnDataExport.Enabled = true;
-                    btnAnteprima.Visible = false;
-                }
+
             }
             catch (Exception Ex)
             {
@@ -136,6 +170,55 @@ namespace PannelloCharger
                 return false;
             }
         }
+
+        public bool MostraDatiImmagine()
+        {
+            try
+            {
+
+                txtMatrSB.Text = FunzioniMR.StringaSeriale(_sb.sbData.Id);
+                txtCliente.Text = _sb.ModelloDati.Cliente.Client;
+                txtNote.Text = _sb.ModelloDati.Cliente.ClientNote;
+                txtManufcturedBy.Text = _sb.sbData.ProductId;
+                txtNumLunghi.Text = _sb.sbData.ContLunghi.ToString();
+                txtNumBrevi.Text = _sb.sbData.ContBrevi.ToString();
+                txtManufcturedBy.Text = _sb.sbData.LongMem.ToString() + " / " + _sb.sbData.ContBrevi.ToString() + "  ( Prg: " + _sb.sbData.ProgramCount.ToString() + " )";
+
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDati: " + Ex.Message);
+                return false;
+            }
+        }
+
+        public bool MostraTestataHexDump()
+        {
+            try
+            {
+
+                txtMatrSB.Text = FunzioniMR.StringaSeriale(_sb.sbData.Id);
+                txtCliente.Text = "";
+                txtFwVersion.Text =  _sb.sbData.SwVersion ;
+                txtNote.Text = "" ;
+                txtNumLunghi.Text = _sb.sbData.ContLunghi.ToString();
+                txtNumBrevi.Text = _sb.sbData.ContBrevi.ToString();
+                txtManufcturedBy.Text = _sb.sbData.LongMem.ToString() + " / " + _sb.sbData.ContBrevi.ToString() + "  ( Prg: " + _sb.sbData.ProgramCount.ToString() + " )";
+
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDati: " + Ex.Message);
+                return false;
+            }
+        }
+
+
+
 
         private void chkChiudi_Click(object sender, EventArgs e)
         {
@@ -259,27 +342,86 @@ namespace PannelloCharger
             }
         }
 
+        private bool importaHexdump()
+        {
+            try
+            {
+
+                string filePath = "";
+
+
+                if (txtNuovoFile.Text != "")
+                {
+                    filePath = txtNuovoFile.Text;
+                    if (File.Exists(filePath))
+                    {
+                        Log.Debug("Inizio Import");
+                        string _fileImport = File.ReadAllText(filePath);
+                        Log.Debug("file caricato: len = " + _fileImport.Length.ToString());
+                        //sbDataModel _importData;
+                        _Immagine = JsonConvert.DeserializeObject<ImageDump>(_fileImport);
+
+                        Log.Debug("file convertito");
+                        _sb.sbData = _Immagine.Testata;
+
+                        //_sb.ModelloDati = _importData;
+                        //_sb.importaModello(_logiche.dbDati.connessione, true, true, true, true, true);
+                        MostraTestataHexDump();
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    //                    MessageBox.Show("Inserire un nome valido", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringheComuni.InserireNome, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            catch (Exception Ex)
+            {
+                //                MessageBox.Show("Dati non validi", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(StringheComuni.DatiNonValidi, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("MostraDati: " + Ex.Message);
+                return false;
+
+            }
+        }
+
+
         private bool salvaImportazione()
         {
             try
             {
                 _sb.importaModello(_logiche.dbDati.connessione,true, true, true, true, true);
-                if (_sb.recordPresente(_sb.ModelloDati.ID, _logiche.dbDati.connessione))
+                _sb.sbData._database = _logiche.dbDati.connessione;
+                if (_sb.recordPresente(_sb.sbData.Id, _logiche.dbDati.connessione))
                 {
                     DialogResult risposta = MessageBox.Show(StringheComuni.DatiGiaPresenti + "\n " + FunzioniMR.StringaSeriale(_sb.ModelloDati.ID) + "  -  " + _sb.ModelloDati.Cliente.ClientNote + " \n Rimpiazzo i dati esistenti ? ", "SPY-BATT", MessageBoxButtons.YesNo);
 
                     if (risposta == System.Windows.Forms.DialogResult.Yes)
                     {
                         //UnitaSpyBatt _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
-                        _sb.sbData.cancellaDati(_sb.ModelloDati.ID);
+                        _sb.sbData.cancellaDati(_sb.sbData.Id);
                     }
                     else return false;
                 }
+
                 bool _esito = _sb.sbData.salvaDati();
+
+                //_sb.sbCliente._database = _logiche.dbDati.connessione;
+                _sb.sbCliente.IdCliente = 1;
                 _esito = _esito && _sb.sbCliente.salvaDati();
-                Log.Warn("SalvaTesate ");
+                Log.Warn("Salva Info Comuni ");
                 foreach (sbProgrammaRicarica _prog in _sb.Programmazioni)
                 {
+                    _prog._database = _logiche.dbDati.connessione;
                     _prog.salvaDati();
                 }
                 Log.Warn("Fine SalvaProgrammazioni: " + _sb.Programmazioni.Count.ToString());
@@ -287,6 +429,11 @@ namespace PannelloCharger
                 foreach (sbMemLunga _lunga in _sb.CicliMemoriaLunga)
                 {
                     Log.Warn("Fine SalvaLunga: ---------------------------------------------------------------------------");
+                    _lunga._database = _logiche.dbDati.connessione;
+                    if(_lunga.IdProgramma != 0)
+                    {
+                        _lunga.CaricaProgramma();
+                    }
                     _lunga.salvaDati();
                     Log.Warn("Fine SalvaLunga: " + _lunga.IdMemoriaLunga.ToString());
                     /*foreach (sbMemBreve _breve in _lunga.CicliMemoriaBreve)
@@ -300,7 +447,7 @@ namespace PannelloCharger
 
                 }
                 Log.Warn("Fine SalvaLunghi: " + _sb.CicliMemoriaLunga.Count.ToString());
-
+                _sb.ConsolidaBrevi();
                 return _esito ;
 
             }
@@ -317,83 +464,287 @@ namespace PannelloCharger
 
         private void btnDataExport_Click(object sender, EventArgs e)
         {
-
-            string filePath = "";
-
-            this.Cursor = Cursors.WaitCursor;
-            if (modo == elementiComuni.modoDati.Output)
+            try
             {
-                esportaDati();
+                string filePath = "";
+
+                //this.Parent.UseWaitCursor = true;
+                this.Cursor = Cursors.WaitCursor;
+
+                switch (modo)
+                {
+                    case elementiComuni.modoDati.Import:
+                        if (salvaImportazione()) this.Close();
+                        break;
+                    case elementiComuni.modoDati.Output:
+                        esportaDati();
+                        break;
+                    case elementiComuni.modoDati.HexDumpRecovery:
+                        if (_sb.ModelloDati.ID == "")
+                        {
+                            return;
+                        }
+
+                        if (salvaImportazione())
+                        {
+                            ApriSpyBatt(_sb.sbData.Id);
+                            this.Close();
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
-            else
+            catch
             {
-                if (salvaImportazione()) this.Close();
+
             }
-            this.Cursor = Cursors.Default;
+
+            finally
+            {
+                this.Cursor = Cursors.Default;
+                //this.Parent.UseWaitCursor = false;
+            }
+            
         }
 
-      
+
+        private void ApriSpyBatt(string IdApparato)
+        {
+            try
+            {
+
+                frmSpyBat sbCorrente = new frmSpyBat(ref _parametri, true, IdApparato, _logiche, false, false);
+                sbCorrente.MdiParent = this.MdiParent;
+                sbCorrente.StartPosition = FormStartPosition.CenterParent;
+                sbCorrente.Show();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ApriSpyBatt: " + Ex.Message);
+            }
+
+        }
+
 
         private void btnSfoglia_Click(object sender, EventArgs e)
         {
-
-
-            if (modo == elementiComuni.modoDati.Output)
+            try
             {
-                string _filename = "";
-
-                sfdExportDati.Title = StringheComuni.EsportaDati;
-                sfdExportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
-                // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
-                string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
-                if (!Directory.Exists(_pathTeorico))
+                switch (modo)
                 {
-                    Directory.CreateDirectory(_pathTeorico);
+                    case elementiComuni.modoDati.Import:
+                        {
+                            ofdImportDati.Title = StringheComuni.ImportaDati;
+                            ofdImportDati.CheckFileExists = false;
+                            ofdImportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
+                            // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                            string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                            _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                            if (!Directory.Exists(_pathTeorico))
+                            {
+                                Directory.CreateDirectory(_pathTeorico);
+                            }
+                            sfdExportDati.InitialDirectory = _pathTeorico;
+                            ofdImportDati.ShowDialog();
+                            txtNuovoFile.Text = ofdImportDati.FileName;
+                            if (importaDati()) btnDataExport.Enabled = true;
+                        }
+                        break;
+                    case elementiComuni.modoDati.Output:
+                        {
+                            string _filename = "";
+
+                            sfdExportDati.Title = StringheComuni.EsportaDati;
+                            sfdExportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
+                            // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                            string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                            _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                            if (!Directory.Exists(_pathTeorico))
+                            {
+                                Directory.CreateDirectory(_pathTeorico);
+                            }
+                            sfdExportDati.InitialDirectory = _pathTeorico;
+
+                            if (txtNuovoFile.Text != "")
+                            {
+                                sfdExportDati.FileName = txtNuovoFile.Text;
+
+                            }
+
+                            sfdExportDati.ShowDialog();
+                            txtNuovoFile.Text = sfdExportDati.FileName;
+
+                        }
+                        break;
+                    case elementiComuni.modoDati.HexDumpRecovery:
+                        {
+                            ofdImportDati.Title = "HEXDUMP RECOVERY"; // StringheComuni.ImportaDati;
+                            ofdImportDati.CheckFileExists = false;
+                            ofdImportDati.Filter = "SPY-BATT HexDump data (*.sbx)|*.sbx|All files (*.*)|*.*";
+                            // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                            string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                            _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                            if (!Directory.Exists(_pathTeorico))
+                            {
+                                Directory.CreateDirectory(_pathTeorico);
+                            }
+                            sfdExportDati.InitialDirectory = _pathTeorico;
+                            ofdImportDati.ShowDialog();
+                            txtNuovoFile.Text = ofdImportDati.FileName;
+                            if (importaHexdump()) btnDataExport.Enabled = true;
+                        }
+                        break;
+                    default:
+                        break;
                 }
-                sfdExportDati.InitialDirectory = _pathTeorico;
-
-                if (txtNuovoFile.Text != "")
-                {
-                    sfdExportDati.FileName = txtNuovoFile.Text;
-
-                }
-
-                sfdExportDati.ShowDialog();
-                txtNuovoFile.Text = sfdExportDati.FileName;
-
-
-             
-
-
             }
-            else
+            catch (Exception Ex)
             {
-                ofdImportDati.Title = StringheComuni.ImportaDati;
-                ofdImportDati.CheckFileExists = false;
-                ofdImportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
-                // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
-                string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
-                if (!Directory.Exists(_pathTeorico))
-                {
-                    Directory.CreateDirectory(_pathTeorico);
-                }
-                sfdExportDati.InitialDirectory = _pathTeorico;
-                ofdImportDati.ShowDialog();
-                txtNuovoFile.Text = ofdImportDati.FileName;
-                if (importaDati()) btnDataExport.Enabled = true;
+                Log.Error("btnSfoglia_Click: " + Ex.Message);
             }
         }
+
+        private void btnSfogliaAnalisi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (modo)
+                {
+                    case elementiComuni.modoDati.Import:
+                        {
+
+                            txtFileAnalisi.Text = "";
+                        }
+                        break;
+                    case elementiComuni.modoDati.Output:
+                        {
+                            txtFileAnalisi.Text = "";
+                        }
+                        break;
+                    case elementiComuni.modoDati.HexDumpRecovery:
+                        {
+
+
+                            sfdExportDati.Title = "Esito Analisi HexDump";
+                            sfdExportDati.Filter = "TXT (*.txt)|*.txt|All files (*.*)|*.*";
+                            // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                            string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                            _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                            if (!Directory.Exists(_pathTeorico))
+                            {
+                                Directory.CreateDirectory(_pathTeorico);
+                            }
+                            sfdExportDati.InitialDirectory = _pathTeorico;
+
+                            if (txtFileAnalisi.Text != "")
+                            {
+                                sfdExportDati.FileName = txtFileAnalisi.Text;
+
+                            }
+
+                            sfdExportDati.ShowDialog();
+                            txtFileAnalisi.Text = sfdExportDati.FileName;
+
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnSfogliaAnalisi_Click: " + Ex.Message);
+            }
+        }
+
 
         private void btnAnteprima_Click(object sender, EventArgs e)
         {
-            if (importaDati()) btnDataExport.Enabled = true;
+            try
+            {
+                switch (modo)
+                {
+                    case elementiComuni.modoDati.Import:
+                        if (importaDati()) btnDataExport.Enabled = true;
+                        break;
+                    case elementiComuni.modoDati.Output:
+                        break;
+                    case elementiComuni.modoDati.HexDumpRecovery:
+                        if (importaHexdump())
+                        {
+                            //_sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true);
+
+                            btnEstract.Enabled = true;
+                            btnDataExport.Enabled = true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                
+            }
+            catch (Exception Ex)
+            {
+               
+            }
+
         }
+
+        private void btnEstract_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //this.UseWaitCursor = true;
+
+                this.Cursor = Cursors.WaitCursor;
+                switch (modo)
+                {
+                    case elementiComuni.modoDati.Import:
+                        if (importaDati()) btnDataExport.Enabled = true;
+                        break;
+                    case elementiComuni.modoDati.Output:
+                        break;
+                    case elementiComuni.modoDati.HexDumpRecovery:
+                        if (importaHexdump())
+                        {
+                            _sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true);
+
+                            //MostraTestataHexDump();
+                            MostraDatiImmagine();
+
+                            btnDataExport.Enabled = true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+
+            }
+            finally
+            {
+                //this.Parent.UseWaitCursor = false;
+                this.Cursor = Cursors.Default;
+            }
+        }
+
 
         private void frmSbExport_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

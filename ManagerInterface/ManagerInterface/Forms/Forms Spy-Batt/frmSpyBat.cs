@@ -516,6 +516,7 @@ namespace PannelloCharger
             }
         }
 
+
         /// <summary>
         /// Provo ad aprire la porta di comunicazione (HW) e ad inizializzare il canale
         /// </summary>
@@ -574,7 +575,6 @@ namespace PannelloCharger
         }
 
 
-
         public bool MostraTestata() 
         {
             try
@@ -594,7 +594,18 @@ namespace PannelloCharger
                 else
                 {
                     //scheda senza booloader
-                    txtRevSWSb.Text = _sb.sbData.SwVersion.ToString();
+                    if (_sb.sbData != null)
+                    {
+                        if (_sb.sbData.SwVersion != null)
+                            txtRevSWSb.Text = _sb.sbData.SwVersion.ToString();
+                        else
+                            txtRevSWSb.Text = "N.D.";
+                    }
+                    else
+                    {
+                        txtRevSWSb.Text = "N.D.";
+                    }
+
 
                 }
 
@@ -637,6 +648,7 @@ namespace PannelloCharger
             }
 
         }
+
 
         public void applicaAutorizzazioni()
         {
@@ -961,6 +973,7 @@ namespace PannelloCharger
             }
         }
 
+
         public bool CaricaCliente(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
         {
             try
@@ -1021,6 +1034,7 @@ namespace PannelloCharger
 
         }
 
+
         private void ListaLunghiCambiata(UnitaSpyBatt usb, sbListaLunghiEvt sbe)
         {
             try
@@ -1036,6 +1050,7 @@ namespace PannelloCharger
             }
 
         }
+
 
         private void mostraCliente()
         {
@@ -1062,6 +1077,7 @@ namespace PannelloCharger
                 Log.Error("mostraCliente: " + Ex.Message);
             }
         }
+
 
         private void CaricaCicli()
         {
@@ -1531,13 +1547,7 @@ namespace PannelloCharger
                     {
                         //  InizializzaSchedaConfronti();
                     }
-                    /*
-                    btnCaricaListaLunghi.Top = this.Height - 140;
-                    btnRigeneraLista.Top = this.Height - 140;
-                    btnCaricaListaUltimiLunghi.Top = this.Height - 140;
-                    btnDettaglioCicliBrevi.Top = this.Height - 140;
-                    btnCaricaDettaglioSel.Top = this.Height - 140;
-                    */
+
                     //Ridimensiono i tab grafici
                     tbcStatistiche.Height = tabCaricaBatterie.Height - 30;
                     // buiStatCockpit.Height = tabStatCockpit.Height;
@@ -1649,8 +1659,6 @@ namespace PannelloCharger
             }
 
         }
-
-
 
 
         private void RicaricaDettaglioRiga(MessaggioSpyBatt.MemoriaPeriodoLungo _tempciclo)
@@ -3235,7 +3243,7 @@ namespace PannelloCharger
             try
             {
 
-                if ((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) < 25)
+                if (((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) < 25) && chkAckDumpMem.Checked != true)
                 {
                     uint _primoElemento = 1;
                     sbMemLunga _tempLungo;
@@ -3282,7 +3290,7 @@ namespace PannelloCharger
                     if (chkEraseDB.Checked == true)
                         _esito = _sb.sbData.cancellaDati(_sb.Id);
                     ;
-                    DumpInteraMemoria(chkAckDumpMem.Checked == true);
+                    DumpInteraMemoria(false);
                     this.Cursor = Cursors.Default;
                 }
             }

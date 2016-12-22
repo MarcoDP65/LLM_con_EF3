@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>2.00.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -432,6 +432,7 @@
     <Compile Include="Logiche\Display\DisplaySetup.cs" />
     <Compile Include="Logiche\Display\DisplaySetupComponents.cs" />
     <Compile Include="Logiche\FileFirmware.cs" />
+    <Compile Include="Logiche\ImageDump.cs" />
     <Compile Include="Logiche\LogicheBase.cs" />
     <Compile Include="Logiche\MappaSpybatt.cs" />
     <Compile Include="Logiche\Messaggio Display\sottoclassiMessaggioDisplay.cs" />
@@ -475,6 +476,7 @@
       <DependentUpon>StringheStatistica.resx</DependentUpon>
     </Compile>
     <Compile Include="Servizi\GestioneTempi.cs" />
+    <Compile Include="Servizi\JsonCustomAdapter.cs" />
     <Compile Include="Servizi\ParametriSetupPro.cs" />
     <Compile Include="Servizi\HexEncoding.cs" />
     <Compile Include="Servizi\ParametriSistema.cs" />

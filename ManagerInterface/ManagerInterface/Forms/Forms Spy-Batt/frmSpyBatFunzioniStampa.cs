@@ -61,12 +61,28 @@ namespace PannelloCharger
 
                 switch (_paginaAttiva)
                 {
+                    case "tabCb04":  // Pagina Lista Cicli
+                        {
+                            if (_logiche.currentUser.livello == 128)
+                            {
+                                // se sono Factory stampo la lista dei cicli
+                                _pagineStampate = 0;
+                                _paginaGrafico = 0;
+                                _modelloStampa = 1;
+                            }
+                            else
+                            {
+                                _pagineStampate = 0;
+                                _paginaGrafico = 0;
+                                _modelloStampa = 1;
+                            }
+                            break;
+                        }
                     case "tabCb01":
                     case "tabStatSintesi":
                     case "tabStatComparazioni":
                     case "tabCb02":
                     case "tabCb03":
-                    case "tabCb04":
                     case "tabCb05":
                         {
                             _pagineStampate = 0;
@@ -246,6 +262,7 @@ namespace PannelloCharger
 
                             break;
                         }
+
                     case 3:  // Stampa grafico temporale
                         {
 
@@ -254,6 +271,34 @@ namespace PannelloCharger
                             doc.HasMorePages = false;
                             _paginaCorrente = 0;
                             _pagineStampate = 0;
+
+                            break;
+                        }
+
+                    case 4:  // Stampa Lista Lunghi
+                        {
+
+                            int _paginePreviste = (StatistichePresenti() + 1) / 2;
+
+                            if (_paginaGrafico > _paginePreviste)   ///_paginaCorrente
+                            {
+                                doc.HasMorePages = false;
+                            }
+                            else
+                            {
+                                _docStampaPaginaGrafici(doc, _paginaCorrente);
+                                if (_paginaGrafico <= _paginePreviste)
+                                {
+                                    doc.HasMorePages = true;
+                                }
+                                else
+                                {
+                                    doc.HasMorePages = false;
+                                    _paginaCorrente = 0;
+                                    _pagineStampate = 0;
+                                }
+
+                            }
 
                             break;
                         }

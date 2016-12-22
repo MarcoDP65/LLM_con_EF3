@@ -9,8 +9,10 @@ using SQLite.Net.Platform.Win32;
 using System.IO;
 using log4net;
 using log4net.Config;
+using Newtonsoft.Json;
 using ChargerLogic;
 using Utility;
+
 
 namespace MoriData
 {
@@ -43,9 +45,10 @@ namespace MoriData
     {
         public string nullID { get { return "0000000000000000"; } }
         public _spybatt _sb = new _spybatt();
-//        public _spybattBuffer _sbB = new _spybattBuffer();
         public bool valido;
+        [JsonIgnore]
         public MoriData._db _database;
+        [JsonIgnore]
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         public bool _datiSalvati;
         public bool _recordPresente;
@@ -112,6 +115,7 @@ namespace MoriData
             try
 
             {
+
                 _sb = _caricaDati(_id);
 
                 if (_sb == null)
@@ -124,7 +128,7 @@ namespace MoriData
 
                 return true;
             }
-            catch ( Exception Ex )
+            catch (Exception Ex)
             {
                 Log.Error("caricaDati: " + Ex.Message);
                 return false;
@@ -136,6 +140,8 @@ namespace MoriData
         {
             try 
             {
+                if (_database == null)
+                    return false;
                 if (_sb.Id != nullID | _sb.Id != null | SoloMemoria != false )
                 {
 

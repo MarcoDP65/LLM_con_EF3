@@ -490,7 +490,7 @@ namespace ChargerLogic
 
                 DateTime OraPC = DateTime.Now;
 
-                ushort _tempUs = (ushort)OraPC.Year;
+                ushort _tempUs =  (ushort)OraPC.Year;
 
                 // Anno
                 splitUshort(_tempUs, ref lsbDisp, ref msbDisp);
@@ -506,7 +506,7 @@ namespace ChargerLogic
                 byte _tempByte;
 
                 //Mese
-                _tempByte = (byte)OraPC.Month;
+                _tempByte =  (byte)OraPC.Month;
 
                 splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
@@ -514,7 +514,7 @@ namespace ChargerLogic
                 _arrayInit += 2;
 
                 //Giorno
-                _tempByte = (byte)OraPC.Day;
+                _tempByte =  (byte)OraPC.Day;
 
                 splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
@@ -522,7 +522,7 @@ namespace ChargerLogic
                 _arrayInit += 2;
 
                 //Giorno della settimana
-                _tempByte = (byte)OraPC.DayOfWeek;
+                _tempByte = 2; //(byte)OraPC.DayOfWeek;
 
                 splitUshort(codificaByte(_tempByte), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;

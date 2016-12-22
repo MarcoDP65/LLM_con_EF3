@@ -118,6 +118,212 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="txtFwVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 177</value>
+  </data>
+  <data name="txtFwVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtFwVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;txtFwVersion.Name" xml:space="preserve">
+    <value>txtFwVersion</value>
+  </data>
+  <data name="&gt;&gt;txtFwVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFwVersion.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtFwVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 157</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Versione FW</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtNumBrevi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>428, 177</value>
+  </data>
+  <data name="txtNumBrevi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 22</value>
+  </data>
+  <data name="txtNumBrevi.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;txtNumBrevi.Name" xml:space="preserve">
+    <value>txtNumBrevi</value>
+  </data>
+  <data name="&gt;&gt;txtNumBrevi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtNumBrevi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtNumBrevi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>425, 157</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 17</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Registrazioni</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtNumLunghi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 177</value>
+  </data>
+  <data name="txtNumLunghi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 22</value>
+  </data>
+  <data name="txtNumLunghi.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;txtNumLunghi.Name" xml:space="preserve">
+    <value>txtNumLunghi</value>
+  </data>
+  <data name="&gt;&gt;txtNumLunghi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtNumLunghi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtNumLunghi.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 157</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 17</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Fasi</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtNumProgrammazioni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 177</value>
+  </data>
+  <data name="txtNumProgrammazioni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 22</value>
+  </data>
+  <data name="txtNumProgrammazioni.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgrammazioni.Name" xml:space="preserve">
+    <value>txtNumProgrammazioni</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgrammazioni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgrammazioni.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgrammazioni.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 157</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Configurazioni</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="txtMatrSB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
@@ -127,11 +333,9 @@
   <data name="txtMatrSB.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 27</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtMatrSB.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtMatrSB.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
@@ -145,34 +349,34 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtMatrSB.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>8</value>
   </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblMatricola.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblMatricola.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 32</value>
   </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblMatricola.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 17</value>
   </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMatricola.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
+  <data name="lblMatricola.Text" xml:space="preserve">
     <value>Matricola</value>
   </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
+  <data name="&gt;&gt;lblMatricola.Name" xml:space="preserve">
+    <value>lblMatricola</value>
   </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblMatricola.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblMatricola.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;lblMatricola.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="txtManufcturedBy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -196,34 +400,34 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtManufcturedBy.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>10</value>
   </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblModello.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblModello.Location" type="System.Drawing.Point, System.Drawing">
     <value>288, 32</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblModello.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 17</value>
   </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblModello.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
+  <data name="lblModello.Text" xml:space="preserve">
     <value>Modello</value>
   </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
+  <data name="&gt;&gt;lblModello.Name" xml:space="preserve">
+    <value>lblModello</value>
   </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblModello.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblModello.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;lblModello.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="txtNote.Location" type="System.Drawing.Point, System.Drawing">
     <value>291, 115</value>
@@ -244,7 +448,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtNote.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>12</value>
   </data>
   <data name="lblFirmwDisp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -271,7 +475,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;lblFirmwDisp.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>13</value>
   </data>
   <data name="txtCliente.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 115</value>
@@ -292,7 +496,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtCliente.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>14</value>
   </data>
   <data name="lblFirmwCb.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,13 +523,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;lblFirmwCb.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>15</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 12</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>666, 171</value>
+    <value>666, 220</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -343,10 +547,160 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkGeneraFileAnalisi.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkGeneraFileAnalisi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 103</value>
+  </data>
+  <data name="chkGeneraFileAnalisi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 21</value>
+  </data>
+  <data name="chkGeneraFileAnalisi.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="chkGeneraFileAnalisi.Text" xml:space="preserve">
+    <value>Genera Report</value>
+  </data>
+  <data name="chkGeneraFileAnalisi.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkGeneraFileAnalisi.Name" xml:space="preserve">
+    <value>chkGeneraFileAnalisi</value>
+  </data>
+  <data name="&gt;&gt;chkGeneraFileAnalisi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkGeneraFileAnalisi.Parent" xml:space="preserve">
+    <value>grbGeneraExcel</value>
+  </data>
+  <data name="&gt;&gt;chkGeneraFileAnalisi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnSfogliaAnalisi.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSfogliaAnalisi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>598, 97</value>
+  </data>
+  <data name="btnSfogliaAnalisi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 30</value>
+  </data>
+  <data name="btnSfogliaAnalisi.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="btnSfogliaAnalisi.Text" xml:space="preserve">
+    <value> ...</value>
+  </data>
+  <data name="btnSfogliaAnalisi.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnSfogliaAnalisi.Name" xml:space="preserve">
+    <value>btnSfogliaAnalisi</value>
+  </data>
+  <data name="&gt;&gt;btnSfogliaAnalisi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSfogliaAnalisi.Parent" xml:space="preserve">
+    <value>grbGeneraExcel</value>
+  </data>
+  <data name="&gt;&gt;btnSfogliaAnalisi.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblTipoFile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblTipoFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblTipoFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 28</value>
+  </data>
+  <data name="lblTipoFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="lblTipoFile.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="lblTipoFile.Text" xml:space="preserve">
+    <value>File Dati</value>
+  </data>
+  <data name="&gt;&gt;lblTipoFile.Name" xml:space="preserve">
+    <value>lblTipoFile</value>
+  </data>
+  <data name="&gt;&gt;lblTipoFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblTipoFile.Parent" xml:space="preserve">
+    <value>grbGeneraExcel</value>
+  </data>
+  <data name="&gt;&gt;lblTipoFile.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 79</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>File Report Analisi</value>
+  </data>
+  <data name="label5.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>grbGeneraExcel</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtFileAnalisi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtFileAnalisi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 99</value>
+  </data>
+  <data name="txtFileAnalisi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>441, 24</value>
+  </data>
+  <data name="txtFileAnalisi.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="txtFileAnalisi.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtFileAnalisi.Name" xml:space="preserve">
+    <value>txtFileAnalisi</value>
+  </data>
+  <data name="&gt;&gt;txtFileAnalisi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFileAnalisi.Parent" xml:space="preserve">
+    <value>grbGeneraExcel</value>
+  </data>
+  <data name="&gt;&gt;txtFileAnalisi.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="btnSfoglia.Location" type="System.Drawing.Point, System.Drawing">
-    <value>612, 29</value>
+    <value>598, 46</value>
   </data>
   <data name="btnSfoglia.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 30</value>
@@ -367,13 +721,13 @@
     <value>grbGeneraExcel</value>
   </data>
   <data name="&gt;&gt;btnSfoglia.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="txtNuovoFile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtNuovoFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 31</value>
+    <value>22, 48</value>
   </data>
   <data name="txtNuovoFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>570, 24</value>
@@ -391,13 +745,13 @@
     <value>grbGeneraExcel</value>
   </data>
   <data name="&gt;&gt;txtNuovoFile.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="grbGeneraExcel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 205</value>
+    <value>17, 251</value>
   </data>
   <data name="grbGeneraExcel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>666, 78</value>
+    <value>666, 106</value>
   </data>
   <data name="grbGeneraExcel.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -415,10 +769,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grbGeneraExcel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkChiudi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 323</value>
+    <value>530, 419</value>
   </data>
   <data name="chkChiudi.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 40</value>
@@ -439,10 +793,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkChiudi.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="btnDataExport.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnDataExport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 323</value>
+    <value>357, 419</value>
   </data>
   <data name="btnDataExport.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 40</value>
@@ -463,7 +820,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnDataExport.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="sfdExportDati.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -472,7 +829,7 @@
     <value>161, 17</value>
   </metadata>
   <data name="btnAnteprima.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 323</value>
+    <value>17, 419</value>
   </data>
   <data name="btnAnteprima.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 40</value>
@@ -481,7 +838,7 @@
     <value>22</value>
   </data>
   <data name="btnAnteprima.Text" xml:space="preserve">
-    <value>Anteprima dati</value>
+    <value>Anteprima</value>
   </data>
   <data name="&gt;&gt;btnAnteprima.Name" xml:space="preserve">
     <value>btnAnteprima</value>
@@ -493,6 +850,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAnteprima.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnEstract.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEstract.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 419</value>
+  </data>
+  <data name="btnEstract.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 40</value>
+  </data>
+  <data name="btnEstract.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="btnEstract.Text" xml:space="preserve">
+    <value>Estrai Dati</value>
+  </data>
+  <data name="btnEstract.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnEstract.Name" xml:space="preserve">
+    <value>btnEstract</value>
+  </data>
+  <data name="&gt;&gt;btnEstract.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEstract.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnEstract.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -502,7 +889,7 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>701, 381</value>
+    <value>701, 490</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>frmSbExport</value>

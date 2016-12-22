@@ -371,6 +371,8 @@ namespace Utility
             }
         }
 
+
+
         public static string StringaDurataBase(uint Secondi)
         {
             try
