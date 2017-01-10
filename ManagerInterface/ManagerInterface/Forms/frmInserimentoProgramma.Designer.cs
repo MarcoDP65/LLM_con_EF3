@@ -183,6 +183,7 @@
             this.label61 = new System.Windows.Forms.Label();
             this.panel31 = new System.Windows.Forms.Panel();
             this.label62 = new System.Windows.Forms.Label();
+            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.grbVersoCorrente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcoDiretto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcoInverso)).BeginInit();
@@ -427,6 +428,7 @@
             // tbpParametri
             // 
             this.tbpParametri.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpParametri.Controls.Add(this.chkCliResetContatori);
             this.tbpParametri.Controls.Add(this.txtProgcBattVdef);
             this.tbpParametri.Controls.Add(this.txtTensioneNom);
             this.tbpParametri.Controls.Add(this.label16);
@@ -1227,6 +1229,13 @@
             this.label62.ForeColor = System.Drawing.Color.White;
             this.label62.Name = "label62";
             // 
+            // chkCliResetContatori
+            // 
+            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
+            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
+            this.chkCliResetContatori.Name = "chkCliResetContatori";
+            this.chkCliResetContatori.UseVisualStyleBackColor = true;
+            // 
             // frmInserimentoProgramma
             // 
             resources.ApplyResources(this, "$this");
@@ -1444,5 +1453,6 @@
         private System.Windows.Forms.TextBox txtProTensioneRaccordo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox chkCliResetContatori;
     }
 }

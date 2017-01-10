@@ -172,7 +172,13 @@ namespace PannelloCharger
         {
             try
             {
-               
+
+                //---------------- Menu Impianto
+                mnuImpianto.Visible = false;
+                if ((byte)Livello < 0x01) mnuImpianto.Visible = true;
+
+
+                //---------------- Menu Lade Light
                 mnuCaricabatteria.Visible = false;
                 if ((byte)Livello < 0x01) mnuCaricabatteria.Visible = true;
 
@@ -1042,7 +1048,35 @@ namespace PannelloCharger
             }
         }
 
-     }
+        private void mnuImpiantoGestioneImpianto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmDefinizioneImpianto))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                frmDefinizioneImpianto ImpiantoCorrenteCorrente = new frmDefinizioneImpianto(ref varGlobali, logiche);
+                ImpiantoCorrenteCorrente.MdiParent = this;
+                ImpiantoCorrenteCorrente.StartPosition = FormStartPosition.CenterParent;
+               // ImpiantoCorrenteCorrente.MostraLista();
+                ImpiantoCorrenteCorrente.Show();
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("mnuImpiantoGestioneImpianto_Click : " + Ex.Message);
+            }
+        }
+    }
 
     public class StatoPulsanti
     {

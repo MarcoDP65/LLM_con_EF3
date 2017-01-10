@@ -502,7 +502,7 @@ namespace MoriData
                 try {
                     string _LocalVer = ""; // _sb.SwVersion.Substring(0, 4);  // controllo solo i primi 4 caratteri della versione perignorare la build
 
-                    if (_sb.SwVersion == null) return 4; // da -1 a 4 per Marco
+                    if (_sb.SwVersion == null) return 6; // da -1 a 4 per Marco
 
                     if (_sb.SwVersion.Length >= 4) _LocalVer = _sb.SwVersion.Substring(0, 4);
 
@@ -552,12 +552,14 @@ namespace MoriData
                                 }
 
                             }
+                        case "2.03":
+                            return 6;
 
 
                         default:
                             //variante per marco
                             //return -1;
-                            return 4;
+                            return 6;
                             //  break;
                     }
                 }
@@ -586,6 +588,7 @@ namespace MoriData
                         case "1.11":
                         case "2.01":
                         case "2.02":
+                        case "2.03":
                             return true;
 
                         default:
@@ -618,6 +621,7 @@ namespace MoriData
                         case "1.11":
                         case "2.01":
                         case "2.02":
+                        case "2.03":
                             return true;
 
                         default:
@@ -664,6 +668,7 @@ namespace MoriData
                         case "1.13":
                         case "2.01":
                         case "2.02":
+                        case "2.03":
                             return 8666;
 
                         default:

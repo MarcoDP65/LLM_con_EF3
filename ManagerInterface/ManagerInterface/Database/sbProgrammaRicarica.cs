@@ -12,6 +12,7 @@ using log4net;
 using log4net.Config;
 
 using Utility;
+using ChargerLogic;
 
 namespace MoriData
 {
@@ -72,8 +73,6 @@ namespace MoriData
         public ushort TensioneFinale { get; set; }
 
 
-
-
     }
 
     public class sbProgrammaRicarica
@@ -88,6 +87,9 @@ namespace MoriData
         public bool _recordPresente;
         private string _tempId;
         public StruttureBase.ArrayCelle CelleSensori;
+
+
+        public MessaggioSpyBatt.ProgrammaRicarica.NuoviLivelli ResetContatori { get; set; } = MessaggioSpyBatt.ProgrammaRicarica.NuoviLivelli.MantieniLivelli;
 
 
 

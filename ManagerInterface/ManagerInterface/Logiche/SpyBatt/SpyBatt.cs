@@ -4074,18 +4074,19 @@ namespace ChargerLogic
                 _mS.CustomerData.ModoBiberonaggio = sbCliente.ModoBiberonaggio;
                 _mS.CustomerData.ModoRabboccatore = sbCliente.ModoRabboccatore;
                 _mS.CustomerData.ModelloPianificazione = sbCliente.MappaTurni;
+                _mS.CustomerData.ResetLivelloCarica = sbCliente.ResetContatori;
 
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 _mS.Comando = SerialMessage.TipoComando.SB_W_DatiCliente;
 
-                _mS.ComponiMessaggioCliente(0);
+                _mS.ComponiMessaggioCliente(0, sbData.fwLevel);
                 Log.Debug("Scrivi SB Cliente - 0 : testata ");
                 Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
                 if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                 {
-                    _mS.ComponiMessaggioCliente(1);
+                    _mS.ComponiMessaggioCliente(1, sbData.fwLevel);
                     Log.Debug("Scrivi SB Cliente - 1 ");
                     //Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
                     _rxRisposta = false;
@@ -4095,14 +4096,14 @@ namespace ChargerLogic
 
                     if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                     {
-                        _mS.ComponiMessaggioCliente(2);
+                        _mS.ComponiMessaggioCliente(2, sbData.fwLevel);
                         Log.Debug("Scrivi SB Cliente - 2 ");
                         _rxRisposta = false;
                         _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                         _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
                         if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                         {
-                            _mS.ComponiMessaggioCliente(3);
+                            _mS.ComponiMessaggioCliente(3, sbData.fwLevel);
                             Log.Debug("Scrivi SB Cliente - 3 ");
                             _rxRisposta = false;
                             _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
@@ -4110,7 +4111,7 @@ namespace ChargerLogic
 
                             if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                             {
-                                _mS.ComponiMessaggioCliente(4);
+                                _mS.ComponiMessaggioCliente(4, sbData.fwLevel);
                                 Log.Debug("Scrivi SB Cliente - 4 ");
                                 _rxRisposta = false;
                                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
@@ -4217,12 +4218,14 @@ namespace ChargerLogic
                 _mS.ProgRicarica.MaxCorrenteW = NuovoProgramma.MaxCorrenteW;
                 _mS.ProgRicarica.TensioneRaccordo = NuovoProgramma.TensioneRaccordo;
                 _mS.ProgRicarica.TensioneFinale = NuovoProgramma.TensioneFinale;
+                _mS.ProgRicarica.ResetLivelloCarica = NuovoProgramma.ResetContatori;
 
                 _mS.ProgRicarica.EsitoScrittura = 0x00;
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 _mS.Comando = SerialMessage.TipoComando.SB_W_Programmazione;
 
-                _mS.ComponiMessaggioNuovoProgramma();
+                _mS.ComponiMessaggioNuovoProgramma(sbData.fwLevel);
+
                 Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);

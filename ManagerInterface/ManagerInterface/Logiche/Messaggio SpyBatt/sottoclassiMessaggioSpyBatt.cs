@@ -802,6 +802,7 @@ namespace ChargerLogic
             public ushort TensioneRaccordo { get; set; }
             public ushort TensioneFinale { get; set; }
 
+            public NuoviLivelli ResetLivelloCarica { get; set; }
 
             public byte[] DatiPianificazione { get; set; }
 
@@ -810,6 +811,8 @@ namespace ChargerLogic
             public bool datiPronti;
             public byte EsitoScrittura;
             public string lastError;
+
+            public enum NuoviLivelli: ushort { MantieniLivelli = 0x8080, ResetLivelli = 0xFFFF }
 
             public EsitoRisposta analizzaMessaggio(byte[] _messaggio, bool DatiPuri = false)
             {
@@ -956,7 +959,8 @@ namespace ChargerLogic
             public byte ModoBiberonaggio = 0;
             public byte ModoRabboccatore = 0;
             public byte[] ModelloPianificazione;
-
+            public NuoviLivelli ResetLivelloCarica { get; set; }
+            public enum NuoviLivelli : ushort { MantieniLivelli = 0x0808, ResetLivelli = 0xFFFF }
             byte[] _dataBuffer;
             public byte[] dataBuffer;
             public bool datiPronti;

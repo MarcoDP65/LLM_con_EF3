@@ -117,18 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkCliResetContatori.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnGeneraCodice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="chkCliResetContatori.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkCliResetContatori.Location" type="System.Drawing.Point, System.Drawing">
+    <value>791, 314</value>
+  </data>
+  <data name="chkCliResetContatori.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 21</value>
+  </data>
+  <data name="chkCliResetContatori.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="chkCliResetContatori.Text" xml:space="preserve">
+    <value>Reset Contatori di Carica</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.Name" xml:space="preserve">
+    <value>chkCliResetContatori</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.Parent" xml:space="preserve">
+    <value>tabCb01</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnGeneraCodice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnGeneraCodice.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 110</value>
   </data>
   <data name="btnGeneraCodice.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 38</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnGeneraCodice.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
@@ -226,7 +256,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;grbAbilitazioneReset.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnRicaricaDati.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -337,7 +367,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;grbDownloadDati.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnSfoglia.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -556,7 +586,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;grbMainDlOptions.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnResetScheda.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
@@ -586,7 +616,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;btnResetScheda.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtTestataPtrProgr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt, style=Bold</value>
@@ -952,7 +982,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;grbTestataContatori.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnSalvaCliente.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -982,7 +1012,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;btnSalvaCliente.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="txtSerialNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
@@ -1468,7 +1498,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;grbTestata.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label254.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1879,7 +1909,7 @@
     <value>tabCb01</value>
   </data>
   <data name="&gt;&gt;grbDatiCliente.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="tabCb01.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -8152,7 +8182,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.14, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.16, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>

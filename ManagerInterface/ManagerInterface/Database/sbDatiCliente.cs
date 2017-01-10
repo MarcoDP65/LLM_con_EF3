@@ -69,6 +69,7 @@ namespace MoriData
         public bool _recordPresente;
         private string _tempId;
         public ModelloSettimana PianificazioneCorrente;
+        public MessaggioSpyBatt.DatiCliente.NuoviLivelli ResetContatori { get; set; } = MessaggioSpyBatt.DatiCliente.NuoviLivelli.MantieniLivelli;
 
 
         public sbDatiCliente()

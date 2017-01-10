@@ -1785,6 +1785,8 @@ namespace Utility
 
             try
             {
+                if ((source.Length - start) < lenght)
+                    return "";
 
                 string result = System.Text.Encoding.UTF8.GetString(source, start, lenght);
                 return result;

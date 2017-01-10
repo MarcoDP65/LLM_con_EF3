@@ -118,10 +118,13 @@ namespace MoriData
             CreateTable<_sbTestataCalibrazione>();
             CreateTable<_sbAnalisiCorrente>();
             CreateTable<_sbParametriGenerali>();
+            CreateTable<_NodoStruttura>();
 
             inizializzaUtente();
             inizializzaDefSoglie(); 
             inizializzaSoglie();
+            inizializzaAlberoNavigazione();
+
 
             bool dbOk = checkInit("_utente");
         }
@@ -260,38 +263,109 @@ namespace MoriData
         }
 
 
-
-
-
-
-
         public void inizializzaSoglie()
         {
-            bool TabellaCompilata = checkInit("_sbSoglie");
+            bool TabellaCompilata = checkInit("_sbDefSoglia");
+            if (!TabellaCompilata)
+            {
+                _sbDefSoglia[] _sgl =
+                {
+                    new _sbDefSoglia { IdLocale = 1, IdSoglia = 1, DescSoglia = "Profondità D.O.D.",TipoMisura = 0 , IdLingua = 1 },
+                    new _sbDefSoglia { IdLocale = 2, IdSoglia = 2, DescSoglia = "Tmax Scarica",  TipoMisura = 0 , IdLingua = 1 },
+                    new _sbDefSoglia { IdLocale = 3, IdSoglia = 3, DescSoglia = "Tmin Scarica",  TipoMisura = 0 , IdLingua = 1 },
+                    new _sbDefSoglia { IdLocale = 4, IdSoglia = 4, DescSoglia = "Diff T Scarica",  TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 5, IdSoglia = 5, DescSoglia = "Tmax Carica Completa",  TipoMisura = 0 , IdLingua = 1 },
+                    new _sbDefSoglia { IdLocale = 6, IdSoglia = 6, DescSoglia = "Tmax Carica Parziale",  TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 7, IdSoglia = 7, DescSoglia = "Diff T Carica Completa",  TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 8, IdSoglia = 8, DescSoglia = "Diff T Carica Parziale",  TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 9,  IdSoglia= 9, DescSoglia = "DeltaV Sblianciamento Celle",  TipoMisura = 1 , IdLingua = 1 },
+                    new _sbDefSoglia { IdLocale = 10, IdSoglia = 10, DescSoglia = "Charge Factor min",  TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 11, IdSoglia = 11, DescSoglia = "Ore Pausa per Fascia D.O.D. 81/100",  TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 12, IdSoglia = 12, DescSoglia = "Ore Pausa per Fascia D.O.D. 61/80", TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 13, IdSoglia = 13, DescSoglia = "Ore Pausa per Fascia D.O.D. 41/60", TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 14, IdSoglia = 14, DescSoglia = "Ore Pausa per Fascia D.O.D. 21/40",  TipoMisura = 0 , IdLingua = 1  },
+                    new _sbDefSoglia { IdLocale = 15, IdSoglia = 15, DescSoglia = "Ore Pausa per Fascia D.O.D. 0/20",  TipoMisura = 0 , IdLingua = 1  },
+                };
 
-            // Verifico se le soglie sono aggiornate
+
+                InsertAll(_sgl);
+            }
+        }
+
+
+
+
+        private _NodoStruttura NodoRoot()
+        {
+            try
+            {
+                _NodoStruttura _tempnodo = new _NodoStruttura();
+                _tempnodo.IdLocale = 1;
+                _tempnodo.Guid = NodoStruttura.GuidROOT;
+                _tempnodo.TipoNodo = (byte)NodoStruttura.TipoNodo.Radice;
+                _tempnodo.Level = 0;
+                _tempnodo.ParentIdLocale = _tempnodo.IdLocale;
+                _tempnodo.ParentGuid = NodoStruttura.GuidBASE;
+
+                _tempnodo.Nome = "Questo PC";
+                _tempnodo.Descrizione = "Radice struttura archivio";
+                _tempnodo.Icona = "root";
+                _tempnodo.IdApparato = null;
+
+                return _tempnodo;
+
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("NodoRoot: " + ex.ToString());
+                return null;
+            }
+        }
+
+        private _NodoStruttura NodoUndef()
+        {
+            try
+            {
+                _NodoStruttura _tempnodo = new _NodoStruttura();
+     
+                _tempnodo.IdLocale = 2;
+                _tempnodo.Guid = NodoStruttura.GuidUNDEF;
+
+                _tempnodo.ParentGuid = NodoStruttura.GuidROOT;
+                _tempnodo.TipoNodo = (byte)NodoStruttura.TipoNodo.Ramo;
+                _tempnodo.Level = 1;
+                _tempnodo.ParentIdLocale = 1;
+
+
+                _tempnodo.Nome = "Non Assegnati";
+                _tempnodo.Descrizione = "Apparati non Assegnati a livelli gerarchici";
+                _tempnodo.Icona = "folder";
+                _tempnodo.IdApparato = null;
+
+                return _tempnodo;
+
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("NodoUndef: " + ex.ToString());
+                return null;
+            }
+        }
+
+
+        public void inizializzaAlberoNavigazione()
+        {
+            bool TabellaCompilata = checkInit("_NodoStruttura");
 
 
             if (!TabellaCompilata)
             {
-                _sbSoglie[] _sgl = 
-                { 
-                    new _sbSoglie { IdLocale = 1, Username = "#default#", IdApparato = "#base#", IdMisura= 1, TipoMisura = 0 ,ValoreInt = 80},
-                    new _sbSoglie { IdLocale = 2, Username = "#default#", IdApparato = "#base#", IdMisura= 2, TipoMisura = 0 ,ValoreInt = 55},
-                    new _sbSoglie { IdLocale = 3, Username = "#default#", IdApparato = "#base#", IdMisura= 3, TipoMisura = 0 ,ValoreInt = 0},
-                    new _sbSoglie { IdLocale = 4, Username = "#default#", IdApparato = "#base#", IdMisura= 4, TipoMisura = 0 ,ValoreInt = 10},
-                    new _sbSoglie { IdLocale = 5, Username = "#default#", IdApparato = "#base#", IdMisura= 5, TipoMisura = 0 ,ValoreInt = 55},
-                    new _sbSoglie { IdLocale = 6, Username = "#default#", IdApparato = "#base#", IdMisura= 6, TipoMisura = 0 ,ValoreInt = 55},
-                    new _sbSoglie { IdLocale = 7, Username = "#default#", IdApparato = "#base#", IdMisura= 7, TipoMisura = 0 ,ValoreInt = 15},
-                    new _sbSoglie { IdLocale = 8, Username = "#default#", IdApparato = "#base#", IdMisura= 8, TipoMisura = 0 ,ValoreInt = 15},
-                    new _sbSoglie { IdLocale = 9, Username = "#default#", IdApparato = "#base#", IdMisura= 9, TipoMisura = 1 ,ValoreNum = 0.05},
-                    new _sbSoglie { IdLocale = 10, Username = "#default#", IdApparato = "#base#", IdMisura= 10, TipoMisura = 0 ,ValoreInt = 1},
-                    new _sbSoglie { IdLocale = 11, Username = "#default#", IdApparato = "#base#", IdMisura= 11, TipoMisura = 0 ,ValoreInt = 24},
-                    new _sbSoglie { IdLocale = 12, Username = "#default#", IdApparato = "#base#", IdMisura= 12, TipoMisura = 0 ,ValoreInt = 72},
-                    new _sbSoglie { IdLocale = 13, Username = "#default#", IdApparato = "#base#", IdMisura= 13, TipoMisura = 0 ,ValoreInt = 168},
-                    new _sbSoglie { IdLocale = 14, Username = "#default#", IdApparato = "#base#", IdMisura= 14, TipoMisura = 0 ,ValoreInt = 360},
-                    new _sbSoglie { IdLocale = 15, Username = "#default#", IdApparato = "#base#", IdMisura= 15, TipoMisura = 0 ,ValoreInt = 960},
-                };
+
+                _NodoStruttura[] _sgl = new _NodoStruttura[2];
+                _sgl[0] = NodoRoot();
+                _sgl[1] = NodoUndef();
 
 
                 InsertAll(_sgl);

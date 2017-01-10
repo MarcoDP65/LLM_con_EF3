@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>2.00.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -223,6 +223,7 @@
     <Compile Include="Database\sbDefSoglie.cs" />
     <Compile Include="Database\sbMemBreve.cs" />
     <Compile Include="Database\sbMemLunga.cs" />
+    <Compile Include="Database\NodoStruttura.cs" />
     <Compile Include="Database\sbPacchettoFirmware.cs" />
     <Compile Include="Database\sbParametriGenerali.cs" />
     <Compile Include="Database\sbProgrammaRicarica.cs" />
@@ -294,6 +295,12 @@
     </Compile>
     <Compile Include="Forms\Forms LadeLight\frmCaricabatterie.Designer.cs">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDefinizioneImpianto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDefinizioneImpianto.Designer.cs">
+      <DependentUpon>frmDefinizioneImpianto.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmDisplayManager.cs">
       <SubType>Form</SubType>
@@ -447,6 +454,7 @@
     <Compile Include="Logiche\SpyBatt\SpyBatt.cs" />
     <Compile Include="Logiche\StatMemLungaSB.cs" />
     <Compile Include="Logiche\StepCarica.cs" />
+    <Compile Include="Logiche\StrutturaImpianto.cs" />
     <Compile Include="Logiche\utente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -569,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDefinizioneImpianto.resx">
+      <DependentUpon>frmDefinizioneImpianto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDisplayManager.resx">
       <DependentUpon>frmDisplayManager.cs</DependentUpon>
@@ -888,11 +899,15 @@
     <None Include="Resources\ebatt256.ico" />
     <None Include="Resources\App-ladelight32.ico" />
     <Content Include="e-proOK.ico" />
+    <None Include="Resources\folder.png" />
     <Content Include="Resources\Grf-Car.bmp" />
     <Content Include="Resources\Grf-Scar.bmp" />
     <Content Include="Resources\Grf-V-Car.bmp" />
     <Content Include="Resources\Grf-V-Scar.bmp" />
     <None Include="Resources\IconaLadeLight.ico" />
+    <None Include="Resources\ico_home.bmp" />
+    <None Include="Resources\home.png" />
+    <None Include="Resources\ico SpyBatt.png" />
     <Content Include="Resources\ind_due.png" />
     <Content Include="Resources\ind_tre.png" />
     <Content Include="Resources\IUIa.bmp" />
@@ -900,6 +915,7 @@
     <None Include="Resources\LogoSpyBatt.bmp" />
     <None Include="Resources\reset.png" />
     <None Include="Resources\Logo e-charger PRO sfondato.png" />
+    <None Include="Resources\plant.png" />
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
     <Content Include="Resources\tre.png" />
@@ -916,7 +932,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\IconeTreeview\" />
+  </ItemGroup>
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.103\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net45\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

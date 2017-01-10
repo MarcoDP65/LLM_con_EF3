@@ -1093,7 +1093,7 @@ namespace ChargerLogic
             catch { return _esito; }
         }
 
-        public ushort ComponiMessaggioCliente(byte NumPacchetto)
+        public ushort ComponiMessaggioCliente(byte NumPacchetto, int fwLevel)
         {
             ushort _esito = 0;
             ushort _dispositivo;
@@ -1142,8 +1142,18 @@ namespace ChargerLogic
                 if (NumPacchetto == 0)
                 {
                     // Pacchetto 0 - solo testata
-                    // _arraylen deve essere la lunghezza effettiva del messaggio, senza CRC (4) e codici di controllo iniziali e finali ( stx, end_pac ed etx )
-                    _arrayLen = _arrayInit;
+
+                    if (fwLevel >= 6)
+                    {
+                        // _arraylen deve essere la lunghezza effettiva del messaggio, senza CRC (4) e codici di controllo iniziali e finali ( stx, end_pac ed etx )
+                        _arrayLen = _arrayInit + 4;
+                    }
+                    else
+                    {
+                        // _arraylen deve essere la lunghezza effettiva del messaggio, senza CRC (4) e codici di controllo iniziali e finali ( stx, end_pac ed etx )
+                        _arrayLen = _arrayInit;
+                    }
+
 
                     MessageBuffer = new byte[_arrayLen + 7];
                     //Array.Resize(ref MessageBuffer, _arrayLen + 7);                
@@ -1191,8 +1201,24 @@ namespace ChargerLogic
                 switch (NumPacchetto)
                 {
                     case 0x00:
-                        //non faccio nulla, solo testata
+                        if (fwLevel >= 6)
+                        {
+                            // Reset contatori
+                            splitUshort((ushort)CustomerData.ResetLivelloCarica, ref lsbDisp, ref msbDisp);
 
+                            splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                            MessageBuffer[(_arrayInit + 1)] = msb;
+                            MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                            splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                            MessageBuffer[(_arrayInit + 3)] = msb;
+                            MessageBuffer[(_arrayInit + 4)] = lsb;
+                            _arrayInit += 4;
+                        }
+                        else
+                        {
+                            //non faccio nulla, solo testata
+                        }
                         break;
 
                     case 0x01:
@@ -1560,7 +1586,7 @@ namespace ChargerLogic
 
         }
 
-        public ushort ComponiMessaggioNuovoProgramma()
+        public ushort ComponiMessaggioNuovoProgramma(int FwLevel)
         {
             ushort _esito = 0;
             //ushort _tempUshort;
@@ -1621,6 +1647,20 @@ namespace ChargerLogic
                 /*******************************************************************************/
                 /* Parametri Base                                                              */
                 /*******************************************************************************/
+                if (FwLevel >= 6)
+                {
+                    splitUshort((ushort)ProgRicarica.ResetLivelloCarica, ref lsbDisp, ref msbDisp);
+
+                    splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                    MessageBuffer[(_arrayInit + 1)] = msb;
+                    MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                    splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                    MessageBuffer[(_arrayInit + 3)] = msb;
+                    MessageBuffer[(_arrayInit + 4)] = lsb;
+                    _arrayInit += 4;
+                }
+
                 // id programma
                 splitUshort(ProgRicarica.IdProgramma, ref lsbDisp, ref msbDisp);
 
@@ -1942,9 +1982,9 @@ namespace ChargerLogic
 
 
                 // dati pianificazione : Spostati nei dati cliente
-
+                /*
                 // Copio comunque i primi 84 bytes
-                for (int _cicloByte = 0; _cicloByte < 3; _cicloByte++)
+                for (int _cicloByte = 0; _cicloByte < 79; _cicloByte++)
                 {
                     splitUshort(codificaByte(0x00), ref lsb, ref msb);
                     MessageBuffer[(_arrayInit + 1)] = msb;
@@ -1952,6 +1992,7 @@ namespace ChargerLogic
                     _arrayInit += 2;
                 }
 
+                */
                         /*******************************************************************************/
                         /// calcolo il crc
                 byte[] _tempMessaggio = new byte[_arrayLen];

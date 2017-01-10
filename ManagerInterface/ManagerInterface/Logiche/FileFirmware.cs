@@ -816,6 +816,9 @@ namespace ChargerLogic
                         // Livello 4;
                         return true;
 
+                    case "2.03":
+                        // Livello 6;
+                        return true;
 
                     default:
                         return false;

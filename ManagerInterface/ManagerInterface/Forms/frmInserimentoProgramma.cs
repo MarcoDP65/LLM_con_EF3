@@ -240,7 +240,7 @@ namespace PannelloCharger
 
         }
 
-        public void salvaProgramma()
+        public bool salvaProgramma()
         {
             try
             {
@@ -266,7 +266,14 @@ namespace PannelloCharger
                 _nuovoProg.BatteryCell1 = FunzioniMR.ConvertiByte(txtProgcCelleV1.Text, 1, 0);
                 _nuovoProg.VersoCorrente = (byte)elementiComuni.VersoCorrente.Diretto;  // se non impostabile >> diretto
                 _nuovoProg.AbilitaPresElett = (byte)elementiComuni.AbilitaElemento.Attivo;
-
+                if (chkCliResetContatori.Checked == true)
+                {
+                    _nuovoProg.ResetContatori = MessaggioSpyBatt.ProgrammaRicarica.NuoviLivelli.ResetLivelli;
+                }
+                else
+                {
+                    _nuovoProg.ResetContatori = MessaggioSpyBatt.ProgrammaRicarica.NuoviLivelli.MantieniLivelli;
+                }
                 if (_attivaEstese)
                 {
                     if (optVersoInverso.Checked)
@@ -314,16 +321,19 @@ namespace PannelloCharger
                 {
                    // MessageBox.Show("Programmazione non riuscita", "Programmazioe Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     MessageBox.Show(StringheComuni.CfgFallita, StringheComuni.TitoloCfg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
                 else
                 {
-                    this.Close();
+                    return true;
+                    //this.Close();
                 }
                
             }
             catch (Exception Ex)
             {
                 Log.Error("salvaProgramma: " + Ex.Message);
+                return false;
             }
 
         }
@@ -341,10 +351,14 @@ namespace PannelloCharger
 
                     return;
                 }
-                salvaProgramma();
-                if (chkMemProgrammed.Checked)
+                if (salvaProgramma())
                 {
-                    _sb.AttivaProgramma();
+                    if (chkMemProgrammed.Checked)
+                    {
+                        _sb.AttivaProgramma();
+
+                    }
+                    this.Close();
                 }
             }
         }

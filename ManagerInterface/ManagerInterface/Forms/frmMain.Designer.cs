@@ -43,6 +43,8 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEsci = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImpianto = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImpiantoGestioneImpianto = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCaricabatteria = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConnettiCb = new System.Windows.Forms.ToolStripMenuItem();
             this.apparatiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +56,7 @@
             this.archivioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.importaFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importaHEXDUMPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.alimentatoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuServizi = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +72,6 @@
             this.mnuConsole = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInformazioniSu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tstPulsanti = new System.Windows.Forms.ToolStrip();
             this.tstBtnCercaUsb = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaRS232 = new System.Windows.Forms.ToolStripButton();
@@ -79,7 +81,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.importaHEXDUMPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -103,7 +104,7 @@
             this.mnuMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
-            this.toolStripMenuItem3,
+            this.mnuImpianto,
             this.mnuCaricabatteria,
             this.mnuSpybat,
             this.mnuServizi,
@@ -186,6 +187,19 @@
             resources.ApplyResources(this.mnuEsci, "mnuEsci");
             this.mnuEsci.Click += new System.EventHandler(this.mnuEsci_Click);
             // 
+            // mnuImpianto
+            // 
+            this.mnuImpianto.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuImpiantoGestioneImpianto});
+            this.mnuImpianto.Name = "mnuImpianto";
+            resources.ApplyResources(this.mnuImpianto, "mnuImpianto");
+            // 
+            // mnuImpiantoGestioneImpianto
+            // 
+            this.mnuImpiantoGestioneImpianto.Name = "mnuImpiantoGestioneImpianto";
+            resources.ApplyResources(this.mnuImpiantoGestioneImpianto, "mnuImpiantoGestioneImpianto");
+            this.mnuImpiantoGestioneImpianto.Click += new System.EventHandler(this.mnuImpiantoGestioneImpianto_Click);
+            // 
             // mnuCaricabatteria
             // 
             this.mnuCaricabatteria.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -259,6 +273,12 @@
             this.importaFileToolStripMenuItem.Name = "importaFileToolStripMenuItem";
             resources.ApplyResources(this.importaFileToolStripMenuItem, "importaFileToolStripMenuItem");
             this.importaFileToolStripMenuItem.Click += new System.EventHandler(this.importaFileToolStripMenuItem_Click);
+            // 
+            // importaHEXDUMPToolStripMenuItem
+            // 
+            this.importaHEXDUMPToolStripMenuItem.Name = "importaHEXDUMPToolStripMenuItem";
+            resources.ApplyResources(this.importaHEXDUMPToolStripMenuItem, "importaHEXDUMPToolStripMenuItem");
+            this.importaHEXDUMPToolStripMenuItem.Click += new System.EventHandler(this.importaHEXDUMPToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -359,11 +379,6 @@
             resources.ApplyResources(this.mnuInformazioniSu, "mnuInformazioniSu");
             this.mnuInformazioniSu.Click += new System.EventHandler(this.mnuInformazioniSu_Click);
             // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            // 
             // tstPulsanti
             // 
             this.tstPulsanti.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -428,12 +443,6 @@
             resources.ApplyResources(this.tstBtnClose, "tstBtnClose");
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
-            // 
-            // importaHEXDUMPToolStripMenuItem
-            // 
-            this.importaHEXDUMPToolStripMenuItem.Name = "importaHEXDUMPToolStripMenuItem";
-            resources.ApplyResources(this.importaHEXDUMPToolStripMenuItem, "importaHEXDUMPToolStripMenuItem");
-            this.importaHEXDUMPToolStripMenuItem.Click += new System.EventHandler(this.importaHEXDUMPToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -510,12 +519,13 @@
         private System.Windows.Forms.ToolStripButton tstBtnPrint;
         private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tstBtnExport;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem programmazioniAvanzateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem mnuLLDisplayManager;
         private System.Windows.Forms.ToolStripMenuItem mSP430FlasherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importaHEXDUMPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuImpianto;
+        private System.Windows.Forms.ToolStripMenuItem mnuImpiantoGestioneImpianto;
     }
 }
 

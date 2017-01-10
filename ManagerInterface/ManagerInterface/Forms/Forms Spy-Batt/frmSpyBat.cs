@@ -1918,6 +1918,12 @@ namespace PannelloCharger
                 _sb.sbCliente.BatteryLLId = txtCliCodiceLL.Text;
                 _sb.sbCliente.SerialNumber = txtSerialNumber.Text;
 
+                _sb.sbCliente.ResetContatori = MessaggioSpyBatt.DatiCliente.NuoviLivelli.MantieniLivelli;
+
+                if(chkCliResetContatori.Checked)
+                {
+                    _sb.sbCliente.ResetContatori = MessaggioSpyBatt.DatiCliente.NuoviLivelli.ResetLivelli;
+                }
 
                 _tempP = (Pianificazione)cmbModoPianificazione.SelectedItem;
                 _sb.sbCliente.ModoPianificazione = (byte)_tempP.CodiceTP;

@@ -313,6 +313,7 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.btnCalScriviGiorno = new System.Windows.Forms.Button();
@@ -901,7 +902,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
+            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -1037,6 +1038,7 @@
             // 
             this.tabCb01.AllowDrop = true;
             this.tabCb01.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCb01.Controls.Add(this.chkCliResetContatori);
             this.tabCb01.Controls.Add(this.grbAbilitazioneReset);
             this.tabCb01.Controls.Add(this.grbDownloadDati);
             this.tabCb01.Controls.Add(this.grbMainDlOptions);
@@ -2993,6 +2995,17 @@
             resources.ApplyResources(this.lblTurno3, "lblTurno3");
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
+            // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
             // 
             // tabCb05
             // 
@@ -6971,16 +6984,12 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // pannelloTurno1
+            // chkCliResetContatori
             // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
+            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
+            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
+            this.chkCliResetContatori.Name = "chkCliResetContatori";
+            this.chkCliResetContatori.UseVisualStyleBackColor = true;
             // 
             // frmSpyBat
             // 
@@ -6997,6 +7006,7 @@
             this.Resize += new System.EventHandler(this.frmSpyBat_Resize);
             this.tabCaricaBatterie.ResumeLayout(false);
             this.tabCb01.ResumeLayout(false);
+            this.tabCb01.PerformLayout();
             this.grbAbilitazioneReset.ResumeLayout(false);
             this.grbAbilitazioneReset.PerformLayout();
             this.grbDownloadDati.ResumeLayout(false);
@@ -8046,5 +8056,6 @@
         private System.Windows.Forms.TextBox txtCliCodiceLL;
         private System.Windows.Forms.TextBox txtStratQryLLBattId;
         private System.Windows.Forms.Label label255;
+        private System.Windows.Forms.CheckBox chkCliResetContatori;
     }
 }
