@@ -27,6 +27,8 @@ namespace PannelloCharger
 
         //bool _apparatoPresente = false;
         ImageDump _Immagine;
+        MessaggioSpyBatt.comandoInizialeSB _NuovaIntestazioneSb;
+
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
        
 
@@ -200,7 +202,21 @@ namespace PannelloCharger
             {
 
                 txtMatrSB.Text = FunzioniMR.StringaSeriale(_sb.sbData.Id);
-                txtCliente.Text = "";
+                if (_NuovaIntestazioneSb == null)
+                    txtCliente.Text = "Record Contatori Mancante";
+                else
+                {
+
+                    if (_NuovaIntestazioneSb != null)
+                    {
+                        txtCliente.Text = "(N) " + _NuovaIntestazioneSb.longRecordCounter.ToString() + "/" + _NuovaIntestazioneSb.longRecordPoiter.ToString();
+                    }
+                    else
+                    { 
+                        txtCliente.Text = _Immagine.IntestazioneSb.longRecordCounter.ToString() + "/" + _Immagine.IntestazioneSb.longRecordPoiter.ToString();
+                    }
+
+                }
                 txtFwVersion.Text =  _sb.sbData.SwVersion ;
                 txtNote.Text = "" ;
                 txtNumLunghi.Text = _sb.sbData.ContLunghi.ToString();
@@ -360,7 +376,7 @@ namespace PannelloCharger
                         Log.Debug("file caricato: len = " + _fileImport.Length.ToString());
                         //sbDataModel _importData;
                         _Immagine = JsonConvert.DeserializeObject<ImageDump>(_fileImport);
-
+                        _NuovaIntestazioneSb = _Immagine.IntestazioneSb;
                         Log.Debug("file convertito");
                         _sb.sbData = _Immagine.Testata;
 
@@ -709,12 +725,23 @@ namespace PannelloCharger
                     case elementiComuni.modoDati.HexDumpRecovery:
                         if (importaHexdump())
                         {
+                            _NuovaIntestazioneSb = _Immagine.IntestazioneSb;
                             _sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true);
 
                             //MostraTestataHexDump();
                             MostraDatiImmagine();
 
+                            if (_NuovaIntestazioneSb == null)
+                            {
+                                string _tempSer = JsonConvert.SerializeObject(_Immagine);
+                                if (!File.Exists(txtNuovoFile.Text)) File.Create(txtNuovoFile.Text).Close();
+                                File.WriteAllText(txtNuovoFile.Text, _tempSer);
+                                
+                            }
+                            Log.Warn("---------------------- FILE RIGENERATO ------------------------------");
+                            Log.Warn(txtNuovoFile.Text);
                             btnDataExport.Enabled = true;
+                        
                         }
                         break;
                     default:

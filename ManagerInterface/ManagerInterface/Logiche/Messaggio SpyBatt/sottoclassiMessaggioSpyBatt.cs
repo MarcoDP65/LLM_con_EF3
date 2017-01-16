@@ -44,6 +44,7 @@ namespace ChargerLogic
 
             public comandoInizialeSB()
             {
+                dataBuffer = new byte[0];
                 manufacturerID = 0;
                 revSoftware = "0.00";
                 buildSoftware = "00";
@@ -65,13 +66,127 @@ namespace ChargerLogic
                 memFree = 0;
             }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="_messaggio">Scompone il pacchetto PARAMETRI INIZIALI</param>
-        /// <param name="DatiPuri">Se True il messaggio contiene solo la parte dati e non la parte intestazione (per DumpMem)</param>
-        /// <returns></returns>
-        public EsitoRisposta analizzaMessaggio(byte[] _messaggio, bool DatiPuri = false)
+
+            public bool GeneraByteArray()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[64];
+                    int _arrayInit = 0;
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 64; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                        // 
+                    }
+
+                    //Revisione SW (all)
+                    for (int _i = 0; _i < 6; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(revSoftware, _i);
+                    }
+
+
+                    //Product ID
+                    for (int _i = 0; _i < 8; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(productId, _i);
+                    }
+
+                    //Manufacturer
+                    for (int _i = 0; _i < 18; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(Manufacturer, _i);
+                    }
+
+                    //HW version
+                    _datamap[_arrayInit++] = revHardware;
+
+                    // Current Prg Count
+                    // _sb.ProgramCount
+                    FunzioniComuni.SplitInt32(numeroProgramma, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //Battery Connected
+                    _datamap[_arrayInit++] = statoBatteria;
+
+                    // N° record short mem
+                    FunzioniComuni.SplitUint32(shortRecordCounter, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    // N° record short mem PTR
+                    FunzioniComuni.SplitUint32(shortRecordPointer, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+
+                    // N° record long mem 
+                    FunzioniComuni.SplitUint32(longRecordCounter, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    // N° record long mem PTR
+                    FunzioniComuni.SplitUint32(longRecordPoiter, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    // MaxRecord
+                    _datamap[_arrayInit++] = 0x00;
+                    _datamap[_arrayInit++] = 0x35;
+                    _datamap[_arrayInit++] = 0xF5;
+
+                    _datamap[_arrayInit++] = 0x00;
+                    _datamap[_arrayInit++] = 0xB9;
+                    _datamap[_arrayInit++] = 0x39;
+
+                    _datamap[_arrayInit++] = 0x00;
+                    _datamap[_arrayInit++] = 0x20;
+                    _datamap[_arrayInit++] = 0x00;
+
+                    _datamap[_arrayInit++] = 0x01;
+                    _datamap[_arrayInit++] = 0x00;
+
+                    _datamap[_arrayInit++] = 0x18;
+
+                    _datamap[_arrayInit++] = 0xFF;
+                    _datamap[_arrayInit++] = 0xFF;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="_messaggio">Scompone il pacchetto PARAMETRI INIZIALI</param>
+            /// <param name="DatiPuri">Se True il messaggio contiene solo la parte dati e non la parte intestazione (per DumpMem)</param>
+            /// <returns></returns>
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, bool DatiPuri = false)
             {
                 //ushort _tempShort;
                 //byte _tempByte1;
@@ -125,6 +240,7 @@ namespace ChargerLogic
                             }
 
                         }
+                        dataBuffer = _risposta;
                         revSoftware = revSoftware + "." + buildSoftware;
                         productId = ArrayToString(_risposta, startByte, 8);
                         startByte += 8;
@@ -240,6 +356,7 @@ namespace ChargerLogic
 
                         case 4:
                         case 5:
+                        case 6:
                             {
                                 _esitoLocale = _analizzaMessaggioLev4(_messaggio, fwLevel, DatiPuri);
                                 break;
@@ -565,7 +682,7 @@ namespace ChargerLogic
             public bool datiPronti;
             public string lastError;
 
-            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, bool DatiPuri = false)
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, bool DatiPuri = false , bool NoLog = false)
             {
 
                 byte[] _risposta;
@@ -598,8 +715,7 @@ namespace ChargerLogic
                     if (_esito)
                     {
                         //Log.Debug(" ---------------------- MemoriaPeriodoBreve -----------------------------------------");
-                        Log.Debug(FunzioniMR.hexdumpArray(_risposta));
-
+                        if(!NoLog) Log.Debug(FunzioniMR.hexdumpArray(_risposta));
 
                         startByte = 0;
                         IdEvento = ArrayToUint32(_risposta, startByte, 4);
@@ -1432,6 +1548,7 @@ namespace ChargerLogic
 
                         case 4:
                         case 5:
+                        case 6:
                             {
                                 _esitoLocale = analizzaMessaggioLev4(_messaggio, fwLevel);
                                 break;

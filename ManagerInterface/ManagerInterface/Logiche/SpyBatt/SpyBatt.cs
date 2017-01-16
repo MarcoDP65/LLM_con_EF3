@@ -244,6 +244,7 @@ namespace ChargerLogic
                 return _risposta;
             }
 
+
             catch (Exception Ex)
             {
                 Log.Error("VerificaPresenza: " + Ex.Message);
@@ -921,6 +922,7 @@ namespace ChargerLogic
                                 _tempImg.Testata = sbData;
                                 _tempImg.DataBuffer = _mS.DumpMem.memImage;
                                 _tempImg.Timestamp= DateTime.Now;
+                                _tempImg.IntestazioneSb = IntestazioneSb;
 
                                 string _tempSer = JsonConvert.SerializeObject(_tempImg);
 
@@ -1392,6 +1394,7 @@ namespace ChargerLogic
             {
                 bool _esito;
                 object _dataRx;
+                bool _testataAssente;
 
                 sbEndStep _esitoBg = new sbEndStep();
                 sbWaitStep _stepBg = new sbWaitStep();
@@ -1405,8 +1408,13 @@ namespace ChargerLogic
 
                 bool _recordPresente;
 
+                int _pntEffettivoLunghi = 0;
+                int _pntEffettivoBrevi = 0;
+
                 if (Immagine != null && Immagine.Testata != null)
                 {
+
+                    _testataAssente = (Immagine.IntestazioneSb == null);
 
                     if (Immagine.Apparato == ImageDump.TipoApparato.SpyBatt) 
                     {
@@ -1467,6 +1475,11 @@ namespace ChargerLogic
                         if (_esitoLettura != SerialMessage.EsitoRisposta.MessaggioOk)
                         {
                             return false;
+                        }
+
+                        if(_testataAssente)
+                        {
+                            Immagine.IntestazioneSb = _mS.Intestazione;
                         }
 
                         if (RunAsinc)
@@ -1644,7 +1657,8 @@ namespace ChargerLogic
                         _TempMessaggio = new byte[_areaSize];
 
                         //_areaBlock = 106;
-
+                        uint _maxLngNum = 0;
+                        uint _maxLngPtr = 0;
                         for (int _cicloCli = 0; _cicloCli < _areaBlock; _cicloCli++)
                         {
                             _tempLunga = new MessaggioSpyBatt.MemoriaPeriodoLungo();
@@ -1657,16 +1671,28 @@ namespace ChargerLogic
                                 {
                                     // Programma non inizializzato. esco dalla lettura programmi
                                     ModelloDati.Testata.LongMem = _CicliMemoriaLunga.Count;
+                                    if(_testataAssente)
+                                    {
+                                        Immagine.IntestazioneSb.longRecordCounter = _maxLngNum;
+                                        Immagine.IntestazioneSb.longRecordPoiter = _maxLngPtr;
+                                    }
                                     break;
                                 }
 
                                 _CicliMemoriaLunga.Add(_tempLunga);
                             }
+                            _maxLngNum = _tempLunga.IdEvento;
+                            _maxLngPtr = (uint)_cicloCli;
+
                             _areaStart += _areaSize;
                         }
 
                         int risposteAttese = _CicliMemoriaLunga.Count;
                         int _lastProgress = 0;
+
+                        int _ultimoBreve = 0;
+
+
 
                         if (risposteAttese > 0)
                         {
@@ -1749,6 +1775,8 @@ namespace ChargerLogic
                                             _CicliMemoriaBreve.Add(_tempBreve);
                                         }
                                         _areaStart += _areaSize;
+                                        if (_areaStart > _ultimoBreve) _ultimoBreve = _areaStart;
+
                                     }
 
                                     // ora trasporto i messaggi nel modello
@@ -1868,6 +1896,88 @@ namespace ChargerLogic
 
                             //ora consolido gli intermedi
                             ConsolidaBrevi();
+
+                            Console.Beep();
+                            Log.Debug(""); Log.Debug(""); Log.Debug("");
+                            //Log.Debug("---------------------- Cicli Brevi: " + _ultimoBreve.ToString() + " ------------------------------");
+
+                            uint _maxShortNum = 0;
+                            uint _maxShortPtr = 0;
+
+                            // come ultima operazione estraggo in modo lineare tutti i brevi e loggo l'estrazione 
+                            if (_ultimoBreve > 0)  // ho almeno 1 breve
+                            {
+                                _areaSize = _mappaCorrente.MemBreve.ElemetSize;
+                                _areaStart = _mappaCorrente.MemBreve.StartAddress;
+                                _areaBlock = _ultimoBreve / _mappaCorrente.MemBreve.ElemetSize + 5;
+
+
+                                Log.Warn("---------------------- Cicli Brevi: " + _areaBlock.ToString() + " ------------------------------");
+
+                                _TempMessaggio = new byte[_areaSize];
+                                UInt32 _IdUltimoLungo = UInt32.MaxValue;
+                                int _numBreviEstratti = 0;
+                                int _breveLoc = 0;
+                                for (int _cicloBreve = 0; _cicloBreve < _areaBlock; _cicloBreve++)
+                                {
+                                    _tempBreve = new MessaggioSpyBatt.MemoriaPeriodoBreve();
+                                    Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
+                                    //Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+                                    _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true,true);
+                                    if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
+                                    {
+                                        if (_IdUltimoLungo != _tempBreve.IdEvento)
+                                        {
+                                            Log.Debug("  Nuovo ID: "+ _tempBreve.IdEvento.ToString("X8"));
+                                            _breveLoc = 0;
+                                            _IdUltimoLungo = _tempBreve.IdEvento;
+                                        }
+
+                                        string _LogBreve = _breveLoc.ToString("000") + " (" + _numBreviEstratti.ToString("000000") + "-0x" + _numBreviEstratti.ToString("X6") + ") ";
+                                        _LogBreve += " | TS: " + StringaTimestamp(_tempBreve.DataOraRegistrazione) + "  | ";
+                                        _LogBreve += FunzioniMR.hexdumpArray(_TempMessaggio);
+                                        Log.Debug(_LogBreve);
+
+                                        //_CicliMemoriaBreve.Add(_tempBreve);
+                                    }
+                                    else
+                                    {
+                                        string _LogBreve = _breveLoc.ToString("000") + " (" + _numBreviEstratti.ToString("000000") + ") ";
+                                        _LogBreve += " | TS: --/--/-- --:--  | ";
+                                        _LogBreve += FunzioniMR.hexdumpArray(_TempMessaggio);
+                                        _LogBreve += " Not Valid (" + _esitoLettura.ToString() + ")";
+                                        Log.Debug(_LogBreve);
+
+                                    }
+
+                                    if(_tempBreve.IdEvento == 0xFFFFFFFF)
+                                    {
+                                        if (_testataAssente)
+                                        {
+                                            Immagine.IntestazioneSb.shortRecordCounter = _maxShortNum;
+                                            Immagine.IntestazioneSb.shortRecordPointer = _maxShortPtr;
+
+                                            Immagine.IntestazioneSb.GeneraByteArray();
+                                        }
+                                        break;
+                                    }
+                                    _numBreviEstratti += 1;
+                                    _maxShortNum = (uint)_numBreviEstratti;
+                                    _maxShortPtr = (uint)_numBreviEstratti;
+                                    _areaStart += _areaSize;
+                                    _breveLoc += 1;
+
+                                }
+                                Console.Beep();
+                                // ora trasporto i messaggi nel modello
+                                Log.Debug("----------------------------------------------------------------------------------------");
+                                Log.Debug("Elencati gli eventi a breve (" + _numBreviEstratti + ") ");
+                                Log.Debug("----------------------------------------------------------------------------------------");
+
+
+                            }
+
+
                         }
 
 

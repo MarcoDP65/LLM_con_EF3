@@ -8182,7 +8182,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.16, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.17, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -18120,166 +18120,58 @@
   <data name="&gt;&gt;tbpFirmware.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="txtClonaLogBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 6pt</value>
-  </data>
-  <data name="txtClonaLogBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 520</value>
-  </data>
-  <data name="txtClonaLogBox.Multiline" type="System.Boolean, mscorlib">
+  <data name="optCloneDaDB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="txtClonaLogBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 86</value>
+  <data name="optCloneDaDB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="txtClonaLogBox.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+  <data name="optCloneDaDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 240</value>
   </data>
-  <data name="&gt;&gt;txtClonaLogBox.Name" xml:space="preserve">
-    <value>txtClonaLogBox</value>
+  <data name="optCloneDaDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 16</value>
   </data>
-  <data name="&gt;&gt;txtClonaLogBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="optCloneDaDB.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
   </data>
-  <data name="&gt;&gt;txtClonaLogBox.Parent" xml:space="preserve">
-    <value>grbTracciaClonazione</value>
+  <data name="&gt;&gt;optCloneDaDB.Name" xml:space="preserve">
+    <value>optCloneDaDB</value>
   </data>
-  <data name="&gt;&gt;txtClonaLogBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;optCloneDaDB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optCloneDaDB.Parent" xml:space="preserve">
+    <value>tbpClonaScheda</value>
+  </data>
+  <data name="&gt;&gt;optCloneDaDB.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lbxClonaListaStep.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="lbxClonaListaStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 94</value>
-  </data>
-  <data name="lbxClonaListaStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 420</value>
-  </data>
-  <data name="lbxClonaListaStep.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;lbxClonaListaStep.Name" xml:space="preserve">
-    <value>lbxClonaListaStep</value>
-  </data>
-  <data name="&gt;&gt;lbxClonaListaStep.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbxClonaListaStep.Parent" xml:space="preserve">
-    <value>grbTracciaClonazione</value>
-  </data>
-  <data name="&gt;&gt;lbxClonaListaStep.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtClonaStatoAttuale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt</value>
-  </data>
-  <data name="txtClonaStatoAttuale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 48</value>
-  </data>
-  <data name="txtClonaStatoAttuale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 27</value>
-  </data>
-  <data name="txtClonaStatoAttuale.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="txtClonaStatoAttuale.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtClonaStatoAttuale.Name" xml:space="preserve">
-    <value>txtClonaStatoAttuale</value>
-  </data>
-  <data name="&gt;&gt;txtClonaStatoAttuale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtClonaStatoAttuale.Parent" xml:space="preserve">
-    <value>grbTracciaClonazione</value>
-  </data>
-  <data name="&gt;&gt;txtClonaStatoAttuale.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label134.AutoSize" type="System.Boolean, mscorlib">
+  <data name="optCloneDaimg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label134.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="optCloneDaimg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label134.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 28</value>
+  <data name="optCloneDaimg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 26</value>
   </data>
-  <data name="label134.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 17</value>
+  <data name="optCloneDaimg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 16</value>
   </data>
-  <data name="label134.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+  <data name="optCloneDaimg.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
-  <data name="label134.Text" xml:space="preserve">
-    <value>Stato Attuale</value>
+  <data name="&gt;&gt;optCloneDaimg.Name" xml:space="preserve">
+    <value>optCloneDaimg</value>
   </data>
-  <data name="&gt;&gt;label134.Name" xml:space="preserve">
-    <value>label134</value>
+  <data name="&gt;&gt;optCloneDaimg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label134.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label134.Parent" xml:space="preserve">
-    <value>grbTracciaClonazione</value>
-  </data>
-  <data name="&gt;&gt;label134.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="grbTracciaClonazione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>721, 32</value>
-  </data>
-  <data name="grbTracciaClonazione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 625</value>
-  </data>
-  <data name="grbTracciaClonazione.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="grbTracciaClonazione.Text" xml:space="preserve">
-    <value>Avanzamento</value>
-  </data>
-  <data name="&gt;&gt;grbTracciaClonazione.Name" xml:space="preserve">
-    <value>grbTracciaClonazione</value>
-  </data>
-  <data name="&gt;&gt;grbTracciaClonazione.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbTracciaClonazione.Parent" xml:space="preserve">
+  <data name="&gt;&gt;optCloneDaimg.Parent" xml:space="preserve">
     <value>tbpClonaScheda</value>
   </data>
-  <data name="&gt;&gt;grbTracciaClonazione.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 621</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="btnClonaScriviRecordTestata.Text" xml:space="preserve">
-    <value>Aggiorna SPY-BATT</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.Name" xml:space="preserve">
-    <value>btnClonaScriviRecordTestata</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.Parent" xml:space="preserve">
-    <value>tbpClonaScheda</value>
-  </data>
-  <data name="&gt;&gt;btnClonaScriviRecordTestata.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;optCloneDaimg.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="txtClonaPktCliente.Font" type="System.Drawing.Font, System.Drawing">
@@ -18304,7 +18196,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaPktCliente.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaPktCliente.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -18331,7 +18223,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaPktBrevi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaPktBrevi.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -18358,7 +18250,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaPktLunghi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaPktLunghi.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -18385,7 +18277,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaPktProgr.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaPktProgr.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -18412,7 +18304,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaDimCliente.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaDimCliente.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -18442,7 +18334,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label132.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label132.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -18469,7 +18361,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaDatiCliente.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaDatiCliente.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -18499,7 +18391,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label133.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label133.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -18508,7 +18400,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClonaPreparaMatrici.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 190</value>
+    <value>469, 193</value>
   </data>
   <data name="btnClonaPreparaMatrici.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 30</value>
@@ -18526,7 +18418,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnClonaPreparaMatrici.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;btnClonaPreparaMatrici.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -18553,7 +18445,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtMaxCicli.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtMaxCicli.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -18583,7 +18475,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label129.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label129.ZOrder" xml:space="preserve">
     <value>10</value>
@@ -18613,7 +18505,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBox8.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;textBox8.ZOrder" xml:space="preserve">
     <value>11</value>
@@ -18646,7 +18538,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label128.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label128.ZOrder" xml:space="preserve">
     <value>12</value>
@@ -18673,7 +18565,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaDimBrevi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaDimBrevi.ZOrder" xml:space="preserve">
     <value>13</value>
@@ -18703,7 +18595,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label126.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label126.ZOrder" xml:space="preserve">
     <value>14</value>
@@ -18730,7 +18622,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaNumBrevi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaNumBrevi.ZOrder" xml:space="preserve">
     <value>15</value>
@@ -18760,7 +18652,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label127.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label127.ZOrder" xml:space="preserve">
     <value>16</value>
@@ -18787,7 +18679,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaDimLunghi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaDimLunghi.ZOrder" xml:space="preserve">
     <value>17</value>
@@ -18817,7 +18709,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label122.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label122.ZOrder" xml:space="preserve">
     <value>18</value>
@@ -18844,7 +18736,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaNumLunghi.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaNumLunghi.ZOrder" xml:space="preserve">
     <value>19</value>
@@ -18874,7 +18766,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label125.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label125.ZOrder" xml:space="preserve">
     <value>20</value>
@@ -18901,7 +18793,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaDimProgr.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaDimProgr.ZOrder" xml:space="preserve">
     <value>21</value>
@@ -18931,7 +18823,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label123.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label123.ZOrder" xml:space="preserve">
     <value>22</value>
@@ -18958,7 +18850,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaNumProgr.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;txtClonaNumProgr.ZOrder" xml:space="preserve">
     <value>23</value>
@@ -18988,34 +18880,34 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label124.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grbCloneSBSourceData</value>
   </data>
   <data name="&gt;&gt;label124.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 187</value>
+  <data name="grbCloneSBSourceData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 140</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="grbCloneSBSourceData.Size" type="System.Drawing.Size, System.Drawing">
     <value>623, 233</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="grbCloneSBSourceData.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="grbCloneSBSourceData.Text" xml:space="preserve">
     <value>Dati Scheda</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;grbCloneSBSourceData.Name" xml:space="preserve">
+    <value>grbCloneSBSourceData</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;grbCloneSBSourceData.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tbpClonaScheda</value>
+  <data name="&gt;&gt;grbCloneSBSourceData.Parent" xml:space="preserve">
+    <value>grbCloneDaDatabase</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;grbCloneSBSourceData.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnClonaGeneraRecordTestata.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
@@ -19024,7 +18916,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClonaGeneraRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 128</value>
+    <value>469, 96</value>
   </data>
   <data name="btnClonaGeneraRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 30</value>
@@ -19057,7 +18949,7 @@
     <value>True</value>
   </data>
   <data name="txtClonaRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
-    <value>580, 73</value>
+    <value>580, 58</value>
   </data>
   <data name="txtClonaRecordTestata.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -19075,10 +18967,10 @@
     <value>1</value>
   </data>
   <data name="grbClonaRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 441</value>
+    <value>24, 379</value>
   </data>
   <data name="grbClonaRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 174</value>
+    <value>623, 135</value>
   </data>
   <data name="grbClonaRecordTestata.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -19093,16 +18985,16 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grbClonaRecordTestata.Parent" xml:space="preserve">
-    <value>tbpClonaScheda</value>
+    <value>grbCloneDaDatabase</value>
   </data>
   <data name="&gt;&gt;grbClonaRecordTestata.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="btnClonaSchedVuota.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnClonaSchedVuota.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 81</value>
+    <value>469, 57</value>
   </data>
   <data name="btnClonaSchedVuota.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 30</value>
@@ -19120,7 +19012,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnClonaSchedVuota.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;btnClonaSchedVuota.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -19129,7 +19021,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClonaCaricaOrigine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 45</value>
+    <value>469, 21</value>
   </data>
   <data name="btnClonaCaricaOrigine.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 30</value>
@@ -19147,7 +19039,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnClonaCaricaOrigine.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;btnClonaCaricaOrigine.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -19174,7 +19066,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBox6.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;textBox6.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -19204,7 +19096,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label118.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;label118.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -19231,7 +19123,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaFwOrigine.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;txtClonaFwOrigine.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -19261,7 +19153,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label119.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;label119.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -19288,7 +19180,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtClonaIdOrigine.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;txtClonaIdOrigine.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -19318,34 +19210,599 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label120.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>grbCloneSBSource</value>
   </data>
   <data name="&gt;&gt;label120.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 32</value>
+  <data name="grbCloneSBSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 33</value>
   </data>
-  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 131</value>
+  <data name="grbCloneSBSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>623, 101</value>
   </data>
-  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
+  <data name="grbCloneSBSource.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
+  <data name="grbCloneSBSource.Text" xml:space="preserve">
     <value>Scheda Origine</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
-    <value>groupBox9</value>
+  <data name="&gt;&gt;grbCloneSBSource.Name" xml:space="preserve">
+    <value>grbCloneSBSource</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
+  <data name="&gt;&gt;grbCloneSBSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grbCloneSBSource.Parent" xml:space="preserve">
+    <value>grbCloneDaDatabase</value>
+  </data>
+  <data name="&gt;&gt;grbCloneSBSource.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grbCloneDaDatabase.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="grbCloneDaDatabase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 226</value>
+  </data>
+  <data name="grbCloneDaDatabase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>674, 539</value>
+  </data>
+  <data name="grbCloneDaDatabase.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="grbCloneDaDatabase.Text" xml:space="preserve">
+    <value>Clona da Archivio</value>
+  </data>
+  <data name="&gt;&gt;grbCloneDaDatabase.Name" xml:space="preserve">
+    <value>grbCloneDaDatabase</value>
+  </data>
+  <data name="&gt;&gt;grbCloneDaDatabase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbCloneDaDatabase.Parent" xml:space="preserve">
     <value>tbpClonaScheda</value>
   </data>
-  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grbCloneDaDatabase.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtCloneFwVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="txtCloneFwVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 48</value>
+  </data>
+  <data name="txtCloneFwVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
+  <data name="txtCloneFwVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="txtCloneFwVersion.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFwVersion.Name" xml:space="preserve">
+    <value>txtCloneFwVersion</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFwVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFwVersion.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFwVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label257.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label257.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label257.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 28</value>
+  </data>
+  <data name="label257.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="label257.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="label257.Text" xml:space="preserve">
+    <value>Ver. FW</value>
+  </data>
+  <data name="&gt;&gt;label257.Name" xml:space="preserve">
+    <value>label257</value>
+  </data>
+  <data name="&gt;&gt;label257.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label257.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label257.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtCloneNumLunghi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="txtCloneNumLunghi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 48</value>
+  </data>
+  <data name="txtCloneNumLunghi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="txtCloneNumLunghi.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="txtCloneNumLunghi.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNumLunghi.Name" xml:space="preserve">
+    <value>txtCloneNumLunghi</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNumLunghi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNumLunghi.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNumLunghi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtCloneIdSB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="txtCloneIdSB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="txtCloneIdSB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="txtCloneIdSB.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="txtCloneIdSB.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCloneIdSB.Name" xml:space="preserve">
+    <value>txtCloneIdSB</value>
+  </data>
+  <data name="&gt;&gt;txtCloneIdSB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCloneIdSB.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtCloneIdSB.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblMatricola.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblMatricola.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblMatricola.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 28</value>
+  </data>
+  <data name="lblMatricola.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="lblMatricola.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="lblMatricola.Text" xml:space="preserve">
+    <value>Matricola</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.Name" xml:space="preserve">
+    <value>lblMatricola</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="txtCloneNote.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="txtCloneNote.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 48</value>
+  </data>
+  <data name="txtCloneNote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="txtCloneNote.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="txtCloneNote.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNote.Name" xml:space="preserve">
+    <value>txtCloneNote</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNote.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNote.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtCloneNote.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label261.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label261.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label261.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 28</value>
+  </data>
+  <data name="label261.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 17</value>
+  </data>
+  <data name="label261.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label261.Text" xml:space="preserve">
+    <value>Data Lettura</value>
+  </data>
+  <data name="&gt;&gt;label261.Name" xml:space="preserve">
+    <value>label261</value>
+  </data>
+  <data name="&gt;&gt;label261.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label261.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label261.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label262.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label262.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label262.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 28</value>
+  </data>
+  <data name="label262.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 17</value>
+  </data>
+  <data name="label262.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="label262.Text" xml:space="preserve">
+    <value>Record Lunghi</value>
+  </data>
+  <data name="&gt;&gt;label262.Name" xml:space="preserve">
+    <value>label262</value>
+  </data>
+  <data name="&gt;&gt;label262.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label262.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label262.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 98</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>623, 85</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>SPY-BATT</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>grbCloneDaImg</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnCloneGetFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCloneGetFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>577, 19</value>
+  </data>
+  <data name="btnCloneGetFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 30</value>
+  </data>
+  <data name="btnCloneGetFile.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="btnCloneGetFile.Text" xml:space="preserve">
+    <value> ...</value>
+  </data>
+  <data name="&gt;&gt;btnCloneGetFile.Name" xml:space="preserve">
+    <value>btnCloneGetFile</value>
+  </data>
+  <data name="&gt;&gt;btnCloneGetFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCloneGetFile.Parent" xml:space="preserve">
+    <value>grbCloneNomeFile</value>
+  </data>
+  <data name="&gt;&gt;btnCloneGetFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtCloneFileImg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtCloneFileImg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 21</value>
+  </data>
+  <data name="txtCloneFileImg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>548, 24</value>
+  </data>
+  <data name="txtCloneFileImg.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFileImg.Name" xml:space="preserve">
+    <value>txtCloneFileImg</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFileImg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFileImg.Parent" xml:space="preserve">
+    <value>grbCloneNomeFile</value>
+  </data>
+  <data name="&gt;&gt;txtCloneFileImg.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grbCloneNomeFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 21</value>
+  </data>
+  <data name="grbCloneNomeFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>623, 66</value>
+  </data>
+  <data name="grbCloneNomeFile.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="grbCloneNomeFile.Text" xml:space="preserve">
+    <value>File Origine</value>
+  </data>
+  <data name="&gt;&gt;grbCloneNomeFile.Name" xml:space="preserve">
+    <value>grbCloneNomeFile</value>
+  </data>
+  <data name="&gt;&gt;grbCloneNomeFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbCloneNomeFile.Parent" xml:space="preserve">
+    <value>grbCloneDaImg</value>
+  </data>
+  <data name="&gt;&gt;grbCloneNomeFile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grbCloneDaImg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 18</value>
+  </data>
+  <data name="grbCloneDaImg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>674, 202</value>
+  </data>
+  <data name="grbCloneDaImg.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="grbCloneDaImg.Text" xml:space="preserve">
+    <value>Clona da Immagine</value>
+  </data>
+  <data name="&gt;&gt;grbCloneDaImg.Name" xml:space="preserve">
+    <value>grbCloneDaImg</value>
+  </data>
+  <data name="&gt;&gt;grbCloneDaImg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbCloneDaImg.Parent" xml:space="preserve">
+    <value>tbpClonaScheda</value>
+  </data>
+  <data name="&gt;&gt;grbCloneDaImg.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pgbCloneAvanzamento.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pgbCloneAvanzamento.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 641</value>
+  </data>
+  <data name="pgbCloneAvanzamento.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 28</value>
+  </data>
+  <data name="pgbCloneAvanzamento.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;pgbCloneAvanzamento.Name" xml:space="preserve">
+    <value>pgbCloneAvanzamento</value>
+  </data>
+  <data name="&gt;&gt;pgbCloneAvanzamento.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pgbCloneAvanzamento.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;pgbCloneAvanzamento.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtClonaLogBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 6pt</value>
+  </data>
+  <data name="txtClonaLogBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 520</value>
+  </data>
+  <data name="txtClonaLogBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtClonaLogBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 115</value>
+  </data>
+  <data name="txtClonaLogBox.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.Name" xml:space="preserve">
+    <value>txtClonaLogBox</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;txtClonaLogBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lbxClonaListaStep.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="lbxClonaListaStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 94</value>
+  </data>
+  <data name="lbxClonaListaStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 420</value>
+  </data>
+  <data name="lbxClonaListaStep.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.Name" xml:space="preserve">
+    <value>lbxClonaListaStep</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;lbxClonaListaStep.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtClonaStatoAttuale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtClonaStatoAttuale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 48</value>
+  </data>
+  <data name="txtClonaStatoAttuale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 27</value>
+  </data>
+  <data name="txtClonaStatoAttuale.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="txtClonaStatoAttuale.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.Name" xml:space="preserve">
+    <value>txtClonaStatoAttuale</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;txtClonaStatoAttuale.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label134.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label134.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label134.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 28</value>
+  </data>
+  <data name="label134.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="label134.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="label134.Text" xml:space="preserve">
+    <value>Stato Attuale</value>
+  </data>
+  <data name="&gt;&gt;label134.Name" xml:space="preserve">
+    <value>label134</value>
+  </data>
+  <data name="&gt;&gt;label134.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label134.Parent" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;label134.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="grbTracciaClonazione.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1022, 26</value>
+  </data>
+  <data name="grbTracciaClonazione.Size" type="System.Drawing.Size, System.Drawing">
+    <value>481, 714</value>
+  </data>
+  <data name="grbTracciaClonazione.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="grbTracciaClonazione.Text" xml:space="preserve">
+    <value>Avanzamento</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.Name" xml:space="preserve">
+    <value>grbTracciaClonazione</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.Parent" xml:space="preserve">
+    <value>tbpClonaScheda</value>
+  </data>
+  <data name="&gt;&gt;grbTracciaClonazione.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.Location" type="System.Drawing.Point, System.Drawing">
+    <value>799, 292</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 68</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.Text" xml:space="preserve">
+    <value>Aggiorna
+SPY-BATT</value>
+  </data>
+  <data name="&gt;&gt;btnClonaScriviRecordTestata.Name" xml:space="preserve">
+    <value>btnClonaScriviRecordTestata</value>
+  </data>
+  <data name="&gt;&gt;btnClonaScriviRecordTestata.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClonaScriviRecordTestata.Parent" xml:space="preserve">
+    <value>tbpClonaScheda</value>
+  </data>
+  <data name="&gt;&gt;btnClonaScriviRecordTestata.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="tbpClonaScheda.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -24991,7 +25448,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>106</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>

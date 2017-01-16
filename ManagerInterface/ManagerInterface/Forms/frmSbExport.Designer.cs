@@ -47,6 +47,11 @@
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.lblFirmwCb = new System.Windows.Forms.Label();
             this.grbGeneraExcel = new System.Windows.Forms.GroupBox();
+            this.chkGeneraFileAnalisi = new System.Windows.Forms.CheckBox();
+            this.btnSfogliaAnalisi = new System.Windows.Forms.Button();
+            this.lblTipoFile = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtFileAnalisi = new System.Windows.Forms.TextBox();
             this.btnSfoglia = new System.Windows.Forms.Button();
             this.txtNuovoFile = new System.Windows.Forms.TextBox();
             this.chkChiudi = new System.Windows.Forms.Button();
@@ -55,11 +60,6 @@
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
             this.btnAnteprima = new System.Windows.Forms.Button();
             this.btnEstract = new System.Windows.Forms.Button();
-            this.txtFileAnalisi = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTipoFile = new System.Windows.Forms.Label();
-            this.btnSfogliaAnalisi = new System.Windows.Forms.Button();
-            this.chkGeneraFileAnalisi = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.grbGeneraExcel.SuspendLayout();
             this.SuspendLayout();
@@ -182,6 +182,34 @@
             this.grbGeneraExcel.Name = "grbGeneraExcel";
             this.grbGeneraExcel.TabStop = false;
             // 
+            // chkGeneraFileAnalisi
+            // 
+            resources.ApplyResources(this.chkGeneraFileAnalisi, "chkGeneraFileAnalisi");
+            this.chkGeneraFileAnalisi.Name = "chkGeneraFileAnalisi";
+            this.chkGeneraFileAnalisi.UseVisualStyleBackColor = true;
+            // 
+            // btnSfogliaAnalisi
+            // 
+            resources.ApplyResources(this.btnSfogliaAnalisi, "btnSfogliaAnalisi");
+            this.btnSfogliaAnalisi.Name = "btnSfogliaAnalisi";
+            this.btnSfogliaAnalisi.UseVisualStyleBackColor = true;
+            this.btnSfogliaAnalisi.Click += new System.EventHandler(this.btnSfogliaAnalisi_Click);
+            // 
+            // lblTipoFile
+            // 
+            resources.ApplyResources(this.lblTipoFile, "lblTipoFile");
+            this.lblTipoFile.Name = "lblTipoFile";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // txtFileAnalisi
+            // 
+            resources.ApplyResources(this.txtFileAnalisi, "txtFileAnalisi");
+            this.txtFileAnalisi.Name = "txtFileAnalisi";
+            // 
             // btnSfoglia
             // 
             resources.ApplyResources(this.btnSfoglia, "btnSfoglia");
@@ -225,34 +253,6 @@
             this.btnEstract.Name = "btnEstract";
             this.btnEstract.UseVisualStyleBackColor = true;
             this.btnEstract.Click += new System.EventHandler(this.btnEstract_Click);
-            // 
-            // txtFileAnalisi
-            // 
-            resources.ApplyResources(this.txtFileAnalisi, "txtFileAnalisi");
-            this.txtFileAnalisi.Name = "txtFileAnalisi";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // lblTipoFile
-            // 
-            resources.ApplyResources(this.lblTipoFile, "lblTipoFile");
-            this.lblTipoFile.Name = "lblTipoFile";
-            // 
-            // btnSfogliaAnalisi
-            // 
-            resources.ApplyResources(this.btnSfogliaAnalisi, "btnSfogliaAnalisi");
-            this.btnSfogliaAnalisi.Name = "btnSfogliaAnalisi";
-            this.btnSfogliaAnalisi.UseVisualStyleBackColor = true;
-            this.btnSfogliaAnalisi.Click += new System.EventHandler(this.btnSfogliaAnalisi_Click);
-            // 
-            // chkGeneraFileAnalisi
-            // 
-            resources.ApplyResources(this.chkGeneraFileAnalisi, "chkGeneraFileAnalisi");
-            this.chkGeneraFileAnalisi.Name = "chkGeneraFileAnalisi";
-            this.chkGeneraFileAnalisi.UseVisualStyleBackColor = true;
             // 
             // frmSbExport
             // 

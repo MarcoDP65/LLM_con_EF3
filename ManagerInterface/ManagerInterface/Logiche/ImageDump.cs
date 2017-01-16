@@ -24,5 +24,6 @@ namespace ChargerLogic
         public byte[] DataBuffer { get; set; }
         public spybattData Testata { get; set; }
         public DateTime Timestamp { get; set; }
+        public MessaggioSpyBatt.comandoInizialeSB IntestazioneSb { get; set; }
     }
 }

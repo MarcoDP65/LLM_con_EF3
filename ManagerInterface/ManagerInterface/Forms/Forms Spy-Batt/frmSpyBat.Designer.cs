@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSpyBat));
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
             this.tabCb01 = new System.Windows.Forms.TabPage();
+            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.grbAbilitazioneReset = new System.Windows.Forms.GroupBox();
             this.btnGeneraCodice = new System.Windows.Forms.Button();
             this.txtCodiceSblocco = new System.Windows.Forms.TextBox();
@@ -655,13 +656,10 @@
             this.txtFwRevBootloader = new System.Windows.Forms.TextBox();
             this.label62 = new System.Windows.Forms.Label();
             this.tbpClonaScheda = new System.Windows.Forms.TabPage();
-            this.grbTracciaClonazione = new System.Windows.Forms.GroupBox();
-            this.txtClonaLogBox = new System.Windows.Forms.TextBox();
-            this.lbxClonaListaStep = new System.Windows.Forms.ListBox();
-            this.txtClonaStatoAttuale = new System.Windows.Forms.TextBox();
-            this.label134 = new System.Windows.Forms.Label();
-            this.btnClonaScriviRecordTestata = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.optCloneDaDB = new System.Windows.Forms.RadioButton();
+            this.optCloneDaimg = new System.Windows.Forms.RadioButton();
+            this.grbCloneDaDatabase = new System.Windows.Forms.GroupBox();
+            this.grbCloneSBSourceData = new System.Windows.Forms.GroupBox();
             this.txtClonaPktCliente = new System.Windows.Forms.TextBox();
             this.txtClonaPktBrevi = new System.Windows.Forms.TextBox();
             this.txtClonaPktLunghi = new System.Windows.Forms.TextBox();
@@ -690,7 +688,7 @@
             this.grbClonaRecordTestata = new System.Windows.Forms.GroupBox();
             this.btnClonaGeneraRecordTestata = new System.Windows.Forms.Button();
             this.txtClonaRecordTestata = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.grbCloneSBSource = new System.Windows.Forms.GroupBox();
             this.btnClonaSchedVuota = new System.Windows.Forms.Button();
             this.btnClonaCaricaOrigine = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -699,6 +697,26 @@
             this.label119 = new System.Windows.Forms.Label();
             this.txtClonaIdOrigine = new System.Windows.Forms.TextBox();
             this.label120 = new System.Windows.Forms.Label();
+            this.grbCloneDaImg = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtCloneFwVersion = new System.Windows.Forms.TextBox();
+            this.label257 = new System.Windows.Forms.Label();
+            this.txtCloneNumLunghi = new System.Windows.Forms.TextBox();
+            this.txtCloneIdSB = new System.Windows.Forms.TextBox();
+            this.lblMatricola = new System.Windows.Forms.Label();
+            this.txtCloneNote = new System.Windows.Forms.TextBox();
+            this.label261 = new System.Windows.Forms.Label();
+            this.label262 = new System.Windows.Forms.Label();
+            this.grbCloneNomeFile = new System.Windows.Forms.GroupBox();
+            this.btnCloneGetFile = new System.Windows.Forms.Button();
+            this.txtCloneFileImg = new System.Windows.Forms.TextBox();
+            this.grbTracciaClonazione = new System.Windows.Forms.GroupBox();
+            this.pgbCloneAvanzamento = new System.Windows.Forms.ProgressBar();
+            this.txtClonaLogBox = new System.Windows.Forms.TextBox();
+            this.lbxClonaListaStep = new System.Windows.Forms.ListBox();
+            this.txtClonaStatoAttuale = new System.Windows.Forms.TextBox();
+            this.label134 = new System.Windows.Forms.Label();
+            this.btnClonaScriviRecordTestata = new System.Windows.Forms.Button();
             this.tabCalibrazione = new System.Windows.Forms.TabPage();
             this.label207 = new System.Windows.Forms.Label();
             this.txtCalCoeffPasso = new System.Windows.Forms.TextBox();
@@ -902,7 +920,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -991,10 +1008,14 @@
             this.grbFWAggiornamento.SuspendLayout();
             this.grbStatoFirmware.SuspendLayout();
             this.tbpClonaScheda.SuspendLayout();
-            this.grbTracciaClonazione.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grbCloneDaDatabase.SuspendLayout();
+            this.grbCloneSBSourceData.SuspendLayout();
             this.grbClonaRecordTestata.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.grbCloneSBSource.SuspendLayout();
+            this.grbCloneDaImg.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.grbCloneNomeFile.SuspendLayout();
+            this.grbTracciaClonazione.SuspendLayout();
             this.tabCalibrazione.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwCalCorrentiVerifica)).BeginInit();
             this.grbCalValoriAttuali.SuspendLayout();
@@ -1050,6 +1071,13 @@
             this.tabCb01.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.tabCb01, "tabCb01");
             this.tabCb01.Name = "tabCb01";
+            // 
+            // chkCliResetContatori
+            // 
+            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
+            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
+            this.chkCliResetContatori.Name = "chkCliResetContatori";
+            this.chkCliResetContatori.UseVisualStyleBackColor = true;
             // 
             // grbAbilitazioneReset
             // 
@@ -5382,87 +5410,73 @@
             // tbpClonaScheda
             // 
             this.tbpClonaScheda.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpClonaScheda.Controls.Add(this.optCloneDaDB);
+            this.tbpClonaScheda.Controls.Add(this.optCloneDaimg);
+            this.tbpClonaScheda.Controls.Add(this.grbCloneDaDatabase);
+            this.tbpClonaScheda.Controls.Add(this.grbCloneDaImg);
             this.tbpClonaScheda.Controls.Add(this.grbTracciaClonazione);
             this.tbpClonaScheda.Controls.Add(this.btnClonaScriviRecordTestata);
-            this.tbpClonaScheda.Controls.Add(this.groupBox2);
-            this.tbpClonaScheda.Controls.Add(this.grbClonaRecordTestata);
-            this.tbpClonaScheda.Controls.Add(this.groupBox9);
             resources.ApplyResources(this.tbpClonaScheda, "tbpClonaScheda");
             this.tbpClonaScheda.Name = "tbpClonaScheda";
             this.tbpClonaScheda.Click += new System.EventHandler(this.tbpClonaScheda_Click);
             // 
-            // grbTracciaClonazione
+            // optCloneDaDB
             // 
-            this.grbTracciaClonazione.BackColor = System.Drawing.Color.White;
-            this.grbTracciaClonazione.Controls.Add(this.txtClonaLogBox);
-            this.grbTracciaClonazione.Controls.Add(this.lbxClonaListaStep);
-            this.grbTracciaClonazione.Controls.Add(this.txtClonaStatoAttuale);
-            this.grbTracciaClonazione.Controls.Add(this.label134);
-            resources.ApplyResources(this.grbTracciaClonazione, "grbTracciaClonazione");
-            this.grbTracciaClonazione.Name = "grbTracciaClonazione";
-            this.grbTracciaClonazione.TabStop = false;
+            resources.ApplyResources(this.optCloneDaDB, "optCloneDaDB");
+            this.optCloneDaDB.Name = "optCloneDaDB";
+            this.optCloneDaDB.UseVisualStyleBackColor = true;
+            this.optCloneDaDB.CheckedChanged += new System.EventHandler(this.optCloneDaDB_CheckedChanged);
             // 
-            // txtClonaLogBox
+            // optCloneDaimg
             // 
-            resources.ApplyResources(this.txtClonaLogBox, "txtClonaLogBox");
-            this.txtClonaLogBox.Name = "txtClonaLogBox";
-            this.txtClonaLogBox.ReadOnly = true;
+            resources.ApplyResources(this.optCloneDaimg, "optCloneDaimg");
+            this.optCloneDaimg.Checked = true;
+            this.optCloneDaimg.Name = "optCloneDaimg";
+            this.optCloneDaimg.TabStop = true;
+            this.optCloneDaimg.UseVisualStyleBackColor = true;
+            this.optCloneDaimg.CheckedChanged += new System.EventHandler(this.optCloneDaimg_CheckedChanged);
             // 
-            // lbxClonaListaStep
+            // grbCloneDaDatabase
             // 
-            this.lbxClonaListaStep.FormattingEnabled = true;
-            resources.ApplyResources(this.lbxClonaListaStep, "lbxClonaListaStep");
-            this.lbxClonaListaStep.Name = "lbxClonaListaStep";
+            this.grbCloneDaDatabase.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.grbCloneDaDatabase.Controls.Add(this.grbCloneSBSourceData);
+            this.grbCloneDaDatabase.Controls.Add(this.grbClonaRecordTestata);
+            this.grbCloneDaDatabase.Controls.Add(this.grbCloneSBSource);
+            resources.ApplyResources(this.grbCloneDaDatabase, "grbCloneDaDatabase");
+            this.grbCloneDaDatabase.Name = "grbCloneDaDatabase";
+            this.grbCloneDaDatabase.TabStop = false;
             // 
-            // txtClonaStatoAttuale
+            // grbCloneSBSourceData
             // 
-            resources.ApplyResources(this.txtClonaStatoAttuale, "txtClonaStatoAttuale");
-            this.txtClonaStatoAttuale.Name = "txtClonaStatoAttuale";
-            this.txtClonaStatoAttuale.ReadOnly = true;
-            // 
-            // label134
-            // 
-            resources.ApplyResources(this.label134, "label134");
-            this.label134.Name = "label134";
-            // 
-            // btnClonaScriviRecordTestata
-            // 
-            resources.ApplyResources(this.btnClonaScriviRecordTestata, "btnClonaScriviRecordTestata");
-            this.btnClonaScriviRecordTestata.Name = "btnClonaScriviRecordTestata";
-            this.btnClonaScriviRecordTestata.UseVisualStyleBackColor = true;
-            this.btnClonaScriviRecordTestata.Click += new System.EventHandler(this.btnClonaScriviRecordTestata_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.txtClonaPktCliente);
-            this.groupBox2.Controls.Add(this.txtClonaPktBrevi);
-            this.groupBox2.Controls.Add(this.txtClonaPktLunghi);
-            this.groupBox2.Controls.Add(this.txtClonaPktProgr);
-            this.groupBox2.Controls.Add(this.txtClonaDimCliente);
-            this.groupBox2.Controls.Add(this.label132);
-            this.groupBox2.Controls.Add(this.txtClonaDatiCliente);
-            this.groupBox2.Controls.Add(this.label133);
-            this.groupBox2.Controls.Add(this.btnClonaPreparaMatrici);
-            this.groupBox2.Controls.Add(this.txtMaxCicli);
-            this.groupBox2.Controls.Add(this.label129);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.label128);
-            this.groupBox2.Controls.Add(this.txtClonaDimBrevi);
-            this.groupBox2.Controls.Add(this.label126);
-            this.groupBox2.Controls.Add(this.txtClonaNumBrevi);
-            this.groupBox2.Controls.Add(this.label127);
-            this.groupBox2.Controls.Add(this.txtClonaDimLunghi);
-            this.groupBox2.Controls.Add(this.label122);
-            this.groupBox2.Controls.Add(this.txtClonaNumLunghi);
-            this.groupBox2.Controls.Add(this.label125);
-            this.groupBox2.Controls.Add(this.txtClonaDimProgr);
-            this.groupBox2.Controls.Add(this.label123);
-            this.groupBox2.Controls.Add(this.txtClonaNumProgr);
-            this.groupBox2.Controls.Add(this.label124);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            this.grbCloneSBSourceData.BackColor = System.Drawing.Color.White;
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaPktCliente);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaPktBrevi);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaPktLunghi);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaPktProgr);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaDimCliente);
+            this.grbCloneSBSourceData.Controls.Add(this.label132);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaDatiCliente);
+            this.grbCloneSBSourceData.Controls.Add(this.label133);
+            this.grbCloneSBSourceData.Controls.Add(this.btnClonaPreparaMatrici);
+            this.grbCloneSBSourceData.Controls.Add(this.txtMaxCicli);
+            this.grbCloneSBSourceData.Controls.Add(this.label129);
+            this.grbCloneSBSourceData.Controls.Add(this.textBox8);
+            this.grbCloneSBSourceData.Controls.Add(this.label128);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaDimBrevi);
+            this.grbCloneSBSourceData.Controls.Add(this.label126);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaNumBrevi);
+            this.grbCloneSBSourceData.Controls.Add(this.label127);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaDimLunghi);
+            this.grbCloneSBSourceData.Controls.Add(this.label122);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaNumLunghi);
+            this.grbCloneSBSourceData.Controls.Add(this.label125);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaDimProgr);
+            this.grbCloneSBSourceData.Controls.Add(this.label123);
+            this.grbCloneSBSourceData.Controls.Add(this.txtClonaNumProgr);
+            this.grbCloneSBSourceData.Controls.Add(this.label124);
+            resources.ApplyResources(this.grbCloneSBSourceData, "grbCloneSBSourceData");
+            this.grbCloneSBSourceData.Name = "grbCloneSBSourceData";
+            this.grbCloneSBSourceData.TabStop = false;
             // 
             // txtClonaPktCliente
             // 
@@ -5613,20 +5627,20 @@
             this.txtClonaRecordTestata.Name = "txtClonaRecordTestata";
             this.txtClonaRecordTestata.ReadOnly = true;
             // 
-            // groupBox9
+            // grbCloneSBSource
             // 
-            this.groupBox9.BackColor = System.Drawing.Color.White;
-            this.groupBox9.Controls.Add(this.btnClonaSchedVuota);
-            this.groupBox9.Controls.Add(this.btnClonaCaricaOrigine);
-            this.groupBox9.Controls.Add(this.textBox6);
-            this.groupBox9.Controls.Add(this.label118);
-            this.groupBox9.Controls.Add(this.txtClonaFwOrigine);
-            this.groupBox9.Controls.Add(this.label119);
-            this.groupBox9.Controls.Add(this.txtClonaIdOrigine);
-            this.groupBox9.Controls.Add(this.label120);
-            resources.ApplyResources(this.groupBox9, "groupBox9");
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.TabStop = false;
+            this.grbCloneSBSource.BackColor = System.Drawing.Color.White;
+            this.grbCloneSBSource.Controls.Add(this.btnClonaSchedVuota);
+            this.grbCloneSBSource.Controls.Add(this.btnClonaCaricaOrigine);
+            this.grbCloneSBSource.Controls.Add(this.textBox6);
+            this.grbCloneSBSource.Controls.Add(this.label118);
+            this.grbCloneSBSource.Controls.Add(this.txtClonaFwOrigine);
+            this.grbCloneSBSource.Controls.Add(this.label119);
+            this.grbCloneSBSource.Controls.Add(this.txtClonaIdOrigine);
+            this.grbCloneSBSource.Controls.Add(this.label120);
+            resources.ApplyResources(this.grbCloneSBSource, "grbCloneSBSource");
+            this.grbCloneSBSource.Name = "grbCloneSBSource";
+            this.grbCloneSBSource.TabStop = false;
             // 
             // btnClonaSchedVuota
             // 
@@ -5671,6 +5685,142 @@
             // 
             resources.ApplyResources(this.label120, "label120");
             this.label120.Name = "label120";
+            // 
+            // grbCloneDaImg
+            // 
+            this.grbCloneDaImg.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.grbCloneDaImg.Controls.Add(this.groupBox2);
+            this.grbCloneDaImg.Controls.Add(this.grbCloneNomeFile);
+            resources.ApplyResources(this.grbCloneDaImg, "grbCloneDaImg");
+            this.grbCloneDaImg.Name = "grbCloneDaImg";
+            this.grbCloneDaImg.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.txtCloneFwVersion);
+            this.groupBox2.Controls.Add(this.label257);
+            this.groupBox2.Controls.Add(this.txtCloneNumLunghi);
+            this.groupBox2.Controls.Add(this.txtCloneIdSB);
+            this.groupBox2.Controls.Add(this.lblMatricola);
+            this.groupBox2.Controls.Add(this.txtCloneNote);
+            this.groupBox2.Controls.Add(this.label261);
+            this.groupBox2.Controls.Add(this.label262);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // txtCloneFwVersion
+            // 
+            resources.ApplyResources(this.txtCloneFwVersion, "txtCloneFwVersion");
+            this.txtCloneFwVersion.Name = "txtCloneFwVersion";
+            this.txtCloneFwVersion.ReadOnly = true;
+            // 
+            // label257
+            // 
+            resources.ApplyResources(this.label257, "label257");
+            this.label257.Name = "label257";
+            // 
+            // txtCloneNumLunghi
+            // 
+            resources.ApplyResources(this.txtCloneNumLunghi, "txtCloneNumLunghi");
+            this.txtCloneNumLunghi.Name = "txtCloneNumLunghi";
+            this.txtCloneNumLunghi.ReadOnly = true;
+            // 
+            // txtCloneIdSB
+            // 
+            resources.ApplyResources(this.txtCloneIdSB, "txtCloneIdSB");
+            this.txtCloneIdSB.Name = "txtCloneIdSB";
+            this.txtCloneIdSB.ReadOnly = true;
+            // 
+            // lblMatricola
+            // 
+            resources.ApplyResources(this.lblMatricola, "lblMatricola");
+            this.lblMatricola.Name = "lblMatricola";
+            // 
+            // txtCloneNote
+            // 
+            resources.ApplyResources(this.txtCloneNote, "txtCloneNote");
+            this.txtCloneNote.Name = "txtCloneNote";
+            this.txtCloneNote.ReadOnly = true;
+            // 
+            // label261
+            // 
+            resources.ApplyResources(this.label261, "label261");
+            this.label261.Name = "label261";
+            // 
+            // label262
+            // 
+            resources.ApplyResources(this.label262, "label262");
+            this.label262.Name = "label262";
+            // 
+            // grbCloneNomeFile
+            // 
+            this.grbCloneNomeFile.BackColor = System.Drawing.Color.White;
+            this.grbCloneNomeFile.Controls.Add(this.btnCloneGetFile);
+            this.grbCloneNomeFile.Controls.Add(this.txtCloneFileImg);
+            resources.ApplyResources(this.grbCloneNomeFile, "grbCloneNomeFile");
+            this.grbCloneNomeFile.Name = "grbCloneNomeFile";
+            this.grbCloneNomeFile.TabStop = false;
+            // 
+            // btnCloneGetFile
+            // 
+            resources.ApplyResources(this.btnCloneGetFile, "btnCloneGetFile");
+            this.btnCloneGetFile.Name = "btnCloneGetFile";
+            this.btnCloneGetFile.UseVisualStyleBackColor = true;
+            this.btnCloneGetFile.Click += new System.EventHandler(this.btnCloneGetFile_Click);
+            // 
+            // txtCloneFileImg
+            // 
+            resources.ApplyResources(this.txtCloneFileImg, "txtCloneFileImg");
+            this.txtCloneFileImg.Name = "txtCloneFileImg";
+            // 
+            // grbTracciaClonazione
+            // 
+            this.grbTracciaClonazione.BackColor = System.Drawing.Color.White;
+            this.grbTracciaClonazione.Controls.Add(this.pgbCloneAvanzamento);
+            this.grbTracciaClonazione.Controls.Add(this.txtClonaLogBox);
+            this.grbTracciaClonazione.Controls.Add(this.lbxClonaListaStep);
+            this.grbTracciaClonazione.Controls.Add(this.txtClonaStatoAttuale);
+            this.grbTracciaClonazione.Controls.Add(this.label134);
+            resources.ApplyResources(this.grbTracciaClonazione, "grbTracciaClonazione");
+            this.grbTracciaClonazione.Name = "grbTracciaClonazione";
+            this.grbTracciaClonazione.TabStop = false;
+            // 
+            // pgbCloneAvanzamento
+            // 
+            resources.ApplyResources(this.pgbCloneAvanzamento, "pgbCloneAvanzamento");
+            this.pgbCloneAvanzamento.Name = "pgbCloneAvanzamento";
+            // 
+            // txtClonaLogBox
+            // 
+            resources.ApplyResources(this.txtClonaLogBox, "txtClonaLogBox");
+            this.txtClonaLogBox.Name = "txtClonaLogBox";
+            this.txtClonaLogBox.ReadOnly = true;
+            // 
+            // lbxClonaListaStep
+            // 
+            this.lbxClonaListaStep.FormattingEnabled = true;
+            resources.ApplyResources(this.lbxClonaListaStep, "lbxClonaListaStep");
+            this.lbxClonaListaStep.Name = "lbxClonaListaStep";
+            // 
+            // txtClonaStatoAttuale
+            // 
+            resources.ApplyResources(this.txtClonaStatoAttuale, "txtClonaStatoAttuale");
+            this.txtClonaStatoAttuale.Name = "txtClonaStatoAttuale";
+            this.txtClonaStatoAttuale.ReadOnly = true;
+            // 
+            // label134
+            // 
+            resources.ApplyResources(this.label134, "label134");
+            this.label134.Name = "label134";
+            // 
+            // btnClonaScriviRecordTestata
+            // 
+            resources.ApplyResources(this.btnClonaScriviRecordTestata, "btnClonaScriviRecordTestata");
+            this.btnClonaScriviRecordTestata.Name = "btnClonaScriviRecordTestata";
+            this.btnClonaScriviRecordTestata.UseVisualStyleBackColor = true;
+            this.btnClonaScriviRecordTestata.Click += new System.EventHandler(this.btnClonaScriviRecordTestata_Click);
             // 
             // tabCalibrazione
             // 
@@ -6984,13 +7134,6 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // chkCliResetContatori
-            // 
-            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
-            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
-            this.chkCliResetContatori.Name = "chkCliResetContatori";
-            this.chkCliResetContatori.UseVisualStyleBackColor = true;
-            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -7144,14 +7287,21 @@
             this.grbStatoFirmware.ResumeLayout(false);
             this.grbStatoFirmware.PerformLayout();
             this.tbpClonaScheda.ResumeLayout(false);
-            this.grbTracciaClonazione.ResumeLayout(false);
-            this.grbTracciaClonazione.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.tbpClonaScheda.PerformLayout();
+            this.grbCloneDaDatabase.ResumeLayout(false);
+            this.grbCloneSBSourceData.ResumeLayout(false);
+            this.grbCloneSBSourceData.PerformLayout();
             this.grbClonaRecordTestata.ResumeLayout(false);
             this.grbClonaRecordTestata.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.grbCloneSBSource.ResumeLayout(false);
+            this.grbCloneSBSource.PerformLayout();
+            this.grbCloneDaImg.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.grbCloneNomeFile.ResumeLayout(false);
+            this.grbCloneNomeFile.PerformLayout();
+            this.grbTracciaClonazione.ResumeLayout(false);
+            this.grbTracciaClonazione.PerformLayout();
             this.tabCalibrazione.ResumeLayout(false);
             this.tabCalibrazione.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwCalCorrentiVerifica)).EndInit();
@@ -7636,7 +7786,7 @@
         private System.Windows.Forms.TextBox txtFWRevA2LenN1;
         private System.Windows.Forms.TextBox txtFWRevA2AddrN1;
         private System.Windows.Forms.TabPage tbpClonaScheda;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox grbCloneSBSource;
         public System.Windows.Forms.Button btnClonaCaricaOrigine;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label118;
@@ -7661,7 +7811,7 @@
         private System.Windows.Forms.TextBox txtTestataPtrLunghi;
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.Button btnResetScheda;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grbCloneSBSourceData;
         private System.Windows.Forms.TextBox txtMaxCicli;
         private System.Windows.Forms.Label label129;
         private System.Windows.Forms.TextBox textBox8;
@@ -8057,5 +8207,22 @@
         private System.Windows.Forms.TextBox txtStratQryLLBattId;
         private System.Windows.Forms.Label label255;
         private System.Windows.Forms.CheckBox chkCliResetContatori;
+        private System.Windows.Forms.GroupBox grbCloneDaDatabase;
+        private System.Windows.Forms.GroupBox grbCloneDaImg;
+        private System.Windows.Forms.ProgressBar pgbCloneAvanzamento;
+        private System.Windows.Forms.RadioButton optCloneDaDB;
+        private System.Windows.Forms.RadioButton optCloneDaimg;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtCloneFwVersion;
+        private System.Windows.Forms.Label label257;
+        private System.Windows.Forms.TextBox txtCloneNumLunghi;
+        private System.Windows.Forms.TextBox txtCloneIdSB;
+        private System.Windows.Forms.Label lblMatricola;
+        private System.Windows.Forms.TextBox txtCloneNote;
+        private System.Windows.Forms.Label label261;
+        private System.Windows.Forms.Label label262;
+        private System.Windows.Forms.GroupBox grbCloneNomeFile;
+        private System.Windows.Forms.Button btnCloneGetFile;
+        private System.Windows.Forms.TextBox txtCloneFileImg;
     }
 }

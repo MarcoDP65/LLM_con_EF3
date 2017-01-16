@@ -886,7 +886,7 @@ namespace PannelloCharger
                 if (TempoRelativo == true)
                 {
                     serTensione.DataFieldX = "TimeLapse";
-                    serTensione.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.###} V\n\nIstante:" + " {2:hh\\:mm}\n";
+                    serTensione.TrackerFormatString = "\n" + serTensione.Title + ": {4:0.##} V\n\nIstante:" + " {2:hh\\:mm}\n";
                 }
                 else
                 {
@@ -906,7 +906,7 @@ namespace PannelloCharger
                 if (TempoRelativo == true)
                 {
                     serCorrente.DataFieldX = "TimeLapse";
-                    serCorrente.TrackerFormatString = serCorrente.Title + "\n\nIstante:" + "{2:hh\\:mm}\nI med={4:0.###} A";
+                    serCorrente.TrackerFormatString = serCorrente.Title + "\n\nIstante:" + "{2:hh\\:mm}\nI med={4:0.##} A";
                 }
                 else
                 {
@@ -926,7 +926,7 @@ namespace PannelloCharger
                 if (TempoRelativo == true)
                 {
                     serTemperatura.DataFieldX = "TimeLapse";
-                    serTemperatura.TrackerFormatString = serTemperatura.Title + "\n\nIstante:" + "{2:hh\\:mm}\nTemperatura: {4:0.###} °C";
+                    serTemperatura.TrackerFormatString = serTemperatura.Title + "\n\nIstante:" + "{2:hh\\:mm}\nTemperatura: {4:0.##} °C";
                 }
                 else
                 {

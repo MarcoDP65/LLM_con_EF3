@@ -18,8 +18,7 @@ using Common.Logging;
 using BrightIdeasSoftware;
 using Utility;
 using MdiHelper;
-
-
+using Newtonsoft.Json;
 
 namespace PannelloCharger
 {
@@ -29,6 +28,12 @@ namespace PannelloCharger
         UnitaSpyBatt _sbTemp;  // classe sb usata come buffer temporaneo per le operazioni di clonatura
         CloneSB DatiClone;
         int _statoAppAttuale;
+
+        ImageDump _ImmagineClone;
+        MessaggioSpyBatt.comandoInizialeSB _NuovaIntestazioneSb { get; set; }
+
+        bool _immagineValida = false;
+
 
         public bool PreparaClonazioneScheda()
         {
@@ -158,14 +163,14 @@ namespace PannelloCharger
 
             try
             {
-
+                
                 bool _esito;
 
                 lbxClonaListaStep.Items.Clear();
                 Application.DoEvents();
 
                 lbxClonaListaStep.Items.Add("Verifica dati");
-                if (_sbTemp.sbData.valido != true)
+                if (_immagineValida != true)
                 {
                     txtClonaStatoAttuale.Text = "Dati Non Pronti";
                     Application.DoEvents();
@@ -209,6 +214,7 @@ namespace PannelloCharger
 
                 // Clear mem
                 txtClonaStatoAttuale.Text = "Cancellazione intera memoria";
+
                 Application.DoEvents();
                 _esito = _sb.CancellaInteraMemoria();
                 if (!_esito)
@@ -230,8 +236,13 @@ namespace PannelloCharger
                 _StartAddr = 0;
                 _NumBlocchi = 476;
                 lbxClonaListaStep.Items.Add("Cancellazione Puntuale memoria");
+                lbxClonaListaStep.Items.Add("da 0x000000 a 0x1BBFFF");
+
+                pgbCloneAvanzamento.Minimum = 0;
+                pgbCloneAvanzamento.Maximum = _NumBlocchi;
                 for (int _cicloBlocchi = 0; _cicloBlocchi < _NumBlocchi; _cicloBlocchi++)
                 {
+                    pgbCloneAvanzamento.Value = _cicloBlocchi;
                     _bloccoCorrente = _cicloBlocchi + 1;
                     _esito = _sb.CancellaBlocco4K(_StartAddr);
                     if (!_esito)
@@ -246,8 +257,11 @@ namespace PannelloCharger
                         txtClonaStatoAttuale.Text = "Cancellazione blocco memoria " + _bloccoCorrente.ToString() + "/476";
                         Application.DoEvents();
                     }
+
                 }
+                pgbCloneAvanzamento.Value = 0;
                 lbxClonaListaStep.Items.Add("Cancellazione Completata");
+                Application.DoEvents();
 
 
                 return true;
@@ -260,9 +274,6 @@ namespace PannelloCharger
 
 
         }
-
-
-
 
 
         public bool EseguiClonazioneScheda()
@@ -502,6 +513,188 @@ namespace PannelloCharger
             }
             catch
             {
+                return false;
+            }
+        }
+
+
+        public bool EseguiClonazioneSchedaDaDump()
+        {
+            try
+            {
+                byte[] _bufferScrittura = new byte[200];
+                uint _startSlot = 0;
+                bool _esito;
+                int _numPacchetti = 0;
+                int _step = 0;
+
+                uint _StartAddr = 0x000000;
+                uint _EndAddr = 0x1BBFFF;
+
+                // Se valida, sostituisco la testata
+                if (_ImmagineClone.IntestazioneSb != null)
+                {
+                    for (int _ic = 0; _ic < _ImmagineClone.IntestazioneSb.dataBuffer.Length; _ic++)
+                    {
+                        _ImmagineClone.DataBuffer[_ic] = _ImmagineClone.IntestazioneSb.dataBuffer[_ic];
+                    }
+                }
+
+                // step 0 Cliente
+                //Copia puntiale da 0x000000 a 0x1BBFFF
+
+                _numPacchetti = 0;
+                _step = (int)(_EndAddr - _StartAddr) / 200;
+
+                if (((_EndAddr - _StartAddr) % 200) > 0)
+                    _step++;
+
+
+                _startSlot = 0;
+                Log.Debug("---------------Area Dati Dump Memoria-------------------");
+               
+
+                for (int _ic = 0; _ic < 200; _ic++)
+                {
+                    _bufferScrittura[_ic] = 0xFF;
+                }
+
+                uint _posizione = 0;
+                pgbCloneAvanzamento.Maximum = _step;
+                pgbCloneAvanzamento.Value = 0;
+                while ((_startSlot + _posizione) < _EndAddr )
+                {
+                    _bufferScrittura[_posizione] = _ImmagineClone.DataBuffer[_startSlot + _posizione];
+                    _posizione++;
+
+                    if (_posizione >= 200)
+                    {
+                        //trasmetto i 200 bytes, vuoto il buffer e riparto
+                        _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
+                        _numPacchetti++;
+                        txtClonaStatoAttuale.Text = "Scrittuta dati " + _numPacchetti.ToString() + "/" + _step.ToString();
+                        pgbCloneAvanzamento.Value = _numPacchetti;
+                        Application.DoEvents();
+                        _startSlot += _posizione;
+                        _posizione = 0;
+                        for (int _ic = 0; _ic < 200; _ic++)
+                        {
+                            _bufferScrittura[_ic] = 0xFF;
+                        }
+                    }
+
+                }
+                // Ora trasmetto il residuo
+                _esito = _sb.ScriviBloccoMemoria(_StartAddr + _startSlot, (ushort)_posizione, _bufferScrittura);
+                _numPacchetti++;
+                txtClonaStatoAttuale.Text = "Scrittuta dati " + _numPacchetti.ToString() + "/" + _step.ToString();
+                pgbCloneAvanzamento.Value = _numPacchetti;
+                
+
+
+
+                lbxClonaListaStep.Items.Add("Trasferimento testata");
+                lbxClonaListaStep.Items.Add("Operazione completata");
+                lbxClonaListaStep.Items.Add("Riattivare l'APP corrente");
+                Application.DoEvents();
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
+
+        private bool importaHexdump()
+        {
+            try
+            {
+
+                string filePath = "";
+
+
+                if (txtCloneFileImg.Text != "")
+                {
+                    filePath = txtCloneFileImg.Text;
+                    if (File.Exists(filePath))
+                    {
+                        Log.Debug("Inizio Import");
+                        string _fileImport = File.ReadAllText(filePath);
+                        Log.Debug("file caricato: len = " + _fileImport.Length.ToString());
+                        //sbDataModel _importData;
+                        _ImmagineClone = JsonConvert.DeserializeObject<ImageDump>(_fileImport);
+
+                        Log.Debug("file convertito");
+                        //_sb.sbData = _ImmagineClone.Testata;
+
+                        //_sb.ModelloDati = _importData;
+                        //_sb.importaModello(_logiche.dbDati.connessione, true, true, true, true, true);
+                        return MostraTestataHexDump();
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    //                    MessageBox.Show("Inserire un nome valido", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringheComuni.InserireNome, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            catch (Exception Ex)
+            {
+                //                MessageBox.Show("Dati non validi", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(StringheComuni.DatiNonValidi, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error("MostraDati: " + Ex.Message);
+                return false;
+
+            }
+        }
+
+
+        public bool MostraTestataHexDump()
+        {
+            try
+            {
+                bool _esito = false;
+                txtCloneIdSB.BackColor = Color.White;
+                txtCloneIdSB.Text = FunzioniMR.StringaSeriale(_ImmagineClone.Testata.Id);
+                txtCloneFwVersion.BackColor = Color.White;
+                txtCloneFwVersion.Text = _ImmagineClone.Testata.SwVersion;
+                if (_ImmagineClone.Testata.SwVersion == _sb.sbData.SwVersion)
+                {
+                    txtCloneFwVersion.ForeColor = Color.Black;
+
+                    _esito = true;
+                }
+                else
+                {
+                    txtCloneFwVersion.ForeColor = Color.Red;
+                    txtCloneFwVersion.BackColor = Color.Yellow;
+                    _esito = false;
+                }
+                txtCloneNumLunghi.BackColor = Color.White;
+                txtCloneNumLunghi.Text = _ImmagineClone.Testata.LongMem.ToString() + " / " + _ImmagineClone.Testata.LongMem.ToString("X6") + "  ( Prg: " + _ImmagineClone.Testata.ProgramCount.ToString() + " )";
+                txtCloneNote.BackColor = Color.White;
+                txtCloneNote.Text = _ImmagineClone.Timestamp.ToString();
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDati: " + Ex.Message);
                 return false;
             }
         }

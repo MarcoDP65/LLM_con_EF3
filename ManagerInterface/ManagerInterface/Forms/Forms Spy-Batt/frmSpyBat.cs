@@ -7083,34 +7083,60 @@ namespace PannelloCharger
         private void btnClonaScriviRecordTestata_Click(object sender, EventArgs e)
         {
             bool _esito;
-
-            if (_sbTemp == null)
+            if (optCloneDaDB.Checked)
             {
-                txtClonaStatoAttuale.Text = "Dati Origine non caricati";
-                return;
-            }
-
-
-
-            if (_sbTemp.sbData.valido)
-            {
-
-                txtClonaStatoAttuale.Text = "Inizio Clonazione";
-
-                _esito = InizializzaClonazioneScheda();
-
-                if (_esito)
+                if (_sbTemp == null)
                 {
-                    _esito = EseguiClonazioneScheda();
+                    txtClonaStatoAttuale.Text = "Dati Origine non caricati";
+                    return;
+                }
+
+
+
+                if (_sbTemp.sbData.valido)
+                {
+
+                    txtClonaStatoAttuale.Text = "Inizio Clonazione";
+
+                    _esito = InizializzaClonazioneScheda();
 
                     if (_esito)
-                        txtClonaStatoAttuale.Text = "Testata Aggiornata";
-                    else
-                        txtClonaStatoAttuale.Text = "Scrittura fallita";
+                    {
+                        _esito = EseguiClonazioneScheda();
+
+                        if (_esito)
+                            txtClonaStatoAttuale.Text = "Testata Aggiornata";
+                        else
+                            txtClonaStatoAttuale.Text = "Scrittura fallita";
+                    }
                 }
+                else
+                    txtClonaStatoAttuale.Text = "Dati non validi";
             }
             else
-                txtClonaStatoAttuale.Text = "Dati non validi";
+            {
+                if (!_immagineValida)
+                {
+                    txtClonaStatoAttuale.Text = "Dati Origine non validi";
+                    return;
+                }
+                else
+                {
+                    txtClonaStatoAttuale.Text = "Inizio Clonazione";
+
+                    _esito = InizializzaClonazioneScheda();
+
+                    if (_esito)
+                    {
+                        _esito = EseguiClonazioneSchedaDaDump();
+
+                        if (_esito)
+                            txtClonaStatoAttuale.Text = "Scheda Aggiornata";
+                        else
+                            txtClonaStatoAttuale.Text = "Scrittura fallita";
+                    }
+                }
+            }
         }
 
         private void btnResetScheda_Click(object sender, EventArgs e)
@@ -8395,5 +8421,73 @@ namespace PannelloCharger
 
             }
         }
+
+        private void optCloneDaimg_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (optCloneDaimg.Checked)
+                    grbCloneDaImg.Enabled = true;
+                else
+                    grbCloneDaImg.Enabled = false;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("optCloneDaimg_CheckedChanged: " + Ex.Message);
+
+            }
+        }
+
+        private void optCloneDaDB_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (optCloneDaDB.Checked)
+                    grbCloneDaDatabase.Enabled = true;
+                else
+                    grbCloneDaDatabase.Enabled = false;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("optCloneDaDB_CheckedChanged: " + Ex.Message);
+
+            }
+        }
+
+        private void btnCloneGetFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _immagineValida = false;
+                sfdImportDati.Title = "HEXDUMP RECOVERY"; // StringheComuni.ImportaDati;
+                sfdImportDati.CheckFileExists = false;
+                sfdImportDati.Filter = "SPY-BATT HexDump data (*.sbx)|*.sbx|All files (*.*)|*.*";
+                // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+                string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                if (!Directory.Exists(_pathTeorico))
+                {
+                    Directory.CreateDirectory(_pathTeorico);
+                }
+                //sfdImportDati.InitialDirectory = _pathTeorico;
+                sfdImportDati.ShowDialog();
+                txtCloneFileImg.Text = sfdImportDati.FileName;
+                _immagineValida = importaHexdump();
+
+                // TODO: loggare l'opetazione
+
+                btnClonaScriviRecordTestata.Enabled = _immagineValida;
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("optCloneDaDB_CheckedChanged: " + Ex.Message);
+
+            }
+
+         }
     }
 }
