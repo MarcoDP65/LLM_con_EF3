@@ -75,7 +75,7 @@ namespace PannelloCharger
                     if (_firmMng.FirmwareData.DatiOK)
                     {
                         FirmwareManager.ExitCode _esito = FirmwareManager.ExitCode.ErroreGenerico;
-                        _esito = _firmMng.GeneraFileSBF(txtFWInFileRev.Text, txtFWInFileRevData.Text, txtFWFileSBFwr.Text, false);
+                        _esito = _firmMng.GeneraFileSBF(txtFWInFileRev.Text, "", txtFWInFileRevData.Text, txtFWFileSBFwr.Text, false);
 
                         if(_esito == FirmwareManager.ExitCode.OK)
                         {

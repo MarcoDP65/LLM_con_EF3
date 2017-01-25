@@ -76,7 +76,7 @@ namespace PannelloCharger
                     if (_firmMng.FirmwareData.DatiOK)
                     {
                         FirmwareManager.ExitCode _esito = FirmwareManager.ExitCode.ErroreGenerico;
-                        _esito = _firmMng.GeneraFileSBF(txtFWInFileRev.Text, txtFWInFileRevData.Text, txtFWFileSBFwr.Text, false);
+                        _esito = _firmMng.GeneraFileSBF(txtFWInFileRev.Text,txtFWLibInFileRev.Text ,txtFWInFileRevData.Text, txtFWFileSBFwr.Text, false);
 
                         if(_esito == FirmwareManager.ExitCode.OK)
                         {
@@ -107,6 +107,7 @@ namespace PannelloCharger
             try
             {
                 txtFWInSBFRev.Text = "";
+                txtFWLibSBFRev.Text = "";
                 txtFWInSBFDtRev.Text = "";
                 txtFWTxFileLenN1.Text = "";
                 txtFWTxFileLenN2.Text = "";
@@ -139,7 +140,7 @@ namespace PannelloCharger
                     }
 
                     btnFWPreparaTrasmissione.Enabled = true;
-
+                    txtFWLibSBFRev.Text = _firmMng.FirmwareData.StrategyLibRelease;
                     txtFWTxFileLenN1.Text = _firmMng.FirmwareData.LenFlash1.ToString();
                     txtFWTxFileLenN2.Text = _firmMng.FirmwareData.LenFlash2.ToString();
                     txtFWTxFileLenP.Text = _firmMng.FirmwareData.LenProxy.ToString();

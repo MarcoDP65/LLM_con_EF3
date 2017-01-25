@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MORI Raddrizzatori")]
 [assembly: AssemblyProduct("LADE Light  - Integrated Solution for Traction Battery")]
-[assembly: AssemblyCopyright("Copyright © 2016")]
+[assembly: AssemblyCopyright("Copyright © 2017")]
 [assembly: AssemblyTrademark("MORI Raddrizzatori")]
 [assembly: AssemblyCulture("")]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.00.2.18")]
-[assembly: AssemblyFileVersion("2.00.2.18")]
+[assembly: AssemblyVersion("2.00.2.19")]
+[assembly: AssemblyFileVersion("2.00.2.19")]
 
 

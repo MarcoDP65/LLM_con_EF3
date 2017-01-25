@@ -154,27 +154,37 @@ namespace ChargerLogic
 
             }
         }
-        
-
-        /*
 
 
 
-        private _NodoStruttura _caricaDati(int _id)
+        private _NodoStruttura NodoRoot()
         {
-            return (from s in _database.Table<_NodoStruttura>()
-                    where s.IdLocale == _id
-                    select s).FirstOrDefault();
+            try
+            {
+                _NodoStruttura _tempnodo = new _NodoStruttura();
+                _tempnodo.IdLocale = 1;
+                _tempnodo.Guid = NodoStruttura.GuidROOT;
+                _tempnodo.TipoNodo = (byte)NodoStruttura.TipoNodo.Radice;
+                _tempnodo.Level = 0;
+                _tempnodo.ParentIdLocale = _tempnodo.IdLocale;
+                _tempnodo.ParentGuid = NodoStruttura.GuidBASE;
+
+                _tempnodo.Nome = "Questo PC";
+                _tempnodo.Descrizione = "Radice struttura archivio";
+                _tempnodo.Icona = "root";
+                _tempnodo.IdApparato = null;
+
+                return _tempnodo;
+
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("NodoRoot: " + ex.ToString());
+                return null;
+            }
         }
 
-        private _NodoStruttura _caricaDati(string _Guid)
-        {
-            return (from s in _database.Table<_NodoStruttura>()
-                    where s.Guid == _Guid
-                    select s).FirstOrDefault();
-        }
 
-
-        */
     }
 }

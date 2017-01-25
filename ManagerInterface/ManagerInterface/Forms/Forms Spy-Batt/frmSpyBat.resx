@@ -1014,6 +1014,75 @@
   <data name="&gt;&gt;btnSalvaCliente.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="grbTestata.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="lblFwStratDisp.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblFwStratDisp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFwStratDisp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblFwStratDisp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>538, 98</value>
+  </data>
+  <data name="lblFwStratDisp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 17</value>
+  </data>
+  <data name="lblFwStratDisp.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="lblFwStratDisp.Text" xml:space="preserve">
+    <value>Rev Strategia</value>
+  </data>
+  <data name="&gt;&gt;lblFwStratDisp.Name" xml:space="preserve">
+    <value>lblFwStratDisp</value>
+  </data>
+  <data name="&gt;&gt;lblFwStratDisp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFwStratDisp.Parent" xml:space="preserve">
+    <value>grbTestata</value>
+  </data>
+  <data name="&gt;&gt;lblFwStratDisp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="txtRevSWStratSb.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="txtRevSWStratSb.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
+  </data>
+  <data name="txtRevSWStratSb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>541, 118</value>
+  </data>
+  <data name="txtRevSWStratSb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 22</value>
+  </data>
+  <data name="txtRevSWStratSb.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="txtRevSWStratSb.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtRevSWStratSb.Name" xml:space="preserve">
+    <value>txtRevSWStratSb</value>
+  </data>
+  <data name="&gt;&gt;txtRevSWStratSb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtRevSWStratSb.Parent" xml:space="preserve">
+    <value>grbTestata</value>
+  </data>
+  <data name="&gt;&gt;txtRevSWStratSb.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="txtSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="txtSerialNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
   </data>
@@ -1042,8 +1111,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtSerialNumber.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
+  <metadata name="lblGenSerNum.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblGenSerNum.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1072,8 +1144,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblGenSerNum.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
+  <metadata name="txtMainNumProgr.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="txtMainNumProgr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
   </data>
@@ -1099,8 +1174,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtMainNumProgr.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
+  <metadata name="lblGenConf.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblGenConf.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1129,8 +1207,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblGenConf.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
+  <metadata name="txtMainNumLunghi.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="txtMainNumLunghi.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
   </data>
@@ -1138,7 +1219,7 @@
     <value>296, 187</value>
   </data>
   <data name="txtMainNumLunghi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="txtMainNumLunghi.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -1156,8 +1237,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtMainNumLunghi.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
+  <metadata name="lblGenFasi.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblGenFasi.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1186,7 +1270,7 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblGenFasi.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <metadata name="txtRevLdrSb.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1198,7 +1282,7 @@
     <value>296, 118</value>
   </data>
   <data name="txtRevLdrSb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 22</value>
+    <value>108, 22</value>
   </data>
   <data name="txtRevLdrSb.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1216,8 +1300,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtRevLdrSb.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
+  <metadata name="lblBootLdrDisp.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblBootLdrDisp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1246,7 +1333,7 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblBootLdrDisp.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <metadata name="txtMatrSB.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1276,8 +1363,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtMatrSB.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
+  <metadata name="lblGenID.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblGenID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1306,8 +1396,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblGenID.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
+  <metadata name="txtManufcturedBy.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="txtManufcturedBy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
@@ -1330,8 +1423,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtManufcturedBy.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
+  <metadata name="lblGenMod.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblGenMod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1360,7 +1456,7 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblGenMod.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <metadata name="txtRevSWSb.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1369,10 +1465,10 @@
     <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
   </data>
   <data name="txtRevSWSb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>470, 116</value>
+    <value>422, 118</value>
   </data>
   <data name="txtRevSWSb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 22</value>
+    <value>106, 22</value>
   </data>
   <data name="txtRevSWSb.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1390,8 +1486,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtRevSWSb.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
+  <metadata name="lblFirmwDisp.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFirmwDisp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1399,7 +1498,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblFirmwDisp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>467, 98</value>
+    <value>419, 98</value>
   </data>
   <data name="lblFirmwDisp.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 17</value>
@@ -1420,8 +1519,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblFirmwDisp.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
+  <metadata name="txtRevHWSb.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="txtRevHWSb.Location" type="System.Drawing.Point, System.Drawing">
     <value>38, 118</value>
   </data>
@@ -1444,8 +1546,11 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;txtRevHWSb.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
+  <metadata name="lblFirmwCb.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFirmwCb.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1474,7 +1579,7 @@
     <value>grbTestata</value>
   </data>
   <data name="&gt;&gt;lblFirmwCb.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="grbTestata.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 374</value>
@@ -8182,7 +8287,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.17, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.18, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -8292,20 +8397,140 @@
   <data name="&gt;&gt;tabCb02.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="txtCalMinuti.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtCalMinuti.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 49</value>
+  </data>
+  <data name="txtCalMinuti.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 27</value>
+  </data>
+  <data name="txtCalMinuti.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="txtCalMinuti.Text" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="txtCalMinuti.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalMinuti.Name" xml:space="preserve">
+    <value>txtCalMinuti</value>
+  </data>
+  <data name="&gt;&gt;txtCalMinuti.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalMinuti.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;txtCalMinuti.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label266.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label266.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label266.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 29</value>
+  </data>
+  <data name="label266.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="label266.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label266.Text" xml:space="preserve">
+    <value>Minuti</value>
+  </data>
+  <data name="&gt;&gt;label266.Name" xml:space="preserve">
+    <value>label266</value>
+  </data>
+  <data name="&gt;&gt;label266.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label266.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;label266.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtCalOre.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtCalOre.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 49</value>
+  </data>
+  <data name="txtCalOre.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 27</value>
+  </data>
+  <data name="txtCalOre.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="txtCalOre.Text" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="txtCalOre.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCalOre.Name" xml:space="preserve">
+    <value>txtCalOre</value>
+  </data>
+  <data name="&gt;&gt;txtCalOre.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCalOre.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;txtCalOre.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label267.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label267.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label267.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 29</value>
+  </data>
+  <data name="label267.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 17</value>
+  </data>
+  <data name="label267.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label267.Text" xml:space="preserve">
+    <value>Ore</value>
+  </data>
+  <data name="&gt;&gt;label267.Name" xml:space="preserve">
+    <value>label267</value>
+  </data>
+  <data name="&gt;&gt;label267.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label267.Parent" xml:space="preserve">
+    <value>grbCalData</value>
+  </data>
+  <data name="&gt;&gt;label267.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="btnCalScriviGiorno.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnCalScriviGiorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 82</value>
+    <value>18, 93</value>
   </data>
   <data name="btnCalScriviGiorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 27</value>
+    <value>337, 27</value>
   </data>
   <data name="btnCalScriviGiorno.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="btnCalScriviGiorno.Text" xml:space="preserve">
-    <value>Imposta Orologio</value>
+    <value>Imposta Data/Ora  Manuale</value>
   </data>
   <data name="&gt;&gt;btnCalScriviGiorno.Name" xml:space="preserve">
     <value>btnCalScriviGiorno</value>
@@ -8317,7 +8542,7 @@
     <value>grbCalData</value>
   </data>
   <data name="&gt;&gt;btnCalScriviGiorno.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="txtCalAnno.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8332,7 +8557,7 @@
     <value>7</value>
   </data>
   <data name="txtCalAnno.Text" xml:space="preserve">
-    <value>2016</value>
+    <value>2017</value>
   </data>
   <data name="txtCalAnno.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -8347,7 +8572,7 @@
     <value>grbCalData</value>
   </data>
   <data name="&gt;&gt;txtCalAnno.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="label250.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8377,7 +8602,7 @@
     <value>grbCalData</value>
   </data>
   <data name="&gt;&gt;label250.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="txtCalMese.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8392,7 +8617,7 @@
     <value>5</value>
   </data>
   <data name="txtCalMese.Text" xml:space="preserve">
-    <value>11</value>
+    <value>01</value>
   </data>
   <data name="txtCalMese.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -8407,7 +8632,7 @@
     <value>grbCalData</value>
   </data>
   <data name="&gt;&gt;txtCalMese.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="label249.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8437,7 +8662,7 @@
     <value>grbCalData</value>
   </data>
   <data name="&gt;&gt;label249.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="txtCalGiorno.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8467,7 +8692,7 @@
     <value>grbCalData</value>
   </data>
   <data name="&gt;&gt;txtCalGiorno.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="label248.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8497,19 +8722,19 @@
     <value>grbCalData</value>
   </data>
   <data name="&gt;&gt;label248.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="grbCalData.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 191</value>
   </data>
   <data name="grbCalData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 126</value>
+    <value>369, 137</value>
   </data>
   <data name="grbCalData.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="grbCalData.Text" xml:space="preserve">
-    <value>Forza Data</value>
+    <value>Forza Data/Ora</value>
   </data>
   <data name="&gt;&gt;grbCalData.Name" xml:space="preserve">
     <value>grbCalData</value>
@@ -8926,10 +9151,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnScriviRtc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 91</value>
+    <value>191, 91</value>
   </data>
   <data name="btnScriviRtc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 27</value>
+    <value>159, 27</value>
   </data>
   <data name="btnScriviRtc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -8953,10 +9178,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnLeggiRtc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 91</value>
+    <value>19, 91</value>
   </data>
   <data name="btnLeggiRtc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 27</value>
+    <value>159, 27</value>
   </data>
   <data name="btnLeggiRtc.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -8980,10 +9205,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtOraRtc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 50</value>
+    <value>191, 50</value>
   </data>
   <data name="txtOraRtc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 27</value>
+    <value>159, 27</value>
   </data>
   <data name="txtOraRtc.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -9010,7 +9235,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblOraRTC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 30</value>
+    <value>188, 30</value>
   </data>
   <data name="lblOraRTC.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 17</value>
@@ -9037,10 +9262,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtDataRtc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 50</value>
+    <value>19, 50</value>
   </data>
   <data name="txtDataRtc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 27</value>
+    <value>159, 27</value>
   </data>
   <data name="txtDataRtc.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -9067,7 +9292,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblDataRTC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 30</value>
+    <value>16, 30</value>
   </data>
   <data name="lblDataRTC.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 17</value>
@@ -9094,7 +9319,7 @@
     <value>38, 32</value>
   </data>
   <data name="grbOraCorrente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 153</value>
+    <value>370, 153</value>
   </data>
   <data name="grbOraCorrente.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -14646,17 +14871,77 @@
   <data name="&gt;&gt;grbFwAttivazioneArea.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtFWLibInFileRev.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtFWLibInFileRev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 116</value>
+  </data>
+  <data name="txtFWLibInFileRev.MaxLength" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="txtFWLibInFileRev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 27</value>
+  </data>
+  <data name="txtFWLibInFileRev.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="txtFWLibInFileRev.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibInFileRev.Name" xml:space="preserve">
+    <value>txtFWLibInFileRev</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibInFileRev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibInFileRev.Parent" xml:space="preserve">
+    <value>grbFWPreparaFile</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibInFileRev.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label256.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label256.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label256.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 96</value>
+  </data>
+  <data name="label256.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="label256.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="label256.Text" xml:space="preserve">
+    <value>Strategia</value>
+  </data>
+  <data name="&gt;&gt;label256.Name" xml:space="preserve">
+    <value>label256</value>
+  </data>
+  <data name="&gt;&gt;label256.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label256.Parent" xml:space="preserve">
+    <value>grbFWPreparaFile</value>
+  </data>
+  <data name="&gt;&gt;label256.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="txtFWInFileRevData.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFWInFileRevData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 116</value>
+    <value>318, 116</value>
   </data>
   <data name="txtFWInFileRevData.Mask" xml:space="preserve">
     <value>00/00/0000</value>
   </data>
   <data name="txtFWInFileRevData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 27</value>
+    <value>131, 27</value>
   </data>
   <data name="txtFWInFileRevData.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
@@ -14674,7 +14959,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileRevData.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label97.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14683,7 +14968,7 @@
     <value>NoControl</value>
   </data>
   <data name="label97.Location" type="System.Drawing.Point, System.Drawing">
-    <value>552, 142</value>
+    <value>618, 142</value>
   </data>
   <data name="label97.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
@@ -14704,13 +14989,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label97.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtFWInFileLenP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
   <data name="txtFWInFileLenP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>555, 162</value>
+    <value>621, 162</value>
   </data>
   <data name="txtFWInFileLenP.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 22</value>
@@ -14731,13 +15016,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileLenP.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtFWInFileAddrP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
   <data name="txtFWInFileAddrP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>555, 116</value>
+    <value>621, 116</value>
   </data>
   <data name="txtFWInFileAddrP.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 22</value>
@@ -14758,7 +15043,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileAddrP.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label98.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14767,7 +15052,7 @@
     <value>NoControl</value>
   </data>
   <data name="label98.Location" type="System.Drawing.Point, System.Drawing">
-    <value>555, 96</value>
+    <value>621, 96</value>
   </data>
   <data name="label98.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -14788,7 +15073,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label98.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label99.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14797,7 +15082,7 @@
     <value>NoControl</value>
   </data>
   <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
-    <value>477, 142</value>
+    <value>543, 142</value>
   </data>
   <data name="label99.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 17</value>
@@ -14818,13 +15103,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label99.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtFWInFileLenN2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
   <data name="txtFWInFileLenN2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>478, 162</value>
+    <value>544, 162</value>
   </data>
   <data name="txtFWInFileLenN2.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 22</value>
@@ -14845,13 +15130,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileLenN2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="txtFWInFileAddrN2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
   <data name="txtFWInFileAddrN2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>477, 116</value>
+    <value>543, 116</value>
   </data>
   <data name="txtFWInFileAddrN2.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 22</value>
@@ -14872,7 +15157,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileAddrN2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="label100.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14881,7 +15166,7 @@
     <value>NoControl</value>
   </data>
   <data name="label100.Location" type="System.Drawing.Point, System.Drawing">
-    <value>477, 96</value>
+    <value>543, 96</value>
   </data>
   <data name="label100.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
@@ -14902,7 +15187,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label100.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="label101.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14911,7 +15196,7 @@
     <value>NoControl</value>
   </data>
   <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 142</value>
+    <value>461, 142</value>
   </data>
   <data name="label101.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 17</value>
@@ -14932,13 +15217,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label101.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="txtFWInFileLenN1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
   <data name="txtFWInFileLenN1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>399, 162</value>
+    <value>465, 162</value>
   </data>
   <data name="txtFWInFileLenN1.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 22</value>
@@ -14959,13 +15244,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileLenN1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="txtFWInFileAddrN1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
   <data name="txtFWInFileAddrN1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>399, 116</value>
+    <value>465, 116</value>
   </data>
   <data name="txtFWInFileAddrN1.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 22</value>
@@ -14986,7 +15271,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileAddrN1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="label102.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14995,7 +15280,7 @@
     <value>NoControl</value>
   </data>
   <data name="label102.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 96</value>
+    <value>462, 96</value>
   </data>
   <data name="label102.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
@@ -15016,7 +15301,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label102.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="label96.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15046,7 +15331,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label96.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="btnFWFileSBFsearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -15073,7 +15358,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFileSBFsearch.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="txtFWFileSBFwr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -15097,7 +15382,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWFileSBFwr.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="label92.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15106,7 +15391,7 @@
     <value>NoControl</value>
   </data>
   <data name="label92.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 96</value>
+    <value>315, 96</value>
   </data>
   <data name="label92.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
@@ -15127,7 +15412,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label92.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="btnFWFilePubSave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -15157,7 +15442,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFilePubSave.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="txtFWInFileRev.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -15169,7 +15454,7 @@
     <value>6</value>
   </data>
   <data name="txtFWInFileRev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 27</value>
+    <value>147, 27</value>
   </data>
   <data name="txtFWInFileRev.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -15187,7 +15472,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileRev.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="label94.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15217,7 +15502,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label94.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="label95.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15247,7 +15532,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label95.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="btnFWFileCCSLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -15274,7 +15559,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFileCCSLoad.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="btnFWFileCCSsearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -15301,7 +15586,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFileCCSsearch.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="txtFwFileCCS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -15325,7 +15610,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFwFileCCS.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="grbFWPreparaFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>578, 335</value>
@@ -16539,8 +16824,35 @@
   <data name="&gt;&gt;GrbFWArea1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="txtFWLibSBFRev.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtFWLibSBFRev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 141</value>
+  </data>
+  <data name="txtFWLibSBFRev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 27</value>
+  </data>
+  <data name="txtFWLibSBFRev.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="txtFWLibSBFRev.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibSBFRev.Name" xml:space="preserve">
+    <value>txtFWLibSBFRev</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibSBFRev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibSBFRev.Parent" xml:space="preserve">
+    <value>grbFWAggiornamento</value>
+  </data>
+  <data name="&gt;&gt;txtFWLibSBFRev.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="grbFWdettUpload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 90</value>
+    <value>193, 93</value>
   </data>
   <data name="grbFWdettUpload.Size" type="System.Drawing.Size, System.Drawing">
     <value>516, 155</value>
@@ -16558,13 +16870,13 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;grbFWdettUpload.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="txtFWInSBFDtRev.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFWInSBFDtRev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 171</value>
+    <value>24, 196</value>
   </data>
   <data name="txtFWInSBFDtRev.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 27</value>
@@ -16585,7 +16897,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInSBFDtRev.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label110.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16594,7 +16906,7 @@
     <value>NoControl</value>
   </data>
   <data name="label110.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 151</value>
+    <value>21, 176</value>
   </data>
   <data name="label110.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
@@ -16615,7 +16927,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label93.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16645,7 +16957,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label93.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtFWTxDataAddrP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16672,7 +16984,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataAddrP.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txtFWTxDataAddrN2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16699,7 +17011,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataAddrN2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="txtFWTxDataAddrN1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16726,7 +17038,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataAddrN1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="txtFWTxDataNumTot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16753,7 +17065,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataNumTot.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="txtFWTxDataNumP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16780,7 +17092,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataNumP.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="txtFWTxDataNumN2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16807,7 +17119,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataNumN2.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="txtFWTxDataNumN1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16834,7 +17146,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataNumN1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="label105.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16864,7 +17176,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label105.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="txtFWTxFileLenP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16891,7 +17203,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxFileLenP.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label106.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16921,7 +17233,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label106.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="txtFWTxFileLenN2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -16948,7 +17260,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxFileLenN2.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="label107.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16978,7 +17290,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label107.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="txtFWTxFileLenN1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -17005,7 +17317,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxFileLenN1.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="txtFWTxDataLenP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -17032,7 +17344,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataLenP.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="txtFWTxDataLenN2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -17059,7 +17371,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataLenN2.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="txtFWTxDataLenN1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
@@ -17086,7 +17398,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWTxDataLenN1.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="btnFWLanciaTrasmissione.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -17095,7 +17407,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFWLanciaTrasmissione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>559, 251</value>
+    <value>560, 261</value>
   </data>
   <data name="btnFWLanciaTrasmissione.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 30</value>
@@ -17116,13 +17428,13 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWLanciaTrasmissione.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="textBox11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="textBox11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 252</value>
+    <value>115, 262</value>
   </data>
   <data name="textBox11.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 27</value>
@@ -17143,7 +17455,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;textBox11.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="label72.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17152,7 +17464,7 @@
     <value>NoControl</value>
   </data>
   <data name="label72.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 232</value>
+    <value>112, 242</value>
   </data>
   <data name="label72.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 17</value>
@@ -17173,7 +17485,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label72.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="textBox10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -17200,7 +17512,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;textBox10.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="label71.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17230,13 +17542,13 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label71.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="txtFWSBFArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFWSBFArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 252</value>
+    <value>25, 262</value>
   </data>
   <data name="txtFWSBFArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 27</value>
@@ -17257,7 +17569,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWSBFArea.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="label70.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17266,7 +17578,7 @@
     <value>NoControl</value>
   </data>
   <data name="label70.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 232</value>
+    <value>22, 242</value>
   </data>
   <data name="label70.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 17</value>
@@ -17287,7 +17599,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label70.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="btnFWPreparaTrasmissione.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -17317,13 +17629,13 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWPreparaTrasmissione.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="txtFWInSBFRev.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFWInSBFRev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 114</value>
+    <value>24, 110</value>
   </data>
   <data name="txtFWInSBFRev.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 27</value>
@@ -17344,7 +17656,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInSBFRev.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="label69.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17353,7 +17665,7 @@
     <value>NoControl</value>
   </data>
   <data name="label69.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 94</value>
+    <value>21, 90</value>
   </data>
   <data name="label69.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 17</value>
@@ -17374,7 +17686,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label69.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>30</value>
   </data>
   <data name="label68.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17404,7 +17716,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label68.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>31</value>
   </data>
   <data name="btnFWFileSBFLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -17431,7 +17743,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWFileSBFLoad.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>32</value>
   </data>
   <data name="btnFWFileSBFReadSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -17458,7 +17770,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWFileSBFReadSearch.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>33</value>
   </data>
   <data name="txtFWFileSBFrd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -17482,13 +17794,13 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWFileSBFrd.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>34</value>
   </data>
   <data name="grbFWAggiornamento.Location" type="System.Drawing.Point, System.Drawing">
     <value>578, 19</value>
   </data>
   <data name="grbFWAggiornamento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>732, 298</value>
+    <value>732, 307</value>
   </data>
   <data name="grbFWAggiornamento.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -17569,10 +17881,10 @@
     <value>None</value>
   </data>
   <data name="grbFWDettStato.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 94</value>
+    <value>23, 98</value>
   </data>
   <data name="grbFWDettStato.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 51</value>
+    <value>460, 51</value>
   </data>
   <data name="grbFWDettStato.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -21244,9 +21556,6 @@ SPY-BATT</value>
   <data name="&gt;&gt;btnCalStartSeq.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <metadata name="lblCalStatoAlim.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="lblCalStatoAlim.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -21457,6 +21766,228 @@ SPY-BATT</value>
   <data name="&gt;&gt;tabCalibrazione.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <data name="label263.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label263.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label263.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 478</value>
+  </data>
+  <data name="label263.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 17</value>
+  </data>
+  <data name="label263.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="label263.Text" xml:space="preserve">
+    <value>CMD_RDTE / WRTE</value>
+  </data>
+  <data name="&gt;&gt;label263.Name" xml:space="preserve">
+    <value>label263</value>
+  </data>
+  <data name="&gt;&gt;label263.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label263.Parent" xml:space="preserve">
+    <value>tbpStrategia</value>
+  </data>
+  <data name="&gt;&gt;label263.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratTEGetReal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratTEGetReal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 36</value>
+  </data>
+  <data name="txtStratTEGetReal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 24</value>
+  </data>
+  <data name="txtStratTEGetReal.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="txtStratTEGetReal.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetReal.Name" xml:space="preserve">
+    <value>txtStratTEGetReal</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetReal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetReal.Parent" xml:space="preserve">
+    <value>panel20</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetReal.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratTEGetLocal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratTEGetLocal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 36</value>
+  </data>
+  <data name="txtStratTEGetLocal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 24</value>
+  </data>
+  <data name="txtStratTEGetLocal.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="txtStratTEGetLocal.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetLocal.Name" xml:space="preserve">
+    <value>txtStratTEGetLocal</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetLocal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetLocal.Parent" xml:space="preserve">
+    <value>panel20</value>
+  </data>
+  <data name="&gt;&gt;txtStratTEGetLocal.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label258.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label258.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label258.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 16</value>
+  </data>
+  <data name="label258.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="label258.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label258.Text" xml:space="preserve">
+    <value>Reale</value>
+  </data>
+  <data name="&gt;&gt;label258.Name" xml:space="preserve">
+    <value>label258</value>
+  </data>
+  <data name="&gt;&gt;label258.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label258.Parent" xml:space="preserve">
+    <value>panel20</value>
+  </data>
+  <data name="&gt;&gt;label258.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label259.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label259.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label259.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 16</value>
+  </data>
+  <data name="label259.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 17</value>
+  </data>
+  <data name="label259.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="label259.Text" xml:space="preserve">
+    <value>Locale</value>
+  </data>
+  <data name="&gt;&gt;label259.Name" xml:space="preserve">
+    <value>label259</value>
+  </data>
+  <data name="&gt;&gt;label259.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label259.Parent" xml:space="preserve">
+    <value>panel20</value>
+  </data>
+  <data name="&gt;&gt;label259.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtStratTESetLocal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratTESetLocal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 36</value>
+  </data>
+  <data name="txtStratTESetLocal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 24</value>
+  </data>
+  <data name="txtStratTESetLocal.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="txtStratTESetLocal.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratTESetLocal.Name" xml:space="preserve">
+    <value>txtStratTESetLocal</value>
+  </data>
+  <data name="&gt;&gt;txtStratTESetLocal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratTESetLocal.Parent" xml:space="preserve">
+    <value>panel20</value>
+  </data>
+  <data name="&gt;&gt;txtStratTESetLocal.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label260.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label260.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label260.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 16</value>
+  </data>
+  <data name="label260.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="label260.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="label260.Text" xml:space="preserve">
+    <value>Set Locale</value>
+  </data>
+  <data name="&gt;&gt;label260.Name" xml:space="preserve">
+    <value>label260</value>
+  </data>
+  <data name="&gt;&gt;label260.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label260.Parent" xml:space="preserve">
+    <value>panel20</value>
+  </data>
+  <data name="&gt;&gt;label260.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panel20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>287, 498</value>
+  </data>
+  <data name="panel20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>289, 77</value>
+  </data>
+  <data name="panel20.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="&gt;&gt;panel20.Name" xml:space="preserve">
+    <value>panel20</value>
+  </data>
+  <data name="&gt;&gt;panel20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel20.Parent" xml:space="preserve">
+    <value>tbpStrategia</value>
+  </data>
+  <data name="&gt;&gt;panel20.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label210.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -21485,7 +22016,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label210.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label200.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -21515,7 +22046,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label200.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label211.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22484,7 +23015,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label189.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22493,7 +23024,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label189.Location" type="System.Drawing.Point, System.Drawing">
-    <value>842, 510</value>
+    <value>842, 478</value>
   </data>
   <data name="label189.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 17</value>
@@ -22514,7 +23045,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label189.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtStratAVStop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -22973,10 +23504,10 @@ SPY-BATT</value>
     <value>15</value>
   </data>
   <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>845, 530</value>
+    <value>845, 498</value>
   </data>
   <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 205</value>
+    <value>289, 237</value>
   </data>
   <data name="panel5.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -22991,7 +23522,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label185.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23021,7 +23552,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label185.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtStratLivcrgCapacityVer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
@@ -23279,7 +23810,7 @@ SPY-BATT</value>
     <value>609, 259</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 223</value>
+    <value>198, 207</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -23294,7 +23825,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label176.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23324,7 +23855,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label176.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="label167.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23354,7 +23885,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label167.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="txtStratQryLLBattId.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24098,7 +24629,7 @@ SPY-BATT</value>
     <value>17, 259</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 304</value>
+    <value>238, 316</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -24113,7 +24644,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="label166.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24143,7 +24674,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label166.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="txtStratLivcrgCapNominale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -24605,7 +25136,7 @@ SPY-BATT</value>
     <value>287, 259</value>
   </data>
   <data name="pnlStratContatoriCarica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 223</value>
+    <value>289, 207</value>
   </data>
   <data name="pnlStratContatoriCarica.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -24620,7 +25151,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;pnlStratContatoriCarica.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="textBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -24758,13 +25289,145 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
+  </data>
+  <data name="label265.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label265.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label265.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 26</value>
+  </data>
+  <data name="label265.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="label265.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="label265.Text" xml:space="preserve">
+    <value>Minuti</value>
+  </data>
+  <data name="&gt;&gt;label265.Name" xml:space="preserve">
+    <value>label265</value>
+  </data>
+  <data name="&gt;&gt;label265.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label265.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label265.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratLLMinuti.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratLLMinuti.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 46</value>
+  </data>
+  <data name="txtStratLLMinuti.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 27</value>
+  </data>
+  <data name="txtStratLLMinuti.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="txtStratLLMinuti.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratLLMinuti.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtStratLLMinuti.Name" xml:space="preserve">
+    <value>txtStratLLMinuti</value>
+  </data>
+  <data name="&gt;&gt;txtStratLLMinuti.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratLLMinuti.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;txtStratLLMinuti.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label264.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label264.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label264.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 82</value>
+  </data>
+  <data name="label264.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 17</value>
+  </data>
+  <data name="label264.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="label264.Text" xml:space="preserve">
+    <value>Stato Lungo Corrente</value>
+  </data>
+  <data name="&gt;&gt;label264.Name" xml:space="preserve">
+    <value>label264</value>
+  </data>
+  <data name="&gt;&gt;label264.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label264.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label264.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmbStratLLTELoc.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items" xml:space="preserve">
+    <value>00 - Effective</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items1" xml:space="preserve">
+    <value>02 - N.D.</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items2" xml:space="preserve">
+    <value>0F - Scarica</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items3" xml:space="preserve">
+    <value>F0 - Carica</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items4" xml:space="preserve">
+    <value>AA - Break</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items5" xml:space="preserve">
+    <value>FF - Effective</value>
+  </data>
+  <data name="cmbStratLLTELoc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 102</value>
+  </data>
+  <data name="cmbStratLLTELoc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 28</value>
+  </data>
+  <data name="cmbStratLLTELoc.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="&gt;&gt;cmbStratLLTELoc.Name" xml:space="preserve">
+    <value>cmbStratLLTELoc</value>
+  </data>
+  <data name="&gt;&gt;cmbStratLLTELoc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbStratLLTELoc.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cmbStratLLTELoc.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="txtStratLLFC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtStratLLFC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 116</value>
+    <value>19, 103</value>
   </data>
   <data name="txtStratLLFC.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 27</value>
@@ -24788,7 +25451,7 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;txtStratLLFC.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="label209.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24797,7 +25460,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label209.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 96</value>
+    <value>19, 83</value>
   </data>
   <data name="label209.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 17</value>
@@ -24818,7 +25481,7 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label209.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="chkStratLLRabb.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24827,7 +25490,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="chkStratLLRabb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 172</value>
+    <value>15, 159</value>
   </data>
   <data name="chkStratLLRabb.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 21</value>
@@ -24848,16 +25511,16 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;chkStratLLRabb.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="txtStratLLAmax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtStratLLAmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 116</value>
+    <value>144, 46</value>
   </data>
   <data name="txtStratLLAmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
+    <value>67, 27</value>
   </data>
   <data name="txtStratLLAmax.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -24878,7 +25541,7 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;txtStratLLAmax.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="label155.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24887,7 +25550,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label155.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 96</value>
+    <value>141, 26</value>
   </data>
   <data name="label155.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 17</value>
@@ -24908,16 +25571,16 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label155.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="txtStratLLVmax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtStratLLVmax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 46</value>
+    <value>80, 46</value>
   </data>
   <data name="txtStratLLVmax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
+    <value>58, 27</value>
   </data>
   <data name="txtStratLLVmax.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -24938,7 +25601,7 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;txtStratLLVmax.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="label154.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24947,7 +25610,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label154.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 26</value>
+    <value>77, 26</value>
   </data>
   <data name="label154.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 17</value>
@@ -24968,7 +25631,7 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label154.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="txtStratLLVmin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -24977,7 +25640,7 @@ SPY-BATT</value>
     <value>16, 46</value>
   </data>
   <data name="txtStratLLVmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+    <value>58, 27</value>
   </data>
   <data name="txtStratLLVmin.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -24998,7 +25661,7 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;txtStratLLVmin.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="label153.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25007,7 +25670,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label153.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 26</value>
+    <value>13, 26</value>
   </data>
   <data name="label153.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 17</value>
@@ -25028,13 +25691,13 @@ SPY-BATT</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label153.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>845, 259</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 223</value>
+    <value>289, 207</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -25049,13 +25712,67 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
+  </data>
+  <data name="btnStratReadTypeEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStratReadTypeEvent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 92</value>
+  </data>
+  <data name="btnStratReadTypeEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 51</value>
+  </data>
+  <data name="btnStratReadTypeEvent.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="btnStratReadTypeEvent.Text" xml:space="preserve">
+    <value>CMD_RDTE</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadTypeEvent.Name" xml:space="preserve">
+    <value>btnStratReadTypeEvent</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadTypeEvent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadTypeEvent.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadTypeEvent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnStratSetTypeEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStratSetTypeEvent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 35</value>
+  </data>
+  <data name="btnStratSetTypeEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 51</value>
+  </data>
+  <data name="btnStratSetTypeEvent.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="btnStratSetTypeEvent.Text" xml:space="preserve">
+    <value>CMD_WRTE</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetTypeEvent.Name" xml:space="preserve">
+    <value>btnStratSetTypeEvent</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetTypeEvent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetTypeEvent.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetTypeEvent.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="btnStratReadVar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratReadVar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>695, 89</value>
+    <value>779, 92</value>
   </data>
   <data name="btnStratReadVar.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -25076,13 +25793,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratReadVar.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="btnStratCallSIS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratCallSIS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>551, 89</value>
+    <value>650, 92</value>
   </data>
   <data name="btnStratCallSIS.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -25103,13 +25820,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallSIS.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btnStratCallAv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratCallAv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>693, 32</value>
+    <value>777, 35</value>
   </data>
   <data name="btnStratCallAv.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -25130,13 +25847,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallAv.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="btnStratSetDischarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratSetDischarge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 89</value>
+    <value>490, 92</value>
   </data>
   <data name="btnStratSetDischarge.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -25157,13 +25874,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetDischarge.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="btnStratCallIS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratCallIS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>551, 32</value>
+    <value>650, 35</value>
   </data>
   <data name="btnStratCallIS.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -25184,13 +25901,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallIS.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="btnStratSetCharge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratSetCharge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 32</value>
+    <value>490, 35</value>
   </data>
   <data name="btnStratSetCharge.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -25211,13 +25928,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetCharge.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="btnStratQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratQuery.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 32</value>
+    <value>175, 32</value>
   </data>
   <data name="btnStratQuery.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -25238,7 +25955,7 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratQuery.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="btnStratTestErr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -25265,7 +25982,7 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTestErr.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="btnStratTest02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -25292,7 +26009,7 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest02.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="btnStratTest01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -25319,7 +26036,7 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest01.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="grbStratComandiTest.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 17</value>
@@ -25343,7 +26060,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;grbStratComandiTest.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="txtStratDataGrid.Font" type="System.Drawing.Font, System.Drawing">
     <value>Courier New, 12pt</value>
@@ -25370,7 +26087,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;txtStratDataGrid.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="tbpStrategia.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>

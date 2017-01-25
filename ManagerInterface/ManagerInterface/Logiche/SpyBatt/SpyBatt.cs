@@ -738,6 +738,42 @@ namespace ChargerLogic
 
 
         /// <summary>
+        /// Legge direttamente dallo SPY-BATT la Versione della libreria strategia corrente.
+        /// </summary>
+        /// <returns></returns>
+        public string VersioneStrategia()
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                string _risposta = "";
+
+
+                _Dati = new byte[252];
+                _esito = LanciaComandoTestStrategia(0xA0, out _Dati);
+
+                if (_esito == true && _Dati.Length >0)
+                {
+
+                    // Estraggo la versione attiva
+                    _risposta = _Dati[0x03].ToString() + "." + _Dati[0x04].ToString("00") + "." + FunzioniComuni.UshortFromArray(_Dati, 0x05).ToString("000");
+
+                }
+
+
+                return _risposta;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VersioneStrategia: " + Ex.Message);
+                return "";
+            }
+
+        }
+
+        /// <summary>
         /// CaricaDatiCliente:  I dati relativi al cliente (4 Record)
         /// se la scheda è collegata aggiorna i dati con quelli presenti sulla scheda
         /// </summary>
@@ -3370,7 +3406,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, byte FC, out byte[] Dati)
+        public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, byte FC, ushort Minuti, byte ForzaTE,out byte[] Dati)
         {
 
 
@@ -3380,7 +3416,7 @@ namespace ChargerLogic
                 byte msb = 0;
                 byte lsb = 0;
 
-                byte[] _cmdStrat = new byte[10];
+                byte[] _cmdStrat = new byte[13];
 
                 Dati = new byte[252];
 
@@ -3390,7 +3426,7 @@ namespace ChargerLogic
 
 
                 _cmdStrat[0] = Modo;  //CMD_IS
-                _cmdStrat[1] = 0x0B;  // len
+                _cmdStrat[1] = 0x0E;  // len
 
                 FunzioniComuni.SplitUshort(Vmin, ref lsb, ref msb);
                 _cmdStrat[2] = msb;
@@ -3404,6 +3440,12 @@ namespace ChargerLogic
 
                 _cmdStrat[8] = Rabb;
                 _cmdStrat[9] = FC;
+
+                FunzioniComuni.SplitUshort(Minuti, ref lsb, ref msb);
+                _cmdStrat[10] = msb;
+                _cmdStrat[11] = lsb;
+
+                _cmdStrat[12] = ForzaTE;
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
                 Log.Debug("Lancio comando base SB_W_chgst_Call -  ");
@@ -3512,6 +3554,69 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+
+        public bool ComandoStrategiaAggiornaTE(byte TELocale, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+                byte msb = 0;
+                byte lsb = 0;
+
+                byte[] _cmdStrat = new byte[8];
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.SB_W_chgst_Call;
+                _mS.ComandoStrat = new MessaggioSpyBatt.ComandoStrategia();
+
+                //_cmdStrat[0] = 0x80;
+                _cmdStrat[0] = 0x54;
+                _cmdStrat[1] = 0x03;
+                _cmdStrat[2] = TELocale;
+
+
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio comando base SB_W_chgst_Call - CMD_WRTE ");
+
+                _mS.ComponiMessaggioOpenStrategia(_cmdStrat);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
+
+                int _totDati = _mS.ComandoStrat.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
 
         public bool ComandoInfoStrategia(byte ComandoStrategia, out byte[] Dati)
         {
@@ -4063,23 +4168,23 @@ namespace ChargerLogic
             }
         }
 
-        public bool ForzaOrologio(int Giorno, int Mese, int Anno)
+        public bool ForzaOrologio(int Giorno, int Mese, int Anno, int Ore, int Minuti)
         {
             try
             {
                 bool _esito;
                 DateTime _now = DateTime.Now;
 
-                DateTime dateValue = new DateTime(Anno, Mese, Giorno);
+                DateTime dateValue = new DateTime(Anno, Mese, Giorno,Ore,Minuti,0);
                 _mS.Comando = SerialMessage.TipoComando.SB_UpdateRTC;
                 _mS.DatiRTC = new SerialMessage.comandoRTC();
                 _mS.DatiRTC.anno = (ushort)Anno;
                 _mS.DatiRTC.mese = (byte)Mese;
                 _mS.DatiRTC.giorno = (byte)Giorno;
                 _mS.DatiRTC.giornoSett = (byte)dateValue.DayOfWeek;
-                _mS.DatiRTC.ore = (byte)_now.Hour;
-                _mS.DatiRTC.minuti = (byte)_now.Minute;
-                _mS.DatiRTC.secondi = (byte)_now.Second;
+                _mS.DatiRTC.ore = (byte)Ore;
+                _mS.DatiRTC.minuti = (byte)Minuti;
+                _mS.DatiRTC.secondi = (byte)0;
 
                 _mS.ComponiMessaggioOra();
                 _rxRisposta = false;

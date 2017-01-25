@@ -65,6 +65,8 @@
             this.label114 = new System.Windows.Forms.Label();
             this.btnSalvaCliente = new System.Windows.Forms.Button();
             this.grbTestata = new System.Windows.Forms.GroupBox();
+            this.lblFwStratDisp = new System.Windows.Forms.Label();
+            this.txtRevSWStratSb = new System.Windows.Forms.TextBox();
             this.txtSerialNumber = new System.Windows.Forms.TextBox();
             this.lblGenSerNum = new System.Windows.Forms.Label();
             this.txtMainNumProgr = new System.Windows.Forms.TextBox();
@@ -314,7 +316,6 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.btnCalScriviGiorno = new System.Windows.Forms.Button();
@@ -533,6 +534,8 @@
             this.rbtFwArea2 = new System.Windows.Forms.RadioButton();
             this.rbtFwArea1 = new System.Windows.Forms.RadioButton();
             this.grbFWPreparaFile = new System.Windows.Forms.GroupBox();
+            this.txtFWLibInFileRev = new System.Windows.Forms.TextBox();
+            this.label256 = new System.Windows.Forms.Label();
             this.txtFWInFileRevData = new System.Windows.Forms.MaskedTextBox();
             this.label97 = new System.Windows.Forms.Label();
             this.txtFWInFileLenP = new System.Windows.Forms.TextBox();
@@ -600,6 +603,7 @@
             this.label77 = new System.Windows.Forms.Label();
             this.txtFwRevA1RevFw = new System.Windows.Forms.TextBox();
             this.grbFWAggiornamento = new System.Windows.Forms.GroupBox();
+            this.txtFWLibSBFRev = new System.Windows.Forms.TextBox();
             this.grbFWdettUpload = new System.Windows.Forms.GroupBox();
             this.txtFWInSBFDtRev = new System.Windows.Forms.TextBox();
             this.label110 = new System.Windows.Forms.Label();
@@ -776,6 +780,14 @@
             this.txtCalStepCorrente = new System.Windows.Forms.TextBox();
             this.lblCalStepCorrente = new System.Windows.Forms.Label();
             this.tbpStrategia = new System.Windows.Forms.TabPage();
+            this.label263 = new System.Windows.Forms.Label();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.txtStratTEGetReal = new System.Windows.Forms.TextBox();
+            this.txtStratTEGetLocal = new System.Windows.Forms.TextBox();
+            this.label258 = new System.Windows.Forms.Label();
+            this.label259 = new System.Windows.Forms.Label();
+            this.txtStratTESetLocal = new System.Windows.Forms.TextBox();
+            this.label260 = new System.Windows.Forms.Label();
             this.label210 = new System.Windows.Forms.Label();
             this.label200 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -894,6 +906,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label156 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label264 = new System.Windows.Forms.Label();
+            this.cmbStratLLTELoc = new System.Windows.Forms.ComboBox();
             this.txtStratLLFC = new System.Windows.Forms.TextBox();
             this.label209 = new System.Windows.Forms.Label();
             this.chkStratLLRabb = new System.Windows.Forms.CheckBox();
@@ -904,6 +918,8 @@
             this.txtStratLLVmin = new System.Windows.Forms.TextBox();
             this.label153 = new System.Windows.Forms.Label();
             this.grbStratComandiTest = new System.Windows.Forms.GroupBox();
+            this.btnStratReadTypeEvent = new System.Windows.Forms.Button();
+            this.btnStratSetTypeEvent = new System.Windows.Forms.Button();
             this.btnStratReadVar = new System.Windows.Forms.Button();
             this.btnStratCallSIS = new System.Windows.Forms.Button();
             this.btnStratCallAv = new System.Windows.Forms.Button();
@@ -920,6 +936,13 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.txtStratLLMinuti = new System.Windows.Forms.TextBox();
+            this.label265 = new System.Windows.Forms.Label();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
+            this.txtCalMinuti = new System.Windows.Forms.TextBox();
+            this.label266 = new System.Windows.Forms.Label();
+            this.txtCalOre = new System.Windows.Forms.TextBox();
+            this.label267 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -1021,6 +1044,7 @@
             this.grbCalValoriAttuali.SuspendLayout();
             this.grbCalListaAttivita.SuspendLayout();
             this.tbpStrategia.SuspendLayout();
+            this.panel20.SuspendLayout();
             this.panel6.SuspendLayout();
             this.grbStratStepCorrente.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -1296,6 +1320,8 @@
             // grbTestata
             // 
             this.grbTestata.BackColor = System.Drawing.Color.White;
+            this.grbTestata.Controls.Add(this.lblFwStratDisp);
+            this.grbTestata.Controls.Add(this.txtRevSWStratSb);
             this.grbTestata.Controls.Add(this.txtSerialNumber);
             this.grbTestata.Controls.Add(this.lblGenSerNum);
             this.grbTestata.Controls.Add(this.txtMainNumProgr);
@@ -1315,6 +1341,17 @@
             resources.ApplyResources(this.grbTestata, "grbTestata");
             this.grbTestata.Name = "grbTestata";
             this.grbTestata.TabStop = false;
+            // 
+            // lblFwStratDisp
+            // 
+            resources.ApplyResources(this.lblFwStratDisp, "lblFwStratDisp");
+            this.lblFwStratDisp.Name = "lblFwStratDisp";
+            // 
+            // txtRevSWStratSb
+            // 
+            resources.ApplyResources(this.txtRevSWStratSb, "txtRevSWStratSb");
+            this.txtRevSWStratSb.Name = "txtRevSWStratSb";
+            this.txtRevSWStratSb.ReadOnly = true;
             // 
             // txtSerialNumber
             // 
@@ -3024,17 +3061,6 @@
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
             // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
-            // 
             // tabCb05
             // 
             this.tabCb05.Controls.Add(this.grbCalData);
@@ -3046,6 +3072,10 @@
             // 
             // grbCalData
             // 
+            this.grbCalData.Controls.Add(this.txtCalMinuti);
+            this.grbCalData.Controls.Add(this.label266);
+            this.grbCalData.Controls.Add(this.txtCalOre);
+            this.grbCalData.Controls.Add(this.label267);
             this.grbCalData.Controls.Add(this.btnCalScriviGiorno);
             this.grbCalData.Controls.Add(this.txtCalAnno);
             this.grbCalData.Controls.Add(this.label250);
@@ -4621,6 +4651,8 @@
             // grbFWPreparaFile
             // 
             this.grbFWPreparaFile.BackColor = System.Drawing.Color.White;
+            this.grbFWPreparaFile.Controls.Add(this.txtFWLibInFileRev);
+            this.grbFWPreparaFile.Controls.Add(this.label256);
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRevData);
             this.grbFWPreparaFile.Controls.Add(this.label97);
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileLenP);
@@ -4648,6 +4680,17 @@
             resources.ApplyResources(this.grbFWPreparaFile, "grbFWPreparaFile");
             this.grbFWPreparaFile.Name = "grbFWPreparaFile";
             this.grbFWPreparaFile.TabStop = false;
+            this.grbFWPreparaFile.Enter += new System.EventHandler(this.grbFWPreparaFile_Enter);
+            // 
+            // txtFWLibInFileRev
+            // 
+            resources.ApplyResources(this.txtFWLibInFileRev, "txtFWLibInFileRev");
+            this.txtFWLibInFileRev.Name = "txtFWLibInFileRev";
+            // 
+            // label256
+            // 
+            resources.ApplyResources(this.label256, "label256");
+            this.label256.Name = "label256";
             // 
             // txtFWInFileRevData
             // 
@@ -5044,6 +5087,7 @@
             // grbFWAggiornamento
             // 
             this.grbFWAggiornamento.BackColor = System.Drawing.Color.White;
+            this.grbFWAggiornamento.Controls.Add(this.txtFWLibSBFRev);
             this.grbFWAggiornamento.Controls.Add(this.grbFWdettUpload);
             this.grbFWAggiornamento.Controls.Add(this.txtFWInSBFDtRev);
             this.grbFWAggiornamento.Controls.Add(this.label110);
@@ -5081,6 +5125,12 @@
             resources.ApplyResources(this.grbFWAggiornamento, "grbFWAggiornamento");
             this.grbFWAggiornamento.Name = "grbFWAggiornamento";
             this.grbFWAggiornamento.TabStop = false;
+            // 
+            // txtFWLibSBFRev
+            // 
+            resources.ApplyResources(this.txtFWLibSBFRev, "txtFWLibSBFRev");
+            this.txtFWLibSBFRev.Name = "txtFWLibSBFRev";
+            this.txtFWLibSBFRev.ReadOnly = true;
             // 
             // grbFWdettUpload
             // 
@@ -6210,6 +6260,8 @@
             // tbpStrategia
             // 
             this.tbpStrategia.BackColor = System.Drawing.Color.LemonChiffon;
+            this.tbpStrategia.Controls.Add(this.label263);
+            this.tbpStrategia.Controls.Add(this.panel20);
             this.tbpStrategia.Controls.Add(this.label210);
             this.tbpStrategia.Controls.Add(this.label200);
             this.tbpStrategia.Controls.Add(this.panel6);
@@ -6228,6 +6280,55 @@
             this.tbpStrategia.Controls.Add(this.txtStratDataGrid);
             resources.ApplyResources(this.tbpStrategia, "tbpStrategia");
             this.tbpStrategia.Name = "tbpStrategia";
+            // 
+            // label263
+            // 
+            resources.ApplyResources(this.label263, "label263");
+            this.label263.Name = "label263";
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.White;
+            this.panel20.Controls.Add(this.txtStratTEGetReal);
+            this.panel20.Controls.Add(this.txtStratTEGetLocal);
+            this.panel20.Controls.Add(this.label258);
+            this.panel20.Controls.Add(this.label259);
+            this.panel20.Controls.Add(this.txtStratTESetLocal);
+            this.panel20.Controls.Add(this.label260);
+            resources.ApplyResources(this.panel20, "panel20");
+            this.panel20.Name = "panel20";
+            // 
+            // txtStratTEGetReal
+            // 
+            resources.ApplyResources(this.txtStratTEGetReal, "txtStratTEGetReal");
+            this.txtStratTEGetReal.Name = "txtStratTEGetReal";
+            this.txtStratTEGetReal.ReadOnly = true;
+            // 
+            // txtStratTEGetLocal
+            // 
+            resources.ApplyResources(this.txtStratTEGetLocal, "txtStratTEGetLocal");
+            this.txtStratTEGetLocal.Name = "txtStratTEGetLocal";
+            this.txtStratTEGetLocal.ReadOnly = true;
+            // 
+            // label258
+            // 
+            resources.ApplyResources(this.label258, "label258");
+            this.label258.Name = "label258";
+            // 
+            // label259
+            // 
+            resources.ApplyResources(this.label259, "label259");
+            this.label259.Name = "label259";
+            // 
+            // txtStratTESetLocal
+            // 
+            resources.ApplyResources(this.txtStratTESetLocal, "txtStratTESetLocal");
+            this.txtStratTESetLocal.Name = "txtStratTESetLocal";
+            // 
+            // label260
+            // 
+            resources.ApplyResources(this.label260, "label260");
+            this.label260.Name = "label260";
             // 
             // label210
             // 
@@ -6966,6 +7067,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label265);
+            this.panel1.Controls.Add(this.txtStratLLMinuti);
+            this.panel1.Controls.Add(this.label264);
+            this.panel1.Controls.Add(this.cmbStratLLTELoc);
             this.panel1.Controls.Add(this.txtStratLLFC);
             this.panel1.Controls.Add(this.label209);
             this.panel1.Controls.Add(this.chkStratLLRabb);
@@ -6978,6 +7083,25 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label264
+            // 
+            resources.ApplyResources(this.label264, "label264");
+            this.label264.Name = "label264";
+            // 
+            // cmbStratLLTELoc
+            // 
+            this.cmbStratLLTELoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbStratLLTELoc, "cmbStratLLTELoc");
+            this.cmbStratLLTELoc.FormattingEnabled = true;
+            this.cmbStratLLTELoc.Items.AddRange(new object[] {
+            resources.GetString("cmbStratLLTELoc.Items"),
+            resources.GetString("cmbStratLLTELoc.Items1"),
+            resources.GetString("cmbStratLLTELoc.Items2"),
+            resources.GetString("cmbStratLLTELoc.Items3"),
+            resources.GetString("cmbStratLLTELoc.Items4"),
+            resources.GetString("cmbStratLLTELoc.Items5")});
+            this.cmbStratLLTELoc.Name = "cmbStratLLTELoc";
             // 
             // txtStratLLFC
             // 
@@ -7029,6 +7153,8 @@
             // grbStratComandiTest
             // 
             this.grbStratComandiTest.BackColor = System.Drawing.Color.White;
+            this.grbStratComandiTest.Controls.Add(this.btnStratReadTypeEvent);
+            this.grbStratComandiTest.Controls.Add(this.btnStratSetTypeEvent);
             this.grbStratComandiTest.Controls.Add(this.btnStratReadVar);
             this.grbStratComandiTest.Controls.Add(this.btnStratCallSIS);
             this.grbStratComandiTest.Controls.Add(this.btnStratCallAv);
@@ -7042,6 +7168,20 @@
             resources.ApplyResources(this.grbStratComandiTest, "grbStratComandiTest");
             this.grbStratComandiTest.Name = "grbStratComandiTest";
             this.grbStratComandiTest.TabStop = false;
+            // 
+            // btnStratReadTypeEvent
+            // 
+            resources.ApplyResources(this.btnStratReadTypeEvent, "btnStratReadTypeEvent");
+            this.btnStratReadTypeEvent.Name = "btnStratReadTypeEvent";
+            this.btnStratReadTypeEvent.UseVisualStyleBackColor = true;
+            this.btnStratReadTypeEvent.Click += new System.EventHandler(this.btnStratReadTypeEvent_Click);
+            // 
+            // btnStratSetTypeEvent
+            // 
+            resources.ApplyResources(this.btnStratSetTypeEvent, "btnStratSetTypeEvent");
+            this.btnStratSetTypeEvent.Name = "btnStratSetTypeEvent";
+            this.btnStratSetTypeEvent.UseVisualStyleBackColor = true;
+            this.btnStratSetTypeEvent.Click += new System.EventHandler(this.btnStratSetTypeEvent_Click);
             // 
             // btnStratReadVar
             // 
@@ -7133,6 +7273,48 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
+            // 
+            // txtStratLLMinuti
+            // 
+            resources.ApplyResources(this.txtStratLLMinuti, "txtStratLLMinuti");
+            this.txtStratLLMinuti.ForeColor = System.Drawing.Color.Red;
+            this.txtStratLLMinuti.Name = "txtStratLLMinuti";
+            // 
+            // label265
+            // 
+            resources.ApplyResources(this.label265, "label265");
+            this.label265.Name = "label265";
+            // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
+            // 
+            // txtCalMinuti
+            // 
+            resources.ApplyResources(this.txtCalMinuti, "txtCalMinuti");
+            this.txtCalMinuti.Name = "txtCalMinuti";
+            // 
+            // label266
+            // 
+            resources.ApplyResources(this.label266, "label266");
+            this.label266.Name = "label266";
+            // 
+            // txtCalOre
+            // 
+            resources.ApplyResources(this.txtCalOre, "txtCalOre");
+            this.txtCalOre.Name = "txtCalOre";
+            // 
+            // label267
+            // 
+            resources.ApplyResources(this.label267, "label267");
+            this.label267.Name = "label267";
             // 
             // frmSpyBat
             // 
@@ -7311,6 +7493,8 @@
             this.grbCalListaAttivita.PerformLayout();
             this.tbpStrategia.ResumeLayout(false);
             this.tbpStrategia.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.grbStratStepCorrente.ResumeLayout(false);
@@ -8224,5 +8408,28 @@
         private System.Windows.Forms.GroupBox grbCloneNomeFile;
         private System.Windows.Forms.Button btnCloneGetFile;
         private System.Windows.Forms.TextBox txtCloneFileImg;
+        private System.Windows.Forms.TextBox txtFWLibInFileRev;
+        private System.Windows.Forms.Label label256;
+        private System.Windows.Forms.TextBox txtFWLibSBFRev;
+        private System.Windows.Forms.Label label263;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.TextBox txtStratTEGetReal;
+        private System.Windows.Forms.TextBox txtStratTEGetLocal;
+        private System.Windows.Forms.Label label258;
+        private System.Windows.Forms.Label label259;
+        private System.Windows.Forms.TextBox txtStratTESetLocal;
+        private System.Windows.Forms.Label label260;
+        private System.Windows.Forms.Button btnStratReadTypeEvent;
+        private System.Windows.Forms.Button btnStratSetTypeEvent;
+        private System.Windows.Forms.Label lblFwStratDisp;
+        private System.Windows.Forms.TextBox txtRevSWStratSb;
+        private System.Windows.Forms.Label label264;
+        private System.Windows.Forms.ComboBox cmbStratLLTELoc;
+        private System.Windows.Forms.Label label265;
+        private System.Windows.Forms.TextBox txtStratLLMinuti;
+        private System.Windows.Forms.TextBox txtCalMinuti;
+        private System.Windows.Forms.Label label266;
+        private System.Windows.Forms.TextBox txtCalOre;
+        private System.Windows.Forms.Label label267;
     }
 }

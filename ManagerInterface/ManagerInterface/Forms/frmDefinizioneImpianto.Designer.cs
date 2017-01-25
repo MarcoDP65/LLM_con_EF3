@@ -69,6 +69,7 @@
             this.Controls.Add(this.tlvStrutturaImpianto);
             this.Name = "frmDefinizioneImpianto";
             this.Text = "frmDefinizioneImpianto";
+            this.Load += new System.EventHandler(this.frmDefinizioneImpianto_Load);
             this.Resize += new System.EventHandler(this.frmDefinizioneImpianto_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.tlvStrutturaImpianto)).EndInit();
             this.ResumeLayout(false);

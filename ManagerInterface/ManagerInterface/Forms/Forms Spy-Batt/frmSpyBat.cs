@@ -125,6 +125,7 @@ namespace PannelloCharger
                 _stat = new StatMemLungaSB();
                 string _idCorrente = IdApparato;
                 abilitaSalvataggi(false);
+                txtRevSWStratSb.Text = "";
 
                 // in futuro, inserire quì il precaricamento delle statistiche
                 //CaricaTestata(IdApparato, Logiche, SerialeCollegata);
@@ -162,6 +163,17 @@ namespace PannelloCharger
                             //TODO: gestire io DB se la scheda è già in archivio
                             CaricaTestata(IdApparato, Logiche, SerialeCollegata);
                         }
+
+                        if (_sb.sbData.Bootloader != _sb.StatoFirmware.RevFirmware)
+                            _sb.sbData.Bootloader = _sb.StatoFirmware.RevFirmware;
+
+                        txtRevSWSb.Text = _sb.StatoFirmware.RevFirmware;
+                        string _verStrategia = _sb.VersioneStrategia();
+
+                        if (_sb.sbData.StrategyLibrary != _verStrategia)
+                            _sb.sbData.StrategyLibrary = _verStrategia;
+                        _sb.sbData.salvaDati();
+                        txtRevSWStratSb.Text = _verStrategia;
 
 
                     }
@@ -941,14 +953,6 @@ namespace PannelloCharger
                 {
                     IdApparato = _sb.Id;
                     MostraTestata();
-                    /*
-                    if (_sb.sbData.fwLevel < 0)
-                    {
-                        //Firmware non valido
-                        _apparatoPresente = false;
-                        Log.Debug("CaricaTestata: Firmware non valido " + _sb.sbData.SwVersion.ToString());
-                    }
-                    */
 
                     CaricaCicli();
 
@@ -7911,7 +7915,7 @@ namespace PannelloCharger
 
         private void btnStratCallAv_Click(object sender, EventArgs e)
         {
-            LanciaComandoStrategiaAvanzametoFase();
+            LanciaComandoStrategiaAvanzamentoFase();
         }
 
         private void cmbStratIsSelStep_SelectedIndexChanged(object sender, EventArgs e)
@@ -8236,7 +8240,11 @@ namespace PannelloCharger
                 int _giorno = int.Parse(txtCalGiorno.Text);
                 int _mese = int.Parse(txtCalMese.Text);
                 int _anno = int.Parse(txtCalAnno.Text);
-                _esito = _sb.ForzaOrologio(_giorno,_mese,_anno);
+                int _ore = int.Parse(txtCalOre.Text);
+                int _minuti = int.Parse(txtCalMinuti.Text);
+
+
+                _esito = _sb.ForzaOrologio(_giorno,_mese,_anno,_ore,_minuti);
                 if (_esito)
                 {
 
@@ -8489,5 +8497,21 @@ namespace PannelloCharger
             }
 
          }
+
+        private void grbFWPreparaFile_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnStratSetTypeEvent_Click(object sender, EventArgs e)
+        {
+
+            LanciaComandoStrategiaWriteTE();
+        }
+
+        private void btnStratReadTypeEvent_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategiaReadTE();
+        }
     }
 }

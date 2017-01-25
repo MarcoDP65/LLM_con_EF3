@@ -138,6 +138,137 @@ namespace PannelloCharger
 
         }
 
+
+        //--------------------------------------------------------------------------
+
+        public bool LanciaComandoStrategiaReadTE()
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                txtStratTEGetReal.Text = "";
+                txtStratTEGetLocal.Text = "";
+                txtStratDataGrid.Text = "";
+                _Dati = new byte[252];
+                _esito = _sb.ComandoInfoStrategia(0x53, out _Dati);
+
+                if (_esito == true)
+                {
+
+                    // Scrivo il dump della risposta
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtStratDataGrid.Text = _risposta;
+                    if (_Dati.Length == 5)
+                    {
+                        // Mostro i valori
+                        txtStratTEGetReal.Text = _Dati[3].ToString("x2");
+                        txtStratTEGetLocal.Text = _Dati[4].ToString("x2");
+                    }
+                    else
+                    {
+                        txtStratTEGetReal.Text = "N.D.";
+                        txtStratTEGetLocal.Text = "N.D.";
+
+                    }
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LanciaComandoTestStrategia: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        public bool LanciaComandoStrategiaWriteTE()
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                byte _tempTE;
+
+                if (txtStratLivcrgSetCapacity.Text != "")
+                {
+                    if (byte.TryParse(txtStratTESetLocal.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _tempTE) != true)
+                        _tempTE = 0xFF;
+                }
+                else
+                {
+                    _tempTE = 0xFF;
+                }
+
+
+
+                txtStratDataGrid.Text = "";
+                _Dati = new byte[252];
+                _esito = _sb.ComandoStrategiaAggiornaTE(_tempTE,  out _Dati);
+
+                if (_esito == true)
+                {
+
+
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtStratDataGrid.Text = _risposta;
+                    if(_Dati[2]==0)
+                    {
+                        txtStratTEGetReal.Text = _Dati[3].ToString("x2");
+                        txtStratTEGetLocal.Text = _Dati[4].ToString("x2");
+                    }
+                    else
+                    {
+                        txtStratTEGetReal.Text = "";
+                        txtStratTEGetLocal.Text = "";
+                    }
+
+
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LanciaComandoTestStrategia: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        //--------------------------------------------------------------------------------
+
         public bool LanciaComandoStrategiaChechCnt(byte ComandoStrategia)
         {
             try
@@ -270,7 +401,7 @@ namespace PannelloCharger
 
         }
 
-        public bool LanciaComandoStrategiaAvanzametoFase()
+        public bool LanciaComandoStrategiaAvanzamentoFase()
         {
             try
             {
@@ -373,28 +504,6 @@ namespace PannelloCharger
                         }
                     }
                     txtStratDataGrid.Text = _risposta;
-                    /*
-                    ushort _Erogato;
-                    ushort _previsto;
-                    // Mostro i valori
-                    _Erogato = FunzioniComuni.UshortFromArray(_Dati, 3);
-                    _previsto = FunzioniComuni.UshortFromArray(_Dati, 5);
-                    txtStratAVErogati.Text = FunzioniMR.StringaCorrenteLL(_Erogato);
-                    txtStratAVPrevisti.Text = FunzioniMR.StringaCorrenteLL(_previsto);
-                    if (_Erogato <= _previsto)
-                        txtStratAVMancanti.Text = FunzioniMR.StringaCorrenteLL((ushort)(_previsto - _Erogato));
-                    else
-                        txtStratAVMancanti.Text = "";
-
-
-                    txtStratAVMinutiResidui.Text = FunzioniComuni.UshortFromArray(_Dati, 0x07).ToString();
-
-                    // Aggiungere i moìinuti trascorsi
-
-                    txtStratAVTensioneIst.Text = FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x0B));
-                    txtStratAVCorrenteIst.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0D));
-                    txtStratAVTempIst.Text = FunzioniMR.StringaTemperatura(_Dati[0x0F]);
-                    */
 
                 }
 
@@ -421,8 +530,13 @@ namespace PannelloCharger
                 ushort _tempVmin;
                 ushort _tempVmax;
                 ushort _tempAmax;
+                ushort _tempMinuti;
                 byte _tempFC;
                 byte _tempRabb;
+                byte _tempLocalTE;
+
+
+
                 byte[] _StepBuffer = new byte[16];
 
 
@@ -464,10 +578,41 @@ namespace PannelloCharger
                     _tempAmax = 0x04B0;
                 }
 
+                if (txtStratLLMinuti.Text != "")
+                {
+                    _tempMinuti = FunzioniMR.ConvertiUshort(txtStratLLMinuti.Text, 1, 480 );  //VMax default 96.00 V
+                }
+                else
+                {
+                    _tempMinuti = 480;
+                }
+
+
+
                 if (chkStratLLRabb.Checked)
                     _tempRabb = 0xF0;
                 else
                     _tempRabb = 0x0F;
+
+                switch(cmbStratLLTELoc.SelectedIndex)
+                {
+                    case 1:
+                        _tempLocalTE = 0x02;
+                        break;
+                    case 2:
+                        _tempLocalTE = 0x0F;
+                        break;
+                    case 3:
+                        _tempLocalTE = 0xF0;
+                        break;
+                    case 4:
+                        _tempLocalTE = 0xAA;
+                        break;
+                    default:
+                        _tempLocalTE = 0x00;
+                        break;
+
+                }
 
 
                 txtStratDataGrid.Text = "";
@@ -478,7 +623,7 @@ namespace PannelloCharger
 
                 txtStratIsEsito.ForeColor = Color.Black;
 
-                _esito = _sb.LanciaComandoStrategia(Modo, _tempVmin, _tempVmax, _tempAmax, _tempRabb, _tempFC, out _Dati);
+                _esito = _sb.LanciaComandoStrategia(Modo, _tempVmin, _tempVmax, _tempAmax, _tempRabb, _tempFC, _tempMinuti, _tempLocalTE, out _Dati);
 
                 if (_esito == true)
                 {

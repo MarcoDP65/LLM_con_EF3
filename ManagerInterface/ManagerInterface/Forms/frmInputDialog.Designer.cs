@@ -86,6 +86,7 @@
             this.MaximizeBox = false;
             this.Name = "frmInputDialog";
             this.Activated += new System.EventHandler(this.frmInputDialog_Activated);
+            this.Load += new System.EventHandler(this.frmInputDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

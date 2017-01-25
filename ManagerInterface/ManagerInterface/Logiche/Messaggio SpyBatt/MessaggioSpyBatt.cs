@@ -3445,7 +3445,8 @@ namespace ChargerLogic
 
             try
             {
-                if (Parametri.Length < 10)
+                int _LunghezzaComando = Parametri.Length;
+                if (_LunghezzaComando < 10)
                     return _esito;
 
                 //serial
@@ -3474,7 +3475,7 @@ namespace ChargerLogic
                 _comandoBase[(21)] = lsb;
 
                 int _arrayInit = _comandoBase.Length;
-                int _arrayLen = _arrayInit + 20;
+                int _arrayLen = _arrayInit + (_LunghezzaComando*2);
 
                 Array.Resize(ref MessageBuffer, _arrayLen + 7);
 
@@ -3488,7 +3489,7 @@ namespace ChargerLogic
                 /// 
                 // Prima il sottocomando
 
-                for (int _cmd = 0; _cmd < 10; _cmd++)
+                for (int _cmd = 0; _cmd < _LunghezzaComando; _cmd++)
                 {
 
                     splitUshort(codificaByte(Parametri[_cmd]), ref lsb, ref msb);

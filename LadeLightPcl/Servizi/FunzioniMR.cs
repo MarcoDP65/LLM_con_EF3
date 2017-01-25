@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.IO.Compression;
+
 
 namespace Utility
 {
@@ -1430,9 +1433,9 @@ namespace Utility
                 for (int _i = 0; _i < buffer.Length; _i++)
                 {
                     _risposta += buffer[_i].ToString("X2");
-                    if (SplitByte & (_i !=(buffer.Length - 1))) _risposta += " ";
+                    if (SplitByte & (_i != (buffer.Length - 1))) _risposta += " ";
                 }
-                return _risposta; 
+                return _risposta;
             }
             catch
             {
@@ -1528,7 +1531,7 @@ namespace Utility
             _byte1 = (byte)((_TempVal >> 24) & 0x000000FF);
             if (value < 0)
             {
-                switch(PosSegno)
+                switch (PosSegno)
                 {
                     case 3:
                         _byte1 = (byte)(_byte1 | 0x80);
@@ -1637,7 +1640,7 @@ namespace Utility
 
 
 
-        public static byte[] StringToArray(string source, int ArrayLen,int Start = 0)
+        public static byte[] StringToArray(string source, int ArrayLen, int Start = 0)
         {
             string _tempString = "";
 
@@ -1676,8 +1679,8 @@ namespace Utility
                 if (data.Length <= (position))
                     return _tempValue;
 
-                _tempValue = (ushort)( data[position] << 8);
-                _tempValue += (ushort)(data[position+1] );
+                _tempValue = (ushort)(data[position] << 8);
+                _tempValue += (ushort)(data[position + 1]);
 
                 return _tempValue;
             }
@@ -1804,7 +1807,7 @@ namespace Utility
         /// <param name="separator">Carattere Separatore.</param>
         /// <param name="DefaultVal">Valore di default se il frammento non è convertibile in intero.</param>
         /// <returns></returns>
-        public static int[] ToIntValueArray( string value, char separator,int DefaultVal = 0)
+        public static int[] ToIntValueArray(string value, char separator, int DefaultVal = 0)
         {
             int[] _intArray = new int[0];
 
@@ -1882,9 +1885,9 @@ namespace Utility
                 Bitmap _tempBmp;
 
                 _tempBmp = new Bitmap(Immagine.Width, Immagine.Height, System.Drawing.Imaging.PixelFormat.Format16bppGrayScale);
-               // using (var gr = Graphics.FromImage(bmp))
-               //     gr.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height));
-               // return bmp;
+                // using (var gr = Graphics.FromImage(bmp))
+                //     gr.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height));
+                // return bmp;
 
 
 
@@ -1896,8 +1899,62 @@ namespace Utility
                 return Immagine;
             }
 
-            
+
         }
+
+
+
+
+        /// <summary>
+        /// Compresses the string.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
+        public static string CompressString(string text)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(text);
+            var memoryStream = new MemoryStream();
+            using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Compress, true))
+            {
+                gZipStream.Write(buffer, 0, buffer.Length);
+            }
+
+            memoryStream.Position = 0;
+
+            var compressedData = new byte[memoryStream.Length];
+            memoryStream.Read(compressedData, 0, compressedData.Length);
+
+            var gZipBuffer = new byte[compressedData.Length + 4];
+            Buffer.BlockCopy(compressedData, 0, gZipBuffer, 4, compressedData.Length);
+            Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gZipBuffer, 0, 4);
+            return Convert.ToBase64String(gZipBuffer);
+        }
+
+        /// <summary>
+        /// Decompresses the string.
+        /// </summary>
+        /// <param name="compressedText">The compressed text.</param>
+        /// <returns></returns>
+        public static string DecompressString(string compressedText)
+        {
+            byte[] gZipBuffer = Convert.FromBase64String(compressedText);
+            using (var memoryStream = new MemoryStream())
+            {
+                int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
+                memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
+
+                var buffer = new byte[dataLength];
+
+                memoryStream.Position = 0;
+                using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+                {
+                    gZipStream.Read(buffer, 0, buffer.Length);
+                }
+
+                return Encoding.UTF8.GetString(buffer,0, buffer.Length);
+            }
+        }
+
 
 
 

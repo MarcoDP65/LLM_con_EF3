@@ -34,6 +34,9 @@ namespace MoriData
         public int ProgramCount { get; set; }
         public byte BattConnected { get; set; }
         public int LongMem { get; set; }
+        public string Bootloader { get; set; }
+        public string StrategyLibrary { get; set; }
+
 
         public override string ToString()
         {
@@ -142,7 +145,7 @@ namespace MoriData
             {
                 if (_database == null)
                     return false;
-                if (_sb.Id != nullID | _sb.Id != null | SoloMemoria != false )
+                if (_sb.Id != nullID && _sb.Id != null && SoloMemoria != false )
                 {
 
                     _spybatt _TestDati = _caricaDati(_sb.Id);
@@ -488,6 +491,26 @@ namespace MoriData
             set
             {
                 _sb.SwVersion = FunzioniMR.StringaMax( value, 7);
+                _datiSalvati = false;
+            }
+        }
+
+        public string Bootloader
+        {
+            get { return _sb.Bootloader; }
+            set
+            {
+                _sb.Bootloader = FunzioniMR.StringaMax( value, 7);
+                _datiSalvati = false;
+            }
+        }
+
+        public string StrategyLibrary
+        {
+            get { return _sb.StrategyLibrary; }
+            set
+            {
+                _sb.StrategyLibrary = FunzioniMR.StringaMax(value, 12);
                 _datiSalvati = false;
             }
         }

@@ -103,5 +103,10 @@ namespace PannelloCharger
 
             }
         }
+
+        private void frmInputDialog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

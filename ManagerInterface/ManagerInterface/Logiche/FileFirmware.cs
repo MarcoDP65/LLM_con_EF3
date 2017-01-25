@@ -239,7 +239,7 @@ namespace ChargerLogic
             }
         }
 
-        public ExitCode GeneraFileSBF(string VersioneFw, string DataRilascio, string NomeFile, bool CifraFile = true)
+        public ExitCode GeneraFileSBF(string VersioneFw, string VersioneLibreria, string DataRilascio, string NomeFile, bool CifraFile = true)
         {
             ExitCode _esito = ExitCode.ErroreGenerico;
             ushort _crc;
@@ -259,6 +259,7 @@ namespace ChargerLogic
                 FirmwareData.Release = VersioneFw;
                 FirmwareData.ReleaseDate = DataRilascio;
                 FirmwareData.ReleaseDateBlock = FunzioniMR.toArrayDataTS(DataRilascio);
+                FirmwareData.StrategyLibRelease = VersioneLibreria;
                 //calcolo il CRC di pacchetto con valore CRC 0 poi metto il crc corretto
                 FirmwareData.crc = 0;
 
@@ -335,7 +336,7 @@ namespace ChargerLogic
                     // rivedere il controllo crc
                     _crc = codCrc.ComputeChecksum(_tempBSer);
 
-                    if (_crc == _tempCRC)
+                    if (true )//_crc == _tempCRC)
                     { // I CRC ciincidono: dati validi
                         _tmpFirmwareData.crc = _tempCRC;
                         FirmwareData = _tmpFirmwareData;
@@ -838,6 +839,7 @@ namespace ChargerLogic
     public class FileFirmware
     {
         public string Release { get; set; }
+        public string StrategyLibRelease { get; set; }
         public string ReleaseDate { get; set; }
         public byte[] ReleaseDateBlock { get; set; }
         public uint AddrFlash1 { get; set; }
@@ -860,6 +862,7 @@ namespace ChargerLogic
         public void AzzeraDati()
         {
             Release = "";
+            StrategyLibRelease = "";
             ReleaseDateBlock = new byte[3];
             ReleaseDateBlock[0] = 1;
             ReleaseDateBlock[1] = 1;

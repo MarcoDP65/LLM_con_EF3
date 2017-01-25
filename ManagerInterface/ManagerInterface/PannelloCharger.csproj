@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationRevision>20</ApplicationRevision>
     <ApplicationVersion>2.00.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -221,6 +221,7 @@
     <Compile Include="Database\sbDataModel.cs" />
     <Compile Include="Database\sbDatiCliente.cs" />
     <Compile Include="Database\sbDefSoglie.cs" />
+    <Compile Include="Database\sbInfoLibreria.cs" />
     <Compile Include="Database\sbMemBreve.cs" />
     <Compile Include="Database\sbMemLunga.cs" />
     <Compile Include="Database\NodoStruttura.cs" />
@@ -301,6 +302,12 @@
     </Compile>
     <Compile Include="Forms\frmDefinizioneImpianto.Designer.cs">
       <DependentUpon>frmDefinizioneImpianto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDettagliNodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDettagliNodo.Designer.cs">
+      <DependentUpon>frmDettagliNodo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmDisplayManager.cs">
       <SubType>Form</SubType>
@@ -580,6 +587,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDefinizioneImpianto.resx">
       <DependentUpon>frmDefinizioneImpianto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDettagliNodo.resx">
+      <DependentUpon>frmDettagliNodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDisplayManager.resx">
       <DependentUpon>frmDisplayManager.cs</DependentUpon>

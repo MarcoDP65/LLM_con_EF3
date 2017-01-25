@@ -222,7 +222,7 @@ namespace PannelloCharger
                 ToolStripMenuItem VoceMenu;
 
                 VoceMenu = new ToolStripMenuItem();
-                VoceMenu.Text = "Nuovo";
+                VoceMenu.Text = "Nuovo ...";
                 VoceMenu.Tag = 1;
                 VoceMenu.Click += new EventHandler(subMnuAggiungi_Click);
                 MenuNodo.Items.Add(VoceMenu);
@@ -260,13 +260,28 @@ namespace PannelloCharger
             {
                 int selectedMenuTag = Convert.ToInt32(((ToolStripMenuItem)sender).Tag);
                 NodoStruttura _tempNodo;
-                string selectedMenuName = ((ToolStripMenuItem)sender).Name;
-                Console.Write( "Menu Aggiungi: " + selectedMenuTag.ToString());
-                object _node = this.tlvStrutturaImpianto.SelectedObjects;
-                if (typeof(NodoStruttura) != _node.GetType())
-                    return;
+                //string selectedMenuName = ((ToolStripMenuItem)sender).Name;
+                //Console.Write( "Menu Aggiungi: " + selectedMenuTag.ToString());
 
-                _tempNodo = (NodoStruttura)_node;
+
+                if(tlvStrutturaImpianto.SelectedObjects.Count > 0)
+                {
+                    object _node = this.tlvStrutturaImpianto.SelectedObjects[0];
+                    _tempNodo = (NodoStruttura)_node;
+
+
+
+
+                     
+                }
+                
+                //if (typeof(NodoStruttura) != _node.GetType())
+                //    return;
+
+
+               
+
+
 
 
             }
@@ -290,6 +305,11 @@ namespace PannelloCharger
             {
                 Log.Error(Ex.Message);
             }
+
+        }
+
+        private void frmDefinizioneImpianto_Load(object sender, EventArgs e)
+        {
 
         }
     }
