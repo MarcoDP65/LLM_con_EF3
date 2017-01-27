@@ -1076,6 +1076,14 @@ namespace PannelloCharger
                 Log.Error("mnuImpiantoGestioneImpianto_Click : " + Ex.Message);
             }
         }
+
+        private void testCalendarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTestFunzioni TestFunzioni = new frmTestFunzioni();
+            TestFunzioni.MdiParent = this;
+            TestFunzioni.StartPosition = FormStartPosition.CenterParent;
+            TestFunzioni.Show();
+        }
     }
 
     public class StatoPulsanti

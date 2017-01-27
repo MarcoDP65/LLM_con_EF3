@@ -680,19 +680,27 @@ namespace MoriData
             }
         }
 
-        public byte Tntc
+        public int Tntc
         {
-            get { return _sbsm.Tntc; }
+            get
+            {
+                sbyte _tmpTemp = (sbyte)_sbsm.Tntc;
+                return _tmpTemp;
+            }
             set
             {
-                _sbsm.Tntc = value;
+                _sbsm.Tntc = (byte)value;
                 _datiSalvati = false;
             }
         }
 
         public string strTemp
         {
-            get { return FunzioniMR.StringaTemperatura(_sbsm.Tntc); }
+            get
+            {
+                sbyte _tmpTemp = (sbyte)_sbsm.Tntc;
+                return FunzioniMR.StringaTemperatura(_tmpTemp);
+            }
         }
 
 

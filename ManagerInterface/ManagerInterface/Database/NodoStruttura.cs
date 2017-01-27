@@ -35,7 +35,7 @@ namespace MoriData
 
         public byte[] GuidId { get; set; }
 
-        public byte TipoNodo { get; set; }
+        public byte Tipo { get; set; }
 
         public Int32 Level { get; set; }
         public string ParentGuid { get; set; }
@@ -182,6 +182,9 @@ namespace MoriData
                         _sbNS.CreationDate = DateTime.Now;
                         _sbNS.RevisionDate = DateTime.Now;
                         _sbNS.Guid = _guid.ToString();
+                        // Se non ho impostato il parent, lo assegno ai non definiti
+                        if(_sbNS.ParentGuid == "")
+                            _sbNS.ParentGuid = NodoStruttura.GuidUNDEF;
                         int _result = _database.Insert(_sbNS);
                         _datiSalvati = true;
                     }
@@ -198,12 +201,14 @@ namespace MoriData
                 }
                 else
                 {
+
+                    // Se il GUID è nullo lo creo e creo il nuovo record
                     return false;
                 }
             }
             catch (Exception Ex)
             {
-                Log.Error("salvaDati: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                Log.Error("NodoStruttura.salvaDati: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
                 return false;
             }
         }
@@ -223,6 +228,24 @@ namespace MoriData
             }
 
         }
+
+        public string NuovoGuid()
+        {
+            try
+            {
+                _guid = new Guid();
+                _sbNS.Guid = _guid.ToString();
+
+                return _sbNS.Guid;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("NodoStruttura.NuovoGuid: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return _sbNS.Guid;
+            }
+        }
+
+        
         
 
 
@@ -291,12 +314,67 @@ namespace MoriData
             }
         }
 
+        public string ParentName
+        {
+            get
+            {
+                _NodoStruttura _parent = (from s in _database.Table<_NodoStruttura>()
+                                          where s.Guid == _sbNS.ParentGuid
+                                          select s).FirstOrDefault();
+                return _parent.Nome;
+            }
+
+
+        }
+
+
+
+        public string ParentGuid
+        {
+            get { return _sbNS.ParentGuid; }
+            set
+            {
+                if (value != null)
+                {
+                    _sbNS.ParentGuid = value;
+                    _datiSalvati = false;
+                }
+            }
+        }
+
+
+        public NodoStruttura.TipoNodo Tipo
+        {
+            get { return (NodoStruttura.TipoNodo)_sbNS.Tipo; }
+            set
+            {
+
+                _sbNS.Tipo = (byte)value;
+                _datiSalvati = false;
+
+            }
+        }
+
+        public string IdApparato
+        {
+            get { return _sbNS.IdApparato; }
+            set
+            {
+                if (value != null)
+                {
+                    _sbNS.IdApparato = value;
+                    _datiSalvati = false;
+                }
+            }
+        }
+
+
         public bool IsLeaf
         {
             get
             {
 
-                if ((_sbNS.TipoNodo & 0x80) == 0x80)
+                if ((_sbNS.Tipo & 0x80) == 0x80)
                     return true;
                 else
                     return false;

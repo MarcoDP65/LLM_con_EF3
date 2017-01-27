@@ -875,7 +875,12 @@ namespace MoriData
 
         public int TempMin
         {
-            get { return  _sblm.TempMin; }
+            get
+            {
+                sbyte _tempTmin = (sbyte)_sblm.TempMin;
+
+                return _tempTmin;
+            }
             set
             {
                 _sblm.TempMin = value;
@@ -888,13 +893,9 @@ namespace MoriData
             get
             {
                 string _stringaTemp;
+                sbyte _tempTmin = (sbyte)_sblm.TempMin;
 
-                if (_sblm.TempMin > 150)
-                {
-                    _stringaTemp = "N.D.";
-                }
-                else
-                    _stringaTemp = FunzioniMR.StringaTemperatura(_sblm.TempMin);
+                _stringaTemp = FunzioniMR.StringaTemperatura(_tempTmin) ;
 
                 if (LivelloUser < 1)
                 {
@@ -921,7 +922,12 @@ namespace MoriData
 
         public int TempMax
         {
-            get { return _sblm.TempMax; }
+            get
+            {
+                sbyte _tempTmax = (sbyte)_sblm.TempMax;
+
+                return _tempTmax;
+            }
             set
             {
                 _sblm.TempMax = value;
@@ -934,13 +940,9 @@ namespace MoriData
             get
             {
                 string _stringaTemp;
+                sbyte _tempTmax = (sbyte)_sblm.TempMax;
 
-                if (_sblm.TempMax > 150)
-                {
-                    _stringaTemp = "N.D.";
-                }
-                else
-                    _stringaTemp = FunzioniMR.StringaTemperatura(_sblm.TempMax);
+                _stringaTemp = FunzioniMR.StringaTemperatura(_tempTmax);
 
                 if (LivelloUser < 1)
                 {

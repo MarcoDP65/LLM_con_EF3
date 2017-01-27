@@ -45,6 +45,7 @@
             // 
             // btnAnnulla
             // 
+            this.btnAnnulla.BackColor = System.Drawing.SystemColors.Control;
             this.btnAnnulla.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnulla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAnnulla.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -53,11 +54,12 @@
             this.btnAnnulla.Size = new System.Drawing.Size(125, 31);
             this.btnAnnulla.TabIndex = 12;
             this.btnAnnulla.Text = "Annulla";
-            this.btnAnnulla.UseVisualStyleBackColor = true;
+            this.btnAnnulla.UseVisualStyleBackColor = false;
             this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnSave.Location = new System.Drawing.Point(174, 285);
@@ -65,7 +67,8 @@
             this.btnSave.Size = new System.Drawing.Size(125, 31);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "OK";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblPassword
             // 
@@ -178,6 +181,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
+            this.CancelButton = this.btnAnnulla;
             this.ClientSize = new System.Drawing.Size(585, 344);
             this.Controls.Add(this.lblLocalGuid);
             this.Controls.Add(this.txtCurrentGuid);

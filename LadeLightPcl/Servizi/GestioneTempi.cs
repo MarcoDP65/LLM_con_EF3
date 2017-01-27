@@ -53,6 +53,7 @@ namespace PannelloCharger
         public int settimana { get; set; }
         public int Inizio { get; set; }
         public string chiaveSettimana { get; set; }
+        public int settimaneAnno { get; set; }
 
     }
 

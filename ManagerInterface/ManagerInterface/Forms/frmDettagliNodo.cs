@@ -75,6 +75,11 @@ namespace PannelloCharger
                     txtNome.Text = NodoCorrente.Nome;
                     txtDescrizione.Text = NodoCorrente.Descrizione;
                     txtCurrentGuid.Text = NodoCorrente.Guid;
+                    if (NodoCorrente.ParentGuid != "")
+                    {
+                        txtParentName.Text = NodoCorrente.ParentName;
+                        txtParentGuid.Text = NodoCorrente.ParentGuid;
+                    }
                 }
 
 
@@ -108,6 +113,70 @@ namespace PannelloCharger
                 Log.Error("frmDettagliNodo.btnAnnulla_Click: " + Ex.Message);
             }
 
+
+        }
+
+        public bool DatiValidi()
+        {
+            bool _esito = false;
+            try
+            {
+
+                if (txtNome.Text == "")
+                {
+                    txtNome.Focus();
+                    return false;
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmDettagliNodo.DatiValidi: " + Ex.Message);
+                return _esito;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DatiValidi())
+                {
+                    NodoCorrente.Nome = txtNome.Text;
+                    NodoCorrente.Descrizione = txtDescrizione.Text;
+
+
+
+
+                    NodoCorrente.Tipo = NodoStruttura.TipoNodo.Ramo;
+                    NodoCorrente.Icona = "folder";
+                    NodoCorrente.IdApparato = null;
+
+
+
+
+                    if (NodoCorrente.ParentGuid != "")
+                    {
+                        NodoCorrente.ParentGuid = txtParentGuid.Text ;
+                    }
+                    if (NodoCorrente.Guid == "")
+                        txtCurrentGuid.Text = NodoCorrente.NuovoGuid();
+
+
+                    if (NodoCorrente.salvaDati())
+                        this.Close();
+
+                    txtCurrentGuid.Text = NodoCorrente.Guid;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmDettagliNodo.btnSave_Click: " + Ex.Message);
+            }
 
         }
     }

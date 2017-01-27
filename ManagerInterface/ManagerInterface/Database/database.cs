@@ -302,7 +302,7 @@ namespace MoriData
                 _NodoStruttura _tempnodo = new _NodoStruttura();
                 _tempnodo.IdLocale = 1;
                 _tempnodo.Guid = NodoStruttura.GuidROOT;
-                _tempnodo.TipoNodo = (byte)NodoStruttura.TipoNodo.Radice;
+                _tempnodo.Tipo = (byte)NodoStruttura.TipoNodo.Radice;
                 _tempnodo.Level = 0;
                 _tempnodo.ParentIdLocale = _tempnodo.IdLocale;
                 _tempnodo.ParentGuid = NodoStruttura.GuidBASE;
@@ -333,7 +333,7 @@ namespace MoriData
                 _tempnodo.Guid = NodoStruttura.GuidUNDEF;
 
                 _tempnodo.ParentGuid = NodoStruttura.GuidROOT;
-                _tempnodo.TipoNodo = (byte)NodoStruttura.TipoNodo.Ramo;
+                _tempnodo.Tipo = (byte)NodoStruttura.TipoNodo.Ramo;
                 _tempnodo.Level = 1;
                 _tempnodo.ParentIdLocale = 1;
 

@@ -125,7 +125,7 @@ namespace PannelloCharger.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap export_01 {
             get {
-                object obj = ResourceManager.GetObject("export 01", resourceCulture);
+                object obj = ResourceManager.GetObject("export_01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

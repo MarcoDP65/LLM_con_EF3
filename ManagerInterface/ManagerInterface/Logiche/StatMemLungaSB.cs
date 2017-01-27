@@ -373,6 +373,7 @@ namespace ChargerLogic
                     //if (ciclo.EffMaxSbilanciamentoC > _maxSbilanciamento) _durataSbil += valCiclo.Durata;
                     // Se lmanca elettrolita (valore 0x0F), agiungo la durata al tempo totale mancanza el.
                     //if (ciclo.PresenzaElettrolita == 0x0F) _durataNoEl += valCiclo.Durata;
+                    _trovatoEqual = false;
 
                     switch (valCiclo.TipoEvento)
                     {
@@ -587,28 +588,46 @@ namespace ChargerLogic
                         _settimanaStart.settimana = _settInizio;
                         _settimanaStart.anno = valPeriodo.dtDataOraStart.Year;
                         _settimanaStart.chiaveSettimana = _settimanaStart.anno.ToString("0000") + _settimanaStart.settimana.ToString("00");
+                        _settimanaStart.settimaneAnno = _tempCal.GetWeekOfYear(new DateTime(valPeriodo.dtDataOraStart.Year,12,31,12,0,0), CalendarWeekRule.FirstDay, DayOfWeek.Monday);
 
                         int _settfine = _tempCal.GetWeekOfYear(valPeriodo.dtDataOraFine, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
                         _settimanaEnd.settimana = _settfine;
                         _settimanaEnd.anno = valPeriodo.dtDataOraFine.Year;
                         _settimanaEnd.chiaveSettimana = _settimanaEnd.anno.ToString("0000") + _settimanaEnd.settimana.ToString("00");
+                        _settimanaEnd.settimaneAnno = _tempCal.GetWeekOfYear(new DateTime(valPeriodo.dtDataOraFine.Year, 12, 31, 12, 0, 0), CalendarWeekRule.FirstDay, DayOfWeek.Monday);
 
                         int _numSettimane;
 
-                        if (_settimanaStart.anno == _settimanaEnd.anno) _numSettimane = _settimanaEnd.settimana - _settimanaStart.settimana;
+                        if (_settimanaStart.anno == _settimanaEnd.anno)
+                        {
+                            _numSettimane = _settimanaEnd.settimana - _settimanaStart.settimana;
+                        }
+                        else
+                        {
+                            _numSettimane = ( _settimanaEnd.settimana + _settimanaStart.settimaneAnno) - _settimanaStart.settimana;
 
+                        }
+
+                        // Istante: in pacchetti di 5 minuti
                         uint _tmpDurata = valPeriodo.Durata;
                         bool _settAggiunta = false;
-                        for (int _cicloS = 0; true; _cicloS++)
+
+                        DateTime nuovaFine;
+
+                        int _settCorrente = _settInizio;
+                        int _annoCorrente = _settimanaStart.anno;
+                        string _chiaveSettimana = _settimanaStart.chiaveSettimana;
+                        valPeriodo.PeriodoTemporale.settimana = _settInizio;
+                        valPeriodo.PeriodoTemporale.giornoInizio = ((int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraStart) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraStart);
+                        valPeriodo.PeriodoTemporale.giornoFine = ((int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine);
+                        int _istante = (valPeriodo.PeriodoTemporale.giornoInizio - 1) * 288;
+                        _istante += _tempCal.GetHour(valPeriodo.dtDataOraStart) * 12;
+                        _istante += _tempCal.GetMinute(valPeriodo.dtDataOraStart) / 5;
+                        valPeriodo.PeriodoTemporale.minutoInizio = _istante;
+                        while ( true )
                         {
                             //Carico l'inizio periodo
-                            valPeriodo.PeriodoTemporale.settimana = _settInizio;
-                            valPeriodo.PeriodoTemporale.giornoInizio = ((int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraStart) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraStart);
-                            valPeriodo.PeriodoTemporale.giornoFine = ((int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine);
-                            int _istante = (valPeriodo.PeriodoTemporale.giornoInizio - 1) * 288;
-                            _istante += _tempCal.GetHour(valPeriodo.dtDataOraStart) * 12;
-                            _istante += _tempCal.GetMinute(valPeriodo.dtDataOraStart) / 5;
-                            valPeriodo.PeriodoTemporale.minutoInizio = _istante;
+
 
                             // se non presente, aggiungo la settimana
                             _settAggiunta = _listaSett.Add(_settimanaStart.chiaveSettimana);
@@ -626,7 +645,7 @@ namespace ChargerLogic
                                 valPeriodo.Durata = (uint)(valPeriodo.PeriodoTemporale.minutoFine - valPeriodo.PeriodoTemporale.minutoInizio) ;
        
                                 CicliStatPeriodo.Add(valPeriodo);
-                                //Log.Debug("Ciclo n° " + valPeriodo.IdMemoriaLunga.ToString() + " chiuso in settimana ");
+                                Log.Debug("Ciclo n° " + valPeriodo.IdMemoriaLunga.ToString() + "/" + valPeriodo.TipoEvento.ToString() + " chiuso in settimana " + _settimanaStart.settimana.ToString());
                                 break;
 
                             }
@@ -634,43 +653,68 @@ namespace ChargerLogic
 
                             else
                             {
-                                // ciclo fino a che non chiudo il periodo
-
-
 
                                 // Chiudo il ciclo alle 24 di domenica e ne apro un altro
                                 Log.Debug("Ciclo n° " + valPeriodo.IdMemoriaLunga.ToString() + " non chiuso in settimana ");
-                                // Chiudo il primo ciclo
-                                valPeriodo.PeriodoTemporale.giornoFine = 7;
-                                valPeriodo.PeriodoTemporale.minutoFine = 2016;
+
+                                // break;
+                                int GiornoPrecedente = valPeriodo.PeriodoTemporale.giornoFine;
+
+                                // Chiudo il primo ciclo, se è l'ultima settimana dell'anno, calcolo il giorno
+                                if ( _settimanaStart.settimaneAnno == _settimanaStart.settimana)
+                                {
+                                    valPeriodo.PeriodoTemporale.giornoFine = ((int)_tempCal.GetDayOfWeek(new DateTime(_annoCorrente, 12, 31)) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(new DateTime(_annoCorrente, 12, 31));
+                                    valPeriodo.PeriodoTemporale.minutoFine = valPeriodo.PeriodoTemporale.giornoFine * 288;
+                                }
+                                else
+                                {
+
+                                    valPeriodo.PeriodoTemporale.giornoFine = 7;
+                                    valPeriodo.PeriodoTemporale.minutoFine = 2016;
+                                }
                                 valPeriodo.Durata = (uint)(valPeriodo.PeriodoTemporale.minutoFine - valPeriodo.PeriodoTemporale.minutoInizio);
                                 valPeriodo.SettimanaRiferimento = _settimanaStart;
                                 CicliStatPeriodo.Add(valPeriodo);
-
+                                Log.Debug("Ciclo n° " + valPeriodo.IdMemoriaLunga.ToString() + " Start: " + _settimanaStart.chiaveSettimana + "  - End: " +_settimanaEnd.chiaveSettimana);
                                 // Ora riapro il secondo
 
-                                 _settInizio = _tempCal.GetWeekOfYear(valPeriodo.dtDataOraFine, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
-                                 _settimanaStart = new SettimanaMR();
-                                _settimanaStart.settimana = _settInizio;
-                                _settimanaStart.anno = valPeriodo.dtDataOraFine.Year;
-                                _settimanaStart.chiaveSettimana = _settimanaStart.anno.ToString("0000") + _settimanaStart.settimana.ToString("00");
+                                _settCorrente += 1;
+                                if(_settCorrente > _settimanaStart.settimaneAnno)
+                                {
+                                    // sono nel nuovo anno
+                                    _settCorrente = 1;
+                                    _annoCorrente += 1;
 
-                                 _settfine = _tempCal.GetWeekOfYear(valPeriodo.dtDataOraFine, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+                                }
+                               
+                                _settimanaStart = new SettimanaMR();
+                                _settimanaStart.settimana = _settCorrente;
+                                _settimanaStart.anno = _annoCorrente;
+                                _settimanaStart.chiaveSettimana = _annoCorrente.ToString("0000") + _settCorrente.ToString("00");
+                                _settimanaStart.settimaneAnno = _tempCal.GetWeekOfYear(new DateTime(_annoCorrente, 12, 31, 12, 0, 0), CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+
+
+                                _settfine = _tempCal.GetWeekOfYear(valPeriodo.dtDataOraFine, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
                                  _settimanaEnd = new SettimanaMR();
                                 _settimanaEnd.settimana = _settfine;
-                                _settimanaEnd.anno = valPeriodo.dtDataOraStart.Year;
+                                _settimanaEnd.anno = valPeriodo.dtDataOraFine.Year;
                                 _settimanaEnd.chiaveSettimana = _settimanaEnd.anno.ToString("0000") + _settimanaEnd.settimana.ToString("00");
-
-                               // break;
-
-
 
                                 _StatCicloSBPeriodo nuovoPeriodo = new _StatCicloSBPeriodo();
                                 nuovoPeriodo.PeriodoTemporale = new PeriodoMR();
                                 nuovoPeriodo.SettimanaRiferimento = new SettimanaMR();
-                                nuovoPeriodo.PeriodoTemporale.settimana = _settfine;
-                                nuovoPeriodo.PeriodoTemporale.giornoInizio = 1;  //Lunedì
-                                nuovoPeriodo.PeriodoTemporale.minutoInizio = 0;  // ore 00:00
+                                nuovoPeriodo.PeriodoTemporale.settimana = _settCorrente;
+                                // se settimana 1, il giorno deve essere il primo dell'anno
+                                if (_settCorrente == 1)
+                                {
+                                    nuovoPeriodo.PeriodoTemporale.giornoInizio = ((int) _tempCal.GetDayOfWeek(new DateTime(_annoCorrente, 1, 1)) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(new DateTime(_annoCorrente, 1, 1));
+                                }
+                                else
+                                {
+                                    nuovoPeriodo.PeriodoTemporale.giornoInizio = 1;  //Lunedì
+                                }
+
+                                nuovoPeriodo.PeriodoTemporale.minutoInizio = (nuovoPeriodo.PeriodoTemporale.giornoInizio - 1) * 288;  // ore 00:00
                                 nuovoPeriodo.PeriodoTemporale.giornoFine = ((int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine);
                                 valPeriodo.PeriodoTemporale.giornoFine = ((int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine);
 
@@ -679,8 +723,7 @@ namespace ChargerLogic
                                 _istante += _tempCal.GetMinute(valPeriodo.dtDataOraFine) / 5;
                                 nuovoPeriodo.PeriodoTemporale.minutoFine = _istante;
                                 nuovoPeriodo.Durata = (uint)(nuovoPeriodo.PeriodoTemporale.minutoFine - nuovoPeriodo.PeriodoTemporale.minutoInizio);
-       
-
+    
                                 nuovoPeriodo.TipoEvento = valCiclo.TipoEvento;
                                 nuovoPeriodo.IdMemoriaLunga = valCiclo.IdMemoriaLunga;
                                 nuovoPeriodo.IdLocale = valCiclo.IdLocale;
@@ -699,16 +742,7 @@ namespace ChargerLogic
                                 nuovoPeriodo.TempMin = valCiclo.TempMin;
                                 nuovoPeriodo.TempMax = valCiclo.TempMax;
                                 nuovoPeriodo.DeltaTemp = valCiclo.DeltaTemp;
-
-                                // se non presente, aggiungo la settimana
-                                _settAggiunta = _listaSett.Add(_settimanaEnd.chiaveSettimana);
-                                if (_settAggiunta) SettimanePresenti.Add(_settimanaStart);
-                                nuovoPeriodo.SettimanaRiferimento = _settimanaStart;
-                                
-                                CicliStatPeriodo.Add(nuovoPeriodo);
-                                
-                                break;
-
+                                valPeriodo = nuovoPeriodo;
                             }
 
 

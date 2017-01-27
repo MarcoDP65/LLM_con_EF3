@@ -145,7 +145,7 @@ namespace MoriData
             {
                 if (_database == null)
                     return false;
-                if (_sb.Id != nullID && _sb.Id != null && SoloMemoria != false )
+                if (_sb.Id != nullID && _sb.Id != null && SoloMemoria == false )
                 {
 
                     _spybatt _TestDati = _caricaDati(_sb.Id);

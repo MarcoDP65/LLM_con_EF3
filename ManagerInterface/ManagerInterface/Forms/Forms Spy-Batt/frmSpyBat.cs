@@ -3488,7 +3488,7 @@ namespace PannelloCharger
                     }
 
                     //Energia
-                    double _kwtot = _stat.WHtotali / 100;
+                    double _kwtot = (double)_stat.WHtotali / 100;
 
                     txtStatTotEnergia.Text = _kwtot.ToString("0.0");
                     /*
@@ -3500,9 +3500,9 @@ namespace PannelloCharger
 
                     if (_stat.NumeroScariche > 0)
                     {
-                        double _kwMed = _stat.WHtotali / (100 * _stat.NumeroScariche);
+                        double _kwMed =(double)_stat.WHtotali /(double)(100 * _stat.NumeroScariche);
                         txtStatEnergiaMediaKWh.Text = _kwMed.ToString("0.0");
-                        _kwMed = _stat.AhTotali / (_stat.NumeroScariche);
+                        _kwMed = (double)_stat.AhTotali / (double)(_stat.NumeroScariche);
                         txtStatEnergiaMediaAh.Text = _kwMed.ToString("0.0");
 
                     }
@@ -4911,8 +4911,8 @@ namespace PannelloCharger
 
                     int puntomedio = (ciclo.PeriodoTemporale.minutoInizio + ciclo.PeriodoTemporale.minutoFine) / 2;
                     int _durata = ciclo.PeriodoTemporale.minutoFine - ciclo.PeriodoTemporale.minutoInizio;
-                    int _posMin = ciclo.PeriodoTemporale.minutoInizio + (_durata / 10);
-                    int _posMax = ciclo.PeriodoTemporale.minutoInizio + (_durata * 9 / 10);
+                    int _posMin = ciclo.PeriodoTemporale.minutoInizio + 5;// (_durata / 10);
+                    int _posMax = ciclo.PeriodoTemporale.minutoFine - 5;//  minutoInizio + (_durata * 9 / 10);
 
                     //----------------------------------------------------------
                     // Temperatura Massima

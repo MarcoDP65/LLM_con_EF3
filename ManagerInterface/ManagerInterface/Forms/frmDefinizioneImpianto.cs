@@ -260,29 +260,20 @@ namespace PannelloCharger
             {
                 int selectedMenuTag = Convert.ToInt32(((ToolStripMenuItem)sender).Tag);
                 NodoStruttura _tempNodo;
-                //string selectedMenuName = ((ToolStripMenuItem)sender).Name;
-                //Console.Write( "Menu Aggiungi: " + selectedMenuTag.ToString());
-
 
                 if(tlvStrutturaImpianto.SelectedObjects.Count > 0)
                 {
                     object _node = this.tlvStrutturaImpianto.SelectedObjects[0];
                     _tempNodo = (NodoStruttura)_node;
+                    frmDettagliNodo _NuovoNodo = new frmDettagliNodo();
+                    //_NuovoNodo.NodoPadre = _tempNodo;
+                    _NuovoNodo.NodoCorrente = new NodoStruttura(_database);
+                    _NuovoNodo.NodoCorrente.ParentGuid = _tempNodo.Guid;
+                    _NuovoNodo.MostraValori();
+                    _NuovoNodo.ShowDialog();
 
-
-
-
-                     
                 }
                 
-                //if (typeof(NodoStruttura) != _node.GetType())
-                //    return;
-
-
-               
-
-
-
 
             }
             catch (Exception Ex)

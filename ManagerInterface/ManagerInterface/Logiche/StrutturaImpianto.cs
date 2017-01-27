@@ -164,7 +164,7 @@ namespace ChargerLogic
                 _NodoStruttura _tempnodo = new _NodoStruttura();
                 _tempnodo.IdLocale = 1;
                 _tempnodo.Guid = NodoStruttura.GuidROOT;
-                _tempnodo.TipoNodo = (byte)NodoStruttura.TipoNodo.Radice;
+                _tempnodo.Tipo = (byte)NodoStruttura.TipoNodo.Radice;
                 _tempnodo.Level = 0;
                 _tempnodo.ParentIdLocale = _tempnodo.IdLocale;
                 _tempnodo.ParentGuid = NodoStruttura.GuidBASE;

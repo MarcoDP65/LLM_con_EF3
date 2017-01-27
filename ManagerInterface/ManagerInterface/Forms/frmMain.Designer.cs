@@ -81,6 +81,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
+            this.testCalendarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -298,7 +299,8 @@
             this.flashFTDIToolStripMenuItem,
             this.flashSPYBATTToolStripMenuItem,
             this.mSP430FlasherToolStripMenuItem,
-            this.programmazioniAvanzateToolStripMenuItem});
+            this.programmazioniAvanzateToolStripMenuItem,
+            this.testCalendarioToolStripMenuItem});
             this.mnuServizi.Name = "mnuServizi";
             resources.ApplyResources(this.mnuServizi, "mnuServizi");
             // 
@@ -412,7 +414,6 @@
             // 
             this.tstBtnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tstBtnExport, "tstBtnExport");
-            this.tstBtnExport.Image = global::PannelloCharger.Properties.Resources.export_01;
             this.tstBtnExport.Name = "tstBtnExport";
             this.tstBtnExport.Click += new System.EventHandler(this.tstBtnExport_Click);
             // 
@@ -443,6 +444,12 @@
             resources.ApplyResources(this.tstBtnClose, "tstBtnClose");
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
+            // 
+            // testCalendarioToolStripMenuItem
+            // 
+            this.testCalendarioToolStripMenuItem.Name = "testCalendarioToolStripMenuItem";
+            resources.ApplyResources(this.testCalendarioToolStripMenuItem, "testCalendarioToolStripMenuItem");
+            this.testCalendarioToolStripMenuItem.Click += new System.EventHandler(this.testCalendarioToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -526,6 +533,7 @@
         private System.Windows.Forms.ToolStripMenuItem importaHEXDUMPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuImpianto;
         private System.Windows.Forms.ToolStripMenuItem mnuImpiantoGestioneImpianto;
+        private System.Windows.Forms.ToolStripMenuItem testCalendarioToolStripMenuItem;
     }
 }
 
