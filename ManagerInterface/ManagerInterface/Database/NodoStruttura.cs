@@ -173,7 +173,10 @@ namespace MoriData
             {
                 if (_guid != null)
                 {
-                    
+                    if(_guid.ToString() == NodoStruttura.GuidBASE)
+                    {
+                        return false;
+                    }
 
                     _NodoStruttura _TestDati = _caricaDati(_guid.ToString());
                     if (_TestDati == null)
@@ -233,7 +236,8 @@ namespace MoriData
         {
             try
             {
-                _guid = new Guid();
+                _guid =  System.Guid.NewGuid();
+
                 _sbNS.Guid = _guid.ToString();
 
                 return _sbNS.Guid;

@@ -38,11 +38,11 @@
             // 
             this.tlvStrutturaImpianto.CellEditUseWholeCell = false;
             this.tlvStrutturaImpianto.FullRowSelect = true;
-            this.tlvStrutturaImpianto.Location = new System.Drawing.Point(23, 12);
+            this.tlvStrutturaImpianto.Location = new System.Drawing.Point(23, 26);
             this.tlvStrutturaImpianto.MultiSelect = false;
             this.tlvStrutturaImpianto.Name = "tlvStrutturaImpianto";
             this.tlvStrutturaImpianto.ShowGroups = false;
-            this.tlvStrutturaImpianto.Size = new System.Drawing.Size(1086, 461);
+            this.tlvStrutturaImpianto.Size = new System.Drawing.Size(1086, 447);
             this.tlvStrutturaImpianto.TabIndex = 1;
             this.tlvStrutturaImpianto.UseCompatibleStateImageBehavior = false;
             this.tlvStrutturaImpianto.View = System.Windows.Forms.View.Details;

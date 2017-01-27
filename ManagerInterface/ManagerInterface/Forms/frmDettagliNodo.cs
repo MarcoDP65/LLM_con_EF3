@@ -128,6 +128,7 @@ namespace PannelloCharger
                     return false;
                 }
 
+                _esito = true;
 
                 return _esito;
             }
@@ -161,7 +162,10 @@ namespace PannelloCharger
                     {
                         NodoCorrente.ParentGuid = txtParentGuid.Text ;
                     }
-                    if (NodoCorrente.Guid == "")
+                    if (NodoCorrente.Guid == null)
+                        txtCurrentGuid.Text = NodoCorrente.NuovoGuid();
+
+                    if (NodoCorrente.Guid == "" || NodoCorrente.Guid == null)
                         txtCurrentGuid.Text = NodoCorrente.NuovoGuid();
 
 

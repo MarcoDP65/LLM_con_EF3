@@ -235,7 +235,13 @@ namespace PannelloCharger
 
 
                 MenuNodo.Items.Add("-");
-                MenuNodo.Items.Add("Elimina");
+
+                VoceMenu = new ToolStripMenuItem();
+                VoceMenu.Text = "Elimina";
+                VoceMenu.Tag = 4;
+                VoceMenu.Click += new EventHandler(subMnuElimina_Click);
+                MenuNodo.Items.Add(VoceMenu);
+
 
                 /*
                 MenuNodo.Items.Add("Nuovo");
@@ -272,8 +278,42 @@ namespace PannelloCharger
                     _NuovoNodo.MostraValori();
                     _NuovoNodo.ShowDialog();
 
+                    //  To refresh the list of children under a model, you call RefreshObject() on the parent.                   
+                    this.tlvStrutturaImpianto.RefreshObject(_node);
                 }
-                
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+
+        }
+
+
+        private void subMnuElimina_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedMenuTag = Convert.ToInt32(((ToolStripMenuItem)sender).Tag);
+                NodoStruttura _tempNodo;
+
+                if (tlvStrutturaImpianto.SelectedObjects.Count > 0)
+                {
+                    object _node = this.tlvStrutturaImpianto.SelectedObjects[0];
+                    _tempNodo = (NodoStruttura)_node;
+                    frmDettagliNodo _NuovoNodo = new frmDettagliNodo();
+                    //_NuovoNodo.NodoPadre = _tempNodo;
+                    _NuovoNodo.NodoCorrente = new NodoStruttura(_database);
+                    _NuovoNodo.NodoCorrente.ParentGuid = _tempNodo.Guid;
+                    _NuovoNodo.MostraValori();
+                    _NuovoNodo.ShowDialog();
+
+                    //  To refresh the list of children under a model, you call RefreshObject() on the parent.                   
+                    this.tlvStrutturaImpianto.RefreshObject(_node);
+                }
+
 
             }
             catch (Exception Ex)
