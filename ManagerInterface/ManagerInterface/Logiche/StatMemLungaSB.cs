@@ -146,21 +146,21 @@ namespace ChargerLogic
         /// <returns></returns>
         public bool caricaSoglie()
         {
-            _profonditaDoD = 20;              // 1
-            _tMaxScarica = 50;                // 2
+            _profonditaDoD = 80;   // 20;     // 1
+            _tMaxScarica = 55;     // 50;     // 2
             _tMinScarica = 0;                 // 3
             _deltaTScarica = 12;              // 4
-            _tMaxCaricaComp = 50;             // 5
-            _tMaxCaricaParz = 50;             // 6
-            _deltaTCaricaComp = 12;           // 7
-            _deltaTCaricaParz = 12;           // 8
+            _tMaxCaricaComp = 55;  // 50;     // 5
+            _tMaxCaricaParz = 55;  // 50;     // 6
+            _deltaTCaricaComp = 15;// 12;           // 7
+            _deltaTCaricaParz = 15;// 12;           // 8
             _maxSbilanciamento = 0.05;        // 9
             _minFC = 1;                       // 10
-            _orePausaDODFascia810 = 5;        // 11
-            _orePausaDODFascia68 = 20;        // 12
-            _orePausaDODFascia46 = 72;        // 13
-            _orePausaDODFascia24 = 480;       // 14
-            _orePausaDODFascia02 = 480;       // 15
+            _orePausaDODFascia810 = 24; //  5;        // 11
+            _orePausaDODFascia68 =  72; // 20;        // 12
+            _orePausaDODFascia46 = 168; // 72;        // 13
+            _orePausaDODFascia24 = 360; // 480;       // 14
+            _orePausaDODFascia02 = 960; // 480;       // 15
 
 
             if (SoglieAnalisi != null)
@@ -528,7 +528,31 @@ namespace ChargerLogic
                         case (byte)SerialMessage.TipoCiclo.Pausa:
                             _numCicliTot += 1;
                             _numPause += 1;
-                            if (valCiclo.StatoCarica <= 70) _numPauseScarica += 1;
+                            int _orePausa = (int)ciclo.Durata / 3600;
+                            int _sogliaDOD = 100 - valCiclo.StatoCarica;
+                            if (_sogliaDOD > 80 )
+                            {
+                                if (_orePausa > _orePausaDODFascia810) _numPauseScarica += 1;
+                            }
+                            else if(_sogliaDOD <= 80 && _sogliaDOD > 60)
+                            {
+                                if (_orePausa > _orePausaDODFascia68) _numPauseScarica += 1;
+                            }
+                            else if (_sogliaDOD <= 60 && _sogliaDOD > 40)
+                            {
+                                if (_orePausa > _orePausaDODFascia46) _numPauseScarica += 1;
+                            }
+                            else if (_sogliaDOD <= 40 && _sogliaDOD > 20)
+                            {
+                                if (_orePausa > _orePausaDODFascia24) _numPauseScarica += 1;
+                            }
+                            else
+                            {
+                                if (_orePausa > _orePausaDODFascia02) _numPauseScarica += 1;
+                            }
+
+                           // if (valCiclo.StatoCarica <= 70) _numPauseScarica += 1;
+
                             _kWhtot += valCiclo.Wh;
                             _durataPause += valCiclo.Durata;
 

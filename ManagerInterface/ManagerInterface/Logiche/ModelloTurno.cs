@@ -44,7 +44,7 @@ namespace ChargerLogic
         {
             _modoTurno = ParametriSetupPro.TipoPianificazione.Tempo;
             _minutiDurata = 0;
-            _fattoreCarica = 102;
+            _fattoreCarica = 101;
             _flagParametri = 0x00;
         }
 
@@ -273,8 +273,8 @@ namespace ChargerLogic
                         Turno = new ModelloTurno[_numeroTurni];
                         Turno[0] = new ModelloTurno();
                         Turno[0].ModoTurno = ParametriSetupPro.TipoPianificazione.Tempo;
-                        Turno[0].MinutiDurata = 480;
-                        Turno[0].FattoreCarica = 102;
+                        Turno[0].MinutiDurata = 660;
+                        Turno[0].FattoreCarica = 101;
                         break;
                     case ParametriSetupPro.TipoPianificazione.Turni:
                         _numeroTurni = 3;

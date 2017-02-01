@@ -46,6 +46,7 @@ namespace ChargerLogic
 
                 var _dati = from s in _database.Table<_NodoStruttura>()
                             where s.ParentGuid == NodoStruttura.GuidBASE
+                            orderby s.Nome
                             select s;
 
 
@@ -68,6 +69,9 @@ namespace ChargerLogic
         }
 
 
+
+
+
         public ArrayList FigliNodo( string NodeGUID)
         {
             ArrayList _tempList = new ArrayList();
@@ -78,6 +82,7 @@ namespace ChargerLogic
 
                 var _dati = from s in _database.Table<_NodoStruttura>()
                             where s.ParentGuid == NodeGUID
+                            orderby s.Nome
                             select s;
 
 
@@ -99,14 +104,37 @@ namespace ChargerLogic
             }
         }
 
+        public bool CancellaNodo(string NodeGUID)
+        {
+
+            try
+            {
+                if (_database == null)
+                    return false;
+
+                SQLiteCommand CancellaRecord = _database.CreateCommand("delete from _NodoStruttura where Guid = ? ", NodeGUID);
+                int esito = CancellaRecord.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("RadiceStruttura: " + Ex.Message);
+                return false;
+
+            }
+        }
+
         public bool CaricaIcone()
         {
             try
             {
                 ListaIcone = new ImageList();
+                ListaIcone.ImageSize = new Size(24, 24);
                 ListaIcone.Images.Add(PannelloCharger.Properties.Resources.home);
                 ListaIcone.Images.Add(PannelloCharger.Properties.Resources.folder);
                 ListaIcone.Images.Add(PannelloCharger.Properties.Resources.plant);
+                ListaIcone.Images.Add(PannelloCharger.Properties.Resources.ico_SpyBatt);
 
                 return true;
             }
@@ -139,6 +167,9 @@ namespace ChargerLogic
                     case "plant":
                         _esito = 2;
                         break;
+                    case "spy-batt":
+                        _esito = 3;
+                        break;
                     default:
                         break;
                 }
@@ -154,6 +185,53 @@ namespace ChargerLogic
 
             }
         }
+
+
+        public bool CercaOrfani()
+        {
+            try
+            {
+                // Prima carico gli SpyBatt Orfani
+
+                string _sql = "";
+                _sql += " select t1.Id, t1.SwVersion, t1.ProductId, t1.HwVersion, t2.DataInstall, t2.Client, t2.BatteryBrand, t2.BatteryModel, t2.BatteryId, t2.ClientNote,t2.SerialNumber ";
+                _sql += " from _spybatt as t1 left outer join _sbDatiCliente as t2 on t1.Id = t2.IdApparato order by t2.ClientNote,t1.Id ";
+                _sql += " and t1.Id not in ( select IdApparato from _NodoStruttura) ";
+                Log.Info(_sql);
+
+                List<dataUtility.sbListaElementi> _resultSet = _database.Query<dataUtility.sbListaElementi>(_sql);
+
+                foreach (dataUtility.sbListaElementi item in _resultSet)
+                {
+
+                    _NodoStruttura _tempnodo = new _NodoStruttura();
+                    Guid _GuidFoglia = Guid.NewGuid();
+                    _tempnodo.Guid = _GuidFoglia.ToString();
+                    _tempnodo.Tipo = (byte)NodoStruttura.TipoNodo.FogliaSB;
+                    _tempnodo.Level = 2;
+                    //_tempnodo.ParentIdLocale = _tempnodo.IdLocale;
+                    _tempnodo.ParentGuid = NodoStruttura.GuidUNDEF;
+
+                    _tempnodo.Nome = item.BatteryId;
+                    _tempnodo.Descrizione = item.ClientNote;
+                    _tempnodo.Icona = "spy-batt";
+                    _tempnodo.IdApparato = item.Id;
+                    _tempnodo.CreationDate = DateTime.Now;
+                    _tempnodo.RevisionDate = DateTime.Now;
+                    int _result = _database.Insert(_tempnodo);
+                }
+
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("NodoRoot: " + ex.ToString());
+                return false;
+            }
+        }
+
+
 
 
 

@@ -106,7 +106,7 @@ namespace PannelloCharger
                 olvColumnName.IsTileViewColumn = true;
                 olvColumnName.Text = "Name";
                 olvColumnName.UseInitialLetterForGroup = true;
-                olvColumnName.Width = 180;
+                olvColumnName.Width = 300;
                 olvColumnName.WordWrap = true;
 
                 olvColumnName.ImageGetter = delegate (object x) {
@@ -116,6 +116,17 @@ namespace PannelloCharger
 
                 tlvStrutturaImpianto.Columns.Add(olvColumnName);
 
+
+                BrightIdeasSoftware.OLVColumn olvColumnDescrizione = new OLVColumn();
+                olvColumnDescrizione.AspectName = "Descrizione";
+                olvColumnDescrizione.IsTileViewColumn = true;
+                olvColumnDescrizione.Text = "Descrizione";
+                olvColumnDescrizione.UseInitialLetterForGroup = true;
+                olvColumnDescrizione.Width = 200;
+                olvColumnDescrizione.WordWrap = true;
+
+                tlvStrutturaImpianto.Columns.Add(olvColumnDescrizione);
+
                 TreeListView.TreeRenderer renderer = this.tlvStrutturaImpianto.TreeColumnRenderer;
                 renderer.LinePen = new Pen(Color.Firebrick, 0.5f);
                 renderer.LinePen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
@@ -124,6 +135,12 @@ namespace PannelloCharger
             {
                 Log.Error(Ex.Message);
             }
+
+        }
+
+
+        private void HandleModelCanDrop(object sender, BrightIdeasSoftware.ModelDropEventArgs e)
+        {
 
         }
 
@@ -169,6 +186,12 @@ namespace PannelloCharger
                 }
             };
 
+
+
+
+
+
+
             // Once those two delegates are in place, the TreeListView starts working
             // after setting the Roots property.
             tlvStrutturaImpianto.SmallImageList = PlantStruct.ListaIcone;
@@ -202,6 +225,7 @@ namespace PannelloCharger
                     //btnEliminaDati.Top = this.Height - 83;
                     //btnEsportaSpybatt.Top = this.Height - 83;
                     //btnImportaDati.Top = this.Height - 83;
+                    btnCaricaOrfani.Top = this.Height - 83;
                     btnChiudi.Top = this.Height - 83;
                     //txtIdScheda.Top = this.Height - 83;
 
@@ -213,7 +237,13 @@ namespace PannelloCharger
             }
         }
 
-        private void tlvStrutturaImpianto_CellRightClick(object sender, CellRightClickEventArgs e)
+
+
+        /// <summary>
+        /// Crea il menu di navigazione per i nodi base.
+        /// </summary>
+        /// <returns></returns>
+        private ContextMenuStrip MenuNavigazioneAlbero()
         {
             try
             {
@@ -242,15 +272,111 @@ namespace PannelloCharger
                 VoceMenu.Click += new EventHandler(subMnuElimina_Click);
                 MenuNodo.Items.Add(VoceMenu);
 
+                return MenuNodo;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                return null;
 
-                /*
-                MenuNodo.Items.Add("Nuovo");
-                MenuNodo.Items.Add("Copia");
-                MenuNodo.Items.Add("Sposta");
-                MenuNodo.Items.Add("Incolla");
+            }
+        }
+
+
+        private ContextMenuStrip MenuNavigazioneSpyBatt()
+        {
+            try
+            {
+                //genero un nuovo menù contestualizzato
+                MenuNodo = new ContextMenuStrip();
+                ToolStripMenuItem VoceMenu;
+
+                VoceMenu = new ToolStripMenuItem();
+                VoceMenu.Text = "Mostra";
+                VoceMenu.Tag = 1;
+                VoceMenu.Click += new EventHandler(subMnuMostraSB_Click);
+                MenuNodo.Items.Add(VoceMenu);
+
+                VoceMenu = new ToolStripMenuItem();
+                VoceMenu.Text = "Esporta";
+                VoceMenu.Tag = 2;
+                //VoceMenu.Click += new EventHandler(subMnuCopia_Click);
+                MenuNodo.Items.Add(VoceMenu);
+
+
                 MenuNodo.Items.Add("-");
-                MenuNodo.Items.Add("Elimina");
-                */
+
+                VoceMenu = new ToolStripMenuItem();
+                VoceMenu.Text = "Elimina";
+                VoceMenu.Tag = 4;
+                VoceMenu.Click += new EventHandler(subMnuElimina_Click);
+                MenuNodo.Items.Add(VoceMenu);
+
+                return MenuNodo;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                return null;
+
+            }
+        }
+
+
+
+
+
+
+
+
+        private void tlvStrutturaImpianto_CellRightClick(object sender, CellRightClickEventArgs e)
+        {
+            try
+            {
+                if (e == null) return;
+
+                NodoStruttura _tempNodo = null;
+
+                if (e.Model.GetType() == typeof(NodoStruttura))
+
+                {
+                    _tempNodo = (NodoStruttura)e.Model;
+
+                }
+
+                else return;
+
+                if (_tempNodo == null) return;
+
+                //genero un nuovo menù contestualizzato
+                MenuNodo = new ContextMenuStrip();
+
+
+
+                switch (_tempNodo.Tipo)
+                {
+                    case NodoStruttura.TipoNodo.Radice:
+                        break;
+                    case NodoStruttura.TipoNodo.Ramo:
+                        MenuNodo = MenuNavigazioneAlbero();
+                        break;
+                    case NodoStruttura.TipoNodo.RadiceCloud:
+                        break;
+                    case NodoStruttura.TipoNodo.FogliaSB:
+                        MenuNodo = MenuNavigazioneSpyBatt();
+                        break;
+                    case NodoStruttura.TipoNodo.FogliaLL:
+                        break;
+                    case NodoStruttura.TipoNodo.FogliaDS:
+                        break;
+                    case NodoStruttura.TipoNodo.FogliaDisp:
+                        break;
+                    default:
+                        break;
+                }
+
+
+
                 e.MenuStrip = MenuNodo;// this.DecideRightClickMenu(e.Model, e.Column);
             }
             catch (Exception Ex)
@@ -291,6 +417,32 @@ namespace PannelloCharger
 
         }
 
+        private void subMnuMostraSB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedMenuTag = Convert.ToInt32(((ToolStripMenuItem)sender).Tag);
+                NodoStruttura _tempNodo;
+
+                if (tlvStrutturaImpianto.SelectedObjects.Count > 0)
+                {
+                    object _node = this.tlvStrutturaImpianto.SelectedObjects[0];
+                    _tempNodo = (NodoStruttura)_node;
+                    ApriSpyBatt(_tempNodo.IdApparato);
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+
+        }
+
+
+
+
 
         private void subMnuElimina_Click(object sender, EventArgs e)
         {
@@ -303,12 +455,11 @@ namespace PannelloCharger
                 {
                     object _node = this.tlvStrutturaImpianto.SelectedObjects[0];
                     _tempNodo = (NodoStruttura)_node;
-                    frmDettagliNodo _NuovoNodo = new frmDettagliNodo();
-                    //_NuovoNodo.NodoPadre = _tempNodo;
-                    _NuovoNodo.NodoCorrente = new NodoStruttura(_database);
-                    _NuovoNodo.NodoCorrente.ParentGuid = _tempNodo.Guid;
-                    _NuovoNodo.MostraValori();
-                    _NuovoNodo.ShowDialog();
+
+                    if(_tempNodo.Cancellabile())
+                    {
+                        PlantStruct.CancellaNodo(_tempNodo.Guid);
+                    }
 
                     //  To refresh the list of children under a model, you call RefreshObject() on the parent.                   
                     this.tlvStrutturaImpianto.RefreshObject(_node);
@@ -343,5 +494,208 @@ namespace PannelloCharger
         {
 
         }
+
+        private void btnCaricaOrfani_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PlantStruct.CercaOrfani();
+                this.tlvStrutturaImpianto.Refresh();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+        }
+
+        private void tlvStrutturaImpianto_ModelCanDrop(object sender, ModelDropEventArgs e)
+        {
+            e.Handled = true;
+            e.Effect = DragDropEffects.None;
+            if (e.SourceModels.Contains(e.TargetModel))
+                e.InfoMessage = "Cannot drop on self";
+            else
+            {
+                
+                var sourceModels = e.SourceModels.Cast<NodoStruttura>();
+                 NodoStruttura target = e.TargetModel as NodoStruttura;
+                if (target == null)
+                    return;
+                if (sourceModels.Any(x => target.IsLeaf))
+                    e.InfoMessage = "Cannot drop on leaf";
+                else
+                {
+
+                    if (sourceModels.Any(x => target.DiscendenteDi(x)))
+                        e.InfoMessage = "Cannot drop on descendant";
+                    else
+                        e.Effect = DragDropEffects.Move;
+
+                }
+            }
+
+            
+
+        }
+
+        private void tlvStrutturaImpianto_Dropped(object sender, OlvDropEventArgs e)
+        {
+            try
+            {
+                
+                NodoStruttura _tempNodo;
+                if (e.Effect == DragDropEffects.Move)
+                {
+                    NodoStruttura _dest =(NodoStruttura) e.DropTargetItem.RowObject;
+                    e.InfoMessage = "Assegnato parent " + _dest.Nome;
+
+                    if (tlvStrutturaImpianto.SelectedObjects.Count > 0)
+                    {
+                        object _node = this.tlvStrutturaImpianto.SelectedObjects[0];
+                        _tempNodo = (NodoStruttura)_node;
+                        _tempNodo.ParentGuid = _dest.Guid;
+                        _tempNodo.salvaDati();
+
+
+                        //  To refresh the list of children under a model, you call RefreshObject() on the parent.                   
+                        this.tlvStrutturaImpianto.RefreshObject(this.tlvStrutturaImpianto.SelectedItem);
+                        tlvStrutturaImpianto.RefreshObject(e.DropTargetItem);
+                        // this.tlvStrutturaImpianto.Refresh();
+                    }
+
+
+                }
+
+             
+  
+                //e.DropTargetItem
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+
+        }
+
+        private void tlvStrutturaImpianto_ModelDropped(object sender, ModelDropEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+
+        }
+
+        private void tlvStrutturaImpianto_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+
+
+                if (tlvStrutturaImpianto.SelectedObject != null)
+                {
+                    MostraDettaglioRiga();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("flvwListaApparati_MouseDoubleClick: " + Ex.Message);
+            }
+
+        }
+
+        public void MostraDettaglioRiga()
+        {
+            try
+            {
+
+                if (tlvStrutturaImpianto.SelectedObjects.Count > 0)
+                {
+
+                    object _node = this.tlvStrutturaImpianto.SelectedObjects[0];
+                    NodoStruttura _tempNodo = (NodoStruttura)_node;
+
+                    switch (_tempNodo.Tipo)
+                    {
+                        case NodoStruttura.TipoNodo.Radice:
+                            break;
+                        case NodoStruttura.TipoNodo.Ramo:
+                            
+                            break;
+                        case NodoStruttura.TipoNodo.RadiceCloud:
+                            break;
+                        case NodoStruttura.TipoNodo.FogliaSB:
+                            if (_tempNodo.IdApparato != null)
+                            {
+                                ApriSpyBatt(_tempNodo.IdApparato);
+                            }
+                            break;
+                        case NodoStruttura.TipoNodo.FogliaLL:
+                            break;
+                        case NodoStruttura.TipoNodo.FogliaDS:
+
+                            break;
+                        case NodoStruttura.TipoNodo.FogliaDisp:
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+
+                
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDettaglioRiga: " + Ex.Message);
+            }
+
+        }
+
+
+
+        private void ApriSpyBatt(string IdApparato)
+        {
+            try
+            {
+
+                frmSpyBat sbCorrente = new frmSpyBat(ref _parametri, true, IdApparato, _logiche, false, false);
+                sbCorrente.MdiParent = this.MdiParent;
+                sbCorrente.StartPosition = FormStartPosition.CenterParent;
+                sbCorrente.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ApriSpyBatt: " + Ex.Message);
+            }
+
+        }
+
+
+        private void ApriExportSpyBatt(string IdApparato)
+        {
+            try
+            {
+
+                frmSbExport sbExport = new frmSbExport(ref _parametri, true, IdApparato, _logiche, false, false);
+                sbExport.MdiParent = this.MdiParent;
+                sbExport.StartPosition = FormStartPosition.CenterParent;
+                sbExport.Setmode(elementiComuni.modoDati.Output);
+                sbExport.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ApriExportSpyBatt: " + Ex.Message);
+            }
+
+        }
+
     }
 }

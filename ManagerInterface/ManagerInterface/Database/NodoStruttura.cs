@@ -171,9 +171,9 @@ namespace MoriData
         {
             try
             {
-                if (_guid != null)
+                if (_sbNS != null)
                 {
-                    if(_guid.ToString() == NodoStruttura.GuidBASE)
+                    if( _sbNS.Guid == null || _sbNS.Guid == NodoStruttura.GuidBASE)
                     {
                         return false;
                     }
@@ -193,7 +193,7 @@ namespace MoriData
                     }
                     else
                     {
-                        _sbNS.IdLocale = _TestDati.IdLocale;
+                        //_sbNS.IdLocale = _TestDati.IdLocale;
                         _sbNS.RevisionDate = DateTime.Now;
                         int _result = _database.Update(_sbNS);
                         _datiSalvati = true;
@@ -232,6 +232,9 @@ namespace MoriData
 
         }
 
+
+
+
         public string NuovoGuid()
         {
             try
@@ -249,14 +252,93 @@ namespace MoriData
             }
         }
 
-        
-        
+
+        public bool AntenatoDi(NodoStruttura Discendente)
+        {
+            try
+            {
+                // Se il nodo non ha figli è cancellabile
+                _NodoStruttura _firstChidren = (from s in _database.Table<_NodoStruttura>()
+                                                where s.ParentGuid == _sbNS.Guid
+                                                select s).FirstOrDefault();
 
 
+                return (_firstChidren == null);
+            }
 
+            catch (Exception Ex)
+            {
+                Log.Error("NodoStruttura.Cancellabile: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+   
+        public NodoStruttura getParent
+        {
+            get
+            {
+                NodoStruttura _tempNodo = null;
 
+                if (_sbNS.ParentGuid == NodoStruttura.GuidROOT || _sbNS.ParentGuid == null)
+                    return null;
 
+                return _tempNodo;
+            }
+        }
 
+        public bool DiscendenteDi(NodoStruttura Antenato)
+        {
+            try
+            {
+                // Scorro all'indietro la catena dei parent e verifico che la destinazione non sia nodo discendente
+                while(true)
+                {
+                    if(_sbNS.ParentGuid == NodoStruttura.GuidROOT || _sbNS.ParentGuid == null )
+                    {
+                        // Sono alla radice, non è discendente
+                        return false;
+                    }
+                    if (_sbNS.ParentGuid == Antenato.Guid)
+                    {
+                        // Il parentGuid coincide: è il figlio
+                        return true;
+                    }
+
+                    // non ho trovato, risalgo di un livello
+                    NodoStruttura _menoUno = new NodoStruttura(_database);
+                    _menoUno.caricaDati(_sbNS.ParentGuid);
+                    return _menoUno.DiscendenteDi(Antenato);
+                }
+
+ 
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("NodoStruttura.Cancellabile: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
+        public bool Cancellabile()
+        {
+            try
+            {
+                // Se il nodo non ha figli è cancellabile
+                _NodoStruttura _firstChidren = (from s in _database.Table<_NodoStruttura>()
+                                                where s.ParentGuid == _sbNS.Guid
+                                                select s).FirstOrDefault();
+              
+
+                return (_firstChidren==null);
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("NodoStruttura.Cancellabile: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
 
 
         #region Parametri

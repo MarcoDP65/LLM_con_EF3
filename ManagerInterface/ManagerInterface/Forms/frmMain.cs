@@ -45,8 +45,6 @@ namespace PannelloCharger
                
                 XmlConfigurator.Configure();
                 Log.Info("");
-                Log.Info("");
-                Log.Info("");
                 Log.Info("----------------------------------------------------------------------------------------------------------------------");
                 Log.Info("----    LADELIGHT Manager Session Start                                                                           ----");
                 Log.Info("----------------------------------------------------------------------------------------------------------------------");
@@ -83,7 +81,7 @@ namespace PannelloCharger
             {
                 Log.Debug("frmMainInitialize");
                 this.IsMdiContainer = true;
-
+                this.WindowState = FormWindowState.Maximized;
                 sstProgressBase.Visible = false;
             }
             catch (Exception Ex)

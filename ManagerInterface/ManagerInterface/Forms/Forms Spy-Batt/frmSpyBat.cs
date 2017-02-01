@@ -3405,6 +3405,9 @@ namespace PannelloCharger
         }
 
 
+        /// <summary>
+        /// Ricalcola le statistiche per lo SB corrente.
+        /// </summary>
         public void RicalcolaStatistiche()
         {
             try
@@ -5933,7 +5936,9 @@ namespace PannelloCharger
                 Ic24.MostraValore = true;
                 Ic24.Verso = IndicatoreCruscotto.VersoValori.Ascendente;
                 Ic24.InizializzaIndicatore(this.buiStatCockpit, 930, 300, 280, StringheStatistica.GougePauser1 + "\n" + StringheStatistica.GougePauser2);
-                Ic24.ImpostaValore((float)_stat.NumeroSovrascariche);
+                //Ic24.ImpostaValore((float)_stat.NumeroSovrascariche);
+                Ic24.ImpostaValore((float)_stat.NumeroPauseBattScarica);
+
 
             }
 
@@ -8051,13 +8056,13 @@ namespace PannelloCharger
 
                 if (_sb.sbCliente.MappaTurni.Length != 84)
                 {
-                    _sb.sbCliente.MappaTurni = new byte[84] { 0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x01, 0xFE, 0x66, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x01, 0xFE, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,  };
+                    _sb.sbCliente.MappaTurni = new byte[84] { 0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                                  0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,  };
                 }
 
                 byte[] _tempData = _sb.sbCliente.MappaTurni;

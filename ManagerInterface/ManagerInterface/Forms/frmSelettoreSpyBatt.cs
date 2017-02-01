@@ -186,16 +186,10 @@ namespace PannelloCharger
             try
             {
 
-                Log.Error("ApriSpyBatt: 1");
                 frmSpyBat sbCorrente = new frmSpyBat(ref _parametri, true, IdApparato, _logiche, false, false);
-                Log.Error("ApriSpyBatt: 2" );
                 sbCorrente.MdiParent = this.MdiParent;
-                Log.Error("ApriSpyBatt: 3" );
                 sbCorrente.StartPosition = FormStartPosition.CenterParent;
-                Log.Error("ApriSpyBatt: 4" );
                 sbCorrente.Show();
-                Log.Error("ApriSpyBatt: 5" );
-
 
             }
             catch (Exception Ex)
