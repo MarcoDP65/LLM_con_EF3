@@ -113,6 +113,16 @@ namespace PannelloCharger.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap echarger_600 {
+            get {
+                object obj = ResourceManager.GetObject("echarger_600", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap export {
             get {
                 object obj = ResourceManager.GetObject("export", resourceCulture);
@@ -236,6 +246,16 @@ namespace PannelloCharger.Properties {
         internal static System.Drawing.Bitmap IWa {
             get {
                 object obj = ResourceManager.GetObject("IWa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lade_light_INTEGRATED {
+            get {
+                object obj = ResourceManager.GetObject("lade_light_INTEGRATED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

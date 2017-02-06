@@ -64,6 +64,7 @@
             this.flashSPYBATTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mSP430FlasherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmazioniAvanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testCalendarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImpostazioni = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCercaDispositiviUSB = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCercaDispositiviCOM = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +82,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.testCalendarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -327,6 +327,12 @@
             resources.ApplyResources(this.programmazioniAvanzateToolStripMenuItem, "programmazioniAvanzateToolStripMenuItem");
             this.programmazioniAvanzateToolStripMenuItem.Click += new System.EventHandler(this.programmazioniAvanzateToolStripMenuItem_Click);
             // 
+            // testCalendarioToolStripMenuItem
+            // 
+            this.testCalendarioToolStripMenuItem.Name = "testCalendarioToolStripMenuItem";
+            resources.ApplyResources(this.testCalendarioToolStripMenuItem, "testCalendarioToolStripMenuItem");
+            this.testCalendarioToolStripMenuItem.Click += new System.EventHandler(this.testCalendarioToolStripMenuItem_Click);
+            // 
             // mnuImpostazioni
             // 
             resources.ApplyResources(this.mnuImpostazioni, "mnuImpostazioni");
@@ -445,17 +451,12 @@
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
             // 
-            // testCalendarioToolStripMenuItem
-            // 
-            this.testCalendarioToolStripMenuItem.Name = "testCalendarioToolStripMenuItem";
-            resources.ApplyResources(this.testCalendarioToolStripMenuItem, "testCalendarioToolStripMenuItem");
-            this.testCalendarioToolStripMenuItem.Click += new System.EventHandler(this.testCalendarioToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImage = global::PannelloCharger.Properties.Resources.lade_light_INTEGRATED;
             this.Controls.Add(this.tstPulsanti);
             this.Controls.Add(this.sstMain);
             this.Controls.Add(this.mnuMain);

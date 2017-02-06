@@ -2598,6 +2598,11 @@ namespace PannelloCharger
                 Log.Error(Ex.Message);
             }
         }
+
+        private void tbpConnessione_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

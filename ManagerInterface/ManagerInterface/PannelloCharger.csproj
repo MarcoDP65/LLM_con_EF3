@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>23</ApplicationRevision>
     <ApplicationVersion>2.00.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -369,6 +369,12 @@
     <Compile Include="Forms\frmMessaggioElettrolita.Designer.cs">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMonitorSig60.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMonitorSig60.Designer.cs">
+      <DependentUpon>frmMonitorSig60.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmMspFlasher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -701,6 +707,9 @@
     <EmbeddedResource Include="Forms\frmMessaggioElettrolita.resx">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMonitorSig60.resx">
+      <DependentUpon>frmMonitorSig60.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMspFlasher.resx">
       <DependentUpon>frmMspFlasher.cs</DependentUpon>
     </EmbeddedResource>
@@ -919,6 +928,7 @@
     <None Include="Resources\App-ladelight32.ico" />
     <Content Include="e-proOK.ico" />
     <None Include="Resources\folder.png" />
+    <None Include="Resources\echarger 600.png" />
     <Content Include="Resources\Grf-Car.bmp" />
     <Content Include="Resources\Grf-Scar.bmp" />
     <Content Include="Resources\Grf-V-Car.bmp" />
@@ -935,8 +945,10 @@
     <None Include="Resources\reset.png" />
     <None Include="Resources\Logo e-charger PRO sfondato.png" />
     <None Include="Resources\plant.png" />
+    <None Include="Resources\lade_light_INTEGRATED.PNG" />
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
+    <None Include="Resources\Sfondo_SPYBATT.bmp" />
     <Content Include="Resources\tre.png" />
     <None Include="Resources\trec.png" />
     <Content Include="Resources\usb.jpg" />

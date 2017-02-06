@@ -59,6 +59,8 @@
             this.btnGetSerialPorts = new System.Windows.Forms.Button();
             this.tbpArchivioModelli = new System.Windows.Forms.TabPage();
             this.grbModInvioModello = new System.Windows.Forms.GroupBox();
+            this.txtModVariabiliTrasmesse = new System.Windows.Forms.TextBox();
+            this.btnModInviaVariabili = new System.Windows.Forms.Button();
             this.pgbModStatoInvio = new System.Windows.Forms.ProgressBar();
             this.btnModAggiornaDisplay = new System.Windows.Forms.Button();
             this.txtModSchermateTrasmesse = new System.Windows.Forms.TextBox();
@@ -196,6 +198,7 @@
             this.pbxImgImmagine = new System.Windows.Forms.PictureBox();
             this.tbpVariabili = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.btnVarSalvaValore = new System.Windows.Forms.Button();
             this.txtVarValore = new System.Windows.Forms.TextBox();
             this.btnVarCancellaVariabile = new System.Windows.Forms.Button();
             this.btnVarInviaValore = new System.Windows.Forms.Button();
@@ -207,6 +210,7 @@
             this.btnVarCrea = new System.Windows.Forms.Button();
             this.txtVarNomeVariabile = new System.Windows.Forms.TextBox();
             this.tbpRealTime = new System.Windows.Forms.TabPage();
+            this.btnRtTestLed = new System.Windows.Forms.Button();
             this.label79 = new System.Windows.Forms.Label();
             this.txtRtSeqSchTime = new System.Windows.Forms.TextBox();
             this.txtRtSeqSchId = new System.Windows.Forms.TextBox();
@@ -320,10 +324,6 @@
             this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.btnVarSalvaValore = new System.Windows.Forms.Button();
-            this.txtModVariabiliTrasmesse = new System.Windows.Forms.TextBox();
-            this.btnModInviaVariabili = new System.Windows.Forms.Button();
-            this.btnRtTestLed = new System.Windows.Forms.Button();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpConnessione.SuspendLayout();
             this.pnlComandiImmediati.SuspendLayout();
@@ -396,6 +396,7 @@
             this.tbpConnessione.Size = new System.Drawing.Size(1625, 668);
             this.tbpConnessione.TabIndex = 0;
             this.tbpConnessione.Text = "Connessione";
+            this.tbpConnessione.Click += new System.EventHandler(this.tbpConnessione_Click);
             // 
             // pnlComandiImmediati
             // 
@@ -719,6 +720,25 @@
             this.grbModInvioModello.TabIndex = 24;
             this.grbModInvioModello.TabStop = false;
             this.grbModInvioModello.Text = "UPLOAD";
+            // 
+            // txtModVariabiliTrasmesse
+            // 
+            this.txtModVariabiliTrasmesse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtModVariabiliTrasmesse.Location = new System.Drawing.Point(266, 152);
+            this.txtModVariabiliTrasmesse.Name = "txtModVariabiliTrasmesse";
+            this.txtModVariabiliTrasmesse.Size = new System.Drawing.Size(74, 24);
+            this.txtModVariabiliTrasmesse.TabIndex = 107;
+            this.txtModVariabiliTrasmesse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnModInviaVariabili
+            // 
+            this.btnModInviaVariabili.Location = new System.Drawing.Point(23, 145);
+            this.btnModInviaVariabili.Name = "btnModInviaVariabili";
+            this.btnModInviaVariabili.Size = new System.Drawing.Size(201, 40);
+            this.btnModInviaVariabili.TabIndex = 106;
+            this.btnModInviaVariabili.Text = "Invia Variabili";
+            this.btnModInviaVariabili.UseVisualStyleBackColor = true;
+            this.btnModInviaVariabili.Click += new System.EventHandler(this.btnModInviaVariabili_Click);
             // 
             // pgbModStatoInvio
             // 
@@ -2241,6 +2261,16 @@
             this.panel10.Size = new System.Drawing.Size(668, 69);
             this.panel10.TabIndex = 22;
             // 
+            // btnVarSalvaValore
+            // 
+            this.btnVarSalvaValore.Location = new System.Drawing.Point(209, 20);
+            this.btnVarSalvaValore.Name = "btnVarSalvaValore";
+            this.btnVarSalvaValore.Size = new System.Drawing.Size(103, 33);
+            this.btnVarSalvaValore.TabIndex = 82;
+            this.btnVarSalvaValore.Text = "Salva Valore";
+            this.btnVarSalvaValore.UseVisualStyleBackColor = true;
+            this.btnVarSalvaValore.Click += new System.EventHandler(this.btnVarSalvaValore_Click);
+            // 
             // txtVarValore
             // 
             this.txtVarValore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2418,6 +2448,16 @@
             this.tbpRealTime.Size = new System.Drawing.Size(1625, 668);
             this.tbpRealTime.TabIndex = 1;
             this.tbpRealTime.Text = "RealTime";
+            // 
+            // btnRtTestLed
+            // 
+            this.btnRtTestLed.Location = new System.Drawing.Point(562, 152);
+            this.btnRtTestLed.Name = "btnRtTestLed";
+            this.btnRtTestLed.Size = new System.Drawing.Size(177, 41);
+            this.btnRtTestLed.TabIndex = 123;
+            this.btnRtTestLed.Text = "Test Led";
+            this.btnRtTestLed.UseVisualStyleBackColor = true;
+            this.btnRtTestLed.Click += new System.EventHandler(this.btnRtTestLed_Click);
             // 
             // label79
             // 
@@ -3589,45 +3629,6 @@
             this.flvStatoListaImg.UseCompatibleStateImageBehavior = false;
             this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
             this.flvStatoListaImg.VirtualMode = true;
-            // 
-            // btnVarSalvaValore
-            // 
-            this.btnVarSalvaValore.Location = new System.Drawing.Point(209, 20);
-            this.btnVarSalvaValore.Name = "btnVarSalvaValore";
-            this.btnVarSalvaValore.Size = new System.Drawing.Size(103, 33);
-            this.btnVarSalvaValore.TabIndex = 82;
-            this.btnVarSalvaValore.Text = "Salva Valore";
-            this.btnVarSalvaValore.UseVisualStyleBackColor = true;
-            this.btnVarSalvaValore.Click += new System.EventHandler(this.btnVarSalvaValore_Click);
-            // 
-            // txtModVariabiliTrasmesse
-            // 
-            this.txtModVariabiliTrasmesse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtModVariabiliTrasmesse.Location = new System.Drawing.Point(266, 152);
-            this.txtModVariabiliTrasmesse.Name = "txtModVariabiliTrasmesse";
-            this.txtModVariabiliTrasmesse.Size = new System.Drawing.Size(74, 24);
-            this.txtModVariabiliTrasmesse.TabIndex = 107;
-            this.txtModVariabiliTrasmesse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnModInviaVariabili
-            // 
-            this.btnModInviaVariabili.Location = new System.Drawing.Point(23, 145);
-            this.btnModInviaVariabili.Name = "btnModInviaVariabili";
-            this.btnModInviaVariabili.Size = new System.Drawing.Size(201, 40);
-            this.btnModInviaVariabili.TabIndex = 106;
-            this.btnModInviaVariabili.Text = "Invia Variabili";
-            this.btnModInviaVariabili.UseVisualStyleBackColor = true;
-            this.btnModInviaVariabili.Click += new System.EventHandler(this.btnModInviaVariabili_Click);
-            // 
-            // btnRtTestLed
-            // 
-            this.btnRtTestLed.Location = new System.Drawing.Point(562, 152);
-            this.btnRtTestLed.Name = "btnRtTestLed";
-            this.btnRtTestLed.Size = new System.Drawing.Size(177, 41);
-            this.btnRtTestLed.TabIndex = 123;
-            this.btnRtTestLed.Text = "Test Led";
-            this.btnRtTestLed.UseVisualStyleBackColor = true;
-            this.btnRtTestLed.Click += new System.EventHandler(this.btnRtTestLed_Click);
             // 
             // frmDisplayManager
             // 
