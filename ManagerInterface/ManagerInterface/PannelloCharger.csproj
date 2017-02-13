@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationRevision>24</ApplicationRevision>
     <ApplicationVersion>2.00.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -502,8 +502,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringheStatistica.resx</DependentUpon>
     </Compile>
+    <Compile Include="Servizi\echoMessaggio.cs" />
     <Compile Include="Servizi\GestioneTempi.cs" />
     <Compile Include="Servizi\JsonCustomAdapter.cs" />
+    <Compile Include="Servizi\modelloSigEcho.cs" />
     <Compile Include="Servizi\ParametriSetupPro.cs" />
     <Compile Include="Servizi\HexEncoding.cs" />
     <Compile Include="Servizi\ParametriSistema.cs" />

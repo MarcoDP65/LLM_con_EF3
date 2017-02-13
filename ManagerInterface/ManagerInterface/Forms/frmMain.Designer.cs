@@ -82,6 +82,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
+            this.sIG60MonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -299,6 +300,7 @@
             this.flashFTDIToolStripMenuItem,
             this.flashSPYBATTToolStripMenuItem,
             this.mSP430FlasherToolStripMenuItem,
+            this.sIG60MonitorToolStripMenuItem,
             this.programmazioniAvanzateToolStripMenuItem,
             this.testCalendarioToolStripMenuItem});
             this.mnuServizi.Name = "mnuServizi";
@@ -451,6 +453,12 @@
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
             // 
+            // sIG60MonitorToolStripMenuItem
+            // 
+            this.sIG60MonitorToolStripMenuItem.Name = "sIG60MonitorToolStripMenuItem";
+            resources.ApplyResources(this.sIG60MonitorToolStripMenuItem, "sIG60MonitorToolStripMenuItem");
+            this.sIG60MonitorToolStripMenuItem.Click += new System.EventHandler(this.sIG60MonitorToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             resources.ApplyResources(this, "$this");
@@ -535,6 +543,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuImpianto;
         private System.Windows.Forms.ToolStripMenuItem mnuImpiantoGestioneImpianto;
         private System.Windows.Forms.ToolStripMenuItem testCalendarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sIG60MonitorToolStripMenuItem;
     }
 }
 

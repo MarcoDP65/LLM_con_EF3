@@ -55,7 +55,7 @@ namespace ChargerLogic
             fwLevel = LivelloFirmware;
         }
 
-        new public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel, bool skipHead = false)
+        new public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel, bool skipHead = false, bool CreateMsgObject = false)
         {
             byte _ret;
             int _startPos;
@@ -778,6 +778,7 @@ namespace ChargerLogic
                             { return EsitoRisposta.BadCRC; }
 
                             // ora leggo la parte dati
+                            if (CreateMsgObject) ComandoStrat = new ComandoStrategia();
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
                             Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             _risposta = ComandoStrat.analizzaMessaggio(_buffArray);

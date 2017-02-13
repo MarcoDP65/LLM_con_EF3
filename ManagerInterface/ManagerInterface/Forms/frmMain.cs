@@ -1082,6 +1082,31 @@ namespace PannelloCharger
             TestFunzioni.StartPosition = FormStartPosition.CenterParent;
             TestFunzioni.Show();
         }
+
+        private void sIG60MonitorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmMonitorSig60))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                frmMonitorSig60 _sig60 = new frmMonitorSig60();
+                _sig60.MdiParent = this;
+                _sig60.StartPosition = FormStartPosition.CenterParent;
+                _sig60.Show();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain.monitorSIG60 : " + Ex.Message);
+            }
+        }
     }
 
     public class StatoPulsanti

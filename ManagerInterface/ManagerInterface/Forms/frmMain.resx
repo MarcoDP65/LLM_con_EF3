@@ -341,6 +341,12 @@
   <data name="mSP430FlasherToolStripMenuItem.Text" xml:space="preserve">
     <value>MSP430 Flasher</value>
   </data>
+  <data name="sIG60MonitorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 26</value>
+  </data>
+  <data name="sIG60MonitorToolStripMenuItem.Text" xml:space="preserve">
+    <value>SIG60 Monitor</value>
+  </data>
   <data name="programmazioniAvanzateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>259, 26</value>
   </data>
@@ -798,8 +804,8 @@
         5m3HU0znfD08tWAXnvzMkHwwKBzmi2AemVfmmZtPSUn5q0Qi+VdsbOwb8fHxM2ao2dopfLRtSGG+PhSo
         mMKn2lCY/QUe/1gdj3+0+SFGbWxLOhVma0Jhjg6emK8LBQriCRpIhYXbhpg35pF5ZZ6Zd4F2rKQdOymR
         QwkJCQH0WeLiF5z1yufGlxXmsgC24vFZWlR4IgQNgm0fNpguDSjMIp2ztUi3Drj++TvxssqeLjf/0Ezm
-        jXlkXpln5l2IiYlRoh3G9MGFtqFEAu1LjYiOzrR09ilTNXZs/EjNov3ZFUb9T8xRufXYp9vwMPPEnHW3
-        /nf5zr6PNlld2GjiVL/PNVBKfjLIXyrzxjyOezWOiYlR+n+8+JGWsJRA2gAAAABJRU5ErkJggg==
+        jXlkXpln5l2IiYlRoh3G9MGFtqFEAu1LjYiOzrR09ilTNXZs/EjNov3ZFUb9T8xRvvXYp9vwMPPEHJVb
+        /7t8Z99Hm6wubDRxqt/nGiglPxnkL5V5Yx7HvRrHxMQo/T+7+JGUmqF3AwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="tstBtnPrint.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1579,6 +1585,12 @@
   </data>
   <data name="&gt;&gt;pdoStampaForm.Type" xml:space="preserve">
     <value>System.Drawing.Printing.PrintDocument, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;sIG60MonitorToolStripMenuItem.Name" xml:space="preserve">
+    <value>sIG60MonitorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;sIG60MonitorToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain</value>

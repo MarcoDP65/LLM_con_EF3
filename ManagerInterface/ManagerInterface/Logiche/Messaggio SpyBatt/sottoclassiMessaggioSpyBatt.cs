@@ -2067,9 +2067,9 @@ namespace ChargerLogic
 
 
 
-                    ComandoLibreria = memData[0];
-                    LunghezzaDati = memData[1];
-                    if ((memData.Length - LunghezzaDati) != 3 )
+                    ComandoLibreria = memDataDecoded[0];
+                    LunghezzaDati = memDataDecoded[1];
+                    if ((memDataDecoded.Length - LunghezzaDati) != 3 )
                         return EsitoRisposta.LunghezzaErrata;
                     EsitoChiamata = memData[2];
                     datiPronti = true;
@@ -2116,6 +2116,85 @@ namespace ChargerLogic
 
             }
 
+            public string DescComandoLibreria
+            {
+                get
+                {
+                    switch (ComandoLibreria)
+                    {
+                        case 0x01:
+                            return "CMD_R - Reset Libreria";
+
+                        case 0x02:
+                            return "CMD_IS - Richiesta Strategia";
+
+                        case 0x03:
+                            return "CMD_AV - Avanzamento Carica";
+
+                        case 0x04:
+                            return "CMD_STP - Arresto Forzato della carica";
+
+                        case 0x05:
+                            return "CMD_SIS - Richiesta Strategia";
+
+                        case 0xA0:
+                            return "CMD_QRY - Richiesta Informazioni";
+
+                        case 0x54:
+                            return "CMD_RDTE - Legge il Tipo Lungo Attuale";
+
+                        case 0x55:
+                            return "CMD_WRTE - Forza il Tipo Lungo Attuale";
+
+                        default:
+                            return ComandoLibreria.ToString("X2") ;
+                  
+                    }
+                }
+            }
+
+            /// <summary>
+            /// In base al comando corrente ritorna una stringa con i parametri in chiaro.
+            /// </summary>
+            /// <value>
+            /// The par comando libreria.
+            /// </value>
+            public string ParComandoLibreria
+            {
+                get
+                {
+                    switch (ComandoLibreria)
+                    {
+                        case 0x01:
+                            return "CMD_R - Reset Libreria";
+
+                        case 0x02:
+                            return "Richiesta Strategia\nUno\nDue\nTre Quattro e cinque";
+
+                        case 0x03:
+                            return "CMD_AV - Avanzamento Carica";
+
+                        case 0x04:
+                            return "CMD_STP - Arresto Forzato della carica";
+
+                        case 0x05:
+                            return "Richiesta Strategia\nUno\nDue\nTre Quattro e cinque";
+
+                        case 0xA0:
+                            return "CMD_QRY - Richiesta Informazioni";
+
+                        case 0x54:
+                            return "CMD_RDTE - Legge il Tipo Lungo Attuale";
+
+                        case 0x55:
+                            return "CMD_WRTE - Forza il Tipo Lungo Attuale";
+
+                        default:
+                            return ComandoLibreria.ToString("X2");
+
+                    }
+                }
+            }
 
 
         }
