@@ -127,7 +127,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkCliResetContatori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>791, 314</value>
+    <value>1277, 588</value>
   </data>
   <data name="chkCliResetContatori.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 21</value>
@@ -595,10 +595,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnResetScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1294, 557</value>
+    <value>1249, 546</value>
   </data>
   <data name="btnResetScheda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 36</value>
+    <value>246, 36</value>
   </data>
   <data name="btnResetScheda.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -991,7 +991,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSalvaCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>791, 272</value>
+    <value>791, 242</value>
   </data>
   <data name="btnSalvaCliente.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 36</value>
@@ -1612,16 +1612,16 @@
     <value>NoControl</value>
   </data>
   <data name="label254.Location" type="System.Drawing.Point, System.Drawing">
-    <value>468, 150</value>
+    <value>129, 150</value>
   </data>
   <data name="label254.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
+    <value>82, 17</value>
   </data>
   <data name="label254.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
   <data name="label254.Text" xml:space="preserve">
-    <value>Codice  L.L.</value>
+    <value>Descrizione</value>
   </data>
   <data name="&gt;&gt;label254.Name" xml:space="preserve">
     <value>label254</value>
@@ -1639,13 +1639,13 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtCliCodiceLL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>471, 170</value>
+    <value>38, 170</value>
   </data>
   <data name="txtCliCodiceLL.MaxLength" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="txtCliCodiceLL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>73, 27</value>
   </data>
   <data name="txtCliCodiceLL.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1750,10 +1750,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtIdBat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 170</value>
+    <value>132, 170</value>
   </data>
   <data name="txtIdBat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 27</value>
+    <value>422, 27</value>
   </data>
   <data name="txtIdBat.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1780,13 +1780,13 @@
     <value>35, 150</value>
   </data>
   <data name="lblCliIdBatteria.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 17</value>
+    <value>76, 17</value>
   </data>
   <data name="lblCliIdBatteria.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
   <data name="lblCliIdBatteria.Text" xml:space="preserve">
-    <value>Identificativo Batteria</value>
+    <value>Id. Batteria</value>
   </data>
   <data name="&gt;&gt;lblCliIdBatteria.Name" xml:space="preserve">
     <value>lblCliIdBatteria</value>
@@ -5140,7 +5140,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnPianSalvaCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 40</value>
+    <value>263, 40</value>
   </data>
   <data name="btnPianSalvaCliente.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 28</value>
@@ -5167,7 +5167,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnPianRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 9</value>
+    <value>351, 40</value>
   </data>
   <data name="btnPianRefresh.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 28</value>
@@ -5197,7 +5197,7 @@
     <value>35, 40</value>
   </data>
   <data name="cmbModoPianificazione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 28</value>
+    <value>222, 28</value>
   </data>
   <data name="cmbModoPianificazione.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -5248,10 +5248,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="cmbRabboccatore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>705, 40</value>
+    <value>774, 40</value>
   </data>
   <data name="cmbRabboccatore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 28</value>
+    <value>238, 28</value>
   </data>
   <data name="cmbRabboccatore.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -5275,7 +5275,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro08.Location" type="System.Drawing.Point, System.Drawing">
-    <value>693, 20</value>
+    <value>771, 20</value>
   </data>
   <data name="lblPro08.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 17</value>
@@ -5302,10 +5302,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="cmbBiberonaggio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>370, 40</value>
+    <value>507, 40</value>
   </data>
   <data name="cmbBiberonaggio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 28</value>
+    <value>238, 28</value>
   </data>
   <data name="cmbBiberonaggio.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -5329,7 +5329,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPro09.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 20</value>
+    <value>505, 20</value>
   </data>
   <data name="lblPro09.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 17</value>
@@ -8287,7 +8287,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.18, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.23, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -8351,6 +8351,306 @@
   </data>
   <data name="&gt;&gt;tabSetupPianificazione.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="txtProgEqCorrenteImpulso.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtProgEqCorrenteImpulso.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 51</value>
+  </data>
+  <data name="txtProgEqCorrenteImpulso.MaxLength" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtProgEqCorrenteImpulso.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 27</value>
+  </data>
+  <data name="txtProgEqCorrenteImpulso.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="txtProgEqCorrenteImpulso.Text" xml:space="preserve">
+    <value>60</value>
+  </data>
+  <data name="txtProgEqCorrenteImpulso.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqCorrenteImpulso.Name" xml:space="preserve">
+    <value>txtProgEqCorrenteImpulso</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqCorrenteImpulso.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqCorrenteImpulso.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqCorrenteImpulso.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label271.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label271.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label271.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 31</value>
+  </data>
+  <data name="label271.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 17</value>
+  </data>
+  <data name="label271.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label271.Text" xml:space="preserve">
+    <value>Corrente Impulso (A)</value>
+  </data>
+  <data name="&gt;&gt;label271.Name" xml:space="preserve">
+    <value>label271</value>
+  </data>
+  <data name="&gt;&gt;label271.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label271.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;label271.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label270.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label270.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label270.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 99</value>
+  </data>
+  <data name="label270.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="label270.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="label270.Text" xml:space="preserve">
+    <value>Minuti Pausa</value>
+  </data>
+  <data name="&gt;&gt;label270.Name" xml:space="preserve">
+    <value>label270</value>
+  </data>
+  <data name="&gt;&gt;label270.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label270.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;label270.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtProgMinPause.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtProgMinPause.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 119</value>
+  </data>
+  <data name="txtProgMinPause.MaxLength" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtProgMinPause.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 27</value>
+  </data>
+  <data name="txtProgMinPause.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="txtProgMinPause.Text" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="txtProgMinPause.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtProgMinPause.Name" xml:space="preserve">
+    <value>txtProgMinPause</value>
+  </data>
+  <data name="&gt;&gt;txtProgMinPause.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtProgMinPause.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;txtProgMinPause.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label269.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label269.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label269.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 99</value>
+  </data>
+  <data name="label269.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="label269.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="label269.Text" xml:space="preserve">
+    <value>Minuti Erog.</value>
+  </data>
+  <data name="&gt;&gt;label269.Name" xml:space="preserve">
+    <value>label269</value>
+  </data>
+  <data name="&gt;&gt;label269.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label269.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;label269.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtProgEqMinPulse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtProgEqMinPulse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 119</value>
+  </data>
+  <data name="txtProgEqMinPulse.MaxLength" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtProgEqMinPulse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 27</value>
+  </data>
+  <data name="txtProgEqMinPulse.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="txtProgEqMinPulse.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtProgEqMinPulse.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqMinPulse.Name" xml:space="preserve">
+    <value>txtProgEqMinPulse</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqMinPulse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqMinPulse.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqMinPulse.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label268.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label268.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label268.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 99</value>
+  </data>
+  <data name="label268.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 17</value>
+  </data>
+  <data name="label268.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="label268.Text" xml:space="preserve">
+    <value>Impulsi</value>
+  </data>
+  <data name="&gt;&gt;label268.Name" xml:space="preserve">
+    <value>label268</value>
+  </data>
+  <data name="&gt;&gt;label268.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label268.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;label268.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtProgEqNumPulse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtProgEqNumPulse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 119</value>
+  </data>
+  <data name="txtProgEqNumPulse.MaxLength" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtProgEqNumPulse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 27</value>
+  </data>
+  <data name="txtProgEqNumPulse.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="txtProgEqNumPulse.Text" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="txtProgEqNumPulse.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqNumPulse.Name" xml:space="preserve">
+    <value>txtProgEqNumPulse</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqNumPulse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqNumPulse.Parent" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;txtProgEqNumPulse.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="grbProgParEqual.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 35</value>
+  </data>
+  <data name="grbProgParEqual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 171</value>
+  </data>
+  <data name="grbProgParEqual.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="grbProgParEqual.Text" xml:space="preserve">
+    <value>Equalizzazione</value>
+  </data>
+  <data name="&gt;&gt;grbProgParEqual.Name" xml:space="preserve">
+    <value>grbProgParEqual</value>
+  </data>
+  <data name="&gt;&gt;grbProgParEqual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbProgParEqual.Parent" xml:space="preserve">
+    <value>tabSetupParametri</value>
+  </data>
+  <data name="&gt;&gt;grbProgParEqual.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabSetupParametri.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabSetupParametri.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1678, 733</value>
+  </data>
+  <data name="tabSetupParametri.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabSetupParametri.Text" xml:space="preserve">
+    <value>Parametri Pianificazione</value>
+  </data>
+  <data name="&gt;&gt;tabSetupParametri.Name" xml:space="preserve">
+    <value>tabSetupParametri</value>
+  </data>
+  <data name="&gt;&gt;tabSetupParametri.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabSetupParametri.Parent" xml:space="preserve">
+    <value>tbcSetup</value>
+  </data>
+  <data name="&gt;&gt;tabSetupParametri.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tbcSetup.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>

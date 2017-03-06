@@ -104,17 +104,12 @@ namespace PannelloCharger
                     //get first item print in text
                     cboPorts.Text = ComPortName; // ArrayComPortsNames[0];
                     //Baud Rate
-                    //cboBaudRate.Items.Add(300);
-                    //cboBaudRate.Items.Add(600);
-                    //cboBaudRate.Items.Add(1200);
-                    //cboBaudRate.Items.Add(2400);
                     cboBaudRate.Items.Add(9600);
-                    //cboBaudRate.Items.Add(14400);
                     cboBaudRate.Items.Add(19200);
                     cboBaudRate.Items.Add(38400);
                     cboBaudRate.Items.Add(57600);
                     //cboBaudRate.Items.Add(115200);
-                    cboBaudRate.Items.ToString();
+                    //cboBaudRate.Items.ToString();
                     //get first item print in text
                     cboBaudRate.Text = "9600";  //cboBaudRate.Items[0].ToString();
                     //Data Bits
@@ -255,23 +250,30 @@ namespace PannelloCharger
 
         private void btnGetSigRegister_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+                string _msg;
+                byte[] _comando = new byte[1];
 
-            string _msg;
-            byte[] _comando = new byte[1];
+                //txtSerialEcho.Text += "\r\n";
+                //Application.DoEvents();
 
-            //txtSerialEcho.Text += "\r\n";
-            //Application.DoEvents();
+                _comando[0] = 0x0D;
 
-            _comando[0] = 0x0D;
+                ScriviMessaggioByte(_comando);
+                Thread.Sleep(200);
 
-            ScriviMessaggioByte(_comando);
-            Thread.Sleep(200);
+                _comando[0] = 0x1D;
+                ScriviMessaggioByte(_comando);
+                Thread.Sleep(200);
+                txtSerialEcho.AppendText("\r\n");
+            }
 
-            _comando[0] = 0x1D;
-            ScriviMessaggioByte(_comando);
-            Thread.Sleep(200);
-            txtSerialEcho.AppendText("\r\n");
+            catch (Exception Ex)
+            {
+                Log.Error("btnGetSigRegister_Click: " + Ex.Message);
+            }
         }
 
 
@@ -923,6 +925,7 @@ namespace PannelloCharger
         {
 
             //coloro la riga in base al Tipo Device
+            if (e.Model == null) return;
             echoMessaggio messaggio = (echoMessaggio)e.Model;
             switch (messaggio.Device)
             {
@@ -1267,6 +1270,28 @@ namespace PannelloCharger
         private void frmMonitorSig60_ResizeEnd(object sender, EventArgs e)
         {
             //RidimensionaControlli();
+        }
+
+        private void btnCmdStartCom_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _mS.Comando = MessaggioSpyBatt.TipoComando.SB_Sstart;
+                _mS.ComponiMessaggio();
+
+                Log.Debug("Send SB START");
+                ///Log.Debug(_mS.hexdumpMessaggio());
+                ScriviMessaggioByte(_mS.MessageBuffer);
+                Thread.Sleep(200);
+
+                txtSerialEcho.AppendText("\r\n");
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnGetSigRegister_Click: " + Ex.Message);
+            }
         }
     }
 

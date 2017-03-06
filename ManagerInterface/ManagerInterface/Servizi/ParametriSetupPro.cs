@@ -15,6 +15,7 @@ namespace ChargerLogic
     public class ParametriSetupPro
     {
         public enum TipoPianificazione : byte { NonDefinita = 0x00, Tempo = 0x01, Turni = 0x02 };
+        public enum ModoEqualizzazione : byte { NO = 0x00, Full = 0x01};
 
         public List<Pianificazione> TipiPianificazione = new List<Pianificazione>
                                {

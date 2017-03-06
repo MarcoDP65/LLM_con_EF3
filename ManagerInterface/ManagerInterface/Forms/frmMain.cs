@@ -932,6 +932,34 @@ namespace PannelloCharger
             }
         }
 
+        public void salva(bool silent = false)
+        {
+            try
+            {
+                Form _tempChild = this.ActiveMdiChild;
+
+                // Se non ho finestre figlio aperte esco
+                if (_tempChild == null) return;
+                if (_tempChild is frmSpyBat)
+                {
+                    frmSpyBat _tempF = (frmSpyBat)_tempChild;
+                    _tempF.SalvaDati();
+                    return;
+                }
+                if (_tempChild is frmListaCicliBreve)
+                {
+                    return;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain - salva: " + Ex.Message);
+            }
+        }
+
+
 
         public void stampa(bool preview = false, bool SelPrinter = false)
         {
@@ -1107,6 +1135,67 @@ namespace PannelloCharger
                 Log.Error("frmMain.monitorSIG60 : " + Ex.Message);
             }
         }
+
+        private void tstBtnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                salva(false);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain - tstBtnRefresh_Click: " + Ex.Message);
+            }
+        }
+
+        private void frmMain_MdiChildActivate(object sender, EventArgs e)
+        {
+            try
+            {
+                // cancello le iscrizioni all'evento dati da salvare
+                if (this.ActiveMdiChild is frmSpyBat)
+                {
+                    frmSpyBat _tempSb = (frmSpyBat)this.ActiveMdiChild;
+                    cEventHelper.RemoveEventHandler(_tempSb, "DatiCambiati");
+                    _tempSb.DatiCambiati += DatiDaSalvare;
+                }
+                else
+                {
+                    tstBtnSave.Enabled = false;
+                }
+
+                
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain_MdiChildActivate: " + Ex.Message);
+            }
+        }
+
+
+        public void DatiDaSalvare (object sender, EventArgs args)
+        {
+            try
+            {
+                DatiCambiatiEventArgs ArgChiamata;
+                if (args is DatiCambiatiEventArgs)
+                {
+                    ArgChiamata = (DatiCambiatiEventArgs)args;
+                }
+                else return;
+
+                tstBtnSave.Enabled = !ArgChiamata.DaSalvare;
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("DatiDaSalvare: " + Ex.Message);
+            }
+        }
+
     }
 
     public class StatoPulsanti

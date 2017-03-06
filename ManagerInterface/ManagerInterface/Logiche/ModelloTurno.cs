@@ -23,13 +23,7 @@ namespace ChargerLogic
     /// </summary>
     public class ModelloTurno
     {
-        /*
-        public enum TipoSchedulazione : byte
-        {
-            Tempo = 0x00,
-            Turni3x7 = 0x01,
-        };
-        */
+
         byte _tipoModello;
         //TipoSchedulazione _modoTurno;
         ParametriSetupPro.TipoPianificazione _modoTurno;
@@ -38,6 +32,9 @@ namespace ChargerLogic
         byte _finecambio;
         byte _fattoreCarica;
         byte _flagParametri;
+        byte _flagEqual;
+        byte _StartEqual;
+
         byte[] _modelloDati;
 
         public ModelloTurno ()
@@ -46,6 +43,8 @@ namespace ChargerLogic
             _minutiDurata = 0;
             _fattoreCarica = 101;
             _flagParametri = 0x00;
+            _flagEqual = 0;
+            _StartEqual = 0;
         }
 
         public bool fromData(byte[] ModelloDati )
@@ -68,6 +67,8 @@ namespace ChargerLogic
                             _minutiDurata = 0;
                             _fattoreCarica = 0;
                             _flagParametri =0;
+                            _flagEqual = 0;
+                            _StartEqual = 0;
 
                             break;
                         }
@@ -80,6 +81,8 @@ namespace ChargerLogic
                             _minutiDurata += ModelloDati[1];
                             _fattoreCarica = ModelloDati[2];
                             _flagParametri = ModelloDati[3];
+                            _flagEqual = ModelloDati[4];
+                            _StartEqual = ModelloDati[5];
 
                             break;
                         }
@@ -91,7 +94,8 @@ namespace ChargerLogic
                             _finecambio = ModelloDati[1];
                             _fattoreCarica = ModelloDati[2];
                             _flagParametri = ModelloDati[3];
-
+                            _flagEqual = 0;
+                            _StartEqual = 0;
                             break;
                         }
                
@@ -129,11 +133,14 @@ namespace ChargerLogic
                         _modelloDati[1] = 0;
                         break;
                     case ParametriSetupPro.TipoPianificazione.Tempo:
+                        _modelloDati = new byte[6];
                         byte HiVal = 0;
                         byte LoVal = 0;
                         FunzioniComuni.SplitUshort(_minutiDurata, ref LoVal, ref HiVal);
                         _modelloDati[0] = HiVal;
                         _modelloDati[1] = LoVal;
+                        _modelloDati[4] = _flagEqual;
+                        _modelloDati[5] = _StartEqual;
                         break;
                     case ParametriSetupPro.TipoPianificazione.Turni:
                         _modelloDati[0] = _inizioCambio;
@@ -147,6 +154,7 @@ namespace ChargerLogic
 
                 _modelloDati[2] = _fattoreCarica;
                 _modelloDati[3] = _flagParametri;
+
 
                 return _modelloDati;
             }
@@ -232,6 +240,42 @@ namespace ChargerLogic
                 _flagParametri = value;
             }
         }
+
+        public byte flagEqual
+        {
+            get
+            {
+                return _flagEqual;
+            }
+            set
+            {
+
+                if((ParametriSetupPro.ModoEqualizzazione)_flagEqual == ParametriSetupPro.ModoEqualizzazione.NO)
+                {
+                    _flagParametri &= 0xFE; // 1111 1110  ==> forzo il bit 0 a 0
+                }
+                else
+                {
+                    _flagParametri |= 0x01; // 0000 0001  ==> forzo il bit 0 a 1
+                }
+                _flagEqual = value;
+            }
+        }
+
+        public byte StartEqual
+        {
+            get
+            {
+                return _StartEqual;
+            }
+            set
+            {
+                _StartEqual = value;
+            }
+        }
+
+
+
 
     }
 

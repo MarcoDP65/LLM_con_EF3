@@ -43,9 +43,7 @@ namespace PannelloCharger
                 return "N.D.";
             }
         }
-
     }
-
 
     public class SettimanaMR
     {
@@ -186,6 +184,32 @@ namespace PannelloCharger
 
             }
         }
+
+        public byte OreMinuti
+        {
+            get
+            {
+                return _dataModel;
+            }
+            set
+            {
+                _dataModel = value;
+                _ore = EstraiOre(value);
+                Ore = _ore;
+                _minuti = EstraiMinuti(value);
+                Minuti = _minuti;
+            }
+
+        }
+
+        public override string ToString()
+        {
+         
+                string _tempstr = _ore.ToString("00") + ":" + _minuti.ToString("00");
+                return _tempstr;
+            
+        }
+
 
     }
 

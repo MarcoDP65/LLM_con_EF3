@@ -1520,6 +1520,11 @@ namespace ChargerLogic
                         MessageBuffer[_arrayInit + 2] = lsb;
                         _arrayInit += 2;
 
+                        // Togliere la zona contatori
+
+
+
+
                         // Chiudo a 252 byte effettivi
                         for (_i = _arrayInit; _i < _arrayLen; _i += 2)
                         {

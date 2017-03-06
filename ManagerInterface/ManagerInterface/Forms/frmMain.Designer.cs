@@ -63,6 +63,7 @@
             this.flashFTDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flashSPYBATTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mSP430FlasherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sIG60MonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmazioniAvanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testCalendarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImpostazioni = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,6 +76,7 @@
             this.mnuInformazioniSu = new System.Windows.Forms.ToolStripMenuItem();
             this.tstPulsanti = new System.Windows.Forms.ToolStrip();
             this.tstBtnCercaUsb = new System.Windows.Forms.ToolStripButton();
+            this.tstBtnSave = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaRS232 = new System.Windows.Forms.ToolStripButton();
             this.tstBtnExport = new System.Windows.Forms.ToolStripButton();
             this.tstBtnPrint = new System.Windows.Forms.ToolStripButton();
@@ -82,7 +84,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.sIG60MonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -323,6 +324,12 @@
             resources.ApplyResources(this.mSP430FlasherToolStripMenuItem, "mSP430FlasherToolStripMenuItem");
             this.mSP430FlasherToolStripMenuItem.Click += new System.EventHandler(this.mSP430FlasherToolStripMenuItem_Click);
             // 
+            // sIG60MonitorToolStripMenuItem
+            // 
+            this.sIG60MonitorToolStripMenuItem.Name = "sIG60MonitorToolStripMenuItem";
+            resources.ApplyResources(this.sIG60MonitorToolStripMenuItem, "sIG60MonitorToolStripMenuItem");
+            this.sIG60MonitorToolStripMenuItem.Click += new System.EventHandler(this.sIG60MonitorToolStripMenuItem_Click);
+            // 
             // programmazioniAvanzateToolStripMenuItem
             // 
             this.programmazioniAvanzateToolStripMenuItem.Name = "programmazioniAvanzateToolStripMenuItem";
@@ -395,6 +402,7 @@
             resources.ApplyResources(this.tstPulsanti, "tstPulsanti");
             this.tstPulsanti.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tstBtnCercaUsb,
+            this.tstBtnSave,
             this.tstBtnCercaRS232,
             this.tstBtnExport,
             this.tstBtnPrint,
@@ -410,6 +418,13 @@
             resources.ApplyResources(this.tstBtnCercaUsb, "tstBtnCercaUsb");
             this.tstBtnCercaUsb.Name = "tstBtnCercaUsb";
             this.tstBtnCercaUsb.Click += new System.EventHandler(this.tstBtnCercaUsb_Click);
+            // 
+            // tstBtnSave
+            // 
+            this.tstBtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.tstBtnSave, "tstBtnSave");
+            this.tstBtnSave.Name = "tstBtnSave";
+            this.tstBtnSave.Click += new System.EventHandler(this.tstBtnSave_Click);
             // 
             // tstBtnCercaRS232
             // 
@@ -453,12 +468,6 @@
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
             // 
-            // sIG60MonitorToolStripMenuItem
-            // 
-            this.sIG60MonitorToolStripMenuItem.Name = "sIG60MonitorToolStripMenuItem";
-            resources.ApplyResources(this.sIG60MonitorToolStripMenuItem, "sIG60MonitorToolStripMenuItem");
-            this.sIG60MonitorToolStripMenuItem.Click += new System.EventHandler(this.sIG60MonitorToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             resources.ApplyResources(this, "$this");
@@ -473,6 +482,7 @@
             this.Name = "frmMain";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.MdiChildActivate += new System.EventHandler(this.frmMain_MdiChildActivate);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.Controls.SetChildIndex(this.mnuMain, 0);
             this.Controls.SetChildIndex(this.sstMain, 0);
@@ -544,6 +554,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuImpiantoGestioneImpianto;
         private System.Windows.Forms.ToolStripMenuItem testCalendarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sIG60MonitorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tstBtnSave;
     }
 }
 

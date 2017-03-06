@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.ComponentModel;
-using System.Windows.Forms;
+ // using System.Windows.Forms;
 
 using SQLite.Net;
 using log4net;
@@ -3282,7 +3282,7 @@ namespace ChargerLogic
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, true);
                 // prima di proseguire aspetto 1 secondo
                 System.Threading.Thread.Sleep(1000);
-                Application.DoEvents();
+                //Application.DoEvents();
 
 
                 if (_esito)
@@ -3313,7 +3313,7 @@ namespace ChargerLogic
         /// Forza il riavvio della scheda
         /// </summary>
         /// <returns></returns>
-        public bool ResetScheda()
+        public bool ResetScheda(bool ResetContatori = false)
         {
 
 
@@ -3326,8 +3326,29 @@ namespace ChargerLogic
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
                 Log.Debug(" RESET SCHEDA ");
+                byte[] _parametriReset = new byte[2];
 
-                _mS.ComponiMessaggio();
+                if (sbData.fwLevel > 5)
+                {
+                    // dalla versione 2.03.02  (livello FW 6) è previsto un flag per  la conservazione dei contatoti di carica
+                    if (ResetContatori)
+                    {
+                        _parametriReset[0] = 0xFF;
+                        _parametriReset[1] = 0xFF;
+                    }
+                    else
+                    {
+                        _parametriReset[0] = 0x04;
+                        _parametriReset[1] = 0x04;
+                    }
+
+                    _mS.ComponiMessaggioNew(_parametriReset);
+                }
+                else
+                {
+                    _mS.ComponiMessaggio();
+                }
+
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
@@ -4366,7 +4387,11 @@ namespace ChargerLogic
                  Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, true);
-
+                if (_mS.EsitoComando == null)
+                {
+                    //nessuna risposta
+                    return false;
+                }
 
                 if (_mS.EsitoComando.CodiceEvento == (byte)SerialMessage.TipoComando.SB_W_Programmazione)
                 {

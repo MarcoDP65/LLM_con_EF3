@@ -285,4 +285,16 @@
   <data name="CfgNonValida" xml:space="preserve">
     <value>Parametri configurazione non validi</value>
   </data>
+  <data name="AttivaConfigKO" xml:space="preserve">
+    <value>Attivazione Configutazione non riuscita</value>
+  </data>
+  <data name="AttivaConfigOk" xml:space="preserve">
+    <value>Configutazione Attivata</value>
+  </data>
+  <data name="DatiDaSalvareR1" xml:space="preserve">
+    <value>Sono presenti dati non salvati</value>
+  </data>
+  <data name="DatiDaSalvareR2" xml:space="preserve">
+    <value>Vuoi salvarli ora ?</value>
+  </data>
 </root>

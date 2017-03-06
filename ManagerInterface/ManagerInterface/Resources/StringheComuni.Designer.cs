@@ -70,6 +70,24 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Attivazione Configutazione non riuscita.
+        /// </summary>
+        internal static string AttivaConfigKO {
+            get {
+                return ResourceManager.GetString("AttivaConfigKO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Configutazione Attivata.
+        /// </summary>
+        internal static string AttivaConfigOk {
+            get {
+                return ResourceManager.GetString("AttivaConfigOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Caricamento Memoria Dati.
         /// </summary>
         internal static string AvTitolo01Dati {
@@ -210,6 +228,24 @@ namespace PannelloCharger {
         internal static string CollegatoUSB {
             get {
                 return ResourceManager.GetString("CollegatoUSB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Sono presenti dati non salvati.
+        /// </summary>
+        internal static string DatiDaSalvareR1 {
+            get {
+                return ResourceManager.GetString("DatiDaSalvareR1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Vuoi salvarli ora ?.
+        /// </summary>
+        internal static string DatiDaSalvareR2 {
+            get {
+                return ResourceManager.GetString("DatiDaSalvareR2", resourceCulture);
             }
         }
         

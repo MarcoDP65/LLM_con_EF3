@@ -54,6 +54,11 @@ namespace MoriData
         public byte[] MappaTurni { get; set; }
         public string BatteryLLId { get; set; }
 
+        public byte EqualNumImpulsi { get; set; }
+        public byte EqualNumImpulsiExtra { get; set; }
+        public byte EqualMinErogazione { get; set; }
+        public byte EqualMinPausa { get; set; }
+        public byte EqualMinAttesa { get; set; } 
 
     }
 
@@ -251,6 +256,11 @@ namespace MoriData
                 _sbdc.ModoRabboccatore = 0;
                 _sbdc.ModoBiberonaggio = 0;
                 _sbdc.MappaTurni = new byte[84];
+                _sbdc.EqualNumImpulsi = 12;
+                _sbdc.EqualNumImpulsiExtra = 4;
+                _sbdc.EqualMinErogazione = 5;
+                _sbdc.EqualMinPausa = 25;
+                _sbdc.EqualMinAttesa = 60;
                 return true;
 
             }
@@ -465,7 +475,57 @@ namespace MoriData
             }
         }
 
+        public byte EqualNumImpulsi
+        {
+            get { return _sbdc.EqualNumImpulsi; }
+            set
+            {
+                _sbdc.EqualNumImpulsi = value;
+                _datiSalvati = false;
+            }
+        }
 
+        public byte EqualNumImpulsiExtra
+        {
+            get { return _sbdc.EqualNumImpulsiExtra; }
+            set
+            {
+                _sbdc.EqualNumImpulsiExtra = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public byte EqualMinErogazione
+        {
+            get { return _sbdc.EqualMinErogazione; }
+            set
+            {
+                _sbdc.EqualMinErogazione = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte EqualMinPausa
+        {
+            get { return _sbdc.EqualMinPausa; }
+            set
+            {
+                _sbdc.EqualMinPausa = value;
+                _datiSalvati = false;
+            }
+        }
+
+
+        public byte EqualMinAttesa
+        {
+            get { return _sbdc.EqualMinAttesa; }
+            set
+            {
+                _sbdc.EqualMinAttesa = value;
+                _datiSalvati = false;
+            }
+        }
 
 
         #endregion Class Parameter

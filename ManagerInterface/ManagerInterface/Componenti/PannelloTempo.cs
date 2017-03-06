@@ -23,6 +23,7 @@ namespace ChargerLogic
         private MaskedTextBox _mtbDurataFase;
 
         private byte _fattoreCarica = 101;
+        private bool _equalEnabled = false;
 
         private byte _opzioniTurno;
         private byte _giorno;
@@ -53,6 +54,9 @@ namespace ChargerLogic
             SetStyle(ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             this.DoubleClick += new System.EventHandler(this.host_DoubleClick);
             initializeComponent();
+            lblModoTempo.Enabled = false;
+            lblStatoBiber.Enabled = false;
+            lblStatoEqual.Enabled = false;
         }
 
         private void initializeComponent()
@@ -213,12 +217,24 @@ namespace ChargerLogic
             get
             {
                 return _solaLettura;
+
             }
 
             set
+
+
             {
                 _solaLettura = value;
                 applicaSolaLettura(_solaLettura);
+
+                if (_solaLettura)
+                {
+                    this.Backcolor = Color.LightGray;
+                }
+                else
+                {
+                    this.Backcolor = Color.LightYellow;
+                }
             }
 
         }
@@ -270,7 +286,7 @@ namespace ChargerLogic
                 }
                 else
                 {
-                    // è disabilitato, abilito
+                    // è abilitato, disabilito
                     _fst = new FontStyle();
                     _fst = FontStyle.Regular | FontStyle.Italic;
 
@@ -378,6 +394,19 @@ namespace ChargerLogic
                     {
                         _fattoreCarica = _nuovoValore;
                         _turno.FattoreCarica = _nuovoValore;
+                        if (_nuovoValore >= 110) 
+                        {
+                            _equalEnabled = true;
+
+                        }
+                        else
+                        {
+                            _equalEnabled = false;
+
+                        }
+
+                        lblStatoEqual.Enabled = _equalEnabled;
+
                         _datiCambiati = true;
 
                     }

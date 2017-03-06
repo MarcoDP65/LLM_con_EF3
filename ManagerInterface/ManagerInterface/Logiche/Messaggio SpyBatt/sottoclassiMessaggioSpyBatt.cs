@@ -1075,6 +1075,12 @@ namespace ChargerLogic
             public byte ModoBiberonaggio = 0;
             public byte ModoRabboccatore = 0;
             public byte[] ModelloPianificazione;
+            public byte EqualNumImpulsi { get; set; } = 12;
+            public byte EqualNumImpulsiExtra { get; set; } = 4;
+            public byte EqualMinErogazione { get; set; } = 5;
+            public byte EqualMinPausa { get; set; } = 25;
+            public byte EqualMinAttesa { get; set; } = 60;
+
             public NuoviLivelli ResetLivelloCarica { get; set; }
             public enum NuoviLivelli : ushort { MantieniLivelli = 0x0808, ResetLivelli = 0xFFFF }
             byte[] _dataBuffer;
@@ -1171,6 +1177,18 @@ namespace ChargerLogic
                                     startByte += 1;
                                 }
 
+                                startByte += 17;  // Area Salvataggio contatori
+
+                                EqualNumImpulsi = _risposta[startByte];
+                                startByte += 1;
+                                EqualNumImpulsiExtra = _risposta[startByte]; 
+                                startByte += 1;
+                                EqualMinErogazione = _risposta[startByte];
+                                startByte += 1;
+                                EqualMinPausa = _risposta[startByte];
+                                startByte += 1;
+                                EqualMinAttesa = _risposta[startByte];
+                                startByte += 1;
                                 PartReceived[3] = true;
                                 break;
                             default:

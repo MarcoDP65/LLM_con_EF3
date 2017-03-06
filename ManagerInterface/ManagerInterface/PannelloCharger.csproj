@@ -185,6 +185,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Componenti\ctrlPannelloTempo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componenti\ctrlPannelloTempo.Designer.cs">
+      <DependentUpon>ctrlPannelloTempo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Componenti\PanelGiornoTurno.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -273,6 +279,7 @@
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattComandiStrategia.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattEvt.cs" />
     <Compile Include="Forms\frmAboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -514,6 +521,9 @@
     <Compile Include="Servizi\StringCipher.cs" />
     <Compile Include="Servizi\usParameters.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Componenti\ctrlPannelloTempo.resx">
+      <DependentUpon>ctrlPannelloTempo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Deso\frmDeso.de.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>

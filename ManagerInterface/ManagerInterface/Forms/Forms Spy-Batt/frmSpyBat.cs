@@ -92,7 +92,14 @@ namespace PannelloCharger
         /// <summary>
         /// Flag per la gestione della fase di caricamento. true finche in caricamento; usato per prevenire azioni sull'onChange in fase di apertura
         /// </summary>
-        private bool _onUpload = true;  
+        private bool _onUpload = true;
+
+        private bool _datiSalvati = true;
+
+        /// <summary>
+        /// Evento attivato al momento della variazione del flag _datiSalvati.
+        /// </summary>
+        public event EventHandler<DatiCambiatiEventArgs> DatiCambiati;
 
 
         public frmSpyBat(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
@@ -100,6 +107,7 @@ namespace PannelloCharger
             bool _esito;
             try
             {
+                bool _aggiornaStatistiche = true;
                 Cursor.Current = Cursors.WaitCursor;
                 _onUpload = true;
                 _parametri = _par;
@@ -198,13 +206,14 @@ namespace PannelloCharger
                 InizializzaOxyGrSingolo();
                 //InizializzaOxyGrCalibrazione();
                 applicaAutorizzazioni();
-                RicalcolaStatistiche();
+                if(_aggiornaStatistiche) RicalcolaStatistiche();
                 InizializzaCalibrazioni();
                 InizializzaVistaCorrenti();
                 InizializzaVistaCorrentiCal();
-                CaricaComboCalibrazioni();
-                CaricaComboGrafici();
+                if (_aggiornaStatistiche) CaricaComboCalibrazioni();
+                if (_aggiornaStatistiche) CaricaComboGrafici();
                 _onUpload = false;
+                _datiSalvati = true;
 
             }
             catch (Exception Ex)
@@ -314,6 +323,7 @@ namespace PannelloCharger
                 InizializzaVistaCorrentiCal();
                 CaricaComboCalibrazioni();
                 CaricaComboGrafici();
+                _datiSalvati = true;
 
             }
             catch (Exception Ex)
@@ -3331,6 +3341,7 @@ namespace PannelloCharger
 
         /// <summary>
         /// Chiude la connessione attiva ( USB o RS232 )
+        /// Sb Connesso verifica se ci sono dati da salvere e nel caso eseguue il salvataggio
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -3338,7 +3349,31 @@ namespace PannelloCharger
         {
             try
             {
+                // Attivo il pulsante Salv Cliente per forzare il Leave del controllo attivo
+                btnSalvaCliente.Select();
+
+                if (!_datiSalvati)
+                {
+                    DialogResult risposta = MessageBox.Show(StringheComuni.DatiDaSalvareR1 + "\n" + StringheComuni.DatiDaSalvareR2,
+                                                            StringheComuni.SalvaDati,
+                                                            MessageBoxButtons.YesNoCancel,
+                                                            MessageBoxIcon.Warning);
+
+
+
+                    if (risposta == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                        e.Cancel = true;
+                    }
+
+                    if (risposta == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        SalvaDati();
+                    }
+                }
+
                 _parametri.chiudiCanaleSpyBatt();
+
             }
             catch (Exception Ex)
             {
@@ -5070,9 +5105,17 @@ namespace PannelloCharger
 
         private void btnAttivaProgrammazione_Click(object sender, EventArgs e)
         {
-            bool _esito;
+            bool _esito = false;
             this.Cursor = Cursors.WaitCursor;
-            if (_apparatoPresente) _esito = _sb.AttivaProgramma();
+            if (_apparatoPresente)
+            {
+                _esito = _sb.AttivaProgramma();
+                if (!_esito)
+                {
+                    MessageBox.Show(StringheComuni.AttivaConfigKO, StringheComuni.TitoloCfg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
             this.Cursor = Cursors.Default;
 
         }
@@ -6882,21 +6925,30 @@ namespace PannelloCharger
 
         private void btnFWFileSBFLoad_Click(object sender, EventArgs e)
         {
-            btnFWLanciaTrasmissione.Enabled = false;
-            CaricafileSBF();
-
-
-            PreparaTrasmissioneFW();
-            bool _esitocella = false;
-
-            _esitocella = ((byte)FirmwareManager.MascheraStato.Blocco1HW & _sb.StatoFirmware.Stato) == (byte)FirmwareManager.MascheraStato.Blocco1HW;
-            if (_esitocella == true)
+            try
             {
-                txtFWSBFArea.Text = "1";
+                if (txtFWFileSBFrd.Text == "") return;
+
+                btnFWLanciaTrasmissione.Enabled = false;
+                CaricafileSBF();
+
+
+                PreparaTrasmissioneFW();
+                bool _esitocella = false;
+
+                _esitocella = ((byte)FirmwareManager.MascheraStato.Blocco1HW & _sb.StatoFirmware.Stato) == (byte)FirmwareManager.MascheraStato.Blocco1HW;
+                if (_esitocella == true)
+                {
+                    txtFWSBFArea.Text = "1";
+                }
+                else
+                {
+                    txtFWSBFArea.Text = "2";
+                }
             }
-            else
+            catch (Exception Ex)
             {
-                txtFWSBFArea.Text = "2";
+                Log.Error("btnFWFileSBFLoad_Click: " + Ex.Message);
             }
         }
 
@@ -7160,7 +7212,7 @@ namespace PannelloCharger
 
                 if (risposta == System.Windows.Forms.DialogResult.Yes)
                 {
-                    _esito = _sb.ResetScheda();
+                    _esito = _sb.ResetScheda(chkCliResetContatori.Checked);
                     //if (_esito) MessageBox.Show("Memoria Azzerata", "Cancellazione Memoria", MessageBoxButtons.OK);
 
                 }
@@ -7972,9 +8024,9 @@ namespace PannelloCharger
                         _esito =  _sb.sbCliente.PianificazioneCorrente.ImpostaModello(_tempP.CodiceTP);
                         _sb.sbCliente.ModoPianificazione = (byte)_tempP.CodiceTP;
                         _esito = MostraPianificazione();
- 
+                        DatiSalvati = false;
                     }
-
+                    
                 }
 
 
@@ -8025,6 +8077,11 @@ namespace PannelloCharger
 
         }
 
+        /// <summary>
+        /// Inizializza la griglia di pianificazione a tempo.
+        /// </summary>
+        /// <param name="InizializzaControllo">if set to <c>true</c> [inizializza controllo].</param>
+        /// <returns></returns>
         private bool MostraGrigliaTempo(bool InizializzaControllo = true)
         {
             bool _esito = false;
@@ -8057,31 +8114,31 @@ namespace PannelloCharger
                 if (_sb.sbCliente.MappaTurni.Length != 84)
                 {
                     _sb.sbCliente.MappaTurni = new byte[84] { 0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                                  0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,  };
+                                                              0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                              0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                              0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                              0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                              0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
+                                                              0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,  };
                 }
 
                 byte[] _tempData = _sb.sbCliente.MappaTurni;
-                byte[] _datiTurno = new byte[4];
+                byte[] _datiTurno = new byte[6];
 
                 for (int _se = 0; _se < 7; _se++)
                 {
                     _giorno = new PanelGiornoTurno(DataOraMR.SiglaGiorno(_se + 1));
                     tlpGrigliaTurni.Controls.Add(_giorno, 0, _se + 2);
-
-                    PannelloTempo P1 = new PannelloTempo();
+                    ctrlPannelloTempo P1 = new ctrlPannelloTempo();
                     ModelloTurno _mT = new ModelloTurno();
-                    Array.Copy(_tempData, _se * 12, _datiTurno, 0, 4);
+                    Array.Copy(_tempData, _se * 12, _datiTurno, 0, 6);
                     _mT.fromData(_datiTurno);
                     P1.Turno = _mT;
                     P1.Giorno = (byte)_se;
-                    P1.BackColor = Color.LightYellow;
-                    tlpGrigliaTurni.Controls.Add(P1, 1, _se + 2);
 
+
+                    tlpGrigliaTurni.Controls.Add(P1, 1, _se + 2);
+                     
 
                 }
 
@@ -8136,16 +8193,26 @@ namespace PannelloCharger
                 byte Giornisalvati = 0;
                 foreach(Control _ctrl in tlpGrigliaTurni.Controls)
                 {
-                    if (_ctrl.GetType() == typeof(PannelloTempo))
+                    if (_ctrl.GetType() == typeof(ctrlPannelloTempo))  // new grid, nuovo controllo con gestione equal
+                    {
+                        byte[] _datiFase = new byte[6] { 0, 0, 0, 0, 0 ,0 };
+                        ctrlPannelloTempo P1 = (ctrlPannelloTempo)_ctrl;
+                        _datiFase = P1.Turno.toData();
+                        Array.Copy(_datiFase,0,_sb.sbCliente.MappaTurni, P1.Giorno * 12,  6);
+                        Giornisalvati += 1;
+                    }
+
+                    if (_ctrl.GetType() == typeof(PannelloTempo))  // old grid  
                     {
                         byte[] _datiFase = new byte[4] { 0, 0, 0, 0 };
                         PannelloTempo P1 = (PannelloTempo)_ctrl;
                         _datiFase = P1.Turno.toData();
-                        Array.Copy(_datiFase,0,_sb.sbCliente.MappaTurni, P1.Giorno * 12,  4);
+                        Array.Copy(_datiFase, 0, _sb.sbCliente.MappaTurni, P1.Giorno * 12, 4);
                         Giornisalvati += 1;
                     }
+
                 }
-                if(Giornisalvati== 7)
+                if (Giornisalvati== 7)
                    _esito = true;
 
                 return _esito;
@@ -8518,5 +8585,218 @@ namespace PannelloCharger
         {
             LanciaComandoStrategiaReadTE();
         }
+
+        private void btnPianSalvaCliente_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            chkCliResetContatori.Checked = false;
+            salvaCliente();
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /// <summary>
+        /// Ritorna o imposta (protected) lo stato di dati salvati.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> se tutti i dati sono salvati; otherwise, <c>false</c>.
+        /// </value>
+        public bool DatiSalvati
+        {
+            get
+            {
+                return _datiSalvati;
+            }
+            protected set
+            {
+                _datiSalvati = value;
+                if(DatiCambiati != null)
+                {
+                    DatiCambiati(this, new DatiCambiatiEventArgs(_datiSalvati));
+                }
+
+            }
+
+        }
+
+
+        public bool SalvaDati()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                salvaCliente();
+                DatiSalvati = true;
+                this.Cursor = Cursors.Default;
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SalvaDati: " + Ex.Message);
+                return false;
+
+            }
+        }
+
+        private void txtCliente_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.Client != txtCliente.Text)
+                {
+                    _sb.sbCliente.Client = txtCliente.Text;
+                    DatiSalvati = false;
+                }
+
+                
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtCliente_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtMarcaBat_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.BatteryBrand != txtMarcaBat.Text)
+                {
+                    _sb.sbCliente.BatteryBrand = txtMarcaBat.Text;
+                    DatiSalvati = false;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtMarcaBat_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtModelloBat_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.BatteryModel != txtModelloBat.Text)
+                {
+                    _sb.sbCliente.BatteryModel = txtModelloBat.Text;
+                    DatiSalvati = false;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtModelloBat_leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtCliCodiceLL_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.BatteryLLId != txtCliCodiceLL.Text)
+                {
+                    _sb.sbCliente.BatteryLLId = txtCliCodiceLL.Text;
+                    DatiSalvati = false;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtCliCodiceLL_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtIdBat_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.BatteryId != txtIdBat.Text)
+                {
+                    _sb.sbCliente.BatteryId = txtIdBat.Text;
+                    DatiSalvati = false;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtIdBat_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtCliCicliAttesi_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.CicliAttesi.ToString() != txtCliCicliAttesi.Text)
+                {
+                    int _tempInt;
+                    if (int.TryParse(txtCliCicliAttesi.Text, out _tempInt))
+                    { _sb.sbCliente.CicliAttesi = (int)_tempInt; }
+                    else
+                    { _sb.sbCliente.CicliAttesi = 1000; }
+
+                    txtCliCicliAttesi.Text = _sb.sbCliente.CicliAttesi.ToString();
+                    DatiSalvati = false;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtCliCicliAttesi_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtNoteCliente_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.ClientNote != txtNoteCliente.Text)
+                {
+                    _sb.sbCliente.ClientNote = txtNoteCliente.Text;
+                    DatiSalvati = false;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtNoteCliente_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void txtSerialNumber_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb.sbCliente.SerialNumber != txtSerialNumber.Text)
+                {
+                    _sb.sbCliente.SerialNumber = txtSerialNumber.Text;
+                    DatiSalvati = false;
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtNoteCliente_Leave: " + Ex.Message);
+
+            }
+        }
+
+
     }
 }
