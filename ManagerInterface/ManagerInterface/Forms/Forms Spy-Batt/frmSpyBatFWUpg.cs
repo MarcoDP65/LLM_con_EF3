@@ -129,8 +129,12 @@ namespace PannelloCharger
 
                     txtFWInSBFRev.Text = _firmMng.FirmwareData.Release;
                     txtFWInSBFDtRev.Text = FunzioniMR.StringaDataTS(_firmMng.FirmwareData.ReleaseDateBlock);
-                    // verifico che il firmware sia accettabile
-                    _esitoBool = _firmMng.VersioneAmmessa(_firmMng.FirmwareData.Release);
+                    // verifico che il firmware sia accettabile, rileggendo la versione BL e FW sulla scheda
+                    _esitoBool = true;// _sb.CaricaStatoFirmware(_sb.Id, true); /// SerialeCollegata);
+                    if (_esitoBool && (_sb.UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk))
+                    {
+                        _esitoBool = _firmMng.VersioneAmmessa(_firmMng.FirmwareData.Release, _sb.sbData.HwVersion.ToString(), _sb.StatoFirmware.strRevBootloader);
+                    }
 
                     if(!_esitoBool)
 

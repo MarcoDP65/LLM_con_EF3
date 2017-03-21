@@ -64,6 +64,7 @@
             this.lblNumSpire = new System.Windows.Forms.Label();
             this.tabImpostazioni = new System.Windows.Forms.TabControl();
             this.tbpParametri = new System.Windows.Forms.TabPage();
+            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.txtProgcBattVdef = new System.Windows.Forms.TextBox();
             this.txtTensioneNom = new System.Windows.Forms.Label();
             this.tbpSetupPro = new System.Windows.Forms.TabPage();
@@ -121,8 +122,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.cmbProMaxSbil = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.lblPro01 = new System.Windows.Forms.Label();
-            this.cmbProModoPianif = new System.Windows.Forms.ComboBox();
             this.tbpSetupTurni = new System.Windows.Forms.TabPage();
             this.tlpGrigliaTurni = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -183,7 +182,6 @@
             this.label61 = new System.Windows.Forms.Label();
             this.panel31 = new System.Windows.Forms.Panel();
             this.label62 = new System.Windows.Forms.Label();
-            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.grbVersoCorrente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcoDiretto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcoInverso)).BeginInit();
@@ -458,6 +456,13 @@
             resources.ApplyResources(this.tbpParametri, "tbpParametri");
             this.tbpParametri.Name = "tbpParametri";
             // 
+            // chkCliResetContatori
+            // 
+            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
+            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
+            this.chkCliResetContatori.Name = "chkCliResetContatori";
+            this.chkCliResetContatori.UseVisualStyleBackColor = true;
+            // 
             // txtProgcBattVdef
             // 
             resources.ApplyResources(this.txtProgcBattVdef, "txtProgcBattVdef");
@@ -474,8 +479,6 @@
             this.tbpSetupPro.BackColor = System.Drawing.Color.LightYellow;
             this.tbpSetupPro.Controls.Add(this.pnlProParametriBase);
             this.tbpSetupPro.Controls.Add(this.pnlProParametriExt);
-            this.tbpSetupPro.Controls.Add(this.lblPro01);
-            this.tbpSetupPro.Controls.Add(this.cmbProModoPianif);
             resources.ApplyResources(this.tbpSetupPro, "tbpSetupPro");
             this.tbpSetupPro.Name = "tbpSetupPro";
             // 
@@ -809,17 +812,6 @@
             // 
             resources.ApplyResources(this.label17, "label17");
             this.label17.Name = "label17";
-            // 
-            // lblPro01
-            // 
-            resources.ApplyResources(this.lblPro01, "lblPro01");
-            this.lblPro01.Name = "lblPro01";
-            // 
-            // cmbProModoPianif
-            // 
-            resources.ApplyResources(this.cmbProModoPianif, "cmbProModoPianif");
-            this.cmbProModoPianif.FormattingEnabled = true;
-            this.cmbProModoPianif.Name = "cmbProModoPianif";
             // 
             // tbpSetupTurni
             // 
@@ -1229,13 +1221,6 @@
             this.label62.ForeColor = System.Drawing.Color.White;
             this.label62.Name = "label62";
             // 
-            // chkCliResetContatori
-            // 
-            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
-            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
-            this.chkCliResetContatori.Name = "chkCliResetContatori";
-            this.chkCliResetContatori.UseVisualStyleBackColor = true;
-            // 
             // frmInserimentoProgramma
             // 
             resources.ApplyResources(this, "$this");
@@ -1259,7 +1244,6 @@
             this.tbpParametri.ResumeLayout(false);
             this.tbpParametri.PerformLayout();
             this.tbpSetupPro.ResumeLayout(false);
-            this.tbpSetupPro.PerformLayout();
             this.pnlProParametriBase.ResumeLayout(false);
             this.pnlProParametriBase.PerformLayout();
             this.pnlProParametriExt.ResumeLayout(false);
@@ -1344,7 +1328,6 @@
         private System.Windows.Forms.Label lblPro12;
         private System.Windows.Forms.ComboBox cmbBiberonaggio;
         private System.Windows.Forms.Label lblPro09;
-        private System.Windows.Forms.ComboBox cmbProModoPianif;
         private System.Windows.Forms.ComboBox cmbRabboccatore;
         private System.Windows.Forms.Label lblPro08;
         private System.Windows.Forms.Label lblPro14;
@@ -1369,7 +1352,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cmbProMaxSbil;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label lblPro01;
         private System.Windows.Forms.Label lblProCoeffBiber;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;

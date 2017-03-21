@@ -25,8 +25,16 @@ namespace PannelloCharger
 
         public frmAlimentatore()
         {
-            InitializeComponent();
-            Alimentatatore = new AlimentatoreTdk();
+            try
+            {
+                InitializeComponent();
+                Alimentatatore = new AlimentatoreTdk();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("frmAlimentatore: " + ex.Message, "Error!");
+            }
+
         }
 
 

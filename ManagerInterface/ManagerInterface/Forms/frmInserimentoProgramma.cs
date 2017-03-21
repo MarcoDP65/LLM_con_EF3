@@ -21,11 +21,14 @@ namespace PannelloCharger
     {
         public bool TestMode = false;
         public UnitaSpyBatt _sb;
+        public sbProgrammaRicarica _ProgAttuale;
 
         private ParametriSetupPro _parametriPro = new ParametriSetupPro();
 
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         LogicheBase _logiche;
+
+
 
         private bool _attivaEstese = false;
         private bool _attivaPRO = false;
@@ -82,6 +85,9 @@ namespace PannelloCharger
                     lblTempMin.Visible = true;
                     lblTipoBatteria.Visible = true;
                     cmbTipoBatteria.Visible = true;
+                    chkCliResetContatori.Visible = true;
+
+
 
 
                 }
@@ -99,6 +105,7 @@ namespace PannelloCharger
                     lblTempMin.Visible = false;
                     lblTipoBatteria.Visible = false;
                     cmbTipoBatteria.Visible = false;
+                    chkCliResetContatori.Visible = false;
                     cmbTipoBatteria.SelectedIndex = 0;
 
                 }
@@ -159,8 +166,6 @@ namespace PannelloCharger
             }
 
             this.Text = StringheComuni.NuovaCfg + " " + Convert.ToString(_sb.sbData.ProgramCount + 1);
-
-
  
         }
 
@@ -240,6 +245,99 @@ namespace PannelloCharger
 
         }
 
+        /// <summary>
+        /// Decide se è necessario resettare i contatori di carica al momento dell'inserimanto della programmazione.
+        /// La strategia prevede:
+        ///   - TRUE se carica attuale = 0
+        ///   - TRUE se è la prima configurazione
+        ///   - TRUE se cambio tensione o capacità rispetto alla precedente configurazione (nuova Batteria)
+        ///   negli altri casi false. L'utente Factory può decidere di cambuare il valore
+        /// 
+        /// <returns><c>true</c> se necessario resettare (carica attuale al 100%) <c>false</c> se si deve mantenere lo stato attuale.</returns>
+        public bool ValutaResetContatori()
+        {
+            try
+            {
+                bool _resetRichiesto = false;
+                ushort _capResidua = 0;
+
+                if ((_sb.sbData.ProgramCount == 0xFFFF) || (_sb.sbData.ProgramCount == 0x00))
+                {
+                    // inserisco il primo programma
+                    _resetRichiesto = true;
+                }
+                else
+                {
+                    //verifico se il livello ( capacità residua ) è zero
+                    _capResidua = VerificaCapacitaAttuale();
+                    if (_capResidua == 0 ) _resetRichiesto = true;
+                    else
+                    {
+                        ushort _nuovaTens = FunzioniMR.ConvertiUshort(txtProgcBattVdef.Text, 100, 0);
+                        ushort _nuovaCap = FunzioniMR.ConvertiUshort(txtProgcBattAhDef.Text, 10, 0);
+
+                        if ((_nuovaTens != _sb.ProgrammaCorrente.BatteryVdef) || (_nuovaCap != _sb.ProgrammaCorrente.BatteryAhdef)) _resetRichiesto = true;
+                    }
+          
+                }
+
+                return _resetRichiesto;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ValutaResetContatori: " + Ex.Message);
+                return true;
+            }
+        }
+
+
+        public ushort VerificaCapacitaAttuale()
+        {
+            try
+            {
+
+                byte[] _Dati; 
+                bool _esito;
+                ushort _capCorr;
+
+                _Dati = new byte[252];
+                _esito = _sb.ComandoInfoStrategia(0x50, out _Dati);
+
+                if (_esito == true)
+                {
+                    // considero solo la capacità residua, non i contatori di carica
+                    _capCorr = FunzioniComuni.UshortFromArray(_Dati, 15);
+                    /*
+
+                    // Mostro i valori
+                    txtStratLivcrgPos.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 13));
+                    txtStratLivcrgCrg.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 3));
+                    txtStratLivcrgCrgTot.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 7));
+
+                    txtStratLivcrgNeg.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 11));
+                    txtStratLivcrgDiscrg.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 5));
+                    txtStratLivcrgDiscrgTot.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 9));
+
+                    txtStratLivcrgCapResidua.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 15));
+                    */
+                }
+                else
+                {
+                    _capCorr = 0;
+                }
+
+                return _capCorr;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VerificaCapacitaAttuale: " + Ex.Message);
+                return 0;
+            }
+
+        }
+
+
+
         public bool salvaProgramma()
         {
             try
@@ -256,16 +354,17 @@ namespace PannelloCharger
                     _nuovoProg.IdProgramma = (ushort)(_sb.sbData.ProgramCount + 1);
                 }
 
-                _nuovoProg.BatteryVdef = FunzioniMR.ConvertiUshort(txtProgcBattVdef.Text,100,0);
+                _nuovoProg.BatteryVdef = FunzioniMR.ConvertiUshort(txtProgcBattVdef.Text, 100, 0);
                 _nuovoProg.BatteryAhdef = FunzioniMR.ConvertiUshort(txtProgcBattAhDef.Text, 10, 0);
                 txtProgcBattType.Text = cmbTipoBatteria.SelectedIndex.ToString();
-                _nuovoProg.BatteryType = FunzioniMR.ConvertiByte(txtProgcBattType.Text,1,0);
+                _nuovoProg.BatteryType = FunzioniMR.ConvertiByte(txtProgcBattType.Text, 1, 0);
                 _nuovoProg.BatteryCells = FunzioniMR.ConvertiByte(txtProgcCelleTot.Text, 1, 0);
                 _nuovoProg.BatteryCell3 = FunzioniMR.ConvertiByte(txtProgcCelleV3.Text, 1, 0);
                 _nuovoProg.BatteryCell2 = FunzioniMR.ConvertiByte(txtProgcCelleV2.Text, 1, 0);
                 _nuovoProg.BatteryCell1 = FunzioniMR.ConvertiByte(txtProgcCelleV1.Text, 1, 0);
                 _nuovoProg.VersoCorrente = (byte)elementiComuni.VersoCorrente.Diretto;  // se non impostabile >> diretto
                 _nuovoProg.AbilitaPresElett = (byte)elementiComuni.AbilitaElemento.Attivo;
+                _nuovoProg.NumeroSpire = FunzioniMR.ConvertiByte(txtNumSpire.Text, 1, 1);
                 if (chkCliResetContatori.Checked == true)
                 {
                     _nuovoProg.ResetContatori = MessaggioSpyBatt.ProgrammaRicarica.NuoviLivelli.ResetLivelli;
@@ -288,38 +387,37 @@ namespace PannelloCharger
                 }
 
 
-                 if (_attivaPRO)
-                {
-                    _nuovoProg.ModoPianificazione = (byte)cmbProModoPianif.SelectedValue;
-                    _nuovoProg.CorrenteMinimaCHG = FunzioniMR.ConvertiUshort(txtProMinChargeCurr.Text, 10,0);
-                    _nuovoProg.CorrenteMassimaCHG = FunzioniMR.ConvertiUshort(txtProMaxChargeCurr.Text, 10, 0);
+                // salvo comunque i parametri di pianificazione (_attivaPRO)
+
+                _nuovoProg.CorrenteMinimaCHG = FunzioniMR.ConvertiUshort(txtProMinChargeCurr.Text, 10, 0);
+                _nuovoProg.CorrenteMassimaCHG = FunzioniMR.ConvertiUshort(txtProMaxChargeCurr.Text, 10, 0);
 
 
-                    _nuovoProg.Rabboccatore = (byte)cmbRabboccatore.SelectedValue;
-                    _nuovoProg.ImpulsiRabboccatore = FunzioniMR.ConvertiByte(txtProImpulsiRabb.Text, 1, 1);
-                    _nuovoProg.Biberonaggio = (byte)cmbBiberonaggio.SelectedValue;
-                    _nuovoProg.TempAttenzione = FunzioniMR.ConvertiByte(txtProTempAttenzione.Text, 1, 45);
-                    _nuovoProg.TempAllarme = FunzioniMR.ConvertiByte(txtProTempAllarme.Text, 1, 55);
-                    _nuovoProg.TempRipresa = FunzioniMR.ConvertiByte(txtProTempRiavvio.Text, 1, 45);
-                    //_nuovoProg.MaxSbilanciamento = (ushort)5; // cmbProMaxSbil.SelectedValue;
-                    _nuovoProg.DurataSbilanciamento = FunzioniMR.ConvertiUshort(txtProMaxMinutiSbil.Text, 1, 240);
-                    _nuovoProg.TensioneGas = FunzioniMR.ConvertiUshort(txtProTensioneGas.Text, 100, 240);
-                    _nuovoProg.DerivaInferiore = FunzioniMR.ConvertiMSshort(txtProDerivaUnder.Text, 10, 0x8027);
-                    _nuovoProg.DerivaSuperiore = FunzioniMR.ConvertiMSshort(txtProDerivaOver.Text, 10, 0x8027);
-                    _nuovoProg.MinCorrenteW = FunzioniMR.ConvertiUshort(txtProMinCurrW.Text, 10, 0);
-                    _nuovoProg.MaxCorrenteW = FunzioniMR.ConvertiUshort(txtProMaxCurrW.Text, 10, 0);
-                    _nuovoProg.MaxCorrenteImp = FunzioniMR.ConvertiUshort(txtProMaxCurrImp.Text, 10, 0);
-                    _nuovoProg.TensioneRaccordo = FunzioniMR.ConvertiUshort(txtProTensioneRaccordo.Text, 100, 245);
-                    _nuovoProg.TensioneFinale = FunzioniMR.ConvertiUshort(txtProTensioneFinale.Text, 100, 265);
+                _nuovoProg.Rabboccatore = (byte)cmbRabboccatore.SelectedValue;
+                _nuovoProg.ImpulsiRabboccatore = FunzioniMR.ConvertiByte(txtProImpulsiRabb.Text, 1, 1);
+                _nuovoProg.Biberonaggio = (byte)cmbBiberonaggio.SelectedValue;
+                _nuovoProg.TempAttenzione = FunzioniMR.ConvertiByte(txtProTempAttenzione.Text, 1, 45);
+                _nuovoProg.TempAllarme = FunzioniMR.ConvertiByte(txtProTempAllarme.Text, 1, 55);
+                _nuovoProg.TempRipresa = FunzioniMR.ConvertiByte(txtProTempRiavvio.Text, 1, 45);
+                //_nuovoProg.MaxSbilanciamento = (ushort)5; // cmbProMaxSbil.SelectedValue;
+                _nuovoProg.DurataSbilanciamento = FunzioniMR.ConvertiUshort(txtProMaxMinutiSbil.Text, 1, 240);
+                _nuovoProg.TensioneGas = FunzioniMR.ConvertiUshort(txtProTensioneGas.Text, 100, 240);
+                _nuovoProg.DerivaInferiore = FunzioniMR.ConvertiMSshort(txtProDerivaUnder.Text, 10, 0x8027);
+                _nuovoProg.DerivaSuperiore = FunzioniMR.ConvertiMSshort(txtProDerivaOver.Text, 10, 0x8027);
+                _nuovoProg.MinCorrenteW = FunzioniMR.ConvertiUshort(txtProMinCurrW.Text, 10, 0);
+                _nuovoProg.MaxCorrenteW = FunzioniMR.ConvertiUshort(txtProMaxCurrW.Text, 10, 0);
+                _nuovoProg.MaxCorrenteImp = FunzioniMR.ConvertiUshort(txtProMaxCurrImp.Text, 10, 0);
+                _nuovoProg.TensioneRaccordo = FunzioniMR.ConvertiUshort(txtProTensioneRaccordo.Text, 100, 245);
+                _nuovoProg.TensioneFinale = FunzioniMR.ConvertiUshort(txtProTensioneFinale.Text, 100, 265);
 
 
-                }
 
-                 _sb.ScriviProgramma( _nuovoProg ,(chkMemProgrammed.Checked == true ));
+
+                _sb.ScriviProgramma(_nuovoProg, (chkMemProgrammed.Checked == true));
 
                 if (_sb.UltimaRisposta != SerialMessage.EsitoRisposta.MessaggioOk)
                 {
-                   // MessageBox.Show("Programmazione non riuscita", "Programmazioe Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // MessageBox.Show("Programmazione non riuscita", "Programmazioe Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     MessageBox.Show(StringheComuni.CfgFallita, StringheComuni.TitoloCfg, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -328,7 +426,7 @@ namespace PannelloCharger
                     return true;
                     //this.Close();
                 }
-               
+
             }
             catch (Exception Ex)
             {
@@ -343,6 +441,8 @@ namespace PannelloCharger
             if (_sb.apparatoPresente)
             {
                 bool _verifica = verificaParametri();
+
+
 
                 if(!_verifica)
                 {
@@ -398,6 +498,7 @@ namespace PannelloCharger
 
                 txtProgcCelleTot.Text = _tempCells.ToString();
                 txtProgcBattVdef.Text = (_tempCells*2).ToString();
+                chkCliResetContatori.Checked = ValutaResetContatori();
             }
             catch
             {
@@ -409,10 +510,6 @@ namespace PannelloCharger
         {
             try
             {
-                cmbProModoPianif.DataSource = _parametriPro.TipiPianificazione;
-                cmbProModoPianif.DisplayMember = "Descrizione";
-                cmbProModoPianif.ValueMember = "Codice";
-                cmbProModoPianif.SelectedIndex = 0;
 
                 cmbProMaxSbil.DataSource = _parametriPro.MaxSbilanciamento;
                 cmbProMaxSbil.DisplayMember = "strValore";
@@ -604,6 +701,8 @@ namespace PannelloCharger
 
                 _tempAmps = (ushort)(_tempCap / 2);
                 txtProMaxCurrImp.Text = _tempAmps.ToString();
+
+                chkCliResetContatori.Checked = ValutaResetContatori();
             }
             catch (Exception Ex)
             {

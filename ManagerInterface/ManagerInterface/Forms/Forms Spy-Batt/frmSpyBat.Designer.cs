@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSpyBat));
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
             this.tabCb01 = new System.Windows.Forms.TabPage();
-            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.grbAbilitazioneReset = new System.Windows.Forms.GroupBox();
             this.btnGeneraCodice = new System.Windows.Forms.Button();
             this.txtCodiceSblocco = new System.Windows.Forms.TextBox();
@@ -49,7 +48,6 @@
             this.chkRecuperaCicli = new System.Windows.Forms.CheckBox();
             this.chkEraseDB = new System.Windows.Forms.CheckBox();
             this.chkAckDumpMem = new System.Windows.Forms.CheckBox();
-            this.btnResetScheda = new System.Windows.Forms.Button();
             this.grbTestataContatori = new System.Windows.Forms.GroupBox();
             this.txtTestataPtrProgr = new System.Windows.Forms.TextBox();
             this.label117 = new System.Windows.Forms.Label();
@@ -186,6 +184,8 @@
             this.flvwListaSoglie = new BrightIdeasSoftware.FastObjectListView();
             this.tabCb04 = new System.Windows.Forms.TabPage();
             this.grbMemCicliPulsanti = new System.Windows.Forms.GroupBox();
+            this.chkMemLngSalvaRicalcolo = new System.Windows.Forms.CheckBox();
+            this.btnRicalcolaSoc = new System.Windows.Forms.Button();
             this.chkCaricaBrevi = new System.Windows.Forms.CheckBox();
             this.chkInvertiCorreti = new System.Windows.Forms.CheckBox();
             this.btnRigeneraLista = new System.Windows.Forms.Button();
@@ -210,8 +210,6 @@
             this.txtEventiCSLunghi = new System.Windows.Forms.TextBox();
             this.lblEventiTotali = new System.Windows.Forms.Label();
             this.tabCb02 = new System.Windows.Forms.TabPage();
-            this.tbcSetup = new System.Windows.Forms.TabControl();
-            this.tabSetupRiepilogo = new System.Windows.Forms.TabPage();
             this.grbProgrImpianto = new System.Windows.Forms.GroupBox();
             this.btnPianSalvaCliente = new System.Windows.Forms.Button();
             this.btnPianRefresh = new System.Windows.Forms.Button();
@@ -281,7 +279,16 @@
             this.btnAttivaProgrammazione = new System.Windows.Forms.Button();
             this.btnNuovoProgramma = new System.Windows.Forms.Button();
             this.btnRicaricaProgr = new System.Windows.Forms.Button();
-            this.tabSetupPianificazione = new System.Windows.Forms.TabPage();
+            this.grbProgParEqual = new System.Windows.Forms.GroupBox();
+            this.txtProgEqCorrenteImpulso = new System.Windows.Forms.TextBox();
+            this.label271 = new System.Windows.Forms.Label();
+            this.label270 = new System.Windows.Forms.Label();
+            this.txtProgMinPause = new System.Windows.Forms.TextBox();
+            this.label269 = new System.Windows.Forms.Label();
+            this.txtProgEqMinPulse = new System.Windows.Forms.TextBox();
+            this.label268 = new System.Windows.Forms.Label();
+            this.txtProgEqNumPulse = new System.Windows.Forms.TextBox();
+            this.tbpPianificazione = new System.Windows.Forms.TabPage();
             this.tlpGrigliaTurni = new System.Windows.Forms.TableLayoutPanel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
@@ -317,16 +324,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
             this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
-            this.tabSetupParametri = new System.Windows.Forms.TabPage();
-            this.grbProgParEqual = new System.Windows.Forms.GroupBox();
-            this.txtProgEqCorrenteImpulso = new System.Windows.Forms.TextBox();
-            this.label271 = new System.Windows.Forms.Label();
-            this.label270 = new System.Windows.Forms.Label();
-            this.txtProgMinPause = new System.Windows.Forms.TextBox();
-            this.label269 = new System.Windows.Forms.Label();
-            this.txtProgEqMinPulse = new System.Windows.Forms.TextBox();
-            this.label268 = new System.Windows.Forms.Label();
-            this.txtProgEqNumPulse = new System.Windows.Forms.TextBox();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.txtCalMinuti = new System.Windows.Forms.TextBox();
@@ -368,7 +365,12 @@
             this.opSonda02 = new System.Windows.Forms.RadioButton();
             this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
+            this.grbVarRestartScheda = new System.Windows.Forms.GroupBox();
+            this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
+            this.btnResetScheda = new System.Windows.Forms.Button();
             this.grbSvcParametriMedie = new System.Windows.Forms.GroupBox();
+            this.lblSvcCausaLastReset = new System.Windows.Forms.Label();
+            this.txtSvcCausaLastReset = new System.Windows.Forms.TextBox();
             this.txtSvcSecDurataPause = new System.Windows.Forms.MaskedTextBox();
             this.label253 = new System.Windows.Forms.Label();
             this.btnSvcScriviParametriMedie = new System.Windows.Forms.Button();
@@ -984,12 +986,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvwCicliBatteria)).BeginInit();
             this.grbMemCicliContatori.SuspendLayout();
             this.tabCb02.SuspendLayout();
-            this.tbcSetup.SuspendLayout();
-            this.tabSetupRiepilogo.SuspendLayout();
             this.grbProgrImpianto.SuspendLayout();
             this.grbProgrammazione.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).BeginInit();
-            this.tabSetupPianificazione.SuspendLayout();
+            this.grbProgParEqual.SuspendLayout();
+            this.tbpPianificazione.SuspendLayout();
             this.tlpGrigliaTurni.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -1005,8 +1006,6 @@
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.tabSetupParametri.SuspendLayout();
-            this.grbProgParEqual.SuspendLayout();
             this.tabCb05.SuspendLayout();
             this.grbCalData.SuspendLayout();
             this.grbAccensione.SuspendLayout();
@@ -1015,6 +1014,7 @@
             this.groupBox4.SuspendLayout();
             this.grbComboSonda.SuspendLayout();
             this.tabSbFact.SuspendLayout();
+            this.grbVarRestartScheda.SuspendLayout();
             this.grbSvcParametriMedie.SuspendLayout();
             this.grbVarResetScheda.SuspendLayout();
             this.grbCalibrazionePulsanti.SuspendLayout();
@@ -1077,6 +1077,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tabStatistiche);
             this.tabCaricaBatterie.Controls.Add(this.tabCb04);
             this.tabCaricaBatterie.Controls.Add(this.tabCb02);
+            this.tabCaricaBatterie.Controls.Add(this.tbpPianificazione);
             this.tabCaricaBatterie.Controls.Add(this.tabCb05);
             this.tabCaricaBatterie.Controls.Add(this.tabCb03);
             this.tabCaricaBatterie.Controls.Add(this.tabSbFact);
@@ -1089,17 +1090,16 @@
             resources.ApplyResources(this.tabCaricaBatterie, "tabCaricaBatterie");
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
+            this.tabCaricaBatterie.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabCaricaBatterie_DrawItem);
             this.tabCaricaBatterie.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabCaricaBatterie_Selected);
             // 
             // tabCb01
             // 
             this.tabCb01.AllowDrop = true;
             this.tabCb01.BackColor = System.Drawing.Color.LightYellow;
-            this.tabCb01.Controls.Add(this.chkCliResetContatori);
             this.tabCb01.Controls.Add(this.grbAbilitazioneReset);
             this.tabCb01.Controls.Add(this.grbDownloadDati);
             this.tabCb01.Controls.Add(this.grbMainDlOptions);
-            this.tabCb01.Controls.Add(this.btnResetScheda);
             this.tabCb01.Controls.Add(this.grbTestataContatori);
             this.tabCb01.Controls.Add(this.btnSalvaCliente);
             this.tabCb01.Controls.Add(this.grbTestata);
@@ -1107,13 +1107,6 @@
             this.tabCb01.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.tabCb01, "tabCb01");
             this.tabCb01.Name = "tabCb01";
-            // 
-            // chkCliResetContatori
-            // 
-            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
-            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
-            this.chkCliResetContatori.Name = "chkCliResetContatori";
-            this.chkCliResetContatori.UseVisualStyleBackColor = true;
             // 
             // grbAbilitazioneReset
             // 
@@ -1228,14 +1221,6 @@
             resources.ApplyResources(this.chkAckDumpMem, "chkAckDumpMem");
             this.chkAckDumpMem.Name = "chkAckDumpMem";
             this.chkAckDumpMem.UseVisualStyleBackColor = true;
-            // 
-            // btnResetScheda
-            // 
-            resources.ApplyResources(this.btnResetScheda, "btnResetScheda");
-            this.btnResetScheda.ForeColor = System.Drawing.Color.Red;
-            this.btnResetScheda.Name = "btnResetScheda";
-            this.btnResetScheda.UseVisualStyleBackColor = true;
-            this.btnResetScheda.Click += new System.EventHandler(this.btnResetScheda_Click);
             // 
             // grbTestataContatori
             // 
@@ -2180,6 +2165,8 @@
             // grbMemCicliPulsanti
             // 
             this.grbMemCicliPulsanti.BackColor = System.Drawing.Color.White;
+            this.grbMemCicliPulsanti.Controls.Add(this.chkMemLngSalvaRicalcolo);
+            this.grbMemCicliPulsanti.Controls.Add(this.btnRicalcolaSoc);
             this.grbMemCicliPulsanti.Controls.Add(this.chkCaricaBrevi);
             this.grbMemCicliPulsanti.Controls.Add(this.chkInvertiCorreti);
             this.grbMemCicliPulsanti.Controls.Add(this.btnRigeneraLista);
@@ -2190,6 +2177,19 @@
             resources.ApplyResources(this.grbMemCicliPulsanti, "grbMemCicliPulsanti");
             this.grbMemCicliPulsanti.Name = "grbMemCicliPulsanti";
             this.grbMemCicliPulsanti.TabStop = false;
+            // 
+            // chkMemLngSalvaRicalcolo
+            // 
+            resources.ApplyResources(this.chkMemLngSalvaRicalcolo, "chkMemLngSalvaRicalcolo");
+            this.chkMemLngSalvaRicalcolo.Name = "chkMemLngSalvaRicalcolo";
+            this.chkMemLngSalvaRicalcolo.UseVisualStyleBackColor = true;
+            // 
+            // btnRicalcolaSoc
+            // 
+            resources.ApplyResources(this.btnRicalcolaSoc, "btnRicalcolaSoc");
+            this.btnRicalcolaSoc.Name = "btnRicalcolaSoc";
+            this.btnRicalcolaSoc.UseVisualStyleBackColor = true;
+            this.btnRicalcolaSoc.Click += new System.EventHandler(this.btnRicalcolaSoc_Click);
             // 
             // chkCaricaBrevi
             // 
@@ -2315,8 +2315,8 @@
             this.flvwCicliBatteria.AllowColumnReorder = true;
             this.flvwCicliBatteria.CellEditUseWholeCell = false;
             this.flvwCicliBatteria.CheckBoxes = true;
-            this.flvwCicliBatteria.FullRowSelect = true;
             resources.ApplyResources(this.flvwCicliBatteria, "flvwCicliBatteria");
+            this.flvwCicliBatteria.FullRowSelect = true;
             this.flvwCicliBatteria.Name = "flvwCicliBatteria";
             this.flvwCicliBatteria.ShowGroups = false;
             this.flvwCicliBatteria.ShowImagesOnSubItems = true;
@@ -2365,31 +2365,16 @@
             // tabCb02
             // 
             this.tabCb02.BackColor = System.Drawing.Color.LightYellow;
-            this.tabCb02.Controls.Add(this.tbcSetup);
+            this.tabCb02.Controls.Add(this.grbProgrImpianto);
+            this.tabCb02.Controls.Add(this.grbProgrammazione);
+            this.tabCb02.Controls.Add(this.flvwProgrammiCarica);
+            this.tabCb02.Controls.Add(this.btnAttivaProgrammazione);
+            this.tabCb02.Controls.Add(this.btnNuovoProgramma);
+            this.tabCb02.Controls.Add(this.btnRicaricaProgr);
+            this.tabCb02.Controls.Add(this.grbProgParEqual);
             resources.ApplyResources(this.tabCb02, "tabCb02");
             this.tabCb02.Name = "tabCb02";
             this.tabCb02.Click += new System.EventHandler(this.tabCb02_Click);
-            // 
-            // tbcSetup
-            // 
-            resources.ApplyResources(this.tbcSetup, "tbcSetup");
-            this.tbcSetup.Controls.Add(this.tabSetupRiepilogo);
-            this.tbcSetup.Controls.Add(this.tabSetupPianificazione);
-            this.tbcSetup.Controls.Add(this.tabSetupParametri);
-            this.tbcSetup.Name = "tbcSetup";
-            this.tbcSetup.SelectedIndex = 0;
-            // 
-            // tabSetupRiepilogo
-            // 
-            this.tabSetupRiepilogo.BackColor = System.Drawing.Color.LightYellow;
-            this.tabSetupRiepilogo.Controls.Add(this.grbProgrImpianto);
-            this.tabSetupRiepilogo.Controls.Add(this.grbProgrammazione);
-            this.tabSetupRiepilogo.Controls.Add(this.flvwProgrammiCarica);
-            this.tabSetupRiepilogo.Controls.Add(this.btnAttivaProgrammazione);
-            this.tabSetupRiepilogo.Controls.Add(this.btnNuovoProgramma);
-            this.tabSetupRiepilogo.Controls.Add(this.btnRicaricaProgr);
-            resources.ApplyResources(this.tabSetupRiepilogo, "tabSetupRiepilogo");
-            this.tabSetupRiepilogo.Name = "tabSetupRiepilogo";
             // 
             // grbProgrImpianto
             // 
@@ -2846,12 +2831,67 @@
             this.btnRicaricaProgr.UseVisualStyleBackColor = true;
             this.btnRicaricaProgr.Click += new System.EventHandler(this.btnRicaricaProgr_Click);
             // 
-            // tabSetupPianificazione
+            // grbProgParEqual
             // 
-            this.tabSetupPianificazione.BackColor = System.Drawing.Color.LightYellow;
-            this.tabSetupPianificazione.Controls.Add(this.tlpGrigliaTurni);
-            resources.ApplyResources(this.tabSetupPianificazione, "tabSetupPianificazione");
-            this.tabSetupPianificazione.Name = "tabSetupPianificazione";
+            this.grbProgParEqual.BackColor = System.Drawing.Color.White;
+            this.grbProgParEqual.Controls.Add(this.txtProgEqCorrenteImpulso);
+            this.grbProgParEqual.Controls.Add(this.label271);
+            this.grbProgParEqual.Controls.Add(this.label270);
+            this.grbProgParEqual.Controls.Add(this.txtProgMinPause);
+            this.grbProgParEqual.Controls.Add(this.label269);
+            this.grbProgParEqual.Controls.Add(this.txtProgEqMinPulse);
+            this.grbProgParEqual.Controls.Add(this.label268);
+            this.grbProgParEqual.Controls.Add(this.txtProgEqNumPulse);
+            resources.ApplyResources(this.grbProgParEqual, "grbProgParEqual");
+            this.grbProgParEqual.Name = "grbProgParEqual";
+            this.grbProgParEqual.TabStop = false;
+            // 
+            // txtProgEqCorrenteImpulso
+            // 
+            resources.ApplyResources(this.txtProgEqCorrenteImpulso, "txtProgEqCorrenteImpulso");
+            this.txtProgEqCorrenteImpulso.Name = "txtProgEqCorrenteImpulso";
+            // 
+            // label271
+            // 
+            resources.ApplyResources(this.label271, "label271");
+            this.label271.Name = "label271";
+            // 
+            // label270
+            // 
+            resources.ApplyResources(this.label270, "label270");
+            this.label270.Name = "label270";
+            // 
+            // txtProgMinPause
+            // 
+            resources.ApplyResources(this.txtProgMinPause, "txtProgMinPause");
+            this.txtProgMinPause.Name = "txtProgMinPause";
+            // 
+            // label269
+            // 
+            resources.ApplyResources(this.label269, "label269");
+            this.label269.Name = "label269";
+            // 
+            // txtProgEqMinPulse
+            // 
+            resources.ApplyResources(this.txtProgEqMinPulse, "txtProgEqMinPulse");
+            this.txtProgEqMinPulse.Name = "txtProgEqMinPulse";
+            // 
+            // label268
+            // 
+            resources.ApplyResources(this.label268, "label268");
+            this.label268.Name = "label268";
+            // 
+            // txtProgEqNumPulse
+            // 
+            resources.ApplyResources(this.txtProgEqNumPulse, "txtProgEqNumPulse");
+            this.txtProgEqNumPulse.Name = "txtProgEqNumPulse";
+            // 
+            // tbpPianificazione
+            // 
+            this.tbpPianificazione.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpPianificazione.Controls.Add(this.tlpGrigliaTurni);
+            resources.ApplyResources(this.tbpPianificazione, "tbpPianificazione");
+            this.tbpPianificazione.Name = "tbpPianificazione";
             // 
             // tlpGrigliaTurni
             // 
@@ -3093,68 +3133,6 @@
             this.pannelloTurno1.InizioCambioTurno = null;
             this.pannelloTurno1.Name = "pannelloTurno1";
             this.pannelloTurno1.SolaLettura = false;
-            // 
-            // tabSetupParametri
-            // 
-            this.tabSetupParametri.BackColor = System.Drawing.Color.LightYellow;
-            this.tabSetupParametri.Controls.Add(this.grbProgParEqual);
-            resources.ApplyResources(this.tabSetupParametri, "tabSetupParametri");
-            this.tabSetupParametri.Name = "tabSetupParametri";
-            // 
-            // grbProgParEqual
-            // 
-            this.grbProgParEqual.BackColor = System.Drawing.Color.White;
-            this.grbProgParEqual.Controls.Add(this.txtProgEqCorrenteImpulso);
-            this.grbProgParEqual.Controls.Add(this.label271);
-            this.grbProgParEqual.Controls.Add(this.label270);
-            this.grbProgParEqual.Controls.Add(this.txtProgMinPause);
-            this.grbProgParEqual.Controls.Add(this.label269);
-            this.grbProgParEqual.Controls.Add(this.txtProgEqMinPulse);
-            this.grbProgParEqual.Controls.Add(this.label268);
-            this.grbProgParEqual.Controls.Add(this.txtProgEqNumPulse);
-            resources.ApplyResources(this.grbProgParEqual, "grbProgParEqual");
-            this.grbProgParEqual.Name = "grbProgParEqual";
-            this.grbProgParEqual.TabStop = false;
-            // 
-            // txtProgEqCorrenteImpulso
-            // 
-            resources.ApplyResources(this.txtProgEqCorrenteImpulso, "txtProgEqCorrenteImpulso");
-            this.txtProgEqCorrenteImpulso.Name = "txtProgEqCorrenteImpulso";
-            // 
-            // label271
-            // 
-            resources.ApplyResources(this.label271, "label271");
-            this.label271.Name = "label271";
-            // 
-            // label270
-            // 
-            resources.ApplyResources(this.label270, "label270");
-            this.label270.Name = "label270";
-            // 
-            // txtProgMinPause
-            // 
-            resources.ApplyResources(this.txtProgMinPause, "txtProgMinPause");
-            this.txtProgMinPause.Name = "txtProgMinPause";
-            // 
-            // label269
-            // 
-            resources.ApplyResources(this.label269, "label269");
-            this.label269.Name = "label269";
-            // 
-            // txtProgEqMinPulse
-            // 
-            resources.ApplyResources(this.txtProgEqMinPulse, "txtProgEqMinPulse");
-            this.txtProgEqMinPulse.Name = "txtProgEqMinPulse";
-            // 
-            // label268
-            // 
-            resources.ApplyResources(this.label268, "label268");
-            this.label268.Name = "label268";
-            // 
-            // txtProgEqNumPulse
-            // 
-            resources.ApplyResources(this.txtProgEqNumPulse, "txtProgEqNumPulse");
-            this.txtProgEqNumPulse.Name = "txtProgEqNumPulse";
             // 
             // tabCb05
             // 
@@ -3516,6 +3494,7 @@
             // tabSbFact
             // 
             this.tabSbFact.BackColor = System.Drawing.Color.LightYellow;
+            this.tabSbFact.Controls.Add(this.grbVarRestartScheda);
             this.tabSbFact.Controls.Add(this.grbSvcParametriMedie);
             this.tabSbFact.Controls.Add(this.grbVarResetScheda);
             this.tabSbFact.Controls.Add(this.grbCalibrazionePulsanti);
@@ -3528,9 +3507,36 @@
             this.tabSbFact.Name = "tabSbFact";
             this.tabSbFact.Click += new System.EventHandler(this.tabSbFact_Click);
             // 
+            // grbVarRestartScheda
+            // 
+            this.grbVarRestartScheda.BackColor = System.Drawing.Color.White;
+            this.grbVarRestartScheda.Controls.Add(this.chkCliResetContatori);
+            this.grbVarRestartScheda.Controls.Add(this.btnResetScheda);
+            resources.ApplyResources(this.grbVarRestartScheda, "grbVarRestartScheda");
+            this.grbVarRestartScheda.ForeColor = System.Drawing.Color.Red;
+            this.grbVarRestartScheda.Name = "grbVarRestartScheda";
+            this.grbVarRestartScheda.TabStop = false;
+            // 
+            // chkCliResetContatori
+            // 
+            resources.ApplyResources(this.chkCliResetContatori, "chkCliResetContatori");
+            this.chkCliResetContatori.ForeColor = System.Drawing.Color.Red;
+            this.chkCliResetContatori.Name = "chkCliResetContatori";
+            this.chkCliResetContatori.UseVisualStyleBackColor = true;
+            // 
+            // btnResetScheda
+            // 
+            resources.ApplyResources(this.btnResetScheda, "btnResetScheda");
+            this.btnResetScheda.ForeColor = System.Drawing.Color.Red;
+            this.btnResetScheda.Name = "btnResetScheda";
+            this.btnResetScheda.UseVisualStyleBackColor = true;
+            this.btnResetScheda.Click += new System.EventHandler(this.btnResetScheda_Click);
+            // 
             // grbSvcParametriMedie
             // 
             this.grbSvcParametriMedie.BackColor = System.Drawing.Color.White;
+            this.grbSvcParametriMedie.Controls.Add(this.lblSvcCausaLastReset);
+            this.grbSvcParametriMedie.Controls.Add(this.txtSvcCausaLastReset);
             this.grbSvcParametriMedie.Controls.Add(this.txtSvcSecDurataPause);
             this.grbSvcParametriMedie.Controls.Add(this.label253);
             this.grbSvcParametriMedie.Controls.Add(this.btnSvcScriviParametriMedie);
@@ -3542,6 +3548,17 @@
             resources.ApplyResources(this.grbSvcParametriMedie, "grbSvcParametriMedie");
             this.grbSvcParametriMedie.Name = "grbSvcParametriMedie";
             this.grbSvcParametriMedie.TabStop = false;
+            // 
+            // lblSvcCausaLastReset
+            // 
+            resources.ApplyResources(this.lblSvcCausaLastReset, "lblSvcCausaLastReset");
+            this.lblSvcCausaLastReset.Name = "lblSvcCausaLastReset";
+            // 
+            // txtSvcCausaLastReset
+            // 
+            resources.ApplyResources(this.txtSvcCausaLastReset, "txtSvcCausaLastReset");
+            this.txtSvcCausaLastReset.Name = "txtSvcCausaLastReset";
+            this.txtSvcCausaLastReset.ReadOnly = true;
             // 
             // txtSvcSecDurataPause
             // 
@@ -3595,8 +3612,8 @@
             this.grbVarResetScheda.BackColor = System.Drawing.Color.White;
             this.grbVarResetScheda.Controls.Add(this.chkFSerMantieniCliente);
             this.grbVarResetScheda.Controls.Add(this.btnFSerCancellaMemoria);
-            this.grbVarResetScheda.ForeColor = System.Drawing.Color.Red;
             resources.ApplyResources(this.grbVarResetScheda, "grbVarResetScheda");
+            this.grbVarResetScheda.ForeColor = System.Drawing.Color.Red;
             this.grbVarResetScheda.Name = "grbVarResetScheda";
             this.grbVarResetScheda.TabStop = false;
             // 
@@ -3610,7 +3627,7 @@
             // btnFSerCancellaMemoria
             // 
             resources.ApplyResources(this.btnFSerCancellaMemoria, "btnFSerCancellaMemoria");
-            this.btnFSerCancellaMemoria.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnFSerCancellaMemoria.ForeColor = System.Drawing.Color.Red;
             this.btnFSerCancellaMemoria.Name = "btnFSerCancellaMemoria";
             this.btnFSerCancellaMemoria.UseVisualStyleBackColor = true;
             this.btnFSerCancellaMemoria.Click += new System.EventHandler(this.btnFSerCancellaMemoria_Click);
@@ -4686,8 +4703,8 @@
             this.flvwLettureCorrente.AllowColumnReorder = true;
             this.flvwLettureCorrente.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwLettureCorrente.CellEditUseWholeCell = false;
-            this.flvwLettureCorrente.FullRowSelect = true;
             resources.ApplyResources(this.flvwLettureCorrente, "flvwLettureCorrente");
+            this.flvwLettureCorrente.FullRowSelect = true;
             this.flvwLettureCorrente.Name = "flvwLettureCorrente";
             this.flvwLettureCorrente.ShowGroups = false;
             this.flvwLettureCorrente.ShowImagesOnSubItems = true;
@@ -6074,8 +6091,8 @@
             // 
             // cmbCalTipoGrafico
             // 
-            this.cmbCalTipoGrafico.FormattingEnabled = true;
             resources.ApplyResources(this.cmbCalTipoGrafico, "cmbCalTipoGrafico");
+            this.cmbCalTipoGrafico.FormattingEnabled = true;
             this.cmbCalTipoGrafico.Name = "cmbCalTipoGrafico";
             this.cmbCalTipoGrafico.SelectedValueChanged += new System.EventHandler(this.cmbCalTipoGrafico_SelectedValueChanged);
             // 
@@ -6129,8 +6146,8 @@
             this.flvwCalCorrentiVerifica.AllowColumnReorder = true;
             this.flvwCalCorrentiVerifica.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwCalCorrentiVerifica.CellEditUseWholeCell = false;
-            this.flvwCalCorrentiVerifica.FullRowSelect = true;
             resources.ApplyResources(this.flvwCalCorrentiVerifica, "flvwCalCorrentiVerifica");
+            this.flvwCalCorrentiVerifica.FullRowSelect = true;
             this.flvwCalCorrentiVerifica.Name = "flvwCalCorrentiVerifica";
             this.flvwCalCorrentiVerifica.ShowGroups = false;
             this.flvwCalCorrentiVerifica.ShowImagesOnSubItems = true;
@@ -6151,8 +6168,8 @@
             // cmbCalListaEsecuzioni
             // 
             this.cmbCalListaEsecuzioni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCalListaEsecuzioni.FormattingEnabled = true;
             resources.ApplyResources(this.cmbCalListaEsecuzioni, "cmbCalListaEsecuzioni");
+            this.cmbCalListaEsecuzioni.FormattingEnabled = true;
             this.cmbCalListaEsecuzioni.Name = "cmbCalListaEsecuzioni";
             // 
             // btnCalRicaricaSequenza
@@ -7415,7 +7432,6 @@
             this.Resize += new System.EventHandler(this.frmSpyBat_Resize);
             this.tabCaricaBatterie.ResumeLayout(false);
             this.tabCb01.ResumeLayout(false);
-            this.tabCb01.PerformLayout();
             this.grbAbilitazioneReset.ResumeLayout(false);
             this.grbAbilitazioneReset.PerformLayout();
             this.grbDownloadDati.ResumeLayout(false);
@@ -7464,14 +7480,14 @@
             this.grbMemCicliContatori.ResumeLayout(false);
             this.grbMemCicliContatori.PerformLayout();
             this.tabCb02.ResumeLayout(false);
-            this.tbcSetup.ResumeLayout(false);
-            this.tabSetupRiepilogo.ResumeLayout(false);
             this.grbProgrImpianto.ResumeLayout(false);
             this.grbProgrImpianto.PerformLayout();
             this.grbProgrammazione.ResumeLayout(false);
             this.grbProgrammazione.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).EndInit();
-            this.tabSetupPianificazione.ResumeLayout(false);
+            this.grbProgParEqual.ResumeLayout(false);
+            this.grbProgParEqual.PerformLayout();
+            this.tbpPianificazione.ResumeLayout(false);
             this.tlpGrigliaTurni.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
@@ -7490,9 +7506,6 @@
             this.panel12.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
-            this.tabSetupParametri.ResumeLayout(false);
-            this.grbProgParEqual.ResumeLayout(false);
-            this.grbProgParEqual.PerformLayout();
             this.tabCb05.ResumeLayout(false);
             this.grbCalData.ResumeLayout(false);
             this.grbCalData.PerformLayout();
@@ -7507,6 +7520,8 @@
             this.grbComboSonda.PerformLayout();
             this.tabSbFact.ResumeLayout(false);
             this.tabSbFact.PerformLayout();
+            this.grbVarRestartScheda.ResumeLayout(false);
+            this.grbVarRestartScheda.PerformLayout();
             this.grbSvcParametriMedie.ResumeLayout(false);
             this.grbSvcParametriMedie.PerformLayout();
             this.grbVarResetScheda.ResumeLayout(false);
@@ -8081,7 +8096,6 @@
         private System.Windows.Forms.Label label116;
         private System.Windows.Forms.TextBox txtTestataPtrLunghi;
         private System.Windows.Forms.Label label113;
-        private System.Windows.Forms.Button btnResetScheda;
         private System.Windows.Forms.GroupBox grbCloneSBSourceData;
         private System.Windows.Forms.TextBox txtMaxCicli;
         private System.Windows.Forms.Label label129;
@@ -8398,9 +8412,6 @@
         private System.Windows.Forms.Label lblPro03;
         private System.Windows.Forms.TextBox txtProMaxChargeCurr;
         private System.Windows.Forms.Label lblPro12;
-        private System.Windows.Forms.TabControl tbcSetup;
-        private System.Windows.Forms.TabPage tabSetupRiepilogo;
-        private System.Windows.Forms.TabPage tabSetupPianificazione;
         private System.Windows.Forms.TableLayoutPanel tlpGrigliaTurni;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel16;
@@ -8477,7 +8488,6 @@
         private System.Windows.Forms.TextBox txtCliCodiceLL;
         private System.Windows.Forms.TextBox txtStratQryLLBattId;
         private System.Windows.Forms.Label label255;
-        private System.Windows.Forms.CheckBox chkCliResetContatori;
         private System.Windows.Forms.GroupBox grbCloneDaDatabase;
         private System.Windows.Forms.GroupBox grbCloneDaImg;
         private System.Windows.Forms.ProgressBar pgbCloneAvanzamento;
@@ -8518,7 +8528,6 @@
         private System.Windows.Forms.Label label266;
         private System.Windows.Forms.TextBox txtCalOre;
         private System.Windows.Forms.Label label267;
-        private System.Windows.Forms.TabPage tabSetupParametri;
         private System.Windows.Forms.GroupBox grbProgParEqual;
         private System.Windows.Forms.TextBox txtProgEqCorrenteImpulso;
         private System.Windows.Forms.Label label271;
@@ -8528,5 +8537,13 @@
         private System.Windows.Forms.TextBox txtProgEqMinPulse;
         private System.Windows.Forms.Label label268;
         private System.Windows.Forms.TextBox txtProgEqNumPulse;
+        private System.Windows.Forms.TabPage tbpPianificazione;
+        private System.Windows.Forms.GroupBox grbVarRestartScheda;
+        private System.Windows.Forms.CheckBox chkCliResetContatori;
+        private System.Windows.Forms.Button btnResetScheda;
+        private System.Windows.Forms.Button btnRicalcolaSoc;
+        private System.Windows.Forms.CheckBox chkMemLngSalvaRicalcolo;
+        private System.Windows.Forms.Label lblSvcCausaLastReset;
+        private System.Windows.Forms.TextBox txtSvcCausaLastReset;
     }
 }

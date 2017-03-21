@@ -37,14 +37,6 @@ namespace PannelloCharger
 
         }
 
-        /*
-        void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            Thread.Sleep(100);
-            string data = _serialPort.ReadLine();
-            this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
-        }
-        */
 
         private void port_DataReceivedSb(object sender, SerialDataReceivedEventArgs e)
         {
@@ -397,7 +389,7 @@ namespace PannelloCharger
                  _Vimpostati = 0;
 
                 if (_tensione < 0) _tensione = 0;
-                if (_tensione > 3) _tensione = 3;
+                if (_tensione > 8) _tensione = 8;
 
                 _comando = "PV "+ _tensione.ToString("0.000",NfiEn) + "\r";
                 _esito = ScriviMessaggio(_comando, false, true);

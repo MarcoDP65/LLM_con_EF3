@@ -370,9 +370,9 @@
     <value>Fattore di Carica</value>
   </data>
   <data name="GrCfAsseX" xml:space="preserve">
-    <value>Numero Cicli</value>
+    <value>Fattore di Carica</value>
   </data>
   <data name="GrCfAsseY" xml:space="preserve">
-    <value>Fattore di Carica</value>
+    <value>Numero Cicli</value>
   </data>
 </root>

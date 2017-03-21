@@ -16,7 +16,7 @@ namespace PannelloCharger
     {
 
         public enum Tipo: byte { Richiesta = 0x01, Risposta = 0x02, Indeterminato = 0x00,NonValido = 0xFF }
-        public enum TipoDevice : byte { LADELight = 0x01, SPYBATT = 0x02,Display = 0x03, PC = 0x04, Indeterminato = 0x00, NonValido = 0xFF }
+        public enum TipoDevice : byte { LADELight = 0x01, SPYBATT = 0x02,Display = 0x03, PC = 0x04, Indeterminato = 0x00,Monitor = 0xF0,  NonValido = 0xFF }
 
         public string Dispositivo { get; set; }
         public string TipoDispositivo { get; set; }

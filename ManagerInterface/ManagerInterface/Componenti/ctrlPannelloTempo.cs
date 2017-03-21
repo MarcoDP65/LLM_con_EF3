@@ -101,9 +101,10 @@ namespace PannelloCharger
                     if (_fattoreCarica != _nuovoValore)
                     {
                         _fattoreCarica = _nuovoValore;
-                       // _turno.FattoreCarica = _nuovoValore;
-
-                        _datiCambiati = true;
+                        _turno.FattoreCarica = _nuovoValore;
+                        DatiSalvati = false;
+                        
+                        // TODO: raise dati cambiati
 
                     }
 
@@ -292,6 +293,7 @@ namespace PannelloCharger
                 {
                     _turno.MinutiDurata = _minutiDurata;
                     _datiCambiati = true;
+                    DatiSalvati = false;
                 }
                 _turno.MinutiDurata = _minutiDurata;
 

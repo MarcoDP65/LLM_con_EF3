@@ -15,7 +15,6 @@ using System.Threading;
 using NextUI.Component;
 using NextUI.Frame;
 
-//using Common.Logging;
 using BrightIdeasSoftware;
 using Utility;
 using MoriData;
@@ -115,6 +114,7 @@ namespace PannelloCharger
 
                 InitializeComponent();
                 inizializzaComboPro();
+                tabCaricaBatterie.DrawMode = TabDrawMode.OwnerDrawFixed;
                 // Setto il bordo invisibile ai due groupbox dell'upd FW
                 grbFWdettUpload.Paint += PaintBorderlessGroupBox;
                 grbFWDettStato.Paint += PaintBorderlessGroupBox;
@@ -143,7 +143,7 @@ namespace PannelloCharger
                 if (!_esito)
                 {
                     // Se non ho il firmware state potrebbe essere una versione precedente
-                    // provo a legere la testata
+                    // provo a leggere la testata
                     _esito = ApriComunicazione(IdApparato, Logiche, SerialeCollegata);
                     if (IdApparato != "")
                     {
@@ -206,7 +206,7 @@ namespace PannelloCharger
                 InizializzaOxyGrSingolo();
                 //InizializzaOxyGrCalibrazione();
                 applicaAutorizzazioni();
-                if(_aggiornaStatistiche) RicalcolaStatistiche();
+                if (_aggiornaStatistiche) RicalcolaStatistiche();
                 InizializzaCalibrazioni();
                 InizializzaVistaCorrenti();
                 InizializzaVistaCorrentiCal();
@@ -597,7 +597,7 @@ namespace PannelloCharger
         }
 
 
-        public bool MostraTestata() 
+        public bool MostraTestata()
         {
             try
             {
@@ -699,14 +699,14 @@ namespace PannelloCharger
                 txtSerialNumber.ReadOnly = _readonly;
 
                 grbMainDlOptions.Visible = false;
-                btnResetScheda.Visible = false;
+                //btnResetScheda.Visible = false;
                 grbTestataContatori.Visible = false;
                 grbAbilitazioneReset.Visible = false;
                 txtSerialNumber.ReadOnly = true;
                 if (LivelloCorrente == 0)
                 {
                     grbMainDlOptions.Visible = true;
-                    btnResetScheda.Visible = true;
+                    //btnResetScheda.Visible = true;
                     grbTestataContatori.Visible = true;
                     grbAbilitazioneReset.Visible = true;
                     txtSerialNumber.ReadOnly = false;
@@ -773,8 +773,6 @@ namespace PannelloCharger
                 _enabled = (_readonly == false);
                 #endregion
 
-
-
                 #region "Orologio"
                 if (LivelloCorrente < 3)
                     _readonly = false;
@@ -784,8 +782,17 @@ namespace PannelloCharger
                 }
                 _enabled = (_readonly == false);
                 grbAccensione.Visible = false;
+               
                 if (LivelloCorrente > 2)
+                {
                     btnScriviRtc.Enabled = false;
+                   
+                }
+                if (LivelloCorrente > 1)
+                {
+                   
+                    grbCalData.Visible = false;
+                }
                 #endregion
 
                 #region "Programmazioni"
@@ -823,8 +830,11 @@ namespace PannelloCharger
 
                 grbCalibrazionePulsanti.Visible = _enabled;
                 grbCalibrazioni.Visible = _enabled;
-
+                grbSvcParametriMedie.Visible = _enabled;
                 chkDatiDiretti.Visible = _enabled;
+                btnPianRefresh.Visible = _enabled;
+                btnPianSalvaCliente.Visible = _enabled;
+                grbProgParEqual.Visible = _enabled;
 
                 if (LivelloCorrente > 2)
                     grbVarResetScheda.Visible = false;
@@ -923,6 +933,18 @@ namespace PannelloCharger
 
                 _enabled = (_readonly == false);
                 #endregion
+
+                #region "Strategia"
+                // accessibile solo a Factory 
+                if (LivelloCorrente > 0)
+                {
+                    tabCaricaBatterie.TabPages.Remove(tbpStrategia);
+                    _readonly = true;
+                }
+
+                _enabled = (_readonly == false);
+                #endregion
+
 
             }
             catch (Exception Ex)
@@ -1394,53 +1416,70 @@ namespace PannelloCharger
                 txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
 
                 InizializzaVistaProgrammazioni();
-                txtProgcID.Text = "";
-                txtProgcBattVdef.Text = "";
-                txtProgcBattAhDef.Text = "";
-                txtProgcCelleTot.Text = "";
-                txtProgcCelleV3.Text = "";
-                txtProgcCelleV2.Text = "";
-                txtProgcCelleV1.Text = "";
-
-
-                foreach (sbProgrammaRicarica _tempProg in _sb.Programmazioni)
+                //Vuoto tutte le textbox
+                foreach (object ctrl in grbProgrammazione.Controls)
                 {
-                    if (_tempProg.IdProgramma == (ushort)_sb.sbData.ProgramCount)
+                    if(ctrl.GetType() == typeof(TextBox))
                     {
-                        txtProgcID.Text = _tempProg.IdProgramma.ToString();
-                        txtProgcBattVdef.Text = FunzioniMR.StringaTensione(_tempProg.BatteryVdef) + " V";
-                        txtProgcBattAhDef.Text = FunzioniMR.StringaCapacita(_tempProg.BatteryAhdef, 10) + " Ah";
-                        txtProgcCelleTot.Text = _tempProg.BatteryCells.ToString();
-                        txtProgcCelleV3.Text = _tempProg.BatteryCell3.ToString();
-                        txtProgcCelleV2.Text = _tempProg.BatteryCell2.ToString();
-                        txtProgcCelleV1.Text = _tempProg.BatteryCell1.ToString();
-                        txtProgcNumSpire.Text = _tempProg.NumeroSpire.ToString();
-                        if(_tempProg.AbilitaPresElett == 0xF0)
-                        {
-                            txtProgcSondaEl.Text = "Non Abilitata";
-                            txtProgcSondaEl.ForeColor = Color.Red;
-                        }
-                        else
-                        {
-                            txtProgcSondaEl.Text = "Abilitata";
-                            txtProgcSondaEl.ForeColor = Color.Black;
-                        }
-
-                        if (_tempProg.VersoCorrente == 0xF0)
-                        {
-                            txtProgcVersoCorrente.Text = "Inverso";
-                            txtProgcVersoCorrente.ForeColor = Color.Red;
-                        }
-                        else
-                        {
-                            txtProgcVersoCorrente.Text = "Diretto";
-                            txtProgcVersoCorrente.ForeColor = Color.Black;
-
-                        }
-
-                        break;
+                        TextBox _tmpTxt = (TextBox)ctrl;
+                        _tmpTxt.Text = "";
                     }
                 }
+
+                if(_sb.ProgrammaCorrente != null)
+                {
+                    txtProgcID.Text = _sb.ProgrammaCorrente.IdProgramma.ToString();
+                    txtProgcBattVdef.Text = FunzioniMR.StringaTensione(_sb.ProgrammaCorrente.BatteryVdef) + " V";
+                    txtProgcBattAhDef.Text = FunzioniMR.StringaCapacita(_sb.ProgrammaCorrente.BatteryAhdef, 10) + " Ah";
+                    txtProgcCelleTot.Text = _sb.ProgrammaCorrente.BatteryCells.ToString();
+                    txtProgcCelleV3.Text = _sb.ProgrammaCorrente.BatteryCell3.ToString();
+                    txtProgcCelleV2.Text = _sb.ProgrammaCorrente.BatteryCell2.ToString();
+                    txtProgcCelleV1.Text = _sb.ProgrammaCorrente.BatteryCell1.ToString();
+                    txtProgcNumSpire.Text = _sb.ProgrammaCorrente.NumeroSpire.ToString();
+
+                    if (_sb.ProgrammaCorrente.AbilitaPresElett == 0xF0)
+                    {
+                        txtProgcSondaEl.Text = "Non Abilitata";
+                        txtProgcSondaEl.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        txtProgcSondaEl.Text = "Abilitata";
+                        txtProgcSondaEl.ForeColor = Color.Black;
+                    }
+
+                    if (_sb.ProgrammaCorrente.VersoCorrente == 0xF0)
+                    {
+                        txtProgcVersoCorrente.Text = "Inverso";
+                        txtProgcVersoCorrente.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        txtProgcVersoCorrente.Text = "Diretto";
+                        txtProgcVersoCorrente.ForeColor = Color.Black;
+
+                    }
+
+                    txtProMinChargeCurr.Text = FunzioniMR.StringaCapacita(_sb.ProgrammaCorrente.CorrenteMinimaCHG, 10) ;
+                    txtProMaxChargeCurr.Text = FunzioniMR.StringaCapacita(_sb.ProgrammaCorrente.CorrenteMassimaCHG, 10) ;
+                    txtProMinCurrW.Text = FunzioniMR.StringaCapacita(_sb.ProgrammaCorrente.MinCorrenteW, 10);
+                    txtProMaxCurrW.Text = FunzioniMR.StringaCapacita(_sb.ProgrammaCorrente.MaxCorrenteW, 10);
+                    txtProMaxCurrImp.Text = FunzioniMR.StringaCapacita(_sb.ProgrammaCorrente.MaxCorrenteImp, 10);
+
+                    txtProTensioneGas.Text = FunzioniMR.StringaTensionePerCella(_sb.ProgrammaCorrente.TensioneGas, 1);
+                    txtProTensioneRaccordo.Text = FunzioniMR.StringaTensionePerCella(_sb.ProgrammaCorrente.TensioneRaccordo, 1);
+                    txtProTensioneFinale.Text = FunzioniMR.StringaTensionePerCella(_sb.ProgrammaCorrente.TensioneFinale, 1);
+
+                    txtProTempAttenzione.Text = FunzioniMR.StringaTemperatura(_sb.ProgrammaCorrente.TempAttenzione);
+                    txtProTempAllarme.Text = FunzioniMR.StringaTemperatura(_sb.ProgrammaCorrente.TempAllarme);
+                    txtProTempRiavvio.Text = FunzioniMR.StringaTemperatura(_sb.ProgrammaCorrente.TempRipresa);
+
+
+
+                }
+
+
+
 
 
 
@@ -1733,6 +1772,9 @@ namespace PannelloCharger
 
         }
 
+        /// <summary>
+        /// Apre il form (modale) per l'inserimento di una nuova configurazione.
+        /// </summary>
         private void MostraNuovoProgramma()
         {
             try
@@ -1918,7 +1960,7 @@ namespace PannelloCharger
             }
         }
 
-        public void salvaCliente()
+        public void salvaCliente(bool SerialeCollegata)
         {
             try
             {
@@ -1934,7 +1976,7 @@ namespace PannelloCharger
 
                 _sb.sbCliente.ResetContatori = MessaggioSpyBatt.DatiCliente.NuoviLivelli.MantieniLivelli;
 
-                if(chkCliResetContatori.Checked)
+                if (chkCliResetContatori.Checked)
                 {
                     _sb.sbCliente.ResetContatori = MessaggioSpyBatt.DatiCliente.NuoviLivelli.ResetLivelli;
                 }
@@ -1949,7 +1991,7 @@ namespace PannelloCharger
                 else
                 { _sb.sbCliente.CicliAttesi = 1000; }
 
-                _sb.ScriviDatiCliente();
+                _sb.ScriviDatiCliente(SerialeCollegata);
                 if (CaricaCliente(_sb.Id, _logiche, true)) mostraCliente();
             }
             catch (Exception Ex)
@@ -2004,6 +2046,7 @@ namespace PannelloCharger
                 HeaderFormatStyle _stile = new HeaderFormatStyle();
                 BarRenderer _barraCortiCaricati = new BarRenderer();
                 ColumnHeaderStyle _chsLunghi = new ColumnHeaderStyle();
+                
 
                 bool _colonnaNascosta = true;
                 int LivelloCorrente;
@@ -2023,6 +2066,7 @@ namespace PannelloCharger
                 Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
                 _stile.SetFont(_carattere);
 
+                flvwCicliBatteria.Font = new Font("Tahoma", 8, FontStyle.Regular);
 
                 flvwCicliBatteria.HeaderUsesThemes = false;
                 flvwCicliBatteria.HeaderFormatStyle = _stile;
@@ -2033,12 +2077,13 @@ namespace PannelloCharger
                 flvwCicliBatteria.View = View.Details;
                 flvwCicliBatteria.ShowGroups = false;
                 flvwCicliBatteria.GridLines = true;
+                flvwCicliBatteria.HeaderWordWrap = true;
 
 
                 BrightIdeasSoftware.OLVColumn Colonna1 = new BrightIdeasSoftware.OLVColumn();
                 Colonna1.Text = StringheMessaggio.strVistaLunghiCol01;
                 Colonna1.AspectName = "IdMemoriaLunga";
-                Colonna1.Width = 60;
+                Colonna1.Width = 50;
                 Colonna1.HeaderTextAlign = HorizontalAlignment.Left;
                 Colonna1.TextAlign = HorizontalAlignment.Left;
                 //               Colonna1.CheckBoxes = false;
@@ -2055,7 +2100,7 @@ namespace PannelloCharger
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
                     return _sb.StringaTipoEvento(_tempVal.TipoEvento);
                 };
-                Colonna2.Width = 100;
+                Colonna2.Width = 70;
                 Colonna2.HeaderTextAlign = HorizontalAlignment.Left;
                 Colonna2.TextAlign = HorizontalAlignment.Left;
                 flvwCicliBatteria.AllColumns.Add(Colonna2);
@@ -2112,7 +2157,7 @@ namespace PannelloCharger
 
                 //Tempo Sovreatemperatura
                 BrightIdeasSoftware.OLVColumn ColDurataOverTemp = new BrightIdeasSoftware.OLVColumn();
-                ColDurataOverTemp.Text = "T OverT"; // StringheMessaggio.strVistaLunghiCol05;
+                ColDurataOverTemp.Text = StringheMessaggio.strVistaLunghiColOverT;  //    "T OverT"
                 ColDurataOverTemp.AspectName = "DurataOverTemp";
                 ColDurataOverTemp.Sortable = false;
                 ColDurataOverTemp.AspectGetter = delegate (object _Valore)
@@ -2120,7 +2165,7 @@ namespace PannelloCharger
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
                     return _sb.StringaDurata(_tempVal.DurataOverTemp, true);
                 };
-                ColDurataOverTemp.Width = 60;
+                ColDurataOverTemp.Width = 65;
                 ColDurataOverTemp.HeaderTextAlign = HorizontalAlignment.Center;
                 ColDurataOverTemp.TextAlign = HorizontalAlignment.Right;
                 ColDurataOverTemp.IsVisible = _colonnaNascosta;
@@ -2133,6 +2178,7 @@ namespace PannelloCharger
                 Colonna7.Width = 50;
                 Colonna7.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna7.TextAlign = HorizontalAlignment.Right;
+                Colonna7.IsVisible = false;
                 flvwCicliBatteria.AllColumns.Add(Colonna7);
 
                 BrightIdeasSoftware.OLVColumn Colonna8 = new BrightIdeasSoftware.OLVColumn();
@@ -2142,7 +2188,31 @@ namespace PannelloCharger
                 Colonna8.Width = 50;
                 Colonna8.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna8.TextAlign = HorizontalAlignment.Right;
+                Colonna8.IsVisible = false;
                 flvwCicliBatteria.AllColumns.Add(Colonna8);
+
+
+
+                BrightIdeasSoftware.OLVColumn Colonna7c = new BrightIdeasSoftware.OLVColumn();
+                Colonna7c.Text = StringheMessaggio.strVistaLunghiCol07c;
+                Colonna7c.AspectName = "strVCellMin";
+                Colonna7c.Sortable = false;
+                Colonna7c.Width = 50;
+                Colonna7c.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna7c.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna7c);
+
+                BrightIdeasSoftware.OLVColumn Colonna8c = new BrightIdeasSoftware.OLVColumn();
+                Colonna8c.Text = StringheMessaggio.strVistaLunghiCol08c;
+                Colonna8c.AspectName = "strVCellMax";
+                Colonna8c.Sortable = false;
+                Colonna8c.Width = 50;
+                Colonna8c.HeaderTextAlign = HorizontalAlignment.Center;
+                Colonna8c.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(Colonna8c);
+
+
+
 
 
                 BrightIdeasSoftware.OLVColumn Colonna9 = new BrightIdeasSoftware.OLVColumn();
@@ -2223,7 +2293,7 @@ namespace PannelloCharger
                 Colonna12.Text = StringheMessaggio.strVistaLunghiCol12; // "Ah";
                 Colonna12.AspectName = "strAh";
                 Colonna12.Sortable = false;
-                Colonna12.Width = 50;
+                Colonna12.Width = 65;
                 Colonna12.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
@@ -2246,7 +2316,7 @@ namespace PannelloCharger
                 ColAhCaricati.Sortable = false;
                 ColAhCaricati.ToolTipText = "Ah Caricati";
                 ColAhCaricati.AspectName = "strAhCaricati";
-                ColAhCaricati.Width = 50;
+                ColAhCaricati.Width = 65;
                 ColAhCaricati.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
@@ -2269,7 +2339,7 @@ namespace PannelloCharger
                 ColAhScaricati.Sortable = false;
                 ColAhScaricati.ToolTipText = "Ah Scaricati";
                 ColAhScaricati.AspectName = "strAhScaricati";
-                ColAhScaricati.Width = 50;
+                ColAhScaricati.Width = 65;
                 ColAhScaricati.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
@@ -2292,7 +2362,7 @@ namespace PannelloCharger
                 Colonna13.AspectName = "strKWh";
                 Colonna13.Sortable = false;
 
-                Colonna13.Width = 50;
+                Colonna13.Width = 65;
                 Colonna13.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
@@ -2314,7 +2384,7 @@ namespace PannelloCharger
                 Colonna13C.AspectName = "strKWhCaricati";
                 Colonna13C.Sortable = false;
 
-                Colonna13C.Width = 60;
+                Colonna13C.Width = 65;
                 Colonna13C.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
@@ -2336,7 +2406,7 @@ namespace PannelloCharger
                 Colonna13S.AspectName = "strKWhScaricati";
                 Colonna13S.Sortable = false;
 
-                Colonna13S.Width = 60;
+                Colonna13S.Width = 65;
                 Colonna13S.AspectGetter = delegate (object _Valore)
                 {
                     sbMemLunga _tempVal = (sbMemLunga)_Valore;
@@ -2377,6 +2447,82 @@ namespace PannelloCharger
                 Colonna14.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna14.TextAlign = HorizontalAlignment.Right;
                 flvwCicliBatteria.AllColumns.Add(Colonna14);
+
+
+
+                /*--------------------------------------------------------------------------------------------------------------------*/
+
+                BrightIdeasSoftware.OLVColumn ColonnaLivStart = new BrightIdeasSoftware.OLVColumn();
+                ColonnaLivStart.Text = "Cap IN";
+                ColonnaLivStart.AspectName = "strLivelloIniziale";
+                ColonnaLivStart.Sortable = false;   
+                /*                 
+                ColonnaLivStart.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strLivelloIniziale;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
+                */
+                ColonnaLivStart.Width = 60;
+                ColonnaLivStart.HeaderTextAlign = HorizontalAlignment.Center;
+                ColonnaLivStart.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(ColonnaLivStart);
+
+
+                BrightIdeasSoftware.OLVColumn ColonnaLivStop = new BrightIdeasSoftware.OLVColumn();
+                ColonnaLivStop.Text = "Cap Fin";
+                ColonnaLivStop.AspectName = "strLivelloFinale";
+                ColonnaLivStop.Sortable = false;
+                ColonnaLivStop.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strLivelloFinale;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
+                ColonnaLivStop.Width = 60;
+                ColonnaLivStop.HeaderTextAlign = HorizontalAlignment.Center;
+                ColonnaLivStop.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(ColonnaLivStop);
+
+
+
+
+                BrightIdeasSoftware.OLVColumn ColonnaSOC = new BrightIdeasSoftware.OLVColumn();
+                ColonnaSOC.Text = "SoC.Eff";
+                ColonnaSOC.AspectName = "strStatoCaricaEff";
+                ColonnaSOC.Sortable = false;
+                ColonnaSOC.AspectGetter = delegate (object _Valore)
+                {
+                    sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                    if (_tempVal.TipoEvento == 0xF0 || _tempVal.TipoEvento == 0x0F)
+                    {
+                        return _tempVal.strStatoCaricaEff;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                };
+                ColonnaSOC.Width = 60;
+                ColonnaSOC.HeaderTextAlign = HorizontalAlignment.Center;
+                ColonnaSOC.TextAlign = HorizontalAlignment.Right;
+                flvwCicliBatteria.AllColumns.Add(ColonnaSOC);
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
 
                 BrightIdeasSoftware.OLVColumn Colonna15 = new BrightIdeasSoftware.OLVColumn();
                 Colonna15.Text = "C.F.";
@@ -2458,7 +2604,7 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna16);
 
                 BrightIdeasSoftware.OLVColumn Colonna17 = new BrightIdeasSoftware.OLVColumn();
-                Colonna17.Text = StringheMessaggio.strVistaLunghiCol17; // "Registrazioni";
+                Colonna17.Text = StringheMessaggio.strVistaLunghiCol17; // "% Reg.";
                 Colonna17.Sortable = false;
                 Colonna17.AspectName = "PercEventiBreviCaricati";
                 Colonna17.Renderer = _barraCortiCaricati;
@@ -3111,7 +3257,7 @@ namespace PannelloCharger
         private void btnSalvaCliente_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            salvaCliente();
+            salvaCliente(_apparatoPresente);
             this.Cursor = Cursors.Default;
         }
 
@@ -3258,6 +3404,15 @@ namespace PannelloCharger
 
         }
 
+
+        /// <summary>
+        /// Evento CLICK del pulsante [Carica Cicli]: se ho meno di 25 cicli da leggere leggo puntualmente lunghi e brevi, 
+        /// se no faccio il dump dell'intera memoria. al termine del dump rileggo l'ultimo ciclo per forzare la chiusura 
+        /// del lungo corrente.
+        /// 
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void cmdRicaricaDati_Click(object sender, EventArgs e)
         {
             try
@@ -3398,10 +3553,10 @@ namespace PannelloCharger
         }
 
         /// <summary>
-        /// Scarica L'intera immagine memoria, aprendo la finastra pop-up di avanzamento
+        /// Scarica L'intera immagine memoria, aprendo la finastra pop-up di avanzamento.
         /// </summary>
         /// <param name="InviaACK">Se TRUE attiva l'invio dell'ACK in risposta ad ogni pacchetto</param>
-        private void DumpInteraMemoria(bool InviaACK = false)
+        private void DumpInteraMemoria(bool InviaACK = false,bool ScaricaUltimoLungo = false)
         {
             try
             {
@@ -3538,7 +3693,7 @@ namespace PannelloCharger
 
                     if (_stat.NumeroScariche > 0)
                     {
-                        double _kwMed =(double)_stat.WHtotali /(double)(100 * _stat.NumeroScariche);
+                        double _kwMed = (double)_stat.WHtotali / (double)(100 * _stat.NumeroScariche);
                         txtStatEnergiaMediaKWh.Text = _kwMed.ToString("0.0");
                         _kwMed = (double)_stat.AhTotali / (double)(_stat.NumeroScariche);
                         txtStatEnergiaMediaAh.Text = _kwMed.ToString("0.0");
@@ -5265,7 +5420,7 @@ namespace PannelloCharger
                 SerialMessage.Crc16Ccitt codCrc = new SerialMessage.Crc16Ccitt(SerialMessage.InitialCrcValue.NonZero1);
 
                 // Prima chiedo il codice di autorizzazione, se ho meno di 30 cicli registrati
-                if ( false ) //_sb.sbData.LongMem > 30)
+                if (false) //_sb.sbData.LongMem > 30)
                 {
                     frmRichiestaCodice _richiesta = new frmRichiestaCodice();
                     _richiesta.ShowDialog();
@@ -5377,7 +5532,7 @@ namespace PannelloCharger
                             _sb.sbCliente.VuotaRecord(MantieniCliente);
                         }
                         _sb.sbCliente.SerialNumber = _tmpSernum;
-                        _sb.ScriviDatiCliente();
+                        _sb.ScriviDatiCliente(true);
 
                         // e ora ricarico i dati
                         //.....
@@ -7465,8 +7620,8 @@ namespace PannelloCharger
                 frmAlimentatore Alimentatore = new frmAlimentatore();
                 Alimentatore.MdiParent = this.MdiParent;
                 Alimentatore.StartPosition = FormStartPosition.CenterParent;
-                if(Alimentatore!=null)
-                   Alimentatore.Show();
+                if (Alimentatore != null)
+                    Alimentatore.Show();
 
                 Lambda = Alimentatore;
 
@@ -7546,7 +7701,7 @@ namespace PannelloCharger
                 txtCalNumSpire.Text = _spire.ToString();
                 txtCalSecondiAttesa.Text = _secAttesa.ToString();
 
-                bool _esitoSeq = LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa, _maxErrA,_secPasso,_coeffPasso);
+                bool _esitoSeq = LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa, _maxErrA, _secPasso, _coeffPasso);
 
                 if (chkCalRegistraSequenza.Checked)
                 {
@@ -7608,7 +7763,7 @@ namespace PannelloCharger
 
             _esito = CaricaTestateCalibrazioni(_sb.Id, _logiche.dbDati.connessione);
 
-            if(_esito)
+            if (_esito)
             {
                 cmbCalListaEsecuzioni.DataSource = _ListaCalibrazioni;
                 cmbCalListaEsecuzioni.DisplayMember = "IdEsecuzione";
@@ -7715,7 +7870,7 @@ namespace PannelloCharger
 
 
                 /***************************************************************************************************************************/
-                /*   GRAFICO C.F..                                                                                                        */
+                /*   GRAFICO C.F..                                                                                                         */
                 /***************************************************************************************************************************/
 
                 if (chkStatGraficoFC.Checked == true)
@@ -7732,7 +7887,7 @@ namespace PannelloCharger
                 }
 
                 /***************************************************************************************************************************/
-                /*   GRAFICO Assenza Elettrolita                                                                   */
+                /*   GRAFICO Assenza Elettrolita                                                                      */
                 /***************************************************************************************************************************/
 
                 if (chkStatGraficoAssEl.Checked == true)
@@ -7935,7 +8090,7 @@ namespace PannelloCharger
 
         private void btnStratTest02_Click(object sender, EventArgs e)
         {
-             
+
         }
 
         private void btnStratTestErr_Click(object sender, EventArgs e)
@@ -7952,7 +8107,7 @@ namespace PannelloCharger
         {
             LanciaComandoStrategiaUpdCnt(0x51);
         }
-    
+
 
         private void btnStratSetDischarge_Click(object sender, EventArgs e)
         {
@@ -7979,7 +8134,7 @@ namespace PannelloCharger
         {
             try
             {
-                StepCarica PassoSelezionato = (StepCarica) cmbStratIsSelStep.SelectedItem;
+                StepCarica PassoSelezionato = (StepCarica)cmbStratIsSelStep.SelectedItem;
                 MostraPassoCorrente(PassoSelezionato);
 
 
@@ -8012,7 +8167,7 @@ namespace PannelloCharger
 
                 Pianificazione _tempP = (Pianificazione)cmbModoPianificazione.SelectedItem;
 
-                if (_sb.sbCliente.ModoPianificazione !=(byte) _tempP.CodiceTP)
+                if (_sb.sbCliente.ModoPianificazione != (byte)_tempP.CodiceTP)
                 {
                     DialogResult risposta = MessageBox.Show("Vuoi cambiare la modalità di pianificazione delle cariche ? " + "\n" + "L'operazione cancellerà la pianificazione corrente",
                     "Modo Pianificazione",
@@ -8021,18 +8176,18 @@ namespace PannelloCharger
 
                     if (risposta == System.Windows.Forms.DialogResult.Yes)
                     {
-                        _esito =  _sb.sbCliente.PianificazioneCorrente.ImpostaModello(_tempP.CodiceTP);
+                        _esito = _sb.sbCliente.PianificazioneCorrente.ImpostaModello(_tempP.CodiceTP);
                         _sb.sbCliente.ModoPianificazione = (byte)_tempP.CodiceTP;
                         _esito = MostraPianificazione();
                         DatiSalvati = false;
                     }
-                    
+
                 }
 
 
             }
 
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Log.Error("cmbModoPianificazione_SelectedIndexChanged: " + Ex.Message);
             }
@@ -8052,7 +8207,7 @@ namespace PannelloCharger
 
                 switch (_sb.sbCliente.ModoPianificazione)
                 {
-                    case (byte) ParametriSetupPro.TipoPianificazione.NonDefinita:
+                    case (byte)ParametriSetupPro.TipoPianificazione.NonDefinita:
                         tlpGrigliaTurni.Visible = false;
                         break;
                     case (byte)ParametriSetupPro.TipoPianificazione.Tempo:
@@ -8138,7 +8293,8 @@ namespace PannelloCharger
 
 
                     tlpGrigliaTurni.Controls.Add(P1, 1, _se + 2);
-                     
+
+                    P1.DatiCambiati += DatiDaSalvare;
 
                 }
 
@@ -8169,13 +8325,13 @@ namespace PannelloCharger
             {
                 bool _arrayInit = InizializzaMatrice;
 
-                if (_sb.sbCliente.MappaTurni == null )
+                if (_sb.sbCliente.MappaTurni == null)
                 {
                     _arrayInit = true;
                 }
                 else
                 {
-                    if (_sb.sbCliente.MappaTurni.Length  != 84 )
+                    if (_sb.sbCliente.MappaTurni.Length != 84)
                         _arrayInit = true;
                 }
 
@@ -8191,14 +8347,14 @@ namespace PannelloCharger
 
                 }
                 byte Giornisalvati = 0;
-                foreach(Control _ctrl in tlpGrigliaTurni.Controls)
+                foreach (Control _ctrl in tlpGrigliaTurni.Controls)
                 {
                     if (_ctrl.GetType() == typeof(ctrlPannelloTempo))  // new grid, nuovo controllo con gestione equal
                     {
-                        byte[] _datiFase = new byte[6] { 0, 0, 0, 0, 0 ,0 };
+                        byte[] _datiFase = new byte[6] { 0, 0, 0, 0, 0, 0 };
                         ctrlPannelloTempo P1 = (ctrlPannelloTempo)_ctrl;
                         _datiFase = P1.Turno.toData();
-                        Array.Copy(_datiFase,0,_sb.sbCliente.MappaTurni, P1.Giorno * 12,  6);
+                        Array.Copy(_datiFase, 0, _sb.sbCliente.MappaTurni, P1.Giorno * 12, 6);
                         Giornisalvati += 1;
                     }
 
@@ -8212,8 +8368,8 @@ namespace PannelloCharger
                     }
 
                 }
-                if (Giornisalvati== 7)
-                   _esito = true;
+                if (Giornisalvati == 7)
+                    _esito = true;
 
                 return _esito;
             }
@@ -8287,8 +8443,8 @@ namespace PannelloCharger
             {
                 if (InizializzaControllo)
                 {
-                   // tlpGrigliaTurni.RowCount = 9;
-                  //  tlpGrigliaTurni.ColumnCount = 4;
+                    // tlpGrigliaTurni.RowCount = 9;
+                    //  tlpGrigliaTurni.ColumnCount = 4;
                     tlpGrigliaTurni.Controls.Clear();
                 }
 
@@ -8316,7 +8472,7 @@ namespace PannelloCharger
                 int _minuti = int.Parse(txtCalMinuti.Text);
 
 
-                _esito = _sb.ForzaOrologio(_giorno,_mese,_anno,_ore,_minuti);
+                _esito = _sb.ForzaOrologio(_giorno, _mese, _anno, _ore, _minuti);
                 if (_esito)
                 {
 
@@ -8348,6 +8504,10 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostra l'impostazione del numero letture ADC da mediare nei 100 ms.
+        /// </summary>
+        /// <returns></returns>
         public bool MostraParametriGenerali()
         {
             try
@@ -8369,6 +8529,15 @@ namespace PannelloCharger
                     txtSvcSecDurataPause.Text = _durata.ToString();
                     txtSvcSecDurataPause.ForeColor = Color.Black;
 
+
+                    if (_sb.sbData.fwLevel<7)
+                    {
+                        txtSvcCausaLastReset.Text = "";
+                    }
+                    else
+                    {
+                        txtSvcCausaLastReset.Text = _sb.ParametriGenerali.CausaUltimoReset.ToString("X4");
+                    }
 
                 }
 
@@ -8443,7 +8612,7 @@ namespace PannelloCharger
                 _VerificaNumero = ushort.TryParse(txtSvcNumLettureTens.Text, out _nuovoValoreTens);
                 if (!_VerificaNumero)
                     return;
-                
+
 
                 _VerificaNumero = TimeSpan.TryParse(txtSvcSecDurataPause.Text, out _tsRead);
                 if (!_VerificaNumero)
@@ -8568,11 +8737,11 @@ namespace PannelloCharger
 
             }
 
-         }
+        }
 
         private void grbFWPreparaFile_Enter(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnStratSetTypeEvent_Click(object sender, EventArgs e)
@@ -8590,7 +8759,7 @@ namespace PannelloCharger
         {
             this.Cursor = Cursors.WaitCursor;
             chkCliResetContatori.Checked = false;
-            salvaCliente();
+            salvaCliente(_apparatoPresente);
             this.Cursor = Cursors.Default;
         }
 
@@ -8610,7 +8779,7 @@ namespace PannelloCharger
             protected set
             {
                 _datiSalvati = value;
-                if(DatiCambiati != null)
+                if (DatiCambiati != null)
                 {
                     DatiCambiati(this, new DatiCambiatiEventArgs(_datiSalvati));
                 }
@@ -8625,7 +8794,7 @@ namespace PannelloCharger
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                salvaCliente();
+                salvaCliente(_apparatoPresente);
                 DatiSalvati = true;
                 this.Cursor = Cursors.Default;
                 return true;
@@ -8649,7 +8818,7 @@ namespace PannelloCharger
                     DatiSalvati = false;
                 }
 
-                
+
             }
             catch (Exception Ex)
             {
@@ -8797,6 +8966,103 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Handles the DrawItem event of the tabCaricaBatterie control.
+        /// Evidenzio il tab corrente cambiando font e colore del titolo
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DrawItemEventArgs"/> instance containing the event data.</param>
+        private void tabCaricaBatterie_DrawItem(object sender, DrawItemEventArgs e)
+        {
 
+            try
+            {
+
+
+
+                Graphics g = e.Graphics;
+                Brush _TextBrush;
+
+                // Get the item from the collection.
+                TabPage _TabPage = tabCaricaBatterie.TabPages[e.Index];
+
+                // Get the real bounds for the tab rectangle.
+                Rectangle _TabBounds = tabCaricaBatterie.GetTabRect(e.Index);
+
+                // Use our own font. Because we CAN.
+                Font _TabFont;
+
+                if (e.State == DrawItemState.Selected)
+                {
+                    // Draw a different background color, and don't paint a focus rectangle.
+                    _TextBrush = new SolidBrush(Color.White);
+                    g.FillRectangle(Brushes.DarkGray, e.Bounds);
+                    _TabFont = new Font(e.Font.FontFamily, (float)12, FontStyle.Bold, GraphicsUnit.Pixel);
+                }
+                else
+                {
+                    _TextBrush = new System.Drawing.SolidBrush(e.ForeColor);
+                    _TabFont = new Font(e.Font.FontFamily, (float)11, FontStyle.Regular, GraphicsUnit.Pixel);
+                    // e.DrawBackground();
+                }
+
+                //Font fnt = new Font(e.Font.FontFamily, (float)7.5, FontStyle.Bold);
+
+                // Draw string. Center the text.
+                StringFormat _StringFlags = new StringFormat();
+                _StringFlags.Alignment = StringAlignment.Center;
+                _StringFlags.LineAlignment = StringAlignment.Center;
+                g.DrawString(tabCaricaBatterie.TabPages[e.Index].Text, _TabFont, _TextBrush,
+                             _TabBounds, new StringFormat(_StringFlags));
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("tabCaricaBatterie_DrawItem: " + Ex.Message);
+
+            }
+
+        }
+
+        public void DatiDaSalvare(object sender, EventArgs args)
+        {
+            try
+            {
+                DatiCambiatiEventArgs ArgChiamata;
+                if (args is DatiCambiatiEventArgs)
+                {
+                    ArgChiamata = (DatiCambiatiEventArgs)args;
+                }
+                else return;
+
+                DatiSalvati = !ArgChiamata.DaSalvare;
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("DatiDaSalvare: " + Ex.Message);
+            }
+        }
+
+
+
+        private void btnRicalcolaSoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _sb.RicalcolaSoc(chkMemLngSalvaRicalcolo.Checked);
+
+                InizializzaVistaLunghi(); 
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("tabCaricaBatterie_DrawItem: " + Ex.Message);
+
+            }
+        }
     }
 }

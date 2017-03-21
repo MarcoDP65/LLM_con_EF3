@@ -1362,6 +1362,9 @@
   <data name="chkCliResetContatori.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="chkCliResetContatori.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
   <data name="chkCliResetContatori.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1369,7 +1372,7 @@
     <value>434, 357</value>
   </data>
   <data name="chkCliResetContatori.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 21</value>
+    <value>245, 24</value>
   </data>
   <data name="chkCliResetContatori.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2608,7 +2611,7 @@
     <value>36</value>
   </data>
   <data name="pnlProParametriBase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 72</value>
+    <value>19, 47</value>
   </data>
   <data name="pnlProParametriBase.Size" type="System.Drawing.Size, System.Drawing">
     <value>808, 217</value>
@@ -3085,7 +3088,7 @@
     <value>19, 309</value>
   </data>
   <data name="pnlProParametriExt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>702, 146</value>
+    <value>808, 146</value>
   </data>
   <data name="pnlProParametriExt.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -3102,60 +3105,6 @@
   <data name="&gt;&gt;pnlProParametriExt.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblPro01.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPro01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPro01.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 18</value>
-  </data>
-  <data name="lblPro01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 17</value>
-  </data>
-  <data name="lblPro01.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="lblPro01.Text" xml:space="preserve">
-    <value>Modalità</value>
-  </data>
-  <data name="&gt;&gt;lblPro01.Name" xml:space="preserve">
-    <value>lblPro01</value>
-  </data>
-  <data name="&gt;&gt;lblPro01.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPro01.Parent" xml:space="preserve">
-    <value>tbpSetupPro</value>
-  </data>
-  <data name="&gt;&gt;lblPro01.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cmbProModoPianif.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="cmbProModoPianif.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 38</value>
-  </data>
-  <data name="cmbProModoPianif.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 28</value>
-  </data>
-  <data name="cmbProModoPianif.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;cmbProModoPianif.Name" xml:space="preserve">
-    <value>cmbProModoPianif</value>
-  </data>
-  <data name="&gt;&gt;cmbProModoPianif.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbProModoPianif.Parent" xml:space="preserve">
-    <value>tbpSetupPro</value>
-  </data>
-  <data name="&gt;&gt;cmbProModoPianif.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="tbpSetupPro.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
   </data>
@@ -3169,7 +3118,7 @@
     <value>1</value>
   </data>
   <data name="tbpSetupPro.Text" xml:space="preserve">
-    <value>Modalità PRO</value>
+    <value>Parametri Avanzati</value>
   </data>
   <data name="&gt;&gt;tbpSetupPro.Name" xml:space="preserve">
     <value>tbpSetupPro</value>

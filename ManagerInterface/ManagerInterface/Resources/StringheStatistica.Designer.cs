@@ -304,7 +304,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Numero Cicli.
+        ///   Cerca una stringa localizzata simile a Fattore di Carica.
         /// </summary>
         internal static string GrCfAsseX {
             get {
@@ -313,7 +313,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Fattore di Carica.
+        ///   Cerca una stringa localizzata simile a Numero Cicli.
         /// </summary>
         internal static string GrCfAsseY {
             get {

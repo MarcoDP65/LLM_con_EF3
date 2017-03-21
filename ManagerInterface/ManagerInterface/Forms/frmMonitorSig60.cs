@@ -537,18 +537,24 @@ namespace PannelloCharger
 
                         _msg.Dispositivo = _mS.idCorrente;
                         _msg.Sottocomando = "";
+                        // In base al serial number riconosco il tipo dispositivo da cui arriva il messaggio
+                        switch (_mS.idCorrente)
+                        {
+                            case "0101010100000000":
+                                _msg.TipoDispositivo = "Monitor";
+                                _msg.Device = echoMessaggio.TipoDevice.Monitor;
+                                break;
+                            case "0000000000000000":
+                                _msg.TipoDispositivo = "LADE Light";
+                                _msg.Device = echoMessaggio.TipoDevice.LADELight;
+                                break;
+                            default:
+                                _msg.TipoDispositivo = "SPY-BATT";
+                                _msg.Device = echoMessaggio.TipoDevice.SPYBATT;
+                                break;
+                        }
 
 
-                        if (_mS.idCorrente == "0000000000000000")
-                        {
-                            _msg.TipoDispositivo = "LADE Light";
-                            _msg.Device = echoMessaggio.TipoDevice.LADELight;
-                        }
-                        else
-                        {
-                            _msg.TipoDispositivo = "SPY-BATT";
-                            _msg.Device = echoMessaggio.TipoDevice.SPYBATT;
-                        }
 
 
                         switch (_mS._comando)
@@ -567,7 +573,7 @@ namespace PannelloCharger
                                 _msg.Parametri = "";
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_W_chgst_Call:  //0x6C: // ACK
+                            case (byte)SerialMessage.TipoComando.SB_W_chgst_Call:  //0x6C
                                 Log.Debug("Comando Strategia");
                                 _msg.Comando = "SB_W_chgst_Call";
                                 _msg.Sottocomando = _mS.ComandoStrat.DescComandoLibreria;
@@ -578,10 +584,17 @@ namespace PannelloCharger
 
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_Sstart:  //0x6C: // ACK
+                            case (byte)SerialMessage.TipoComando.SB_Sstart:  //0x6C
                                 Log.Debug("Apertura Canale SIG");
                                 _msg.Comando = "SB_Sstart";
                                 _msg.DescComando = "Apertura Canale SIG";
+                                _msg.Parametri = "";
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.SB_Stop:  //0x1D
+                                Log.Debug("Chiusura Canale SIG");
+                                _msg.Comando = "SB_Stop";
+                                _msg.DescComando = "Chiusura Canale SIG";
                                 _msg.Parametri = "";
                                 break;
 
@@ -929,6 +942,9 @@ namespace PannelloCharger
             echoMessaggio messaggio = (echoMessaggio)e.Model;
             switch (messaggio.Device)
             {
+                case echoMessaggio.TipoDevice.Monitor:
+                    e.Item.BackColor = Color.LightBlue;
+                    break;
                 case echoMessaggio.TipoDevice.LADELight: 
                     e.Item.BackColor = Color.LightGreen;
                     break;
@@ -1278,10 +1294,33 @@ namespace PannelloCharger
             {
 
                 _mS.Comando = MessaggioSpyBatt.TipoComando.SB_Sstart;
+                _mS.SerialNumber = new byte[8]{ 1,1,1,1,0,0,0,0};
                 _mS.ComponiMessaggio();
 
                 Log.Debug("Send SB START");
                 ///Log.Debug(_mS.hexdumpMessaggio());
+                ScriviMessaggioByte(_mS.MessageBuffer);
+                Thread.Sleep(200);
+
+                txtSerialEcho.AppendText("\r\n");
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnGetSigRegister_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnCmdStopCom_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _mS.Comando = MessaggioSpyBatt.TipoComando.SB_Stop;
+                _mS.SerialNumber = new byte[8] { 1, 1, 1, 1, 0, 0, 0, 0 };
+                _mS.ComponiMessaggio();
+
+                Log.Debug("Send SB STOP");
                 ScriviMessaggioByte(_mS.MessageBuffer);
                 Thread.Sleep(200);
 

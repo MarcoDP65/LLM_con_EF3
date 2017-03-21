@@ -1152,7 +1152,7 @@ namespace PannelloCharger
         {
             try
             {
-                // cancello le iscrizioni all'evento dati da salvare
+                // cancello le iscrizioni all'evento dati da salvare e attivo solo la scheda corrente
                 if (this.ActiveMdiChild is frmSpyBat)
                 {
                     frmSpyBat _tempSb = (frmSpyBat)this.ActiveMdiChild;
@@ -1174,7 +1174,7 @@ namespace PannelloCharger
         }
 
 
-        public void DatiDaSalvare (object sender, EventArgs args)
+        public void DatiDaSalvare(object sender, EventArgs args)
         {
             try
             {

@@ -37,6 +37,7 @@ namespace MoriData
         public ushort LettureCorrente { get; set; }
         public ushort LettureTensione { get; set; }
         public ushort DurataPausa { get; set; }
+        public ushort CausaUltimoReset { get; set; }
 
         public override string ToString()
         {
@@ -340,7 +341,15 @@ namespace MoriData
             }
         }
 
-
+        public ushort CausaUltimoReset
+        {
+            get { return _sbpgen.CausaUltimoReset; }
+            set
+            {
+                _sbpgen.CausaUltimoReset = value;
+                _datiSalvati = false;
+            }
+        }
 
         #endregion Class Parameter
 

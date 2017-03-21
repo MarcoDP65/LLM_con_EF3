@@ -764,17 +764,50 @@ namespace ChargerLogic
 
         }
 
-        public bool VersioneAmmessa(string Versione, string HWversion = "4")
+
+
+        /// <summary>
+        /// Verifico se la versione selezionata è insytallabile sullo spybatt corrente
+        /// </summary>
+        /// <param name="Versione">Versione del FW da caricare</param>
+        /// <param name="HWversion">Versione dell'hardware corrente</param>
+        /// <param name="BootLoader">Versione del bootloader corrente</param>
+        /// <returns></returns>
+        public bool VersioneAmmessa(string Versione, string HWversion = "4", string BootLoader = "1.01.09")
         {
             bool _esito = false;
 
             try
             {
 
-                string _LocalVer = ""; 
+                string _LocalVer = "";
+                string _blVersion = "";
+                int _blv = 0;
 
                 if (Versione == null) return false;
                 if (Versione.Length >= 4) _LocalVer = Versione.Substring(0, 4);
+
+
+                if (BootLoader ==null) return false;
+                if (BootLoader.Length >= 4) _blVersion = BootLoader.Substring(0, 4);
+
+
+
+                switch (_blVersion)
+                {
+                    case "1.01":
+                        _blv = 1;
+                        break;
+                    case "1.02":
+                        _blv = 2;
+                        break;
+                    default:
+                        _blv = 0;
+                        //se non ho un bootloader noto non continuo in ogni caso.
+                        return false;
+                }
+
+
 
                 switch (_LocalVer)
                 {
@@ -806,20 +839,27 @@ namespace ChargerLogic
                     case "1.11":
 
                         // Livello 4;
-                        return true;
+                        // Valido con bootloader 1.01.xx
+                        return (_blv == 1);
                     case "1.12":
                     case "1.13":
                         // Livello 4 non pubblico;
-                        return true;
+                        // Valido con bootloader 1.01.xx
+                        return (_blv == 1);
+                       // return true;
 
                     case "2.01":
                     case "2.02":
                         // Livello 4;
-                        return true;
+                        // Valido con bootloader 1.02.xx
+                        return (_blv == 2);
+                        //return true;
 
                     case "2.03":
-                        // Livello 6;
-                        return true;
+                        // Livello 6/7;
+                        // Valido con bootloader 1.02.xx
+                        return (_blv == 2);
+                        //return true;
 
                     default:
                         return false;

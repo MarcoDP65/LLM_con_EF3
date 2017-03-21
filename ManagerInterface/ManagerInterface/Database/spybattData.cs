@@ -576,7 +576,14 @@ namespace MoriData
 
                             }
                         case "2.03":
-                            return 6;
+                            switch (_sb.SwVersion)
+                            {
+                                case "2.03.05":
+                                    return 7;
+                                default:
+                                    return 6;
+                            }
+                            break;
 
 
                         default:

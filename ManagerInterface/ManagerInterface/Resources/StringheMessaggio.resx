@@ -127,7 +127,7 @@
     <value>Disconnettere l'utente corrente ?  (L'operazione chiuderà tutte le finestre aperte)</value>
   </data>
   <data name="strVistaLunghiCol01" xml:space="preserve">
-    <value>F.</value>
+    <value>Fase</value>
   </data>
   <data name="strVistaLunghiTtCol01" xml:space="preserve">
     <value>Progressivo Fase</value>
@@ -139,7 +139,7 @@
     <value>Tipo Fase</value>
   </data>
   <data name="strVistaLunghiCol03" xml:space="preserve">
-    <value>Start</value>
+    <value>Start </value>
   </data>
   <data name="strVistaLunghiTtCol03" xml:space="preserve">
     <value>Data/Ora Inizio Fase</value>
@@ -193,19 +193,19 @@
     <value>I max</value>
   </data>
   <data name="strVistaLunghiCol11" xml:space="preserve">
-    <value>Elettrolita</value>
+    <value>Stato Elettr.</value>
   </data>
   <data name="strVistaLunghiCol12" xml:space="preserve">
     <value>Ah</value>
   </data>
   <data name="strVistaLunghiCol13" xml:space="preserve">
-    <value>KWh</value>
+    <value>KWh Totali</value>
   </data>
   <data name="strVistaLunghiCol13C" xml:space="preserve">
-    <value>KWh C.</value>
+    <value>KWh Caricati</value>
   </data>
   <data name="strVistaLunghiCol13S" xml:space="preserve">
-    <value>KWh S.</value>
+    <value>KWh Scaricati</value>
   </data>
   <data name="strVistaLunghiCol14" xml:space="preserve">
     <value>S.o.C.</value>
@@ -263,5 +263,14 @@
   </data>
   <data name="strTitoloListaBrevi" xml:space="preserve">
     <value>Dettaglio Fase</value>
+  </data>
+  <data name="strVistaLunghiCol07c" xml:space="preserve">
+    <value>V/El Min</value>
+  </data>
+  <data name="strVistaLunghiCol08c" xml:space="preserve">
+    <value>V/El Max</value>
+  </data>
+  <data name="strVistaLunghiColOverT" xml:space="preserve">
+    <value>Tempo SovraTemp</value>
   </data>
 </root>

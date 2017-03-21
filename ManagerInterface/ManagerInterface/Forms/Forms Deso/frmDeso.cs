@@ -1567,7 +1567,7 @@ namespace PannelloCharger
                 else
                 { _sb.sbCliente.CicliAttesi = 1000; }
 
-                _sb.ScriviDatiCliente();
+                _sb.ScriviDatiCliente(true);
                 if (caricaCliente(_sb.Id, _logiche, true)) mostraCliente();
             }
             catch (Exception Ex)

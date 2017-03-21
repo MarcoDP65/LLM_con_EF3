@@ -9,6 +9,11 @@ using ChargerLogic;
 
 namespace PannelloCharger
 {
+    /// <summary>
+    /// Class DatiCambiatiEventArgs.
+    /// Gestisce i parametri passati negli eventi Salvato/Da Salvare e Dati Cambiati
+    /// </summary>
+    /// <seealso cref="System.EventArgs" />
     public class DatiCambiatiEventArgs : EventArgs
     {
         public bool DaSalvare { get; private set; }

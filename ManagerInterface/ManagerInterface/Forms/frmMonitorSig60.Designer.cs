@@ -369,6 +369,7 @@
             this.btnCmdStopCom.TabIndex = 44;
             this.btnCmdStopCom.Text = "Stop Comunicazione";
             this.btnCmdStopCom.UseVisualStyleBackColor = true;
+            this.btnCmdStopCom.Click += new System.EventHandler(this.btnCmdStopCom_Click);
             // 
             // btnCmdStartCom
             // 

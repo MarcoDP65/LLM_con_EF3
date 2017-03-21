@@ -101,6 +101,19 @@ namespace MoriData
             _recordPresente = false;
         }
 
+
+        public sbProgrammaRicarica(_sbProgrammaRicarica RecordBase)
+        {
+            _sbpr = RecordBase;
+            valido = ( RecordBase != null);
+            _datiSalvati = true;
+            _recordPresente = (RecordBase != null);
+        }
+
+
+
+
+
         public sbProgrammaRicarica(_db connessione)
         {
             valido = false;

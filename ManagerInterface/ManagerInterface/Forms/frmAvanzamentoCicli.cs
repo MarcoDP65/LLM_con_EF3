@@ -43,7 +43,7 @@ namespace PannelloCharger
         public MoriData._db DbDati;
         public ListaRegistrazioni ListaCicli;
         public bool CaricaBrevi = false;
-
+        public bool CaricaUltimoLungo = false;
         private DateTime _startCompute;
         private DateTime _firstRecord;
         private bool _firstRecordReceived;
@@ -112,7 +112,11 @@ namespace PannelloCharger
         
         }
 
-
+        /// <summary>
+        /// Lancia l'attività asincrona in base a quanto richiesto col parametro TipoComando.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DoWorkEventArgs"/> instance containing the event data.</param>
         void sbWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             //NOTE : Never play with the UI thread here...

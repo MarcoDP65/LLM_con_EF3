@@ -100,6 +100,10 @@ namespace MoriData
         public UInt32 DurataBreve = 300;
         public int LivelloUser = 2;
 
+        public int LivelloIniziale { get; set; }
+        public int LivelloFinale { get; set; }
+        public byte StatoCaricaEff { get; set; }
+
 
         // Visualizzazione Correnti
         public int DivisoreCorrente = 10;
@@ -547,7 +551,7 @@ namespace MoriData
                 {
 
                     Elemento.ValoriIntermedi = new tensioniIntermedie();
-                    // Se il 'ProgrammaAttivo' non è crocato, provo a caricarlo
+                    // Se il 'ProgrammaAttivo' non è caricato, provo a caricarlo
                     if (ProgrammaAttivo != null)
                         if (ProgrammaAttivo.BatteryCells < 1)
                             CaricaProgramma();
@@ -1045,6 +1049,133 @@ namespace MoriData
         }
 
 
+
+        public float VCellMin
+        {
+            get
+            {
+                float _vCellMin = (float)_sblm.Vmin;
+
+                if( ProgrammaAttivo != null )
+                {
+                    if(ProgrammaAttivo.BatteryCells > 0 )
+                    {
+                        _vCellMin = (float)_sblm.Vmin / (float)ProgrammaAttivo.BatteryCells;
+                    }
+                   
+                }
+                return _vCellMin;
+            }
+        }
+
+        public string strVCellMin
+        {
+            get
+            {
+                string _valTensione;
+
+                //return FunzioniMR.StringaTensione(_sblm.Vmin);
+                if (ProgrammaAttivo != null)
+                {
+                    _valTensione = FunzioniMR.StringaTensionePerCella(_sblm.Vmin, ProgrammaAttivo.BatteryCells);
+                }
+                else
+                {
+                    _valTensione =  FunzioniMR.StringaTensionePerCella(_sblm.Vmin, 1);
+                }
+
+                if (LivelloUser < 1)
+                {
+                    //return FunzioniMR.StringaTensione(_sblm.Vmin);
+                    return _valTensione;
+                }
+                else
+                {
+
+
+                    switch (_sblm.TipoEvento)
+                    {
+                        case 0xF0: // "Carica"
+                        case 0x0F: // "Scarica"
+                            return _valTensione;
+
+                        case 0xAA: // "Pausa
+                            return "";
+                        default:
+                            return "";
+                    }
+                }
+
+            }
+        }
+
+
+        public float VCellMax
+        {
+            get
+            {
+                float _vCellMax = (float)_sblm.Vmax;
+
+                if (ProgrammaAttivo != null)
+                {
+                    if (ProgrammaAttivo.BatteryCells > 0)
+                    {
+                        _vCellMax = (float)_sblm.Vmin / (float)ProgrammaAttivo.BatteryCells;
+                    }
+
+                }
+                return _vCellMax;
+            }
+        }
+
+        public string strVCellMax
+        {
+            get
+            {
+                string _valTensione;
+
+                //return FunzioniMR.StringaTensione(_sblm.Vmax);
+                if (ProgrammaAttivo != null)
+                {
+                    _valTensione = FunzioniMR.StringaTensionePerCella(_sblm.Vmax, ProgrammaAttivo.BatteryCells);
+                }
+                else
+                {
+                    _valTensione = FunzioniMR.StringaTensionePerCella(_sblm.Vmax, 1);
+                }
+
+                if (LivelloUser < 1)
+                {
+                    //return FunzioniMR.StringaTensione(_sblm.Vmax);
+                    return _valTensione;
+                }
+                else
+                {
+
+
+                    switch (_sblm.TipoEvento)
+                    {
+                        case 0xF0: // "Carica"
+                        case 0x0F: // "Scarica"
+                            return _valTensione;
+
+                        case 0xAA: // "Pausa
+                            return "";
+                        default:
+                            return "";
+                    }
+                }
+
+            }
+        }
+
+
+
+
+
+
+
+
         public short Amin
         {
             get { return _sblm.Amin; }
@@ -1321,6 +1452,7 @@ namespace MoriData
             }
         }
 
+
         public float ValAhScaricati
         {
             get { return FunzioniMR.ValoreEffettivo(_sblm.AhScaricati, DivisoreCorrente); }
@@ -1516,6 +1648,36 @@ namespace MoriData
             get { return FunzioniMR.StringaSoC(_sblm.StatoCatica); }
         }
 
+        /*--------------------------------------------------------------------------------------------*/
+
+        public string strStatoCaricaEff
+        {
+            get { return FunzioniMR.StringaSoC(StatoCaricaEff); }
+        }
+
+        public string strLivelloIniziale
+        {
+
+            get
+            {
+
+                    return FunzioniMR.StringaCapacita(LivelloIniziale, DivisoreCorrente, DecimaliCorrente);
+ 
+            }
+        }
+
+        public string strLivelloFinale
+        {
+
+            get
+            {
+
+                return FunzioniMR.StringaCapacita(LivelloFinale, DivisoreCorrente, DecimaliCorrente);
+
+            }
+        }
+        /*--------------------------------------------------------------------------------------------*/
+
 
         public int TipoCariatore
         {
@@ -1567,6 +1729,7 @@ namespace MoriData
                     switch (_sblm.TipoEvento)
                     {
                         case 0xF0: // "Carica"
+                            return "";
                         case 0x0F: // "Scarica"
                             return FunzioniMR.StringaTensioneCella(_sblm.VMaxSbilanciamentoC);
 

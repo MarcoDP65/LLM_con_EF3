@@ -357,6 +357,7 @@ namespace ChargerLogic
                         case 4:
                         case 5:
                         case 6:
+                        case 7:
                             {
                                 _esitoLocale = _analizzaMessaggioLev4(_messaggio, fwLevel, DatiPuri);
                                 break;
@@ -1402,7 +1403,6 @@ namespace ChargerLogic
 
         }
 
-
         public class ImmagineDumpMem
         {
 
@@ -1567,6 +1567,7 @@ namespace ChargerLogic
                         case 4:
                         case 5:
                         case 6:
+                        case 7:
                             {
                                 _esitoLocale = analizzaMessaggioLev4(_messaggio, fwLevel);
                                 break;
@@ -1866,6 +1867,9 @@ namespace ChargerLogic
             public ushort LettureTensione { get; set; }
             public ushort LettureCorrente { get; set; }
             public ushort DurataPausa { get; set; }
+            public ushort UltimoReset { get; set; }
+
+
 
             public DateTime IstanteLettura { get; set; }
 
@@ -1904,7 +1908,12 @@ namespace ChargerLogic
                         startByte += 2;
                         DurataPausa = ArrayToUshort(_risposta, startByte, 2);
                         startByte += 2;
-
+                        UltimoReset = 0;
+                        if (fwLevel > 6)
+                        {
+                            UltimoReset = ArrayToUshort(_risposta, startByte, 2);
+                            startByte += 2;
+                        }
 
 
                         datiPronti = true;

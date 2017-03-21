@@ -660,6 +660,7 @@ namespace ChargerLogic
                         ParametriGenerali.LettureTensione = _mS.ParametriGenerali.LettureTensione;
                         ParametriGenerali.DurataPausa = _mS.ParametriGenerali.DurataPausa;
                         ParametriGenerali.DataInserimento = _mS.ParametriGenerali.IstanteLettura;
+                        ParametriGenerali.CausaUltimoReset = _mS.ParametriGenerali.UltimoReset;
 
                     }
                 }
@@ -1633,7 +1634,7 @@ namespace ChargerLogic
                             foreach (MessaggioSpyBatt.ProgrammaRicarica _ciclo in _Programmazioni)
                             {
                                 //sbProgrammaRicarica _progR = new sbProgrammaRicarica(dbCorrente);
-                                sbProgrammaRicarica _progR = new sbProgrammaRicarica(null);
+                                sbProgrammaRicarica _progR = new sbProgrammaRicarica();
                                 _progR.caricaDati(_idCorrente, _ciclo.IdProgramma);
 
                                 if (_ciclo.IdProgramma != 0xFFFF)
@@ -2557,6 +2558,12 @@ namespace ChargerLogic
                 Programmazioni.Clear();
 
                 IEnumerable<_sbProgrammaRicarica> _TempCicli = dbCorrente.Query<_sbProgrammaRicarica>("select * from _sbProgrammaRicarica where IdApparato = ? order by IdProgramma desc", IdApparato);
+                if (sbData.ProgramCount > 0)
+                {
+                    _sbProgrammaRicarica _prgc = _TempCicli.Where(x => x.IdProgramma == sbData.ProgramCount).FirstOrDefault();
+                    ProgrammaCorrente = new sbProgrammaRicarica(_prgc);
+
+                }
 
                 foreach (_sbProgrammaRicarica Elemento in _TempCicli)
                 {
@@ -2568,6 +2575,7 @@ namespace ChargerLogic
                     }
 
                 }
+
 
                 return true;
             }
@@ -3067,6 +3075,29 @@ namespace ChargerLogic
                                 _progR.BatteryCell1 = _ciclo.BatteryCell1;
                                 _progR.BatteryCell2 = _ciclo.BatteryCell2;
                                 _progR.BatteryCell3 = _ciclo.BatteryCell3;
+
+                                _progR.AbilitaPresElett = _ciclo.AbilitaPresElett;
+                                _progR.TempMin = _ciclo.TempMin;
+                                _progR.TempMax = _ciclo.TempMax;
+                                _progR.VersoCorrente = _ciclo.VersoCorrente;
+                                _progR.NumeroSpire = _ciclo.NumeroSpire;
+                                _progR.TempAttenzione = _ciclo.TempAttenzione;
+                                _progR.TempAllarme = _ciclo.TempAllarme;
+                                _progR.TempRipresa = _ciclo.TempRipresa;
+                                _progR.MaxSbilanciamento = _ciclo.MaxSbilanciamento;
+                                
+                                _progR.TensioneGas = _ciclo.TensioneGas;
+                                _progR.DerivaSuperiore = _ciclo.DerivaSuperiore;
+                                _progR.DerivaInferiore = _ciclo.DerivaInferiore;
+                                _progR.CorrenteMassimaCHG = _ciclo.CorrenteCaricaMax;
+                                _progR.CorrenteMinimaCHG = _ciclo.CorrenteCaricaMin;
+                                _progR.ImpulsiRabboccatore = _ciclo.PulseRabboccatore;
+                                _progR.MinCorrenteW = _ciclo.MinCorrenteW;
+                                _progR.MaxCorrenteW = _ciclo.MaxCorrenteW;
+                                _progR.MaxCorrenteImp = _ciclo.MaxCorrenteImp;
+                                _progR.TensioneRaccordo = _ciclo.TensioneRaccordo;
+                                _progR.TensioneFinale = _ciclo.TensioneFinale;
+
                                 _progR.salvaDati();
 
                                 Programmazioni.Add(_progR);
@@ -4135,16 +4166,8 @@ namespace ChargerLogic
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase);
                 OrologioSistema = _mS.DatiRTCSB;
 
-                //    _mS.Comando = SerialMessage.TipoComando.Stop;
-                //    _mS.ComponiMessaggio();
-                //    _rxRisposta = false;
-                //    _parametri.serialeCorrente.Write(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-
-
                 return _esito;
 
-                //   }
-                //  return _esito;
             }
 
             catch (Exception Ex)
@@ -4285,78 +4308,87 @@ namespace ChargerLogic
             }
         }
 
-        public bool ScriviDatiCliente( )
+        public bool ScriviDatiCliente(bool ApparatoConnesso)
         {
             try
             {
                 bool _esito;
 
-                Log.Debug("Scrivi SB Cliente ");
-                Log.Debug("---------------------------------------------------------------------------------------------------------------");
- 
-                _rxRisposta = false;
-
-            
-                _mS.CustomerData.Client = sbCliente.Client.ToString();
-                if (sbCliente.ClientNote == null) sbCliente.ClientNote = "";
-                _mS.CustomerData.ClientNote = sbCliente.ClientNote.ToString();
-                _mS.CustomerData.BatteryBrand = sbCliente.BatteryBrand.ToString();
-                _mS.CustomerData.BatteryId = sbCliente.BatteryId.ToString();
-                _mS.CustomerData.BatteryLLId = sbCliente.BatteryLLId.ToString();
-                _mS.CustomerData.BatteryModel = sbCliente.BatteryModel.ToString();
-                _mS.CustomerData.CicliAttesi = (ushort)sbCliente.CicliAttesi;
-                _mS.CustomerData.SerialNumber = sbCliente.SerialNumber.ToString();
-                _mS.CustomerData.ModoPianificazione = sbCliente.ModoPianificazione;
-                _mS.CustomerData.ModoBiberonaggio = sbCliente.ModoBiberonaggio;
-                _mS.CustomerData.ModoRabboccatore = sbCliente.ModoRabboccatore;
-                _mS.CustomerData.ModelloPianificazione = sbCliente.MappaTurni;
-                _mS.CustomerData.ResetLivelloCarica = sbCliente.ResetContatori;
-
-                _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
-                _mS.Comando = SerialMessage.TipoComando.SB_W_DatiCliente;
-
-                _mS.ComponiMessaggioCliente(0, sbData.fwLevel);
-                Log.Debug("Scrivi SB Cliente - 0 : testata ");
-                Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
-                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
-                if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
+                if (ApparatoConnesso)
                 {
-                    _mS.ComponiMessaggioCliente(1, sbData.fwLevel);
-                    Log.Debug("Scrivi SB Cliente - 1 ");
-                    //Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
-                    _rxRisposta = false;
-                    _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);
-                    // Operazione complessa, deve spostare i 4K, richiede almeno 1500 ms  --> uso il timeout lungo.
+                    _mS.CustomerData = new MessaggioSpyBatt.DatiCliente();
 
+                    Log.Debug("Scrivi SB Cliente ");
+                    Log.Debug("---------------------------------------------------------------------------------------------------------------");
+
+                    _rxRisposta = false;
+
+
+                    _mS.CustomerData.Client = sbCliente.Client.ToString();
+                    if (sbCliente.ClientNote == null) sbCliente.ClientNote = "";
+                    _mS.CustomerData.ClientNote = sbCliente.ClientNote.ToString();
+                    _mS.CustomerData.BatteryBrand = sbCliente.BatteryBrand.ToString();
+                    _mS.CustomerData.BatteryId = sbCliente.BatteryId.ToString();
+                    _mS.CustomerData.BatteryLLId = sbCliente.BatteryLLId.ToString();
+                    _mS.CustomerData.BatteryModel = sbCliente.BatteryModel.ToString();
+                    _mS.CustomerData.CicliAttesi = (ushort)sbCliente.CicliAttesi;
+                    _mS.CustomerData.SerialNumber = sbCliente.SerialNumber.ToString();
+                    _mS.CustomerData.ModoPianificazione = sbCliente.ModoPianificazione;
+                    _mS.CustomerData.ModoBiberonaggio = sbCliente.ModoBiberonaggio;
+                    _mS.CustomerData.ModoRabboccatore = sbCliente.ModoRabboccatore;
+                    _mS.CustomerData.ModelloPianificazione = sbCliente.MappaTurni;
+                    _mS.CustomerData.ResetLivelloCarica = sbCliente.ResetContatori;
+
+                    _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
+                    _mS.Comando = SerialMessage.TipoComando.SB_W_DatiCliente;
+
+                    _mS.ComponiMessaggioCliente(0, sbData.fwLevel);
+                    Log.Debug("Scrivi SB Cliente - 0 : testata ");
+                    Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
+                    _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
                     if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                     {
-                        _mS.ComponiMessaggioCliente(2, sbData.fwLevel);
-                        Log.Debug("Scrivi SB Cliente - 2 ");
+                        _mS.ComponiMessaggioCliente(1, sbData.fwLevel);
+                        Log.Debug("Scrivi SB Cliente - 1 ");
+                        //Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
                         _rxRisposta = false;
                         _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                        _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                        _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);
+                        // Operazione complessa, deve spostare i 4K, richiede almeno 1500 ms  --> uso il timeout lungo.
+
                         if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                         {
-                            _mS.ComponiMessaggioCliente(3, sbData.fwLevel);
-                            Log.Debug("Scrivi SB Cliente - 3 ");
+                            _mS.ComponiMessaggioCliente(2, sbData.fwLevel);
+                            Log.Debug("Scrivi SB Cliente - 2 ");
                             _rxRisposta = false;
                             _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                             _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
-
                             if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                             {
-                                _mS.ComponiMessaggioCliente(4, sbData.fwLevel);
-                                Log.Debug("Scrivi SB Cliente - 4 ");
+                                _mS.ComponiMessaggioCliente(3, sbData.fwLevel);
+                                Log.Debug("Scrivi SB Cliente - 3 ");
                                 _rxRisposta = false;
                                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                                if (_esito & UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
+                                {
+                                    _mS.ComponiMessaggioCliente(4, sbData.fwLevel);
+                                    Log.Debug("Scrivi SB Cliente - 4 ");
+                                    _rxRisposta = false;
+                                    _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                                }
                             }
                         }
                     }
+                    return (bool)(UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk); //_esito;
                 }
-                return (bool)(UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk); //_esito;
+                else
+                {
+                    return false;
+                }
             }
 
             catch (Exception Ex)
@@ -4456,6 +4488,7 @@ namespace ChargerLogic
                 _mS.ProgRicarica.DerivaSuperiore = NuovoProgramma.DerivaSuperiore;
                 _mS.ProgRicarica.MinCorrenteW = NuovoProgramma.MinCorrenteW;
                 _mS.ProgRicarica.MaxCorrenteW = NuovoProgramma.MaxCorrenteW;
+                _mS.ProgRicarica.MaxCorrenteImp = NuovoProgramma.MaxCorrenteImp;
                 _mS.ProgRicarica.TensioneRaccordo = NuovoProgramma.TensioneRaccordo;
                 _mS.ProgRicarica.TensioneFinale = NuovoProgramma.TensioneFinale;
                 _mS.ProgRicarica.ResetLivelloCarica = NuovoProgramma.ResetContatori;
@@ -4470,15 +4503,6 @@ namespace ChargerLogic
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);
 
-               // if(_esito)
-               // {
-               //    if(_mS.ProgRicarica.EsitoScrittura == (byte) SerialMessage.LadeLightBool.True)
-               //     { return true; }
-               //     else
-               //     { return false; }
-               // }
-
-                
 
                 return _esito;
             }
@@ -4672,7 +4696,59 @@ namespace ChargerLogic
 
 
 
+        public bool RicalcolaSoc(bool SalvaEsito = false)
+        {
+            try
+            {
 
+                int _progAttuale = 0;
+                int _capAttuale = 0;
+                int _capnominale = 0;
+                int _capFinale = 0;
+
+                int _maxRighe = CicliMemoriaLunga.Count-1;
+
+
+                //foreach (sbMemLunga ciclo in CicliMemoriaLunga.Reverse())
+                for(int _cc = _maxRighe;_cc >=0; _cc-- )
+                {
+                    sbMemLunga ciclo = CicliMemoriaLunga.ElementAt(_cc);
+                    if (_progAttuale != ciclo.IdProgramma )
+                    {
+                        _progAttuale = ciclo.IdProgramma;
+                        _capnominale = ciclo.ProgrammaAttivo.BatteryAhdef;  
+                        _capAttuale = _capnominale;
+                    }
+                    ciclo.LivelloIniziale = _capAttuale;
+                    _capFinale = _capAttuale + ciclo.AhCaricati - ciclo.AhScaricati;
+                    if (_capFinale > _capnominale) _capFinale = _capnominale;
+                    if (_capFinale < 0) _capFinale = 0;
+
+                    ciclo.LivelloFinale = _capFinale;
+                    _capAttuale = _capFinale;
+
+                    ciclo.StatoCaricaEff = (byte)((float)_capFinale / (float)_capnominale * 100);
+
+                    if(SalvaEsito)
+                    {
+                        ciclo._sblm.StatoCatica = ciclo.StatoCaricaEff;
+                        ciclo.salvaDati();
+                    }
+                }
+                    
+               
+
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
 
 
 

@@ -79,6 +79,11 @@
             // 
             this.nudChargeFactor.DecimalPlaces = 2;
             this.nudChargeFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudChargeFactor.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.nudChargeFactor.Location = new System.Drawing.Point(120, 34);
             this.nudChargeFactor.Maximum = new decimal(new int[] {
             130,

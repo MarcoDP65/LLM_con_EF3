@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationRevision>27</ApplicationRevision>
     <ApplicationVersion>2.00.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -60,11 +60,10 @@
     <ApplicationIcon>App-ladelight32.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>02BAE0EB6AE436D36B85D7F551993EE47B901F29</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>9E2BBA1750703151867FEB79799884FA99381222</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>mori 2017-2020.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -890,6 +889,7 @@
     </None>
     <None Include="ManagerInterface_ChiaveTemporanea.pfx" />
     <None Include="ManagerInterface_TemporaryKey.pfx" />
+    <None Include="mori 2017-2020.pfx" />
     <None Include="packages.config" />
     <None Include="PannelloCharger_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />

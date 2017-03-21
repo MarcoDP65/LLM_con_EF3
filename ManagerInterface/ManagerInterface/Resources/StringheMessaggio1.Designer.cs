@@ -196,7 +196,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a F..
+        ///   Cerca una stringa localizzata simile a Fase.
         /// </summary>
         internal static string strVistaLunghiCol01 {
             get {
@@ -214,7 +214,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Start.
+        ///   Cerca una stringa localizzata simile a Start .
         /// </summary>
         internal static string strVistaLunghiCol03 {
             get {
@@ -268,11 +268,29 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a V/El Min.
+        /// </summary>
+        internal static string strVistaLunghiCol07c {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol07c", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a V Max.
         /// </summary>
         internal static string strVistaLunghiCol08 {
             get {
                 return ResourceManager.GetString("strVistaLunghiCol08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a V/El Max.
+        /// </summary>
+        internal static string strVistaLunghiCol08c {
+            get {
+                return ResourceManager.GetString("strVistaLunghiCol08c", resourceCulture);
             }
         }
         
@@ -295,7 +313,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Elettrolita.
+        ///   Cerca una stringa localizzata simile a Stato Elettr..
         /// </summary>
         internal static string strVistaLunghiCol11 {
             get {
@@ -313,7 +331,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a KWh.
+        ///   Cerca una stringa localizzata simile a KWh Totali.
         /// </summary>
         internal static string strVistaLunghiCol13 {
             get {
@@ -322,7 +340,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a KWh C..
+        ///   Cerca una stringa localizzata simile a KWh Caricati.
         /// </summary>
         internal static string strVistaLunghiCol13C {
             get {
@@ -331,7 +349,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a KWh S..
+        ///   Cerca una stringa localizzata simile a KWh Scaricati.
         /// </summary>
         internal static string strVistaLunghiCol13S {
             get {
@@ -417,6 +435,15 @@ namespace PannelloCharger {
         internal static string strVistaLunghiColIdProgramma {
             get {
                 return ResourceManager.GetString("strVistaLunghiColIdProgramma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Tempo SovraTemp.
+        /// </summary>
+        internal static string strVistaLunghiColOverT {
+            get {
+                return ResourceManager.GetString("strVistaLunghiColOverT", resourceCulture);
             }
         }
         

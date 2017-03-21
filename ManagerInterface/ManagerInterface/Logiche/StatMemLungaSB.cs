@@ -383,7 +383,10 @@ namespace ChargerLogic
                             _numCicliTot += 1;
                             _numCariche += 1;
                             _durataFasiAttive += ciclo.Durata;
-                            _durataSbil += ciclo.DurataSbilCelle;
+
+                            // lo sbilanciamento è significativo solo in carica 08/03/17
+                            //_durataSbil += ciclo.DurataSbilCelle;
+
                             _durataNoEl += ciclo.DurataMancanzaElettrolita;
                             _durataOverTempMax += ciclo.DurataOverTemp;
 
