@@ -537,6 +537,10 @@ namespace MoriData
                 if(ProgrammaAttivo != null)
                    _celleRelative = FunzioniMR.CalcolaCelleRelative(ProgrammaAttivo.CelleSensori);
 
+                sbyte minTemp = 127;
+                sbyte maxtemp = -128;
+                byte PresElettr = 0xF0;
+
 
                 float _tmpVMaxSbilanciamento = 0;
                 float _tmpSbil;
@@ -546,51 +550,75 @@ namespace MoriData
 
                 int _tSogliaTemp = 55; // Soglia Temperatura; al momento SEMPRE 55 °C
 
+                if (CicliMemoriaBreve.Count < 1)
+                {
+                    // Se non ho i brevi
 
-                foreach (sbMemBreve Elemento in CicliMemoriaBreve)
+                    // 1) l'elettrolita lo considero mancante per tutto il ciclo
+                    if(PresenzaElettrolita == 0x0F)
+                    {
+                        _tmpDurataMancanzaElettrolita = Durata;
+                    }
+                    minTemp = (sbyte)_sblm.TempMin;
+                    maxtemp = (sbyte)_sblm.TempMax;
+                    PresElettr = PresenzaElettrolita;
+
+                }
+                else
                 {
 
-                    Elemento.ValoriIntermedi = new tensioniIntermedie();
-                    // Se il 'ProgrammaAttivo' non è caricato, provo a caricarlo
-                    if (ProgrammaAttivo != null)
-                        if (ProgrammaAttivo.BatteryCells < 1)
-                            CaricaProgramma();
-                            //Completo con valori cella, se il programma è definito
-                            if (ProgrammaAttivo != null)
+
+                    foreach (sbMemBreve Elemento in CicliMemoriaBreve)
                     {
-                        StruttureBase.ArrayTensioniUS _TensioniCiclo = new StruttureBase.ArrayTensioniUS();
-                        _TensioniCiclo.V1 = (ushort)Elemento.V1;
-                        _TensioniCiclo.V2 = (ushort)Elemento.V2;
-                        _TensioniCiclo.V3 = (ushort)Elemento.V3;
-                        _TensioniCiclo.Vbatt = (ushort)Elemento.Vreg;
-                        Elemento.ValoriIntermedi.CalcolaIntermedie(_TensioniCiclo, ProgrammaAttivo.CelleSensori, _celleRelative);
-                       
-                        // se previsto calcolo massimo sbilanciamento e presenza elettrolita
 
-                        if (ConsolidaDati == true)
+                        Elemento.ValoriIntermedi = new tensioniIntermedie();
+                        // Se il 'ProgrammaAttivo' non è caricato, provo a caricarlo
+                        if (ProgrammaAttivo != null)
+                            if (ProgrammaAttivo.BatteryCells < 1)
+                                CaricaProgramma();
+                        //Completo con valori cella, se il programma è definito
+                        if (ProgrammaAttivo != null)
                         {
-                            if (Elemento.PresenzaElettrolita == 0x0F) _tmpDurataMancanzaElettrolita += DurataBreve;
-                            _tmpSbil = Elemento.ValoriIntermedi.MassimoSbilanciamento(Elemento.ValoriIntermedi.TensioniCellaRelative);
-                            if (_tmpVMaxSbilanciamento < _tmpSbil) _tmpVMaxSbilanciamento = _tmpSbil;
-                            Elemento.Vc1 = Elemento.ValoriIntermedi.TensioniCellaAssolute.V1;
-                            Elemento.Vc2 = Elemento.ValoriIntermedi.TensioniCellaAssolute.V2;
-                            Elemento.Vc3 = Elemento.ValoriIntermedi.TensioniCellaAssolute.V3;
-                            Elemento.VcBatt = Elemento.ValoriIntermedi.TensioniCellaAssolute.Vbatt;
-                            Elemento.Vcs1 = Elemento.ValoriIntermedi.TensioniCellaRelative.V1;
-                            Elemento.Vcs2 = Elemento.ValoriIntermedi.TensioniCellaRelative.V2;
-                            Elemento.Vcs3 = Elemento.ValoriIntermedi.TensioniCellaRelative.V3;
-                            Elemento.VcsBatt = Elemento.ValoriIntermedi.TensioniCellaRelative.Vbatt;
-                            Elemento.MaxSbil = _tmpSbil;
+                            StruttureBase.ArrayTensioniUS _TensioniCiclo = new StruttureBase.ArrayTensioniUS();
+                            _TensioniCiclo.V1 = (ushort)Elemento.V1;
+                            _TensioniCiclo.V2 = (ushort)Elemento.V2;
+                            _TensioniCiclo.V3 = (ushort)Elemento.V3;
+                            _TensioniCiclo.Vbatt = (ushort)Elemento.Vreg;
+                            Elemento.ValoriIntermedi.CalcolaIntermedie(_TensioniCiclo, ProgrammaAttivo.CelleSensori, _celleRelative);
 
-                            // Se _tmpSbil (massimo sbilanciamento calcolato)  supera la soglia max, conteggio il tempo
-                            if (_tmpSbil > SogliaMaxSbil) _tmpDurataOverMaxSbil += DurataBreve;
-                            if ((Elemento.Tntc > _tSogliaTemp) && (Elemento.Tntc < 150 )) _tmpDurataOverTemp += DurataBreve;
+                            // se previsto calcolo massimo sbilanciamento e presenza elettrolita
 
+                            if (ConsolidaDati == true)
+                            {
+                                if (Elemento.PresenzaElettrolita == 0x0F)
+                                {
+                                    _tmpDurataMancanzaElettrolita += DurataBreve;
+                                    PresElettr = 0x0F;
+                                }
+                                _tmpSbil = Elemento.ValoriIntermedi.MassimoSbilanciamento(Elemento.ValoriIntermedi.TensioniCellaRelative);
+                                if (_tmpVMaxSbilanciamento < _tmpSbil) _tmpVMaxSbilanciamento = _tmpSbil;
+                                Elemento.Vc1 = Elemento.ValoriIntermedi.TensioniCellaAssolute.V1;
+                                Elemento.Vc2 = Elemento.ValoriIntermedi.TensioniCellaAssolute.V2;
+                                Elemento.Vc3 = Elemento.ValoriIntermedi.TensioniCellaAssolute.V3;
+                                Elemento.VcBatt = Elemento.ValoriIntermedi.TensioniCellaAssolute.Vbatt;
+                                Elemento.Vcs1 = Elemento.ValoriIntermedi.TensioniCellaRelative.V1;
+                                Elemento.Vcs2 = Elemento.ValoriIntermedi.TensioniCellaRelative.V2;
+                                Elemento.Vcs3 = Elemento.ValoriIntermedi.TensioniCellaRelative.V3;
+                                Elemento.VcsBatt = Elemento.ValoriIntermedi.TensioniCellaRelative.Vbatt;
+                                Elemento.MaxSbil = _tmpSbil;
 
+                                // Se _tmpSbil (massimo sbilanciamento calcolato)  supera la soglia max, conteggio il tempo
+                                if (_tmpSbil > SogliaMaxSbil) _tmpDurataOverMaxSbil += DurataBreve;
+                                if ((Elemento.Tntc > _tSogliaTemp) && (Elemento.Tntc < 150)) _tmpDurataOverTemp += DurataBreve;
+                                if ( minTemp > (sbyte)Elemento._sbsm.Tntc ) minTemp = (sbyte)Elemento._sbsm.Tntc;
+                                if ( maxtemp < (sbyte)Elemento._sbsm.Tntc) maxtemp = (sbyte)Elemento._sbsm.Tntc;
+                               
+
+                            }
                         }
+
+
                     }
-
-
                 }
 
                 if (ConsolidaDati == true)
@@ -599,6 +627,9 @@ namespace MoriData
                     _sblm.VMaxSbilanciamentoC = _tmpVMaxSbilanciamento;
                     _sblm.DurataSbilanciamento = _tmpDurataOverMaxSbil;
                     _sblm.DurataOverTemp = _tmpDurataOverTemp;
+                    _sblm.TempMin = (sbyte)minTemp;
+                    _sblm.TempMax = (sbyte)maxtemp;
+                    _sblm.PresenzaElettrolita = PresElettr;
                     _datiSalvati = false;
                 }
 

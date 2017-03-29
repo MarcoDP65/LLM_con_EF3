@@ -146,130 +146,149 @@ namespace ChargerLogic
         /// <returns></returns>
         public bool caricaSoglie()
         {
-            _profonditaDoD = 80;   // 20;     // 1
-            _tMaxScarica = 55;     // 50;     // 2
-            _tMinScarica = 0;                 // 3
-            _deltaTScarica = 12;              // 4
-            _tMaxCaricaComp = 55;  // 50;     // 5
-            _tMaxCaricaParz = 55;  // 50;     // 6
-            _deltaTCaricaComp = 15;// 12;           // 7
-            _deltaTCaricaParz = 15;// 12;           // 8
-            _maxSbilanciamento = 0.05;        // 9
-            _minFC = 1;                       // 10
-            _orePausaDODFascia810 = 24; //  5;        // 11
-            _orePausaDODFascia68 =  72; // 20;        // 12
-            _orePausaDODFascia46 = 168; // 72;        // 13
-            _orePausaDODFascia24 = 360; // 480;       // 14
-            _orePausaDODFascia02 = 960; // 480;       // 15
-
-
-            if (SoglieAnalisi != null)
+            try
             {
-                foreach (sbSoglia _sgl in SoglieAnalisi.PacchettoSoglie)
+                _profonditaDoD = 80;   // 20;     // 1
+                _tMaxScarica = 55;     // 50;     // 2
+                _tMinScarica = 0;                 // 3
+                _deltaTScarica = 12;              // 4
+                _tMaxCaricaComp = 55;  // 50;     // 5
+                _tMaxCaricaParz = 55;  // 50;     // 6
+                _deltaTCaricaComp = 15;// 12;           // 7
+                _deltaTCaricaParz = 15;// 12;           // 8
+                _maxSbilanciamento = 0.05;        // 9
+                _minFC = 1;                       // 10
+                _orePausaDODFascia810 = 24; //  5;        // 11
+                _orePausaDODFascia68 = 72; // 20;        // 12
+                _orePausaDODFascia46 = 168; // 72;        // 13
+                _orePausaDODFascia24 = 360; // 480;       // 14
+                _orePausaDODFascia02 = 960; // 480;       // 15
+
+
+                if (SoglieAnalisi != null)
                 {
-                    switch(_sgl.IdMisura)
+                    foreach (sbSoglia _sgl in SoglieAnalisi.PacchettoSoglie)
                     {
-                        case 1: //Profondità DoD
-                            _profonditaDoD = 100 - _sgl.ValoreInt;
-                            break;
-                        case 2: //Tmax Scarica  
-                            _tMaxScarica = _sgl.ValoreInt;
-                            break;
-                        case 3: //Tmin Scarica  
-                            _tMinScarica = _sgl.ValoreInt;
-                            break;
-                        case 4: //Diff T Scarica  
-                            _deltaTScarica = _sgl.ValoreInt;
-                            break;
-                        case 5: //Tmax Carica Completa
-                            _tMaxCaricaComp =  _sgl.ValoreInt;
-                            break;
-                        case 6: //Tmax Carica Parziale
-                            _tMaxCaricaParz = _sgl.ValoreInt;
-                            break;
-                        case 7: //Diff T Carica Completa
-                            _deltaTCaricaComp = _sgl.ValoreInt;
-                            break;
-                        case 8: //Diff T Carica Parziale
-                            _deltaTCaricaParz = _sgl.ValoreInt;
-                            break;
-                        case 9: //Profondità DoD
-                            _maxSbilanciamento =  _sgl.ValoreNum;
-                            break;
-                        case 10: //Min CF
-                            _minFC = _sgl.ValoreInt;
-                            break;
-                        case 11: //Diff T Carica Parziale
-                            _orePausaDODFascia810 = _sgl.ValoreInt;
-                            break;
-                        case 12: //Diff T Carica Parziale
-                            _orePausaDODFascia68 = _sgl.ValoreInt;
-                            break;
-                        case 13: //Diff T Carica Parziale
-                            _orePausaDODFascia46 = _sgl.ValoreInt;
-                            break;
-                        case 14: //Diff T Carica Parziale
-                            _orePausaDODFascia24 = _sgl.ValoreInt;
-                            break;
-                        case 15: //Diff T Carica Parziale
-                            _orePausaDODFascia02 = _sgl.ValoreInt;
-                            break;
+                        switch (_sgl.IdMisura)
+                        {
+                            case 1: //Profondità DoD
+                                _profonditaDoD = 100 - _sgl.ValoreInt;
+                                break;
+                            case 2: //Tmax Scarica  
+                                _tMaxScarica = _sgl.ValoreInt;
+                                break;
+                            case 3: //Tmin Scarica  
+                                _tMinScarica = _sgl.ValoreInt;
+                                break;
+                            case 4: //Diff T Scarica  
+                                _deltaTScarica = _sgl.ValoreInt;
+                                break;
+                            case 5: //Tmax Carica Completa
+                                _tMaxCaricaComp = _sgl.ValoreInt;
+                                break;
+                            case 6: //Tmax Carica Parziale
+                                _tMaxCaricaParz = _sgl.ValoreInt;
+                                break;
+                            case 7: //Diff T Carica Completa
+                                _deltaTCaricaComp = _sgl.ValoreInt;
+                                break;
+                            case 8: //Diff T Carica Parziale
+                                _deltaTCaricaParz = _sgl.ValoreInt;
+                                break;
+                            case 9: //Profondità DoD
+                                _maxSbilanciamento = _sgl.ValoreNum;
+                                break;
+                            case 10: //Min CF
+                                _minFC = _sgl.ValoreInt;
+                                break;
+                            case 11: //Diff T Carica Parziale
+                                _orePausaDODFascia810 = _sgl.ValoreInt;
+                                break;
+                            case 12: //Diff T Carica Parziale
+                                _orePausaDODFascia68 = _sgl.ValoreInt;
+                                break;
+                            case 13: //Diff T Carica Parziale
+                                _orePausaDODFascia46 = _sgl.ValoreInt;
+                                break;
+                            case 14: //Diff T Carica Parziale
+                                _orePausaDODFascia24 = _sgl.ValoreInt;
+                                break;
+                            case 15: //Diff T Carica Parziale
+                                _orePausaDODFascia02 = _sgl.ValoreInt;
+                                break;
+
+                        }
 
                     }
-
                 }
+                return true;
             }
-            return true;
-        
+
+            catch (Exception Ex)
+            {
+                Log.Debug("caricaSoglie: " + Ex.Message);
+                return false;
+            }
         }
 
         public bool azzeraValori()
         {
-            _lastProg = new sbProgrammaRicarica();
-            _lastProg.IdProgramma = 0;
-            _datiPronti = false;
-            _dtStart = Convert.ToDateTime("01/01/3000 00:00");
-            _dtFine = Convert.ToDateTime("01/01/2000 00:00");
-            _numCicliTot = 0;
-            _numCicliEff = 0;
-            _numCariche = 0;
-            _numScariche = 0;
-            _numSovraScariche = 0;
-            _numPauseScarica = 0;
-            _numGiorni = 0;
-            _numSecondi = 0;
-            _durataCarica = 0;
-            _durataScarica = 0;
-            _durataPause = 0;
-            _numCaricheComplete = 0;
-            _numCaricheParziali = 0;
-            _durataNoEl = 0;
-            _numPause = 0;
-            _numAnomali = 0;
-            _kWhtot = 0;
-            _kWhCaricati = 0;
-            _EnScaricataNorm = 0;
-            _totaleScaricato = 0;
-            _maxSbil = 0;
-            _durataSbil = 0;
-            _KWhmediCiclo = 0;
-            _AhmediCiclo = 0;
-            _numScaricaOver = 0;
-            _numCaricaCOver = 0;
-            _numCaricaPOver = 0;
-            _numFasiAttive = 0;
-            _mancanzaElFasiAttive = 0;
-            _numMacrofasiScarica = 0;
-            _macroScariche = 0;
-            _totDodScariche = 0;
-            _macroSovrascariche = 0;
-            _durataFasiAttive = 0;
-            _durataOverTempMax = 0;
-            _ultimaLettura = DateTime.MinValue;
+            try
+            {
 
-            DatiCorrenti = new DatiEstrazione();
 
-            return true;
+                _lastProg = new sbProgrammaRicarica();
+                _lastProg.IdProgramma = 0;
+                _datiPronti = false;
+                _dtStart = Convert.ToDateTime("01/01/3000 00:00");
+                _dtFine = Convert.ToDateTime("01/01/2000 00:00");
+                _numCicliTot = 0;
+                _numCicliEff = 0;
+                _numCariche = 0;
+                _numScariche = 0;
+                _numSovraScariche = 0;
+                _numPauseScarica = 0;
+                _numGiorni = 0;
+                _numSecondi = 0;
+                _durataCarica = 0;
+                _durataScarica = 0;
+                _durataPause = 0;
+                _numCaricheComplete = 0;
+                _numCaricheParziali = 0;
+                _durataNoEl = 0;
+                _numPause = 0;
+                _numAnomali = 0;
+                _kWhtot = 0;
+                _kWhCaricati = 0;
+                _EnScaricataNorm = 0;
+                _totaleScaricato = 0;
+                _maxSbil = 0;
+                _durataSbil = 0;
+                _KWhmediCiclo = 0;
+                _AhmediCiclo = 0;
+                _numScaricaOver = 0;
+                _numCaricaCOver = 0;
+                _numCaricaPOver = 0;
+                _numFasiAttive = 0;
+                _mancanzaElFasiAttive = 0;
+                _numMacrofasiScarica = 0;
+                _macroScariche = 0;
+                _totDodScariche = 0;
+                _macroSovrascariche = 0;
+                _durataFasiAttive = 0;
+                _durataOverTempMax = 0;
+                _ultimaLettura = DateTime.MinValue;
+
+                DatiCorrenti = new DatiEstrazione();
+
+                return true;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Debug("azzeraValori: " + Ex.Message);
+                return false;
+            }
         }
 
 
@@ -624,6 +643,10 @@ namespace ChargerLogic
                         _settimanaEnd.settimaneAnno = _tempCal.GetWeekOfYear(new DateTime(valPeriodo.dtDataOraFine.Year, 12, 31, 12, 0, 0), CalendarWeekRule.FirstDay, DayOfWeek.Monday);
 
                         int _numSettimane;
+                        if ((_settimanaEnd.anno -_settimanaStart.anno > 1) || (_settimanaEnd.anno - _settimanaStart.anno < 0))
+                        {
+                            Log.Error("Durata ciclo superiore a 2 anni");
+                        }
 
                         if (_settimanaStart.anno == _settimanaEnd.anno)
                         {
@@ -661,7 +684,7 @@ namespace ChargerLogic
                             if (_settAggiunta) SettimanePresenti.Add(_settimanaStart);
                             valPeriodo.SettimanaRiferimento = _settimanaStart;
                             // se la fine è nella stessa settimana chiudo il ciclo
-                            if ((_settimanaStart.anno == _settimanaEnd.anno) && (_settimanaStart.settimana == _settimanaEnd.settimana))
+                            if ((_settimanaStart.anno == _settimanaEnd.anno) && (_settimanaStart.settimana >= _settimanaEnd.settimana))
                             {
                                 valPeriodo.PeriodoTemporale.giornoFine = ((int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine) == 0) ? 7 : (int)_tempCal.GetDayOfWeek(valPeriodo.dtDataOraFine);
 
@@ -777,10 +800,6 @@ namespace ChargerLogic
 
                         }
                     }
-
-
-
-
 
                 }
 

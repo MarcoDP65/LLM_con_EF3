@@ -254,8 +254,13 @@ namespace PannelloCharger
                 _sb.PreparaEsportazione(true, true, true, true,true);
                 string JsonData = JsonConvert.SerializeObject(_sb.ModelloDati);
                 Log.Debug("file generato");
+                // Prima comprimo i dati
+                string JsonZip = FunzioniComuni.CompressString(JsonData);
+
                 // Ora cifro i dati
-                string JsonEncript = StringCipher.Encrypt(JsonData);
+                string JsonEncript = StringCipher.Encrypt(JsonZip);
+                
+
                 //JsonEncript = JsonData;
                 Log.Debug("file criptato");
                 File.WriteAllText(filePath, JsonEncript);
@@ -292,6 +297,7 @@ namespace PannelloCharger
                     {
                         Log.Debug("Inizio Import");
                         string _fileDecripted = "";
+                        string _fileDecompress = "";
                         string _fileImport = File.ReadAllText(filePath);
                         Log.Debug("file caricato: len = " + _fileImport.Length.ToString());
 
@@ -303,6 +309,18 @@ namespace PannelloCharger
                             _fileImport = _fileDecripted;
                         }
                         Log.Debug("file decriptato");
+
+                        // verifico se è compresso
+                        _fileDecompress = FunzioniComuni.DecompressString(_fileImport);
+                        if (_fileDecripted != "")
+                        {
+
+                            //è compresso
+                            _fileImport = _fileDecompress; 
+
+                        }
+
+
                         sbDataModel _importData;
                         elementiComuni.Crc16Ccitt codCrc = new elementiComuni.Crc16Ccitt(elementiComuni.InitialCrcValue.NonZero1);
                         ushort _crc;

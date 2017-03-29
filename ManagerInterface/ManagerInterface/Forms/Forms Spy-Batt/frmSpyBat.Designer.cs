@@ -955,6 +955,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.btnRiconsolidaBrevi = new System.Windows.Forms.Button();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -2165,6 +2166,7 @@
             // grbMemCicliPulsanti
             // 
             this.grbMemCicliPulsanti.BackColor = System.Drawing.Color.White;
+            this.grbMemCicliPulsanti.Controls.Add(this.btnRiconsolidaBrevi);
             this.grbMemCicliPulsanti.Controls.Add(this.chkMemLngSalvaRicalcolo);
             this.grbMemCicliPulsanti.Controls.Add(this.btnRicalcolaSoc);
             this.grbMemCicliPulsanti.Controls.Add(this.chkCaricaBrevi);
@@ -7417,6 +7419,13 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // btnRiconsolidaBrevi
+            // 
+            resources.ApplyResources(this.btnRiconsolidaBrevi, "btnRiconsolidaBrevi");
+            this.btnRiconsolidaBrevi.Name = "btnRiconsolidaBrevi";
+            this.btnRiconsolidaBrevi.UseVisualStyleBackColor = true;
+            this.btnRiconsolidaBrevi.Click += new System.EventHandler(this.btnRiconsolidaBrevi_Click);
+            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -8545,5 +8554,6 @@
         private System.Windows.Forms.CheckBox chkMemLngSalvaRicalcolo;
         private System.Windows.Forms.Label lblSvcCausaLastReset;
         private System.Windows.Forms.TextBox txtSvcCausaLastReset;
+        private System.Windows.Forms.Button btnRiconsolidaBrevi;
     }
 }

@@ -1844,28 +1844,36 @@ namespace ChargerLogic
                                         _LogBreve += " | Timestamp: " + StringaTimestamp(_cicloBr.DataOraRegistrazione);
                                         Log.Debug(_LogBreve);
                                         // Aggiorno la lunga e ricarico le brevi
-                                        if (_cicloBr.IdEvento != ( _ciclo.IdEvento))
+                                        if (_cicloBr.IdEvento != (_ciclo.IdEvento))
                                         {
+                                            // il breve nella posizione indicata non apertiene al lungo corrente (probabile riciclo memoria)
                                             _numerr++;
-                                        }
-                                        _memBr.IdApparato = IdApparato;
-                                        _memBr.IdMemoriaLunga = (int)_memLn.IdMemoriaLunga;
-                                        _memBr.IdMemoriaBreve = _numCiclo;
-                                        _memBr.DataOraRegistrazione = StringaTimestamp(_cicloBr.DataOraRegistrazione);
-                                        _memBr.Vreg = _cicloBr.Vreg;
-                                        _memBr.V1 = _cicloBr.V1;
-                                        _memBr.V2 = _cicloBr.V2;
-                                        _memBr.V3 = _cicloBr.V3;
-                                        _memBr.Amed = _cicloBr.Amed;
-                                        _memBr.Amin = _cicloBr.Amin;
-                                        _memBr.Amax = _cicloBr.Amax;
-                                        _memBr.Tntc = _cicloBr.Tntc;
-                                        _memBr.PresenzaElettrolita = _cicloBr.PresenzaElettrolita;
-                                        _memBr.VbatBk = _cicloBr.VbatBk;
-                                        _numCiclo++;
+                                            Log.Debug("Breve non appartenente al lungo corrente");
 
-                                        _memLn.CicliMemoriaBreve.Add(_memBr);
-                                        _datiLungo.CicliBrevi.Add(_memBr._sbsm);
+                                        }
+                                        else
+                                        {
+
+
+                                            _memBr.IdApparato = IdApparato;
+                                            _memBr.IdMemoriaLunga = (int)_memLn.IdMemoriaLunga;
+                                            _memBr.IdMemoriaBreve = _numCiclo;
+                                            _memBr.DataOraRegistrazione = StringaTimestamp(_cicloBr.DataOraRegistrazione);
+                                            _memBr.Vreg = _cicloBr.Vreg;
+                                            _memBr.V1 = _cicloBr.V1;
+                                            _memBr.V2 = _cicloBr.V2;
+                                            _memBr.V3 = _cicloBr.V3;
+                                            _memBr.Amed = _cicloBr.Amed;
+                                            _memBr.Amin = _cicloBr.Amin;
+                                            _memBr.Amax = _cicloBr.Amax;
+                                            _memBr.Tntc = _cicloBr.Tntc;
+                                            _memBr.PresenzaElettrolita = _cicloBr.PresenzaElettrolita;
+                                            _memBr.VbatBk = _cicloBr.VbatBk;
+                                            _numCiclo++;
+
+                                            _memLn.CicliMemoriaBreve.Add(_memBr);
+                                            _datiLungo.CicliBrevi.Add(_memBr._sbsm);
+                                        }
                                     }
 
                                     Log.Debug("----------------------------------------------------------------------------------------");

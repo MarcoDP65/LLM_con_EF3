@@ -1493,7 +1493,14 @@ namespace Utility
             _hiVal = (byte)((_value >> 8) & 0xFFu);
         }
 
-
+        /// <summary>
+        /// Suddivide il valore passato uint32 nei 4 byte costituenti.
+        /// </summary>
+        /// <param name="_value">Valore da convertire.</param>
+        /// <param name="_byte1">byte1.</param>
+        /// <param name="_byte2">byte2.</param>
+        /// <param name="_byte3">byte3.</param>
+        /// <param name="_byte4">byte4.</param>
         public static void SplitUint32(UInt32 _value, ref byte _byte1, ref byte _byte2, ref byte _byte3, ref byte _byte4)
 
         {
@@ -1937,21 +1944,28 @@ namespace Utility
         /// <returns></returns>
         public static string DecompressString(string compressedText)
         {
-            byte[] gZipBuffer = Convert.FromBase64String(compressedText);
-            using (var memoryStream = new MemoryStream())
+            try
             {
-                int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
-                memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
-
-                var buffer = new byte[dataLength];
-
-                memoryStream.Position = 0;
-                using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+                byte[] gZipBuffer = Convert.FromBase64String(compressedText);
+                using (var memoryStream = new MemoryStream())
                 {
-                    gZipStream.Read(buffer, 0, buffer.Length);
-                }
+                    int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
+                    memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
 
-                return Encoding.UTF8.GetString(buffer,0, buffer.Length);
+                    var buffer = new byte[dataLength];
+
+                    memoryStream.Position = 0;
+                    using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+                    {
+                        gZipStream.Read(buffer, 0, buffer.Length);
+                    }
+
+                    return Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                }
+            }
+            catch (Exception Ex)
+            {
+                return "";
             }
         }
 

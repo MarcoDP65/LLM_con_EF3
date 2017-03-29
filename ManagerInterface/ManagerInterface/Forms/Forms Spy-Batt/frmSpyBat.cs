@@ -106,7 +106,7 @@ namespace PannelloCharger
             bool _esito;
             try
             {
-                bool _aggiornaStatistiche = true;
+                bool _aggiornaStatistiche = false;
                 Cursor.Current = Cursors.WaitCursor;
                 _onUpload = true;
                 _parametri = _par;
@@ -202,6 +202,9 @@ namespace PannelloCharger
                     }
 
                 CaricaProgrammazioni();
+
+
+                if ((_sb.sbData.LongMem > 0) && (_sb.sbData.LongMem < 30000)) _aggiornaStatistiche = true;
 
                 InizializzaOxyGrSingolo();
                 //InizializzaOxyGrCalibrazione();
@@ -893,6 +896,7 @@ namespace PannelloCharger
                 }
                 else
                 {
+                    _readonly = false;
                     grbStatoFirmware.Visible = true;
                     grbFWAggiornamento.Visible = true;
                     // Nascondo tutto poi riattvo se serve
@@ -2473,6 +2477,7 @@ namespace PannelloCharger
                 ColonnaLivStart.Width = 60;
                 ColonnaLivStart.HeaderTextAlign = HorizontalAlignment.Center;
                 ColonnaLivStart.TextAlign = HorizontalAlignment.Right;
+                ColonnaLivStart.IsVisible = _colonnaNascosta;
                 flvwCicliBatteria.AllColumns.Add(ColonnaLivStart);
 
 
@@ -2495,6 +2500,7 @@ namespace PannelloCharger
                 ColonnaLivStop.Width = 60;
                 ColonnaLivStop.HeaderTextAlign = HorizontalAlignment.Center;
                 ColonnaLivStop.TextAlign = HorizontalAlignment.Right;
+                ColonnaLivStop.IsVisible = _colonnaNascosta;
                 flvwCicliBatteria.AllColumns.Add(ColonnaLivStop);
 
 
@@ -2519,6 +2525,7 @@ namespace PannelloCharger
                 ColonnaSOC.Width = 60;
                 ColonnaSOC.HeaderTextAlign = HorizontalAlignment.Center;
                 ColonnaSOC.TextAlign = HorizontalAlignment.Right;
+                ColonnaSOC.IsVisible = _colonnaNascosta;
                 flvwCicliBatteria.AllColumns.Add(ColonnaSOC);
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -2543,6 +2550,7 @@ namespace PannelloCharger
                 Colonna15.Width = 60;
                 Colonna15.HeaderTextAlign = HorizontalAlignment.Center;
                 Colonna15.TextAlign = HorizontalAlignment.Right;
+
                 flvwCicliBatteria.AllColumns.Add(Colonna15);
 
                 //Tempo Sbilanciamento celle 
@@ -9057,6 +9065,21 @@ namespace PannelloCharger
                 _sb.RicalcolaSoc(chkMemLngSalvaRicalcolo.Checked);
 
                 InizializzaVistaLunghi(); 
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("tabCaricaBatterie_DrawItem: " + Ex.Message);
+
+            }
+        }
+
+        private void btnRiconsolidaBrevi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _sb.ConsolidaBrevi();
+                InizializzaVistaLunghi();
             }
             catch (Exception Ex)
             {

@@ -271,6 +271,7 @@ namespace MoriData
                 case 4:
                 case 5:
                 case 6:
+                case 7:
                     _mappaLocale.Testata = new ElementoMemoria { StartAddress = 0x00, ElemetSize = 64, NoOfElemets = 1, ExtraMem = 3996, EndAddress = 0x0FFF };
                     _mappaLocale.DatiCliente = new ElementoMemoria { StartAddress = 0x1000, ElemetSize = 240, NoOfElemets = 4, ExtraMem = 0, EndAddress = 0x043F };
                     _mappaLocale.Programmazioni = new ElementoMemoria { StartAddress = 0x1400, ElemetSize = 128, NoOfElemets = 23, ExtraMem = 0, EndAddress = 0x1FFF };
@@ -579,6 +580,7 @@ namespace MoriData
                             switch (_sb.SwVersion)
                             {
                                 case "2.03.05":
+                                case "2.03.06":
                                     return 7;
                                 default:
                                     return 6;

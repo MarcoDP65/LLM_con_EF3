@@ -4422,6 +4422,33 @@
   <data name="&gt;&gt;tabStatistiche.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="btnRiconsolidaBrevi.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRiconsolidaBrevi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>712, 75</value>
+  </data>
+  <data name="btnRiconsolidaBrevi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 36</value>
+  </data>
+  <data name="btnRiconsolidaBrevi.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="btnRiconsolidaBrevi.Text" xml:space="preserve">
+    <value>Consolida Brevi</value>
+  </data>
+  <data name="&gt;&gt;btnRiconsolidaBrevi.Name" xml:space="preserve">
+    <value>btnRiconsolidaBrevi</value>
+  </data>
+  <data name="&gt;&gt;btnRiconsolidaBrevi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRiconsolidaBrevi.Parent" xml:space="preserve">
+    <value>grbMemCicliPulsanti</value>
+  </data>
+  <data name="&gt;&gt;btnRiconsolidaBrevi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="chkMemLngSalvaRicalcolo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4450,7 +4477,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;chkMemLngSalvaRicalcolo.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnRicalcolaSoc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4477,7 +4504,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;btnRicalcolaSoc.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkCaricaBrevi.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4507,7 +4534,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;chkCaricaBrevi.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkInvertiCorreti.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4537,7 +4564,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;chkInvertiCorreti.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnRigeneraLista.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4564,7 +4591,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;btnRigeneraLista.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnCaricaListaUltimiLunghi.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4591,7 +4618,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;btnCaricaListaUltimiLunghi.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnCaricaDettaglioSel.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4621,7 +4648,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;btnCaricaDettaglioSel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnCaricaListaLunghi.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4648,7 +4675,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;btnCaricaListaLunghi.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnDettaglioCicliBrevi.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4675,7 +4702,7 @@
     <value>grbMemCicliPulsanti</value>
   </data>
   <data name="&gt;&gt;btnDettaglioCicliBrevi.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="grbMemCicliPulsanti.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -4684,7 +4711,7 @@
     <value>43, 582</value>
   </data>
   <data name="grbMemCicliPulsanti.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1342, 82</value>
+    <value>1342, 132</value>
   </data>
   <data name="grbMemCicliPulsanti.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -8623,7 +8650,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.25, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.26, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
