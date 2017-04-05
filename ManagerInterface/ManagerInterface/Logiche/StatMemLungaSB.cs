@@ -387,7 +387,14 @@ namespace ChargerLogic
 
 
                     if (ciclo.EffMaxSbilanciamentoC > _maxSbil) _maxSbil = ciclo.VMaxSbilanciamentoC;
-                    if (ciclo.IdProgramma > _lastProg.IdProgramma) _lastProg = ciclo.ProgrammaAttivo;
+                    if (_lastProg == null)
+                    {
+                        _lastProg = ciclo.ProgrammaAttivo;
+                    }
+                    else
+                    {
+                        if (ciclo.IdProgramma > _lastProg.IdProgramma) _lastProg = ciclo.ProgrammaAttivo;
+                    }
                     // Se lo sbilaciamento celle supera il limite, agiungo la durata al tempo totale di sbilanciamento
                     //if (ciclo.EffMaxSbilanciamentoC > _maxSbilanciamento) _durataSbil += valCiclo.Durata;
                     // Se lmanca elettrolita (valore 0x0F), agiungo la durata al tempo totale mancanza el.

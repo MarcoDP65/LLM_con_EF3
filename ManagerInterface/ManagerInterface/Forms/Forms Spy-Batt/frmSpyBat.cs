@@ -625,6 +625,17 @@ namespace PannelloCharger
                             txtRevSWSb.Text = _sb.sbData.SwVersion.ToString();
                         else
                             txtRevSWSb.Text = "N.D.";
+
+                        txtRevLdrSb.Text = _sb.sbData.Bootloader;
+                        txtRevSWStratSb.Text = _sb.sbData.StrategyLibrary;
+
+
+
+
+
+
+
+
                     }
                     else
                     {
@@ -808,9 +819,19 @@ namespace PannelloCharger
                     case 1:
                         btnNuovoProgramma.Visible = true;
                         btnAttivaProgrammazione.Visible = true;
+                        grbProgrammazione.Height = 245;
+                        grbProgrImpianto.Height = 137;
+                        grbProgrImpianto.Top = 280;
+
                         break;
                     case 2:
                         btnNuovoProgramma.Visible = true;
+                        grbProgrammazione.Height = 108;
+                        grbProgrImpianto.Height = 76;
+                        grbProgrImpianto.Top = 147;
+                        flvwProgrammiCarica.Height = 300;
+                        flvwProgrammiCarica.Top = 235;
+
                         break;
                 }
 

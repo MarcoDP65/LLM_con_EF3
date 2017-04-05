@@ -264,7 +264,7 @@ namespace PannelloCharger
                 //JsonEncript = JsonData;
                 Log.Debug("file criptato");
                 File.WriteAllText(filePath, JsonEncript);
-                File.WriteAllText(filePath+ ".txt", JsonData);
+                //File.WriteAllText(filePath+ ".txt", JsonData);
 
                 Log.Debug("file salvato");
 
@@ -312,7 +312,7 @@ namespace PannelloCharger
 
                         // verifico se è compresso
                         _fileDecompress = FunzioniComuni.DecompressString(_fileImport);
-                        if (_fileDecripted != "")
+                        if (_fileDecompress != "")
                         {
 
                             //è compresso

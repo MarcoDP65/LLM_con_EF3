@@ -184,6 +184,7 @@
             this.flvwListaSoglie = new BrightIdeasSoftware.FastObjectListView();
             this.tabCb04 = new System.Windows.Forms.TabPage();
             this.grbMemCicliPulsanti = new System.Windows.Forms.GroupBox();
+            this.btnRiconsolidaBrevi = new System.Windows.Forms.Button();
             this.chkMemLngSalvaRicalcolo = new System.Windows.Forms.CheckBox();
             this.btnRicalcolaSoc = new System.Windows.Forms.Button();
             this.chkCaricaBrevi = new System.Windows.Forms.CheckBox();
@@ -955,7 +956,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.btnRiconsolidaBrevi = new System.Windows.Forms.Button();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -2179,6 +2179,13 @@
             resources.ApplyResources(this.grbMemCicliPulsanti, "grbMemCicliPulsanti");
             this.grbMemCicliPulsanti.Name = "grbMemCicliPulsanti";
             this.grbMemCicliPulsanti.TabStop = false;
+            // 
+            // btnRiconsolidaBrevi
+            // 
+            resources.ApplyResources(this.btnRiconsolidaBrevi, "btnRiconsolidaBrevi");
+            this.btnRiconsolidaBrevi.Name = "btnRiconsolidaBrevi";
+            this.btnRiconsolidaBrevi.UseVisualStyleBackColor = true;
+            this.btnRiconsolidaBrevi.Click += new System.EventHandler(this.btnRiconsolidaBrevi_Click);
             // 
             // chkMemLngSalvaRicalcolo
             // 
@@ -7418,13 +7425,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // btnRiconsolidaBrevi
-            // 
-            resources.ApplyResources(this.btnRiconsolidaBrevi, "btnRiconsolidaBrevi");
-            this.btnRiconsolidaBrevi.Name = "btnRiconsolidaBrevi";
-            this.btnRiconsolidaBrevi.UseVisualStyleBackColor = true;
-            this.btnRiconsolidaBrevi.Click += new System.EventHandler(this.btnRiconsolidaBrevi_Click);
             // 
             // frmSpyBat
             // 

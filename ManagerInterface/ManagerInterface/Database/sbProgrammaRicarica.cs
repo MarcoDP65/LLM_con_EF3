@@ -134,9 +134,10 @@ namespace MoriData
         {
             if (_database != null)
             {
-                return (from s in _database.Table<_sbProgrammaRicarica>()
-                        where s.IdApparato == _IdApparato & s.IdProgramma == _IdProgramma 
-                    select s).FirstOrDefault();
+                _sbProgrammaRicarica _esitoQuery = (from s in _database.Table<_sbProgrammaRicarica>()
+                          where s.IdApparato == _IdApparato & s.IdProgramma == _IdProgramma 
+                          select s).FirstOrDefault();
+                return _esitoQuery;
             }
             else
             {

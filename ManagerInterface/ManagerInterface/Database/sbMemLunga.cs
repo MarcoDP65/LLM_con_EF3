@@ -661,7 +661,7 @@ namespace MoriData
                     //Log.Debug("MemLunga.CaricaProgramma: Non Trovato (" + _sblm.IdApparato.ToString() + " - " + _sblm.IdProgramma.ToString() + ") " + _tempProgramma.ToString());
                 }
 
-                return _esito;
+                 return _esito;
 
             }
             catch (Exception Ex)

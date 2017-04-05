@@ -89,7 +89,6 @@ namespace PannelloCharger
 
 
 
-
                 }
                 else
                 {
@@ -107,6 +106,10 @@ namespace PannelloCharger
                     cmbTipoBatteria.Visible = false;
                     chkCliResetContatori.Visible = false;
                     cmbTipoBatteria.SelectedIndex = 0;
+
+                    tabImpostazioni.TabPages.Remove(tbpSetupPro);
+                    tabImpostazioni.TabPages.Remove(tbpSetupTurni);
+                    tabImpostazioni.TabPages.Remove(tbpSetupTempo);
 
                 }
 
@@ -393,9 +396,9 @@ namespace PannelloCharger
                 _nuovoProg.CorrenteMassimaCHG = FunzioniMR.ConvertiUshort(txtProMaxChargeCurr.Text, 10, 0);
 
 
-                _nuovoProg.Rabboccatore = (byte)cmbRabboccatore.SelectedValue;
+                _nuovoProg.Rabboccatore = 0x00;//  (byte)cmbRabboccatore.SelectedValue;
                 _nuovoProg.ImpulsiRabboccatore = FunzioniMR.ConvertiByte(txtProImpulsiRabb.Text, 1, 1);
-                _nuovoProg.Biberonaggio = (byte)cmbBiberonaggio.SelectedValue;
+                _nuovoProg.Biberonaggio = 0x00;//(byte)cmbBiberonaggio.SelectedValue;
                 _nuovoProg.TempAttenzione = FunzioniMR.ConvertiByte(txtProTempAttenzione.Text, 1, 45);
                 _nuovoProg.TempAllarme = FunzioniMR.ConvertiByte(txtProTempAllarme.Text, 1, 55);
                 _nuovoProg.TempRipresa = FunzioniMR.ConvertiByte(txtProTempRiavvio.Text, 1, 45);
@@ -518,12 +521,12 @@ namespace PannelloCharger
                 cmbBiberonaggio.DataSource = _parametriPro.OpzioniBib;
                 cmbBiberonaggio.DisplayMember = "Descrizione";
                 cmbBiberonaggio.ValueMember = "Codice";
-                cmbBiberonaggio.SelectedIndex = 0;
+                if(cmbBiberonaggio.Items.Count > 0) cmbBiberonaggio.SelectedIndex = 0;
 
                 cmbRabboccatore.DataSource = _parametriPro.OpzioniRabb;
                 cmbRabboccatore.DisplayMember = "Descrizione";
                 cmbRabboccatore.ValueMember = "Codice";
-                cmbRabboccatore.SelectedIndex = 0;
+                if (cmbRabboccatore.Items.Count > 0) cmbRabboccatore.SelectedIndex = 0;
 
 
 
