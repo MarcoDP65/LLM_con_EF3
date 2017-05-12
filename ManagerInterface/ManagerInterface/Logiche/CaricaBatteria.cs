@@ -59,8 +59,8 @@ namespace ChargerLogic
         public byte[] DatiRisposta;
 
         public int AttesaTimeout = 25; // Tempo attesa in decimi di secondo
-       
-
+        public SerialMessage.OcBaudRate BrOCcorrente = SerialMessage.OcBaudRate.OFF;
+        public SerialMessage.OcEchoMode EchoOCcorrente = SerialMessage.OcEchoMode.OFF;
 
         private bool aspettaRisposta(int timeout, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false)
         {
@@ -691,6 +691,10 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+
+
+
 
 
 

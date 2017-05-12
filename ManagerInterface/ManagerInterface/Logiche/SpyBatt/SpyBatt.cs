@@ -25,7 +25,9 @@ namespace ChargerLogic
     {
         public enum StatoScheda : byte { NonCollegata = 0x00, SoloBootloader = 0x01, BLandFW = 0x02, SoloFW = 0x03 };
 
+        /// <exclude />
         public static SerialPort serialeApparato;
+
         private static MessaggioSpyBatt _mS; // = new MessaggioSpyBatt();
         private parametriSistema _parametri;
 
@@ -125,7 +127,8 @@ namespace ChargerLogic
         private static EventWaitHandle SB_USBeventWait;
         private bool _attivaLogger = false;
         private string _fileLogger = "";
-
+        public SerialMessage.OcBaudRate BrOCcorrente = SerialMessage.OcBaudRate.OFF;
+        public SerialMessage.OcEchoMode EchoOCcorrente = SerialMessage.OcEchoMode.OFF;
 
         public event LongMemListHandler LMListChange ;
         public delegate void LongMemListHandler(UnitaSpyBatt sb, sbListaLunghiEvt lme);
@@ -295,40 +298,6 @@ namespace ChargerLogic
             {
                 Log.Error("recordPresente: " + Ex.Message);
                 _lastError = Ex.Message;
-                return false;
-            }
-
-        }
-
-        public bool CaricaCompleto(string IdApparato, MoriData._db dbCorrente, bool ApparatoConnesso = false )
-        {
-            try
-            {
-                bool _esito;
-                bool _recordPresente;
-
-                Log.Debug("CaricaCompleto " );
-                if (ApparatoConnesso)
-                    ControllaAttesa(UltimaScrittura);
-
-                _esito = false;
-                _recordPresente = sbData.caricaDati(IdApparato);
-
-                if (_recordPresente)
-                {
-                    _idCorrente = IdApparato;
-                    _recordPresente = sbCliente.caricaDati(IdApparato, 1);
-                    _recordPresente = CaricaProgrammazioni(IdApparato, dbCorrente);
-                    _recordPresente = CaricaCicliMemLunga(IdApparato, dbCorrente);
-
-                    _esito = true;
-                }
-                return _esito;
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("CaricaCompleto: " + Ex.Message);
-                Log.Error(Ex.TargetSite.ToString());
                 return false;
             }
 
@@ -559,120 +528,6 @@ namespace ChargerLogic
 
 
 
-
-
-
-        /// <summary>
-        /// Legge direttamente dallo SPY-BATT collegato i valori attuali di corrente, tensione e temperatura
-        /// </summary>
-        /// <param name="IdApparato">ID dell'apparato collegato</param>
-        /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
-        /// <returns></returns>
-        public bool CaricaVariabili(string IdApparato, bool ApparatoConnesso)
-        {
-            try
-            {
-                bool _esito;
-//
-//                _idCorrente = IdApparato;
-//                
-                _esito = false;
-
-                if (ApparatoConnesso)
-                {
-                    // Eseguo solo se la connessione all'apparato è attiva
-                    _mS.variabiliScheda = new MessaggioSpyBatt.VariabiliSpybatt();
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_Variabili;
-                    _mS.ComponiMessaggio();
-                    _rxRisposta = false;
-                    skipHead = true;
-                    Log.Debug("SB Carica Variabili");
-                    Log.Debug(_mS.hexdumpMessaggio());
-                    _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
-                    if (_esito)
-                    {
-                        sbVariabili = new MoriData.sbVariabili();
-                        sbVariabili.IdApparato = _idCorrente;
-                        sbVariabili.TensioneTampone = (ushort)(_mS.variabiliScheda.TensioneBattT );
-                        sbVariabili.TensioneIstantanea = _mS.variabiliScheda.TensioneIstantanea;
-                        sbVariabili.Tensione1 = _mS.variabiliScheda.Tensione1;
-                        sbVariabili.Tensione2 = _mS.variabiliScheda.Tensione2;
-                        sbVariabili.Tensione3 = _mS.variabiliScheda.Tensione3;
-                        sbVariabili.CorrenteBatteria = _mS.variabiliScheda.CorrenteBatteria;
-                        sbVariabili.AhCaricati = _mS.variabiliScheda.AhCaricati;
-                        sbVariabili.AhScaricati = _mS.variabiliScheda.AhScaricati;
-                        sbVariabili.TempNTC = _mS.variabiliScheda.TempNTC;
-                        sbVariabili.PresenzaElettrolita = _mS.variabiliScheda.PresenzaElettrolita;
-                        sbVariabili.SoC = _mS.variabiliScheda.SoC;
-                        sbVariabili.RF = _mS.variabiliScheda.RF;
-                        sbVariabili.WhScaricati = _mS.variabiliScheda.WhScaricati;
-                        sbVariabili.WhCaricati = _mS.variabiliScheda.WhCaricati;
-                        sbVariabili.MemProgrammed = _mS.variabiliScheda.MemProgrammed;
-                        sbVariabili.IstanteLettura = _mS.variabiliScheda.IstanteLettura;
-                        sbVariabili.ConnectionStatus = _mS.variabiliScheda.ConnStatus;
-
-                    }
-                }
-                return _esito;
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("CaricaTestata: " + Ex.Message);
-                Log.Error(Ex.TargetSite.ToString());
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Legge direttamente dallo SPY-BATT collegato i valori dei parametri generali
-        /// </summary>
-        /// <param name="IdApparato">ID dell'apparato collegato</param>
-        /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
-        /// <returns></returns>
-        public bool CaricaParametri(string IdApparato, bool ApparatoConnesso)
-        {
-            try
-            {
-                bool _esito;
-                //
-                //                _idCorrente = IdApparato;
-                //                
-                _esito = false;
-
-                if (ApparatoConnesso)
-                {
-                    // Eseguo solo se la connessione all'apparato è attiva
-                    _mS.ParametriGenerali = new MessaggioSpyBatt.ParametriSpybatt();
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_ParametriLettura;
-                    _mS.ComponiMessaggio();
-                    _rxRisposta = false;
-                    skipHead = true;
-                    Log.Debug("SB Lettura Parametri");
-                    Log.Debug(_mS.hexdumpMessaggio());
-                    _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
-                    if (_esito)
-                    {
-                        ParametriGenerali = new MoriData.sbParametriGenerali();
-                        ParametriGenerali.IdApparato = _idCorrente;
-                        ParametriGenerali.LettureCorrente = _mS.ParametriGenerali.LettureCorrente;
-                        ParametriGenerali.LettureTensione = _mS.ParametriGenerali.LettureTensione;
-                        ParametriGenerali.DurataPausa = _mS.ParametriGenerali.DurataPausa;
-                        ParametriGenerali.DataInserimento = _mS.ParametriGenerali.IstanteLettura;
-                        ParametriGenerali.CausaUltimoReset = _mS.ParametriGenerali.UltimoReset;
-
-                    }
-                }
-                return _esito;
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("CaricaCalibrazioni: " + Ex.Message);
-                Log.Error(Ex.TargetSite.ToString());
-                return false;
-            }
-        }
 
 
 
@@ -1432,6 +1287,8 @@ namespace ChargerLogic
                 bool _esito;
                 object _dataRx;
                 bool _testataAssente;
+                txtLogger txtLog = new txtLogger();
+
 
                 sbEndStep _esitoBg = new sbEndStep();
                 sbWaitStep _stepBg = new sbWaitStep();
@@ -1442,6 +1299,8 @@ namespace ChargerLogic
 
                 if (FileReport == "")
                     GeneraReport = false;
+
+                txtLog.Open(FileReport);
 
                 bool _recordPresente;
 
@@ -1503,6 +1362,10 @@ namespace ChargerLogic
                         Log.Warn("---------------------- TESTATA (NON ATTIVA) ------------------------------");
 
                         Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+
+                        txtLog.WriteLn("---------------------- TESTATA (NON ATTIVA) ------------------------------");
+                        txtLog.WriteLn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+
 
                         // Non carico il record testata: i contatori non sono valorizzati: controllo solo che il record sia valido
                         // TODO: 
@@ -1701,6 +1564,7 @@ namespace ChargerLogic
                             _tempLunga = new MessaggioSpyBatt.MemoriaPeriodoLungo();
                             Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
                             //Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+                            txtLog.WriteLn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
                             _esitoLettura = _tempLunga.analizzaMessaggio(_TempMessaggio, sbData.fwLevel, true);
                             if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                             {
@@ -1854,7 +1718,6 @@ namespace ChargerLogic
                                         else
                                         {
 
-
                                             _memBr.IdApparato = IdApparato;
                                             _memBr.IdMemoriaLunga = (int)_memLn.IdMemoriaLunga;
                                             _memBr.IdMemoriaBreve = _numCiclo;
@@ -1938,6 +1801,12 @@ namespace ChargerLogic
 
 
                             }
+
+
+
+
+
+
 
                             //ora consolido gli intermedi
                             ConsolidaBrevi();
@@ -2024,6 +1893,65 @@ namespace ChargerLogic
 
 
                         }
+                        //spacchetto la memoria brevi in modo sequenziale
+                        if (true)
+                        {
+
+                            bool trovatoUltimo = false;
+                            byte[] _tempChiave = new byte[5];
+                            byte[] _ultimaChiave = new byte[5] { 0x00, 0x00, 0x00, 0x00, 0x00 };
+                            byte[] _chiaveStop = new byte[5] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                            int _numbrevi = 0;
+
+                            _areaSize = _mappaCorrente.MemBreve.ElemetSize;
+                            _areaStart = _mappaCorrente.MemBreve.StartAddress; //+ (int)(_memLn.PuntatorePrimoBreve * _areaSize);
+                            _areaBlock = _mappaCorrente.MemBreve.NoOfElemets;
+
+
+                            txtLog.WriteLn("---------------------- Cicli Brevi: " + _areaBlock.ToString() + " ------------------------------");
+
+                            _TempMessaggio = new byte[_areaSize];
+
+                            while (!trovatoUltimo)
+                            {
+                                // _tempBreve = new MessaggioSpyBatt.MemoriaPeriodoBreve();
+                                Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
+                                Array.Copy(Immagine.DataBuffer, _areaStart, _tempChiave, 0, 5);
+                                //Array.Copy(Immagine.DataBuffer, _areaStart, _ultimaChiave, 0, 5);
+
+                                if (_tempChiave.SequenceEqual(_chiaveStop))
+                                {
+                                    trovatoUltimo = true;
+                                    txtLog.WriteLn("---------------------- Cicli Brevi: " + _numbrevi.ToString() + " ------------------------------");
+                                    break;
+                                }
+
+                                if (!_tempChiave.SequenceEqual(_ultimaChiave))
+                                {
+                                    // Nuova Chiave
+                                    _ultimaChiave = _tempChiave;
+                                    txtLog.WriteLn("");
+
+                                }
+                                _numbrevi -= 1;
+                                txtLog.WriteLn(FunzioniMR.hexdumpArray(_TempMessaggio, false));
+
+                                //Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
+                                // _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true);
+                                // if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
+                                // {
+                                //     _CicliMemoriaBreve.Add(_tempBreve);
+                                // }
+
+                                _areaStart += _areaSize;
+                                if (_areaStart > _ultimoBreve) _ultimoBreve = _areaStart;
+
+                            }
+
+
+                            // Log.Debug(_testataLungo);
+                            Log.Debug("----------------------------------------------------------------------------------------");
+                        }
 
 
 
@@ -2072,7 +2000,7 @@ namespace ChargerLogic
         {
             try
             {
-                bool _esito;
+                //bool _esito;
                 object _dataRx;
 
                 bool _RaggiuntoTO = false;
@@ -4701,8 +4629,32 @@ namespace ChargerLogic
             }
         }
 
+        public bool ScriviParametriOC(SerialMessage.OcBaudRate BRrichiesto, SerialMessage.OcEchoMode AttivaEcho)
+        {
+            try
+            {
+                bool _esito;
+                DateTime _now = DateTime.Now;
 
+                _mS.Comando = SerialMessage.TipoComando.SB_W_ParametriSIG60;
 
+                _mS.ComponiMessaggioScriviParametriSig(BRrichiesto, AttivaEcho);
+                _rxRisposta = false;
+                Log.Debug("Scrivi Parametri OC");
+                Log.Debug(_mS.hexdumpMessaggio());
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                return _esito; //_esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
 
         public bool RicalcolaSoc(bool SalvaEsito = false)
         {
@@ -4997,6 +4949,18 @@ namespace ChargerLogic
                             case (byte)SerialMessage.TipoComando.SB_W_ParametriLettura:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 Log.Debug("Scrittura Parametri Lettura");
+                                _inviaRisposta = false;
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.SB_R_ParametriSIG60:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                Log.Debug("Lettura Parametri OC");
+                                _inviaRisposta = false;
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.SB_W_ParametriSIG60:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                Log.Debug("Scrittura Parametri OC");
                                 _inviaRisposta = false;
                                 break;
 

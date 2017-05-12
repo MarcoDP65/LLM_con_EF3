@@ -49,7 +49,6 @@ namespace PannelloCharger
         public System.Collections.Generic.List<mrDataPoint> ValoriTensioniCellaS3 = new List<mrDataPoint>();
         public System.Collections.Generic.List<mrDataPoint> ValoriTensioniCellaS4 = new List<mrDataPoint>();
 
-        private sbMemBreve CicloBreve;
         private parametriSistema _parametri;
 
 

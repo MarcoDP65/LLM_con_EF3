@@ -422,6 +422,12 @@
             this.btnSalvaCaricabatteria = new System.Windows.Forms.Button();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
+            this.grbVarParametriSig = new System.Windows.Forms.GroupBox();
+            this.btnFSerVerificaOC = new System.Windows.Forms.Button();
+            this.chkFSerEchoOC = new System.Windows.Forms.CheckBox();
+            this.btnFSerImpostaOC = new System.Windows.Forms.Button();
+            this.label278 = new System.Windows.Forms.Label();
+            this.cmbFSerBaudrateOC = new System.Windows.Forms.ComboBox();
             this.tabProfiloAttuale.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
             this.tabCaricaBatterie.SuspendLayout();
@@ -472,11 +478,13 @@
             this.pnlStratContatoriCarica.SuspendLayout();
             this.panel3.SuspendLayout();
             this.grbStratComandiTest.SuspendLayout();
+            this.grbVarParametriSig.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProfiloAttuale
             // 
             this.tabProfiloAttuale.BackColor = System.Drawing.Color.LightYellow;
+            this.tabProfiloAttuale.Controls.Add(this.grbVarParametriSig);
             this.tabProfiloAttuale.Controls.Add(this.grbCicloCorrente);
             this.tabProfiloAttuale.Location = new System.Drawing.Point(4, 25);
             this.tabProfiloAttuale.Name = "tabProfiloAttuale";
@@ -486,6 +494,7 @@
             // 
             // grbCicloCorrente
             // 
+            this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
             this.grbCicloCorrente.Controls.Add(this.txtPaParDivK);
             this.grbCicloCorrente.Controls.Add(this.label69);
             this.grbCicloCorrente.Controls.Add(this.txtPaParKp);
@@ -540,10 +549,10 @@
             this.grbCicloCorrente.Controls.Add(this.label4);
             this.grbCicloCorrente.Location = new System.Drawing.Point(66, 23);
             this.grbCicloCorrente.Name = "grbCicloCorrente";
-            this.grbCicloCorrente.Size = new System.Drawing.Size(1102, 499);
+            this.grbCicloCorrente.Size = new System.Drawing.Size(958, 499);
             this.grbCicloCorrente.TabIndex = 0;
             this.grbCicloCorrente.TabStop = false;
-            this.grbCicloCorrente.Text = "Profilo  Corrente";
+            this.grbCicloCorrente.Text = "Profilo  Attivo";
             this.grbCicloCorrente.Enter += new System.EventHandler(this.grbCicloCorrente_Enter);
             // 
             // txtPaParDivK
@@ -675,7 +684,7 @@
             // 
             // btnPaSalvaDati
             // 
-            this.btnPaSalvaDati.Location = new System.Drawing.Point(638, 447);
+            this.btnPaSalvaDati.Location = new System.Drawing.Point(766, 426);
             this.btnPaSalvaDati.Name = "btnPaSalvaDati";
             this.btnPaSalvaDati.Size = new System.Drawing.Size(160, 33);
             this.btnPaSalvaDati.TabIndex = 41;
@@ -816,7 +825,7 @@
             // 
             // btnCicloCorrente
             // 
-            this.btnCicloCorrente.Location = new System.Drawing.Point(638, 392);
+            this.btnCicloCorrente.Location = new System.Drawing.Point(766, 387);
             this.btnCicloCorrente.Name = "btnCicloCorrente";
             this.btnCicloCorrente.Size = new System.Drawing.Size(160, 33);
             this.btnCicloCorrente.TabIndex = 26;
@@ -4886,6 +4895,77 @@
             this.tmrLetturaAutomatica.Interval = 30000;
             this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
             // 
+            // grbVarParametriSig
+            // 
+            this.grbVarParametriSig.BackColor = System.Drawing.Color.White;
+            this.grbVarParametriSig.Controls.Add(this.btnFSerVerificaOC);
+            this.grbVarParametriSig.Controls.Add(this.chkFSerEchoOC);
+            this.grbVarParametriSig.Controls.Add(this.btnFSerImpostaOC);
+            this.grbVarParametriSig.Controls.Add(this.label278);
+            this.grbVarParametriSig.Controls.Add(this.cmbFSerBaudrateOC);
+            this.grbVarParametriSig.Location = new System.Drawing.Point(1088, 23);
+            this.grbVarParametriSig.Name = "grbVarParametriSig";
+            this.grbVarParametriSig.Size = new System.Drawing.Size(296, 165);
+            this.grbVarParametriSig.TabIndex = 61;
+            this.grbVarParametriSig.TabStop = false;
+            this.grbVarParametriSig.Text = "Parametri Comunicazione OC";
+            // 
+            // btnFSerVerificaOC
+            // 
+            this.btnFSerVerificaOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnFSerVerificaOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFSerVerificaOC.Location = new System.Drawing.Point(34, 107);
+            this.btnFSerVerificaOC.Name = "btnFSerVerificaOC";
+            this.btnFSerVerificaOC.Size = new System.Drawing.Size(115, 34);
+            this.btnFSerVerificaOC.TabIndex = 5;
+            this.btnFSerVerificaOC.Text = "Verifica";
+            this.btnFSerVerificaOC.UseVisualStyleBackColor = true;
+            this.btnFSerVerificaOC.Click += new System.EventHandler(this.btnFSerVerificaOC_Click);
+            // 
+            // chkFSerEchoOC
+            // 
+            this.chkFSerEchoOC.AutoSize = true;
+            this.chkFSerEchoOC.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.chkFSerEchoOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.chkFSerEchoOC.ForeColor = System.Drawing.Color.Red;
+            this.chkFSerEchoOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkFSerEchoOC.Location = new System.Drawing.Point(204, 36);
+            this.chkFSerEchoOC.Name = "chkFSerEchoOC";
+            this.chkFSerEchoOC.Size = new System.Drawing.Size(66, 41);
+            this.chkFSerEchoOC.TabIndex = 4;
+            this.chkFSerEchoOC.Text = "ECHO";
+            this.chkFSerEchoOC.UseVisualStyleBackColor = true;
+            // 
+            // btnFSerImpostaOC
+            // 
+            this.btnFSerImpostaOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnFSerImpostaOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFSerImpostaOC.Location = new System.Drawing.Point(155, 107);
+            this.btnFSerImpostaOC.Name = "btnFSerImpostaOC";
+            this.btnFSerImpostaOC.Size = new System.Drawing.Size(115, 34);
+            this.btnFSerImpostaOC.TabIndex = 3;
+            this.btnFSerImpostaOC.Text = "Imposta";
+            this.btnFSerImpostaOC.UseVisualStyleBackColor = true;
+            // 
+            // label278
+            // 
+            this.label278.AutoSize = true;
+            this.label278.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label278.Location = new System.Drawing.Point(31, 31);
+            this.label278.Name = "label278";
+            this.label278.Size = new System.Drawing.Size(66, 17);
+            this.label278.TabIndex = 2;
+            this.label278.Text = "Baudrate";
+            // 
+            // cmbFSerBaudrateOC
+            // 
+            this.cmbFSerBaudrateOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmbFSerBaudrateOC.FormattingEnabled = true;
+            this.cmbFSerBaudrateOC.Location = new System.Drawing.Point(35, 54);
+            this.cmbFSerBaudrateOC.Name = "cmbFSerBaudrateOC";
+            this.cmbFSerBaudrateOC.Size = new System.Drawing.Size(163, 26);
+            this.cmbFSerBaudrateOC.TabIndex = 1;
+            // 
             // frmCaricabatterie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -4986,6 +5066,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.grbStratComandiTest.ResumeLayout(false);
+            this.grbVarParametriSig.ResumeLayout(false);
+            this.grbVarParametriSig.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5385,5 +5467,11 @@
         private System.Windows.Forms.TextBox txtStratLLVmin;
         private System.Windows.Forms.Label label153;
         private System.Windows.Forms.Label label176;
+        private System.Windows.Forms.GroupBox grbVarParametriSig;
+        private System.Windows.Forms.Button btnFSerVerificaOC;
+        private System.Windows.Forms.CheckBox chkFSerEchoOC;
+        private System.Windows.Forms.Button btnFSerImpostaOC;
+        private System.Windows.Forms.Label label278;
+        private System.Windows.Forms.ComboBox cmbFSerBaudrateOC;
     }
 }

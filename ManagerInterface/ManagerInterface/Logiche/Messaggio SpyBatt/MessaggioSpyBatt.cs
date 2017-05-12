@@ -33,6 +33,8 @@ namespace ChargerLogic
         new public StatoFirmware StatoFirmwareScheda;
         new public ComandoStrategia ComandoStrat;
         new public ParametriSpybatt ParametriGenerali;
+        public OcBaudRate  BrOCcorrente = OcBaudRate.OFF;
+        public OcEchoMode EchoOCcorrente = OcEchoMode.OFF;
 
 
         public byte _comandoInvio;
@@ -188,8 +190,6 @@ namespace ChargerLogic
                             return EsitoRisposta.ErroreGenerico;
                             break;
                         }
-
-
 
                     case (byte)TipoComando.SB_DatiIniziali:  //risposta parametri iniziali
                         {
@@ -400,7 +400,6 @@ namespace ChargerLogic
 
                             break;
                         }
-
 
                     case (byte)TipoComando.SB_R_ParametriLettura:  // Lettura dati programmazione
                         {
@@ -652,6 +651,55 @@ namespace ChargerLogic
                             break;
                         }
 
+                    case (byte)TipoComando.SB_R_ParametriSIG60:  // Lettura impostazioni SIG60
+                        {
+                            _endPos = _messaggio.Length;
+                            _startPos = _endPos - 6;
+
+                            if (_messaggio[_startPos] != serENDPAC)
+                            {
+                                return EsitoRisposta.NonRiconosciuto;
+                            }
+                            _buffArray = new byte[_startPos - 1];
+
+                            // controllo CRC
+                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                            _startPos++;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)(_ret);
+                            _startPos += 2;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)((_tempShort << 8) + _ret);
+                            _crc = codCrc.ComputeChecksum(_buffArray);
+
+                            if (_crc != _tempShort)
+                            { return EsitoRisposta.BadCRC; }
+
+                            // ora leggo la parte dati
+                            byte _tempByte;
+
+                            _buffArray = new byte[(_endPos - (preambleLenght + 7))];
+                            Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
+                            ushort numBytes = (ushort)(_buffArray.Length / 2);
+                            byte[] _rispostaOC = new byte[numBytes];
+
+
+                            if (decodificaArray(_buffArray, ref _rispostaOC))
+                            {
+                                _tempByte = _rispostaOC[0];
+                                if (Enum.IsDefined(typeof(OcBaudRate), _tempByte))
+                                    BrOCcorrente = (OcBaudRate)_tempByte;
+                                else
+                                    BrOCcorrente = OcBaudRate.OFF;
+                            }
+                            else
+                            {
+                                BrOCcorrente = OcBaudRate.OFF;
+                            }
+
+                            return EsitoRisposta.MessaggioOk; 
+
+                        }
                     case 0x99: //ciclo attuale
                         {
                             _endPos = _messaggio.Length;
@@ -3742,6 +3790,102 @@ namespace ChargerLogic
             }
             catch { return _esito; }
         }
+
+        public ushort ComponiMessaggioScriviParametriSig(OcBaudRate SetupCorrente, OcEchoMode EchoCorrente)
+        {
+            ushort _esito = 0;
+            ushort _dispositivo;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try
+            {
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+                //Comando
+                _comando = (byte)(TipoComando.SB_W_ParametriSIG60);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 4;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+                /// aggiungo il corpo
+                /// 
+
+                // ON/OFF - Baud Rate 
+                splitUshort(codificaByte((byte)SetupCorrente), ref lsb, ref msb);
+                MessageBuffer[_arrayInit + 1] = msb;
+                MessageBuffer[_arrayInit + 2] = lsb;
+                _arrayInit += 2;
+
+                // Echo
+                splitUshort(codificaByte((byte)EchoCorrente), ref lsb, ref msb);
+                MessageBuffer[_arrayInit + 1] = msb;
+                MessageBuffer[_arrayInit + 2] = lsb;
+                _arrayInit += 2;
+
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+
+
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+
+                return _esito;
+            }
+            catch { return _esito; }
+        }
+
+
+
 
     }
 }

@@ -124,6 +124,13 @@ namespace PannelloCharger
                 InizializzaOxyGrCalibrazione();
                 ResizeRedraw = true;
                 _logiche = Logiche;
+                cmbFSerBaudrateOC.DataSource = ListaBrSig;
+                cmbFSerBaudrateOC.DisplayMember = "descrizione";
+                cmbFSerBaudrateOC.ValueMember = "BrSettingValue";
+
+                cmbFSerEchoOC.DataSource = ListaEchoSig;
+                cmbFSerEchoOC.DisplayMember = "descrizione";
+                cmbFSerEchoOC.ValueMember = "EcSettingValue";
 
                 Log.Debug("----------------------- frmSpyBat ---------------------------");
 
@@ -629,13 +636,6 @@ namespace PannelloCharger
                         txtRevLdrSb.Text = _sb.sbData.Bootloader;
                         txtRevSWStratSb.Text = _sb.sbData.StrategyLibrary;
 
-
-
-
-
-
-
-
                     }
                     else
                     {
@@ -672,6 +672,7 @@ namespace PannelloCharger
                     txtTestataContBrevi.Text = _sb.IntestazioneSb.shortRecordCounter.ToString();
                     txtTestataPtrBrevi.Text = _sb.IntestazioneSb.shortRecordPointer.ToString();
                     txtTestataContProgr.Text = _sb.IntestazioneSb.numeroProgramma.ToString();
+
                 }
 
                 return true;
@@ -819,9 +820,11 @@ namespace PannelloCharger
                     case 1:
                         btnNuovoProgramma.Visible = true;
                         btnAttivaProgrammazione.Visible = true;
-                        grbProgrammazione.Height = 245;
-                        grbProgrImpianto.Height = 137;
-                        grbProgrImpianto.Top = 280;
+                        grbProgrammazione.Height = 199;
+                        grbProgrImpianto.Height = 128;
+                        grbProgrImpianto.Top = 228;
+                       // grbProgrImpianto.Height = 176;
+                       // grbProgrImpianto.Top = 228;
 
                         break;
                     case 2:
@@ -859,9 +862,15 @@ namespace PannelloCharger
                 btnPianRefresh.Visible = _enabled;
                 btnPianSalvaCliente.Visible = _enabled;
                 grbProgParEqual.Visible = _enabled;
+                if (_sb.sbData.fwLevel >= 6)
+                    grbVarParametriSig.Visible = _enabled;
+                else
+                    grbVarParametriSig.Visible = false;
+
 
                 if (LivelloCorrente > 2)
                     grbVarResetScheda.Visible = false;
+
 
                 #endregion
 
@@ -881,7 +890,6 @@ namespace PannelloCharger
                 _enabled = (_readonly == false);
                 #endregion
 
-
                 #region "Verifica"
                 // accessibile solo a Factory 
                 if (LivelloCorrente > 0)
@@ -893,7 +901,6 @@ namespace PannelloCharger
                 _enabled = (_readonly == false);
                 #endregion
 
-
                 #region "Clonatura"
                 // accessibile solo a Factory 
                 if (LivelloCorrente > 0)
@@ -904,7 +911,6 @@ namespace PannelloCharger
 
                 _enabled = (_readonly == false);
                 #endregion
-
 
                 #region "Firmware"
                 // accessibile a power user nuovo file solo a Factory 
@@ -946,7 +952,6 @@ namespace PannelloCharger
 
                 _enabled = (_readonly == false);
                 #endregion
-
 
                 #region "Calibrazione"
                 // accessibile solo a Factory 
@@ -1010,6 +1015,8 @@ namespace PannelloCharger
                 {
                     IdApparato = _sb.Id;
                     MostraTestata();
+
+                    txtTestataPtrProgr.Text = _sb.sbData.NumeroCloni().ToString();
 
                     CaricaCicli();
 
@@ -5553,6 +5560,9 @@ namespace PannelloCharger
                 {
                     string _tmpSernum = _sb.sbCliente.SerialNumber;
 
+                    this.Cursor = Cursors.WaitCursor;
+                
+                   
                     _esito = _sb.CancellaInteraMemoria();
                     if (_esito)
                     {
@@ -5568,12 +5578,14 @@ namespace PannelloCharger
 
                         RileggiSpyBat();
 
+                        
+
                         MessageBox.Show(StringheComuni.MemoriaCancellata, StringheComuni.CancellaMemoria, MessageBoxButtons.OK);
 
                     }
 
 
-
+                    this.Cursor = Cursors.Default;
 
 
 
@@ -8582,6 +8594,26 @@ namespace PannelloCharger
             }
         }
 
+        public bool MostraParametriOC()
+        {
+            try
+            {
+                //TimeSpan _durata;
+                //txtSvcNumLettureCorr.Text = "";
+                //txtSvcNumLettureTens.Text = "";
+                //txtSvcSecDurataPause.Text = "";
+
+                cmbFSerBaudrateOC.SelectedValue = _sb.BrOCcorrente;
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraParametriGenerali: " + Ex.Message);
+                return false;
+            }
+        }
+
         private void txtSvcNumLettureCorr_Leave(object sender, EventArgs e)
         {
             try
@@ -9041,8 +9073,7 @@ namespace PannelloCharger
                 StringFormat _StringFlags = new StringFormat();
                 _StringFlags.Alignment = StringAlignment.Center;
                 _StringFlags.LineAlignment = StringAlignment.Center;
-                g.DrawString(tabCaricaBatterie.TabPages[e.Index].Text, _TabFont, _TextBrush,
-                             _TabBounds, new StringFormat(_StringFlags));
+                g.DrawString(tabCaricaBatterie.TabPages[e.Index].Text, _TabFont, _TextBrush, _TabBounds, new StringFormat(_StringFlags));
 
 
             }
@@ -9107,6 +9138,65 @@ namespace PannelloCharger
                 Log.Error("tabCaricaBatterie_DrawItem: " + Ex.Message);
 
             }
+        }
+
+        private void label276_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbStratComandiTest_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStratReadPar_Click(object sender, EventArgs e)
+        {
+            LanciaComandoStrategiaChechPar();
+        }
+
+        private void btnFSerVerificaOC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _sb.CaricaStatoOC(_sb.Id, _apparatoPresente);
+                MostraParametriOC();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFSerVerificaOC_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnFSerImpostaOC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _esito;
+
+                _esito = _sb.ScriviParametriOC(  (SerialMessage.OcBaudRate)cmbFSerBaudrateOC.SelectedValue, (SerialMessage.OcEchoMode)cmbFSerEchoOC.SelectedValue);
+
+                if (_esito && ((SerialMessage.OcEchoMode)cmbFSerEchoOC.SelectedValue != SerialMessage.OcEchoMode.OFF))
+                {
+                    // apro la schermata moniitor sig 
+                    frmMonitorSig60 _monitorCorrente = new frmMonitorSig60();
+                    //_monitorCorrente.Parent = this;
+                    _monitorCorrente.SetAsSbMonitor();
+                    _monitorCorrente.Show();
+                    _monitorCorrente.BringToFront();
+
+                }
+                _sb.CaricaStatoOC(_sb.Id, _apparatoPresente);
+
+                MostraParametriOC();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnSvcScriviParametriMedie_Click: " + Ex.Message);
+
+            }
+
         }
     }
 }

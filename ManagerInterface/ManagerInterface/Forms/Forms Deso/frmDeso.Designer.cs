@@ -1367,8 +1367,8 @@
             this.flvwCicliBatteria.CellEditUseWholeCell = false;
             this.flvwCicliBatteria.CheckBoxes = true;
             this.flvwCicliBatteria.FullRowSelect = true;
-            this.flvwCicliBatteria.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwCicliBatteria.HighlightForegroundColor = System.Drawing.Color.Empty;
+            this.flvwCicliBatteria.SelectedBackColor  = System.Drawing.Color.Empty;
+            this.flvwCicliBatteria.SelectedForeColor = System.Drawing.Color.Empty;
             this.flvwCicliBatteria.Location = new System.Drawing.Point(43, 37);
             this.flvwCicliBatteria.Name = "flvwCicliBatteria";
             this.flvwCicliBatteria.ShowGroups = false;

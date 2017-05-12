@@ -66,6 +66,9 @@ namespace ChargerLogic
             SB_R_ParametriLettura = 0x4F,
             SB_W_ParametriLettura = 0x4E,
 
+            SB_R_ParametriSIG60 = 0x7E,
+            SB_W_ParametriSIG60 = 0x7D,
+
             DI_LedRGB = 0x1E,
             DI_Stato = 0xE1,
             DI_CancellaInteraMemoria = 0x3A,
@@ -106,7 +109,13 @@ namespace ChargerLogic
             CondizioneStop = 0xF0,
             CoeffK = 0xF1,   // 1 decimale
         }
-       
+        /// <summary>
+        /// Enum OCBaudRate: Setta la velocià di comunicazione sul canale OC
+        /// </summary>
+        public enum OcBaudRate : byte { OFF = 0x00, br_9k6 = 0x21, br_19k2 = 0x31, br_38k4 = 0x01, br_57k6 = 0x11 };
+        public enum OcEchoMode : byte { OFF = 0x00, Listening = 0xAC, Echo = 0xEC };
+
+
         // Da rendere dinamico
         public enum TipoCicloLadeLight : byte
         {
@@ -1360,7 +1369,6 @@ namespace ChargerLogic
                 return null;
             }
         }
-
 
         public static ushort ArrayToUshort(byte[] source, int start, int lenght)
         {

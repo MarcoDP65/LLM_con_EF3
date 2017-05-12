@@ -157,7 +157,7 @@ namespace MoriData
             get { return _sbCal.IdLocale; }
             set
             {
-                if (value != null)
+                //if (value != null)
                 {
                     _sbCal.IdLocale = value;
                     _datiSalvati = false;

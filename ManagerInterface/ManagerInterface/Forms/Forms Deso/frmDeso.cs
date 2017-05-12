@@ -201,7 +201,6 @@ namespace PannelloCharger
 
         public bool caricaDati(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
         {
-            bool _risposta = false;
             try
             {
                 bool _esito;
@@ -3226,39 +3225,6 @@ namespace PannelloCharger
 
 
 
-                    /*
-                        double _percCicli = 0;
-
-                        if (DatiGraph.TotLetture > 0)
-                        {
-                            _percCicli = (double)DatiGraph.arrayValori[_ciclo] / (double)DatiGraph.TotLetture;
-                        }
-
-                        if (_ciclo >= DatiGraph.StepSoglia)
-                            colonna.Color = OxyPlot.OxyColors.Red;
-                        else
-                            colonna.Color = OxyPlot.OxyColors.Blue;
-                        if (colonna.Value > 0)
-                        {
-                            OxyPlot.Annotations.PointAnnotation NotaPunto = new OxyPlot.Annotations.PointAnnotation();
-                            NotaPunto.X = _ciclo;
-                            NotaPunto.Y = colonna.Value;
-                            NotaPunto.Text = "Cicli: " + colonna.Value.ToString();
-                            NotaPunto.Text += "\n" + _percCicli.ToString("P1");
-                            NotaPunto.TextVerticalAlignment = OxyPlot.VerticalAlignment.Bottom;
-                            NotaPunto.Shape = OxyPlot.MarkerType.Cross;
-                            Grafico.Annotations.Add(NotaPunto);
-                        }
-
-                    */
-
-
-
-
-
-
-
-
                     Grafico.Axes.Add(AsseCat);
                     Grafico.Axes.Add(AsseConteggi);
 
@@ -5335,7 +5301,7 @@ namespace PannelloCharger
         {
             try
             {
-                bool _esito;
+                //bool _esito;
                 this.Cursor = Cursors.WaitCursor;
                 AggiornaFirmware();
                 this.Cursor = Cursors.Default;
@@ -5464,7 +5430,7 @@ namespace PannelloCharger
 
         private void btnClonaGeneraRecordTestata_Click(object sender, EventArgs e)
         {
-            bool _esito;
+            //bool _esito;
             txtClonaRecordTestata.Text = "";
             if (_sbTemp.sbData.valido)
             {
@@ -5701,10 +5667,10 @@ namespace PannelloCharger
             {
 
                 uint _StartAddr;
-                uint _TmpAddr;
-                ushort _NumByte;
+                //uint _TmpAddr;
+                //ushort _NumByte;
                 ushort _NumSequenze;
-                bool _esito;
+                //bool _esito;
                 byte[] _dataArray;
                 int _numBytes;
                 int _cicliCompleti;

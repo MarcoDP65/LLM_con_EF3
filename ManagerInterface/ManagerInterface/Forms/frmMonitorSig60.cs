@@ -61,6 +61,35 @@ namespace PannelloCharger
 
         }
 
+        public void SetAsSbMonitor()
+        {
+            try
+            {
+                pnlPorta.Enabled = false;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SetAsSbMonitor: " + Ex.Message);
+            }
+        }
+
+        public void ResetSbMonitor()
+        {
+            try
+            {
+                pnlPorta.Enabled = true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ResetSbMonitor: " + Ex.Message);
+            }
+        }
+
+
+
+
         private void btnGetSerialPorts_Click(object sender, EventArgs e)
         {
             try

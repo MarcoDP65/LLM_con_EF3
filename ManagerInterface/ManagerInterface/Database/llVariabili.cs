@@ -203,11 +203,10 @@ namespace MoriData
             get { return _llPar.Lettura; }
             set
             {
-                if (value != null)
-                {
+
                     _llPar.Lettura = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 

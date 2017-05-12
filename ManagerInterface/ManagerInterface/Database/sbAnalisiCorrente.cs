@@ -152,7 +152,7 @@ namespace MoriData
             get { return _sbAC.IdLocale; }
             set
             {
-                if (value != null)
+                //if (value != null)
                 {
                     _sbAC.IdLocale = value;
                     _datiSalvati = false;

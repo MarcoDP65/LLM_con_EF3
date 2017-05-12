@@ -84,6 +84,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
+            this.francoisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -157,7 +158,8 @@
             // 
             this.linguaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.italianoToolStripMenuItem,
-            this.englishToolStripMenuItem});
+            this.englishToolStripMenuItem,
+            this.francoisToolStripMenuItem});
             this.linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
             resources.ApplyResources(this.linguaToolStripMenuItem, "linguaToolStripMenuItem");
             // 
@@ -468,6 +470,12 @@
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
             // 
+            // francoisToolStripMenuItem
+            // 
+            this.francoisToolStripMenuItem.Name = "francoisToolStripMenuItem";
+            resources.ApplyResources(this.francoisToolStripMenuItem, "francoisToolStripMenuItem");
+            this.francoisToolStripMenuItem.Click += new System.EventHandler(this.francoisToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             resources.ApplyResources(this, "$this");
@@ -555,6 +563,7 @@
         private System.Windows.Forms.ToolStripMenuItem testCalendarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sIG60MonitorToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tstBtnSave;
+        private System.Windows.Forms.ToolStripMenuItem francoisToolStripMenuItem;
     }
 }
 

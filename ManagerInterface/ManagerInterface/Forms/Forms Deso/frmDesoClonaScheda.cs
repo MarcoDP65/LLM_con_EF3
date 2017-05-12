@@ -77,7 +77,7 @@ namespace PannelloCharger
                 Log.Warn(" ---------------------------------- Programmazioni -----------------------------------");
                 Log.Warn(FunzioniMR.hexdumpArray(DatiClone.Programmazioni, true));
 
-                bool _primoLungo = true;
+                //bool _primoLungo = true;
                 int _contalunghi = 0;
 
                 // Carico I lunghi

@@ -42,10 +42,25 @@ namespace MoriData
             public string ClientNote { get; set; }
             [MaxLength(20)]
             public string SerialNumber { get; set; }
+            public DateTime UltimaLettura { get; set; }
 
             public override string ToString()
             {
                 return Id.ToString();
+            }
+            public string strUltimaLettura
+            {
+                get
+                {
+                    if (UltimaLettura == DateTime.MinValue)
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return UltimaLettura.ToShortDateString() + " " + UltimaLettura.ToShortTimeString();
+                    }
+                }
             }
         }
     }

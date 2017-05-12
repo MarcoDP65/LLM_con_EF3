@@ -45,12 +45,12 @@
             this.txtOutputCoamndo.BackColor = System.Drawing.Color.Black;
             this.txtOutputCoamndo.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutputCoamndo.ForeColor = System.Drawing.Color.White;
-            this.txtOutputCoamndo.Location = new System.Drawing.Point(34, 223);
+            this.txtOutputCoamndo.Location = new System.Drawing.Point(34, 128);
             this.txtOutputCoamndo.Multiline = true;
             this.txtOutputCoamndo.Name = "txtOutputCoamndo";
             this.txtOutputCoamndo.ReadOnly = true;
             this.txtOutputCoamndo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOutputCoamndo.Size = new System.Drawing.Size(924, 484);
+            this.txtOutputCoamndo.Size = new System.Drawing.Size(924, 569);
             this.txtOutputCoamndo.TabIndex = 24;
             // 
             // btnEseguiComando

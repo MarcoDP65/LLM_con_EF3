@@ -201,30 +201,37 @@ namespace PannelloCharger
             try
             {
 
-                txtMatrSB.Text = FunzioniMR.StringaSeriale(_sb.sbData.Id);
-                if (_NuovaIntestazioneSb == null)
-                    txtCliente.Text = "Record Contatori Mancante";
+                if (_sb.sbData == null)
+                {
+                    return false;
+                }
                 else
                 {
-
-                    if (_NuovaIntestazioneSb != null)
-                    {
-                        txtCliente.Text = "(N) " + _NuovaIntestazioneSb.longRecordCounter.ToString() + "/" + _NuovaIntestazioneSb.longRecordPoiter.ToString();
-                    }
+                    txtMatrSB.Text = FunzioniMR.StringaSeriale(_sb.sbData.Id);
+                    if (_NuovaIntestazioneSb == null)
+                        txtCliente.Text = "Record Contatori Mancante";
                     else
-                    { 
-                        txtCliente.Text = _Immagine.IntestazioneSb.longRecordCounter.ToString() + "/" + _Immagine.IntestazioneSb.longRecordPoiter.ToString();
+                    {
+
+                        if (_NuovaIntestazioneSb != null)
+                        {
+                            txtCliente.Text = "(N) " + _NuovaIntestazioneSb.longRecordCounter.ToString() + "/" + _NuovaIntestazioneSb.longRecordPoiter.ToString();
+                        }
+                        else
+                        {
+                            txtCliente.Text = _Immagine.IntestazioneSb.longRecordCounter.ToString() + "/" + _Immagine.IntestazioneSb.longRecordPoiter.ToString();
+                        }
+
                     }
+                    txtFwVersion.Text = _sb.sbData.SwVersion;
+                    txtNote.Text = "";
+                    txtNumLunghi.Text = _sb.sbData.ContLunghi.ToString();
+                    txtNumBrevi.Text = _sb.sbData.ContBrevi.ToString();
+                    txtManufcturedBy.Text = _sb.sbData.LongMem.ToString() + " / " + _sb.sbData.ContBrevi.ToString() + "  ( Prg: " + _sb.sbData.ProgramCount.ToString() + " )";
 
+
+                    return true;
                 }
-                txtFwVersion.Text =  _sb.sbData.SwVersion ;
-                txtNote.Text = "" ;
-                txtNumLunghi.Text = _sb.sbData.ContLunghi.ToString();
-                txtNumBrevi.Text = _sb.sbData.ContBrevi.ToString();
-                txtManufcturedBy.Text = _sb.sbData.LongMem.ToString() + " / " + _sb.sbData.ContBrevi.ToString() + "  ( Prg: " + _sb.sbData.ProgramCount.ToString() + " )";
-
-
-                return true;
             }
             catch (Exception Ex)
             {
@@ -744,7 +751,7 @@ namespace PannelloCharger
                         if (importaHexdump())
                         {
                             _NuovaIntestazioneSb = _Immagine.IntestazioneSb;
-                            _sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true);
+                            _sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true,true, txtNuovoFile.Text+"_decoded");
 
                             //MostraTestataHexDump();
                             MostraDatiImmagine();

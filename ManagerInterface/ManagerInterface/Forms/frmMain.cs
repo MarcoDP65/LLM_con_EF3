@@ -186,6 +186,7 @@ namespace PannelloCharger
                 importaFileToolStripMenuItem.Visible = false;
                 toolStripMenuItem4.Visible = false;
                 alimentatoreToolStripMenuItem.Visible = false;
+                importaHEXDUMPToolStripMenuItem.Visible = false;
 
                 if ((byte)Livello < 0x04) mnuSpybat.Visible = true;
                 if ((byte)Livello < 0x02)
@@ -193,10 +194,12 @@ namespace PannelloCharger
                     toolStripMenuItem1.Visible = true;
                     importaFileToolStripMenuItem.Visible = true;
                     toolStripMenuItem4.Visible = true;
+
                 }
                 if ((byte)Livello < 0x01)
                 {
                     alimentatoreToolStripMenuItem.Visible = true;
+                    importaHEXDUMPToolStripMenuItem.Visible = true;
                 }
                     
                 mnuImpostazioni.Visible = false;
@@ -1196,6 +1199,12 @@ namespace PannelloCharger
             }
         }
 
+        private void francoisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Setto la lingua di default IT
+            impostaCultura("fr");
+
+        }
     }
 
     public class StatoPulsanti

@@ -159,4 +159,22 @@
   <data name="chkSondaElPresente.Text" xml:space="preserve">
     <value>Electrolyte Probe  Installed</value>
   </data>
+  <data name="lblTempMin.Text" xml:space="preserve">
+    <value>T Recovery (°C)</value>
+  </data>
+  <data name="lblTempMax.Text" xml:space="preserve">
+    <value>T Alarm (°C)</value>
+  </data>
+  <data name="optVersoInverso.Text" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="optVersoDiretto.Text" xml:space="preserve">
+    <value>Reverse</value>
+  </data>
+  <data name="chkCliResetContatori.Text" xml:space="preserve">
+    <value>Reset Charge Counters</value>
+  </data>
+  <data name="tbpParametri.Text" xml:space="preserve">
+    <value>Base Parameters</value>
+  </data>
 </root>

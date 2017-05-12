@@ -313,7 +313,38 @@ namespace ChargerLogic
         }
     }
 
+    public class ValoreLista
+    {
+        public string descrizione { get; set; }
+        public SerialMessage.OcBaudRate BrSettingValue { get; set; }
+        public SerialMessage.OcEchoMode EcSettingValue { get; set; }
 
+        public Boolean enabled { get; set; }
 
+        public ValoreLista()
+        {
+            descrizione = "";
+            BrSettingValue = SerialMessage.OcBaudRate.OFF;
+            EcSettingValue = SerialMessage.OcEchoMode.OFF;
+            enabled = false;
+        }
+
+        public ValoreLista(string ValDescrizione, SerialMessage.OcBaudRate BRValSettingValue, Boolean ValEnabled)
+        {
+            descrizione = ValDescrizione;
+            BrSettingValue = BRValSettingValue;
+            EcSettingValue = SerialMessage.OcEchoMode.OFF;
+            enabled = ValEnabled;
+        }
+
+        public ValoreLista(string ValDescrizione, SerialMessage.OcEchoMode ECValSettingValue, Boolean ValEnabled)
+        {
+            descrizione = ValDescrizione;
+            BrSettingValue = SerialMessage.OcBaudRate.OFF;
+            EcSettingValue = ECValSettingValue;
+            enabled = ValEnabled;
+        }
+
+    }
 
 }

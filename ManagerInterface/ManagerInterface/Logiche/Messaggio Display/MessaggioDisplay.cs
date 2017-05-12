@@ -1370,7 +1370,7 @@ namespace ChargerLogic
         public ushort ComponiMessaggioPacchettoImmagine(ushort numBytes, byte[] Dati)
         {
             ushort _esito = 0;
-            ushort _dispositivo;
+            //ushort _dispositivo;
             byte _comando;
             byte msbDisp = 0;
             byte lsbDisp = 0;

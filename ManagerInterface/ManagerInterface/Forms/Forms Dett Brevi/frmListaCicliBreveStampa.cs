@@ -40,7 +40,7 @@ namespace PannelloCharger
 
 
         private int _paginaCorrente = 0;
-        private int _modelloStampa = 0;
+//        private int _modelloStampa = 0;
 
 
         /// <summary>
@@ -55,11 +55,7 @@ namespace PannelloCharger
             {
 
 
-
-
-
-                _modelloStampa = 0;
-
+//                _modelloStampa = 0;
 
 
                 // Inizializzo il documento
@@ -91,8 +87,6 @@ namespace PannelloCharger
                     {
                         _parametri.ImpostazioniStampante = printDlg.PrinterSettings;
                     }
-
-
 
                 }
                 else
@@ -170,7 +164,7 @@ namespace PannelloCharger
 
                 // doc.PageSettings
                 int _rigaLabel = 100;
-                int rigaTesto = 120;
+                //int rigaTesto = 120;
 
 
 

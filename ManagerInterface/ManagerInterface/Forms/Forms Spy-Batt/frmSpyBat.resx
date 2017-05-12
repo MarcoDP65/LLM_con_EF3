@@ -8650,7 +8650,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager Prerelease, Version=2.0.2.27, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.10.1.3, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -10062,6 +10062,192 @@
   <data name="&gt;&gt;tabCb03.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="label279.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label279.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label279.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 25</value>
+  </data>
+  <data name="label279.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="label279.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label279.Text" xml:space="preserve">
+    <value>ECHO</value>
+  </data>
+  <data name="&gt;&gt;label279.Name" xml:space="preserve">
+    <value>label279</value>
+  </data>
+  <data name="&gt;&gt;label279.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label279.Parent" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;label279.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmbFSerEchoOC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="cmbFSerEchoOC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 48</value>
+  </data>
+  <data name="cmbFSerEchoOC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 26</value>
+  </data>
+  <data name="cmbFSerEchoOC.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerEchoOC.Name" xml:space="preserve">
+    <value>cmbFSerEchoOC</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerEchoOC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerEchoOC.Parent" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerEchoOC.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnFSerVerificaOC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="btnFSerVerificaOC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnFSerVerificaOC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 92</value>
+  </data>
+  <data name="btnFSerVerificaOC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 34</value>
+  </data>
+  <data name="btnFSerVerificaOC.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnFSerVerificaOC.Text" xml:space="preserve">
+    <value>Verifica</value>
+  </data>
+  <data name="&gt;&gt;btnFSerVerificaOC.Name" xml:space="preserve">
+    <value>btnFSerVerificaOC</value>
+  </data>
+  <data name="&gt;&gt;btnFSerVerificaOC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFSerVerificaOC.Parent" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;btnFSerVerificaOC.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnFSerImpostaOC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="btnFSerImpostaOC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 92</value>
+  </data>
+  <data name="btnFSerImpostaOC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 34</value>
+  </data>
+  <data name="btnFSerImpostaOC.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnFSerImpostaOC.Text" xml:space="preserve">
+    <value>Imposta</value>
+  </data>
+  <data name="&gt;&gt;btnFSerImpostaOC.Name" xml:space="preserve">
+    <value>btnFSerImpostaOC</value>
+  </data>
+  <data name="&gt;&gt;btnFSerImpostaOC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFSerImpostaOC.Parent" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;btnFSerImpostaOC.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label278.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label278.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 25</value>
+  </data>
+  <data name="label278.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 20</value>
+  </data>
+  <data name="label278.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label278.Text" xml:space="preserve">
+    <value>Baudrate</value>
+  </data>
+  <data name="&gt;&gt;label278.Name" xml:space="preserve">
+    <value>label278</value>
+  </data>
+  <data name="&gt;&gt;label278.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label278.Parent" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;label278.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cmbFSerBaudrateOC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="cmbFSerBaudrateOC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="cmbFSerBaudrateOC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 26</value>
+  </data>
+  <data name="cmbFSerBaudrateOC.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerBaudrateOC.Name" xml:space="preserve">
+    <value>cmbFSerBaudrateOC</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerBaudrateOC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerBaudrateOC.Parent" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;cmbFSerBaudrateOC.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="grbVarParametriSig.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1222, 308</value>
+  </data>
+  <data name="grbVarParametriSig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 133</value>
+  </data>
+  <data name="grbVarParametriSig.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="grbVarParametriSig.Text" xml:space="preserve">
+    <value>Parametri Comunicazione OC</value>
+  </data>
+  <data name="&gt;&gt;grbVarParametriSig.Name" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;grbVarParametriSig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVarParametriSig.Parent" xml:space="preserve">
+    <value>tabSbFact</value>
+  </data>
+  <data name="&gt;&gt;grbVarParametriSig.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="chkCliResetContatori.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -10069,7 +10255,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkCliResetContatori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 97</value>
+    <value>48, 97</value>
   </data>
   <data name="chkCliResetContatori.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
@@ -10099,7 +10285,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnResetScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 38</value>
+    <value>48, 38</value>
   </data>
   <data name="btnResetScheda.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 53</value>
@@ -10126,10 +10312,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbVarRestartScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 193</value>
+    <value>1222, 173</value>
   </data>
   <data name="grbVarRestartScheda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 129</value>
+    <value>295, 129</value>
   </data>
   <data name="grbVarRestartScheda.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -10147,7 +10333,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbVarRestartScheda.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblSvcCausaLastReset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10156,7 +10342,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSvcCausaLastReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 160</value>
+    <value>19, 142</value>
   </data>
   <data name="lblSvcCausaLastReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 18</value>
@@ -10183,7 +10369,7 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtSvcCausaLastReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 156</value>
+    <value>195, 138</value>
   </data>
   <data name="txtSvcCausaLastReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 27</value>
@@ -10276,7 +10462,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSvcScriviParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 233</value>
+    <value>161, 184</value>
   </data>
   <data name="btnSvcScriviParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 36</value>
@@ -10303,7 +10489,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSvcLeggiParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 233</value>
+    <value>22, 184</value>
   </data>
   <data name="btnSvcLeggiParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 36</value>
@@ -10450,10 +10636,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbSvcParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 379</value>
+    <value>1222, 447</value>
   </data>
   <data name="grbSvcParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 291</value>
+    <value>295, 244</value>
   </data>
   <data name="grbSvcParametriMedie.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -10471,7 +10657,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbSvcParametriMedie.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkFSerMantieniCliente.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10480,7 +10666,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkFSerMantieniCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 98</value>
+    <value>48, 98</value>
   </data>
   <data name="chkFSerMantieniCliente.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 22</value>
@@ -10510,7 +10696,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFSerCancellaMemoria.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 35</value>
+    <value>48, 41</value>
   </data>
   <data name="btnFSerCancellaMemoria.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 53</value>
@@ -10540,7 +10726,7 @@
     <value>1222, 33</value>
   </data>
   <data name="grbVarResetScheda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 129</value>
+    <value>295, 129</value>
   </data>
   <data name="grbVarResetScheda.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -10558,7 +10744,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbVarResetScheda.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnAttivaCalibrazione.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -10702,7 +10888,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbCalibrazionePulsanti.Location" type="System.Drawing.Point, System.Drawing">
-    <value>965, 379</value>
+    <value>965, 400</value>
   </data>
   <data name="grbCalibrazionePulsanti.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 291</value>
@@ -10720,7 +10906,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbCalibrazionePulsanti.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnCalScriviParametro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -11734,7 +11920,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbCalibrazioni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 379</value>
+    <value>29, 400</value>
   </data>
   <data name="grbCalibrazioni.Size" type="System.Drawing.Size, System.Drawing">
     <value>913, 291</value>
@@ -11755,7 +11941,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbCalibrazioni.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="chkParLetturaAuto.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11788,7 +11974,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;chkParLetturaAuto.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="chkDatiDiretti.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11821,7 +12007,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;chkDatiDiretti.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnLeggiVariabili.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -11851,7 +12037,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;btnLeggiVariabili.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="grbVariabiliConnVOK.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12946,7 +13132,7 @@
     <value>tabSbFact</value>
   </data>
   <data name="&gt;&gt;grbVariabiliImmediate.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="tabSbFact.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 29</value>
@@ -12958,7 +13144,7 @@
     <value>7</value>
   </data>
   <data name="tabSbFact.Text" xml:space="preserve">
-    <value>Funzioni di servizio</value>
+    <value>Funzioni di Servizio</value>
   </data>
   <data name="&gt;&gt;tabSbFact.Name" xml:space="preserve">
     <value>tabSbFact</value>
@@ -22405,6 +22591,399 @@ SPY-BATT</value>
   <data name="&gt;&gt;tabCalibrazione.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="label276.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label276.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="label276.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label276.Location" type="System.Drawing.Point, System.Drawing">
+    <value>865, 239</value>
+  </data>
+  <data name="label276.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 18</value>
+  </data>
+  <data name="label276.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="label276.Text" xml:space="preserve">
+    <value>CMD_WRPAR</value>
+  </data>
+  <data name="&gt;&gt;label276.Name" xml:space="preserve">
+    <value>label276</value>
+  </data>
+  <data name="&gt;&gt;label276.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label276.Parent" xml:space="preserve">
+    <value>tbpStrategia</value>
+  </data>
+  <data name="&gt;&gt;label276.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label277.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label277.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label277.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 187</value>
+  </data>
+  <data name="label277.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 18</value>
+  </data>
+  <data name="label277.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="label277.Text" xml:space="preserve">
+    <value>Cont Brevi</value>
+  </data>
+  <data name="&gt;&gt;label277.Name" xml:space="preserve">
+    <value>label277</value>
+  </data>
+  <data name="&gt;&gt;label277.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label277.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;label277.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratParGetBrevi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtStratParGetBrevi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 208</value>
+  </data>
+  <data name="txtStratParGetBrevi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 27</value>
+  </data>
+  <data name="txtStratParGetBrevi.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="txtStratParGetBrevi.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetBrevi.Name" xml:space="preserve">
+    <value>txtStratParGetBrevi</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetBrevi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetBrevi.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetBrevi.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtStratParSetBrevi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratParSetBrevi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 208</value>
+  </data>
+  <data name="txtStratParSetBrevi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 27</value>
+  </data>
+  <data name="txtStratParSetBrevi.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="txtStratParSetBrevi.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetBrevi.Name" xml:space="preserve">
+    <value>txtStratParSetBrevi</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetBrevi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetBrevi.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetBrevi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtStratParGetLng.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtStratParGetLng.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 155</value>
+  </data>
+  <data name="txtStratParGetLng.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 27</value>
+  </data>
+  <data name="txtStratParGetLng.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="txtStratParGetLng.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetLng.Name" xml:space="preserve">
+    <value>txtStratParGetLng</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetLng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetLng.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetLng.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtStratParGetProg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratParGetProg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 92</value>
+  </data>
+  <data name="txtStratParGetProg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 24</value>
+  </data>
+  <data name="txtStratParGetProg.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="txtStratParGetProg.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetProg.Name" xml:space="preserve">
+    <value>txtStratParGetProg</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetProg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetProg.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetProg.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtStratParGetSoC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratParGetSoC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 33</value>
+  </data>
+  <data name="txtStratParGetSoC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 24</value>
+  </data>
+  <data name="txtStratParGetSoC.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="txtStratParGetSoC.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetSoC.Name" xml:space="preserve">
+    <value>txtStratParGetSoC</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetSoC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetSoC.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParGetSoC.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtStratParSetLunghi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtStratParSetLunghi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 155</value>
+  </data>
+  <data name="txtStratParSetLunghi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 27</value>
+  </data>
+  <data name="txtStratParSetLunghi.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="txtStratParSetLunghi.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetLunghi.Name" xml:space="preserve">
+    <value>txtStratParSetLunghi</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetLunghi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetLunghi.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetLunghi.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label273.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label273.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label273.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 133</value>
+  </data>
+  <data name="label273.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 18</value>
+  </data>
+  <data name="label273.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label273.Text" xml:space="preserve">
+    <value>Cont Lunghi</value>
+  </data>
+  <data name="&gt;&gt;label273.Name" xml:space="preserve">
+    <value>label273</value>
+  </data>
+  <data name="&gt;&gt;label273.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label273.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;label273.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtStratParSetProg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratParSetProg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 92</value>
+  </data>
+  <data name="txtStratParSetProg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 24</value>
+  </data>
+  <data name="txtStratParSetProg.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="txtStratParSetProg.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetProg.Name" xml:space="preserve">
+    <value>txtStratParSetProg</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetProg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetProg.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetProg.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label274.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label274.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label274.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 71</value>
+  </data>
+  <data name="label274.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 18</value>
+  </data>
+  <data name="label274.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="label274.Text" xml:space="preserve">
+    <value>Prog</value>
+  </data>
+  <data name="&gt;&gt;label274.Name" xml:space="preserve">
+    <value>label274</value>
+  </data>
+  <data name="&gt;&gt;label274.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label274.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;label274.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtStratParSetSoC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtStratParSetSoC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 33</value>
+  </data>
+  <data name="txtStratParSetSoC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 24</value>
+  </data>
+  <data name="txtStratParSetSoC.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="txtStratParSetSoC.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetSoC.Name" xml:space="preserve">
+    <value>txtStratParSetSoC</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetSoC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetSoC.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;txtStratParSetSoC.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label275.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label275.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label275.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="label275.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 18</value>
+  </data>
+  <data name="label275.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="label275.Text" xml:space="preserve">
+    <value>SoC</value>
+  </data>
+  <data name="&gt;&gt;label275.Name" xml:space="preserve">
+    <value>label275</value>
+  </data>
+  <data name="&gt;&gt;label275.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label275.Parent" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;label275.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="panel22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="panel22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>868, 259</value>
+  </data>
+  <data name="panel22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 248</value>
+  </data>
+  <data name="panel22.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="&gt;&gt;panel22.Name" xml:space="preserve">
+    <value>panel22</value>
+  </data>
+  <data name="&gt;&gt;panel22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel22.Parent" xml:space="preserve">
+    <value>tbpStrategia</value>
+  </data>
+  <data name="&gt;&gt;panel22.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label263.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -22436,7 +23015,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label263.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtStratTEGetReal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -22631,7 +23210,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel20.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label210.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22643,7 +23222,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label210.Location" type="System.Drawing.Point, System.Drawing">
-    <value>842, 239</value>
+    <value>865, 524</value>
   </data>
   <data name="label210.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 18</value>
@@ -22664,7 +23243,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label210.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label200.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22676,7 +23255,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label200.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1158, 239</value>
+    <value>1181, 239</value>
   </data>
   <data name="label200.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 18</value>
@@ -22697,7 +23276,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label200.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label211.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23651,7 +24230,7 @@ SPY-BATT</value>
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1158, 259</value>
+    <value>1181, 259</value>
   </data>
   <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>410, 476</value>
@@ -23669,7 +24248,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label189.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23681,7 +24260,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label189.Location" type="System.Drawing.Point, System.Drawing">
-    <value>842, 478</value>
+    <value>1307, 13</value>
   </data>
   <data name="label189.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 18</value>
@@ -23702,7 +24281,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label189.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtStratAVStop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24164,10 +24743,10 @@ SPY-BATT</value>
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>845, 498</value>
+    <value>1302, 34</value>
   </data>
   <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 237</value>
+    <value>289, 199</value>
   </data>
   <data name="panel5.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -24182,7 +24761,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label185.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24215,7 +24794,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label185.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="txtStratLivcrgCapacityVer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
@@ -24491,7 +25070,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="label176.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24524,7 +25103,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label176.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="label167.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24557,7 +25136,64 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label167.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
+  </data>
+  <data name="label272.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label272.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label272.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 245</value>
+  </data>
+  <data name="label272.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 18</value>
+  </data>
+  <data name="label272.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="label272.Text" xml:space="preserve">
+    <value>Esito</value>
+  </data>
+  <data name="&gt;&gt;label272.Name" xml:space="preserve">
+    <value>label272</value>
+  </data>
+  <data name="&gt;&gt;label272.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label272.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label272.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtStratQryError.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="txtStratQryError.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 265</value>
+  </data>
+  <data name="txtStratQryError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="txtStratQryError.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="txtStratQryError.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtStratQryError.Name" xml:space="preserve">
+    <value>txtStratQryError</value>
+  </data>
+  <data name="&gt;&gt;txtStratQryError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtStratQryError.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;txtStratQryError.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="txtStratQryLLBattId.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24566,7 +25202,7 @@ SPY-BATT</value>
     <value>16, 265</value>
   </data>
   <data name="txtStratQryLLBattId.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 24</value>
+    <value>64, 24</value>
   </data>
   <data name="txtStratQryLLBattId.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
@@ -24581,7 +25217,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryLLBattId.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label255.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24611,7 +25247,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label255.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtStratQryModoPian.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24638,7 +25274,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryModoPian.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label247.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24668,7 +25304,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label247.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtStratQryFC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24695,7 +25331,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryFC.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label246.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24725,7 +25361,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label246.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtStratQryMinChg.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24752,7 +25388,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryMinChg.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label244.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24782,7 +25418,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label244.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="txtStratQryGg.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24809,7 +25445,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryGg.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="label245.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24839,7 +25475,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label245.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="txtStratQryTrepr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24866,7 +25502,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryTrepr.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="label175.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24896,7 +25532,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label175.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="txtStratQryTalm.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24923,7 +25559,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryTalm.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="label174.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -24953,7 +25589,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label174.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="txtStratQryTatt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24980,7 +25616,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryTatt.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="label173.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25010,7 +25646,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label173.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="txtStratQryTensGas.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -25037,7 +25673,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryTensGas.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="label172.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25067,7 +25703,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label172.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="txtStratQryCapN.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -25094,7 +25730,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryCapN.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="label171.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25124,7 +25760,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label171.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="txtStratQryTensN.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -25151,7 +25787,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryTensN.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="label170.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25181,7 +25817,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label170.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="txtStratQryActSeup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -25208,7 +25844,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryActSeup.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="label169.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25238,7 +25874,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label169.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="txtStratQryVerLib.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -25265,7 +25901,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;txtStratQryVerLib.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>26</value>
   </data>
   <data name="label168.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25295,7 +25931,7 @@ SPY-BATT</value>
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label168.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>27</value>
   </data>
   <data name="panel3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -25319,7 +25955,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="label166.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -25352,7 +25988,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;label166.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="txtStratLivcrgCapNominale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -25832,13 +26468,13 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;pnlStratContatoriCarica.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="textBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 118</value>
+    <value>10, 117</value>
   </data>
   <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -25868,7 +26504,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label157.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 98</value>
+    <value>7, 96</value>
   </data>
   <data name="label157.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 18</value>
@@ -25895,7 +26531,7 @@ SPY-BATT</value>
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 48</value>
+    <value>10, 49</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 27</value>
@@ -25925,7 +26561,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="label156.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 28</value>
+    <value>7, 28</value>
   </data>
   <data name="label156.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 18</value>
@@ -25952,10 +26588,10 @@ SPY-BATT</value>
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1158, 15</value>
+    <value>1181, 34</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 205</value>
+    <value>102, 199</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -25973,7 +26609,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="label265.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -26174,7 +26810,7 @@ SPY-BATT</value>
     <value>NoControl</value>
   </data>
   <data name="chkStratLLRabb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 159</value>
+    <value>16, 148</value>
   </data>
   <data name="chkStratLLRabb.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
@@ -26381,10 +27017,10 @@ SPY-BATT</value>
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>845, 259</value>
+    <value>868, 551</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 207</value>
+    <value>289, 184</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -26399,13 +27035,67 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
+  </data>
+  <data name="btnStratReadPar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStratReadPar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>554, 32</value>
+  </data>
+  <data name="btnStratReadPar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 51</value>
+  </data>
+  <data name="btnStratReadPar.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="btnStratReadPar.Text" xml:space="preserve">
+    <value>CMD_RDPAR</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadPar.Name" xml:space="preserve">
+    <value>btnStratReadPar</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadPar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadPar.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;btnStratReadPar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnStratSetPar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStratSetPar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>554, 89</value>
+  </data>
+  <data name="btnStratSetPar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 51</value>
+  </data>
+  <data name="btnStratSetPar.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="btnStratSetPar.Text" xml:space="preserve">
+    <value>CMD_WRPAR</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetPar.Name" xml:space="preserve">
+    <value>btnStratSetPar</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetPar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetPar.Parent" xml:space="preserve">
+    <value>grbStratComandiTest</value>
+  </data>
+  <data name="&gt;&gt;btnStratSetPar.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="btnStratReadTypeEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratReadTypeEvent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 92</value>
+    <value>286, 32</value>
   </data>
   <data name="btnStratReadTypeEvent.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -26426,13 +27116,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratReadTypeEvent.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="btnStratSetTypeEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratSetTypeEvent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 35</value>
+    <value>286, 89</value>
   </data>
   <data name="btnStratSetTypeEvent.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -26453,16 +27143,16 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetTypeEvent.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btnStratReadVar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratReadVar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>779, 92</value>
+    <value>991, 32</value>
   </data>
   <data name="btnStratReadVar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 51</value>
+    <value>124, 51</value>
   </data>
   <data name="btnStratReadVar.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -26480,16 +27170,19 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratReadVar.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="btnStratCallSIS.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="btnStratCallSIS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratCallSIS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>650, 92</value>
+    <value>719, 32</value>
   </data>
   <data name="btnStratCallSIS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 51</value>
+    <value>109, 51</value>
   </data>
   <data name="btnStratCallSIS.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -26507,16 +27200,19 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallSIS.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
+  </data>
+  <data name="btnStratCallAv.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="btnStratCallAv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratCallAv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>777, 35</value>
+    <value>844, 32</value>
   </data>
   <data name="btnStratCallAv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 51</value>
+    <value>109, 51</value>
   </data>
   <data name="btnStratCallAv.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -26534,13 +27230,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallAv.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="btnStratSetDischarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratSetDischarge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>490, 92</value>
+    <value>413, 32</value>
   </data>
   <data name="btnStratSetDischarge.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 51</value>
@@ -26561,16 +27257,19 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetDischarge.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
+  </data>
+  <data name="btnStratCallIS.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="btnStratCallIS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratCallIS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>650, 35</value>
+    <value>719, 89</value>
   </data>
   <data name="btnStratCallIS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 51</value>
+    <value>109, 51</value>
   </data>
   <data name="btnStratCallIS.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -26588,13 +27287,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratCallIS.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="btnStratSetCharge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratSetCharge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>490, 35</value>
+    <value>413, 89</value>
   </data>
   <data name="btnStratSetCharge.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 51</value>
@@ -26615,13 +27314,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratSetCharge.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="btnStratQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratQuery.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 32</value>
+    <value>146, 32</value>
   </data>
   <data name="btnStratQuery.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -26642,13 +27341,13 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratQuery.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="btnStratTestErr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnStratTestErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>954, 89</value>
+    <value>991, 89</value>
   </data>
   <data name="btnStratTestErr.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 51</value>
@@ -26669,7 +27368,7 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTestErr.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="btnStratTest02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -26696,7 +27395,7 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest02.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="btnStratTest01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -26723,16 +27422,16 @@ SPY-BATT</value>
     <value>grbStratComandiTest</value>
   </data>
   <data name="&gt;&gt;btnStratTest01.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="grbStratComandiTest.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbStratComandiTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 17</value>
+    <value>16, 30</value>
   </data>
   <data name="grbStratComandiTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1118, 203</value>
+    <value>1141, 173</value>
   </data>
   <data name="grbStratComandiTest.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -26750,7 +27449,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;grbStratComandiTest.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="txtStratDataGrid.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -26762,7 +27461,7 @@ SPY-BATT</value>
     <value>True</value>
   </data>
   <data name="txtStratDataGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 148</value>
+    <value>828, 148</value>
   </data>
   <data name="txtStratDataGrid.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -26777,7 +27476,7 @@ SPY-BATT</value>
     <value>tbpStrategia</value>
   </data>
   <data name="&gt;&gt;txtStratDataGrid.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="tbpStrategia.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 29</value>

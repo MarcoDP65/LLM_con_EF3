@@ -36,6 +36,12 @@ namespace MoriData
         public int LongMem { get; set; }
         public string Bootloader { get; set; }
         public string StrategyLibrary { get; set; }
+        // per la gestione copie in archivio
+        public string IdBase { get; set; }
+        public int NumeroClone { get; set; }
+        public DateTime DataClone { get; set; }
+        public string NoteClone { get; set; }
+
 
 
         public override string ToString()
@@ -200,6 +206,46 @@ namespace MoriData
             }
         }
 
+        public int NumeroCloni()
+        {
+           try
+            {
+                int result = 0;
+                SQLiteCommand SqlCmd;
+
+                SqlCmd = _database.CreateCommand("select count(*) from _spybatt where IdBase = ? ", _sb.Id);
+                result = SqlCmd.ExecuteScalar<int>();
+
+                return result;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("NumeroCloni. " + Ex.Message);
+                return 0;
+            }
+        }
+
+        public int UltimoClone()
+        {
+            try
+            {
+                int result = 0;
+                SQLiteCommand SqlCmd;
+                SqlCmd = _database.CreateCommand("select max(NumeroClone) from _spybatt where IdBase = ? ", _sb.Id);
+                result = SqlCmd.ExecuteScalar<int>();
+
+                return result;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("UltimoClone. " + Ex.Message);
+                return 0;
+            }
+        }
+
+
         public bool DaMessaggio(MessaggioSpyBatt.comandoInizialeSB _mS)
         {
             try
@@ -272,6 +318,7 @@ namespace MoriData
                 case 5:
                 case 6:
                 case 7:
+                case 8:
                     _mappaLocale.Testata = new ElementoMemoria { StartAddress = 0x00, ElemetSize = 64, NoOfElemets = 1, ExtraMem = 3996, EndAddress = 0x0FFF };
                     _mappaLocale.DatiCliente = new ElementoMemoria { StartAddress = 0x1000, ElemetSize = 240, NoOfElemets = 4, ExtraMem = 0, EndAddress = 0x043F };
                     _mappaLocale.Programmazioni = new ElementoMemoria { StartAddress = 0x1400, ElemetSize = 128, NoOfElemets = 23, ExtraMem = 0, EndAddress = 0x1FFF };
@@ -585,8 +632,11 @@ namespace MoriData
                                 default:
                                     return 6;
                             }
-                            break;
+                            
 
+                        case "2.04":
+                            return 8;
+                            
 
                         default:
                             //variante per marco
@@ -621,6 +671,7 @@ namespace MoriData
                         case "2.01":
                         case "2.02":
                         case "2.03":
+                        case "2.04":
                             return true;
 
                         default:
@@ -654,6 +705,7 @@ namespace MoriData
                         case "2.01":
                         case "2.02":
                         case "2.03":
+                        case "2.04":
                             return true;
 
                         default:
@@ -701,6 +753,7 @@ namespace MoriData
                         case "2.01":
                         case "2.02":
                         case "2.03":
+                        case "2.04":
                             return 8666;
 
                         default:
@@ -775,7 +828,56 @@ namespace MoriData
                 _sb.LongMem = value;
                 _datiSalvati = false;
             }
-        }  
+        }
+        /*
+        public string IdBase { get; set; }
+        public int NumeroClone { get; set; }
+        public DateTime DataClone { get; set; }
+        public string NoteClone { get; set; }
+        */
+
+        public string IdBase
+        {
+            get { return _sb.IdBase; }
+            set
+            {
+                if (value != nullID | _sb.IdBase != value)
+                {
+                    _sb.IdBase = value;
+                    _datiSalvati = false;
+                }
+            }
+        }
+
+
+        public int NumeroClone
+        {
+            get { return _sb.NumeroClone; }
+            set
+            {
+                _sb.NumeroClone = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public DateTime DataClone
+        {
+            get { return _sb.DataClone; }
+            set
+            {
+                _sb.DataClone = value;
+                _datiSalvati = false;
+            }
+        }
+        public string NoteClone
+        {
+            get { return _sb.NoteClone; }
+            set
+            {
+                _sb.NoteClone = value;
+                _datiSalvati = false;
+            }
+        }
 
         #endregion Class Parameter
 

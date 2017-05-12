@@ -859,7 +859,12 @@ namespace ChargerLogic
                         // Livello 6/7;
                         // Valido con bootloader 1.02.xx
                         return (_blv == 2);
-                        //return true;
+                    //return true;
+                    case "2.04":
+                        // Livello 6/7;
+                        // Valido con bootloader 1.02.xx
+                        return (_blv == 2);
+                    //return true;
 
                     default:
                         return false;

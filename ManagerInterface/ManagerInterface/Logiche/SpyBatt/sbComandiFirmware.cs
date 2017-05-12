@@ -111,13 +111,13 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
-                object _dataRx;
+                //object _dataRx;
                 sbEndStep _esitoBg = new sbEndStep();
                 sbWaitStep _stepBg = new sbWaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
 
 
-                bool _recordPresente;
+                //bool _recordPresente;
 
                 Thread.CurrentThread.CurrentUICulture = _parametri.currentCulture;
 
@@ -160,11 +160,7 @@ namespace ChargerLogic
                     {
                         if (RunAsinc)
                         {
-                            ushort _pacchettiInviati = 0;
-                            ushort _pacchettoCorrente = 0;
-
-                            object _empty;
-
+                            
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
@@ -189,9 +185,7 @@ namespace ChargerLogic
                             ushort _pacchettoCorrente = 0;
                             ushort _tmpPacchettoCorrente;
 
-                            object _empty;
-
-                            //Preparo l'intestazione della finestra di avanzamento
+                              //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
                                 sbWaitStep _passo = new sbWaitStep();

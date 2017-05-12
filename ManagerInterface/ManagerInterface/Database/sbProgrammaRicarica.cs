@@ -246,11 +246,10 @@ namespace MoriData
             get { return _sbpr.IdLocale; }
             set
             {
-                if (value !=null )
-                {
-                    _sbpr.IdLocale = value;
-                    _datiSalvati = false;
-                }
+
+                _sbpr.IdLocale = value;
+                _datiSalvati = false;
+                                                                                                                                                                         
             }
         }
         public string IdApparato
@@ -431,8 +430,8 @@ namespace MoriData
                 // Variabili temporanee per il passaggio dati
                 byte _byte1 = 0;
                 byte _byte2 = 0;
-                byte _byte3 = 0;
-                byte _byte4 = 0;
+                //byte _byte3 = 0;
+                //byte _byte4 = 0;
 
                 // Preparo l'array vuoto
                 for (int _i = 0; _i < 128; _i++)

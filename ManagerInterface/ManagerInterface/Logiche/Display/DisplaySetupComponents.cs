@@ -122,9 +122,9 @@ namespace ChargerLogic
                 try
                 {
 
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
-                    byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
 
                     bmp = new Bitmap(Width, Height);
 
@@ -224,9 +224,9 @@ namespace ChargerLogic
                 {
                     bmp = new Bitmap(Width, Height);
 
-                    byte _NumRowBlock = 0;
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
 
 
                     for (int _count = 0; _count < ImageBuffer.Length; _count++)
@@ -259,9 +259,9 @@ namespace ChargerLogic
                 {
                     bmp = new Bitmap(Width, Height);
 
-                    byte _NumRowBlock = 0;
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
 
 
                     for (int _count = 0; _count < ImageBuffer.Length; _count++)
@@ -456,9 +456,9 @@ namespace ChargerLogic
                 try
                 {
 
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
-                    byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
 
                     bmp = new Bitmap(Width, Height);
 
@@ -569,9 +569,9 @@ namespace ChargerLogic
                 {
                     bmp = new Bitmap(Width, Height);
 
-                    byte _NumRowBlock = 0;
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
 
 
                     for (int _count = 0; _count < ImageBuffer.Length; _count++)
@@ -604,9 +604,9 @@ namespace ChargerLogic
                 {
                     bmp = new Bitmap(Width, Height);
 
-                    byte _NumRowBlock = 0;
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
 
 
                     for (int _count = 0; _count < ImageBuffer.Length; _count++)
@@ -1000,9 +1000,9 @@ namespace ChargerLogic
                 try
                 {
 
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
-                    byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
 
 
 
@@ -1134,9 +1134,9 @@ namespace ChargerLogic
                 {
                     bmp = new Bitmap(Width, Height);
 
-                    byte _NumRowBlock = 0;
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
 
 
                     for (int _count = 0; _count < ImageBuffer.Length; _count++)
@@ -1169,9 +1169,9 @@ namespace ChargerLogic
                 {
                     bmp = new Bitmap(Width, Height);
 
-                    byte _NumRowBlock = 0;
-                    byte _NumRow = 0;
-                    byte _NumCol = 0;
+                    //byte _NumRowBlock = 0;
+                    //byte _NumRow = 0;
+                    //byte _NumCol = 0;
 
 
                     for (int _count = 0; _count < ImageBuffer.Length; _count++)

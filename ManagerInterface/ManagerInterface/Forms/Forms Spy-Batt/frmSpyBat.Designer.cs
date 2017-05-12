@@ -366,6 +366,11 @@
             this.opSonda02 = new System.Windows.Forms.RadioButton();
             this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
+            this.grbVarParametriSig = new System.Windows.Forms.GroupBox();
+            this.btnFSerVerificaOC = new System.Windows.Forms.Button();
+            this.btnFSerImpostaOC = new System.Windows.Forms.Button();
+            this.label278 = new System.Windows.Forms.Label();
+            this.cmbFSerBaudrateOC = new System.Windows.Forms.ComboBox();
             this.grbVarRestartScheda = new System.Windows.Forms.GroupBox();
             this.chkCliResetContatori = new System.Windows.Forms.CheckBox();
             this.btnResetScheda = new System.Windows.Forms.Button();
@@ -798,6 +803,20 @@
             this.txtCalStepCorrente = new System.Windows.Forms.TextBox();
             this.lblCalStepCorrente = new System.Windows.Forms.Label();
             this.tbpStrategia = new System.Windows.Forms.TabPage();
+            this.label276 = new System.Windows.Forms.Label();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.label277 = new System.Windows.Forms.Label();
+            this.txtStratParGetBrevi = new System.Windows.Forms.TextBox();
+            this.txtStratParSetBrevi = new System.Windows.Forms.TextBox();
+            this.txtStratParGetLng = new System.Windows.Forms.TextBox();
+            this.txtStratParGetProg = new System.Windows.Forms.TextBox();
+            this.txtStratParGetSoC = new System.Windows.Forms.TextBox();
+            this.txtStratParSetLunghi = new System.Windows.Forms.TextBox();
+            this.label273 = new System.Windows.Forms.Label();
+            this.txtStratParSetProg = new System.Windows.Forms.TextBox();
+            this.label274 = new System.Windows.Forms.Label();
+            this.txtStratParSetSoC = new System.Windows.Forms.TextBox();
+            this.label275 = new System.Windows.Forms.Label();
             this.label263 = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
             this.txtStratTEGetReal = new System.Windows.Forms.TextBox();
@@ -874,6 +893,8 @@
             this.label176 = new System.Windows.Forms.Label();
             this.label167 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label272 = new System.Windows.Forms.Label();
+            this.txtStratQryError = new System.Windows.Forms.TextBox();
             this.txtStratQryLLBattId = new System.Windows.Forms.TextBox();
             this.label255 = new System.Windows.Forms.Label();
             this.txtStratQryModoPian = new System.Windows.Forms.TextBox();
@@ -938,6 +959,8 @@
             this.txtStratLLVmin = new System.Windows.Forms.TextBox();
             this.label153 = new System.Windows.Forms.Label();
             this.grbStratComandiTest = new System.Windows.Forms.GroupBox();
+            this.btnStratReadPar = new System.Windows.Forms.Button();
+            this.btnStratSetPar = new System.Windows.Forms.Button();
             this.btnStratReadTypeEvent = new System.Windows.Forms.Button();
             this.btnStratSetTypeEvent = new System.Windows.Forms.Button();
             this.btnStratReadVar = new System.Windows.Forms.Button();
@@ -956,6 +979,8 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.cmbFSerEchoOC = new System.Windows.Forms.ComboBox();
+            this.label279 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
@@ -1015,6 +1040,7 @@
             this.groupBox4.SuspendLayout();
             this.grbComboSonda.SuspendLayout();
             this.tabSbFact.SuspendLayout();
+            this.grbVarParametriSig.SuspendLayout();
             this.grbVarRestartScheda.SuspendLayout();
             this.grbSvcParametriMedie.SuspendLayout();
             this.grbVarResetScheda.SuspendLayout();
@@ -1057,6 +1083,7 @@
             this.grbCalValoriAttuali.SuspendLayout();
             this.grbCalListaAttivita.SuspendLayout();
             this.tbpStrategia.SuspendLayout();
+            this.panel22.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel6.SuspendLayout();
             this.grbStratStepCorrente.SuspendLayout();
@@ -3503,6 +3530,7 @@
             // tabSbFact
             // 
             this.tabSbFact.BackColor = System.Drawing.Color.LightYellow;
+            this.tabSbFact.Controls.Add(this.grbVarParametriSig);
             this.tabSbFact.Controls.Add(this.grbVarRestartScheda);
             this.tabSbFact.Controls.Add(this.grbSvcParametriMedie);
             this.tabSbFact.Controls.Add(this.grbVarResetScheda);
@@ -3515,6 +3543,44 @@
             resources.ApplyResources(this.tabSbFact, "tabSbFact");
             this.tabSbFact.Name = "tabSbFact";
             this.tabSbFact.Click += new System.EventHandler(this.tabSbFact_Click);
+            // 
+            // grbVarParametriSig
+            // 
+            this.grbVarParametriSig.BackColor = System.Drawing.Color.White;
+            this.grbVarParametriSig.Controls.Add(this.label279);
+            this.grbVarParametriSig.Controls.Add(this.cmbFSerEchoOC);
+            this.grbVarParametriSig.Controls.Add(this.btnFSerVerificaOC);
+            this.grbVarParametriSig.Controls.Add(this.btnFSerImpostaOC);
+            this.grbVarParametriSig.Controls.Add(this.label278);
+            this.grbVarParametriSig.Controls.Add(this.cmbFSerBaudrateOC);
+            resources.ApplyResources(this.grbVarParametriSig, "grbVarParametriSig");
+            this.grbVarParametriSig.Name = "grbVarParametriSig";
+            this.grbVarParametriSig.TabStop = false;
+            // 
+            // btnFSerVerificaOC
+            // 
+            resources.ApplyResources(this.btnFSerVerificaOC, "btnFSerVerificaOC");
+            this.btnFSerVerificaOC.Name = "btnFSerVerificaOC";
+            this.btnFSerVerificaOC.UseVisualStyleBackColor = true;
+            this.btnFSerVerificaOC.Click += new System.EventHandler(this.btnFSerVerificaOC_Click);
+            // 
+            // btnFSerImpostaOC
+            // 
+            resources.ApplyResources(this.btnFSerImpostaOC, "btnFSerImpostaOC");
+            this.btnFSerImpostaOC.Name = "btnFSerImpostaOC";
+            this.btnFSerImpostaOC.UseVisualStyleBackColor = true;
+            this.btnFSerImpostaOC.Click += new System.EventHandler(this.btnFSerImpostaOC_Click);
+            // 
+            // label278
+            // 
+            resources.ApplyResources(this.label278, "label278");
+            this.label278.Name = "label278";
+            // 
+            // cmbFSerBaudrateOC
+            // 
+            resources.ApplyResources(this.cmbFSerBaudrateOC, "cmbFSerBaudrateOC");
+            this.cmbFSerBaudrateOC.FormattingEnabled = true;
+            this.cmbFSerBaudrateOC.Name = "cmbFSerBaudrateOC";
             // 
             // grbVarRestartScheda
             // 
@@ -6401,6 +6467,8 @@
             // tbpStrategia
             // 
             this.tbpStrategia.BackColor = System.Drawing.Color.LemonChiffon;
+            this.tbpStrategia.Controls.Add(this.label276);
+            this.tbpStrategia.Controls.Add(this.panel22);
             this.tbpStrategia.Controls.Add(this.label263);
             this.tbpStrategia.Controls.Add(this.panel20);
             this.tbpStrategia.Controls.Add(this.label210);
@@ -6421,6 +6489,94 @@
             this.tbpStrategia.Controls.Add(this.txtStratDataGrid);
             resources.ApplyResources(this.tbpStrategia, "tbpStrategia");
             this.tbpStrategia.Name = "tbpStrategia";
+            // 
+            // label276
+            // 
+            resources.ApplyResources(this.label276, "label276");
+            this.label276.Name = "label276";
+            this.label276.Click += new System.EventHandler(this.label276_Click);
+            // 
+            // panel22
+            // 
+            this.panel22.BackColor = System.Drawing.Color.White;
+            this.panel22.Controls.Add(this.label277);
+            this.panel22.Controls.Add(this.txtStratParGetBrevi);
+            this.panel22.Controls.Add(this.txtStratParSetBrevi);
+            this.panel22.Controls.Add(this.txtStratParGetLng);
+            this.panel22.Controls.Add(this.txtStratParGetProg);
+            this.panel22.Controls.Add(this.txtStratParGetSoC);
+            this.panel22.Controls.Add(this.txtStratParSetLunghi);
+            this.panel22.Controls.Add(this.label273);
+            this.panel22.Controls.Add(this.txtStratParSetProg);
+            this.panel22.Controls.Add(this.label274);
+            this.panel22.Controls.Add(this.txtStratParSetSoC);
+            this.panel22.Controls.Add(this.label275);
+            resources.ApplyResources(this.panel22, "panel22");
+            this.panel22.Name = "panel22";
+            // 
+            // label277
+            // 
+            resources.ApplyResources(this.label277, "label277");
+            this.label277.Name = "label277";
+            // 
+            // txtStratParGetBrevi
+            // 
+            resources.ApplyResources(this.txtStratParGetBrevi, "txtStratParGetBrevi");
+            this.txtStratParGetBrevi.Name = "txtStratParGetBrevi";
+            this.txtStratParGetBrevi.ReadOnly = true;
+            // 
+            // txtStratParSetBrevi
+            // 
+            resources.ApplyResources(this.txtStratParSetBrevi, "txtStratParSetBrevi");
+            this.txtStratParSetBrevi.Name = "txtStratParSetBrevi";
+            // 
+            // txtStratParGetLng
+            // 
+            resources.ApplyResources(this.txtStratParGetLng, "txtStratParGetLng");
+            this.txtStratParGetLng.Name = "txtStratParGetLng";
+            this.txtStratParGetLng.ReadOnly = true;
+            // 
+            // txtStratParGetProg
+            // 
+            resources.ApplyResources(this.txtStratParGetProg, "txtStratParGetProg");
+            this.txtStratParGetProg.Name = "txtStratParGetProg";
+            this.txtStratParGetProg.ReadOnly = true;
+            // 
+            // txtStratParGetSoC
+            // 
+            resources.ApplyResources(this.txtStratParGetSoC, "txtStratParGetSoC");
+            this.txtStratParGetSoC.Name = "txtStratParGetSoC";
+            this.txtStratParGetSoC.ReadOnly = true;
+            // 
+            // txtStratParSetLunghi
+            // 
+            resources.ApplyResources(this.txtStratParSetLunghi, "txtStratParSetLunghi");
+            this.txtStratParSetLunghi.Name = "txtStratParSetLunghi";
+            // 
+            // label273
+            // 
+            resources.ApplyResources(this.label273, "label273");
+            this.label273.Name = "label273";
+            // 
+            // txtStratParSetProg
+            // 
+            resources.ApplyResources(this.txtStratParSetProg, "txtStratParSetProg");
+            this.txtStratParSetProg.Name = "txtStratParSetProg";
+            // 
+            // label274
+            // 
+            resources.ApplyResources(this.label274, "label274");
+            this.label274.Name = "label274";
+            // 
+            // txtStratParSetSoC
+            // 
+            resources.ApplyResources(this.txtStratParSetSoC, "txtStratParSetSoC");
+            this.txtStratParSetSoC.Name = "txtStratParSetSoC";
+            // 
+            // label275
+            // 
+            resources.ApplyResources(this.label275, "label275");
+            this.label275.Name = "label275";
             // 
             // label263
             // 
@@ -6888,6 +7044,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label272);
+            this.panel3.Controls.Add(this.txtStratQryError);
             this.panel3.Controls.Add(this.txtStratQryLLBattId);
             this.panel3.Controls.Add(this.label255);
             this.panel3.Controls.Add(this.txtStratQryModoPian);
@@ -6916,6 +7074,18 @@
             this.panel3.Controls.Add(this.label168);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
+            // 
+            // label272
+            // 
+            resources.ApplyResources(this.label272, "label272");
+            this.label272.Name = "label272";
+            // 
+            // txtStratQryError
+            // 
+            resources.ApplyResources(this.txtStratQryError, "txtStratQryError");
+            this.txtStratQryError.ForeColor = System.Drawing.Color.Red;
+            this.txtStratQryError.Name = "txtStratQryError";
+            this.txtStratQryError.ReadOnly = true;
             // 
             // txtStratQryLLBattId
             // 
@@ -7305,6 +7475,8 @@
             // grbStratComandiTest
             // 
             this.grbStratComandiTest.BackColor = System.Drawing.Color.White;
+            this.grbStratComandiTest.Controls.Add(this.btnStratReadPar);
+            this.grbStratComandiTest.Controls.Add(this.btnStratSetPar);
             this.grbStratComandiTest.Controls.Add(this.btnStratReadTypeEvent);
             this.grbStratComandiTest.Controls.Add(this.btnStratSetTypeEvent);
             this.grbStratComandiTest.Controls.Add(this.btnStratReadVar);
@@ -7320,6 +7492,21 @@
             resources.ApplyResources(this.grbStratComandiTest, "grbStratComandiTest");
             this.grbStratComandiTest.Name = "grbStratComandiTest";
             this.grbStratComandiTest.TabStop = false;
+            this.grbStratComandiTest.Enter += new System.EventHandler(this.grbStratComandiTest_Enter);
+            // 
+            // btnStratReadPar
+            // 
+            resources.ApplyResources(this.btnStratReadPar, "btnStratReadPar");
+            this.btnStratReadPar.Name = "btnStratReadPar";
+            this.btnStratReadPar.UseVisualStyleBackColor = true;
+            this.btnStratReadPar.Click += new System.EventHandler(this.btnStratReadPar_Click);
+            // 
+            // btnStratSetPar
+            // 
+            this.btnStratSetPar.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.btnStratSetPar, "btnStratSetPar");
+            this.btnStratSetPar.Name = "btnStratSetPar";
+            this.btnStratSetPar.UseVisualStyleBackColor = true;
             // 
             // btnStratReadTypeEvent
             // 
@@ -7330,6 +7517,7 @@
             // 
             // btnStratSetTypeEvent
             // 
+            this.btnStratSetTypeEvent.ForeColor = System.Drawing.Color.Red;
             resources.ApplyResources(this.btnStratSetTypeEvent, "btnStratSetTypeEvent");
             this.btnStratSetTypeEvent.Name = "btnStratSetTypeEvent";
             this.btnStratSetTypeEvent.UseVisualStyleBackColor = true;
@@ -7344,16 +7532,18 @@
             // 
             // btnStratCallSIS
             // 
+            this.btnStratCallSIS.BackColor = System.Drawing.Color.LightBlue;
             resources.ApplyResources(this.btnStratCallSIS, "btnStratCallSIS");
             this.btnStratCallSIS.Name = "btnStratCallSIS";
-            this.btnStratCallSIS.UseVisualStyleBackColor = true;
+            this.btnStratCallSIS.UseVisualStyleBackColor = false;
             this.btnStratCallSIS.Click += new System.EventHandler(this.btnStratCallSIS_Click);
             // 
             // btnStratCallAv
             // 
+            this.btnStratCallAv.BackColor = System.Drawing.Color.LightBlue;
             resources.ApplyResources(this.btnStratCallAv, "btnStratCallAv");
             this.btnStratCallAv.Name = "btnStratCallAv";
-            this.btnStratCallAv.UseVisualStyleBackColor = true;
+            this.btnStratCallAv.UseVisualStyleBackColor = false;
             this.btnStratCallAv.Click += new System.EventHandler(this.btnStratCallAv_Click);
             // 
             // btnStratSetDischarge
@@ -7365,13 +7555,15 @@
             // 
             // btnStratCallIS
             // 
+            this.btnStratCallIS.BackColor = System.Drawing.Color.LightBlue;
             resources.ApplyResources(this.btnStratCallIS, "btnStratCallIS");
             this.btnStratCallIS.Name = "btnStratCallIS";
-            this.btnStratCallIS.UseVisualStyleBackColor = true;
+            this.btnStratCallIS.UseVisualStyleBackColor = false;
             this.btnStratCallIS.Click += new System.EventHandler(this.btnStratCallIS_Click);
             // 
             // btnStratSetCharge
             // 
+            this.btnStratSetCharge.ForeColor = System.Drawing.Color.Red;
             resources.ApplyResources(this.btnStratSetCharge, "btnStratSetCharge");
             this.btnStratSetCharge.Name = "btnStratSetCharge";
             this.btnStratSetCharge.UseVisualStyleBackColor = true;
@@ -7425,6 +7617,18 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
+            // 
+            // cmbFSerEchoOC
+            // 
+            resources.ApplyResources(this.cmbFSerEchoOC, "cmbFSerEchoOC");
+            this.cmbFSerEchoOC.FormattingEnabled = true;
+            this.cmbFSerEchoOC.Name = "cmbFSerEchoOC";
+            // 
+            // label279
+            // 
+            resources.ApplyResources(this.label279, "label279");
+            this.label279.ForeColor = System.Drawing.Color.Red;
+            this.label279.Name = "label279";
             // 
             // frmSpyBat
             // 
@@ -7529,6 +7733,8 @@
             this.grbComboSonda.PerformLayout();
             this.tabSbFact.ResumeLayout(false);
             this.tabSbFact.PerformLayout();
+            this.grbVarParametriSig.ResumeLayout(false);
+            this.grbVarParametriSig.PerformLayout();
             this.grbVarRestartScheda.ResumeLayout(false);
             this.grbVarRestartScheda.PerformLayout();
             this.grbSvcParametriMedie.ResumeLayout(false);
@@ -7604,6 +7810,8 @@
             this.grbCalListaAttivita.PerformLayout();
             this.tbpStrategia.ResumeLayout(false);
             this.tbpStrategia.PerformLayout();
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -8555,5 +8763,30 @@
         private System.Windows.Forms.Label lblSvcCausaLastReset;
         private System.Windows.Forms.TextBox txtSvcCausaLastReset;
         private System.Windows.Forms.Button btnRiconsolidaBrevi;
+        private System.Windows.Forms.Label label272;
+        private System.Windows.Forms.TextBox txtStratQryError;
+        private System.Windows.Forms.Label label276;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Label label277;
+        private System.Windows.Forms.TextBox txtStratParGetBrevi;
+        private System.Windows.Forms.TextBox txtStratParSetBrevi;
+        private System.Windows.Forms.TextBox txtStratParGetLng;
+        private System.Windows.Forms.TextBox txtStratParGetProg;
+        private System.Windows.Forms.TextBox txtStratParGetSoC;
+        private System.Windows.Forms.TextBox txtStratParSetLunghi;
+        private System.Windows.Forms.Label label273;
+        private System.Windows.Forms.TextBox txtStratParSetProg;
+        private System.Windows.Forms.Label label274;
+        private System.Windows.Forms.TextBox txtStratParSetSoC;
+        private System.Windows.Forms.Label label275;
+        private System.Windows.Forms.Button btnStratReadPar;
+        private System.Windows.Forms.Button btnStratSetPar;
+        private System.Windows.Forms.GroupBox grbVarParametriSig;
+        private System.Windows.Forms.Button btnFSerImpostaOC;
+        private System.Windows.Forms.Label label278;
+        private System.Windows.Forms.ComboBox cmbFSerBaudrateOC;
+        private System.Windows.Forms.Button btnFSerVerificaOC;
+        private System.Windows.Forms.Label label279;
+        private System.Windows.Forms.ComboBox cmbFSerEchoOC;
     }
 }

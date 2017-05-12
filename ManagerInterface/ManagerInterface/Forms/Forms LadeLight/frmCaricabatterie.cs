@@ -36,6 +36,14 @@ namespace PannelloCharger
         bool _apparatoPresente = false;
 
         public List<llVariabili> ListaValori = new List<llVariabili>();
+        public System.Collections.Generic.List<ValoreLista> ListaBrSig = new List<ValoreLista>()
+        {
+            new ValoreLista("OFF", SerialMessage.OcBaudRate.OFF, false),
+            new ValoreLista("ON 9.6K", SerialMessage.OcBaudRate.br_9k6, false),
+            new ValoreLista("ON 19.2K", SerialMessage.OcBaudRate.br_19k2, false),
+            new ValoreLista("ON 38.4K", SerialMessage.OcBaudRate.br_38k4, false),
+            new ValoreLista("ON 57.6K", SerialMessage.OcBaudRate.br_57k6, false),
+        };
 
 
         public frmCaricabatterie(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
@@ -170,6 +178,10 @@ namespace PannelloCharger
             cmbPaCondStop.Items.Add("Timer");
             cmbPaCondStop.Items.Add("dV/dt");
             cmbPaCondStop.SelectedIndex = 0;
+
+            cmbFSerBaudrateOC.DataSource = ListaBrSig;
+            cmbFSerBaudrateOC.DisplayMember = "descrizione";
+            cmbFSerBaudrateOC.ValueMember = "SettingValue";
 
         }
 
@@ -1344,6 +1356,11 @@ namespace PannelloCharger
             ChiamataProxySig60CSAvanzamento(0x03);
 
             this.Cursor = Cursors.Default;
+        }
+
+        private void btnFSerVerificaOC_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

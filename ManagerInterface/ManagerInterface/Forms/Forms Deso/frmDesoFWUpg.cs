@@ -350,7 +350,7 @@ namespace PannelloCharger
         {
             bool _esito = false;
             byte[] _bufferDati = new byte[64];
-            uint _area;
+            //uint _area;
 
             try
             {

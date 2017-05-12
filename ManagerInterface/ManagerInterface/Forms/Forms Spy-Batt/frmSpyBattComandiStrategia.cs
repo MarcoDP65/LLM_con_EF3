@@ -109,6 +109,42 @@ namespace PannelloCharger
                     txtStratDataGrid.Text = _risposta;
 
                     // Mostro i valori
+                     byte ErrCode = _Dati[0x02];
+                    if (ErrCode == 0)
+                    {
+                       
+                        txtStratQryError.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        txtStratQryError.ForeColor = Color.Red;
+
+                    }
+                    Application.DoEvents();
+                    string _errorMsg = "" ;
+                    switch (ErrCode)
+                    {
+                        case 0x00:
+                            _errorMsg = "OK (0x00)";
+                            break;
+                        case 0x70:
+                            _errorMsg = "ERR_SB_NOCONFIG";
+                            break;
+                        case 0x71:
+                            _errorMsg = "ERR_SB_NOSTRAT";
+                            break;
+                        case 0x72:
+                            _errorMsg = "ERR_SB_NOCOUNT";
+                            break;
+                        case 0x73:
+                            _errorMsg = "ERR_SB_SOCZERO";
+                            break;
+                        default:
+                            _errorMsg = "N.D. (0x" + ErrCode.ToString("x2") + ")";
+                            break;
+                    }
+
+                    txtStratQryError.Text = _errorMsg;
                     txtStratQryVerLib.Text = _Dati[0x03].ToString() + "." + _Dati[0x04].ToString("00") + "." + FunzioniComuni.UshortFromArray(_Dati, 0x05).ToString("000");
                     txtStratQryActSeup.Text = _Dati[0x08].ToString();
                     txtStratQryTensN.Text = FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x09));
@@ -400,6 +436,146 @@ namespace PannelloCharger
             }
 
         }
+
+
+        public bool LanciaComandoStrategiaChechPar()
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                byte ComandoStrategia = 0x56;
+
+                txtStratDataGrid.Text = "";
+                _Dati = new byte[252];
+                _esito = _sb.ComandoInfoStrategia(ComandoStrategia, out _Dati);
+
+                if (_esito == true)
+                {
+
+
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtStratDataGrid.Text = _risposta;
+
+                    // Mostro i valori
+                    txtStratParGetSoC.Text =_Dati[3].ToString();
+                    txtStratParGetProg.Text = _Dati[4].ToString();
+                    txtStratParGetLng.Text = "";
+                    txtStratParGetBrevi.Text = "";
+                    /*
+                    txtStratLivcrgNeg.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 11));
+                    txtStratLivcrgDiscrg.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 5));
+                    txtStratLivcrgDiscrgTot.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 9));
+
+                    txtStratLivcrgCapResidua.Text = FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 15));
+                    */
+
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LanciaComandoTestStrategia: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        public bool LanciaComandoStrategiaUpdPar(byte ComandoStrategia)
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                ushort _tempCapacity;
+                ushort _tempChg;
+                ushort _tempDschg;
+                if (txtStratLivcrgSetCapacity.Text != "")
+                {
+                    _tempCapacity = FunzioniMR.ConvertiUshort(txtStratLivcrgSetCapacity.Text, 10, 0xFFFF);
+                }
+                else
+                {
+                    _tempCapacity = 0xFFFF;
+                }
+
+                if (txtStratLivcrgSetDschg.Text != "")
+                {
+                    _tempDschg = FunzioniMR.ConvertiUshort(txtStratLivcrgSetDschg.Text, 10, 0xFFFF);
+                }
+                else
+                {
+                    _tempDschg = 0xFFFF;
+                }
+
+                if (txtStratLivcrgSetChg.Text != "")
+                {
+                    _tempChg = FunzioniMR.ConvertiUshort(txtStratLivcrgSetChg.Text, 10, 0xFFFF);
+                }
+                else
+                {
+                    _tempChg = 0xFFFF;
+                }
+
+
+                txtStratDataGrid.Text = "";
+                _Dati = new byte[252];
+                _esito = _sb.ComandoStrategiaAggiornaContatori(_tempCapacity, _tempDschg, _tempChg, out _Dati);
+
+                if (_esito == true)
+                {
+
+
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtStratDataGrid.Text = _risposta;
+
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LanciaComandoTestStrategia: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+
+
+
+
 
         public bool LanciaComandoStrategiaAvanzamentoFase()
         {

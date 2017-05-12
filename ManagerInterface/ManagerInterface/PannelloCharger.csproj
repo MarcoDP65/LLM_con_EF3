@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>2.10.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -89,6 +89,12 @@
     <Reference Include="Common.Logging.Log4Net1213, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Log4Net1213.3.3.1\lib\net40\Common.Logging.Log4Net1213.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="ConsoleControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7edd23586f5e297f, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConsoleControl.1.1.0.0\lib\net40\ConsoleControl.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleControlAPI, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7c86b8a36b9c33e2, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConsoleControl.1.1.0.0\lib\net40\ConsoleControlAPI.dll</HintPath>
     </Reference>
     <Reference Include="FTD2XX_NET, Version=1.0.14.39395, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FTD2XX_NET.1.0.14\lib\net40\FTD2XX_NET.dll</HintPath>
@@ -255,6 +261,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms LadeLight\frmCaricaBatteriaComandiProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBatParAndCmd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattCalibrazione.cs">
@@ -477,6 +486,8 @@
     <Compile Include="Logiche\SpyBatt\sbComandiFirmware.cs" />
     <Compile Include="Logiche\SpyBatt\sottoclassiSpyBatt.cs" />
     <Compile Include="Logiche\SpyBatt\SpyBatt.cs" />
+    <Compile Include="Logiche\SpyBatt\SpyBattComandiArchivio.cs" />
+    <Compile Include="Logiche\SpyBatt\SpyBattComandiScheda.cs" />
     <Compile Include="Logiche\StatMemLungaSB.cs" />
     <Compile Include="Logiche\StepCarica.cs" />
     <Compile Include="Logiche\StrutturaImpianto.cs" />
@@ -518,8 +529,15 @@
     <Compile Include="Servizi\ScannerPorte.cs" />
     <Compile Include="Servizi\ScannerUSB.cs" />
     <Compile Include="Servizi\StringCipher.cs" />
+    <Compile Include="Servizi\txtLogger.cs" />
     <Compile Include="Servizi\usParameters.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Componenti\ctrlPannelloTempo.fr-FR.resx">
+      <DependentUpon>ctrlPannelloTempo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componenti\ctrlPannelloTempo.fr.resx">
+      <DependentUpon>ctrlPannelloTempo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Componenti\ctrlPannelloTempo.resx">
       <DependentUpon>ctrlPannelloTempo.cs</DependentUpon>
     </EmbeddedResource>
@@ -532,6 +550,12 @@
     <EmbeddedResource Include="Forms\Forms Deso\frmDeso.es.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.fr-FR.resx">
+      <DependentUpon>frmDeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Deso\frmDeso.fr.resx">
+      <DependentUpon>frmDeso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Deso\frmDeso.hi-IN.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
     </EmbeddedResource>
@@ -540,6 +564,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Deso\frmDeso.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.fr-FR.resx">
+      <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.fr.resx">
+      <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.fr-FR.resx">
+      <DependentUpon>frmCaricabatterie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.fr.resx">
+      <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.de.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
@@ -550,6 +586,12 @@
     <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.es.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.fr-FR.resx">
+      <DependentUpon>frmSpyBat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.fr.resx">
+      <DependentUpon>frmSpyBat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.hi-IN.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
@@ -558,6 +600,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAboutBox.de.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
@@ -566,6 +609,12 @@
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAboutBox.es.resx">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAboutBox.fr-FR.resx">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAboutBox.fr.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAboutBox.hi-IN.resx">
@@ -581,6 +630,12 @@
     <EmbeddedResource Include="Forms\frmAlimentatore.es.resx">
       <DependentUpon>frmAlimentatore.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAlimentatore.fr-FR.resx">
+      <DependentUpon>frmAlimentatore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAlimentatore.fr.resx">
+      <DependentUpon>frmAlimentatore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAlimentatore.hi-IN.resx">
       <DependentUpon>frmAlimentatore.cs</DependentUpon>
     </EmbeddedResource>
@@ -591,6 +646,12 @@
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAvanzamentoCicli.es.resx">
+      <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAvanzamentoCicli.fr-FR.resx">
+      <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAvanzamentoCicli.fr.resx">
       <DependentUpon>frmAvanzamentoCicli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAvanzamentoCicli.hi-IN.resx">
@@ -608,16 +669,40 @@
     <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDefinizioneImpianto.fr-FR.resx">
+      <DependentUpon>frmDefinizioneImpianto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDefinizioneImpianto.fr.resx">
+      <DependentUpon>frmDefinizioneImpianto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDefinizioneImpianto.resx">
       <DependentUpon>frmDefinizioneImpianto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDettagliNodo.fr-FR.resx">
+      <DependentUpon>frmDettagliNodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDettagliNodo.fr.resx">
+      <DependentUpon>frmDettagliNodo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDettagliNodo.resx">
       <DependentUpon>frmDettagliNodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDisplayManager.fr-FR.resx">
+      <DependentUpon>frmDisplayManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDisplayManager.fr.resx">
+      <DependentUpon>frmDisplayManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDisplayManager.resx">
       <DependentUpon>frmDisplayManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFlashFTDI.es.resx">
+      <DependentUpon>frmFlashFTDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFlashFTDI.fr-FR.resx">
+      <DependentUpon>frmFlashFTDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFlashFTDI.fr.resx">
       <DependentUpon>frmFlashFTDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFlashFTDI.hi-IN.resx">
@@ -629,6 +714,12 @@
     <EmbeddedResource Include="Forms\frmFlashSpyBatt.es.resx">
       <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFlashSpyBatt.fr-FR.resx">
+      <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFlashSpyBatt.fr.resx">
+      <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFlashSpyBatt.hi-IN.resx">
       <DependentUpon>frmFlashSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
@@ -638,11 +729,23 @@
     <EmbeddedResource Include="Forms\frmGraficoCiclo.es.resx">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGraficoCiclo.fr-FR.resx">
+      <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGraficoCiclo.fr.resx">
+      <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGraficoCiclo.hi-IN.resx">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGraficoCiclo.resx">
       <DependentUpon>frmGraficoCiclo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInputDialog.fr-FR.resx">
+      <DependentUpon>frmInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInputDialog.fr.resx">
+      <DependentUpon>frmInputDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInputDialog.resx">
       <DependentUpon>frmInputDialog.cs</DependentUpon>
@@ -651,6 +754,12 @@
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInserimentoProgramma.es.resx">
+      <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInserimentoProgramma.fr-FR.resx">
+      <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInserimentoProgramma.fr.resx">
       <DependentUpon>frmInserimentoProgramma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInserimentoProgramma.hi-IN.resx">
@@ -687,6 +796,12 @@
     <EmbeddedResource Include="Forms\frmLogin.es.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.fr-FR.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.fr.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.hi-IN.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -706,6 +821,12 @@
     <EmbeddedResource Include="Forms\frmMain.es.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.fr-FR.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.fr.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.hi-IN.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -715,19 +836,49 @@
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMessaggioElettrolita.fr-FR.resx">
+      <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMessaggioElettrolita.fr.resx">
+      <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMessaggioElettrolita.resx">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMonitorSig60.fr-FR.resx">
+      <DependentUpon>frmMonitorSig60.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMonitorSig60.fr.resx">
+      <DependentUpon>frmMonitorSig60.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMonitorSig60.resx">
       <DependentUpon>frmMonitorSig60.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMspFlasher.fr-FR.resx">
+      <DependentUpon>frmMspFlasher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMspFlasher.fr.resx">
+      <DependentUpon>frmMspFlasher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMspFlasher.resx">
       <DependentUpon>frmMspFlasher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPopupCambioTurmo.fr-FR.resx">
+      <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPopupCambioTurmo.fr.resx">
+      <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPopupCambioTurmo.resx">
       <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRichiestaCodice.en.resx">
+      <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRichiestaCodice.fr-FR.resx">
+      <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRichiestaCodice.fr.resx">
       <DependentUpon>frmRichiestaCodice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRichiestaCodice.resx">
@@ -739,6 +890,12 @@
     <EmbeddedResource Include="Forms\frmSbExport.es.resx">
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSbExport.fr-FR.resx">
+      <DependentUpon>frmSbExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSbExport.fr.resx">
+      <DependentUpon>frmSbExport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSbExport.hi-IN.resx">
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </EmbeddedResource>
@@ -746,6 +903,12 @@
       <DependentUpon>frmSbExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelettoreCom.es.resx">
+      <DependentUpon>frmSelettoreCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelettoreCom.fr-FR.resx">
+      <DependentUpon>frmSelettoreCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelettoreCom.fr.resx">
       <DependentUpon>frmSelettoreCom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelettoreCom.hi-IN.resx">
@@ -761,6 +924,12 @@
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelettoreDevice.es.resx">
+      <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelettoreDevice.fr-FR.resx">
+      <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelettoreDevice.fr.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelettoreDevice.hi-IN.resx">
@@ -781,6 +950,12 @@
     <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.es.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.fr-FR.resx">
+      <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.fr.resx">
+      <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.hi-IN.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>
     </EmbeddedResource>
@@ -793,6 +968,12 @@
     <EmbeddedResource Include="Forms\frmSerialPanel.es.resx">
       <DependentUpon>frmSerialPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSerialPanel.fr-FR.resx">
+      <DependentUpon>frmSerialPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSerialPanel.fr.resx">
+      <DependentUpon>frmSerialPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSerialPanel.hi-IN.resx">
       <DependentUpon>frmSerialPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -800,6 +981,12 @@
       <DependentUpon>frmSerialPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSpyBatCarica.es.resx">
+      <DependentUpon>frmSpyBatCarica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSpyBatCarica.fr-FR.resx">
+      <DependentUpon>frmSpyBatCarica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSpyBatCarica.fr.resx">
       <DependentUpon>frmSpyBatCarica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSpyBatCarica.hi-IN.resx">
@@ -811,16 +998,34 @@
     <EmbeddedResource Include="Forms\frmSpyBatScarica.es.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSpyBatScarica.fr-FR.resx">
+      <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSpyBatScarica.fr.resx">
+      <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSpyBatScarica.hi-IN.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSpyBatScarica.resx">
       <DependentUpon>frmSpyBatScarica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTestFunzioni.fr-FR.resx">
+      <DependentUpon>frmTestFunzioni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTestFunzioni.fr.resx">
+      <DependentUpon>frmTestFunzioni.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTestFunzioni.resx">
       <DependentUpon>frmTestFunzioni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUploadBootloader.es.resx">
+      <DependentUpon>frmUploadBootloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUploadBootloader.fr-FR.resx">
+      <DependentUpon>frmUploadBootloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUploadBootloader.fr.resx">
       <DependentUpon>frmUploadBootloader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUploadBootloader.hi-IN.resx">
@@ -830,6 +1035,8 @@
       <DependentUpon>frmUploadBootloader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.es.resx" />
+    <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="Properties\Resources.fr.resx" />
     <EmbeddedResource Include="Properties\Resources.hi-IN.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -842,6 +1049,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Resources\StringheColonneTabelle.en.resx" />
+    <EmbeddedResource Include="Resources\StringheColonneTabelle.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\StringheColonneTabelle.fr.resx" />
     <EmbeddedResource Include="Resources\StringheColonneTabelle.hi-IN.resx" />
     <EmbeddedResource Include="Resources\StringheColonneTabelle.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -851,6 +1060,8 @@
     <EmbeddedResource Include="Resources\StringheComuni.de.resx" />
     <EmbeddedResource Include="Resources\StringheComuni.en.resx" />
     <EmbeddedResource Include="Resources\StringheComuni.es.resx" />
+    <EmbeddedResource Include="Resources\StringheComuni.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\StringheComuni.fr.resx" />
     <EmbeddedResource Include="Resources\StringheComuni.hi-IN.resx" />
     <EmbeddedResource Include="Resources\StringheComuni.hi.resx" />
     <EmbeddedResource Include="Resources\StringheComuni.resx">
@@ -861,6 +1072,8 @@
     <EmbeddedResource Include="Resources\StringheMessaggio.de.resx" />
     <EmbeddedResource Include="Resources\StringheMessaggio.en.resx" />
     <EmbeddedResource Include="Resources\StringheMessaggio.es.resx" />
+    <EmbeddedResource Include="Resources\StringheMessaggio.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\StringheMessaggio.fr.resx" />
     <EmbeddedResource Include="Resources\StringheMessaggio.hi-IN.resx" />
     <EmbeddedResource Include="Resources\StringheMessaggio.hi.resx" />
     <EmbeddedResource Include="Resources\StringheMessaggio.resx">
@@ -869,6 +1082,8 @@
       <CustomToolNamespace>PannelloCharger</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\stringheStampa.en.resx" />
+    <EmbeddedResource Include="Resources\stringheStampa.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\stringheStampa.fr.resx" />
     <EmbeddedResource Include="Resources\stringheStampa.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>stringheStampa.Designer.cs</LastGenOutput>
@@ -877,6 +1092,8 @@
     <EmbeddedResource Include="Resources\StringheStatistica.de.resx" />
     <EmbeddedResource Include="Resources\StringheStatistica.en.resx" />
     <EmbeddedResource Include="Resources\StringheStatistica.es.resx" />
+    <EmbeddedResource Include="Resources\StringheStatistica.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\StringheStatistica.fr.resx" />
     <EmbeddedResource Include="Resources\StringheStatistica.hi-IN.resx" />
     <EmbeddedResource Include="Resources\StringheStatistica.hi.resx" />
     <EmbeddedResource Include="Resources\StringheStatistica.resx">

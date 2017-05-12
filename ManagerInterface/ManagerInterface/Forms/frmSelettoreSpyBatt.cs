@@ -72,7 +72,9 @@ namespace PannelloCharger
             try
             {
                 string _sql = "";
-                _sql += "select t1.Id, t1.SwVersion, t1.ProductId, t1.HwVersion, t2.DataInstall, t2.Client, t2.BatteryBrand, t2.BatteryModel, t2.BatteryId, t2.ClientNote,t2.SerialNumber ";
+                _sql += "select t1.Id, t1.SwVersion, t1.ProductId, t1.HwVersion, t2.DataInstall, t2.Client, t2.BatteryBrand, t2.BatteryModel, t2.BatteryId, t2.ClientNote,t2.SerialNumber,";
+                _sql += "( select max(DataLastDownload) from _sbMemLunga as t99 where t99.IdApparato = t1.Id) as UltimaLettura ";
+
                 _sql += "from _spybatt as t1 left outer join _sbDatiCliente as t2 on t1.Id = t2.IdApparato order by t2.ClientNote,t1.Id ";
  
                 Log.Info(_sql);
@@ -156,6 +158,14 @@ namespace PannelloCharger
                 colSN.HeaderTextAlign = HorizontalAlignment.Center;
                 colSN.TextAlign = HorizontalAlignment.Left;
                 flvwListaApparati.AllColumns.Add(colSN);
+
+                BrightIdeasSoftware.OLVColumn colDul = new BrightIdeasSoftware.OLVColumn();
+                colDul.Text = "Ultima Lettura";// StringheColonneTabelle.ListaApp07SN; // "Note";
+                colDul.AspectName = "strUltimaLettura";
+                colDul.Width = 100;
+                colDul.HeaderTextAlign = HorizontalAlignment.Center;
+                colDul.TextAlign = HorizontalAlignment.Left;
+                flvwListaApparati.AllColumns.Add(colDul);
 
                 BrightIdeasSoftware.OLVColumn colId = new BrightIdeasSoftware.OLVColumn();
                 colId.Text = StringheColonneTabelle.ListaApp06IdSb;  // "ID SPY-BATT";
