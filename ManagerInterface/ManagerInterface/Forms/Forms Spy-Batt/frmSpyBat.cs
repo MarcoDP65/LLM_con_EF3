@@ -3854,13 +3854,30 @@ namespace PannelloCharger
         {
             try
             {
+                bool _esito;
 
                 if (e.TabPage != tabSbFact)
                 {
+                    //Se non sono nel tab Funzioni di servizio, spengo la lettura automatica
                     chkParLetturaAuto.Checked = false;
                 }
+
+                if (e.TabPage == tabSbFact)
+                    {
+                        //Entrando nel tab Funzioni di servizio, se sono collegato ad uno SB, leggo i parametri, lo stato del Sig e i parametri di sistema.
+                        if (_apparatoPresente)
+                        {
+                            this.Cursor = Cursors.WaitCursor;
+                            _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
+                            MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
+                            _sb.CaricaStatoOC(_sb.Id, _apparatoPresente);
+                            MostraParametriOC();
+                            this.Cursor = Cursors.Default;
+                        }
+                    }
                 if (e.TabPage == tabCb05)
                 {
+                    // Se entro nel tab orologio, carico l'ora corrente dallo Spy-Batt
                     if (_apparatoPresente) CaricaOrologio();
                 }
                 if (e.TabPage == tabCb02)
@@ -9180,9 +9197,20 @@ namespace PannelloCharger
                 {
                     // apro la schermata moniitor sig 
                     frmMonitorSig60 _monitorCorrente = new frmMonitorSig60();
-                    //_monitorCorrente.Parent = this;
                     _monitorCorrente.SetAsSbMonitor();
                     _monitorCorrente.Show();
+
+                    // aggancio l'evento di ricezione su usb al monitor Sig
+                    // 1 determino la porta com collegata
+
+
+
+                    cEventHelper.RemoveEventHandler(_parametri.serialeSpyBatt, "DataReceived");
+                    _parametri.serialeSpyBatt.PortName.ToString();
+
+                    _parametri.serialeSpyBatt.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(_monitorCorrente._serialPort_DataReceived);
+
+
                     _monitorCorrente.BringToFront();
 
                 }

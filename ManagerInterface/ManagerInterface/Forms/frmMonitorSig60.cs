@@ -377,7 +377,7 @@ namespace PannelloCharger
         }
 
 
-        void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        public void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             int dataLength = ComPort.BytesToRead;
             byte[] data = new byte[dataLength];
@@ -393,8 +393,8 @@ namespace PannelloCharger
             if (nbrDataRead == 0)
                 return;
             // Send data to whom ever interested
-            if (NewSerialDataRecieved != null)
-                NewSerialDataRecieved(this, new SerialDataEventArgs(data));
+
+            NewSerialDataRecieved(this, new SerialDataEventArgs(data));
 
         }
 
@@ -404,7 +404,7 @@ namespace PannelloCharger
         }
 
 
-        void _spManager_NewSerialDataRecieved(object sender, SerialDataEventArgs e)
+        public void _spManager_NewSerialDataRecieved(object sender, SerialDataEventArgs e)
         {
             try
             {

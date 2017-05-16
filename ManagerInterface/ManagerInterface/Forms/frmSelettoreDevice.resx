@@ -132,7 +132,7 @@
     <value>flvwListaDevices</value>
   </data>
   <data name="&gt;&gt;flvwListaDevices.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;flvwListaDevices.Parent" xml:space="preserve">
     <value>$this</value>
