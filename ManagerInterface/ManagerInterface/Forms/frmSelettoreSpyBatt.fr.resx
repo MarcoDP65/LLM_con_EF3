@@ -117,4 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnApriSpybatt.Text" xml:space="preserve">
+    <value>Ouvrir carte</value>
+  </data>
+  <data name="btnChiudi.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="btnEsportaSpybatt.Text" xml:space="preserve">
+    <value>Export données</value>
+  </data>
+  <data name="btnEliminaDati.Text" xml:space="preserve">
+    <value>Annulation données</value>
+  </data>
+  <data name="btnImportaDati.Text" xml:space="preserve">
+    <value>Import données</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Archive SPY-BATT</value>
+  </data>
 </root>

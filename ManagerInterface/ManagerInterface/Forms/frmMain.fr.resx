@@ -117,4 +117,133 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="impostaStampanteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Réglage imprimante</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aperçu impression</value>
+  </data>
+  <data name="mnuStampa.Text" xml:space="preserve">
+    <value>Imprimer</value>
+  </data>
+  <data name="italianoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Italien</value>
+  </data>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>Anglais</value>
+  </data>
+  <data name="linguaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Langage</value>
+  </data>
+  <data name="mnuLogout.Text" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="mnuEsci.Text" xml:space="preserve">
+    <value>Sortie</value>
+  </data>
+  <data name="mnuFile.Text" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="mnuImpiantoGestioneImpianto.Text" xml:space="preserve">
+    <value>Gestion de l'implantation</value>
+  </data>
+  <data name="mnuImpianto.Text" xml:space="preserve">
+    <value>Implantation</value>
+  </data>
+  <data name="mnuConnettiCb.Text" xml:space="preserve">
+    <value>Connecter</value>
+  </data>
+  <data name="apparatiToolStripMenuItem.Text" xml:space="preserve">
+    <value>Appareils</value>
+  </data>
+  <data name="orologioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Horloge</value>
+  </data>
+  <data name="mnuLLDisplayManager.Text" xml:space="preserve">
+    <value>Gestionnaire d'affichage</value>
+  </data>
+  <data name="caricaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Connexion appareil</value>
+  </data>
+  <data name="archivioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="importaFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Import fichier</value>
+  </data>
+  <data name="importaHEXDUMPToolStripMenuItem.Text" xml:space="preserve">
+    <value>Import HEXDUMP</value>
+  </data>
+  <data name="alimentatoreToolStripMenuItem.Text" xml:space="preserve">
+    <value>Calibration alimentation </value>
+  </data>
+  <data name="flashFTDIToolStripMenuItem.Text" xml:space="preserve">
+    <value>Programme FTDI</value>
+  </data>
+  <data name="flashSPYBATTToolStripMenuItem.Text" xml:space="preserve">
+    <value>Programme SPY-BATT</value>
+  </data>
+  <data name="mSP430FlasherToolStripMenuItem.Text" xml:space="preserve">
+    <value>Programmateur MSP430</value>
+  </data>
+  <data name="sIG60MonitorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Moniteur SIG60</value>
+  </data>
+  <data name="programmazioniAvanzateToolStripMenuItem.Text" xml:space="preserve">
+    <value>programmation avancée</value>
+  </data>
+  <data name="testCalendarioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Calendrier test</value>
+  </data>
+  <data name="mnuServizi.Text" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="mnuCercaDispositiviUSB.Text" xml:space="preserve">
+    <value>Recherche périphériques USB</value>
+  </data>
+  <data name="mnuCercaDispositiviCOM.Text" xml:space="preserve">
+    <value>Recherche port COM série</value>
+  </data>
+  <data name="mnuSelezionePorta.Text" xml:space="preserve">
+    <value>Configuration port série</value>
+  </data>
+  <data name="mnuPortaSeriale.Text" xml:space="preserve">
+    <value>Console série</value>
+  </data>
+  <data name="mnuConsole.Text" xml:space="preserve">
+    <value>Console</value>
+  </data>
+  <data name="mnuImpostazioni.Text" xml:space="preserve">
+    <value>Recherche appareils</value>
+  </data>
+  <data name="mnuInformazioniSu.Text" xml:space="preserve">
+    <value>Au sujet de: LADE light</value>
+  </data>
+  <data name="tstBtnCercaUsb.Text" xml:space="preserve">
+    <value>Recherche USB</value>
+  </data>
+  <data name="tstBtnSave.Text" xml:space="preserve">
+    <value>Sauver</value>
+  </data>
+  <data name="tstBtnCercaRS232.Text" xml:space="preserve">
+    <value>Recherche RS232</value>
+  </data>
+  <data name="tstBtnExport.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="tstBtnPrint.Text" xml:space="preserve">
+    <value>Impression</value>
+  </data>
+  <data name="tstBtnRefresh.Text" xml:space="preserve">
+    <value>Rafraichir</value>
+  </data>
+  <data name="tstBtnRefresh.ToolTipText" xml:space="preserve">
+    <value>Rafraichir</value>
+  </data>
+  <data name="tstBtnClose.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="tstBtnClose.ToolTipText" xml:space="preserve">
+    <value>Fermer carte actuelle</value>
+  </data>
 </root>

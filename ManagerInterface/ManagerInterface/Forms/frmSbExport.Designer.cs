@@ -60,6 +60,8 @@
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
             this.btnAnteprima = new System.Windows.Forms.Button();
             this.btnEstract = new System.Windows.Forms.Button();
+            this.txtNumClone = new System.Windows.Forms.TextBox();
+            this.lblNumClone = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.grbGeneraExcel.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +69,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.lblNumClone);
+            this.groupBox2.Controls.Add(this.txtNumClone);
             this.groupBox2.Controls.Add(this.txtFwVersion);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtNumBrevi);
@@ -254,6 +258,16 @@
             this.btnEstract.UseVisualStyleBackColor = true;
             this.btnEstract.Click += new System.EventHandler(this.btnEstract_Click);
             // 
+            // txtNumClone
+            // 
+            resources.ApplyResources(this.txtNumClone, "txtNumClone");
+            this.txtNumClone.Name = "txtNumClone";
+            // 
+            // lblNumClone
+            // 
+            resources.ApplyResources(this.lblNumClone, "lblNumClone");
+            this.lblNumClone.Name = "lblNumClone";
+            // 
             // frmSbExport
             // 
             resources.ApplyResources(this, "$this");
@@ -309,5 +323,7 @@
         private System.Windows.Forms.Label lblTipoFile;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtFileAnalisi;
+        private System.Windows.Forms.Label lblNumClone;
+        private System.Windows.Forms.TextBox txtNumClone;
     }
 }

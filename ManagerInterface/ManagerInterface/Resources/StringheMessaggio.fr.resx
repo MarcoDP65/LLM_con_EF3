@@ -117,4 +117,151 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="benvenuto" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
+  <data name="ConfermaCambioLingua" xml:space="preserve">
+    <value>L'opération implique la fermeture de tous les onglets ouverts.</value>
+  </data>
+  <data name="ConfermaDisconnessione" xml:space="preserve">
+    <value>Déconnecter l'utilisateur actuel? (L'opération fermera toutes les fenêtres ouvertes)</value>
+  </data>
+  <data name="strVistaLunghiCol01" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="strVistaLunghiTtCol01" xml:space="preserve">
+    <value>Progression Phase</value>
+  </data>
+  <data name="strVistaLunghiCol02" xml:space="preserve">
+    <value>Phase type</value>
+  </data>
+  <data name="strVistaLunghiTtCol02" xml:space="preserve">
+    <value>Phase type</value>
+  </data>
+  <data name="strVistaLunghiCol03" xml:space="preserve">
+    <value>Début</value>
+  </data>
+  <data name="strVistaLunghiTtCol03" xml:space="preserve">
+    <value>Date / Heure de début de phase</value>
+  </data>
+  <data name="strVistaLunghiCol04" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="strVistaLunghiTtCol04" xml:space="preserve">
+    <value>Date / heure de fin de phase</value>
+  </data>
+  <data name="strVistaLunghiCol05" xml:space="preserve">
+    <value>Durée</value>
+  </data>
+  <data name="strVistaLunghiTtCol05" xml:space="preserve">
+    <value>Durée phase</value>
+  </data>
+  <data name="strVistaLunghiCol06m" xml:space="preserve">
+    <value>°C min</value>
+  </data>
+  <data name="strVistaLunghiTtCol06m" xml:space="preserve">
+    <value>Température minimale</value>
+  </data>
+  <data name="strVistaLunghiCol06" xml:space="preserve">
+    <value>°C max</value>
+  </data>
+  <data name="strVistaLunghiTtCol06" xml:space="preserve">
+    <value>Température maximale</value>
+  </data>
+  <data name="strVistaLunghiCol07" xml:space="preserve">
+    <value>V min</value>
+  </data>
+  <data name="strVistaLunghiTtCol07" xml:space="preserve">
+    <value>Tension minimale</value>
+  </data>
+  <data name="strVistaLunghiCol08" xml:space="preserve">
+    <value>V max</value>
+  </data>
+  <data name="strVistaLunghiTtCol08" xml:space="preserve">
+    <value>Tension maximale</value>
+  </data>
+  <data name="strVistaLunghiCol09" xml:space="preserve">
+    <value>I min</value>
+  </data>
+  <data name="strGiornoLun" xml:space="preserve">
+    <value>Lun</value>
+  </data>
+  <data name="strVistaLunghiCol10" xml:space="preserve">
+    <value>I max</value>
+  </data>
+  <data name="strVistaLunghiCol11" xml:space="preserve">
+    <value>Etat électrolyte</value>
+  </data>
+  <data name="strVistaLunghiCol12" xml:space="preserve">
+    <value>Ah</value>
+  </data>
+  <data name="strVistaLunghiCol13" xml:space="preserve">
+    <value>kWh total</value>
+  </data>
+  <data name="strVistaLunghiCol13C" xml:space="preserve">
+    <value>kWh charge</value>
+  </data>
+  <data name="strVistaLunghiCol13S" xml:space="preserve">
+    <value>kWh décharge</value>
+  </data>
+  <data name="strVistaLunghiCol14" xml:space="preserve">
+    <value>S.o.C.</value>
+  </data>
+  <data name="strVistaLunghiCol15" xml:space="preserve">
+    <value>F.d.C.</value>
+  </data>
+  <data name="strVistaLunghiCol16" xml:space="preserve">
+    <value>Enregistrements</value>
+  </data>
+  <data name="strVistaLunghiCol17" xml:space="preserve">
+    <value>Enregistrements</value>
+  </data>
+  <data name="strVistaLunghiCol20" xml:space="preserve">
+    <value>Max déséq.</value>
+  </data>
+  <data name="strVistaLunghiColAhCaricati" xml:space="preserve">
+    <value>Ah charge</value>
+  </data>
+  <data name="strVistaLunghiColAhScaricati" xml:space="preserve">
+    <value>Ah décharge</value>
+  </data>
+  <data name="strVistaLunghiColCondStop" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="strVistaLunghiColIdProgramma" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="strFirmwareNonValido" xml:space="preserve">
+    <value>Version microcode inconnue</value>
+  </data>
+  <data name="strMsgAggFWFase1" xml:space="preserve">
+    <value>Phase 1: Envoi Entête</value>
+  </data>
+  <data name="strMsgAggFWFase1err1" xml:space="preserve">
+    <value>Chargement entête échoué</value>
+  </data>
+  <data name="strMsgAggFWFase2" xml:space="preserve">
+    <value>Phase 2: Envoi données</value>
+  </data>
+  <data name="strMsgAggFWFase2err1" xml:space="preserve">
+    <value>Chargement bloc flash 1 échoué</value>
+  </data>
+  <data name="strMsgAggFWFase2err2" xml:space="preserve">
+    <value>Chargement bloc flash 2 échoué</value>
+  </data>
+  <data name="strMsgAggFWFase2err3" xml:space="preserve">
+    <value>Chargement table de proxy échoué</value>
+  </data>
+  <data name="strMsgAggFWFase3" xml:space="preserve">
+    <value>Phase 3 - redémarrage SPY-BATT</value>
+  </data>
+  <data name="strMsgAggiornamentoFirmware" xml:space="preserve">
+    <value>Mise à jour microcode</value>
+  </data>
+  <data name="strTitoloListaBrevi" xml:space="preserve">
+    <value>Détails phase</value>
+  </data>
+  <data name="strVistaLunghiColOverT" xml:space="preserve">
+    <value>Temps de surchauffe</value>
+  </data>
 </root>

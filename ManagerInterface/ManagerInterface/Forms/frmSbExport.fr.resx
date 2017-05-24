@@ -117,4 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Version microcode</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Phases</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="lblMatricola.Text" xml:space="preserve">
+    <value>Matricule</value>
+  </data>
+  <data name="lblModello.Text" xml:space="preserve">
+    <value>Modèle</value>
+  </data>
+  <data name="lblFirmwDisp.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="lblFirmwCb.Text" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>SPY-BATT</value>
+  </data>
+  <data name="chkGeneraFileAnalisi.Text" xml:space="preserve">
+    <value>Générer rapport</value>
+  </data>
+  <data name="lblTipoFile.Text" xml:space="preserve">
+    <value>Fichier données</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Fichier rapport d'analyse</value>
+  </data>
+  <data name="grbGeneraExcel.Text" xml:space="preserve">
+    <value>Sélection fichier</value>
+  </data>
+  <data name="chkChiudi.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="btnDataExport.Text" xml:space="preserve">
+    <value>Sauver données</value>
+  </data>
+  <data name="btnAnteprima.Text" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="btnEstract.Text" xml:space="preserve">
+    <value>Extraction données</value>
+  </data>
 </root>

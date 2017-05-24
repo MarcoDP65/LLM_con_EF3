@@ -117,4 +117,265 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Capacité nominale</value>
+  </data>
+  <data name="lblCelleP1.Text" xml:space="preserve">
+    <value>Elément V1</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Elément tot</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Elément V3</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Elément V2</value>
+  </data>
+  <data name="lblTipoBatteria.Text" xml:space="preserve">
+    <value>Type batterie</value>
+  </data>
+  <data name="chkMemProgrammed.Text" xml:space="preserve">
+    <value>Activer configuration</value>
+  </data>
+  <data name="btnInserisciProgramma.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btnAnnulla.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="chkSondaElPresente.Text" xml:space="preserve">
+    <value>Sonde électrolyte installée</value>
+  </data>
+  <data name="lblTempMin.Text" xml:space="preserve">
+    <value>T reprise (°C)</value>
+  </data>
+  <data name="lblTempMax.Text" xml:space="preserve">
+    <value>T alarme (°C)</value>
+  </data>
+  <data name="optVersoInverso.Text" xml:space="preserve">
+    <value>Inversée</value>
+  </data>
+  <data name="optVersoDiretto.Text" xml:space="preserve">
+    <value>Directe</value>
+  </data>
+  <data name="grbVersoCorrente.Text" xml:space="preserve">
+    <value>Version installée</value>
+  </data>
+  <data name="lblNumSpire.Text" xml:space="preserve">
+    <value>Nombre de spire</value>
+  </data>
+  <data name="chkCliResetContatori.Text" xml:space="preserve">
+    <value>Réinitialiser compteurs de charge</value>
+  </data>
+  <data name="txtTensioneNom.Text" xml:space="preserve">
+    <value>Tension nominale</value>
+  </data>
+  <data name="tbpParametri.Text" xml:space="preserve">
+    <value>Paramètres de base</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Tension connexion</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Courant max (imp)</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Tension finale</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Tension de gaz</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Courant min (W)</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Courant max (W)</value>
+  </data>
+  <data name="lblPro02.Text" xml:space="preserve">
+    <value>Courant min (I)</value>
+  </data>
+  <data name="lblPro08.Text" xml:space="preserve">
+    <value>Remplisseur</value>
+  </data>
+  <data name="lblPro06.Text" xml:space="preserve">
+    <value>T° reprise</value>
+  </data>
+  <data name="lblPro05.Text" xml:space="preserve">
+    <value>T° alarme</value>
+  </data>
+  <data name="lblPro03.Text" xml:space="preserve">
+    <value>Courant max (W)</value>
+  </data>
+  <data name="lblPro09.Text" xml:space="preserve">
+    <value>Biberonnage</value>
+  </data>
+  <data name="lblProImpulsiRabb.Text" xml:space="preserve">
+    <value>Impulsion rempl.</value>
+  </data>
+  <data name="lblProCoeffBiber.Text" xml:space="preserve">
+    <value>Coeff Biber.</value>
+  </data>
+  <data name="lblProDerivaUnder.Text" xml:space="preserve">
+    <value>Dérive &lt; 15°C</value>
+  </data>
+  <data name="lblProDerivaOver.Text" xml:space="preserve">
+    <value>Dérive &gt; 25°C</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Minutes max déséq.</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Déséq. d'éléments max</value>
+  </data>
+  <data name="tbpSetupPro.Text" xml:space="preserve">
+    <value>Paramètres avancés</value>
+  </data>
+  <data name="panel9.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel9.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Horaire de changement de cycle</value>
+  </data>
+  <data name="panel2.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel2.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Horaire de changement de cycle</value>
+  </data>
+  <data name="panel1.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel1.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="lblMainOrari.Text" xml:space="preserve">
+    <value>Horaire de changement de cycle</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="panel8.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel8.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="lblTurno3.Text" xml:space="preserve">
+    <value>3ème tour</value>
+  </data>
+  <data name="panel7.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel7.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="lblTurno2.Text" xml:space="preserve">
+    <value>2ème tour</value>
+  </data>
+  <data name="panel6.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel6.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="lblTurno1.Text" xml:space="preserve">
+    <value>1er tour</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="tbpSetupTurni.Text" xml:space="preserve">
+    <value>Planification tours</value>
+  </data>
+  <data name="panel19.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel19.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="label51.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="label52.Text" xml:space="preserve">
+    <value>Horaire de changement de cycle</value>
+  </data>
+  <data name="label53.Text" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="panel23.AccessibleDescription" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="panel23.AccessibleName" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="label56.Text" xml:space="preserve">
+    <value>1er tour</value>
+  </data>
+  <data name="label57.Text" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="label58.Text" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="label59.Text" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="label60.Text" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="label61.Text" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="label62.Text" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="tbpSetupTempo.Text" xml:space="preserve">
+    <value>Planification temps</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Nouvelle configuration</value>
+  </data>
 </root>

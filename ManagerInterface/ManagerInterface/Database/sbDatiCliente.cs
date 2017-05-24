@@ -166,11 +166,15 @@ namespace MoriData
 
         }
 
+        /// <summary>
+        /// Salva i dati correnti nel db locale.
+        /// </summary>
+        /// <returns><c>true</c> se il salvataggio riesce <c>false</c> altrimenti.</returns>
         public bool salvaDati()
         {
             try
             {
-                if (_sbdc.IdApparato != nullID & _sbdc.IdApparato != null & _sbdc.IdCliente != null)
+                if (_sbdc.IdApparato != nullID & _sbdc.IdApparato != null & _sbdc.IdCliente != 0)
                 {
 
                     _sbDatiCliente _TestDati = _caricaDati(_sbdc.IdApparato, _sbdc.IdCliente);
@@ -272,6 +276,25 @@ namespace MoriData
 
         }
 
+        public bool ClonaRecord(string NuovoIdApparato )
+        {
+            try
+            {
+                // 1. Dati cliente
+                _sbDatiCliente _newDC = FunzioniComuni.CloneJson<_sbDatiCliente>(_sbdc);
+                _newDC.IdApparato = NuovoIdApparato;
+
+                int _result = _database.Insert(_newDC);
+
+                return (_result == 1);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ClonaRecord: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
 
         #region Class Parameters
 
@@ -349,7 +372,6 @@ namespace MoriData
             }
         }
 
-
         public string SerialNumber
         {
             get { return _sbdc.SerialNumber; }
@@ -359,7 +381,6 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
-
 
         public string BatteryBrand
         {
@@ -390,7 +411,6 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
-
 
         public string BatteryLLId
         {

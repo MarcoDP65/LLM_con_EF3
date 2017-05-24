@@ -117,4 +117,1351 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnGeneraCodice.Text" xml:space="preserve">
+    <value>Générer code</value>
+  </data>
+  <data name="label139.Text" xml:space="preserve">
+    <value>Code de déblocage</value>
+  </data>
+  <data name="grbAbilitazioneReset.Text" xml:space="preserve">
+    <value>Autoriser vidage mémoire</value>
+  </data>
+  <data name="btnRicaricaDati.Text" xml:space="preserve">
+    <value>Téléchargement données du SPY-BATT</value>
+  </data>
+  <data name="label91.Text" xml:space="preserve">
+    <value>Dernières données téléchargées</value>
+  </data>
+  <data name="grbDownloadDati.Text" xml:space="preserve">
+    <value>Téléchargement </value>
+  </data>
+  <data name="btnSfoglia.Text" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="chkSaveHexDump.Text" xml:space="preserve">
+    <value>Sauver image</value>
+  </data>
+  <data name="chkRecuperaCicli.Text" xml:space="preserve">
+    <value>Cycles récupérés</value>
+  </data>
+  <data name="chkEraseDB.Text" xml:space="preserve">
+    <value>Vider B.d.D. avant lecture</value>
+  </data>
+  <data name="chkAckDumpMem.Text" xml:space="preserve">
+    <value>Emettre paquet ACK</value>
+  </data>
+  <data name="grbMainDlOptions.Text" xml:space="preserve">
+    <value>Paramètres de téléchargement</value>
+  </data>
+  <data name="label115.Text" xml:space="preserve">
+    <value>Ptr. court</value>
+  </data>
+  <data name="label116.Text" xml:space="preserve">
+    <value>Cont. court</value>
+  </data>
+  <data name="label113.Text" xml:space="preserve">
+    <value>Ptr. long</value>
+  </data>
+  <data name="label114.Text" xml:space="preserve">
+    <value>Cont. long</value>
+  </data>
+  <data name="grbTestataContatori.Text" xml:space="preserve">
+    <value>Compteur</value>
+  </data>
+  <data name="btnSalvaCliente.Text" xml:space="preserve">
+    <value>Sauver info client</value>
+  </data>
+  <data name="lblFwStratDisp.Text" xml:space="preserve">
+    <value>Rev stratégie</value>
+  </data>
+  <data name="lblGenSerNum.Text" xml:space="preserve">
+    <value>Numéro de série</value>
+  </data>
+  <data name="lblGenConf.Text" xml:space="preserve">
+    <value>Réglage actif</value>
+  </data>
+  <data name="lblGenFasi.Text" xml:space="preserve">
+    <value>Phases enregistrées</value>
+  </data>
+  <data name="lblBootLdrDisp.Text" xml:space="preserve">
+    <value>Rev amorceur</value>
+  </data>
+  <data name="lblGenID.Text" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="lblGenMod.Text" xml:space="preserve">
+    <value>Modèle</value>
+  </data>
+  <data name="lblFirmwDisp.Text" xml:space="preserve">
+    <value>Version microcode</value>
+  </data>
+  <data name="lblFirmwCb.Text" xml:space="preserve">
+    <value>Version matériel</value>
+  </data>
+  <data name="grbTestata.Text" xml:space="preserve">
+    <value>SPY-BATT</value>
+  </data>
+  <data name="label254.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblCliCicliAttesi.Text" xml:space="preserve">
+    <value>Cycles attendus</value>
+  </data>
+  <data name="lblCliIdBatteria.Text" xml:space="preserve">
+    <value>Identifiant batterie</value>
+  </data>
+  <data name="lblCliMarcaBatt.Text" xml:space="preserve">
+    <value>Marque batterie</value>
+  </data>
+  <data name="lblCliModellpApp.Text" xml:space="preserve">
+    <value>Modèle batterie</value>
+  </data>
+  <data name="lbNoteCliente.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="lblCliCliente.Text" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="grbDatiCliente.Text" xml:space="preserve">
+    <value>Info client</value>
+  </data>
+  <data name="tabCb01.Text" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="label137.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="grbStatEventiAnomali.Text" xml:space="preserve">
+    <value>Anomalies</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>Cycle moyen (Ah)</value>
+  </data>
+  <data name="lblStatEnergiaMedia.Text" xml:space="preserve">
+    <value>Cycle moyen (kWh)</value>
+  </data>
+  <data name="lblStatTotEnergia.Text" xml:space="preserve">
+    <value>Energie totale (kWh)</value>
+  </data>
+  <data name="grbStatEnergia.Text" xml:space="preserve">
+    <value>Energie fournie par la batterie</value>
+  </data>
+  <data name="label136.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="label135.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="label47.Text" xml:space="preserve">
+    <value>Surchauffe</value>
+  </data>
+  <data name="label48.Text" xml:space="preserve">
+    <value>Surchauffe</value>
+  </data>
+  <data name="lblStatNumCariche.Text" xml:space="preserve">
+    <value>Charges</value>
+  </data>
+  <data name="lblStatNumCaricheParz.Text" xml:space="preserve">
+    <value>Charges partielles</value>
+  </data>
+  <data name="lblStatNumCaricheComp.Text" xml:space="preserve">
+    <value>Charges complètes</value>
+  </data>
+  <data name="lblStatTempoInCarica.Text" xml:space="preserve">
+    <value>Temps de charge</value>
+  </data>
+  <data name="grbStatCarica.Text" xml:space="preserve">
+    <value>Charge</value>
+  </data>
+  <data name="label46.Text" xml:space="preserve">
+    <value>Surchauffe</value>
+  </data>
+  <data name="lblStatMediaScarica.Text" xml:space="preserve">
+    <value>D.o.D. moyenne</value>
+  </data>
+  <data name="lblStatPauseSC.Text" xml:space="preserve">
+    <value>Pauses critiques</value>
+  </data>
+  <data name="lblStatNumSovrascariche.Text" xml:space="preserve">
+    <value>Surdécharges</value>
+  </data>
+  <data name="lblStatNumScariche.Text" xml:space="preserve">
+    <value>Décharges</value>
+  </data>
+  <data name="lblStatTempoInScarica.Text" xml:space="preserve">
+    <value>Temps de décharge</value>
+  </data>
+  <data name="grbStatScariche.Text" xml:space="preserve">
+    <value>Décharge</value>
+  </data>
+  <data name="lblStatMancElettr.Text" xml:space="preserve">
+    <value>Manque d'électrolyte</value>
+  </data>
+  <data name="lblStatSbilCelle.Text" xml:space="preserve">
+    <value>Déséquilibre d'éléments</value>
+  </data>
+  <data name="lblStatNumCicli.Text" xml:space="preserve">
+    <value>Nombre de cycles</value>
+  </data>
+  <data name="lblStatSOH.Text" xml:space="preserve">
+    <value>S.o.H.</value>
+  </data>
+  <data name="lblStatGiorniAtt.Text" xml:space="preserve">
+    <value>Jours d'activité</value>
+  </data>
+  <data name="lblStatAttivazioe.Text" xml:space="preserve">
+    <value>Activation</value>
+  </data>
+  <data name="grbStatStato.Text" xml:space="preserve">
+    <value>Etat batterie</value>
+  </data>
+  <data name="tabStatSintesi.Text" xml:space="preserve">
+    <value>Résumé</value>
+  </data>
+  <data name="tabStatCockpit.Text" xml:space="preserve">
+    <value>Tableau de bord</value>
+  </data>
+  <data name="label49.Text" xml:space="preserve">
+    <value>Comparaison des bénéfices</value>
+  </data>
+  <data name="tabStatComparazioni.Text" xml:space="preserve">
+    <value>Comparaisons</value>
+  </data>
+  <data name="btnGraficiTest.Text" xml:space="preserve">
+    <value>Graphiques de test</value>
+  </data>
+  <data name="chkStatGraficoAssEl.Text" xml:space="preserve">
+    <value>% d'absence d'électrolyte</value>
+  </data>
+  <data name="chkStatGraficoPause.Text" xml:space="preserve">
+    <value>Pause en batterie basse</value>
+  </data>
+  <data name="chkStatGraficoFC.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="chkStatGraficoDTCP.Text" xml:space="preserve">
+    <value>Augmentation T° en charge partielle</value>
+  </data>
+  <data name="chkStatGraficoDTCC.Text" xml:space="preserve">
+    <value>Augmentation T° en charge complète</value>
+  </data>
+  <data name="chkStatGraficoTmaxCP.Text" xml:space="preserve">
+    <value>T° max en charge partielle</value>
+  </data>
+  <data name="chkStatGraficoTmaxCC.Text" xml:space="preserve">
+    <value>T° max en charge complète</value>
+  </data>
+  <data name="chkStatGraficoDTS.Text" xml:space="preserve">
+    <value>Augmentation T° en décharge</value>
+  </data>
+  <data name="chkStatGraficoTminS.Text" xml:space="preserve">
+    <value>T° min en décharge</value>
+  </data>
+  <data name="chkStatGraficoTmaxS.Text" xml:space="preserve">
+    <value>T° max en décharge</value>
+  </data>
+  <data name="chkStatGraficoDurCP.Text" xml:space="preserve">
+    <value>Durée charge partielle</value>
+  </data>
+  <data name="chkStatGraficoDurCC.Text" xml:space="preserve">
+    <value>Durée charge complète</value>
+  </data>
+  <data name="chkStatGraficoDoD.Text" xml:space="preserve">
+    <value>D.o.D.</value>
+  </data>
+  <data name="chkStatGraficoTemporale.Text" xml:space="preserve">
+    <value>Graphique temporelle</value>
+  </data>
+  <data name="grbStatSelGrafici.Text" xml:space="preserve">
+    <value>Sélection graphique</value>
+  </data>
+  <data name="btnStatRicalcola.Text" xml:space="preserve">
+    <value>Recalcul</value>
+  </data>
+  <data name="lblStatDataFine.Text" xml:space="preserve">
+    <value>Mois de fin (exclu)</value>
+  </data>
+  <data name="lblStatDataInizio.Text" xml:space="preserve">
+    <value>Mois de début</value>
+  </data>
+  <data name="dtpStatFine.CustomFormat" xml:space="preserve">
+    <value>01/MM/AAAA</value>
+  </data>
+  <data name="dtpStatInizio.CustomFormat" xml:space="preserve">
+    <value>01/MM/AAAA</value>
+  </data>
+  <data name="optStatPeriodoSel.Text" xml:space="preserve">
+    <value>Période sélectionnée</value>
+  </data>
+  <data name="optStatInteroIntervallo.Text" xml:space="preserve">
+    <value>Période totale</value>
+  </data>
+  <data name="grbStatSelPeriodo.Text" xml:space="preserve">
+    <value>Sélection période</value>
+  </data>
+  <data name="tabStatParametri.Text" xml:space="preserve">
+    <value>Sélection paramètres</value>
+  </data>
+  <data name="tabStatSoglie.Text" xml:space="preserve">
+    <value>Seuils</value>
+  </data>
+  <data name="tabStatistiche.Text" xml:space="preserve">
+    <value>Statistiques</value>
+  </data>
+  <data name="btnRiconsolidaBrevi.Text" xml:space="preserve">
+    <value>Consolidation courte</value>
+  </data>
+  <data name="chkMemLngSalvaRicalcolo.Text" xml:space="preserve">
+    <value>Enregistrer recalcul</value>
+  </data>
+  <data name="btnRicalcolaSoc.Text" xml:space="preserve">
+    <value>Recalculer S.o.C.</value>
+  </data>
+  <data name="chkCaricaBrevi.Text" xml:space="preserve">
+    <value>Téléchargement court direct</value>
+  </data>
+  <data name="chkInvertiCorreti.Text" xml:space="preserve">
+    <value>Inverser courants de décharge</value>
+  </data>
+  <data name="btnRigeneraLista.Text" xml:space="preserve">
+    <value>Régénérer liste</value>
+  </data>
+  <data name="btnCaricaListaUltimiLunghi.Text" xml:space="preserve">
+    <value>Charger dernier évènement</value>
+  </data>
+  <data name="btnCaricaDettaglioSel.Text" xml:space="preserve">
+    <value>Charger détail évènements</value>
+  </data>
+  <data name="btnCaricaListaLunghi.Text" xml:space="preserve">
+    <value>Recharger liste évènement</value>
+  </data>
+  <data name="btnDettaglioCicliBrevi.Text" xml:space="preserve">
+    <value>Montrer détails</value>
+  </data>
+  <data name="btnGeneraCsv.Text" xml:space="preserve">
+    <value>Créer fichier</value>
+  </data>
+  <data name="btnSelFileCicli.Text" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="grbEsportaExcel.Text" xml:space="preserve">
+    <value>Exports cycles en Excel</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Jusqu'au cycle</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Du cycle</value>
+  </data>
+  <data name="txtMemA.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtMemDa.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnCaricaDaMemoria.Text" xml:space="preserve">
+    <value>Lecture directe</value>
+  </data>
+  <data name="grbMemCicliReadMem.Text" xml:space="preserve">
+    <value>Accès directe à la mémoire</value>
+  </data>
+  <data name="txtCicliProgrammazione.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Total événements programmation</value>
+  </data>
+  <data name="lblEventiTotali.Text" xml:space="preserve">
+    <value>Total événements</value>
+  </data>
+  <data name="grbMemCicliContatori.Text" xml:space="preserve">
+    <value>Compteurs</value>
+  </data>
+  <data name="tabCb04.Text" xml:space="preserve">
+    <value>cycles en mémoire</value>
+  </data>
+  <data name="btnPianSalvaCliente.Text" xml:space="preserve">
+    <value>Sauver</value>
+  </data>
+  <data name="btnPianRefresh.Text" xml:space="preserve">
+    <value>Rafraichir</value>
+  </data>
+  <data name="label243.Text" xml:space="preserve">
+    <value>Planification</value>
+  </data>
+  <data name="lblPro08.Text" xml:space="preserve">
+    <value>Remplisseur de batterie</value>
+  </data>
+  <data name="lblPro09.Text" xml:space="preserve">
+    <value>Biberonnage</value>
+  </data>
+  <data name="grbProgrImpianto.Text" xml:space="preserve">
+    <value>Paramètres de l'implantation</value>
+  </data>
+  <data name="txtProgcNumSpire.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtProTensioneRaccordo.Text" xml:space="preserve">
+    <value>2,45</value>
+  </data>
+  <data name="label216.Text" xml:space="preserve">
+    <value>V/el</value>
+  </data>
+  <data name="label217.Text" xml:space="preserve">
+    <value>V jonction</value>
+  </data>
+  <data name="label218.Text" xml:space="preserve">
+    <value>I Max (Imp)</value>
+  </data>
+  <data name="txtProMaxCurrImp.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label219.Text" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="txtProTensioneFinale.Text" xml:space="preserve">
+    <value>2,65</value>
+  </data>
+  <data name="label220.Text" xml:space="preserve">
+    <value>V/el</value>
+  </data>
+  <data name="label221.Text" xml:space="preserve">
+    <value>V final</value>
+  </data>
+  <data name="txtProTensioneGas.Text" xml:space="preserve">
+    <value>2,40</value>
+  </data>
+  <data name="label222.Text" xml:space="preserve">
+    <value>V/el</value>
+  </data>
+  <data name="label223.Text" xml:space="preserve">
+    <value>V gaz</value>
+  </data>
+  <data name="txtProMinCurrW.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label225.Text" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="lblPro06.Text" xml:space="preserve">
+    <value>T° reprise</value>
+  </data>
+  <data name="lblPro05.Text" xml:space="preserve">
+    <value>T°C alarme</value>
+  </data>
+  <data name="label215.Text" xml:space="preserve">
+    <value>Vers. Actuelle</value>
+  </data>
+  <data name="label214.Text" xml:space="preserve">
+    <value>Sonde électrolyte</value>
+  </data>
+  <data name="label213.Text" xml:space="preserve">
+    <value>Spire</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Type de batterie</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Nb éléments</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Élément V3</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Élément V2</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Capacité nominale</value>
+  </data>
+  <data name="lblCelleP1.Text" xml:space="preserve">
+    <value>Élément V1</value>
+  </data>
+  <data name="txtTensioneNom.Text" xml:space="preserve">
+    <value>Tension nominale</value>
+  </data>
+  <data name="grbProgrammazione.Text" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="btnAttivaProgrammazione.Text" xml:space="preserve">
+    <value>Activation configuration</value>
+  </data>
+  <data name="btnNuovoProgramma.Text" xml:space="preserve">
+    <value>Nouvelle configuration</value>
+  </data>
+  <data name="btnRicaricaProgr.Text" xml:space="preserve">
+    <value>Lecture configuration</value>
+  </data>
+  <data name="label271.Text" xml:space="preserve">
+    <value>Courant impulsionnel (A)</value>
+  </data>
+  <data name="label270.Text" xml:space="preserve">
+    <value>Minutes en pause</value>
+  </data>
+  <data name="label269.Text" xml:space="preserve">
+    <value>Minutes en charge</value>
+  </data>
+  <data name="label268.Text" xml:space="preserve">
+    <value>Impulsion</value>
+  </data>
+  <data name="grbProgParEqual.Text" xml:space="preserve">
+    <value>Egalisation</value>
+  </data>
+  <data name="tabCb02.Text" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="label231.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="label232.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="label233.Text" xml:space="preserve">
+    <value>Horaire de changement de cycle</value>
+  </data>
+  <data name="label228.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="label229.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="label230.Text" xml:space="preserve">
+    <value>Horaire de changement de cycle</value>
+  </data>
+  <data name="label234.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="label235.Text" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="lblMainOrari.Text" xml:space="preserve">
+    <value>Horaire de changement de cycle</value>
+  </data>
+  <data name="lblTurno2.Text" xml:space="preserve">
+    <value>2ème cycle</value>
+  </data>
+  <data name="lblTurno1.Text" xml:space="preserve">
+    <value>1er cycle</value>
+  </data>
+  <data name="lblTurno3.Text" xml:space="preserve">
+    <value>3ème cycle</value>
+  </data>
+  <data name="tbpPianificazione.Text" xml:space="preserve">
+    <value>Planification</value>
+  </data>
+  <data name="label266.Text" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="label267.Text" xml:space="preserve">
+    <value>Heure</value>
+  </data>
+  <data name="btnCalScriviGiorno.Text" xml:space="preserve">
+    <value>Régler date/heure manuel</value>
+  </data>
+  <data name="label250.Text" xml:space="preserve">
+    <value>Année</value>
+  </data>
+  <data name="label249.Text" xml:space="preserve">
+    <value>Mois</value>
+  </data>
+  <data name="label248.Text" xml:space="preserve">
+    <value>Jour</value>
+  </data>
+  <data name="grbCalData.Text" xml:space="preserve">
+    <value>Forçage date/heure</value>
+  </data>
+  <data name="lblOrarioAccensione.Text" xml:space="preserve">
+    <value>Temps</value>
+  </data>
+  <data name="rbtAccensione03.Text" xml:space="preserve">
+    <value>Programmé</value>
+  </data>
+  <data name="lblOreRitardo.Text" xml:space="preserve">
+    <value>Heures</value>
+  </data>
+  <data name="rbtAccensione02.Text" xml:space="preserve">
+    <value>Différé</value>
+  </data>
+  <data name="rbtAccensione01.Text" xml:space="preserve">
+    <value>Immédiat</value>
+  </data>
+  <data name="grbAccensione.Text" xml:space="preserve">
+    <value>Commutation</value>
+  </data>
+  <data name="btnScriviRtc.Text" xml:space="preserve">
+    <value>Régler horloge</value>
+  </data>
+  <data name="btnLeggiRtc.Text" xml:space="preserve">
+    <value>Lire horloge</value>
+  </data>
+  <data name="lblOraRTC.Text" xml:space="preserve">
+    <value>Temps</value>
+  </data>
+  <data name="lblDataRTC.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="grbOraCorrente.Text" xml:space="preserve">
+    <value>Horloge système</value>
+  </data>
+  <data name="tabCb05.Text" xml:space="preserve">
+    <value>Horloge temps réel</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Vmax V/él</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Vmin V/él</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>-mV/él / °C</value>
+  </data>
+  <data name="opSonda02.Text" xml:space="preserve">
+    <value>Marche</value>
+  </data>
+  <data name="opSonda01.Text" xml:space="preserve">
+    <value>Arrêt</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Sonde thermique</value>
+  </data>
+  <data name="tabCb03.Text" xml:space="preserve">
+    <value>Sonde thermique</value>
+  </data>
+  <data name="btnFSerVerificaOC.Text" xml:space="preserve">
+    <value>Vérifier</value>
+  </data>
+  <data name="chkFSerEchoOC.Text" xml:space="preserve">
+    <value>ECHO</value>
+  </data>
+  <data name="btnFSerImpostaOC.Text" xml:space="preserve">
+    <value>Régler</value>
+  </data>
+  <data name="label278.Text" xml:space="preserve">
+    <value>bande passante</value>
+  </data>
+  <data name="grbVarParametriSig.Text" xml:space="preserve">
+    <value>Paramètres de communication LL</value>
+  </data>
+  <data name="chkCliResetContatori.Text" xml:space="preserve">
+    <value>Restaurer l'état de charge</value>
+  </data>
+  <data name="btnResetScheda.Text" xml:space="preserve">
+    <value>Redémarrer</value>
+  </data>
+  <data name="grbVarRestartScheda.Text" xml:space="preserve">
+    <value>Redémarrage carte électronique</value>
+  </data>
+  <data name="lblSvcCausaLastReset.Text" xml:space="preserve">
+    <value>Cause dernière réinitialisation</value>
+  </data>
+  <data name="label253.Text" xml:space="preserve">
+    <value>Durée pause</value>
+  </data>
+  <data name="btnSvcScriviParametriMedie.Text" xml:space="preserve">
+    <value>Régler</value>
+  </data>
+  <data name="btnSvcLeggiParametriMedie.Text" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="label252.Text" xml:space="preserve">
+    <value>Nb lecture V/°C</value>
+  </data>
+  <data name="label251.Text" xml:space="preserve">
+    <value>Nombre de lecture I</value>
+  </data>
+  <data name="grbSvcParametriMedie.Text" xml:space="preserve">
+    <value>Paramètres système</value>
+  </data>
+  <data name="chkFSerMantieniCliente.Text" xml:space="preserve">
+    <value>Maintien données client</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="grbVarResetScheda.Text" xml:space="preserve">
+    <value>Vidange mémoire</value>
+  </data>
+  <data name="btnAttivaCalibrazione.Text" xml:space="preserve">
+    <value>Activer calibration</value>
+  </data>
+  <data name="btnLeggiCalibrazioni.Text" xml:space="preserve">
+    <value>Lire calibration</value>
+  </data>
+  <data name="btnConsolidaBrevi.Text" xml:space="preserve">
+    <value>consolidation brève</value>
+  </data>
+  <data name="btnMemProgrammed.Text" xml:space="preserve">
+    <value>Mém programmée</value>
+  </data>
+  <data name="btnStampaScheda.Text" xml:space="preserve">
+    <value>Impression rapport</value>
+  </data>
+  <data name="btnCalScriviParametro.Text" xml:space="preserve">
+    <value>Ecrire paramètre</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>Valeur réelle</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>Paramètre</value>
+  </data>
+  <data name="grbComandiCalibrazione.Text" xml:space="preserve">
+    <value>Saisir calibration</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>Cour neg</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Cour pos</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>Cour zéro</value>
+  </data>
+  <data name="grbCalValues.Text" xml:space="preserve">
+    <value>Valeurs</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Cour neg</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Cour pos</value>
+  </data>
+  <data name="lblAdcCurrZero.Text" xml:space="preserve">
+    <value>Cour zéro</value>
+  </data>
+  <data name="grbAdcGain.Text" xml:space="preserve">
+    <value>Gain CNA</value>
+  </data>
+  <data name="grbCalibrazioni.Text" xml:space="preserve">
+    <value>Calibration</value>
+  </data>
+  <data name="chkParLetturaAuto.Text" xml:space="preserve">
+    <value>Lecture automatique</value>
+  </data>
+  <data name="chkDatiDiretti.Text" xml:space="preserve">
+    <value>Valeurs réelles</value>
+  </data>
+  <data name="btnLeggiVariabili.Text" xml:space="preserve">
+    <value>Lecture immédiate</value>
+  </data>
+  <data name="grbVariabiliConnVOK.Text" xml:space="preserve">
+    <value>Connexion OK</value>
+  </data>
+  <data name="grbVariabiliStatoConn.Text" xml:space="preserve">
+    <value>Etat connexion</value>
+  </data>
+  <data name="lblVarVBattT.Text" xml:space="preserve">
+    <value>V batt sauvegarde</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Etat SPY-BATT</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>F.d.C.</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>S.o.C.</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>kWh chargés</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>kWh déchargés</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Electrolyte</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Temp. Batterie</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>I Batt</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Ah chargés</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Ah déchargés</value>
+  </data>
+  <data name="grbVariabiliImmediate.Text" xml:space="preserve">
+    <value>Panneau variables</value>
+  </data>
+  <data name="tabSbFact.Text" xml:space="preserve">
+    <value>Fonctions de service</value>
+  </data>
+  <data name="rbtMemAreaApp2.Text" xml:space="preserve">
+    <value>Zone APP 2</value>
+  </data>
+  <data name="rbtMemAreaApp1.Text" xml:space="preserve">
+    <value>Zone APP 1</value>
+  </data>
+  <data name="rbtMemAreaLibera.Text" xml:space="preserve">
+    <value>Zone personnalisée</value>
+  </data>
+  <data name="label111.Text" xml:space="preserve">
+    <value>Blocs</value>
+  </data>
+  <data name="chkMemCFStartAddHex.Text" xml:space="preserve">
+    <value>Adresse hexa</value>
+  </data>
+  <data name="label112.Text" xml:space="preserve">
+    <value>Adresse initiale</value>
+  </data>
+  <data name="btnMemCFExec.Text" xml:space="preserve">
+    <value>Exécuter</value>
+  </data>
+  <data name="grbMemCancFisica.Text" xml:space="preserve">
+    <value>Effacer mémoire 4k</value>
+  </data>
+  <data name="btnDumpMemoria.Text" xml:space="preserve">
+    <value>Copie brute mémoire</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Lecture complète mémoire</value>
+  </data>
+  <data name="chkMemHexW.Text" xml:space="preserve">
+    <value>Adresse hexa</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Valeur (hexa)</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Octets</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Adresse initiale</value>
+  </data>
+  <data name="cmdMemWrite.Text" xml:space="preserve">
+    <value>Ecriture directe</value>
+  </data>
+  <data name="grbMemScrittura.Text" xml:space="preserve">
+    <value>Ecriture mémoire</value>
+  </data>
+  <data name="chkMemClearMantieniCliente.Text" xml:space="preserve">
+    <value>Maintien données client</value>
+  </data>
+  <data name="cmdMemClear.Text" xml:space="preserve">
+    <value>Effacement</value>
+  </data>
+  <data name="grbMemCancellazione.Text" xml:space="preserve">
+    <value>Effacement mémoire</value>
+  </data>
+  <data name="chkMemHex.Text" xml:space="preserve">
+    <value>Adresse hexa</value>
+  </data>
+  <data name="lblReadMemBytes.Text" xml:space="preserve">
+    <value>octets</value>
+  </data>
+  <data name="lblReadMemStartAddr.Text" xml:space="preserve">
+    <value>Adresse initiale</value>
+  </data>
+  <data name="cmdMemRead.Text" xml:space="preserve">
+    <value>Lecture directe</value>
+  </data>
+  <data name="grbMemLettura.Text" xml:space="preserve">
+    <value>Lecture mémoire</value>
+  </data>
+  <data name="tabMemRead.Text" xml:space="preserve">
+    <value>Accès direct mémoire</value>
+  </data>
+  <data name="tctCalGeneraExcel.Text" xml:space="preserve">
+    <value>Créer fichier</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Exports cycles en Excel</value>
+  </data>
+  <data name="label59.Text" xml:space="preserve">
+    <value>Version de noyau</value>
+  </data>
+  <data name="label58.Text" xml:space="preserve">
+    <value>Nombre de cycles</value>
+  </data>
+  <data name="chkCalRitornoVeloce.Text" xml:space="preserve">
+    <value>Rembobiner</value>
+  </data>
+  <data name="chkCalSoloAndata.Text" xml:space="preserve">
+    <value>Cycle direct unique</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Seq. noyau externe</value>
+  </data>
+  <data name="label61.Text" xml:space="preserve">
+    <value>Erreur max nég.</value>
+  </data>
+  <data name="label60.Text" xml:space="preserve">
+    <value>Erreur max pos.</value>
+  </data>
+  <data name="btnCalEseguiSeqExt.Text" xml:space="preserve">
+    <value>Seq. complète</value>
+  </data>
+  <data name="chkCalCorrentePositiva.Text" xml:space="preserve">
+    <value>Courant absolu</value>
+  </data>
+  <data name="label57.Text" xml:space="preserve">
+    <value>Spire</value>
+  </data>
+  <data name="chkCalAccendiAlim.Text" xml:space="preserve">
+    <value>Activation sortie automatique</value>
+  </data>
+  <data name="label56.Text" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="label55.Text" xml:space="preserve">
+    <value>Vers SPY-BATT</value>
+  </data>
+  <data name="label54.Text" xml:space="preserve">
+    <value>Vers alim</value>
+  </data>
+  <data name="btnCalEseguiSeq.Text" xml:space="preserve">
+    <value>Exécuter</value>
+  </data>
+  <data name="label53.Text" xml:space="preserve">
+    <value>Retard (ms)</value>
+  </data>
+  <data name="label52.Text" xml:space="preserve">
+    <value>Pas (A)</value>
+  </data>
+  <data name="grbQuadroSequenza.Text" xml:space="preserve">
+    <value>Séquence courant</value>
+  </data>
+  <data name="lblCalConnessione.Text" xml:space="preserve">
+    <value>Non connecté</value>
+  </data>
+  <data name="btnCalCollegaTdk.Text" xml:space="preserve">
+    <value>Connecter alimentation</value>
+  </data>
+  <data name="tbpCalibrazioni.Text" xml:space="preserve">
+    <value>Analyseur</value>
+  </data>
+  <data name="btnFwCheckArea.Text" xml:space="preserve">
+    <value>Vérifier</value>
+  </data>
+  <data name="btnFwSwitchArea.Text" xml:space="preserve">
+    <value>Activer</value>
+  </data>
+  <data name="grbFwAttivazioneArea.Text" xml:space="preserve">
+    <value>Zone d'activation</value>
+  </data>
+  <data name="label256.Text" xml:space="preserve">
+    <value>Stratégie</value>
+  </data>
+  <data name="label97.Text" xml:space="preserve">
+    <value>Dim proxy</value>
+  </data>
+  <data name="label98.Text" xml:space="preserve">
+    <value>Addr proxy</value>
+  </data>
+  <data name="label96.Text" xml:space="preserve">
+    <value>Fichier du microcode public</value>
+  </data>
+  <data name="label92.Text" xml:space="preserve">
+    <value>Date de sortie</value>
+  </data>
+  <data name="btnFWFilePubSave.Text" xml:space="preserve">
+    <value>Créer</value>
+  </data>
+  <data name="label94.Text" xml:space="preserve">
+    <value>Rev. microcode</value>
+  </data>
+  <data name="label95.Text" xml:space="preserve">
+    <value>Fichier microcode CCS</value>
+  </data>
+  <data name="btnFWFileCCSLoad.Text" xml:space="preserve">
+    <value>Charger fichier</value>
+  </data>
+  <data name="grbFWPreparaFile.Text" xml:space="preserve">
+    <value>Préparation de fichiers SBF</value>
+  </data>
+  <data name="label109.Text" xml:space="preserve">
+    <value>Date de sortie</value>
+  </data>
+  <data name="label87.Text" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="label90.Text" xml:space="preserve">
+    <value>Rev. microcode</value>
+  </data>
+  <data name="grbFWArea2.Text" xml:space="preserve">
+    <value>Zone 2</value>
+  </data>
+  <data name="label103.Text" xml:space="preserve">
+    <value>Date de sortie</value>
+  </data>
+  <data name="label78.Text" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="label77.Text" xml:space="preserve">
+    <value>Rev microcode</value>
+  </data>
+  <data name="GrbFWArea1.Text" xml:space="preserve">
+    <value>Zone 1</value>
+  </data>
+  <data name="label110.Text" xml:space="preserve">
+    <value>Date de sortie</value>
+  </data>
+  <data name="btnFWLanciaTrasmissione.Text" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="label72.Text" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="label70.Text" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="btnFWPreparaTrasmissione.Text" xml:space="preserve">
+    <value>Préparer</value>
+  </data>
+  <data name="label69.Text" xml:space="preserve">
+    <value>Rev microcode</value>
+  </data>
+  <data name="label68.Text" xml:space="preserve">
+    <value>Fichier microcode</value>
+  </data>
+  <data name="btnFWFileSBFLoad.Text" xml:space="preserve">
+    <value>Charger fichier</value>
+  </data>
+  <data name="grbFWAggiornamento.Text" xml:space="preserve">
+    <value>Mise à jour</value>
+  </data>
+  <data name="label186.Text" xml:space="preserve">
+    <value>Lib Stratégie</value>
+  </data>
+  <data name="btnFwCaricaStato.Text" xml:space="preserve">
+    <value>Recharger</value>
+  </data>
+  <data name="label64.Text" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="label63.Text" xml:space="preserve">
+    <value>Rev microcode</value>
+  </data>
+  <data name="label62.Text" xml:space="preserve">
+    <value>Rev lanceur</value>
+  </data>
+  <data name="grbStatoFirmware.Text" xml:space="preserve">
+    <value>Etat carte</value>
+  </data>
+  <data name="tbpFirmware.Text" xml:space="preserve">
+    <value>Microcode</value>
+  </data>
+  <data name="label132.Text" xml:space="preserve">
+    <value>Octets</value>
+  </data>
+  <data name="label133.Text" xml:space="preserve">
+    <value>Info client</value>
+  </data>
+  <data name="btnClonaPreparaMatrici.Text" xml:space="preserve">
+    <value>Préparer matrices</value>
+  </data>
+  <data name="label129.Text" xml:space="preserve">
+    <value>Cycles limites</value>
+  </data>
+  <data name="label128.Text" xml:space="preserve">
+    <value>Paquets</value>
+  </data>
+  <data name="label126.Text" xml:space="preserve">
+    <value>Octets</value>
+  </data>
+  <data name="label127.Text" xml:space="preserve">
+    <value>Courte</value>
+  </data>
+  <data name="label122.Text" xml:space="preserve">
+    <value>Octets</value>
+  </data>
+  <data name="label125.Text" xml:space="preserve">
+    <value>Longue</value>
+  </data>
+  <data name="label123.Text" xml:space="preserve">
+    <value>Octets</value>
+  </data>
+  <data name="label124.Text" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="grbCloneSBSourceData.Text" xml:space="preserve">
+    <value>Données carte</value>
+  </data>
+  <data name="btnClonaGeneraRecordTestata.Text" xml:space="preserve">
+    <value>Créer enregistrement</value>
+  </data>
+  <data name="grbClonaRecordTestata.Text" xml:space="preserve">
+    <value>Entête enregistrement</value>
+  </data>
+  <data name="btnClonaSchedVuota.Text" xml:space="preserve">
+    <value>Carte vide</value>
+  </data>
+  <data name="btnClonaCaricaOrigine.Text" xml:space="preserve">
+    <value>Charger données</value>
+  </data>
+  <data name="label118.Text" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="label119.Text" xml:space="preserve">
+    <value>Rev microcode</value>
+  </data>
+  <data name="label120.Text" xml:space="preserve">
+    <value>Id originelle</value>
+  </data>
+  <data name="grbCloneSBSource.Text" xml:space="preserve">
+    <value>Carte d'origine</value>
+  </data>
+  <data name="grbCloneDaDatabase.Text" xml:space="preserve">
+    <value>Cloner archives</value>
+  </data>
+  <data name="label257.Text" xml:space="preserve">
+    <value>Vers. FW.</value>
+  </data>
+  <data name="lblMatricola.Text" xml:space="preserve">
+    <value>Numéro de série</value>
+  </data>
+  <data name="label261.Text" xml:space="preserve">
+    <value>Date de lecture</value>
+  </data>
+  <data name="label262.Text" xml:space="preserve">
+    <value>Rapport long</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>SPY-BATT</value>
+  </data>
+  <data name="grbCloneNomeFile.Text" xml:space="preserve">
+    <value>Fichier origine</value>
+  </data>
+  <data name="grbCloneDaImg.Text" xml:space="preserve">
+    <value>Cloner l'image</value>
+  </data>
+  <data name="label134.Text" xml:space="preserve">
+    <value>Etat actuel</value>
+  </data>
+  <data name="grbTracciaClonazione.Text" xml:space="preserve">
+    <value>Progression</value>
+  </data>
+  <data name="btnClonaScriviRecordTestata.Text" xml:space="preserve">
+    <value>Mise à jour SPY-BAT</value>
+  </data>
+  <data name="tbpClonaScheda.Text" xml:space="preserve">
+    <value>Clonage</value>
+  </data>
+  <data name="label151.Text" xml:space="preserve">
+    <value>Microcode requis</value>
+  </data>
+  <data name="btnCalRefreshLista.Text" xml:space="preserve">
+    <value>Recharger résultat</value>
+  </data>
+  <data name="label148.Text" xml:space="preserve">
+    <value>Spire</value>
+  </data>
+  <data name="label147.Text" xml:space="preserve">
+    <value>A vérifié</value>
+  </data>
+  <data name="label146.Text" xml:space="preserve">
+    <value>A calibré</value>
+  </data>
+  <data name="chkCalRegistraSequenza.Text" xml:space="preserve">
+    <value>Sauver séquence</value>
+  </data>
+  <data name="chkCalAttivaAlim.Text" xml:space="preserve">
+    <value>Activation sortie automatique</value>
+  </data>
+  <data name="btnCalRicaricaSequenza.Text" xml:space="preserve">
+    <value>Recharger base de données</value>
+  </data>
+  <data name="label138.Text" xml:space="preserve">
+    <value>Electr.</value>
+  </data>
+  <data name="label140.Text" xml:space="preserve">
+    <value>Err. max nég.</value>
+  </data>
+  <data name="label141.Text" xml:space="preserve">
+    <value>Err. Max pos.</value>
+  </data>
+  <data name="label142.Text" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="grbCalValoriAttuali.Text" xml:space="preserve">
+    <value>Valeur actuelle</value>
+  </data>
+  <data name="btnCalStartSeq.Text" xml:space="preserve">
+    <value>Lancer séquence</value>
+  </data>
+  <data name="lblCalStatoAlim.Text" xml:space="preserve">
+    <value>non connecté</value>
+  </data>
+  <data name="btnCalCollegaAlim.Text" xml:space="preserve">
+    <value>Connecter alimentation</value>
+  </data>
+  <data name="lblCalStepCorrente.Text" xml:space="preserve">
+    <value>Action en cours</value>
+  </data>
+  <data name="tabCalibrazione.Text" xml:space="preserve">
+    <value>Calibration</value>
+  </data>
+  <data name="label277.Text" xml:space="preserve">
+    <value>Cont court</value>
+  </data>
+  <data name="label273.Text" xml:space="preserve">
+    <value>Cont long</value>
+  </data>
+  <data name="label275.Text" xml:space="preserve">
+    <value>S.o.C.</value>
+  </data>
+  <data name="label258.Text" xml:space="preserve">
+    <value>Réel</value>
+  </data>
+  <data name="label259.Text" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="label260.Text" xml:space="preserve">
+    <value>Régler local</value>
+  </data>
+  <data name="label200.Text" xml:space="preserve">
+    <value>Résultat CMD_IS</value>
+  </data>
+  <data name="label211.Text" xml:space="preserve">
+    <value>T blocage</value>
+  </data>
+  <data name="label206.Text" xml:space="preserve">
+    <value>Type pas</value>
+  </data>
+  <data name="label205.Text" xml:space="preserve">
+    <value>répétitions</value>
+  </data>
+  <data name="label194.Text" xml:space="preserve">
+    <value>Ah étape</value>
+  </data>
+  <data name="grbStratStepCorrente.Text" xml:space="preserve">
+    <value>Etape de charge</value>
+  </data>
+  <data name="label202.Text" xml:space="preserve">
+    <value>Etape</value>
+  </data>
+  <data name="label199.Text" xml:space="preserve">
+    <value>Spire</value>
+  </data>
+  <data name="label198.Text" xml:space="preserve">
+    <value>Etape</value>
+  </data>
+  <data name="label197.Text" xml:space="preserve">
+    <value>Temps max</value>
+  </data>
+  <data name="label193.Text" xml:space="preserve">
+    <value>Ah requis</value>
+  </data>
+  <data name="label196.Text" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="label180.Text" xml:space="preserve">
+    <value>Ah attendus</value>
+  </data>
+  <data name="label181.Text" xml:space="preserve">
+    <value>Ah manquants</value>
+  </data>
+  <data name="label187.Text" xml:space="preserve">
+    <value>Minutes rep.</value>
+  </data>
+  <data name="label188.Text" xml:space="preserve">
+    <value>Ah rendus</value>
+  </data>
+  <data name="label178.Text" xml:space="preserve">
+    <value>Capacité batterie</value>
+  </data>
+  <data name="label183.Text" xml:space="preserve">
+    <value>Déch.</value>
+  </data>
+  <data name="label184.Text" xml:space="preserve">
+    <value>Chrg.</value>
+  </data>
+  <data name="label272.Text" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="label255.Text" xml:space="preserve">
+    <value>Id Batt. L.L.</value>
+  </data>
+  <data name="label244.Text" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="label175.Text" xml:space="preserve">
+    <value>T repr</value>
+  </data>
+  <data name="label174.Text" xml:space="preserve">
+    <value>T alarme</value>
+  </data>
+  <data name="label172.Text" xml:space="preserve">
+    <value>Vgaz</value>
+  </data>
+  <data name="label169.Text" xml:space="preserve">
+    <value>Réglage</value>
+  </data>
+  <data name="label168.Text" xml:space="preserve">
+    <value>Version lib.</value>
+  </data>
+  <data name="label165.Text" xml:space="preserve">
+    <value>Capacité nominale</value>
+  </data>
+  <data name="label164.Text" xml:space="preserve">
+    <value>Capacité batterie</value>
+  </data>
+  <data name="label162.Text" xml:space="preserve">
+    <value>Tot dech.</value>
+  </data>
+  <data name="label163.Text" xml:space="preserve">
+    <value>Chrg tot</value>
+  </data>
+  <data name="label160.Text" xml:space="preserve">
+    <value>Déch.</value>
+  </data>
+  <data name="label161.Text" xml:space="preserve">
+    <value>Chrg.</value>
+  </data>
+  <data name="label159.Text" xml:space="preserve">
+    <value>Nég.</value>
+  </data>
+  <data name="label158.Text" xml:space="preserve">
+    <value>Pos.</value>
+  </data>
+  <data name="label265.Text" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="label264.Text" xml:space="preserve">
+    <value>Etat actuel long</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items" xml:space="preserve">
+    <value>00 - Effectif</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items2" xml:space="preserve">
+    <value>0F - Décharge</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items3" xml:space="preserve">
+    <value>0 - Charge</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items4" xml:space="preserve">
+    <value>AA - Pause</value>
+  </data>
+  <data name="cmbStratLLTELoc.Items5" xml:space="preserve">
+    <value>FF - Effectif</value>
+  </data>
+  <data name="chkStratLLRabb.Text" xml:space="preserve">
+    <value>Remplisseur présent</value>
+  </data>
+  <data name="grbStratComandiTest.Text" xml:space="preserve">
+    <value>Contrôle d'essai</value>
+  </data>
+  <data name="tbpStrategia.Text" xml:space="preserve">
+    <value>Stratégie</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>SPY-BATT</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Rapport originel</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>Préparation fichier SBF</value>
+  </data>
+  <data name="btnStatProvaInserimento.Text" xml:space="preserve">
+    <value>Test données</value>
+  </data>
+  <data name="chkAESEncript.Text" xml:space="preserve">
+    <value>Encodage AES</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Mise à jour</value>
+  </data>
 </root>

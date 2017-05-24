@@ -449,6 +449,11 @@ namespace PannelloCharger
                     if (risposta == System.Windows.Forms.DialogResult.Yes)
                     {
                         //UnitaSpyBatt _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
+                        int _numClone = _sb.CreaClone();
+                        lblNumClone.Visible = true;
+                        txtNumClone.Visible = true;
+                        txtNumClone.Text = _numClone.ToString("000");
+                        Application.DoEvents();
                         _sb.sbData.cancellaDati(_sb.sbData.Id);
                     }
                     else return false;
@@ -572,6 +577,10 @@ namespace PannelloCharger
         {
             try
             {
+
+                lblNumClone.Visible = false;
+                txtNumClone.Visible = false;
+
                 switch (modo)
                 {
                     case elementiComuni.modoDati.Import:
@@ -704,6 +713,9 @@ namespace PannelloCharger
         {
             try
             {
+                lblNumClone.Visible = false;
+                txtNumClone.Visible = false;
+
                 switch (modo)
                 {
                     case elementiComuni.modoDati.Import:
@@ -740,6 +752,8 @@ namespace PannelloCharger
                 //this.UseWaitCursor = true;
 
                 this.Cursor = Cursors.WaitCursor;
+                lblNumClone.Visible = false;
+                txtNumClone.Visible = false;
                 switch (modo)
                 {
                     case elementiComuni.modoDati.Import:

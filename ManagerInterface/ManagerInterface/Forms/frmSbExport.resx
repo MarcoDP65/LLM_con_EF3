@@ -117,14 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblNumClone.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblNumClone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblNumClone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>547, 157</value>
+  </data>
+  <data name="lblNumClone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 17</value>
+  </data>
+  <data name="lblNumClone.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="lblNumClone.Text" xml:space="preserve">
+    <value>Clone</value>
+  </data>
+  <data name="lblNumClone.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblNumClone.Name" xml:space="preserve">
+    <value>lblNumClone</value>
+  </data>
+  <data name="&gt;&gt;lblNumClone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblNumClone.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;lblNumClone.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtNumClone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>550, 177</value>
+  </data>
+  <data name="txtNumClone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 22</value>
+  </data>
+  <data name="txtNumClone.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="txtNumClone.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtNumClone.Name" xml:space="preserve">
+    <value>txtNumClone</value>
+  </data>
+  <data name="&gt;&gt;txtNumClone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtNumClone.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtNumClone.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="txtFwVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 177</value>
   </data>
   <data name="txtFwVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 22</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtFwVersion.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
@@ -138,12 +196,11 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtFwVersion.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -169,7 +226,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtNumBrevi.Location" type="System.Drawing.Point, System.Drawing">
     <value>428, 177</value>
@@ -190,7 +247,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtNumBrevi.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,7 +277,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtNumLunghi.Location" type="System.Drawing.Point, System.Drawing">
     <value>310, 177</value>
@@ -241,7 +298,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtNumLunghi.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -271,7 +328,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtNumProgrammazioni.Location" type="System.Drawing.Point, System.Drawing">
     <value>190, 177</value>
@@ -292,7 +349,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtNumProgrammazioni.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -322,7 +379,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="txtMatrSB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -349,7 +406,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtMatrSB.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="lblMatricola.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -376,7 +433,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;lblMatricola.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="txtManufcturedBy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -400,7 +457,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtManufcturedBy.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="lblModello.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -427,7 +484,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;lblModello.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="txtNote.Location" type="System.Drawing.Point, System.Drawing">
     <value>291, 115</value>
@@ -448,7 +505,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtNote.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="lblFirmwDisp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -475,7 +532,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;lblFirmwDisp.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="txtCliente.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 115</value>
@@ -496,7 +553,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtCliente.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="lblFirmwCb.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -523,7 +580,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;lblFirmwCb.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 12</value>

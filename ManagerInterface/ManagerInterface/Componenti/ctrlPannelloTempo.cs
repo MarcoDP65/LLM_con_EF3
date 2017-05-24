@@ -15,9 +15,6 @@ namespace PannelloCharger
     {
 
         private byte _fattoreCarica = 101;
-        private bool _equalEnabled = false;
-
-        private byte _opzioniTurno;
         private byte _giorno;
         private byte _startEqual;
 

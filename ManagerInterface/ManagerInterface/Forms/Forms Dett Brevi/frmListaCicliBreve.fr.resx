@@ -117,4 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnChiudi.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="tbpAndamentoOxy.Text" xml:space="preserve">
+    <value>Graphique de phase</value>
+  </data>
+  <data name="tbpTensioniCiclo.Text" xml:space="preserve">
+    <value>Tension partielle</value>
+  </data>
+  <data name="tbpDatiCiclo.Text" xml:space="preserve">
+    <value>Données</value>
+  </data>
+  <data name="tbpUtilita.Text" xml:space="preserve">
+    <value>Utilitaire</value>
+  </data>
+  <data name="grbProgrammazione.Text" xml:space="preserve">
+    <value>Réglages</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Num.</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Éléments</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Éléments V3</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Éléments V2</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Capacité nom.</value>
+  </data>
+  <data name="txtTensioneNom.Text" xml:space="preserve">
+    <value>Tension nom.</value>
+  </data>
+  <data name="grbContatori.Text" xml:space="preserve">
+    <value>Compteurs</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Début</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Évènement</value>
+  </data>
+  <data name="chkIntervalloRelativo.Text" xml:space="preserve">
+    <value>Intervalle de temps relatif dans les graphiques</value>
+  </data>
+  <data name="grbGeneraExcel.Text" xml:space="preserve">
+    <value>Export des données en Excel</value>
+  </data>
+  <data name="btnGeneraCsv.Text" xml:space="preserve">
+    <value>Créer fichier</value>
+  </data>
+  <data name="lblCelleP1.Text" xml:space="preserve">
+    <value>Éléments V1</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Détail des phases</value>
+  </data>
 </root>

@@ -18,7 +18,7 @@
     <HelpFileName>LADELIGHT Manager PRO</HelpFileName>
     <HelpFileNamingMethod>MemberName</HelpFileNamingMethod>
     <ImageFolderPath />
-    <Theme />
+    <Theme>FlatGray</Theme>
     <HtmlFormats>
       <HtmlHelp>true</HtmlHelp>
       <MSHelpViewer>false</MSHelpViewer>
@@ -45,7 +45,11 @@
     <ResolveCrefLinks>true</ResolveCrefLinks>
     <HeaderText />
     <FooterText />
-    <SelectedProjects />
+    <SelectedProjects>
+      <SelectedProject>LadeLightPcl</SelectedProject>
+      <SelectedProject>MdiHelper</SelectedProject>
+      <SelectedProject>PannelloCharger</SelectedProject>
+    </SelectedProjects>
   </HelpConfiguration>
 </HelpConfigurations>
 <GeneralProperties>

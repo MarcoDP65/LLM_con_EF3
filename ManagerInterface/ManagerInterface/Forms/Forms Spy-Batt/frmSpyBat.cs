@@ -11,6 +11,7 @@ using System.Drawing.Printing;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using FTD2XX_NET;
 
 using NextUI.Component;
 using NextUI.Frame;
@@ -654,7 +655,12 @@ namespace PannelloCharger
 
                 txtEventiCSLunghi.Text = _sb.sbData.LongMem.ToString();
                 txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
-
+                txtTestataIdBase.Text = _sb.sbData.IdBase;
+                txtTestataNumClone.Text = _sb.sbData.NumeroClone.ToString();
+                txtTestataDataClone.Text = "";
+                if (_sb.sbData.DataClone != DateTime.MinValue)
+                    txtTestataDataClone.Text = _sb.sbData.DataClone.ToShortDateString() + " " + _sb.sbData.DataClone.ToShortTimeString();
+                txtTestataNoteClone.Text = _sb.sbData.NoteClone;
 
                 // Carico l'area Contatori - Solo dal comando Testata
                 // Prima vuoto le tb
@@ -672,7 +678,6 @@ namespace PannelloCharger
                     txtTestataContBrevi.Text = _sb.IntestazioneSb.shortRecordCounter.ToString();
                     txtTestataPtrBrevi.Text = _sb.IntestazioneSb.shortRecordPointer.ToString();
                     txtTestataContProgr.Text = _sb.IntestazioneSb.numeroProgramma.ToString();
-
                 }
 
                 return true;
@@ -1018,14 +1023,13 @@ namespace PannelloCharger
 
                     txtTestataPtrProgr.Text = _sb.sbData.NumeroCloni().ToString();
 
+                    CaricaProgrammazioni();
                     CaricaCicli();
 
                     if (CaricaCliente(IdApparato, Logiche, SerialeCollegata)) mostraCliente();
                     _apparatoPresente = _sb.apparatoPresente;
                     // se l'apparato è collegato abilito i salvataggi
                     abilitaSalvataggi(_apparatoPresente);
-
-                    CaricaProgrammazioni();
 
                     _sb.CaricaParametri(_sb.Id, _apparatoPresente);
                     MostraParametriGenerali();
@@ -9190,6 +9194,7 @@ namespace PannelloCharger
             try
             {
                 bool _esito;
+                FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
 
                 _esito = _sb.ScriviParametriOC(  (SerialMessage.OcBaudRate)cmbFSerBaudrateOC.SelectedValue, (SerialMessage.OcEchoMode)cmbFSerEchoOC.SelectedValue);
 
@@ -9198,20 +9203,17 @@ namespace PannelloCharger
                     // apro la schermata moniitor sig 
                     frmMonitorSig60 _monitorCorrente = new frmMonitorSig60();
                     _monitorCorrente.SetAsSbMonitor();
-                    _monitorCorrente.Show();
 
                     // aggancio l'evento di ricezione su usb al monitor Sig
                     // 1 determino la porta com collegata
 
-
-
-                    cEventHelper.RemoveEventHandler(_parametri.serialeSpyBatt, "DataReceived");
-                    _parametri.serialeSpyBatt.PortName.ToString();
-
-                    _parametri.serialeSpyBatt.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(_monitorCorrente._serialPort_DataReceived);
-
-
-                    _monitorCorrente.BringToFront();
+                    string _ftdiPortName;
+                    ftStatus = _parametri.usbSpyBatt.GetCOMPort(out _ftdiPortName);
+                    ftStatus = _parametri.usbSpyBatt.Close();
+                    _monitorCorrente.ApriPortaSB(_ftdiPortName, 9600);
+                    _monitorCorrente.ShowDialog();
+                    //_monitorCorrente.BringToFront();
+                    this.Close();
 
                 }
                 _sb.CaricaStatoOC(_sb.Id, _apparatoPresente);
@@ -9225,6 +9227,26 @@ namespace PannelloCharger
 
             }
 
+        }
+
+        private void btnTestataCreaClone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_sb != null)
+                {
+                    this.Cursor = Cursors.WaitCursor;
+                    _sb.CreaClone();
+
+                    MostraTestata();
+                    this.Cursor = Cursors.Default;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnTestataCreaClone_Click: " + Ex.Message);
+
+            }
         }
     }
 }

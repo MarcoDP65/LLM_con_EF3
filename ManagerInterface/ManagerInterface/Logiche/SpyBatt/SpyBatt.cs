@@ -479,6 +479,17 @@ namespace ChargerLogic
                     if (_esito)
                     {
                         IntestazioneSb = _mS.Intestazione;
+                        // prima di sovrascrivere i dati, se il numero di lunghi presenti sulla scheda 
+                        if(sbData.LongMem < (int)_mS.Intestazione.longRecordCounter)
+                        {
+                            int numclone = CreaClone();
+                            if (numclone > 0)
+                            {
+                                sbData.cancellaDati(IdApparato);
+                            }
+                        }
+
+
                         sbData.SwVersion = _mS.Intestazione.revSoftware;
                         sbData.HwVersion = _mS.Intestazione.revHardware;
                         sbData.Manufacturer = _mS.Intestazione.Manufacturer;

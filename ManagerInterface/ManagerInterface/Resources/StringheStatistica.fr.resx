@@ -117,4 +117,253 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Anidride" xml:space="preserve">
+    <value>Anhydride</value>
+  </data>
+  <data name="CO2Risparmiata" xml:space="preserve">
+    <value>CO2 Epargné</value>
+  </data>
+  <data name="Energia" xml:space="preserve">
+    <value>Energie</value>
+  </data>
+  <data name="EnergiaConsumata" xml:space="preserve">
+    <value>Energie consommée</value>
+  </data>
+  <data name="Numero" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="numRabbocchi" xml:space="preserve">
+    <value>Nombre de remplissage</value>
+  </data>
+  <data name="percResidua" xml:space="preserve">
+    <value>% vie résiduelle</value>
+  </data>
+  <data name="Rabbocchi_breve" xml:space="preserve">
+    <value>Remplissage</value>
+  </data>
+  <data name="SoH_breve" xml:space="preserve">
+    <value>S.o.H</value>
+  </data>
+  <data name="FaseCarica" xml:space="preserve">
+    <value>Phase de charge</value>
+  </data>
+  <data name="FaseScarica" xml:space="preserve">
+    <value>Phase de décharge</value>
+  </data>
+  <data name="InizioFase" xml:space="preserve">
+    <value>Phase de départ</value>
+  </data>
+  <data name="Sezione" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="TemperaturaMedia" xml:space="preserve">
+    <value>Température moyenne</value>
+  </data>
+  <data name="TensionePerCella" xml:space="preserve">
+    <value>Tension par élément</value>
+  </data>
+  <data name="Tipologia" xml:space="preserve">
+    <value>Type de chargeur</value>
+  </data>
+  <data name="Cicli" xml:space="preserve">
+    <value>Cycles</value>
+  </data>
+  <data name="Corrente" xml:space="preserve">
+    <value>Courant</value>
+  </data>
+  <data name="GrDODAsseX" xml:space="preserve">
+    <value>Profondeur de décharge</value>
+  </data>
+  <data name="GrDODAsseY" xml:space="preserve">
+    <value>Nombre de cycles</value>
+  </data>
+  <data name="GrDODChiave" xml:space="preserve">
+    <value>D.o.D.</value>
+  </data>
+  <data name="GrDODTitolo" xml:space="preserve">
+    <value>Profondeur de décharge (DoD)</value>
+  </data>
+  <data name="GrTempChiave" xml:space="preserve">
+    <value>Graphique temporelle</value>
+  </data>
+  <data name="Settimana" xml:space="preserve">
+    <value>Semaine</value>
+  </data>
+  <data name="Temperatura" xml:space="preserve">
+    <value>Température</value>
+  </data>
+  <data name="Tensione" xml:space="preserve">
+    <value>Tension</value>
+  </data>
+  <data name="TensioneTotale" xml:space="preserve">
+    <value>Tension totale</value>
+  </data>
+  <data name="TensioniCarica" xml:space="preserve">
+    <value>Tensions de charge partielles</value>
+  </data>
+  <data name="TensioniScarica" xml:space="preserve">
+    <value>Tensions de décharge partielles</value>
+  </data>
+  <data name="GrDuCCChiave" xml:space="preserve">
+    <value>Durée CC</value>
+  </data>
+  <data name="GrDuCCTitolo" xml:space="preserve">
+    <value>Durée charge complète</value>
+  </data>
+  <data name="GrDuCPChiave" xml:space="preserve">
+    <value>Durée CP</value>
+  </data>
+  <data name="GrDuCPTitolo" xml:space="preserve">
+    <value>Durée charges partielles</value>
+  </data>
+  <data name="GrDurCAsseX" xml:space="preserve">
+    <value>Durée (hh:mm)</value>
+  </data>
+  <data name="GrDurCAsseY" xml:space="preserve">
+    <value>Nombre de cycles</value>
+  </data>
+  <data name="GrTempAttivaDelta" xml:space="preserve">
+    <value>Augmentation thermique</value>
+  </data>
+  <data name="GrTempAttivaMax" xml:space="preserve">
+    <value>Température max</value>
+  </data>
+  <data name="GrTempAttivaMin" xml:space="preserve">
+    <value>Température min</value>
+  </data>
+  <data name="GrDeltaTCCChiave" xml:space="preserve">
+    <value>Augm Tcc</value>
+  </data>
+  <data name="GrDeltaTCCTitolo" xml:space="preserve">
+    <value>Augmentation T°C en charge complète</value>
+  </data>
+  <data name="GrDeltaTCPChiave" xml:space="preserve">
+    <value>Augm Tcp</value>
+  </data>
+  <data name="GrDeltaTCPTitolo" xml:space="preserve">
+    <value>Augmentation T°C en charge partielle</value>
+  </data>
+  <data name="GrDeltaTSChiave" xml:space="preserve">
+    <value>Augm Tde</value>
+  </data>
+  <data name="GrDeltaTSTitolo" xml:space="preserve">
+    <value>Augmentation température en décharge</value>
+  </data>
+  <data name="GrTmaxCCChiave" xml:space="preserve">
+    <value>Tmax cc</value>
+  </data>
+  <data name="GrTmaxCCTitolo" xml:space="preserve">
+    <value>Température max en charge complète</value>
+  </data>
+  <data name="GrTmaxCPChiave" xml:space="preserve">
+    <value>Tmax cp</value>
+  </data>
+  <data name="GrTmaxCPTitolo" xml:space="preserve">
+    <value>Température max en charge partielle</value>
+  </data>
+  <data name="GrTmaxSChiave" xml:space="preserve">
+    <value>Tmax de</value>
+  </data>
+  <data name="GrTmaxSTitolo" xml:space="preserve">
+    <value>Température max en décharge</value>
+  </data>
+  <data name="GrTminSChiave" xml:space="preserve">
+    <value>Tmin de</value>
+  </data>
+  <data name="GrTminSTitolo" xml:space="preserve">
+    <value>T°C min en décharge</value>
+  </data>
+  <data name="NumeroCicli" xml:space="preserve">
+    <value>Nombre de cycles</value>
+  </data>
+  <data name="TitAxTDelta" xml:space="preserve">
+    <value>Augmentation thermique (°C)</value>
+  </data>
+  <data name="TitAxTmax" xml:space="preserve">
+    <value>Température max  (°C)</value>
+  </data>
+  <data name="TitAxTmin" xml:space="preserve">
+    <value>Température min  (°C)</value>
+  </data>
+  <data name="PercCarica" xml:space="preserve">
+    <value>% de charge</value>
+  </data>
+  <data name="GrAssenzaElChiave" xml:space="preserve">
+    <value>Abs. El</value>
+  </data>
+  <data name="GrAssenzaElTitolo" xml:space="preserve">
+    <value>% d'absence d'électrolyte (No de phases)</value>
+  </data>
+  <data name="GougeSOH" xml:space="preserve">
+    <value>% S.o.H.</value>
+  </data>
+  <data name="GougeSOHr2" xml:space="preserve">
+    <value>% S.o.H.</value>
+  </data>
+  <data name="GougeAssElr1" xml:space="preserve">
+    <value>% d'absence</value>
+  </data>
+  <data name="GougeAssElr2" xml:space="preserve">
+    <value>Electrolyte</value>
+  </data>
+  <data name="GougeCIncr1" xml:space="preserve">
+    <value>% charge</value>
+  </data>
+  <data name="GougeCIncr2" xml:space="preserve">
+    <value>Partiel</value>
+  </data>
+  <data name="GougeOverTr1" xml:space="preserve">
+    <value>% phase surchauf</value>
+  </data>
+  <data name="GougeOverTr2" xml:space="preserve">
+    <value>Surchauffe</value>
+  </data>
+  <data name="GougePauser1" xml:space="preserve">
+    <value>Nb Pause</value>
+  </data>
+  <data name="GougePauser2" xml:space="preserve">
+    <value>critique</value>
+  </data>
+  <data name="GougeSbilr1" xml:space="preserve">
+    <value>% temps</value>
+  </data>
+  <data name="GougeSbilr2" xml:space="preserve">
+    <value>Eléments déséq.</value>
+  </data>
+  <data name="GougeSovrar2" xml:space="preserve">
+    <value>% surdécharge</value>
+  </data>
+  <data name="GougeDODr2" xml:space="preserve">
+    <value>% D.o.D.</value>
+  </data>
+  <data name="GrSettNotaPunto" xml:space="preserve">
+    <value>Cycle</value>
+  </data>
+  <data name="GrSettserTmax" xml:space="preserve">
+    <value>T°C max</value>
+  </data>
+  <data name="GrSettserTmed" xml:space="preserve">
+    <value>T°C moy</value>
+  </data>
+  <data name="GrSettserTmin" xml:space="preserve">
+    <value>T°C min</value>
+  </data>
+  <data name="GrSettserTvar" xml:space="preserve">
+    <value>Plage temp.</value>
+  </data>
+  <data name="GrSettTitoloAsseY" xml:space="preserve">
+    <value>% charge</value>
+  </data>
+  <data name="GrCfChiave" xml:space="preserve">
+    <value>F.d.C.</value>
+  </data>
+  <data name="GrCfTitolo" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="GrCfAsseX" xml:space="preserve">
+    <value>Facteur de charge</value>
+  </data>
+  <data name="GrCfAsseY" xml:space="preserve">
+    <value>Nombre de cycles</value>
+  </data>
 </root>

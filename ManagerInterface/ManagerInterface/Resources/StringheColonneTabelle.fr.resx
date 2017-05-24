@@ -117,4 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ListaApp01Cliente" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="ListaApp02IdBatt" xml:space="preserve">
+    <value>ID batterie</value>
+  </data>
+  <data name="ListaApp03Batt" xml:space="preserve">
+    <value>Batterie</value>
+  </data>
+  <data name="ListaApp04Mod" xml:space="preserve">
+    <value>Modèle</value>
+  </data>
+  <data name="ListaApp05Note" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="ListaApp06IdSb" xml:space="preserve">
+    <value>ID SPY-BAT</value>
+  </data>
+  <data name="ListaApp07SN" xml:space="preserve">
+    <value>S.N.</value>
+  </data>
+  <data name="ListaSetup01Id" xml:space="preserve">
+    <value>Réglage</value>
+  </data>
+  <data name="ListaSetup02Data" xml:space="preserve">
+    <value>date création</value>
+  </data>
+  <data name="ListaSetup06TCell" xml:space="preserve">
+    <value>Eléments total</value>
+  </data>
+  <data name="ListaSetup07Cel3" xml:space="preserve">
+    <value>Éléments V3</value>
+  </data>
+  <data name="ListaSetup08Cel2" xml:space="preserve">
+    <value>Éléments V2</value>
+  </data>
+  <data name="ListaSetup09Cel1" xml:space="preserve">
+    <value>Éléments V1</value>
+  </data>
+  <data name="ListaSetup05Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

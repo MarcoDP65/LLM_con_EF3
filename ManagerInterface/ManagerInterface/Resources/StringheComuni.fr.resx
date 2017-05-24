@@ -117,4 +117,184 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AproCollegamento" xml:space="preserve">
+    <value>Ouvrir connexion</value>
+  </data>
+  <data name="AvTitolo01Dati" xml:space="preserve">
+    <value>Télécharger mémoire données</value>
+  </data>
+  <data name="AvTitolo02Lunghi" xml:space="preserve">
+    <value>Télécharger résumé étapes</value>
+  </data>
+  <data name="AvTitolo03Brevi" xml:space="preserve">
+    <value>Télécharger détails étapes</value>
+  </data>
+  <data name="AvTitolo04Firmware" xml:space="preserve">
+    <value>Mise à jour microcode</value>
+  </data>
+  <data name="CancellaMemoria" xml:space="preserve">
+    <value>Effacement mémoire</value>
+  </data>
+  <data name="CancellaMemoriaR1" xml:space="preserve">
+    <value>Voulez-vous vraiment effacer TOUTE la mémoire?</value>
+  </data>
+  <data name="CancellaMemoriaR2" xml:space="preserve">
+    <value>ATTENTION: Ceci effacera toutes les données stockées</value>
+  </data>
+  <data name="Carica" xml:space="preserve">
+    <value>Charger</value>
+  </data>
+  <data name="CaricaDati" xml:space="preserve">
+    <value>Charger données</value>
+  </data>
+  <data name="CfgFallita" xml:space="preserve">
+    <value>Echec configuration</value>
+  </data>
+  <data name="ImportaDati" xml:space="preserve">
+    <value>Import données</value>
+  </data>
+  <data name="Giovedi" xml:space="preserve">
+    <value>Jeu</value>
+  </data>
+  <data name="FileGenerato" xml:space="preserve">
+    <value>Fichier créer</value>
+  </data>
+  <data name="FileDanneggiato" xml:space="preserve">
+    <value>Fichier corrompu: Données impossible à charger</value>
+  </data>
+  <data name="FaseScarica" xml:space="preserve">
+    <value>Phase de décharge</value>
+  </data>
+  <data name="FaseEqualizzazione" xml:space="preserve">
+    <value>Phase d'égalisation</value>
+  </data>
+  <data name="FaseCarica" xml:space="preserve">
+    <value>Phase de charge</value>
+  </data>
+  <data name="EventoAnomalo" xml:space="preserve">
+    <value>Anomalie</value>
+  </data>
+  <data name="EsportazioneDati" xml:space="preserve">
+    <value>Export données d'appareil</value>
+  </data>
+  <data name="EsportaDati" xml:space="preserve">
+    <value>Export données</value>
+  </data>
+  <data name="Elettrolita" xml:space="preserve">
+    <value>Electrolyte</value>
+  </data>
+  <data name="Domenica" xml:space="preserve">
+    <value>Dim</value>
+  </data>
+  <data name="DatiNonValidi" xml:space="preserve">
+    <value>Données invalides</value>
+  </data>
+  <data name="DatiGiaPresenti" xml:space="preserve">
+    <value>Données déjà présentes</value>
+  </data>
+  <data name="CollegatoUSB" xml:space="preserve">
+    <value>Connecté au port USB</value>
+  </data>
+  <data name="Collegato" xml:space="preserve">
+    <value>Connecté au port</value>
+  </data>
+  <data name="ImpossibileContinuare" xml:space="preserve">
+    <value>Impossible de continuer</value>
+  </data>
+  <data name="NoDevice" xml:space="preserve">
+    <value>Aucun appareil connecté</value>
+  </data>
+  <data name="Mercoledi" xml:space="preserve">
+    <value>Mer</value>
+  </data>
+  <data name="MemoriaCancellata" xml:space="preserve">
+    <value>Mémoire effacé</value>
+  </data>
+  <data name="Martedi" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="Lunedi" xml:space="preserve">
+    <value>Lun</value>
+  </data>
+  <data name="InserireNome" xml:space="preserve">
+    <value>Entrer un nom valide</value>
+  </data>
+  <data name="InformazioniSu" xml:space="preserve">
+    <value>Information sur</value>
+  </data>
+  <data name="NotDefined" xml:space="preserve">
+    <value>Appareil actuel non défini</value>
+  </data>
+  <data name="NuovaCfg" xml:space="preserve">
+    <value>Nouvelle configuration</value>
+  </data>
+  <data name="StatoPrgND" xml:space="preserve">
+    <value>Etat non défini:</value>
+  </data>
+  <data name="StatoPrg03" xml:space="preserve">
+    <value>Calibration activée</value>
+  </data>
+  <data name="StatoPrg02" xml:space="preserve">
+    <value>Configuration activée; Enregistrement activée</value>
+  </data>
+  <data name="StatoPrg01" xml:space="preserve">
+    <value>Configuration activée; Enregistrement NON activée</value>
+  </data>
+  <data name="StatoPrg00" xml:space="preserve">
+    <value>Configuration non activée</value>
+  </data>
+  <data name="Scarica" xml:space="preserve">
+    <value>Télécharger</value>
+  </data>
+  <data name="SalvaDati" xml:space="preserve">
+    <value>Sauver données</value>
+  </data>
+  <data name="Sabato" xml:space="preserve">
+    <value>Sam</value>
+  </data>
+  <data name="RichConfermaCanc" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer toutes les données relatives à l'appareil?</value>
+  </data>
+  <data name="PresenzaElett" xml:space="preserve">
+    <value>Electrolyte </value>
+  </data>
+  <data name="Pausa" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="TitoloCfg" xml:space="preserve">
+    <value>Configuration SPY-BAT</value>
+  </data>
+  <data name="Versione" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Venerdi" xml:space="preserve">
+    <value>Ven</value>
+  </data>
+  <data name="TrovatoDispositivo" xml:space="preserve">
+    <value>Appareil trouvé</value>
+  </data>
+  <data name="CancellaMemoriaR3" xml:space="preserve">
+    <value>Code non valide: Mauvais code</value>
+  </data>
+  <data name="CancellaMemoriaR4" xml:space="preserve">
+    <value>Code non valide: Données requises obsolètes</value>
+  </data>
+  <data name="CancellaMemoriaR5" xml:space="preserve">
+    <value>Code non valide: Appareil non correspondant</value>
+  </data>
+  <data name="CfgNonValida" xml:space="preserve">
+    <value>Mauvais paramètres configurés</value>
+  </data>
+  <data name="AttivaConfigKO" xml:space="preserve">
+    <value>Echec activation configuration</value>
+  </data>
+  <data name="AttivaConfigOk" xml:space="preserve">
+    <value>Configuration activée</value>
+  </data>
+  <data name="DatiDaSalvareR1" xml:space="preserve">
+    <value>Présence données non sauvées</value>
+  </data>
+  <data name="DatiDaSalvareR2" xml:space="preserve">
+    <value>Voulez-vous les sauver maintenant?</value>
+  </data>
 </root>

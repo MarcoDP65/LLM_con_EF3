@@ -32,6 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSpyBat));
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
             this.tabCb01 = new System.Windows.Forms.TabPage();
+            this.grbCloneScheda = new System.Windows.Forms.GroupBox();
+            this.txtTestataNoteClone = new System.Windows.Forms.TextBox();
+            this.label283 = new System.Windows.Forms.Label();
+            this.txtTestataDataClone = new System.Windows.Forms.TextBox();
+            this.label282 = new System.Windows.Forms.Label();
+            this.txtTestataNumClone = new System.Windows.Forms.TextBox();
+            this.label280 = new System.Windows.Forms.Label();
+            this.txtTestataIdBase = new System.Windows.Forms.TextBox();
+            this.label281 = new System.Windows.Forms.Label();
+            this.btnTestataCreaClone = new System.Windows.Forms.Button();
             this.grbAbilitazioneReset = new System.Windows.Forms.GroupBox();
             this.btnGeneraCodice = new System.Windows.Forms.Button();
             this.txtCodiceSblocco = new System.Windows.Forms.TextBox();
@@ -367,6 +377,8 @@
             this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
             this.grbVarParametriSig = new System.Windows.Forms.GroupBox();
+            this.label279 = new System.Windows.Forms.Label();
+            this.cmbFSerEchoOC = new System.Windows.Forms.ComboBox();
             this.btnFSerVerificaOC = new System.Windows.Forms.Button();
             this.btnFSerImpostaOC = new System.Windows.Forms.Button();
             this.label278 = new System.Windows.Forms.Label();
@@ -979,10 +991,9 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.cmbFSerEchoOC = new System.Windows.Forms.ComboBox();
-            this.label279 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
+            this.grbCloneScheda.SuspendLayout();
             this.grbAbilitazioneReset.SuspendLayout();
             this.grbDownloadDati.SuspendLayout();
             this.grbMainDlOptions.SuspendLayout();
@@ -1125,6 +1136,7 @@
             // 
             this.tabCb01.AllowDrop = true;
             this.tabCb01.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCb01.Controls.Add(this.grbCloneScheda);
             this.tabCb01.Controls.Add(this.grbAbilitazioneReset);
             this.tabCb01.Controls.Add(this.grbDownloadDati);
             this.tabCb01.Controls.Add(this.grbMainDlOptions);
@@ -1135,6 +1147,73 @@
             this.tabCb01.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.tabCb01, "tabCb01");
             this.tabCb01.Name = "tabCb01";
+            // 
+            // grbCloneScheda
+            // 
+            this.grbCloneScheda.BackColor = System.Drawing.Color.White;
+            this.grbCloneScheda.Controls.Add(this.txtTestataNoteClone);
+            this.grbCloneScheda.Controls.Add(this.label283);
+            this.grbCloneScheda.Controls.Add(this.txtTestataDataClone);
+            this.grbCloneScheda.Controls.Add(this.label282);
+            this.grbCloneScheda.Controls.Add(this.txtTestataNumClone);
+            this.grbCloneScheda.Controls.Add(this.label280);
+            this.grbCloneScheda.Controls.Add(this.txtTestataIdBase);
+            this.grbCloneScheda.Controls.Add(this.label281);
+            this.grbCloneScheda.Controls.Add(this.btnTestataCreaClone);
+            resources.ApplyResources(this.grbCloneScheda, "grbCloneScheda");
+            this.grbCloneScheda.Name = "grbCloneScheda";
+            this.grbCloneScheda.TabStop = false;
+            // 
+            // txtTestataNoteClone
+            // 
+            resources.ApplyResources(this.txtTestataNoteClone, "txtTestataNoteClone");
+            this.txtTestataNoteClone.Name = "txtTestataNoteClone";
+            this.txtTestataNoteClone.ReadOnly = true;
+            // 
+            // label283
+            // 
+            resources.ApplyResources(this.label283, "label283");
+            this.label283.Name = "label283";
+            // 
+            // txtTestataDataClone
+            // 
+            resources.ApplyResources(this.txtTestataDataClone, "txtTestataDataClone");
+            this.txtTestataDataClone.Name = "txtTestataDataClone";
+            this.txtTestataDataClone.ReadOnly = true;
+            // 
+            // label282
+            // 
+            resources.ApplyResources(this.label282, "label282");
+            this.label282.Name = "label282";
+            // 
+            // txtTestataNumClone
+            // 
+            resources.ApplyResources(this.txtTestataNumClone, "txtTestataNumClone");
+            this.txtTestataNumClone.Name = "txtTestataNumClone";
+            this.txtTestataNumClone.ReadOnly = true;
+            // 
+            // label280
+            // 
+            resources.ApplyResources(this.label280, "label280");
+            this.label280.Name = "label280";
+            // 
+            // txtTestataIdBase
+            // 
+            resources.ApplyResources(this.txtTestataIdBase, "txtTestataIdBase");
+            this.txtTestataIdBase.Name = "txtTestataIdBase";
+            this.txtTestataIdBase.ReadOnly = true;
+            // 
+            // label281
+            // 
+            resources.ApplyResources(this.label281, "label281");
+            this.label281.Name = "label281";
+            // 
+            // btnTestataCreaClone
+            // 
+            resources.ApplyResources(this.btnTestataCreaClone, "btnTestataCreaClone");
+            this.btnTestataCreaClone.Name = "btnTestataCreaClone";
+            this.btnTestataCreaClone.UseVisualStyleBackColor = true;
+            this.btnTestataCreaClone.Click += new System.EventHandler(this.btnTestataCreaClone_Click);
             // 
             // grbAbilitazioneReset
             // 
@@ -3556,6 +3635,18 @@
             resources.ApplyResources(this.grbVarParametriSig, "grbVarParametriSig");
             this.grbVarParametriSig.Name = "grbVarParametriSig";
             this.grbVarParametriSig.TabStop = false;
+            // 
+            // label279
+            // 
+            resources.ApplyResources(this.label279, "label279");
+            this.label279.ForeColor = System.Drawing.Color.Red;
+            this.label279.Name = "label279";
+            // 
+            // cmbFSerEchoOC
+            // 
+            resources.ApplyResources(this.cmbFSerEchoOC, "cmbFSerEchoOC");
+            this.cmbFSerEchoOC.FormattingEnabled = true;
+            this.cmbFSerEchoOC.Name = "cmbFSerEchoOC";
             // 
             // btnFSerVerificaOC
             // 
@@ -7618,18 +7709,6 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // cmbFSerEchoOC
-            // 
-            resources.ApplyResources(this.cmbFSerEchoOC, "cmbFSerEchoOC");
-            this.cmbFSerEchoOC.FormattingEnabled = true;
-            this.cmbFSerEchoOC.Name = "cmbFSerEchoOC";
-            // 
-            // label279
-            // 
-            resources.ApplyResources(this.label279, "label279");
-            this.label279.ForeColor = System.Drawing.Color.Red;
-            this.label279.Name = "label279";
-            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -7645,6 +7724,8 @@
             this.Resize += new System.EventHandler(this.frmSpyBat_Resize);
             this.tabCaricaBatterie.ResumeLayout(false);
             this.tabCb01.ResumeLayout(false);
+            this.grbCloneScheda.ResumeLayout(false);
+            this.grbCloneScheda.PerformLayout();
             this.grbAbilitazioneReset.ResumeLayout(false);
             this.grbAbilitazioneReset.PerformLayout();
             this.grbDownloadDati.ResumeLayout(false);
@@ -8788,5 +8869,15 @@
         private System.Windows.Forms.Button btnFSerVerificaOC;
         private System.Windows.Forms.Label label279;
         private System.Windows.Forms.ComboBox cmbFSerEchoOC;
+        private System.Windows.Forms.GroupBox grbCloneScheda;
+        private System.Windows.Forms.TextBox txtTestataNoteClone;
+        private System.Windows.Forms.Label label283;
+        private System.Windows.Forms.TextBox txtTestataDataClone;
+        private System.Windows.Forms.Label label282;
+        private System.Windows.Forms.TextBox txtTestataNumClone;
+        private System.Windows.Forms.Label label280;
+        private System.Windows.Forms.TextBox txtTestataIdBase;
+        private System.Windows.Forms.Label label281;
+        private System.Windows.Forms.Button btnTestataCreaClone;
     }
 }

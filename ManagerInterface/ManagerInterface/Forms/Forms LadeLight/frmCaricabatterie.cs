@@ -179,9 +179,9 @@ namespace PannelloCharger
             cmbPaCondStop.Items.Add("dV/dt");
             cmbPaCondStop.SelectedIndex = 0;
 
-            cmbFSerBaudrateOC.DataSource = ListaBrSig;
-            cmbFSerBaudrateOC.DisplayMember = "descrizione";
-            cmbFSerBaudrateOC.ValueMember = "SettingValue";
+           // cmbFSerBaudrateOC.DataSource = Lista;
+          //  cmbFSerBaudrateOC.DisplayMember = "descrizione";
+          //  cmbFSerBaudrateOC.ValueMember = "SettingValue";
 
         }
 

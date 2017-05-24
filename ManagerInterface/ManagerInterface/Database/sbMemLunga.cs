@@ -307,8 +307,6 @@ namespace MoriData
 
         }
 
-
-
         public bool caricaDati(int idLocale)
         {
             try
@@ -406,6 +404,31 @@ namespace MoriData
             }
         }
 
+        public bool ClonaRecord(string NuovoIdApparato)
+        {
+            try
+            {
+                // 1. Dati cliente
+                _sbMemLunga _newML = FunzioniComuni.CloneJson<_sbMemLunga>(_sblm);
+                _newML.IdApparato = NuovoIdApparato;
+
+                int _result = _database.Insert(_newML);
+
+                if (_result == 1)
+                {
+                    ClonaBrevi(NuovoIdApparato);
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ClonaRecord: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
+
         public bool CaricaBrevi() 
         {
             try 
@@ -422,17 +445,7 @@ namespace MoriData
                     sbMemBreve _cLoc;
                     _cLoc = new sbMemBreve(Elemento);
                     CicliMemoriaBreve.Add(_cLoc);
-
-                    /*
-                    _cLoc = new sbMemBreve(_database);
-                    if (_cLoc.caricaDati(Elemento.IdLocale))
-                    {
-                        CicliMemoriaBreve.Add(_cLoc);
-                    }
-                     */ 
-
                 }
-
 
                 return true;
             
@@ -474,6 +487,40 @@ namespace MoriData
                 //CaricaBrevi();
                 //Log.Warn("Brevi ricaricati");
 
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaBrevi " + Ex.Message);
+                return false;
+            }
+        }
+
+        public bool ClonaBrevi(string NuovoIdApparato)
+        {
+            try
+            {
+                DateTime _start = DateTime.Now;
+                Log.Debug("Start SalvaBrevi ");
+                if (_database == null)
+                    return false;
+
+                CicliMemBreveDB.Clear();
+
+                foreach (sbMemBreve Elemento in CicliMemoriaBreve)
+                {
+                    _sbMemBreve _newMB = FunzioniComuni.CloneJson<_sbMemBreve>(Elemento._sbsm);
+                    _newMB.IdApparato = NuovoIdApparato;
+                    _newMB.CreationDate = DateTime.Now;
+                    CicliMemBreveDB.Add(_newMB);
+                }
+                Log.Debug("Brevi pronti");
+
+
+                int _result = _database.InsertAll(CicliMemBreveDB);
+                Log.Debug("Brevi salvati su db");
 
                 return true;
 
@@ -1200,13 +1247,6 @@ namespace MoriData
             }
         }
 
-
-
-
-
-
-
-
         public short Amin
         {
             get { return _sblm.Amin; }
@@ -1216,10 +1256,12 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
         public string strAmin
         {
             get { return FunzioniMR.StringaCorrente(_sblm.Amin); }
         }
+
         public string olvAmin
         {
             get
@@ -1265,6 +1307,7 @@ namespace MoriData
         {
             get { return FunzioniMR.StringaCorrente(_sblm.Amax); }
         }
+
         public string olvAmax
         {
             get
@@ -1350,7 +1393,6 @@ namespace MoriData
 
         }
 
-
         public int Ah
         {
             get { return _sblm.Ah; }
@@ -1360,14 +1402,6 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
-
-        /*
-        // Visualizzazione Correnti
-        public int DivisoreCorrente = 10;
-        public int DecimaliCorrente = 1;
-        public int DecimaliPotenza = 1;
-        */
-
 
         public string strAh
         {
@@ -1401,7 +1435,6 @@ namespace MoriData
         {
             get { return FunzioniMR.ValoreEffettivo(_sblm.Ah, DivisoreCorrente); }
         }
-
 
         public int AhCaricati
         {
@@ -1659,11 +1692,11 @@ namespace MoriData
             }
 
         }
+
         public string strFattoreCarica
         {
             get { return FunzioniMR.StringaFattoreCarica(_sblm.FattoreCarica); }
         }
-
 
         public byte StatoCarica
         {
@@ -1674,6 +1707,7 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
         public string strStatoCarica
         {
             get { return FunzioniMR.StringaSoC(_sblm.StatoCatica); }
@@ -1730,8 +1764,6 @@ namespace MoriData
             }
         }
 
-
-
         public float VMaxSbilanciamentoC
         {
             get { return _sblm.VMaxSbilanciamentoC; }
@@ -1775,8 +1807,6 @@ namespace MoriData
 
         }
 
-
-
         public UInt32 DurataSbilCelle
         {
             get { return _sblm.DurataSbilanciamento; }
@@ -1807,7 +1837,6 @@ namespace MoriData
             }
         }
 
-
         public DateTime DataLastDownload
         {
             get { return _sblm.DataLastDownload; }
@@ -1818,10 +1847,7 @@ namespace MoriData
             }
         }
 
-
-
         #endregion Class Parameter
-
 
         public string TensioniCiclo()
         {

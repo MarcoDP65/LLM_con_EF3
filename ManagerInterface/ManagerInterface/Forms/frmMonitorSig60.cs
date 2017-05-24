@@ -239,6 +239,42 @@ namespace PannelloCharger
             }
         }
 
+
+        public bool ApriPortaSB(string PortName, int BaudRate)
+        {
+            try
+            {
+
+                ComPort.PortName = PortName;
+                ComPort.BaudRate = BaudRate;
+                ComPort.DataBits = 8;
+                ComPort.StopBits = StopBits.One;
+                ComPort.Handshake = Handshake.None;
+                ComPort.Parity = Parity.None;
+                _dataBuffer = new byte[0];
+                cEventHelper.RemoveEventHandler(ComPort, "DataReceived");
+                ComPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
+                cEventHelper.RemoveEventHandler(this, "NewSerialDataRecieved");
+                NewSerialDataRecieved += new EventHandler<SerialDataEventArgs>(_spManager_NewSerialDataRecieved);
+
+                if (ComPort.IsOpen) ComPort.Close();
+
+                ComPort.Open();
+
+
+
+                VerificaStatoPorta();
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VerificaStatoPorta: " + Ex.Message);
+                return false;
+            }
+        }
+
+
         private bool VerificaStatoPorta()
         {
             try
@@ -791,6 +827,15 @@ namespace PannelloCharger
                             rigaParametri += " - ID:" + FunzioniComuni.ArrayToString(_Dati, 0x1D, 5);
                             RigaBase.Parametri = rigaParametri;
                             // Ora il pacchetto in ordine inverso
+                            //Quarta Riga
+                            _msgPar = new echoMessaggio();
+                            _msgPar.SegueRiga = true;
+                            _msgPar.Device = RigaBase.Device;
+                            _msgPar.Comando = "3";
+                            rigaParametri = "Esito:" + _Dati[0x02].ToString("x2") ;
+                            _msgPar.Parametri = rigaParametri;
+                            ListaMessaggi.Insert(0, _msgPar);
+                            //Terza Riga
                             _msgPar = new echoMessaggio();
                             _msgPar.SegueRiga = true;
                             _msgPar.Device = RigaBase.Device;
@@ -801,6 +846,7 @@ namespace PannelloCharger
                             _msgPar.Parametri = rigaParametri;
                             ListaMessaggi.Insert(0, _msgPar);
                             _msgPar = new echoMessaggio();
+                            //Seconda Riga
                             _msgPar.SegueRiga = true;
                             _msgPar.Device = RigaBase.Device;
                             _msgPar.Comando = "1";
@@ -1285,8 +1331,8 @@ namespace PannelloCharger
                 }
                 if (this.Height > 700)
                 {
-                    flvListaComandiSIG.Height = this.Height - 300;
-                    txtSerialEcho.Top = this.Height - 270;
+                    flvListaComandiSIG.Height = this.Height - 295;
+                    txtSerialEcho.Top = this.Height - 255;
                     btnChiudi.Top =   this.Height - 90;
                 }
 

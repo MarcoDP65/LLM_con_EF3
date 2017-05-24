@@ -226,7 +226,7 @@
     <value>Min temperature</value>
   </data>
   <data name="GrDeltaTCCTitolo" xml:space="preserve">
-    <value>Temperature increasing in complete charge</value>
+    <value>Température increasing in complete charge</value>
   </data>
   <data name="GrDeltaTCPTitolo" xml:space="preserve">
     <value>Temperature increasing in partial charge</value>

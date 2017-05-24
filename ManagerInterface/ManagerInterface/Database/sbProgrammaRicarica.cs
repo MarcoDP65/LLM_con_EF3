@@ -239,6 +239,25 @@ namespace MoriData
             }
         }
 
+        public bool ClonaRecord(string NuovoIdApparato)
+        {
+            try
+            {
+                _sbProgrammaRicarica _newDC = FunzioniComuni.CloneJson<_sbProgrammaRicarica>(_sbpr);
+                _newDC.IdApparato = NuovoIdApparato;
+
+                int _result = _database.Insert(_newDC);
+
+                return (_result == 1);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ClonaRecord: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
+
         #region Class Parameters
 
         public int IdLocale
@@ -266,7 +285,15 @@ namespace MoriData
         }
         public ushort IdProgramma
         {
-            get { return _sbpr.IdProgramma; }
+            get
+            {
+                if (_sbpr != null)
+                {
+                    return _sbpr.IdProgramma;
+                }
+                else
+                    return 0;
+            }
             set
             {
                 if (value != null)

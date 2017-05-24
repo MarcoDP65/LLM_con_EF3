@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="titBatteria" xml:space="preserve">
+    <value>Identificateur batterie</value>
+  </data>
+  <data name="titCliente" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="titData" xml:space="preserve">
+    <value>Rapport de données</value>
+  </data>
+  <data name="txtNumPagina" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="txtPeriodoA" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="txtPeriodoAttivo" xml:space="preserve">
+    <value>Période sélectionnée</value>
+  </data>
+  <data name="txtPeriodoDal" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="titGraficoTemporale" xml:space="preserve">
+    <value>Graphique temporelle - Semaine</value>
+  </data>
 </root>

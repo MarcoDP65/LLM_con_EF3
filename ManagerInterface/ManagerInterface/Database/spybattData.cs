@@ -245,6 +245,94 @@ namespace MoriData
             }
         }
 
+        public bool GeneraClone(out string NuovoId, out _spybatt NuovaTestata, bool SalvaDati)
+        {
+
+            bool _esito;
+            int _numClone;
+
+            try
+            {
+                if (_sb == null)
+                {
+                    // Non parto da un record esistente
+                    NuovoId = "";
+                    NuovaTestata = null;
+                    return false;
+                }
+
+                if ((_sb.Id == "") || (_sb.Id == nullID))
+                {
+                    // Non parto da un record esistente
+                    NuovoId = "";
+                    NuovaTestata = null;
+                    return false;
+                }
+
+                // record di partenza è valido, genero l'ID clone
+
+                if (_sb.IdBase == "" || _sb.IdBase == null )
+                {
+                    // Non parto da un record esistente
+
+                    _sb.IdBase = _sb.Id;
+                    _sb.NumeroClone = 0;
+
+                    if(!salvaDati())
+                    {
+                        NuovoId = "";
+                        NuovaTestata = null;
+                        return false;
+                    }
+                }
+                _numClone = UltimoClone();
+                _numClone += 1;
+
+                NuovoId = _sb.IdBase + "." + _numClone.ToString("000");
+        
+                NuovaTestata = new _spybatt();
+                NuovaTestata.Id = NuovoId;
+                NuovaTestata.CreationDate = DateTime.Now;
+                NuovaTestata.RevisionDate = DateTime.Now;
+                NuovaTestata.LastUser = _sb.LastUser;
+                NuovaTestata.SwVersion = _sb.SwVersion;
+                NuovaTestata.ProductId = _sb.ProductId;
+                NuovaTestata.Manufacturer = _sb.Manufacturer;
+                NuovaTestata.HwVersion = _sb.HwVersion;
+                NuovaTestata.ProgramCount = _sb.ProgramCount;
+                NuovaTestata.BattConnected = _sb.BattConnected;
+                NuovaTestata.LongMem = _sb.LongMem;
+                NuovaTestata.Bootloader = _sb.Bootloader;
+                NuovaTestata.StrategyLibrary = _sb.StrategyLibrary;
+                NuovaTestata.IdBase = _sb.IdBase;
+                NuovaTestata.NumeroClone = _numClone;
+                NuovaTestata.DataClone = DateTime.Now;
+                NuovaTestata.NoteClone = "";
+                int _salvati = 1;
+
+                if (SalvaDati)
+                {
+                     _salvati =  _database.Insert(NuovaTestata);
+                }
+
+                if (_salvati > 0)
+                    return true;
+                else
+                {
+                    NuovoId = "";
+                    NuovaTestata = null;
+                    return false;
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("UltimoClone. " + Ex.Message);
+                NuovoId = "";
+                NuovaTestata = null;
+                return false;
+            }
+        }
 
         public bool DaMessaggio(MessaggioSpyBatt.comandoInizialeSB _mS)
         {
