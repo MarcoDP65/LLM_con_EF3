@@ -481,12 +481,13 @@ namespace ChargerLogic
                         IntestazioneSb = _mS.Intestazione;
                         // prima di sovrascrivere i dati, se il numero di lunghi presenti sulla scheda 
                         if(sbData.LongMem < (int)_mS.Intestazione.longRecordCounter)
+
                         {
-                            int numclone = CreaClone();
-                            if (numclone > 0)
-                            {
-                                sbData.cancellaDati(IdApparato);
-                            }
+                           // int numclone = CreaClone();
+                           // if (numclone > 0)
+                          //  {
+                          //      sbData.cancellaDati(IdApparato);
+                          //  }
                         }
 
 
@@ -2505,12 +2506,7 @@ namespace ChargerLogic
                 Programmazioni.Clear();
 
                 IEnumerable<_sbProgrammaRicarica> _TempCicli = dbCorrente.Query<_sbProgrammaRicarica>("select * from _sbProgrammaRicarica where IdApparato = ? order by IdProgramma desc", IdApparato);
-                if (sbData.ProgramCount > 0)
-                {
-                    _sbProgrammaRicarica _prgc = _TempCicli.Where(x => x.IdProgramma == sbData.ProgramCount).FirstOrDefault();
-                    ProgrammaCorrente = new sbProgrammaRicarica(_prgc);
 
-                }
 
                 foreach (_sbProgrammaRicarica Elemento in _TempCicli)
                 {
@@ -2522,7 +2518,12 @@ namespace ChargerLogic
                     }
 
                 }
+                if (sbData.ProgramCount > 0)
+                {
+                    _sbProgrammaRicarica _prgc = _TempCicli.Where(x => x.IdProgramma == sbData.ProgramCount).FirstOrDefault();
+                    ProgrammaCorrente = new sbProgrammaRicarica(_prgc);
 
+                }
 
                 return true;
             }

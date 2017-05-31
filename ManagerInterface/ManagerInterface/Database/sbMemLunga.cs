@@ -89,7 +89,7 @@ namespace MoriData
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         public bool _datiSalvati;
         public bool _recordPresente;
-        private string _tempId;
+        //private string _tempId;
         private System.Collections.Generic.List<_sbMemBreve> CicliMemBreveDB = new System.Collections.Generic.List<_sbMemBreve>();
         public System.Collections.Generic.List<sbMemBreve> CicliMemoriaBreve = new System.Collections.Generic.List<sbMemBreve>();
         private System.Collections.Generic.List<ChargerLogic.MessaggioSpyBatt.MemoriaPeriodoBreve> _CicliMemoriaBreve = new System.Collections.Generic.List<ChargerLogic.MessaggioSpyBatt.MemoriaPeriodoBreve>();

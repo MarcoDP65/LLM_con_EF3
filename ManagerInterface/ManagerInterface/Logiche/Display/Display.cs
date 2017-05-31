@@ -24,7 +24,7 @@ namespace ChargerLogic
 
         public static SerialPort serialeApparato;
         private static MessaggioDisplay _mD; // = new MessaggioSpyBatt();
-        private parametriSistema _parametri;
+ //       private parametriSistema _parametri;
 
         private static Queue<byte> codaDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
         private static Queue<byte> echoDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
@@ -686,7 +686,36 @@ namespace ChargerLogic
             }
         }
 
+        public bool ResetScheda()
+        {
+            bool _risposta = false;
 
+            try
+            {
+                bool _esito = false;
+
+                _mD.Comando = SerialMessage.TipoComando.DI_ResetBoard;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_ResetBoard;
+                _mD.ComponiMessaggio();
+                _rxRisposta = false;
+                Log.Debug("Display Reset Board");
+                Log.Debug(_mD.hexdumpMessaggio());
+
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                if ((_esito) && (_ultimaRisposta == SerialMessage.TipoRisposta.Ack))
+                {
+                    _risposta = true;
+                }
+                return _risposta;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("VerificaPresenza: " + Ex.Message);
+                return _risposta;
+            }
+        }
         public bool CaricaListaImmaginiPresenti(ushort Start,ushort Stop, bool ElencaVuote = false, bool CaricaBitmap = false)
         {
             bool _risposta = false;

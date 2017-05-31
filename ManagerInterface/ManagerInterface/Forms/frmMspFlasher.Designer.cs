@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtOutputCoamndo = new System.Windows.Forms.TextBox();
             this.btnEseguiComando = new System.Windows.Forms.Button();
             this.grbGeneraExcel = new System.Windows.Forms.GroupBox();
             this.btnSfoglia = new System.Windows.Forms.Button();
@@ -37,25 +36,13 @@
             this.sfdExportEsito = new System.Windows.Forms.SaveFileDialog();
             this.txtCmdExitCode = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.cctlOsConsole = new ConsoleControl.ConsoleControl();
             this.grbGeneraExcel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtOutputCoamndo
-            // 
-            this.txtOutputCoamndo.BackColor = System.Drawing.Color.Black;
-            this.txtOutputCoamndo.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOutputCoamndo.ForeColor = System.Drawing.Color.White;
-            this.txtOutputCoamndo.Location = new System.Drawing.Point(34, 128);
-            this.txtOutputCoamndo.Multiline = true;
-            this.txtOutputCoamndo.Name = "txtOutputCoamndo";
-            this.txtOutputCoamndo.ReadOnly = true;
-            this.txtOutputCoamndo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOutputCoamndo.Size = new System.Drawing.Size(924, 569);
-            this.txtOutputCoamndo.TabIndex = 24;
-            // 
             // btnEseguiComando
             // 
-            this.btnEseguiComando.Location = new System.Drawing.Point(988, 571);
+            this.btnEseguiComando.Location = new System.Drawing.Point(865, 703);
             this.btnEseguiComando.Name = "btnEseguiComando";
             this.btnEseguiComando.Size = new System.Drawing.Size(187, 35);
             this.btnEseguiComando.TabIndex = 23;
@@ -100,7 +87,7 @@
             // txtCmdExitCode
             // 
             this.txtCmdExitCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCmdExitCode.Location = new System.Drawing.Point(988, 670);
+            this.txtCmdExitCode.Location = new System.Drawing.Point(1122, 711);
             this.txtCmdExitCode.Name = "txtCmdExitCode";
             this.txtCmdExitCode.ReadOnly = true;
             this.txtCmdExitCode.Size = new System.Drawing.Size(99, 27);
@@ -111,20 +98,34 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label25.Location = new System.Drawing.Point(985, 650);
+            this.label25.Location = new System.Drawing.Point(1119, 691);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(67, 17);
             this.label25.TabIndex = 87;
             this.label25.Text = "Exit Code";
+            // 
+            // cctlOsConsole
+            // 
+            this.cctlOsConsole.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cctlOsConsole.ForeColor = System.Drawing.Color.Red;
+            this.cctlOsConsole.IsInputEnabled = true;
+            this.cctlOsConsole.Location = new System.Drawing.Point(34, 119);
+            this.cctlOsConsole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cctlOsConsole.Name = "cctlOsConsole";
+            this.cctlOsConsole.SendKeyboardCommandsToProcess = false;
+            this.cctlOsConsole.ShowDiagnostics = false;
+            this.cctlOsConsole.Size = new System.Drawing.Size(1187, 540);
+            this.cctlOsConsole.TabIndex = 89;
+            this.cctlOsConsole.UseWaitCursor = true;
             // 
             // frmMspFlasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1270, 763);
+            this.Controls.Add(this.cctlOsConsole);
             this.Controls.Add(this.txtCmdExitCode);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.txtOutputCoamndo);
             this.Controls.Add(this.btnEseguiComando);
             this.Controls.Add(this.grbGeneraExcel);
             this.Name = "frmMspFlasher";
@@ -138,8 +139,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtOutputCoamndo;
         private System.Windows.Forms.Button btnEseguiComando;
         private System.Windows.Forms.GroupBox grbGeneraExcel;
         private System.Windows.Forms.Button btnSfoglia;
@@ -148,5 +147,6 @@
         private System.Windows.Forms.SaveFileDialog sfdExportEsito;
         private System.Windows.Forms.TextBox txtCmdExitCode;
         private System.Windows.Forms.Label label25;
+        private ConsoleControl.ConsoleControl cctlOsConsole;
     }
 }

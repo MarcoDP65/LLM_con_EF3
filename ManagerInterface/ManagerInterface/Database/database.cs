@@ -14,119 +14,53 @@ namespace MoriData
 {
 
 
-    public class _parametri
-    {
-        [PrimaryKey]
-        public int Id { get; set; }
-        [MaxLength(255)]
-        public string Parametro { get; set; }
-        [MaxLength(255)]
-        public int Tipo { get; set; }
-        public int idMessaggio { get; set; }
-        public string valTesto { get; set; }
-        public int valInt { get; set; }
-        public DateTime valTime { get; set; }
-        public decimal valDec { get; set; }
-        public override string ToString()
-        {
-            string _testo;
-            _testo = Parametro;
-            switch (Tipo)
-            {
-                case 1: // Stringa
-                    _testo += valTesto;
-                    break;
-                case 2: // Intero
-                    _testo += valInt.ToString();
-                    break;
-                case 3: // Data/ora
-                    _testo += valTime.ToString();
-                    break;
-                case 4: //decimale
-                    _testo += valDec.ToString();
-                    break;
-            }
-
-            return _testo;
-        }
-    }
-  
-    public class _eventoBreve
-    {
-        [PrimaryKey]
-        public int Id { get; set; }
-        public DateTime DataCreazione { get; set; }
-        public DateTime DataModifica { get; set; }
-        public string UtenteModifica { get; set; }
-        [MaxLength(255)]
-        public string Parametro { get; set; }
-        [MaxLength(255)]
-        public int Tipo { get; set; }
-        public int idMessaggio { get; set; }
-        public string valTesto { get; set; }
-        public int valInt { get; set; }
-        public DateTime valTime { get; set; }
-        public decimal valDec { get; set; }
-        public override string ToString()
-        {
-            string _testo;
-            _testo = Parametro;
-            switch (Tipo)
-            {
-                case 1: // Stringa
-                    _testo += valTesto;
-                    break;
-                case 2: // Intero
-                    _testo += valInt.ToString();
-                    break;
-                case 3: // Data/ora
-                    _testo += valTime.ToString();
-                    break;
-                case 4: //decimale
-                    _testo += valDec.ToString();
-                    break;
-            }
-
-            return _testo;
-        }
-   }
-
-    public class InizializzaDb
-    {
-     }
-
     public class _db : SQLiteConnection
     {
 
+
+
+        
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
         public _db(string _dbName) : base(new SQLitePlatformWin32(), _dbName)
         {
-            int _esito;
-            Log.Error("Database collegato: " + _dbName);
-            //Create Tables
-            _esito = CreateTable<_lingue>();
-            _esito = CreateTable<_utente>();
-            CreateTable<_sbDefSoglia>();
-            CreateTable<_sbSoglie>();
-            CreateTable<_parametri>();
-            CreateTable<_spybatt>();
-            CreateTable<_sbMemLunga>();
-            CreateTable<_sbMemBreve>();
-            CreateTable<_sbProgrammaRicarica>();
-            CreateTable<_sbDatiCliente>();
-            CreateTable<_sbTestataCalibrazione>();
-            CreateTable<_sbAnalisiCorrente>();
-            CreateTable<_sbParametriGenerali>();
-            CreateTable<_NodoStruttura>();
+            try
+            {
+                int _esito;
+                Log.Error("Database collegato: " + _dbName);
+                //Create Tables
+                _esito = CreateTable<_lingue>();
+                _esito = CreateTable<_utente>();
+                CreateTable<_sbDefSoglia>();
+                CreateTable<_sbSoglie>();
+                CreateTable<_parametri>();
+                CreateTable<_spybatt>();
+                CreateTable<_sbMemLunga>();
+                CreateTable<_sbMemBreve>();
+                CreateTable<_sbProgrammaRicarica>();
+                CreateTable<_sbDatiCliente>();
+                CreateTable<_sbTestataCalibrazione>();
+                CreateTable<_sbAnalisiCorrente>();
+                CreateTable<_sbParametriGenerali>();
+                CreateTable<_NodoStruttura>();
+                CreateTable<_lmEventiDb>();
 
-            inizializzaUtente();
-            inizializzaDefSoglie(); 
-            inizializzaSoglie();
-            inizializzaAlberoNavigazione();
+                inizializzaUtente();
+                inizializzaDefSoglie();
+                inizializzaSoglie();
 
 
-            bool dbOk = checkInit("_utente");
+                inizializzaAlberoNavigazione();
+
+
+                bool dbOk = checkInit("_utente");
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("Database non disponibile");
+                Log.Error(ex.ToString());
+            }
         }
 
         public  _utente CaricaUtente (string Username)
@@ -182,6 +116,9 @@ namespace MoriData
         {
             try
             {
+
+                //string _query = "SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = ";
+
                 return true;
 
             }
@@ -191,6 +128,44 @@ namespace MoriData
             }
             
         }
+
+
+
+        public  bool CheckDbUpdate()
+        {
+            int _numRecord;
+            try
+            {
+                // Step 1: allineamento ID Base
+                var command = this.CreateCommand("select count(*) from _lmEventiDb where IdAttivita = 1 ");
+                var result = command.ExecuteScalar<int>();
+                if (result < 1)
+                {
+                    // 1.1 - Verifico quanti sono
+                    command = this.CreateCommand("select count(*) from _spybatt where  IdBase isNull");
+                    result = command.ExecuteScalar<int>();
+
+                    Log.Debug("Step 1: allineamento ID Base - " + result.ToString() + " da aggiornare");
+                    if (result > 0)
+                    {
+
+                        command = this.CreateCommand("update _spybatt set IdBase = Id, NumeroClone = 0 where  IdBase isNull ");
+                        _numRecord = command.ExecuteNonQuery();
+
+                    }
+
+
+                }
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
 
 
         #region Inizializza Tabelle
@@ -231,7 +206,6 @@ namespace MoriData
                 InsertAll(usr);
             }
         }
-
 
         public void inizializzaDefSoglie()
         {
@@ -289,9 +263,6 @@ namespace MoriData
                 InsertAll(_sgl);
             }
         }
-
-
-
 
         private _NodoStruttura NodoRoot()
         {
@@ -352,7 +323,15 @@ namespace MoriData
             }
         }
 
-
+        /*
+        public bool TableExists(String tableName, SQLiteConnection connection)
+        {
+            SQLiteCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM sqlite_master WHERE type = 'table' AND name = @name";
+            cmd.Parameters.Add("@name", DbType.String).Value = tableName;
+            return (cmd.ExecuteScalar() != null);
+        }
+        */
         public void inizializzaAlberoNavigazione()
         {
             bool TabellaCompilata = checkInit("_NodoStruttura");
@@ -369,6 +348,45 @@ namespace MoriData
                 InsertAll(_sgl);
             }
         }
+
+
+        public bool VerificaAggiornamentoDB()
+        {
+            try
+            {
+                // Step 1: verifico se è presente e attivo il log aggiornamenti
+
+
+
+
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("VerificaAggiornamentoDB: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool VerificaAttività(int IdAttivita)
+        {
+            try
+            {
+  
+
+
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                Log.Error("VerificaAggiornamentoDB: " + ex.ToString());
+                return false;
+            }
+        }
+
+
 
         #endregion
 
@@ -457,11 +475,6 @@ namespace MoriData
 
             public bool valido;
 
-//            public Parametro()
-//            {
-//                valido = false;
-//            }
-
             public Parametro(_db connessione)
             {
                 valido = false;
@@ -485,10 +498,9 @@ namespace MoriData
                 }
             }
 
-        }//Fine Parametro
+        }
 
-    }//Fine Archivio
-
+    }
 
     public class Db : SQLiteConnection
         {

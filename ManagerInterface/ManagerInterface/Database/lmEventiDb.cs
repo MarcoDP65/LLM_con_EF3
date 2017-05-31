@@ -30,11 +30,13 @@ namespace MoriData
         public string LastUser { get; set; }
 
         public string VersioneManager { get; set; }
+        public int IdAttivita { get; set; }
         public string Attivita { get; set; }
         public string ElementiInteressati { get; set; }
         public int NumeroElementi { get; set; }
 
-        public string Esito { get; set; }
+        public int Esito { get; set; }
+        public string DescEsito { get; set; }
 
     }
 
@@ -107,9 +109,32 @@ namespace MoriData
         {
             try
             {
+                if ( _lmDb != null )
+                {
 
+                    _lmEventiDb _TestDati = _caricaDati(_lmDb.IdRecord);
+                    if (_TestDati == null)
+                    {
+                        //nuovo record
+                        _lmDb.CreationDate = DateTime.Now;
+                        _lmDb.RevisionDate = DateTime.Now;
+
+                        int _result = _database.Insert(_lmDb);
+                        _datiSalvati = (_result == 1);
+                    }
+                    else
+                    {
+                        _lmDb.RevisionDate = DateTime.Now;
+                        int _result = _database.Update(_lmDb);
+                        _datiSalvati = (_result == 1);
+                    }
+
+                    return true;
+                }
+                else
+                {
                     return false;
-                
+                }
             }
             catch (Exception Ex)
             {
@@ -119,445 +144,105 @@ namespace MoriData
         }
 
 
-
         #region Class Parameters
-        /*
+    
 
-        public int IdLocale
+        public int IdRecord
         {
-            get { return _sbsm.IdLocale; }
+            get { return _lmDb.IdRecord; }
             set
             {
-                if (value != null)
-                {
-                    _sbsm.IdLocale = value;
-                    _datiSalvati = false;
-                }
-            }
-        }
-        public string IdApparato
-        {
-            get { return _sbsm.IdApparato; }
-            set
-            {
-                if (value != null)
-                {
-                    _sbsm.IdApparato = value;
-                    _datiSalvati = false;
-                }
-            }
-        }
-        public int IdMemoriaLunga
-        {
-            get { return _sbsm.IdMemoriaLunga; }
-            set
-            {
-                if (value != null)
-                {
-                    _sbsm.IdMemoriaLunga = value;
-                    _datiSalvati = false;
-                }
+
+                _lmDb.IdRecord = value;
+                _datiSalvati = false;
+
             }
         }
 
-        public int IdMemoriaBreve
-        {
-            get { return _sbsm.IdMemoriaBreve; }
-            set
-            {
-                if (value != null)
-                {
-                    _sbsm.IdMemoriaBreve = value;
-                    _datiSalvati = false;
-                }
-            }
-        }
+
         public DateTime CreationDate
         {
-            get { return _sbsm.CreationDate; }
+            get { return _lmDb.CreationDate; }
         }
 
         public DateTime RevisionDate
         {
-            get { return _sbsm.RevisionDate; }
+            get { return _lmDb.RevisionDate; }
         }
 
         public string LastUser
         {
-            get { return _sbsm.LastUser; }
+            get { return _lmDb.LastUser; }
         }
 
-        public string DataOraRegistrazione
+        public string VersioneManager
         {
-            get { return _sbsm.DataOraRegistrazione; }
+            get { return _lmDb.VersioneManager; }
             set
             {
-                _sbsm.DataOraRegistrazione = value;
+                _lmDb.VersioneManager = value;
                 _datiSalvati = false;
             }
         }
 
-        public DateTime dtDataOraRegistrazione
+        public string ElementiInteressati
         {
-            get
-            {
-                DateTime _dataora;
-
-
-                if (_sbsm.DataOraRegistrazione.Length != 15)
-                {
-                    // data non formattata correttamente
-                    return DateTime.Now;
-                }
-
-                //if (DateTime.TryParseExact(_sbsm.DataOraRegistrazione,"dd/MM/yy HH:mm",CultureInfo.InvariantCulture,DateTimeStyles.None,out _dataora))
-                if (DateTime.TryParse(_sbsm.DataOraRegistrazione, out _dataora))
-                {
-                    return _dataora;
-                }
-
-
-                return DateTime.Now;
-
-            }
-        }
-
-        public int Vreg
-        {
-            get { return _sbsm.Vreg; }
+            get { return _lmDb.ElementiInteressati; }
             set
             {
-                _sbsm.Vreg = value;
+                _lmDb.ElementiInteressati = value;
                 _datiSalvati = false;
             }
         }
 
-        public string strVreg
+        public int IdAttivita
         {
-            get { return FunzioniMR.StringaTensione(_sbsm.Vreg); }
-        }
-
-        // Tensioni Assolute
-
-        public int V1
-        {
-            get { return _sbsm.V1; }
+            get { return _lmDb.IdAttivita; }
             set
             {
-                _sbsm.V1 = value;
+
+                _lmDb.IdAttivita = value;
+                _datiSalvati = false;
+
+            }
+        }
+
+
+        public string Attivita
+        {
+            get { return _lmDb.Attivita; }
+            set
+            {
+                _lmDb.Attivita = value;
                 _datiSalvati = false;
             }
         }
 
-        public string strV1
+        public int NumeroElementi
         {
-            get { return FunzioniMR.StringaTensione(_sbsm.V1); }
-        }
-
-        public int V2
-        {
-            get { return _sbsm.V2; }
+            get { return _lmDb.NumeroElementi; }
             set
             {
-                _sbsm.V2 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strV2
-        {
-            get { return FunzioniMR.StringaTensione(_sbsm.V2); }
-        }
-
-        public int V3
-        {
-            get { return _sbsm.V3; }
-            set
-            {
-                _sbsm.V3 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strV3
-        {
-            get { return FunzioniMR.StringaTensione(_sbsm.V3); }
-        }
-
-        // Tensioni Assolute per cella
-
-        public float Vc1
-        {
-            get { return _sbsm.Vc1; }
-            set
-            {
-                _sbsm.Vc1 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVc1
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.Vc1); }
-        }
-
-
-        public float Vc2
-        {
-            get { return _sbsm.Vc2; }
-            set
-            {
-                _sbsm.Vc2 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVc2
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.Vc2); }
-        }
-
-        public float Vc3
-        {
-            get { return _sbsm.Vc3; }
-            set
-            {
-                _sbsm.Vc3 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVc3
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.Vc3); }
-        }
-
-
-
-        public float VcBatt
-        {
-            get { return _sbsm.VcBatt; }
-            set
-            {
-                _sbsm.VcBatt = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVcBatt
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.VcBatt); }
-        }
-
-        // Tensioni relative di sezione per cella
-
-        public float Vcs1
-        {
-            get { return _sbsm.Vcs1; }
-            set
-            {
-                _sbsm.Vcs1 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVcs1
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.Vcs1); }
-        }
-
-
-        public float Vcs2
-        {
-            get { return _sbsm.Vcs2; }
-            set
-            {
-                _sbsm.Vcs2 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVcs2
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.Vcs2); }
-        }
-
-        public float Vcs3
-        {
-            get { return _sbsm.Vcs3; }
-            set
-            {
-                _sbsm.Vcs3 = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVcs3
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.Vcs3); }
-        }
-
-
-
-        public float VcsBatt
-        {
-            get { return _sbsm.VcsBatt; }
-            set
-            {
-                _sbsm.VcsBatt = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVcsBatt
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.VcsBatt); }
-        }
-
-
-        // Massimo sbilanciamento: riferito alle Tensioni relative di sezione per cella
-
-        public float MaxSbil
-        {
-            get { return _sbsm.MaxSbil; }
-            set
-            {
-                _sbsm.MaxSbil = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strMaxSbil
-        {
-            get { return FunzioniMR.StringaTensioneCella(_sbsm.MaxSbil); }
-        }
-
-
-        public int Amed
-        {
-            get { return _sbsm.Amed; }
-            set
-            {
-                _sbsm.Amed = value;
+                _lmDb.NumeroElementi = value;
                 _datiSalvati = false;
             }
         }
 
-        public string strAmed
+        public string strNumeroElementi
         {
-            get { return FunzioniMR.StringaCorrente((short)_sbsm.Amed); }
-        }
-        public string olvAmed
-        {
-            get
-            {
-                if (VersoScarica == elementiComuni.VersoCorrente.Diretto)
-                {
-                    return FunzioniMR.StringaCorrenteOLV((short)_sbsm.Amed);
-                }
-                else
-                {
-                    return FunzioniMR.StringaCorrenteOLV((short)-_sbsm.Amed);
-                }
-            }
+            get { return FunzioniMR.StringaTensione(_lmDb.NumeroElementi); }
         }
 
-        public int Amin
+        public string DescEsito
         {
-            get { return _sbsm.Amin; }
+            get { return _lmDb.DescEsito; }
             set
             {
-                _sbsm.Amin = value;
+                _lmDb.DescEsito = value;
                 _datiSalvati = false;
             }
         }
 
-        public string strAmin
-        {
-            get { return FunzioniMR.StringaCorrente((short)_sbsm.Amin); }
-        }
-        public string olvAmin
-        {
-            get
-            {
-                if (VersoScarica == elementiComuni.VersoCorrente.Diretto)
-                {
-                    return FunzioniMR.StringaCorrenteOLV((short)_sbsm.Amin);
-                }
-                else
-                {
-                    return FunzioniMR.StringaCorrenteOLV((short)-_sbsm.Amax);
-                }
-            }
-        }
-
-
-        public int Amax
-        {
-            get { return _sbsm.Amax; }
-            set
-            {
-                _sbsm.Amax = value;
-                _datiSalvati = false;
-            }
-        }
-
-        public string strAmax
-        {
-            get { return FunzioniMR.StringaCorrente((short)_sbsm.Amax); }
-        }
-        public string olvAmax
-        {
-            get
-            {
-                if (VersoScarica == elementiComuni.VersoCorrente.Diretto)
-                {
-                    return FunzioniMR.StringaCorrenteOLV((short)_sbsm.Amax);
-                }
-                else
-                {
-                    return FunzioniMR.StringaCorrenteOLV((short)-_sbsm.Amin);
-                }
-            }
-        }
-
-        public int Tntc
-        {
-            get
-            {
-                sbyte _tmpTemp = (sbyte)_sbsm.Tntc;
-                return _tmpTemp;
-            }
-            set
-            {
-                _sbsm.Tntc = (byte)value;
-                _datiSalvati = false;
-            }
-        }
-
-        public string strTemp
-        {
-            get
-            {
-                sbyte _tmpTemp = (sbyte)_sbsm.Tntc;
-                return FunzioniMR.StringaTemperatura(_tmpTemp);
-            }
-        }
-
-
-        public byte PresenzaElettrolita
-        {
-            get { return _sbsm.PresenzaElettrolita; }
-            set
-            {
-                _sbsm.PresenzaElettrolita = value;
-                _datiSalvati = false;
-            }
-        }
-
-        public byte VbatBk
-        {
-            get { return _sbsm.VbatBk; }
-            set
-            {
-                _sbsm.VbatBk = value;
-                _datiSalvati = false;
-            }
-        }
-        public string strVbatBk
-        {
-            get { return FunzioniMR.StringaTensione(_sbsm.VbatBk * 10); }
-        }
-        */
         #endregion Class Parameter
 
 

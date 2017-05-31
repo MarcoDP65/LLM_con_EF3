@@ -72,7 +72,6 @@ namespace ChargerLogic
         private double _KWhmediCiclo;
         private double _AhmediCiclo;
         private uint _durataCarica;
-
         private int _numScaricaOver;
         private int _numCaricaCOver;
         private int _numCaricaPOver;
@@ -90,7 +89,7 @@ namespace ChargerLogic
         private int _numGiorni;
         private double _numSecondi;
         private int _cicliAttesi = 1500;
-        private int _offsetSettimane = 0;
+//        private int _offsetSettimane = 0;
         private double _EnScaricataNorm = 0;
         private int _totaleScaricato;
         private double _maxSbil;

@@ -324,6 +324,14 @@
             this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.grbRtPulsanti = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.btnRtLeggiPulsanti = new System.Windows.Forms.Button();
+            this.btnRtResetBoard = new System.Windows.Forms.Button();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpConnessione.SuspendLayout();
             this.pnlComandiImmediati.SuspendLayout();
@@ -367,6 +375,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaSch)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).BeginInit();
+            this.grbRtPulsanti.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcMainDisplayManager
@@ -2380,6 +2389,8 @@
             // tbpRealTime
             // 
             this.tbpRealTime.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpRealTime.Controls.Add(this.btnRtResetBoard);
+            this.tbpRealTime.Controls.Add(this.grbRtPulsanti);
             this.tbpRealTime.Controls.Add(this.btnRtTestLed);
             this.tbpRealTime.Controls.Add(this.label79);
             this.tbpRealTime.Controls.Add(this.txtRtSeqSchTime);
@@ -2555,9 +2566,9 @@
             // 
             // btnRtSetBaudRate
             // 
-            this.btnRtSetBaudRate.Location = new System.Drawing.Point(1306, 135);
+            this.btnRtSetBaudRate.Location = new System.Drawing.Point(1306, 360);
             this.btnRtSetBaudRate.Name = "btnRtSetBaudRate";
-            this.btnRtSetBaudRate.Size = new System.Drawing.Size(178, 41);
+            this.btnRtSetBaudRate.Size = new System.Drawing.Size(207, 41);
             this.btnRtSetBaudRate.TabIndex = 113;
             this.btnRtSetBaudRate.Text = "Imposta BaudRate";
             this.btnRtSetBaudRate.UseVisualStyleBackColor = true;
@@ -2573,16 +2584,16 @@
             "38400",
             "57600",
             "115200"});
-            this.cmbRtBaudRate.Location = new System.Drawing.Point(1135, 143);
+            this.cmbRtBaudRate.Location = new System.Drawing.Point(1426, 309);
             this.cmbRtBaudRate.Name = "cmbRtBaudRate";
-            this.cmbRtBaudRate.Size = new System.Drawing.Size(128, 24);
+            this.cmbRtBaudRate.Size = new System.Drawing.Size(87, 24);
             this.cmbRtBaudRate.TabIndex = 112;
             // 
             // label77
             // 
             this.label77.AutoSize = true;
             this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(998, 143);
+            this.label77.Location = new System.Drawing.Point(1302, 310);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(109, 20);
             this.label77.TabIndex = 111;
@@ -2590,9 +2601,9 @@
             // 
             // btnRtSetRTC
             // 
-            this.btnRtSetRTC.Location = new System.Drawing.Point(1307, 194);
+            this.btnRtSetRTC.Location = new System.Drawing.Point(1306, 425);
             this.btnRtSetRTC.Name = "btnRtSetRTC";
-            this.btnRtSetRTC.Size = new System.Drawing.Size(177, 41);
+            this.btnRtSetRTC.Size = new System.Drawing.Size(207, 41);
             this.btnRtSetRTC.TabIndex = 110;
             this.btnRtSetRTC.Text = "Imposta Orologio";
             this.btnRtSetRTC.UseVisualStyleBackColor = true;
@@ -3630,6 +3641,91 @@
             this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
             this.flvStatoListaImg.VirtualMode = true;
             // 
+            // grbRtPulsanti
+            // 
+            this.grbRtPulsanti.BackColor = System.Drawing.Color.White;
+            this.grbRtPulsanti.Controls.Add(this.btnRtLeggiPulsanti);
+            this.grbRtPulsanti.Controls.Add(this.textBox7);
+            this.grbRtPulsanti.Controls.Add(this.textBox6);
+            this.grbRtPulsanti.Controls.Add(this.textBox5);
+            this.grbRtPulsanti.Controls.Add(this.textBox4);
+            this.grbRtPulsanti.Controls.Add(this.textBox3);
+            this.grbRtPulsanti.Location = new System.Drawing.Point(951, 206);
+            this.grbRtPulsanti.Name = "grbRtPulsanti";
+            this.grbRtPulsanti.Size = new System.Drawing.Size(246, 260);
+            this.grbRtPulsanti.TabIndex = 124;
+            this.grbRtPulsanti.TabStop = false;
+            this.grbRtPulsanti.Text = "Pulsanti";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(24, 45);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(81, 30);
+            this.textBox3.TabIndex = 0;
+            this.textBox3.Text = "0x00";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(133, 45);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(81, 30);
+            this.textBox4.TabIndex = 1;
+            this.textBox4.Text = "0x00";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(133, 89);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(81, 30);
+            this.textBox5.TabIndex = 2;
+            this.textBox5.Text = "0x00";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(133, 135);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(81, 30);
+            this.textBox6.TabIndex = 3;
+            this.textBox6.Text = "0x00";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(24, 135);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(81, 30);
+            this.textBox7.TabIndex = 4;
+            this.textBox7.Text = "0x00";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnRtLeggiPulsanti
+            // 
+            this.btnRtLeggiPulsanti.Location = new System.Drawing.Point(44, 193);
+            this.btnRtLeggiPulsanti.Name = "btnRtLeggiPulsanti";
+            this.btnRtLeggiPulsanti.Size = new System.Drawing.Size(156, 38);
+            this.btnRtLeggiPulsanti.TabIndex = 5;
+            this.btnRtLeggiPulsanti.Text = "Leggi Pulsanti";
+            this.btnRtLeggiPulsanti.UseVisualStyleBackColor = true;
+            // 
+            // btnRtResetBoard
+            // 
+            this.btnRtResetBoard.Location = new System.Drawing.Point(1306, 526);
+            this.btnRtResetBoard.Name = "btnRtResetBoard";
+            this.btnRtResetBoard.Size = new System.Drawing.Size(207, 41);
+            this.btnRtResetBoard.TabIndex = 125;
+            this.btnRtResetBoard.Text = "Reset Scheda";
+            this.btnRtResetBoard.UseVisualStyleBackColor = true;
+            this.btnRtResetBoard.Click += new System.EventHandler(this.btnRtResetBoard_Click);
+            // 
             // frmDisplayManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3703,6 +3799,8 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).EndInit();
+            this.grbRtPulsanti.ResumeLayout(false);
+            this.grbRtPulsanti.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4005,5 +4103,13 @@
         private System.Windows.Forms.TextBox txtModVariabiliTrasmesse;
         private System.Windows.Forms.Button btnModInviaVariabili;
         private System.Windows.Forms.Button btnRtTestLed;
+        private System.Windows.Forms.Button btnRtResetBoard;
+        private System.Windows.Forms.GroupBox grbRtPulsanti;
+        private System.Windows.Forms.Button btnRtLeggiPulsanti;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

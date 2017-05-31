@@ -55,7 +55,7 @@ namespace MoriData
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         public bool _datiSalvati;
         public bool _recordPresente;
-        private string _tempId;
+        //private string _tempId;
 
 
 

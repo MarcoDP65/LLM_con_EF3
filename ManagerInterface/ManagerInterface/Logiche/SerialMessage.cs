@@ -71,6 +71,7 @@ namespace ChargerLogic
 
             DI_LedRGB = 0x1E,
             DI_Stato = 0xE1,
+            DI_ResetBoard = 0x5F,
             DI_CancellaInteraMemoria = 0x3A,
             DI_Cancella4K = 0x24,
             DI_R_LeggiMemoria = 0x3C,

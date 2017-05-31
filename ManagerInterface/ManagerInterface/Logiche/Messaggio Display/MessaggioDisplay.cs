@@ -84,24 +84,6 @@ namespace ChargerLogic
                 // STX
                 _ret = _messaggio[0];
                 if (_ret != serSTX) return EsitoRisposta.NonRiconosciuto;
-                /*
-                //seriale
-                _startPos = 1;
-                SerialNumber = new byte[8];
-                for (int ciclo = 0; ciclo < 8; ciclo++)
-                {
-                    SerialNumber[ciclo] = decodificaByte(_messaggio[_startPos + (2 * ciclo)], _messaggio[_startPos + (2 * ciclo) + 1]);
-                }
-
-                //tipo
-                _startPos = 17;
-                _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                _dispositivo = (ushort)(_ret);
-                _startPos = 19;
-                _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                _dispositivo = (ushort)((_dispositivo << 8) + _ret);
-                Dispositivo = 0; // Enum.ToObject(typeof(TipoDispositivo), _dispositivo);
-                */
 
                 if (skipHead == false)
                 {
@@ -649,8 +631,9 @@ namespace ChargerLogic
                 /// aggiungo il corpo
                 /// 
                 /// ATTENZIONE: Il canale BLU ha i lati DX/SX invertiti rispeto agli altri canali
+                ///          -> Dalla rev 1.02.07 i parametri sono stati riordinati
 
-                splitUshort(codificaByte(ValBlueDx), ref lsb, ref msb);
+                splitUshort(codificaByte(ValBlue), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
@@ -672,7 +655,7 @@ namespace ChargerLogic
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;
 
-                splitUshort(codificaByte(ValBlue), ref lsb, ref msb);
+                splitUshort(codificaByte(ValBlueDx), ref lsb, ref msb);
                 MessageBuffer[(_arrayInit + 1)] = msb;
                 MessageBuffer[(_arrayInit + 2)] = lsb;
                 _arrayInit += 2;

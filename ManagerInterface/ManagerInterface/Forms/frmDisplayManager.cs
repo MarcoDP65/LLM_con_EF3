@@ -2603,7 +2603,46 @@ namespace PannelloCharger
         {
 
         }
+
+        private void btnRtResetBoard_Click(object sender, EventArgs e)
+        {
+ 
+            try
+            {
+                bool verifica;
+                btnRtResetBoard.BackColor = Color.Blue;
+                Application.DoEvents();
+                if (_disp.ResetScheda())
+                {
+                    verifica = _disp.VerificaPresenza();
+
+                    if (verifica)
+                    {
+                        btnRtResetBoard.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        btnRtResetBoard.BackColor = Color.LightPink;
+                    }
+                }
+                else
+                {
+                    btnRtResetBoard.BackColor = Color.Red;
+                }
+
+                Application.DoEvents();
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("---------------- frmDisplayManager_Load ------------");
+                Log.Error(Ex.Message);
+            }
+        }
+
     }
+    
 
 
 }

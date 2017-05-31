@@ -147,8 +147,6 @@ namespace PannelloCharger
             }
             set
             {
-                ushort _tempOre;
-                ushort _tempMinuti;
                 _minutiDurata = value;
                 MostraDurata(_minutiDurata);
                 _turno.MinutiDurata = _minutiDurata;

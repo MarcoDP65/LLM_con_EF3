@@ -30,7 +30,22 @@ namespace PannelloCharger
         {
             if (txtFileComandi.Text != "")
             {
-                ExecuteCommandSync(txtFileComandi.Text);
+                // ExecuteCommandSync(txtFileComandi.Text);
+
+                if (cctlOsConsole.IsProcessRunning)
+                {
+                    cctlOsConsole.StopProcess();
+                    cctlOsConsole.WriteOutput("STOP Esecuzione\n\r", Color.Red);
+                }
+                else
+                {
+                    cctlOsConsole.ClearOutput();
+                    cctlOsConsole.WriteOutput("Inizio Esecuzione", Color.Blue);
+                    cctlOsConsole.ShowDiagnostics= true;
+                    cctlOsConsole.UseWaitCursor = true;
+
+                    cctlOsConsole.StartProcess("C:\\TI\\MSP430Flasher_1.3.7\\MSP430Flasher.exe", "");
+                }
             }
         }
 
@@ -46,7 +61,7 @@ namespace PannelloCharger
                 // and "/c " as the parameters.
                 // Incidentally, /c tells cmd that we want it to execute the command that follows,
                 // and then exit.
-                txtOutputCoamndo.Text = "";
+                //txtOutputCoamndo.Text = "";
                 txtCmdExitCode.Text = "";
 
                 //this.
@@ -112,16 +127,20 @@ namespace PannelloCharger
 
         void CommandOutputHandler(object sender, DataReceivedEventArgs e)
         {
+            /*
             Trace.WriteLine(e.Data);
             this.BeginInvoke(new MethodInvoker(() =>
             {
                 txtOutputCoamndo.AppendText(e.Data ?? string.Empty);
                 txtOutputCoamndo.AppendText("\r\n");
             }));
-
+            */
             Application.DoEvents();
         }
 
+        private void cctlOsConsole_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
