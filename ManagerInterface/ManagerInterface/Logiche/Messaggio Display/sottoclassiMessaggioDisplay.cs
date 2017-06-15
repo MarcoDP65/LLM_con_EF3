@@ -101,5 +101,72 @@ namespace ChargerLogic
 
         }
 
+        public class StatoScheda
+        {
+
+            public byte Pulsante1 { get; set; }
+            public byte Pulsante2 { get; set; }
+            public byte Pulsante3 { get; set; }
+            public byte Pulsante4 { get; set; }
+            public byte Pulsante5 { get; set; }
+
+
+            public DateTime IstanteLettura { get; set; }
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+
+                try
+                {
+                    datiPronti = false;
+                    if (_messaggio.Length < 2)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    _risposta = new byte[(_messaggio.Length / 2)];
+
+                    if (decodificaArray(_messaggio, ref _risposta))
+                    {
+                        Log.Debug(" ---------------------- ParametriSpybatt -----------------------------------------");
+                        Log.Debug(FunzioniMR.hexdumpArray(_risposta));
+
+                        startByte = 0;
+
+                        Pulsante1 = _risposta[startByte++];
+                        Pulsante2 = _risposta[startByte++];
+                        Pulsante3 = _risposta[startByte++];
+                        Pulsante4 = _risposta[startByte++];
+                        Pulsante5 = _risposta[startByte++];
+
+
+                        datiPronti = true;
+                        IstanteLettura = DateTime.Now;
+
+                    }
+
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+        }
+
+
     }
 }

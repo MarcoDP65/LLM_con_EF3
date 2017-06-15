@@ -210,6 +210,14 @@
             this.btnVarCrea = new System.Windows.Forms.Button();
             this.txtVarNomeVariabile = new System.Windows.Forms.TextBox();
             this.tbpRealTime = new System.Windows.Forms.TabPage();
+            this.btnRtResetBoard = new System.Windows.Forms.Button();
+            this.grbRtPulsanti = new System.Windows.Forms.GroupBox();
+            this.btnRtLeggiPulsanti = new System.Windows.Forms.Button();
+            this.txtRtValBtn01 = new System.Windows.Forms.TextBox();
+            this.txtRtValBtn02 = new System.Windows.Forms.TextBox();
+            this.txtRtValBtn03 = new System.Windows.Forms.TextBox();
+            this.txtRtValBtn04 = new System.Windows.Forms.TextBox();
+            this.txtRtValBtn05 = new System.Windows.Forms.TextBox();
             this.btnRtTestLed = new System.Windows.Forms.Button();
             this.label79 = new System.Windows.Forms.Label();
             this.txtRtSeqSchTime = new System.Windows.Forms.TextBox();
@@ -324,14 +332,6 @@
             this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.grbRtPulsanti = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.btnRtLeggiPulsanti = new System.Windows.Forms.Button();
-            this.btnRtResetBoard = new System.Windows.Forms.Button();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpConnessione.SuspendLayout();
             this.pnlComandiImmediati.SuspendLayout();
@@ -365,6 +365,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvVarListaVariabili)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tbpRealTime.SuspendLayout();
+            this.grbRtPulsanti.SuspendLayout();
             this.tbpAccesssoMemoria.SuspendLayout();
             this.grbMemScrittura.SuspendLayout();
             this.grbMemCancFisica.SuspendLayout();
@@ -375,7 +376,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaSch)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).BeginInit();
-            this.grbRtPulsanti.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcMainDisplayManager
@@ -2460,6 +2460,92 @@
             this.tbpRealTime.TabIndex = 1;
             this.tbpRealTime.Text = "RealTime";
             // 
+            // btnRtResetBoard
+            // 
+            this.btnRtResetBoard.Location = new System.Drawing.Point(1306, 526);
+            this.btnRtResetBoard.Name = "btnRtResetBoard";
+            this.btnRtResetBoard.Size = new System.Drawing.Size(207, 41);
+            this.btnRtResetBoard.TabIndex = 125;
+            this.btnRtResetBoard.Text = "Reset Scheda";
+            this.btnRtResetBoard.UseVisualStyleBackColor = true;
+            this.btnRtResetBoard.Click += new System.EventHandler(this.btnRtResetBoard_Click);
+            // 
+            // grbRtPulsanti
+            // 
+            this.grbRtPulsanti.BackColor = System.Drawing.Color.White;
+            this.grbRtPulsanti.Controls.Add(this.btnRtLeggiPulsanti);
+            this.grbRtPulsanti.Controls.Add(this.txtRtValBtn01);
+            this.grbRtPulsanti.Controls.Add(this.txtRtValBtn02);
+            this.grbRtPulsanti.Controls.Add(this.txtRtValBtn03);
+            this.grbRtPulsanti.Controls.Add(this.txtRtValBtn04);
+            this.grbRtPulsanti.Controls.Add(this.txtRtValBtn05);
+            this.grbRtPulsanti.Location = new System.Drawing.Point(951, 206);
+            this.grbRtPulsanti.Name = "grbRtPulsanti";
+            this.grbRtPulsanti.Size = new System.Drawing.Size(246, 260);
+            this.grbRtPulsanti.TabIndex = 124;
+            this.grbRtPulsanti.TabStop = false;
+            this.grbRtPulsanti.Text = "Pulsanti";
+            // 
+            // btnRtLeggiPulsanti
+            // 
+            this.btnRtLeggiPulsanti.Location = new System.Drawing.Point(44, 193);
+            this.btnRtLeggiPulsanti.Name = "btnRtLeggiPulsanti";
+            this.btnRtLeggiPulsanti.Size = new System.Drawing.Size(156, 38);
+            this.btnRtLeggiPulsanti.TabIndex = 5;
+            this.btnRtLeggiPulsanti.Text = "Leggi Pulsanti";
+            this.btnRtLeggiPulsanti.UseVisualStyleBackColor = true;
+            this.btnRtLeggiPulsanti.Click += new System.EventHandler(this.btnRtLeggiPulsanti_Click);
+            // 
+            // txtRtValBtn01
+            // 
+            this.txtRtValBtn01.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRtValBtn01.Location = new System.Drawing.Point(24, 135);
+            this.txtRtValBtn01.Name = "txtRtValBtn01";
+            this.txtRtValBtn01.Size = new System.Drawing.Size(81, 30);
+            this.txtRtValBtn01.TabIndex = 4;
+            this.txtRtValBtn01.Text = "0x00";
+            this.txtRtValBtn01.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtRtValBtn02
+            // 
+            this.txtRtValBtn02.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRtValBtn02.Location = new System.Drawing.Point(133, 135);
+            this.txtRtValBtn02.Name = "txtRtValBtn02";
+            this.txtRtValBtn02.Size = new System.Drawing.Size(81, 30);
+            this.txtRtValBtn02.TabIndex = 3;
+            this.txtRtValBtn02.Text = "0x00";
+            this.txtRtValBtn02.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtRtValBtn03
+            // 
+            this.txtRtValBtn03.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRtValBtn03.Location = new System.Drawing.Point(133, 89);
+            this.txtRtValBtn03.Name = "txtRtValBtn03";
+            this.txtRtValBtn03.Size = new System.Drawing.Size(81, 30);
+            this.txtRtValBtn03.TabIndex = 2;
+            this.txtRtValBtn03.Text = "0x00";
+            this.txtRtValBtn03.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtRtValBtn04
+            // 
+            this.txtRtValBtn04.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRtValBtn04.Location = new System.Drawing.Point(133, 45);
+            this.txtRtValBtn04.Name = "txtRtValBtn04";
+            this.txtRtValBtn04.Size = new System.Drawing.Size(81, 30);
+            this.txtRtValBtn04.TabIndex = 1;
+            this.txtRtValBtn04.Text = "0x00";
+            this.txtRtValBtn04.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtRtValBtn05
+            // 
+            this.txtRtValBtn05.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRtValBtn05.Location = new System.Drawing.Point(24, 45);
+            this.txtRtValBtn05.Name = "txtRtValBtn05";
+            this.txtRtValBtn05.Size = new System.Drawing.Size(81, 30);
+            this.txtRtValBtn05.TabIndex = 0;
+            this.txtRtValBtn05.Text = "0x00";
+            this.txtRtValBtn05.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnRtTestLed
             // 
             this.btnRtTestLed.Location = new System.Drawing.Point(562, 152);
@@ -3641,91 +3727,6 @@
             this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
             this.flvStatoListaImg.VirtualMode = true;
             // 
-            // grbRtPulsanti
-            // 
-            this.grbRtPulsanti.BackColor = System.Drawing.Color.White;
-            this.grbRtPulsanti.Controls.Add(this.btnRtLeggiPulsanti);
-            this.grbRtPulsanti.Controls.Add(this.textBox7);
-            this.grbRtPulsanti.Controls.Add(this.textBox6);
-            this.grbRtPulsanti.Controls.Add(this.textBox5);
-            this.grbRtPulsanti.Controls.Add(this.textBox4);
-            this.grbRtPulsanti.Controls.Add(this.textBox3);
-            this.grbRtPulsanti.Location = new System.Drawing.Point(951, 206);
-            this.grbRtPulsanti.Name = "grbRtPulsanti";
-            this.grbRtPulsanti.Size = new System.Drawing.Size(246, 260);
-            this.grbRtPulsanti.TabIndex = 124;
-            this.grbRtPulsanti.TabStop = false;
-            this.grbRtPulsanti.Text = "Pulsanti";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(24, 45);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(81, 30);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.Text = "0x00";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(133, 45);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(81, 30);
-            this.textBox4.TabIndex = 1;
-            this.textBox4.Text = "0x00";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(133, 89);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(81, 30);
-            this.textBox5.TabIndex = 2;
-            this.textBox5.Text = "0x00";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(133, 135);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(81, 30);
-            this.textBox6.TabIndex = 3;
-            this.textBox6.Text = "0x00";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(24, 135);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(81, 30);
-            this.textBox7.TabIndex = 4;
-            this.textBox7.Text = "0x00";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnRtLeggiPulsanti
-            // 
-            this.btnRtLeggiPulsanti.Location = new System.Drawing.Point(44, 193);
-            this.btnRtLeggiPulsanti.Name = "btnRtLeggiPulsanti";
-            this.btnRtLeggiPulsanti.Size = new System.Drawing.Size(156, 38);
-            this.btnRtLeggiPulsanti.TabIndex = 5;
-            this.btnRtLeggiPulsanti.Text = "Leggi Pulsanti";
-            this.btnRtLeggiPulsanti.UseVisualStyleBackColor = true;
-            // 
-            // btnRtResetBoard
-            // 
-            this.btnRtResetBoard.Location = new System.Drawing.Point(1306, 526);
-            this.btnRtResetBoard.Name = "btnRtResetBoard";
-            this.btnRtResetBoard.Size = new System.Drawing.Size(207, 41);
-            this.btnRtResetBoard.TabIndex = 125;
-            this.btnRtResetBoard.Text = "Reset Scheda";
-            this.btnRtResetBoard.UseVisualStyleBackColor = true;
-            this.btnRtResetBoard.Click += new System.EventHandler(this.btnRtResetBoard_Click);
-            // 
             // frmDisplayManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3782,6 +3783,8 @@
             this.groupBox2.PerformLayout();
             this.tbpRealTime.ResumeLayout(false);
             this.tbpRealTime.PerformLayout();
+            this.grbRtPulsanti.ResumeLayout(false);
+            this.grbRtPulsanti.PerformLayout();
             this.tbpAccesssoMemoria.ResumeLayout(false);
             this.tbpAccesssoMemoria.PerformLayout();
             this.grbMemScrittura.ResumeLayout(false);
@@ -3799,8 +3802,6 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvStatoListaImg)).EndInit();
-            this.grbRtPulsanti.ResumeLayout(false);
-            this.grbRtPulsanti.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4106,10 +4107,10 @@
         private System.Windows.Forms.Button btnRtResetBoard;
         private System.Windows.Forms.GroupBox grbRtPulsanti;
         private System.Windows.Forms.Button btnRtLeggiPulsanti;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtRtValBtn01;
+        private System.Windows.Forms.TextBox txtRtValBtn02;
+        private System.Windows.Forms.TextBox txtRtValBtn03;
+        private System.Windows.Forms.TextBox txtRtValBtn04;
+        private System.Windows.Forms.TextBox txtRtValBtn05;
     }
 }

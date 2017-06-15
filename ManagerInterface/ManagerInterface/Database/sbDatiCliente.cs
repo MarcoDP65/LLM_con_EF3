@@ -329,11 +329,10 @@ namespace MoriData
             get { return _sbdc.IdCliente; }
             set
             {
-                if (value != null)
-                {
+
                     _sbdc.IdCliente = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 

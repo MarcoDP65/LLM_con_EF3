@@ -2614,6 +2614,8 @@ namespace PannelloCharger
                 Application.DoEvents();
                 if (_disp.ResetScheda())
                 {
+                    int milliseconds = 2000;
+                    System.Threading.Thread.Sleep(milliseconds);
                     verifica = _disp.VerificaPresenza();
 
                     if (verifica)
@@ -2641,6 +2643,36 @@ namespace PannelloCharger
             }
         }
 
+        private void btnRtLeggiPulsanti_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool verifica;
+                if (_disp.LeggiStatoScheda())
+                {
+                    txtRtValBtn01.Text = "0x" + _disp.StatoAttualeScheda.Pulsante1.ToString("x2");
+                    txtRtValBtn02.Text = "0x" + _disp.StatoAttualeScheda.Pulsante2.ToString("x2");
+                    txtRtValBtn03.Text = "0x" + _disp.StatoAttualeScheda.Pulsante3.ToString("x2");
+                    txtRtValBtn04.Text = "0x" + _disp.StatoAttualeScheda.Pulsante4.ToString("x2");
+                    txtRtValBtn05.Text = "0x" + _disp.StatoAttualeScheda.Pulsante5.ToString("x2");
+
+                }
+                else
+                {
+                    txtRtValBtn01.Text = "";
+                    txtRtValBtn02.Text = "";
+                    txtRtValBtn03.Text = "";
+                    txtRtValBtn04.Text = "";
+                    txtRtValBtn05.Text = "";
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnRtLeggiPulsanti_Click: " + Ex.Message);
+            }
+
+        }
     }
     
 

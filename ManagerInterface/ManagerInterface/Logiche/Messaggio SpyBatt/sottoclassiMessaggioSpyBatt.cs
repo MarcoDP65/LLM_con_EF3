@@ -331,7 +331,7 @@ namespace ChargerLogic
             {
 
                 byte[] _risposta;
-                int startByte = 0;
+                //int startByte = 0;
                 EsitoRisposta _esitoLocale;
 
                 try

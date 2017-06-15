@@ -246,11 +246,10 @@ namespace MoriData
             get { return _sbpgen.IdLocale; }
             set
             {
-                if (value != null)
-                {
+               
                     _sbpgen.IdLocale = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 
@@ -272,11 +271,10 @@ namespace MoriData
             get { return _sbpgen.Progressivo; }
             set
             {
-                if (value != null)
-                {
+
                     _sbpgen.Progressivo = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 

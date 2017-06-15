@@ -84,6 +84,10 @@ namespace ChargerLogic
 
                 if (skipHead == false)
                 {
+
+                    if (_messaggio.Length < 20)
+                    { return EsitoRisposta.LunghezzaErrata; }
+
                     //seriale
                     _startPos = 1;
                     SerialNumber = new byte[8];
@@ -107,7 +111,8 @@ namespace ChargerLogic
                 }
                 else
                 {
-
+                    if (_messaggio.Length < 14)
+                    { return EsitoRisposta.LunghezzaErrata; }
                     SerialNumber = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
                     Dispositivo = 0;
                     _startPos = 1;

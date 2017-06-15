@@ -54,9 +54,8 @@ namespace ChargerLogic
             }
         }
 
-        new public PacchettoReadMem _pacchettoMem;
-
-
+        public PacchettoReadMem _pacchettoMem = new PacchettoReadMem();
+        public StatoScheda _statoScheda = new StatoScheda();
 
         public EsitoRisposta analizzaMessaggio(byte[] _messaggio, bool skipHead = false)
         {
@@ -84,6 +83,32 @@ namespace ChargerLogic
                 // STX
                 _ret = _messaggio[0];
                 if (_ret != serSTX) return EsitoRisposta.NonRiconosciuto;
+
+                // POi verifico il CRC
+                _endPos = _messaggio.Length;
+                _startPos = _endPos - 6;
+                if (_messaggio[_startPos] != serENDPAC)
+                {
+                    return EsitoRisposta.NonRiconosciuto;
+                }
+                _buffArray = new byte[_startPos - 1];
+
+                // controllo CRC
+                Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                _startPos++;
+                _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                _tempShort = (ushort)(_ret);
+                _startPos += 2;
+                _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                _tempShort = (ushort)((_tempShort << 8) + _ret);
+                _crc = codCrc.ComputeChecksum(_buffArray);
+
+                if (_crc != _tempShort)
+                {
+                    Log.Debug("analizzaMessaggio Display: BAD CRC");
+                    return EsitoRisposta.BadCRC;
+                }
+
 
                 if (skipHead == false)
                 {
@@ -134,6 +159,11 @@ namespace ChargerLogic
                 switch (_comando)
                 {
                     case (byte)TipoComando.ACK:
+                        {
+                            Log.Debug("Display: ACK");
+                            break;
+                        }
+                        /*
                         _startPos = 23;
                         if (_messaggio[_startPos] != serENDPAC)
                         {
@@ -151,40 +181,26 @@ namespace ChargerLogic
 
                         if (_crc != _tempShort)
                         { return EsitoRisposta.BadCRC; }
-
-                        break;
+                        */
+                        
                     case (byte)TipoComando.NACK:
-                        _crc = 0;
-                        break;
+                        {
+                            Log.Debug("Display: --> NACK <---");
+                            _crc = 0;
+                            break;
+                        }
 
                     case (byte)TipoComando.Start:
-                        break;
+                        {
+                            Log.Debug("Display: START Comunicazione");
+                            _crc = 0;
+                            break;
+                        }
 
                     case (byte)TipoComando.DI_R_LeggiMemoria: // Lettura frammento memoria
                         {
-                            _endPos = _messaggio.Length;
-                            _startPos = _endPos - 6;
 
-                            if (_messaggio[_startPos] != serENDPAC)
-                            {
-                                return EsitoRisposta.NonRiconosciuto;
-                            }
-                            _buffArray = new byte[_startPos - 1];
-
-                            // controllo CRC
-                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
-                            _startPos++;
-                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                            _tempShort = (ushort)(_ret);
-                            _startPos += 2;
-                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                            _tempShort = (ushort)((_tempShort << 8) + _ret);
-                            _crc = codCrc.ComputeChecksum(_buffArray);
-
-                            if (_crc != _tempShort)
-                            { return EsitoRisposta.BadCRC; }
-
-                            // ora leggo la parte dati
+                            // leggo la parte dati
                             _pacchettoMem = new PacchettoReadMem();
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
                             if (_comando != (byte)TipoComando.DI_R_LeggiMemoria)
@@ -195,7 +211,7 @@ namespace ChargerLogic
                             {
                                 Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             }
-
+                            Log.Debug("Display: Readmem " + hexdumpArray(_buffArray));
                             _risposta = _pacchettoMem.analizzaMessaggio(_buffArray);
                             if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
 
@@ -206,12 +222,27 @@ namespace ChargerLogic
                         break;
                     case (byte)TipoComando.DI_MostraSchermata:
                         break;
-                    default:
-                        return EsitoRisposta.NonRiconosciuto;
+                    case (byte)TipoComando.DI_ResetBoard:
                         break;
+                    case (byte)TipoComando.DI_Stato:
+                        {
+
+                            // leggo la parte dati
+                            _statoScheda = new StatoScheda();
+                            _buffArray = new byte[(_endPos - (preambleLenght + 7))];
+                            Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
+                            Log.Debug("Display: Read Stato " + hexdumpArray(_buffArray));
+                            _risposta = _statoScheda.analizzaMessaggio(_buffArray);
+                            if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
+
+                            break;
+                        }
+
+                    default:
+                        {
+                            return EsitoRisposta.NonRiconosciuto;
+                        }
                 }
-
-
 
                 return EsitoRisposta.MessaggioOk;
 
@@ -223,9 +254,6 @@ namespace ChargerLogic
             }
 
         }
-
-
-
 
         public bool ComponiMessaggioBacklight(bool Acceso)
         {
@@ -320,7 +348,6 @@ namespace ChargerLogic
             catch { return _esito; }
         }
 
-
         public bool ComponiMessaggioBaudRate(DisplaySetup.BaudRate Velocita)
         {
             bool _esito = false;
@@ -407,10 +434,6 @@ namespace ChargerLogic
             }
             catch { return _esito; }
         }
-
-
-
-
 
         /// <summary>
         /// Compone il messaggio per l'invio all' RTC del display l'ora locale del PC.
@@ -563,9 +586,6 @@ namespace ChargerLogic
             }
             catch { return _esito; }
         }
-
-
-
 
         /// <summary>
         /// Compone il messaggio di comando LED. I ai due canali vengono inviati gli stessi valori.

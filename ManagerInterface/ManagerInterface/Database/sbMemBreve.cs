@@ -155,7 +155,7 @@ namespace MoriData
         {
             try
             {
-                if (_sbsm.IdApparato != nullID & _sbsm.IdApparato != null & _sbsm.IdMemoriaLunga != null)
+                if (_sbsm.IdApparato != nullID & _sbsm.IdApparato != null & _sbsm.IdMemoriaLunga != 0)
                 {
 
                     _sbMemBreve _TestDati = _caricaDati(_sbsm.IdApparato, _sbsm.IdMemoriaLunga, _sbsm.IdMemoriaBreve);
@@ -322,11 +322,10 @@ namespace MoriData
             get { return _sbsm.IdMemoriaLunga; }
             set
             {
-                if (value != null)
-                {
+
                     _sbsm.IdMemoriaLunga = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 

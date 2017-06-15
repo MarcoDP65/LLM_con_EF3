@@ -747,11 +747,10 @@ namespace MoriData
             get { return _sblm.IdLocale; }
             set
             {
-                if (value !=null )
-                {
+
                     _sblm.IdLocale = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 
@@ -761,11 +760,10 @@ namespace MoriData
             get { return _sblm.IdMemoriaLunga; }
             set
             {
-                if (value != null)
-                {
+
                     _sblm.IdMemoriaLunga = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 

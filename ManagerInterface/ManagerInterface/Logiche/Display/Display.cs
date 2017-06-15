@@ -35,7 +35,7 @@ namespace ChargerLogic
         public List<DisplaySetup.Schermata> Schermate = new List<DisplaySetup.Schermata>();
         public List<DisplaySetup.Variabile> Variabili = new List<DisplaySetup.Variabile>();
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
-
+        public DisplaySetup.StatoDisplay StatoAttualeScheda = new DisplaySetup.StatoDisplay();
         private int _timeOut = 10;
         private DateTime _startRead;
         private SerialMessage.TipoRisposta _ultimaRisposta = SerialMessage.TipoRisposta.NonValido;   // flag per l'indicazioene del tipo dell'ultimo messaggio ricevuto dalla scheda
@@ -115,15 +115,10 @@ namespace ChargerLogic
                 _mD._comando = (byte)SerialMessage.TipoComando.Start;
                 _mD.ComponiMessaggio();
                 _rxRisposta = false;
+
                 Log.Debug("Display START");
                 Log.Debug(_mD.hexdumpMessaggio());
-                /*
-                echoDatiSER.Clear();
-                for (int i = 0; i < _mD.MessageBuffer.Length; i++)
-                {
-                    echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
-                }
-                */
+
                 scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true); 
                 if ((_esito) && (_ultimaRisposta == SerialMessage.TipoRisposta.Ack))
@@ -325,7 +320,6 @@ namespace ChargerLogic
             }
         }
 
-
         /// <summary>
         /// Cancella l'intera memoria flash (4MB). Cancella snche i dati relativi alla scheda corrente dal DB Locale
         /// </summary>
@@ -376,7 +370,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-
 
         /// <summary>
         /// Carica l'immagine passata come parametro sulla memoria esterna del dispositivo
@@ -716,6 +709,52 @@ namespace ChargerLogic
                 return _risposta;
             }
         }
+
+        public bool LeggiStatoScheda()
+        {
+            bool _risposta = false;
+
+            try
+            {
+                bool _esito = false;
+
+                _mD.Comando = SerialMessage.TipoComando.DI_Stato;
+                _mD._comando = (byte)SerialMessage.TipoComando.DI_Stato;
+                _mD.ComponiMessaggio();
+                _rxRisposta = false;
+                Log.Debug("Display Read State");
+                Log.Debug(_mD.hexdumpMessaggio());
+
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1,false);
+
+                if ((_esito)) // && (_ultimaRisposta == SerialMessage.TipoRisposta.Ack))
+                {
+                    if (_mD._statoScheda != null)
+                    {
+                        StatoAttualeScheda.Pulsante1 = _mD._statoScheda.Pulsante1;
+                        StatoAttualeScheda.Pulsante2 = _mD._statoScheda.Pulsante2;
+                        StatoAttualeScheda.Pulsante3 = _mD._statoScheda.Pulsante3;
+                        StatoAttualeScheda.Pulsante4 = _mD._statoScheda.Pulsante4;
+                        StatoAttualeScheda.Pulsante5 = _mD._statoScheda.Pulsante5;
+                        _risposta = true;
+                    }
+                }
+                return _risposta;
+
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("VerificaPresenza: " + Ex.Message);
+                return _risposta;
+            }
+        }
+
         public bool CaricaListaImmaginiPresenti(ushort Start,ushort Stop, bool ElencaVuote = false, bool CaricaBitmap = false)
         {
             bool _risposta = false;

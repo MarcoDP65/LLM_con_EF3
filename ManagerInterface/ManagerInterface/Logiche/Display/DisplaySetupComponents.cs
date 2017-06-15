@@ -920,9 +920,7 @@ namespace ChargerLogic
             public byte Id { get; set; }
             public byte Lunghezza { get; set; }
             public string Valore { get; set; }
-        }
-
-    
+        } 
 
         public class DataModel
         {
@@ -1326,6 +1324,16 @@ namespace ChargerLogic
             }
         }
 
+        public class StatoDisplay
+        {
+            public byte Pulsante1 { get; set; }
+            public byte Pulsante2 { get; set; }
+            public byte Pulsante3 { get; set; }
+            public byte Pulsante4 { get; set; }
+            public byte Pulsante5 { get; set; }
+
+            public DateTime IstanteLettura { get; set; }
+        }
 
     }
 }

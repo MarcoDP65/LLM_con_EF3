@@ -376,11 +376,10 @@ namespace MoriData
             get { return _sbtc.IdLocale; }
             set
             {
-                if (value != null)
-                {
+
                     _sbtc.IdLocale = value;
                     _datiSalvati = false;
-                }
+                
             }
         }
 

@@ -147,21 +147,21 @@ namespace ChargerLogic
         {
             try
             {
-                _profonditaDoD = 80;   // 20;     // 1
-                _tMaxScarica = 55;     // 50;     // 2
+                _profonditaDoD = 80;              // 20;       // 1
+                _tMaxScarica = 55;                // 50;       // 2
                 _tMinScarica = 0;                 // 3
                 _deltaTScarica = 12;              // 4
-                _tMaxCaricaComp = 55;  // 50;     // 5
-                _tMaxCaricaParz = 55;  // 50;     // 6
-                _deltaTCaricaComp = 15;// 12;           // 7
-                _deltaTCaricaParz = 15;// 12;           // 8
+                _tMaxCaricaComp = 55;             // 50;       // 5
+                _tMaxCaricaParz = 55;             // 50;       // 6
+                _deltaTCaricaComp = 15;           // 12;       // 7
+                _deltaTCaricaParz = 15;           // 12;       // 8
                 _maxSbilanciamento = 0.05;        // 9
                 _minFC = 1;                       // 10
-                _orePausaDODFascia810 = 24; //  5;        // 11
-                _orePausaDODFascia68 = 72; // 20;        // 12
-                _orePausaDODFascia46 = 168; // 72;        // 13
-                _orePausaDODFascia24 = 360; // 480;       // 14
-                _orePausaDODFascia02 = 960; // 480;       // 15
+                _orePausaDODFascia810 = 24;       //  5;       // 11
+                _orePausaDODFascia68 = 72;        // 20;       // 12
+                _orePausaDODFascia46 = 168;       // 72;       // 13
+                _orePausaDODFascia24 = 360;       // 480;      // 14
+                _orePausaDODFascia02 = 960;       // 480;      // 15
 
 
                 if (SoglieAnalisi != null)
@@ -394,198 +394,201 @@ namespace ChargerLogic
                     {
                         if (ciclo.IdProgramma > _lastProg.IdProgramma) _lastProg = ciclo.ProgrammaAttivo;
                     }
-                    // Se lo sbilaciamento celle supera il limite, agiungo la durata al tempo totale di sbilanciamento
-                    //if (ciclo.EffMaxSbilanciamentoC > _maxSbilanciamento) _durataSbil += valCiclo.Durata;
-                    // Se lmanca elettrolita (valore 0x0F), agiungo la durata al tempo totale mancanza el.
-                    //if (ciclo.PresenzaElettrolita == 0x0F) _durataNoEl += valCiclo.Durata;
+
                     _trovatoEqual = false;
 
                     switch (valCiclo.TipoEvento)
                     {
                         case (byte)SerialMessage.TipoCiclo.Carica:
-                            _numFasiAttive += 1;
-                            _numCicliEff += 1;
-                            _numCicliTot += 1;
-                            _numCariche += 1;
-                            _durataFasiAttive += ciclo.Durata;
-
-                            // lo sbilanciamento è significativo solo in carica 08/03/17
-                            //_durataSbil += ciclo.DurataSbilCelle;
-
-                            _durataNoEl += ciclo.DurataMancanzaElettrolita;
-                            _durataOverTempMax += ciclo.DurataOverTemp;
-
-                            //Controllo la presenza elettrolita
-                            if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
-
-                            // Verifico se esiste una fase di equalizzazione
-
-                            // Creo una lista brevi ordinata
-                            System.Collections.Generic.List<sbMemBreve> _tmpCMemoriaBreve;
-                            _tmpCMemoriaBreve = ciclo.CicliMemoriaBreve.OrderBy(x => x.IdMemoriaBreve).ToList();
-
-                            _trovatoEqual = false;
-                            //Cerco il primo breve a corrente 0
-                            foreach (sbMemBreve _tmpBreve in _tmpCMemoriaBreve)
                             {
-                                if (_tmpBreve.Amed < 15 & _tmpBreve.Amed > -15)
+                                _numFasiAttive += 1;
+                                _numCicliEff += 1;
+                                _numCicliTot += 1;
+                                _numCariche += 1;
+                                _durataFasiAttive += ciclo.Durata;
+
+                                // lo sbilanciamento è significativo solo in carica 08/03/17
+                                //_durataSbil += ciclo.DurataSbilCelle;
+
+                                _durataNoEl += ciclo.DurataMancanzaElettrolita;
+                                _durataOverTempMax += ciclo.DurataOverTemp;
+
+                                //Controllo la presenza elettrolita
+                                if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
+
+                                // Verifico se esiste una fase di equalizzazione
+
+                                // Creo una lista brevi ordinata
+                                System.Collections.Generic.List<sbMemBreve> _tmpCMemoriaBreve;
+                                _tmpCMemoriaBreve = ciclo.CicliMemoriaBreve.OrderBy(x => x.IdMemoriaBreve).ToList();
+
+                                _trovatoEqual = false;
+                                //Cerco il primo breve a corrente 0
+                                foreach (sbMemBreve _tmpBreve in _tmpCMemoriaBreve)
                                 {
-
-                                    // trovato il primo breve
-                                    int _posPrimo = _tmpCMemoriaBreve.IndexOf(_tmpBreve);
-                                    // Se non sono gli ultimo brevi...
-                                    if (_posPrimo < (_tmpCMemoriaBreve.Count - 6))
+                                    if (_tmpBreve.Amed < 15 & _tmpBreve.Amed > -15)
                                     {
-                                        _trovatoEqual = true;
 
-                                        //ora verifico se i 6 brevi successivi sono a 0
-                                        for (int _idxEqual = 0; _idxEqual < 6; _idxEqual++)
+                                        // trovato il primo breve
+                                        int _posPrimo = _tmpCMemoriaBreve.IndexOf(_tmpBreve);
+                                        // Se non sono gli ultimo brevi...
+                                        if (_posPrimo < (_tmpCMemoriaBreve.Count - 6))
                                         {
-                                            sbMemBreve _tmpBreveZero = _tmpCMemoriaBreve.ElementAt(_idxEqual + _posPrimo);
-                                            if ((_tmpBreve.Amed > 15 | _tmpBreve.Amed < -15))
+                                            _trovatoEqual = true;
+
+                                            //ora verifico se i 6 brevi successivi sono a 0
+                                            for (int _idxEqual = 0; _idxEqual < 6; _idxEqual++)
                                             {
-                                                _trovatoEqual = false;
-                                                break;
+                                                sbMemBreve _tmpBreveZero = _tmpCMemoriaBreve.ElementAt(_idxEqual + _posPrimo);
+                                                if ((_tmpBreve.Amed > 15 | _tmpBreve.Amed < -15))
+                                                {
+                                                    _trovatoEqual = false;
+                                                    break;
+                                                }
+
+
                                             }
-
-
                                         }
-                                    }
 
+                                    }
+                                    if (_trovatoEqual)
+                                    {
+                                        DataOraBreve = _tmpBreve.DataOraRegistrazione;
+                                        dtDataOraBreve = _tmpBreve.dtDataOraRegistrazione;
+                                        break;
+                                    }
                                 }
+
+                                // Trovata  L'equalizzazione; spezzo il ciclo
                                 if (_trovatoEqual)
                                 {
-                                    DataOraBreve = _tmpBreve.DataOraRegistrazione;
-                                    dtDataOraBreve = _tmpBreve.dtDataOraRegistrazione;
-                                    break;
+                                    valCicloEqual.TipoEvento = (byte)SerialMessage.TipoCiclo.Equal;
+                                    valCicloEqual.IdMemoriaLunga = valCiclo.IdMemoriaLunga;
+                                    valCicloEqual.IdMemoriaLungaStat = valCiclo.IdMemoriaLunga * 10;
+                                    valCicloEqual.IdLocale = valCiclo.IdLocale;
+                                    valCicloEqual.FattoreCarica = valCiclo.FattoreCarica;
+                                    valCicloEqual.StatoCarica = valCiclo.StatoCarica;
+                                    valCicloEqual.PeriodoValido = valCiclo.PeriodoValido;
+                                    valCicloEqual.Wh = valCiclo.Wh;
+                                    valCicloEqual.Ah = valCiclo.Ah;
+                                    valCicloEqual.PresenzaElettrolita = valCiclo.PresenzaElettrolita;
+                                    valCicloEqual.TempMin = valCiclo.TempMin;
+                                    valCicloEqual.TempMax = valCiclo.TempMax;
+                                    valCicloEqual.DeltaTemp = valCicloEqual.TempMax - valCicloEqual.TempMin;
+
+                                    // uso la data del breve per impostare le durate
+                                    valCicloEqual.DataOraFine = valCiclo.DataOraFine;
+                                    valCicloEqual.dtDataOraFine = valCiclo.dtDataOraFine;
+                                    valCicloEqual.DataOraStart = DataOraBreve;
+                                    valCiclo.DataOraFine = DataOraBreve;
+                                    valCicloEqual.dtDataOraStart = dtDataOraBreve;
+                                    valCiclo.dtDataOraFine = dtDataOraBreve;
+                                    TimeSpan _tsC = valCiclo.dtDataOraFine - valCiclo.dtDataOraStart;
+                                    TimeSpan _tsE = valCicloEqual.dtDataOraFine - valCicloEqual.dtDataOraStart;
+
+                                    valCiclo.Durata = (UInt32)_tsC.TotalSeconds;
+                                    valCicloEqual.Durata = (UInt32)_tsE.TotalSeconds;
+
                                 }
-                            }
-
-                            // Trovata  L'equalizzazione; spezzo il ciclo
-                            if (_trovatoEqual)
-                            {
-                                valCicloEqual.TipoEvento = (byte)SerialMessage.TipoCiclo.Equal;
-                                valCicloEqual.IdMemoriaLunga = valCiclo.IdMemoriaLunga;
-                                valCicloEqual.IdMemoriaLungaStat = valCiclo.IdMemoriaLunga * 10;
-                                valCicloEqual.IdLocale = valCiclo.IdLocale;
-                                valCicloEqual.FattoreCarica = valCiclo.FattoreCarica;
-                                valCicloEqual.StatoCarica = valCiclo.StatoCarica;
-                                valCicloEqual.PeriodoValido = valCiclo.PeriodoValido;
-                                valCicloEqual.Wh = valCiclo.Wh;
-                                valCicloEqual.Ah = valCiclo.Ah;
-                                valCicloEqual.PresenzaElettrolita = valCiclo.PresenzaElettrolita;
-                                valCicloEqual.TempMin = valCiclo.TempMin;
-                                valCicloEqual.TempMax = valCiclo.TempMax;
-                                valCicloEqual.DeltaTemp = valCicloEqual.TempMax - valCicloEqual.TempMin;
-
-                                // uso la data del breve per impostare le durate
-                                valCicloEqual.DataOraFine = valCiclo.DataOraFine;
-                                valCicloEqual.dtDataOraFine = valCiclo.dtDataOraFine;
-                                valCicloEqual.DataOraStart = DataOraBreve;
-                                valCiclo.DataOraFine = DataOraBreve;
-                                valCicloEqual.dtDataOraStart = dtDataOraBreve;
-                                valCiclo.dtDataOraFine = dtDataOraBreve;
-                                TimeSpan _tsC = valCiclo.dtDataOraFine - valCiclo.dtDataOraStart;
-                                TimeSpan _tsE = valCicloEqual.dtDataOraFine - valCicloEqual.dtDataOraStart;
-
-                                valCiclo.Durata = (UInt32)_tsC.TotalSeconds;
-                                valCicloEqual.Durata = (UInt32)_tsE.TotalSeconds;
-
-                            }
 
 
 
-                            _durataCarica += valCiclo.Durata;
-                            if (valCiclo.FattoreCarica >= 100)
-                            {
-                                _numCaricheComplete += 1;
-                                valCiclo.ModoCarica = 1;
-                                if (valCiclo.TempMax >= _tMaxCaricaComp) _numCaricaCOver += 1;
-                            }
-                            else
-                            {
-                                _numCaricheParziali += 1;
-                                if (valCiclo.TempMax >= _tMaxCaricaParz) _numCaricaPOver += 1;
+                                _durataCarica += valCiclo.Durata;
+                                if (valCiclo.FattoreCarica >= 100)
+                                {
+                                    _numCaricheComplete += 1;
+                                    valCiclo.ModoCarica = 1;
+                                    if (valCiclo.TempMax >= _tMaxCaricaComp) _numCaricaCOver += 1;
+                                }
+                                else
+                                {
+                                    _numCaricheParziali += 1;
+                                    if (valCiclo.TempMax >= _tMaxCaricaParz) _numCaricaPOver += 1;
 
-                                valCiclo.ModoCarica = 0;
-                            }
+                                    valCiclo.ModoCarica = 0;
+                                }
 
-                            // imposto lo ststo carica iniziale pari allo stato carica del ciclo precedente
-                            valCiclo.StatoCaricaIniziale = _statoCaricaPrec;
-                            _statoCaricaPrec = ciclo.StatoCarica;
-                            _kWhCaricati += valCiclo.Wh;
-                            _numMacrofasiScarica  += 1;  //Ogni carica chiude una macroscarica
-                            _macroScariche += 1;  //Ogni carica chiude una macroscarica
-                            _totDodScariche += valCiclo.StatoCaricaIniziale; //Determino la profondità di scarica dal livello di carica all'inizio della carica
-                            if (valCiclo.StatoCaricaIniziale < 20 )  _macroSovrascariche += 1;
-                            //_totaleScaricato += (valCiclo.StatoCaricaIniziale - valCiclo.StatoCarica);
+                                // imposto lo ststo carica iniziale pari allo stato carica del ciclo precedente
+                                valCiclo.StatoCaricaIniziale = _statoCaricaPrec;
+                                _statoCaricaPrec = ciclo.StatoCarica;
+                                _kWhCaricati += valCiclo.Wh;
+                                _numMacrofasiScarica += 1;  //Ogni carica chiude una macroscarica
+                                _macroScariche += 1;  //Ogni carica chiude una macroscarica
+                                _totDodScariche += valCiclo.StatoCaricaIniziale; //Determino la profondità di scarica dal livello di carica all'inizio della carica
+                                if (valCiclo.StatoCaricaIniziale < 20) _macroSovrascariche += 1;
+                                //_totaleScaricato += (valCiclo.StatoCaricaIniziale - valCiclo.StatoCarica);
 
                                 // ad ogni carica creo la relativa MacroScarica con profindità pari all'inizio prrecedente
 
 
-                            break;
+                                break;
+                            }
                         case (byte)SerialMessage.TipoCiclo.Scarica:
-                            double _tmed;
-                            _numFasiAttive += 1;
-                            _numCicliTot += 1;
-                            _numScariche += 1;
-                            if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
+                            {
+                                double _tmed;
+                                _numFasiAttive += 1;
+                                _numCicliTot += 1;
+                                _numScariche += 1;
+                                if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
 
-                            if (valCiclo.StatoCarica <= _profonditaDoD) _numSovraScariche += 1;
-                            _kWhtot += valCiclo.Wh;
-                            //TODO: Risistemare con AH caricati e scaricati
-                            _Ahtot += valCiclo.Ah;
-                            _durataScarica += valCiclo.Durata;
-                            _tmed = (double)(valCiclo.TempMax + valCiclo.TempMin) / 2;
+                                if (valCiclo.StatoCarica <= _profonditaDoD) _numSovraScariche += 1;
+                                _kWhtot += valCiclo.Wh;
+                                //TODO: Risistemare con AH caricati e scaricati
+                                _Ahtot += valCiclo.Ah;
+                                _durataScarica += valCiclo.Durata;
+                                _tmed = (double)(valCiclo.TempMax + valCiclo.TempMin) / 2;
 
-                            if (valCiclo.TempMax >= _tMaxScarica) _numScaricaOver += 1;
+                                if (valCiclo.TempMax >= _tMaxScarica) _numScaricaOver += 1;
 
-                            _durataFasiAttive += ciclo.Durata;
-                            _durataSbil += ciclo.DurataSbilCelle;
-                            _durataNoEl += ciclo.DurataMancanzaElettrolita;
-                            _durataOverTempMax += ciclo.DurataOverTemp;
+                                _durataFasiAttive += ciclo.Durata;
+                                _durataSbil += ciclo.DurataSbilCelle;
+                                _durataNoEl += ciclo.DurataMancanzaElettrolita;
+                                _durataOverTempMax += ciclo.DurataOverTemp;
 
 
-                            _EnScaricataNorm += valCiclo.Wh * FunzioniAnalisi.FattoreTermicoSOH(_tmed);
-                            // imposto lo ststo carica iniziale pari allo stato carica del ciclo precedente
-                            valCiclo.StatoCaricaIniziale = _statoCaricaPrec;
-                            _statoCaricaPrec = ciclo.StatoCarica;
+                                _EnScaricataNorm += valCiclo.Wh * FunzioniAnalisi.FattoreTermicoSOH(_tmed);
+                                // imposto lo ststo carica iniziale pari allo stato carica del ciclo precedente
+                                valCiclo.StatoCaricaIniziale = _statoCaricaPrec;
+                                _statoCaricaPrec = ciclo.StatoCarica;
 
-                            _totaleScaricato += (valCiclo.StatoCaricaIniziale - valCiclo.StatoCarica);
-                            break;
+                                _totaleScaricato += (valCiclo.StatoCaricaIniziale - valCiclo.StatoCarica);
+                                break;
+                            }
                         case (byte)SerialMessage.TipoCiclo.Pausa:
-                            _numCicliTot += 1;
-                            _numPause += 1;
-                            int _orePausa = (int)ciclo.Durata / 3600;
-                            int _sogliaDOD = 100 - valCiclo.StatoCarica;
-                            if (_sogliaDOD > 80 )
                             {
-                                if (_orePausa > _orePausaDODFascia810) _numPauseScarica += 1;
-                            }
-                            else if(_sogliaDOD <= 80 && _sogliaDOD > 60)
-                            {
-                                if (_orePausa > _orePausaDODFascia68) _numPauseScarica += 1;
-                            }
-                            else if (_sogliaDOD <= 60 && _sogliaDOD > 40)
-                            {
-                                if (_orePausa > _orePausaDODFascia46) _numPauseScarica += 1;
-                            }
-                            else if (_sogliaDOD <= 40 && _sogliaDOD > 20)
-                            {
-                                if (_orePausa > _orePausaDODFascia24) _numPauseScarica += 1;
-                            }
-                            else
-                            {
-                                if (_orePausa > _orePausaDODFascia02) _numPauseScarica += 1;
-                            }
+                                _numCicliTot += 1;
+                                _numPause += 1;
+                                int _orePausa = (int)ciclo.Durata / 3600;
+                                int _sogliaDOD = 100 - valCiclo.StatoCarica;
+                                if (_sogliaDOD > 80)
+                                {
+                                    if (_orePausa > _orePausaDODFascia810) _numPauseScarica += 1;
+                                }
+                                else if (_sogliaDOD <= 80 && _sogliaDOD > 60)
+                                {
+                                    if (_orePausa > _orePausaDODFascia68) _numPauseScarica += 1;
+                                }
+                                else if (_sogliaDOD <= 60 && _sogliaDOD > 40)
+                                {
+                                    if (_orePausa > _orePausaDODFascia46) _numPauseScarica += 1;
+                                }
+                                else if (_sogliaDOD <= 40 && _sogliaDOD > 20)
+                                {
+                                    if (_orePausa > _orePausaDODFascia24) _numPauseScarica += 1;
+                                }
+                                else
+                                {
+                                    if (_orePausa > _orePausaDODFascia02) _numPauseScarica += 1;
+                                }
 
-                           // if (valCiclo.StatoCarica <= 70) _numPauseScarica += 1;
+                                // if (valCiclo.StatoCarica <= 70) _numPauseScarica += 1;
 
-                            _kWhtot += valCiclo.Wh;
-                            _durataPause += valCiclo.Durata;
+                                _kWhtot += valCiclo.Wh;
+                                _durataPause += valCiclo.Durata;
 
 
-                            break;
+                                break;
+                            }
                         default:
                             // se tipo ciclo non atalogato, lo conto nelle anomalie ma non nel totale
                             _numAnomali += 1;

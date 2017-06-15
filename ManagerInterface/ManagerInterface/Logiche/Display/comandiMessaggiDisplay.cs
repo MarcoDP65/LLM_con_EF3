@@ -460,6 +460,11 @@ namespace ChargerLogic
                                 _inviaRisposta = false;
                                 Log.Debug("Scrittura Testata Immagine");
                                 break;
+                            case (byte)SerialMessage.TipoComando.DI_Stato:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                Log.Debug("Lettura Stato");
+                                break;
 
                             default:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;

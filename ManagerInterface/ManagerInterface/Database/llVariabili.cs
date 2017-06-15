@@ -154,11 +154,10 @@ namespace MoriData
             get { return _llPar.IdLocale; }
             set
             {
-                if (value != null)
-                {
+
                     _llPar.IdLocale = value;
                     _datiSalvati = false;
-                }
+
             }
         }
         public string IdApparato
