@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlPorta = new System.Windows.Forms.Panel();
             this.btnGetSigRegister = new System.Windows.Forms.Button();
             this.btnSetSigRegister = new System.Windows.Forms.Button();
@@ -54,13 +55,19 @@
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkSendAuto = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNumCaratteri = new System.Windows.Forms.TextBox();
+            this.chkSendStop = new System.Windows.Forms.CheckBox();
+            this.chkSendStart = new System.Windows.Forms.CheckBox();
+            this.btnCmdSendNoise = new System.Windows.Forms.Button();
             this.btnCmdAv = new System.Windows.Forms.Button();
             this.btnCmdQuery = new System.Windows.Forms.Button();
             this.btnCmdStopCom = new System.Windows.Forms.Button();
             this.btnCmdStartCom = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnlComandiLista = new System.Windows.Forms.Panel();
             this.txtSerialEcho = new System.Windows.Forms.TextBox();
+            this.tmrInvioAutomatico = new System.Windows.Forms.Timer(this.components);
             this.pnlPorta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvListaComandiSIG)).BeginInit();
             this.pnlFile.SuspendLayout();
@@ -236,7 +243,7 @@
             this.pnlFile.Controls.Add(this.txtEchoFilename);
             this.pnlFile.Location = new System.Drawing.Point(23, 242);
             this.pnlFile.Name = "pnlFile";
-            this.pnlFile.Size = new System.Drawing.Size(347, 185);
+            this.pnlFile.Size = new System.Drawing.Size(347, 175);
             this.pnlFile.TabIndex = 22;
             // 
             // btnSfogliaCarica
@@ -264,7 +271,7 @@
             this.txtEchoFileNote.Location = new System.Drawing.Point(15, 125);
             this.txtEchoFileNote.Multiline = true;
             this.txtEchoFileNote.Name = "txtEchoFileNote";
-            this.txtEchoFileNote.Size = new System.Drawing.Size(316, 45);
+            this.txtEchoFileNote.Size = new System.Drawing.Size(316, 38);
             this.txtEchoFileNote.TabIndex = 46;
             // 
             // btnCariacaRegistrazione
@@ -319,39 +326,106 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.chkSendAuto);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtNumCaratteri);
+            this.panel1.Controls.Add(this.chkSendStop);
+            this.panel1.Controls.Add(this.chkSendStart);
+            this.panel1.Controls.Add(this.btnCmdSendNoise);
             this.panel1.Controls.Add(this.btnCmdAv);
             this.panel1.Controls.Add(this.btnCmdQuery);
             this.panel1.Controls.Add(this.btnCmdStopCom);
             this.panel1.Controls.Add(this.btnCmdStartCom);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(24, 435);
+            this.panel1.Location = new System.Drawing.Point(24, 423);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(347, 108);
+            this.panel1.Size = new System.Drawing.Size(347, 120);
             this.panel1.TabIndex = 23;
+            // 
+            // chkSendAuto
+            // 
+            this.chkSendAuto.AutoSize = true;
+            this.chkSendAuto.Location = new System.Drawing.Point(239, 86);
+            this.chkSendAuto.Name = "chkSendAuto";
+            this.chkSendAuto.Size = new System.Drawing.Size(62, 21);
+            this.chkSendAuto.TabIndex = 52;
+            this.chkSendAuto.Text = "Loop";
+            this.chkSendAuto.UseVisualStyleBackColor = true;
+            this.chkSendAuto.CheckedChanged += new System.EventHandler(this.chkSendAuto_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(76, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 17);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "Bytes";
+            // 
+            // txtNumCaratteri
+            // 
+            this.txtNumCaratteri.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumCaratteri.Location = new System.Drawing.Point(119, 84);
+            this.txtNumCaratteri.Name = "txtNumCaratteri";
+            this.txtNumCaratteri.Size = new System.Drawing.Size(46, 22);
+            this.txtNumCaratteri.TabIndex = 50;
+            this.txtNumCaratteri.Text = "256";
+            this.txtNumCaratteri.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // chkSendStop
+            // 
+            this.chkSendStop.AutoSize = true;
+            this.chkSendStop.Location = new System.Drawing.Point(171, 86);
+            this.chkSendStop.Name = "chkSendStop";
+            this.chkSendStop.Size = new System.Drawing.Size(60, 21);
+            this.chkSendStop.TabIndex = 49;
+            this.chkSendStop.Text = "0x03";
+            this.chkSendStop.UseVisualStyleBackColor = true;
+            // 
+            // chkSendStart
+            // 
+            this.chkSendStart.AutoSize = true;
+            this.chkSendStart.Location = new System.Drawing.Point(15, 85);
+            this.chkSendStart.Name = "chkSendStart";
+            this.chkSendStart.Size = new System.Drawing.Size(60, 21);
+            this.chkSendStart.TabIndex = 48;
+            this.chkSendStart.Text = "0x02";
+            this.chkSendStart.UseVisualStyleBackColor = true;
+            // 
+            // btnCmdSendNoise
+            // 
+            this.btnCmdSendNoise.Location = new System.Drawing.Point(14, 51);
+            this.btnCmdSendNoise.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCmdSendNoise.Name = "btnCmdSendNoise";
+            this.btnCmdSendNoise.Size = new System.Drawing.Size(91, 27);
+            this.btnCmdSendNoise.TabIndex = 47;
+            this.btnCmdSendNoise.Text = "TX Rumore";
+            this.btnCmdSendNoise.UseVisualStyleBackColor = true;
+            this.btnCmdSendNoise.Click += new System.EventHandler(this.btnCmdSendNoise_Click);
             // 
             // btnCmdAv
             // 
-            this.btnCmdAv.Location = new System.Drawing.Point(180, 63);
+            this.btnCmdAv.Location = new System.Drawing.Point(180, 51);
             this.btnCmdAv.Margin = new System.Windows.Forms.Padding(4);
             this.btnCmdAv.Name = "btnCmdAv";
-            this.btnCmdAv.Size = new System.Drawing.Size(151, 27);
+            this.btnCmdAv.Size = new System.Drawing.Size(69, 27);
             this.btnCmdAv.TabIndex = 46;
-            this.btnCmdAv.Text = "Avanzamento";
+            this.btnCmdAv.Text = "AV";
             this.btnCmdAv.UseVisualStyleBackColor = true;
+            this.btnCmdAv.Click += new System.EventHandler(this.btnCmdAv_Click);
             // 
             // btnCmdQuery
             // 
-            this.btnCmdQuery.Location = new System.Drawing.Point(15, 63);
+            this.btnCmdQuery.Location = new System.Drawing.Point(259, 51);
             this.btnCmdQuery.Margin = new System.Windows.Forms.Padding(4);
             this.btnCmdQuery.Name = "btnCmdQuery";
-            this.btnCmdQuery.Size = new System.Drawing.Size(151, 27);
+            this.btnCmdQuery.Size = new System.Drawing.Size(71, 27);
             this.btnCmdQuery.TabIndex = 45;
-            this.btnCmdQuery.Text = "Query";
+            this.btnCmdQuery.Text = "QRY";
             this.btnCmdQuery.UseVisualStyleBackColor = true;
             // 
             // btnCmdStopCom
             // 
-            this.btnCmdStopCom.Location = new System.Drawing.Point(180, 32);
+            this.btnCmdStopCom.Location = new System.Drawing.Point(180, 15);
             this.btnCmdStopCom.Margin = new System.Windows.Forms.Padding(4);
             this.btnCmdStopCom.Name = "btnCmdStopCom";
             this.btnCmdStopCom.Size = new System.Drawing.Size(151, 28);
@@ -362,7 +436,7 @@
             // 
             // btnCmdStartCom
             // 
-            this.btnCmdStartCom.Location = new System.Drawing.Point(15, 32);
+            this.btnCmdStartCom.Location = new System.Drawing.Point(15, 15);
             this.btnCmdStartCom.Margin = new System.Windows.Forms.Padding(4);
             this.btnCmdStartCom.Name = "btnCmdStartCom";
             this.btnCmdStartCom.Size = new System.Drawing.Size(151, 28);
@@ -370,15 +444,6 @@
             this.btnCmdStartCom.Text = "Start Comunicazione";
             this.btnCmdStartCom.UseVisualStyleBackColor = true;
             this.btnCmdStartCom.Click += new System.EventHandler(this.btnCmdStartCom_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 17);
-            this.label4.TabIndex = 42;
-            this.label4.Text = "Comandi Immediati";
             // 
             // pnlComandiLista
             // 
@@ -401,6 +466,11 @@
             this.txtSerialEcho.Size = new System.Drawing.Size(1739, 182);
             this.txtSerialEcho.TabIndex = 2;
             // 
+            // tmrInvioAutomatico
+            // 
+            this.tmrInvioAutomatico.Interval = 10000;
+            this.tmrInvioAutomatico.Tick += new System.EventHandler(this.tmrInvioAutomatico_Tick);
+            // 
             // frmMonitorSig60
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -418,7 +488,6 @@
             this.ShowIcon = false;
             this.Text = "Monitor Sig60";
             this.Load += new System.EventHandler(this.frmMonitorSig60_Load);
-            this.ResizeEnd += new System.EventHandler(this.frmMonitorSig60_ResizeEnd);
             this.Resize += new System.EventHandler(this.frmMonitorSig60_Resize);
             this.pnlPorta.ResumeLayout(false);
             this.pnlPorta.PerformLayout();
@@ -465,8 +534,14 @@
         private System.Windows.Forms.Button btnCmdQuery;
         private System.Windows.Forms.Button btnCmdStopCom;
         private System.Windows.Forms.Button btnCmdStartCom;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel pnlComandiLista;
         private System.Windows.Forms.TextBox txtSerialEcho;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNumCaratteri;
+        private System.Windows.Forms.CheckBox chkSendStop;
+        private System.Windows.Forms.CheckBox chkSendStart;
+        private System.Windows.Forms.Button btnCmdSendNoise;
+        private System.Windows.Forms.CheckBox chkSendAuto;
+        private System.Windows.Forms.Timer tmrInvioAutomatico;
     }
 }

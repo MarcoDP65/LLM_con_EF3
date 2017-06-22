@@ -92,6 +92,7 @@ namespace ChargerLogic
 
             LL_SIG60_PROXY = 0x81,
          };
+
         public enum ParametroLadeLight : byte
         {
             TempoMassimoCarica = 0x01,
@@ -110,6 +111,7 @@ namespace ChargerLogic
             CondizioneStop = 0xF0,
             CoeffK = 0xF1,   // 1 decimale
         }
+
         /// <summary>
         /// Enum OCBaudRate: Setta la velocià di comunicazione sul canale OC
         /// </summary>

@@ -43,6 +43,8 @@ namespace PannelloCharger
                 txtFWInFileLenN2.Text = "";
                 txtFWInFileLenP.Text = "";
 
+
+
                 _esito = _firmMng.CaricaFileCCS(txtFwFileCCS.Text);
                 if(_esito == FirmwareManager.ExitCode.OK)
                 {

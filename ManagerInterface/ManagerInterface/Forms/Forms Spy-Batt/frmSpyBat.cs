@@ -3220,8 +3220,6 @@ namespace PannelloCharger
         private void flvwCicliBatteria_ItemActivate(object sender, EventArgs e)
         {
 
-            Log.Debug("flvwCicliBatteria_ItemActivate " + sender.ToString());
-
         }
 
         /// <summary>
@@ -3384,11 +3382,23 @@ namespace PannelloCharger
 
         private void tmrLetturaAutomatica_Tick(object sender, EventArgs e)
         {
-            bool _esito;
-            this.Cursor = Cursors.WaitCursor;
-            _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
-            MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
-            this.Cursor = Cursors.Default;
+            try
+            {
+                bool _esito;
+                this.Cursor = Cursors.WaitCursor;
+                _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
+                MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
+            }
+
+            catch
+            {
+
+            }
+
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         private void btnNuovoProgramma_Click(object sender, EventArgs e)
@@ -3515,6 +3525,111 @@ namespace PannelloCharger
 
             }
         }
+
+
+        /// <summary>
+        /// Scarica dalla scheda i dati dei cicli.      
+        /// </summary>
+        /// <param name="LimiteCicli">Numero max di cicli scaricabili singolarmente.</param>
+        /// <param name="ForzaDump">if set to <c>true</c> [forza dump].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        private bool LeggiDatiCicli(int LimiteCicli = 25,bool ForzaDump = false,  bool CreaClone = false)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                bool _dumpNecessario = false;
+
+                if (CreaClone) _dumpNecessario = true;
+                if (!_dumpNecessario)
+                {
+                    if ((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) > LimiteCicli) _dumpNecessario = true;
+                }
+
+
+                if (((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) > LimiteCicli) || chkAckDumpMem.Checked == true)
+                {
+                    // ho un numero di cicli superiore al massimo o ho espressamente chiesto il dump: parto con quello
+
+                    bool _esito;
+                   
+                    CaricaTestata(_sb.Id, _logiche, _apparatoPresente);
+                    if (chkEraseDB.Checked == true)
+                        _esito = _sb.sbData.cancellaDati(_sb.Id);
+                    ;
+                    DumpInteraMemoria(false);
+                    this.Cursor = Cursors.Default;
+
+                }
+
+                //........................................
+
+                if (((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) < 25) && chkAckDumpMem.Checked != true)
+                {
+                    uint _primoElemento = 1;
+                    sbMemLunga _tempLungo;
+                    this.Cursor = Cursors.WaitCursor;
+                    bool _caricaBrevi = (chkCaricaBrevi.Checked == true);
+
+                    if (_sb.CicliMemoriaLunga.Count > 0)
+                    {
+                        _tempLungo = _sb.CicliMemoriaLunga[0];
+                        _primoElemento = _tempLungo.IdMemoriaLunga;
+                    }
+
+                    Log.Debug("Lancio lettura lunghi");
+                    this.Cursor = Cursors.WaitCursor;
+                    _avCicli.ParametriWorker.MainCount = 100;
+                    _avCicli.sbLocale = _sb;
+                    _avCicli.ValStart = (int)_primoElemento;
+                    _avCicli.ValFine = (int)_sb.sbData.LongMem;
+                    _avCicli.DbDati = _logiche.dbDati.connessione;
+                    _avCicli.CaricaBrevi = chkCaricaBrevi.Checked;
+                    _avCicli.TipoComando = elementiComuni.tipoMessaggio.MemLunga;
+                    Log.Debug("FRM RicaricaCicli: ");
+
+                    //_esito = _sb.RicaricaCaricaCicliMemLunga(Inizio, (uint)_sb.sbData.LongMem, _logiche.dbDati.connessione, true, CaricaBrevi);
+
+                    // Apro il form con le progressbar
+                    _avCicli.ShowDialog(this);
+                    //bool _caricaBrevi = ( chkCaricaBrevi.Checked == true );
+                    //RicaricaCicli(1, _caricaBrevi);
+                    CaricaCicli();
+                    CaricaTestata(_sb.Id, _logiche, _apparatoPresente);
+                    btnCaricaDettaglioSel.Enabled = _apparatoPresente;
+                    RicalcolaStatistiche();
+                    //_avCicli.Dispose();
+                    this.Cursor = Cursors.Default;
+                }
+                else
+                {
+
+
+                    bool _esito;
+                    this.Cursor = Cursors.WaitCursor;
+                    CaricaTestata(_sb.Id, _logiche, _apparatoPresente);
+                    if (chkEraseDB.Checked == true)
+                        _esito = _sb.sbData.cancellaDati(_sb.Id);
+                    ;
+                    DumpInteraMemoria(false);
+                    this.Cursor = Cursors.Default;
+                }
+
+                return true;
+            }
+            catch
+            {
+                this.Cursor = Cursors.Default;
+                return false;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+
+
 
         private void btnRigeneraLista_Click(object sender, EventArgs e)
         {
@@ -3900,6 +4015,7 @@ namespace PannelloCharger
                 if (e.TabPage == tabCalibrazione)
                 {
                     if (_apparatoPresente) VerificaAlimentatore(false);
+
                     if (tabCalibrazione.Height > 300)
                     {
                         pnlCalVerifica.Height = tabCalibrazione.Height - 240;
@@ -7097,9 +7213,19 @@ namespace PannelloCharger
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnFWFileCCSsearch_Click(object sender, EventArgs e)
         {
-            sfdImportDati.Filter = "CCS Generated File (*.txt)|*.txt|All files (*.*)|*.*";
-            sfdImportDati.ShowDialog();
-            txtFwFileCCS.Text = sfdImportDati.FileName;
+            try
+            {
+                if (sfdImportDati.InitialDirectory == "") sfdImportDati.InitialDirectory = PannelloCharger.Properties.Settings.Default.pathFwSource;
+
+                sfdImportDati.Filter = "CCS Generated File (*.txt)|*.txt|All files (*.*)|*.*";
+                sfdImportDati.ShowDialog();
+                txtFwFileCCS.Text = sfdImportDati.FileName;
+                PannelloCharger.Properties.Settings.Default.pathFwSource = Path.GetDirectoryName(sfdImportDati.FileName);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnGeneraCsv_Click: " + Ex.Message);
+            }
 
         }
 

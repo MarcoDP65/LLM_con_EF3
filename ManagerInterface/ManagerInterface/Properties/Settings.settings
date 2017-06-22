@@ -35,5 +35,11 @@
     <Setting Name="BaudRateDisplay" Type="System.String" Scope="User">
       <Value Profile="(Default)">9600</Value>
     </Setting>
+    <Setting Name="pathFwSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="pathFwReady" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

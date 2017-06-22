@@ -96,6 +96,9 @@ namespace ChargerLogic
 
         private int _numFasiAttive = 0;
         private int _mancanzaElFasiAttive = 0;
+
+        private int _numFasiAttivePeriodo = 0;
+        private int _mancanzaElFasiAttivePeriodo = 0;
         private int _numMacrofasiScarica = 0;
         private int _macroSovrascariche = 0;
         private DateTime _ultimaLettura = DateTime.MinValue;
@@ -270,6 +273,8 @@ namespace ChargerLogic
                 _numCaricaPOver = 0;
                 _numFasiAttive = 0;
                 _mancanzaElFasiAttive = 0;
+                _numFasiAttivePeriodo = 0;
+                _mancanzaElFasiAttivePeriodo = 0;
                 _numMacrofasiScarica = 0;
                 _macroScariche = 0;
                 _totDodScariche = 0;
@@ -402,6 +407,7 @@ namespace ChargerLogic
                         case (byte)SerialMessage.TipoCiclo.Carica:
                             {
                                 _numFasiAttive += 1;
+                                if(valCiclo.PeriodoValido) _numFasiAttivePeriodo += 1;
                                 _numCicliEff += 1;
                                 _numCicliTot += 1;
                                 _numCariche += 1;
@@ -415,6 +421,7 @@ namespace ChargerLogic
 
                                 //Controllo la presenza elettrolita
                                 if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
+                                if (ciclo.PresenzaElettrolita == 0x0F && valCiclo.PeriodoValido) _mancanzaElFasiAttivePeriodo += 1;
 
                                 // Verifico se esiste una fase di equalizzazione
 
@@ -527,9 +534,11 @@ namespace ChargerLogic
                             {
                                 double _tmed;
                                 _numFasiAttive += 1;
+                                if (valCiclo.PeriodoValido) _numFasiAttivePeriodo += 1;
                                 _numCicliTot += 1;
                                 _numScariche += 1;
                                 if (ciclo.PresenzaElettrolita == 0x0F) _mancanzaElFasiAttive += 1;
+                                if (ciclo.PresenzaElettrolita == 0x0F && valCiclo.PeriodoValido) _mancanzaElFasiAttivePeriodo += 1;
 
                                 if (valCiclo.StatoCarica <= _profonditaDoD) _numSovraScariche += 1;
                                 _kWhtot += valCiclo.Wh;
@@ -1536,9 +1545,9 @@ namespace ChargerLogic
 
                 //inizializzo gli array
 
-                _datiComp.NumEvTotali = _numFasiAttive;
-                _datiComp.NumEvOK = _numFasiAttive - _mancanzaElFasiAttive;
-                _datiComp.NumEvErrore = _mancanzaElFasiAttive;
+                _datiComp.NumEvTotali = _numFasiAttivePeriodo;
+                _datiComp.NumEvOK = _numFasiAttivePeriodo - _mancanzaElFasiAttivePeriodo;
+                _datiComp.NumEvErrore = _mancanzaElFasiAttivePeriodo;
 
 
                 _datiComp.DatiValidi = true;

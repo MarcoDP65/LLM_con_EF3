@@ -1358,11 +1358,6 @@ namespace PannelloCharger
             }
         }
 
-        private void frmMonitorSig60_ResizeEnd(object sender, EventArgs e)
-        {
-            //RidimensionaControlli();
-        }
-
         private void btnCmdStartCom_Click(object sender, EventArgs e)
         {
             try
@@ -1400,6 +1395,144 @@ namespace PannelloCharger
                 Thread.Sleep(200);
 
                 txtSerialEcho.AppendText("\r\n");
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnGetSigRegister_Click: " + Ex.Message);
+            }
+        }
+
+        public void SendNoise()
+        {
+            try
+            {
+                int _numChar = 100;
+                int start = 0;
+                int stop = 0;
+
+                byte _currByte;
+                if (ComPort.IsOpen)
+                {
+                    txtSerialEcho.AppendText("\r\n");
+                    if (int.TryParse(txtNumCaratteri.Text, out _numChar))
+                    {
+
+                        byte[] _buffer = new byte[_numChar];
+                        if (start == 1) _buffer[0] = 0x02;
+
+                        Random rnd = new Random();
+                        for (int i = 0; i < _numChar; i++)
+                        {
+                            _buffer[i] = (byte)rnd.Next(0x10, 0xEF);
+                        }
+                        if (chkSendStart.Checked) _buffer[0] = 0x02;
+                        if (chkSendStop.Checked) _buffer[_numChar - 1] = 0x03;
+
+                        ComPort.Write(_buffer, 0, _numChar);
+                    }
+
+                }
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnCmdSendNoise_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnCmdSendNoise_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SendNoise();
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnCmdSendNoise_Click: " + Ex.Message);
+            }
+        }
+
+        private void tmrInvioAutomatico_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _esito;
+                this.Cursor = Cursors.WaitCursor;
+                chkSendAuto.ForeColor = Color.Green;
+                Application.DoEvents();
+
+                SendNoise();
+
+
+
+            }
+
+            catch
+            {
+
+            }
+
+            finally
+            {
+                chkSendAuto.ForeColor = Color.Black;
+                Application.DoEvents();
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void chkSendAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkSendAuto.Checked)
+                {
+                    int _numChar = 100;
+
+                    if (int.TryParse(txtNumCaratteri.Text, out _numChar))
+                    {
+                        tmrInvioAutomatico.Interval = _numChar * 20;
+                    }
+                    else
+                    {
+                        tmrInvioAutomatico.Interval = 10000;
+                    }
+                    tmrInvioAutomatico.Enabled = true;
+                }
+                else
+                {
+                    tmrInvioAutomatico.Interval = 10000;
+                    tmrInvioAutomatico.Enabled = false;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnCmdAv_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                /*
+                _mS.Comando = MessaggioSpyBatt.TipoComando.SB_Sstart;
+                _mS.SerialNumber = new byte[8] { 1, 1, 1, 1, 0, 0, 0, 0 };
+                _mS.Comando = SerialMessage.TipoComando.SB_W_chgst_Call;
+                _mS.ComandoStrat = new MessaggioSpyBatt.ComandoStrategia();
+                _mS.ComponiMessaggio();
+                _mS.ComponiMessaggioTestStrategia(ComandoStrategia);
+
+                Log.Debug("Send SB START");
+                ///Log.Debug(_mS.hexdumpMessaggio());
+                ScriviMessaggioByte(_mS.MessageBuffer);
+                Thread.Sleep(200);
+
+                txtSerialEcho.AppendText("\r\n");
+                */
             }
 
             catch (Exception Ex)

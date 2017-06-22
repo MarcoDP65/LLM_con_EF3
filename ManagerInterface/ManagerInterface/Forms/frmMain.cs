@@ -175,7 +175,6 @@ namespace PannelloCharger
                 mnuImpianto.Visible = false;
                 if ((byte)Livello < 0x01) mnuImpianto.Visible = true;
 
-
                 //---------------- Menu Lade Light
                 mnuCaricabatteria.Visible = false;
                 if ((byte)Livello < 0x01) mnuCaricabatteria.Visible = true;
@@ -220,11 +219,7 @@ namespace PannelloCharger
                 {
                     tstBtnCercaUsb.Enabled = false;
                     caricaToolStripMenuItem.Enabled = false;
-
                 }
-
-
-
 
             }
 
@@ -534,7 +529,6 @@ namespace PannelloCharger
             }
         }
 
-
         private void cercaDispositiviUSBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -606,14 +600,14 @@ namespace PannelloCharger
         {
             try
             {
-                System.Environment.Exit(0);
                 Log.Info("App Exit ");
+                System.Environment.Exit(0);
+                
             }
             catch (Exception Ex)
             {
                 Log.Error("frmMain: " + Ex.Message);
             }
-
         }
 
         private void caricaParametriToolStripMenuItem_Click(object sender, EventArgs e)
@@ -629,6 +623,7 @@ namespace PannelloCharger
             }
             catch
             {
+
             }
         }
 
@@ -644,7 +639,6 @@ namespace PannelloCharger
             }
 
         }
-
 
         private void mnuLogout_Click(object sender, EventArgs e)
         {
