@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,145 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTipoBatteria.Text" xml:space="preserve">
-    <value>Battery Type</value>
+  <data name="lblDurata.Text" xml:space="preserve">
+    <value>Charge Time</value>
   </data>
-  <data name="txtTensioneNom.Text" xml:space="preserve">
-    <value>Nominal Voltage</value>
+  <data name="lblOraEqual.Text" xml:space="preserve">
+    <value>Start Time</value>
   </data>
-  <data name="grbVersoCorrente.Text" xml:space="preserve">
-    <value>Installation Direction</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>New Setup</value>
-  </data>
-  <data name="lblNumSpire.Text" xml:space="preserve">
-    <value>N. of Turns</value>
-  </data>
-  <data name="btnInserisciProgramma.Text" xml:space="preserve">
-    <value>Insert Setup</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Cells V3</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Cells V2</value>
-  </data>
-  <data name="lblCelleP1.Text" xml:space="preserve">
-    <value>Cells V1</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Total Cells</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Nominal Capacity</value>
-  </data>
-  <data name="chkMemProgrammed.Text" xml:space="preserve">
-    <value>Enable Setup</value>
-  </data>
-  <data name="btnAnnulla.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="chkSondaElPresente.Text" xml:space="preserve">
-    <value>Electrolyte Probe  Installed</value>
-  </data>
-  <data name="lblTempMin.Text" xml:space="preserve">
-    <value>T Recovery (°C)</value>
-  </data>
-  <data name="lblTempMax.Text" xml:space="preserve">
-    <value>T Alarm (°C)</value>
-  </data>
-  <data name="optVersoDiretto.Text" xml:space="preserve">
-    <value>Direct</value>
-  </data>
-  <data name="chkCliResetContatori.Text" xml:space="preserve">
-    <value>Reset Charge Counters</value>
-  </data>
-  <data name="tbpParametri.Text" xml:space="preserve">
-    <value>Base Parameters</value>
-  </data>
-  <data name="label56.Text" xml:space="preserve">
-    <value>1st shift</value>
-  </data>
-  <data name="lblTurno2.Text" xml:space="preserve">
-    <value>2nd shift</value>
-  </data>
-  <data name="lblTurno3.Text" xml:space="preserve">
-    <value>3rd shift</value>
-  </data>
-  <data name="optVersoInverso.Text" xml:space="preserve">
-    <value>Reverse</value>
-  </data>
-  <data name="label38.Text" xml:space="preserve">
-    <value>Charge Factor</value>
-  </data>
-  <data name="label51.Text" xml:space="preserve">
-    <value>Charge Factor</value>
-  </data>
-  <data name="label41.Text" xml:space="preserve">
-    <value>Charge Factor</value>
-  </data>
-  <data name="label35.Text" xml:space="preserve">
-    <value>Charge Factor</value>
-  </data>
-  <data name="label42.Text" xml:space="preserve">
-    <value>Change shift time</value>
-  </data>
-  <data name="lblMainOrari.Text" xml:space="preserve">
-    <value>Change shift time</value>
-  </data>
-  <data name="label52.Text" xml:space="preserve">
-    <value>Change shift time</value>
-  </data>
-  <data name="label39.Text" xml:space="preserve">
-    <value>Change shift time</value>
-  </data>
-  <data name="label37.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="label36.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="label40.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="label50.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="tbpSetupTurni.Text" xml:space="preserve">
-    <value>Shifts planning</value>
-  </data>
-  <data name="tbpSetupTempo.Text" xml:space="preserve">
-    <value>Time planning</value>
-  </data>
-  <data name="tbpSetupPro.Text" xml:space="preserve">
-    <value>Advanced Parameters</value>
-  </data>
-  <data name="lblPro08.Text" xml:space="preserve">
-    <value>Topping-up</value>
-  </data>
-  <data name="lblPro09.Text" xml:space="preserve">
-    <value>Partial Charge</value>
-  </data>
-  <data name="lblProImpulsiRabb.Text" xml:space="preserve">
-    <value>Topping pulses</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Final Voltage</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Connection Voltage</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>Gas Voltage</value>
-  </data>
-  <data name="lblPro06.Text" xml:space="preserve">
-    <value>T Restart (°C)</value>
-  </data>
-  <data name="lblPro05.Text" xml:space="preserve">
-    <value>T Alarm (°C)</value>
-  </data>
-  <data name="lblPro04.Text" xml:space="preserve">
-    <value>T Warning (°C)</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>C. F.</value>
   </data>
 </root>

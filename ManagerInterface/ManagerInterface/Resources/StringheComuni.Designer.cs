@@ -475,6 +475,33 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Nessuna.
+        /// </summary>
+        internal static string PianificazioneNessuna {
+            get {
+                return ResourceManager.GetString("PianificazioneNessuna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Tempo.
+        /// </summary>
+        internal static string PianificazioneTempo {
+            get {
+                return ResourceManager.GetString("PianificazioneTempo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Turni.
+        /// </summary>
+        internal static string PianificazioneTurni {
+            get {
+                return ResourceManager.GetString("PianificazioneTurni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Pres Elettrolita.
         /// </summary>
         internal static string PresenzaElett {

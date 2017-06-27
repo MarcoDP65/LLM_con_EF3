@@ -178,6 +178,15 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Durata   -   F.C.   -   Opzioni.
+        /// </summary>
+        internal static string strSottoTitoloPianificazione {
+            get {
+                return ResourceManager.GetString("strSottoTitoloPianificazione", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a .
         /// </summary>
         internal static string strTipoEvento {
@@ -192,6 +201,15 @@ namespace PannelloCharger {
         internal static string strTitoloListaBrevi {
             get {
                 return ResourceManager.GetString("strTitoloListaBrevi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Carica Pianificata.
+        /// </summary>
+        internal static string strTitoloPianificazione {
+            get {
+                return ResourceManager.GetString("strTitoloPianificazione", resourceCulture);
             }
         }
         

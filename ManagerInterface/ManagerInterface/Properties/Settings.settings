@@ -41,5 +41,8 @@
     <Setting Name="pathFwReady" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="VersioneFwRichiesta" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2.04.05</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

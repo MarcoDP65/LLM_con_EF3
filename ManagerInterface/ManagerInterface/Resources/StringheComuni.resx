@@ -297,4 +297,13 @@
   <data name="DatiDaSalvareR2" xml:space="preserve">
     <value>Vuoi salvarli ora ?</value>
   </data>
+  <data name="PianificazioneNessuna" xml:space="preserve">
+    <value>Nessuna</value>
+  </data>
+  <data name="PianificazioneTempo" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="PianificazioneTurni" xml:space="preserve">
+    <value>Turni</value>
+  </data>
 </root>

@@ -273,4 +273,10 @@
   <data name="strVistaLunghiColOverT" xml:space="preserve">
     <value>Tempo SovraTemp</value>
   </data>
+  <data name="strSottoTitoloPianificazione" xml:space="preserve">
+    <value>Durata   -   F.C.   -   Opzioni</value>
+  </data>
+  <data name="strTitoloPianificazione" xml:space="preserve">
+    <value>Carica Pianificata</value>
+  </data>
 </root>

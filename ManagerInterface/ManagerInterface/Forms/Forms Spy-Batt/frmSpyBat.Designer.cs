@@ -757,6 +757,7 @@
             this.label134 = new System.Windows.Forms.Label();
             this.btnClonaScriviRecordTestata = new System.Windows.Forms.Button();
             this.tabCalibrazione = new System.Windows.Forms.TabPage();
+            this.btnCalSalvaFWVer = new System.Windows.Forms.Button();
             this.label207 = new System.Windows.Forms.Label();
             this.txtCalCoeffPasso = new System.Windows.Forms.TextBox();
             this.txtCalSecondiPasso = new System.Windows.Forms.TextBox();
@@ -6173,6 +6174,7 @@
             // tabCalibrazione
             // 
             this.tabCalibrazione.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCalibrazione.Controls.Add(this.btnCalSalvaFWVer);
             this.tabCalibrazione.Controls.Add(this.label207);
             this.tabCalibrazione.Controls.Add(this.txtCalCoeffPasso);
             this.tabCalibrazione.Controls.Add(this.txtCalSecondiPasso);
@@ -6204,6 +6206,13 @@
             this.tabCalibrazione.Controls.Add(this.grbCalListaAttivita);
             resources.ApplyResources(this.tabCalibrazione, "tabCalibrazione");
             this.tabCalibrazione.Name = "tabCalibrazione";
+            // 
+            // btnCalSalvaFWVer
+            // 
+            resources.ApplyResources(this.btnCalSalvaFWVer, "btnCalSalvaFWVer");
+            this.btnCalSalvaFWVer.Name = "btnCalSalvaFWVer";
+            this.btnCalSalvaFWVer.UseVisualStyleBackColor = true;
+            this.btnCalSalvaFWVer.Click += new System.EventHandler(this.btnCalSalvaFWVer_Click);
             // 
             // label207
             // 
@@ -8879,5 +8888,6 @@
         private System.Windows.Forms.TextBox txtTestataIdBase;
         private System.Windows.Forms.Label label281;
         private System.Windows.Forms.Button btnTestataCreaClone;
+        private System.Windows.Forms.Button btnCalSalvaFWVer;
     }
 }

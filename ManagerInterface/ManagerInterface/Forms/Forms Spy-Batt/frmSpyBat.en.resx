@@ -251,7 +251,7 @@
     <value>Automatic activation output</value>
   </data>
   <data name="label57.Text" xml:space="preserve">
-    <value>Coils</value>
+    <value>Turns</value>
   </data>
   <data name="chkCalCorrentePositiva.Text" xml:space="preserve">
     <value>Absolute current</value>
@@ -377,7 +377,7 @@
     <value>Read</value>
   </data>
   <data name="chkDatiDiretti.Text" xml:space="preserve">
-    <value>Actual values</value>
+    <value>Effective values</value>
   </data>
   <data name="chkParLetturaAuto.Text" xml:space="preserve">
     <value>Automatic read</value>
@@ -731,7 +731,7 @@
     <value>Ptr. Short Record</value>
   </data>
   <data name="btnResetScheda.Text" xml:space="preserve">
-    <value>SPY-BATT Reset</value>
+    <value>SPY-BATT Reboot</value>
   </data>
   <data name="chkAckDumpMem.Text" xml:space="preserve">
     <value>Send ACK packet</value>
@@ -873,5 +873,122 @@
   </data>
   <data name="tabCb01.Text" xml:space="preserve">
     <value>General</value>
+  </data>
+  <data name="tbpPianificazione.Text" xml:space="preserve">
+    <value>Planning</value>
+  </data>
+  <data name="label243.Text" xml:space="preserve">
+    <value>Planning</value>
+  </data>
+  <data name="lblPro09.Text" xml:space="preserve">
+    <value>Partial Charge</value>
+  </data>
+  <data name="lblSvcCausaLastReset.Text" xml:space="preserve">
+    <value>Last Reset</value>
+  </data>
+  <data name="btnPianSalvaCliente.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="chkMemLngSalvaRicalcolo.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="chkCalRegistraSequenza.Text" xml:space="preserve">
+    <value>Save Sequence</value>
+  </data>
+  <data name="grbCloneSBSource.Text" xml:space="preserve">
+    <value>Sopurce Board</value>
+  </data>
+  <data name="label213.Text" xml:space="preserve">
+    <value>Turns</value>
+  </data>
+  <data name="label148.Text" xml:space="preserve">
+    <value>Turns</value>
+  </data>
+  <data name="tbpStrategia.Text" xml:space="preserve">
+    <value>Strategy</value>
+  </data>
+  <data name="label256.Text" xml:space="preserve">
+    <value>Strategy</value>
+  </data>
+  <data name="label174.Text" xml:space="preserve">
+    <value>T Alarm</value>
+  </data>
+  <data name="label173.Text" xml:space="preserve">
+    <value>T Warning</value>
+  </data>
+  <data name="label209.Text" xml:space="preserve">
+    <value>C.F.</value>
+  </data>
+  <data name="label246.Text" xml:space="preserve">
+    <value>C.F.</value>
+  </data>
+  <data name="label271.Text" xml:space="preserve">
+    <value>Pulse Current (A)</value>
+  </data>
+  <data name="label268.Text" xml:space="preserve">
+    <value>No of Pulses</value>
+  </data>
+  <data name="label269.Text" xml:space="preserve">
+    <value>Min. ON</value>
+  </data>
+  <data name="label270.Text" xml:space="preserve">
+    <value>Min. OFF</value>
+  </data>
+  <data name="label248.Text" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="lblMatricola.Text" xml:space="preserve">
+    <value>Serial #</value>
+  </data>
+  <data name="label249.Text" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="label199.Text" xml:space="preserve">
+    <value>Turns</value>
+  </data>
+  <data name="label197.Text" xml:space="preserve">
+    <value>Max Time</value>
+  </data>
+  <data name="label206.Text" xml:space="preserve">
+    <value>Step Type</value>
+  </data>
+  <data name="grbCalValoriAttuali.Text" xml:space="preserve">
+    <value>Actual values</value>
+  </data>
+  <data name="btnSvcLeggiParametriMedie.Text" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="btnFSerVerificaOC.Text" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="label214.Text" xml:space="preserve">
+    <value>Electrolyte Probe</value>
+  </data>
+  <data name="label260.Text" xml:space="preserve">
+    <value>Local Setup</value>
+  </data>
+  <data name="label215.Text" xml:space="preserve">
+    <value>Current direction</value>
+  </data>
+  <data name="grbVarRestartScheda.Text" xml:space="preserve">
+    <value>Reboot</value>
+  </data>
+  <data name="chkCliResetContatori.Text" xml:space="preserve">
+    <value>Restore Charge Level</value>
+  </data>
+  <data name="grbVarParametriSig.Text" xml:space="preserve">
+    <value>LL Communication</value>
+  </data>
+  <data name="btnFSerImpostaOC.Text" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="btnSvcScriviParametriMedie.Text" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="btnCalScriviGiorno.Text" xml:space="preserve">
+    <value>Set Manual Clock</value>
+  </data>
+  <data name="grbCloneScheda.Text" xml:space="preserve">
+    <value>Data Image</value>
   </data>
 </root>

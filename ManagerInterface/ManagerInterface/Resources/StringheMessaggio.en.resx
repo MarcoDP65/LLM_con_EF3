@@ -243,4 +243,10 @@
   <data name="strTitoloListaBrevi" xml:space="preserve">
     <value>Phase Detail</value>
   </data>
+  <data name="strSottoTitoloPianificazione" xml:space="preserve">
+    <value>Duration   -   C.F.   -   Options</value>
+  </data>
+  <data name="strTitoloPianificazione" xml:space="preserve">
+    <value>Planned Charge</value>
+  </data>
 </root>

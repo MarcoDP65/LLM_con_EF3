@@ -285,4 +285,19 @@
   <data name="CfgNonValida" xml:space="preserve">
     <value>Wrong parameters</value>
   </data>
+  <data name="PianificazioneTurni" xml:space="preserve">
+    <value>Shifts</value>
+  </data>
+  <data name="PianificazioneTempo" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="PianificazioneNessuna" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="AttivaConfigOk" xml:space="preserve">
+    <value>Enabled Configuration</value>
+  </data>
+  <data name="AttivaConfigKO" xml:space="preserve">
+    <value>Setup Activation Failed</value>
+  </data>
 </root>

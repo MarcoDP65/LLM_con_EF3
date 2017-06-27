@@ -19,8 +19,8 @@ namespace ChargerLogic
 
         public List<Pianificazione> TipiPianificazione = new List<Pianificazione>
                                {
-                                    new Pianificazione { Codice = 0, Descrizione  ="Non Attiva"},
-                                    new Pianificazione { Codice = 1, Descrizione  ="Tempo"},
+                                    new Pianificazione { Codice = 0, Descrizione  = PannelloCharger.StringheComuni.PianificazioneNessuna},
+                                    new Pianificazione { Codice = 1, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempo},
                                     //new Pianificazione { Codice = 2, Descrizione = "Turni"}  - pianificazione per turni temporaneamente disabilitata
                                };
 

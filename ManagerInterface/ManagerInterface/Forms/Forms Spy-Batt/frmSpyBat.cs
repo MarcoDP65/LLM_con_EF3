@@ -722,6 +722,7 @@ namespace PannelloCharger
                 //btnResetScheda.Visible = false;
                 grbTestataContatori.Visible = false;
                 grbAbilitazioneReset.Visible = false;
+                grbCloneScheda.Visible = false;
                 txtSerialNumber.ReadOnly = true;
                 if (LivelloCorrente == 0)
                 {
@@ -729,6 +730,7 @@ namespace PannelloCharger
                     //btnResetScheda.Visible = true;
                     grbTestataContatori.Visible = true;
                     grbAbilitazioneReset.Visible = true;
+                    grbCloneScheda.Visible = true;
                     txtSerialNumber.ReadOnly = false;
                 }
 
@@ -4014,6 +4016,8 @@ namespace PannelloCharger
                     frmSpyBat_Resize(null, null);
                 if (e.TabPage == tabCalibrazione)
                 {
+                    txtCalFWRichiesto.Text = PannelloCharger.Properties.Settings.Default.VersioneFwRichiesta;
+
                     if (_apparatoPresente) VerificaAlimentatore(false);
 
                     if (tabCalibrazione.Height > 300)
@@ -8444,9 +8448,9 @@ namespace PannelloCharger
                 PanelGiornoTurno _giorno;
                 tlpGrigliaTurni.Controls.Clear();
 
-                _testata = new PanelTestataColonnaTurno("Carica Pianificata");
+                _testata = new PanelTestataColonnaTurno( PannelloCharger.StringheMessaggio.strTitoloPianificazione);   //"Carica Pianificata");
                 tlpGrigliaTurni.Controls.Add(_testata, 1, 0);
-                _testata2 = new PanelTestataColonnaTurno("Durata   -   F.C.   -   Opzioni", new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                _testata2 = new PanelTestataColonnaTurno(PannelloCharger.StringheMessaggio.strSottoTitoloPianificazione, new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                 tlpGrigliaTurni.Controls.Add(_testata2, 1, 1);
 
 
@@ -9373,6 +9377,20 @@ namespace PannelloCharger
                 Log.Error("btnTestataCreaClone_Click: " + Ex.Message);
 
             }
+        }
+
+        private void btnCalSalvaFWVer_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                PannelloCharger.Properties.Settings.Default.VersioneFwRichiesta = txtCalFWRichiesto.Text;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnCalSalvaFWVer_Click: " + Ex.Message);
+            }
+
         }
     }
 }
