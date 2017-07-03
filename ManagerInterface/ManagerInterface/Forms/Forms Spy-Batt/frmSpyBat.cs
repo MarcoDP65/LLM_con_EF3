@@ -1714,6 +1714,50 @@ namespace PannelloCharger
         }
 
 
+        /// <summary>
+        /// Se per il ciclo lungo corrente sono saricati i cicli  brevi, apre la finestra col dettaglio cicli
+        /// </summary>
+        private void MostraDettaglioRiga(sbMemLunga RigaDati)
+        {
+            try
+            {
+                Log.Debug("MostraDettaglioRiga - Rigadati");
+
+                if (RigaDati != null)
+                {
+
+
+                    sbMemLunga _tempLunga = RigaDati;
+                    if (_tempLunga.NumEventiBreviCaricati > 0)
+                    {
+                        Log.Debug("MostraDettaglioRiga Start");
+                        frmListaCicliBreve CicliBreve = new frmListaCicliBreve();
+                        CicliBreve.MdiParent = this.MdiParent;
+                        CicliBreve.StartPosition = FormStartPosition.CenterParent;
+                        CicliBreve.parametri = _parametri;
+
+                        //CicliBreve.CicliMemoriaBreve = _sb.CicliMemoriaBreve;
+                        CicliBreve.CicloLungo = _tempLunga;
+                        CicliBreve._sb = _sb;
+                        CicliBreve.Show();
+                        Log.Debug("MostraDettaglioRiga Start mostracicli");
+                        CicliBreve.MostraCicli();
+                        Log.Debug("MostraDettaglioRiga Fine");
+                    }
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDettaglioRiga: " + Ex.Message);
+            }
+
+        }
+
+
+
+
+
         private void MostraDettaglioFase(UInt32 IdCiclo)
         {
             try
@@ -3209,7 +3253,7 @@ namespace PannelloCharger
 
                 if (_lista.SelectedObject != null)
                 {
-                    MostraDettaglioRiga();
+                    MostraDettaglioRiga((sbMemLunga)_lista.SelectedObject);
                 }
             }
             catch (Exception Ex)
@@ -3308,7 +3352,7 @@ namespace PannelloCharger
 
         private void flvwCicliBatteria_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            
             try
             {
                 FastObjectListView _lista = (FastObjectListView)sender;

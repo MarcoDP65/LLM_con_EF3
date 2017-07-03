@@ -2442,7 +2442,6 @@
             this.flvwCicliBatteria.VirtualMode = true;
             this.flvwCicliBatteria.FormatCell += new System.EventHandler<BrightIdeasSoftware.FormatCellEventArgs>(this.flvwCicliBatteria_FormatCell);
             this.flvwCicliBatteria.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.flvwCicliBatteria_FormatRow);
-            this.flvwCicliBatteria.ItemActivate += new System.EventHandler(this.flvwCicliBatteria_ItemActivate);
             this.flvwCicliBatteria.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.flvwCicliBatteria_MouseDoubleClick);
             // 
             // grbMemCicliContatori
