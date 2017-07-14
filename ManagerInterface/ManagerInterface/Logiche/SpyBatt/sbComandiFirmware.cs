@@ -106,7 +106,7 @@ namespace ChargerLogic
         /// <param name="Firmware"></param>
         /// <param name="RunAsinc"></param>
         /// <returns></returns>
-        public bool AggiornaFirmware(string IdApparato, bool ApparatoConnesso,byte Area, BloccoFirmware Firmware, bool RunAsinc = false, bool WaitReconnect = true )
+        public bool AggiornaFirmware(string IdApparato, bool ApparatoConnesso,byte Area, BloccoFirmware Firmware, bool RunAsinc = false, bool WaitReconnect = true, bool ResetBeforeStart = true )
         {
             try
             {
@@ -123,9 +123,60 @@ namespace ChargerLogic
 
                 if (true)  //ApparatoConnesso)
                 {
-                    // verificare Firmware.TestataOK
+                    // Se previsto, prima resetto la scheda
+
+                    if (ResetBeforeStart)
+                    {
+
+                        if (Step != null)
+                        {
+                            sbWaitStep _passo = new sbWaitStep();
+                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                            _passo.Titolo = StringheMessaggio.strMsgResetSB;  //"Reset SPY-BATT";
+                            _passo.Eventi = 1;
+                            _passo.Step = -1;
+                            _passo.EsecuzioneInterrotta = false;
+                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                            Step(this, _stepEv);
+                        }
+                        _esito = ResetScheda(false);
+                        //ora aspetto il riavvio e ricollego
+                        int _progress = 0;
+                        double _valProgress = 0;
+
+                        _esito = false;
+                        int _tentativi = 0;
+
+                        while (!_esito)
+                        {
+                            System.Threading.Thread.Sleep(500);
+                            if (Step != null)
+                            {
+                                sbWaitStep _passo = new sbWaitStep();
+                                _passo.Eventi = 20;
+                                _passo.Step = _tentativi++;
+                                _passo.EsecuzioneInterrotta = false;
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                _valProgress = (_tentativi * 5);
+
+                                _progress = (int)_valProgress;
+                                // if (_lastProgress != _progress)
+                                {
+                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                    //Log.Debug("Passo " + _risposteRicevute.ToString());
+                                    Step(this, _stepEv);
+                                    //_lastProgress = _progress;
+                                }
+                            }
+
+                            _esito = VerificaPresenza();
+
+                        }
 
 
+
+                    }
 
                     //Prima invio la testata
 

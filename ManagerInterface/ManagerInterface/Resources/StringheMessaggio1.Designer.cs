@@ -178,6 +178,15 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Reset  SPY-BATT.
+        /// </summary>
+        internal static string strMsgResetSB {
+            get {
+                return ResourceManager.GetString("strMsgResetSB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Durata   -   F.C.   -   Opzioni.
         /// </summary>
         internal static string strSottoTitoloPianificazione {

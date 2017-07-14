@@ -269,7 +269,7 @@
             this.flvwCicliBrevi.CellEditUseWholeCell = false;
             this.flvwCicliBrevi.FullRowSelect = true;
             this.flvwCicliBrevi.SelectedBackColor = System.Drawing.Color.Empty;
-            this.flvwCicliBrevi.HighlightForegroundColor = System.Drawing.Color.Empty;
+            this.flvwCicliBrevi.SelectedForeColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.flvwCicliBrevi, "flvwCicliBrevi");
             this.flvwCicliBrevi.Name = "flvwCicliBrevi";
             this.flvwCicliBrevi.ShowGroups = false;

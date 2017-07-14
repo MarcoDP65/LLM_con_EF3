@@ -68,7 +68,6 @@ namespace PannelloCharger
             }
         }
 
-
         public bool SalvaFileSBF()
         {
             try
@@ -99,8 +98,6 @@ namespace PannelloCharger
                 return false;
             }
         }
-
-
 
         public bool CaricafileSBF()
         {
@@ -161,7 +158,6 @@ namespace PannelloCharger
                 return false;
             }
         }
-
 
         private void MostraStato(FirmwareManager.MascheraStato Valore, byte Stato, ref TextBox Cella, bool KOifFalse = false )
         {
@@ -406,7 +402,6 @@ namespace PannelloCharger
             }
         }
 
-
         public bool SwitchAreaBl(string IdApparato, bool SerialeCollegata)
         {
             bool _esito = false;
@@ -444,9 +439,6 @@ namespace PannelloCharger
                 return _esito;
             }
         }
-
-
-
 
         public void PreparaTrasmissioneFW()
         {
@@ -502,7 +494,6 @@ namespace PannelloCharger
             }
   
     }
-
 
         private void AggiornaFirmware(bool InviaACK = false)
         {
@@ -578,8 +569,6 @@ namespace PannelloCharger
 
             }
         }
-
-
 
         public bool CaricaSbOrigine(string IdApparato, MoriData._db dbCorrente, bool ApparatoConnesso = false)
         {

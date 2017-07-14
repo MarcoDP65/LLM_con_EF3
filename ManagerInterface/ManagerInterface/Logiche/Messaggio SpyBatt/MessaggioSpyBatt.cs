@@ -20,19 +20,19 @@ namespace ChargerLogic
         private byte[] _idCorrente = { 0, 0, 0, 0, 0, 0, 0, 0 };
         private byte[] _tempId = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
-        new public comandoInizialeSB Intestazione;
-        new public comandoRTC DatiRTCSB;
-        new public DatiCliente CustomerData;
-        new public ProgrammaRicarica ProgRicarica;
-        new public MemoriaPeriodoLungo CicloLungo;
-        new public MemoriaPeriodoBreve _CicloBreve;
-        new public PacchettoReadMem _pacchettoMem;
-        new public VariabiliSpybatt variabiliScheda;
-        new public CalibrazioniSpybatt valoriCalibrazione;
-        new public ImmagineDumpMem DumpMem;
-        new public StatoFirmware StatoFirmwareScheda;
-        new public ComandoStrategia ComandoStrat;
-        new public ParametriSpybatt ParametriGenerali;
+        public comandoInizialeSB Intestazione;
+        public comandoRTC DatiRTCSB;
+        public DatiCliente CustomerData;
+        public ProgrammaRicarica ProgRicarica;
+        public MemoriaPeriodoLungo CicloLungo;
+        public MemoriaPeriodoBreve _CicloBreve;
+        public PacchettoReadMem _pacchettoMem;
+        public VariabiliSpybatt variabiliScheda;
+        public CalibrazioniSpybatt valoriCalibrazione;
+        public ImmagineDumpMem DumpMem;
+        public StatoFirmware StatoFirmwareScheda;
+        public ComandoStrategia ComandoStrat;
+        public ParametriSpybatt ParametriGenerali;
         public OcBaudRate  BrOCcorrente = OcBaudRate.OFF;
         public OcEchoMode EchoOCcorrente = OcEchoMode.OFF;
 
@@ -40,7 +40,7 @@ namespace ChargerLogic
         public byte _comandoInvio;
         public byte _pacchettoInviato;
         public byte _esitoPacchetto;
-        new public EsitoMessaggio EsitoComando;
+        public EsitoMessaggio EsitoComando;
 
         public int fwLevel = 0;
 
@@ -2579,7 +2579,7 @@ namespace ChargerLogic
 
         }
 
-        public ushort ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes)
+        public new ushort ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes)
         {
             ushort _esito = 0;
             ushort _dispositivo;
@@ -2686,7 +2686,7 @@ namespace ChargerLogic
             catch { return _esito; }
         }
 
-        public ushort ComponiMessaggioScriviMem(UInt32 memAddress, ushort numBytes, byte[] Dati)
+        public new ushort ComponiMessaggioScriviMem(UInt32 memAddress, ushort numBytes, byte[] Dati)
         {
             ushort _esito = 0;
             ushort _dispositivo;
@@ -2820,7 +2820,7 @@ namespace ChargerLogic
 
         }
 
-        public ushort ComponiMessaggioCancella4KMem(UInt32 memAddress)
+        public new ushort ComponiMessaggioCancella4KMem(UInt32 memAddress)
         {
             ushort _esito = 0;
             ushort _dispositivo;

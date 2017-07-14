@@ -17,7 +17,7 @@ using SQLite.Net;
 
 namespace ChargerLogic
 {
-    public class CaricaBatteria
+    public partial class CaricaBatteria
     {
         public SerialPort serialeApparato;
         private static SerialMessage _mS;
@@ -51,6 +51,7 @@ namespace ChargerLogic
         // ----------------------------------------------------------
 
         private static EventWaitHandle LL_USBeventWait;
+        private DateTime _startRead;
 
         public byte[] numeroSeriale;
         private string _lastError;
@@ -514,7 +515,6 @@ namespace ChargerLogic
             } 
         }
 
-
         public bool CaricaCicli()
         {
             try
@@ -573,7 +573,6 @@ namespace ChargerLogic
             }
         }
 
-
         public bool LeggiCicloAttuale()
         {
             try
@@ -601,8 +600,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-
-
 
         public bool LeggiVariabili()
         {
@@ -649,7 +646,6 @@ namespace ChargerLogic
             }
         }
 
-
         public bool ProxySBSig60(ref byte[] PacchettoDati )
         {
             try
@@ -693,11 +689,6 @@ namespace ChargerLogic
         }
 
 
-
-
-
-
-
         public bool LeggiMemoriaScheda()
         {
             try
@@ -725,6 +716,207 @@ namespace ChargerLogic
                 return false;
             }
         }
+      
+        /// <summary>
+        /// Carico direttamente da memoria l'area passata come parametro
+        /// </summary>
+        /// <param name="StartAddr">Indirizzo (iniziale) del blocco da leggere</param>
+        /// <param name="NumByte">Numero di byte da leggere (max 242)</param>
+        /// <param name="Dati">bytearray dati letti</param>
+        /// <returns></returns>
+        public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+
+                if (NumByte < 1) NumByte = 1;
+                if (NumByte > 242)
+                {
+                    Dati = null;
+                    return false;
+                }
+
+                Dati = new byte[NumByte];
+
+
+                _mS.Comando = SerialMessage.TipoComando.LL_R_LeggiMemoria;
+                _mS._pacchettoMem = new SerialMessage.PacchettoReadMem();
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lettura di " + NumByte.ToString() + " bytes dall'indirizzo " + StartAddr.ToString("X2"));
+
+                _mS.ComponiMessaggioLeggiMem(StartAddr, NumByte);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                Log.Debug(_mS.hexdumpArray(_mS._pacchettoMem.memDataDecoded));
+
+                for (int _ciclo = 0; ((_ciclo < NumByte) && (_ciclo < _mS._pacchettoMem.numBytes)); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS._pacchettoMem.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Scrivi il blocco dati in memoria flash.
+        /// </summary>
+        /// <param name="StartAddr">The start addr.</param>
+        /// <param name="NumByte">The number of byte.</param>
+        /// <param name="Dati">The data.</param>
+        /// <returns></returns>
+        public bool ScriviBloccoMemoria(uint StartAddr, ushort NumByte, byte[] Dati, bool modoDeso = false)
+        {
+
+
+            try
+            {
+                bool _esito = true;
+
+                if (NumByte < 0) NumByte = 0;
+                if (NumByte > 242)
+                {
+                    return false;
+                }
+
+
+                _mS.Comando = SerialMessage.TipoComando.SB_W_ScriviMemoria;
+
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Scrittura di " + NumByte.ToString() + " bytes dall'indirizzo " + StartAddr.ToString("X2"));
+
+                _mS.ComponiMessaggioScriviMem(StartAddr, NumByte, Dati);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                if (modoDeso != true)
+                {
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                }
+
+
+                Log.Debug(_mS.hexdumpMessaggio());
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Cancella fisicamente un blocco di 4K dalla memoria flash mettendo tutti i Bytes a 0xFF
+        /// </summary>
+        /// <returns></returns>
+        public bool CancellaBlocco4K(uint StartAddr)
+        {
+
+
+            try
+            {
+                bool _esito;
+
+                _mS.Comando = SerialMessage.TipoComando.SB_Cancella4K;
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Cancellazione di 4Kbytes dall'indirizzo " + StartAddr.ToString("X2"));
+
+                _mS.ComponiMessaggioCancella4KMem(StartAddr);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                //Log.Debug("------------------------------------------------------------------------------------------------------------");
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Cancella l'intera memoria flash (4MB). Cancella snche i dati relativi alla scheda corrente dal DB Locale
+        /// </summary>
+        /// <returns></returns>
+        public bool CancellaInteraMemoria()
+        {
+
+
+            try
+            {
+                bool _esito;
+
+                _mS.Comando = SerialMessage.TipoComando.LL_CancellaInteraMemoria;
+
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("SerialMessage.TipoComando.SB_CancellaInteraMemoria");
+
+                _mS.ComponiMessaggio();
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, true);
+                // prima di proseguire aspetto 1 secondo
+                System.Threading.Thread.Sleep(1000);
+                //Application.DoEvents();
+
+                Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug("------------------------------------------------------------------------------------------------------------");
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
 
 
         public bool ScriviCicloCorrente()

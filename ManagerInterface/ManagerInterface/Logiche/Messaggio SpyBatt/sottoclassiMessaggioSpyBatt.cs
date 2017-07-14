@@ -1317,7 +1317,7 @@ namespace ChargerLogic
 
         }
 
-        public class PacchettoReadMem
+        public new class PacchettoReadMem
         {
 
             byte[] _dataBuffer;

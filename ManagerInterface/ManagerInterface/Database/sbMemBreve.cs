@@ -298,11 +298,10 @@ namespace MoriData
             get { return _sbsm.IdLocale; }
             set
             {
-                if (value !=null )
-                {
-                    _sbsm.IdLocale = value;
-                    _datiSalvati = false;
-                }
+
+                _sbsm.IdLocale = value;
+                _datiSalvati = false;
+
             }
         }
         public string IdApparato

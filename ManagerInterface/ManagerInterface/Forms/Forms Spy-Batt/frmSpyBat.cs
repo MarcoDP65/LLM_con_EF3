@@ -2720,7 +2720,6 @@ namespace PannelloCharger
             }
         }
 
-
         private void InizializzaVistaStat()
         {
             try
@@ -3064,14 +3063,10 @@ namespace PannelloCharger
             }
         }
 
-
         public void MostraTensioni()
         {
-
             //flvwCicliBatteria.Columns[1].is
         }
-
-
 
         /// <summary>
         /// 
@@ -3200,7 +3195,6 @@ namespace PannelloCharger
                 Log.Error("InizializzaVistaLunghi: " + Ex.Message);
             }
         }
-
 
         private void flvwCicliBatteria_FormatRow(object sender, FormatRowEventArgs e)
         {
@@ -3560,7 +3554,7 @@ namespace PannelloCharger
                     CaricaTestata(_sb.Id, _logiche, _apparatoPresente);
                     if (chkEraseDB.Checked == true)
                         _esito = _sb.sbData.cancellaDati(_sb.Id);
-                    ;
+                    
                     DumpInteraMemoria(false);
                     this.Cursor = Cursors.Default;
                 }

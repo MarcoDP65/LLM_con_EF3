@@ -463,7 +463,8 @@
       <DependentUpon>frmUploadBootloader.cs</DependentUpon>
     </Compile>
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
-    <Compile Include="Logiche\CaricaBatteria.cs" />
+    <Compile Include="Logiche\Caricabatteria\CaricaBatteria.cs" />
+    <Compile Include="Logiche\Caricabatteria\cbComandiMemoria.cs" />
     <Compile Include="Logiche\cEventHelper.cs" />
     <Compile Include="Logiche\CloneSB.cs" />
     <Compile Include="Logiche\clsStatBloccoSoglie.cs" />
@@ -1196,6 +1197,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Logiche\Messaggio CaricaBatteria\" />
     <Folder Include="Resources\IconeTreeview\" />
   </ItemGroup>
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.103\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net45\System.Data.SQLite.Core.targets')" />

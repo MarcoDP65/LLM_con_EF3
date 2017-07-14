@@ -236,7 +236,6 @@ namespace MoriData
             }
         }
 
-
         public void inizializzaSoglie()
         {
             bool TabellaCompilata = checkInit("_sbSoglie");

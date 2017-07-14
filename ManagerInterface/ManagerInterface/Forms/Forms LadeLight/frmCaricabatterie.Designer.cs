@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabProfiloAttuale = new System.Windows.Forms.TabPage();
+            this.grbVarParametriSig = new System.Windows.Forms.GroupBox();
+            this.btnFSerVerificaOC = new System.Windows.Forms.Button();
+            this.chkFSerEchoOC = new System.Windows.Forms.CheckBox();
+            this.btnFSerImpostaOC = new System.Windows.Forms.Button();
+            this.label278 = new System.Windows.Forms.Label();
+            this.cmbFSerBaudrateOC = new System.Windows.Forms.ComboBox();
             this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
             this.txtPaParDivK = new System.Windows.Forms.TextBox();
             this.label69 = new System.Windows.Forms.Label();
@@ -422,13 +428,43 @@
             this.btnSalvaCaricabatteria = new System.Windows.Forms.Button();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
-            this.grbVarParametriSig = new System.Windows.Forms.GroupBox();
-            this.btnFSerVerificaOC = new System.Windows.Forms.Button();
-            this.chkFSerEchoOC = new System.Windows.Forms.CheckBox();
-            this.btnFSerImpostaOC = new System.Windows.Forms.Button();
-            this.label278 = new System.Windows.Forms.Label();
-            this.cmbFSerBaudrateOC = new System.Windows.Forms.ComboBox();
+            this.tabMemRead = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grbMemCancFisica = new System.Windows.Forms.GroupBox();
+            this.rbtMemAreaApp2 = new System.Windows.Forms.RadioButton();
+            this.rbtMemAreaApp1 = new System.Windows.Forms.RadioButton();
+            this.rbtMemAreaLibera = new System.Windows.Forms.RadioButton();
+            this.label111 = new System.Windows.Forms.Label();
+            this.txtMemCFBlocchi = new System.Windows.Forms.TextBox();
+            this.chkMemCFStartAddHex = new System.Windows.Forms.CheckBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.txtMemCFStartAdd = new System.Windows.Forms.TextBox();
+            this.btnMemCFExec = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnDumpMemoria = new System.Windows.Forms.Button();
+            this.txtMemDataGrid = new System.Windows.Forms.TextBox();
+            this.grbMemScrittura = new System.Windows.Forms.GroupBox();
+            this.chkMemHexW = new System.Windows.Forms.CheckBox();
+            this.lblMemVerificaValore = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.txtMemDataW = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.txtMemLenW = new System.Windows.Forms.TextBox();
+            this.txtMemAddrW = new System.Windows.Forms.TextBox();
+            this.cmdMemWrite = new System.Windows.Forms.Button();
+            this.grbMemCancellazione = new System.Windows.Forms.GroupBox();
+            this.chkMemClearMantieniCliente = new System.Windows.Forms.CheckBox();
+            this.cmdMemClear = new System.Windows.Forms.Button();
+            this.grbMemLettura = new System.Windows.Forms.GroupBox();
+            this.chkMemHex = new System.Windows.Forms.CheckBox();
+            this.lblReadMemBytes = new System.Windows.Forms.Label();
+            this.lblReadMemStartAddr = new System.Windows.Forms.Label();
+            this.txtMemLenR = new System.Windows.Forms.TextBox();
+            this.txtMemAddrR = new System.Windows.Forms.TextBox();
+            this.cmdMemRead = new System.Windows.Forms.Button();
             this.tabProfiloAttuale.SuspendLayout();
+            this.grbVarParametriSig.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabGenerale.SuspendLayout();
@@ -478,7 +514,13 @@
             this.pnlStratContatoriCarica.SuspendLayout();
             this.panel3.SuspendLayout();
             this.grbStratComandiTest.SuspendLayout();
-            this.grbVarParametriSig.SuspendLayout();
+            this.tabMemRead.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grbMemCancFisica.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.grbMemScrittura.SuspendLayout();
+            this.grbMemCancellazione.SuspendLayout();
+            this.grbMemLettura.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProfiloAttuale
@@ -491,6 +533,77 @@
             this.tabProfiloAttuale.Size = new System.Drawing.Size(1585, 688);
             this.tabProfiloAttuale.TabIndex = 5;
             this.tabProfiloAttuale.Text = "Profilo Attuale";
+            // 
+            // grbVarParametriSig
+            // 
+            this.grbVarParametriSig.BackColor = System.Drawing.Color.White;
+            this.grbVarParametriSig.Controls.Add(this.btnFSerVerificaOC);
+            this.grbVarParametriSig.Controls.Add(this.chkFSerEchoOC);
+            this.grbVarParametriSig.Controls.Add(this.btnFSerImpostaOC);
+            this.grbVarParametriSig.Controls.Add(this.label278);
+            this.grbVarParametriSig.Controls.Add(this.cmbFSerBaudrateOC);
+            this.grbVarParametriSig.Location = new System.Drawing.Point(1088, 23);
+            this.grbVarParametriSig.Name = "grbVarParametriSig";
+            this.grbVarParametriSig.Size = new System.Drawing.Size(296, 165);
+            this.grbVarParametriSig.TabIndex = 61;
+            this.grbVarParametriSig.TabStop = false;
+            this.grbVarParametriSig.Text = "Parametri Comunicazione OC";
+            // 
+            // btnFSerVerificaOC
+            // 
+            this.btnFSerVerificaOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnFSerVerificaOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFSerVerificaOC.Location = new System.Drawing.Point(34, 107);
+            this.btnFSerVerificaOC.Name = "btnFSerVerificaOC";
+            this.btnFSerVerificaOC.Size = new System.Drawing.Size(115, 34);
+            this.btnFSerVerificaOC.TabIndex = 5;
+            this.btnFSerVerificaOC.Text = "Verifica";
+            this.btnFSerVerificaOC.UseVisualStyleBackColor = true;
+            this.btnFSerVerificaOC.Click += new System.EventHandler(this.btnFSerVerificaOC_Click);
+            // 
+            // chkFSerEchoOC
+            // 
+            this.chkFSerEchoOC.AutoSize = true;
+            this.chkFSerEchoOC.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.chkFSerEchoOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.chkFSerEchoOC.ForeColor = System.Drawing.Color.Red;
+            this.chkFSerEchoOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkFSerEchoOC.Location = new System.Drawing.Point(204, 36);
+            this.chkFSerEchoOC.Name = "chkFSerEchoOC";
+            this.chkFSerEchoOC.Size = new System.Drawing.Size(66, 41);
+            this.chkFSerEchoOC.TabIndex = 4;
+            this.chkFSerEchoOC.Text = "ECHO";
+            this.chkFSerEchoOC.UseVisualStyleBackColor = true;
+            // 
+            // btnFSerImpostaOC
+            // 
+            this.btnFSerImpostaOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnFSerImpostaOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFSerImpostaOC.Location = new System.Drawing.Point(155, 107);
+            this.btnFSerImpostaOC.Name = "btnFSerImpostaOC";
+            this.btnFSerImpostaOC.Size = new System.Drawing.Size(115, 34);
+            this.btnFSerImpostaOC.TabIndex = 3;
+            this.btnFSerImpostaOC.Text = "Imposta";
+            this.btnFSerImpostaOC.UseVisualStyleBackColor = true;
+            // 
+            // label278
+            // 
+            this.label278.AutoSize = true;
+            this.label278.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label278.Location = new System.Drawing.Point(31, 31);
+            this.label278.Name = "label278";
+            this.label278.Size = new System.Drawing.Size(66, 17);
+            this.label278.TabIndex = 2;
+            this.label278.Text = "Baudrate";
+            // 
+            // cmbFSerBaudrateOC
+            // 
+            this.cmbFSerBaudrateOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmbFSerBaudrateOC.FormattingEnabled = true;
+            this.cmbFSerBaudrateOC.Location = new System.Drawing.Point(35, 54);
+            this.cmbFSerBaudrateOC.Name = "cmbFSerBaudrateOC";
+            this.cmbFSerBaudrateOC.Size = new System.Drawing.Size(163, 26);
+            this.cmbFSerBaudrateOC.TabIndex = 1;
             // 
             // grbCicloCorrente
             // 
@@ -1047,6 +1160,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tabCb04);
             this.tabCaricaBatterie.Controls.Add(this.tabMonitor);
             this.tabCaricaBatterie.Controls.Add(this.tbpProxySig60);
+            this.tabCaricaBatterie.Controls.Add(this.tabMemRead);
             this.tabCaricaBatterie.Location = new System.Drawing.Point(12, 12);
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
@@ -4895,76 +5009,418 @@
             this.tmrLetturaAutomatica.Interval = 30000;
             this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
             // 
-            // grbVarParametriSig
+            // tabMemRead
             // 
-            this.grbVarParametriSig.BackColor = System.Drawing.Color.White;
-            this.grbVarParametriSig.Controls.Add(this.btnFSerVerificaOC);
-            this.grbVarParametriSig.Controls.Add(this.chkFSerEchoOC);
-            this.grbVarParametriSig.Controls.Add(this.btnFSerImpostaOC);
-            this.grbVarParametriSig.Controls.Add(this.label278);
-            this.grbVarParametriSig.Controls.Add(this.cmbFSerBaudrateOC);
-            this.grbVarParametriSig.Location = new System.Drawing.Point(1088, 23);
-            this.grbVarParametriSig.Name = "grbVarParametriSig";
-            this.grbVarParametriSig.Size = new System.Drawing.Size(296, 165);
-            this.grbVarParametriSig.TabIndex = 61;
-            this.grbVarParametriSig.TabStop = false;
-            this.grbVarParametriSig.Text = "Parametri Comunicazione OC";
+            this.tabMemRead.BackColor = System.Drawing.Color.LightYellow;
+            this.tabMemRead.Controls.Add(this.pictureBox1);
+            this.tabMemRead.Controls.Add(this.grbMemCancFisica);
+            this.tabMemRead.Controls.Add(this.groupBox9);
+            this.tabMemRead.Controls.Add(this.txtMemDataGrid);
+            this.tabMemRead.Controls.Add(this.grbMemScrittura);
+            this.tabMemRead.Controls.Add(this.grbMemCancellazione);
+            this.tabMemRead.Controls.Add(this.grbMemLettura);
+            this.tabMemRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.tabMemRead.Location = new System.Drawing.Point(4, 25);
+            this.tabMemRead.Name = "tabMemRead";
+            this.tabMemRead.Size = new System.Drawing.Size(1585, 688);
+            this.tabMemRead.TabIndex = 10;
+            this.tabMemRead.Text = "Accesso Memoria";
             // 
-            // btnFSerVerificaOC
+            // pictureBox1
             // 
-            this.btnFSerVerificaOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnFSerVerificaOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFSerVerificaOC.Location = new System.Drawing.Point(34, 107);
-            this.btnFSerVerificaOC.Name = "btnFSerVerificaOC";
-            this.btnFSerVerificaOC.Size = new System.Drawing.Size(115, 34);
-            this.btnFSerVerificaOC.TabIndex = 5;
-            this.btnFSerVerificaOC.Text = "Verifica";
-            this.btnFSerVerificaOC.UseVisualStyleBackColor = true;
-            this.btnFSerVerificaOC.Click += new System.EventHandler(this.btnFSerVerificaOC_Click);
+            this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pictureBox1.Location = new System.Drawing.Point(942, 278);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(405, 291);
+            this.pictureBox1.TabIndex = 52;
+            this.pictureBox1.TabStop = false;
             // 
-            // chkFSerEchoOC
+            // grbMemCancFisica
             // 
-            this.chkFSerEchoOC.AutoSize = true;
-            this.chkFSerEchoOC.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkFSerEchoOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.chkFSerEchoOC.ForeColor = System.Drawing.Color.Red;
-            this.chkFSerEchoOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkFSerEchoOC.Location = new System.Drawing.Point(204, 36);
-            this.chkFSerEchoOC.Name = "chkFSerEchoOC";
-            this.chkFSerEchoOC.Size = new System.Drawing.Size(66, 41);
-            this.chkFSerEchoOC.TabIndex = 4;
-            this.chkFSerEchoOC.Text = "ECHO";
-            this.chkFSerEchoOC.UseVisualStyleBackColor = true;
+            this.grbMemCancFisica.BackColor = System.Drawing.Color.White;
+            this.grbMemCancFisica.Controls.Add(this.rbtMemAreaApp2);
+            this.grbMemCancFisica.Controls.Add(this.rbtMemAreaApp1);
+            this.grbMemCancFisica.Controls.Add(this.rbtMemAreaLibera);
+            this.grbMemCancFisica.Controls.Add(this.label111);
+            this.grbMemCancFisica.Controls.Add(this.txtMemCFBlocchi);
+            this.grbMemCancFisica.Controls.Add(this.chkMemCFStartAddHex);
+            this.grbMemCancFisica.Controls.Add(this.label112);
+            this.grbMemCancFisica.Controls.Add(this.txtMemCFStartAdd);
+            this.grbMemCancFisica.Controls.Add(this.btnMemCFExec);
+            this.grbMemCancFisica.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grbMemCancFisica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbMemCancFisica.Location = new System.Drawing.Point(942, 20);
+            this.grbMemCancFisica.Name = "grbMemCancFisica";
+            this.grbMemCancFisica.Size = new System.Drawing.Size(405, 237);
+            this.grbMemCancFisica.TabIndex = 51;
+            this.grbMemCancFisica.TabStop = false;
+            this.grbMemCancFisica.Text = "Cancellazione 4K Memoria";
             // 
-            // btnFSerImpostaOC
+            // rbtMemAreaApp2
             // 
-            this.btnFSerImpostaOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnFSerImpostaOC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFSerImpostaOC.Location = new System.Drawing.Point(155, 107);
-            this.btnFSerImpostaOC.Name = "btnFSerImpostaOC";
-            this.btnFSerImpostaOC.Size = new System.Drawing.Size(115, 34);
-            this.btnFSerImpostaOC.TabIndex = 3;
-            this.btnFSerImpostaOC.Text = "Imposta";
-            this.btnFSerImpostaOC.UseVisualStyleBackColor = true;
+            this.rbtMemAreaApp2.AutoSize = true;
+            this.rbtMemAreaApp2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtMemAreaApp2.Location = new System.Drawing.Point(18, 165);
+            this.rbtMemAreaApp2.Name = "rbtMemAreaApp2";
+            this.rbtMemAreaApp2.Size = new System.Drawing.Size(104, 22);
+            this.rbtMemAreaApp2.TabIndex = 18;
+            this.rbtMemAreaApp2.Text = "Area APP 2";
+            this.rbtMemAreaApp2.UseVisualStyleBackColor = true;
             // 
-            // label278
+            // rbtMemAreaApp1
             // 
-            this.label278.AutoSize = true;
-            this.label278.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label278.Location = new System.Drawing.Point(31, 31);
-            this.label278.Name = "label278";
-            this.label278.Size = new System.Drawing.Size(66, 17);
-            this.label278.TabIndex = 2;
-            this.label278.Text = "Baudrate";
+            this.rbtMemAreaApp1.AutoSize = true;
+            this.rbtMemAreaApp1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtMemAreaApp1.Location = new System.Drawing.Point(18, 138);
+            this.rbtMemAreaApp1.Name = "rbtMemAreaApp1";
+            this.rbtMemAreaApp1.Size = new System.Drawing.Size(104, 22);
+            this.rbtMemAreaApp1.TabIndex = 17;
+            this.rbtMemAreaApp1.Text = "Area APP 1";
+            this.rbtMemAreaApp1.UseVisualStyleBackColor = true;
             // 
-            // cmbFSerBaudrateOC
+            // rbtMemAreaLibera
             // 
-            this.cmbFSerBaudrateOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmbFSerBaudrateOC.FormattingEnabled = true;
-            this.cmbFSerBaudrateOC.Location = new System.Drawing.Point(35, 54);
-            this.cmbFSerBaudrateOC.Name = "cmbFSerBaudrateOC";
-            this.cmbFSerBaudrateOC.Size = new System.Drawing.Size(163, 26);
-            this.cmbFSerBaudrateOC.TabIndex = 1;
+            this.rbtMemAreaLibera.AutoSize = true;
+            this.rbtMemAreaLibera.Checked = true;
+            this.rbtMemAreaLibera.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtMemAreaLibera.Location = new System.Drawing.Point(18, 111);
+            this.rbtMemAreaLibera.Name = "rbtMemAreaLibera";
+            this.rbtMemAreaLibera.Size = new System.Drawing.Size(120, 22);
+            this.rbtMemAreaLibera.TabIndex = 16;
+            this.rbtMemAreaLibera.TabStop = true;
+            this.rbtMemAreaLibera.Text = "Zona Custom";
+            this.rbtMemAreaLibera.UseVisualStyleBackColor = true;
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label111.Location = new System.Drawing.Point(140, 18);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(57, 18);
+            this.label111.TabIndex = 15;
+            this.label111.Text = "Blocchi";
+            // 
+            // txtMemCFBlocchi
+            // 
+            this.txtMemCFBlocchi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemCFBlocchi.Location = new System.Drawing.Point(143, 36);
+            this.txtMemCFBlocchi.Name = "txtMemCFBlocchi";
+            this.txtMemCFBlocchi.Size = new System.Drawing.Size(51, 24);
+            this.txtMemCFBlocchi.TabIndex = 14;
+            this.txtMemCFBlocchi.Text = "1";
+            this.txtMemCFBlocchi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // chkMemCFStartAddHex
+            // 
+            this.chkMemCFStartAddHex.AutoSize = true;
+            this.chkMemCFStartAddHex.Checked = true;
+            this.chkMemCFStartAddHex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMemCFStartAddHex.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkMemCFStartAddHex.Location = new System.Drawing.Point(18, 67);
+            this.chkMemCFStartAddHex.Name = "chkMemCFStartAddHex";
+            this.chkMemCFStartAddHex.Size = new System.Drawing.Size(114, 22);
+            this.chkMemCFStartAddHex.TabIndex = 13;
+            this.chkMemCFStartAddHex.Text = "Hex Address";
+            this.chkMemCFStartAddHex.UseVisualStyleBackColor = true;
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label112.Location = new System.Drawing.Point(15, 19);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(111, 18);
+            this.label112.TabIndex = 11;
+            this.label112.Text = "Indirizzo Iniziale";
+            // 
+            // txtMemCFStartAdd
+            // 
+            this.txtMemCFStartAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemCFStartAdd.Location = new System.Drawing.Point(18, 37);
+            this.txtMemCFStartAdd.Name = "txtMemCFStartAdd";
+            this.txtMemCFStartAdd.Size = new System.Drawing.Size(104, 24);
+            this.txtMemCFStartAdd.TabIndex = 9;
+            this.txtMemCFStartAdd.Text = "0";
+            this.txtMemCFStartAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnMemCFExec
+            // 
+            this.btnMemCFExec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemCFExec.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemCFExec.Location = new System.Drawing.Point(223, 36);
+            this.btnMemCFExec.Name = "btnMemCFExec";
+            this.btnMemCFExec.Size = new System.Drawing.Size(155, 51);
+            this.btnMemCFExec.TabIndex = 8;
+            this.btnMemCFExec.Text = "Esegui";
+            this.btnMemCFExec.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.BackColor = System.Drawing.Color.White;
+            this.groupBox9.Controls.Add(this.btnDumpMemoria);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.groupBox9.Location = new System.Drawing.Point(465, 20);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(202, 109);
+            this.groupBox9.TabIndex = 50;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Lettura Completa Memoria";
+            // 
+            // btnDumpMemoria
+            // 
+            this.btnDumpMemoria.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnDumpMemoria.Location = new System.Drawing.Point(27, 37);
+            this.btnDumpMemoria.Name = "btnDumpMemoria";
+            this.btnDumpMemoria.Size = new System.Drawing.Size(149, 51);
+            this.btnDumpMemoria.TabIndex = 50;
+            this.btnDumpMemoria.Text = "Dump Memoria";
+            this.btnDumpMemoria.UseVisualStyleBackColor = true;
+            this.btnDumpMemoria.Visible = false;
+            // 
+            // txtMemDataGrid
+            // 
+            this.txtMemDataGrid.Font = new System.Drawing.Font("Courier New", 12F);
+            this.txtMemDataGrid.Location = new System.Drawing.Point(24, 278);
+            this.txtMemDataGrid.Multiline = true;
+            this.txtMemDataGrid.Name = "txtMemDataGrid";
+            this.txtMemDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMemDataGrid.Size = new System.Drawing.Size(884, 291);
+            this.txtMemDataGrid.TabIndex = 16;
+            // 
+            // grbMemScrittura
+            // 
+            this.grbMemScrittura.BackColor = System.Drawing.Color.White;
+            this.grbMemScrittura.Controls.Add(this.chkMemHexW);
+            this.grbMemScrittura.Controls.Add(this.lblMemVerificaValore);
+            this.grbMemScrittura.Controls.Add(this.label70);
+            this.grbMemScrittura.Controls.Add(this.txtMemDataW);
+            this.grbMemScrittura.Controls.Add(this.label71);
+            this.grbMemScrittura.Controls.Add(this.label72);
+            this.grbMemScrittura.Controls.Add(this.txtMemLenW);
+            this.grbMemScrittura.Controls.Add(this.txtMemAddrW);
+            this.grbMemScrittura.Controls.Add(this.cmdMemWrite);
+            this.grbMemScrittura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbMemScrittura.Location = new System.Drawing.Point(24, 146);
+            this.grbMemScrittura.Name = "grbMemScrittura";
+            this.grbMemScrittura.Size = new System.Drawing.Size(884, 111);
+            this.grbMemScrittura.TabIndex = 13;
+            this.grbMemScrittura.TabStop = false;
+            this.grbMemScrittura.Text = "Scrittura Memoria";
+            // 
+            // chkMemHexW
+            // 
+            this.chkMemHexW.AutoSize = true;
+            this.chkMemHexW.Checked = true;
+            this.chkMemHexW.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMemHexW.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkMemHexW.Location = new System.Drawing.Point(207, 76);
+            this.chkMemHexW.Name = "chkMemHexW";
+            this.chkMemHexW.Size = new System.Drawing.Size(114, 22);
+            this.chkMemHexW.TabIndex = 17;
+            this.chkMemHexW.Text = "Hex Address";
+            this.chkMemHexW.UseVisualStyleBackColor = true;
+            // 
+            // lblMemVerificaValore
+            // 
+            this.lblMemVerificaValore.AutoSize = true;
+            this.lblMemVerificaValore.BackColor = System.Drawing.Color.Transparent;
+            this.lblMemVerificaValore.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F);
+            this.lblMemVerificaValore.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblMemVerificaValore.Location = new System.Drawing.Point(375, 77);
+            this.lblMemVerificaValore.Name = "lblMemVerificaValore";
+            this.lblMemVerificaValore.Size = new System.Drawing.Size(16, 15);
+            this.lblMemVerificaValore.TabIndex = 16;
+            this.lblMemVerificaValore.Text = "...";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label70.Location = new System.Drawing.Point(375, 26);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(95, 18);
+            this.label70.TabIndex = 14;
+            this.label70.Text = "Valore (HEX)";
+            // 
+            // txtMemDataW
+            // 
+            this.txtMemDataW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemDataW.Location = new System.Drawing.Point(378, 46);
+            this.txtMemDataW.Name = "txtMemDataW";
+            this.txtMemDataW.Size = new System.Drawing.Size(480, 24);
+            this.txtMemDataW.TabIndex = 13;
+            this.txtMemDataW.Text = "FF";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label71.Location = new System.Drawing.Point(318, 26);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(45, 18);
+            this.label71.TabIndex = 12;
+            this.label71.Text = "Bytes";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label72.Location = new System.Drawing.Point(204, 26);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(111, 18);
+            this.label72.TabIndex = 11;
+            this.label72.Text = "Indirizzo Iniziale";
+            // 
+            // txtMemLenW
+            // 
+            this.txtMemLenW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemLenW.Location = new System.Drawing.Point(321, 46);
+            this.txtMemLenW.Name = "txtMemLenW";
+            this.txtMemLenW.ReadOnly = true;
+            this.txtMemLenW.Size = new System.Drawing.Size(51, 24);
+            this.txtMemLenW.TabIndex = 10;
+            this.txtMemLenW.Text = "1";
+            this.txtMemLenW.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtMemAddrW
+            // 
+            this.txtMemAddrW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemAddrW.Location = new System.Drawing.Point(207, 46);
+            this.txtMemAddrW.Name = "txtMemAddrW";
+            this.txtMemAddrW.Size = new System.Drawing.Size(104, 24);
+            this.txtMemAddrW.TabIndex = 9;
+            this.txtMemAddrW.Text = "0";
+            this.txtMemAddrW.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cmdMemWrite
+            // 
+            this.cmdMemWrite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdMemWrite.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmdMemWrite.Location = new System.Drawing.Point(24, 38);
+            this.cmdMemWrite.Name = "cmdMemWrite";
+            this.cmdMemWrite.Size = new System.Drawing.Size(155, 41);
+            this.cmdMemWrite.TabIndex = 8;
+            this.cmdMemWrite.Text = "Scrittura Diretta";
+            this.cmdMemWrite.UseVisualStyleBackColor = true;
+            // 
+            // grbMemCancellazione
+            // 
+            this.grbMemCancellazione.BackColor = System.Drawing.Color.White;
+            this.grbMemCancellazione.Controls.Add(this.chkMemClearMantieniCliente);
+            this.grbMemCancellazione.Controls.Add(this.cmdMemClear);
+            this.grbMemCancellazione.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbMemCancellazione.Location = new System.Drawing.Point(706, 20);
+            this.grbMemCancellazione.Name = "grbMemCancellazione";
+            this.grbMemCancellazione.Size = new System.Drawing.Size(202, 109);
+            this.grbMemCancellazione.TabIndex = 12;
+            this.grbMemCancellazione.TabStop = false;
+            this.grbMemCancellazione.Text = "Cancellazione Memoria";
+            // 
+            // chkMemClearMantieniCliente
+            // 
+            this.chkMemClearMantieniCliente.AutoSize = true;
+            this.chkMemClearMantieniCliente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.chkMemClearMantieniCliente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkMemClearMantieniCliente.Location = new System.Drawing.Point(17, 77);
+            this.chkMemClearMantieniCliente.Name = "chkMemClearMantieniCliente";
+            this.chkMemClearMantieniCliente.Size = new System.Drawing.Size(164, 22);
+            this.chkMemClearMantieniCliente.TabIndex = 11;
+            this.chkMemClearMantieniCliente.Text = "Mantieni Dati Cliente";
+            this.chkMemClearMantieniCliente.UseVisualStyleBackColor = true;
+            // 
+            // cmdMemClear
+            // 
+            this.cmdMemClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdMemClear.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmdMemClear.Location = new System.Drawing.Point(17, 31);
+            this.cmdMemClear.Name = "cmdMemClear";
+            this.cmdMemClear.Size = new System.Drawing.Size(159, 35);
+            this.cmdMemClear.TabIndex = 8;
+            this.cmdMemClear.Text = "Cancellazione";
+            this.cmdMemClear.UseVisualStyleBackColor = true;
+            // 
+            // grbMemLettura
+            // 
+            this.grbMemLettura.BackColor = System.Drawing.Color.White;
+            this.grbMemLettura.Controls.Add(this.chkMemHex);
+            this.grbMemLettura.Controls.Add(this.lblReadMemBytes);
+            this.grbMemLettura.Controls.Add(this.lblReadMemStartAddr);
+            this.grbMemLettura.Controls.Add(this.txtMemLenR);
+            this.grbMemLettura.Controls.Add(this.txtMemAddrR);
+            this.grbMemLettura.Controls.Add(this.cmdMemRead);
+            this.grbMemLettura.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grbMemLettura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbMemLettura.Location = new System.Drawing.Point(24, 20);
+            this.grbMemLettura.Name = "grbMemLettura";
+            this.grbMemLettura.Size = new System.Drawing.Size(391, 109);
+            this.grbMemLettura.TabIndex = 10;
+            this.grbMemLettura.TabStop = false;
+            this.grbMemLettura.Text = "Lettura Memoria";
+            // 
+            // chkMemHex
+            // 
+            this.chkMemHex.AutoSize = true;
+            this.chkMemHex.Checked = true;
+            this.chkMemHex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMemHex.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkMemHex.Location = new System.Drawing.Point(18, 67);
+            this.chkMemHex.Name = "chkMemHex";
+            this.chkMemHex.Size = new System.Drawing.Size(114, 22);
+            this.chkMemHex.TabIndex = 13;
+            this.chkMemHex.Text = "Hex Address";
+            this.chkMemHex.UseVisualStyleBackColor = true;
+            // 
+            // lblReadMemBytes
+            // 
+            this.lblReadMemBytes.AutoSize = true;
+            this.lblReadMemBytes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblReadMemBytes.Location = new System.Drawing.Point(140, 19);
+            this.lblReadMemBytes.Name = "lblReadMemBytes";
+            this.lblReadMemBytes.Size = new System.Drawing.Size(45, 18);
+            this.lblReadMemBytes.TabIndex = 12;
+            this.lblReadMemBytes.Text = "Bytes";
+            // 
+            // lblReadMemStartAddr
+            // 
+            this.lblReadMemStartAddr.AutoSize = true;
+            this.lblReadMemStartAddr.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblReadMemStartAddr.Location = new System.Drawing.Point(15, 19);
+            this.lblReadMemStartAddr.Name = "lblReadMemStartAddr";
+            this.lblReadMemStartAddr.Size = new System.Drawing.Size(111, 18);
+            this.lblReadMemStartAddr.TabIndex = 11;
+            this.lblReadMemStartAddr.Text = "Indirizzo Iniziale";
+            // 
+            // txtMemLenR
+            // 
+            this.txtMemLenR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemLenR.Location = new System.Drawing.Point(143, 37);
+            this.txtMemLenR.Name = "txtMemLenR";
+            this.txtMemLenR.Size = new System.Drawing.Size(51, 24);
+            this.txtMemLenR.TabIndex = 10;
+            this.txtMemLenR.Text = "64";
+            this.txtMemLenR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtMemAddrR
+            // 
+            this.txtMemAddrR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemAddrR.Location = new System.Drawing.Point(18, 37);
+            this.txtMemAddrR.Name = "txtMemAddrR";
+            this.txtMemAddrR.Size = new System.Drawing.Size(104, 24);
+            this.txtMemAddrR.TabIndex = 9;
+            this.txtMemAddrR.Text = "0";
+            this.txtMemAddrR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cmdMemRead
+            // 
+            this.cmdMemRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdMemRead.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmdMemRead.Location = new System.Drawing.Point(217, 36);
+            this.cmdMemRead.Name = "cmdMemRead";
+            this.cmdMemRead.Size = new System.Drawing.Size(155, 51);
+            this.cmdMemRead.TabIndex = 8;
+            this.cmdMemRead.Text = "Lettura Diretta";
+            this.cmdMemRead.UseVisualStyleBackColor = true;
             // 
             // frmCaricabatterie
             // 
@@ -4980,6 +5436,8 @@
             this.Load += new System.EventHandler(this.frmCaricabatterie_Load);
             this.Resize += new System.EventHandler(this.frmCaricabatterie_Resize);
             this.tabProfiloAttuale.ResumeLayout(false);
+            this.grbVarParametriSig.ResumeLayout(false);
+            this.grbVarParametriSig.PerformLayout();
             this.grbCicloCorrente.ResumeLayout(false);
             this.grbCicloCorrente.PerformLayout();
             this.tabCaricaBatterie.ResumeLayout(false);
@@ -5066,8 +5524,18 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.grbStratComandiTest.ResumeLayout(false);
-            this.grbVarParametriSig.ResumeLayout(false);
-            this.grbVarParametriSig.PerformLayout();
+            this.tabMemRead.ResumeLayout(false);
+            this.tabMemRead.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grbMemCancFisica.ResumeLayout(false);
+            this.grbMemCancFisica.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.grbMemScrittura.ResumeLayout(false);
+            this.grbMemScrittura.PerformLayout();
+            this.grbMemCancellazione.ResumeLayout(false);
+            this.grbMemCancellazione.PerformLayout();
+            this.grbMemLettura.ResumeLayout(false);
+            this.grbMemLettura.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5473,5 +5941,40 @@
         private System.Windows.Forms.Button btnFSerImpostaOC;
         private System.Windows.Forms.Label label278;
         private System.Windows.Forms.ComboBox cmbFSerBaudrateOC;
+        private System.Windows.Forms.TabPage tabMemRead;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox grbMemCancFisica;
+        private System.Windows.Forms.RadioButton rbtMemAreaApp2;
+        private System.Windows.Forms.RadioButton rbtMemAreaApp1;
+        private System.Windows.Forms.RadioButton rbtMemAreaLibera;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.TextBox txtMemCFBlocchi;
+        private System.Windows.Forms.CheckBox chkMemCFStartAddHex;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.TextBox txtMemCFStartAdd;
+        private System.Windows.Forms.Button btnMemCFExec;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button btnDumpMemoria;
+        private System.Windows.Forms.TextBox txtMemDataGrid;
+        private System.Windows.Forms.GroupBox grbMemScrittura;
+        private System.Windows.Forms.CheckBox chkMemHexW;
+        private System.Windows.Forms.Label lblMemVerificaValore;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox txtMemDataW;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.TextBox txtMemLenW;
+        private System.Windows.Forms.TextBox txtMemAddrW;
+        private System.Windows.Forms.Button cmdMemWrite;
+        private System.Windows.Forms.GroupBox grbMemCancellazione;
+        private System.Windows.Forms.CheckBox chkMemClearMantieniCliente;
+        private System.Windows.Forms.Button cmdMemClear;
+        private System.Windows.Forms.GroupBox grbMemLettura;
+        private System.Windows.Forms.CheckBox chkMemHex;
+        private System.Windows.Forms.Label lblReadMemBytes;
+        private System.Windows.Forms.Label lblReadMemStartAddr;
+        private System.Windows.Forms.TextBox txtMemLenR;
+        private System.Windows.Forms.TextBox txtMemAddrR;
+        private System.Windows.Forms.Button cmdMemRead;
     }
 }

@@ -40,6 +40,7 @@
             this.linguaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.italianoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.francoisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEsci = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +85,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.francoisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -174,6 +174,12 @@
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // francoisToolStripMenuItem
+            // 
+            this.francoisToolStripMenuItem.Name = "francoisToolStripMenuItem";
+            resources.ApplyResources(this.francoisToolStripMenuItem, "francoisToolStripMenuItem");
+            this.francoisToolStripMenuItem.Click += new System.EventHandler(this.francoisToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -469,12 +475,6 @@
             resources.ApplyResources(this.tstBtnClose, "tstBtnClose");
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
-            // 
-            // francoisToolStripMenuItem
-            // 
-            this.francoisToolStripMenuItem.Name = "francoisToolStripMenuItem";
-            resources.ApplyResources(this.francoisToolStripMenuItem, "francoisToolStripMenuItem");
-            this.francoisToolStripMenuItem.Click += new System.EventHandler(this.francoisToolStripMenuItem_Click);
             // 
             // frmMain
             // 

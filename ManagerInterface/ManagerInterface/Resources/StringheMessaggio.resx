@@ -279,4 +279,7 @@
   <data name="strTitoloPianificazione" xml:space="preserve">
     <value>Carica Pianificata</value>
   </data>
+  <data name="strMsgResetSB" xml:space="preserve">
+    <value>Reset  SPY-BATT</value>
+  </data>
 </root>

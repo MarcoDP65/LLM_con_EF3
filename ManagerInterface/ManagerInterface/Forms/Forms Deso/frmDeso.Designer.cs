@@ -1905,8 +1905,8 @@
             // flvwProgrammiCarica
             // 
             this.flvwProgrammiCarica.CellEditUseWholeCell = false;
-            this.flvwProgrammiCarica.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwProgrammiCarica.HighlightForegroundColor = System.Drawing.Color.Empty;
+            this.flvwProgrammiCarica.SelectedBackColor = System.Drawing.Color.Empty;
+            this.flvwProgrammiCarica.SelectedBackColor = System.Drawing.Color.Empty;
             this.flvwProgrammiCarica.Location = new System.Drawing.Point(42, 166);
             this.flvwProgrammiCarica.Name = "flvwProgrammiCarica";
             this.flvwProgrammiCarica.ShowGroups = false;
@@ -3900,8 +3900,8 @@
             this.flvwLettureCorrente.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwLettureCorrente.CellEditUseWholeCell = false;
             this.flvwLettureCorrente.FullRowSelect = true;
-            this.flvwLettureCorrente.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.flvwLettureCorrente.HighlightForegroundColor = System.Drawing.Color.Empty;
+            this.flvwLettureCorrente.SelectedBackColor = System.Drawing.Color.Empty;
+            this.flvwLettureCorrente.SelectedBackColor = System.Drawing.Color.Empty;
             this.flvwLettureCorrente.Location = new System.Drawing.Point(23, 393);
             this.flvwLettureCorrente.Name = "flvwLettureCorrente";
             this.flvwLettureCorrente.ShowGroups = false;

@@ -3111,7 +3111,6 @@ namespace ChargerLogic
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
-               // Log.Debug(_mS.hexdumpMessaggio());
                 Log.Debug(_mS.hexdumpArray( _mS._pacchettoMem.memDataDecoded));
 
                 for ( int _ciclo = 0; ((_ciclo<NumByte) && (_ciclo < _mS._pacchettoMem.numBytes )); _ciclo++)

@@ -163,25 +163,6 @@ namespace ChargerLogic
                             Log.Debug("Display: ACK");
                             break;
                         }
-                        /*
-                        _startPos = 23;
-                        if (_messaggio[_startPos] != serENDPAC)
-                        {
-                            return EsitoRisposta.NonRiconosciuto;
-                        }
-                        _buffArray = new byte[22];
-                        Array.Copy(_messaggio, 1, _buffArray, 0, 22);
-                        _startPos = 24;
-                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                        _tempShort = (ushort)(_ret);
-                        _startPos = 26;
-                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                        _tempShort = (ushort)((_tempShort << 8) + _ret);
-                        _crc = codCrc.ComputeChecksum(_buffArray);
-
-                        if (_crc != _tempShort)
-                        { return EsitoRisposta.BadCRC; }
-                        */
                         
                     case (byte)TipoComando.NACK:
                         {
@@ -1132,7 +1113,7 @@ namespace ChargerLogic
             catch { return _esito; }
         }
  
-        public bool ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes)
+        public new bool ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes)
         {
             bool _esito = false;
             ushort _dispositivo;
@@ -1448,7 +1429,7 @@ namespace ChargerLogic
 
         }
 
-        public ushort ComponiMessaggioScriviMem(UInt32 memAddress, ushort numBytes, byte[] Dati)
+        public new ushort ComponiMessaggioScriviMem(UInt32 memAddress, ushort numBytes, byte[] Dati)
         {
             ushort _esito = 0;
             ushort _dispositivo;
@@ -1581,7 +1562,7 @@ namespace ChargerLogic
 
         }
 
-        public ushort ComponiMessaggioCancella4KMem(UInt32 memAddress)
+        public new ushort ComponiMessaggioCancella4KMem(UInt32 memAddress)
         {
             ushort _esito = 0;
             ushort _dispositivo;
