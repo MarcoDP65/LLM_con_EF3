@@ -723,8 +723,16 @@ namespace MoriData
                             
 
                         case "2.04":
-                            return 8;
-                            
+                            switch (_sb.SwVersion)
+                            {
+                                case "2.04.06":
+                                    return 9;
+                                default:
+                                    return 8;
+                            }
+                           
+
+
 
                         default:
                             //variante per marco
@@ -760,6 +768,7 @@ namespace MoriData
                         case "2.02":
                         case "2.03":
                         case "2.04":
+                        case "2.05":
                             return true;
 
                         default:
@@ -794,6 +803,7 @@ namespace MoriData
                         case "2.02":
                         case "2.03":
                         case "2.04":
+                        case "2.05":
                             return true;
 
                         default:
@@ -842,6 +852,7 @@ namespace MoriData
                         case "2.02":
                         case "2.03":
                         case "2.04":
+                        case "2.05":
                             return 8666;
 
                         default:

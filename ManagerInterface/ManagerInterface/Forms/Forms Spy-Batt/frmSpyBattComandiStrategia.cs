@@ -929,7 +929,7 @@ namespace PannelloCharger
                 txtStratCurrStepTBlocco.Text = StepCorrente.strTBlocco;
                 txtStratCurrStepToff.Text = StepCorrente.strToff;
                 txtStratCurrStepTon.Text = StepCorrente.strTon;
-                txtStratCurrStepRipetizioni.Text = StepCorrente.strPasso;
+                txtStratCurrStepRipetizioni.Text = StepCorrente.strNumRipetizioni;
 
                 return true;
             }

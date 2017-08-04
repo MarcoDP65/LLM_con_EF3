@@ -14,14 +14,23 @@ namespace ChargerLogic
 {
     public class ParametriSetupPro
     {
-        public enum TipoPianificazione : byte { NonDefinita = 0x00, Tempo = 0x01, Turni = 0x02 };
+        public enum TipoPianificazione : byte { NonDefinita = 0x00, Tempo = 0x01, Turni = 0x02,TempoEsteso = 0x11, TurniEsteso = 0x12 };
         public enum ModoEqualizzazione : byte { NO = 0x00, Full = 0x01};
-
+        public enum BitParametro : byte { Equal= 0, Rabboccatore = 1,Biberonaggio = 2,StartDelayed = 4,DeleteDelay = 5};
+        public enum RitardoAvvio : byte
+        {
+            RitOFF_ForceOFF = 0x00,
+            RitON_ForceOFF = 0x10,
+            RitON_ForceON = 0x11,
+        }
+          
         public List<Pianificazione> TipiPianificazione = new List<Pianificazione>
                                {
-                                    new Pianificazione { Codice = 0, Descrizione  = PannelloCharger.StringheComuni.PianificazioneNessuna},
-                                    new Pianificazione { Codice = 1, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempo},
+                                    new Pianificazione { Codice = 0, Descrizione  = PannelloCharger.StringheComuni.PianificazioneNessuna,FwLevelMin = 0 ,FwLevelMax = 999},
+                                    new Pianificazione { Codice = 1, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempo,FwLevelMin = 0 ,FwLevelMax = 8},
                                     //new Pianificazione { Codice = 2, Descrizione = "Turni"}  - pianificazione per turni temporaneamente disabilitata
+                                    new Pianificazione { Codice = 3, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempoExt,FwLevelMin = 9 ,FwLevelMax = 999},
+
                                };
 
         public List<Pianificazione> OpzioniBib = new List<Pianificazione>
@@ -37,6 +46,7 @@ namespace ChargerLogic
                                     new Pianificazione { Codice = 0X0F, Descrizione = "ON"},
                                };
 
+    
 
         public List<ValoreByte> FCbase = new List<ValoreByte>
                                {
@@ -102,6 +112,8 @@ namespace ChargerLogic
     {
         byte _codice;
         string _descrizione;
+        int _fwLevelMin;
+        int _fwLevelMax;
 
 
         public ParametriSetupPro.TipoPianificazione CodiceTP
@@ -137,6 +149,33 @@ namespace ChargerLogic
                 _descrizione = value;
             }
         }
+
+        public int FwLevelMin
+        {
+            get
+            {
+                return _fwLevelMin;
+            }
+
+            set
+            {
+                _fwLevelMin = value;
+            }
+        }
+
+        public int FwLevelMax
+        {
+            get
+            {
+                return _fwLevelMax;
+            }
+
+            set
+            {
+                _fwLevelMax = value;
+            }
+        }
+
 
     }
 

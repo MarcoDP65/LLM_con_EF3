@@ -30,12 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPannelloTempo));
             this.mtxDurataCarica = new System.Windows.Forms.MaskedTextBox();
-            this.mtxInizioEqual = new System.Windows.Forms.MaskedTextBox();
             this.chkEnableEqual = new System.Windows.Forms.CheckBox();
             this.nudChargeFactor = new System.Windows.Forms.NumericUpDown();
             this.lblDurata = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblOraEqual = new System.Windows.Forms.Label();
+            this.lblChargeFactor = new System.Windows.Forms.Label();
+            this.chkStartDelayed = new System.Windows.Forms.CheckBox();
+            this.lblInizioCarica = new System.Windows.Forms.Label();
+            this.mtxInizioCarica = new System.Windows.Forms.MaskedTextBox();
+            this.lblAttesaMassima = new System.Windows.Forms.Label();
+            this.mtxAttesaMassima = new System.Windows.Forms.MaskedTextBox();
+            this.chkEnableDeleteDelay = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudChargeFactor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,13 +49,6 @@
             this.mtxDurataCarica.Name = "mtxDurataCarica";
             this.mtxDurataCarica.ValidatingType = typeof(System.DateTime);
             this.mtxDurataCarica.Leave += new System.EventHandler(this.mtxDurataCarica_Leave);
-            // 
-            // mtxInizioEqual
-            // 
-            resources.ApplyResources(this.mtxInizioEqual, "mtxInizioEqual");
-            this.mtxInizioEqual.Name = "mtxInizioEqual";
-            this.mtxInizioEqual.ValidatingType = typeof(System.DateTime);
-            this.mtxInizioEqual.Leave += new System.EventHandler(this.mtxInizioEqual_Leave);
             // 
             // chkEnableEqual
             // 
@@ -92,15 +89,46 @@
             resources.ApplyResources(this.lblDurata, "lblDurata");
             this.lblDurata.Name = "lblDurata";
             // 
-            // label1
+            // lblChargeFactor
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.lblChargeFactor, "lblChargeFactor");
+            this.lblChargeFactor.Name = "lblChargeFactor";
             // 
-            // lblOraEqual
+            // chkStartDelayed
             // 
-            resources.ApplyResources(this.lblOraEqual, "lblOraEqual");
-            this.lblOraEqual.Name = "lblOraEqual";
+            resources.ApplyResources(this.chkStartDelayed, "chkStartDelayed");
+            this.chkStartDelayed.Name = "chkStartDelayed";
+            this.chkStartDelayed.UseVisualStyleBackColor = true;
+            this.chkStartDelayed.CheckedChanged += new System.EventHandler(this.chkStartDelayed_CheckedChanged);
+            // 
+            // lblInizioCarica
+            // 
+            resources.ApplyResources(this.lblInizioCarica, "lblInizioCarica");
+            this.lblInizioCarica.Name = "lblInizioCarica";
+            // 
+            // mtxInizioCarica
+            // 
+            resources.ApplyResources(this.mtxInizioCarica, "mtxInizioCarica");
+            this.mtxInizioCarica.Name = "mtxInizioCarica";
+            this.mtxInizioCarica.ValidatingType = typeof(System.DateTime);
+            // 
+            // lblAttesaMassima
+            // 
+            resources.ApplyResources(this.lblAttesaMassima, "lblAttesaMassima");
+            this.lblAttesaMassima.Name = "lblAttesaMassima";
+            // 
+            // mtxAttesaMassima
+            // 
+            resources.ApplyResources(this.mtxAttesaMassima, "mtxAttesaMassima");
+            this.mtxAttesaMassima.Name = "mtxAttesaMassima";
+            this.mtxAttesaMassima.ValidatingType = typeof(System.DateTime);
+            // 
+            // chkEnableDeleteDelay
+            // 
+            resources.ApplyResources(this.chkEnableDeleteDelay, "chkEnableDeleteDelay");
+            this.chkEnableDeleteDelay.Name = "chkEnableDeleteDelay";
+            this.chkEnableDeleteDelay.UseVisualStyleBackColor = true;
+            this.chkEnableDeleteDelay.CheckedChanged += new System.EventHandler(this.chkEnableDeleteDelay_CheckedChanged);
             // 
             // ctrlPannelloTempo
             // 
@@ -108,12 +136,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Controls.Add(this.lblOraEqual);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkEnableDeleteDelay);
+            this.Controls.Add(this.lblAttesaMassima);
+            this.Controls.Add(this.mtxAttesaMassima);
+            this.Controls.Add(this.lblInizioCarica);
+            this.Controls.Add(this.mtxInizioCarica);
+            this.Controls.Add(this.chkStartDelayed);
+            this.Controls.Add(this.lblChargeFactor);
             this.Controls.Add(this.lblDurata);
             this.Controls.Add(this.nudChargeFactor);
             this.Controls.Add(this.chkEnableEqual);
-            this.Controls.Add(this.mtxInizioEqual);
             this.Controls.Add(this.mtxDurataCarica);
             this.Name = "ctrlPannelloTempo";
             this.Load += new System.EventHandler(this.ctrlPannelloTempo_Load);
@@ -127,11 +159,15 @@
 
         #endregion
         private System.Windows.Forms.MaskedTextBox mtxDurataCarica;
-        private System.Windows.Forms.MaskedTextBox mtxInizioEqual;
         private System.Windows.Forms.CheckBox chkEnableEqual;
         private System.Windows.Forms.NumericUpDown nudChargeFactor;
         private System.Windows.Forms.Label lblDurata;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblOraEqual;
+        private System.Windows.Forms.Label lblChargeFactor;
+        private System.Windows.Forms.CheckBox chkStartDelayed;
+        private System.Windows.Forms.Label lblInizioCarica;
+        private System.Windows.Forms.MaskedTextBox mtxInizioCarica;
+        private System.Windows.Forms.Label lblAttesaMassima;
+        private System.Windows.Forms.MaskedTextBox mtxAttesaMassima;
+        private System.Windows.Forms.CheckBox chkEnableDeleteDelay;
     }
 }

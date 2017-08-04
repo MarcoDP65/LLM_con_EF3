@@ -291,6 +291,8 @@
             this.btnNuovoProgramma = new System.Windows.Forms.Button();
             this.btnRicaricaProgr = new System.Windows.Forms.Button();
             this.grbProgParEqual = new System.Windows.Forms.GroupBox();
+            this.label284 = new System.Windows.Forms.Label();
+            this.txtProgMinAttesaEqual = new System.Windows.Forms.TextBox();
             this.txtProgEqCorrenteImpulso = new System.Windows.Forms.TextBox();
             this.label271 = new System.Windows.Forms.Label();
             this.label270 = new System.Windows.Forms.Label();
@@ -2949,6 +2951,8 @@
             // grbProgParEqual
             // 
             this.grbProgParEqual.BackColor = System.Drawing.Color.White;
+            this.grbProgParEqual.Controls.Add(this.label284);
+            this.grbProgParEqual.Controls.Add(this.txtProgMinAttesaEqual);
             this.grbProgParEqual.Controls.Add(this.txtProgEqCorrenteImpulso);
             this.grbProgParEqual.Controls.Add(this.label271);
             this.grbProgParEqual.Controls.Add(this.label270);
@@ -2961,10 +2965,22 @@
             this.grbProgParEqual.Name = "grbProgParEqual";
             this.grbProgParEqual.TabStop = false;
             // 
+            // label284
+            // 
+            resources.ApplyResources(this.label284, "label284");
+            this.label284.Name = "label284";
+            // 
+            // txtProgMinAttesaEqual
+            // 
+            resources.ApplyResources(this.txtProgMinAttesaEqual, "txtProgMinAttesaEqual");
+            this.txtProgMinAttesaEqual.Name = "txtProgMinAttesaEqual";
+            this.txtProgMinAttesaEqual.Leave += new System.EventHandler(this.txtProgMinAttesaEqual_Leave);
+            // 
             // txtProgEqCorrenteImpulso
             // 
             resources.ApplyResources(this.txtProgEqCorrenteImpulso, "txtProgEqCorrenteImpulso");
             this.txtProgEqCorrenteImpulso.Name = "txtProgEqCorrenteImpulso";
+            this.txtProgEqCorrenteImpulso.Leave += new System.EventHandler(this.txtProgEqCorrenteImpulso_Leave);
             // 
             // label271
             // 
@@ -8888,5 +8904,7 @@
         private System.Windows.Forms.Label label281;
         private System.Windows.Forms.Button btnTestataCreaClone;
         private System.Windows.Forms.Button btnCalSalvaFWVer;
+        private System.Windows.Forms.Label label284;
+        private System.Windows.Forms.TextBox txtProgMinAttesaEqual;
     }
 }

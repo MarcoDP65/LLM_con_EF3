@@ -1432,149 +1432,160 @@ namespace ChargerLogic
                         MessageBuffer[_arrayInit + 2] = lsb;
                         _arrayInit += 2;
 
-                        splitUshort(codificaByte(CustomerData.ModoBiberonaggio), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
+                        // in base al modo pianificazione cambio la mappa dati
 
-
-                        splitUshort(codificaByte(CustomerData.ModoRabboccatore), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // ora gli 84 bytes della mappa turni
-                        if(CustomerData.ModelloPianificazione.Length == 84)
+                        switch(CustomerData.ModoPianificazione)
                         {
-                            for (int _mp = 0; _mp < 84; _mp++)
-                            {
-                                splitUshort(codificaByte(CustomerData.ModelloPianificazione[_mp]), ref lsb, ref msb);
-                                MessageBuffer[_arrayInit + 1] = msb;
-                                MessageBuffer[_arrayInit + 2] = lsb;
-                                _arrayInit += 2;
-                            }
+                            case 0:  // nessuna pianificazione
+                            case 2:  // turni base: non implementata
+                            case 4:  // turni estesi: non implementata
+                            default: // -- registro solo modo pianificazione
+                                {
+                                    break;
+                                }
+                            case 1: // tempo base
+                                {
+
+                                    splitUshort(codificaByte(CustomerData.ModoBiberonaggio), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+
+                                    splitUshort(codificaByte(CustomerData.ModoRabboccatore), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    // ora gli 84 bytes della mappa turni
+                                    if (CustomerData.ModelloPianificazione.Length == 84)
+                                    {
+                                        for (int _mp = 0; _mp < 84; _mp++)
+                                        {
+                                            splitUshort(codificaByte(CustomerData.ModelloPianificazione[_mp]), ref lsb, ref msb);
+                                            MessageBuffer[_arrayInit + 1] = msb;
+                                            MessageBuffer[_arrayInit + 2] = lsb;
+                                            _arrayInit += 2;
+                                        }
+                                    }
+
+                                    // Salto lo spazio della struttura contatori (17 bytes)
+                                    for (_i = 0; _i < 17; _i += 1)
+                                    {
+                                        splitUshort(_codificaByte(0x00), ref lsb, ref msb);
+                                        MessageBuffer[_arrayInit + 1] = msb;
+                                        MessageBuffer[_arrayInit + 2] = lsb;
+                                        _arrayInit += 2;
+                                    }
+
+                                    // poi i dati di equal:
+                                    splitUshort(codificaByte(CustomerData.EqualNumImpulsi), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    splitUshort(codificaByte(CustomerData.EqualNumImpulsiExtra), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    splitUshort(codificaByte(CustomerData.EqualMinErogazione), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    splitUshort(codificaByte(CustomerData.EqualMinPausa), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    splitUshort(codificaByte(CustomerData.EqualMinAttesa), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    break;
+                                }
+                            case 3: // tempo esteso
+                                {
+                                    //MODO_BIBERONAGGIO
+                                    splitUshort(codificaByte(CustomerData.ModoBiberonaggio), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    //MODO_RABBOCCATORE
+                                    splitUshort(codificaByte(CustomerData.ModoRabboccatore), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    //Vuoto per future estensioni
+                                    splitUshort(codificaByte(0x00), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    //EQ_MIN_PULSE
+                                    splitUshort(codificaByte(CustomerData.EqualMinErogazione), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    //EQ_MIN_PAUSE
+                                    splitUshort(codificaByte(CustomerData.EqualMinPausa), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    //EQ_PULSE_CURRENT
+                                    splitUshort(CustomerData.EqualPulseCurrent, ref lsbDisp, ref msbDisp);
+
+                                    splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                                    MessageBuffer[(_arrayInit + 1)] = msb;
+                                    MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                                    splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                                    MessageBuffer[(_arrayInit + 3)] = msb;
+                                    MessageBuffer[(_arrayInit + 4)] = lsb;
+                                    _arrayInit += 4;
+
+                                    // 27 Bytes liberi
+                                    for (_i = 0; _i < 27; _i += 1)
+                                    {
+                                        splitUshort(_codificaByte(0x00), ref lsb, ref msb);
+                                        MessageBuffer[_arrayInit + 1] = msb;
+                                        MessageBuffer[_arrayInit + 2] = lsb;
+                                        _arrayInit += 2;
+                                    }
+
+
+                                    // ora i 168 bytes della mappa turni
+                                    if (CustomerData.ModelloPianificazione.Length == 168)
+                                    {
+                                        for (int _mp = 0; _mp < 168; _mp++)
+                                        {
+                                            splitUshort(codificaByte(CustomerData.ModelloPianificazione[_mp]), ref lsb, ref msb);
+                                            MessageBuffer[_arrayInit + 1] = msb;
+                                            MessageBuffer[_arrayInit + 2] = lsb;
+                                            _arrayInit += 2;
+                                        }
+                                    }
+
+                                    // Salto lo spazio della struttura contatori (17 bytes)
+                                    for (_i = 0; _i < 17; _i += 1)
+                                    {
+                                        splitUshort(_codificaByte(0x00), ref lsb, ref msb);
+                                        MessageBuffer[_arrayInit + 1] = msb;
+                                        MessageBuffer[_arrayInit + 2] = lsb;
+                                        _arrayInit += 2;
+                                    }
+
+                                    break;
+                                }
+
+
                         }
-
-                        // Scrivo i dati simulati della struttura contatori
-                        // on/off
-                        splitUshort(codificaByte( 0x0F ), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // POS
-                        _tempShort = 0x0101;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-                        // NEG
-                        _tempShort = 0x0202;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // CHG
-                        _tempShort = 0x0303;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // DISCHG
-                        _tempShort = 0x0404;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // TOT_CHG
-                        _tempShort = 0x0505;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // TOT_DISCHG
-                        _tempShort = 0x0606;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // capacity
-                        _tempShort = 0x0707;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // flag micro
-                        _tempShort = 0xFFFF;
-                        splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
-
-                        splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
-                        MessageBuffer[_arrayInit + 1] = msb;
-                        MessageBuffer[_arrayInit + 2] = lsb;
-                        _arrayInit += 2;
-
-                        // Togliere la zona contatori
-
 
 
 

@@ -1082,6 +1082,7 @@ namespace ChargerLogic
             public byte EqualMinErogazione { get; set; } = 5;
             public byte EqualMinPausa { get; set; } = 25;
             public byte EqualMinAttesa { get; set; } = 60;
+            public ushort EqualPulseCurrent { get; set; } = 0;
 
             public NuoviLivelli ResetLivelloCarica { get; set; }
             public enum NuoviLivelli : ushort { MantieniLivelli = 0x0808, ResetLivelli = 0xFFFF }
@@ -1165,34 +1166,109 @@ namespace ChargerLogic
                                 PartReceived[2] = true;
                                 break;
                             case 4:
-                                // carico i dati di pianificazione
-                                ModoPianificazione = _risposta[startByte];
-                                startByte += 1;
-                                ModoBiberonaggio = _risposta[startByte];
-                                startByte += 1;
-                                ModoRabboccatore = _risposta[startByte];
-                                startByte += 1;
-                                ModelloPianificazione = new byte[84];
-                                for (int _dt = 0; _dt < 84; _dt++)
                                 {
-                                    ModelloPianificazione[_dt] = _risposta[startByte];
+                                    // carico i dati di pianificazione
+                                    ModoPianificazione = _risposta[startByte];
                                     startByte += 1;
+                                    // in base al ModoPianificazione identifico il tipo mappa.
+                                    // 0 / 1 / 2  mappa base con dati pianificazione in 84 byte a partire da 0x04
+                                    // 3 / 4      mappa estesa con dati pianificazione in 168 byte a partire da 0x26
+                                    switch(ModoPianificazione)
+                                    {
+                                        case 0:  // nessuna pianificazione
+                                        case 2:  // turni base: non implementata
+                                        case 4:  // turni estesi: non implementata
+                                        default:
+                                            {
+                                                ModoBiberonaggio = 0;
+                                                ModoRabboccatore = 0;
+                                                startByte += 1;
+                                                ModelloPianificazione = new byte[84];
+                                                for (int _dt = 0; _dt < 84; _dt++)
+                                                {
+                                                    ModelloPianificazione[_dt] = 0;
+                                                }
+
+                                                EqualNumImpulsi = 0;
+                                                EqualNumImpulsiExtra = 0;
+                                                EqualMinErogazione = 0;
+                                                EqualMinPausa = 0;
+                                                EqualMinAttesa = 0;
+                                                PartReceived[3] = true;
+                                                break;
+                                            }
+                                        case 1: // tempo base
+                                            {
+
+                                                ModoBiberonaggio = _risposta[startByte];
+                                                startByte += 1;
+                                                ModoRabboccatore = _risposta[startByte];
+                                                startByte += 1;
+                                                ModelloPianificazione = new byte[84];
+                                                for (int _dt = 0; _dt < 84; _dt++)
+                                                {
+                                                    ModelloPianificazione[_dt] = _risposta[startByte];
+                                                    startByte += 1;
+                                                }
+
+                                                startByte += 17;  // Area Salvataggio contatori
+
+                                                EqualNumImpulsi = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualNumImpulsiExtra = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualMinErogazione = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualMinPausa = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualMinAttesa = _risposta[startByte];
+                                                startByte += 1;
+                                                PartReceived[3] = true;
+
+                                                break;
+                                            }
+
+                                        case 3: // tempo esteso
+                                            {
+
+                                                ModoBiberonaggio = _risposta[startByte];
+                                                startByte += 1;
+                                                ModoRabboccatore = _risposta[startByte];
+                                                startByte += 1;
+                                                // byte vuoto
+                                                startByte += 1;
+                                                EqualMinErogazione = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualMinPausa = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualMinAttesa = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualNumImpulsi = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualPulseCurrent = ArrayToUshort(_risposta, startByte, 2);
+                                                startByte += 2; 
+                                                // bytes vuoti
+                                                startByte += 27;
+
+                                                ModelloPianificazione = new byte[168];
+                                                for (int _dt = 0; _dt < 168; _dt++)
+                                                {
+                                                    ModelloPianificazione[_dt] = _risposta[startByte];
+                                                    startByte += 1;
+                                                }
+
+                                                // per ora il resto è vuoto
+
+                                                PartReceived[3] = true;
+
+                                                break;
+                                            }
+
+                                    }
+
+
+                                    break;
                                 }
-
-                                startByte += 17;  // Area Salvataggio contatori
-
-                                EqualNumImpulsi = _risposta[startByte];
-                                startByte += 1;
-                                EqualNumImpulsiExtra = _risposta[startByte]; 
-                                startByte += 1;
-                                EqualMinErogazione = _risposta[startByte];
-                                startByte += 1;
-                                EqualMinPausa = _risposta[startByte];
-                                startByte += 1;
-                                EqualMinAttesa = _risposta[startByte];
-                                startByte += 1;
-                                PartReceived[3] = true;
-                                break;
                             default:
                                 //stepReceived--;  //  Nulla da fare... pacchetto non previsto
                                 break;
@@ -1214,8 +1290,6 @@ namespace ChargerLogic
                 }
 
             }
-
-
         }
 
         public new class comandoRTC

@@ -193,10 +193,12 @@ namespace PannelloCharger
 
                 byte _numParametri = 0;
                 ushort _divK = 10;
-                _cb.CicloInMacchina = new SerialMessage.cicloAttuale();
-                _cb.CicloInMacchina.LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length;
-                _cb.CicloInMacchina.NomeCiclo = txtPaNomeProfilo.Text;
-                _cb.CicloInMacchina.TipoCiclo = (byte)cmbPaProfilo.SelectedIndex;
+                _cb.CicloInMacchina = new SerialMessage.cicloAttuale()
+                {
+                    LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length,
+                    NomeCiclo = txtPaNomeProfilo.Text,
+                    TipoCiclo = (byte)cmbPaProfilo.SelectedIndex
+                };
 
 
                 if (txtPaCapacita.Text.Length>0)
@@ -204,9 +206,11 @@ namespace PannelloCharger
                     ushort result;
                     if (ushort.TryParse(txtPaCapacita.Text, out result))
                     {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaNominale;
-                        _par.ValoreParametro = result;
+                        ParametroLL _par = new ParametroLL()
+                        {
+                            idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaNominale,
+                            ValoreParametro = result
+                        };
                         _cb.CicloInMacchina.Parametri.Add(_par);
                         _numParametri++;
                     }
@@ -424,9 +428,11 @@ namespace PannelloCharger
                     ushort result;
                     if (ushort.TryParse(txtPaFreqSwitch.Text, out result))
                     {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.FrequenzaSwitching;
-                        _par.ValoreParametro = result;
+                        ParametroLL _par = new ParametroLL()
+                        {
+                            idParametro = (byte)SerialMessage.ParametroLadeLight.FrequenzaSwitching,
+                            ValoreParametro = result
+                        };
                         _cb.CicloInMacchina.Parametri.Add(_par);
                         _numParametri++;
                     }

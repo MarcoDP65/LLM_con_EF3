@@ -58,7 +58,8 @@ namespace MoriData
         public byte EqualNumImpulsiExtra { get; set; }
         public byte EqualMinErogazione { get; set; }
         public byte EqualMinPausa { get; set; }
-        public byte EqualMinAttesa { get; set; } 
+        public byte EqualMinAttesa { get; set; }
+        public ushort EqualPulseCurrent { get; set; }
 
     }
 
@@ -546,6 +547,15 @@ namespace MoriData
             }
         }
 
+        public ushort EqualPulseCurrent
+        {
+            get { return _sbdc.EqualPulseCurrent; }
+            set
+            {
+                _sbdc.EqualPulseCurrent = value;
+                _datiSalvati = false;
+            }
+        }
 
         #endregion Class Parameter
 

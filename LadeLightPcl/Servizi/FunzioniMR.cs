@@ -1988,6 +1988,76 @@ namespace Utility
             return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source), deserializeSettings);
         }
 
+
+
+
+    }
+
+    public static class FunzioniBinarie
+    {
+        /// <summary>
+        /// Setta il bit in posizione position al valore value
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="position">The position.</param>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>System.Byte.</returns>
+        public static byte SetBit(byte source, int position, bool value = true)
+        {
+
+            int _tempMask = 0;
+            byte _result = source;
+            try
+            {
+                if (value)
+                {
+                    // Setto il bit a 1 mettendolo in or con l'origine
+                    _tempMask = 0x0001;
+                    _tempMask =_tempMask << position;
+                    _result = (byte)(source | _tempMask);
+                }
+                else
+                {
+                    // Setto il bit a 0 mettendolo in and con l'origine
+                    _tempMask = 0x0001;
+                    _tempMask = _tempMask << position;
+                    _tempMask = ~_tempMask;
+                    _result = (byte)(source & _tempMask);
+                }
+
+                return _result;
+            }
+            catch
+            {
+                return source;
+            }
+        }
+
+
+        public static bool GetBit(byte source, int position)
+        {
+
+            int _tempMask = 0;
+            bool _result = false;
+            try
+            {
+
+                _tempMask = 0x0001;
+                _tempMask = _tempMask << position;
+
+                _result = ((source & _tempMask) == _tempMask);
+
+
+                return _result;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
     }
 
 }

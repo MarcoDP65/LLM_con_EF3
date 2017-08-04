@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdiHelper", "..\MdiHelper\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLPlantService", "LLPlantService\LLPlantService.csproj", "{B7054E19-B956-4702-B4DD-7388AC5ACF5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLComponents", "LLComponents\LLComponents.csproj", "{7615F30A-5167-444A-AC71-5439CFFFE8EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,13 +35,17 @@ Global
 		{B7054E19-B956-4702-B4DD-7388AC5ACF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7054E19-B956-4702-B4DD-7388AC5ACF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7054E19-B956-4702-B4DD-7388AC5ACF5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_NeutralResourcesLanguage = it-IT
-		RESX_AutoCreateNewLanguageFiles = True
 		RESX_ConfirmAddLanguageFile = True
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_NeutralResourcesLanguage = it-IT
 	EndGlobalSection
 EndGlobal

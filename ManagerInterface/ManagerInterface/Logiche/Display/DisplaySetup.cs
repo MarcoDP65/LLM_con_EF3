@@ -178,7 +178,13 @@ namespace ChargerLogic
             }
         }
 
-
+        public bool DatiSalvati
+        {
+            get
+            {
+                return _datisalvati;
+            }
+        }
 
 
 

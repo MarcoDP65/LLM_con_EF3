@@ -267,23 +267,24 @@ namespace MoriData
         {
             try
             {
-                _NodoStruttura _tempnodo = new _NodoStruttura();
-                _tempnodo.IdLocale = 1;
-                _tempnodo.Guid = NodoStruttura.GuidROOT;
-                _tempnodo.Tipo = (byte)NodoStruttura.TipoNodo.Radice;
-                _tempnodo.Level = 0;
+                _NodoStruttura _tempnodo = new _NodoStruttura()
+                {
+                    IdLocale = 1,
+                    Guid = NodoStruttura.GuidROOT,
+                    Tipo = (byte)NodoStruttura.TipoNodo.Radice,
+                    Level = 0,
+                    ParentGuid = NodoStruttura.GuidBASE,
+
+                    Nome = "Questo PC",
+                    Descrizione = "Radice struttura archivio",
+                    Icona = "root",
+                    IdApparato = null
+                };
                 _tempnodo.ParentIdLocale = _tempnodo.IdLocale;
-                _tempnodo.ParentGuid = NodoStruttura.GuidBASE;
-
-                _tempnodo.Nome = "Questo PC";
-                _tempnodo.Descrizione = "Radice struttura archivio";
-                _tempnodo.Icona = "root";
-                _tempnodo.IdApparato = null;
-
                 return _tempnodo;
 
             }
-
+ 
             catch (Exception ex)
             {
                 Log.Error("NodoRoot: " + ex.ToString());
@@ -295,21 +296,21 @@ namespace MoriData
         {
             try
             {
-                _NodoStruttura _tempnodo = new _NodoStruttura();
-     
-                _tempnodo.IdLocale = 2;
-                _tempnodo.Guid = NodoStruttura.GuidUNDEF;
+                _NodoStruttura _tempnodo = new _NodoStruttura()
+                {
+                    IdLocale = 2,
+                    Guid = NodoStruttura.GuidUNDEF,
 
-                _tempnodo.ParentGuid = NodoStruttura.GuidROOT;
-                _tempnodo.Tipo = (byte)NodoStruttura.TipoNodo.Ramo;
-                _tempnodo.Level = 1;
-                _tempnodo.ParentIdLocale = 1;
+                    ParentGuid = NodoStruttura.GuidROOT,
+                    Tipo = (byte)NodoStruttura.TipoNodo.Ramo,
+                    Level = 1,
+                    ParentIdLocale = 1,
 
-
-                _tempnodo.Nome = "Non Assegnati";
-                _tempnodo.Descrizione = "Apparati non Assegnati a livelli gerarchici";
-                _tempnodo.Icona = "folder";
-                _tempnodo.IdApparato = null;
+                    Nome = "Non Assegnati",
+                    Descrizione = "Apparati non Assegnati a livelli gerarchici",
+                    Icona = "folder",
+                    IdApparato = null
+                };
 
                 return _tempnodo;
 

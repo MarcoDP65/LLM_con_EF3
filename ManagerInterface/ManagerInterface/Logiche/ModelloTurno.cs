@@ -24,6 +24,8 @@ namespace ChargerLogic
     public class ModelloTurno
     {
 
+
+
         byte _tipoModello;
         //TipoSchedulazione _modoTurno;
         ParametriSetupPro.TipoPianificazione _modoTurno;
@@ -32,8 +34,22 @@ namespace ChargerLogic
         byte _finecambio;
         byte _fattoreCarica;
         byte _flagParametri;
-        byte _flagEqual;
+        bool _flagEqual;
+        bool _flagBiber;
+        bool _flagRabbocco;
+        bool _flagStartDelayed;
+        bool _flagDeleteDelay;
+
         byte _StartEqual;
+        ushort _orarioStartCarica;  // in minuti
+        byte _oraStartCarica;
+        byte _minStartCarica;
+
+        ushort _maxMinutiAnticipo;  
+        ParametriSetupPro.RitardoAvvio _flagRitardoAvvio;
+
+
+
 
         byte[] _modelloDati;
 
@@ -43,8 +59,11 @@ namespace ChargerLogic
             _minutiDurata = 0;
             _fattoreCarica = 101;
             _flagParametri = 0x00;
-            _flagEqual = 0;
+            _flagEqual = false;
             _StartEqual = 0;
+            _orarioStartCarica = 0;
+            _maxMinutiAnticipo = 0;
+            _flagRitardoAvvio = ParametriSetupPro.RitardoAvvio.RitOFF_ForceOFF;
         }
 
         public bool fromData(byte[] ModelloDati )
@@ -67,8 +86,11 @@ namespace ChargerLogic
                             _minutiDurata = 0;
                             _fattoreCarica = 0;
                             _flagParametri =0;
-                            _flagEqual = 0;
-                            _StartEqual = 0;
+                            _flagEqual = false;
+                            _flagBiber = false;
+                            _flagRabbocco = false;
+                            _flagStartDelayed = false;
+                            _flagDeleteDelay = false;
 
                             break;
                         }
@@ -81,7 +103,12 @@ namespace ChargerLogic
                             _minutiDurata += ModelloDati[1];
                             _fattoreCarica = ModelloDati[2];
                             _flagParametri = ModelloDati[3];
-                            _flagEqual = ModelloDati[4];
+                            _flagEqual = false;
+                            _flagBiber = false;
+                            _flagRabbocco = false;
+                            _flagStartDelayed = false;
+                            _flagDeleteDelay = false;
+                            _flagEqual = ModelloDati[4]==1;
                             _StartEqual = ModelloDati[5];
 
                             break;
@@ -94,11 +121,40 @@ namespace ChargerLogic
                             _finecambio = ModelloDati[1];
                             _fattoreCarica = ModelloDati[2];
                             _flagParametri = ModelloDati[3];
-                            _flagEqual = 0;
+                            _flagEqual = false;
+                            _flagBiber = false;
+                            _flagRabbocco = false;
+                            _flagStartDelayed = false;
+                            _flagDeleteDelay = false;
+
                             _StartEqual = 0;
                             break;
                         }
-               
+                    case ParametriSetupPro.TipoPianificazione.TempoEsteso:
+                        { 
+                            _inizioCambio = 0;
+                            _finecambio = 0;
+
+                            _minutiDurata = (ushort)(ModelloDati[0] << 8);
+                            _minutiDurata += ModelloDati[1];
+                            _fattoreCarica = ModelloDati[2];
+                            _flagParametri = ModelloDati[3];
+
+                            _flagEqual = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro. Equal);
+                            _flagBiber = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro.Biberonaggio);
+                            _flagRabbocco = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro.Rabboccatore);
+                            _flagStartDelayed = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro.StartDelayed);
+                            _flagDeleteDelay = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro.DeleteDelay);
+
+                            _oraStartCarica = ModelloDati[4];
+                            _minStartCarica = ModelloDati[5];
+
+                            _maxMinutiAnticipo = (ushort)(ModelloDati[6] << 8);
+                            _maxMinutiAnticipo += ModelloDati[7];
+
+                            break;
+                        }
+
                     default:
                         {
                             _inizioCambio = 0;
@@ -124,8 +180,12 @@ namespace ChargerLogic
         public byte[] toData()
         {
             _modelloDati = new byte[4];
+            byte HiVal;
+            byte LoVal;
+
             try
             {
+
                 switch (_modoTurno)
                 {
                     case ParametriSetupPro.TipoPianificazione.NonDefinita:
@@ -134,14 +194,39 @@ namespace ChargerLogic
                         break;
                     case ParametriSetupPro.TipoPianificazione.Tempo:
                         _modelloDati = new byte[6];
-                        byte HiVal = 0;
-                        byte LoVal = 0;
+                        HiVal = 0;
+                        LoVal = 0;
                         FunzioniComuni.SplitUshort(_minutiDurata, ref LoVal, ref HiVal);
                         _modelloDati[0] = HiVal;
                         _modelloDati[1] = LoVal;
-                        _modelloDati[4] = _flagEqual;
+                        _modelloDati[4] = (byte)(_flagEqual ? 1:0) ;
                         _modelloDati[5] = _StartEqual;
                         break;
+                    case ParametriSetupPro.TipoPianificazione.TempoEsteso:
+                        _modelloDati = new byte[24];
+                        HiVal = 0;
+                        LoVal = 0;
+                        FunzioniComuni.SplitUshort(_minutiDurata, ref LoVal, ref HiVal);
+                        _modelloDati[0] = HiVal;
+                        _modelloDati[1] = LoVal;
+                        _modelloDati[2] = _fattoreCarica;
+
+                        _flagParametri = FunzioniBinarie.SetBit(_flagParametri, (int)ParametriSetupPro.BitParametro.Equal, _flagEqual);
+                        _flagParametri = FunzioniBinarie.SetBit(_flagParametri, (int)ParametriSetupPro.BitParametro.Biberonaggio, _flagBiber);
+                        _flagParametri = FunzioniBinarie.SetBit(_flagParametri, (int)ParametriSetupPro.BitParametro.Rabboccatore, _flagRabbocco);
+                        _flagParametri = FunzioniBinarie.SetBit(_flagParametri, (int)ParametriSetupPro.BitParametro.StartDelayed, _flagStartDelayed);
+                        _flagParametri = FunzioniBinarie.SetBit(_flagParametri, (int)ParametriSetupPro.BitParametro.DeleteDelay, _flagDeleteDelay);
+                        _modelloDati[3] = _flagParametri;
+
+                        _modelloDati[4] = _oraStartCarica;
+                        _modelloDati[5] = _minStartCarica;
+
+                        FunzioniComuni.SplitUshort(_maxMinutiAnticipo, ref LoVal, ref HiVal);
+                        _modelloDati[6] = HiVal;
+                        _modelloDati[7] = LoVal;
+
+                        break;
+
                     case ParametriSetupPro.TipoPianificazione.Turni:
                         _modelloDati[0] = _inizioCambio;
                         _modelloDati[1] = _finecambio;
@@ -241,7 +326,7 @@ namespace ChargerLogic
             }
         }
 
-        public byte flagEqual
+        public bool flagEqual
         {
             get
             {
@@ -250,14 +335,7 @@ namespace ChargerLogic
             set
             {
 
-                if((ParametriSetupPro.ModoEqualizzazione)_flagEqual == ParametriSetupPro.ModoEqualizzazione.NO)
-                {
-                    _flagParametri &= 0xFE; // 1111 1110  ==> forzo il bit 0 a 0
-                }
-                else
-                {
-                    _flagParametri |= 0x01; // 0000 0001  ==> forzo il bit 0 a 1
-                }
+                
                 _flagEqual = value;
             }
         }
@@ -274,8 +352,111 @@ namespace ChargerLogic
             }
         }
 
+        public bool flagBiber
+        {
+            get
+            {
+                return _flagBiber;
+            }
+            set
+            {
+                _flagBiber = value;
+            }
+        }
+
+        public bool flagRabbocco
+        {
+            get
+            {
+                return _flagRabbocco;
+            }
+            set
+            {
 
 
+                _flagRabbocco = value;
+            }
+        }
+
+        public bool flagStartDelayed
+        {
+            get
+            {
+                return _flagStartDelayed;
+            }
+            set
+            {
+
+
+                _flagStartDelayed = value;
+            }
+        }
+
+        public bool flagDeleteDelay
+        {
+            get
+            {
+                return _flagDeleteDelay;
+            }
+            set
+            {
+
+
+                _flagDeleteDelay = value;
+            }
+        }
+
+
+        public byte OraStartCarica
+        {
+            get
+            {
+                return _oraStartCarica;
+            }
+            set
+            {
+                if (value > 23)
+                {
+                    value = 23;
+                }
+                _oraStartCarica = value;
+            }
+        }
+
+        public byte MinutiStartCarica
+        {
+            get
+            {
+                return _minStartCarica;
+            }
+            set
+            {
+                if (value > 59)
+                {
+                    value = 59;
+                }
+                _minStartCarica = value;
+
+            }
+        }
+
+
+        public ushort MaxMinutiAnticipo
+        {
+            get
+            {
+                return _maxMinutiAnticipo;
+            }
+            set
+            {
+                if (value > 59)
+                {
+                    value = 59;
+                }
+                _maxMinutiAnticipo = value;
+
+            }
+        }
 
     }
 
@@ -520,6 +701,12 @@ namespace ChargerLogic
 
 
         }
+
+
+        byte _oraStartCarica;
+        byte _minStartCarica;
+
+        ushort _maxMinutiAnticipo;
 
 
     }

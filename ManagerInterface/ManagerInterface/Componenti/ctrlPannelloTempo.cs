@@ -42,16 +42,14 @@ namespace PannelloCharger
         {
             if (chkEnableEqual.Checked)
             {
-                mtxInizioEqual.Enabled = true;
-                lblOraEqual.Enabled = true;
-                _turno.flagEqual = (byte)ParametriSetupPro.ModoEqualizzazione.Full;
+
+                _turno.flagEqual = true;
 
             }
             else
             {
-                mtxInizioEqual.Enabled = false;
-                lblOraEqual.Enabled = false;
-                _turno.flagEqual = (byte)ParametriSetupPro.ModoEqualizzazione.NO;
+
+                _turno.flagEqual = false;
             }
         }
         public bool SolaLettura
@@ -76,7 +74,7 @@ namespace PannelloCharger
         {
             try
             {
-                mtxInizioEqual.ReadOnly = stato;
+                //mtxInizioEqual.ReadOnly = stato;
                 mtxDurataCarica.ReadOnly = stato;
                 chkEnableEqual.AutoCheck = !stato;
                 nudChargeFactor.ReadOnly = stato;
@@ -131,13 +129,12 @@ namespace PannelloCharger
                 MostraFC(_fattoreCarica);
                 _datiCambiati = false;
 
-                chkEnableEqual.Checked = ((ParametriSetupPro.ModoEqualizzazione)_turno.flagEqual != ParametriSetupPro.ModoEqualizzazione.NO);
+                chkEnableEqual.Checked = _turno.flagEqual;
                 _startEqual = _turno.StartEqual;
                 MostraInizioEqual(_startEqual);
 
             }
         }
-
 
         public ushort MinutiDurata
         {
@@ -153,7 +150,6 @@ namespace PannelloCharger
                 _datiCambiati = true;
             }
         }
-
 
         public byte Giorno
         {
@@ -203,10 +199,6 @@ namespace PannelloCharger
             {
                 OraTurnoMR _tempOra = new OraTurnoMR(OreMinuti);
 
-                ushort _tempOre;
-                ushort _tempMinuti;
-                string pippo = _tempOra.ToString();
-                mtxInizioEqual.Text = pippo;  //"00:00";// _tempOra.ToString();
 
                 _esito = true;
                 
@@ -248,7 +240,6 @@ namespace PannelloCharger
         {
             VerificaDurataFase();
         }
-
 
         private bool VerificaDurataFase()
         {
@@ -320,7 +311,6 @@ namespace PannelloCharger
             }
         }
 
-
         public void Selezionato(bool Attivo)
         {
             try
@@ -337,14 +327,10 @@ namespace PannelloCharger
             }
         }
 
-
-
-
         private void mtxInizioEqual_Leave(object sender, EventArgs e)
         {
             VerificaInizioEqual();
         }
-
 
         private bool VerificaInizioEqual()
         {
@@ -352,7 +338,7 @@ namespace PannelloCharger
             try
             {
                 OraTurnoMR _tempOra;
-                int _tempOre;
+                /*int _tempOre;
                 int _tempMin;
                 bool _esito;
                 string _tempoT;
@@ -375,7 +361,7 @@ namespace PannelloCharger
 
                 _turno.StartEqual = _tempOra.OreMinuti;
                 _startEqual = _turno.StartEqual;
-                MostraInizioEqual(_startEqual);
+                MostraInizioEqual(_startEqual);*/
                 StatoVerifica = true;
                 return StatoVerifica;
             }
@@ -384,7 +370,6 @@ namespace PannelloCharger
                 return true;
             }
         }
-
 
         /// <summary>
         /// Ritorna o imposta (protected) lo stato di dati salvati.
@@ -410,8 +395,6 @@ namespace PannelloCharger
 
         }
 
-
-
         private void ctrlPannelloTempo_Leave(object sender, EventArgs e)
         {
             Selezionato(false);
@@ -421,5 +404,144 @@ namespace PannelloCharger
         {
             Selezionato(true);
         }
+
+        private void chkStartDelayed_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                ShowStartDelayed(chkStartDelayed.Checked);
+                _turno.flagStartDelayed = chkStartDelayed.Checked;
+                DatiSalvati = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void ShowStartDelayed(bool enabled)
+        {
+            try
+            {
+                mtxInizioCarica.Enabled = enabled;
+                mtxAttesaMassima.Enabled = enabled;
+                chkEnableDeleteDelay.Enabled = enabled;
+                lblAttesaMassima.Enabled = enabled;
+                lblInizioCarica.Enabled = enabled;
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void chkEnableDeleteDelay_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _turno.flagDeleteDelay = chkEnableDeleteDelay.Checked;
+                DatiSalvati = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private bool VerificaStartDifferito()
+        {
+            bool StatoVerifica = false;
+            try
+            {
+                int _tempOre;
+                int _tempMin;
+                bool _esito;
+                string _tempoT;
+                string _tempoIns = mtxInizioCarica.Text;
+                _tempoIns = _tempoIns.Replace("_", "0");
+
+                _tempoT = _tempoIns.Substring(0, 2);
+                _esito = int.TryParse(_tempoT, out _tempOre);
+                if (_tempOre > 23) _tempOre = 23;
+                if (_tempoIns.Length > 3)
+                {
+                    _tempoT = _tempoIns.Substring(3, 2);
+                    _esito = int.TryParse(_tempoT, out _tempMin);
+                }
+                else
+                {
+                    _tempMin = 0;
+                }
+                if (_tempMin > 59) _tempMin = 59;
+
+                _turno.MinutiStartCarica = (byte)_tempMin;
+                _turno.OraStartCarica = (byte)_tempOre;
+
+                StatoVerifica = true;
+                return StatoVerifica;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool MostraStartDifferito(byte Ore = 0 , byte Minuti = 0)
+        {
+            bool _esito = false;
+            try
+            {
+
+                mtxInizioCarica.Text = Ore.ToString("00") + ":" + Minuti.ToString("00");
+                _esito = true;
+
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+        private bool MostraAttesaMassima(ushort MinutiAttesa = 0)
+        {
+
+            try
+            {
+                ushort _tempOre;
+                ushort _tempMinuti;
+
+                _tempOre = (ushort)(MinutiAttesa / 60);
+                _tempMinuti = (ushort)(MinutiAttesa % 60);
+
+                return MostraAttesaMassima((byte)_tempOre, (byte)_tempMinuti);
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool MostraAttesaMassima(byte Ore = 0, byte Minuti = 0)
+        {
+            bool _esito = false;
+            try
+            {
+
+                mtxAttesaMassima.Text = Ore.ToString("00") + ":" + Minuti.ToString("00");
+                _esito = true;
+
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
     }
 }

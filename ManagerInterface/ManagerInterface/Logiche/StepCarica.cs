@@ -102,8 +102,11 @@ namespace ChargerLogic
                     case 0x05:
                         _tipo = "M";
                         break;
-                    case 0x80:
+                    case 0x0A:
                         _tipo = "PA";
+                        break;
+                    case 0x0B:
+                        _tipo = "AA";
                         break;
                     default:
                         _tipo = "N.D.";

@@ -484,7 +484,7 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Tempo.
+        ///   Cerca una stringa localizzata simile a Tempo (base).
         /// </summary>
         internal static string PianificazioneTempo {
             get {
@@ -493,11 +493,29 @@ namespace PannelloCharger {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Turni.
+        ///   Cerca una stringa localizzata simile a Tempo.
+        /// </summary>
+        internal static string PianificazioneTempoExt {
+            get {
+                return ResourceManager.GetString("PianificazioneTempoExt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Turni (base).
         /// </summary>
         internal static string PianificazioneTurni {
             get {
                 return ResourceManager.GetString("PianificazioneTurni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Turni.
+        /// </summary>
+        internal static string PianificazioneTurniExt {
+            get {
+                return ResourceManager.GetString("PianificazioneTurniExt", resourceCulture);
             }
         }
         

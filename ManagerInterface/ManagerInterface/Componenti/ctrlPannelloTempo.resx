@@ -117,12 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="mtxDurataCarica.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mtxDurataCarica.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="mtxDurataCarica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 34</value>
+    <value>27, 37</value>
   </data>
   <data name="mtxDurataCarica.Mask" xml:space="preserve">
     <value>00:00</value>
@@ -148,58 +151,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mtxDurataCarica.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
-  <data name="mtxInizioEqual.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="mtxInizioEqual.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="mtxInizioEqual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 34</value>
-  </data>
-  <data name="mtxInizioEqual.Mask" xml:space="preserve">
-    <value>00:00</value>
-  </data>
-  <data name="mtxInizioEqual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
-  </data>
-  <data name="mtxInizioEqual.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="mtxInizioEqual.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;mtxInizioEqual.Name" xml:space="preserve">
-    <value>mtxInizioEqual</value>
-  </data>
-  <data name="&gt;&gt;mtxInizioEqual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mtxInizioEqual.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;mtxInizioEqual.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
+  <metadata name="chkEnableEqual.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="chkEnableEqual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="chkEnableEqual.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
   <data name="chkEnableEqual.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="chkEnableEqual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 35</value>
+    <value>618, 14</value>
   </data>
   <data name="chkEnableEqual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 24</value>
+    <value>60, 41</value>
   </data>
   <data name="chkEnableEqual.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="chkEnableEqual.Text" xml:space="preserve">
     <value>Equal</value>
+  </data>
+  <data name="chkEnableEqual.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;chkEnableEqual.Name" xml:space="preserve">
     <value>chkEnableEqual</value>
@@ -211,13 +190,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkEnableEqual.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
+  <metadata name="nudChargeFactor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="nudChargeFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="nudChargeFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 34</value>
+    <value>503, 37</value>
   </data>
   <data name="nudChargeFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 27</value>
@@ -238,22 +220,32 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;nudChargeFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
+  <metadata name="lblDurata.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblDurata.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblDurata.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
+  </data>
   <data name="lblDurata.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 14</value>
+    <value>35, 0</value>
   </data>
   <data name="lblDurata.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 17</value>
+    <value>57, 34</value>
   </data>
   <data name="lblDurata.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="lblDurata.Text" xml:space="preserve">
-    <value>Ore Carica</value>
+    <value>Durata
+Carica</value>
+  </data>
+  <data name="lblDurata.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
   </data>
   <data name="&gt;&gt;lblDurata.Name" xml:space="preserve">
     <value>lblDurata</value>
@@ -265,73 +257,289 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblDurata.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 14</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 17</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>F.C.</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblOraEqual.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblOraEqual.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="lblOraEqual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 14</value>
-  </data>
-  <data name="lblOraEqual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
-  </data>
-  <data name="lblOraEqual.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="lblOraEqual.Text" xml:space="preserve">
-    <value>Ora inizio</value>
+  <metadata name="lblChargeFactor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblChargeFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;lblOraEqual.Name" xml:space="preserve">
-    <value>lblOraEqual</value>
+  <data name="lblChargeFactor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;lblOraEqual.Type" xml:space="preserve">
+  <data name="lblChargeFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>520, 14</value>
+  </data>
+  <data name="lblChargeFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="lblChargeFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblChargeFactor.Text" xml:space="preserve">
+    <value>F.C.</value>
+  </data>
+  <data name="&gt;&gt;lblChargeFactor.Name" xml:space="preserve">
+    <value>lblChargeFactor</value>
+  </data>
+  <data name="&gt;&gt;lblChargeFactor.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblOraEqual.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblChargeFactor.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lblOraEqual.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblChargeFactor.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <metadata name="chkStartDelayed.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="chkStartDelayed.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkStartDelayed.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="chkStartDelayed.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="chkStartDelayed.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkStartDelayed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 0</value>
+  </data>
+  <data name="chkStartDelayed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 55</value>
+  </data>
+  <data name="chkStartDelayed.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="chkStartDelayed.Text" xml:space="preserve">
+    <value>Ora Inizio
+Predefinita
+</value>
+  </data>
+  <data name="chkStartDelayed.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;chkStartDelayed.Name" xml:space="preserve">
+    <value>chkStartDelayed</value>
+  </data>
+  <data name="&gt;&gt;chkStartDelayed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkStartDelayed.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkStartDelayed.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="lblInizioCarica.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblInizioCarica.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblInizioCarica.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblInizioCarica.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblInizioCarica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 18</value>
+  </data>
+  <data name="lblInizioCarica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 17</value>
+  </data>
+  <data name="lblInizioCarica.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lblInizioCarica.Text" xml:space="preserve">
+    <value>Ora inizio</value>
+  </data>
+  <data name="&gt;&gt;lblInizioCarica.Name" xml:space="preserve">
+    <value>lblInizioCarica</value>
+  </data>
+  <data name="&gt;&gt;lblInizioCarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblInizioCarica.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblInizioCarica.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="mtxInizioCarica.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="mtxInizioCarica.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="mtxInizioCarica.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="mtxInizioCarica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 37</value>
+  </data>
+  <data name="mtxInizioCarica.Mask" xml:space="preserve">
+    <value>00:00</value>
+  </data>
+  <data name="mtxInizioCarica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 27</value>
+  </data>
+  <data name="mtxInizioCarica.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="mtxInizioCarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;mtxInizioCarica.Name" xml:space="preserve">
+    <value>mtxInizioCarica</value>
+  </data>
+  <data name="&gt;&gt;mtxInizioCarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mtxInizioCarica.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mtxInizioCarica.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="lblAttesaMassima.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblAttesaMassima.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAttesaMassima.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblAttesaMassima.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblAttesaMassima.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 0</value>
+  </data>
+  <data name="lblAttesaMassima.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 34</value>
+  </data>
+  <data name="lblAttesaMassima.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="lblAttesaMassima.Text" xml:space="preserve">
+    <value>Attesa
+massima
+</value>
+  </data>
+  <data name="lblAttesaMassima.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="&gt;&gt;lblAttesaMassima.Name" xml:space="preserve">
+    <value>lblAttesaMassima</value>
+  </data>
+  <data name="&gt;&gt;lblAttesaMassima.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAttesaMassima.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblAttesaMassima.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="mtxAttesaMassima.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="mtxAttesaMassima.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="mtxAttesaMassima.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="mtxAttesaMassima.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 37</value>
+  </data>
+  <data name="mtxAttesaMassima.Mask" xml:space="preserve">
+    <value>00:00</value>
+  </data>
+  <data name="mtxAttesaMassima.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 27</value>
+  </data>
+  <data name="mtxAttesaMassima.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="mtxAttesaMassima.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;mtxAttesaMassima.Name" xml:space="preserve">
+    <value>mtxAttesaMassima</value>
+  </data>
+  <data name="&gt;&gt;mtxAttesaMassima.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mtxAttesaMassima.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mtxAttesaMassima.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="chkEnableDeleteDelay.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="chkEnableDeleteDelay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkEnableDeleteDelay.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="chkEnableDeleteDelay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="chkEnableDeleteDelay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkEnableDeleteDelay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>382, 1</value>
+  </data>
+  <data name="chkEnableDeleteDelay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 55</value>
+  </data>
+  <data name="chkEnableDeleteDelay.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="chkEnableDeleteDelay.Text" xml:space="preserve">
+    <value>Abil. Inizio
+immediato
+</value>
+  </data>
+  <data name="chkEnableDeleteDelay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;chkEnableDeleteDelay.Name" xml:space="preserve">
+    <value>chkEnableDeleteDelay</value>
+  </data>
+  <data name="&gt;&gt;chkEnableDeleteDelay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkEnableDeleteDelay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkEnableDeleteDelay.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 76</value>
+    <value>705, 70</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ctrlPannelloTempo</value>

@@ -301,9 +301,15 @@
     <value>Nessuna</value>
   </data>
   <data name="PianificazioneTempo" xml:space="preserve">
-    <value>Tempo</value>
+    <value>Tempo (base)</value>
   </data>
   <data name="PianificazioneTurni" xml:space="preserve">
+    <value>Turni (base)</value>
+  </data>
+  <data name="PianificazioneTempoExt" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="PianificazioneTurniExt" xml:space="preserve">
     <value>Turni</value>
   </data>
 </root>
