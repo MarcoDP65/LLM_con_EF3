@@ -1175,9 +1175,9 @@ namespace ChargerLogic
                                     // 3 / 4      mappa estesa con dati pianificazione in 168 byte a partire da 0x26
                                     switch(ModoPianificazione)
                                     {
-                                        case 0:  // nessuna pianificazione
-                                        case 2:  // turni base: non implementata
-                                        case 4:  // turni estesi: non implementata
+                                        case (byte)ParametriSetupPro.TipoPianificazione.NonDefinita:  // nessuna pianificazione
+                                        case (byte)ParametriSetupPro.TipoPianificazione.Turni:  // turni base: non implementata
+                                        case (byte)ParametriSetupPro.TipoPianificazione.TurniEsteso:  // turni estesi: non implementata
                                         default:
                                             {
                                                 ModoBiberonaggio = 0;
@@ -1197,7 +1197,7 @@ namespace ChargerLogic
                                                 PartReceived[3] = true;
                                                 break;
                                             }
-                                        case 1: // tempo base
+                                        case (byte)ParametriSetupPro.TipoPianificazione.Tempo: // tempo base
                                             {
 
                                                 ModoBiberonaggio = _risposta[startByte];
@@ -1223,12 +1223,17 @@ namespace ChargerLogic
                                                 startByte += 1;
                                                 EqualMinAttesa = _risposta[startByte];
                                                 startByte += 1;
+                                                EqualNumImpulsiExtra = _risposta[startByte];
+                                                startByte += 1;
+                                                EqualPulseCurrent = ArrayToUshort(_risposta, startByte, 2);
+                                                startByte += 2;
+
                                                 PartReceived[3] = true;
 
                                                 break;
                                             }
 
-                                        case 3: // tempo esteso
+                                        case (byte)ParametriSetupPro.TipoPianificazione.TempoEsteso: // tempo esteso
                                             {
 
                                                 ModoBiberonaggio = _risposta[startByte];
@@ -1247,8 +1252,9 @@ namespace ChargerLogic
                                                 startByte += 1;
                                                 EqualPulseCurrent = ArrayToUshort(_risposta, startByte, 2);
                                                 startByte += 2; 
+
                                                 // bytes vuoti
-                                                startByte += 27;
+                                                startByte += 26;
 
                                                 ModelloPianificazione = new byte[168];
                                                 for (int _dt = 0; _dt < 168; _dt++)

@@ -768,12 +768,7 @@ namespace PannelloCharger
                                 _msgPar.Parametri = rigaParametri;
                                 ListaMessaggi.Insert(0, _msgPar);
 
-
-
                             }
-
-
-
 
                         }
                         break;

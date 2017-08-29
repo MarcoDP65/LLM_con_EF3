@@ -23696,7 +23696,7 @@ SPY-BATT</value>
     <value>2</value>
   </data>
   <data name="txtStratCurrStepTipo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
   </data>
   <data name="txtStratCurrStepTipo.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 51</value>
@@ -23706,9 +23706,6 @@ SPY-BATT</value>
   </data>
   <data name="txtStratCurrStepTipo.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
-  </data>
-  <data name="txtStratCurrStepTipo.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
   </data>
   <data name="&gt;&gt;txtStratCurrStepTipo.Name" xml:space="preserve">
     <value>txtStratCurrStepTipo</value>

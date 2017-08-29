@@ -26,10 +26,10 @@ namespace ChargerLogic
           
         public List<Pianificazione> TipiPianificazione = new List<Pianificazione>
                                {
-                                    new Pianificazione { Codice = 0, Descrizione  = PannelloCharger.StringheComuni.PianificazioneNessuna,FwLevelMin = 0 ,FwLevelMax = 999},
-                                    new Pianificazione { Codice = 1, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempo,FwLevelMin = 0 ,FwLevelMax = 8},
+                                    new Pianificazione { Codice = (byte)TipoPianificazione.NonDefinita, Descrizione  = PannelloCharger.StringheComuni.PianificazioneNessuna,FwLevelMin = 0 ,FwLevelMax = 999},
+                                    new Pianificazione { Codice = (byte)TipoPianificazione.Tempo, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempo,FwLevelMin = 0 ,FwLevelMax = 9},
                                     //new Pianificazione { Codice = 2, Descrizione = "Turni"}  - pianificazione per turni temporaneamente disabilitata
-                                    new Pianificazione { Codice = 3, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempoExt,FwLevelMin = 9 ,FwLevelMax = 999},
+                                    new Pianificazione { Codice = (byte)TipoPianificazione.TempoEsteso, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempoExt,FwLevelMin = 8 ,FwLevelMax = 999},
 
                                };
 

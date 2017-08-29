@@ -145,9 +145,12 @@ namespace ChargerLogic
                             _flagRabbocco = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro.Rabboccatore);
                             _flagStartDelayed = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro.StartDelayed);
                             _flagDeleteDelay = FunzioniBinarie.GetBit(ModelloDati[3], (int)ParametriSetupPro.BitParametro.DeleteDelay);
-
+                            /*
                             _oraStartCarica = ModelloDati[4];
                             _minStartCarica = ModelloDati[5];
+                            */
+                            _orarioStartCarica = (ushort)(ModelloDati[4] << 8);
+                            _orarioStartCarica += ModelloDati[5];
 
                             _maxMinutiAnticipo = (ushort)(ModelloDati[6] << 8);
                             _maxMinutiAnticipo += ModelloDati[7];
@@ -217,9 +220,13 @@ namespace ChargerLogic
                         _flagParametri = FunzioniBinarie.SetBit(_flagParametri, (int)ParametriSetupPro.BitParametro.StartDelayed, _flagStartDelayed);
                         _flagParametri = FunzioniBinarie.SetBit(_flagParametri, (int)ParametriSetupPro.BitParametro.DeleteDelay, _flagDeleteDelay);
                         _modelloDati[3] = _flagParametri;
-
+                        /*
                         _modelloDati[4] = _oraStartCarica;
                         _modelloDati[5] = _minStartCarica;
+                        */
+                        FunzioniComuni.SplitUshort(_orarioStartCarica, ref LoVal, ref HiVal);
+                        _modelloDati[4] = HiVal;
+                        _modelloDati[5] = LoVal;
 
                         FunzioniComuni.SplitUshort(_maxMinutiAnticipo, ref LoVal, ref HiVal);
                         _modelloDati[6] = HiVal;
@@ -440,6 +447,19 @@ namespace ChargerLogic
             }
         }
 
+        public ushort OrarioStartCarica
+        {
+            get
+            {
+                return _orarioStartCarica;
+            }
+            set
+            {
+
+                _orarioStartCarica = value;
+
+            }
+        }
 
         public ushort MaxMinutiAnticipo
         {
@@ -449,10 +469,7 @@ namespace ChargerLogic
             }
             set
             {
-                if (value > 59)
-                {
-                    value = 59;
-                }
+
                 _maxMinutiAnticipo = value;
 
             }
@@ -510,6 +527,22 @@ namespace ChargerLogic
                             Turno[_i].ModoTurno = ParametriSetupPro.TipoPianificazione.Turni;
                             Turno[_i].FattoreCarica = 102;
                         }
+                        break;
+                    case ParametriSetupPro.TipoPianificazione.TempoEsteso:
+                        _numeroTurni = 1;
+                        Turno = new ModelloTurno[_numeroTurni];
+                        Turno[0] = new ModelloTurno();
+                        Turno[0].ModoTurno = ParametriSetupPro.TipoPianificazione.TempoEsteso;
+                        Turno[0].MinutiDurata = 660;
+                        Turno[0].FattoreCarica = 101;
+                        Turno[0].flagEqual = false;
+                        Turno[0].flagRabbocco = false;
+                        Turno[0].flagBiber = false;
+                        Turno[0].flagStartDelayed = false;
+                        Turno[0].MinutiStartCarica = 0;
+                        Turno[0].MaxMinutiAnticipo = 0;
+                        Turno[0].flagDeleteDelay = false; 
+
                         break;
                     default:
                         _numeroTurni = 1;
@@ -569,6 +602,13 @@ namespace ChargerLogic
                             Turno[_i].ModoTurno = ParametriSetupPro.TipoPianificazione.Turni;
                             Turno[_i].FattoreCarica = 102;
                         }
+                        break;
+                    case ParametriSetupPro.TipoPianificazione.TempoEsteso:
+                        _numeroTurni = 1;
+                        Turno = new ModelloTurno[_numeroTurni];
+                        Turno[0].ModoTurno = ParametriSetupPro.TipoPianificazione.TempoEsteso;
+                        Turno[0].MinutiDurata = 480;
+                        Turno[0].FattoreCarica = 102;
                         break;
                     default:
                         _numeroTurni = 1;

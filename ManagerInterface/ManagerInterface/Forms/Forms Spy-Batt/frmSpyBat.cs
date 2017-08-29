@@ -1139,7 +1139,7 @@ namespace PannelloCharger
                 txtSerialNumber.Text = _sb.sbCliente.SerialNumber;
                 txtCliCodiceLL.Text = _sb.sbCliente.BatteryLLId;
 
-                txtProgcBattAhDef.Text =  FunzioniMR.StringaCapacita(_sb.sbCliente.EqualPulseCurrent, 10) ;
+                txtProgEqCorrenteImpulso.Text =  FunzioniMR.StringaCapacita(_sb.sbCliente.EqualPulseCurrent, 10) ;
                 txtProgMinAttesaEqual.Text = _sb.sbCliente.EqualMinAttesa.ToString();
                 txtProgMinPause.Text = _sb.sbCliente.EqualMinPausa.ToString();
                 txtProgEqMinPulse.Text = _sb.sbCliente.EqualMinErogazione.ToString();
@@ -1760,10 +1760,6 @@ namespace PannelloCharger
 
         }
 
-
-
-
-
         private void MostraDettaglioFase(UInt32 IdCiclo)
         {
             try
@@ -1800,7 +1796,6 @@ namespace PannelloCharger
             }
 
         }
-
 
         private void RicaricaDettaglioRiga(MessaggioSpyBatt.MemoriaPeriodoLungo _tempciclo)
         {
@@ -1897,7 +1892,6 @@ namespace PannelloCharger
             { }
 
         }
-
 
         private void lvwCicliBatteria_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2048,10 +2042,13 @@ namespace PannelloCharger
             }
         }
 
-        public void salvaCliente(bool SerialeCollegata)
+        public void SalvaCliente(bool SerialeCollegata , bool marcaSalvataggio = true)
         {
             try
             {
+                // Prima di tutto sposto il focus su una cella non editabile per lanciare eventuali eventi leave di salvataggio
+                txtMatrSB.Focus();
+
                 Pianificazione _tempP;
                 // prima salvo i dati nella classe
                 _sb.sbCliente.Client = txtCliente.Text;
@@ -2061,12 +2058,16 @@ namespace PannelloCharger
                 _sb.sbCliente.BatteryId = txtIdBat.Text;
                 _sb.sbCliente.BatteryLLId = txtCliCodiceLL.Text;
                 _sb.sbCliente.SerialNumber = txtSerialNumber.Text;
-
-                _sb.sbCliente.EqualPulseCurrent = FunzioniMR.ConvertiUshort(txtProgcBattAhDef.Text, 10, 0);
+                /*
+                 * .... già caricati al leave delle textbox
+                _sb.sbCliente.EqualPulseCurrent = FunzioniMR.ConvertiUshort(txtProgEqCorrenteImpulso.Text, 10, 0);
                 _sb.sbCliente.EqualMinAttesa = FunzioniMR.ConvertiByte(txtProgMinAttesaEqual.Text, 1, 0);
                 _sb.sbCliente.EqualMinPausa = FunzioniMR.ConvertiByte(txtProgMinPause.Text, 1, 0);
                 _sb.sbCliente.EqualMinErogazione = FunzioniMR.ConvertiByte(txtProgEqMinPulse.Text, 1, 0);
                 _sb.sbCliente.EqualNumImpulsi = FunzioniMR.ConvertiByte(txtProgEqNumPulse.Text, 1, 0);
+                */
+
+
 
 
                 _sb.sbCliente.ResetContatori = MessaggioSpyBatt.DatiCliente.NuoviLivelli.MantieniLivelli;
@@ -2082,11 +2083,12 @@ namespace PannelloCharger
 
                 int _tempInt;
                 if (int.TryParse(txtCliCicliAttesi.Text, out _tempInt))
-                { _sb.sbCliente.CicliAttesi = (int)_tempInt; }
+                { _sb.sbCliente.CicliAttesi = (int)((_tempInt > 0) ? _tempInt : 1500 ); }
                 else
-                { _sb.sbCliente.CicliAttesi = 1000; }
+                { _sb.sbCliente.CicliAttesi = 1500; }
 
                 _sb.ScriviDatiCliente(SerialeCollegata);
+                if (marcaSalvataggio) DatiSalvati = true;
                 if (CaricaCliente(_sb.Id, _logiche, true)) mostraCliente();
             }
             catch (Exception Ex)
@@ -3348,7 +3350,7 @@ namespace PannelloCharger
         private void btnSalvaCliente_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            salvaCliente(_apparatoPresente);
+            SalvaCliente(_apparatoPresente);
             this.Cursor = Cursors.Default;
         }
 
@@ -3680,9 +3682,6 @@ namespace PannelloCharger
                 this.Cursor = Cursors.Default;
             }
         }
-
-
-
 
         private void btnRigeneraLista_Click(object sender, EventArgs e)
         {
@@ -8468,10 +8467,13 @@ namespace PannelloCharger
                         tlpGrigliaTurni.Visible = false;
                         break;
                     case (byte)ParametriSetupPro.TipoPianificazione.Tempo:
-                        MostraGrigliaTempo(InizializzaControllo);
+                        MostraGrigliaTempo(false,InizializzaControllo);
                         break;
                     case (byte)ParametriSetupPro.TipoPianificazione.Turni:
                         MostraGrigliaTurni(InizializzaControllo);
+                        break;
+                    case (byte)ParametriSetupPro.TipoPianificazione.TempoEsteso:
+                        MostraGrigliaTempo(true, InizializzaControllo);
                         break;
                     default:
                         break;
@@ -8494,7 +8496,7 @@ namespace PannelloCharger
         /// </summary>
         /// <param name="InizializzaControllo">if set to <c>true</c> [inizializza controllo].</param>
         /// <returns></returns>
-        private bool MostraGrigliaTempo(bool InizializzaControllo = true)
+        private bool MostraGrigliaTempo(bool ModoEsteso = false,bool InizializzaControllo = true)
         {
             bool _esito = false;
             try
@@ -8510,23 +8512,69 @@ namespace PannelloCharger
                 tlpGrigliaTurni.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 0));
                 tlpGrigliaTurni.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 0));
 
-                //  tlpGrigliaTurni.ColumnCount = 4;        
-                //  tlpGrigliaTurni.RowCount = 9;
+
                 PanelTestataColonnaTurno _testata;
                 PanelTestataColonnaTurno _testata2;
                 PanelGiornoTurno _giorno;
                 tlpGrigliaTurni.Controls.Clear();
                 //setto la 2^  colonna a largheza fissa
-                //tlpGrigliaTurni.col
                 _testata = new PanelTestataColonnaTurno( PannelloCharger.StringheMessaggio.strTitoloPianificazione);   //"Carica Pianificata");
                 tlpGrigliaTurni.Controls.Add(_testata, 1, 0);
-                _testata2 = new PanelTestataColonnaTurno(PannelloCharger.StringheMessaggio.strSottoTitoloPianificazione, new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-                tlpGrigliaTurni.Controls.Add(_testata2, 1, 1);
 
                 // in base alla rev FW  ( e lib ) uso la mappa compatta o estesa
-
-                if (_sb.sbData.fwLevel < 9)
+                if(ModoEsteso)
                 {
+                    _testata2 = new PanelTestataColonnaTurno(PannelloCharger.StringheMessaggio.strSottoTitoloPianificazioneTempoExt, new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                    tlpGrigliaTurni.Controls.Add(_testata2, 1, 1);
+
+                    if (_sb.sbCliente.MappaTurni == null)
+                        _sb.sbCliente.MappaTurni = new byte[1];
+
+                    if (_sb.sbCliente.MappaTurni.Length != 168)
+                    {
+                        _sb.sbCliente.MappaTurni = new byte[168]
+                        {
+                            0x02,0x94, 0x65, 0x00, 0,0, 0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+                            0x02,0x94, 0x65, 0x00, 0,0, 0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+                            0x02,0x94, 0x73, 0x00, 0,0, 0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+                            0x02,0x94, 0x65, 0x00, 0,0, 0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+                            0x02,0x94, 0x65, 0x00, 0,0, 0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+                            0x02,0x94, 0x73, 0x00, 0,0, 0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+                            0x02,0x94, 0x73, 0x00, 0,0, 0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+                        };
+                    }
+
+                    byte[] _tempData = _sb.sbCliente.MappaTurni;
+                    byte[] _datiTurno = new byte[24];
+
+                    for (int _se = 0; _se < 7; _se++)
+                    {
+                        _giorno = new PanelGiornoTurno(DataOraMR.SiglaGiorno(_se + 1));
+                        tlpGrigliaTurni.Controls.Add(_giorno, 0, _se + 2);
+                        ctrlPannelloTempo P1 = new ctrlPannelloTempo();
+
+                        P1.ModoEsteso = true;
+                        ModelloTurno _mT = new ModelloTurno();
+                        _mT.ModoTurno = ParametriSetupPro.TipoPianificazione.TempoEsteso;
+                        Array.Copy(_tempData, _se * 24, _datiTurno, 0, 24);
+                        _mT.fromData(_datiTurno);
+                        P1.Turno = _mT;
+                        P1.Giorno = (byte)_se;
+
+
+                        tlpGrigliaTurni.Controls.Add(P1, 1, _se + 2);
+
+                        P1.DatiCambiati += DatiDaSalvare;
+
+                    }
+
+
+                }
+                else
+                {
+                    _testata2 = new PanelTestataColonnaTurno(PannelloCharger.StringheMessaggio.strSottoTitoloPianificazioneTempoBase, new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                    tlpGrigliaTurni.Controls.Add(_testata2, 1, 1);
+
                     // VERSIONE PRE-EQUAL
                     // Se il cliente è caricato, uso la griglia definita
                     if (_sb.sbCliente.MappaTurni == null)
@@ -8534,13 +8582,16 @@ namespace PannelloCharger
 
                     if (_sb.sbCliente.MappaTurni.Length != 84)
                     {
-                        _sb.sbCliente.MappaTurni = new byte[84] { 0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                              0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                              0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                              0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                              0x02, 0x94, 0x65, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                              0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,
-                                                              0x02, 0x94, 0x73, 0x00, 0, 0, 0, 0,0,0,0,0,  };
+                        _sb.sbCliente.MappaTurni = new byte[84]
+                        {
+                            0x02, 0x94, 0x65, 0x00,0,0,0,0,0,0,0,0,
+                            0x02, 0x94, 0x65, 0x00,0,0,0,0,0,0,0,0,
+                            0x02, 0x94, 0x73, 0x00,0,0,0,0,0,0,0,0,
+                            0x02, 0x94, 0x65, 0x00,0,0,0,0,0,0,0,0,
+                            0x02, 0x94, 0x65, 0x00,0,0,0,0,0,0,0,0,
+                            0x02, 0x94, 0x73, 0x00,0,0,0,0,0,0,0,0,
+                            0x02, 0x94, 0x73, 0x00,0,0,0,0,0,0,0,0,
+                        };
                     }
 
                     byte[] _tempData = _sb.sbCliente.MappaTurni;
@@ -8551,7 +8602,10 @@ namespace PannelloCharger
                         _giorno = new PanelGiornoTurno(DataOraMR.SiglaGiorno(_se + 1));
                         tlpGrigliaTurni.Controls.Add(_giorno, 0, _se + 2);
                         ctrlPannelloTempo P1 = new ctrlPannelloTempo();
+
+                        P1.ModoEsteso = false;
                         ModelloTurno _mT = new ModelloTurno();
+                        _mT.ModoTurno= ParametriSetupPro.TipoPianificazione.Tempo;
                         Array.Copy(_tempData, _se * 12, _datiTurno, 0, 6);
                         _mT.fromData(_datiTurno);
                         P1.Turno = _mT;
@@ -8563,11 +8617,8 @@ namespace PannelloCharger
                         P1.DatiCambiati += DatiDaSalvare;
 
                     }
+
                 }
-
-
-
-
 
                 _esito = true;
                 return _esito;
@@ -8597,33 +8648,65 @@ namespace PannelloCharger
                 }
                 else
                 {
-                    if (_sb.sbCliente.MappaTurni.Length != 84)
+                    if (_sb.sbCliente.MappaTurni.Length != _sb.sbCliente.DimensioneMappaTurni)
                         _arrayInit = true;
                 }
 
 
                 if (_arrayInit)
                 {
-                    _sb.sbCliente.MappaTurni = new byte[84];
-                    for (int _arr = 0; _arr < 84; _arr++)
+                    _sb.sbCliente.MappaTurni = new byte[_sb.sbCliente.DimensioneMappaTurni];
+                    for (int _arr = 0; _arr < _sb.sbCliente.DimensioneMappaTurni; _arr++)
                     {
                         _sb.sbCliente.MappaTurni[_arr] = 0x00;
 
                     }
 
                 }
-                byte Giornisalvati = 0;
+                byte TurniSalvati = 0;
                 foreach (Control _ctrl in tlpGrigliaTurni.Controls)
                 {
-                    if (_ctrl.GetType() == typeof(ctrlPannelloTempo))  // new grid, nuovo controllo con gestione equal
+                    if (_ctrl.GetType() == typeof(ctrlPannelloTempo)) 
                     {
-                        byte[] _datiFase = new byte[6] { 0, 0, 0, 0, 0, 0 };
-                        ctrlPannelloTempo P1 = (ctrlPannelloTempo)_ctrl;
-                        _datiFase = P1.Turno.toData();
-                        Array.Copy(_datiFase, 0, _sb.sbCliente.MappaTurni, P1.Giorno * 12, 6);
-                        Giornisalvati += 1;
+                        byte[] _datiFase;
+
+                        switch ((ParametriSetupPro.TipoPianificazione)_sb.sbCliente.ModoPianificazione)
+                        {
+                            case ParametriSetupPro.TipoPianificazione.NonDefinita:
+                                {
+                                    TurniSalvati += 3;
+                                }
+                                break;
+                            case ParametriSetupPro.TipoPianificazione.Tempo:
+                                {
+                                    _datiFase = new byte[6] { 0, 0, 0, 0, 0, 0 };
+                                    ctrlPannelloTempo P1 = (ctrlPannelloTempo)_ctrl;
+                                    _datiFase = P1.Turno.toData();
+                                    Array.Copy(_datiFase, 0, _sb.sbCliente.MappaTurni, P1.Giorno * 12, 6);
+                                    TurniSalvati += 1;
+                                }
+                                break;
+                            case ParametriSetupPro.TipoPianificazione.Turni:
+                                TurniSalvati += 1;
+                                break;
+                            case ParametriSetupPro.TipoPianificazione.TempoEsteso:
+                                {
+                                    _datiFase = new byte[24] { 0,0,0,0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                                    ctrlPannelloTempo P1 = (ctrlPannelloTempo)_ctrl;
+                                    _datiFase = P1.Turno.toData();
+                                    Array.Copy(_datiFase, 0, _sb.sbCliente.MappaTurni, P1.Giorno * 24, 24);
+                                    TurniSalvati += 3;
+                                }
+                                break;
+                            case ParametriSetupPro.TipoPianificazione.TurniEsteso:
+                                TurniSalvati += 1;
+                                break;
+                            default:
+                                break;
+                        }
                     }
 
+                    /*
                     if (_ctrl.GetType() == typeof(PannelloTempo))  // old grid  
                     {
                         byte[] _datiFase = new byte[4] { 0, 0, 0, 0 };
@@ -8632,9 +8715,10 @@ namespace PannelloCharger
                         Array.Copy(_datiFase, 0, _sb.sbCliente.MappaTurni, P1.Giorno * 12, 4);
                         Giornisalvati += 1;
                     }
+                    */
 
                 }
-                if (Giornisalvati == 7)
+                if (TurniSalvati == 21)
                     _esito = true;
 
                 return _esito;
@@ -9045,7 +9129,7 @@ namespace PannelloCharger
         {
             this.Cursor = Cursors.WaitCursor;
             chkCliResetContatori.Checked = false;
-            salvaCliente(_apparatoPresente);
+            SalvaCliente(_apparatoPresente);
             this.Cursor = Cursors.Default;
         }
 
@@ -9080,7 +9164,9 @@ namespace PannelloCharger
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                salvaCliente(_apparatoPresente);
+                txtIdBat.Focus();
+                Application.DoEvents();
+                SalvaCliente(_apparatoPresente);
                 DatiSalvati = true;
                 this.Cursor = Cursors.Default;
                 return true;
@@ -9504,5 +9590,60 @@ namespace PannelloCharger
                 Log.Error("txtProgMinAttesaEqual_Leave: " + Ex.Message);
             }
         }
+
+        private void txtProgEqNumPulse_Leave(object sender, EventArgs e)
+        {
+            byte _valoreCorrente;
+            try
+            {
+                _valoreCorrente = FunzioniMR.ConvertiByte(txtProgEqNumPulse.Text, 1, 0);
+                if (_sb.sbCliente.EqualNumImpulsi != _valoreCorrente)
+                {
+                    _sb.sbCliente.EqualNumImpulsi = _valoreCorrente;
+                    DatiSalvati = false;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtProgEqNumPulse_Leave: " + Ex.Message);
+            }
+        }
+
+        private void txtProgEqMinPulse_Leave(object sender, EventArgs e)
+        {
+            byte _valoreCorrente;
+            try
+            {
+                _valoreCorrente = FunzioniMR.ConvertiByte(txtProgEqMinPulse.Text, 1, 0);
+                if (_sb.sbCliente.EqualMinErogazione != _valoreCorrente)
+                {
+                    _sb.sbCliente.EqualMinErogazione = _valoreCorrente;
+                    DatiSalvati = false;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtProgEqMinPulse_Leave: " + Ex.Message);
+            }
+        }
+
+        private void txtProgMinPause_Leave(object sender, EventArgs e)
+        {
+            byte _valoreCorrente;
+            try
+            {
+                _valoreCorrente = FunzioniMR.ConvertiByte(txtProgMinPause.Text, 1, 0);
+                if (_sb.sbCliente.EqualMinPausa != _valoreCorrente)
+                {
+                    _sb.sbCliente.EqualMinPausa = _valoreCorrente;
+                    DatiSalvati = false;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtProgMinPause_Leave: " + Ex.Message);
+            }
+        }
+
     }
 }

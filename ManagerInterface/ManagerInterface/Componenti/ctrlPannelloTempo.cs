@@ -17,10 +17,15 @@ namespace PannelloCharger
         private byte _fattoreCarica = 101;
         private byte _giorno;
         private byte _startEqual;
+        private bool _modoEsteso;
+        private bool _StartDelayed;
 
         private ushort _minutiDurata = 480;
         private bool _datiCambiati = false;
-        
+
+        private ushort _minutiInizio = 0;
+        private ushort _minutiMassimaAttesa = 0;
+
         private bool _solaLettura = false;
         private ModelloTurno _turno = new ModelloTurno();
 
@@ -51,6 +56,8 @@ namespace PannelloCharger
 
                 _turno.flagEqual = false;
             }
+
+            DatiSalvati = false;
         }
         public bool SolaLettura
         {
@@ -129,9 +136,31 @@ namespace PannelloCharger
                 MostraFC(_fattoreCarica);
                 _datiCambiati = false;
 
-                chkEnableEqual.Checked = _turno.flagEqual;
-                _startEqual = _turno.StartEqual;
-                MostraInizioEqual(_startEqual);
+
+                if (ModoEsteso)
+                {
+                    chkEnableEqual.Checked = _turno.flagEqual;
+                    _startEqual = _turno.StartEqual;
+                    MostraInizioEqual(_startEqual);
+
+                    chkStartDelayed.Checked = _turno.flagStartDelayed;
+                    _StartDelayed = _turno.flagStartDelayed;
+                    ShowStartDelayed(_StartDelayed);
+
+                    if (_turno.flagStartDelayed)
+                    {
+                        _minutiDurata = _turno.MinutiDurata;
+                        MostraDurata(_turno.MinutiDurata);
+
+                        _minutiInizio = _turno.OrarioStartCarica;
+                        MostraOrarioInizio(_turno.OrarioStartCarica);
+
+                        _minutiMassimaAttesa = _turno.MaxMinutiAnticipo;
+                        MostraMassimaAttesa(_turno.MaxMinutiAnticipo);
+                        chkEnableDeleteDelay.Checked = _turno.flagDeleteDelay;
+                    }
+
+                }
 
             }
         }
@@ -412,6 +441,7 @@ namespace PannelloCharger
 
                 ShowStartDelayed(chkStartDelayed.Checked);
                 _turno.flagStartDelayed = chkStartDelayed.Checked;
+                _StartDelayed = _turno.flagStartDelayed;
                 DatiSalvati = false;
             }
             catch
@@ -489,13 +519,17 @@ namespace PannelloCharger
             }
         }
 
-        private bool MostraStartDifferito(byte Ore = 0 , byte Minuti = 0)
+        private bool MostraStartDifferito(ushort MinutiInizio = 0)
         {
             bool _esito = false;
             try
             {
+                byte _tempOre;
+                byte _tempMinuti;
 
-                mtxInizioCarica.Text = Ore.ToString("00") + ":" + Minuti.ToString("00");
+                _tempOre = (byte)(MinutiInizio / 60);
+                _tempMinuti = (byte)(MinutiInizio % 60);
+                mtxInizioCarica.Text = _tempOre.ToString("00") + ":" + _tempMinuti.ToString("00");
                 _esito = true;
 
                 return _esito;
@@ -543,5 +577,178 @@ namespace PannelloCharger
             }
         }
 
+        public bool ModoEsteso
+        {
+            get
+            {
+                return _modoEsteso;
+            }
+            set
+            {
+                _modoEsteso = value;
+                chkStartDelayed.Enabled = value;
+                chkEnableEqual.Enabled = value;
+
+            }
+        }
+
+        private void mtxInizioCarica_Leave(object sender, EventArgs e)
+        {
+            VerificaInizioCarica();
+        }
+
+        /// <summary>
+        /// Verifica che l'orario inizio carica inserito sia un orario valido e lo trasforma in minuti dalle 00:00
+        /// </summary>
+        /// <returns><c>true</c> se orario valido.</returns>
+        private bool VerificaInizioCarica()
+        {
+            try
+            {
+
+                int _tempOre;
+                int _tempMin;
+                bool _esito;
+                string _tempoT;
+                string _tempoIns = mtxInizioCarica.Text;
+                _tempoIns = _tempoIns.Replace("_", "0");
+
+                _tempoT = _tempoIns.Substring(0, 2);
+                _esito = int.TryParse(_tempoT, out _tempOre);
+                if (_tempoIns.Length > 3)
+                {
+                    _tempoT = _tempoIns.Substring(3, 2);
+                    _esito = int.TryParse(_tempoT, out _tempMin);
+                }
+                else
+                {
+                    _tempMin = 0;
+                }
+                _minutiInizio = (ushort)(_tempOre * 60 + _tempMin);
+
+
+                if (_turno.MinutiStartCarica != _minutiInizio)
+                {
+                    _turno.OrarioStartCarica = _minutiInizio;
+                    _datiCambiati = true;
+                    DatiSalvati = false;
+                }
+                _turno.OrarioStartCarica = _minutiInizio;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Converte l'orario inizio da minuti totali a ORE:MINUTI e lo inserisce nella relativa textbox.
+        /// </summary>
+        /// <param name="Minuti">Minuti totali dalle 00:00.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        private bool MostraOrarioInizio(ushort Minuti = 0)
+        {
+            bool _esito = false;
+            try
+            {
+                ushort _tempOre;
+                ushort _tempMinuti;
+
+                if (Minuti != 0)
+                {
+                    _tempOre = (ushort)(Minuti / 60);
+                    _tempMinuti = (ushort)(Minuti % 60);
+                    mtxInizioCarica.Text = _tempOre.ToString("00") + ":" + _tempMinuti.ToString("00");
+                    _esito = true;
+                }
+                else
+                {
+                    mtxInizioCarica.Text = "";
+                    _esito = false;
+                }
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+        private void mtxAttesaMassima_Leave(object sender, EventArgs e)
+        {
+            VerificaMassimaAttesa();
+        }
+
+        private bool VerificaMassimaAttesa()
+        {
+            try
+            {
+
+                int _tempOre;
+                int _tempMin;
+                bool _esito;
+                string _tempoT;
+                string _tempoIns = mtxAttesaMassima.Text;
+                _tempoIns = _tempoIns.Replace("_", "0");
+
+                _tempoT = _tempoIns.Substring(0, 2);
+                _esito = int.TryParse(_tempoT, out _tempOre);
+                if (_tempoIns.Length > 3)
+                {
+                    _tempoT = _tempoIns.Substring(3, 2);
+                    _esito = int.TryParse(_tempoT, out _tempMin);
+                }
+                else
+                {
+                    _tempMin = 0;
+                }
+                _minutiMassimaAttesa = (ushort)(_tempOre * 60 + _tempMin);
+
+
+                if (_turno.MaxMinutiAnticipo != _minutiMassimaAttesa)
+                {
+                    _turno.MaxMinutiAnticipo = _minutiMassimaAttesa;
+                    _datiCambiati = true;
+                    DatiSalvati = false;
+                }
+                _turno.MaxMinutiAnticipo = _minutiMassimaAttesa;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool MostraMassimaAttesa(ushort Minuti = 0)
+        {
+            bool _esito = false;
+            try
+            {
+                ushort _tempOre;
+                ushort _tempMinuti;
+
+                if (Minuti != 0)
+                {
+                    _tempOre = (ushort)(Minuti / 60);
+                    _tempMinuti = (ushort)(Minuti % 60);
+                    mtxAttesaMassima.Text = _tempOre.ToString("00") + ":" + _tempMinuti.ToString("00");
+                    _esito = true;
+                }
+                else
+                {
+                    mtxAttesaMassima.Text = "";
+                    _esito = false;
+                }
+                return _esito;
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
     }
 }

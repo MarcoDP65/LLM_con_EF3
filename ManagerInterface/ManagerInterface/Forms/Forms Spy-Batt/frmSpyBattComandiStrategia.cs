@@ -153,7 +153,7 @@ namespace PannelloCharger
                     txtStratQryTatt.Text = FunzioniMR.StringaTemperatura(_Dati[0x13]);
                     txtStratQryTalm.Text = FunzioniMR.StringaTemperatura(_Dati[0x14]);
                     txtStratQryTrepr.Text = FunzioniMR.StringaTemperatura(_Dati[0x15]);
-                    txtStratQryModoPian.Text = _Dati[0x16].ToString();
+                    txtStratQryModoPian.Text =  _Dati[0x16].ToString("X2");
                     txtStratQryGg.Text = DataOraMR.SiglaGiorno(_Dati[0x17] + 1) + "-" + _Dati[0x17].ToString();
                     _tempMin = (ushort)((_Dati[0x19] << 8) + _Dati[0x1A]);
                     txtStratQryMinChg.Text = _tempMin.ToString();
@@ -866,9 +866,11 @@ namespace PannelloCharger
 
 
                     }
-                    cmbStratIsSelStep.DisplayMember = "strPasso";
+
                     //cmbStratIsSelStep.ValueMember = "Dati.IdStep";
+                    cmbStratIsSelStep.DataSource = null;
                     cmbStratIsSelStep.DataSource = PassiStrategia;
+                    cmbStratIsSelStep.DisplayMember = "strPasso";
                     cmbStratIsSelStep.Refresh();
                 }
 

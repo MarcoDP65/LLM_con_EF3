@@ -2996,6 +2996,7 @@
             // 
             resources.ApplyResources(this.txtProgMinPause, "txtProgMinPause");
             this.txtProgMinPause.Name = "txtProgMinPause";
+            this.txtProgMinPause.Leave += new System.EventHandler(this.txtProgMinPause_Leave);
             // 
             // label269
             // 
@@ -3006,6 +3007,7 @@
             // 
             resources.ApplyResources(this.txtProgEqMinPulse, "txtProgEqMinPulse");
             this.txtProgEqMinPulse.Name = "txtProgEqMinPulse";
+            this.txtProgEqMinPulse.Leave += new System.EventHandler(this.txtProgEqMinPulse_Leave);
             // 
             // label268
             // 
@@ -3016,6 +3018,7 @@
             // 
             resources.ApplyResources(this.txtProgEqNumPulse, "txtProgEqNumPulse");
             this.txtProgEqNumPulse.Name = "txtProgEqNumPulse";
+            this.txtProgEqNumPulse.Leave += new System.EventHandler(this.txtProgEqNumPulse_Leave);
             // 
             // tbpPianificazione
             // 

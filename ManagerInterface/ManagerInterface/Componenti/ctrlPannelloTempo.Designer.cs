@@ -111,6 +111,7 @@
             resources.ApplyResources(this.mtxInizioCarica, "mtxInizioCarica");
             this.mtxInizioCarica.Name = "mtxInizioCarica";
             this.mtxInizioCarica.ValidatingType = typeof(System.DateTime);
+            this.mtxInizioCarica.Leave += new System.EventHandler(this.mtxInizioCarica_Leave);
             // 
             // lblAttesaMassima
             // 
@@ -122,6 +123,7 @@
             resources.ApplyResources(this.mtxAttesaMassima, "mtxAttesaMassima");
             this.mtxAttesaMassima.Name = "mtxAttesaMassima";
             this.mtxAttesaMassima.ValidatingType = typeof(System.DateTime);
+            this.mtxAttesaMassima.Leave += new System.EventHandler(this.mtxAttesaMassima_Leave);
             // 
             // chkEnableDeleteDelay
             // 

@@ -1434,16 +1434,16 @@ namespace ChargerLogic
 
                         // in base al modo pianificazione cambio la mappa dati
 
-                        switch(CustomerData.ModoPianificazione)
+                        switch((ParametriSetupPro.TipoPianificazione)CustomerData.ModoPianificazione)
                         {
-                            case 0:  // nessuna pianificazione
-                            case 2:  // turni base: non implementata
-                            case 4:  // turni estesi: non implementata
+                            case ParametriSetupPro.TipoPianificazione.NonDefinita:  // nessuna pianificazione
+                            case ParametriSetupPro.TipoPianificazione.Turni:  // turni base: non implementata
+                            case ParametriSetupPro.TipoPianificazione.TurniEsteso:  // turni estesi: non implementata
                             default: // -- registro solo modo pianificazione
                                 {
                                     break;
                                 }
-                            case 1: // tempo base
+                            case ParametriSetupPro.TipoPianificazione.Tempo: // tempo base
                                 {
 
                                     splitUshort(codificaByte(CustomerData.ModoBiberonaggio), ref lsb, ref msb);
@@ -1504,9 +1504,27 @@ namespace ChargerLogic
                                     MessageBuffer[_arrayInit + 2] = lsb;
                                     _arrayInit += 2;
 
+                                    splitUshort(codificaByte(CustomerData.EqualNumImpulsiExtra), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    _tempShort = (ushort)(CustomerData.EqualPulseCurrent);
+                                    splitUshort(_tempShort, ref lsbDisp, ref msbDisp);
+
+                                    splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
                                     break;
                                 }
-                            case 3: // tempo esteso
+                            case ParametriSetupPro.TipoPianificazione.TempoEsteso: // tempo esteso
                                 {
                                     //MODO_BIBERONAGGIO
                                     splitUshort(codificaByte(CustomerData.ModoBiberonaggio), ref lsb, ref msb);
@@ -1538,6 +1556,18 @@ namespace ChargerLogic
                                     MessageBuffer[_arrayInit + 2] = lsb;
                                     _arrayInit += 2;
 
+                                    //EQ_MIN_WAIT
+                                    splitUshort(codificaByte(CustomerData.EqualMinAttesa), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
+                                    //EQ_NUM_PULSE
+                                    splitUshort(codificaByte(CustomerData.EqualNumImpulsi), ref lsb, ref msb);
+                                    MessageBuffer[_arrayInit + 1] = msb;
+                                    MessageBuffer[_arrayInit + 2] = lsb;
+                                    _arrayInit += 2;
+
                                     //EQ_PULSE_CURRENT
                                     splitUshort(CustomerData.EqualPulseCurrent, ref lsbDisp, ref msbDisp);
 
@@ -1551,7 +1581,7 @@ namespace ChargerLogic
                                     _arrayInit += 4;
 
                                     // 27 Bytes liberi
-                                    for (_i = 0; _i < 27; _i += 1)
+                                    for (_i = 0; _i < 26; _i += 1)
                                     {
                                         splitUshort(_codificaByte(0x00), ref lsb, ref msb);
                                         MessageBuffer[_arrayInit + 1] = msb;
@@ -1642,8 +1672,7 @@ namespace ChargerLogic
                 MessageBuffer[_arrayLen + 6] = serETX;
 
                 Log.Debug("Corpo: " + hexdumpArray(MessageBuffer));
-                //Log.Info("CRC: " + _crc.ToString("X2"));
-                //Log.Info("CRC: " + msbDisp.ToString("X2") + lsbDisp.ToString("X2")  );
+
                 return _esito;
             }
             catch (Exception Ex)

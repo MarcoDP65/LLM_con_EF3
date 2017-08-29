@@ -484,6 +484,36 @@ namespace MoriData
             }
         }
 
+        public int DimensioneMappaTurni
+        {
+            get
+            {
+                int _dimensione = 0;
+                switch ((ParametriSetupPro.TipoPianificazione)_sbdc.ModoPianificazione)
+                {
+                    case ParametriSetupPro.TipoPianificazione.NonDefinita:
+                        _dimensione = 0;
+                        break;
+                    case ParametriSetupPro.TipoPianificazione.Tempo:
+                        _dimensione = 84;
+                        break;
+                    case ParametriSetupPro.TipoPianificazione.Turni:
+                        _dimensione = 84;
+                        break;
+                    case ParametriSetupPro.TipoPianificazione.TempoEsteso:
+                        _dimensione = 168;
+                        break;
+                    case ParametriSetupPro.TipoPianificazione.TurniEsteso:
+                        _dimensione = 168;
+                        break;
+                    default:
+                        _dimensione = 0;
+                        break;
+                }
+
+                return _dimensione;
+            }
+        }
 
         public byte[] MappaTurni
         {

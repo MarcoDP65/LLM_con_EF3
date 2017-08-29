@@ -708,6 +708,13 @@ namespace ChargerLogic
                         sbCliente.ModoPianificazione = _mS.CustomerData.ModoPianificazione;
                         sbCliente.ModoBiberonaggio = _mS.CustomerData.ModoBiberonaggio;
                         sbCliente.ModoRabboccatore = _mS.CustomerData.ModoRabboccatore ;
+
+                        sbCliente.EqualPulseCurrent = _mS.CustomerData.EqualPulseCurrent;
+                        sbCliente.EqualNumImpulsi = _mS.CustomerData.EqualNumImpulsi;
+                        sbCliente.EqualMinAttesa = _mS.CustomerData.EqualMinAttesa;
+                        sbCliente.EqualMinErogazione = _mS.CustomerData.EqualMinErogazione;
+                        sbCliente.EqualMinPausa = _mS.CustomerData.EqualMinPausa;
+
                         sbCliente.MappaTurni = _mS.CustomerData.ModelloPianificazione;
 
                         sbCliente.salvaDati();
@@ -4284,6 +4291,13 @@ namespace ChargerLogic
                     _mS.CustomerData.ModoBiberonaggio = sbCliente.ModoBiberonaggio;
                     _mS.CustomerData.ModoRabboccatore = sbCliente.ModoRabboccatore;
                     _mS.CustomerData.ModelloPianificazione = sbCliente.MappaTurni;
+
+                    _mS.CustomerData.EqualPulseCurrent = sbCliente.EqualPulseCurrent;
+                    _mS.CustomerData.EqualMinAttesa = sbCliente.EqualMinAttesa;
+                    _mS.CustomerData.EqualMinPausa = sbCliente.EqualMinPausa;
+                    _mS.CustomerData.EqualMinErogazione = sbCliente.EqualMinErogazione;
+                    _mS.CustomerData.EqualNumImpulsi = sbCliente.EqualNumImpulsi;
+
                     _mS.CustomerData.ResetLivelloCarica = sbCliente.ResetContatori;
 
                     _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;

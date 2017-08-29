@@ -273,7 +273,7 @@
   <data name="strVistaLunghiColOverT" xml:space="preserve">
     <value>Tempo SovraTemp</value>
   </data>
-  <data name="strSottoTitoloPianificazione" xml:space="preserve">
+  <data name="strSottoTitoloPianificazioneTempoBase" xml:space="preserve">
     <value>Durata   -   F.C.   -   Opzioni</value>
   </data>
   <data name="strTitoloPianificazione" xml:space="preserve">
@@ -281,5 +281,8 @@
   </data>
   <data name="strMsgResetSB" xml:space="preserve">
     <value>Reset  SPY-BATT</value>
+  </data>
+  <data name="strSottoTitoloPianificazioneTempoExt" xml:space="preserve">
+    <value>Durata   -   Inizio   -   F.C.   -   Opzioni</value>
   </data>
 </root>

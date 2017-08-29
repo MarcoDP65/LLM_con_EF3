@@ -189,9 +189,18 @@ namespace PannelloCharger {
         /// <summary>
         ///   Cerca una stringa localizzata simile a Durata   -   F.C.   -   Opzioni.
         /// </summary>
-        internal static string strSottoTitoloPianificazione {
+        internal static string strSottoTitoloPianificazioneTempoBase {
             get {
-                return ResourceManager.GetString("strSottoTitoloPianificazione", resourceCulture);
+                return ResourceManager.GetString("strSottoTitoloPianificazioneTempoBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Durata   -   Inizio   -   F.C.   -   Opzioni.
+        /// </summary>
+        internal static string strSottoTitoloPianificazioneTempoExt {
+            get {
+                return ResourceManager.GetString("strSottoTitoloPianificazioneTempoExt", resourceCulture);
             }
         }
         
