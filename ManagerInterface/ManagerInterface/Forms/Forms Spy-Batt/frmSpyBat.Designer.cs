@@ -994,6 +994,8 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.label285 = new System.Windows.Forms.Label();
+            this.txtProgBatteryType = new System.Windows.Forms.TextBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -2559,6 +2561,8 @@
             // grbProgrammazione
             // 
             this.grbProgrammazione.BackColor = System.Drawing.Color.White;
+            this.grbProgrammazione.Controls.Add(this.label285);
+            this.grbProgrammazione.Controls.Add(this.txtProgBatteryType);
             this.grbProgrammazione.Controls.Add(this.txtProgcNumSpire);
             this.grbProgrammazione.Controls.Add(this.txtProgcVersoCorrente);
             this.grbProgrammazione.Controls.Add(this.txtProTensioneRaccordo);
@@ -7736,6 +7740,17 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // label285
+            // 
+            resources.ApplyResources(this.label285, "label285");
+            this.label285.Name = "label285";
+            // 
+            // txtProgBatteryType
+            // 
+            resources.ApplyResources(this.txtProgBatteryType, "txtProgBatteryType");
+            this.txtProgBatteryType.Name = "txtProgBatteryType";
+            this.txtProgBatteryType.ReadOnly = true;
+            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -8909,5 +8924,7 @@
         private System.Windows.Forms.Button btnCalSalvaFWVer;
         private System.Windows.Forms.Label label284;
         private System.Windows.Forms.TextBox txtProgMinAttesaEqual;
+        private System.Windows.Forms.Label label285;
+        private System.Windows.Forms.TextBox txtProgBatteryType;
     }
 }

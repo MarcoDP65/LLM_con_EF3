@@ -319,6 +319,7 @@
             resources.ApplyResources(this.cmbTipoBatteria, "cmbTipoBatteria");
             this.cmbTipoBatteria.FormattingEnabled = true;
             this.cmbTipoBatteria.Name = "cmbTipoBatteria";
+            this.cmbTipoBatteria.SelectedValueChanged += new System.EventHandler(this.cmbTipoBatteria_SelectedValueChanged);
             // 
             // chkSondaElPresente
             // 

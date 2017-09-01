@@ -1387,7 +1387,7 @@ namespace PannelloCharger
                 {
 
 
-                    frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma( _logiche);
+                    frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma( _logiche,ref _parametri);
                     NuovoProgramma._sb = _sb;
                     //NuovoProgramma.MdiParent = this.MdiParent;
                     NuovoProgramma.StartPosition = FormStartPosition.CenterParent;

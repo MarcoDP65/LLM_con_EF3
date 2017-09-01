@@ -9,6 +9,7 @@ using log4net;
 using log4net.Config;
 using FTD2XX_NET;
 using System.Drawing.Printing;
+using MoriData;
 
 namespace ChargerLogic
 {
@@ -44,8 +45,8 @@ namespace ChargerLogic
 
         public string lastError;
 
-        public string currentUser = "Factory";
-        public string currentPassword = "Factory";
+        public string currentUser = "FACTORY";
+        public string currentPassword = "factory";
         public CultureInfo currentCulture = new CultureInfo("it");
         public string currentCultureValue = "it";
         public bool currentSaveLogin = true;
@@ -57,6 +58,7 @@ namespace ChargerLogic
 
         public static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
+        public List<sbTipoBatteria> TipiBattria;
 
         public  parametriSistema()
         {
@@ -67,6 +69,9 @@ namespace ChargerLogic
                 InizializzaFTDI();
 
                 CaricaImpostazioniDefault();
+
+                InizializzaTipiBatteria();
+
                 if (currentCultureValue != "")
                 {
                     currentCulture = new CultureInfo(currentCultureValue);
@@ -77,11 +82,7 @@ namespace ChargerLogic
                 Log.Error("parametriSistema: " + Ex.Message);
             }
 
-
-
-
         }
-
 
         private void InizializzaFTDI()
         {
@@ -185,6 +186,43 @@ namespace ChargerLogic
             }
             catch
             {
+
+            }
+        }
+
+
+        private void InizializzaTipiBatteria()
+        {
+            try
+            {
+                TipiBattria = new List<sbTipoBatteria>();
+
+                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x00, BatteryType = "N.D.", SortOrder = 0, StandardChargeProfile = 0x00, Obsolete = 0xFF });
+                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x71, BatteryType = "Pb/Lead", SortOrder = 1, StandardChargeProfile = 0x01, Obsolete = 0x00 });
+                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x02, BatteryType = "Gel", SortOrder = 2, StandardChargeProfile = 0x0, Obsolete = 0x00 });
+                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x03, BatteryType = "Lithium", SortOrder = 3, StandardChargeProfile = 0x0, Obsolete = 0x00 });
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaTipiBatteria: " + Ex.Message);
+            }
+        }
+
+        public sbTipoBatteria TipoBatteria(byte IdCorrente)
+        {
+            try
+            {
+                foreach (sbTipoBatteria item in TipiBattria)    
+                {
+                    if (item.BatteryTypeId == IdCorrente) return item;
+                }
+
+                return new sbTipoBatteria() { BatteryTypeId = 0x00, BatteryType = "N.D.", SortOrder = 0, StandardChargeProfile = 0x00, Obsolete = 0xFF };
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("TipoBatteria: " + Ex.Message);
+                return new sbTipoBatteria() { BatteryTypeId = 0x00, BatteryType = "N.D.", SortOrder = 0, StandardChargeProfile = 0x00, Obsolete = 0xFF };
 
             }
         }

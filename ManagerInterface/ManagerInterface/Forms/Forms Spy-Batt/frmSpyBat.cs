@@ -1475,6 +1475,7 @@ namespace PannelloCharger
                     txtProgcID.Text = _sb.ProgrammaCorrente.IdProgramma.ToString();
                     txtProgcBattVdef.Text = FunzioniMR.StringaTensione(_sb.ProgrammaCorrente.BatteryVdef) + " V";
                     txtProgcBattAhDef.Text = FunzioniMR.StringaCapacita(_sb.ProgrammaCorrente.BatteryAhdef, 10) + " Ah";
+                    txtProgBatteryType.Text = _parametri.TipoBatteria(_sb.ProgrammaCorrente.BatteryType).BatteryType;
                     txtProgcCelleTot.Text = _sb.ProgrammaCorrente.BatteryCells.ToString();
                     txtProgcCelleV3.Text = _sb.ProgrammaCorrente.BatteryCell3.ToString();
                     txtProgcCelleV2.Text = _sb.ProgrammaCorrente.BatteryCell2.ToString();
@@ -1866,7 +1867,7 @@ namespace PannelloCharger
                 {
 
 
-                    frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma(_logiche);
+                    frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma(_logiche, ref _parametri);
                     NuovoProgramma._sb = _sb;
                     //NuovoProgramma.MdiParent = this.MdiParent;
                     NuovoProgramma.StartPosition = FormStartPosition.CenterParent;

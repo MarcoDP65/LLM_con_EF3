@@ -24,7 +24,7 @@ namespace PannelloCharger
         public sbProgrammaRicarica _ProgAttuale;
 
         private ParametriSetupPro _parametriPro = new ParametriSetupPro();
-
+        private parametriSistema _parametri;
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         LogicheBase _logiche;
 
@@ -36,13 +36,18 @@ namespace PannelloCharger
 
 
 
-        public frmInserimentoProgramma(LogicheBase Logiche)
+        public frmInserimentoProgramma(LogicheBase Logiche, ref parametriSistema _par)
         {
             _logiche = Logiche;
             InitializeComponent();
+            _parametri = _par;
+            cmbTipoBatteria.DataSource = _parametri.TipiBattria;
+            cmbTipoBatteria.DisplayMember = "BatteryType";
+            cmbTipoBatteria.ValueMember = "BatteryTypeId";
 
-            cmbTipoBatteria.Items.Add("Pb");
-            cmbTipoBatteria.Items.Add("Gel");
+
+            //cmbTipoBatteria.Items.Add("Pb");
+            //cmbTipoBatteria.Items.Add("Gel");
             cmbTipoBatteria.SelectedIndex = 0;
             ApplicaAutorizzazioni();
 
@@ -359,8 +364,10 @@ namespace PannelloCharger
 
                 _nuovoProg.BatteryVdef = FunzioniMR.ConvertiUshort(txtProgcBattVdef.Text, 100, 0);
                 _nuovoProg.BatteryAhdef = FunzioniMR.ConvertiUshort(txtProgcBattAhDef.Text, 10, 0);
-                txtProgcBattType.Text = cmbTipoBatteria.SelectedIndex.ToString();
-                _nuovoProg.BatteryType = FunzioniMR.ConvertiByte(txtProgcBattType.Text, 1, 0);
+                //txtProgcBattType.Text = cmbTipoBatteria.SelectedIndex.ToString();
+                //_nuovoProg.BatteryType = FunzioniMR.ConvertiByte(txtProgcBattType.Text, 1, 0);
+
+                _nuovoProg.BatteryType = (byte)cmbTipoBatteria.SelectedValue;
                 _nuovoProg.BatteryCells = FunzioniMR.ConvertiByte(txtProgcCelleTot.Text, 1, 0);
                 _nuovoProg.BatteryCell3 = FunzioniMR.ConvertiByte(txtProgcCelleV3.Text, 1, 0);
                 _nuovoProg.BatteryCell2 = FunzioniMR.ConvertiByte(txtProgcCelleV2.Text, 1, 0);
@@ -710,6 +717,18 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("txtProgcBattAhDef_Leave: " + Ex.Message);
+
+            }
+        }
+
+        private void cmbTipoBatteria_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbTipoBatteria_SelectedValueChanged: " + Ex.Message);
 
             }
         }

@@ -1023,9 +1023,9 @@ namespace PannelloCharger
 
         private void programmazioniAvanzateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            parametriSistema SysPar = new parametriSistema();
             //UnitaSpyBatt _sb = new UnitaSpyBatt(null,0 );
-            frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma(logiche);
+            frmInserimentoProgramma NuovoProgramma = new frmInserimentoProgramma(logiche, ref SysPar);
             //NuovoProgramma._sb = _sb;
             //NuovoProgramma.MdiParent = this.MdiParent;
             NuovoProgramma.TestMode = true;
