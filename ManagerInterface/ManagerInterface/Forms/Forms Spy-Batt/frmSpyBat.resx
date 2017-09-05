@@ -9010,7 +9010,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.10.3.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.10.4.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -10483,7 +10483,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFSerVerificaOC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 92</value>
+    <value>22, 228</value>
   </data>
   <data name="btnFSerVerificaOC.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 34</value>
@@ -10510,7 +10510,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="btnFSerImpostaOC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 92</value>
+    <value>156, 228</value>
   </data>
   <data name="btnFSerImpostaOC.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 34</value>
@@ -10585,10 +10585,10 @@
     <value>5</value>
   </data>
   <data name="grbVarParametriSig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 308</value>
+    <value>1235, 400</value>
   </data>
   <data name="grbVarParametriSig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 133</value>
+    <value>282, 291</value>
   </data>
   <data name="grbVarParametriSig.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -10672,7 +10672,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbVarRestartScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 173</value>
+    <value>1222, 193</value>
   </data>
   <data name="grbVarRestartScheda.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 129</value>
@@ -10702,16 +10702,16 @@
     <value>NoControl</value>
   </data>
   <data name="lblSvcCausaLastReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 142</value>
+    <value>154, 35</value>
   </data>
   <data name="lblSvcCausaLastReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 18</value>
+    <value>47, 18</value>
   </data>
   <data name="lblSvcCausaLastReset.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
   </data>
   <data name="lblSvcCausaLastReset.Text" xml:space="preserve">
-    <value>Causa Ultimo Reset</value>
+    <value>Reset</value>
   </data>
   <data name="&gt;&gt;lblSvcCausaLastReset.Name" xml:space="preserve">
     <value>lblSvcCausaLastReset</value>
@@ -10729,10 +10729,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtSvcCausaLastReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 138</value>
+    <value>157, 56</value>
   </data>
   <data name="txtSvcCausaLastReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 27</value>
+    <value>49, 27</value>
   </data>
   <data name="txtSvcCausaLastReset.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -10759,13 +10759,13 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtSvcSecDurataPause.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 98</value>
+    <value>115, 98</value>
   </data>
   <data name="txtSvcSecDurataPause.Mask" xml:space="preserve">
     <value>00:00:00</value>
   </data>
   <data name="txtSvcSecDurataPause.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 27</value>
+    <value>91, 27</value>
   </data>
   <data name="txtSvcSecDurataPause.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -10822,10 +10822,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnSvcScriviParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 184</value>
+    <value>125, 142</value>
   </data>
   <data name="btnSvcScriviParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 36</value>
+    <value>81, 31</value>
   </data>
   <data name="btnSvcScriviParametriMedie.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -10849,10 +10849,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnSvcLeggiParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 184</value>
+    <value>22, 142</value>
   </data>
   <data name="btnSvcLeggiParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 36</value>
+    <value>81, 31</value>
   </data>
   <data name="btnSvcLeggiParametriMedie.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -10879,16 +10879,16 @@
     <value>NoControl</value>
   </data>
   <data name="label252.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 68</value>
+    <value>75, 35</value>
   </data>
   <data name="label252.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 18</value>
+    <value>67, 18</value>
   </data>
   <data name="label252.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
   </data>
   <data name="label252.Text" xml:space="preserve">
-    <value>Num Letture V/°c</value>
+    <value>Lett. V/°c</value>
   </data>
   <data name="&gt;&gt;label252.Name" xml:space="preserve">
     <value>label252</value>
@@ -10906,10 +10906,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtSvcNumLettureTens.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 64</value>
+    <value>78, 56</value>
   </data>
   <data name="txtSvcNumLettureTens.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 27</value>
+    <value>57, 27</value>
   </data>
   <data name="txtSvcNumLettureTens.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -10939,16 +10939,16 @@
     <value>NoControl</value>
   </data>
   <data name="label251.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 35</value>
+    <value>12, 35</value>
   </data>
   <data name="label251.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 18</value>
+    <value>60, 18</value>
   </data>
   <data name="label251.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
   <data name="label251.Text" xml:space="preserve">
-    <value>Numero Letture I</value>
+    <value>Letture I</value>
   </data>
   <data name="&gt;&gt;label251.Name" xml:space="preserve">
     <value>label251</value>
@@ -10966,10 +10966,10 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtSvcNumLettureCorr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 31</value>
+    <value>15, 56</value>
   </data>
   <data name="txtSvcNumLettureCorr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 27</value>
+    <value>57, 27</value>
   </data>
   <data name="txtSvcNumLettureCorr.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -10996,10 +10996,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbSvcParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 447</value>
+    <value>965, 193</value>
   </data>
   <data name="grbSvcParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 244</value>
+    <value>226, 191</value>
   </data>
   <data name="grbSvcParametriMedie.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -27944,7 +27944,7 @@ SPY-BATT</value>
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>106</value>
+    <value>56</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>

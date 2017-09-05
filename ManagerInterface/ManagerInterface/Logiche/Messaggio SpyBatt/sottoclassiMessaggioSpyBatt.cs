@@ -359,6 +359,8 @@ namespace ChargerLogic
                         case 6:
                         case 7:
                         case 8:
+                        case 9:
+                        case 10:
                             {
                                 _esitoLocale = _analizzaMessaggioLev4(_messaggio, fwLevel, DatiPuri);
                                 break;

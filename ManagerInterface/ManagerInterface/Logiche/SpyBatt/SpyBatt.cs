@@ -1167,7 +1167,11 @@ namespace ChargerLogic
                                         _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true);
                                         if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                                         {
-                                            _CicliMemoriaBreve.Add(_tempBreve);
+                                            // Se effettivamente il breve caricato appartiene al lungo corrente
+                                            if (_tempBreve.IdEvento == _memLn.IdMemoriaLunga)
+                                            {
+                                                _CicliMemoriaBreve.Add(_tempBreve);
+                                            }
                                         }
                                         _areaStart += _areaSize;
                                     }
@@ -1692,7 +1696,11 @@ namespace ChargerLogic
                                         _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true);
                                         if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                                         {
-                                            _CicliMemoriaBreve.Add(_tempBreve);
+                                            // Se effettivamente il breve caricato appartiene al lungo corrente
+                                            if (_tempBreve.IdCicloLungo == _memLn.IdMemoriaLunga)
+                                            {
+                                                _CicliMemoriaBreve.Add(_tempBreve);
+                                            }
                                         }
                                         _areaStart += _areaSize;
                                         if (_areaStart > _ultimoBreve) _ultimoBreve = _areaStart;
@@ -1738,7 +1746,7 @@ namespace ChargerLogic
                                         {
 
                                             _memBr.IdApparato = IdApparato;
-                                            _memBr.IdMemoriaLunga = (int)_memLn.IdMemoriaLunga;
+                                            _memBr.IdMemoriaLunga = (int)_cicloBr.IdCicloLungo;   //  (int)_memLn.IdMemoriaLunga;
                                             _memBr.IdMemoriaBreve = _numCiclo;
                                             _memBr.DataOraRegistrazione = StringaTimestamp(_cicloBr.DataOraRegistrazione);
                                             _memBr.Vreg = _cicloBr.Vreg;

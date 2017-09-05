@@ -231,6 +231,8 @@
             this.cmbBiberonaggio = new System.Windows.Forms.ComboBox();
             this.lblPro09 = new System.Windows.Forms.Label();
             this.grbProgrammazione = new System.Windows.Forms.GroupBox();
+            this.label285 = new System.Windows.Forms.Label();
+            this.txtProgBatteryType = new System.Windows.Forms.TextBox();
             this.txtProgcNumSpire = new System.Windows.Forms.TextBox();
             this.txtProgcVersoCorrente = new System.Windows.Forms.TextBox();
             this.txtProTensioneRaccordo = new System.Windows.Forms.TextBox();
@@ -994,8 +996,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.label285 = new System.Windows.Forms.Label();
-            this.txtProgBatteryType = new System.Windows.Forms.TextBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -2621,6 +2621,17 @@
             resources.ApplyResources(this.grbProgrammazione, "grbProgrammazione");
             this.grbProgrammazione.Name = "grbProgrammazione";
             this.grbProgrammazione.TabStop = false;
+            // 
+            // label285
+            // 
+            resources.ApplyResources(this.label285, "label285");
+            this.label285.Name = "label285";
+            // 
+            // txtProgBatteryType
+            // 
+            resources.ApplyResources(this.txtProgBatteryType, "txtProgBatteryType");
+            this.txtProgBatteryType.Name = "txtProgBatteryType";
+            this.txtProgBatteryType.ReadOnly = true;
             // 
             // txtProgcNumSpire
             // 
@@ -7739,17 +7750,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // label285
-            // 
-            resources.ApplyResources(this.label285, "label285");
-            this.label285.Name = "label285";
-            // 
-            // txtProgBatteryType
-            // 
-            resources.ApplyResources(this.txtProgBatteryType, "txtProgBatteryType");
-            this.txtProgBatteryType.Name = "txtProgBatteryType";
-            this.txtProgBatteryType.ReadOnly = true;
             // 
             // frmSpyBat
             // 
