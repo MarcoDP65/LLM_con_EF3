@@ -381,6 +381,20 @@
             this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
             this.grbVarParametriSig = new System.Windows.Forms.GroupBox();
+            this.txtSigNumLetture = new System.Windows.Forms.TextBox();
+            this.txtSigPercInt = new System.Windows.Forms.TextBox();
+            this.txtSigPercErr = new System.Windows.Forms.TextBox();
+            this.txtSigReg1Err = new System.Windows.Forms.TextBox();
+            this.txtSigReg0Err = new System.Windows.Forms.TextBox();
+            this.txtSigReg1 = new System.Windows.Forms.TextBox();
+            this.txtSigReg0 = new System.Windows.Forms.TextBox();
+            this.lblSigPercInt = new System.Windows.Forms.Label();
+            this.label291 = new System.Windows.Forms.Label();
+            this.label290 = new System.Windows.Forms.Label();
+            this.label289 = new System.Windows.Forms.Label();
+            this.label288 = new System.Windows.Forms.Label();
+            this.label287 = new System.Windows.Forms.Label();
+            this.label286 = new System.Windows.Forms.Label();
             this.label279 = new System.Windows.Forms.Label();
             this.cmbFSerEchoOC = new System.Windows.Forms.ComboBox();
             this.btnFSerVerificaOC = new System.Windows.Forms.Button();
@@ -3660,15 +3674,114 @@
             // grbVarParametriSig
             // 
             this.grbVarParametriSig.BackColor = System.Drawing.Color.White;
+            this.grbVarParametriSig.Controls.Add(this.txtSigNumLetture);
+            this.grbVarParametriSig.Controls.Add(this.txtSigPercInt);
+            this.grbVarParametriSig.Controls.Add(this.txtSigPercErr);
+            this.grbVarParametriSig.Controls.Add(this.txtSigReg1Err);
+            this.grbVarParametriSig.Controls.Add(this.txtSigReg0Err);
+            this.grbVarParametriSig.Controls.Add(this.txtSigReg1);
+            this.grbVarParametriSig.Controls.Add(this.txtSigReg0);
+            this.grbVarParametriSig.Controls.Add(this.lblSigPercInt);
+            this.grbVarParametriSig.Controls.Add(this.label291);
+            this.grbVarParametriSig.Controls.Add(this.label290);
+            this.grbVarParametriSig.Controls.Add(this.label289);
+            this.grbVarParametriSig.Controls.Add(this.label288);
+            this.grbVarParametriSig.Controls.Add(this.label287);
+            this.grbVarParametriSig.Controls.Add(this.label286);
             this.grbVarParametriSig.Controls.Add(this.label279);
             this.grbVarParametriSig.Controls.Add(this.cmbFSerEchoOC);
             this.grbVarParametriSig.Controls.Add(this.btnFSerVerificaOC);
             this.grbVarParametriSig.Controls.Add(this.btnFSerImpostaOC);
             this.grbVarParametriSig.Controls.Add(this.label278);
             this.grbVarParametriSig.Controls.Add(this.cmbFSerBaudrateOC);
+            this.grbVarParametriSig.ForeColor = System.Drawing.Color.Red;
             resources.ApplyResources(this.grbVarParametriSig, "grbVarParametriSig");
             this.grbVarParametriSig.Name = "grbVarParametriSig";
             this.grbVarParametriSig.TabStop = false;
+            // 
+            // txtSigNumLetture
+            // 
+            resources.ApplyResources(this.txtSigNumLetture, "txtSigNumLetture");
+            this.txtSigNumLetture.Name = "txtSigNumLetture";
+            this.txtSigNumLetture.ReadOnly = true;
+            // 
+            // txtSigPercInt
+            // 
+            resources.ApplyResources(this.txtSigPercInt, "txtSigPercInt");
+            this.txtSigPercInt.Name = "txtSigPercInt";
+            this.txtSigPercInt.ReadOnly = true;
+            // 
+            // txtSigPercErr
+            // 
+            resources.ApplyResources(this.txtSigPercErr, "txtSigPercErr");
+            this.txtSigPercErr.Name = "txtSigPercErr";
+            this.txtSigPercErr.ReadOnly = true;
+            // 
+            // txtSigReg1Err
+            // 
+            resources.ApplyResources(this.txtSigReg1Err, "txtSigReg1Err");
+            this.txtSigReg1Err.Name = "txtSigReg1Err";
+            this.txtSigReg1Err.ReadOnly = true;
+            // 
+            // txtSigReg0Err
+            // 
+            resources.ApplyResources(this.txtSigReg0Err, "txtSigReg0Err");
+            this.txtSigReg0Err.Name = "txtSigReg0Err";
+            this.txtSigReg0Err.ReadOnly = true;
+            // 
+            // txtSigReg1
+            // 
+            resources.ApplyResources(this.txtSigReg1, "txtSigReg1");
+            this.txtSigReg1.Name = "txtSigReg1";
+            this.txtSigReg1.ReadOnly = true;
+            // 
+            // txtSigReg0
+            // 
+            resources.ApplyResources(this.txtSigReg0, "txtSigReg0");
+            this.txtSigReg0.Name = "txtSigReg0";
+            this.txtSigReg0.ReadOnly = true;
+            // 
+            // lblSigPercInt
+            // 
+            resources.ApplyResources(this.lblSigPercInt, "lblSigPercInt");
+            this.lblSigPercInt.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblSigPercInt.Name = "lblSigPercInt";
+            // 
+            // label291
+            // 
+            resources.ApplyResources(this.label291, "label291");
+            this.label291.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label291.Name = "label291";
+            // 
+            // label290
+            // 
+            resources.ApplyResources(this.label290, "label290");
+            this.label290.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label290.Name = "label290";
+            // 
+            // label289
+            // 
+            resources.ApplyResources(this.label289, "label289");
+            this.label289.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label289.Name = "label289";
+            // 
+            // label288
+            // 
+            resources.ApplyResources(this.label288, "label288");
+            this.label288.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label288.Name = "label288";
+            // 
+            // label287
+            // 
+            resources.ApplyResources(this.label287, "label287");
+            this.label287.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label287.Name = "label287";
+            // 
+            // label286
+            // 
+            resources.ApplyResources(this.label286, "label286");
+            this.label286.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label286.Name = "label286";
             // 
             // label279
             // 
@@ -3685,6 +3798,7 @@
             // btnFSerVerificaOC
             // 
             resources.ApplyResources(this.btnFSerVerificaOC, "btnFSerVerificaOC");
+            this.btnFSerVerificaOC.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnFSerVerificaOC.Name = "btnFSerVerificaOC";
             this.btnFSerVerificaOC.UseVisualStyleBackColor = true;
             this.btnFSerVerificaOC.Click += new System.EventHandler(this.btnFSerVerificaOC_Click);
@@ -3692,6 +3806,7 @@
             // btnFSerImpostaOC
             // 
             resources.ApplyResources(this.btnFSerImpostaOC, "btnFSerImpostaOC");
+            this.btnFSerImpostaOC.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnFSerImpostaOC.Name = "btnFSerImpostaOC";
             this.btnFSerImpostaOC.UseVisualStyleBackColor = true;
             this.btnFSerImpostaOC.Click += new System.EventHandler(this.btnFSerImpostaOC_Click);
@@ -3699,6 +3814,7 @@
             // label278
             // 
             resources.ApplyResources(this.label278, "label278");
+            this.label278.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label278.Name = "label278";
             // 
             // cmbFSerBaudrateOC
@@ -8926,5 +9042,19 @@
         private System.Windows.Forms.TextBox txtProgMinAttesaEqual;
         private System.Windows.Forms.Label label285;
         private System.Windows.Forms.TextBox txtProgBatteryType;
+        private System.Windows.Forms.Label lblSigPercInt;
+        private System.Windows.Forms.Label label291;
+        private System.Windows.Forms.Label label290;
+        private System.Windows.Forms.Label label289;
+        private System.Windows.Forms.Label label288;
+        private System.Windows.Forms.Label label287;
+        private System.Windows.Forms.Label label286;
+        private System.Windows.Forms.TextBox txtSigNumLetture;
+        private System.Windows.Forms.TextBox txtSigPercInt;
+        private System.Windows.Forms.TextBox txtSigPercErr;
+        private System.Windows.Forms.TextBox txtSigReg1Err;
+        private System.Windows.Forms.TextBox txtSigReg0Err;
+        private System.Windows.Forms.TextBox txtSigReg1;
+        private System.Windows.Forms.TextBox txtSigReg0;
     }
 }

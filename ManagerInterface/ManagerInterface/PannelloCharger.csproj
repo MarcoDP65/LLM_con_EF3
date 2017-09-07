@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>2.10.4.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -239,6 +239,7 @@
     <Compile Include="Database\sbPacchettoFirmware.cs" />
     <Compile Include="Database\sbParametriGenerali.cs" />
     <Compile Include="Database\sbProgrammaRicarica.cs" />
+    <Compile Include="Database\sbSig60Parameters.cs" />
     <Compile Include="Database\sbSoglie.cs" />
     <Compile Include="Database\sbStatoFirmware.cs" />
     <Compile Include="Database\sbTestataCalibrazione.cs" />

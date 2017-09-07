@@ -157,7 +157,10 @@ namespace ChargerLogic
                 {
                     // Eseguo solo se la connessione all'apparato è attiva
                     //_mS.ParametriGenerali = new MessaggioSpyBatt.ParametriSpybatt();
+
                     _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_ParametriSIG60;
+                    _mS.StatoTrxOC = new MessaggioSpyBatt.StatoSig60();
+                    StatoSig60 = new sbSig60Parameters();
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
                     skipHead = true;
@@ -167,9 +170,20 @@ namespace ChargerLogic
                     _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
                     if (_esito)
                     {
+                        StatoSig60.OCBaudrate = _mS.StatoTrxOC.OCBaudrate;
+                        StatoSig60.DatiEstesi = _mS.StatoTrxOC.DatiEstesi;
+                        StatoSig60.ControlReg0 = _mS.StatoTrxOC.ControlReg0;
+                        StatoSig60.ControlReg1 = _mS.StatoTrxOC.ControlReg1;
+                        StatoSig60.ControlReg0_Err = _mS.StatoTrxOC.ControlReg0_Err;
+                        StatoSig60.ControlReg1_Err = _mS.StatoTrxOC.ControlReg1_Err;
+
+                        StatoSig60.NumLetture = _mS.StatoTrxOC.NumLetture;
+                        StatoSig60.NumErrori = _mS.StatoTrxOC.NumErrori;
+                        StatoSig60.NumInterferenze = _mS.StatoTrxOC.NumInterferenze;
 
                         BrOCcorrente = _mS.BrOCcorrente;
                     }
+
                 }
                 return _esito;
             }

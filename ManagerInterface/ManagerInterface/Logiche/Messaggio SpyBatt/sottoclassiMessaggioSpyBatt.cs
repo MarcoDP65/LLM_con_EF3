@@ -1652,6 +1652,8 @@ namespace ChargerLogic
                         case 6:
                         case 7:
                         case 8:
+                        case 9:
+                        case 10:
                             {
                                 _esitoLocale = analizzaMessaggioLev4(_messaggio, fwLevel);
                                 break;
@@ -2309,6 +2311,184 @@ namespace ChargerLogic
 
 
         }
+
+        public class StatoSig60
+        {
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public ushort numBytes;
+            public UInt32 memAddress;
+            public byte[] memData;
+            public byte[] memDataDecoded;
+
+            public byte OCBaudrate;
+
+            public byte ControlReg0;
+            public byte ControlReg1;
+
+            public byte ControlReg0_Err;
+            public byte ControlReg1_Err;
+
+            public uint NumLetture;
+            public uint NumErrori;
+            public uint NumInterferenze;
+
+            private bool _datiEstesi = false;
+            private bool _datiPronti = false;
+
+
+
+            public byte ComandoLibreria;
+            public byte LunghezzaDati;
+            public byte EsitoChiamata;
+
+
+            public bool datiPronti;
+
+            public StatoSig60()
+            {
+                _datiEstesi = false;
+                _datiPronti = false;
+
+                NumLetture = 0;
+                NumErrori = 0;
+                NumInterferenze = 0;
+
+            }
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempShort;
+                byte _tempByte;
+
+                try
+                {
+                    datiPronti = false;
+                    LunghezzaDati = 0;
+                    if (_messaggio.Length < 2)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+                    numBytes = (ushort)(_messaggio.Length / 2);
+                    _risposta = new byte[numBytes];
+
+                    if (decodificaArray(_messaggio, ref _risposta))
+                    {
+
+                        if (_risposta.Length < 1)
+                            return EsitoRisposta.RispostaNonValida;
+
+
+                        if (_risposta.Length == 1)
+                        {
+                            OCBaudrate = _risposta[0];
+
+
+                            ControlReg0 = 0x00;
+                            ControlReg1 = 0x00;
+
+                            ControlReg0_Err = 0x00;
+                            ControlReg1_Err = 0x00;
+
+                            NumLetture = 0;
+                            NumErrori = 0;
+                            NumInterferenze = 0;
+
+                            _datiEstesi = false;
+                            _datiPronti = true;
+                            //datiPronti = true;
+                            return EsitoRisposta.MessaggioOk;
+                        }
+
+
+                        if (_risposta.Length > 14)
+                        {
+                            OCBaudrate = _risposta[0];
+
+
+                            ControlReg0 = _risposta[1];
+                            ControlReg1 = _risposta[2];
+
+                            ControlReg0_Err = _risposta[3];
+                            ControlReg1_Err = _risposta[4];
+
+                            NumLetture = ArrayToUint32(_risposta, 3, 4);
+                            NumErrori = ArrayToUint32(_risposta, 7, 4);
+                            NumInterferenze = ArrayToUint32(_risposta, 11, 4);
+
+                            _datiEstesi = true;
+                            _datiPronti = true;
+                            return EsitoRisposta.MessaggioOk;
+                        }
+
+                        return EsitoRisposta.RispostaNonValida;
+                    }
+                    return EsitoRisposta.RispostaNonValida;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+
+
+
+            public EsitoRisposta componiMessaggio(byte[] _messaggio)
+            {
+                ushort _tempShort;
+                byte _tempByte;
+                byte[] _tempArray;
+                byte[] _tempMessaggio = new byte[10];
+                byte[] _tempFromShort = new byte[2];
+
+                try
+                {
+                    //l'intestazione deve essere pronta
+
+                    datiPronti = false;
+
+                    if (_messaggio.Length != 10) { return EsitoRisposta.NonRiconosciuto; }
+
+                    _tempByte = decodificaByte(_messaggio[0], _messaggio[1]);
+                    _tempShort = (ushort)(_tempByte);
+                    _tempByte = decodificaByte(_messaggio[2], _messaggio[3]);
+                    _tempShort = (ushort)((_tempShort << 8) + _tempByte);
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+            public bool DatiEstesi
+            {
+                get
+                {
+                    return _datiEstesi;
+                }
+            }
+
+            public bool DatiPronti
+            {
+                get
+                {
+                    return _datiPronti;
+                }
+            }
+        }
+
 
         public class EsitoMessaggio
         {

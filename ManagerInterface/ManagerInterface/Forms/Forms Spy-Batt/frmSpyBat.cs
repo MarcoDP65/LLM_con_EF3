@@ -4150,7 +4150,7 @@ namespace PannelloCharger
                 //prima elimino le esistenti
                 foreach (TabPage _pagina in tbcStatistiche.TabPages)
                 {
-                    if (_pagina.Tag == "GRAFICO")
+                    if ((string)_pagina.Tag == "GRAFICO")
                         tbcStatistiche.TabPages.Remove(_pagina);
                 }
 
@@ -8107,7 +8107,7 @@ namespace PannelloCharger
                 //prima elimino le esistenti
                 foreach (TabPage _pagina in tbcStatistiche.TabPages)
                 {
-                    if (_pagina.Tag == "GRAFICO")
+                    if ((string)_pagina.Tag == "GRAFICO")
                         tbcStatistiche.TabPages.Remove(_pagina);
                 }
 
@@ -8914,7 +8914,19 @@ namespace PannelloCharger
                 //txtSvcSecDurataPause.Text = "";
 
                 cmbFSerBaudrateOC.SelectedValue = _sb.BrOCcorrente;
+                if (_sb.StatoSig60.DatiEstesi)
+                {
+                    txtSigReg0.Text = _sb.StatoSig60.ControlReg0.ToString("x2").ToUpper();
+                    txtSigReg1.Text = _sb.StatoSig60.ControlReg1.ToString("x2").ToUpper();
 
+                    txtSigReg0Err.Text = _sb.StatoSig60.ControlReg0_Err.ToString("x2").ToUpper();
+                    txtSigReg1Err.Text = _sb.StatoSig60.ControlReg1_Err.ToString("x2").ToUpper();
+
+                    txtSigNumLetture.Text = _sb.StatoSig60.NumLetture.ToString();
+                    txtSigPercErr.Text = _sb.StatoSig60.NumErrori.ToString();
+                    txtSigPercInt.Text = _sb.StatoSig60.NumInterferenze.ToString();
+
+                }
                 return true;
             }
             catch (Exception Ex)

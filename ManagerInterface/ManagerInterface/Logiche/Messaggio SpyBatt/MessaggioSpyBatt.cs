@@ -36,6 +36,8 @@ namespace ChargerLogic
         public OcBaudRate  BrOCcorrente = OcBaudRate.OFF;
         public OcEchoMode EchoOCcorrente = OcEchoMode.OFF;
 
+        public StatoSig60 StatoTrxOC;
+
 
         public byte _comandoInvio;
         public byte _pacchettoInviato;
@@ -193,7 +195,6 @@ namespace ChargerLogic
                             _crc = 0;
                             Log.Warn("--- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK ---");
                             return EsitoRisposta.ErroreGenerico;
-                            break;
                         }
 
                     case (byte)TipoComando.SB_DatiIniziali:  //risposta parametri iniziali
@@ -696,6 +697,8 @@ namespace ChargerLogic
                                     BrOCcorrente = (OcBaudRate)_tempByte;
                                 else
                                     BrOCcorrente = OcBaudRate.OFF;
+                                _risposta = StatoTrxOC.analizzaMessaggio(_buffArray);
+                                if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
                             }
                             else
                             {
@@ -876,7 +879,7 @@ namespace ChargerLogic
 
                     default:
                         return EsitoRisposta.NonRiconosciuto;
-                        break;
+                       
                 }
 
 

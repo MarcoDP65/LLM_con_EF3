@@ -554,7 +554,7 @@ namespace ChargerLogic
 
                     default:
                         return EsitoRisposta.NonRiconosciuto;
-                     break;
+
                 }
 
 

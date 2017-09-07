@@ -868,10 +868,9 @@ namespace ChargerLogic
 
                     default:
                         return false;
-                        //  break;
+                        
                 }
 
-                return _esito;
             }
             catch
             {

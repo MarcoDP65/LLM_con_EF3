@@ -45,7 +45,7 @@ namespace ChargerLogic
         public sbStatoFirmware StatoFirmware = new sbStatoFirmware();
         public sbParametriGenerali ParametriGenerali = new sbParametriGenerali();
         public sbProgrammaRicarica ProgrammaCorrente;
-    
+        public sbSig60Parameters StatoSig60 = new sbSig60Parameters();
 
         //Strutture Memoria
 
