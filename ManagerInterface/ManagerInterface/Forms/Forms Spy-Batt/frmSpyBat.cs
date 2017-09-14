@@ -2144,8 +2144,16 @@ namespace PannelloCharger
                 HeaderFormatStyle _stile = new HeaderFormatStyle();
                 BarRenderer _barraCortiCaricati = new BarRenderer();
                 ColumnHeaderStyle _chsLunghi = new ColumnHeaderStyle();
-                
 
+                bool ColonnaFactory = false;
+
+                if (_logiche.currentUser != null)
+                {
+                    if(_logiche.currentUser.livello<1)
+                    {
+                        ColonnaFactory = true;
+                    }
+                }
                 bool _colonnaNascosta = true;
                 int LivelloCorrente;
                 if (_logiche.currentUser != null)
@@ -2675,15 +2683,95 @@ namespace PannelloCharger
                 flvwCicliBatteria.AllColumns.Add(Colonna20);
 
 
-                BrightIdeasSoftware.OLVColumn colCondStop = new BrightIdeasSoftware.OLVColumn();
-                colCondStop.Text = "Stop";
-                colCondStop.AspectName = "strCondizioneStop";
-                colCondStop.Sortable = false;
-                colCondStop.Width = 40;
-                colCondStop.HeaderTextAlign = HorizontalAlignment.Center;
-                colCondStop.TextAlign = HorizontalAlignment.Center;
-                colCondStop.IsVisible = false;
+                BrightIdeasSoftware.OLVColumn colCondStop = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Stop",
+                    AspectName = "strCondizioneStop",
+                    Sortable = false,
+                    Width = 40,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = ColonnaFactory,
+                };
+                    
                 flvwCicliBatteria.AllColumns.Add(colCondStop);
+
+
+                BrightIdeasSoftware.OLVColumn tipoCaricatore = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Tipo LL",
+                    ToolTipText = "Tipo Caricabatteria",
+                    AspectName = "strTipoCariatore",
+                    AspectGetter = delegate (object _Valore)
+                    {
+                        sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                        if (_tempVal.TipoEvento == 0xF0)
+                        {
+                            return _tempVal.strTipoCariatore; 
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    },
+                    Sortable = false,
+                    Width = 40,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = ColonnaFactory,
+                };
+                flvwCicliBatteria.AllColumns.Add(tipoCaricatore);
+
+
+                BrightIdeasSoftware.OLVColumn IdCaricatore = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "ID LL",
+                    ToolTipText = "Serial ID Caricabatteria",
+                    AspectName = "strIdCaricatore",
+                    AspectGetter = delegate (object _Valore)
+                    {
+                        sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                        if (_tempVal.TipoEvento == 0xF0)
+                        {
+                            return _tempVal.strIdCaricatore;
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    },
+                    Sortable = false,
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = ColonnaFactory,
+                };
+                flvwCicliBatteria.AllColumns.Add(IdCaricatore);
+
+                BrightIdeasSoftware.OLVColumn CodiceStopCB = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Stop LL",
+                    ToolTipText = "Causale stop da caricabatteria",
+                    AspectGetter = delegate (object _Valore)
+                    {
+                        sbMemLunga _tempVal = (sbMemLunga)_Valore;
+                        if (_tempVal.TipoEvento == 0xF0)
+                        {
+                            return _tempVal.strChargerStop;
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    },
+                    Sortable = false,
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = ColonnaFactory,
+                };
+                flvwCicliBatteria.AllColumns.Add(CodiceStopCB);
+
 
                 BrightIdeasSoftware.OLVColumn colIdProgramma = new BrightIdeasSoftware.OLVColumn();
                 colIdProgramma.Text = StringheMessaggio.strVistaLunghiColIdProgramma; //"Conf";
@@ -4042,7 +4130,7 @@ namespace PannelloCharger
                             this.Cursor = Cursors.WaitCursor;
                             _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
                             MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
-                            _sb.CaricaStatoOC(_sb.Id, _apparatoPresente);
+                            _sb.CaricaStatoOC(_sb.Id, _apparatoPresente,chkFSerResetCnt.Checked);
                             MostraParametriOC();
                             this.Cursor = Cursors.Default;
                         }
@@ -9483,7 +9571,7 @@ namespace PannelloCharger
         {
             try
             {
-                _sb.CaricaStatoOC(_sb.Id, _apparatoPresente);
+                _sb.CaricaStatoOC(_sb.Id, _apparatoPresente, chkFSerResetCnt.Checked);
                 MostraParametriOC();
             }
             catch (Exception Ex)
@@ -9519,7 +9607,7 @@ namespace PannelloCharger
                     this.Close();
 
                 }
-                _sb.CaricaStatoOC(_sb.Id, _apparatoPresente);
+                _sb.CaricaStatoOC(_sb.Id, _apparatoPresente, chkFSerResetCnt.Checked);
 
                 MostraParametriOC();
 

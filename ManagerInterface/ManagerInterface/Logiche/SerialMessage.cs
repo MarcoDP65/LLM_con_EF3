@@ -96,6 +96,7 @@ namespace ChargerLogic
             LL_R_LeggiMemoria = 0x34,
             LL_W_ScriviMemoria = 0x36,
             LL_R_DumpMemoria = 0x37,
+            LL_W_FineCarica = 0x63,
 
         };
 

@@ -319,7 +319,8 @@ namespace ChargerLogic
             public byte CondizioneStop;
             public byte FattoreCarica;
             public byte StatoCatica;
-            public ushort TipoCariatore;
+            public byte ChargerStop;
+            public byte TipoCaricatore;
             public UInt32 IdCaricatore;
 
             byte[] _dataBuffer;
@@ -505,8 +506,10 @@ namespace ChargerLogic
                         startByte += 1;
                         StatoCatica = _risposta[startByte];
                         startByte += 1;
-                        TipoCariatore = ArrayToUshort(_risposta, startByte, 2);
-                        startByte += 2;
+                        ChargerStop = _risposta[startByte];
+                        startByte += 1;
+                        TipoCaricatore = _risposta[startByte];
+                        startByte += 1;
                         IdCaricatore = ArrayToUint32(_risposta, startByte, 3);
                         startByte += 3;
 
@@ -618,8 +621,10 @@ namespace ChargerLogic
                         startByte += 1;
                         StatoCatica = _risposta[startByte];
                         startByte += 1;
-                        TipoCariatore = ArrayToUshort(_risposta, startByte, 2);
-                        startByte += 2;
+                        ChargerStop = _risposta[startByte];
+                        startByte += 1;
+                        TipoCaricatore = _risposta[startByte];
+                        startByte += 1;
                         IdCaricatore = ArrayToUint32(_risposta, startByte, 3);
                         startByte += 3;
 
@@ -2417,9 +2422,9 @@ namespace ChargerLogic
                             ControlReg0_Err = _risposta[3];
                             ControlReg1_Err = _risposta[4];
 
-                            NumLetture = ArrayToUint32(_risposta, 3, 4);
-                            NumErrori = ArrayToUint32(_risposta, 7, 4);
-                            NumInterferenze = ArrayToUint32(_risposta, 11, 4);
+                            NumLetture = ArrayToUint32(_risposta, 5, 4);
+                            NumInterferenze = ArrayToUint32(_risposta, 9, 4);
+                            NumErrori  = ArrayToUint32(_risposta, 13, 4);
 
                             _datiEstesi = true;
                             _datiPronti = true;

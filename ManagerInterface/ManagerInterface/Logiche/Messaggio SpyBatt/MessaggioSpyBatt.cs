@@ -37,6 +37,7 @@ namespace ChargerLogic
         public OcEchoMode EchoOCcorrente = OcEchoMode.OFF;
 
         public StatoSig60 StatoTrxOC;
+        public byte ReserCounterOC;
 
 
         public byte _comandoInvio;

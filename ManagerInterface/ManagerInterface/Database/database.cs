@@ -185,7 +185,7 @@ namespace MoriData
             {
                 _utente[] usr = {
                                   new _utente { Id = 1, Username = "FACTORY", Password = Utility.StringCipher.PasswordEncrypt("factory"), NomeUtente = "Livello Factory", Livello = 0, Lingua = 0, Attivo = 1 },
-                                  //new _utente { Id = 2, Username = "SERVICE", Password = Utility.StringCipher.PasswordEncrypt("service"), NomeUtente = "Livello Service", Livello = 1, Lingua = 0, Attivo = 1 },
+                                  new _utente { Id = 2, Username = "SERVICE", Password = Utility.StringCipher.PasswordEncrypt("MS13ZXY6645AHKY"), NomeUtente = "Livello Service", Livello = 1, Lingua = 0, Attivo = 1 },
                                   new _utente { Id = 3, Username = "POWERUSER", Password = Utility.StringCipher.PasswordEncrypt("PU51KSX33R"), NomeUtente = "Livello Power User", Livello = 2, Lingua = 0, Attivo = 1 },
                                   new _utente { Id = 4, Username = "USER", Password = Utility.StringCipher.PasswordEncrypt("UT16MR28"), NomeUtente = "Livello User", Livello = 3, Lingua = 0, Attivo = 1 }
                                 };

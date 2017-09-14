@@ -66,6 +66,7 @@ namespace MoriData
         public UInt32 DurataSbilanciamento { get; set; }
         public UInt32 DurataOverTemp { get; set; }
         public DateTime DataLastDownload { get; set; }
+        public byte ChargerStop { get; set; }
 
 
 
@@ -1751,6 +1752,14 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+        public string strTipoCariatore
+        {
+            get
+            {
+                return _sblm.TipoCariatore.ToString();
+            }
+
+        }
 
         public UInt32 IdCaricatore
         {
@@ -1759,6 +1768,15 @@ namespace MoriData
             {
                 _sblm.IdCaricatore = value;
                 _datiSalvati = false;
+            }
+        }
+
+
+        public string strIdCaricatore
+        {
+            get
+            {
+                return _sblm.IdCaricatore.ToString("x6");
             }
         }
 
@@ -1844,6 +1862,70 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+        public byte ChargerStop
+        {
+            get { return _sblm.ChargerStop; }
+            set
+            {
+                _sblm.ChargerStop = value;
+                _datiSalvati = false;
+            }
+
+        }
+
+        public string strChargerStop
+        {
+            get
+            {
+                string _descrStato = "?";
+                switch (_sblm.ChargerStop)
+                {
+                    case 0x00:
+                        {
+                            _descrStato = "Strappo (00)";
+                            break;
+                        }
+                    case 0x01:
+                        {
+                            _descrStato = "Ah-SB (01)";
+                            break;
+                        }
+
+                    case 0x02:
+                        {
+                            _descrStato = "Ah-LL (02)";
+                            break;
+                        }
+                    case 0x03:
+                        {
+                            _descrStato = "KBD (03)";
+                            break;
+                        }
+                    case 0x04:
+                        {
+                            _descrStato = "Adap E (04)";
+                            break;
+                        }
+                    case 0x05:
+                        {
+                            _descrStato = "Adap I (05)";
+                            break;
+                        }
+
+                    default:
+                        {
+                            _descrStato = "N.D. (" + _sblm.ChargerStop.ToString("x2") + ")";
+                            break;
+                        }
+                }
+
+                return _descrStato;
+            }
+
+        }
+
+
 
         #endregion Class Parameter
 

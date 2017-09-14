@@ -662,6 +662,14 @@ namespace PannelloCharger
                                 _msg.DescComando = "Chiusura Canale SIG";
                                 _msg.Parametri = "";
                                 break;
+                            case (byte)SerialMessage.TipoComando.LL_W_FineCarica:  //0x63
+                                Log.Debug("Fine Carica da LL");
+                                _msg.Comando = "LL_Stop";
+                                _msg.DescComando = "Fine Carica da LL";
+                                _msg.Sottocomando = _mS.ComandoStrat.DescComandoLibreria;
+                                _msg.DataArray = _mS.ComandoStrat.memDataDecoded;
+                                _msg.Parametri = "";
+                                break;
 
                             default:
                                 Log.Debug("Comando Sconosciuto");

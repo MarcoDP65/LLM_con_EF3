@@ -731,6 +731,7 @@ namespace MoriData
                                 case "2.04.06":
                                     return 9;
                                 case "2.04.07":
+                                case "2.04.08":
                                     return 10;
                                 default:
                                     return 8;

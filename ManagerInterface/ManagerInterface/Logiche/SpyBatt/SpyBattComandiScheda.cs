@@ -144,11 +144,12 @@ namespace ChargerLogic
         /// <param name="IdApparato">ID dell'apparato collegato</param>
         /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
         /// <returns></returns>
-        public bool CaricaStatoOC(string IdApparato, bool ApparatoConnesso)
+        public bool CaricaStatoOC(string IdApparato, bool ApparatoConnesso,bool ResetCount)
         {
             try
             {
                 bool _esito = false;
+                byte[] _dati = new byte[1];
                 //
                 //                _idCorrente = IdApparato;
                 //                
@@ -160,8 +161,13 @@ namespace ChargerLogic
 
                     _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_ParametriSIG60;
                     _mS.StatoTrxOC = new MessaggioSpyBatt.StatoSig60();
+                    if (ResetCount)
+                        _mS.ReserCounterOC = 0xF0;
+                    else
+                        _mS.ReserCounterOC = 0x0F;
+                    _dati[0] = _mS.ReserCounterOC;
                     StatoSig60 = new sbSig60Parameters();
-                    _mS.ComponiMessaggio();
+                    _mS.ComponiMessaggioNew(_dati);
                     _rxRisposta = false;
                     skipHead = true;
                     Log.Debug("SB Lettura Parametri OC");

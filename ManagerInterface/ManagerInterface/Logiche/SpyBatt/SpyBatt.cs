@@ -1591,7 +1591,7 @@ namespace ChargerLogic
                             _esitoLettura = _tempLunga.analizzaMessaggio(_TempMessaggio, sbData.fwLevel, true);
                             if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                             {
-                                if (_tempLunga.IdEvento == 0xFFFFFFFF)
+                                if (false) //_tempLunga.IdEvento == 0xFFFFFFFF)
                                 {
                                     // Programma non inizializzato. esco dalla lettura programmi
                                     ModelloDati.Testata.LongMem = _CicliMemoriaLunga.Count;
@@ -2589,9 +2589,10 @@ namespace ChargerLogic
                     EventoLungo.CondizioneStop = MsgCiclo.CondizioneStop;
                     EventoLungo.FattoreCarica = MsgCiclo.FattoreCarica;
                     EventoLungo.StatoCarica = MsgCiclo.StatoCatica;
-                    EventoLungo.TipoCariatore = MsgCiclo.TipoCariatore;
+                    EventoLungo.TipoCariatore = MsgCiclo.TipoCaricatore;
                     EventoLungo.IdCaricatore = MsgCiclo.IdCaricatore;
                     EventoLungo.DataLastDownload = DateTime.Now;
+                    EventoLungo.ChargerStop = MsgCiclo.ChargerStop;
                     EventoLungo.salvaDati();
                 }
                 return true;
@@ -2935,7 +2936,7 @@ namespace ChargerLogic
                         _memLn.CondizioneStop = _ciclo.CondizioneStop;
                         _memLn.FattoreCarica = _ciclo.FattoreCarica;
                         _memLn.StatoCarica = _ciclo.StatoCatica;
-                        _memLn.TipoCariatore = _ciclo.TipoCariatore;
+                        _memLn.TipoCariatore = _ciclo.TipoCaricatore;
                         _memLn.IdCaricatore = _ciclo.IdCaricatore;
 
                         CicliMemoriaLunga.Add(_memLn);
@@ -3797,11 +3798,11 @@ namespace ChargerLogic
                 if (Secondi > 86400)
                 {
                     // Se la durata è superiore ad 1 giorno ( 86400 secondi ) mostro anche i giorni
-                    _tempo = string.Format("{0}g {1:D2}:{2:D2}",t.Days, t.Hours, t.Minutes);
+                    _tempo = string.Format("{0}g {1:D2}:{2:D2}:{3:D2}", t.Days, t.Hours, t.Minutes,t.Seconds);
                 }
                 else
                 {
-                    _tempo = string.Format("{0:D2}:{1:D2}", t.Hours, t.Minutes);
+                    _tempo = string.Format("{0:D2}:{1:D2}:{2:D2}", t.Hours, t.Minutes,t.Seconds);
                 }
                 //_tempo += "  / " + Secondi.ToString();
                 return _tempo;

@@ -10422,6 +10422,36 @@
   <data name="&gt;&gt;tabCb03.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="chkFSerResetCnt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFSerResetCnt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt</value>
+  </data>
+  <data name="chkFSerResetCnt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 315</value>
+  </data>
+  <data name="chkFSerResetCnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 21</value>
+  </data>
+  <data name="chkFSerResetCnt.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="chkFSerResetCnt.Text" xml:space="preserve">
+    <value>Reset Count</value>
+  </data>
+  <data name="&gt;&gt;chkFSerResetCnt.Name" xml:space="preserve">
+    <value>chkFSerResetCnt</value>
+  </data>
+  <data name="&gt;&gt;chkFSerResetCnt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkFSerResetCnt.Parent" xml:space="preserve">
+    <value>grbVarParametriSig</value>
+  </data>
+  <data name="&gt;&gt;chkFSerResetCnt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="txtSigNumLetture.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -10447,13 +10477,13 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;txtSigNumLetture.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="txtSigPercInt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigPercInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 249</value>
+    <value>146, 244</value>
   </data>
   <data name="txtSigPercInt.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -10474,13 +10504,13 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;txtSigPercInt.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="txtSigPercErr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigPercErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 249</value>
+    <value>34, 244</value>
   </data>
   <data name="txtSigPercErr.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -10501,7 +10531,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;txtSigPercErr.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="txtSigReg1Err.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10528,7 +10558,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;txtSigReg1Err.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtSigReg0Err.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10555,7 +10585,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;txtSigReg0Err.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txtSigReg1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10582,7 +10612,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;txtSigReg1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="txtSigReg0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10609,7 +10639,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;txtSigReg0.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblSigPercInt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10618,7 +10648,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSigPercInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 226</value>
+    <value>165, 221</value>
   </data>
   <data name="lblSigPercInt.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 20</value>
@@ -10639,7 +10669,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;lblSigPercInt.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label291.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10669,7 +10699,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label291.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="label290.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10678,7 +10708,7 @@
     <value>NoControl</value>
   </data>
   <data name="label290.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 226</value>
+    <value>58, 221</value>
   </data>
   <data name="label290.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 20</value>
@@ -10699,7 +10729,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label290.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label289.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10729,7 +10759,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label289.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="label288.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10759,7 +10789,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label288.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label287.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10792,7 +10822,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label287.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label286.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10825,7 +10855,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label286.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label279.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10855,7 +10885,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label279.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="cmbFSerEchoOC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10879,7 +10909,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;cmbFSerEchoOC.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="btnFSerVerificaOC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10888,7 +10918,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFSerVerificaOC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 293</value>
+    <value>20, 274</value>
   </data>
   <data name="btnFSerVerificaOC.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 34</value>
@@ -10909,7 +10939,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;btnFSerVerificaOC.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btnFSerImpostaOC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10918,7 +10948,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFSerImpostaOC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 291</value>
+    <value>146, 274</value>
   </data>
   <data name="btnFSerImpostaOC.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 34</value>
@@ -10939,7 +10969,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;btnFSerImpostaOC.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="label278.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10969,7 +10999,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;label278.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="cmbFSerBaudrateOC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10993,7 +11023,7 @@
     <value>grbVarParametriSig</value>
   </data>
   <data name="&gt;&gt;cmbFSerBaudrateOC.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="grbVarParametriSig.Location" type="System.Drawing.Point, System.Drawing">
     <value>1222, 335</value>

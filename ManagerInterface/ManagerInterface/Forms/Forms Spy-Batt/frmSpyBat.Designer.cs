@@ -1010,6 +1010,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.chkFSerResetCnt = new System.Windows.Forms.CheckBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -3674,6 +3675,7 @@
             // grbVarParametriSig
             // 
             this.grbVarParametriSig.BackColor = System.Drawing.Color.White;
+            this.grbVarParametriSig.Controls.Add(this.chkFSerResetCnt);
             this.grbVarParametriSig.Controls.Add(this.txtSigNumLetture);
             this.grbVarParametriSig.Controls.Add(this.txtSigPercInt);
             this.grbVarParametriSig.Controls.Add(this.txtSigPercErr);
@@ -7867,6 +7869,12 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // chkFSerResetCnt
+            // 
+            resources.ApplyResources(this.chkFSerResetCnt, "chkFSerResetCnt");
+            this.chkFSerResetCnt.Name = "chkFSerResetCnt";
+            this.chkFSerResetCnt.UseVisualStyleBackColor = true;
+            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -9056,5 +9064,6 @@
         private System.Windows.Forms.TextBox txtSigReg0Err;
         private System.Windows.Forms.TextBox txtSigReg1;
         private System.Windows.Forms.TextBox txtSigReg0;
+        private System.Windows.Forms.CheckBox chkFSerResetCnt;
     }
 }
