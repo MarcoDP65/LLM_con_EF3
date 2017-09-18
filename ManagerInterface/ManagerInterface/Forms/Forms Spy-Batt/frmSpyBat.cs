@@ -719,19 +719,24 @@ namespace PannelloCharger
                 txtSerialNumber.ReadOnly = _readonly;
 
                 grbMainDlOptions.Visible = false;
-                //btnResetScheda.Visible = false;
                 grbTestataContatori.Visible = false;
                 grbAbilitazioneReset.Visible = false;
                 grbCloneScheda.Visible = false;
                 txtSerialNumber.ReadOnly = true;
-                if (LivelloCorrente == 0)
+                if (LivelloCorrente < 1 )
                 {
                     grbMainDlOptions.Visible = true;
-                    //btnResetScheda.Visible = true;
                     grbTestataContatori.Visible = true;
                     grbAbilitazioneReset.Visible = true;
                     grbCloneScheda.Visible = true;
                     txtSerialNumber.ReadOnly = false;
+                    grbAbilitazioneReset.Visible = true;
+                }
+                if (LivelloCorrente < 2)
+                {
+                    grbMainDlOptions.Visible = true;
+                    grbTestataContatori.Visible = true;
+                    grbCloneScheda.Visible = true;
                 }
 
                 #endregion
@@ -747,7 +752,7 @@ namespace PannelloCharger
                 grbMemCicliPulsanti.Visible = false;
 
 
-                if (LivelloCorrente < 2)
+                if (LivelloCorrente < 1)
                 {
                     _readonly = false;
                     grbEsportaExcel.Visible = true;
@@ -760,21 +765,11 @@ namespace PannelloCharger
 
                 }
 
-                /*    
-                _enabled = (_readonly == false);
-                grbMemCicliReadMem.Visible = _enabled;
-                chkCaricaBrevi.Visible = _enabled;
-                chkInvertiCorreti.Visible = _enabled;
-                btnCaricaListaLunghi.Enabled = _enabled;
-                //carica ultimi attivo per tutti
-                //btnCaricaListaUltimiLunghi.Enabled = true;
-                btnCaricaDettaglioSel.Enabled = _enabled;
-                */
 
                 #endregion
 
                 #region "Sonda Termica"
-                if (LivelloCorrente < 2)
+                if (LivelloCorrente < 1)
                     _readonly = false;
                 else
                 {
@@ -810,7 +805,7 @@ namespace PannelloCharger
                     btnScriviRtc.Enabled = false;
                    
                 }
-                if (LivelloCorrente > 1)
+                if (LivelloCorrente > 0)
                 {
                    
                     grbCalData.Visible = false;
@@ -857,18 +852,30 @@ namespace PannelloCharger
                     _readonly = true;
                 }
                 _enabled = (_readonly == false);
-                chkDatiDiretti.Visible = _enabled;
+
                 grbVariabiliConnVOK.Visible = _enabled;
                 btnDumpMemoria.Visible = _enabled;
                 btnStampaScheda.Visible = _enabled;
 
                 grbCalibrazionePulsanti.Visible = _enabled;
                 grbCalibrazioni.Visible = _enabled;
+
+
+                if (LivelloCorrente < 2)
+                    _readonly = false;
+                else
+                {
+                    _readonly = true;
+                }
+                _enabled = (_readonly == false);
+                chkDatiDiretti.Visible = _enabled;
                 grbSvcParametriMedie.Visible = _enabled;
                 chkDatiDiretti.Visible = _enabled;
                 btnPianRefresh.Visible = _enabled;
                 btnPianSalvaCliente.Visible = _enabled;
                 grbProgParEqual.Visible = _enabled;
+
+
                 if (_sb.sbData.fwLevel >= 6)
                     grbVarParametriSig.Visible = _enabled;
                 else
@@ -1628,7 +1635,7 @@ namespace PannelloCharger
                         LivelloCorrente = 99;
                     }
 
-                    if (LivelloCorrente < 2) _readonly = true; else _readonly = false;
+                    if (LivelloCorrente < 1) _readonly = true; else _readonly = false;
 
 
                     if (_readonly)
@@ -2149,7 +2156,7 @@ namespace PannelloCharger
 
                 if (_logiche.currentUser != null)
                 {
-                    if(_logiche.currentUser.livello<1)
+                    if(_logiche.currentUser.livello<2)
                     {
                         ColonnaFactory = true;
                     }
@@ -2165,7 +2172,7 @@ namespace PannelloCharger
                     LivelloCorrente = 99;
                 }
 
-                if (LivelloCorrente < 1) _colonnaNascosta = true; else _colonnaNascosta = false;
+                if (LivelloCorrente < 2) _colonnaNascosta = true; else _colonnaNascosta = false;
 
                 _stile.SetBackColor(Color.DarkGray);
                 _stile.SetForeColor(Color.Yellow);
@@ -4153,6 +4160,13 @@ namespace PannelloCharger
                 }
                 if (e.TabPage == tabStatistiche)
                     frmSpyBat_Resize(null, null);
+
+                if (e.TabPage == tbpFirmware)
+                {
+                    // Se entro nel tab firmware e sono connesso, carico le versioni
+                    if (_apparatoPresente) VerificaStatoFw();
+                }
+
                 if (e.TabPage == tabCalibrazione)
                 {
                     txtCalFWRichiesto.Text = PannelloCharger.Properties.Settings.Default.VersioneFwRichiesta;
@@ -7440,12 +7454,37 @@ namespace PannelloCharger
 
         private void btnFwCaricaStato_Click(object sender, EventArgs e)
         {
-            string _tempId = _sb.Id;
-            _sb.VerificaPresenza();
-            CaricaStatoFirmware(ref _tempId, _logiche, _sb.apparatoPresente);
-            CaricaStatoAreaFw(1, _sb.StatoFirmware.Stato);
-            CaricaStatoAreaFw(2, _sb.StatoFirmware.Stato);
+            try
+            {
+                if (_sb.apparatoPresente)
+                {
+                    VerificaStatoFw();
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwCaricaStato_Click: " + Ex.Message);
+            }
         }
+
+
+        private void VerificaStatoFw()
+        {
+            try
+            {
+                string _tempId = _sb.Id;
+                _sb.VerificaPresenza();
+                CaricaStatoFirmware(ref _tempId, _logiche, _sb.apparatoPresente);
+                CaricaStatoAreaFw(1, _sb.StatoFirmware.Stato);
+                CaricaStatoAreaFw(2, _sb.StatoFirmware.Stato);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwCaricaStato_Click: " + Ex.Message);
+            }
+        }
+
 
         private void btnFWPreparaTrasmissione_Click(object sender, EventArgs e)
         {

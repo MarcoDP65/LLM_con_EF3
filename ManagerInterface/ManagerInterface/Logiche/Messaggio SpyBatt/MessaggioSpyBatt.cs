@@ -36,6 +36,8 @@ namespace ChargerLogic
         public OcBaudRate  BrOCcorrente = OcBaudRate.OFF;
         public OcEchoMode EchoOCcorrente = OcEchoMode.OFF;
 
+        public byte[] LLstopMessage;
+
         public StatoSig60 StatoTrxOC;
         public byte ReserCounterOC;
 
@@ -806,6 +808,41 @@ namespace ChargerLogic
                             Array.Copy(_messaggio, 23, _buffArray, 0, 16);
                             _risposta = DatiRTCSB.analizzaMessaggio(_buffArray);
                             if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
+
+                            break;
+                        }
+
+                    case (byte)TipoComando.LL_W_FineCarica: // 0xD3: // read RTC
+                        {
+                            _startPos = 39;
+
+                            if (_messaggio[_startPos] != serENDPAC)
+                            {
+                                return EsitoRisposta.NonRiconosciuto;
+                            }
+
+
+                            _buffArray = new byte[38];
+                            Array.Copy(_messaggio, 1, _buffArray, 0, 38);
+                            _startPos = 40;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)(_ret);
+                            _startPos = 42;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)((_tempShort << 8) + _ret);
+                            _crc = codCrc.ComputeChecksum(_buffArray);
+
+                            if (_crc != _tempShort)
+                            { return EsitoRisposta.BadCRC; }
+
+                            // ora leggo la parte dati
+                            DatiRTCSB = new comandoRTC();
+                            LLstopMessage = new byte[5];
+                            Array.Copy(_messaggio, 23, LLstopMessage, 0, 5);
+
+                            //_risposta = DatiRTCSB.analizzaMessaggio(_buffArray);
+                            
+                            //if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
 
                             break;
                         }

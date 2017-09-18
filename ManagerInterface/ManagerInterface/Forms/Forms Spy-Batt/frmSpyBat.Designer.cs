@@ -60,7 +60,7 @@
             this.chkAckDumpMem = new System.Windows.Forms.CheckBox();
             this.grbTestataContatori = new System.Windows.Forms.GroupBox();
             this.txtTestataPtrProgr = new System.Windows.Forms.TextBox();
-            this.label117 = new System.Windows.Forms.Label();
+            this.lblTestataPtrProgr = new System.Windows.Forms.Label();
             this.txtTestataContProgr = new System.Windows.Forms.TextBox();
             this.label121 = new System.Windows.Forms.Label();
             this.txtTestataPtrBrevi = new System.Windows.Forms.TextBox();
@@ -381,6 +381,7 @@
             this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
             this.grbVarParametriSig = new System.Windows.Forms.GroupBox();
+            this.chkFSerResetCnt = new System.Windows.Forms.CheckBox();
             this.txtSigNumLetture = new System.Windows.Forms.TextBox();
             this.txtSigPercInt = new System.Windows.Forms.TextBox();
             this.txtSigPercErr = new System.Windows.Forms.TextBox();
@@ -1010,7 +1011,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.chkFSerResetCnt = new System.Windows.Forms.CheckBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -1353,7 +1353,7 @@
             // 
             this.grbTestataContatori.BackColor = System.Drawing.Color.White;
             this.grbTestataContatori.Controls.Add(this.txtTestataPtrProgr);
-            this.grbTestataContatori.Controls.Add(this.label117);
+            this.grbTestataContatori.Controls.Add(this.lblTestataPtrProgr);
             this.grbTestataContatori.Controls.Add(this.txtTestataContProgr);
             this.grbTestataContatori.Controls.Add(this.label121);
             this.grbTestataContatori.Controls.Add(this.txtTestataPtrBrevi);
@@ -1374,10 +1374,10 @@
             this.txtTestataPtrProgr.Name = "txtTestataPtrProgr";
             this.txtTestataPtrProgr.ReadOnly = true;
             // 
-            // label117
+            // lblTestataPtrProgr
             // 
-            resources.ApplyResources(this.label117, "label117");
-            this.label117.Name = "label117";
+            resources.ApplyResources(this.lblTestataPtrProgr, "lblTestataPtrProgr");
+            this.lblTestataPtrProgr.Name = "lblTestataPtrProgr";
             // 
             // txtTestataContProgr
             // 
@@ -3700,6 +3700,12 @@
             resources.ApplyResources(this.grbVarParametriSig, "grbVarParametriSig");
             this.grbVarParametriSig.Name = "grbVarParametriSig";
             this.grbVarParametriSig.TabStop = false;
+            // 
+            // chkFSerResetCnt
+            // 
+            resources.ApplyResources(this.chkFSerResetCnt, "chkFSerResetCnt");
+            this.chkFSerResetCnt.Name = "chkFSerResetCnt";
+            this.chkFSerResetCnt.UseVisualStyleBackColor = true;
             // 
             // txtSigNumLetture
             // 
@@ -7869,12 +7875,6 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // chkFSerResetCnt
-            // 
-            resources.ApplyResources(this.chkFSerResetCnt, "chkFSerResetCnt");
-            this.chkFSerResetCnt.Name = "chkFSerResetCnt";
-            this.chkFSerResetCnt.UseVisualStyleBackColor = true;
-            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -8551,7 +8551,7 @@
         private System.Windows.Forms.TextBox txtTestataContLunghi;
         private System.Windows.Forms.Label label114;
         private System.Windows.Forms.TextBox txtTestataPtrProgr;
-        private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.Label lblTestataPtrProgr;
         private System.Windows.Forms.TextBox txtTestataContProgr;
         private System.Windows.Forms.Label label121;
         private System.Windows.Forms.TextBox txtTestataPtrBrevi;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.IO;
 using System.IO.Ports;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using FTD2XX_NET;
 using MoriData;
 using Utility;
 using Newtonsoft.Json;
+
 
 namespace ChargerLogic
 {

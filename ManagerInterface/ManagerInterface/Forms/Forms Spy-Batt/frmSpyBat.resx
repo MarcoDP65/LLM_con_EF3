@@ -873,34 +873,34 @@
   <data name="&gt;&gt;txtTestataPtrProgr.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label117.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblTestataPtrProgr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label117.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblTestataPtrProgr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label117.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblTestataPtrProgr.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 96</value>
   </data>
-  <data name="label117.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblTestataPtrProgr.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 18</value>
   </data>
-  <data name="label117.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblTestataPtrProgr.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
   </data>
-  <data name="label117.Text" xml:space="preserve">
+  <data name="lblTestataPtrProgr.Text" xml:space="preserve">
     <value>Ptr. Program.</value>
   </data>
-  <data name="&gt;&gt;label117.Name" xml:space="preserve">
-    <value>label117</value>
+  <data name="&gt;&gt;lblTestataPtrProgr.Name" xml:space="preserve">
+    <value>lblTestataPtrProgr</value>
   </data>
-  <data name="&gt;&gt;label117.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblTestataPtrProgr.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label117.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblTestataPtrProgr.Parent" xml:space="preserve">
     <value>grbTestataContatori</value>
   </data>
-  <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblTestataPtrProgr.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="txtTestataContProgr.Font" type="System.Drawing.Font, System.Drawing">
@@ -9010,7 +9010,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.10.4.4, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=2.10.4.5, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>

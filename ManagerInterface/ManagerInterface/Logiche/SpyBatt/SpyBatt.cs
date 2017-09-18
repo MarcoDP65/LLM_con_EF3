@@ -1591,7 +1591,7 @@ namespace ChargerLogic
                             _esitoLettura = _tempLunga.analizzaMessaggio(_TempMessaggio, sbData.fwLevel, true);
                             if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                             {
-                                if (false) //_tempLunga.IdEvento == 0xFFFFFFFF)
+                                if (_tempLunga.IdEvento == 0xFFFFFFFF)
                                 {
                                     // Programma non inizializzato. esco dalla lettura programmi
                                     ModelloDati.Testata.LongMem = _CicliMemoriaLunga.Count;
@@ -1697,7 +1697,7 @@ namespace ChargerLogic
                                         if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                                         {
                                             // Se effettivamente il breve caricato appartiene al lungo corrente
-                                            if (_tempBreve.IdCicloLungo == _memLn.IdMemoriaLunga)
+                                            if (_tempBreve.IdEvento == _memLn.IdMemoriaLunga)
                                             {
                                                 _CicliMemoriaBreve.Add(_tempBreve);
                                             }

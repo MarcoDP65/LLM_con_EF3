@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PannelloCharger", "ManagerInterface\PannelloCharger.csproj", "{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdiHelper", "..\MdiHelper\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLPlantService", "LLPlantService\LLPlantService.csproj", "{B7054E19-B956-4702-B4DD-7388AC5ACF5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLComponents", "LLComponents\LLComponents.csproj", "{7615F30A-5167-444A-AC71-5439CFFFE8EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LLComponents", "LLComponents\LLComponents.csproj", "{7615F30A-5167-444A-AC71-5439CFFFE8EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,8 +44,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_ConfirmAddLanguageFile = True
-		RESX_AutoCreateNewLanguageFiles = True
 		RESX_NeutralResourcesLanguage = it-IT
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_ConfirmAddLanguageFile = True
+		SolutionGuid = {93F9884D-788F-46E3-B2DA-ED81E839C53D}
 	EndGlobalSection
 EndGlobal

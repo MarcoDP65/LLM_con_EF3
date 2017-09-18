@@ -58,7 +58,7 @@ namespace MoriData
                     }
                     else
                     {
-                        return UltimaLettura.ToShortDateString() + " " + UltimaLettura.ToShortTimeString();
+                        return UltimaLettura.ToString("yyyy/MM/dd") + " " + UltimaLettura.ToShortTimeString();
                     }
                 }
             }

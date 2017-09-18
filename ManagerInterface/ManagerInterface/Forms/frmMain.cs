@@ -202,15 +202,15 @@ namespace PannelloCharger
                 }
                     
                 mnuImpostazioni.Visible = false;
-                if ((byte)Livello < 0x02) mnuImpostazioni.Visible = true;
+                if ((byte)Livello < 0x01) mnuImpostazioni.Visible = true;
                 mnuCercaDispositiviUSB.Visible = false;
                 if ((byte)Livello < 0x02) mnuCercaDispositiviUSB.Visible = true;
                 mnuCercaDispositiviCOM.Visible = false;
                 if ((byte)Livello < 0x02) mnuCercaDispositiviCOM.Visible = true;
                 mnuSelezionePorta.Visible = false;
-                if ((byte)Livello < 0x02) mnuSelezionePorta.Visible = true;
+                if ((byte)Livello < 0x01) mnuSelezionePorta.Visible = true;
                 mnuServizi.Visible = false;
-                if ((byte)Livello < 0x02) mnuServizi.Visible = true;
+                if ((byte)Livello < 0x01) mnuServizi.Visible = true;
 
 
                 // Già in questa fase, se non ho i driver FTDI installati, disabilito la scansione USB

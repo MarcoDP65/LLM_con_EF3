@@ -666,8 +666,8 @@ namespace PannelloCharger
                                 Log.Debug("Fine Carica da LL");
                                 _msg.Comando = "LL_Stop";
                                 _msg.DescComando = "Fine Carica da LL";
-                                _msg.Sottocomando = _mS.ComandoStrat.DescComandoLibreria;
-                                _msg.DataArray = _mS.ComandoStrat.memDataDecoded;
+                                //_msg.Sottocomando = _mS.ComandoStrat.DescComandoLibreria;
+                                //_msg.DataArray = _mS.ComandoStrat.memDataDecoded;
                                 _msg.Parametri = "";
                                 break;
 

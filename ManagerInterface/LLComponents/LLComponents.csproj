@@ -4,4 +4,8 @@
     <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="SpyBatt\comandiMessaggiSpyBatt.cs" />
+  </ItemGroup>
+
 </Project>
