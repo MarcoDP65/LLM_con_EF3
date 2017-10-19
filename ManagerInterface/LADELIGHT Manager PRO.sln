@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLPlantService", "LLPlantSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LLComponents", "LLComponents\LLComponents.csproj", "{7615F30A-5167-444A-AC71-5439CFFFE8EC}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LADELIGHT Manager Setup", "LADELIGHT Manager Setup\LADELIGHT Manager Setup.vdproj", "{C62F7CC8-4F91-4D4A-89D4-E3941D9AA40A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,14 +41,16 @@ Global
 		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C62F7CC8-4F91-4D4A-89D4-E3941D9AA40A}.Debug|Any CPU.ActiveCfg = Debug
+		{C62F7CC8-4F91-4D4A-89D4-E3941D9AA40A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_NeutralResourcesLanguage = it-IT
-		RESX_AutoCreateNewLanguageFiles = True
-		RESX_ConfirmAddLanguageFile = True
 		SolutionGuid = {93F9884D-788F-46E3-B2DA-ED81E839C53D}
+		RESX_ConfirmAddLanguageFile = True
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_NeutralResourcesLanguage = it-IT
 	EndGlobalSection
 EndGlobal

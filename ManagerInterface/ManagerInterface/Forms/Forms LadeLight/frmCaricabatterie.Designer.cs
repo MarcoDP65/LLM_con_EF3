@@ -424,10 +424,6 @@
             this.btnStratTest02 = new System.Windows.Forms.Button();
             this.btnStratTest01 = new System.Windows.Forms.Button();
             this.txtStratDataGridTx = new System.Windows.Forms.TextBox();
-            this.btnApparatoOk = new System.Windows.Forms.Button();
-            this.btnSalvaCaricabatteria = new System.Windows.Forms.Button();
-            this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
-            this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.tabMemRead = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grbMemCancFisica = new System.Windows.Forms.GroupBox();
@@ -463,6 +459,131 @@
             this.txtMemLenR = new System.Windows.Forms.TextBox();
             this.txtMemAddrR = new System.Windows.Forms.TextBox();
             this.cmdMemRead = new System.Windows.Forms.Button();
+            this.tbpFirmware = new System.Windows.Forms.TabPage();
+            this.grbFwAttivazioneArea = new System.Windows.Forms.GroupBox();
+            this.rbtFwBootLdr = new System.Windows.Forms.RadioButton();
+            this.btnFwCheckArea = new System.Windows.Forms.Button();
+            this.btnFwSwitchArea = new System.Windows.Forms.Button();
+            this.rbtFwArea2 = new System.Windows.Forms.RadioButton();
+            this.rbtFwArea1 = new System.Windows.Forms.RadioButton();
+            this.grbFWPreparaFile = new System.Windows.Forms.GroupBox();
+            this.txtFwFileCCSa01 = new System.Windows.Forms.TextBox();
+            this.txtFwFileCCShex = new System.Windows.Forms.TextBox();
+            this.txtFWLibInFileRev = new System.Windows.Forms.TextBox();
+            this.label256 = new System.Windows.Forms.Label();
+            this.txtFWInFileRevData = new System.Windows.Forms.MaskedTextBox();
+            this.label96 = new System.Windows.Forms.Label();
+            this.btnFWFileLLFsearch = new System.Windows.Forms.Button();
+            this.txtFWFileLLFwr = new System.Windows.Forms.TextBox();
+            this.label92 = new System.Windows.Forms.Label();
+            this.btnFWFilePubSave = new System.Windows.Forms.Button();
+            this.txtFWInFileRev = new System.Windows.Forms.TextBox();
+            this.label94 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.btnFWFileCCSLoad = new System.Windows.Forms.Button();
+            this.btnFWFileCCSsearch = new System.Windows.Forms.Button();
+            this.txtFwFileCCS = new System.Windows.Forms.TextBox();
+            this.grbFWArea2 = new System.Windows.Forms.GroupBox();
+            this.txtFWRevA2LenP = new System.Windows.Forms.TextBox();
+            this.txtFWRevA2AddrP = new System.Windows.Forms.TextBox();
+            this.txtFWRevA2LenN2 = new System.Windows.Forms.TextBox();
+            this.txtFWRevA2AddrN2 = new System.Windows.Forms.TextBox();
+            this.txtFWRevA2LenN1 = new System.Windows.Forms.TextBox();
+            this.txtFWRevA2AddrN1 = new System.Windows.Forms.TextBox();
+            this.label109 = new System.Windows.Forms.Label();
+            this.txtFwRevA2RilFw = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label86 = new System.Windows.Forms.Label();
+            this.label87 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.txtFwRevA2State = new System.Windows.Forms.TextBox();
+            this.label90 = new System.Windows.Forms.Label();
+            this.txtFwRevA2RevFw = new System.Windows.Forms.TextBox();
+            this.GrbFWArea1 = new System.Windows.Forms.GroupBox();
+            this.label103 = new System.Windows.Forms.Label();
+            this.txtFwRevA1RilFw = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.txtFWRevA1LenP = new System.Windows.Forms.TextBox();
+            this.txtFWRevA1AddrP = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.txtFWRevA1LenN2 = new System.Windows.Forms.TextBox();
+            this.txtFWRevA1AddrN2 = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.txtFWRevA1LenN1 = new System.Windows.Forms.TextBox();
+            this.txtFWRevA1AddrN1 = new System.Windows.Forms.TextBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.txtFwRevA1State = new System.Windows.Forms.TextBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.txtFwRevA1RevFw = new System.Windows.Forms.TextBox();
+            this.grbFWAggiornamento = new System.Windows.Forms.GroupBox();
+            this.grbFWdettUpload = new System.Windows.Forms.GroupBox();
+            this.txtFWInSBFDtRev = new System.Windows.Forms.TextBox();
+            this.label110 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.txtFWTxDataAddrP = new System.Windows.Forms.TextBox();
+            this.txtFWTxDataAddrN1 = new System.Windows.Forms.TextBox();
+            this.txtFWTxDataNumTot = new System.Windows.Forms.TextBox();
+            this.txtFWTxDataNumP = new System.Windows.Forms.TextBox();
+            this.txtFWTxDataNumN1 = new System.Windows.Forms.TextBox();
+            this.label105 = new System.Windows.Forms.Label();
+            this.txtFWTxFileLenP = new System.Windows.Forms.TextBox();
+            this.txtFWTxFileLenN1 = new System.Windows.Forms.TextBox();
+            this.txtFWTxDataLenP = new System.Windows.Forms.TextBox();
+            this.txtFWTxDataLenN1 = new System.Windows.Forms.TextBox();
+            this.btnFWLanciaTrasmissione = new System.Windows.Forms.Button();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label108 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.txtFWSBFArea = new System.Windows.Forms.TextBox();
+            this.label114 = new System.Windows.Forms.Label();
+            this.btnFWPreparaTrasmissione = new System.Windows.Forms.Button();
+            this.txtFWInSBFRev = new System.Windows.Forms.TextBox();
+            this.label115 = new System.Windows.Forms.Label();
+            this.label116 = new System.Windows.Forms.Label();
+            this.btnFWFileLLFLoad = new System.Windows.Forms.Button();
+            this.btnFWFileLLFReadSearch = new System.Windows.Forms.Button();
+            this.txtFWFileSBFrd = new System.Windows.Forms.TextBox();
+            this.grbStatoFirmware = new System.Windows.Forms.GroupBox();
+            this.label186 = new System.Windows.Forms.Label();
+            this.txtFwRevIsLibrary = new System.Windows.Forms.TextBox();
+            this.grbFWDettStato = new System.Windows.Forms.GroupBox();
+            this.txtFwStatoSA2 = new System.Windows.Forms.TextBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.txtFwStatoSA1 = new System.Windows.Forms.TextBox();
+            this.label118 = new System.Windows.Forms.Label();
+            this.btnFwCaricaStato = new System.Windows.Forms.Button();
+            this.txtFwStatoHA2 = new System.Windows.Forms.TextBox();
+            this.label119 = new System.Windows.Forms.Label();
+            this.txtFwStatoHA1 = new System.Windows.Forms.TextBox();
+            this.label120 = new System.Windows.Forms.Label();
+            this.txtFwStatoMicro = new System.Windows.Forms.TextBox();
+            this.label121 = new System.Windows.Forms.Label();
+            this.txtFwAreaTestata = new System.Windows.Forms.TextBox();
+            this.label122 = new System.Windows.Forms.Label();
+            this.txtFwRevFirmware = new System.Windows.Forms.TextBox();
+            this.label123 = new System.Windows.Forms.Label();
+            this.txtFwRevBootloader = new System.Windows.Forms.TextBox();
+            this.label124 = new System.Windows.Forms.Label();
+            this.btnApparatoOk = new System.Windows.Forms.Button();
+            this.btnSalvaCaricabatteria = new System.Windows.Forms.Button();
+            this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
+            this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
+            this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.txtFWLibSBFRev = new System.Windows.Forms.TextBox();
+            this.label107 = new System.Windows.Forms.Label();
+            this.lvwFWInFileStruct = new BrightIdeasSoftware.FastObjectListView();
+            this.txtFWInFileStruct = new System.Windows.Forms.TextBox();
             this.tabProfiloAttuale.SuspendLayout();
             this.grbVarParametriSig.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
@@ -521,6 +642,14 @@
             this.grbMemScrittura.SuspendLayout();
             this.grbMemCancellazione.SuspendLayout();
             this.grbMemLettura.SuspendLayout();
+            this.tbpFirmware.SuspendLayout();
+            this.grbFwAttivazioneArea.SuspendLayout();
+            this.grbFWPreparaFile.SuspendLayout();
+            this.grbFWArea2.SuspendLayout();
+            this.GrbFWArea1.SuspendLayout();
+            this.grbFWAggiornamento.SuspendLayout();
+            this.grbStatoFirmware.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lvwFWInFileStruct)).BeginInit();
             this.SuspendLayout();
             // 
             // tabProfiloAttuale
@@ -1161,6 +1290,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tabMonitor);
             this.tabCaricaBatterie.Controls.Add(this.tbpProxySig60);
             this.tabCaricaBatterie.Controls.Add(this.tabMemRead);
+            this.tabCaricaBatterie.Controls.Add(this.tbpFirmware);
             this.tabCaricaBatterie.Location = new System.Drawing.Point(12, 12);
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
@@ -4985,30 +5115,6 @@
             this.txtStratDataGridTx.Size = new System.Drawing.Size(670, 200);
             this.txtStratDataGridTx.TabIndex = 52;
             // 
-            // btnApparatoOk
-            // 
-            this.btnApparatoOk.Location = new System.Drawing.Point(1483, 767);
-            this.btnApparatoOk.Name = "btnApparatoOk";
-            this.btnApparatoOk.Size = new System.Drawing.Size(118, 32);
-            this.btnApparatoOk.TabIndex = 1;
-            this.btnApparatoOk.Text = "Chiudi";
-            this.btnApparatoOk.UseVisualStyleBackColor = true;
-            this.btnApparatoOk.Click += new System.EventHandler(this.btnApparatoOk_Click);
-            // 
-            // btnSalvaCaricabatteria
-            // 
-            this.btnSalvaCaricabatteria.Location = new System.Drawing.Point(1347, 767);
-            this.btnSalvaCaricabatteria.Name = "btnSalvaCaricabatteria";
-            this.btnSalvaCaricabatteria.Size = new System.Drawing.Size(118, 32);
-            this.btnSalvaCaricabatteria.TabIndex = 3;
-            this.btnSalvaCaricabatteria.Text = "Salva";
-            this.btnSalvaCaricabatteria.UseVisualStyleBackColor = true;
-            // 
-            // tmrLetturaAutomatica
-            // 
-            this.tmrLetturaAutomatica.Interval = 30000;
-            this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
-            // 
             // tabMemRead
             // 
             this.tabMemRead.BackColor = System.Drawing.Color.LightYellow;
@@ -5422,6 +5528,1339 @@
             this.cmdMemRead.Text = "Lettura Diretta";
             this.cmdMemRead.UseVisualStyleBackColor = true;
             // 
+            // tbpFirmware
+            // 
+            this.tbpFirmware.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpFirmware.Controls.Add(this.grbFwAttivazioneArea);
+            this.tbpFirmware.Controls.Add(this.grbFWPreparaFile);
+            this.tbpFirmware.Controls.Add(this.grbFWArea2);
+            this.tbpFirmware.Controls.Add(this.GrbFWArea1);
+            this.tbpFirmware.Controls.Add(this.grbFWAggiornamento);
+            this.tbpFirmware.Controls.Add(this.grbStatoFirmware);
+            this.tbpFirmware.Location = new System.Drawing.Point(4, 25);
+            this.tbpFirmware.Name = "tbpFirmware";
+            this.tbpFirmware.Size = new System.Drawing.Size(1585, 688);
+            this.tbpFirmware.TabIndex = 12;
+            this.tbpFirmware.Text = "Firmware";
+            // 
+            // grbFwAttivazioneArea
+            // 
+            this.grbFwAttivazioneArea.BackColor = System.Drawing.Color.White;
+            this.grbFwAttivazioneArea.Controls.Add(this.rbtFwBootLdr);
+            this.grbFwAttivazioneArea.Controls.Add(this.btnFwCheckArea);
+            this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchArea);
+            this.grbFwAttivazioneArea.Controls.Add(this.rbtFwArea2);
+            this.grbFwAttivazioneArea.Controls.Add(this.rbtFwArea1);
+            this.grbFwAttivazioneArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbFwAttivazioneArea.Location = new System.Drawing.Point(16, 190);
+            this.grbFwAttivazioneArea.Name = "grbFwAttivazioneArea";
+            this.grbFwAttivazioneArea.Size = new System.Drawing.Size(509, 68);
+            this.grbFwAttivazioneArea.TabIndex = 5;
+            this.grbFwAttivazioneArea.TabStop = false;
+            this.grbFwAttivazioneArea.Text = "Attivazione area";
+            // 
+            // rbtFwBootLdr
+            // 
+            this.rbtFwBootLdr.AutoSize = true;
+            this.rbtFwBootLdr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.rbtFwBootLdr.ForeColor = System.Drawing.Color.Red;
+            this.rbtFwBootLdr.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtFwBootLdr.Location = new System.Drawing.Point(43, 31);
+            this.rbtFwBootLdr.Name = "rbtFwBootLdr";
+            this.rbtFwBootLdr.Size = new System.Drawing.Size(54, 24);
+            this.rbtFwBootLdr.TabIndex = 47;
+            this.rbtFwBootLdr.Text = "BL";
+            this.rbtFwBootLdr.UseVisualStyleBackColor = true;
+            // 
+            // btnFwCheckArea
+            // 
+            this.btnFwCheckArea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFwCheckArea.Location = new System.Drawing.Point(277, 25);
+            this.btnFwCheckArea.Name = "btnFwCheckArea";
+            this.btnFwCheckArea.Size = new System.Drawing.Size(100, 30);
+            this.btnFwCheckArea.TabIndex = 46;
+            this.btnFwCheckArea.Text = "Verifica";
+            this.btnFwCheckArea.UseVisualStyleBackColor = true;
+            // 
+            // btnFwSwitchArea
+            // 
+            this.btnFwSwitchArea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFwSwitchArea.Location = new System.Drawing.Point(383, 25);
+            this.btnFwSwitchArea.Name = "btnFwSwitchArea";
+            this.btnFwSwitchArea.Size = new System.Drawing.Size(100, 30);
+            this.btnFwSwitchArea.TabIndex = 45;
+            this.btnFwSwitchArea.Text = "Attiva";
+            this.btnFwSwitchArea.UseVisualStyleBackColor = true;
+            // 
+            // rbtFwArea2
+            // 
+            this.rbtFwArea2.AutoSize = true;
+            this.rbtFwArea2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.rbtFwArea2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtFwArea2.Location = new System.Drawing.Point(187, 31);
+            this.rbtFwArea2.Name = "rbtFwArea2";
+            this.rbtFwArea2.Size = new System.Drawing.Size(52, 24);
+            this.rbtFwArea2.TabIndex = 1;
+            this.rbtFwArea2.Text = "A2";
+            this.rbtFwArea2.UseVisualStyleBackColor = true;
+            // 
+            // rbtFwArea1
+            // 
+            this.rbtFwArea1.AutoSize = true;
+            this.rbtFwArea1.Checked = true;
+            this.rbtFwArea1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.rbtFwArea1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtFwArea1.Location = new System.Drawing.Point(117, 31);
+            this.rbtFwArea1.Name = "rbtFwArea1";
+            this.rbtFwArea1.Size = new System.Drawing.Size(52, 24);
+            this.rbtFwArea1.TabIndex = 0;
+            this.rbtFwArea1.TabStop = true;
+            this.rbtFwArea1.Text = "A1";
+            this.rbtFwArea1.UseVisualStyleBackColor = true;
+            // 
+            // grbFWPreparaFile
+            // 
+            this.grbFWPreparaFile.BackColor = System.Drawing.Color.White;
+            this.grbFWPreparaFile.Controls.Add(this.txtFWInFileStruct);
+            this.grbFWPreparaFile.Controls.Add(this.lvwFWInFileStruct);
+            this.grbFWPreparaFile.Controls.Add(this.txtFwFileCCSa01);
+            this.grbFWPreparaFile.Controls.Add(this.txtFwFileCCShex);
+            this.grbFWPreparaFile.Controls.Add(this.txtFWLibInFileRev);
+            this.grbFWPreparaFile.Controls.Add(this.label256);
+            this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRevData);
+            this.grbFWPreparaFile.Controls.Add(this.label96);
+            this.grbFWPreparaFile.Controls.Add(this.btnFWFileLLFsearch);
+            this.grbFWPreparaFile.Controls.Add(this.txtFWFileLLFwr);
+            this.grbFWPreparaFile.Controls.Add(this.label92);
+            this.grbFWPreparaFile.Controls.Add(this.btnFWFilePubSave);
+            this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRev);
+            this.grbFWPreparaFile.Controls.Add(this.label94);
+            this.grbFWPreparaFile.Controls.Add(this.label95);
+            this.grbFWPreparaFile.Controls.Add(this.btnFWFileCCSLoad);
+            this.grbFWPreparaFile.Controls.Add(this.btnFWFileCCSsearch);
+            this.grbFWPreparaFile.Controls.Add(this.txtFwFileCCS);
+            this.grbFWPreparaFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbFWPreparaFile.Location = new System.Drawing.Point(578, 335);
+            this.grbFWPreparaFile.Name = "grbFWPreparaFile";
+            this.grbFWPreparaFile.Size = new System.Drawing.Size(732, 311);
+            this.grbFWPreparaFile.TabIndex = 4;
+            this.grbFWPreparaFile.TabStop = false;
+            this.grbFWPreparaFile.Text = "Preparazione File SBF";
+            // 
+            // txtFwFileCCSa01
+            // 
+            this.txtFwFileCCSa01.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFwFileCCSa01.Location = new System.Drawing.Point(24, 114);
+            this.txtFwFileCCSa01.Name = "txtFwFileCCSa01";
+            this.txtFwFileCCSa01.Size = new System.Drawing.Size(530, 24);
+            this.txtFwFileCCSa01.TabIndex = 68;
+            // 
+            // txtFwFileCCShex
+            // 
+            this.txtFwFileCCShex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFwFileCCShex.Location = new System.Drawing.Point(23, 84);
+            this.txtFwFileCCShex.Name = "txtFwFileCCShex";
+            this.txtFwFileCCShex.Size = new System.Drawing.Size(530, 24);
+            this.txtFwFileCCShex.TabIndex = 67;
+            // 
+            // txtFWLibInFileRev
+            // 
+            this.txtFWLibInFileRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWLibInFileRev.Location = new System.Drawing.Point(21, 197);
+            this.txtFWLibInFileRev.MaxLength = 9;
+            this.txtFWLibInFileRev.Name = "txtFWLibInFileRev";
+            this.txtFWLibInFileRev.Size = new System.Drawing.Size(147, 27);
+            this.txtFWLibInFileRev.TabIndex = 66;
+            this.txtFWLibInFileRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label256
+            // 
+            this.label256.AutoSize = true;
+            this.label256.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label256.Location = new System.Drawing.Point(174, 206);
+            this.label256.Name = "label256";
+            this.label256.Size = new System.Drawing.Size(66, 18);
+            this.label256.TabIndex = 65;
+            this.label256.Text = "Strategia";
+            // 
+            // txtFWInFileRevData
+            // 
+            this.txtFWInFileRevData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWInFileRevData.Location = new System.Drawing.Point(177, 164);
+            this.txtFWInFileRevData.Mask = "00/00/0000";
+            this.txtFWInFileRevData.Name = "txtFWInFileRevData";
+            this.txtFWInFileRevData.Size = new System.Drawing.Size(151, 27);
+            this.txtFWInFileRevData.TabIndex = 64;
+            this.txtFWInFileRevData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFWInFileRevData.ValidatingType = typeof(System.DateTime);
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label96.Location = new System.Drawing.Point(21, 233);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(158, 18);
+            this.label96.TabIndex = 45;
+            this.label96.Text = "File Firmware Pubblico";
+            // 
+            // btnFWFileLLFsearch
+            // 
+            this.btnFWFileLLFsearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWFileLLFsearch.Location = new System.Drawing.Point(560, 251);
+            this.btnFWFileLLFsearch.Name = "btnFWFileLLFsearch";
+            this.btnFWFileLLFsearch.Size = new System.Drawing.Size(33, 30);
+            this.btnFWFileLLFsearch.TabIndex = 44;
+            this.btnFWFileLLFsearch.Text = "...";
+            this.btnFWFileLLFsearch.UseVisualStyleBackColor = true;
+            this.btnFWFileLLFsearch.Click += new System.EventHandler(this.btnFWFileSBFsearch_Click);
+            // 
+            // txtFWFileLLFwr
+            // 
+            this.txtFWFileLLFwr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtFWFileLLFwr.Location = new System.Drawing.Point(24, 253);
+            this.txtFWFileLLFwr.Name = "txtFWFileLLFwr";
+            this.txtFWFileLLFwr.Size = new System.Drawing.Size(530, 24);
+            this.txtFWFileLLFwr.TabIndex = 43;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label92.Location = new System.Drawing.Point(174, 144);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(96, 18);
+            this.label92.TabIndex = 39;
+            this.label92.Text = "Data Rilascio";
+            // 
+            // btnFWFilePubSave
+            // 
+            this.btnFWFilePubSave.Enabled = false;
+            this.btnFWFilePubSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWFilePubSave.Location = new System.Drawing.Point(599, 251);
+            this.btnFWFilePubSave.Name = "btnFWFilePubSave";
+            this.btnFWFilePubSave.Size = new System.Drawing.Size(97, 30);
+            this.btnFWFilePubSave.TabIndex = 35;
+            this.btnFWFilePubSave.Text = "Genera";
+            this.btnFWFilePubSave.UseVisualStyleBackColor = true;
+            this.btnFWFilePubSave.Click += new System.EventHandler(this.btnFWFilePubSave_Click);
+            // 
+            // txtFWInFileRev
+            // 
+            this.txtFWInFileRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWInFileRev.Location = new System.Drawing.Point(21, 164);
+            this.txtFWInFileRev.MaxLength = 6;
+            this.txtFWInFileRev.Name = "txtFWInFileRev";
+            this.txtFWInFileRev.Size = new System.Drawing.Size(147, 27);
+            this.txtFWInFileRev.TabIndex = 34;
+            this.txtFWInFileRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label94.Location = new System.Drawing.Point(18, 144);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(100, 18);
+            this.label94.TabIndex = 33;
+            this.label94.Text = "Rev Firmware";
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label95.Location = new System.Drawing.Point(20, 28);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(178, 18);
+            this.label95.TabIndex = 30;
+            this.label95.Text = "File Firmware CCS (HEX)";
+            // 
+            // btnFWFileCCSLoad
+            // 
+            this.btnFWFileCCSLoad.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWFileCCSLoad.Location = new System.Drawing.Point(598, 52);
+            this.btnFWFileCCSLoad.Name = "btnFWFileCCSLoad";
+            this.btnFWFileCCSLoad.Size = new System.Drawing.Size(97, 30);
+            this.btnFWFileCCSLoad.TabIndex = 17;
+            this.btnFWFileCCSLoad.Text = "Carica File";
+            this.btnFWFileCCSLoad.UseVisualStyleBackColor = true;
+            this.btnFWFileCCSLoad.Click += new System.EventHandler(this.btnFWFileCCSLoad_Click);
+            // 
+            // btnFWFileCCSsearch
+            // 
+            this.btnFWFileCCSsearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWFileCCSsearch.Location = new System.Drawing.Point(559, 52);
+            this.btnFWFileCCSsearch.Name = "btnFWFileCCSsearch";
+            this.btnFWFileCCSsearch.Size = new System.Drawing.Size(33, 30);
+            this.btnFWFileCCSsearch.TabIndex = 16;
+            this.btnFWFileCCSsearch.Text = "...";
+            this.btnFWFileCCSsearch.UseVisualStyleBackColor = true;
+            this.btnFWFileCCSsearch.Click += new System.EventHandler(this.btnFWFileCCSsearch_Click);
+            // 
+            // txtFwFileCCS
+            // 
+            this.txtFwFileCCS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtFwFileCCS.Location = new System.Drawing.Point(23, 54);
+            this.txtFwFileCCS.Name = "txtFwFileCCS";
+            this.txtFwFileCCS.Size = new System.Drawing.Size(530, 24);
+            this.txtFwFileCCS.TabIndex = 15;
+            // 
+            // grbFWArea2
+            // 
+            this.grbFWArea2.BackColor = System.Drawing.Color.White;
+            this.grbFWArea2.Controls.Add(this.txtFWRevA2LenP);
+            this.grbFWArea2.Controls.Add(this.txtFWRevA2AddrP);
+            this.grbFWArea2.Controls.Add(this.txtFWRevA2LenN2);
+            this.grbFWArea2.Controls.Add(this.txtFWRevA2AddrN2);
+            this.grbFWArea2.Controls.Add(this.txtFWRevA2LenN1);
+            this.grbFWArea2.Controls.Add(this.txtFWRevA2AddrN1);
+            this.grbFWArea2.Controls.Add(this.label109);
+            this.grbFWArea2.Controls.Add(this.txtFwRevA2RilFw);
+            this.grbFWArea2.Controls.Add(this.label82);
+            this.grbFWArea2.Controls.Add(this.label83);
+            this.grbFWArea2.Controls.Add(this.label84);
+            this.grbFWArea2.Controls.Add(this.label85);
+            this.grbFWArea2.Controls.Add(this.label86);
+            this.grbFWArea2.Controls.Add(this.label87);
+            this.grbFWArea2.Controls.Add(this.label88);
+            this.grbFWArea2.Controls.Add(this.textBox1);
+            this.grbFWArea2.Controls.Add(this.label89);
+            this.grbFWArea2.Controls.Add(this.txtFwRevA2State);
+            this.grbFWArea2.Controls.Add(this.label90);
+            this.grbFWArea2.Controls.Add(this.txtFwRevA2RevFw);
+            this.grbFWArea2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbFWArea2.Location = new System.Drawing.Point(16, 467);
+            this.grbFWArea2.Name = "grbFWArea2";
+            this.grbFWArea2.Size = new System.Drawing.Size(509, 179);
+            this.grbFWArea2.TabIndex = 3;
+            this.grbFWArea2.TabStop = false;
+            this.grbFWArea2.Text = "Area 2";
+            // 
+            // txtFWRevA2LenP
+            // 
+            this.txtFWRevA2LenP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA2LenP.Location = new System.Drawing.Point(409, 113);
+            this.txtFWRevA2LenP.Name = "txtFWRevA2LenP";
+            this.txtFWRevA2LenP.Size = new System.Drawing.Size(74, 22);
+            this.txtFWRevA2LenP.TabIndex = 60;
+            this.txtFWRevA2LenP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA2AddrP
+            // 
+            this.txtFWRevA2AddrP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA2AddrP.Location = new System.Drawing.Point(331, 113);
+            this.txtFWRevA2AddrP.Name = "txtFWRevA2AddrP";
+            this.txtFWRevA2AddrP.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA2AddrP.TabIndex = 59;
+            this.txtFWRevA2AddrP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA2LenN2
+            // 
+            this.txtFWRevA2LenN2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA2LenN2.Location = new System.Drawing.Point(253, 113);
+            this.txtFWRevA2LenN2.Name = "txtFWRevA2LenN2";
+            this.txtFWRevA2LenN2.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA2LenN2.TabIndex = 58;
+            this.txtFWRevA2LenN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA2AddrN2
+            // 
+            this.txtFWRevA2AddrN2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA2AddrN2.Location = new System.Drawing.Point(175, 113);
+            this.txtFWRevA2AddrN2.Name = "txtFWRevA2AddrN2";
+            this.txtFWRevA2AddrN2.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA2AddrN2.TabIndex = 57;
+            this.txtFWRevA2AddrN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA2LenN1
+            // 
+            this.txtFWRevA2LenN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA2LenN1.Location = new System.Drawing.Point(97, 113);
+            this.txtFWRevA2LenN1.Name = "txtFWRevA2LenN1";
+            this.txtFWRevA2LenN1.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA2LenN1.TabIndex = 56;
+            this.txtFWRevA2LenN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA2AddrN1
+            // 
+            this.txtFWRevA2AddrN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA2AddrN1.Location = new System.Drawing.Point(23, 113);
+            this.txtFWRevA2AddrN1.Name = "txtFWRevA2AddrN1";
+            this.txtFWRevA2AddrN1.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA2AddrN1.TabIndex = 55;
+            this.txtFWRevA2AddrN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label109.Location = new System.Drawing.Point(179, 28);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(96, 18);
+            this.label109.TabIndex = 54;
+            this.label109.Text = "Data Rilascio";
+            // 
+            // txtFwRevA2RilFw
+            // 
+            this.txtFwRevA2RilFw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevA2RilFw.Location = new System.Drawing.Point(182, 48);
+            this.txtFwRevA2RilFw.Name = "txtFwRevA2RilFw";
+            this.txtFwRevA2RilFw.ReadOnly = true;
+            this.txtFwRevA2RilFw.Size = new System.Drawing.Size(129, 27);
+            this.txtFwRevA2RilFw.TabIndex = 53;
+            this.txtFwRevA2RilFw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label82.Location = new System.Drawing.Point(412, 93);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(77, 18);
+            this.label82.TabIndex = 50;
+            this.label82.Text = "Dim Proxy";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label83.Location = new System.Drawing.Point(334, 93);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(80, 18);
+            this.label83.TabIndex = 47;
+            this.label83.Text = "Addr Proxy";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label84.Location = new System.Drawing.Point(257, 93);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(58, 18);
+            this.label84.TabIndex = 46;
+            this.label84.Text = "Dim N2";
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label85.Location = new System.Drawing.Point(179, 93);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(61, 18);
+            this.label85.TabIndex = 43;
+            this.label85.Text = "Addr N2";
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label86.Location = new System.Drawing.Point(98, 93);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(58, 18);
+            this.label86.TabIndex = 42;
+            this.label86.Text = "Dim N1";
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label87.Location = new System.Drawing.Point(412, 28);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(43, 18);
+            this.label87.TabIndex = 41;
+            this.label87.Text = "Stato";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label88.Location = new System.Drawing.Point(20, 93);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(61, 18);
+            this.label88.TabIndex = 35;
+            this.label88.Text = "Addr N1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.textBox1.Location = new System.Drawing.Point(337, 48);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(70, 27);
+            this.textBox1.TabIndex = 34;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label89.Location = new System.Drawing.Point(334, 27);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(41, 18);
+            this.label89.TabIndex = 33;
+            this.label89.Text = "CRC";
+            // 
+            // txtFwRevA2State
+            // 
+            this.txtFwRevA2State.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevA2State.Location = new System.Drawing.Point(415, 48);
+            this.txtFwRevA2State.Name = "txtFwRevA2State";
+            this.txtFwRevA2State.Size = new System.Drawing.Size(65, 27);
+            this.txtFwRevA2State.TabIndex = 32;
+            this.txtFwRevA2State.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label90.Location = new System.Drawing.Point(20, 28);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(100, 18);
+            this.label90.TabIndex = 31;
+            this.label90.Text = "Rev Firmware";
+            // 
+            // txtFwRevA2RevFw
+            // 
+            this.txtFwRevA2RevFw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevA2RevFw.Location = new System.Drawing.Point(23, 48);
+            this.txtFwRevA2RevFw.Name = "txtFwRevA2RevFw";
+            this.txtFwRevA2RevFw.Size = new System.Drawing.Size(153, 27);
+            this.txtFwRevA2RevFw.TabIndex = 30;
+            this.txtFwRevA2RevFw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // GrbFWArea1
+            // 
+            this.GrbFWArea1.BackColor = System.Drawing.Color.White;
+            this.GrbFWArea1.Controls.Add(this.label103);
+            this.GrbFWArea1.Controls.Add(this.txtFwRevA1RilFw);
+            this.GrbFWArea1.Controls.Add(this.label80);
+            this.GrbFWArea1.Controls.Add(this.txtFWRevA1LenP);
+            this.GrbFWArea1.Controls.Add(this.txtFWRevA1AddrP);
+            this.GrbFWArea1.Controls.Add(this.label81);
+            this.GrbFWArea1.Controls.Add(this.label74);
+            this.GrbFWArea1.Controls.Add(this.txtFWRevA1LenN2);
+            this.GrbFWArea1.Controls.Add(this.txtFWRevA1AddrN2);
+            this.GrbFWArea1.Controls.Add(this.label75);
+            this.GrbFWArea1.Controls.Add(this.label79);
+            this.GrbFWArea1.Controls.Add(this.label78);
+            this.GrbFWArea1.Controls.Add(this.txtFWRevA1LenN1);
+            this.GrbFWArea1.Controls.Add(this.txtFWRevA1AddrN1);
+            this.GrbFWArea1.Controls.Add(this.label77);
+            this.GrbFWArea1.Controls.Add(this.textBox4);
+            this.GrbFWArea1.Controls.Add(this.label91);
+            this.GrbFWArea1.Controls.Add(this.txtFwRevA1State);
+            this.GrbFWArea1.Controls.Add(this.label93);
+            this.GrbFWArea1.Controls.Add(this.txtFwRevA1RevFw);
+            this.GrbFWArea1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.GrbFWArea1.Location = new System.Drawing.Point(16, 281);
+            this.GrbFWArea1.Name = "GrbFWArea1";
+            this.GrbFWArea1.Size = new System.Drawing.Size(509, 179);
+            this.GrbFWArea1.TabIndex = 2;
+            this.GrbFWArea1.TabStop = false;
+            this.GrbFWArea1.Text = "Area 1";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label103.Location = new System.Drawing.Point(179, 28);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(96, 18);
+            this.label103.TabIndex = 52;
+            this.label103.Text = "Data Rilascio";
+            // 
+            // txtFwRevA1RilFw
+            // 
+            this.txtFwRevA1RilFw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevA1RilFw.Location = new System.Drawing.Point(182, 48);
+            this.txtFwRevA1RilFw.Name = "txtFwRevA1RilFw";
+            this.txtFwRevA1RilFw.ReadOnly = true;
+            this.txtFwRevA1RilFw.Size = new System.Drawing.Size(129, 27);
+            this.txtFwRevA1RilFw.TabIndex = 51;
+            this.txtFwRevA1RilFw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label80.Location = new System.Drawing.Point(412, 93);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(77, 18);
+            this.label80.TabIndex = 50;
+            this.label80.Text = "Dim Proxy";
+            // 
+            // txtFWRevA1LenP
+            // 
+            this.txtFWRevA1LenP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA1LenP.Location = new System.Drawing.Point(409, 113);
+            this.txtFWRevA1LenP.Name = "txtFWRevA1LenP";
+            this.txtFWRevA1LenP.Size = new System.Drawing.Size(74, 22);
+            this.txtFWRevA1LenP.TabIndex = 49;
+            this.txtFWRevA1LenP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA1AddrP
+            // 
+            this.txtFWRevA1AddrP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA1AddrP.Location = new System.Drawing.Point(331, 113);
+            this.txtFWRevA1AddrP.Name = "txtFWRevA1AddrP";
+            this.txtFWRevA1AddrP.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA1AddrP.TabIndex = 48;
+            this.txtFWRevA1AddrP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label81.Location = new System.Drawing.Point(329, 93);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(80, 18);
+            this.label81.TabIndex = 47;
+            this.label81.Text = "Addr Proxy";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label74.Location = new System.Drawing.Point(250, 93);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(58, 18);
+            this.label74.TabIndex = 46;
+            this.label74.Text = "Dim N2";
+            // 
+            // txtFWRevA1LenN2
+            // 
+            this.txtFWRevA1LenN2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA1LenN2.Location = new System.Drawing.Point(253, 113);
+            this.txtFWRevA1LenN2.Name = "txtFWRevA1LenN2";
+            this.txtFWRevA1LenN2.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA1LenN2.TabIndex = 45;
+            this.txtFWRevA1LenN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA1AddrN2
+            // 
+            this.txtFWRevA1AddrN2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA1AddrN2.Location = new System.Drawing.Point(175, 113);
+            this.txtFWRevA1AddrN2.Name = "txtFWRevA1AddrN2";
+            this.txtFWRevA1AddrN2.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA1AddrN2.TabIndex = 44;
+            this.txtFWRevA1AddrN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label75.Location = new System.Drawing.Point(172, 93);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(61, 18);
+            this.label75.TabIndex = 43;
+            this.label75.Text = "Addr N2";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label79.Location = new System.Drawing.Point(98, 93);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(58, 18);
+            this.label79.TabIndex = 42;
+            this.label79.Text = "Dim N1";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label78.Location = new System.Drawing.Point(412, 28);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(43, 18);
+            this.label78.TabIndex = 41;
+            this.label78.Text = "Stato";
+            // 
+            // txtFWRevA1LenN1
+            // 
+            this.txtFWRevA1LenN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA1LenN1.Location = new System.Drawing.Point(97, 113);
+            this.txtFWRevA1LenN1.Name = "txtFWRevA1LenN1";
+            this.txtFWRevA1LenN1.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA1LenN1.TabIndex = 38;
+            this.txtFWRevA1LenN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWRevA1AddrN1
+            // 
+            this.txtFWRevA1AddrN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWRevA1AddrN1.Location = new System.Drawing.Point(23, 113);
+            this.txtFWRevA1AddrN1.Name = "txtFWRevA1AddrN1";
+            this.txtFWRevA1AddrN1.Size = new System.Drawing.Size(72, 22);
+            this.txtFWRevA1AddrN1.TabIndex = 36;
+            this.txtFWRevA1AddrN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label77.Location = new System.Drawing.Point(20, 93);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(61, 18);
+            this.label77.TabIndex = 35;
+            this.label77.Text = "Addr N1";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.textBox4.Location = new System.Drawing.Point(337, 48);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(72, 27);
+            this.textBox4.TabIndex = 34;
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label91.Location = new System.Drawing.Point(334, 28);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(41, 18);
+            this.label91.TabIndex = 33;
+            this.label91.Text = "CRC";
+            // 
+            // txtFwRevA1State
+            // 
+            this.txtFwRevA1State.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevA1State.Location = new System.Drawing.Point(415, 48);
+            this.txtFwRevA1State.Name = "txtFwRevA1State";
+            this.txtFwRevA1State.Size = new System.Drawing.Size(68, 27);
+            this.txtFwRevA1State.TabIndex = 32;
+            this.txtFwRevA1State.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label93.Location = new System.Drawing.Point(20, 28);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(100, 18);
+            this.label93.TabIndex = 31;
+            this.label93.Text = "Rev Firmware";
+            // 
+            // txtFwRevA1RevFw
+            // 
+            this.txtFwRevA1RevFw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevA1RevFw.Location = new System.Drawing.Point(23, 48);
+            this.txtFwRevA1RevFw.Name = "txtFwRevA1RevFw";
+            this.txtFwRevA1RevFw.ReadOnly = true;
+            this.txtFwRevA1RevFw.Size = new System.Drawing.Size(153, 27);
+            this.txtFwRevA1RevFw.TabIndex = 30;
+            this.txtFwRevA1RevFw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // grbFWAggiornamento
+            // 
+            this.grbFWAggiornamento.BackColor = System.Drawing.Color.White;
+            this.grbFWAggiornamento.Controls.Add(this.txtFWLibSBFRev);
+            this.grbFWAggiornamento.Controls.Add(this.grbFWdettUpload);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWInSBFDtRev);
+            this.grbFWAggiornamento.Controls.Add(this.label110);
+            this.grbFWAggiornamento.Controls.Add(this.label104);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataAddrP);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataAddrN1);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataNumTot);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataNumP);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataNumN1);
+            this.grbFWAggiornamento.Controls.Add(this.label105);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxFileLenP);
+            this.grbFWAggiornamento.Controls.Add(this.label107);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxFileLenN1);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataLenP);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataLenN1);
+            this.grbFWAggiornamento.Controls.Add(this.btnFWLanciaTrasmissione);
+            this.grbFWAggiornamento.Controls.Add(this.textBox11);
+            this.grbFWAggiornamento.Controls.Add(this.label108);
+            this.grbFWAggiornamento.Controls.Add(this.textBox10);
+            this.grbFWAggiornamento.Controls.Add(this.label113);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWSBFArea);
+            this.grbFWAggiornamento.Controls.Add(this.label114);
+            this.grbFWAggiornamento.Controls.Add(this.btnFWPreparaTrasmissione);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWInSBFRev);
+            this.grbFWAggiornamento.Controls.Add(this.label115);
+            this.grbFWAggiornamento.Controls.Add(this.label116);
+            this.grbFWAggiornamento.Controls.Add(this.btnFWFileLLFLoad);
+            this.grbFWAggiornamento.Controls.Add(this.btnFWFileLLFReadSearch);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWFileSBFrd);
+            this.grbFWAggiornamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbFWAggiornamento.Location = new System.Drawing.Point(578, 19);
+            this.grbFWAggiornamento.Name = "grbFWAggiornamento";
+            this.grbFWAggiornamento.Size = new System.Drawing.Size(732, 307);
+            this.grbFWAggiornamento.TabIndex = 1;
+            this.grbFWAggiornamento.TabStop = false;
+            this.grbFWAggiornamento.Text = "Aggiornamento";
+            // 
+            // grbFWdettUpload
+            // 
+            this.grbFWdettUpload.Location = new System.Drawing.Point(558, 141);
+            this.grbFWdettUpload.Name = "grbFWdettUpload";
+            this.grbFWdettUpload.Size = new System.Drawing.Size(149, 85);
+            this.grbFWdettUpload.TabIndex = 81;
+            this.grbFWdettUpload.TabStop = false;
+            // 
+            // txtFWInSBFDtRev
+            // 
+            this.txtFWInSBFDtRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWInSBFDtRev.Location = new System.Drawing.Point(24, 196);
+            this.txtFWInSBFDtRev.Name = "txtFWInSBFDtRev";
+            this.txtFWInSBFDtRev.ReadOnly = true;
+            this.txtFWInSBFDtRev.Size = new System.Drawing.Size(163, 27);
+            this.txtFWInSBFDtRev.TabIndex = 80;
+            this.txtFWInSBFDtRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label110.Location = new System.Drawing.Point(21, 176);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(96, 18);
+            this.label110.TabIndex = 79;
+            this.label110.Text = "Data Rilascio";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label104.Location = new System.Drawing.Point(262, 213);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(42, 18);
+            this.label104.TabIndex = 78;
+            this.label104.Text = "Addr.";
+            // 
+            // txtFWTxDataAddrP
+            // 
+            this.txtFWTxDataAddrP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxDataAddrP.Location = new System.Drawing.Point(451, 210);
+            this.txtFWTxDataAddrP.Name = "txtFWTxDataAddrP";
+            this.txtFWTxDataAddrP.ReadOnly = true;
+            this.txtFWTxDataAddrP.Size = new System.Drawing.Size(86, 22);
+            this.txtFWTxDataAddrP.TabIndex = 77;
+            this.txtFWTxDataAddrP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWTxDataAddrN1
+            // 
+            this.txtFWTxDataAddrN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxDataAddrN1.Location = new System.Drawing.Point(355, 210);
+            this.txtFWTxDataAddrN1.Name = "txtFWTxDataAddrN1";
+            this.txtFWTxDataAddrN1.ReadOnly = true;
+            this.txtFWTxDataAddrN1.Size = new System.Drawing.Size(90, 22);
+            this.txtFWTxDataAddrN1.TabIndex = 75;
+            this.txtFWTxDataAddrN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWTxDataNumTot
+            // 
+            this.txtFWTxDataNumTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxDataNumTot.Location = new System.Drawing.Point(214, 188);
+            this.txtFWTxDataNumTot.Name = "txtFWTxDataNumTot";
+            this.txtFWTxDataNumTot.ReadOnly = true;
+            this.txtFWTxDataNumTot.Size = new System.Drawing.Size(68, 22);
+            this.txtFWTxDataNumTot.TabIndex = 74;
+            this.txtFWTxDataNumTot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWTxDataNumP
+            // 
+            this.txtFWTxDataNumP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxDataNumP.Location = new System.Drawing.Point(451, 174);
+            this.txtFWTxDataNumP.Name = "txtFWTxDataNumP";
+            this.txtFWTxDataNumP.ReadOnly = true;
+            this.txtFWTxDataNumP.Size = new System.Drawing.Size(86, 22);
+            this.txtFWTxDataNumP.TabIndex = 73;
+            this.txtFWTxDataNumP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWTxDataNumN1
+            // 
+            this.txtFWTxDataNumN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxDataNumN1.Location = new System.Drawing.Point(355, 174);
+            this.txtFWTxDataNumN1.Name = "txtFWTxDataNumN1";
+            this.txtFWTxDataNumN1.ReadOnly = true;
+            this.txtFWTxDataNumN1.Size = new System.Drawing.Size(90, 22);
+            this.txtFWTxDataNumN1.TabIndex = 71;
+            this.txtFWTxDataNumN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label105.Location = new System.Drawing.Point(448, 99);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(68, 18);
+            this.label105.TabIndex = 70;
+            this.label105.Text = "App Start";
+            // 
+            // txtFWTxFileLenP
+            // 
+            this.txtFWTxFileLenP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxFileLenP.Location = new System.Drawing.Point(451, 118);
+            this.txtFWTxFileLenP.Name = "txtFWTxFileLenP";
+            this.txtFWTxFileLenP.ReadOnly = true;
+            this.txtFWTxFileLenP.Size = new System.Drawing.Size(86, 22);
+            this.txtFWTxFileLenP.TabIndex = 69;
+            this.txtFWTxFileLenP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWTxFileLenN1
+            // 
+            this.txtFWTxFileLenN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxFileLenN1.Location = new System.Drawing.Point(355, 118);
+            this.txtFWTxFileLenN1.Name = "txtFWTxFileLenN1";
+            this.txtFWTxFileLenN1.ReadOnly = true;
+            this.txtFWTxFileLenN1.Size = new System.Drawing.Size(90, 22);
+            this.txtFWTxFileLenN1.TabIndex = 65;
+            this.txtFWTxFileLenN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWTxDataLenP
+            // 
+            this.txtFWTxDataLenP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxDataLenP.Location = new System.Drawing.Point(451, 146);
+            this.txtFWTxDataLenP.Name = "txtFWTxDataLenP";
+            this.txtFWTxDataLenP.ReadOnly = true;
+            this.txtFWTxDataLenP.Size = new System.Drawing.Size(86, 22);
+            this.txtFWTxDataLenP.TabIndex = 63;
+            this.txtFWTxDataLenP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFWTxDataLenN1
+            // 
+            this.txtFWTxDataLenN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWTxDataLenN1.Location = new System.Drawing.Point(355, 146);
+            this.txtFWTxDataLenN1.Name = "txtFWTxDataLenN1";
+            this.txtFWTxDataLenN1.ReadOnly = true;
+            this.txtFWTxDataLenN1.Size = new System.Drawing.Size(90, 22);
+            this.txtFWTxDataLenN1.TabIndex = 59;
+            this.txtFWTxDataLenN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnFWLanciaTrasmissione
+            // 
+            this.btnFWLanciaTrasmissione.Enabled = false;
+            this.btnFWLanciaTrasmissione.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWLanciaTrasmissione.Location = new System.Drawing.Point(560, 261);
+            this.btnFWLanciaTrasmissione.Name = "btnFWLanciaTrasmissione";
+            this.btnFWLanciaTrasmissione.Size = new System.Drawing.Size(137, 30);
+            this.btnFWLanciaTrasmissione.TabIndex = 43;
+            this.btnFWLanciaTrasmissione.Text = "Invia";
+            this.btnFWLanciaTrasmissione.UseVisualStyleBackColor = true;
+            this.btnFWLanciaTrasmissione.Click += new System.EventHandler(this.btnFWLanciaTrasmissione_Click);
+            // 
+            // textBox11
+            // 
+            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.textBox11.Location = new System.Drawing.Point(115, 262);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(253, 27);
+            this.textBox11.TabIndex = 42;
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label108.Location = new System.Drawing.Point(112, 242);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(42, 18);
+            this.label108.TabIndex = 41;
+            this.label108.Text = "Esito";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.textBox10.Location = new System.Drawing.Point(199, 110);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(111, 27);
+            this.textBox10.TabIndex = 40;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label113.Location = new System.Drawing.Point(196, 90);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(41, 18);
+            this.label113.TabIndex = 39;
+            this.label113.Text = "CRC";
+            // 
+            // txtFWSBFArea
+            // 
+            this.txtFWSBFArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWSBFArea.Location = new System.Drawing.Point(25, 262);
+            this.txtFWSBFArea.Name = "txtFWSBFArea";
+            this.txtFWSBFArea.Size = new System.Drawing.Size(73, 27);
+            this.txtFWSBFArea.TabIndex = 38;
+            this.txtFWSBFArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label114.Location = new System.Drawing.Point(22, 242);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(38, 18);
+            this.label114.TabIndex = 37;
+            this.label114.Text = "Area";
+            // 
+            // btnFWPreparaTrasmissione
+            // 
+            this.btnFWPreparaTrasmissione.Enabled = false;
+            this.btnFWPreparaTrasmissione.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWPreparaTrasmissione.Location = new System.Drawing.Point(559, 116);
+            this.btnFWPreparaTrasmissione.Name = "btnFWPreparaTrasmissione";
+            this.btnFWPreparaTrasmissione.Size = new System.Drawing.Size(136, 27);
+            this.btnFWPreparaTrasmissione.TabIndex = 36;
+            this.btnFWPreparaTrasmissione.Text = "Prepara";
+            this.btnFWPreparaTrasmissione.UseVisualStyleBackColor = true;
+            this.btnFWPreparaTrasmissione.Click += new System.EventHandler(this.btnFWPreparaTrasmissione_Click);
+            // 
+            // txtFWInSBFRev
+            // 
+            this.txtFWInSBFRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWInSBFRev.Location = new System.Drawing.Point(24, 110);
+            this.txtFWInSBFRev.Name = "txtFWInSBFRev";
+            this.txtFWInSBFRev.ReadOnly = true;
+            this.txtFWInSBFRev.Size = new System.Drawing.Size(163, 27);
+            this.txtFWInSBFRev.TabIndex = 34;
+            this.txtFWInSBFRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label115.Location = new System.Drawing.Point(21, 90);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(100, 18);
+            this.label115.TabIndex = 33;
+            this.label115.Text = "Rev Firmware";
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label116.Location = new System.Drawing.Point(20, 34);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(97, 18);
+            this.label116.TabIndex = 30;
+            this.label116.Text = "File Firmware";
+            // 
+            // btnFWFileLLFLoad
+            // 
+            this.btnFWFileLLFLoad.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWFileLLFLoad.Location = new System.Drawing.Point(606, 52);
+            this.btnFWFileLLFLoad.Name = "btnFWFileLLFLoad";
+            this.btnFWFileLLFLoad.Size = new System.Drawing.Size(89, 35);
+            this.btnFWFileLLFLoad.TabIndex = 17;
+            this.btnFWFileLLFLoad.Text = "Carica File";
+            this.btnFWFileLLFLoad.UseVisualStyleBackColor = true;
+            this.btnFWFileLLFLoad.Click += new System.EventHandler(this.btnFWFileSBFLoad_Click);
+            // 
+            // btnFWFileLLFReadSearch
+            // 
+            this.btnFWFileLLFReadSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFWFileLLFReadSearch.Location = new System.Drawing.Point(558, 54);
+            this.btnFWFileLLFReadSearch.Name = "btnFWFileLLFReadSearch";
+            this.btnFWFileLLFReadSearch.Size = new System.Drawing.Size(33, 30);
+            this.btnFWFileLLFReadSearch.TabIndex = 16;
+            this.btnFWFileLLFReadSearch.Text = "...";
+            this.btnFWFileLLFReadSearch.UseVisualStyleBackColor = true;
+            this.btnFWFileLLFReadSearch.Click += new System.EventHandler(this.btnFWFileLLFReadSearch_Click);
+            // 
+            // txtFWFileSBFrd
+            // 
+            this.txtFWFileSBFrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtFWFileSBFrd.Location = new System.Drawing.Point(24, 56);
+            this.txtFWFileSBFrd.Name = "txtFWFileSBFrd";
+            this.txtFWFileSBFrd.Size = new System.Drawing.Size(513, 24);
+            this.txtFWFileSBFrd.TabIndex = 15;
+            // 
+            // grbStatoFirmware
+            // 
+            this.grbStatoFirmware.BackColor = System.Drawing.Color.White;
+            this.grbStatoFirmware.Controls.Add(this.label186);
+            this.grbStatoFirmware.Controls.Add(this.txtFwRevIsLibrary);
+            this.grbStatoFirmware.Controls.Add(this.grbFWDettStato);
+            this.grbStatoFirmware.Controls.Add(this.txtFwStatoSA2);
+            this.grbStatoFirmware.Controls.Add(this.label117);
+            this.grbStatoFirmware.Controls.Add(this.txtFwStatoSA1);
+            this.grbStatoFirmware.Controls.Add(this.label118);
+            this.grbStatoFirmware.Controls.Add(this.btnFwCaricaStato);
+            this.grbStatoFirmware.Controls.Add(this.txtFwStatoHA2);
+            this.grbStatoFirmware.Controls.Add(this.label119);
+            this.grbStatoFirmware.Controls.Add(this.txtFwStatoHA1);
+            this.grbStatoFirmware.Controls.Add(this.label120);
+            this.grbStatoFirmware.Controls.Add(this.txtFwStatoMicro);
+            this.grbStatoFirmware.Controls.Add(this.label121);
+            this.grbStatoFirmware.Controls.Add(this.txtFwAreaTestata);
+            this.grbStatoFirmware.Controls.Add(this.label122);
+            this.grbStatoFirmware.Controls.Add(this.txtFwRevFirmware);
+            this.grbStatoFirmware.Controls.Add(this.label123);
+            this.grbStatoFirmware.Controls.Add(this.txtFwRevBootloader);
+            this.grbStatoFirmware.Controls.Add(this.label124);
+            this.grbStatoFirmware.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbStatoFirmware.Location = new System.Drawing.Point(16, 19);
+            this.grbStatoFirmware.Name = "grbStatoFirmware";
+            this.grbStatoFirmware.Size = new System.Drawing.Size(509, 159);
+            this.grbStatoFirmware.TabIndex = 0;
+            this.grbStatoFirmware.TabStop = false;
+            this.grbStatoFirmware.Text = "Stato Scheda";
+            // 
+            // label186
+            // 
+            this.label186.AutoSize = true;
+            this.label186.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label186.Location = new System.Drawing.Point(293, 28);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(86, 18);
+            this.label186.TabIndex = 51;
+            this.label186.Text = "Rev Display";
+            // 
+            // txtFwRevIsLibrary
+            // 
+            this.txtFwRevIsLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevIsLibrary.Location = new System.Drawing.Point(296, 48);
+            this.txtFwRevIsLibrary.Name = "txtFwRevIsLibrary";
+            this.txtFwRevIsLibrary.Size = new System.Drawing.Size(130, 27);
+            this.txtFwRevIsLibrary.TabIndex = 50;
+            this.txtFwRevIsLibrary.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // grbFWDettStato
+            // 
+            this.grbFWDettStato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.grbFWDettStato.Location = new System.Drawing.Point(23, 98);
+            this.grbFWDettStato.Name = "grbFWDettStato";
+            this.grbFWDettStato.Size = new System.Drawing.Size(460, 51);
+            this.grbFWDettStato.TabIndex = 49;
+            this.grbFWDettStato.TabStop = false;
+            // 
+            // txtFwStatoSA2
+            // 
+            this.txtFwStatoSA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwStatoSA2.Location = new System.Drawing.Point(245, 116);
+            this.txtFwStatoSA2.Name = "txtFwStatoSA2";
+            this.txtFwStatoSA2.Size = new System.Drawing.Size(45, 27);
+            this.txtFwStatoSA2.TabIndex = 48;
+            this.txtFwStatoSA2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label117.Location = new System.Drawing.Point(242, 96);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(39, 18);
+            this.label117.TabIndex = 47;
+            this.label117.Text = "F-A2";
+            // 
+            // txtFwStatoSA1
+            // 
+            this.txtFwStatoSA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwStatoSA1.Location = new System.Drawing.Point(194, 116);
+            this.txtFwStatoSA1.Name = "txtFwStatoSA1";
+            this.txtFwStatoSA1.Size = new System.Drawing.Size(45, 27);
+            this.txtFwStatoSA1.TabIndex = 46;
+            this.txtFwStatoSA1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label118.Location = new System.Drawing.Point(191, 96);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(39, 18);
+            this.label118.TabIndex = 45;
+            this.label118.Text = "F-A1";
+            // 
+            // btnFwCaricaStato
+            // 
+            this.btnFwCaricaStato.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFwCaricaStato.Location = new System.Drawing.Point(383, 110);
+            this.btnFwCaricaStato.Name = "btnFwCaricaStato";
+            this.btnFwCaricaStato.Size = new System.Drawing.Size(100, 30);
+            this.btnFwCaricaStato.TabIndex = 44;
+            this.btnFwCaricaStato.Text = "Ricarica";
+            this.btnFwCaricaStato.UseVisualStyleBackColor = true;
+            // 
+            // txtFwStatoHA2
+            // 
+            this.txtFwStatoHA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwStatoHA2.Location = new System.Drawing.Point(124, 116);
+            this.txtFwStatoHA2.Name = "txtFwStatoHA2";
+            this.txtFwStatoHA2.Size = new System.Drawing.Size(45, 27);
+            this.txtFwStatoHA2.TabIndex = 40;
+            this.txtFwStatoHA2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label119.Location = new System.Drawing.Point(129, 96);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(41, 18);
+            this.label119.TabIndex = 39;
+            this.label119.Text = "H-A2";
+            // 
+            // txtFwStatoHA1
+            // 
+            this.txtFwStatoHA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwStatoHA1.Location = new System.Drawing.Point(73, 116);
+            this.txtFwStatoHA1.Name = "txtFwStatoHA1";
+            this.txtFwStatoHA1.Size = new System.Drawing.Size(45, 27);
+            this.txtFwStatoHA1.TabIndex = 38;
+            this.txtFwStatoHA1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label120
+            // 
+            this.label120.AutoSize = true;
+            this.label120.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label120.Location = new System.Drawing.Point(78, 96);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(41, 18);
+            this.label120.TabIndex = 37;
+            this.label120.Text = "H-A1";
+            // 
+            // txtFwStatoMicro
+            // 
+            this.txtFwStatoMicro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwStatoMicro.Location = new System.Drawing.Point(23, 116);
+            this.txtFwStatoMicro.Name = "txtFwStatoMicro";
+            this.txtFwStatoMicro.Size = new System.Drawing.Size(45, 27);
+            this.txtFwStatoMicro.TabIndex = 36;
+            this.txtFwStatoMicro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label121.Location = new System.Drawing.Point(26, 96);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(46, 18);
+            this.label121.TabIndex = 35;
+            this.label121.Text = "Micro";
+            // 
+            // txtFwAreaTestata
+            // 
+            this.txtFwAreaTestata.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwAreaTestata.Location = new System.Drawing.Point(445, 48);
+            this.txtFwAreaTestata.Name = "txtFwAreaTestata";
+            this.txtFwAreaTestata.Size = new System.Drawing.Size(35, 27);
+            this.txtFwAreaTestata.TabIndex = 34;
+            this.txtFwAreaTestata.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label122
+            // 
+            this.label122.AutoSize = true;
+            this.label122.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label122.Location = new System.Drawing.Point(445, 28);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(38, 18);
+            this.label122.TabIndex = 33;
+            this.label122.Text = "Area";
+            // 
+            // txtFwRevFirmware
+            // 
+            this.txtFwRevFirmware.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevFirmware.Location = new System.Drawing.Point(161, 48);
+            this.txtFwRevFirmware.Name = "txtFwRevFirmware";
+            this.txtFwRevFirmware.Size = new System.Drawing.Size(129, 27);
+            this.txtFwRevFirmware.TabIndex = 32;
+            this.txtFwRevFirmware.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label123.Location = new System.Drawing.Point(158, 28);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(100, 18);
+            this.label123.TabIndex = 31;
+            this.label123.Text = "Rev Firmware";
+            // 
+            // txtFwRevBootloader
+            // 
+            this.txtFwRevBootloader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevBootloader.Location = new System.Drawing.Point(23, 48);
+            this.txtFwRevBootloader.Name = "txtFwRevBootloader";
+            this.txtFwRevBootloader.Size = new System.Drawing.Size(129, 27);
+            this.txtFwRevBootloader.TabIndex = 30;
+            this.txtFwRevBootloader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label124.Location = new System.Drawing.Point(20, 28);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(111, 18);
+            this.label124.TabIndex = 29;
+            this.label124.Text = "Rev Bootloader";
+            // 
+            // btnApparatoOk
+            // 
+            this.btnApparatoOk.Location = new System.Drawing.Point(1483, 767);
+            this.btnApparatoOk.Name = "btnApparatoOk";
+            this.btnApparatoOk.Size = new System.Drawing.Size(118, 32);
+            this.btnApparatoOk.TabIndex = 1;
+            this.btnApparatoOk.Text = "Chiudi";
+            this.btnApparatoOk.UseVisualStyleBackColor = true;
+            this.btnApparatoOk.Click += new System.EventHandler(this.btnApparatoOk_Click);
+            // 
+            // btnSalvaCaricabatteria
+            // 
+            this.btnSalvaCaricabatteria.Location = new System.Drawing.Point(1347, 767);
+            this.btnSalvaCaricabatteria.Name = "btnSalvaCaricabatteria";
+            this.btnSalvaCaricabatteria.Size = new System.Drawing.Size(118, 32);
+            this.btnSalvaCaricabatteria.TabIndex = 3;
+            this.btnSalvaCaricabatteria.Text = "Salva";
+            this.btnSalvaCaricabatteria.UseVisualStyleBackColor = true;
+            // 
+            // tmrLetturaAutomatica
+            // 
+            this.tmrLetturaAutomatica.Interval = 30000;
+            this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
+            // 
+            // sfdImportDati
+            // 
+            this.sfdImportDati.FileName = "prova";
+            // 
+            // txtFWLibSBFRev
+            // 
+            this.txtFWLibSBFRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWLibSBFRev.Location = new System.Drawing.Point(24, 141);
+            this.txtFWLibSBFRev.Name = "txtFWLibSBFRev";
+            this.txtFWLibSBFRev.ReadOnly = true;
+            this.txtFWLibSBFRev.Size = new System.Drawing.Size(163, 27);
+            this.txtFWLibSBFRev.TabIndex = 82;
+            this.txtFWLibSBFRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label107.Location = new System.Drawing.Point(359, 100);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(79, 18);
+            this.label107.TabIndex = 66;
+            this.label107.Text = "Flash Data";
+            // 
+            // lvwFWInFileStruct
+            // 
+            this.lvwFWInFileStruct.CellEditUseWholeCell = false;
+            this.lvwFWInFileStruct.Location = new System.Drawing.Point(375, 149);
+            this.lvwFWInFileStruct.Name = "lvwFWInFileStruct";
+            this.lvwFWInFileStruct.ShowGroups = false;
+            this.lvwFWInFileStruct.Size = new System.Drawing.Size(319, 84);
+            this.lvwFWInFileStruct.TabIndex = 69;
+            this.lvwFWInFileStruct.UseCompatibleStateImageBehavior = false;
+            this.lvwFWInFileStruct.View = System.Windows.Forms.View.Details;
+            this.lvwFWInFileStruct.VirtualMode = true;
+            // 
+            // txtFWInFileStruct
+            // 
+            this.txtFWInFileStruct.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWInFileStruct.Location = new System.Drawing.Point(598, 116);
+            this.txtFWInFileStruct.Name = "txtFWInFileStruct";
+            this.txtFWInFileStruct.ReadOnly = true;
+            this.txtFWInFileStruct.Size = new System.Drawing.Size(96, 22);
+            this.txtFWInFileStruct.TabIndex = 70;
+            this.txtFWInFileStruct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmCaricabatterie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -5536,6 +6975,20 @@
             this.grbMemCancellazione.PerformLayout();
             this.grbMemLettura.ResumeLayout(false);
             this.grbMemLettura.PerformLayout();
+            this.tbpFirmware.ResumeLayout(false);
+            this.grbFwAttivazioneArea.ResumeLayout(false);
+            this.grbFwAttivazioneArea.PerformLayout();
+            this.grbFWPreparaFile.ResumeLayout(false);
+            this.grbFWPreparaFile.PerformLayout();
+            this.grbFWArea2.ResumeLayout(false);
+            this.grbFWArea2.PerformLayout();
+            this.GrbFWArea1.ResumeLayout(false);
+            this.GrbFWArea1.PerformLayout();
+            this.grbFWAggiornamento.ResumeLayout(false);
+            this.grbFWAggiornamento.PerformLayout();
+            this.grbStatoFirmware.ResumeLayout(false);
+            this.grbStatoFirmware.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lvwFWInFileStruct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5976,5 +7429,126 @@
         private System.Windows.Forms.TextBox txtMemLenR;
         private System.Windows.Forms.TextBox txtMemAddrR;
         private System.Windows.Forms.Button cmdMemRead;
+        private System.Windows.Forms.TabPage tbpFirmware;
+        private System.Windows.Forms.GroupBox grbFwAttivazioneArea;
+        private System.Windows.Forms.RadioButton rbtFwBootLdr;
+        public System.Windows.Forms.Button btnFwCheckArea;
+        public System.Windows.Forms.Button btnFwSwitchArea;
+        private System.Windows.Forms.RadioButton rbtFwArea2;
+        private System.Windows.Forms.RadioButton rbtFwArea1;
+        private System.Windows.Forms.GroupBox grbFWPreparaFile;
+        private System.Windows.Forms.TextBox txtFWLibInFileRev;
+        private System.Windows.Forms.Label label256;
+        private System.Windows.Forms.MaskedTextBox txtFWInFileRevData;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.Button btnFWFileLLFsearch;
+        private System.Windows.Forms.TextBox txtFWFileLLFwr;
+        private System.Windows.Forms.Label label92;
+        public System.Windows.Forms.Button btnFWFilePubSave;
+        private System.Windows.Forms.TextBox txtFWInFileRev;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.Label label95;
+        public System.Windows.Forms.Button btnFWFileCCSLoad;
+        private System.Windows.Forms.Button btnFWFileCCSsearch;
+        private System.Windows.Forms.TextBox txtFwFileCCS;
+        private System.Windows.Forms.GroupBox grbFWArea2;
+        private System.Windows.Forms.TextBox txtFWRevA2LenP;
+        private System.Windows.Forms.TextBox txtFWRevA2AddrP;
+        private System.Windows.Forms.TextBox txtFWRevA2LenN2;
+        private System.Windows.Forms.TextBox txtFWRevA2AddrN2;
+        private System.Windows.Forms.TextBox txtFWRevA2LenN1;
+        private System.Windows.Forms.TextBox txtFWRevA2AddrN1;
+        private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.TextBox txtFwRevA2RilFw;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.TextBox txtFwRevA2State;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.TextBox txtFwRevA2RevFw;
+        private System.Windows.Forms.GroupBox GrbFWArea1;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.TextBox txtFwRevA1RilFw;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.TextBox txtFWRevA1LenP;
+        private System.Windows.Forms.TextBox txtFWRevA1AddrP;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox txtFWRevA1LenN2;
+        private System.Windows.Forms.TextBox txtFWRevA1AddrN2;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox txtFWRevA1LenN1;
+        private System.Windows.Forms.TextBox txtFWRevA1AddrN1;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.TextBox txtFwRevA1State;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.TextBox txtFwRevA1RevFw;
+        private System.Windows.Forms.GroupBox grbFWAggiornamento;
+        private System.Windows.Forms.GroupBox grbFWdettUpload;
+        private System.Windows.Forms.TextBox txtFWInSBFDtRev;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.TextBox txtFWTxDataAddrP;
+        private System.Windows.Forms.TextBox txtFWTxDataAddrN1;
+        private System.Windows.Forms.TextBox txtFWTxDataNumTot;
+        private System.Windows.Forms.TextBox txtFWTxDataNumP;
+        private System.Windows.Forms.TextBox txtFWTxDataNumN1;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.TextBox txtFWTxFileLenP;
+        private System.Windows.Forms.TextBox txtFWTxFileLenN1;
+        private System.Windows.Forms.TextBox txtFWTxDataLenP;
+        private System.Windows.Forms.TextBox txtFWTxDataLenN1;
+        public System.Windows.Forms.Button btnFWLanciaTrasmissione;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.TextBox txtFWSBFArea;
+        private System.Windows.Forms.Label label114;
+        public System.Windows.Forms.Button btnFWPreparaTrasmissione;
+        private System.Windows.Forms.TextBox txtFWInSBFRev;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.Label label116;
+        public System.Windows.Forms.Button btnFWFileLLFLoad;
+        private System.Windows.Forms.Button btnFWFileLLFReadSearch;
+        private System.Windows.Forms.TextBox txtFWFileSBFrd;
+        private System.Windows.Forms.GroupBox grbStatoFirmware;
+        private System.Windows.Forms.Label label186;
+        private System.Windows.Forms.TextBox txtFwRevIsLibrary;
+        private System.Windows.Forms.GroupBox grbFWDettStato;
+        private System.Windows.Forms.TextBox txtFwStatoSA2;
+        private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.TextBox txtFwStatoSA1;
+        private System.Windows.Forms.Label label118;
+        public System.Windows.Forms.Button btnFwCaricaStato;
+        private System.Windows.Forms.TextBox txtFwStatoHA2;
+        private System.Windows.Forms.Label label119;
+        private System.Windows.Forms.TextBox txtFwStatoHA1;
+        private System.Windows.Forms.Label label120;
+        private System.Windows.Forms.TextBox txtFwStatoMicro;
+        private System.Windows.Forms.Label label121;
+        private System.Windows.Forms.TextBox txtFwAreaTestata;
+        private System.Windows.Forms.Label label122;
+        private System.Windows.Forms.TextBox txtFwRevFirmware;
+        private System.Windows.Forms.Label label123;
+        private System.Windows.Forms.TextBox txtFwRevBootloader;
+        private System.Windows.Forms.Label label124;
+        private System.Windows.Forms.OpenFileDialog sfdImportDati;
+        private System.Windows.Forms.TextBox txtFwFileCCSa01;
+        private System.Windows.Forms.TextBox txtFwFileCCShex;
+        private BrightIdeasSoftware.FastObjectListView lvwFWInFileStruct;
+        private System.Windows.Forms.TextBox txtFWLibSBFRev;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.TextBox txtFWInFileStruct;
     }
 }

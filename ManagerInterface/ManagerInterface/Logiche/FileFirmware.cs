@@ -764,10 +764,8 @@ namespace ChargerLogic
 
         }
 
-
-
         /// <summary>
-        /// Verifico se la versione selezionata è insytallabile sullo spybatt corrente
+        /// Verifico se la versione selezionata è installabile sullo spybatt corrente
         /// </summary>
         /// <param name="Versione">Versione del FW da caricare</param>
         /// <param name="HWversion">Versione dell'hardware corrente</param>
@@ -877,6 +875,7 @@ namespace ChargerLogic
                 return _esito;
             }
         }
+
     }
 
     

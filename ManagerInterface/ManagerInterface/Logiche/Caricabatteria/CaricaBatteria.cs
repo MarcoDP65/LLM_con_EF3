@@ -47,7 +47,7 @@ namespace ChargerLogic
         * ---------------------------------------------------------
         */
         public event StepHandler Step;
-        public delegate void StepHandler(UnitaSpyBatt usb, ProgressChangedEventArgs e); //sbWaitEventStep e);
+        public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e); //sbWaitEventStep e);
         // ----------------------------------------------------------
 
         private static EventWaitHandle LL_USBeventWait;
@@ -56,8 +56,11 @@ namespace ChargerLogic
         public byte[] numeroSeriale;
         private string _lastError;
         private bool _cbCollegato;
+        public bool apparatoPresente = false;
 
         public byte[] DatiRisposta;
+        public SerialMessage.EsitoRisposta UltimaRisposta;
+        private SerialMessage.TipoRisposta _ultimaRisposta = SerialMessage.TipoRisposta.NonValido;   // flag per l'indicazioene del tipo dell'ultimo messaggio ricevuto dalla scheda
 
         public int AttesaTimeout = 25; // Tempo attesa in decimi di secondo
         public SerialMessage.OcBaudRate BrOCcorrente = SerialMessage.OcBaudRate.OFF;
@@ -476,7 +479,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito = false;
-                _mS.Comando = SerialMessage.TipoComando.Start;
+                _mS.Comando = SerialMessage.TipoComando.SB_Sstart;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("START");
@@ -492,15 +495,11 @@ namespace ChargerLogic
                     _rxRisposta = false;
                     Log.Debug("PRIMA");
                     Log.Debug(_mS.hexdumpMessaggio());
-                    //_parametri.serialeCorrente.Write(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                     _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-
-                    
                     _esito = aspettaRisposta(AttesaTimeout, 1,true,false);
-
                     Intestazione = _mS.Intestazione;
                     _cbCollegato = _esito;
-
+                    apparatoPresente = _esito;
                     return _esito;
 
                 }
@@ -514,6 +513,7 @@ namespace ChargerLogic
                 return false;
             } 
         }
+
 
         public bool CaricaCicli()
         {
@@ -1207,12 +1207,15 @@ namespace ChargerLogic
                         switch (_mS._comando)
                         {
                             case (byte)SerialMessage.TipoComando.ACK:
+                            case (byte)SerialMessage.TipoComando.SB_ACK:
                                 Log.Debug("Comando Ricevuto");
                                 TipoRisposta = 1;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 _inviaRisposta = false;
                                 break;
                             case (byte)SerialMessage.TipoComando.NACK:
+                            case (byte)SerialMessage.TipoComando.SB_NACK:
+
                                 TipoRisposta = 2;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Nack;
                                 Log.Debug("Comando Errato");

@@ -44,5 +44,11 @@
     <Setting Name="VersioneFwRichiesta" Type="System.String" Scope="User">
       <Value Profile="(Default)">2.04.05</Value>
     </Setting>
+    <Setting Name="pathLLFwSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="pathLLFwReady" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

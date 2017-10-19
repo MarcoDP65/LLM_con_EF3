@@ -10,6 +10,7 @@ using log4net.Config;
 using FTD2XX_NET;
 using System.Drawing.Printing;
 using MoriData;
+using Utility;
 
 namespace ChargerLogic
 {
@@ -479,6 +480,11 @@ namespace ChargerLogic
                 }
                 else
                 {
+                    if ( !SytemUtility.PortExist( serialeLadeLight.PortName))
+                    {
+                        return false;
+                    }
+
                     if (!serialeLadeLight.IsOpen)
                     {
                         serialeLadeLight.BaudRate = baudRate;

@@ -119,7 +119,7 @@ namespace ChargerLogic
         private string _lastError;
         private bool _cbCollegato;
         private bool _inviaAckPacchettoDump = false;
-        private SerialMessage.TipoRisposta _ultimaRisposta = SerialMessage.TipoRisposta.NonValido;   // flag per l'indicazioene del tipo dell'ultimo messaggio ricevuto dalla scheda
+        private SerialMessage.TipoRisposta _ultimaRisposta = SerialMessage.TipoRisposta.NonValido;   // flag per l'indicazione del tipo dell'ultimo messaggio ricevuto dalla scheda
         public elementiComuni.VersoCorrente VersoScarica = elementiComuni.VersoCorrente.Diretto;
 
         // Eventi pubblici della classe spy Batt

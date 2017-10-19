@@ -29,10 +29,17 @@ namespace PannelloCharger
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         
         private BackgroundWorker sbWorker;
-        
+
+        public enum ControlledDevice : byte { Nessuno = 0, SpyBatt = 1, Display = 2, LadeLight = 3, Desolfatatore = 4 };
+
+
         public UnitaSpyBatt sbLocale;
+        public CaricaBatteria llLocale;
+        public ControlledDevice ElementoPilotato = ControlledDevice.Nessuno; 
+
         public elementiComuni.tipoMessaggio TipoComando { get; set; }
         public BloccoFirmware FirmwareBlock { get; set; }
+        public BloccoFirmwareLL FirmwareLLBlock { get; set; }
         public byte FirmwareArea { get; set; }
         public int ValStart;
         public int ValFine;
@@ -121,7 +128,24 @@ namespace PannelloCharger
         {
             //NOTE : Never play with the UI thread here...
             bool _esito;
-            sbLocale.RichiestaInterruzione = false;
+            switch (ElementoPilotato)
+            {
+                case ControlledDevice.Nessuno:
+                    break;
+                case ControlledDevice.SpyBatt:
+                    sbLocale.RichiestaInterruzione = false;
+                    break;
+                case ControlledDevice.Display:
+                    break;
+                case ControlledDevice.LadeLight:
+
+                    break;
+                case ControlledDevice.Desolfatatore:
+                    break;
+                default:
+                    break;
+            }
+
             btnAnnulla.Enabled = true;
             btnChiudi.Enabled = false;
             btnStartLettura.Enabled = false;
@@ -233,6 +257,18 @@ namespace PannelloCharger
                         Log.Debug("Lancio aggiornamento firmware ");
 
                         _esito = sbLocale.AggiornaFirmware(sbLocale.Id, sbLocale.apparatoPresente, FirmwareArea, FirmwareBlock,true);// InviaACK, true, SalvaHexDump, FileHexDump);
+                        break;
+                    }
+
+                case elementiComuni.tipoMessaggio.AggiornamentoFirmwareLL:
+                    {
+                        _stepBg.Titolo = StringheComuni.AvTitolo04Firmware;  // "Aggiornamento Firmware";
+                        _stepBg.Step = -1;
+                        _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio aggiornamento firmware ");
+
+                        _esito = llLocale.AggiornaFirmware( "" , llLocale.apparatoPresente, FirmwareArea, FirmwareLLBlock, true); // InviaACK, true, SalvaHexDump, FileHexDump);
                         break;
                     }
 
@@ -439,7 +475,7 @@ namespace PannelloCharger
 
         }
 
-        void stepRisposta(UnitaSpyBatt sender, ProgressChangedEventArgs e)
+        void stepRispostaSB(UnitaSpyBatt sender, ProgressChangedEventArgs e)
         {
             try
             {
@@ -467,6 +503,34 @@ namespace PannelloCharger
             }
         }
 
+        void stepRispostaLL(CaricaBatteria sender, ProgressChangedEventArgs e)
+        {
+            try
+            {
+                sbWaitStep _statoE = (sbWaitStep)e.UserState;
+                int ValAvanzamento = 0;
+                double _valAvanzamento = 0;
+                //Here you play with the main UI thread
+
+                if (_statoE.Eventi > 0)
+                {
+                    _valAvanzamento = (_statoE.Step * 100) / _statoE.Eventi;
+                }
+                else
+                {
+                    _valAvanzamento = 0;
+                }
+                ValAvanzamento = (int)_valAvanzamento;
+                Log.Warn("Ricevuto STEP " + ValAvanzamento.ToString());
+                sbWorker.ReportProgress(ValAvanzamento, _statoE);
+            }
+            catch (Exception Ex)
+            {
+                Log.Debug("stepRisposta: " + Ex.Message);
+
+            }
+        }
+
         void fineElaborazione(UnitaSpyBatt sender, RunWorkerCompletedEventArgs e)
         {
             Log.Debug("Ricevuta fine ricezione");
@@ -481,7 +545,6 @@ namespace PannelloCharger
             {
                 string _messaggio1;
 
-                //If it was cancelled midway
                 if (e.Cancelled)
                 {
                     Log.Debug("sbWorker_RunWorkerCompleted: Task Cancellato");
@@ -613,7 +676,24 @@ namespace PannelloCharger
         private void frmAvanzamentoCicli_Shown(object sender, EventArgs e)
         {
             Log.Debug("Show Form Avanzamento");
-            sbLocale.Step += new UnitaSpyBatt.StepHandler(stepRisposta);
+            switch (ElementoPilotato)
+            {
+                case ControlledDevice.Nessuno:
+                    break;
+                case ControlledDevice.SpyBatt:
+                    sbLocale.Step += new UnitaSpyBatt.StepHandler(stepRispostaSB);
+                    break;
+                case ControlledDevice.Display:
+                    break;
+                case ControlledDevice.LadeLight:
+                    llLocale.Step += new CaricaBatteria.StepHandler(stepRispostaLL);
+                    break;
+                case ControlledDevice.Desolfatatore:
+                    break;
+                default:
+                    break;
+            }
+            
             AvviaRicalcolo();
         }
 

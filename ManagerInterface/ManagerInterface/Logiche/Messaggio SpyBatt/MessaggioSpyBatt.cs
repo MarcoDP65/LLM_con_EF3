@@ -2170,7 +2170,7 @@ namespace ChargerLogic
 
         }
 
-        public ushort ComponiMessaggioTestataFW(byte Blocco, byte[] Intestazione )
+        public new ushort ComponiMessaggioTestataFW(byte Blocco, byte[] Intestazione )
         {
             ushort _esito = 0;
             //ushort _tempUshort;
@@ -2511,7 +2511,7 @@ namespace ChargerLogic
         /// <param name="NumBytes">Dimensione del pachetto (byte, deve essere inferioreo uguale a 130)</param>
         /// <param name="Dati">byte array del pacchetto con CRC finale</param>
         /// <returns></returns>
-        public ushort ComponiMessaggioPacchettoDatiFW(ushort NumPacchetto,byte NumBytes, byte[] Dati, ushort CRCPacchetto)
+        public new ushort ComponiMessaggioPacchettoDatiFW(ushort NumPacchetto,byte NumBytes, byte[] Dati, ushort CRCPacchetto)
         {
             ushort _esito = 0;
             //ushort _tempUshort;
@@ -2605,9 +2605,6 @@ namespace ChargerLogic
                     MessageBuffer[_arrayInit + 1] = msb;
                     MessageBuffer[_arrayInit + 2] = lsb;
                     _arrayInit += 2;
-                    //Log.Error("sb -> ComponiMessaggioDatiFW: _i         =" + _i.ToString());
-                    //Log.Error("                            : _arrayInit =" + _arrayInit.ToString());
-                    //Log.Error("----------------------------------------------------------");
                 }
 
                 // Aggiungo il CRC pacchetto

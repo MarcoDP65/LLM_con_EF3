@@ -5750,7 +5750,7 @@ namespace PannelloCharger
                 SerialMessage.Crc16Ccitt codCrc = new SerialMessage.Crc16Ccitt(SerialMessage.InitialCrcValue.NonZero1);
 
                 // Prima chiedo il codice di autorizzazione, se ho meno di 30 cicli registrati
-                if (false) //_sb.sbData.LongMem > 30)
+                if (_sb.sbData.LongMem > 30)
                 {
                     frmRichiestaCodice _richiesta = new frmRichiestaCodice();
                     _richiesta.ShowDialog();
@@ -7806,10 +7806,10 @@ namespace PannelloCharger
 
         private void btnGeneraCodice_Click(object sender, EventArgs e)
         {
-            txtCodiceSblocco.Text = CodiceSblocco();
+            txtCodiceSblocco.Text = CodiceSblocco(chkTestataIgnoraNumLunghi.Checked);
         }
 
-        private string CodiceSblocco()
+        private string CodiceSblocco(bool ignoraLunghi)
         {
             try
             {
@@ -7829,9 +7829,17 @@ namespace PannelloCharger
                 }
                 _codice = _hexId.ToString("x6");
 
-                //poi aggiungo il numeo ciclilunghi
-                _codice += _sb.sbData.LongMem.ToString("x6");
+                //poi aggiungo il numeo ciclilunghi. se richiesto carico FFFFFF che abilita tutto
+                if (ignoraLunghi)
+                {
+                    _codice += "FFFFFF";
+                }
+                else
+                {
+                    _codice += _sb.sbData.LongMem.ToString("x6");
+                }
                 _codice = _codice.ToUpper();
+                
                 byte[] PrimaCodifica = Encoding.ASCII.GetBytes(_codice);
 
                 //Quindi metto il CRC

@@ -1011,6 +1011,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.chkTestataIgnoraNumLunghi = new System.Windows.Forms.CheckBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -1238,6 +1239,7 @@
             // grbAbilitazioneReset
             // 
             this.grbAbilitazioneReset.BackColor = System.Drawing.Color.White;
+            this.grbAbilitazioneReset.Controls.Add(this.chkTestataIgnoraNumLunghi);
             this.grbAbilitazioneReset.Controls.Add(this.btnGeneraCodice);
             this.grbAbilitazioneReset.Controls.Add(this.txtCodiceSblocco);
             this.grbAbilitazioneReset.Controls.Add(this.label139);
@@ -7875,6 +7877,12 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // chkTestataIgnoraNumLunghi
+            // 
+            resources.ApplyResources(this.chkTestataIgnoraNumLunghi, "chkTestataIgnoraNumLunghi");
+            this.chkTestataIgnoraNumLunghi.Name = "chkTestataIgnoraNumLunghi";
+            this.chkTestataIgnoraNumLunghi.UseVisualStyleBackColor = true;
+            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -9065,5 +9073,6 @@
         private System.Windows.Forms.TextBox txtSigReg1;
         private System.Windows.Forms.TextBox txtSigReg0;
         private System.Windows.Forms.CheckBox chkFSerResetCnt;
+        private System.Windows.Forms.CheckBox chkTestataIgnoraNumLunghi;
     }
 }

@@ -28,12 +28,24 @@ namespace PannelloCharger
 
         private CaricaBatteria _cb;
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+        private frmAvanzamentoCicli _avCicli = new frmAvanzamentoCicli();
 
         bool readingMessage = false;
         bool _portaCollegata;
         bool _cbCollegato;
 
         bool _apparatoPresente = false;
+
+
+        /* ----------------------------------------------------------
+         *  Dichiarazione eventi per la gestione avanzamento
+         * ---------------------------------------------------------
+         */
+        public event StepHandler Step;
+        public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e); //sbWaitEventStep e);
+                                                                                        // ----------------------------------------------------------
+
+
 
         public List<llVariabili> ListaValori = new List<llVariabili>();
         public System.Collections.Generic.List<ValoreLista> ListaBrSig = new List<ValoreLista>()
@@ -1367,6 +1379,133 @@ namespace PannelloCharger
         private void btnFSerVerificaOC_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Handles the Click event of the btnFWFileCCSsearch control.
+        /// Apre la finestra gestione file per la ricerca del file CCS (txt) da caricare
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void btnFWFileCCSsearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sfdImportDati.InitialDirectory == "") sfdImportDati.InitialDirectory = PannelloCharger.Properties.Settings.Default.pathLLFwSource;
+
+                sfdImportDati.Filter = "CCS Generated File (*.hex)|*.hex|All files (*.*)|*.*";
+                sfdImportDati.ShowDialog();
+                txtFwFileCCS.Text = sfdImportDati.FileName;
+
+                ControllaNomiFilesCCSLL(sfdImportDati.FileName);
+
+                PannelloCharger.Properties.Settings.Default.pathLLFwSource = Path.GetDirectoryName(sfdImportDati.FileName);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnGeneraCsv_Click: " + Ex.Message);
+            }
+
+        }
+
+
+        private void btnFWFileSBFsearch_Click(object sender, EventArgs e)
+        {
+            sfdExportDati.Filter = "LLF LADE Light Firmware File (*.llf)|*.llf|All files (*.*)|*.*";
+            sfdExportDati.ShowDialog();
+            txtFWFileLLFwr.Text = sfdExportDati.FileName;
+            btnFWLanciaTrasmissione.Enabled = false;
+
+        }
+
+
+        private void btnFWFileCCSLoad_Click(object sender, EventArgs e)
+        {
+            CaricafileLLCCS();
+        }
+
+        private void btnFWFilePubSave_Click(object sender, EventArgs e)
+        {
+            if (txtFWFileLLFwr.Text != "")
+            {
+                if (txtFWInFileRev.Text == "")
+                {
+                    MessageBox.Show("Inserire il numero di release", "Preperazione App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                SalvaFileLLF();
+            }
+        }
+
+        private void btnFWFileLLFReadSearch_Click(object sender, EventArgs e)
+        {
+            sfdImportDati.Filter = "LLF LADE Light Firmware File (*.llf)|*.llf|All files (*.*)|*.*";
+            sfdImportDati.ShowDialog();
+            txtFWFileSBFrd.Text = sfdImportDati.FileName;
+
+            bool _preview = CaricafileLLF();
+        }
+
+        private void btnFWFileLLFLoad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtFWFileSBFrd.Text == "") return;
+
+                btnFWLanciaTrasmissione.Enabled = false;
+                CaricafileLLF();
+
+
+                PreparaTrasmissioneFW();
+                /*
+                bool _esitocella = false;
+
+                _esitocella = ((byte)FirmwareManager.MascheraStato.Blocco1HW & _sb.StatoFirmware.Stato) == (byte)FirmwareManager.MascheraStato.Blocco1HW;
+                if (_esitocella == true)
+                {
+                    txtFWSBFArea.Text = "1";
+                }
+                else
+                {
+                    txtFWSBFArea.Text = "2";
+                }
+
+                */
+
+                txtFWSBFArea.Text = "1";
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFWFileSBFLoad_Click: " + Ex.Message);
+            }
+        }
+        private void btnFWFileSBFLoad_Click(object sender, EventArgs e)
+        {
+            CaricafileLLCCS();
+        }
+
+
+        private void btnFWLanciaTrasmissione_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool _esito;
+                this.Cursor = Cursors.WaitCursor;
+                AggiornaFirmware();
+                _cb.VerificaPresenza();
+                this.Cursor = Cursors.Default;
+            }
+            catch
+            {
+                this.Cursor = Cursors.Default;
+
+            }
+        }
+
+        private void btnFWPreparaTrasmissione_Click(object sender, EventArgs e)
+        {
+            PreparaTrasmissioneFW();
         }
     }
 

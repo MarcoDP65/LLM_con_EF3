@@ -74,7 +74,6 @@ namespace PannelloCharger
             }
         }
 
-
         private void frmMainInitialize()
         {
             try
@@ -89,7 +88,6 @@ namespace PannelloCharger
                 Log.Error("frmMainInitialize: " + Ex.Message);
             }
         }
-
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -825,8 +823,6 @@ namespace PannelloCharger
 
         }
 
-
-
         public void impostaCultura( string CodiceLingua)
         {
             try
@@ -955,8 +951,6 @@ namespace PannelloCharger
                 Log.Error("frmMain - salva: " + Ex.Message);
             }
         }
-
-
 
         public void stampa(bool preview = false, bool SelPrinter = false)
         {
@@ -1183,7 +1177,6 @@ namespace PannelloCharger
                 else return;
 
                 tstBtnSave.Enabled = !ArgChiamata.DaSalvare;
-
 
             }
 

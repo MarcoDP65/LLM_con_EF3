@@ -17,7 +17,9 @@ namespace ChargerLogic
                                           DumpMemoria = 4,
                                           AggiornamentoFirmware = 5,
                                           ClonazioneScheda = 6,
-                                          NonDefinito =-1 };
+                                          AggiornamentoFirmwareLL = 10,
+ 
+                                          NonDefinito = -1 };
 
         public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Nack = 2, Break = 3, Dati = 10, NonValido = -1 };
         public enum EsitoFunzione : byte { OK = 0x00, DatiNonVAlidi = 0x01,NonInSequenza = 0x02,ErroreGenerico = 0xFF}

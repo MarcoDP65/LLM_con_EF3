@@ -265,6 +265,9 @@
     <Compile Include="Forms\Forms LadeLight\frmCaricaBatteriaComandiProxy.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Forms LadeLight\frmCaricabatterieFunzioniFirmware.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBatParAndCmd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -466,7 +469,11 @@
     </Compile>
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
     <Compile Include="Logiche\Caricabatteria\CaricaBatteria.cs" />
+    <Compile Include="Logiche\Caricabatteria\cbComandiFirmware.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiMemoria.cs" />
+    <Compile Include="Logiche\Caricabatteria\sottoclassiCaricaBatteria.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Logiche\cEventHelper.cs" />
     <Compile Include="Logiche\CloneSB.cs" />
     <Compile Include="Logiche\clsStatBloccoSoglie.cs" />
@@ -476,6 +483,7 @@
     <Compile Include="Logiche\Display\DisplaySetup.cs" />
     <Compile Include="Logiche\Display\DisplaySetupComponents.cs" />
     <Compile Include="Logiche\FileFirmware.cs" />
+    <Compile Include="Logiche\FileFirmwareLL.cs" />
     <Compile Include="Logiche\ImageDump.cs" />
     <Compile Include="Logiche\LogicheBase.cs" />
     <Compile Include="Logiche\MappaSpybatt.cs" />
@@ -532,6 +540,7 @@
     <Compile Include="Servizi\ScannerPorte.cs" />
     <Compile Include="Servizi\ScannerUSB.cs" />
     <Compile Include="Servizi\StringCipher.cs" />
+    <Compile Include="Servizi\SytemUtility.cs" />
     <Compile Include="Servizi\txtLogger.cs" />
     <Compile Include="Servizi\usParameters.cs" />
     <Compile Include="Settings.cs" />
