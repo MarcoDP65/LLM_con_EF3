@@ -35,7 +35,7 @@ namespace PannelloCharger
 
         public UnitaSpyBatt sbLocale;
         public CaricaBatteria llLocale;
-        public ControlledDevice ElementoPilotato = ControlledDevice.Nessuno; 
+        public ControlledDevice ElementoPilotato = ControlledDevice.SpyBatt; 
 
         public elementiComuni.tipoMessaggio TipoComando { get; set; }
         public BloccoFirmware FirmwareBlock { get; set; }
@@ -149,8 +149,8 @@ namespace PannelloCharger
             btnAnnulla.Enabled = true;
             btnChiudi.Enabled = false;
             btnStartLettura.Enabled = false;
-            sbEndStep _esitoBg = new sbEndStep();
-            sbWaitStep _stepBg = new sbWaitStep();
+            elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+            elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
             ProgressChangedEventArgs _stepEv;
             //time consuming operation
             DateTime _inizioChiamata = DateTime.Now;
@@ -214,7 +214,7 @@ namespace PannelloCharger
                                 {
 
                                     //prima avanzo il contatore lunghi
-                                    sbWaitStep _passo = new sbWaitStep();
+                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                     int _progress = 0;
                                     double _valProgress = 0;
                                     _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
@@ -293,24 +293,57 @@ namespace PannelloCharger
             string _messaggio2;
             int _localProgressPercentage = e.ProgressPercentage;
 
+            elementiComuni.WaitStep _statoE = null;
+            elementiComuni.WaitStep _statoLL= null;
+            bool _EsecuzioneInterrotta = false;
+            string _titolo ="";
+            int _step = 0;
+            elementiComuni.tipoMessaggio _msg = elementiComuni.tipoMessaggio.vuoto;
+
+            switch (ElementoPilotato)
+            {
+                case ControlledDevice.Nessuno:
+                    break;
+                case ControlledDevice.SpyBatt:
+                    _statoE = (elementiComuni.WaitStep)e.UserState;
+                    _EsecuzioneInterrotta = _statoE.EsecuzioneInterrotta;
+                    _titolo = _statoE.Titolo;
+                    _step = _statoE.Step;
+                    _msg = _statoE.TipoDati;
+                    break;
+                case ControlledDevice.Display:
+                    break;
+                case ControlledDevice.LadeLight:
+                    _statoLL = (elementiComuni.WaitStep)e.UserState;
+                    _EsecuzioneInterrotta = _statoLL.EsecuzioneInterrotta;
+                    _titolo = _statoLL.Titolo;
+                    _step = _statoLL.Step;
+                    _msg = _statoLL.TipoDati;
+                    break;
+                case ControlledDevice.Desolfatatore:
+                    break;
+                default:
+                    break;
+            }
+
             //Here you play with the main UI thread
-            sbWaitStep _statoE = (sbWaitStep)e.UserState;
+            //sbWaitStep _statoE = (sbWaitStep)e.UserState;
 
             if (_localProgressPercentage > 100)
                 _localProgressPercentage = 100;
 
-            if (_statoE.EsecuzioneInterrotta)
+            if (_EsecuzioneInterrotta)
             {
-                lblTitolo.Text = _statoE.Titolo;
+                lblTitolo.Text = _titolo;
                 return;
             }
 
-            if (_statoE.Step == -1)
+            if (_step == -1)
             {
-                lblTitolo.Text = _statoE.Titolo;
+                lblTitolo.Text = _titolo;
                 return;
             }
-            switch (_statoE.TipoDati)
+            switch (_msg)
             {
 
                 case elementiComuni.tipoMessaggio.MemLunga:
@@ -465,6 +498,35 @@ namespace PannelloCharger
                         }
                         break;
                     }
+                case elementiComuni.tipoMessaggio.AggiornamentoFirmwareLL:
+                    {
+                        {
+
+                            TimeSpan _tTrascorso = DateTime.Now.Subtract(_startCompute);
+                            if (_statoLL == null)
+                            {
+                                _messaggio1 = "Evento non formato - tempo: " + _tTrascorso.TotalSeconds.ToString("0.000");
+                            }
+                            else
+                            {
+                                double _previsto = 0;
+                                if (_statoLL.Step > 0)
+                                {
+                                    _previsto = (_tTrascorso.TotalSeconds * _statoLL.Eventi) / _statoE.Step;
+                                }
+                                _messaggio1 = "Step Breve: " + _statoLL.Step.ToString() + " di " + _statoLL.Eventi.ToString() + " - tempo: " + _tTrascorso.TotalSeconds.ToString("0.000") + " di " + _previsto.ToString("0.000");
+                                _firstRecordReceived = true;
+                                lblAvanzmentoB.Text = e.ProgressPercentage.ToString() + "%";
+                                lblMsg01.Text = _messaggio1;
+
+                            }
+                            Log.Info("Worker Progress Firmware " + e.ProgressPercentage.ToString() + " (" + _statoLL.Step.ToString() + ")");
+                            pgbAvanamentoB.Value = _localProgressPercentage;
+                            lblMessaggioAvanzamento.Text = "Processing......" + pgbAvanamentoB.Value.ToString() + "%";
+                        }
+                        break;
+                    }
+
                 default:
                     {
                         Log.Info("Worker Progress Evento non riconosciuto: " + _statoE.TipoDati.ToString());
@@ -479,7 +541,7 @@ namespace PannelloCharger
         {
             try
             {
-                sbWaitStep _statoE = (sbWaitStep)e.UserState;
+                elementiComuni.WaitStep _statoE = (elementiComuni.WaitStep)e.UserState;
                 int ValAvanzamento = 0;
                 double _valAvanzamento = 0;
                 //Here you play with the main UI thread
@@ -493,7 +555,7 @@ namespace PannelloCharger
                     _valAvanzamento = 0;
                 }
                 ValAvanzamento = (int)_valAvanzamento;
-                Log.Warn("Ricevuto STEP "+ ValAvanzamento.ToString() );
+                Log.Warn("Ricevuto STEP SB "+ ValAvanzamento.ToString() );
                 sbWorker.ReportProgress(ValAvanzamento, _statoE);
             }
             catch (Exception Ex)
@@ -507,7 +569,7 @@ namespace PannelloCharger
         {
             try
             {
-                sbWaitStep _statoE = (sbWaitStep)e.UserState;
+                elementiComuni.WaitStep _statoE = (elementiComuni.WaitStep)e.UserState;
                 int ValAvanzamento = 0;
                 double _valAvanzamento = 0;
                 //Here you play with the main UI thread
@@ -521,7 +583,7 @@ namespace PannelloCharger
                     _valAvanzamento = 0;
                 }
                 ValAvanzamento = (int)_valAvanzamento;
-                Log.Warn("Ricevuto STEP " + ValAvanzamento.ToString());
+                Log.Warn("Ricevuto STEP LL " + ValAvanzamento.ToString());
                 sbWorker.ReportProgress(ValAvanzamento, _statoE);
             }
             catch (Exception Ex)
@@ -560,7 +622,7 @@ namespace PannelloCharger
                     Log.Debug("sbWorker_RunWorkerCompleted: Task Completed");
                     if (e.Result != null)
                     {
-                        sbEndStep _esito = (sbEndStep)e.Result;
+                        elementiComuni.EndStep _esito = (elementiComuni.EndStep)e.Result;
 
 
                         _messaggio1 = "Ricevuti : " + _esito.UltimoEvento.ToString() + " di " + _esito.EventiPrevisti.ToString() + " - tempo: " + FunzioniMR.StringaDurataFull( _esito.SecondiElaborazione);

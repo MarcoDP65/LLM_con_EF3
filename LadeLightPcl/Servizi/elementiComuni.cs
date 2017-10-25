@@ -130,7 +130,6 @@ namespace ChargerLogic
         /// </summary>
         public enum VersoCorrente : byte { Diretto = 0x0F, Inverso = 0xF0, NonDefinito = 0x00 };
 
-
         public enum EsitoControlloValore : byte
         {
             EsitoPositivo = 0x00,
@@ -157,9 +156,218 @@ namespace ChargerLogic
             ErroreVBk = 0x46,
             ErroreElettr = 0x47,
         };
+    
+        public class WaitEventStep : EventArgs
+        {
+            private int _numEventi;
+            private int _evCorrente;
+            private tipoMessaggio _TipoDati;
+            private contenutoMessaggio _DatiRicevuti;
 
+            public int Eventi
+            {
+                set
+                {
+                    _numEventi = value;
+                }
+                get
+                {
+                    return this._numEventi;
+                }
+            }
 
+            public int Step
+            {
+                set
+                {
+                    _evCorrente = value;
+                }
+                get
+                {
+                    return this._evCorrente;
+                }
+            }
 
+            public tipoMessaggio TipoDati
+            {
+                set
+                {
+                    _TipoDati = value;
+                }
+                get
+                {
+                    return this._TipoDati;
+                }
+            }
+
+            public contenutoMessaggio DatiRicevuti
+            {
+                set
+                {
+                    _DatiRicevuti = value;
+                }
+                get
+                {
+                    return this._DatiRicevuti;
+                }
+            }
+
+        }
+
+        public class WaitStep
+        {
+            private int _numEventi;
+            private int _evCorrente;
+            private string _titolo;
+            private bool _esecuzioneInterrotta;
+            private tipoMessaggio _TipoDati;
+            private contenutoMessaggio _DatiRicevuti;
+
+             public int Eventi
+            {
+                set
+                {
+                    _numEventi = value;
+                }
+                get
+                {
+                    return this._numEventi;
+                }
+            }
+
+            public int Step
+            {
+                set
+                {
+                    _evCorrente = value;
+                }
+                get
+                {
+                    return this._evCorrente;
+                }
+            }
+
+            public bool EsecuzioneInterrotta
+            {
+                set
+                {
+                    _esecuzioneInterrotta = value;
+                }
+                get
+                {
+                    return this._esecuzioneInterrotta;
+                }
+            }
+
+            public string Titolo
+            {
+                set
+                {
+                    _titolo = value;
+                }
+                get
+                {
+                    return this._titolo;
+                }
+            }
+            public tipoMessaggio TipoDati
+            {
+                set
+                {
+                    _TipoDati = value;
+                }
+                get
+                {
+                    return this._TipoDati;
+                }
+            }
+
+            public contenutoMessaggio DatiRicevuti
+            {
+                set
+                {
+                    _DatiRicevuti = value;
+                }
+                get
+                {
+                    return this._DatiRicevuti;
+                }
+            }
+
+        }
+
+        public class EndStep
+        {
+            private int _numEventiPrev;
+            private int _ultimoEvento;
+            private double _secondiTot;
+            private tipoMessaggio _TipoDati;
+            private contenutoMessaggio _DatiRicevuti;
+
+            // public enum tipoMessaggio : int { vuoto = 0, MemLunga = 1, MemBreve = 2, Programmi = 3 };
+            // public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Dati = 2, Breack = 3, Nack = 10, NonValido = 99 };
+
+            public int EventiPrevisti
+            {
+                set
+                {
+                    _numEventiPrev = value;
+                }
+                get
+                {
+                    return this._numEventiPrev;
+                }
+            }
+
+            public int UltimoEvento
+            {
+                set
+                {
+                    _ultimoEvento = value;
+                }
+                get
+                {
+                    return this._ultimoEvento;
+                }
+            }
+
+            public double SecondiElaborazione
+            {
+                set
+                {
+                    _secondiTot = value;
+                }
+                get
+                {
+                    return this._secondiTot;
+                }
+            }
+
+            public tipoMessaggio TipoDati
+            {
+                set
+                {
+                    _TipoDati = value;
+                }
+                get
+                {
+                    return this._TipoDati;
+                }
+            }
+
+            public contenutoMessaggio DatiRicevuti
+            {
+                set
+                {
+                    _DatiRicevuti = value;
+                }
+                get
+                {
+                    return this._DatiRicevuti;
+                }
+            }
+
+        }
 
 
 

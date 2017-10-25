@@ -36,9 +36,11 @@ namespace ChargerLogic
             {
                 bool _esito;
                 //object _dataRx;
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                //sbWaitStep _stepBg = new sbWaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
+                elementiComuni.WaitStep _passo;
+                ProgressChangedEventArgs _stepEv;
 
 
                 //bool _recordPresente;
@@ -54,13 +56,13 @@ namespace ChargerLogic
 
                         if (Step != null)
                         {
-                            llWaitStep _passo = new llWaitStep();
+                            _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = StringheMessaggio.strMsgResetSB;  //"Reset SPY-BATT";
                             _passo.Eventi = 1;
                             _passo.Step = -1;
                             _passo.EsecuzioneInterrotta = false;
-                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                            _stepEv = new ProgressChangedEventArgs(0, _passo);
                             Step(this, _stepEv);
                         }
                         //_esito = ResetScheda(false);
@@ -77,7 +79,7 @@ namespace ChargerLogic
                             System.Threading.Thread.Sleep(500);
                             if (Step != null)
                             {
-                                llWaitStep _passo = new llWaitStep();
+                                _passo = new elementiComuni.WaitStep();
                                 _passo.Eventi = 20;
                                 _passo.Step = _tentativi++;
                                 _passo.EsecuzioneInterrotta = false;
@@ -88,7 +90,7 @@ namespace ChargerLogic
                                 _progress = (int)_valProgress;
                                 // if (_lastProgress != _progress)
                                 {
-                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                     _stepEv = new ProgressChangedEventArgs(_progress, _passo);
                                     //Log.Debug("Passo " + _risposteRicevute.ToString());
                                     Step(this, _stepEv);
                                     //_lastProgress = _progress;
@@ -110,13 +112,13 @@ namespace ChargerLogic
                         //Preparo l'intestazione della finestra di avanzamento
                         if (Step != null)
                         {
-                            llWaitStep _passo = new llWaitStep();
+                            _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = StringheMessaggio.strMsgAggFWFase1;  // "Fase 1 - Invio Testata";
                             _passo.Eventi = 1;
                             _passo.Step = -1;
                             _passo.EsecuzioneInterrotta = false;
-                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                            _stepEv = new ProgressChangedEventArgs(0, _passo);
                             Step(this, _stepEv);
                         }
 
@@ -127,9 +129,20 @@ namespace ChargerLogic
 
 
                     _mS.ComponiMessaggioTestataFW(Area, Firmware.MessaggioTestata);
-                    Log.Debug(_mS.hexdumpMessaggio());
-                    _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, true);
+                    //Log.Debug(_mS.hexdumpMessaggio());
+                    //_parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    Log.Debug("----------------------------------------------------------------------------------------------------------------------------------------");
+
+                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+
+                    Log.Debug("----------------------------------------------------------------------------------------------------------------------------------------");
+
+                    _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);
+
+                    Log.Debug("Invio testata: " + _esito.ToString());
+                    Log.Debug("----------------------------------------------------------------------------------------------------------------------------------------");
+                    Log.Debug("");
+
 
                     //_esito = aspettaRisposta(elementiComuni.TimeoutBase, out _dataRx, MemorySlice, false, true, elementiComuni.tipoMessaggio.AggiornamentoFirmware);
 
@@ -141,13 +154,13 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = StringheMessaggio.strMsgAggFWFase1err1;  //"Caricamento Testata Fallito";
                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                 _passo.Step = -1;
                                 _passo.EsecuzioneInterrotta = true;
-                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                _stepEv = new ProgressChangedEventArgs(0, _passo);
                                 Step(this, _stepEv);
                             }
                         }
@@ -165,13 +178,13 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                llWaitStep _passo = new llWaitStep();
+                                _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = StringheMessaggio.strMsgAggFWFase2;  //"Fase 2 - Invio Dati";
                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                 _passo.Step = -1;
                                 _passo.EsecuzioneInterrotta = false;
-                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                _stepEv = new ProgressChangedEventArgs(0, _passo);
                                 Step(this, _stepEv);
                             }
 
@@ -180,155 +193,117 @@ namespace ChargerLogic
                             //fase 2:Invio aree
 
                             Log.Debug("----------------------------------------------------------");
-                    //        Log.Debug("Blocco 2 - Flash 1 " + Firmware.ListaFlash.Count.ToString());
+                            Log.Debug("Blocchi Dati:  " + Firmware.TotaleBlocchi.ToString());
                             Log.Debug("----------------------------------------------------------");
 
-                    //        foreach (PacchettoDatiFW _dataBlock in Firmware.ListaFlash)
+                            int _numAree = 0;
+                            foreach (AreaDatiFWLL _areaDati in Firmware.ListaAree)
                             {
-                                _pacchettoCorrente++;
-                                _tmpPacchettoCorrente = (ushort)(_pacchettoCorrente - 1);
+                                // aggiorno il titolo
+                                Log.Debug("FW Update: area #" + _numAree.ToString());
+                                 _passo = new elementiComuni.WaitStep();
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                _passo.Titolo = "Caricamento Area " + _numAree.ToString();
+                                _passo.Eventi = (int)_pacchettoCorrente;
+                                _passo.Step = -1;
+                                _passo.EsecuzioneInterrotta = false;
+                                _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                Step(this, _stepEv);
 
-                                //if (_tmpPacchettoCorrente == 3)
-                                //    _tmpPacchettoCorrente = 6;
 
-                     //           _mS.ComponiMessaggioPacchettoDatiFW((ushort)(_tmpPacchettoCorrente), (byte)_dataBlock.DimPacchetto, _dataBlock.PacchettoDati, _dataBlock.CRC);
-                                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
-                                if (_esito)
+                                // ora faccio scorrere i pacchetti dell'area
+                                foreach (PacchettoDatiFWLL _pacchettoDati in _areaDati.ListaPacchetti)
                                 {
-                                    _pacchettiInviati++;
-                                    if (Step != null)
+                                    _pacchettoCorrente++;
+                                    _tmpPacchettoCorrente = (ushort)(_pacchettoCorrente - 1);
+                                    Log.Debug("Passo " + _tmpPacchettoCorrente.ToString() + " - Size " + _pacchettoDati.DimPacchetto.ToString());
+
+                                    _mS.ComponiMessaggioPacchettoDatiFW((ushort)(_tmpPacchettoCorrente), (byte)_pacchettoDati.DimPacchetto, _pacchettoDati.PacchettoDati, _pacchettoDati.CRC);
+                                    // _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+
+                                    Log.Debug("Passo " + _pacchettoCorrente.ToString() + " inviato con esito " + _esito.ToString());
+
+                                    if (_esito)
                                     {
-                                        if (_ultimaRisposta == SerialMessage.TipoRisposta.Ack)
+                                        _pacchettiInviati++;
+
+                                        if (Step != null)
                                         {
-                                            // Il pacchetto è stato accettato; incremento i contatori e continuo
-                                            int _progress = 0;
-                                            double _valProgress = 0;
-                                            sbWaitStep _passo = new sbWaitStep();
-                                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
-                                            _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
-                                            _passo.Eventi = (int)Firmware.TotaleBlocchi;
-                                            _passo.Step = _pacchettiInviati;
-                                            _passo.EsecuzioneInterrotta = false;
-                                            if (Firmware.TotaleBlocchi > 0)
+                                            if (_ultimaRisposta == SerialMessage.TipoRisposta.Ack)
                                             {
-                                                _valProgress = (_pacchettiInviati * 100) / Firmware.TotaleBlocchi;
+                                                // Il pacchetto è stato accettato; incremento i contatori e continuo
+                                                int _progress = 0;
+                                                double _valProgress = 0;
+                                                _passo = new elementiComuni.WaitStep();
+                                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                                _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                                _passo.Eventi = (int)Firmware.TotaleBlocchi;
+                                                _passo.Step = _pacchettiInviati;
+                                                _passo.EsecuzioneInterrotta = false;
+                                                if (Firmware.TotaleBlocchi > 0)
+                                                {
+                                                    _valProgress = (_pacchettiInviati * 100) / Firmware.TotaleBlocchi;
+                                                }
+                                                _progress = (int)_valProgress;
+                                                if (_lastProgress != _progress)
+                                                {
+                                                    _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                                    //Log.Debug("Passo " + _risposteRicevute.ToString());
+                                                    Step(this, _stepEv);
+                                                    _lastProgress = _progress;
+                                                }
                                             }
-                                            _progress = (int)_valProgress;
-                                            if (_lastProgress != _progress)
+                                            else
                                             {
-                                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
-                                                //Log.Debug("Passo " + _risposteRicevute.ToString());
-                                                Step(this, _stepEv);
-                                                _lastProgress = _progress;
+                                                // Pacchetto non valido, blocco l'aggiornmento
+                                                _pacchettiInviati = 0;
+                                                _pacchettoCorrente = 0;
+
+
+                                                //Preparo l'intestazione della finestra di avanzamento
+                                                if (Step != null)
+                                                {
+                                                    Log.Error("FW Update(1): errore pacchetto #" + _pacchettiInviati + " - Area " + _numAree.ToString());
+                                                     _passo = new elementiComuni.WaitStep();
+                                                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                                    _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                                                    _passo.Eventi = (int)Firmware.TotaleBlocchi;
+                                                    _passo.Step = -1;
+                                                    _passo.EsecuzioneInterrotta = true;
+                                                    _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                                    Step(this, _stepEv);
+                                                    return false;
+                                                }
+
                                             }
                                         }
                                         else
                                         {
-                                            // Pacchetto non valido, blocco l'aggiornmento
-                                            _pacchettiInviati = 0;
-                                            _pacchettoCorrente = 0;
-
-
-                                            //Preparo l'intestazione della finestra di avanzamento
-                                            if (Step != null)
-                                            {
-                                                Log.Error("FW Update: errore pacchetto flash 1 #" + _pacchettiInviati);
-                                                sbWaitStep _passo = new sbWaitStep();
-                                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                                _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
-                                                _passo.Eventi = (int)Firmware.TotaleBlocchi;
-                                                _passo.Step = -1;
-                                                _passo.EsecuzioneInterrotta = true;
-                                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
-                                                Step(this, _stepEv);
-                                                return false;
-                                            }
-
+                                            //Errore pacchetto
+                                            Log.Error("FW Update(2): errore pacchetto #" + _pacchettiInviati + " - Area " + _numAree.ToString());
+                                            return false;
                                         }
+
                                     }
                                     else
                                     {
                                         //Errore pacchetto
-                                        Log.Error("FW Update: errore pacchetto flash #" + _pacchettoCorrente);
+                                        Log.Error("FW Update(3): errore pacchetto #" + _pacchettiInviati + " - Area " + _numAree.ToString());
                                         return false;
                                     }
 
-                                }
-                                else
-                                {
-                                    //Errore pacchetto
-                                    Log.Error("FW Update: errore pacchetto flash 1 #" + _pacchettoCorrente);
-                                    return false;
-                                }
-
-
-                            }
-
-                            //fase 3: Indirizzo
-                            Log.Debug("----------------------------------------------------------");
-                            Log.Debug("Blocco 3 - Indirizzo app - 4 byte " ) ;
-                            Log.Debug("----------------------------------------------------------");
-
-                            Log.Debug("----------------------------------------------------------");
-                            Log.Debug("Fine TX  " + _pacchettiInviati.ToString());
-                            Log.Debug("----------------------------------------------------------");
-
-
-
-                            //ora, se previsto aspetto il riavvio e ricollego
-                            if (WaitReconnect)
-                            {
-                                int _progress = 0;
-                                double _valProgress = 0;
-                                //  mi ricollego aspettando il riavvio
-                                //Application.DoEvents();
-
-                                if (Step != null)
-                                {
-                                    sbWaitStep _passo = new sbWaitStep();
-                                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                    _passo.Titolo = StringheMessaggio.strMsgAggFWFase3;  //"Fase 3 - riavvio SPY-BATT";
-                                    _passo.Eventi = 1;
-                                    _passo.Step = -1;
-                                    _passo.EsecuzioneInterrotta = false;
-                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
-                                    Step(this, _stepEv);
-                                }
-
-                                _esito = false;
-                                int _tentativi = 0;
-                                _lastProgress = 0;
-                                while (!_esito)
-                                {
-                                    System.Threading.Thread.Sleep(500);
-                                    if (Step != null)
-                                    {
-                                        sbWaitStep _passo = new sbWaitStep();
-                                        _passo.Eventi = 20;
-                                        _passo.Step = _tentativi++;
-                                        _passo.EsecuzioneInterrotta = false;
-                                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
-                                        _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
-                                        _valProgress = (_tentativi * 5);
-
-                                        _progress = (int)_valProgress;
-                                        // if (_lastProgress != _progress)
-                                        {
-                                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
-                                            //Log.Debug("Passo " + _risposteRicevute.ToString());
-                                            Step(this, _stepEv);
-                                            _lastProgress = _progress;
-                                        }
-                                    }
-
-                                    _esito = VerificaPresenza();
 
                                 }
 
-                                //dopo la riconnessione, sincronizzo l'orologio
-
-                                if (_esito) ScriviOrologio();
+                            
+                            
+                            
+                            //dopo la riconnessione, sincronizzo l'orologio
+                                
+                               // if (_esito) ScriviOrologio();
 
                             }
 

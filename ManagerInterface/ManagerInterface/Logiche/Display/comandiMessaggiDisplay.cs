@@ -293,7 +293,7 @@ namespace ChargerLogic
                 // se background mode attivo, lancio l'evento di fine elaborazione
                 if (runAsync == true)
                 {
-                    sbEndStep _esitoBg = new sbEndStep();
+                    elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
                     TimeSpan _tTrascorso = DateTime.Now.Subtract(_startRicezione);
 
                     _esitoBg.EventiPrevisti = risposteAttese;

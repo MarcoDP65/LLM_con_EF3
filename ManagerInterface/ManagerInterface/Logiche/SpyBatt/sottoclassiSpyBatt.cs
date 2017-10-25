@@ -24,6 +24,7 @@ namespace ChargerLogic
     {
 
     }
+
     public class sbListaLunghiEvt : EventArgs
     {
         private int numLunghe;
@@ -40,7 +41,7 @@ namespace ChargerLogic
         }
     }
 
-
+/*
     public class sbWaitEventStep : EventArgs
     {
         private int _numEventi;
@@ -101,7 +102,6 @@ namespace ChargerLogic
 
     }
 
-
     public class sbWaitStep
     {
         private int _numEventi;
@@ -110,9 +110,6 @@ namespace ChargerLogic
         private bool _esecuzioneInterrotta;
         private elementiComuni.tipoMessaggio _TipoDati;
         private elementiComuni.contenutoMessaggio _DatiRicevuti;
-
-        // public enum tipoMessaggio : int { vuoto = 0, MemLunga = 1, MemBreve = 2, Programmi = 3 };
-        // public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Dati = 2, Breack = 3, Nack = 10, NonValido = 99 };
 
         public int Eventi
         {
@@ -161,6 +158,7 @@ namespace ChargerLogic
                 return this._titolo;
             }
         }
+
         public elementiComuni.tipoMessaggio TipoDati
         {
             set
@@ -260,7 +258,7 @@ namespace ChargerLogic
         }
 
     }
-
+    */
     /// <summary>
     /// Registrazione (record e collezione)
     /// Struttura per il passaggio di elenchi nei metodo di estrazione / ricerca

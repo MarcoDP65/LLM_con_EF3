@@ -23,7 +23,7 @@ namespace PannelloCharger
 
     {
     }
-
+    /*
     public class llWaitEventStep : EventArgs
     {
         private int _numEventi;
@@ -243,5 +243,5 @@ namespace PannelloCharger
         }
 
     }
-
+    */
 }

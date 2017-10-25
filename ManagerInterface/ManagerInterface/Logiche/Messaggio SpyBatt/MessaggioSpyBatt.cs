@@ -135,7 +135,7 @@ namespace ChargerLogic
                 // ora in base al comando cambio lettura:
                 switch (_comando)
                 {
-                    case (byte)TipoComando.SB_ACK: // ACK
+                    case (byte)TipoComando.ACK_PACKET: // ACK
                         {
                             _startPos = 23;
                             if (_messaggio[_startPos] != serENDPAC)
@@ -157,7 +157,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_ACK_PKG: // 0x6D  ACK Pacchetti in scrittura multipla
+                    case (byte)TipoComando.EVENT_MEM_CODE: // 0x6D  ACK Pacchetti in scrittura multipla
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -193,7 +193,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_NACK: //NAK
+                    case (byte)TipoComando.NACK_PACKET: //NAK
                         {
                             _crc = 0;
                             Log.Warn("--- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK --- NACK ---");
@@ -627,7 +627,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_BootloaderInfo:
+                    case (byte)TipoComando.CMD_INFO_BL:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -2219,7 +2219,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_FirmwareUpdate);
+                _comando = (byte)(TipoComando.CMD_FW_UPLOAD_MSP);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -2342,7 +2342,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_FirmwareSelect);
+                _comando = (byte)(TipoComando.CMD_FW_UPDATE);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -2554,7 +2554,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_FirmwareData);
+                _comando = (byte)(TipoComando.CMD_FW_DATA_SEND);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

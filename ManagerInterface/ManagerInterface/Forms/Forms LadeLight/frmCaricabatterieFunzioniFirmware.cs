@@ -24,12 +24,7 @@ namespace PannelloCharger
     {
         FirmwareLLManager _firmMng = new FirmwareLLManager();
 
-
-
-        /// <summary>
-        /// Carico la lista delle letture per l'analisi corrente
-        /// </summary>
-        private void InitVistaBlocchiFwIN()
+        private void InizializzaVistaStrutturaAreeCCS()
         {
             try
             {
@@ -40,92 +35,85 @@ namespace PannelloCharger
                 _stile.SetFont(_carattere);
                 Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
 
-                flvwLettureParametri.HeaderUsesThemes = false;
-                flvwLettureParametri.HeaderFormatStyle = _stile;
-                flvwLettureParametri.UseAlternatingBackColors = true;
-                flvwLettureParametri.AlternateRowBackColor = Color.LightGoldenrodYellow;
+                lvwFWInFileStruct.HeaderUsesThemes = false;
+                lvwFWInFileStruct.HeaderFormatStyle = _stile;
+                lvwFWInFileStruct.UseAlternatingBackColors = true;
+                lvwFWInFileStruct.AlternateRowBackColor = Color.LightGoldenrodYellow;
 
-                flvwLettureParametri.AllColumns.Clear();
+                lvwFWInFileStruct.AllColumns.Clear();
 
-                flvwLettureParametri.View = View.Details;
-                flvwLettureParametri.ShowGroups = false;
-                flvwLettureParametri.GridLines = true;
+                lvwFWInFileStruct.View = View.Details;
+                lvwFWInFileStruct.ShowGroups = false;
+                lvwFWInFileStruct.GridLines = true;
 
-                BrightIdeasSoftware.OLVColumn colLettura = new BrightIdeasSoftware.OLVColumn();
-                colLettura.Text = "N.";
-                colLettura.AspectName = "strLettura";
-                colLettura.Width = 40;
-                colLettura.HeaderTextAlign = HorizontalAlignment.Center;
-                colLettura.TextAlign = HorizontalAlignment.Right;
-                flvwLettureParametri.AllColumns.Add(colLettura);
+                OLVColumn NumArea = new OLVColumn()
+                {
+                    Text = "Area",
+                    ToolTipText = "Area di memoria",
+                    AspectName = "strNumArea",
+                    Sortable = false,
+                    Width = 40,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = true,
+                };
+                lvwFWInFileStruct.AllColumns.Add(NumArea);
 
-                BrightIdeasSoftware.OLVColumn colTimeStamp = new BrightIdeasSoftware.OLVColumn();
-                colTimeStamp.Text = "Time";
-                colTimeStamp.AspectName = "strOraLettura";
-                colTimeStamp.Width = 70;
-                colTimeStamp.HeaderTextAlign = HorizontalAlignment.Center;
-                colTimeStamp.TextAlign = HorizontalAlignment.Right;
-                flvwLettureParametri.AllColumns.Add(colTimeStamp);
-
-                BrightIdeasSoftware.OLVColumn colTempoCiclo = new BrightIdeasSoftware.OLVColumn();
-                colTempoCiclo.Text = "T.Ciclo";
-                colTempoCiclo.AspectName = "strSecondsFromStart";
-                colTempoCiclo.Width = 70;
-                colTempoCiclo.HeaderTextAlign = HorizontalAlignment.Center;
-                colTempoCiclo.TextAlign = HorizontalAlignment.Right;
-                flvwLettureParametri.AllColumns.Add(colTempoCiclo);
-
-
-                BrightIdeasSoftware.OLVColumn colTensioneIst = new BrightIdeasSoftware.OLVColumn();
-                colTensioneIst.Text = "V ist";
-                colTensioneIst.AspectName = "strTensioneIstantanea";
-                colTensioneIst.Width = 60;
-                colTensioneIst.HeaderTextAlign = HorizontalAlignment.Center;
-                colTensioneIst.TextAlign = HorizontalAlignment.Right;
-                flvwLettureParametri.AllColumns.Add(colTensioneIst);
+                OLVColumn AddressArea = new OLVColumn()
+                {
+                    Text = "Addr",
+                    ToolTipText = "Indirizzo Area di memoria",
+                    AspectName = "strAddrDestPacchetto",
+                    Sortable = false,
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = true,
+                };
+                lvwFWInFileStruct.AllColumns.Add(AddressArea);
 
 
-                BrightIdeasSoftware.OLVColumn colCorrIst = new BrightIdeasSoftware.OLVColumn();
-                colCorrIst.Text = "A ist";
-                colCorrIst.AspectName = "strCorrenteIstantanea";
-                colCorrIst.Width = 60;
-                colCorrIst.HeaderTextAlign = HorizontalAlignment.Center;
-                colCorrIst.TextAlign = HorizontalAlignment.Right;
-                flvwLettureParametri.AllColumns.Add(colCorrIst);
-
-
-                BrightIdeasSoftware.OLVColumn colCorrCaricata = new BrightIdeasSoftware.OLVColumn();
-                colCorrCaricata.Text = "Ah car";
-                colCorrCaricata.AspectName = "strAhCaricati";
-                colCorrCaricata.Width = 60;
-                colCorrCaricata.HeaderTextAlign = HorizontalAlignment.Center;
-                colCorrCaricata.TextAlign = HorizontalAlignment.Right;
-                flvwLettureParametri.AllColumns.Add(colCorrCaricata);
-
-
+                OLVColumn DimArea = new OLVColumn()
+                {
+                    Text = "Dim",
+                    ToolTipText = "Dimensione Area di memoria",
+                    AspectName = "strNumBytes",
+                    Sortable = false,
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
+                    IsVisible = true,
+                };
+                lvwFWInFileStruct.AllColumns.Add(DimArea);
 
 
                 //-------------------------------------------- 
 
 
-                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
-                colRowFiller.Text = "";
-                colRowFiller.Width = 50;
-                colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
-                colRowFiller.TextAlign = HorizontalAlignment.Right;
-                colRowFiller.FillsFreeSpace = true;
-                flvwLettureParametri.AllColumns.Add(colRowFiller);
+                OLVColumn colRowFiller = new OLVColumn()
+                {
+                    Text = "",
+                    Sortable = false,
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    FillsFreeSpace = true,
+                    IsVisible = true,
+                };
 
-                flvwLettureParametri.RebuildColumns();
+                lvwFWInFileStruct.AllColumns.Add(colRowFiller);
 
-                flvwLettureParametri.SetObjects(ListaValori);
-                flvwLettureParametri.BuildList();
+                lvwFWInFileStruct.RebuildColumns();
+
+                lvwFWInFileStruct.SetObjects(ListaAreeLLF);
+                lvwFWInFileStruct.BuildList();
             }
             catch (Exception Ex)
             {
                 Log.Error("InizializzaVistaLunghi: " + Ex.Message);
             }
         }
+
 
 
         public void CaricafileLLCCS()
@@ -246,15 +234,7 @@ namespace PannelloCharger
             bool _esitoBool;
             try
             {
-                txtFWInSBFRev.Text = "";
-                txtFWLibSBFRev.Text = "";
-                txtFWInSBFDtRev.Text = "";
-                txtFWTxFileLenN1.Text = "";
 
-                txtFWTxFileLenP.Text = "";
-                txtFWTxDataLenN1.Text = "";
-
-                txtFWTxDataLenP.Text = "";
                 btnFWPreparaTrasmissione.Enabled = false;
 
                 if (txtFWFileSBFrd.Text == "")
@@ -267,8 +247,26 @@ namespace PannelloCharger
                 if (_esito == FirmwareLLManager.ExitCode.OK)
                 {
 
-                    txtFWInSBFRev.Text = _firmMng.FirmwareData.Release;
+                    txtFWInLLFRev.Text = _firmMng.FirmwareData.Release;
+                    txtFWInLLFDispRev.Text = _firmMng.FirmwareData.DisplayRelease;
+
                     txtFWInSBFDtRev.Text = FunzioniMR.StringaDataTS(_firmMng.FirmwareData.ReleaseDateBlock);
+                    ListaAreeLLF.Clear();
+                    int NumArea = 0;
+                    foreach(AreaDatiFWLL _area in _firmMng.FirmwareData.ListaAree)
+                    {
+                        ParametriArea _tempPar = new ParametriArea();
+                        _tempPar.NumArea = NumArea++;
+                        _tempPar.NumBytes = (int)_area.DimDati;
+                        _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
+                        _tempPar.NumPacchetti = 0;
+                        ListaAreeLLF.Add(_tempPar);
+
+                    }
+                    InizializzaVistaListaAreeLLF();
+
+
+
                     // verifico che il firmware sia accettabile, rileggendo la versione BL e FW sulla scheda
                     /*
                     _esitoBool = _sb.CaricaStatoFirmware(_sb.Id, true); /// SerialeCollegata);
@@ -285,10 +283,7 @@ namespace PannelloCharger
                     }
                     */
                     btnFWPreparaTrasmissione.Enabled = true;
-                    //txtFWLibSBFRev.Text = _firmMng.FirmwareData.StrategyLibRelease;
-                    //txtFWTxFileLenN1.Text = _firmMng.FirmwareData.LenFlash1.ToString();
-                    //txtFWTxFileLenN2.Text = _firmMng.FirmwareData.LenFlash2.ToString();
-                    //txtFWTxFileLenP.Text = _firmMng.FirmwareData.LenProxy.ToString();
+
 
                     return true;
 
@@ -306,17 +301,7 @@ namespace PannelloCharger
             FirmwareLLManager.ExitCode _esito;
             try
             {
-                txtFWTxDataLenN1.Text = "";
-                txtFWTxDataLenP.Text = "";
 
-                txtFWTxDataAddrN1.Text = "";
-
-                txtFWTxDataAddrP.Text = "";
-
-                txtFWTxDataNumN1.Text = "";
-
-                txtFWTxDataNumP.Text = "";
-                txtFWTxDataNumTot.Text = "";
                 btnFWLanciaTrasmissione.Enabled = false;
 
                 _esito = _firmMng.PreparaUpgradeFw();
@@ -325,20 +310,24 @@ namespace PannelloCharger
                     _esito = _firmMng.ComponiArrayTestata();
                     if (_esito == FirmwareLLManager.ExitCode.OK)
                     {
-                        /*
-                        txtFWTxDataLenN1.Text = _firmMng.FirmwareBlock.LenFlash.ToString();
-                       // txtFWTxDataLenP.Text = _firmMng.FirmwareBlock.LenProxy.ToString();
 
-                        txtFWTxDataNumN1.Text = _firmMng.FirmwareBlock.ListaFlash.Count().ToString();
-                        //txtFWTxDataNumN2.Text = _firmMng.FirmwareBlock.ListaFlash2.Count().ToString();
-                        txtFWTxDataNumP.Text = "1";// _firmMng.FirmwareBlock.ListaProxy.Count().ToString();
-                        txtFWTxDataNumTot.Text = _firmMng.FirmwareBlock.TotaleBlocchi.ToString();
+                        ListaAreeLLF.Clear();
+                        int NumArea = 0;
+                        foreach (AreaDatiFWLL _area in _firmMng.FirmwareBlock.ListaAree)
+                        {
+                            ParametriArea _tempPar = new ParametriArea();
+                            _tempPar.NumArea = NumArea++;
+                            _tempPar.NumBytes = (int)_area.DimDati;
+                            _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
+                            _tempPar.NumPacchetti =(int)_area.NumeroPacchetti;
 
-                       // txtFWTxDataAddrN1.Text = "0x" + _firmMng.FirmwareBlock.AddrFlash.ToString("X4");
-                        //txtFWTxDataAddrN2.Text = "0x" + _firmMng.FirmwareBlock.AddrFlash2.ToString("X4");
-                        //txtFWTxDataAddrP.Text = "0x" + _firmMng.FirmwareBlock.AddrProxy.ToString("X4");
-                        Log.Error("Teststa FW: " + FunzioniMR.hexdumpArray(_firmMng.FirmwareBlock.MessaggioTestata));
-                        */
+                            ListaAreeLLF.Add(_tempPar);
+
+                        }
+                  
+                        flwFWFileLLFStruct.SetObjects(ListaAreeLLF);
+                        flwFWFileLLFStruct.BuildList();
+
                         btnFWLanciaTrasmissione.Enabled = true;
                     }
 
@@ -354,6 +343,112 @@ namespace PannelloCharger
             }
 
         }
+
+        private void InizializzaVistaListaAreeLLF()
+        {
+            try
+            {
+                HeaderFormatStyle _stile = new HeaderFormatStyle();
+                _stile.SetBackColor(Color.DarkGray);
+                _stile.SetForeColor(Color.Yellow);
+                Font _carattere = new Font("Tahoma", 7, FontStyle.Bold);
+                _stile.SetFont(_carattere);
+                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
+
+                flwFWFileLLFStruct.HeaderUsesThemes = false;
+                flwFWFileLLFStruct.HeaderFormatStyle = _stile;
+                flwFWFileLLFStruct.UseAlternatingBackColors = true;
+                flwFWFileLLFStruct.AlternateRowBackColor = Color.LightGoldenrodYellow;
+
+                flwFWFileLLFStruct.AllColumns.Clear();
+
+                flwFWFileLLFStruct.View = View.Details;
+                flwFWFileLLFStruct.ShowGroups = false;
+                flwFWFileLLFStruct.GridLines = true;
+
+                OLVColumn NumArea = new OLVColumn()
+                {
+                    Text = "Area",
+                    ToolTipText = "Area di memoria",
+                    AspectName = "strNumArea",
+                    Sortable = false,
+                    Width = 40,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = true,
+                };
+                flwFWFileLLFStruct.AllColumns.Add(NumArea);
+
+                OLVColumn AddressArea = new OLVColumn()
+                {
+                    Text = "Addr",
+                    ToolTipText = "Indirizzo Area di memoria",
+                    AspectName = "strAddrDestPacchetto",
+                    Sortable = false,
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    IsVisible = true,
+                };
+                flwFWFileLLFStruct.AllColumns.Add(AddressArea);
+
+
+                OLVColumn DimArea = new OLVColumn()
+                {
+                    Text = "Dim",
+                    ToolTipText = "Dimensione Area di memoria",
+                    AspectName = "strNumBytes",
+                    Sortable = false,
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
+                    IsVisible = true,
+                };
+                flwFWFileLLFStruct.AllColumns.Add(DimArea);
+
+                OLVColumn NumPacchetti = new OLVColumn()
+                {
+                    Text = "Pkt",
+                    ToolTipText = "Numero Pacchetti",
+                    AspectName = "strNumPacchetti",
+                    Sortable = false,
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
+                    IsVisible = true,
+                };
+                flwFWFileLLFStruct.AllColumns.Add(NumPacchetti);
+
+
+                //-------------------------------------------- 
+
+
+                OLVColumn colRowFiller = new OLVColumn()
+                {
+                    Text = "",
+                    Sortable = false,
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    FillsFreeSpace = true,
+                    IsVisible = true,
+                };
+
+                flwFWFileLLFStruct.AllColumns.Add(colRowFiller);
+
+                flwFWFileLLFStruct.RebuildColumns();
+
+                flwFWFileLLFStruct.SetObjects(ListaAreeLLF);
+                flwFWFileLLFStruct.BuildList();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaVistaLunghi: " + Ex.Message);
+            }
+        }
+
+
+
 
 
         private void AggiornaFirmware(bool InviaACK = false)
@@ -377,14 +472,17 @@ namespace PannelloCharger
                 }
 
                 this.Cursor = Cursors.WaitCursor;
-                byte _area;
+                byte _area = (byte)(cmbFWSBFArea.SelectedIndex + 1);
+                /*
                 byte.TryParse(txtFWSBFArea.Text, out _area);
                 if (_area != 2)
                     _area = 1;
 
                 txtFWSBFArea.Text = _area.ToString();
+                */
                 _avCicli.ParametriWorker.MainCount = 100;
 
+                _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
                 _avCicli.llLocale = _cb;
                 _avCicli.FirmwareLLBlock = _firmMng.FirmwareBlock;
                 _avCicli.FirmwareArea = _area;
@@ -400,11 +498,8 @@ namespace PannelloCharger
 
                 Log.Debug("FRM firmwareUPD : ");
 
-
                 // Apro il form con le progressbar
-
                 _avCicli.ShowDialog(this);
-
 
                 // aspetto 5 secondi poi mi ricollego
                 Application.DoEvents();

@@ -43,6 +43,7 @@
             this.label281 = new System.Windows.Forms.Label();
             this.btnTestataCreaClone = new System.Windows.Forms.Button();
             this.grbAbilitazioneReset = new System.Windows.Forms.GroupBox();
+            this.chkTestataIgnoraNumLunghi = new System.Windows.Forms.CheckBox();
             this.btnGeneraCodice = new System.Windows.Forms.Button();
             this.txtCodiceSblocco = new System.Windows.Forms.TextBox();
             this.label139 = new System.Windows.Forms.Label();
@@ -1011,7 +1012,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.chkTestataIgnoraNumLunghi = new System.Windows.Forms.CheckBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -1246,6 +1246,13 @@
             resources.ApplyResources(this.grbAbilitazioneReset, "grbAbilitazioneReset");
             this.grbAbilitazioneReset.Name = "grbAbilitazioneReset";
             this.grbAbilitazioneReset.TabStop = false;
+            // 
+            // chkTestataIgnoraNumLunghi
+            // 
+            resources.ApplyResources(this.chkTestataIgnoraNumLunghi, "chkTestataIgnoraNumLunghi");
+            this.chkTestataIgnoraNumLunghi.Name = "chkTestataIgnoraNumLunghi";
+            this.chkTestataIgnoraNumLunghi.UseVisualStyleBackColor = true;
+            this.chkTestataIgnoraNumLunghi.CheckedChanged += new System.EventHandler(this.chkTestataIgnoraNumLunghi_CheckedChanged);
             // 
             // btnGeneraCodice
             // 
@@ -7876,12 +7883,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // chkTestataIgnoraNumLunghi
-            // 
-            resources.ApplyResources(this.chkTestataIgnoraNumLunghi, "chkTestataIgnoraNumLunghi");
-            this.chkTestataIgnoraNumLunghi.Name = "chkTestataIgnoraNumLunghi";
-            this.chkTestataIgnoraNumLunghi.UseVisualStyleBackColor = true;
             // 
             // frmSpyBat
             // 

@@ -467,6 +467,8 @@
             this.rbtFwArea2 = new System.Windows.Forms.RadioButton();
             this.rbtFwArea1 = new System.Windows.Forms.RadioButton();
             this.grbFWPreparaFile = new System.Windows.Forms.GroupBox();
+            this.txtFWInFileStruct = new System.Windows.Forms.TextBox();
+            this.lvwFWInFileStruct = new BrightIdeasSoftware.FastObjectListView();
             this.txtFwFileCCSa01 = new System.Windows.Forms.TextBox();
             this.txtFwFileCCShex = new System.Windows.Forms.TextBox();
             this.txtFWLibInFileRev = new System.Windows.Forms.TextBox();
@@ -526,29 +528,16 @@
             this.label93 = new System.Windows.Forms.Label();
             this.txtFwRevA1RevFw = new System.Windows.Forms.TextBox();
             this.grbFWAggiornamento = new System.Windows.Forms.GroupBox();
-            this.grbFWdettUpload = new System.Windows.Forms.GroupBox();
+            this.flwFWFileLLFStruct = new BrightIdeasSoftware.FastObjectListView();
+            this.txtFWInLLFDispRev = new System.Windows.Forms.TextBox();
             this.txtFWInSBFDtRev = new System.Windows.Forms.TextBox();
             this.label110 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.txtFWTxDataAddrP = new System.Windows.Forms.TextBox();
-            this.txtFWTxDataAddrN1 = new System.Windows.Forms.TextBox();
-            this.txtFWTxDataNumTot = new System.Windows.Forms.TextBox();
-            this.txtFWTxDataNumP = new System.Windows.Forms.TextBox();
-            this.txtFWTxDataNumN1 = new System.Windows.Forms.TextBox();
-            this.label105 = new System.Windows.Forms.Label();
-            this.txtFWTxFileLenP = new System.Windows.Forms.TextBox();
-            this.txtFWTxFileLenN1 = new System.Windows.Forms.TextBox();
-            this.txtFWTxDataLenP = new System.Windows.Forms.TextBox();
-            this.txtFWTxDataLenN1 = new System.Windows.Forms.TextBox();
             this.btnFWLanciaTrasmissione = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label108 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label113 = new System.Windows.Forms.Label();
-            this.txtFWSBFArea = new System.Windows.Forms.TextBox();
             this.label114 = new System.Windows.Forms.Label();
             this.btnFWPreparaTrasmissione = new System.Windows.Forms.Button();
-            this.txtFWInSBFRev = new System.Windows.Forms.TextBox();
+            this.txtFWInLLFRev = new System.Windows.Forms.TextBox();
             this.label115 = new System.Windows.Forms.Label();
             this.label116 = new System.Windows.Forms.Label();
             this.btnFWFileLLFLoad = new System.Windows.Forms.Button();
@@ -580,10 +569,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.txtFWLibSBFRev = new System.Windows.Forms.TextBox();
-            this.label107 = new System.Windows.Forms.Label();
-            this.lvwFWInFileStruct = new BrightIdeasSoftware.FastObjectListView();
-            this.txtFWInFileStruct = new System.Windows.Forms.TextBox();
+            this.cmbFWSBFArea = new System.Windows.Forms.ComboBox();
             this.tabProfiloAttuale.SuspendLayout();
             this.grbVarParametriSig.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
@@ -645,11 +631,12 @@
             this.tbpFirmware.SuspendLayout();
             this.grbFwAttivazioneArea.SuspendLayout();
             this.grbFWPreparaFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lvwFWInFileStruct)).BeginInit();
             this.grbFWArea2.SuspendLayout();
             this.GrbFWArea1.SuspendLayout();
             this.grbFWAggiornamento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flwFWFileLLFStruct)).BeginInit();
             this.grbStatoFirmware.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lvwFWInFileStruct)).BeginInit();
             this.SuspendLayout();
             // 
             // tabProfiloAttuale
@@ -5647,10 +5634,32 @@
             this.grbFWPreparaFile.TabStop = false;
             this.grbFWPreparaFile.Text = "Preparazione File SBF";
             // 
+            // txtFWInFileStruct
+            // 
+            this.txtFWInFileStruct.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtFWInFileStruct.Location = new System.Drawing.Point(598, 112);
+            this.txtFWInFileStruct.Name = "txtFWInFileStruct";
+            this.txtFWInFileStruct.ReadOnly = true;
+            this.txtFWInFileStruct.Size = new System.Drawing.Size(96, 22);
+            this.txtFWInFileStruct.TabIndex = 70;
+            this.txtFWInFileStruct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lvwFWInFileStruct
+            // 
+            this.lvwFWInFileStruct.CellEditUseWholeCell = false;
+            this.lvwFWInFileStruct.Location = new System.Drawing.Point(359, 159);
+            this.lvwFWInFileStruct.Name = "lvwFWInFileStruct";
+            this.lvwFWInFileStruct.ShowGroups = false;
+            this.lvwFWInFileStruct.Size = new System.Drawing.Size(335, 72);
+            this.lvwFWInFileStruct.TabIndex = 69;
+            this.lvwFWInFileStruct.UseCompatibleStateImageBehavior = false;
+            this.lvwFWInFileStruct.View = System.Windows.Forms.View.Details;
+            this.lvwFWInFileStruct.VirtualMode = true;
+            // 
             // txtFwFileCCSa01
             // 
             this.txtFwFileCCSa01.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFwFileCCSa01.Location = new System.Drawing.Point(24, 114);
+            this.txtFwFileCCSa01.Location = new System.Drawing.Point(24, 110);
             this.txtFwFileCCSa01.Name = "txtFwFileCCSa01";
             this.txtFwFileCCSa01.Size = new System.Drawing.Size(530, 24);
             this.txtFwFileCCSa01.TabIndex = 68;
@@ -5658,7 +5667,7 @@
             // txtFwFileCCShex
             // 
             this.txtFwFileCCShex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFwFileCCShex.Location = new System.Drawing.Point(23, 84);
+            this.txtFwFileCCShex.Location = new System.Drawing.Point(23, 80);
             this.txtFwFileCCShex.Name = "txtFwFileCCShex";
             this.txtFwFileCCShex.Size = new System.Drawing.Size(530, 24);
             this.txtFwFileCCShex.TabIndex = 67;
@@ -5669,7 +5678,7 @@
             this.txtFWLibInFileRev.Location = new System.Drawing.Point(21, 197);
             this.txtFWLibInFileRev.MaxLength = 9;
             this.txtFWLibInFileRev.Name = "txtFWLibInFileRev";
-            this.txtFWLibInFileRev.Size = new System.Drawing.Size(147, 27);
+            this.txtFWLibInFileRev.Size = new System.Drawing.Size(130, 27);
             this.txtFWLibInFileRev.TabIndex = 66;
             this.txtFWLibInFileRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -5751,7 +5760,7 @@
             this.txtFWInFileRev.Location = new System.Drawing.Point(21, 164);
             this.txtFWInFileRev.MaxLength = 6;
             this.txtFWInFileRev.Name = "txtFWInFileRev";
-            this.txtFWInFileRev.Size = new System.Drawing.Size(147, 27);
+            this.txtFWInFileRev.Size = new System.Drawing.Size(130, 27);
             this.txtFWInFileRev.TabIndex = 34;
             this.txtFWInFileRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -5769,7 +5778,7 @@
             // 
             this.label95.AutoSize = true;
             this.label95.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label95.Location = new System.Drawing.Point(20, 28);
+            this.label95.Location = new System.Drawing.Point(22, 29);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(178, 18);
             this.label95.TabIndex = 30;
@@ -5778,7 +5787,7 @@
             // btnFWFileCCSLoad
             // 
             this.btnFWFileCCSLoad.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFWFileCCSLoad.Location = new System.Drawing.Point(598, 52);
+            this.btnFWFileCCSLoad.Location = new System.Drawing.Point(598, 48);
             this.btnFWFileCCSLoad.Name = "btnFWFileCCSLoad";
             this.btnFWFileCCSLoad.Size = new System.Drawing.Size(97, 30);
             this.btnFWFileCCSLoad.TabIndex = 17;
@@ -5789,7 +5798,7 @@
             // btnFWFileCCSsearch
             // 
             this.btnFWFileCCSsearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFWFileCCSsearch.Location = new System.Drawing.Point(559, 52);
+            this.btnFWFileCCSsearch.Location = new System.Drawing.Point(559, 48);
             this.btnFWFileCCSsearch.Name = "btnFWFileCCSsearch";
             this.btnFWFileCCSsearch.Size = new System.Drawing.Size(33, 30);
             this.btnFWFileCCSsearch.TabIndex = 16;
@@ -5800,7 +5809,7 @@
             // txtFwFileCCS
             // 
             this.txtFwFileCCS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtFwFileCCS.Location = new System.Drawing.Point(23, 54);
+            this.txtFwFileCCS.Location = new System.Drawing.Point(23, 50);
             this.txtFwFileCCS.Name = "txtFwFileCCS";
             this.txtFwFileCCS.Size = new System.Drawing.Size(530, 24);
             this.txtFwFileCCS.TabIndex = 15;
@@ -6253,31 +6262,17 @@
             // grbFWAggiornamento
             // 
             this.grbFWAggiornamento.BackColor = System.Drawing.Color.White;
-            this.grbFWAggiornamento.Controls.Add(this.txtFWLibSBFRev);
-            this.grbFWAggiornamento.Controls.Add(this.grbFWdettUpload);
+            this.grbFWAggiornamento.Controls.Add(this.cmbFWSBFArea);
+            this.grbFWAggiornamento.Controls.Add(this.flwFWFileLLFStruct);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWInLLFDispRev);
             this.grbFWAggiornamento.Controls.Add(this.txtFWInSBFDtRev);
             this.grbFWAggiornamento.Controls.Add(this.label110);
-            this.grbFWAggiornamento.Controls.Add(this.label104);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataAddrP);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataAddrN1);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataNumTot);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataNumP);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataNumN1);
-            this.grbFWAggiornamento.Controls.Add(this.label105);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxFileLenP);
-            this.grbFWAggiornamento.Controls.Add(this.label107);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxFileLenN1);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataLenP);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWTxDataLenN1);
             this.grbFWAggiornamento.Controls.Add(this.btnFWLanciaTrasmissione);
             this.grbFWAggiornamento.Controls.Add(this.textBox11);
             this.grbFWAggiornamento.Controls.Add(this.label108);
-            this.grbFWAggiornamento.Controls.Add(this.textBox10);
-            this.grbFWAggiornamento.Controls.Add(this.label113);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWSBFArea);
             this.grbFWAggiornamento.Controls.Add(this.label114);
             this.grbFWAggiornamento.Controls.Add(this.btnFWPreparaTrasmissione);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWInSBFRev);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWInLLFRev);
             this.grbFWAggiornamento.Controls.Add(this.label115);
             this.grbFWAggiornamento.Controls.Add(this.label116);
             this.grbFWAggiornamento.Controls.Add(this.btnFWFileLLFLoad);
@@ -6291,13 +6286,27 @@
             this.grbFWAggiornamento.TabStop = false;
             this.grbFWAggiornamento.Text = "Aggiornamento";
             // 
-            // grbFWdettUpload
+            // flwFWFileLLFStruct
             // 
-            this.grbFWdettUpload.Location = new System.Drawing.Point(558, 141);
-            this.grbFWdettUpload.Name = "grbFWdettUpload";
-            this.grbFWdettUpload.Size = new System.Drawing.Size(149, 85);
-            this.grbFWdettUpload.TabIndex = 81;
-            this.grbFWdettUpload.TabStop = false;
+            this.flwFWFileLLFStruct.CellEditUseWholeCell = false;
+            this.flwFWFileLLFStruct.Location = new System.Drawing.Point(259, 110);
+            this.flwFWFileLLFStruct.Name = "flwFWFileLLFStruct";
+            this.flwFWFileLLFStruct.ShowGroups = false;
+            this.flwFWFileLLFStruct.Size = new System.Drawing.Size(406, 113);
+            this.flwFWFileLLFStruct.TabIndex = 83;
+            this.flwFWFileLLFStruct.UseCompatibleStateImageBehavior = false;
+            this.flwFWFileLLFStruct.View = System.Windows.Forms.View.Details;
+            this.flwFWFileLLFStruct.VirtualMode = true;
+            // 
+            // txtFWInLLFDispRev
+            // 
+            this.txtFWInLLFDispRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWInLLFDispRev.Location = new System.Drawing.Point(24, 141);
+            this.txtFWInLLFDispRev.Name = "txtFWInLLFDispRev";
+            this.txtFWInLLFDispRev.ReadOnly = true;
+            this.txtFWInLLFDispRev.Size = new System.Drawing.Size(163, 27);
+            this.txtFWInLLFDispRev.TabIndex = 82;
+            this.txtFWInLLFDispRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtFWInSBFDtRev
             // 
@@ -6319,123 +6328,13 @@
             this.label110.TabIndex = 79;
             this.label110.Text = "Data Rilascio";
             // 
-            // label104
-            // 
-            this.label104.AutoSize = true;
-            this.label104.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label104.Location = new System.Drawing.Point(262, 213);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(42, 18);
-            this.label104.TabIndex = 78;
-            this.label104.Text = "Addr.";
-            // 
-            // txtFWTxDataAddrP
-            // 
-            this.txtFWTxDataAddrP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxDataAddrP.Location = new System.Drawing.Point(451, 210);
-            this.txtFWTxDataAddrP.Name = "txtFWTxDataAddrP";
-            this.txtFWTxDataAddrP.ReadOnly = true;
-            this.txtFWTxDataAddrP.Size = new System.Drawing.Size(86, 22);
-            this.txtFWTxDataAddrP.TabIndex = 77;
-            this.txtFWTxDataAddrP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFWTxDataAddrN1
-            // 
-            this.txtFWTxDataAddrN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxDataAddrN1.Location = new System.Drawing.Point(355, 210);
-            this.txtFWTxDataAddrN1.Name = "txtFWTxDataAddrN1";
-            this.txtFWTxDataAddrN1.ReadOnly = true;
-            this.txtFWTxDataAddrN1.Size = new System.Drawing.Size(90, 22);
-            this.txtFWTxDataAddrN1.TabIndex = 75;
-            this.txtFWTxDataAddrN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFWTxDataNumTot
-            // 
-            this.txtFWTxDataNumTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxDataNumTot.Location = new System.Drawing.Point(214, 188);
-            this.txtFWTxDataNumTot.Name = "txtFWTxDataNumTot";
-            this.txtFWTxDataNumTot.ReadOnly = true;
-            this.txtFWTxDataNumTot.Size = new System.Drawing.Size(68, 22);
-            this.txtFWTxDataNumTot.TabIndex = 74;
-            this.txtFWTxDataNumTot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFWTxDataNumP
-            // 
-            this.txtFWTxDataNumP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxDataNumP.Location = new System.Drawing.Point(451, 174);
-            this.txtFWTxDataNumP.Name = "txtFWTxDataNumP";
-            this.txtFWTxDataNumP.ReadOnly = true;
-            this.txtFWTxDataNumP.Size = new System.Drawing.Size(86, 22);
-            this.txtFWTxDataNumP.TabIndex = 73;
-            this.txtFWTxDataNumP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFWTxDataNumN1
-            // 
-            this.txtFWTxDataNumN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxDataNumN1.Location = new System.Drawing.Point(355, 174);
-            this.txtFWTxDataNumN1.Name = "txtFWTxDataNumN1";
-            this.txtFWTxDataNumN1.ReadOnly = true;
-            this.txtFWTxDataNumN1.Size = new System.Drawing.Size(90, 22);
-            this.txtFWTxDataNumN1.TabIndex = 71;
-            this.txtFWTxDataNumN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label105.Location = new System.Drawing.Point(448, 99);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(68, 18);
-            this.label105.TabIndex = 70;
-            this.label105.Text = "App Start";
-            // 
-            // txtFWTxFileLenP
-            // 
-            this.txtFWTxFileLenP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxFileLenP.Location = new System.Drawing.Point(451, 118);
-            this.txtFWTxFileLenP.Name = "txtFWTxFileLenP";
-            this.txtFWTxFileLenP.ReadOnly = true;
-            this.txtFWTxFileLenP.Size = new System.Drawing.Size(86, 22);
-            this.txtFWTxFileLenP.TabIndex = 69;
-            this.txtFWTxFileLenP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFWTxFileLenN1
-            // 
-            this.txtFWTxFileLenN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxFileLenN1.Location = new System.Drawing.Point(355, 118);
-            this.txtFWTxFileLenN1.Name = "txtFWTxFileLenN1";
-            this.txtFWTxFileLenN1.ReadOnly = true;
-            this.txtFWTxFileLenN1.Size = new System.Drawing.Size(90, 22);
-            this.txtFWTxFileLenN1.TabIndex = 65;
-            this.txtFWTxFileLenN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFWTxDataLenP
-            // 
-            this.txtFWTxDataLenP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxDataLenP.Location = new System.Drawing.Point(451, 146);
-            this.txtFWTxDataLenP.Name = "txtFWTxDataLenP";
-            this.txtFWTxDataLenP.ReadOnly = true;
-            this.txtFWTxDataLenP.Size = new System.Drawing.Size(86, 22);
-            this.txtFWTxDataLenP.TabIndex = 63;
-            this.txtFWTxDataLenP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFWTxDataLenN1
-            // 
-            this.txtFWTxDataLenN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWTxDataLenN1.Location = new System.Drawing.Point(355, 146);
-            this.txtFWTxDataLenN1.Name = "txtFWTxDataLenN1";
-            this.txtFWTxDataLenN1.ReadOnly = true;
-            this.txtFWTxDataLenN1.Size = new System.Drawing.Size(90, 22);
-            this.txtFWTxDataLenN1.TabIndex = 59;
-            this.txtFWTxDataLenN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // btnFWLanciaTrasmissione
             // 
             this.btnFWLanciaTrasmissione.Enabled = false;
             this.btnFWLanciaTrasmissione.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFWLanciaTrasmissione.Location = new System.Drawing.Point(560, 261);
+            this.btnFWLanciaTrasmissione.Location = new System.Drawing.Point(570, 258);
             this.btnFWLanciaTrasmissione.Name = "btnFWLanciaTrasmissione";
-            this.btnFWLanciaTrasmissione.Size = new System.Drawing.Size(137, 30);
+            this.btnFWLanciaTrasmissione.Size = new System.Drawing.Size(137, 33);
             this.btnFWLanciaTrasmissione.TabIndex = 43;
             this.btnFWLanciaTrasmissione.Text = "Invia";
             this.btnFWLanciaTrasmissione.UseVisualStyleBackColor = true;
@@ -6444,9 +6343,9 @@
             // textBox11
             // 
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBox11.Location = new System.Drawing.Point(115, 262);
+            this.textBox11.Location = new System.Drawing.Point(85, 263);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(253, 27);
+            this.textBox11.Size = new System.Drawing.Size(113, 27);
             this.textBox11.TabIndex = 42;
             this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -6454,39 +6353,11 @@
             // 
             this.label108.AutoSize = true;
             this.label108.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label108.Location = new System.Drawing.Point(112, 242);
+            this.label108.Location = new System.Drawing.Point(82, 241);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(42, 18);
             this.label108.TabIndex = 41;
             this.label108.Text = "Esito";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBox10.Location = new System.Drawing.Point(199, 110);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(111, 27);
-            this.textBox10.TabIndex = 40;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label113.Location = new System.Drawing.Point(196, 90);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(41, 18);
-            this.label113.TabIndex = 39;
-            this.label113.Text = "CRC";
-            // 
-            // txtFWSBFArea
-            // 
-            this.txtFWSBFArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtFWSBFArea.Location = new System.Drawing.Point(25, 262);
-            this.txtFWSBFArea.Name = "txtFWSBFArea";
-            this.txtFWSBFArea.Size = new System.Drawing.Size(73, 27);
-            this.txtFWSBFArea.TabIndex = 38;
-            this.txtFWSBFArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label114
             // 
@@ -6502,23 +6373,23 @@
             // 
             this.btnFWPreparaTrasmissione.Enabled = false;
             this.btnFWPreparaTrasmissione.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFWPreparaTrasmissione.Location = new System.Drawing.Point(559, 116);
+            this.btnFWPreparaTrasmissione.Location = new System.Drawing.Point(389, 261);
             this.btnFWPreparaTrasmissione.Name = "btnFWPreparaTrasmissione";
-            this.btnFWPreparaTrasmissione.Size = new System.Drawing.Size(136, 27);
+            this.btnFWPreparaTrasmissione.Size = new System.Drawing.Size(148, 30);
             this.btnFWPreparaTrasmissione.TabIndex = 36;
             this.btnFWPreparaTrasmissione.Text = "Prepara";
             this.btnFWPreparaTrasmissione.UseVisualStyleBackColor = true;
             this.btnFWPreparaTrasmissione.Click += new System.EventHandler(this.btnFWPreparaTrasmissione_Click);
             // 
-            // txtFWInSBFRev
+            // txtFWInLLFRev
             // 
-            this.txtFWInSBFRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtFWInSBFRev.Location = new System.Drawing.Point(24, 110);
-            this.txtFWInSBFRev.Name = "txtFWInSBFRev";
-            this.txtFWInSBFRev.ReadOnly = true;
-            this.txtFWInSBFRev.Size = new System.Drawing.Size(163, 27);
-            this.txtFWInSBFRev.TabIndex = 34;
-            this.txtFWInSBFRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFWInLLFRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWInLLFRev.Location = new System.Drawing.Point(24, 110);
+            this.txtFWInLLFRev.Name = "txtFWInLLFRev";
+            this.txtFWInLLFRev.ReadOnly = true;
+            this.txtFWInLLFRev.Size = new System.Drawing.Size(163, 27);
+            this.txtFWInLLFRev.TabIndex = 34;
+            this.txtFWInLLFRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label115
             // 
@@ -6543,7 +6414,7 @@
             // btnFWFileLLFLoad
             // 
             this.btnFWFileLLFLoad.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFWFileLLFLoad.Location = new System.Drawing.Point(606, 52);
+            this.btnFWFileLLFLoad.Location = new System.Drawing.Point(618, 51);
             this.btnFWFileLLFLoad.Name = "btnFWFileLLFLoad";
             this.btnFWFileLLFLoad.Size = new System.Drawing.Size(89, 35);
             this.btnFWFileLLFLoad.TabIndex = 17;
@@ -6819,47 +6690,18 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // txtFWLibSBFRev
+            // cmbFWSBFArea
             // 
-            this.txtFWLibSBFRev.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtFWLibSBFRev.Location = new System.Drawing.Point(24, 141);
-            this.txtFWLibSBFRev.Name = "txtFWLibSBFRev";
-            this.txtFWLibSBFRev.ReadOnly = true;
-            this.txtFWLibSBFRev.Size = new System.Drawing.Size(163, 27);
-            this.txtFWLibSBFRev.TabIndex = 82;
-            this.txtFWLibSBFRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label107.Location = new System.Drawing.Point(359, 100);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(79, 18);
-            this.label107.TabIndex = 66;
-            this.label107.Text = "Flash Data";
-            // 
-            // lvwFWInFileStruct
-            // 
-            this.lvwFWInFileStruct.CellEditUseWholeCell = false;
-            this.lvwFWInFileStruct.Location = new System.Drawing.Point(375, 149);
-            this.lvwFWInFileStruct.Name = "lvwFWInFileStruct";
-            this.lvwFWInFileStruct.ShowGroups = false;
-            this.lvwFWInFileStruct.Size = new System.Drawing.Size(319, 84);
-            this.lvwFWInFileStruct.TabIndex = 69;
-            this.lvwFWInFileStruct.UseCompatibleStateImageBehavior = false;
-            this.lvwFWInFileStruct.View = System.Windows.Forms.View.Details;
-            this.lvwFWInFileStruct.VirtualMode = true;
-            // 
-            // txtFWInFileStruct
-            // 
-            this.txtFWInFileStruct.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.txtFWInFileStruct.Location = new System.Drawing.Point(598, 116);
-            this.txtFWInFileStruct.Name = "txtFWInFileStruct";
-            this.txtFWInFileStruct.ReadOnly = true;
-            this.txtFWInFileStruct.Size = new System.Drawing.Size(96, 22);
-            this.txtFWInFileStruct.TabIndex = 70;
-            this.txtFWInFileStruct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cmbFWSBFArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFWSBFArea.FormattingEnabled = true;
+            this.cmbFWSBFArea.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.cmbFWSBFArea.Location = new System.Drawing.Point(25, 264);
+            this.cmbFWSBFArea.Name = "cmbFWSBFArea";
+            this.cmbFWSBFArea.Size = new System.Drawing.Size(44, 26);
+            this.cmbFWSBFArea.TabIndex = 84;
+            this.cmbFWSBFArea.Text = "1";
             // 
             // frmCaricabatterie
             // 
@@ -6980,15 +6822,16 @@
             this.grbFwAttivazioneArea.PerformLayout();
             this.grbFWPreparaFile.ResumeLayout(false);
             this.grbFWPreparaFile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lvwFWInFileStruct)).EndInit();
             this.grbFWArea2.ResumeLayout(false);
             this.grbFWArea2.PerformLayout();
             this.GrbFWArea1.ResumeLayout(false);
             this.GrbFWArea1.PerformLayout();
             this.grbFWAggiornamento.ResumeLayout(false);
             this.grbFWAggiornamento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flwFWFileLLFStruct)).EndInit();
             this.grbStatoFirmware.ResumeLayout(false);
             this.grbStatoFirmware.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lvwFWInFileStruct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7494,29 +7337,14 @@
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.TextBox txtFwRevA1RevFw;
         private System.Windows.Forms.GroupBox grbFWAggiornamento;
-        private System.Windows.Forms.GroupBox grbFWdettUpload;
         private System.Windows.Forms.TextBox txtFWInSBFDtRev;
         private System.Windows.Forms.Label label110;
-        private System.Windows.Forms.Label label104;
-        private System.Windows.Forms.TextBox txtFWTxDataAddrP;
-        private System.Windows.Forms.TextBox txtFWTxDataAddrN1;
-        private System.Windows.Forms.TextBox txtFWTxDataNumTot;
-        private System.Windows.Forms.TextBox txtFWTxDataNumP;
-        private System.Windows.Forms.TextBox txtFWTxDataNumN1;
-        private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.TextBox txtFWTxFileLenP;
-        private System.Windows.Forms.TextBox txtFWTxFileLenN1;
-        private System.Windows.Forms.TextBox txtFWTxDataLenP;
-        private System.Windows.Forms.TextBox txtFWTxDataLenN1;
         public System.Windows.Forms.Button btnFWLanciaTrasmissione;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label108;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label113;
-        private System.Windows.Forms.TextBox txtFWSBFArea;
         private System.Windows.Forms.Label label114;
         public System.Windows.Forms.Button btnFWPreparaTrasmissione;
-        private System.Windows.Forms.TextBox txtFWInSBFRev;
+        private System.Windows.Forms.TextBox txtFWInLLFRev;
         private System.Windows.Forms.Label label115;
         private System.Windows.Forms.Label label116;
         public System.Windows.Forms.Button btnFWFileLLFLoad;
@@ -7547,8 +7375,9 @@
         private System.Windows.Forms.TextBox txtFwFileCCSa01;
         private System.Windows.Forms.TextBox txtFwFileCCShex;
         private BrightIdeasSoftware.FastObjectListView lvwFWInFileStruct;
-        private System.Windows.Forms.TextBox txtFWLibSBFRev;
-        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.TextBox txtFWInLLFDispRev;
         private System.Windows.Forms.TextBox txtFWInFileStruct;
+        private BrightIdeasSoftware.FastObjectListView flwFWFileLLFStruct;
+        private System.Windows.Forms.ComboBox cmbFWSBFArea;
     }
 }

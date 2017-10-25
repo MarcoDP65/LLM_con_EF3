@@ -178,11 +178,12 @@ namespace ChargerLogic
                                     Log.Debug("trovato ETX");
                                     _msgRicevuto = analizzaCoda();
                                     Log.Debug("Dati in coda LL (USB) " + codaDatiSER.Count.ToString());
-
+                                    _ultimaRisposta = _msgRicevuto;
                                     _trovatoETX = false;
 
                                     switch (_msgRicevuto)
                                     {
+
                                         case SerialMessage.TipoRisposta.Ack:
                                             _ackRicevuti++;
                                             if (aspettaAck && _risposteRicevute >= risposteAttese) _inAttesa = false;
@@ -259,7 +260,7 @@ namespace ChargerLogic
                     // se background mode attivo, lancio l'evento di fine elaborazione
                     if (runAsync == true)
                     {
-                        sbEndStep _esitoBg = new sbEndStep();
+                        elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
                         _tTrascorso = DateTime.Now.Subtract(_startRicezione);
 
                         _esitoBg.EventiPrevisti = risposteAttese;
@@ -479,7 +480,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito = false;
-                _mS.Comando = SerialMessage.TipoComando.SB_Sstart;
+                _mS.Comando = SerialMessage.TipoComando.CMD_CONNECT;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("START");
@@ -488,12 +489,12 @@ namespace ChargerLogic
                 // Leggo la testata apparato
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(AttesaTimeout, 0,true,false);
-                if (_mS._comando == 0x44)  
+                if (_mS._comando == (byte)SerialMessage.TipoComando.ACK_PACKET)  
                 {
-                    _mS.Comando = SerialMessage.TipoComando.PrimaConnessione;
+                    _mS.Comando = SerialMessage.TipoComando.CMD_UART_HOST_CONNECTED;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
-                    Log.Debug("PRIMA");
+                    Log.Debug("PRIMA LETTURA");
                     Log.Debug(_mS.hexdumpMessaggio());
                     _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                     _esito = aspettaRisposta(AttesaTimeout, 1,true,false);
@@ -523,7 +524,7 @@ namespace ChargerLogic
                 CicliInMemoria = new System.Collections.Generic.List< SerialMessage.CicloDiCarica>();
                 if (_mS.CicliPresenti.NumCicli > 0)
                 {
-                    _mS.Comando = SerialMessage.TipoComando.CicliCarica;
+                    _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_CRG;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
                     Log.Debug("CICLI");
@@ -579,7 +580,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.CicloProgrammato;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_PROG;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Leggi Ciclo Programmato LL");
@@ -925,7 +926,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.ProgrammazioneCiclo;
+                _mS.Comando = SerialMessage.TipoComando.CMD_PRG_CYCLE_CRG;
                 _mS.CicloInMacchina = CicloInMacchina;
                 _mS.ComponiMessaggioCicloProgrammato();
                 _rxRisposta = false;
@@ -1207,29 +1208,29 @@ namespace ChargerLogic
                         switch (_mS._comando)
                         {
                             case (byte)SerialMessage.TipoComando.ACK:
-                            case (byte)SerialMessage.TipoComando.SB_ACK:
-                                Log.Debug("Comando Ricevuto");
+                            case (byte)SerialMessage.TipoComando.ACK_PACKET:
+                                Log.Debug("Risposta Ricevuta: ACK");
                                 TipoRisposta = 1;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 _inviaRisposta = false;
                                 break;
                             case (byte)SerialMessage.TipoComando.NACK:
-                            case (byte)SerialMessage.TipoComando.SB_NACK:
+                            case (byte)SerialMessage.TipoComando.NACK_PACKET:
 
                                 TipoRisposta = 2;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Nack;
-                                Log.Debug("Comando Errato");
+                                Log.Debug("--------------------------------- Risposta Ricevuta: NACK -----------------------------");
                                 _inviaRisposta = false;
                                 break;
-                            case (byte)SerialMessage.TipoComando.PrimaConnessione: // Prima Lettura
+                            case (byte)SerialMessage.TipoComando.CMD_UART_HOST_CONNECTED: // Prima Lettura
                                 Log.Debug("Prima Lettura");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
-                                _inviaRisposta = true;
+                                _inviaRisposta = false;
                                 break;
-                            case (byte)SerialMessage.TipoComando.CicloProgrammato:
+                            case (byte)SerialMessage.TipoComando.CMD_READ_CYCLE_PROG:
                                 Log.Debug("Ciclo Programmato");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
-                                _inviaRisposta = true;
+                                _inviaRisposta = false;
                                 break;
                             case (byte)SerialMessage.TipoComando.SB_R_Variabili:
                                 Log.Debug("Variabili");

@@ -21,16 +21,22 @@ namespace ChargerLogic
             ReadRTC = 0xD3, 
             UpdateRTC = 0xD2, 
             FirmwareUpdate = 0xD5,
-            PrimaConnessione = 0x01,
-            CicloProgrammato = 0x02,
-            CicliCarica = 0x03,
-            DettagliCiclo = 0x04,
-            ProgrammazioneCiclo = 0x05,
+
+            CMD_UART_HOST_CONNECTED   = 0x01,
+            CMD_READ_CYCLE_PROG       = 0x02,
+            CMD_READ_ID_CYCLE_CRG     = 0x03,
+            CMD_READ_CYCLE_CRG        = 0x04,
+            CMD_PRG_CYCLE_CRG         = 0x05,
+            ACK_PACKET                = 0x6C,
+            EVENT_MEM_CODE            = 0x6D,
+            NACK_PACKET               = 0x71,
+
+
+
             ACK = 0x44,
             NACK = 0x45,
-            SB_Sstart = 0x17,
-            SB_Strobe = 0x1B,
-            SB_Stop = 0x1D,
+            CMD_CONNECT               = 0x17,
+            CMD_DISCONNECT            = 0x1D,
             SB_DatiIniziali = 0x1F,
             SB_R_DatiCliente = 0x20,
             SB_R_Programmazione = 0x21,
@@ -49,17 +55,17 @@ namespace ChargerLogic
             SB_Cal_Enable = 0x3B,
             SB_Cal_InvioDato = 0x3E,
             SB_Cal_LetturaGain = 0x3F,
-            SB_R_BootloaderInfo = 0x51, // stesso per ll
-            SB_W_FirmwareUpdate = 0x53, // stesso per ll
-            SB_W_FirmwareData =  0x57,  // stesso per ll
-            SB_W_FirmwareSelect = 0x58, // stesso per ll
+            CMD_INFO_BL                = 0x51,  // stesso per ll
+            CMD_FW_UPLOAD_MSP          = 0x53,  // stesso per ll
+            CMD_FW_UPLOAD_TMS          = 0x54,  // stesso per ll
+
+            CMD_FW_DATA_SEND = 0x57,   // stesso per ll
+            CMD_FW_UPDATE              = 0x58,  // stesso per ll
             SB_W_BLON = 0x5B,
             SB_R_APPCHECK = 0x5D,
             SB_W_RESETSCHEDA = 0X5F,
             BREAK = 0x1C,
-            SB_ACK = 0x6C,
-            SB_ACK_PKG = 0x6D,
-            SB_NACK = 0x71,
+
             SB_W_MemProgrammed = 0x74,
             SB_W_chgst_Call = 0x80,
 
@@ -337,7 +343,7 @@ namespace ChargerLogic
                         _crc = 0;
                         break;
 
-                    case (byte)TipoComando.PrimaConnessione:
+                    case (byte)TipoComando.CMD_UART_HOST_CONNECTED:
                         _endPos = _messaggio.Length;
                         _startPos = _endPos - 6;
 
@@ -462,7 +468,7 @@ namespace ChargerLogic
 
                         break;
 
-                    case (byte)TipoComando.CicloProgrammato:
+                    case (byte)TipoComando.CMD_READ_CYCLE_PROG:
                         _endPos = _messaggio.Length;
                         _startPos = _endPos - 6;
 
@@ -936,7 +942,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DettagliCiclo);
+                _comando = (byte)(TipoComando.CMD_READ_CYCLE_CRG);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1034,7 +1040,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.ProgrammazioneCiclo);
+                _comando = (byte)(TipoComando.CMD_PRG_CYCLE_CRG);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1530,7 +1536,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_FirmwareUpdate);
+                _comando = (byte)(TipoComando.CMD_FW_UPLOAD_TMS);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1659,7 +1665,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_FirmwareData);
+                _comando = (byte)(TipoComando.CMD_FW_DATA_SEND);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

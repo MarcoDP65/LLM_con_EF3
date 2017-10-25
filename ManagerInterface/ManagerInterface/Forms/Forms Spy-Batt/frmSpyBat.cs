@@ -7806,19 +7806,29 @@ namespace PannelloCharger
 
         private void btnGeneraCodice_Click(object sender, EventArgs e)
         {
-            txtCodiceSblocco.Text = CodiceSblocco(chkTestataIgnoraNumLunghi.Checked);
+            string _TempId = "";
+            if (chkTestataIgnoraNumLunghi.Checked) _TempId = txtCodiceSblocco.Text;
+
+            txtCodiceSblocco.Text = CodiceSblocco(chkTestataIgnoraNumLunghi.Checked, _TempId);
         }
 
-        private string CodiceSblocco(bool ignoraLunghi)
+        private string CodiceSblocco(bool ignoraLunghi, string AltroID = "")
         {
             try
             {
                 string _codice = "";
                 SerialMessage.Crc16Ccitt codCrc = new SerialMessage.Crc16Ccitt(SerialMessage.InitialCrcValue.NonZero1);
 
+                if (AltroID =="" || AltroID.Length != 16)
+                {
+                    AltroID = _sb.Id;
+                }
+
+
                 //Step 1 Genero l'esadecimale dell'ID
                 int _hexId = 0;
-                byte[] array = Encoding.ASCII.GetBytes(_sb.Id);
+//                byte[] array = Encoding.ASCII.GetBytes(_sb.Id); Originale; generalizzato il 25/10/2017
+                byte[] array = Encoding.ASCII.GetBytes(AltroID);
 
                 // Loop through contents of the array.
                 int _step = 0;
@@ -7874,6 +7884,7 @@ namespace PannelloCharger
                 return "";
             }
         }
+
 
         private void lblCliCliente_Click(object sender, EventArgs e)
         {
@@ -9793,5 +9804,27 @@ namespace PannelloCharger
             }
         }
 
+        private void chkTestataIgnoraNumLunghi_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkTestataIgnoraNumLunghi.Checked)
+                {
+                    txtCodiceSblocco.Text = _sb.Id;
+                    txtCodiceSblocco.ReadOnly = false;
+                }
+                else
+                {
+                    txtCodiceSblocco.Text = "";
+                    txtCodiceSblocco.ReadOnly = true;
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkTestataIgnoraNumLunghi_CheckedChanged: " + Ex.Message);
+            }
+        }
     }
 }

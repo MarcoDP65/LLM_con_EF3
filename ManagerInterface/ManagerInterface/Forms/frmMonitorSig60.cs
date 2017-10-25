@@ -620,18 +620,16 @@ namespace PannelloCharger
                         }
 
 
-
-
                         switch (_mS._comando)
                         {
 
-                            case (byte)SerialMessage.TipoComando.SB_ACK:  //0x6C: // ACK
+                            case (byte)SerialMessage.TipoComando.ACK_PACKET:  //0x6C: // ACK
                                 Log.Debug("Comando Ricevuto: SB_ACK");
                                 _msg.Comando = "SB_ACK";
                                 _msg.DescComando = "Comando Ricevuto";
                                 _msg.Parametri = "";
                                 break;
-                            case (byte)SerialMessage.TipoComando.SB_NACK:  //0x71: // NACK
+                            case (byte)SerialMessage.TipoComando.NACK_PACKET:  //0x71: // NACK
                                 Log.Debug("Comando Ricevuto: SB_NACK");
                                 _msg.Comando = "SB_NACK";
                                 _msg.DescComando = "Comando Ricevuto";
@@ -649,14 +647,14 @@ namespace PannelloCharger
 
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_Sstart:  //0x6C
+                            case (byte)SerialMessage.TipoComando.CMD_CONNECT:  //0x6C
                                 Log.Debug("Apertura Canale SIG");
                                 _msg.Comando = "SB_Sstart";
                                 _msg.DescComando = "Apertura Canale SIG";
                                 _msg.Parametri = "";
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_Stop:  //0x1D
+                            case (byte)SerialMessage.TipoComando.CMD_DISCONNECT:  //0x1D
                                 Log.Debug("Chiusura Canale SIG");
                                 _msg.Comando = "SB_Stop";
                                 _msg.DescComando = "Chiusura Canale SIG";
@@ -1366,7 +1364,7 @@ namespace PannelloCharger
             try
             {
 
-                _mS.Comando = MessaggioSpyBatt.TipoComando.SB_Sstart;
+                _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_CONNECT;
                 _mS.SerialNumber = new byte[8]{ 1,1,1,1,0,0,0,0};
                 _mS.ComponiMessaggio();
 
@@ -1389,7 +1387,7 @@ namespace PannelloCharger
             try
             {
 
-                _mS.Comando = MessaggioSpyBatt.TipoComando.SB_Stop;
+                _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_DISCONNECT;
                 _mS.SerialNumber = new byte[8] { 1, 1, 1, 1, 0, 0, 0, 0 };
                 _mS.ComponiMessaggio();
 

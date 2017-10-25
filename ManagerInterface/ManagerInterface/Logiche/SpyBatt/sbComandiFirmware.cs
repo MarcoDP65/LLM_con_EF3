@@ -56,7 +56,7 @@ namespace ChargerLogic
                 {
                     // Eseguo solo se la connessione all'apparato è attiva
                     _mS.StatoFirmwareScheda = new MessaggioSpyBatt.StatoFirmware();
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_BootloaderInfo;
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_INFO_BL;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
                     skipHead = true;
@@ -112,8 +112,8 @@ namespace ChargerLogic
             {
                 bool _esito;
                 //object _dataRx;
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
 
 
@@ -130,7 +130,7 @@ namespace ChargerLogic
 
                         if (Step != null)
                         {
-                            sbWaitStep _passo = new sbWaitStep();
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = StringheMessaggio.strMsgResetSB;  //"Reset SPY-BATT";
                             _passo.Eventi = 1;
@@ -152,7 +152,7 @@ namespace ChargerLogic
                             System.Threading.Thread.Sleep(500);
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.Eventi = 20;
                                 _passo.Step = _tentativi++;
                                 _passo.EsecuzioneInterrotta = false;
@@ -185,7 +185,7 @@ namespace ChargerLogic
                         //Preparo l'intestazione della finestra di avanzamento
                         if (Step != null)
                         {
-                            sbWaitStep _passo = new sbWaitStep();
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = StringheMessaggio.strMsgAggFWFase1;  // "Fase 1 - Invio Testata";
                             _passo.Eventi = 1;
@@ -215,7 +215,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = StringheMessaggio.strMsgAggFWFase1err1;  //"Caricamento Testata Fallito";
                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -239,7 +239,7 @@ namespace ChargerLogic
                               //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = StringheMessaggio.strMsgAggFWFase2;  //"Fase 2 - Invio Dati";
                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -277,7 +277,7 @@ namespace ChargerLogic
                                             // Il pacchetto è stato accettato; incremento i contatori e continuo
                                             int _progress = 0;
                                             double _valProgress = 0;
-                                            sbWaitStep _passo = new sbWaitStep();
+                                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                             _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
                                             _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -307,7 +307,7 @@ namespace ChargerLogic
                                             if (Step != null)
                                             {
                                                 Log.Error("FW Update: errore pacchetto flash 1 #" + _pacchettiInviati);
-                                                sbWaitStep _passo = new sbWaitStep();
+                                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                                 _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -363,7 +363,7 @@ namespace ChargerLogic
                                         {
                                             int _progress = 0;
                                             double _valProgress = 0;
-                                            sbWaitStep _passo = new sbWaitStep();
+                                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                             _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
                                             _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -393,7 +393,7 @@ namespace ChargerLogic
                                             if (Step != null)
                                             {
                                                 Log.Error("FW Update: errore pacchetto flash 1 #" + _pacchettiInviati);
-                                                sbWaitStep _passo = new sbWaitStep();
+                                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                                 _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err2;  //"Caricamento Applicazione fallito ( Blocco Flash 2 )";
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -442,7 +442,7 @@ namespace ChargerLogic
                                         {
                                             int _progress = 0;
                                             double _valProgress = 0;
-                                            sbWaitStep _passo = new sbWaitStep();
+                                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                             _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
                                             _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -472,7 +472,7 @@ namespace ChargerLogic
                                             if (Step != null)
                                             {
                                                 Log.Error("FW Update: errore pacchetto Proxy #" + _pacchettiInviati);
-                                                sbWaitStep _passo = new sbWaitStep();
+                                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                                 _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err3;  //"Caricamento Applicazione fallito ( Blocco Proxy Table )";
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -515,7 +515,7 @@ namespace ChargerLogic
 
                                 if (Step != null)
                                 {
-                                    sbWaitStep _passo = new sbWaitStep();
+                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                     _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                     _passo.Titolo = StringheMessaggio.strMsgAggFWFase3;  //"Fase 3 - riavvio SPY-BATT";
                                     _passo.Eventi = 1;
@@ -533,7 +533,7 @@ namespace ChargerLogic
                                     System.Threading.Thread.Sleep(500);
                                     if (Step != null)
                                     {
-                                        sbWaitStep _passo = new sbWaitStep();
+                                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                         _passo.Eventi = 20;
                                         _passo.Step = _tentativi++;
                                         _passo.EsecuzioneInterrotta = false;
@@ -656,8 +656,8 @@ namespace ChargerLogic
             {
                 bool _esito;
                 object _dataRx;
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
 
 
@@ -724,8 +724,8 @@ namespace ChargerLogic
             {
                 bool _esito;
                 object _dataRx;
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
 
 

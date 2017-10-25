@@ -153,7 +153,7 @@ namespace ChargerLogic
                                                 {
                                                     int _progress = 0;
                                                     double _valProgress = 0;
-                                                    sbWaitStep _passo = new sbWaitStep();
+                                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                                     _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                                     _passo.TipoDati = TipoDati;
                                                     _passo.Eventi = risposteAttese;
@@ -211,7 +211,7 @@ namespace ChargerLogic
                     // se background mode attivo, lancio l'evento di fine elaborazione
                     if (runAsync == true)
                     {
-                        sbEndStep _esitoBg = new sbEndStep();
+                        elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
                         TimeSpan _tTrascorso = DateTime.Now.Subtract(_startRicezione);
 
                         _esitoBg.EventiPrevisti = risposteAttese;

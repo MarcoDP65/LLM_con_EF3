@@ -27,7 +27,7 @@ namespace ChargerLogic
         {
             OK = 0,
             FileAssente = 0x01, FileVuoto = 0x02, FormatoFileErrato = 0x03, FileA01Assente = 0x04, FileHEXAssente = 0x05,
-            DatiNonPronti = 0x11, FormatoDatiErrato = 0x13, FilesNonAllineati = 0x14,NumeroBlocchiElevato = 0x15,
+            DatiNonPronti = 0x11, FormatoDatiErrato = 0x13, FilesNonAllineati = 0x14,NumeroBlocchiElevato = 0x15, NumeroBlytesElevato = 0x16,
             ErroreGenerico = 0xFF
         };
 
@@ -392,7 +392,8 @@ namespace ChargerLogic
                 // Carico i dati di testata
                 FirmwareBlock.Release = FirmwareData.Release;
                 FirmwareBlock.ReleaseDate = FirmwareData.ReleaseDate;
-                /*
+
+                /* RIPRISTNARE LA VERIFICA VERSIONE, per ora controllo dolo di avere 6 caratteri di app e 6 di display
                 if ((FirmwareData.Release.Substring(0, 2) != "1.") && (FirmwareData.Release.Substring(0, 2) != "2."))
                 {
                     _esito = ExitCode.ErroreGenerico;
@@ -401,6 +402,9 @@ namespace ChargerLogic
                 */
 
 
+                byte[] _tempBuffer = new byte[131072];
+                int _currByte = 0;
+                int _lenDati = 0;
 
                 //FirmwareBlock.DataFlash = FirmwareData.DataFlash;
                 //FirmwareBlock.LenFlash = FirmwareData.LenFlash;
@@ -444,6 +448,19 @@ namespace ChargerLogic
                         _dati.ListaPacchetti.Add(_blocco);
                         _blockSize += _blocco.DimPacchetto;
                         FirmwareBlock.TotaleBlocchi += 1;
+
+                        // Ora accodo i dati al buffer SENZA CRC di PACCHETTO per il calcolo del CRC generale da passsare in testata e la lunghezza complessiva
+                        // compresi i CRC di pacchetto. Questa dimensione può al massimo essere pari a 128K
+                        Array.Copy(_dati.PacchettoDati, (_block * BloccoTx), _tempBuffer, _currByte, BloccoTx);
+                        _currByte += BloccoTx;
+                        _lenDati += _blocco.DimPacchetto ;
+                        if (_lenDati > 131072)
+                        {
+                            _esito = ExitCode.NumeroBlytesElevato;
+                            return _esito;
+                        }
+
+
                     }
 
                     // poi quello finale se resto > 0
@@ -459,9 +476,25 @@ namespace ChargerLogic
                         _dati.ListaPacchetti.Add(_blocco);
                         _blockSize += _blocco.DimPacchetto;
                         FirmwareBlock.TotaleBlocchi += 1;
+                        // Ora accodo i dati al buffer SENZA CRC di PACCHETTO per il calcolo del CRC generale da passsare in testata e la lunghezza complessiva
+                        // compresi i CRC di pacchetto. Questa dimensione può al massimo essere pari a 128K
+                        Array.Copy(_dati.PacchettoDati, (_blockDiv * BloccoTx), _tempBuffer, _currByte, _blockMod);
+                        _currByte += _blockMod;
+                        _lenDati += _blocco.DimPacchetto;
+                        if (_lenDati > 131072)
+                        {
+                            _esito = ExitCode.NumeroBlytesElevato;
+                            return _esito;
+                        }
                     }
 
+
+
+
                 }
+                // Ora calcolo il CRC globale da inserire in testata
+
+                FirmwareBlock.crc = codCrc.ComputePartialChecksum(_tempBuffer, _currByte);
                 FirmwareBlock.DatiOK = true;
                 _esito = ExitCode.OK;
                 return _esito;

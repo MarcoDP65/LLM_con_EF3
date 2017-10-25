@@ -228,7 +228,7 @@ namespace ChargerLogic
             {
                 bool _esito = false;
                 
-                _mS.Comando = MessaggioSpyBatt.TipoComando.SB_Sstart;
+                _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_CONNECT;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("SB START");
@@ -748,8 +748,8 @@ namespace ChargerLogic
 
                 bool _RaggiuntoTO = false;
 
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
                 MappaMemoria _mappaCorrente = new MappaMemoria();
 
@@ -776,7 +776,7 @@ namespace ChargerLogic
                         //Preparo l'intestazione della finestra di avanzamento
                         if (Step != null)
                         {
-                            sbWaitStep _passo = new sbWaitStep();
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = "Fase 1 - Caricamento Immagine Memoria";
                             _passo.Eventi = 1;
@@ -873,7 +873,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.1 - Scomposizione Memoria: Testata";
                                 _passo.Eventi = 10;
@@ -911,7 +911,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
                                 _passo.Eventi = 10;
@@ -945,7 +945,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
                                 _passo.Eventi = 10;
@@ -1222,7 +1222,7 @@ namespace ChargerLogic
                                     {
                                         int _progress = 0;
                                         double _valProgress = 0;
-                                        sbWaitStep _passo = new sbWaitStep();
+                                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                         _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                         _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
                                         _passo.Eventi = risposteAttese;
@@ -1313,8 +1313,8 @@ namespace ChargerLogic
                 txtLogger txtLog = new txtLogger();
 
 
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
                 MappaMemoria _mappaCorrente = new MappaMemoria();
                 ModelloDati = new sbDataModel();
@@ -1362,7 +1362,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.1 - Scomposizione Memoria: Testata";
                                 _passo.Eventi = 10;
@@ -1410,7 +1410,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
                                 _passo.Eventi = 10;
@@ -1444,7 +1444,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
                                 _passo.Eventi = 10;
@@ -1805,7 +1805,7 @@ namespace ChargerLogic
                                     {
                                         int _progress = 0;
                                         double _valProgress = 0;
-                                        sbWaitStep _passo = new sbWaitStep();
+                                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                         _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                         _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
                                         _passo.Eventi = risposteAttese;
@@ -2032,8 +2032,8 @@ namespace ChargerLogic
 
                 bool _RaggiuntoTO = false;
 
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
                 MappaMemoria _mappaCorrente = new MappaMemoria();
 
@@ -2067,7 +2067,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.1 - Scomposizione Memoria: Testata";
                                 _passo.Eventi = 10;
@@ -2105,7 +2105,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
                                 _passo.Eventi = 10;
@@ -2139,7 +2139,7 @@ namespace ChargerLogic
                             //Preparo l'intestazione della finestra di avanzamento
                             if (Step != null)
                             {
-                                sbWaitStep _passo = new sbWaitStep();
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Fase 2.2 - Scomposizione Memoria: Cliente";
                                 _passo.Eventi = 10;
@@ -2411,7 +2411,7 @@ namespace ChargerLogic
                                     {
                                         int _progress = 0;
                                         double _valProgress = 0;
-                                        sbWaitStep _passo = new sbWaitStep();
+                                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                         _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                         _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
                                         _passo.Eventi = risposteAttese;
@@ -2626,8 +2626,8 @@ namespace ChargerLogic
             {
                 bool _esito;
                 object _dataRx;
-                sbEndStep _esitoBg = new sbEndStep();
-                sbWaitStep _stepBg = new sbWaitStep();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
 
 
                 //_CicliMemoriaLunga = new System.Collections.Generic.List<MessaggioSpyBatt.MemoriaPeriodoLungo>();
@@ -2653,7 +2653,7 @@ namespace ChargerLogic
                         //Preparo l'intestazione della finestra di avanzamento
                         if (Step != null)
                         {
-                            sbWaitStep _passo = new sbWaitStep();
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = "Fase 1 - Caricamento Eventi Lunghi";
                             _passo.Eventi = 1;
@@ -2732,7 +2732,7 @@ namespace ChargerLogic
                         //Preparo l'intestazione della finestra di avanzamento
                         if (Step != null)
                         {
-                            sbWaitStep _passo = new sbWaitStep();
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = "Fase 2 - Caricamento Eventi Brevi";
                             _passo.Eventi = 1;
@@ -2754,7 +2754,7 @@ namespace ChargerLogic
 
                         if (RichiestaInterruzione)
                         {
-                            sbWaitStep _passo = new sbWaitStep();
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                             _passo.Titolo = "Fase 2 - Caricamento Eventi Brevi";
                             _passo.Eventi = 1;
@@ -2797,7 +2797,7 @@ namespace ChargerLogic
                                 if (_memLn.PuntatorePrimoBreve < 0xFFFFFFFF)
                                 {
                                     //prima avanzo il contatore lunghi
-                                    sbWaitStep _passo = new sbWaitStep();
+                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                     int _progress = 0;
                                     double _valProgress = 0;
                                     _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
@@ -4811,14 +4811,14 @@ namespace ChargerLogic
                         Log.Debug("Comando: --> 0x" + _mS._comando.ToString("X2"));
                        switch (_mS._comando)
                         {
-                           case (byte) SerialMessage.TipoComando.SB_ACK:  //0x6C: // ACK
+                           case (byte) SerialMessage.TipoComando.ACK_PACKET:  //0x6C: // ACK
                                 Log.Debug("Comando Ricevuto");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 TipoRisposta = 1;
                                 _inviaRisposta = false;
 
                                 break;
-                           case (byte) SerialMessage.TipoComando.SB_ACK_PKG:  // 0x6D: // ACK Pacchetto
+                           case (byte) SerialMessage.TipoComando.EVENT_MEM_CODE:  // 0x6D: // ACK Pacchetto
                                 Log.Debug("Esito Comando Ricevuto");
                                 //_datiRicevuti = SerialMessage.TipoRisposta.Ack;   ???????????????
                                 // 16/07/15 il messaggio 0x0D inviato dopo comando che prevede la scrittura su memoria flash esterna per indicare l'esito;
@@ -4847,7 +4847,7 @@ namespace ChargerLogic
                                 }
 
                                 break;
-                           case (byte)SerialMessage.TipoComando.SB_NACK:  //0x71: //NAK
+                           case (byte)SerialMessage.TipoComando.NACK_PACKET:  //0x71: //NAK
                                 TipoRisposta = 2;
                                 UltimaRisposta = SerialMessage.EsitoRisposta.NonRiconosciuto;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Nack;
@@ -4938,7 +4938,7 @@ namespace ChargerLogic
                                 _inviaRisposta = true;
                                 Log.Debug("Prima Lettura");
                                 break;
-                            case (byte)SerialMessage.TipoComando.CicloProgrammato: // Ciclo Programmato
+                            case (byte)SerialMessage.TipoComando.CMD_READ_CYCLE_PROG: // Ciclo Programmato
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 Log.Debug("Ciclo Programmato");
                                 break;
@@ -4963,7 +4963,7 @@ namespace ChargerLogic
                                 //_inviaRisposta = _mS.variabiliScheda.datiPronti;
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_R_BootloaderInfo:
+                            case (byte)SerialMessage.TipoComando.CMD_INFO_BL:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 // _inviaRisposta = true;
                                 _inviaRisposta = true;

@@ -392,7 +392,7 @@ namespace PannelloCharger
                 byte msb = (byte)(0);
 
                 sm.Dispositivo = SerialMessage.TipoDispositivo.Charger;
-                sm.Comando = SerialMessage.TipoComando.PrimaConnessione;
+                sm.Comando = SerialMessage.TipoComando.CMD_UART_HOST_CONNECTED;
                 byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
                 sm.SerialNumber = Seriale;
 
