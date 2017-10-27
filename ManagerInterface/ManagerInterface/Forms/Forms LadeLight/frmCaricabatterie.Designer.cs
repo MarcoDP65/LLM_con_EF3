@@ -528,12 +528,13 @@
             this.label93 = new System.Windows.Forms.Label();
             this.txtFwRevA1RevFw = new System.Windows.Forms.TextBox();
             this.grbFWAggiornamento = new System.Windows.Forms.GroupBox();
+            this.cmbFWSBFArea = new System.Windows.Forms.ComboBox();
             this.flwFWFileLLFStruct = new BrightIdeasSoftware.FastObjectListView();
             this.txtFWInLLFDispRev = new System.Windows.Forms.TextBox();
             this.txtFWInSBFDtRev = new System.Windows.Forms.TextBox();
             this.label110 = new System.Windows.Forms.Label();
             this.btnFWLanciaTrasmissione = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtFWInLLFEsito = new System.Windows.Forms.TextBox();
             this.label108 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
             this.btnFWPreparaTrasmissione = new System.Windows.Forms.Button();
@@ -569,7 +570,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.cmbFWSBFArea = new System.Windows.Forms.ComboBox();
             this.tabProfiloAttuale.SuspendLayout();
             this.grbVarParametriSig.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
@@ -5647,10 +5647,10 @@
             // lvwFWInFileStruct
             // 
             this.lvwFWInFileStruct.CellEditUseWholeCell = false;
-            this.lvwFWInFileStruct.Location = new System.Drawing.Point(359, 159);
+            this.lvwFWInFileStruct.Location = new System.Drawing.Point(361, 144);
             this.lvwFWInFileStruct.Name = "lvwFWInFileStruct";
             this.lvwFWInFileStruct.ShowGroups = false;
-            this.lvwFWInFileStruct.Size = new System.Drawing.Size(335, 72);
+            this.lvwFWInFileStruct.Size = new System.Drawing.Size(304, 108);
             this.lvwFWInFileStruct.TabIndex = 69;
             this.lvwFWInFileStruct.UseCompatibleStateImageBehavior = false;
             this.lvwFWInFileStruct.View = System.Windows.Forms.View.Details;
@@ -5698,7 +5698,7 @@
             this.txtFWInFileRevData.Location = new System.Drawing.Point(177, 164);
             this.txtFWInFileRevData.Mask = "00/00/0000";
             this.txtFWInFileRevData.Name = "txtFWInFileRevData";
-            this.txtFWInFileRevData.Size = new System.Drawing.Size(151, 27);
+            this.txtFWInFileRevData.Size = new System.Drawing.Size(128, 27);
             this.txtFWInFileRevData.TabIndex = 64;
             this.txtFWInFileRevData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFWInFileRevData.ValidatingType = typeof(System.DateTime);
@@ -5707,7 +5707,7 @@
             // 
             this.label96.AutoSize = true;
             this.label96.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label96.Location = new System.Drawing.Point(21, 233);
+            this.label96.Location = new System.Drawing.Point(21, 245);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(158, 18);
             this.label96.TabIndex = 45;
@@ -5716,7 +5716,7 @@
             // btnFWFileLLFsearch
             // 
             this.btnFWFileLLFsearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFWFileLLFsearch.Location = new System.Drawing.Point(560, 251);
+            this.btnFWFileLLFsearch.Location = new System.Drawing.Point(557, 267);
             this.btnFWFileLLFsearch.Name = "btnFWFileLLFsearch";
             this.btnFWFileLLFsearch.Size = new System.Drawing.Size(33, 30);
             this.btnFWFileLLFsearch.TabIndex = 44;
@@ -5727,7 +5727,7 @@
             // txtFWFileLLFwr
             // 
             this.txtFWFileLLFwr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtFWFileLLFwr.Location = new System.Drawing.Point(24, 253);
+            this.txtFWFileLLFwr.Location = new System.Drawing.Point(21, 270);
             this.txtFWFileLLFwr.Name = "txtFWFileLLFwr";
             this.txtFWFileLLFwr.Size = new System.Drawing.Size(530, 24);
             this.txtFWFileLLFwr.TabIndex = 43;
@@ -5746,7 +5746,7 @@
             // 
             this.btnFWFilePubSave.Enabled = false;
             this.btnFWFilePubSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFWFilePubSave.Location = new System.Drawing.Point(599, 251);
+            this.btnFWFilePubSave.Location = new System.Drawing.Point(596, 267);
             this.btnFWFilePubSave.Name = "btnFWFilePubSave";
             this.btnFWFilePubSave.Size = new System.Drawing.Size(97, 30);
             this.btnFWFilePubSave.TabIndex = 35;
@@ -6268,7 +6268,7 @@
             this.grbFWAggiornamento.Controls.Add(this.txtFWInSBFDtRev);
             this.grbFWAggiornamento.Controls.Add(this.label110);
             this.grbFWAggiornamento.Controls.Add(this.btnFWLanciaTrasmissione);
-            this.grbFWAggiornamento.Controls.Add(this.textBox11);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWInLLFEsito);
             this.grbFWAggiornamento.Controls.Add(this.label108);
             this.grbFWAggiornamento.Controls.Add(this.label114);
             this.grbFWAggiornamento.Controls.Add(this.btnFWPreparaTrasmissione);
@@ -6285,6 +6285,19 @@
             this.grbFWAggiornamento.TabIndex = 1;
             this.grbFWAggiornamento.TabStop = false;
             this.grbFWAggiornamento.Text = "Aggiornamento";
+            // 
+            // cmbFWSBFArea
+            // 
+            this.cmbFWSBFArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFWSBFArea.FormattingEnabled = true;
+            this.cmbFWSBFArea.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.cmbFWSBFArea.Location = new System.Drawing.Point(25, 264);
+            this.cmbFWSBFArea.Name = "cmbFWSBFArea";
+            this.cmbFWSBFArea.Size = new System.Drawing.Size(44, 26);
+            this.cmbFWSBFArea.TabIndex = 84;
+            this.cmbFWSBFArea.Text = "1";
             // 
             // flwFWFileLLFStruct
             // 
@@ -6340,14 +6353,14 @@
             this.btnFWLanciaTrasmissione.UseVisualStyleBackColor = true;
             this.btnFWLanciaTrasmissione.Click += new System.EventHandler(this.btnFWLanciaTrasmissione_Click);
             // 
-            // textBox11
+            // txtFWInLLFEsito
             // 
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBox11.Location = new System.Drawing.Point(85, 263);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(113, 27);
-            this.textBox11.TabIndex = 42;
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFWInLLFEsito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFWInLLFEsito.Location = new System.Drawing.Point(85, 263);
+            this.txtFWInLLFEsito.Name = "txtFWInLLFEsito";
+            this.txtFWInLLFEsito.Size = new System.Drawing.Size(113, 27);
+            this.txtFWInLLFEsito.TabIndex = 42;
+            this.txtFWInLLFEsito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label108
             // 
@@ -6494,9 +6507,9 @@
             // grbFWDettStato
             // 
             this.grbFWDettStato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.grbFWDettStato.Location = new System.Drawing.Point(23, 98);
+            this.grbFWDettStato.Location = new System.Drawing.Point(0, 81);
             this.grbFWDettStato.Name = "grbFWDettStato";
-            this.grbFWDettStato.Size = new System.Drawing.Size(460, 51);
+            this.grbFWDettStato.Size = new System.Drawing.Size(51, 21);
             this.grbFWDettStato.TabIndex = 49;
             this.grbFWDettStato.TabStop = false;
             // 
@@ -6547,6 +6560,7 @@
             this.btnFwCaricaStato.TabIndex = 44;
             this.btnFwCaricaStato.Text = "Ricarica";
             this.btnFwCaricaStato.UseVisualStyleBackColor = true;
+            this.btnFwCaricaStato.Click += new System.EventHandler(this.btnFwCaricaStato_Click);
             // 
             // txtFwStatoHA2
             // 
@@ -6689,19 +6703,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // cmbFWSBFArea
-            // 
-            this.cmbFWSBFArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFWSBFArea.FormattingEnabled = true;
-            this.cmbFWSBFArea.Items.AddRange(new object[] {
-            "1",
-            "2"});
-            this.cmbFWSBFArea.Location = new System.Drawing.Point(25, 264);
-            this.cmbFWSBFArea.Name = "cmbFWSBFArea";
-            this.cmbFWSBFArea.Size = new System.Drawing.Size(44, 26);
-            this.cmbFWSBFArea.TabIndex = 84;
-            this.cmbFWSBFArea.Text = "1";
             // 
             // frmCaricabatterie
             // 
@@ -7340,7 +7341,7 @@
         private System.Windows.Forms.TextBox txtFWInSBFDtRev;
         private System.Windows.Forms.Label label110;
         public System.Windows.Forms.Button btnFWLanciaTrasmissione;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtFWInLLFEsito;
         private System.Windows.Forms.Label label108;
         private System.Windows.Forms.Label label114;
         public System.Windows.Forms.Button btnFWPreparaTrasmissione;

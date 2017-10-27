@@ -20,7 +20,7 @@ namespace ChargerLogic
     public partial class CaricaBatteria
     {
         public SerialPort serialeApparato;
-        private static SerialMessage _mS;
+        private static MessaggioLadeLight _mS;
         private parametriSistema _parametri;
         private static Queue<byte> codaDatiSER = new Queue<byte>();
 
@@ -48,7 +48,12 @@ namespace ChargerLogic
         */
         public event StepHandler Step;
         public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e); //sbWaitEventStep e);
-        // ----------------------------------------------------------
+                                                                                          // ----------------------------------------------------------
+
+        public llStatoFirmware StatoFirmware = new llStatoFirmware();
+
+
+        private Boolean _firmwarePresente = false;
 
         private static EventWaitHandle LL_USBeventWait;
         private DateTime _startRead;
@@ -437,7 +442,7 @@ namespace ChargerLogic
             try
             {
                 _parametri = parametri;
-                _mS = new SerialMessage();
+                _mS = new MessaggioLadeLight();
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
                 byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
                 _mS.SerialNumber = Seriale;

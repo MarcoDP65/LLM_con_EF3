@@ -326,6 +326,70 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Legge direttamente dal LADE-Light collegato i parametri del firmware attivo
+        /// </summary>
+        /// <param name="IdApparato">ID dell'apparato collegato</param>
+        /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
+        /// <returns></returns>
+        public bool CaricaStatoFirmware(string IdApparato, bool ApparatoConnesso)
+        {
+            try
+            {
+                bool _esito;
+                //
+                //                _idCorrente = IdApparato;
+                //                
+                _esito = false;
+
+                if (ApparatoConnesso)
+                {
+                    // Eseguo solo se la connessione all'apparato è attiva
+                    _mS.StatoFirmwareScheda = new MessaggioLadeLight.StatoFirmware();
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_INFO_BL;
+                    _mS.ComponiMessaggio();
+                    _rxRisposta = false;
+                    //skipHead = true;
+                    Log.Debug("LL Leggi Stato Firmware");
+                    Log.Debug(_mS.hexdumpMessaggio());
+                    _firmwarePresente = false;
+                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                    if (_esito)
+                    {
+                        StatoFirmware = new MoriData.llStatoFirmware();
+                        StatoFirmware.IdApparato = "";// _idCorrente;
+
+                        StatoFirmware.RevBootloader = _mS.StatoFirmwareScheda.RevBootloader;
+                        StatoFirmware.RevFirmware = _mS.StatoFirmwareScheda.RevFirmware;
+
+                        //if ((_mS.StatoFirmwareScheda.RevBootloader != "") && (_mS.StatoFirmwareScheda.RevFirmware != "??????"))
+                        _firmwarePresente = true;
+                        StatoFirmware.CRCFirmware = _mS.StatoFirmwareScheda.CRCFirmware;
+                        StatoFirmware.AddrFlash0 = _mS.StatoFirmwareScheda.AddrFlash0;
+                        StatoFirmware.LenFlash0 = _mS.StatoFirmwareScheda.LenFlash0;
+                        StatoFirmware.AddrFlash1 = _mS.StatoFirmwareScheda.AddrFlash1;
+                        StatoFirmware.LenFlash1 = _mS.StatoFirmwareScheda.LenFlash1;
+                        StatoFirmware.AddrFlash2 = _mS.StatoFirmwareScheda.AddrFlash2;
+                        StatoFirmware.LenFlash2 = _mS.StatoFirmwareScheda.LenFlash2;
+                        StatoFirmware.AddrFlash3 = _mS.StatoFirmwareScheda.AddrFlash3;
+                        StatoFirmware.LenFlash3 = _mS.StatoFirmwareScheda.LenFlash3;
+                        StatoFirmware.AddrFlash4 = _mS.StatoFirmwareScheda.AddrFlash4;
+                        StatoFirmware.LenFlash4 = _mS.StatoFirmwareScheda.LenFlash4;
+                        StatoFirmware.Stato = _mS.StatoFirmwareScheda.Stato;
+                        StatoFirmware.valido = true;
+
+                    }
+                }
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaTestataFW: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+                return false;
+            }
+        }
 
 
     }

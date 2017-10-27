@@ -14,7 +14,7 @@ using Utility;
 
 namespace MoriData
 {
-    public class _sbStatoFirmware
+    public class _llStatoFirmware
     {
         [PrimaryKey]
         [AutoIncrement]
@@ -29,13 +29,19 @@ namespace MoriData
 
         public string RevBootloader { get; set; }
         public string RevFirmware { get; set; }
+        public string RevDisplay { get; set; }
         public ushort CRCFirmware { get; set; }
-        public uint AddrFlash { get; set; }
-        public uint LenFlash { get; set; }
+        public uint AddrFlash0 { get; set; }
+        public uint LenFlash0 { get; set; }
+        public uint AddrFlash1 { get; set; }
+        public uint LenFlash1 { get; set; }
         public uint AddrFlash2 { get; set; }
         public uint LenFlash2 { get; set; }
-        public uint AddrProxy { get; set; }
-        public uint LenProxy { get; set; }
+        public uint AddrFlash3 { get; set; }
+        public uint LenFlash3 { get; set; }
+        public uint AddrFlash4 { get; set; }
+        public uint LenFlash4 { get; set; }
+
         public byte Stato { get; set; }
 
         public DateTime IstanteLettura { get; set; }
@@ -46,10 +52,10 @@ namespace MoriData
         }
     }
 
-    public class sbStatoFirmware
+    public class llStatoFirmware
     {
         public string nullID { get { return "0000000000000000"; } }
-        public _sbStatoFirmware _sbSFW = new _sbStatoFirmware();
+        public _llStatoFirmware _llSFW = new _llStatoFirmware();
         public bool valido;
         public MoriData._db _database;
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
@@ -59,19 +65,19 @@ namespace MoriData
 
 
 
-        public sbStatoFirmware()
+        public llStatoFirmware()
         {
-            _sbSFW = new _sbStatoFirmware();
+            _llSFW = new _llStatoFirmware();
             valido = false;
             _datiSalvati = true;
             _recordPresente = false;
         }
 
 
-        public sbStatoFirmware(_db connessione)
+        public llStatoFirmware(_db connessione)
         {
             valido = false;
-            _sbSFW = new _sbStatoFirmware();
+            _llSFW = new _llStatoFirmware();
             _database = connessione;
             _datiSalvati = true;
             _recordPresente = false;
@@ -79,9 +85,9 @@ namespace MoriData
 
 
 
-        private _sbStatoFirmware _caricaDati(int _id)
+        private _llStatoFirmware _caricaDati(int _id)
         {
-            return (from s in _database.Table<_sbStatoFirmware>()
+            return (from s in _database.Table<_llStatoFirmware>()
                     where s.IdLocale == _id
                     select s).FirstOrDefault();
         }
@@ -90,10 +96,10 @@ namespace MoriData
         {
             try
             {
-                _sbSFW = _caricaDati(idLocale);
-                if (_sbSFW == null)
+                _llSFW = _caricaDati(idLocale);
+                if (_llSFW == null)
                 {
-                    _sbSFW = new _sbStatoFirmware();
+                    _llSFW = new _llStatoFirmware();
                     return false;
                 }
 
@@ -154,24 +160,24 @@ namespace MoriData
 
         public int IdLocale
         {
-            get { return _sbSFW.IdLocale; }
+            get { return _llSFW.IdLocale; }
             set
             {
                 if (value != null)
                 {
-                    _sbSFW.IdLocale = value;
+                    _llSFW.IdLocale = value;
                     _datiSalvati = false;
                 }
             }
         }
         public string IdApparato
         {
-            get { return _sbSFW.IdApparato; }
+            get { return _llSFW.IdApparato; }
             set
             {
                 if (value != null)
                 {
-                    _sbSFW.IdApparato = value;
+                    _llSFW.IdApparato = value;
                     _datiSalvati = false;
                 }
             }
@@ -181,146 +187,223 @@ namespace MoriData
 
         public string RevBootloader
         {
-            get { return _sbSFW.RevBootloader; }
+            get { return _llSFW.RevBootloader; }
             set
             {
-                _sbSFW.RevBootloader = value;
+                _llSFW.RevBootloader = value;
                 _datiSalvati = false;
             }
         }
         public string strRevBootloader
         {
-            get { return FunzioniMR.StringaRevisione( _sbSFW.RevBootloader); }
+            get { return FunzioniMR.StringaRevisione(_llSFW.RevBootloader); }
         }
+
+        public string RevDisplay
+        {
+            get { return _llSFW.RevDisplay; }
+            set
+            {
+                _llSFW.RevDisplay = value;
+                _datiSalvati = false;
+            }
+        }
+        public string strRevDisplay
+        {
+            get { return FunzioniMR.StringaRevisione(_llSFW.RevDisplay); }
+        }
+
 
 
         public string RevFirmware
         {
-            get { return _sbSFW.RevFirmware; }
+            get { return _llSFW.RevFirmware; }
             set
             {
-                _sbSFW.RevFirmware = value;
+                _llSFW.RevFirmware = value;
                 _datiSalvati = false;
             }
         }
         public string strRevFirmware
         {
-            get { return FunzioniMR.StringaRevisione(_sbSFW.RevFirmware); }
+            get { return FunzioniMR.StringaRevisione(_llSFW.RevFirmware); }
         }
 
 
         public ushort CRCFirmware
         {
-            get { return _sbSFW.CRCFirmware; }
+            get { return _llSFW.CRCFirmware; }
             set
             {
-                _sbSFW.CRCFirmware = value;
+                _llSFW.CRCFirmware = value;
                 _datiSalvati = false;
             }
         }
         public string strCRCFirmware
         {
-            get { return _sbSFW.CRCFirmware.ToString("X4"); }
+            get { return _llSFW.CRCFirmware.ToString("X4"); }
         }
 
-        public uint AddrFlash
+        //---------------------------------------------------------------------
+        public uint AddrFlash0
         {
-            get { return _sbSFW.AddrFlash; }
+            get { return _llSFW.AddrFlash0; }
             set
             {
-                _sbSFW.AddrFlash = value;
+                _llSFW.AddrFlash0 = value;
                 _datiSalvati = false;
             }
         }
-        public string strAddrFlash
+        public string strAddrFlash0
         {
-            get { return _sbSFW.AddrFlash.ToString("X8"); }
+            get { return _llSFW.AddrFlash0.ToString("X8"); }
         }
 
 
-        public uint LenFlash
+        public uint LenFlash0
         {
-            get { return _sbSFW.LenFlash; }
+            get { return _llSFW.LenFlash0; }
             set
             {
-                _sbSFW.LenFlash = value;
+                _llSFW.LenFlash0 = value;
                 _datiSalvati = false;
             }
         }
-        public string strLenFlash
+        public string strLenFlash0
         {
-            get { return _sbSFW.LenFlash.ToString("X8"); }
+            get { return _llSFW.LenFlash0.ToString("X8"); }
         }
 
+        //---------------------------------------------------------------------
+        public uint AddrFlash1
+        {
+            get { return _llSFW.AddrFlash1; }
+            set
+            {
+                _llSFW.AddrFlash1 = value;
+                _datiSalvati = false;
+            }
+        }
+        public string strAddrFlash1
+        {
+            get { return _llSFW.AddrFlash1.ToString("X8"); }
+        }
 
+        public uint LenFlash1
+        {
+            get { return _llSFW.LenFlash1; }
+            set
+            {
+                _llSFW.LenFlash1 = value;
+                _datiSalvati = false;
+            }
+        }
+        public string strLenFlash1
+        {
+            get { return _llSFW.LenFlash1.ToString("X8"); }
+        }
+
+        //---------------------------------------------------------------------
         public uint AddrFlash2
         {
-            get { return _sbSFW.AddrFlash2; }
+            get { return _llSFW.AddrFlash2; }
             set
             {
-                _sbSFW.AddrFlash2 = value;
+                _llSFW.AddrFlash2 = value;
                 _datiSalvati = false;
             }
         }
         public string strAddrFlash2
         {
-            get { return _sbSFW.AddrFlash2.ToString("X8"); }
+            get { return _llSFW.AddrFlash2.ToString("X8"); }
         }
 
         public uint LenFlash2
         {
-            get { return _sbSFW.LenFlash2; }
+            get { return _llSFW.LenFlash2; }
             set
             {
-                _sbSFW.LenFlash2 = value;
+                _llSFW.LenFlash2 = value;
                 _datiSalvati = false;
             }
         }
         public string strLenFlash2
         {
-            get { return _sbSFW.LenFlash2.ToString("X8"); }
+            get { return _llSFW.LenFlash2.ToString("X8"); }
         }
 
-        public uint AddrProxy
+        //---------------------------------------------------------------------
+        public uint AddrFlash3
         {
-            get { return _sbSFW.AddrProxy; }
+            get { return _llSFW.AddrFlash3; }
             set
             {
-                _sbSFW.AddrProxy = value;
+                _llSFW.AddrFlash3 = value;
                 _datiSalvati = false;
             }
         }
-        public string strAddrProxy
+        public string strAddrFlash3
         {
-            get { return _sbSFW.AddrProxy.ToString("X8"); }
+            get { return _llSFW.AddrFlash3.ToString("X8"); }
         }
 
-        public uint LenProxy
+        public uint LenFlash3
         {
-            get { return _sbSFW.LenProxy; }
+            get { return _llSFW.LenFlash3; }
             set
             {
-                _sbSFW.LenProxy = value;
+                _llSFW.LenFlash3 = value;
                 _datiSalvati = false;
             }
         }
-        public string strLenProxy
+        public string strLenFlash3
         {
-            get { return _sbSFW.LenProxy.ToString("X4"); }
+            get { return _llSFW.LenFlash3.ToString("X8"); }
         }
+
+        //---------------------------------------------------------------------
+        public uint AddrFlash4
+        {
+            get { return _llSFW.AddrFlash4; }
+            set
+            {
+                _llSFW.AddrFlash4 = value;
+                _datiSalvati = false;
+            }
+        }
+        public string strAddrFlash4
+        {
+            get { return _llSFW.AddrFlash4.ToString("X8"); }
+        }
+
+        public uint LenFlash4
+        {
+            get { return _llSFW.LenFlash4; }
+            set
+            {
+                _llSFW.LenFlash4 = value;
+                _datiSalvati = false;
+            }
+        }
+        public string strLenFlash4
+        {
+            get { return _llSFW.LenFlash4.ToString("X8"); }
+        }
+
+        //---------------------------------------------------------------------
 
         public byte Stato
         {
-            get { return _sbSFW.Stato; }
+            get { return _llSFW.Stato; }
             set
             {
-                _sbSFW.Stato = value;
+                _llSFW.Stato = value;
                 _datiSalvati = false;
             }
         }
         public string strStato
         {
-            get { return _sbSFW.Stato.ToString("X"); }
+            get { return _llSFW.Stato.ToString("X"); }
         }
 
 
@@ -330,3 +413,4 @@ namespace MoriData
     }
 
 }
+

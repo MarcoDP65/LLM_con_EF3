@@ -49,6 +49,7 @@ namespace PannelloCharger
 
         public List<llVariabili> ListaValori = new List<llVariabili>();  // lista per listview realtime logger
         public List<ParametriArea> ListaAreeLLF = new List<ParametriArea>();  // lista per listview file Firmware upload
+        public List<ParametriArea> ListaAreeCCS = new List<ParametriArea>();  // lista per listview file Firmware upload
 
 
         public System.Collections.Generic.List<ValoreLista> ListaBrSig = new List<ValoreLista>()
@@ -1509,6 +1510,22 @@ namespace PannelloCharger
         private void btnFWPreparaTrasmissione_Click(object sender, EventArgs e)
         {
             PreparaTrasmissioneFW();
+        }
+
+        private void btnFwCaricaStato_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_cb.apparatoPresente)
+                {
+                    VerificaStatoFw();
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwCaricaStato_Click: " + Ex.Message);
+            }
         }
     }
 

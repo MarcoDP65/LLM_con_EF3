@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -222,6 +222,7 @@
     <Compile Include="Componenti\PannelloTurno.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Database\llStatoFirmware.cs" />
     <Compile Include="Database\database.cs" />
     <Compile Include="Database\dataUtility.cs" />
     <Compile Include="Database\lingue.cs" />
@@ -488,12 +489,14 @@
     <Compile Include="Logiche\ImageDump.cs" />
     <Compile Include="Logiche\LogicheBase.cs" />
     <Compile Include="Logiche\MappaSpybatt.cs" />
+    <Compile Include="Logiche\Messaggio CaricaBatteria\MessaggioLadeLight.cs" />
+    <Compile Include="Logiche\Messaggio CaricaBatteria\SottoclassiMessaggioLadeLight.cs" />
     <Compile Include="Logiche\Messaggio Display\sottoclassiMessaggioDisplay.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\MessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\sottoclassiMessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio Display\MessaggioDisplay.cs" />
     <Compile Include="Logiche\ModelloTurno.cs" />
-    <Compile Include="Logiche\SerialMessage.cs" />
+    <Compile Include="Logiche\Serial Message\SerialMessage.cs" />
     <Compile Include="Logiche\SpyBatt\comandiMessaggiSpyBatt.cs" />
     <Compile Include="Logiche\SpyBatt\sbComandiFirmware.cs" />
     <Compile Include="Logiche\SpyBatt\sottoclassiSpyBatt.cs" />
@@ -1209,7 +1212,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logiche\Messaggio CaricaBatteria\" />
     <Folder Include="Resources\IconeTreeview\" />
   </ItemGroup>
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.103\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net45\System.Data.SQLite.Core.targets')" />

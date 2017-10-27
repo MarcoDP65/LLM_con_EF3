@@ -105,7 +105,7 @@ namespace PannelloCharger
 
                 lvwFWInFileStruct.RebuildColumns();
 
-                lvwFWInFileStruct.SetObjects(ListaAreeLLF);
+                lvwFWInFileStruct.SetObjects(ListaAreeCCS);
                 lvwFWInFileStruct.BuildList();
             }
             catch (Exception Ex)
@@ -115,7 +115,9 @@ namespace PannelloCharger
         }
 
 
-
+        /// <summary>
+        /// Carico il binario generato da CCS, unisco i due files (.hex e .a01)  e verifico la correttezza formale degli stessi
+        /// </summary>
         public void CaricafileLLCCS()
         {
 
@@ -125,12 +127,27 @@ namespace PannelloCharger
             try
             {
                 txtFWInFileStruct.Text = "";
+                btnFWLanciaTrasmissione.Enabled = false;
+                txtFWInLLFEsito.Text = "";
+                ListaAreeCCS.Clear();  
 
                 _esito = _firmMng.CaricaFileCCS(txtFwFileCCS.Text);
 
                 if (_esito == FirmwareLLManager.ExitCode.OK)
                 {
-                
+
+                    int NumArea = 0;
+                    foreach (AreaDatiFWLL _area in _firmMng.FirmwareData.ListaAree)
+                    {
+                        ParametriArea _tempPar = new ParametriArea();
+                        _tempPar.NumArea = NumArea++;
+                        _tempPar.NumBytes = (int)_area.DimDati;
+                        _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
+                        _tempPar.NumPacchetti = 0;
+                        ListaAreeCCS.Add(_tempPar);
+
+                    }
+                    InizializzaVistaStrutturaAreeCCS();
 
                     btnFWFilePubSave.Enabled = true;
 
@@ -303,7 +320,7 @@ namespace PannelloCharger
             {
 
                 btnFWLanciaTrasmissione.Enabled = false;
-
+                txtFWInLLFEsito.Text = "";
                 _esito = _firmMng.PreparaUpgradeFw();
                 if (_esito == FirmwareLLManager.ExitCode.OK)
                 {
@@ -327,10 +344,14 @@ namespace PannelloCharger
                   
                         flwFWFileLLFStruct.SetObjects(ListaAreeLLF);
                         flwFWFileLLFStruct.BuildList();
-
+                        txtFWInLLFEsito.Text = "FW Pronto";
                         btnFWLanciaTrasmissione.Enabled = true;
                     }
 
+                }
+                else
+                {
+                    txtFWInLLFEsito.Text = "Non Valido";
                 }
 
 
@@ -447,10 +468,6 @@ namespace PannelloCharger
             }
         }
 
-
-
-
-
         private void AggiornaFirmware(bool InviaACK = false)
         {
             try
@@ -526,7 +543,306 @@ namespace PannelloCharger
             }
         }
 
+        public bool CaricaStatoFirmware(ref string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
+        {
+            bool _esito = false;
+            bool _esitoFunzione = false;
+            try
+            {
+                txtFwRevBootloader.Text = "...";
+                txtFwRevFirmware.Text = "";
+                txtFwStatoMicro.Text = "";
+                txtFwStatoHA1.Text = "";
+                txtFwStatoHA2.Text = "";
+                txtFwStatoSA1.Text = "";
+                txtFwStatoSA2.Text = "";
+                txtFwAreaTestata.Text = "";
+                Log.Debug("----------------------- CaricaStatoFirmware ---------------------------");
 
+
+                // _esito = caricaDati(IdApparato, Logiche, SerialeCollegata);
+                _esito = _cb.apriPorta();
+
+                if (_esito)
+                {
+                    IdApparato = ""; // _sb.Id;
+
+                    _esito = _cb.CaricaStatoFirmware(IdApparato, SerialeCollegata);
+
+                    if (_esito && (_cb.UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk))
+                    {
+
+                        txtFwRevBootloader.Text = _cb.StatoFirmware.strRevBootloader;
+                        txtFwRevFirmware.Text = _cb.StatoFirmware.strRevFirmware;
+
+                        MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _cb.StatoFirmware.Stato, ref txtFwStatoHA1, true);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _cb.StatoFirmware.Stato, ref txtFwStatoHA2, true);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco1SW, _cb.StatoFirmware.Stato, ref txtFwStatoSA1, false);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco2SW, _cb.StatoFirmware.Stato, ref txtFwStatoSA2, false);
+                        MostraStato(FirmwareManager.MascheraStato.FlashmPHW, _cb.StatoFirmware.Stato, ref txtFwStatoMicro, true);
+
+                        _esitoFunzione = true;
+
+                        // Verifico quale blocco è attualmente caricato sul micro
+
+                        if ((_cb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
+                        {
+                            txtFwAreaTestata.Text = "BL";
+                        }
+                        else
+                        {
+                            bool _esitoMicro1 = false;
+                            _esitoMicro1 = (_cb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco1InUso) == (byte)FirmwareManager.MascheraStato.Blocco1InUso;
+                            bool _esitoMicro2 = false;
+                            _esitoMicro2 = (_cb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco2InUso) == (byte)FirmwareManager.MascheraStato.Blocco2InUso;
+
+
+                            if (_esitoMicro1)
+                            {
+                                txtFwAreaTestata.Text = "A1";
+                            }
+                            else
+                            {
+                                if (_esitoMicro2)
+                                {
+                                    txtFwAreaTestata.Text = "A2";
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+
+                return _esitoFunzione;
+
+            }
+            catch
+            {
+                return _esitoFunzione;
+            }
+        }
+
+        private void MostraStato(FirmwareManager.MascheraStato Valore, byte Stato, ref TextBox Cella, bool KOifFalse = false)
+        {
+            try
+            {
+                bool _esitocella = false;
+
+                _esitocella = (Stato & (byte)Valore) == (byte)Valore;
+
+                if (_esitocella)
+                {
+                    Cella.ForeColor = Color.Green;
+                    Cella.Text = "OK";
+                }
+                else
+                {
+                    if (KOifFalse)
+                    {
+                        Cella.ForeColor = Color.Black;
+                        Cella.Text = "";
+                    }
+                    else
+                    {
+                        Cella.ForeColor = Color.Red;
+                        Cella.Text = "KO";
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
+        }
+
+
+        private void VerificaStatoFw()
+        {
+            try
+            {
+                string _tempId = "";
+                _cb.VerificaPresenza();
+                CaricaStatoFirmware(ref _tempId, _logiche, _cb.apparatoPresente);
+                //CaricaStatoAreaFw(1, _sb.StatoFirmware.Stato);
+                //CaricaStatoAreaFw(2, _sb.StatoFirmware.Stato);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwCaricaStato_Click: " + Ex.Message);
+            }
+        }
+        /*
+        public bool CaricaStatoAreaFw(byte IdArea, byte StatoFirmware)
+        {
+            bool _esito = false;
+            byte[] _bufferDati = new byte[64];
+            FirmwareManager _tempFW = new FirmwareManager();
+            FirmwareManager.ExitCode _esitoFW = FirmwareManager.ExitCode.ErroreGenerico;
+            uint _area;
+
+            try
+            {
+
+                Log.Info("Lettura area FW 1 ");
+                if (IdArea == 1)
+                {
+
+                    txtFwRevA1State.Text = "KO";
+                    txtFwRevA1State.ForeColor = Color.Red;
+                    txtFwRevA1RevFw.Text = "";
+                    txtFwRevA1RilFw.Text = "";
+                    txtFWRevA1AddrN1.Text = "";
+                    txtFWRevA1LenN1.Text = "";
+                    txtFWRevA1AddrN2.Text = "";
+                    txtFWRevA1LenN2.Text = "";
+                    txtFWRevA1AddrP.Text = "";
+                    txtFWRevA1LenP.Text = "";
+                    _area = 0x1E0000;
+                }
+                else
+                {
+                    txtFwRevA2State.Text = "KO";
+                    txtFwRevA2State.ForeColor = Color.Red;
+                    txtFwRevA2RevFw.Text = "";
+                    txtFwRevA2RilFw.Text = "";
+                    txtFWRevA2AddrN1.Text = "";
+                    txtFWRevA2LenN1.Text = "";
+                    txtFWRevA2AddrN2.Text = "";
+                    txtFWRevA2LenN2.Text = "";
+                    txtFWRevA2AddrP.Text = "";
+                    txtFWRevA2LenP.Text = "";
+                    _area = 0x1F0000;
+
+                }
+
+
+                _esito = _sb.LeggiBloccoMemoria(_area, 64, out _bufferDati);
+
+
+                if (_esito)
+                {
+                    _esitoFW = _tempFW.AnalizzaArrayTestata(_bufferDati);
+                    if (_esitoFW == FirmwareManager.ExitCode.OK && _tempFW.FirmwareBlock.TestataOK)
+                    {
+                        if (IdArea == 1)
+                        {
+                            txtFwRevA1State.Text = "OK";
+                            txtFwRevA1State.ForeColor = Color.Black;
+                            txtFwRevA1RevFw.Text = _tempFW.FirmwareBlock.Release;
+                            txtFwRevA1RilFw.Text = _tempFW.FirmwareBlock.ReleaseDate;
+                            txtFWRevA1AddrN1.Text = _tempFW.FirmwareBlock.AddrFlash1.ToString();
+                            txtFWRevA1LenN1.Text = _tempFW.FirmwareBlock.LenFlash1.ToString();
+                            txtFWRevA1AddrN2.Text = _tempFW.FirmwareBlock.AddrFlash2.ToString();
+                            txtFWRevA1LenN2.Text = _tempFW.FirmwareBlock.LenFlash2.ToString();
+                            txtFWRevA1AddrP.Text = _tempFW.FirmwareBlock.AddrProxy.ToString();
+                            txtFWRevA1LenP.Text = _tempFW.FirmwareBlock.LenProxy.ToString();
+                        }
+                        else
+                        {
+                            txtFwRevA2State.Text = "OK";
+                            txtFwRevA2State.ForeColor = Color.Black;
+                            txtFwRevA2RevFw.Text = _tempFW.FirmwareBlock.Release;
+                            txtFwRevA2RilFw.Text = _tempFW.FirmwareBlock.ReleaseDate;
+                            txtFWRevA2AddrN1.Text = _tempFW.FirmwareBlock.AddrFlash1.ToString();
+                            txtFWRevA2LenN1.Text = _tempFW.FirmwareBlock.LenFlash1.ToString();
+                            txtFWRevA2AddrN2.Text = _tempFW.FirmwareBlock.AddrFlash2.ToString();
+                            txtFWRevA2LenN2.Text = _tempFW.FirmwareBlock.LenFlash2.ToString();
+                            txtFWRevA2AddrP.Text = _tempFW.FirmwareBlock.AddrProxy.ToString();
+                            txtFWRevA2LenP.Text = _tempFW.FirmwareBlock.LenProxy.ToString();
+                        }
+                    }
+
+                }
+
+                return _esito;
+
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+        public bool SwitchAreaFw(string IdApparato, bool SerialeCollegata, byte IdArea)
+        {
+            bool _esito = false;
+            byte[] _bufferDati = new byte[64];
+            //uint _area;
+
+            try
+            {
+
+                Cursor.Current = Cursors.WaitCursor;
+
+                _esito = _sb.SwitchFirmware(IdApparato, SerialeCollegata, IdArea);
+
+
+                if (_esito)
+                {
+                    // Switch riuscito aspetto 30 secondi, poi mi riconnetto
+                    Application.DoEvents();
+                    Thread.Sleep(20000);
+                    Application.DoEvents();
+                    _esito = reconnectSpyBat();
+                    Cursor.Current = Cursors.Default;
+                    if (!_esito)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show(_parametri.lastError, "Riconnessione Fallita", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+                }
+                Cursor.Current = Cursors.Default;
+                return _esito;
+
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+        public bool SwitchAreaBl(string IdApparato, bool SerialeCollegata)
+        {
+            bool _esito = false;
+            byte[] _bufferDati = new byte[64];
+            //uint _area;
+
+            try
+            {
+
+                Cursor.Current = Cursors.WaitCursor;
+                _esito = _sb.SwitchToBootLoader(IdApparato, SerialeCollegata);
+
+
+                if (_esito)
+                {
+                    // Switch riuscito, mi riconnetto
+                    Application.DoEvents();
+                    Thread.Sleep(10000);
+                    Application.DoEvents();
+                    _esito = reconnectSpyBat();
+                    Cursor.Current = Cursors.Default;
+                    if (!_esito)
+                    {
+                        MessageBox.Show(_parametri.lastError, "Riconnessione Fallita", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+                }
+
+                return _esito;
+
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+        
+         */
 
     }  // Fine Classe
 }
