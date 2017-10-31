@@ -362,9 +362,11 @@ namespace ChargerLogic
 
                         StatoFirmware.RevBootloader = _mS.StatoFirmwareScheda.RevBootloader;
                         StatoFirmware.RevFirmware = _mS.StatoFirmwareScheda.RevFirmware;
+                        StatoFirmware.RevDisplay = _mS.StatoFirmwareScheda.RevDisplay;
 
                         //if ((_mS.StatoFirmwareScheda.RevBootloader != "") && (_mS.StatoFirmwareScheda.RevFirmware != "??????"))
                         _firmwarePresente = true;
+                        StatoFirmware.Stato = _mS.StatoFirmwareScheda.Stato;
                         StatoFirmware.CRCFirmware = _mS.StatoFirmwareScheda.CRCFirmware;
                         StatoFirmware.AddrFlash0 = _mS.StatoFirmwareScheda.AddrFlash0;
                         StatoFirmware.LenFlash0 = _mS.StatoFirmwareScheda.LenFlash0;
@@ -390,6 +392,76 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+        /// <summary>
+        /// Resetta la scheda e la riavvia caricando solo il BootLoader
+        /// </summary>
+        /// <param name="IdApparato"></param>
+        /// <param name="ApparatoConnesso"></param>
+        /// <param name="Area"></param>
+        /// <returns></returns>
+        public bool SwitchToBootLoader(string IdApparato, bool ApparatoConnesso)
+        {
+            try
+            {
+                bool _esito;
+                object _dataRx;
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
+                SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
+
+
+                bool _recordPresente;
+
+
+                if (ApparatoConnesso)
+                {
+                    // verificare Firmware.TestataOK
+
+
+
+                    //Prima invio la testata
+
+                    Log.Debug("+---------------------------------------------------------");
+                    Log.Debug("| Switch to BootLoader                                    ");
+                    Log.Debug("+---------------------------------------------------------");
+
+
+                    _mS.ComponiMessaggioSwitchBL();
+
+                    Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
+                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    _esito = aspettaRisposta(50, 1, true);
+
+                    if (!_esito)
+                    {
+                        Log.Debug(" Switch to BL fallito : ");
+                        return false;
+                    }
+                    else
+                    {
+                        //ricevuto ritorno, verifico la risposta 
+                        if (_ultimaRisposta == SerialMessage.TipoRisposta.Ack)
+                        {
+                            Log.Debug(" Switch to BL completato ");
+                            return true;
+                        }
+
+
+                    }
+                }
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("FW Update: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+
+                return false;
+            }
+        }
+
+
 
 
     }

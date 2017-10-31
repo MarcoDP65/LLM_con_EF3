@@ -760,7 +760,7 @@ namespace ChargerLogic
                     MemorySlice = sbData.NumPacchetti;
                     _mS.fwLevel = sbData.fwLevel;
                     _mS.DumpMem = new MessaggioSpyBatt.ImmagineDumpMem();
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_DumpMemoria;
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_READ_ALL_MEMORY;
                     //_mS.ComponiMessaggio();
                     if(AckPacchetto == true) _AckPacchetto = SerialMessage.LadeLightBool.True;
                     _mS.ComponiMessaggioLeggiInteraMemoria(_AckPacchetto);
@@ -2890,7 +2890,7 @@ namespace ChargerLogic
                     for (uint _cicloM = cicloStart; _cicloM <= cicloEnd; _cicloM++)
                     {
 
-                        _mS.Comando = SerialMessage.TipoComando.SB_R_LeggiMemoria;
+                        _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
 
                         AddrLettura = AddrBase + LenMemLunga * (_cicloM - 1);
 
@@ -3115,7 +3115,7 @@ namespace ChargerLogic
                 Dati = new byte[NumByte];
 
 
-                _mS.Comando = SerialMessage.TipoComando.SB_R_LeggiMemoria;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
                 _mS._pacchettoMem = new MessaggioSpyBatt.PacchettoReadMem();
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -3172,7 +3172,7 @@ namespace ChargerLogic
                 }
 
 
-                _mS.Comando = SerialMessage.TipoComando.SB_W_ScriviMemoria;
+                _mS.Comando = SerialMessage.TipoComando.CMD_WRITE_MEMORY;
 
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -3221,7 +3221,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.SB_Cancella4K;
+                _mS.Comando = SerialMessage.TipoComando.CMD_ERASE_4K_MEM;
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
                 Log.Debug("Cancellazione di 4Kbytes dall'indirizzo " + StartAddr.ToString("X2"));
@@ -3315,7 +3315,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.SB_W_RESETSCHEDA;
+                _mS.Comando = SerialMessage.TipoComando.CMD_RESET_BOARD;
 
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -4833,7 +4833,7 @@ namespace ChargerLogic
                                             _inviaRisposta = false;
                                             break;
                                         }
-                                    case (byte)SerialMessage.TipoComando.SB_W_ScriviMemoria:
+                                    case (byte)SerialMessage.TipoComando.CMD_WRITE_MEMORY:
                                         {
                                             _inviaRisposta = false;
                                             break;
@@ -4875,7 +4875,7 @@ namespace ChargerLogic
                                 Log.Warn("Accodato Ciclo Breve per il ciclo Lungo " + _mS._CicloBreve.IdEvento.ToString() + " in posizione " + _CicliMemoriaBreve.Count.ToString() );
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_R_LeggiMemoria:
+                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Lettura Area Memoria");
@@ -4926,7 +4926,7 @@ namespace ChargerLogic
                                 //_inviaRisposta = _mS.variabiliScheda.datiPronti;
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_R_DumpMemoria:
+                            case (byte)SerialMessage.TipoComando.CMD_READ_ALL_MEMORY:
                                 Log.Debug("Lettura Pacchetto Mem " + _mS.DumpMem.NumStep.ToString());
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = _inviaAckPacchettoDump;
@@ -4951,7 +4951,7 @@ namespace ChargerLogic
                                 Log.Debug("Read RTC");
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_Cancella4K:
+                            case (byte)SerialMessage.TipoComando.CMD_ERASE_4K_MEM:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 Log.Debug("Cancella 4K");
                                 //_inviaRisposta = _mS.variabiliScheda.datiPronti;

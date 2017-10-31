@@ -16,6 +16,7 @@ using log4net.Config;
 
 using MoriData;
 using Utility;
+using System.Threading;
 
 namespace PannelloCharger
 {
@@ -551,6 +552,7 @@ namespace PannelloCharger
             {
                 txtFwRevBootloader.Text = "...";
                 txtFwRevFirmware.Text = "";
+                txtFwRevDisplay.Text = "";
                 txtFwStatoMicro.Text = "";
                 txtFwStatoHA1.Text = "";
                 txtFwStatoHA2.Text = "";
@@ -574,6 +576,7 @@ namespace PannelloCharger
 
                         txtFwRevBootloader.Text = _cb.StatoFirmware.strRevBootloader;
                         txtFwRevFirmware.Text = _cb.StatoFirmware.strRevFirmware;
+                        txtFwRevDisplay.Text = _cb.StatoFirmware.strRevDisplay;
 
                         MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _cb.StatoFirmware.Stato, ref txtFwStatoHA1, true);
                         MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _cb.StatoFirmware.Stato, ref txtFwStatoHA2, true);
@@ -803,6 +806,7 @@ namespace PannelloCharger
                 return _esito;
             }
         }
+        */
 
         public bool SwitchAreaBl(string IdApparato, bool SerialeCollegata)
         {
@@ -814,16 +818,17 @@ namespace PannelloCharger
             {
 
                 Cursor.Current = Cursors.WaitCursor;
-                _esito = _sb.SwitchToBootLoader(IdApparato, SerialeCollegata);
+                _esito = _cb.SwitchToBootLoader(IdApparato, SerialeCollegata);
 
 
                 if (_esito)
                 {
                     // Switch riuscito, mi riconnetto
                     Application.DoEvents();
-                    Thread.Sleep(10000);
+                    Thread.Sleep(2000);
                     Application.DoEvents();
-                    _esito = reconnectSpyBat();
+                    attivaCaricabatterie(ref _parametri, false);
+                    _esito = reconnectLadeLight();
                     Cursor.Current = Cursors.Default;
                     if (!_esito)
                     {
@@ -838,11 +843,84 @@ namespace PannelloCharger
             }
             catch
             {
+                Cursor.Current = Cursors.Default;
                 return _esito;
             }
         }
-        
-         */
+
+
+        public bool reconnectLadeLight()
+        {
+            bool _esito;
+            try
+            {
+
+
+                Log.Debug("----------------------- reconnectSpyBat ---------------------------");
+
+                string _idCorrente = "";// _cb.Id;
+                abilitaSalvataggi(false);
+
+                // in futuro, inserire quì il precaricamento delle statistiche
+                //CaricaTestata(IdApparato, Logiche, SerialeCollegata);
+
+                // 12/10/15: inizio leggendo lo stato del bootloader, per verificare se c'è un firmware caricato
+                _esito = CaricaStatoFirmware(ref _idCorrente, _logiche, _apparatoPresente);
+                if (!_esito)
+                {
+                    // Se non ho il firmware state potrebbe essere una versione precedente
+                    // provo a leggere la testata
+                    _esito = _cb.VerificaPresenza();
+                    if (_idCorrente != "")
+                    {
+                        //CaricaTestata(_idCorrente, _logiche, _apparatoPresente);
+                    }
+
+                }
+                else
+                {
+                    /*
+                    if (_cb.FirmwarePresente)
+                    {
+                        // Se sono in stato BL lo evidenzio e mi fermo, altrimenti leggo la testata
+                        if ((_sb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
+                        {
+                            MostraTestata();
+                            txtRevSWSb.Text = "BOOTLOADER";
+                            txtRevSWSb.ForeColor = Color.Red;
+
+                            // se l'apparato è collegato abilito i salvataggi
+                            abilitaSalvataggi(_sb.apparatoPresente);
+
+                            Log.Info("Stato scheda SPY-BATT: LD OK, MODO BOOTLOADER ");
+
+                        }
+                        else
+                        {
+                            //TODO: gestire io DB se la scheda è già in archivio
+                            CaricaTestata(_idCorrente, _logiche, _apparatoPresente);
+                        }
+
+
+                    }
+                    else
+                    {
+                        MostraTestata();
+                    }
+                    */
+                }
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat: " + Ex.Message + " [" + Ex.TargetSite.ToString() + "]");
+                return false;
+            }
+
+        }
+
 
     }  // Fine Classe
 }

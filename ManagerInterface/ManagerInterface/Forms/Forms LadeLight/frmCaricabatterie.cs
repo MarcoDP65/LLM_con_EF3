@@ -16,6 +16,7 @@ using log4net.Config;
 
 using MoriData;
 using Utility;
+using System.Globalization;
 
 namespace PannelloCharger
 {
@@ -1526,6 +1527,101 @@ namespace PannelloCharger
             {
                 Log.Error("btnFwCaricaStato_Click: " + Ex.Message);
             }
+        }
+
+        private void btnFwSwitchArea_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rbtFwBootLdr.Checked)
+                {
+                    // reset to bl
+                    bool _esito = SwitchAreaBl("", true);
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwSwitchArea_Click: " + Ex.Message);
+            }
+        }
+
+        private void rbtMemAreaLibera_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtMemAreaLibera.Checked) txtMemCFStartAdd.Text = "0";
+        }
+
+        private void rbtMemAreaApp1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtMemAreaApp1.Checked) txtMemCFStartAdd.Text = "1C0000";
+        }
+
+        private void rbtMemAreaApp2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtMemAreaApp2.Checked) txtMemCFStartAdd.Text = "1E0000";
+        }
+
+        private void btnMemCFExec_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                uint _StartAddr;
+                int _bloccoCorrente;
+                ushort _NumBlocchi;
+                bool _esito;
+
+                if (chkMemHex.Checked)
+                {
+                    if (uint.TryParse(txtMemCFStartAdd.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemCFStartAdd.Text, out _StartAddr) != true) return;
+                }
+
+
+                _NumBlocchi = 0;
+                if (ushort.TryParse(txtMemCFBlocchi.Text, out _NumBlocchi) != true) return;
+
+
+                if (_NumBlocchi > 0)
+                {
+
+                    for (int _cicloBlocchi = 0; _cicloBlocchi < _NumBlocchi; _cicloBlocchi++)
+                    {
+                        _bloccoCorrente = _cicloBlocchi + 1;
+                        _esito = _cb.CancellaBlocco4K(_StartAddr);
+                        if (!_esito)
+                        {
+                            MessageBox.Show("Cancellazione del blocco " + _bloccoCorrente.ToString() + " non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            _StartAddr += 0x1000;
+                            txtMemCFStartAdd.Text = _StartAddr.ToString("X6");
+                            txtMemCFBlocchi.Text = _bloccoCorrente.ToString();
+                            Application.DoEvents();
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Inserire un numero di blocchi valido", "Esportazione dati Corrente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+
         }
     }
 

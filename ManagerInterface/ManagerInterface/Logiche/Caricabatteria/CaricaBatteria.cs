@@ -141,7 +141,7 @@ namespace ChargerLogic
                             // Now that we have the amount of data we want available, read it
                             byte[] readData = new byte[numBytesAvailable];
                             uint numBytesRead = 0;
-
+                            Log.Debug("Ricevuti " + numBytesAvailable.ToString() + " bytes");
                             // Note that the Read method is overloaded, so can read string or byte array data
                             ftStatus = _parametri.usbLadeLight.Read(readData, numBytesAvailable, ref numBytesRead);
                             if (ftStatus != FTDI.FT_STATUS.FT_OK)
@@ -558,7 +558,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.ReadRTC;
+                _mS.Comando = SerialMessage.TipoComando.SB_ReadRTC;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Leggi RTC");
@@ -606,7 +606,7 @@ namespace ChargerLogic
                 return false;
             }
         }
-
+        
         public bool LeggiVariabili()
         {
             try
@@ -701,7 +701,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.SB_R_DumpMemoria;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_ALL_MEMORY;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Leggi Ciclo Programmato");
@@ -805,7 +805,7 @@ namespace ChargerLogic
                 }
 
 
-                _mS.Comando = SerialMessage.TipoComando.SB_W_ScriviMemoria;
+                _mS.Comando = SerialMessage.TipoComando.CMD_WRITE_MEMORY;
 
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -850,7 +850,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.SB_Cancella4K;
+                _mS.Comando = SerialMessage.TipoComando.CMD_ERASE_4K_MEM;
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
                 Log.Debug("Cancellazione di 4Kbytes dall'indirizzo " + StartAddr.ToString("X2"));
@@ -859,7 +859,7 @@ namespace ChargerLogic
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
-                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
 
                 //Log.Debug("------------------------------------------------------------------------------------------------------------");

@@ -434,6 +434,7 @@ namespace ChargerLogic
                     _blockSize = 0;
                     _blockDiv = _dati.DimDati / BloccoTx;
                     _blockMod = (ushort)(_dati.DimDati % BloccoTx);
+                    _dati.ListaPacchetti.Clear();
                     // Prima i blocchi completi
                     for (int _block = 0; _block < _blockDiv; _block++)
                     {

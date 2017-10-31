@@ -46,10 +46,10 @@ namespace ChargerLogic
             SB_R_CicloBreve = 0x26,
             SB_R_Variabili = 0x27,
             SB_CancellaInteraMemoria = 0x28,
-            SB_Cancella4K = 0x2E,
-            SB_R_LeggiMemoria = 0x33,
-            SB_W_ScriviMemoria = 0x35,
-            SB_R_DumpMemoria = 0x39,
+            CMD_ERASE_4K_MEM = 0x2E,
+            CMD_READ_MEMORY = 0x33,
+            CMD_WRITE_MEMORY = 0x35,
+            CMD_READ_ALL_MEMORY = 0x39,
             SB_UpdateRTC = 0x47,
             SB_ReadRTC = 0x48,
             SB_Cal_Enable = 0x3B,
@@ -59,11 +59,11 @@ namespace ChargerLogic
             CMD_FW_UPLOAD_MSP          = 0x53,  // stesso per ll
             CMD_FW_UPLOAD_TMS          = 0x54,  // stesso per ll
 
-            CMD_FW_DATA_SEND = 0x57,   // stesso per ll
+            CMD_FW_DATA_SEND           = 0x57,   // stesso per ll
             CMD_FW_UPDATE              = 0x58,  // stesso per ll
-            SB_W_BLON = 0x5B,
-            SB_R_APPCHECK = 0x5D,
-            SB_W_RESETSCHEDA = 0X5F,
+            CMD_RESET_BOOT             = 0x5B,
+            CMD_CTRL_APP               = 0x5D,
+            CMD_RESET_BOARD            = 0X5F,
             BREAK = 0x1C,
 
             SB_W_MemProgrammed = 0x74,
@@ -98,7 +98,7 @@ namespace ChargerLogic
 
             LL_SIG60_PROXY = 0x81,
             LL_CancellaInteraMemoria = 0x29,
-            LL_Cancella4K = 0x2F,
+            //LL_Cancella4K = 0x2F,
             LL_R_LeggiMemoria = 0x34,
             LL_W_ScriviMemoria = 0x36,
             LL_R_DumpMemoria = 0x37,
@@ -344,35 +344,36 @@ namespace ChargerLogic
                         break;
 
                     case (byte)TipoComando.CMD_UART_HOST_CONNECTED:
-                        _endPos = _messaggio.Length;
-                        _startPos = _endPos - 6;
-
-                        if (_messaggio[_startPos] != serENDPAC)
                         {
-                            return EsitoRisposta.NonRiconosciuto;
+                            _endPos = _messaggio.Length;
+                            _startPos = _endPos - 6;
+
+                            if (_messaggio[_startPos] != serENDPAC)
+                            {
+                                return EsitoRisposta.NonRiconosciuto;
+                            }
+                            _buffArray = new byte[_startPos - 1];
+
+                            // controllo CRC
+                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                            _startPos++;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)(_ret);
+                            _startPos += 2;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)((_tempShort << 8) + _ret);
+                            _crc = codCrc.ComputeChecksum(_buffArray);
+
+                            if (_crc != _tempShort)
+                            { return EsitoRisposta.BadCRC; }
+
+                            // ora leggo la parte dati
+                            Intestazione = new comandoIniziale();
+                            _buffArray = new byte[(_endPos - 29)];
+                            Array.Copy(_messaggio, 23, _buffArray, 0, _endPos - 29);
+                            _risposta = Intestazione.analizzaMessaggio(_buffArray);
+                            if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
                         }
-                        _buffArray = new byte[_startPos - 1];
-
-                        // controllo CRC
-                        Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
-                        _startPos++ ;
-                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                        _tempShort = (ushort)(_ret);
-                        _startPos += 2;
-                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                        _tempShort = (ushort)((_tempShort << 8) + _ret);
-                        _crc = codCrc.ComputeChecksum(_buffArray);
-
-                        if (_crc != _tempShort)
-                        { return EsitoRisposta.BadCRC; }
-
-                        // ora leggo la parte dati
-                        Intestazione = new comandoIniziale();
-                        _buffArray = new byte[(_endPos-29)];
-                        Array.Copy(_messaggio, 23, _buffArray, 0, _endPos-29);
-                        _risposta = Intestazione.analizzaMessaggio(_buffArray);
-                        if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
-
                         break;
 
                     case 0x99: //ciclo attuale
@@ -407,7 +408,7 @@ namespace ChargerLogic
 
                         break;
 
-                    case 0x03: //id cicli
+                    case (byte)TipoComando.CMD_READ_ID_CYCLE_CRG: //id cicli - 0x03
                         _endPos = _messaggio.Length;
                         _startPos = _endPos - 6;
 
@@ -1422,7 +1423,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.LL_Cancella4K);
+                _comando = (byte)(TipoComando.CMD_ERASE_4K_MEM);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

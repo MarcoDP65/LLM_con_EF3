@@ -444,7 +444,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_DumpMemoria:  // Lettura intera memoria
+                    case (byte)TipoComando.CMD_READ_ALL_MEMORY:  // Lettura intera memoria
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -479,7 +479,7 @@ namespace ChargerLogic
 
                             }
 
-                            if (_comando != (byte)TipoComando.SB_R_DumpMemoria)
+                            if (_comando != (byte)TipoComando.CMD_READ_ALL_MEMORY)
                             {   // dove non ho la testata corretta recupero i 2 bytes del comando
                                 //Array.Copy(_messaggio, preambleLenght - 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                                 if (fwLevel > 2)
@@ -519,7 +519,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_LeggiMemoria: // Lettura frammento memoria
+                    case (byte)TipoComando.CMD_READ_MEMORY: // Lettura frammento memoria
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -546,7 +546,7 @@ namespace ChargerLogic
                             // ora leggo la parte dati
                             _pacchettoMem = new PacchettoReadMem();
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
-                            if (_comando != (byte)TipoComando.SB_R_LeggiMemoria)
+                            if (_comando != (byte)TipoComando.CMD_READ_MEMORY)
                             {   // dove non ho la testata corretta recupero i 2 bytes del comando
                                 Array.Copy(_messaggio, preambleLenght - 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             }
@@ -2444,7 +2444,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_BLON);
+                _comando = (byte)(TipoComando.CMD_RESET_BOOT);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -2459,10 +2459,6 @@ namespace ChargerLogic
                 {
                     MessageBuffer[m + 1] = _comandoBase[m];
                 }
-
-
-
-
 
                 /*******************************************************************************/
                 /* Parte dati                                                                  */
@@ -2692,7 +2688,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_R_LeggiMemoria);
+                _comando = (byte)(TipoComando.CMD_READ_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -2799,7 +2795,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_ScriviMemoria);
+                _comando = (byte)(TipoComando.CMD_WRITE_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -2933,7 +2929,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_Cancella4K);
+                _comando = (byte)(TipoComando.CMD_ERASE_4K_MEM);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3402,7 +3398,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_R_DumpMemoria);
+                _comando = (byte)(TipoComando.CMD_READ_ALL_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

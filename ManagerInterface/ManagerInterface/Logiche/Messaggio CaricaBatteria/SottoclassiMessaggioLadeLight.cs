@@ -17,7 +17,9 @@ namespace ChargerLogic
 
             public string RevBootloader;
             public string RevFirmware;
+            public string RevDisplay;
             public byte[] ReleaseDateBlock;
+            public byte LenPkt;
             public ushort CRCFirmware;
             public uint AddrFlash0;
             public uint LenFlash0;
@@ -61,10 +63,16 @@ namespace ChargerLogic
                         Log.Debug(" ---------------------- Info Firmware -----------------------------------------");
                         Log.Debug(FunzioniMR.hexdumpArray(_risposta));
 
+                        Stato = _risposta[startByte];
+                        startByte += 1;
                         RevBootloader = ArrayToString(_risposta, startByte, 6);
                         startByte += 6;
                         RevFirmware = ArrayToString(_risposta, startByte, 6);
                         startByte += 6;
+                        RevDisplay = ArrayToString(_risposta, startByte, 6);
+                        startByte += 6;
+                        LenPkt = _risposta[startByte];
+                        startByte += 1;
                         CRCFirmware = ArrayToUshort(_risposta, startByte, 2);
                         startByte += 2;
                         AddrFlash0 = ArrayToUint32(_risposta, startByte, 4);
@@ -87,7 +95,7 @@ namespace ChargerLogic
                         startByte += 4;
                         LenFlash4 = ArrayToUint32(_risposta, startByte, 4);
                         startByte += 4;
-
+                        /*
                         ReleaseDateBlock = new byte[3];
                         ReleaseDateBlock[0] = _risposta[startByte];
                         if (ReleaseDateBlock[0] == 0xFF)
@@ -104,7 +112,7 @@ namespace ChargerLogic
                             ReleaseDateBlock[2] = 15;
 
                         startByte += 1;
-
+                        */
                         //Area non usata
                         startByte += 88;
                         if (startByte < _risposta.Length)
@@ -112,10 +120,6 @@ namespace ChargerLogic
                             Stato = _risposta[startByte];
                             startByte += 1;
                             if (Stato == 0xFF) Stato = 0x07;
-                        }
-                        else
-                        {
-                            Stato = 0x07;
                         }
 
                         datiPronti = true;

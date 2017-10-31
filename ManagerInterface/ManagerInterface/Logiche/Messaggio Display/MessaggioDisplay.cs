@@ -1464,7 +1464,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_ScriviMemoria);
+                _comando = (byte)(TipoComando.CMD_WRITE_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1597,7 +1597,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_Cancella4K);
+                _comando = (byte)(TipoComando.CMD_ERASE_4K_MEM);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

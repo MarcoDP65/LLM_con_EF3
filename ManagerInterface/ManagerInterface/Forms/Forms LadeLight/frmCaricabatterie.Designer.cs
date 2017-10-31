@@ -546,7 +546,7 @@
             this.txtFWFileSBFrd = new System.Windows.Forms.TextBox();
             this.grbStatoFirmware = new System.Windows.Forms.GroupBox();
             this.label186 = new System.Windows.Forms.Label();
-            this.txtFwRevIsLibrary = new System.Windows.Forms.TextBox();
+            this.txtFwRevDisplay = new System.Windows.Forms.TextBox();
             this.grbFWDettStato = new System.Windows.Forms.GroupBox();
             this.txtFwStatoSA2 = new System.Windows.Forms.TextBox();
             this.label117 = new System.Windows.Forms.Label();
@@ -5155,10 +5155,11 @@
             this.rbtMemAreaApp2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.rbtMemAreaApp2.Location = new System.Drawing.Point(18, 165);
             this.rbtMemAreaApp2.Name = "rbtMemAreaApp2";
-            this.rbtMemAreaApp2.Size = new System.Drawing.Size(104, 22);
+            this.rbtMemAreaApp2.Size = new System.Drawing.Size(191, 22);
             this.rbtMemAreaApp2.TabIndex = 18;
-            this.rbtMemAreaApp2.Text = "Area APP 2";
+            this.rbtMemAreaApp2.Text = "Area APP 2 ( 0x1E0000 )";
             this.rbtMemAreaApp2.UseVisualStyleBackColor = true;
+            this.rbtMemAreaApp2.CheckedChanged += new System.EventHandler(this.rbtMemAreaApp2_CheckedChanged);
             // 
             // rbtMemAreaApp1
             // 
@@ -5166,10 +5167,11 @@
             this.rbtMemAreaApp1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.rbtMemAreaApp1.Location = new System.Drawing.Point(18, 138);
             this.rbtMemAreaApp1.Name = "rbtMemAreaApp1";
-            this.rbtMemAreaApp1.Size = new System.Drawing.Size(104, 22);
+            this.rbtMemAreaApp1.Size = new System.Drawing.Size(192, 22);
             this.rbtMemAreaApp1.TabIndex = 17;
-            this.rbtMemAreaApp1.Text = "Area APP 1";
+            this.rbtMemAreaApp1.Text = "Area APP 1 ( 0x1C0000 )";
             this.rbtMemAreaApp1.UseVisualStyleBackColor = true;
+            this.rbtMemAreaApp1.CheckedChanged += new System.EventHandler(this.rbtMemAreaApp1_CheckedChanged);
             // 
             // rbtMemAreaLibera
             // 
@@ -5183,6 +5185,7 @@
             this.rbtMemAreaLibera.TabStop = true;
             this.rbtMemAreaLibera.Text = "Zona Custom";
             this.rbtMemAreaLibera.UseVisualStyleBackColor = true;
+            this.rbtMemAreaLibera.CheckedChanged += new System.EventHandler(this.rbtMemAreaLibera_CheckedChanged);
             // 
             // label111
             // 
@@ -5247,6 +5250,7 @@
             this.btnMemCFExec.TabIndex = 8;
             this.btnMemCFExec.Text = "Esegui";
             this.btnMemCFExec.UseVisualStyleBackColor = true;
+            this.btnMemCFExec.Click += new System.EventHandler(this.btnMemCFExec_Click);
             // 
             // groupBox9
             // 
@@ -5552,7 +5556,7 @@
             this.rbtFwBootLdr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
             this.rbtFwBootLdr.ForeColor = System.Drawing.Color.Red;
             this.rbtFwBootLdr.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtFwBootLdr.Location = new System.Drawing.Point(43, 31);
+            this.rbtFwBootLdr.Location = new System.Drawing.Point(23, 31);
             this.rbtFwBootLdr.Name = "rbtFwBootLdr";
             this.rbtFwBootLdr.Size = new System.Drawing.Size(54, 24);
             this.rbtFwBootLdr.TabIndex = 47;
@@ -5578,13 +5582,14 @@
             this.btnFwSwitchArea.TabIndex = 45;
             this.btnFwSwitchArea.Text = "Attiva";
             this.btnFwSwitchArea.UseVisualStyleBackColor = true;
+            this.btnFwSwitchArea.Click += new System.EventHandler(this.btnFwSwitchArea_Click);
             // 
             // rbtFwArea2
             // 
             this.rbtFwArea2.AutoSize = true;
             this.rbtFwArea2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
             this.rbtFwArea2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtFwArea2.Location = new System.Drawing.Point(187, 31);
+            this.rbtFwArea2.Location = new System.Drawing.Point(175, 31);
             this.rbtFwArea2.Name = "rbtFwArea2";
             this.rbtFwArea2.Size = new System.Drawing.Size(52, 24);
             this.rbtFwArea2.TabIndex = 1;
@@ -5597,7 +5602,7 @@
             this.rbtFwArea1.Checked = true;
             this.rbtFwArea1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
             this.rbtFwArea1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtFwArea1.Location = new System.Drawing.Point(117, 31);
+            this.rbtFwArea1.Location = new System.Drawing.Point(97, 31);
             this.rbtFwArea1.Name = "rbtFwArea1";
             this.rbtFwArea1.Size = new System.Drawing.Size(52, 24);
             this.rbtFwArea1.TabIndex = 0;
@@ -6458,7 +6463,7 @@
             // 
             this.grbStatoFirmware.BackColor = System.Drawing.Color.White;
             this.grbStatoFirmware.Controls.Add(this.label186);
-            this.grbStatoFirmware.Controls.Add(this.txtFwRevIsLibrary);
+            this.grbStatoFirmware.Controls.Add(this.txtFwRevDisplay);
             this.grbStatoFirmware.Controls.Add(this.grbFWDettStato);
             this.grbStatoFirmware.Controls.Add(this.txtFwStatoSA2);
             this.grbStatoFirmware.Controls.Add(this.label117);
@@ -6495,14 +6500,14 @@
             this.label186.TabIndex = 51;
             this.label186.Text = "Rev Display";
             // 
-            // txtFwRevIsLibrary
+            // txtFwRevDisplay
             // 
-            this.txtFwRevIsLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtFwRevIsLibrary.Location = new System.Drawing.Point(296, 48);
-            this.txtFwRevIsLibrary.Name = "txtFwRevIsLibrary";
-            this.txtFwRevIsLibrary.Size = new System.Drawing.Size(130, 27);
-            this.txtFwRevIsLibrary.TabIndex = 50;
-            this.txtFwRevIsLibrary.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFwRevDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtFwRevDisplay.Location = new System.Drawing.Point(296, 48);
+            this.txtFwRevDisplay.Name = "txtFwRevDisplay";
+            this.txtFwRevDisplay.Size = new System.Drawing.Size(130, 27);
+            this.txtFwRevDisplay.TabIndex = 50;
+            this.txtFwRevDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // grbFWDettStato
             // 
@@ -7353,7 +7358,7 @@
         private System.Windows.Forms.TextBox txtFWFileSBFrd;
         private System.Windows.Forms.GroupBox grbStatoFirmware;
         private System.Windows.Forms.Label label186;
-        private System.Windows.Forms.TextBox txtFwRevIsLibrary;
+        private System.Windows.Forms.TextBox txtFwRevDisplay;
         private System.Windows.Forms.GroupBox grbFWDettStato;
         private System.Windows.Forms.TextBox txtFwStatoSA2;
         private System.Windows.Forms.Label label117;
