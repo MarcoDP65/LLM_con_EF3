@@ -461,11 +461,9 @@
             this.cmdMemRead = new System.Windows.Forms.Button();
             this.tbpFirmware = new System.Windows.Forms.TabPage();
             this.grbFwAttivazioneArea = new System.Windows.Forms.GroupBox();
-            this.rbtFwBootLdr = new System.Windows.Forms.RadioButton();
-            this.btnFwCheckArea = new System.Windows.Forms.Button();
-            this.btnFwSwitchArea = new System.Windows.Forms.Button();
-            this.rbtFwArea2 = new System.Windows.Forms.RadioButton();
-            this.rbtFwArea1 = new System.Windows.Forms.RadioButton();
+            this.btnFwSwitchArea2 = new System.Windows.Forms.Button();
+            this.btnFwSwitchArea1 = new System.Windows.Forms.Button();
+            this.btnFwSwitchBL = new System.Windows.Forms.Button();
             this.grbFWPreparaFile = new System.Windows.Forms.GroupBox();
             this.txtFWInFileStruct = new System.Windows.Forms.TextBox();
             this.lvwFWInFileStruct = new BrightIdeasSoftware.FastObjectListView();
@@ -5537,11 +5535,9 @@
             // grbFwAttivazioneArea
             // 
             this.grbFwAttivazioneArea.BackColor = System.Drawing.Color.White;
-            this.grbFwAttivazioneArea.Controls.Add(this.rbtFwBootLdr);
-            this.grbFwAttivazioneArea.Controls.Add(this.btnFwCheckArea);
-            this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchArea);
-            this.grbFwAttivazioneArea.Controls.Add(this.rbtFwArea2);
-            this.grbFwAttivazioneArea.Controls.Add(this.rbtFwArea1);
+            this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchArea2);
+            this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchArea1);
+            this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchBL);
             this.grbFwAttivazioneArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.grbFwAttivazioneArea.Location = new System.Drawing.Point(16, 190);
             this.grbFwAttivazioneArea.Name = "grbFwAttivazioneArea";
@@ -5550,65 +5546,38 @@
             this.grbFwAttivazioneArea.TabStop = false;
             this.grbFwAttivazioneArea.Text = "Attivazione area";
             // 
-            // rbtFwBootLdr
+            // btnFwSwitchArea2
             // 
-            this.rbtFwBootLdr.AutoSize = true;
-            this.rbtFwBootLdr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.rbtFwBootLdr.ForeColor = System.Drawing.Color.Red;
-            this.rbtFwBootLdr.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtFwBootLdr.Location = new System.Drawing.Point(23, 31);
-            this.rbtFwBootLdr.Name = "rbtFwBootLdr";
-            this.rbtFwBootLdr.Size = new System.Drawing.Size(54, 24);
-            this.rbtFwBootLdr.TabIndex = 47;
-            this.rbtFwBootLdr.Text = "BL";
-            this.rbtFwBootLdr.UseVisualStyleBackColor = true;
+            this.btnFwSwitchArea2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFwSwitchArea2.Location = new System.Drawing.Point(356, 22);
+            this.btnFwSwitchArea2.Name = "btnFwSwitchArea2";
+            this.btnFwSwitchArea2.Size = new System.Drawing.Size(127, 30);
+            this.btnFwSwitchArea2.TabIndex = 50;
+            this.btnFwSwitchArea2.Text = "Area 2";
+            this.btnFwSwitchArea2.UseVisualStyleBackColor = true;
+            this.btnFwSwitchArea2.Click += new System.EventHandler(this.btnFwSwitchArea2_Click);
             // 
-            // btnFwCheckArea
+            // btnFwSwitchArea1
             // 
-            this.btnFwCheckArea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFwCheckArea.Location = new System.Drawing.Point(277, 25);
-            this.btnFwCheckArea.Name = "btnFwCheckArea";
-            this.btnFwCheckArea.Size = new System.Drawing.Size(100, 30);
-            this.btnFwCheckArea.TabIndex = 46;
-            this.btnFwCheckArea.Text = "Verifica";
-            this.btnFwCheckArea.UseVisualStyleBackColor = true;
+            this.btnFwSwitchArea1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFwSwitchArea1.Location = new System.Drawing.Point(223, 22);
+            this.btnFwSwitchArea1.Name = "btnFwSwitchArea1";
+            this.btnFwSwitchArea1.Size = new System.Drawing.Size(127, 30);
+            this.btnFwSwitchArea1.TabIndex = 49;
+            this.btnFwSwitchArea1.Text = "Area 1";
+            this.btnFwSwitchArea1.UseVisualStyleBackColor = true;
+            this.btnFwSwitchArea1.Click += new System.EventHandler(this.btnFwSwitchArea1_Click);
             // 
-            // btnFwSwitchArea
+            // btnFwSwitchBL
             // 
-            this.btnFwSwitchArea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFwSwitchArea.Location = new System.Drawing.Point(383, 25);
-            this.btnFwSwitchArea.Name = "btnFwSwitchArea";
-            this.btnFwSwitchArea.Size = new System.Drawing.Size(100, 30);
-            this.btnFwSwitchArea.TabIndex = 45;
-            this.btnFwSwitchArea.Text = "Attiva";
-            this.btnFwSwitchArea.UseVisualStyleBackColor = true;
-            this.btnFwSwitchArea.Click += new System.EventHandler(this.btnFwSwitchArea_Click);
-            // 
-            // rbtFwArea2
-            // 
-            this.rbtFwArea2.AutoSize = true;
-            this.rbtFwArea2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.rbtFwArea2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtFwArea2.Location = new System.Drawing.Point(175, 31);
-            this.rbtFwArea2.Name = "rbtFwArea2";
-            this.rbtFwArea2.Size = new System.Drawing.Size(52, 24);
-            this.rbtFwArea2.TabIndex = 1;
-            this.rbtFwArea2.Text = "A2";
-            this.rbtFwArea2.UseVisualStyleBackColor = true;
-            // 
-            // rbtFwArea1
-            // 
-            this.rbtFwArea1.AutoSize = true;
-            this.rbtFwArea1.Checked = true;
-            this.rbtFwArea1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.rbtFwArea1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtFwArea1.Location = new System.Drawing.Point(97, 31);
-            this.rbtFwArea1.Name = "rbtFwArea1";
-            this.rbtFwArea1.Size = new System.Drawing.Size(52, 24);
-            this.rbtFwArea1.TabIndex = 0;
-            this.rbtFwArea1.TabStop = true;
-            this.rbtFwArea1.Text = "A1";
-            this.rbtFwArea1.UseVisualStyleBackColor = true;
+            this.btnFwSwitchBL.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFwSwitchBL.Location = new System.Drawing.Point(23, 22);
+            this.btnFwSwitchBL.Name = "btnFwSwitchBL";
+            this.btnFwSwitchBL.Size = new System.Drawing.Size(194, 30);
+            this.btnFwSwitchBL.TabIndex = 48;
+            this.btnFwSwitchBL.Text = "BootLoader";
+            this.btnFwSwitchBL.UseVisualStyleBackColor = true;
+            this.btnFwSwitchBL.Click += new System.EventHandler(this.btnFwSwitchBL_Click);
             // 
             // grbFWPreparaFile
             // 
@@ -6825,7 +6794,6 @@
             this.grbMemLettura.PerformLayout();
             this.tbpFirmware.ResumeLayout(false);
             this.grbFwAttivazioneArea.ResumeLayout(false);
-            this.grbFwAttivazioneArea.PerformLayout();
             this.grbFWPreparaFile.ResumeLayout(false);
             this.grbFWPreparaFile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lvwFWInFileStruct)).EndInit();
@@ -7280,11 +7248,6 @@
         private System.Windows.Forms.Button cmdMemRead;
         private System.Windows.Forms.TabPage tbpFirmware;
         private System.Windows.Forms.GroupBox grbFwAttivazioneArea;
-        private System.Windows.Forms.RadioButton rbtFwBootLdr;
-        public System.Windows.Forms.Button btnFwCheckArea;
-        public System.Windows.Forms.Button btnFwSwitchArea;
-        private System.Windows.Forms.RadioButton rbtFwArea2;
-        private System.Windows.Forms.RadioButton rbtFwArea1;
         private System.Windows.Forms.GroupBox grbFWPreparaFile;
         private System.Windows.Forms.TextBox txtFWLibInFileRev;
         private System.Windows.Forms.Label label256;
@@ -7385,5 +7348,8 @@
         private System.Windows.Forms.TextBox txtFWInFileStruct;
         private BrightIdeasSoftware.FastObjectListView flwFWFileLLFStruct;
         private System.Windows.Forms.ComboBox cmbFWSBFArea;
+        public System.Windows.Forms.Button btnFwSwitchArea2;
+        public System.Windows.Forms.Button btnFwSwitchArea1;
+        public System.Windows.Forms.Button btnFwSwitchBL;
     }
 }

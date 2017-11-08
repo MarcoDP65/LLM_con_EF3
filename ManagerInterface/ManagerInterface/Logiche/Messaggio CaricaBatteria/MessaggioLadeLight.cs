@@ -35,7 +35,7 @@ namespace ChargerLogic
         //public ParametriSpybatt ParametriGenerali;
         public OcBaudRate BrOCcorrente = OcBaudRate.OFF;
         public OcEchoMode EchoOCcorrente = OcEchoMode.OFF;
-
+        public RequiredActionOutcome EsitoRichiestaFW = RequiredActionOutcome.Undefined;
         public byte[] LLstopMessage;
 
        // public StatoSig60 StatoTrxOC;
@@ -148,6 +148,116 @@ namespace ChargerLogic
 
         }
 
+        public ushort ComponiMessaggioSwitchFW(byte Blocco)
+        {
+            ushort _esito = 0;
+            // ushort _tempUshort;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try
+            {
+                // Unici banchi acettabili 1 e 2 
+                if ((Blocco < 1) || (Blocco > 2))
+                {
+                    _esito = 99;
+                    return _esito;
+                }
+
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.CMD_FW_UPDATE);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 2;
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+
+
+
+
+                /*******************************************************************************/
+                /* Parte dati                                                                  */
+                /*******************************************************************************/
+
+                // id Blocco
+
+                splitUshort(codificaByte(Blocco), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+
+                /*******************************************************************************/
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+                /// completo il messaggio con CRC e terminatori
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("sb -> ComponiMessaggioSwitchFW: " + Ex.Message);
+                _lastError = Ex.Message;
+
+                return _esito;
+            }
+
+        }
+
+
+
         public new EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel = 1, bool skipHead = false, bool CreateMsgObject = false)
         {
             byte _ret;
@@ -225,6 +335,7 @@ namespace ChargerLogic
                 switch (_comando)
                 {
                     case (byte)TipoComando.ACK:
+                    case (byte)TipoComando.ACK_PACKET:
                         // case (byte)TipoComando.SB_ACK:
 
                         _startPos = 23;
@@ -287,6 +398,7 @@ namespace ChargerLogic
                             if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
                             break;
                         }
+
 
                     case 0x99: //ciclo attuale
                         {
@@ -517,6 +629,48 @@ namespace ChargerLogic
                             break;
                         }
 
+                    case (byte)TipoComando.CMD_FW_UPDATE: 
+                        {
+                            _endPos = _messaggio.Length;
+                            _startPos = _endPos - 6;
+                            EsitoRichiestaFW = RequiredActionOutcome.Undefined;
+                            Log.Debug("Ricevuta risposta switch area");
+
+                            if (_messaggio[_startPos] != serENDPAC)
+                            {
+                                return EsitoRisposta.NonRiconosciuto;
+                            }
+                            _buffArray = new byte[_startPos - 1];
+                            byte _buffByte;
+                            // controllo CRC
+                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                            _startPos++;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)(_ret);
+                            _startPos += 2;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)((_tempShort << 8) + _ret);
+                            _crc = codCrc.ComputeChecksum(_buffArray);
+
+                            if (_crc != _tempShort)
+                            { return EsitoRisposta.BadCRC; }
+
+                            // ora leggo la parte dati
+                            _buffByte = decodificaByte(_messaggio[23], _messaggio[24]); ;
+                            _buffArray = new byte[(_endPos - 29)];
+                            EsitoRichiestaFW = RequiredActionOutcome.Undefined;
+                            Log.Debug("Risposta switch area: " + _buffByte.ToString("X2"));
+                            if (_buffByte == 0x0F)
+                            {
+                                EsitoRichiestaFW = RequiredActionOutcome.Success;
+                            }
+                            else
+                            { 
+                                EsitoRichiestaFW = RequiredActionOutcome.Failed ;
+                            }
+                            return EsitoRisposta.ErroreGenerico;
+                        }
+                        break;
 
 
                     default:

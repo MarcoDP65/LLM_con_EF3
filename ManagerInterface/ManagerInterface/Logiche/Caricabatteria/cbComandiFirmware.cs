@@ -431,7 +431,7 @@ namespace ChargerLogic
 
                     Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
                     _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(50, 1, true);
+                    _esito = aspettaRisposta(50, 0, true);
 
                     if (!_esito)
                     {
@@ -451,6 +451,75 @@ namespace ChargerLogic
                     }
                 }
                 return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("FW Update: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Commuta L'app attiva se qualla dell'area indicata come parametro
+        /// </summary>
+        /// <param name="IdApparato"></param>
+        /// <param name="ApparatoConnesso"></param>
+        /// <param name="Area"></param>
+        /// <returns></returns>
+        public bool SwitchFirmware(string IdApparato, bool ApparatoConnesso, byte Area)
+        {
+            try
+            {
+                bool _esito;
+                object _dataRx;
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
+                SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
+
+
+                bool _recordPresente;
+
+
+                if (ApparatoConnesso)
+                {
+                    // verificare Firmware.TestataOK
+
+
+
+                    //Prima invio la testata
+
+                    Log.Debug("----------------------------------------------------------");
+                    Log.Debug(" Switch FW: " + Area.ToString());
+                    Log.Debug("----------------------------------------------------------");
+
+
+                    _mS.ComponiMessaggioSwitchFW(Area);
+                    Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
+                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    _esito = aspettaRisposta(50, 1, true);
+
+                    if (!_esito)
+                    {
+                        Log.Debug(" Switch FW fallito : " + _mS.EsitoRichiestaFW.ToString());
+                        return false;
+                    }
+                    else
+                    {
+                        //ricevuto ritorno, verifico la risposta 
+                        if (_mS.EsitoRichiestaFW == SerialMessage.RequiredActionOutcome.Success)
+                        {
+                            Log.Debug(" Switch FW completato area " + Area.ToString() + " attiva.");
+                            return true;
+                        }
+
+
+                    }
+                }
+                // APPARATO NON CONNESSO --> False
+                return false;
             }
             catch (Exception Ex)
             {

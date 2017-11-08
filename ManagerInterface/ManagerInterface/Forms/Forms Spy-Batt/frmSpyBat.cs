@@ -7636,8 +7636,6 @@ namespace PannelloCharger
                 {
                     txtClonaFwOrigine.Text = _sbTemp.sbData.SwVersion;
                 }
-
-
             }
         }
 
@@ -7657,7 +7655,6 @@ namespace PannelloCharger
             }
             else
                 txtClonaRecordTestata.Text = "Dati non validi";
-
 
         }
 

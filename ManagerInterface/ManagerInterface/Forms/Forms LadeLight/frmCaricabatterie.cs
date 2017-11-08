@@ -825,7 +825,6 @@ namespace PannelloCharger
             try
             {
 
-
                 if (e.TabPage == tabOrologio)
                 {
                     if (_apparatoPresente) CaricaOrologio();
@@ -836,8 +835,11 @@ namespace PannelloCharger
                     if (_apparatoPresente) CaricaCicloAttuale(); 
                 }
 
-                
-            
+                if (e.TabPage == tbpFirmware)
+                {
+                    if (_apparatoPresente) VerificaStatoFw();
+                }
+
             }
             catch (Exception Ex)
             {
@@ -1531,34 +1533,34 @@ namespace PannelloCharger
 
         private void btnFwSwitchArea_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (rbtFwBootLdr.Checked)
-                {
-                    // reset to bl
-                    bool _esito = SwitchAreaBl("", true);
 
-                }
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("btnFwSwitchArea_Click: " + Ex.Message);
-            }
         }
 
         private void rbtMemAreaLibera_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbtMemAreaLibera.Checked) txtMemCFStartAdd.Text = "0";
+            if (rbtMemAreaLibera.Checked)
+            {
+                txtMemCFStartAdd.Text = "0";
+                txtMemCFBlocchi.Text = "1";
+            }
         }
 
         private void rbtMemAreaApp1_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbtMemAreaApp1.Checked) txtMemCFStartAdd.Text = "1C0000";
+            if (rbtMemAreaApp1.Checked)
+            {
+                txtMemCFStartAdd.Text = "1C0000";
+                txtMemCFBlocchi.Text = "32";
+            }
         }
 
         private void rbtMemAreaApp2_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbtMemAreaApp2.Checked) txtMemCFStartAdd.Text = "1E0000";
+            if (rbtMemAreaApp2.Checked)
+            {
+                txtMemCFStartAdd.Text = "1E0000";
+                txtMemCFBlocchi.Text = "32";
+            }
         }
 
         private void btnMemCFExec_Click(object sender, EventArgs e)
@@ -1622,6 +1624,56 @@ namespace PannelloCharger
             }
 
 
+        }
+
+        private void btnFwCheckArea_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFwSwitchBL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // reset to bl
+                bool _esito = SwitchAreaBl("", true);
+                VerificaStatoFw();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwSwitchBL_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnFwSwitchArea1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // reset to bl
+                bool _esito = SwitchAreaFw("", true, 1);
+                VerificaStatoFw();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwSwitchBL_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnFwSwitchArea2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // reset to bl
+                bool _esito = SwitchAreaFw("", true, 2);
+                VerificaStatoFw();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwSwitchBL_Click: " + Ex.Message);
+            }
         }
     }
 

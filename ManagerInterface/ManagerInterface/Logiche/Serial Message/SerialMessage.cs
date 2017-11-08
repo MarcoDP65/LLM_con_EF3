@@ -12,6 +12,7 @@ namespace ChargerLogic
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
         public enum InitialCrcValue : ushort { Zeros, NonZero1 = 0xffff, NonZero2 = 0x1D0F };
+        public enum RequiredActionOutcome : byte {Success = 0x0F,Failed = 0xF0, UnDone = 0xFF,Undefined = 0x00};
         public enum TipoDispositivo : ushort { PcOrSmart = 0xBCBC, Charger = 0x0000, SpyBat = 0x0003 };
         public enum TipoComando : byte { 
             Start = 0x0F,  
@@ -316,7 +317,7 @@ namespace ChargerLogic
                 // ora in base al comando cambio faccio lettura:
                 switch (_comando)
                 {
-                    case (byte)TipoComando.ACK:
+                    case (byte)TipoComando.ACK_PACKET:
                    // case (byte)TipoComando.SB_ACK:
 
                         _startPos = 23;

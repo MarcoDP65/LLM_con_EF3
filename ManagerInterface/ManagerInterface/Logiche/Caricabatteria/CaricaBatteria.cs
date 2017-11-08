@@ -520,6 +520,77 @@ namespace ChargerLogic
             } 
         }
 
+        public bool StartComunicazione(int TimeoutRisposta = 50)
+        {
+            try
+            {
+                bool _esito = false;
+                _mS.Comando = SerialMessage.TipoComando.CMD_CONNECT;
+                _mS.ComponiMessaggio();
+                _rxRisposta = false;
+                Log.Debug("START");
+                Log.Debug(_mS.hexdumpMessaggio());
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(TimeoutRisposta, 0, true, false);
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Attende che la scheda sia responsive cercando di aprire il canale di comunicazione.
+        /// </summary>
+        /// <param name="AttesaIniziale">Millisecondi di attesa iniziale prima di cominciare col polling.</param>
+        /// <param name="Timeout">Timeout complessivo per l'operazione.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool AttendiRiconnessione(int AttesaIniziale = 10,int Timeout = 5000)
+        {
+            DateTime _startFunzione;
+            bool _esito = false;
+            bool _connessioneAttiva = false;
+
+            try
+            {
+
+                _startFunzione = DateTime.Now;
+
+                // innazitutto aspetto il tempo di attesa iniziale
+                if (AttesaIniziale > 0)
+                {
+                    Thread.Sleep(AttesaIniziale);
+                }
+
+                _connessioneAttiva = StartComunicazione();
+
+                while (!_connessioneAttiva )
+                {
+                    if (raggiuntoTimeout(_startFunzione, Timeout)) break;
+                    _connessioneAttiva = StartComunicazione();
+
+                }
+                _esito =_connessioneAttiva;
+
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+
 
         public bool CaricaCicli()
         {
@@ -1247,6 +1318,18 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = true;
                                 break;
+                            case (byte)SerialMessage.TipoComando.CMD_INFO_BL:
+                                Log.Debug("INFO Bootloader");
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.CMD_FW_UPDATE:
+                                Log.Debug("ISwitch App");
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                break;
+
                             case 0x03: // Cicli in memoria
                                 Log.Debug("Cicli in memoria");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
@@ -1267,7 +1350,7 @@ namespace ChargerLogic
                         {
                             Log.Debug("Esito: " + _mS._comando.ToString("X2"));
 
-                            _mS._comando = (byte)SerialMessage.TipoComando.ACK;
+                            _mS._comando = (byte)SerialMessage.TipoComando.ACK_PACKET;
                             _mS._dispositivo = 0x0000;
                             _mS.componiRisposta(_dataBuffer, _esito);
 
