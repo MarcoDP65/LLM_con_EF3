@@ -200,7 +200,7 @@ namespace ChargerLogic
                             return EsitoRisposta.ErroreGenerico;
                         }
 
-                    case (byte)TipoComando.SB_DatiIniziali:  //risposta parametri iniziali
+                    case (byte)TipoComando.CMD_READ_INITIAL_PAR:  //risposta parametri iniziali
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;

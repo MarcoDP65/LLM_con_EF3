@@ -221,7 +221,7 @@ namespace ChargerLogic
                                     _mS.ComponiMessaggioPacchettoDatiFW((ushort)(_tmpPacchettoCorrente), (byte)_pacchettoDati.DimPacchetto, _pacchettoDati.PacchettoDati, _pacchettoDati.CRC);
                                     // _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                                     _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                                    _esito = aspettaRisposta(elementiComuni.Timeout5sec, 0, true);
 
 
                                     Log.Debug("Passo " + _pacchettoCorrente.ToString() + " inviato con esito " + _esito.ToString());

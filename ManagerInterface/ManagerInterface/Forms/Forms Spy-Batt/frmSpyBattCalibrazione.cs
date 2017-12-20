@@ -1192,7 +1192,9 @@ namespace PannelloCharger
             }
         }
 
-        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2, int SecondiAttesa = 5, int MaxAerrore = 5, int SecondiPasso = 2, float CoeffPasso = 2)
+        private bool LanciaSequenzaCalibrazione(sbTestataCalibrazione SequenzaCorrente ,bool SalvaDati,
+                                                int CorrenteMax = 300, int CorrenteVerMax = 300,int Spire = 2, int SecondiAttesa = 5, int MaxAerrore = 5,
+                                                int SecondiPasso = 2, float CoeffPasso = 2 ,int ErroreAssoluto = 5,  float ErrorePercentuale = 5,int CorrenteSoglia  = 50)
         {
 
 
@@ -1241,12 +1243,6 @@ namespace PannelloCharger
 
                 GraficoCorrentiCalComplOxy();
                 Application.DoEvents();
-
-
-
-                // _esito = LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax, 20, Spire, MaxAerrore, SecondiPasso, CoeffPasso);
-                //
-                // return false;
 
 
                 txtCalCurr.Text = "";
@@ -1774,7 +1770,7 @@ namespace PannelloCharger
 
 
 
-                _esito = LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax, 20, Spire, MaxAerrore,SecondiPasso,CoeffPasso);
+                _esito = LanciaSequenzaVerificaCalibrazione(0, CorrenteVerMax, 20, Spire, MaxAerrore,SecondiPasso, CoeffPasso,ErroreAssoluto,ErrorePercentuale,CorrenteSoglia);
 
 
 
@@ -1858,7 +1854,7 @@ namespace PannelloCharger
             }
         }
 
-        private bool LanciaSequenzaVerificaCalibrazione(int CorrenteBase,int CorrenteVerMax , int Passo, int Spire, int MaxErrore , int Secondi, float FattorePasso )
+        private bool LanciaSequenzaVerificaCalibrazione (int CorrenteBase,int CorrenteVerMax ,int Passo,int Spire,int MaxErrore ,int Secondi,float FattorePasso, int ErroreAssoluto,            float ErrorePercentuale,            int CorrenteSoglia )
         {
 
 
@@ -1880,10 +1876,16 @@ namespace PannelloCharger
                 float _maxErrPos = 0;
                 float _maxErrNeg = 0;
 
+                float _maxErrAss = 0;
+                float _maxErrPerc = 0;
+
                 int _passoTest = 0;
 
                 int _maxErroreAmmesso = MaxErrore;
-                int _maxErroreRilevato = 0;
+                float _maxErroreRilevato = 0;
+
+                float _correnteEffettiva = 0;
+                float _CorrenteSpyBatt = 0;
                 sbAnalisiCorrente _vac;
 
                 txtCalCurr.Text = "";
@@ -1937,6 +1939,7 @@ namespace PannelloCharger
                 _risposta = MessageBox.Show("Collegare l'alimentatore alla presa INVERSA", "Verifica Polarità", MessageBoxButtons.OKCancel);
                 if (_risposta != DialogResult.OK)
                 {
+                    // Chiuso con ANNULLA: verifica NON superata
                     return false;
                 }
 
@@ -1957,7 +1960,7 @@ namespace PannelloCharger
                     _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
                     Lambda.MostraCorrenti();
                     MostraLetture();
-                    MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso,false);
+                    MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg,_maxErrAss,_maxErrPerc , ErroreAssoluto, ErrorePercentuale, false);
 
                     if (_sb.sbVariabili.CorrenteBatteria >= 0)
                     {
@@ -2021,26 +2024,40 @@ namespace PannelloCharger
 
                             txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
                             float _corrBase = Lambda.Alimentatatore.Arilevati;
-
+                            _correnteEffettiva = _corrBase * _spire;
+                            _CorrenteSpyBatt = (float)_sb.sbVariabili.CorrenteBatteria / 10;
 
                             _test.AspybattAN = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
 
                             txtCalErrore.Text = "";
                             if (_corrBase != 0)
                             {
-                                float _errore = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                                int _erroreAss = Math.Abs((int)(-_sb.sbVariabili.CorrenteBatteria/10)  - (int)(_corrBase * _spire));
+                                float _errore = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria / 10) - (_correnteEffettiva)) / (_correnteEffettiva);
+                                float _erroreAss = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria/10)  - (float)(_correnteEffettiva));
                                 if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
 
-                                txtCalErrore.Text = _errore.ToString("p2");
-                                txtCalErrMax.Text = _errore.ToString("p2");
-                                if (_corrBase > 10)
+                                txtCalErrore.Text = _errore.ToString("p2");                      
+                          //      txtCalErrMax.Text = _errore.ToString("p2");
+
+                                if (_correnteEffettiva > 10)
                                 {
                                     if (_errore > _maxErrNeg) _maxErrNeg = _errore;
-                                    txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
-                                    txtCalErrMaxNeg.Text = _maxErrNeg.ToString("p2");
+                             //       txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
+                             //       txtCalErrMaxNeg.Text = _maxErrNeg.ToString("p2");
                                 }
-                                MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
+
+                                if(_correnteEffettiva < CorrenteSoglia)
+                                {
+                                    if (_erroreAss > _maxErrAss) _maxErrAss = _erroreAss;
+                                }
+                                else
+                                {
+                                    if (_errore > _maxErrPerc) _maxErrPerc = _errore;
+                                }
+
+                                MostraErrore(_correnteEffettiva, _CorrenteSpyBatt, _erroreAss, _errore, _maxErrAss, _maxErrPerc, ErroreAssoluto, ErrorePercentuale, false);
+
+                                //MostraErrore(_maxErrAss, _maxErrAss, _maxErrPos, _maxErrNeg, _maxErrPerc,, ErrorePercentuale, false);
 
                             }
 
@@ -2089,23 +2106,35 @@ namespace PannelloCharger
 
                             txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
                             float _corrBase = Lambda.Alimentatatore.Arilevati;
-
+                            _correnteEffettiva = _corrBase * _spire;
+                            _CorrenteSpyBatt = (float)_sb.sbVariabili.CorrenteBatteria / 10;
 
                             _test.AspybattDN = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
 
                             txtCalErrore.Text = "";
                             if (_corrBase != 0)
                             {
-                                float _errore = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                                int _erroreAss = Math.Abs((int)(-_sb.sbVariabili.CorrenteBatteria / 10 ) - (int)(_corrBase * _spire));
+                                float _errore = Math.Abs((float)(-_sb.sbVariabili.CorrenteBatteria / 10) - (_correnteEffettiva)) / (_correnteEffettiva);
+                                int _erroreAss = Math.Abs((int)(-_sb.sbVariabili.CorrenteBatteria / 10 ) - (int)(_correnteEffettiva));
                                 if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
-                                txtCalErrore.Text = _errore.ToString("p2");
+                                //txtCalErrore.Text = _errore.ToString("p2");
                                 if (_corrBase > 10)
                                 {
                                     if (_errore > _maxErrNeg) _maxErrNeg = _errore;
-                                    txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
+                                    //txtCalErroreMaxNeg.Text = _maxErrNeg.ToString("p2");
                                 }
-                                MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
+
+                                if (_correnteEffettiva < CorrenteSoglia)
+                                {
+                                    if (_erroreAss > _maxErrAss) _maxErrAss = _erroreAss;
+                                }
+                                else
+                                {
+                                    if (_errore > _maxErrPerc) _maxErrPerc = _errore;
+                                }
+
+                                MostraErrore(_correnteEffettiva, _CorrenteSpyBatt, _erroreAss, _errore, _maxErrAss, _maxErrPerc, ErroreAssoluto, ErrorePercentuale, false);
+                                //MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
                             }
 
                             _stepCount++;
@@ -2235,25 +2264,35 @@ namespace PannelloCharger
 
                         txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
                         float _corrBase = Lambda.Alimentatatore.Arilevati;
-
+                        _correnteEffettiva = _corrBase * _spire;
+                        _CorrenteSpyBatt = (float)_sb.sbVariabili.CorrenteBatteria / 10;
 
                         _test.AspybattAP = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
 
                         txtCalErrore.Text = "";
                         if (_corrBase != 0)
                         {
-                            float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                            int _erroreAss = Math.Abs((int)(_sb.sbVariabili.CorrenteBatteria /10) - (int)(_corrBase * _spire));
-                            if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
+                            float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - _correnteEffettiva) / (_correnteEffettiva);
+                            float _erroreAss = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria /10) - (_correnteEffettiva));
+                            if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = (int)_erroreAss;
                             txtCalErrore.Text = _errore.ToString("p2");
-                            txtCalErrMax.Text = _errore.ToString("p2");
+                            //txtCalErrMax.Text = _errore.ToString("p2");
                             if (_corrBase > 10)
                             {
                                 if (_errore > _maxErrPos) _maxErrPos = _errore;
-                                txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
-                                txtCalErrMaxPos.Text = _maxErrPos.ToString("p2");
+                                //txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
+                                //txtCalErrMaxPos.Text = _maxErrPos.ToString("p2");
                             }
-                            MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
+                            if (_correnteEffettiva < CorrenteSoglia)
+                            {
+                                if (_erroreAss > _maxErrAss) _maxErrAss = _erroreAss;
+                            }
+                            else
+                            {
+                                if (_errore > _maxErrPerc) _maxErrPerc = _errore;
+                            }
+                            MostraErrore(_correnteEffettiva, _CorrenteSpyBatt, _erroreAss, _errore, _maxErrAss, _maxErrPerc, ErroreAssoluto, ErrorePercentuale, false);
+                            // MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
 
                         }
 
@@ -2263,7 +2302,7 @@ namespace PannelloCharger
                         //flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                         //flvwLettureCorrente.Refresh();
                         //flvwLettureCorrente.BuildList();
-                        Application.DoEvents();
+                        //Application.DoEvents();
 
                         GraficoCorrentiCalComplOxy();
                         flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
@@ -2296,26 +2335,36 @@ namespace PannelloCharger
 
                         txtCalIalim.Text = Lambda.Alimentatatore.Arilevati.ToString("0.0");
                         float _corrBase = Lambda.Alimentatatore.Arilevati;
-
+                        _correnteEffettiva = _corrBase * _spire;
+                        _CorrenteSpyBatt = (float)_sb.sbVariabili.CorrenteBatteria / 10;
 
                         _test.AspybattDP = (float)(_sb.sbVariabili.CorrenteBatteria / 10);
 
                         txtCalErrore.Text = "";
                         if (_corrBase != 0)
                         {
-                            float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - (_corrBase * _spire)) / (_corrBase * _spire);
-                            int _erroreAss = Math.Abs((int)(_sb.sbVariabili.CorrenteBatteria /10 ) - (int)(_corrBase * _spire));
+                            float _errore = Math.Abs((float)(_sb.sbVariabili.CorrenteBatteria / 10) - _correnteEffettiva) / _correnteEffettiva;
+                            int _erroreAss = Math.Abs((int)(_sb.sbVariabili.CorrenteBatteria /10 ) - (int)(_correnteEffettiva));
 
                             if (_erroreAss > _maxErroreRilevato) _maxErroreRilevato = _erroreAss;
                             txtCalErrore.Text = _errore.ToString("p2");
-                            txtCalErrMax.Text = _errore.ToString("p2");
+                            //txtCalErrMax.Text = _errore.ToString("p2");
                             if (_corrBase > 10)
                             {
                                 if (_errore > _maxErrPos) _maxErrPos = _errore;
-                                txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
-                                txtCalErrMaxPos.Text = _maxErrPos.ToString("p2");
+                                //txtCalErroreMaxPos.Text = _maxErrPos.ToString("p2");
+                                //txtCalErrMaxPos.Text = _maxErrPos.ToString("p2");
                             }
-                            MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
+                            if (_correnteEffettiva < CorrenteSoglia)
+                            {
+                                if (_erroreAss > _maxErrAss) _maxErrAss = _erroreAss;
+                            }
+                            else
+                            {
+                                if (_errore > _maxErrPerc) _maxErrPerc = _errore;
+                            }
+                            MostraErrore(_correnteEffettiva, _CorrenteSpyBatt, _erroreAss, _errore, _maxErrAss, _maxErrPerc, ErroreAssoluto, ErrorePercentuale, false);
+                            //MostraErrore(_maxErr, _maxErroreRilevato, _maxErrPos, _maxErrNeg, _maxErroreAmmesso, false);
                         }
 
                         _stepCount++;
@@ -2345,7 +2394,11 @@ namespace PannelloCharger
                     Application.DoEvents();
 
                 }
-
+                else
+                {
+                    // Chiuso con ANNULLA: verifica NON superata
+                    return false;
+                }
 
                 GraficoCorrentiCalComplOxy();
                 flvwCalCorrentiVerifica.Refresh();
@@ -2378,11 +2431,22 @@ namespace PannelloCharger
                 }
                 flvwCalCorrentiVerifica.SetObjects(ValoriTestCorrente);
                 flvwCalCorrentiVerifica.BuildList();
+
+                // Se supero il massimo errore assoluto o percentuale in una qualunque delle scansioni --> verifica fallita
+
+                if ((_maxErrAss > ErroreAssoluto) || ((_maxErrPerc * 100 ) > ErrorePercentuale ))
+                    return false;
+                else
+                    return true;
+
+                /*
                 if (_maxErroreRilevato > _maxErroreAmmesso)
                     return false;
                 else
                     return true;
-                
+                */
+
+
             }
             catch (Exception Ex)
             {
@@ -3118,7 +3182,7 @@ namespace PannelloCharger
             }
         }
 
-        private void MostraErrore(float MaxErr, int MaxAErr, float MaxErrPos, float MaxErrNeg, int LimErrA, bool ClearOnly = false)
+        private void MostraErrore(float CorrAlim, float CorrSb,float ErrAss, float ErrPrc,  float MaxErrAss, float MaxErrPerc,int LimErrA, float LimErrP, bool ClearOnly = false)
         {
             try
             {
@@ -3128,6 +3192,9 @@ namespace PannelloCharger
                 txtCalErrMaxPos.Text = "";
                 txtCalErrMaxNeg.Text = "";
                 txtCalErrMaxAss.Text = "";
+                txtCalErrMaxPrc.Text = "";
+                txtCalCurrAlim.Text = CorrAlim.ToString("0.0");
+                txtCalCurrSB.Text = CorrSb.ToString("0.0");
 
 
                 if (ClearOnly)
@@ -3135,16 +3202,31 @@ namespace PannelloCharger
                     return;
                 }
 
-                txtCalErrMax.Text = MaxErr.ToString("0.0");
-                txtCalErrMaxPos.Text = MaxErrPos.ToString("0.0");
-                txtCalErrMaxNeg.Text = MaxErrNeg.ToString("0.0");
 
-                if (MaxAErr > LimErrA)
-                    txtCalErrMaxAss.ForeColor = Color.Red;
+               // if (MaxAErr > LimErrA)
+               //     txtCalErrMaxAss.ForeColor = Color.Red;
+               // else
+               //     txtCalErrMaxAss.ForeColor = Color.Black;
+
+
+                txtCalErrMax.Text = ErrAss.ToString("0.0");
+                txtCalErrMaxPrc.Text = ErrPrc.ToString("p2");
+                txtCalErrMaxNeg.Text = MaxErrAss.ToString("0.0");
+                txtCalErrMaxPos.Text = MaxErrPerc.ToString("p2");
+
+
+                if (MaxErrAss > LimErrA)
+                    txtCalErrMaxNeg.ForeColor = Color.Red;
                 else
-                    txtCalErrMaxAss.ForeColor = Color.Black;
+                    txtCalErrMaxNeg.ForeColor = Color.Black;
 
-                txtCalErrMaxAss.Text = MaxAErr.ToString("0");
+
+                if ((MaxErrPerc*100) > LimErrP)
+                    txtCalErrMaxPos.ForeColor = Color.Red;
+                else
+                    txtCalErrMaxPos.ForeColor = Color.Black;
+
+                //txtCalErrMaxAss.Text = MaxAErr.ToString("0");
 
 
             }

@@ -85,6 +85,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
+            this.tstBtnCercaWireless = new System.Windows.Forms.ToolStripButton();
+            this.sbWirelessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -253,6 +255,7 @@
             // 
             this.mnuSpybat.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.caricaToolStripMenuItem,
+            this.sbWirelessToolStripMenuItem,
             this.archivioToolStripMenuItem,
             this.toolStripMenuItem1,
             this.importaFileToolStripMenuItem,
@@ -410,6 +413,7 @@
             resources.ApplyResources(this.tstPulsanti, "tstPulsanti");
             this.tstPulsanti.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tstBtnCercaUsb,
+            this.tstBtnCercaWireless,
             this.tstBtnSave,
             this.tstBtnCercaRS232,
             this.tstBtnExport,
@@ -475,6 +479,20 @@
             resources.ApplyResources(this.tstBtnClose, "tstBtnClose");
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
+            // 
+            // tstBtnCercaWireless
+            // 
+            this.tstBtnCercaWireless.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tstBtnCercaWireless.Image = global::PannelloCharger.Properties.Resources.wireless;
+            resources.ApplyResources(this.tstBtnCercaWireless, "tstBtnCercaWireless");
+            this.tstBtnCercaWireless.Name = "tstBtnCercaWireless";
+            this.tstBtnCercaWireless.Click += new System.EventHandler(this.tstBtnCercaWireless_Click);
+            // 
+            // sbWirelessToolStripMenuItem
+            // 
+            this.sbWirelessToolStripMenuItem.Name = "sbWirelessToolStripMenuItem";
+            resources.ApplyResources(this.sbWirelessToolStripMenuItem, "sbWirelessToolStripMenuItem");
+            this.sbWirelessToolStripMenuItem.Click += new System.EventHandler(this.sbWirelessToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -564,6 +582,8 @@
         private System.Windows.Forms.ToolStripMenuItem sIG60MonitorToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tstBtnSave;
         private System.Windows.Forms.ToolStripMenuItem francoisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tstBtnCercaWireless;
+        private System.Windows.Forms.ToolStripMenuItem sbWirelessToolStripMenuItem;
     }
 }
 

@@ -736,14 +736,18 @@ namespace MoriData
                                 default:
                                     return 8;
                             }
-                           
 
+                        case "3.00":
+                        case "3.01":
+                            {
+                                return 10;
+                            }
 
 
                         default:
                             //variante per marco
                             //return -1;
-                            return 6;
+                            return 10;
                             //  break;
                     }
                 }
@@ -775,6 +779,8 @@ namespace MoriData
                         case "2.03":
                         case "2.04":
                         case "2.05":
+                        case "3.00":
+                        case "3.01":
                             return true;
 
                         default:
@@ -810,6 +816,8 @@ namespace MoriData
                         case "2.03":
                         case "2.04":
                         case "2.05":
+                        case "3.00":
+                        case "3.01":
                             return true;
 
                         default:
@@ -859,6 +867,8 @@ namespace MoriData
                         case "2.03":
                         case "2.04":
                         case "2.05":
+                        case "3.00":
+                        case "3.01":
                             return 8666;
 
                         default:

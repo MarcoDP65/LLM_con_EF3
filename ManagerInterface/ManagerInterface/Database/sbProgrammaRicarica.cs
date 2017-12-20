@@ -328,7 +328,19 @@ namespace MoriData
 
         public ushort BatteryVdef
         {
-            get { return _sbpr.BatteryVdef; }
+            get
+            {
+                if (_sbpr != null)
+                {
+                    return _sbpr.BatteryVdef;
+                }
+                else
+                {
+                    return 0;
+                }
+                return 0;
+
+            }
             set
             {
                 _sbpr.BatteryVdef = value;
@@ -337,7 +349,15 @@ namespace MoriData
         }
         public ushort BatteryAhdef
         {
-            get { return _sbpr.BatteryAhdef; }
+            get
+            {
+                if (_sbpr != null)
+                {
+                    return _sbpr.BatteryAhdef;
+                }
+                else
+                    return 0;
+            }
             set
             {
                 _sbpr.BatteryAhdef = value;

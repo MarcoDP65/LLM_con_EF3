@@ -364,7 +364,17 @@ namespace MoriData
 
         public string Client
         {
-            get { return _sbdc.Client; }
+            get
+            {
+                if (_sbdc != null)
+                {
+                    return _sbdc.Client;
+                }
+                else
+                {
+                    return "";
+                }
+            }
             set
             {
                 _sbdc.Client = FunzioniMR.StringaMax(value, 120);

@@ -38,7 +38,7 @@ namespace ChargerLogic
             NACK = 0x45,
             CMD_CONNECT               = 0x17,
             CMD_DISCONNECT            = 0x1D,
-            SB_DatiIniziali = 0x1F,
+            CMD_READ_INITIAL_PAR      = 0x1F,
             SB_R_DatiCliente = 0x20,
             SB_R_Programmazione = 0x21,
             SB_W_DatiCliente = 0x22,
@@ -622,7 +622,7 @@ namespace ChargerLogic
             return ComponiMessaggio(_vuoto);
         }
 
-        public ushort ComponiMessaggio(byte[] _corpoMessaggio)
+        public ushort ComponiMessaggio(byte[] _corpoMessaggio, TipoDispositivo Device = TipoDispositivo.PcOrSmart, bool AddressZero = true)
         {
             ushort _esito = 0;
             ushort _dispositivo;
@@ -639,13 +639,21 @@ namespace ChargerLogic
                 //serial
                 for (int i = 0; i <= 7; i++)
                 {
-                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    if (AddressZero)
+                    {
+                        msb = 0x30;
+                        lsb = 0x30;
+                    }
+                    else
+                    {
+                        splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    }
                     _comandoBase[(i * 2)] = msb;
                     _comandoBase[(i * 2) + 1] = lsb;
                 }
-                //dispositivo
 
-                _dispositivo = (ushort)(Dispositivo);
+                //dispositivo
+                _dispositivo = (ushort)(Device);
                 splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
 
                 splitUshort(codificaByte(msbDisp), ref lsb, ref msb);

@@ -468,11 +468,11 @@ namespace ChargerLogic
 
                 if (ApparatoConnesso)
                 {
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_DatiIniziali;
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_READ_INITIAL_PAR;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
                     skipHead = true;
-                    Log.Debug("SB CaricaTestata");
+                    Log.Debug("SB CMD_READ_INITIAL_PAR");
                     Log.Debug(_mS.hexdumpMessaggio());
                     _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                     _esito = aspettaRisposta(elementiComuni.TimeoutLungo);
@@ -499,6 +499,10 @@ namespace ChargerLogic
                         sbData.BattConnected = _mS.Intestazione.statoBatteria;
                         sbData.LongMem = (int)_mS.Intestazione.longRecordCounter;
                         sbData.salvaDati();
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
                 return true;
@@ -1150,6 +1154,10 @@ namespace ChargerLogic
                                     _areaBlock =_memLn.NumEventiBrevi;
                                     */
 
+                                    // 12/12/2017 Modifico il calcolo del puntatore: il puntatore effettivo è funzione del riciclo (numero eventi)
+
+                                    //int _primoBreveEff = (int)(_memLn.PuntatorePrimoBreve % _mappaCorrente.MemBreve.NoOfElemets);
+
                                     _areaSize = _mappaCorrente.MemBreve.ElemetSize;
                                     _areaStart = _mappaCorrente.MemBreve.StartAddress + (int)(_memLn.PuntatorePrimoBreve * _areaSize);
                                     _areaBlock =  _memLn.NumEventiBrevi;
@@ -1174,6 +1182,11 @@ namespace ChargerLogic
                                             }
                                         }
                                         _areaStart += _areaSize;
+                                        if (_areaStart > (0x002000 + _areaBlock * _areaSize))
+                                        {
+                                            // ho superato il limite superiore, riparto
+                                            _areaStart = 0x002000;
+                                        }
                                     }
                                    
                                     // ora trasporto i messaggi nel modello
@@ -1323,7 +1336,7 @@ namespace ChargerLogic
                 if (FileReport == "")
                     GeneraReport = false;
 
-                txtLog.Open(FileReport);
+                txtLog.Open(FileReport,txtLogger.DataMode.OverWrite);
 
                 bool _recordPresente;
 
@@ -1703,7 +1716,11 @@ namespace ChargerLogic
                                             }
                                         }
                                         _areaStart += _areaSize;
-                                        if (_areaStart > _ultimoBreve) _ultimoBreve = _areaStart;
+                                        if (_areaStart > _mappaCorrente.MemBreve.EndAddress)
+                                        {
+                                            // ho superato il limite superiore, riparto
+                                            _areaStart = _mappaCorrente.MemBreve.StartAddress;
+                                        }
 
                                     }
 
@@ -1746,7 +1763,7 @@ namespace ChargerLogic
                                         {
 
                                             _memBr.IdApparato = IdApparato;
-                                            _memBr.IdMemoriaLunga = (int)_cicloBr.IdCicloLungo;   //  (int)_memLn.IdMemoriaLunga;
+                                            _memBr.IdMemoriaLunga = (int)_ciclo.IdEvento;   //  (int)_memLn.IdMemoriaLunga;
                                             _memBr.IdMemoriaBreve = _numCiclo;
                                             _memBr.DataOraRegistrazione = StringaTimestamp(_cicloBr.DataOraRegistrazione);
                                             _memBr.Vreg = _cicloBr.Vreg;
@@ -1921,6 +1938,7 @@ namespace ChargerLogic
 
                         }
                         //spacchetto la memoria brevi in modo sequenziale
+                        int pacchetti_loggati = 0;
                         if (true)
                         {
 
@@ -1948,9 +1966,9 @@ namespace ChargerLogic
 
                                 if (_tempChiave.SequenceEqual(_chiaveStop))
                                 {
-                                    trovatoUltimo = true;
-                                    txtLog.WriteLn("---------------------- Cicli Brevi: " + _numbrevi.ToString() + " ------------------------------");
-                                    break;
+                                    //trovatoUltimo = true;
+                                    //txtLog.WriteLn("---------------------- Cicli Brevi: " + _numbrevi.ToString() + " ------------------------------");
+                                    //break;
                                 }
 
                                 if (!_tempChiave.SequenceEqual(_ultimaChiave))
@@ -1961,8 +1979,9 @@ namespace ChargerLogic
 
                                 }
                                 _numbrevi -= 1;
-                                txtLog.WriteLn(FunzioniMR.hexdumpArray(_TempMessaggio, false));
 
+                                txtLog.WriteLn(FunzioniMR.hexdumpArray(_TempMessaggio, false));
+                                pacchetti_loggati += 1;
                                 //Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
                                 // _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true);
                                 // if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
@@ -1972,6 +1991,13 @@ namespace ChargerLogic
 
                                 _areaStart += _areaSize;
                                 if (_areaStart > _ultimoBreve) _ultimoBreve = _areaStart;
+                                if(pacchetti_loggati >= 47419 )
+                                {
+                                    trovatoUltimo = true;
+                                    txtLog.WriteLn("---------------------- Cicli Brevi: " + _numbrevi.ToString() + " ------------------------------");
+                                    break;
+
+                                }
 
                             }
 
@@ -3578,8 +3604,8 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
-                byte msb = 0;
-                byte lsb = 0;
+                //byte msb = 0;
+                //byte lsb = 0;
 
                 byte[] _cmdStrat = new byte[8];
 
@@ -3742,7 +3768,7 @@ namespace ChargerLogic
                 _tensioni = _inVolt.ToString("0.0");
                 return _tensioni;
             }
-            catch (Exception Ex)
+            catch //(Exception Ex)
             {
                 return "";
             }
@@ -4933,7 +4959,7 @@ namespace ChargerLogic
                                 //_inviaRisposta = _mS.CustomerData.datiPronti;
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_DatiIniziali:// Prima Lettura
+                            case (byte)SerialMessage.TipoComando.CMD_READ_INITIAL_PAR:// Prima Lettura
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = true;
                                 Log.Debug("Prima Lettura");
@@ -4965,13 +4991,13 @@ namespace ChargerLogic
 
                             case (byte)SerialMessage.TipoComando.CMD_INFO_BL:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
-                                // _inviaRisposta = true;
+                                // _inviaRisposta = true;  -----> da verificare
                                 _inviaRisposta = true;
                                 break;
 
                             case (byte)SerialMessage.TipoComando.SB_ReadRTC:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
-                                _inviaRisposta = true;
+                                _inviaRisposta = false;
                                 break;
 
                             case (byte)SerialMessage.TipoComando.SB_R_ParametriLettura:

@@ -334,6 +334,7 @@ namespace ChargerLogic
                     uint bytesScritti = 0;
                     FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
                     ftStatus = usbSpyBatt.Write(messaggio, (uint)NumByte, ref bytesScritti);
+                    Log.Debug("Scrittura su USB: scritti " + bytesScritti + " bytes");
                     if (ftStatus != FTDI.FT_STATUS.FT_OK)
                     {
                         // Wait for a key press
@@ -347,6 +348,7 @@ namespace ChargerLogic
                 {
                     if (serialeSpyBatt.IsOpen)
                     {
+                        Log.Debug("Scrittura su SERIALE");
                         serialeSpyBatt.Write(messaggio, Start, NumByte);
                         return true;
                     }

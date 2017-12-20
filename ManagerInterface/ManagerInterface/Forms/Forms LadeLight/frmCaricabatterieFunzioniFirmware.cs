@@ -469,6 +469,7 @@ namespace PannelloCharger
             }
         }
 
+
         private void AggiornaFirmware(bool InviaACK = false)
         {
             try
@@ -687,98 +688,7 @@ namespace PannelloCharger
                 Log.Error("btnFwCaricaStato_Click: " + Ex.Message);
             }
         }
-        /*
-        public bool CaricaStatoAreaFw(byte IdArea, byte StatoFirmware)
-        {
-            bool _esito = false;
-            byte[] _bufferDati = new byte[64];
-            FirmwareManager _tempFW = new FirmwareManager();
-            FirmwareManager.ExitCode _esitoFW = FirmwareManager.ExitCode.ErroreGenerico;
-            uint _area;
 
-            try
-            {
-
-                Log.Info("Lettura area FW 1 ");
-                if (IdArea == 1)
-                {
-
-                    txtFwRevA1State.Text = "KO";
-                    txtFwRevA1State.ForeColor = Color.Red;
-                    txtFwRevA1RevFw.Text = "";
-                    txtFwRevA1RilFw.Text = "";
-                    txtFWRevA1AddrN1.Text = "";
-                    txtFWRevA1LenN1.Text = "";
-                    txtFWRevA1AddrN2.Text = "";
-                    txtFWRevA1LenN2.Text = "";
-                    txtFWRevA1AddrP.Text = "";
-                    txtFWRevA1LenP.Text = "";
-                    _area = 0x1E0000;
-                }
-                else
-                {
-                    txtFwRevA2State.Text = "KO";
-                    txtFwRevA2State.ForeColor = Color.Red;
-                    txtFwRevA2RevFw.Text = "";
-                    txtFwRevA2RilFw.Text = "";
-                    txtFWRevA2AddrN1.Text = "";
-                    txtFWRevA2LenN1.Text = "";
-                    txtFWRevA2AddrN2.Text = "";
-                    txtFWRevA2LenN2.Text = "";
-                    txtFWRevA2AddrP.Text = "";
-                    txtFWRevA2LenP.Text = "";
-                    _area = 0x1F0000;
-
-                }
-
-
-                _esito = _sb.LeggiBloccoMemoria(_area, 64, out _bufferDati);
-
-
-                if (_esito)
-                {
-                    _esitoFW = _tempFW.AnalizzaArrayTestata(_bufferDati);
-                    if (_esitoFW == FirmwareManager.ExitCode.OK && _tempFW.FirmwareBlock.TestataOK)
-                    {
-                        if (IdArea == 1)
-                        {
-                            txtFwRevA1State.Text = "OK";
-                            txtFwRevA1State.ForeColor = Color.Black;
-                            txtFwRevA1RevFw.Text = _tempFW.FirmwareBlock.Release;
-                            txtFwRevA1RilFw.Text = _tempFW.FirmwareBlock.ReleaseDate;
-                            txtFWRevA1AddrN1.Text = _tempFW.FirmwareBlock.AddrFlash1.ToString();
-                            txtFWRevA1LenN1.Text = _tempFW.FirmwareBlock.LenFlash1.ToString();
-                            txtFWRevA1AddrN2.Text = _tempFW.FirmwareBlock.AddrFlash2.ToString();
-                            txtFWRevA1LenN2.Text = _tempFW.FirmwareBlock.LenFlash2.ToString();
-                            txtFWRevA1AddrP.Text = _tempFW.FirmwareBlock.AddrProxy.ToString();
-                            txtFWRevA1LenP.Text = _tempFW.FirmwareBlock.LenProxy.ToString();
-                        }
-                        else
-                        {
-                            txtFwRevA2State.Text = "OK";
-                            txtFwRevA2State.ForeColor = Color.Black;
-                            txtFwRevA2RevFw.Text = _tempFW.FirmwareBlock.Release;
-                            txtFwRevA2RilFw.Text = _tempFW.FirmwareBlock.ReleaseDate;
-                            txtFWRevA2AddrN1.Text = _tempFW.FirmwareBlock.AddrFlash1.ToString();
-                            txtFWRevA2LenN1.Text = _tempFW.FirmwareBlock.LenFlash1.ToString();
-                            txtFWRevA2AddrN2.Text = _tempFW.FirmwareBlock.AddrFlash2.ToString();
-                            txtFWRevA2LenN2.Text = _tempFW.FirmwareBlock.LenFlash2.ToString();
-                            txtFWRevA2AddrP.Text = _tempFW.FirmwareBlock.AddrProxy.ToString();
-                            txtFWRevA2LenP.Text = _tempFW.FirmwareBlock.LenProxy.ToString();
-                        }
-                    }
-
-                }
-
-                return _esito;
-
-            }
-            catch
-            {
-                return _esito;
-            }
-        }
-        */
         public bool SwitchAreaFw(string IdApparato, bool SerialeCollegata, byte IdArea)
         {
             bool _esito = false;

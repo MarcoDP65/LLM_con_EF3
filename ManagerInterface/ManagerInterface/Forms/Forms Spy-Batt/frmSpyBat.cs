@@ -1020,8 +1020,6 @@ namespace PannelloCharger
                     txtRevSWSb.ForeColor = Color.Red;
                     Log.Info("Stato scheda SPY-BATT: LD OK, APP KO ");
                     return false;
-
-
                 }
 
 
@@ -4180,7 +4178,9 @@ namespace PannelloCharger
                     if (tbpCalibrazioni.Width > 600)
                     {
                         pnlCalGrafico.Width = tbpCalibrazioni.Width - 540;
+                        pnlCalVerifica.Width = tabCalibrazione.Width - 300;
                     }
+                    
                 }
 
             }
@@ -6758,7 +6758,7 @@ namespace PannelloCharger
 
             }
 
-            catch (Exception Ex)
+            catch //(Exception Ex)
             {
                 //Log.Error("frmMain: " + Ex.Message);
             }
@@ -8048,13 +8048,16 @@ namespace PannelloCharger
                 }
 
 
-                int _AmaxCal = 250;
+                int _AmaxCal = 175;
                 int _AmaxVer = 300;
                 int _spire = 2;
                 int _secAttesa = 5;
                 int _maxErrA = 5;
                 int _secPasso = 2;
+                int _errAssoluto = 5;
+                float _errPercentuale = 5;
                 float _coeffPasso = 2;
+                int _correnteSoglia = 50;
 
 
                 int.TryParse(txtCalAcal.Text, out _AmaxCal);
@@ -8063,6 +8066,9 @@ namespace PannelloCharger
                 int.TryParse(txtCalSecondiAttesa.Text, out _secAttesa);
                 int.TryParse(txtCalMaxAerr.Text, out _maxErrA);
                 int.TryParse(txtCalSecondiPasso.Text, out _secPasso);
+                int.TryParse(txtCalErroreAss.Text, out _errAssoluto);
+                int.TryParse(txtCalSogiaPercAss.Text, out _correnteSoglia);
+                float.TryParse(txtCalErrorePerc.Text, out _errPercentuale);
                 float.TryParse(txtCalCoeffPasso.Text, out _coeffPasso);
 
                 if (_secAttesa < 1) _secAttesa = 1;
@@ -8087,7 +8093,7 @@ namespace PannelloCharger
                 txtCalNumSpire.Text = _spire.ToString();
                 txtCalSecondiAttesa.Text = _secAttesa.ToString();
 
-                bool _esitoSeq = LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa, _maxErrA, _secPasso, _coeffPasso);
+                bool _esitoSeq = LanciaSequenzaCalibrazione(_sequenzaCorrente, chkCalRegistraSequenza.Checked, _AmaxCal, _AmaxVer, _spire, _secAttesa, _maxErrA, _secPasso, _coeffPasso , _errAssoluto,_errPercentuale, _correnteSoglia);
 
                 if (chkCalRegistraSequenza.Checked)
                 {

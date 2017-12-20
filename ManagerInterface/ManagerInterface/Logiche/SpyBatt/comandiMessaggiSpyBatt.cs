@@ -199,7 +199,7 @@ namespace ChargerLogic
                             }
                         }
 
-                        System.Threading.Thread.Sleep(10);
+                        System.Threading.Thread.Sleep(5);
                         if (raggiuntoTimeout(_startFunzione, timeout))
                         {
                             Log.Debug("aspettaRisposta.USB raggiunto Timeout");

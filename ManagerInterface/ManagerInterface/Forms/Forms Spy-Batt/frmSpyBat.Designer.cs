@@ -549,6 +549,7 @@
             this.txtCalNumCiclo = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
             this.grbQuadroSequenza = new System.Windows.Forms.GroupBox();
+            this.txtCalErrorePrc = new System.Windows.Forms.TextBox();
             this.chkCalRitornoVeloce = new System.Windows.Forms.CheckBox();
             this.chkCalSoloAndata = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -777,6 +778,13 @@
             this.label134 = new System.Windows.Forms.Label();
             this.btnClonaScriviRecordTestata = new System.Windows.Forms.Button();
             this.tabCalibrazione = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label117 = new System.Windows.Forms.Label();
+            this.txtCalErroreAss = new System.Windows.Forms.TextBox();
+            this.txtCalErrorePerc = new System.Windows.Forms.TextBox();
+            this.label292 = new System.Windows.Forms.Label();
+            this.txtCalSogiaPercAss = new System.Windows.Forms.TextBox();
+            this.label293 = new System.Windows.Forms.Label();
             this.btnCalSalvaFWVer = new System.Windows.Forms.Button();
             this.label207 = new System.Windows.Forms.Label();
             this.txtCalCoeffPasso = new System.Windows.Forms.TextBox();
@@ -802,6 +810,8 @@
             this.cmbCalListaEsecuzioni = new System.Windows.Forms.ComboBox();
             this.btnCalRicaricaSequenza = new System.Windows.Forms.Button();
             this.grbCalValoriAttuali = new System.Windows.Forms.GroupBox();
+            this.label294 = new System.Windows.Forms.Label();
+            this.txtCalErrMaxPrc = new System.Windows.Forms.TextBox();
             this.label152 = new System.Windows.Forms.Label();
             this.txtCalErrMaxAss = new System.Windows.Forms.TextBox();
             this.txtCalTemp = new System.Windows.Forms.TextBox();
@@ -4829,6 +4839,7 @@
             // grbQuadroSequenza
             // 
             this.grbQuadroSequenza.BackColor = System.Drawing.Color.White;
+            this.grbQuadroSequenza.Controls.Add(this.txtCalErrorePrc);
             this.grbQuadroSequenza.Controls.Add(this.chkCalRitornoVeloce);
             this.grbQuadroSequenza.Controls.Add(this.chkCalSoloAndata);
             this.grbQuadroSequenza.Controls.Add(this.button1);
@@ -4861,6 +4872,11 @@
             resources.ApplyResources(this.grbQuadroSequenza, "grbQuadroSequenza");
             this.grbQuadroSequenza.Name = "grbQuadroSequenza";
             this.grbQuadroSequenza.TabStop = false;
+            // 
+            // txtCalErrorePrc
+            // 
+            resources.ApplyResources(this.txtCalErrorePrc, "txtCalErrorePrc");
+            this.txtCalErrorePrc.Name = "txtCalErrorePrc";
             // 
             // chkCalRitornoVeloce
             // 
@@ -6340,6 +6356,13 @@
             // tabCalibrazione
             // 
             this.tabCalibrazione.BackColor = System.Drawing.Color.LightYellow;
+            this.tabCalibrazione.Controls.Add(this.button2);
+            this.tabCalibrazione.Controls.Add(this.label117);
+            this.tabCalibrazione.Controls.Add(this.txtCalErroreAss);
+            this.tabCalibrazione.Controls.Add(this.txtCalErrorePerc);
+            this.tabCalibrazione.Controls.Add(this.label292);
+            this.tabCalibrazione.Controls.Add(this.txtCalSogiaPercAss);
+            this.tabCalibrazione.Controls.Add(this.label293);
             this.tabCalibrazione.Controls.Add(this.btnCalSalvaFWVer);
             this.tabCalibrazione.Controls.Add(this.label207);
             this.tabCalibrazione.Controls.Add(this.txtCalCoeffPasso);
@@ -6372,6 +6395,42 @@
             this.tabCalibrazione.Controls.Add(this.grbCalListaAttivita);
             resources.ApplyResources(this.tabCalibrazione, "tabCalibrazione");
             this.tabCalibrazione.Name = "tabCalibrazione";
+            // 
+            // button2
+            // 
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label117
+            // 
+            resources.ApplyResources(this.label117, "label117");
+            this.label117.Name = "label117";
+            // 
+            // txtCalErroreAss
+            // 
+            resources.ApplyResources(this.txtCalErroreAss, "txtCalErroreAss");
+            this.txtCalErroreAss.Name = "txtCalErroreAss";
+            // 
+            // txtCalErrorePerc
+            // 
+            resources.ApplyResources(this.txtCalErrorePerc, "txtCalErrorePerc");
+            this.txtCalErrorePerc.Name = "txtCalErrorePerc";
+            // 
+            // label292
+            // 
+            resources.ApplyResources(this.label292, "label292");
+            this.label292.Name = "label292";
+            // 
+            // txtCalSogiaPercAss
+            // 
+            resources.ApplyResources(this.txtCalSogiaPercAss, "txtCalSogiaPercAss");
+            this.txtCalSogiaPercAss.Name = "txtCalSogiaPercAss";
+            // 
+            // label293
+            // 
+            resources.ApplyResources(this.label293, "label293");
+            this.label293.Name = "label293";
             // 
             // btnCalSalvaFWVer
             // 
@@ -6523,6 +6582,8 @@
             // grbCalValoriAttuali
             // 
             this.grbCalValoriAttuali.BackColor = System.Drawing.Color.White;
+            this.grbCalValoriAttuali.Controls.Add(this.label294);
+            this.grbCalValoriAttuali.Controls.Add(this.txtCalErrMaxPrc);
             this.grbCalValoriAttuali.Controls.Add(this.label152);
             this.grbCalValoriAttuali.Controls.Add(this.txtCalErrMaxAss);
             this.grbCalValoriAttuali.Controls.Add(this.txtCalTemp);
@@ -6550,6 +6611,16 @@
             resources.ApplyResources(this.grbCalValoriAttuali, "grbCalValoriAttuali");
             this.grbCalValoriAttuali.Name = "grbCalValoriAttuali";
             this.grbCalValoriAttuali.TabStop = false;
+            // 
+            // label294
+            // 
+            resources.ApplyResources(this.label294, "label294");
+            this.label294.Name = "label294";
+            // 
+            // txtCalErrMaxPrc
+            // 
+            resources.ApplyResources(this.txtCalErrMaxPrc, "txtCalErrMaxPrc");
+            this.txtCalErrMaxPrc.Name = "txtCalErrMaxPrc";
             // 
             // label152
             // 
@@ -9075,5 +9146,15 @@
         private System.Windows.Forms.TextBox txtSigReg0;
         private System.Windows.Forms.CheckBox chkFSerResetCnt;
         private System.Windows.Forms.CheckBox chkTestataIgnoraNumLunghi;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.TextBox txtCalErroreAss;
+        private System.Windows.Forms.TextBox txtCalErrorePerc;
+        private System.Windows.Forms.Label label292;
+        private System.Windows.Forms.TextBox txtCalSogiaPercAss;
+        private System.Windows.Forms.Label label293;
+        private System.Windows.Forms.TextBox txtCalErrorePrc;
+        private System.Windows.Forms.TextBox txtCalErrMaxPrc;
+        private System.Windows.Forms.Label label294;
     }
 }

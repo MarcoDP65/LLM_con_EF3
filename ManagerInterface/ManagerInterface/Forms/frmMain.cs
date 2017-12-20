@@ -1192,6 +1192,16 @@ namespace PannelloCharger
             impostaCultura("fr");
 
         }
+
+        private void tstBtnCercaWireless_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sbWirelessToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class StatoPulsanti
