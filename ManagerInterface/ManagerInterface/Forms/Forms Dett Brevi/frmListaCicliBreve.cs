@@ -470,6 +470,7 @@ namespace PannelloCharger
                 txtFineEvento.Text = CicloLungo.DataOraFine; //_sb.StringaTimestamp(EventoLungo.DataOraFine);
                 this.Text = StringheMessaggio.strTitoloListaBrevi + " " + CicloLungo.IdMemoriaLunga.ToString();
                 //Programma
+                /*
                 txtNumProgramma.Text = CicloLungo.ProgrammaAttivo.IdProgramma.ToString();
                 txtCapacitaNominale.Text = FunzioniMR.StringaCorrente( (short)CicloLungo.ProgrammaAttivo.BatteryAhdef ) + " Ah";
                 txtTensioneNominale.Text = FunzioniMR.StringaTensione( CicloLungo.ProgrammaAttivo.BatteryVdef) + " V";
@@ -477,14 +478,15 @@ namespace PannelloCharger
                 txtCelleV2.Text = CicloLungo.ProgrammaAttivo.BatteryCell2.ToString();
                 txtCelleV3.Text = CicloLungo.ProgrammaAttivo.BatteryCell3.ToString();
                 txtCelleTot.Text = CicloLungo.ProgrammaAttivo.BatteryCells.ToString();
-
+                */
 
                 //Calcolo la matrice attivazione celle
+                /*
                 AttivaIntermedi[0] = (CicloLungo.ProgrammaAttivo.BatteryCells > 0);
                 AttivaIntermedi[1] = (CicloLungo.ProgrammaAttivo.BatteryCell1 > 0);
                 AttivaIntermedi[2] = (CicloLungo.ProgrammaAttivo.BatteryCell2 > 0);
                 AttivaIntermedi[3] = (CicloLungo.ProgrammaAttivo.BatteryCell3 > 0);
-
+                */
                 // Poi la tabella
                 Log.Debug("MostraCicli rigeneraListaCicli");
                 rigeneraListaCicli();

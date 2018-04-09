@@ -111,8 +111,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.Start;
-                _mD._comando = (byte)SerialMessage.TipoComando.Start;
+                _mD.Comando = SerialMessage.TipoComando.CMD_CONNECT;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_CONNECT;
                 _mD.ComponiMessaggio();
                 _rxRisposta = false;
 
@@ -153,8 +153,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_Backlight;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_Backlight;
+                _mD.Comando = SerialMessage.TipoComando.CMD_BACKLIGHT;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_BACKLIGHT;
                 _mD.ComponiMessaggioBacklight(Acceso);
                 _rxRisposta = false;
                 Log.Debug("Display Backlight: " + Acceso.ToString());
@@ -198,8 +198,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_LedRGB;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_LedRGB;
+                _mD.Comando = SerialMessage.TipoComando.CMD_LED_RGB;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_LED_RGB;
                 _mD.ComponiMessaggioLed(Red, Green, Blu, On, Off, RedDx , GreenDx, BluDx, OnDx, OffDx);
                 _rxRisposta = false;
                 Log.Debug("Display Led: ");
@@ -229,8 +229,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_DrawLine;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_DrawLine;
+                _mD.Comando = SerialMessage.TipoComando.CMD_DRAW_LINE;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_DRAW_LINE;
                 _mD.ComponiMessaggioTracciaLinea(Xstart, Ystart, Xend, Yend, Color);
                 _rxRisposta = false;
                 Log.Debug("Display traccia linea: ");
@@ -278,7 +278,7 @@ namespace ChargerLogic
                 Dati = new byte[NumByte];
 
 
-                _mD.Comando = SerialMessage.TipoComando.DI_R_LeggiMemoria;
+                _mD.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
                 _mD._pacchettoMem = new MessaggioDisplay.PacchettoReadMem();
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -326,11 +326,12 @@ namespace ChargerLogic
         /// <returns></returns>
         public bool CancellaInteraMemoria()
         {
-
-
             try
             {
-                bool _esito;
+                bool _esito = false ;
+                /*
+                  
+                Temporaneamente disabilitata 
 
                 _mD.Comando = SerialMessage.TipoComando.DI_CancellaInteraMemoria;
 
@@ -357,7 +358,7 @@ namespace ChargerLogic
 
                 Log.Debug(_mD.hexdumpMessaggio());
                 Log.Debug("------------------------------------------------------------------------------------------------------------");
-
+                */
                 return _esito;
 
 
@@ -388,8 +389,8 @@ namespace ChargerLogic
                 //Prima mi accerto che il bytearray sia pronto
 
 
-                _mD.Comando = SerialMessage.TipoComando.DI_W_SalvaImmagineMemoria;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_W_SalvaImmagineMemoria;
+                _mD.Comando = SerialMessage.TipoComando.CMD_IMAGE_RX_START;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_IMAGE_RX_START;
                 _mD.ComponiMessaggioInviaTestataImmagine(Img);
                 _rxRisposta = false;
                 Log.Debug("Display- Invio Testata Immagine");
@@ -481,8 +482,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_MostraImmagine;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_MostraImmagine;
+                _mD.Comando = SerialMessage.TipoComando.CMD_DRAW_IMAGE;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_DRAW_IMAGE;
                 _mD.ComponiMessaggioMostraImmagine(Id, PosX, PosY, Color);
                 _rxRisposta = false;
                 Log.Debug("Display mostra immagine: ");
@@ -516,8 +517,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_W_SetRTC;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_W_SetRTC;
+                _mD.Comando = SerialMessage.TipoComando.CMD_UPDATE_RTC;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_UPDATE_RTC;
                 _mD.ComponiMessaggioSetRTC();
                 _rxRisposta = false;
                 Log.Debug("Display Set RTC: ");
@@ -555,8 +556,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_SwitchBaudRate;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_SwitchBaudRate;
+                _mD.Comando = SerialMessage.TipoComando.CMD_UART_SWITCH_BDRATE;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_UART_SWITCH_BDRATE;
                 _mD.ComponiMessaggioBaudRate(Velocita);
                 _rxRisposta = false;
                 Log.Debug("Display Set BaudRate: ");
@@ -586,8 +587,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_MostraSchermata;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_MostraSchermata;
+                _mD.Comando = SerialMessage.TipoComando.CMD_DRAW_SCREEN;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_DRAW_SCREEN;
                 _mD.ComponiMessaggioMostraSchermata(Id);
                 _rxRisposta = false;
                 Log.Debug("Display mostra Schermata: ");
@@ -617,8 +618,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_ScrollSchermate;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_ScrollSchermate;
+                _mD.Comando = SerialMessage.TipoComando.CMD_SCROLL_SCREEN;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_SCROLL_SCREEN;
                 _mD.ComponiMessaggioScrollSchermate(ListaSch, Attesa);
                 _rxRisposta = false;
                 Log.Debug("ScrollSchermate: ");
@@ -649,8 +650,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_CancellaDisplay;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_CancellaDisplay;
+                _mD.Comando = SerialMessage.TipoComando.CMD_CLEAR_DISPLAY;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_CLEAR_DISPLAY;
                 _mD.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Display CLS");
@@ -687,8 +688,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_ResetBoard;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_ResetBoard;
+                _mD.Comando = SerialMessage.TipoComando.CMD_RESET_BOARD;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_RESET_BOARD;
                 _mD.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Display Reset Board");
@@ -718,8 +719,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_Stato;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_Stato;
+                _mD.Comando = SerialMessage.TipoComando.CMD_STATE_DEVICE;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_STATE_DEVICE;
                 _mD.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Display Read State");
@@ -832,8 +833,8 @@ namespace ChargerLogic
 
                     // Step 1 : testata schermata
                     
-                _mD.Comando = SerialMessage.TipoComando.DI_W_SalvaSchermataMemoria;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_W_SalvaSchermataMemoria;
+                _mD.Comando = SerialMessage.TipoComando.CMD_SCREEN_RX_START;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_SCREEN_RX_START;
                 _mD.ComponiMessaggioInviaTestataSchermata(Screen);
                 _rxRisposta = false;
                 Log.Debug("Display- Invio Testata Schermata");
@@ -945,8 +946,8 @@ namespace ChargerLogic
             {
                 bool _esito = false;
 
-                _mD.Comando = SerialMessage.TipoComando.DI_W_ScriviVariabile;
-                _mD._comando = (byte)SerialMessage.TipoComando.DI_W_ScriviVariabile;
+                _mD.Comando = SerialMessage.TipoComando.CMD_RX_VARIABLE;
+                _mD._comando = (byte)SerialMessage.TipoComando.CMD_RX_VARIABLE;
                 _mD.ComponiMessaggioInviaVariabile(Id,Valore);
                 _rxRisposta = false;
                 Log.Debug("Display imposta Variabile: ");

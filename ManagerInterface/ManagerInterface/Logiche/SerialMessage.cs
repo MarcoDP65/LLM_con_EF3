@@ -12,107 +12,91 @@ namespace ChargerLogic
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
         public enum InitialCrcValue : ushort { Zeros, NonZero1 = 0xffff, NonZero2 = 0x1D0F };
-        public enum RequiredActionOutcome : byte {Success = 0x0F,Failed = 0xF0, UnDone = 0xFF,Undefined = 0x00};
         public enum TipoDispositivo : ushort { PcOrSmart = 0xBCBC, Charger = 0x0000, SpyBat = 0x0003 };
-        public enum TipoComando : byte {
+        public enum TipoComando : byte { 
+            Start = 0x0F,  
+            Strobe = 0xFF, 
+            Stop = 0xF0,
 
-            CMD_NOTHING = 0x00,
-            CMD_UART_HOST_CONNECTED = 0x01,
-            CMD_READ_CYCLE_PROG = 0x02,
-            CMD_READ_ID_CYCLE_CRG = 0x03,
-            CMD_READ_CYCLE_CRG = 0x04,
-            CMD_PROG_CYCLE_CRG = 0x05,
+            ReadRTC = 0xD3, 
+            UpdateRTC = 0xD2, 
+            FirmwareUpdate = 0xD5,
+            PrimaConnessione = 0x01,
+            CicloProgrammato = 0x02,
+            CicliCarica = 0x03,
+            DettagliCiclo = 0x04,
+            ProgrammazioneCiclo = 0x05,
+            ACK = 0x44,
+            NACK = 0x45,
+            SB_Sstart = 0x17,
+            SB_Strobe = 0x1B,
+            SB_Stop = 0x1D,
+            SB_DatiIniziali = 0x1F,
+            SB_R_DatiCliente = 0x20,
+            SB_R_Programmazione = 0x21,
+            SB_W_DatiCliente = 0x22,
+            SB_W_Programmazione = 0x23,
+            SB_R_CicloLungo = 0x25,
+            SB_R_CicloBreve = 0x26,
+            SB_R_Variabili = 0x27,
+            SB_CancellaInteraMemoria = 0x28,
+            SB_Cancella4K = 0x2E,
+            SB_R_LeggiMemoria = 0x33,
+            SB_W_ScriviMemoria = 0x35,
+            SB_R_DumpMemoria = 0x39,
+            SB_UpdateRTC = 0x47,
+            SB_ReadRTC = 0x48,
+            SB_Cal_Enable = 0x3B,
+            SB_Cal_InvioDato = 0x3E,
+            SB_Cal_LetturaGain = 0x3F,
+            SB_R_BootloaderInfo = 0x51, // stesso per ll
+            SB_W_FirmwareUpdate = 0x53, // stesso per ll
+            SB_W_FirmwareData =  0x57,  // stesso per ll
+            SB_W_FirmwareSelect = 0x58, // stesso per ll
+            SB_W_BLON = 0x5B,
+            SB_R_APPCHECK = 0x5D,
+            SB_W_RESETSCHEDA = 0X5F,
+            BREAK = 0x1C,
+            SB_ACK = 0x6C,
+            SB_ACK_PKG = 0x6D,
+            SB_NACK = 0x71,
+            SB_W_MemProgrammed = 0x74,
+            SB_W_chgst_Call = 0x80,
 
-            CMD_WRITE_TEST_H16 = 0x16,
-            CMD_CONNECT = 0x17,
-            CMD_STROBE = 0x1B,
-            CMD_BREAK = 0x1C,
-            CMD_DISCONNECT = 0x1D,
-            CMD_LED_RGB = 0x1E,
-            CMD_READ_INITIAL_PAR = 0x1F,
+            SB_R_ParametriLettura = 0x4F,
+            SB_W_ParametriLettura = 0x4E,
 
-            CMD_READ_CLIENT_DATA = 0x20,
-            CMD_READ_PROG_DATA = 0x21,
-            CMD_WRITE_CLIENT_DATA = 0x22,
-            CMD_PROGRAM_SPYBATT = 0x23,
-            CMD_READ_LT_MEMORY = 0x25,
-            CMD_READ_ST_MEMORY = 0x26,
-            CMD_READ_VARIABLE = 0x27,
-            CMD_ERASE_DATA_MEMORY = 0x28,
-            CMD_CLEAR_DISPLAY = 0x2D,
-            CMD_ERASE_4K_MEM = 0x2E,
-            CMD_READ_MEMORY = 0x33,
-            CMD_WRITE_MEMORY = 0x35,
-            CMD_READ_ALL_MEMORY = 0x39,
-            CMD_CALIB_ON_OFF = 0x3B,
-            CMD_CALIB_PARAM = 0x3E,
-            CMD_READ_VAL_CALIB = 0x3F,
+            SB_R_ParametriSIG60 = 0x7E,
+            SB_W_ParametriSIG60 = 0x7D,
 
-            CMD_UPDATE_RTC = 0x47,
-            CMD_READ_RTC = 0x48,
-            CMD_IMAGE_RX_START = 0x4B,
-            CMD_IMAGE_RX_STOP = 0x4C,
-            CMD_RX_VARIABLE = 0x4D,
-            CMD_SEND_PARAM = 0x4E,
-            CMD_READ_PARAM = 0x4F,
+            DI_LedRGB = 0x1E,
+            DI_Stato = 0xE1,
+            DI_ResetBoard = 0x5F,
+            DI_CancellaInteraMemoria = 0x3A,
+            DI_Cancella4K = 0x24,
+            DI_R_LeggiMemoria = 0x3C,
+            DI_W_ScriviMemoria = 0xC3,
+            DI_W_ScriviVariabile = 0xC4,
+            DI_W_SetRTC = 0xD2,
+            DI_W_SalvaImmagineMemoria = 0x4B,
+            DI_W_SalvaSchermataMemoria = 0xB4,
 
-            CMD_INFO_BL = 0x51,  
-            CMD_FW_UPLOAD_MSP = 0x53,  
-            CMD_FW_UPLOAD_TMS = 0x54, 
-
-            CMD_FW_DATA_SEND = 0x57,   
-            CMD_FW_UPDATE = 0x58,
-            CMD_DRAW_IMAGE = 0x5A,
-            CMD_RESET_BOOT = 0x5B,
-            CMD_CTRL_APP = 0x5D,
-            CMD_RESET_BOARD = 0X5F,
-            CMD_MODE_STOP_LT = 0x63,
-
-            CMD_UART_SWITCH_BDRATE = 0x73,
-            CMD_MEM_PROGRAMMED = 0x74,
-            CMD_SIG60_SETTING = 0x7D,
-            CMD_SIG60_READ_SETTING = 0x7E,
-            CMD_CHRG_STRATEGY = 0x80,
-            CMD_SIG60_PROXY = 0x82,
-            CMD_SCROLL_SCREEN = 0x94,
-            CMD_DRAW_SCREEN = 0x96,
-            CMD_DRAW_LINE = 0xA5,
-            CMD_BACKLIGHT = 0xB3,
-            CMD_SCREEN_RX_START = 0xB4,
-            CMD_STATE_DEVICE = 0xE1,
-            CMD_BUSY = 0xE2,
-
-
-            ACK_PACKET = 0x6C,
-            EVENT_MEM_CODE = 0x6D,
-            NACK_PACKET = 0x71,
-
-
+            DI_CancellaDisplay = 0x2D,
+            DI_Backlight = 0xB3,
+            DI_DrawLine = 0xA5,
+            DI_MostraImmagine = 0x5A,
+            DI_MostraSchermata = 0x96,
+            DI_ScrollSchermate = 0x94,
+            DI_SwitchBaudRate = 0x74,
 
 
-
-            // Start = 0x0F,  obsoleto, -> CMD_CONNECT
-            // Strobe = 0xFF, 
-            // Stop = 0xF0,
-            //ReadRTC = 0xD3, 
-            //UpdateRTC = 0xD2, 
-            //FirmwareUpdate = 0xD5,
-            //ACK = 0x44,
-            //NACK = 0x45,
-            //BREAK = 0x1C,
-            // CMD_RESET_BOARD = 0x5F,
-            // DI_CancellaInteraMemoria = 0x3A, --> comando rimosso
-            // DI_Cancella4K = 0x24,       --> rimosso -->  0x2E
-            // DI_R_LeggiMemoria = 0x3C,   --> rimosso -->  0x33
-            // DI_W_ScriviMemoria = 0xC3,  --> rimosso -->  0x35
-            // DI_W_ScriviVariabile = 0xC4,--> rimosso -->  0x4D
-            // DI_W_SetRTC = 0xD2,
-            //LL_CancellaInteraMemoria = 0x29,
-            //LL_Cancella4K = 0x2F,
-            //LL_R_LeggiMemoria = 0x34,
-            //LL_W_ScriviMemoria = 0x36,
-            //LL_R_DumpMemoria = 0x37,
-            
+            LL_SIG60_PROXY = 0x81,
+            LL_CancellaInteraMemoria = 0x29,
+            LL_Cancella4K = 0x2F,
+            LL_R_LeggiMemoria = 0x34,
+            LL_W_ScriviMemoria = 0x36,
+            LL_R_DumpMemoria = 0x37,
+            LL_W_FineCarica = 0x63,
 
         };
 
@@ -326,7 +310,7 @@ namespace ChargerLogic
                 // ora in base al comando cambio faccio lettura:
                 switch (_comando)
                 {
-                    case (byte)TipoComando.ACK_PACKET:
+                    case (byte)TipoComando.ACK:
                    // case (byte)TipoComando.SB_ACK:
 
                         _startPos = 23;
@@ -348,41 +332,41 @@ namespace ChargerLogic
                         { return EsitoRisposta.BadCRC; }
 
                         break;
-                    case (byte)TipoComando.NACK_PACKET:
+                    case (byte)TipoComando.NACK:
+                  //  case (byte)TipoComando.SB_NACK:
                         _crc = 0;
                         break;
 
-                    case (byte)TipoComando.CMD_UART_HOST_CONNECTED:
+                    case (byte)TipoComando.PrimaConnessione:
+                        _endPos = _messaggio.Length;
+                        _startPos = _endPos - 6;
+
+                        if (_messaggio[_startPos] != serENDPAC)
                         {
-                            _endPos = _messaggio.Length;
-                            _startPos = _endPos - 6;
-
-                            if (_messaggio[_startPos] != serENDPAC)
-                            {
-                                return EsitoRisposta.NonRiconosciuto;
-                            }
-                            _buffArray = new byte[_startPos - 1];
-
-                            // controllo CRC
-                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
-                            _startPos++;
-                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                            _tempShort = (ushort)(_ret);
-                            _startPos += 2;
-                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                            _tempShort = (ushort)((_tempShort << 8) + _ret);
-                            _crc = codCrc.ComputeChecksum(_buffArray);
-
-                            if (_crc != _tempShort)
-                            { return EsitoRisposta.BadCRC; }
-
-                            // ora leggo la parte dati
-                            Intestazione = new comandoIniziale();
-                            _buffArray = new byte[(_endPos - 29)];
-                            Array.Copy(_messaggio, 23, _buffArray, 0, _endPos - 29);
-                            _risposta = Intestazione.analizzaMessaggio(_buffArray);
-                            if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
+                            return EsitoRisposta.NonRiconosciuto;
                         }
+                        _buffArray = new byte[_startPos - 1];
+
+                        // controllo CRC
+                        Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                        _startPos++ ;
+                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                        _tempShort = (ushort)(_ret);
+                        _startPos += 2;
+                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                        _tempShort = (ushort)((_tempShort << 8) + _ret);
+                        _crc = codCrc.ComputeChecksum(_buffArray);
+
+                        if (_crc != _tempShort)
+                        { return EsitoRisposta.BadCRC; }
+
+                        // ora leggo la parte dati
+                        Intestazione = new comandoIniziale();
+                        _buffArray = new byte[(_endPos-29)];
+                        Array.Copy(_messaggio, 23, _buffArray, 0, _endPos-29);
+                        _risposta = Intestazione.analizzaMessaggio(_buffArray);
+                        if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
+
                         break;
 
                     case 0x99: //ciclo attuale
@@ -417,7 +401,7 @@ namespace ChargerLogic
 
                         break;
 
-                    case (byte)TipoComando.CMD_READ_ID_CYCLE_CRG: //id cicli - 0x03
+                    case 0x03: //id cicli
                         _endPos = _messaggio.Length;
                         _startPos = _endPos - 6;
 
@@ -478,7 +462,7 @@ namespace ChargerLogic
 
                         break;
 
-                    case (byte)TipoComando.CMD_READ_CYCLE_PROG:
+                    case (byte)TipoComando.CicloProgrammato:
                         _endPos = _messaggio.Length;
                         _startPos = _endPos - 6;
 
@@ -510,7 +494,7 @@ namespace ChargerLogic
 
                         break;
 
-                    case (byte)TipoComando.CMD_READ_VARIABLE:
+                    case (byte)TipoComando.SB_R_Variabili:
                         _endPos = _messaggio.Length;
                         _startPos = _endPos - 6;
 
@@ -541,7 +525,7 @@ namespace ChargerLogic
                         if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
                         break;
 
-                    case (byte)TipoComando.CMD_SIG60_PROXY:
+                    case (byte)TipoComando.LL_SIG60_PROXY:
                         _endPos = _messaggio.Length;
                         _startPos = _endPos - 6;
 
@@ -630,7 +614,7 @@ namespace ChargerLogic
             return ComponiMessaggio(_vuoto);
         }
 
-        public ushort ComponiMessaggio(byte[] _corpoMessaggio, TipoDispositivo Device = TipoDispositivo.PcOrSmart, bool AddressZero = true)
+        public ushort ComponiMessaggio(byte[] _corpoMessaggio)
         {
             ushort _esito = 0;
             ushort _dispositivo;
@@ -647,21 +631,13 @@ namespace ChargerLogic
                 //serial
                 for (int i = 0; i <= 7; i++)
                 {
-                    if (AddressZero)
-                    {
-                        msb = 0x30;
-                        lsb = 0x30;
-                    }
-                    else
-                    {
-                        splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
-                    }
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
                     _comandoBase[(i * 2)] = msb;
                     _comandoBase[(i * 2) + 1] = lsb;
                 }
-
                 //dispositivo
-                _dispositivo = (ushort)(Device);
+
+                _dispositivo = (ushort)(Dispositivo);
                 splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
 
                 splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
@@ -960,7 +936,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.CMD_READ_CYCLE_CRG);
+                _comando = (byte)(TipoComando.DettagliCiclo);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1058,7 +1034,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.CMD_PROG_CYCLE_CRG);
+                _comando = (byte)(TipoComando.ProgrammazioneCiclo);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1198,7 +1174,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.CMD_READ_MEMORY);
+                _comando = (byte)(TipoComando.LL_R_LeggiMemoria);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1308,7 +1284,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.CMD_WRITE_MEMORY);
+                _comando = (byte)(TipoComando.LL_W_ScriviMemoria);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1440,7 +1416,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.CMD_ERASE_4K_MEM);
+                _comando = (byte)(TipoComando.LL_Cancella4K);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1554,7 +1530,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.CMD_FW_UPLOAD_TMS);
+                _comando = (byte)(TipoComando.SB_W_FirmwareUpdate);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1683,7 +1659,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.CMD_FW_DATA_SEND);
+                _comando = (byte)(TipoComando.SB_W_FirmwareData);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

@@ -43,9 +43,12 @@ namespace ChargerLogic
 
                 if (ApparatoConnesso)
                 {
+                    ControllaAttesa(UltimaScrittura);
+
+
                     // Eseguo solo se la connessione all'apparato è attiva
                     _mS.variabiliScheda = new MessaggioSpyBatt.VariabiliSpybatt();
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_Variabili;
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_READ_VARIABLE;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
                     skipHead = true;
@@ -98,6 +101,9 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
+
+                ControllaAttesa(UltimaScrittura);
+
                 //
                 //                _idCorrente = IdApparato;
                 //                
@@ -107,7 +113,7 @@ namespace ChargerLogic
                 {
                     // Eseguo solo se la connessione all'apparato è attiva
                     _mS.ParametriGenerali = new MessaggioSpyBatt.ParametriSpybatt();
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_ParametriLettura;
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_READ_PARAM;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
                     skipHead = true;
@@ -149,6 +155,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito = false;
+
                 byte[] _dati = new byte[1];
                 //
                 //                _idCorrente = IdApparato;
@@ -159,7 +166,9 @@ namespace ChargerLogic
                     // Eseguo solo se la connessione all'apparato è attiva
                     //_mS.ParametriGenerali = new MessaggioSpyBatt.ParametriSpybatt();
 
-                    _mS.Comando = MessaggioSpyBatt.TipoComando.SB_R_ParametriSIG60;
+                    ControllaAttesa(UltimaScrittura);
+
+                    _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_SIG60_READ_SETTING;
                     _mS.StatoTrxOC = new MessaggioSpyBatt.StatoSig60();
                     if (ResetCount)
                         _mS.ReserCounterOC = 0xF0;

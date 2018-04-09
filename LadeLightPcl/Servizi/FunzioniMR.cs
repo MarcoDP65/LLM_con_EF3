@@ -738,6 +738,10 @@ namespace Utility
         {
             try
             {
+                if (Testo == null)
+                {
+                    return "";
+                }
                 if (Testo.Length <= Caratteri) return Testo;
                 else return Testo.Substring(0, Caratteri);
             }
@@ -1401,15 +1405,21 @@ namespace Utility
 
             try
             {
-                if (Posizione < Testo.Length)
-                {
-                    _tempbyte = (byte)Testo[Posizione];
-                }
-                else
+                if (Testo == null)
                 {
                     _tempbyte = valoreNullo;
                 }
-
+                else
+                {
+                    if (Posizione < Testo.Length)
+                    {
+                        _tempbyte = (byte)Testo[Posizione];
+                    }
+                    else
+                    {
+                        _tempbyte = valoreNullo;
+                    }
+                }
                 return _tempbyte;
             }
             catch (Exception Ex)

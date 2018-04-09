@@ -366,7 +366,11 @@ namespace MoriData
         }
         public byte BatteryType
         {
-            get { return _sbpr.BatteryType; }
+            get
+            {
+                if (_sbpr != null) return _sbpr.BatteryType;
+                return 0x00;
+            }
             set
             {
                 _sbpr.BatteryType = value;

@@ -770,7 +770,7 @@ namespace PannelloCharger
                 _formCorrente.logiche = logiche;
                 _formCorrente.Scanner = DispositiviUSB;
                 _formCorrente.ListaPorte = DispositiviUSB.ListaPorte;
-                _formCorrente.MostraLista();
+                _formCorrente.MostraListaUsb();
                 _formCorrente.Show();
 
 
@@ -781,6 +781,56 @@ namespace PannelloCharger
                 Log.Error("frmMain: " + Ex.Message);
             }
         }
+
+        private void ApriSelettoreDevicesWless()
+        {
+            frmSelettoreDevice _formCorrente;
+            try
+            {
+                bool _formPresente = false;
+
+                _formCorrente = new frmSelettoreDevice();
+//              int _numApparati = DispositiviUSB.NumDevSpyBatt + DispositiviUSB.NumDevLadeLight;
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmSelettoreDevice))
+                    {
+                        _formCorrente = (frmSelettoreDevice)form;
+                        _formPresente = true;
+                        break;
+                    }
+                }
+
+                if (!_formPresente)
+                {
+                    _formCorrente = new frmSelettoreDevice(ref varGlobali, elementiComuni.TipoConnessione.Bluetooth);
+                    _formCorrente.MdiParent = this;
+                    _formCorrente.StartPosition = FormStartPosition.CenterParent;
+                }
+
+                // frmSelettoreSpyBatt ArchivioCorrente = new frmSelettoreSpyBatt(ref varGlobali, logiche);
+                //ArchivioCorrente.MostraLista();
+                //_formCorrente.varGlobali = varGlobali;
+
+                _formCorrente.logiche = logiche;
+                //_formCorrente.Scanner = DispositiviUSB;
+                //_formCorrente.ListaPorte = DispositiviUSB.ListaPorte;
+                //_formCorrente.MostraListaUsb();
+
+               
+                _formCorrente.Show();
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain: " + Ex.Message);
+            }
+        }
+
+
 
         private void tstBtnRefresh_Click(object sender, EventArgs e)
         {
@@ -1195,12 +1245,51 @@ namespace PannelloCharger
 
         private void tstBtnCercaWireless_Click(object sender, EventArgs e)
         {
-
+            sbWirelessToolStripMenuItem_Click(sender, e);
         }
 
         private void sbWirelessToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+
+                    ApriSelettoreDevicesWless();
+
+
+/*
+            DispositiviUSB = new ScannerUSB();
+
+
+                if (DispositiviUSB.cercaPorte())
+                {
+                    if (DispositiviUSB.NumDevSpyBatt > 0)
+                    {
+                        DialogResult risposta = MessageBox.Show(StringheComuni.TrovatoDispositivo + " SPY-BATT " + StringheComuni.CollegatoUSB + " \n " + StringheComuni.AproCollegamento + " ? ", "SPY-BATT", MessageBoxButtons.YesNo);
+                        //DialogResult risposta = MessageBox.Show("Trovato dispositivo SPY-BATT collegato alla porta USB \n Apro il collegamento ? ", "SPY-BATT", MessageBoxButtons.YesNo)//;
+
+                        if (risposta == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            varGlobali.usbSpyBattSerNum = DispositiviUSB.SpyBattUsbSerialNo;
+                            varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
+                            ApriSpyBatt();
+                            return;
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    DialogResult risposta = MessageBox.Show(StringheComuni.NoDevice, "LADE LIGHT", MessageBoxButtons.OK);
+                }
+*/
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain: " + Ex.Message);
+            }
         }
     }
 

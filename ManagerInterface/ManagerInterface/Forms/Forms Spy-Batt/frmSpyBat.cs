@@ -203,7 +203,7 @@ namespace PannelloCharger
                 _apparatoPresente = SerialeCollegata;
                 // se l'apparato è presente e le configurazioni su scheda superano quelle in mem, aggiorno
                 if (_apparatoPresente)
-                    if (_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
+                    if ( true ) //_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
                     {
 
                         RicaricaProgrammazioni();
@@ -1557,7 +1557,7 @@ namespace PannelloCharger
                 Log.Debug("RicaricaProgrammazioni: ");
 
                 // 18/11/15 - Prima di ricaricare la lista, ricarico la restata per leggere il contatore aggiornato
-                _esito = _sb.CaricaTestata();
+                //_esito = _sb.CaricaTestata();
 
 
                 _esito = _sb.RicaricaProgrammazioni(1, (ushort)_sb.sbData.ProgramCount, _logiche.dbDati.connessione, true);
@@ -7051,9 +7051,6 @@ namespace PannelloCharger
                 }
 
 
-
-
-
                 oxyGraficoAnalisi.Axes.Add(AsseCat);
 
 
@@ -7082,7 +7079,7 @@ namespace PannelloCharger
             try
             {
                 string _Flag;
-                string _titoloGrafico = "";
+                //string _titoloGrafico = "";
                 string _modelloIntervallo;
                 double _fattoreCorrente = 0;
                 double _dtInSecondi;

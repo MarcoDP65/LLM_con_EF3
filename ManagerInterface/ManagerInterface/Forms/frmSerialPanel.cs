@@ -325,7 +325,7 @@ namespace PannelloCharger
             if (ComPort.IsOpen == false) return;
 
             sm.Dispositivo = SerialMessage.TipoDispositivo.Charger;
-            sm.Comando = SerialMessage.TipoComando.Start;
+            sm.Comando = SerialMessage.TipoComando.CMD_CONNECT;
             byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
             sm.SerialNumber = Seriale;
 
@@ -359,7 +359,7 @@ namespace PannelloCharger
                 byte msb = (byte)(0);
 
                 sm.Dispositivo = SerialMessage.TipoDispositivo.Charger;
-                sm.Comando = SerialMessage.TipoComando.ReadRTC;
+                sm.Comando = SerialMessage.TipoComando.CMD_READ_RTC;
                 byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
                 sm.SerialNumber = Seriale;
 

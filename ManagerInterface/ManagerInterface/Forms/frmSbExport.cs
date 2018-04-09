@@ -399,12 +399,36 @@ namespace PannelloCharger
                         Log.Debug("Inizio Import");
                         string _fileImport = File.ReadAllText(filePath);
                         Log.Debug("file caricato: len = " + _fileImport.Length.ToString());
-                        //sbDataModel _importData;
-                        _Immagine = JsonConvert.DeserializeObject<ImageDump>(_fileImport);
-                        _NuovaIntestazioneSb = _Immagine.IntestazioneSb;
-                        Log.Debug("file convertito");
-                        _sb.sbData = _Immagine.Testata;
 
+                        //Ora verifico se il dump è il binario puro o è la classe
+                        //if ( _fileImport.Substring(0,1) == "{")
+                        {
+                            // E' una classe serializzata
+                            //sbDataModel _importData;
+                            _Immagine = JsonConvert.DeserializeObject<ImageDump>(_fileImport);
+                            _NuovaIntestazioneSb = _Immagine.IntestazioneSb;
+                            Log.Debug("file convertito");
+                            _sb.sbData = _Immagine.Testata;
+
+                        }
+                        /*
+                        else
+                        {
+                            // dovrebbe essere l'hexdump puro
+                            if (_fileImport.Length != 4194304)
+                            {
+                                // Lunghezza errata, esco
+                                //return false;
+                            }
+
+                            _Immagine =  new ImageDump();
+                            _Immagine.DataBuffer = new byte[_fileImport.Length];
+                            _Immagine.DataBuffer = Encoding.ASCII.GetBytes(_fileImport);
+                            _NuovaIntestazioneSb = new MessaggioSpyBatt.comandoInizialeSB();
+                            _sb.sbData = new spybattData();
+
+                        }
+                        */
                         //_sb.ModelloDati = _importData;
                         //_sb.importaModello(_logiche.dbDati.connessione, true, true, true, true, true);
                         MostraTestataHexDump();
@@ -765,6 +789,14 @@ namespace PannelloCharger
                         if (importaHexdump())
                         {
                             _NuovaIntestazioneSb = _Immagine.IntestazioneSb;
+
+                            if (false) //_Immagine.Testata == null)
+                            {
+                                _Immagine.Testata = new spybattData();
+                                _Immagine.Testata.Id = "anonimo";
+
+                            }
+
                             _sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true,true, txtNuovoFile.Text+"_decoded");
 
                             //MostraTestataHexDump();

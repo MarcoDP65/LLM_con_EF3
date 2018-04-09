@@ -398,7 +398,7 @@ namespace ChargerLogic
                 FirmwareBlock.Release = FirmwareData.Release;
                 FirmwareBlock.ReleaseDate = FirmwareData.ReleaseDate;
 
-                if ((FirmwareData.Release.Substring(0,2) != "1.") && (FirmwareData.Release.Substring(0, 2) != "2."))
+                if ((FirmwareData.Release.Substring(0,2) != "1.") && (FirmwareData.Release.Substring(0, 2) != "2.") && (FirmwareData.Release.Substring(0, 2) != "3."))
                 {
                     _esito = ExitCode.ErroreGenerico;
                     return _esito;
@@ -844,7 +844,6 @@ namespace ChargerLogic
                         // Livello 4 non pubblico;
                         // Valido con bootloader 1.01.xx
                         return (_blv == 1);
-                       // return true;
 
                     case "2.01":
                     case "2.02":
@@ -858,11 +857,14 @@ namespace ChargerLogic
                         // Valido con bootloader 1.02.xx
                         return (_blv == 2);
                     //return true;
+
                     case "2.04":
+                    case "3.00":
+                    case "3.01":
                         // Livello 6/7;
                         // Valido con bootloader 1.02.xx
                         return (_blv == 2);
-                    //return true;
+
 
                     default:
                         return false;

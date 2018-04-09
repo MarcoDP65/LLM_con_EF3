@@ -202,6 +202,7 @@ namespace ChargerLogic
 
                     case (byte)TipoComando.CMD_READ_INITIAL_PAR:  //risposta parametri iniziali
                         {
+                            Log.Warn("--- CMD_READ_INITIAL_PAR --- CMD_READ_INITIAL_PAR ---");
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
 
@@ -234,7 +235,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_CicloLungo:
+                    case (byte)TipoComando.CMD_READ_LT_MEMORY:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -268,7 +269,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_CicloBreve:
+                    case (byte)TipoComando.CMD_READ_ST_MEMORY:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -302,7 +303,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_DatiCliente:
+                    case (byte)TipoComando.CMD_READ_CLIENT_DATA:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -336,7 +337,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_Programmazione:  // Lettura dati programmazione
+                    case (byte)TipoComando.CMD_READ_PROG_DATA:  // Lettura dati programmazione
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -370,7 +371,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_W_Programmazione:  // Lettura dell'esito della scrittura programmazionme                         
+                    case (byte)TipoComando.CMD_PROGRAM_SPYBATT:  // Lettura dell'esito della scrittura programmazionme                         
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -410,7 +411,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_ParametriLettura:  // Lettura dati programmazione
+                    case (byte)TipoComando.CMD_READ_PARAM:  // Lettura dati programmazione
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -561,7 +562,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_Variabili:
+                    case (byte)TipoComando.CMD_READ_VARIABLE:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -594,7 +595,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_Cal_LetturaGain:
+                    case (byte)TipoComando.CMD_READ_VAL_CALIB:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -660,7 +661,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_ParametriSIG60:  // Lettura impostazioni SIG60
+                    case (byte)TipoComando.CMD_SIG60_READ_SETTING:  // Lettura impostazioni SIG60
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -779,7 +780,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_ReadRTC: // 0xD3: // read RTC
+                    case (byte)TipoComando.CMD_READ_RTC: // 0xD3: // read RTC
                         {
                             _startPos = 39;
 
@@ -812,7 +813,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.LL_W_FineCarica: // 0xD3: // read RTC
+                    case (byte)TipoComando.CMD_MODE_STOP_LT: // 0xD3: // read RTC
                         {
                             _startPos = 39;
 
@@ -847,7 +848,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_W_chgst_Call: // messaggio dati strategia
+                    case (byte)TipoComando.CMD_CHRG_STRATEGY: // messaggio dati strategia
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -1002,7 +1003,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_R_CicloLungo);
+                _comando = (byte)(TipoComando.CMD_READ_LT_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1099,7 +1100,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_R_CicloBreve);
+                _comando = (byte)(TipoComando.CMD_READ_ST_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1224,7 +1225,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_DatiCliente);
+                _comando = (byte)(TipoComando.CMD_WRITE_CLIENT_DATA);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1762,7 +1763,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_Programmazione);
+                _comando = (byte)(TipoComando.CMD_PROGRAM_SPYBATT);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3025,7 +3026,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_Programmazione);
+                _comando = (byte)(TipoComando.CMD_PROGRAM_SPYBATT);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3207,7 +3208,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_R_Programmazione);
+                _comando = (byte)(TipoComando.CMD_READ_PROG_DATA);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3299,7 +3300,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_Cal_InvioDato);
+                _comando = (byte)(TipoComando.CMD_CALIB_PARAM);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3501,7 +3502,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_chgst_Call);
+                _comando = (byte)(TipoComando.CMD_CHRG_STRATEGY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3602,7 +3603,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_chgst_Call);
+                _comando = (byte)(TipoComando.CMD_CHRG_STRATEGY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3701,7 +3702,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_chgst_Call);
+                _comando = (byte)(TipoComando.CMD_CHRG_STRATEGY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3793,7 +3794,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.SB_W_ParametriLettura);
+                _comando = (byte)(TipoComando.CMD_READ_PARAM);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -3905,7 +3906,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
                 //Comando
-                _comando = (byte)(TipoComando.SB_W_ParametriSIG60);
+                _comando = (byte)(TipoComando.CMD_SIG60_SETTING);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

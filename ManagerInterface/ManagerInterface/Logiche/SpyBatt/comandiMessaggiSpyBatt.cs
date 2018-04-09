@@ -58,194 +58,370 @@ namespace ChargerLogic
                 // entro nel loop e aspetto 
                 esito = null;
 
-                if (_parametri.CanaleSpyBat == parametriSistema.CanaleDispositivo.USB)
+                switch(_parametri.CanaleSpyBat)
                 {
-                    // mi metto in ascolto sul canale USB fino a EOT o a timeout 
-                    // aspetto 10 mS 
-                    // System.Threading.Thread.Sleep(100);
-
-                    // Check the amount of data available to read
-                    // In this case we know how much data we are expecting, 
-                    // so wait until we have all of the bytes we have sent.
-                    uint numBytesAvailable = 0;
-                    uint numTempToRead = 0;
-                    FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
-
-                    int _risposteRicevute = 0;
-                    int _ackRicevuti = 0;
-                    int _breakRicevuti = 0;
-                    SerialMessage.TipoRisposta _msgRicevuto;
-
-                    Log.Debug("Inizio Ascolto " + timeout.ToString() + " - " + risposteAttese.ToString() + " - " + aspettaAck.ToString());
-
-                    bool _inAttesa = true;
-
-                    _startFunzione = DateTime.Now;
-                    _startRicezione = DateTime.Now;
-                    do
-                    {
-                        // verifico se ci sono dati
-                        numBytesAvailable = 0;
-                        ftStatus = _parametri.usbSpyBatt.GetRxBytesAvailable(ref numBytesAvailable);
-                        if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                    case parametriSistema.CanaleDispositivo.USB:
                         {
-                            // Errore nella lettura dati disponibili
-                            Log.Warn("Failed to get number of bytes available to read (error " + ftStatus.ToString() + ")");
-                        }
-                        if (numBytesAvailable > 0)
-                        {
-                            // Now that we have the amount of data we want available, read it
-                            byte[] readData = new byte[numBytesAvailable];
-                            uint numBytesRead = 0;
+                            // mi metto in ascolto sul canale USB fino a EOT o a timeout 
+                            // aspetto 10 mS 
+                            // System.Threading.Thread.Sleep(100);
 
-                            // Note that the Read method is overloaded, so can read string or byte array data
-                            ftStatus = _parametri.usbSpyBatt.Read(readData, numBytesAvailable, ref numBytesRead);
-                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                            // Check the amount of data available to read
+                            // In this case we know how much data we are expecting, 
+                            // so wait until we have all of the bytes we have sent.
+                            uint numBytesAvailable = 0;
+                            uint numTempToRead = 0;
+                            FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
+
+                            int _risposteRicevute = 0;
+                            int _ackRicevuti = 0;
+                            int _breakRicevuti = 0;
+                            SerialMessage.TipoRisposta _msgRicevuto;
+
+                            Log.Debug("Inizio Ascolto su USB: timeout = " + timeout.ToString() + " - Risposte attese = " + risposteAttese.ToString() + " - Attesa ACK = " + aspettaAck.ToString());
+
+                            bool _inAttesa = true;
+
+                            _startFunzione = DateTime.Now;
+                            _startRicezione = DateTime.Now;
+                            do
                             {
-                                // Wait for a key press
-                                Log.Warn("Failed to read data (error " + ftStatus.ToString() + ")");
-                                //return false;
-                            }
-
-                            Log.Debug("Dati Ricevuti SB (USB) " + numBytesRead.ToString());
-                            for (int _i = 0; _i < numBytesRead; _i++)
-                            {
-
-                                codaDatiSER.Enqueue(readData[_i]);
-
-
-                                if (readData[_i] == SerialMessage.serETX)
+                                // verifico se ci sono dati
+                                numBytesAvailable = 0;
+                                ftStatus = _parametri.usbSpyBatt.GetRxBytesAvailable(ref numBytesAvailable);
+                                if (ftStatus != FTDI.FT_STATUS.FT_OK)
                                 {
-                                    Log.Debug("Trovato Etx (USB), faccio ripartire il timeout");
-                                    _trovatoETX = true;
-                                    Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
-                                    _startFunzione = DateTime.Now;
+                                    // Errore nella lettura dati disponibili
+                                    Log.Warn("Failed to get number of bytes available to read (error " + ftStatus.ToString() + ")");
+                                }
+                                if (numBytesAvailable > 0)
+                                {
+                                    // Now that we have the amount of data we want available, read it
+                                    byte[] readData = new byte[numBytesAvailable];
+                                    uint numBytesRead = 0;
+
+                                    // Note that the Read method is overloaded, so can read string or byte array data
+                                    ftStatus = _parametri.usbSpyBatt.Read(readData, numBytesAvailable, ref numBytesRead);
+                                    if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                                    {
+                                        // Wait for a key press
+                                        Log.Warn("Failed to read data (error " + ftStatus.ToString() + ")");
+                                        //return false;
+                                    }
+
+                                    Log.Debug("Dati Ricevuti SB (USB) " + numBytesRead.ToString());
+                                    for (int _i = 0; _i < numBytesRead; _i++)
+                                    {
+
+                                        codaDatiSER.Enqueue(readData[_i]);
+
+
+                                        if (readData[_i] == SerialMessage.serETX)
+                                        {
+                                            Log.Debug("Trovato Etx (USB), faccio ripartire il timeout");
+                                            _trovatoETX = true;
+                                            Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
+                                            _startFunzione = DateTime.Now;
+                                        }
+
+                                        if (_trovatoETX)
+                                        {
+                                            Log.Debug("trovato ETX");
+                                            _msgRicevuto = analizzaCodaSB();
+                                            Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
+
+                                            _trovatoETX = false;
+                                            UltimaScrittura = DateTime.Now;
+                                            switch (_msgRicevuto)
+                                            {
+                                                case SerialMessage.TipoRisposta.Ack:
+                                                    _ackRicevuti++;
+                                                    _ultimaRisposta = SerialMessage.TipoRisposta.Ack;
+                                                    if (aspettaAck && _risposteRicevute >= risposteAttese) _inAttesa = false;
+                                                    break;
+
+                                                case SerialMessage.TipoRisposta.Data:
+                                                    _risposteRicevute++;
+                                                    _ultimaRisposta = SerialMessage.TipoRisposta.Data;
+                                                    if (TipoDati == elementiComuni.tipoMessaggio.DumpMemoria & _risposteRicevute >= risposteAttese - 1)
+                                                    {
+                                                        _richiestaCancellata = true;
+                                                        Log.Warn("Task cancellato al messaggio " + _risposteRicevute.ToString());
+                                                    }
+                                                    // se la gestione eventi è attiva, lancio un evento 
+                                                    if (runAsync == true)
+                                                    {
+                                                        if (Step != null)
+                                                        {
+                                                            int _progress = 0;
+                                                            double _valProgress = 0;
+                                                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                                            _passo.TipoDati = TipoDati;
+                                                            _passo.Eventi = risposteAttese;
+                                                            _passo.Step = _risposteRicevute;
+                                                            _passo.EsecuzioneInterrotta = false;
+                                                            if (risposteAttese > 0)
+                                                            {
+                                                                _valProgress = (_risposteRicevute * 100) / risposteAttese;
+                                                            }
+                                                            _progress = (int)_valProgress;
+                                                            if (_lastProgress != _progress)
+                                                            {
+                                                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                                                Log.Debug("Passo " + _risposteRicevute.ToString());
+                                                                Step(this, _stepEv);
+                                                                _lastProgress = _progress;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    if (_risposteRicevute >= risposteAttese)
+                                                    {
+                                                        _inAttesa = false;
+                                                    }
+                                                    break;
+
+                                                case SerialMessage.TipoRisposta.Break:
+                                                    Log.Debug("Ricevuto BREAK");
+                                                    _ultimaRisposta = SerialMessage.TipoRisposta.Break;
+                                                    _breakRicevuti++;
+                                                    _inAttesa = false;
+                                                    break;
+
+                                                case SerialMessage.TipoRisposta.Nack:
+                                                case SerialMessage.TipoRisposta.NonValido:
+                                                    _ultimaRisposta = _msgRicevuto;
+                                                    _breakRicevuti++;
+                                                    _inAttesa = false;
+                                                    break;
+
+                                            }
+                                        }
+                                    }
+
+                                    //  durata attesa e ricezione blocco
+                                    TimeSpan _millisAttesa = DateTime.Now.Subtract(_startFunzione);
+                                    Log.Debug(" --------------------- Millisecondi: " + _millisAttesa.ToString());
                                 }
 
-                                if (_trovatoETX)
+                                System.Threading.Thread.Sleep(5);
+                                if (raggiuntoTimeout(_startFunzione, timeout))
                                 {
-                                    Log.Debug("trovato ETX");
-                                    _msgRicevuto = analizzaCodaSB();
-                                    Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
+                                    Log.Debug("aspettaRisposta.USB raggiunto Timeout");
+                                    break;
+                                }
+                                // Log.Debug(DateTime.Now.ToShortTimeString());
+                            }
+                            while (_inAttesa);
+                            // se background mode attivo, lancio l'evento di fine elaborazione
+                            if (runAsync == true)
+                            {
+                                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                                TimeSpan _tTrascorso = DateTime.Now.Subtract(_startRicezione);
 
-                                    _trovatoETX = false;
-                                    
-                                    switch (_msgRicevuto)
+                                _esitoBg.EventiPrevisti = risposteAttese;
+                                _esitoBg.UltimoEvento = _risposteRicevute;
+                                _esitoBg.SecondiElaborazione = _tTrascorso.TotalSeconds;
+                                // RunWorkerCompletedEventArgs _esito = new RunWorkerCompletedEventArgs(_esitoBg, null, _richiestaCacellata);
+                                esito = _esitoBg;
+                            }
+
+
+                            return !_inAttesa;
+
+                        }
+
+                    case parametriSistema.CanaleDispositivo.Seriale:
+                        {
+                            int _cicli = 2;
+                            //_rxRisposta = false;
+                            string _logx = "";
+                            System.Threading.Thread.Sleep(200);
+                            do
+                            {
+                                _cicli++;
+                                _logx += "^";
+                                if (_rxRisposta)
+                                {
+                                    _logx += "|";
+                                    Log.Debug(_logx);
+                                    return true;
+                                }
+                                System.Threading.Thread.Sleep(50);
+                            }
+                            while (_rxRisposta == false && (_cicli < (timeout * 10)));
+                            Log.Debug(_logx);
+                            return _rxRisposta;
+                        }
+
+                    case parametriSistema.CanaleDispositivo.BTStream:
+
+                        {
+                            // mi metto in ascolto sulo stream BT fino a EOT o a timeout 
+                            // aspetto 10 mS 
+                            // System.Threading.Thread.Sleep(100);
+
+                            // Check the amount of data available to read
+                            // In this case we know how much data we are expecting, 
+                            // so wait until we have all of the bytes we have sent.
+                            int numBytesAvailable = 0;
+                            int numTempToRead = 0;
+                            int _risposteRicevute = 0;
+                            int _ackRicevuti = 0;
+                            int _breakRicevuti = 0;
+
+                            SerialMessage.TipoRisposta _msgRicevuto;
+
+                            Log.Debug("Inizio Ascolto Wless" + timeout.ToString() + " - " + risposteAttese.ToString() + " - " + aspettaAck.ToString());
+
+                            bool _inAttesa = true;
+
+                            _startFunzione = DateTime.Now;
+                            _startRicezione = DateTime.Now;
+                            byte[] tempdata = new byte[8096];
+                            int BytesCaricati;
+
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                do
+                                {
+                                    // verifico se ci sono dati
+
+                                    BytesCaricati = _parametri.streamSpyBatt.Read(tempdata, 0, tempdata.Length);
+
+                                    if (numBytesAvailable > 0)
                                     {
-                                        case SerialMessage.TipoRisposta.Ack:
-                                            _ackRicevuti++;
-                                            _ultimaRisposta = SerialMessage.TipoRisposta.Ack;
-                                            if (aspettaAck && _risposteRicevute >= risposteAttese) _inAttesa = false;
-                                            break;
 
-                                        case SerialMessage.TipoRisposta.Data:
-                                            _risposteRicevute++;
-                                            _ultimaRisposta = SerialMessage.TipoRisposta.Data;
-                                            if (TipoDati == elementiComuni.tipoMessaggio.DumpMemoria & _risposteRicevute >= risposteAttese - 1)
+                                        Log.Debug("Dati Ricevutiuart Wless " + numBytesAvailable.ToString());
+                                        for (int _i = 0; _i < numBytesAvailable; _i++)
+                                        {
+
+                                            codaDatiSER.Enqueue(tempdata[_i]);
+
+
+                                            if (tempdata[_i] == SerialMessage.serETX)
                                             {
-                                                _richiestaCancellata = true;
-                                                Log.Warn("Task cancellato al messaggio " + _risposteRicevute.ToString());
+                                                Log.Debug("Trovato Etx (USB), faccio ripartire il timeout");
+                                                _trovatoETX = true;
+                                                Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
+                                                _startFunzione = DateTime.Now;
                                             }
-                                            // se la gestione eventi è attiva, lancio un evento 
-                                            if (runAsync == true)
+
+                                            if (_trovatoETX)
                                             {
-                                                if (Step != null)
+                                                Log.Debug("trovato ETX");
+                                                _msgRicevuto = analizzaCodaSB();
+                                                Log.Debug("Dati in coda SB (USB) " + codaDatiSER.Count.ToString());
+
+                                                _trovatoETX = false;
+                                                UltimaScrittura = DateTime.Now;
+                                                switch (_msgRicevuto)
                                                 {
-                                                    int _progress = 0;
-                                                    double _valProgress = 0;
-                                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
-                                                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
-                                                    _passo.TipoDati = TipoDati;
-                                                    _passo.Eventi = risposteAttese;
-                                                    _passo.Step = _risposteRicevute;
-                                                    _passo.EsecuzioneInterrotta = false;
-                                                    if (risposteAttese > 0)
-                                                    {
-                                                        _valProgress = (_risposteRicevute * 100) / risposteAttese;
-                                                    }
-                                                    _progress = (int)_valProgress;
-                                                    if (_lastProgress != _progress)
-                                                    {
-                                                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
-                                                        Log.Debug("Passo " + _risposteRicevute.ToString());
-                                                        Step(this, _stepEv);
-                                                        _lastProgress = _progress;
-                                                    }
+                                                    case SerialMessage.TipoRisposta.Ack:
+                                                        _ackRicevuti++;
+                                                        _ultimaRisposta = SerialMessage.TipoRisposta.Ack;
+                                                        if (aspettaAck && _risposteRicevute >= risposteAttese) _inAttesa = false;
+                                                        break;
+
+                                                    case SerialMessage.TipoRisposta.Data:
+                                                        _risposteRicevute++;
+                                                        _ultimaRisposta = SerialMessage.TipoRisposta.Data;
+                                                        if (TipoDati == elementiComuni.tipoMessaggio.DumpMemoria & _risposteRicevute >= risposteAttese - 1)
+                                                        {
+                                                            _richiestaCancellata = true;
+                                                            Log.Warn("Task cancellato al messaggio " + _risposteRicevute.ToString());
+                                                        }
+                                                        // se la gestione eventi è attiva, lancio un evento 
+                                                        if (runAsync == true)
+                                                        {
+                                                            if (Step != null)
+                                                            {
+                                                                int _progress = 0;
+                                                                double _valProgress = 0;
+                                                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                                                _passo.TipoDati = TipoDati;
+                                                                _passo.Eventi = risposteAttese;
+                                                                _passo.Step = _risposteRicevute;
+                                                                _passo.EsecuzioneInterrotta = false;
+                                                                if (risposteAttese > 0)
+                                                                {
+                                                                    _valProgress = (_risposteRicevute * 100) / risposteAttese;
+                                                                }
+                                                                _progress = (int)_valProgress;
+                                                                if (_lastProgress != _progress)
+                                                                {
+                                                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                                                    Log.Debug("Passo " + _risposteRicevute.ToString());
+                                                                    Step(this, _stepEv);
+                                                                    _lastProgress = _progress;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        if (_risposteRicevute >= risposteAttese)
+                                                        {
+                                                            _inAttesa = false;
+                                                        }
+                                                        break;
+
+                                                    case SerialMessage.TipoRisposta.Break:
+                                                        Log.Debug("Ricevuto BREAK");
+                                                        _ultimaRisposta = SerialMessage.TipoRisposta.Break;
+                                                        _breakRicevuti++;
+                                                        _inAttesa = false;
+                                                        break;
+
+                                                    case SerialMessage.TipoRisposta.Nack:
+                                                    case SerialMessage.TipoRisposta.NonValido:
+                                                        _ultimaRisposta = _msgRicevuto;
+                                                        _breakRicevuti++;
+                                                        _inAttesa = false;
+                                                        break;
+
                                                 }
                                             }
-
-                                            if (_risposteRicevute >= risposteAttese)
-                                            {
-                                                _inAttesa = false;
-                                            }
-                                            break;
-
-                                        case SerialMessage.TipoRisposta.Break:
-                                            Log.Debug("Ricevuto BREAK");
-                                            _ultimaRisposta = SerialMessage.TipoRisposta.Break;
-                                            _breakRicevuti++;
-                                            _inAttesa = false;
-                                            break;
-
-                                        case SerialMessage.TipoRisposta.Nack:
-                                        case SerialMessage.TipoRisposta.NonValido:
-                                            _ultimaRisposta = _msgRicevuto;
-                                            _breakRicevuti++;
-                                            _inAttesa = false;
-                                            break;
-
+                                        }
                                     }
+
+                                    System.Threading.Thread.Sleep(5);
+                                    if (raggiuntoTimeout(_startFunzione, timeout))
+                                    {
+                                        Log.Debug("aspettaRisposta.USB raggiunto Timeout");
+                                        break;
+                                    }
+                                    Log.Debug(DateTime.Now.ToShortTimeString());
                                 }
+                                while (_inAttesa);
+
                             }
+
+     
+                            // se background mode attivo, lancio l'evento di fine elaborazione
+                            if (runAsync == true)
+                            {
+                                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                                TimeSpan _tTrascorso = DateTime.Now.Subtract(_startRicezione);
+
+                                _esitoBg.EventiPrevisti = risposteAttese;
+                                _esitoBg.UltimoEvento = _risposteRicevute;
+                                _esitoBg.SecondiElaborazione = _tTrascorso.TotalSeconds;
+                                // RunWorkerCompletedEventArgs _esito = new RunWorkerCompletedEventArgs(_esitoBg, null, _richiestaCacellata);
+                                esito = _esitoBg;
+                            }
+
+
+                            return !_inAttesa;
+
                         }
 
-                        System.Threading.Thread.Sleep(5);
-                        if (raggiuntoTimeout(_startFunzione, timeout))
-                        {
-                            Log.Debug("aspettaRisposta.USB raggiunto Timeout");
-                            break;
-                        }
-                        Log.Debug(DateTime.Now.ToShortTimeString());
-                    }
-                    while (_inAttesa);
-                    // se background mode attivo, lancio l'evento di fine elaborazione
-                    if (runAsync == true)
-                    {
-                        elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
-                        TimeSpan _tTrascorso = DateTime.Now.Subtract(_startRicezione);
+                    default:
+                        return false;
 
-                        _esitoBg.EventiPrevisti = risposteAttese;
-                        _esitoBg.UltimoEvento = _risposteRicevute;
-                        _esitoBg.SecondiElaborazione = _tTrascorso.TotalSeconds;
-                        // RunWorkerCompletedEventArgs _esito = new RunWorkerCompletedEventArgs(_esitoBg, null, _richiestaCacellata);
-                        esito = _esitoBg;
-                    }
-
-
-                    return !_inAttesa;
                 }
-                else
-                {
-                    int _cicli = 2;
-                    //_rxRisposta = false;
-                    string _logx = "";
-                    System.Threading.Thread.Sleep(200);
-                    do
-                    {
-                        _cicli++;
-                        _logx += "^";
-                        if (_rxRisposta)
-                        {
-                            _logx += "|";
-                            Log.Debug(_logx);
-                            return true;
-                        }
-                        System.Threading.Thread.Sleep(50);
-                    }
-                    while (_rxRisposta == false && (_cicli < (timeout * 10)));
-                    Log.Debug(_logx);
-                    return _rxRisposta;
-                }
+
+                return false;
             }
 
             catch (Exception Ex)

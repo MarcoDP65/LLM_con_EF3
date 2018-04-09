@@ -196,4 +196,16 @@
   <data name="wireless" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wireless.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="KO_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_KO_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="KO_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_KO_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OK_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_ok_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OK_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_ok_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

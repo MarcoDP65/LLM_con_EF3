@@ -33,6 +33,8 @@
             this.btnChiudi = new System.Windows.Forms.Button();
             this.btnConnetti = new System.Windows.Forms.Button();
             this.btnAggiorna = new System.Windows.Forms.Button();
+            this.btnAggiornaBT = new System.Windows.Forms.Button();
+            this.pbRicerca = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.flvwListaDevices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,10 +70,24 @@
             this.btnAggiorna.UseVisualStyleBackColor = true;
             this.btnAggiorna.Click += new System.EventHandler(this.btnAggiorna_Click);
             // 
+            // btnAggiornaBT
+            // 
+            resources.ApplyResources(this.btnAggiornaBT, "btnAggiornaBT");
+            this.btnAggiornaBT.Name = "btnAggiornaBT";
+            this.btnAggiornaBT.UseVisualStyleBackColor = true;
+            this.btnAggiornaBT.Click += new System.EventHandler(this.btnAggiornaBT_Click);
+            // 
+            // pbRicerca
+            // 
+            resources.ApplyResources(this.pbRicerca, "pbRicerca");
+            this.pbRicerca.Name = "pbRicerca";
+            // 
             // frmSelettoreDevice
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pbRicerca);
+            this.Controls.Add(this.btnAggiornaBT);
             this.Controls.Add(this.btnAggiorna);
             this.Controls.Add(this.btnConnetti);
             this.Controls.Add(this.btnChiudi);
@@ -93,5 +109,7 @@
         private System.Windows.Forms.Button btnChiudi;
         private System.Windows.Forms.Button btnConnetti;
         private System.Windows.Forms.Button btnAggiorna;
+        private System.Windows.Forms.Button btnAggiornaBT;
+        private System.Windows.Forms.ProgressBar pbRicerca;
     }
 }

@@ -122,7 +122,7 @@
     <value>12, 12</value>
   </data>
   <data name="flvwListaDevices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 244</value>
+    <value>532, 234</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="flvwListaDevices.TabIndex" type="System.Int32, mscorlib">
@@ -138,7 +138,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flvwListaDevices.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="btnChiudi.Location" type="System.Drawing.Point, System.Drawing">
     <value>426, 274</value>
@@ -162,7 +162,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnChiudi.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="btnConnetti.Location" type="System.Drawing.Point, System.Drawing">
     <value>302, 274</value>
@@ -186,13 +186,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnConnetti.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btnAggiorna.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 274</value>
   </data>
   <data name="btnAggiorna.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 32</value>
+    <value>99, 32</value>
   </data>
   <data name="btnAggiorna.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -210,6 +210,58 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAggiorna.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnAggiornaBT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAggiornaBT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 274</value>
+  </data>
+  <data name="btnAggiornaBT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 32</value>
+  </data>
+  <data name="btnAggiornaBT.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnAggiornaBT.Text" xml:space="preserve">
+    <value>Wireless</value>
+  </data>
+  <data name="&gt;&gt;btnAggiornaBT.Name" xml:space="preserve">
+    <value>btnAggiornaBT</value>
+  </data>
+  <data name="&gt;&gt;btnAggiornaBT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAggiornaBT.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnAggiornaBT.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pbRicerca.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 245</value>
+  </data>
+  <data name="pbRicerca.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 23</value>
+  </data>
+  <data name="pbRicerca.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="pbRicerca.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pbRicerca.Name" xml:space="preserve">
+    <value>pbRicerca</value>
+  </data>
+  <data name="&gt;&gt;pbRicerca.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbRicerca.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pbRicerca.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

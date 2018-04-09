@@ -16,8 +16,9 @@ namespace ChargerLogic
 {
    public class parametriSistema
     {
-        public enum CanaleDispositivo : uint { Seriale = 0x00, USB = 0x01 };
+        public enum CanaleDispositivo : uint { Seriale = 0x00, USB = 0x01 , BTStream = 0x02};
 
+        public Stream streamCorrente;
         public SerialPort serialeCorrente ;
         public FTDI usbCorrente;
 
@@ -25,10 +26,12 @@ namespace ChargerLogic
         public FTDI usbLadeLight;
         public string usbLadeLightSerNum;
 
-
+        public Stream streamSpyBatt;
         public SerialPort serialeSpyBatt;
         public FTDI usbSpyBatt;
         public string usbSpyBattSerNum;
+
+        public DateTime UltimoMessaggio;
       
 
 
@@ -72,6 +75,8 @@ namespace ChargerLogic
                 CaricaImpostazioniDefault();
 
                 InizializzaTipiBatteria();
+
+                UltimoMessaggio = DateTime.Now;
 
                 if (currentCultureValue != "")
                 {
@@ -236,83 +241,106 @@ namespace ChargerLogic
             FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
             try
             {
-                if (CanaleSpyBat == CanaleDispositivo.USB)
+                switch(CanaleSpyBat)
                 {
-                    if (usbSpyBattSerNum != "")
-                    {
-
-                        if (!usbSpyBatt.IsOpen)
+                    case CanaleDispositivo.USB:
                         {
-
-                            // Open device by serial number
-                            ftStatus = usbSpyBatt.OpenByIndex(12);
-
-                            ftStatus = usbSpyBatt.OpenBySerialNumber(usbSpyBattSerNum);
-                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                            if (usbSpyBattSerNum != "")
                             {
-                                // Wait for a key press
-                                Log.Error("Failed to open device (error " + ftStatus.ToString() + ")");
-                                return false;
-                            }
 
-                            // Set up device data parameters
-                            // Set Baud rate to 9600
-                            ftStatus = usbSpyBatt.SetBaudRate(baudRateUSB);
-                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
-                            {
-                                // Wait for a key press
-                                Log.Error("Failed to set Baud rate (error " + ftStatus.ToString() + ")");
-                                return false;
-                            }
+                                if (!usbSpyBatt.IsOpen)
+                                {
 
-                            // Set data characteristics - Data bits, Stop bits, Parity
-                            ftStatus = usbSpyBatt.SetDataCharacteristics(FTDI.FT_DATA_BITS.FT_BITS_8, FTDI.FT_STOP_BITS.FT_STOP_BITS_1, FTDI.FT_PARITY.FT_PARITY_NONE);
-                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
-                            {
-                                // Wait for a key press
-                                Log.Error("Failed to set data characteristics (error " + ftStatus.ToString() + ")");
-                                return false;
-                            }
+                                    // Open device by serial number
+                                    ftStatus = usbSpyBatt.OpenByIndex(12);
 
-                            // Set flow control - set RTS/CTS flow control
-                            ftStatus = usbSpyBatt.SetFlowControl(FTDI.FT_FLOW_CONTROL.FT_FLOW_RTS_CTS, 0x11, 0x13);
-                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
-                            {
-                                // Wait for a key press
-                                Log.Error("Failed to set flow control (error " + ftStatus.ToString() + ")");
-                                return false;
-                            }
+                                    ftStatus = usbSpyBatt.OpenBySerialNumber(usbSpyBattSerNum);
+                                    if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                                    {
+                                        // Wait for a key press
+                                        Log.Error("Failed to open device (error " + ftStatus.ToString() + ")");
+                                        return false;
+                                    }
 
-                            // Set read timeout to 5 seconds, write timeout to infinite
-                            ftStatus = usbSpyBatt.SetTimeouts(5000, 0);
-                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
-                            {
-                                // Wait for a key press
-                                Log.Error("Failed to set timeouts (error " + ftStatus.ToString() + ")");
-                                return false;
-                            }
+                                    // Set up device data parameters
+                                    // Set Baud rate to 9600
+                                    ftStatus = usbSpyBatt.SetBaudRate(baudRateUSB);
+                                    if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                                    {
+                                        // Wait for a key press
+                                        Log.Error("Failed to set Baud rate (error " + ftStatus.ToString() + ")");
+                                        return false;
+                                    }
 
+                                    // Set data characteristics - Data bits, Stop bits, Parity
+                                    ftStatus = usbSpyBatt.SetDataCharacteristics(FTDI.FT_DATA_BITS.FT_BITS_8, FTDI.FT_STOP_BITS.FT_STOP_BITS_1, FTDI.FT_PARITY.FT_PARITY_NONE);
+                                    if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                                    {
+                                        // Wait for a key press
+                                        Log.Error("Failed to set data characteristics (error " + ftStatus.ToString() + ")");
+                                        return false;
+                                    }
+
+                                    // Set flow control - set RTS/CTS flow control
+                                    ftStatus = usbSpyBatt.SetFlowControl(FTDI.FT_FLOW_CONTROL.FT_FLOW_RTS_CTS, 0x11, 0x13);
+                                    if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                                    {
+                                        // Wait for a key press
+                                        Log.Error("Failed to set flow control (error " + ftStatus.ToString() + ")");
+                                        return false;
+                                    }
+
+                                    // Set read timeout to 5 seconds, write timeout to infinite
+                                    ftStatus = usbSpyBatt.SetTimeouts(5000, 0);
+                                    if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                                    {
+                                        // Wait for a key press
+                                        Log.Error("Failed to set timeouts (error " + ftStatus.ToString() + ")");
+                                        return false;
+                                    }
+
+                                }
+                                return usbSpyBatt.IsOpen;
+                            }
+                            return usbSpyBatt.IsOpen;
                         }
-                        return usbSpyBatt.IsOpen;
-                    }
-                    return usbSpyBatt.IsOpen;
 
-                }
-                else
-                {
-                    if (!serialeSpyBatt.IsOpen)
-                    {
-                        serialeSpyBatt.BaudRate = baudRate;
-                        serialeSpyBatt.DataBits = dataBits;
-                        serialeSpyBatt.Parity = parityBit;
-                        serialeSpyBatt.Handshake = handShake;
-                        serialeSpyBatt.PortName = portName;
+                    case CanaleDispositivo.Seriale:
+                        {
+                            if (!serialeSpyBatt.IsOpen)
+                            {
+                                serialeSpyBatt.BaudRate = baudRate;
+                                serialeSpyBatt.DataBits = dataBits;
+                                serialeSpyBatt.Parity = parityBit;
+                                serialeSpyBatt.Handshake = handShake;
+                                serialeSpyBatt.PortName = portName;
 
-                        serialeSpyBatt.Open();
+                                serialeSpyBatt.Open();
 
+                            }
+                            return serialeSpyBatt.IsOpen;
+                        }
 
-                    }
-                    return serialeSpyBatt.IsOpen;
+                    case CanaleDispositivo.BTStream:
+                        {
+                            if(streamSpyBatt == null)
+                            {
+                                return false;
+                            }
+
+                            if(streamSpyBatt.CanRead && streamSpyBatt.CanWrite)
+                            {
+                                return true;
+                            }
+
+                            return false;
+                        }
+
+                    default:
+                        {
+                            return false;
+                        }
+
                 }
 
             }
@@ -329,32 +357,57 @@ namespace ChargerLogic
 
             try
             {
-                if (CanaleSpyBat == CanaleDispositivo.USB)
-                {
-                    uint bytesScritti = 0;
-                    FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
-                    ftStatus = usbSpyBatt.Write(messaggio, (uint)NumByte, ref bytesScritti);
-                    Log.Debug("Scrittura su USB: scritti " + bytesScritti + " bytes");
-                    if (ftStatus != FTDI.FT_STATUS.FT_OK)
-                    {
-                        // Wait for a key press
-                        Log.Error("Failed to write to device (error " + ftStatus.ToString() + ")");
-                        return false;
-                    }
-                    return true;
 
-                }
-                else
+                switch (CanaleSpyBat)
                 {
-                    if (serialeSpyBatt.IsOpen)
-                    {
-                        Log.Debug("Scrittura su SERIALE");
-                        serialeSpyBatt.Write(messaggio, Start, NumByte);
-                        return true;
-                    }
-                    else
-                        return false;
+                    case CanaleDispositivo.USB:
+                        {
+                            uint bytesScritti = 0;
+                            FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
+                            ftStatus = usbSpyBatt.Write(messaggio, (uint)NumByte, ref bytesScritti);
+                            Log.Debug("Scrittura su USB: scritti " + bytesScritti + " bytes");
+                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                            {
+                                // Wait for a key press
+                                Log.Error("Failed to write to device (error " + ftStatus.ToString() + ")");
+                                return false;
+                            }
+                            UltimoMessaggio = DateTime.Now;
+                            return true;
+                        }
+
+                    case CanaleDispositivo.Seriale:
+                        {
+                            if (serialeSpyBatt.IsOpen)
+                            {
+                                Log.Debug("Scrittura su SERIALE");
+                                serialeSpyBatt.Write(messaggio, Start, NumByte);
+                                UltimoMessaggio = DateTime.Now;
+                                return true;
+                            }
+
+                            return false;
+                        }
+
+                    case CanaleDispositivo.BTStream:
+                        {
+                           if ( streamSpyBatt.CanWrite)
+                            {
+                                Log.Debug("Scrittura su STREAM BT");
+                                streamSpyBatt.Write(messaggio, Start, NumByte);
+                                UltimoMessaggio = DateTime.Now;
+                                return true;
+                            }
+                            return false;
+                        }
+
+                    default:
+                        {
+                            Log.Debug("Canale scrittura non definito  ------- > non scrivo nulla");
+                            return false;
+                        }
                 }
+
             }
             catch (Exception Ex)
             {
@@ -365,17 +418,30 @@ namespace ChargerLogic
 
         public bool statoCanaleSpyBatt()
         {
-
             try
             {
-                if (CanaleSpyBat == CanaleDispositivo.USB)
+
+                switch (CanaleSpyBat)
                 {
-                    return usbSpyBatt.IsOpen;
+                    case CanaleDispositivo.USB:
+                        {
+                            return usbSpyBatt.IsOpen;
+                        }
+                    case CanaleDispositivo.Seriale:
+                        {
+                            return serialeSpyBatt.IsOpen;
+                        }
+                    case CanaleDispositivo.BTStream:
+                        {
+                            return (streamSpyBatt.CanRead && streamSpyBatt.CanWrite);
+                        }
+
+                    default:
+                        {
+                            return false;
+                        }
                 }
-                else
-                {
-                    return serialeSpyBatt.IsOpen;
-                }
+
             }
             catch (Exception Ex)
             {
@@ -389,25 +455,41 @@ namespace ChargerLogic
 
             try
             {
-                if (CanaleSpyBat == CanaleDispositivo.USB)
+                switch (CanaleSpyBat)
                 {
-                     usbSpyBatt.Close();
-                     return;
+                    case CanaleDispositivo.USB:
+                        {
+                            usbSpyBatt.Close();
+                            return;
+                        }
+                    case CanaleDispositivo.Seriale:
+                        {
+                            serialeSpyBatt.Close();
+                            return;
+                        }
+                    case CanaleDispositivo.BTStream:
+                        {
+                            streamSpyBatt.Close();
+                            return ;
+                        }
+
+                    default:
+                        {
+                            return ;
+                        }
                 }
-                else
-                {
-                   serialeSpyBatt.Close();
-                   return;
-                }
+
+
             }
             catch (Exception Ex)
             {
                 lastError = Ex.Message;
             }
         }
-#endregion
 
-#region "Comunicazione LADE Light"
+        #endregion
+
+        #region "Comunicazione LADE Light"
 
         public bool apriLadeLight()
         {
@@ -496,7 +578,6 @@ namespace ChargerLogic
                         serialeLadeLight.PortName = portName;
 
                         serialeLadeLight.Open();
-
 
                     }
                     return serialeLadeLight.IsOpen;

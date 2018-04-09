@@ -8,7 +8,7 @@ namespace ChargerLogic
 {
     public class elementiComuni
     {
-        public const int TimeoutBase = 2;   // Durata di default del timeout di comunicazione, espressa in secondi/10.
+        public const int TimeoutBase  = 2;  // Durata di default del timeout di comunicazione, espressa in secondi/10.
         public const int TimeoutLungo = 5;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
         public const int Timeout1sec = 10;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
         public const int Timeout5sec = 50;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
@@ -26,7 +26,10 @@ namespace ChargerLogic
 
         public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Nack = 2, Break = 3, Dati = 10, NonValido = -1 };
         public enum EsitoFunzione : byte { OK = 0x00, DatiNonVAlidi = 0x01,NonInSequenza = 0x02,ErroreGenerico = 0xFF}
- 
+
+
+        public enum TipoConnessione : byte { Nessuna = 0x00, Seriale = 0x10, Bluetooth = 0x11, USB = 0x20, WiFi = 0x40};
+
 
         public enum modoDati : byte { Import = 0x00,Output = 0x01, HexDumpRecovery = 0x02 };
         public enum AbilitaElemento : byte { Attivo = 0x0F , Non_Attivo = 0xF0 };

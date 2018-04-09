@@ -253,9 +253,49 @@ namespace PannelloCharger.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KO_16 {
+            get {
+                object obj = ResourceManager.GetObject("KO_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KO_32 {
+            get {
+                object obj = ResourceManager.GetObject("KO_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lade_light_INTEGRATED {
             get {
                 object obj = ResourceManager.GetObject("lade_light_INTEGRATED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OK_16 {
+            get {
+                object obj = ResourceManager.GetObject("OK_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OK_32 {
+            get {
+                object obj = ResourceManager.GetObject("OK_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

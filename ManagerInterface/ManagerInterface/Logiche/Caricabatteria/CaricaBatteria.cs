@@ -629,7 +629,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.SB_ReadRTC;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_RTC;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Leggi RTC");
@@ -684,7 +684,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.SB_R_Variabili;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_VARIABLE;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("Leggi Variabili LL");
@@ -731,7 +731,7 @@ namespace ChargerLogic
                 _mS.DatiStrategia = new SerialMessage.ProxyComandoStrategia();
                 DatiRisposta = new byte[240];
 
-                _mS.Comando = SerialMessage.TipoComando.LL_SIG60_PROXY;
+                _mS.Comando = SerialMessage.TipoComando.CMD_SIG60_PROXY;
                 _mS.ComponiMessaggioNew(PacchettoDati);
                 _rxRisposta = false;
                 Log.Debug("---------------------------------------------------------------------------");
@@ -819,7 +819,7 @@ namespace ChargerLogic
                 Dati = new byte[NumByte];
 
 
-                _mS.Comando = SerialMessage.TipoComando.LL_R_LeggiMemoria;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_ALL_MEMORY;
                 _mS._pacchettoMem = new SerialMessage.PacchettoReadMem();
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -961,7 +961,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.LL_CancellaInteraMemoria;
+                _mS.Comando = SerialMessage.TipoComando.CMD_ERASE_DATA_MEMORY;
 
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -1002,7 +1002,7 @@ namespace ChargerLogic
             {
                 bool _esito;
 
-                _mS.Comando = SerialMessage.TipoComando.CMD_PRG_CYCLE_CRG;
+                _mS.Comando = SerialMessage.TipoComando.CMD_PROG_CYCLE_CRG;
                 _mS.CicloInMacchina = CicloInMacchina;
                 _mS.ComponiMessaggioCicloProgrammato();
                 _rxRisposta = false;
@@ -1035,7 +1035,7 @@ namespace ChargerLogic
                 bool _esito;
                 DateTime _now = DateTime.Now; 
 
-                _mS.Comando = SerialMessage.TipoComando.UpdateRTC;
+                _mS.Comando = SerialMessage.TipoComando.CMD_UPDATE_RTC;
                 _mS.DatiRTC = new SerialMessage.comandoRTC();
                 _mS.DatiRTC.anno = ( ushort ) _now.Year;
                 _mS.DatiRTC.mese = ( byte ) _now.Month;
@@ -1283,14 +1283,14 @@ namespace ChargerLogic
 
                         switch (_mS._comando)
                         {
-                            case (byte)SerialMessage.TipoComando.ACK:
+                            //case (byte)SerialMessage.TipoComando.ACK:
                             case (byte)SerialMessage.TipoComando.ACK_PACKET:
                                 Log.Debug("Risposta Ricevuta: ACK");
                                 TipoRisposta = 1;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 _inviaRisposta = false;
                                 break;
-                            case (byte)SerialMessage.TipoComando.NACK:
+                            //case (byte)SerialMessage.TipoComando.NACK:
                             case (byte)SerialMessage.TipoComando.NACK_PACKET:
 
                                 TipoRisposta = 2;
@@ -1308,12 +1308,12 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 break;
-                            case (byte)SerialMessage.TipoComando.SB_R_Variabili:
+                            case (byte)SerialMessage.TipoComando.CMD_READ_VARIABLE:
                                 Log.Debug("Variabili");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = true;
                                 break;
-                            case (byte)SerialMessage.TipoComando.LL_SIG60_PROXY:
+                            case (byte)SerialMessage.TipoComando.CMD_SIG60_PROXY:
                                 Log.Debug("SIG60 Proxy");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = true;

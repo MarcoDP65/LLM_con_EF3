@@ -412,7 +412,7 @@ namespace ChargerLogic
                         Log.Debug("Comando: --> 0x" + _mD._comando.ToString("X2"));
                         switch (_mD._comando)
                         {
-                            case (byte)SerialMessage.TipoComando.ACK: 
+                            case (byte)SerialMessage.TipoComando.ACK_PACKET: 
                                 Log.Debug("Comando Ricevuto");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 TipoRisposta = 1;
@@ -420,7 +420,7 @@ namespace ChargerLogic
 
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.NACK:  
+                            case (byte)SerialMessage.TipoComando.NACK_PACKET:  
                                 TipoRisposta = 2;
                                 UltimaRisposta = SerialMessage.EsitoRisposta.NonRiconosciuto;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Nack;
@@ -428,7 +428,7 @@ namespace ChargerLogic
                                 _inviaRisposta = false;
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.BREAK:  // 0x1C: //BREAK
+                            case (byte)SerialMessage.TipoComando.CMD_BREAK:  // 0x1C: //BREAK
                                 TipoRisposta = 2;
                                 UltimaRisposta = SerialMessage.EsitoRisposta.MessaggioOk;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Break;
@@ -437,30 +437,30 @@ namespace ChargerLogic
                                 break;
 
 
-                            case (byte)SerialMessage.TipoComando.Start: // 0x0F:
-                            case (byte)SerialMessage.TipoComando.Stop:  // 0xF0:
+                            case (byte)SerialMessage.TipoComando.CMD_CONNECT:
+                            case (byte)SerialMessage.TipoComando.CMD_DISCONNECT:  // 0xF0:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 Log.Debug("Risposta Start/Stop Comunicazione 0x" + _mD._comando.ToString("X2"));
                                 _inviaRisposta = false;
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.DI_Backlight:
+                            case (byte)SerialMessage.TipoComando.CMD_BACKLIGHT:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Backlight");
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.DI_R_LeggiMemoria:
+                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Lettura Area Memoria");
                                 break;
-                            case (byte)SerialMessage.TipoComando.DI_W_SalvaImmagineMemoria:
+                            case (byte)SerialMessage.TipoComando.CMD_IMAGE_RX_START:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Scrittura Testata Immagine");
                                 break;
-                            case (byte)SerialMessage.TipoComando.DI_Stato:
+                            case (byte)SerialMessage.TipoComando.CMD_STATE_DEVICE:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Lettura Stato");
@@ -477,7 +477,7 @@ namespace ChargerLogic
                         {
                             Log.Debug("Esito: " + _mD._comando.ToString("X2"));
 
-                                _mD._comando = (byte)SerialMessage.TipoComando.ACK ;
+                                _mD._comando = (byte)SerialMessage.TipoComando.ACK_PACKET;
                                 Log.Debug("Mandato ACK");
                             // _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                             _mD._dispositivo = 0x0000;

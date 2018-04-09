@@ -91,50 +91,26 @@ namespace ChargerLogic
 
                 if(Verso == VersoValori.Ascendente)
                 {
-                    if(MinVal<MaxVal)
+                    if (MinVal < MaxVal)
                     {
                         // min --> verde --> L1 --> giallo --> L2 --> Rosso --> Max
                         //VERDE
-                        _sez = new SezioneScala();
-                        _sez.minimo = MinVal;
-                        _sez.massimo = Lim1;
-                        _sez.coloreSezione = Color.Green;
-                        Sezioni[0] = _sez;
+                        Sezioni[0] = new SezioneScala { minimo = MinVal, massimo = Lim1, coloreSezione = Color.Green  };
                         //GIALLO
-                        _sez = new SezioneScala();
-                        _sez.minimo = Lim1;
-                        _sez.massimo = Lim2;
-                        _sez.coloreSezione = Color.Yellow;
-                        Sezioni[1] = _sez;
+                        Sezioni[1] = new SezioneScala { minimo = Lim1, massimo = Lim2, coloreSezione = Color.Yellow };
                         //ROSSO
-                        _sez = new SezioneScala();
-                        _sez.minimo = Lim2;
-                        _sez.massimo = MaxVal;
-                        _sez.coloreSezione = Color.Red;
-                        Sezioni[2] = _sez;
+                        Sezioni[2] = new SezioneScala { minimo = Lim2, massimo = MaxVal, coloreSezione = Color.Red  };
+
                     }
                     else
                     {
                         // max --> verde --> L1 --> giallo --> L2 --> Rosso --> min
                         //VERDE
-                        _sez = new SezioneScala();
-                        _sez.minimo = Lim2;
-                        _sez.massimo = MaxVal;
-                        _sez.coloreSezione = Color.Green;
-                        Sezioni[0] = _sez;
+                        Sezioni[0] = new SezioneScala { minimo = Lim2, massimo = MaxVal, coloreSezione = Color.Green };
                         //GIALLO
-                        _sez = new SezioneScala();
-                        _sez.minimo = Lim1;
-                        _sez.massimo = Lim2;
-                        _sez.coloreSezione = Color.Yellow;
-                        Sezioni[1] = _sez;
+                        Sezioni[1] = new SezioneScala { minimo = Lim1, massimo = Lim2, coloreSezione = Color.Yellow };
                         //ROSSO
-                        _sez = new SezioneScala();
-                        _sez.minimo = Lim1;
-                        _sez.massimo = MinVal;
-                        _sez.coloreSezione = Color.Red;
-                        Sezioni[2] = _sez;
-
+                        Sezioni[2] = new SezioneScala { minimo = Lim1, massimo = MinVal, coloreSezione = Color.Red };
                     }
 
 
@@ -373,24 +349,24 @@ namespace ChargerLogic
 
                 InizializzaSoglie();
 
-                CircularScaleBar bar = new CircularScaleBar(_frame);
-                bar.OffsetFromFrame = size * 1 / 10;
-                //bar.
-                bar.FillGradientType = NextUI.Renderer.RendererGradient.GradientType.DiagonalRight;
-                bar.ScaleBarSize = 4;
-                bar.FillColor = Color.DarkGray;
+                CircularScaleBar bar = new CircularScaleBar(_frame)
+                {
+                    OffsetFromFrame = size * 1 / 10,
+                    FillGradientType = NextUI.Renderer.RendererGradient.GradientType.DiagonalRight,
+                    ScaleBarSize = 4,
+                    FillColor = Color.DarkGray,
 
-                bar.StartValue = MinVal;
-                bar.EndValue = MaxVal;
-                bar.StartAngle = 30;
-                bar.SweepAngle = 120;
-                bar.MajorTickNumber = 11;
-                bar.MinorTicknumber = 2;
+                    StartValue = MinVal,
+                    EndValue = MaxVal,
+                    StartAngle = 30,
+                    SweepAngle = 120,
+                    MajorTickNumber = 11,
+                    MinorTicknumber = 2,
+                };
                 bar.TickMajor.EnableGradient = false;
                 bar.TickMajor.EnableBorder = false;
                 bar.TickMajor.FillColor = Color.Black;
-                //bar.TickMajor.FillColor = Color.Black;
-                bar.TickMajor.Height = size / 20; // 15;
+                bar.TickMajor.Height = size / 20; 
                 bar.TickMajor.Width = 2;
                 bar.TickMajor.Type = TickBase.TickType.RoundedRect;
                 bar.TickMinor.EnableGradient = false;
@@ -402,14 +378,14 @@ namespace ChargerLogic
                 bar.TickLabel.OffsetFromScale = size / 8; //35;
                 bar.TickLabel.LabelFont = new Font(FontFamily.GenericMonospace, FontSize() - 1, FontStyle.Bold);
                 bar.TickLabel.FontColor = Color.Black;
-                //bar.TickLabel.FontColor = Color.DarkGray;
+
                 _frame.ScaleCollection.Add(bar);
 
                 double _textWidth;
                 if (Etichetta != "")
                 {
 
-                    using (Bitmap tempImage = new Bitmap(size, size))  // 400, 400))
+                    using (Bitmap tempImage = new Bitmap(size, size))  
                     {
                         SizeF stringSize = Graphics.FromImage(tempImage).MeasureString(Etichetta, bar.TickLabel.LabelFont);
                         _textWidth = stringSize.Width;
@@ -436,15 +412,17 @@ namespace ChargerLogic
 
                 for (int _ciclor = 0; _ciclor < _NumSezioni; _ciclor++)
                 {
-                    CircularRange _tempRange = new CircularRange(_frame);
-                    _tempRange.EnableGradient = false;
-                    _tempRange.StartValue = Sezioni[_ciclor].minimo;
-                    _tempRange.EndValue = Sezioni[_ciclor].massimo;
-                    _tempRange.StartWidth = 10;
-                    _tempRange.EndWidth = 10;
-                    _tempRange.RangePosition = RangeBase.Position.Inner;
-                    _tempRange.FillColor = Sezioni[_ciclor].coloreSezione;
-
+                    CircularRange _tempRange = new CircularRange(_frame)
+                    {
+                        EnableGradient = false,
+                        StartValue = Sezioni[_ciclor].minimo,
+                        EndValue = Sezioni[_ciclor].massimo,
+                        StartWidth = 10,
+                        EndWidth = 10,
+                        RangePosition = RangeBase.Position.Inner,
+                        FillColor = Sezioni[_ciclor].coloreSezione,
+                    };
+                    
                     bar.Range.Add(_tempRange);
                 }
 

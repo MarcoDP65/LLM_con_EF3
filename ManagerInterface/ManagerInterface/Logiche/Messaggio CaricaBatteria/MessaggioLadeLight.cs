@@ -334,7 +334,7 @@ namespace ChargerLogic
                 // ora in base al comando cambio faccio lettura:
                 switch (_comando)
                 {
-                    case (byte)TipoComando.ACK:
+                    //case (byte)TipoComando.ACK:
                     case (byte)TipoComando.ACK_PACKET:
                         // case (byte)TipoComando.SB_ACK:
 
@@ -358,7 +358,7 @@ namespace ChargerLogic
 
                         break;
 
-                    case (byte)TipoComando.NACK:
+                   
                     case (byte)TipoComando.NACK_PACKET: //NAK
                         {
                             _crc = 0;
@@ -466,7 +466,7 @@ namespace ChargerLogic
                         }
                         break;
 
-                    case (byte)TipoComando.ReadRTC: // read RTC - 0xD3:
+                    case (byte)TipoComando.CMD_READ_RTC: // read RTC - 0xD3:
                         {
                             _startPos = 39;
 
@@ -530,7 +530,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.SB_R_Variabili:
+                    case (byte)TipoComando.CMD_READ_VARIABLE:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;
@@ -563,7 +563,7 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.LL_SIG60_PROXY:
+                    case (byte)TipoComando.CMD_SIG60_PROXY:
                         {
                             _endPos = _messaggio.Length;
                             _startPos = _endPos - 6;

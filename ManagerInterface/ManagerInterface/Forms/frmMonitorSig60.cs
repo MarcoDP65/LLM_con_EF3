@@ -636,7 +636,7 @@ namespace PannelloCharger
                                 _msg.Parametri = "";
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.SB_W_chgst_Call:  //0x6C
+                            case (byte)SerialMessage.TipoComando.CMD_CHRG_STRATEGY:  //0x6C
                                 Log.Debug("Comando Strategia");
                                 _msg.Comando = "SB_W_chgst_Call";
                                 _msg.Sottocomando = _mS.ComandoStrat.DescComandoLibreria;
@@ -660,7 +660,7 @@ namespace PannelloCharger
                                 _msg.DescComando = "Chiusura Canale SIG";
                                 _msg.Parametri = "";
                                 break;
-                            case (byte)SerialMessage.TipoComando.LL_W_FineCarica:  //0x63
+                            case (byte)SerialMessage.TipoComando.CMD_MODE_STOP_LT:  //0x63
                                 Log.Debug("Fine Carica da LL");
                                 _msg.Comando = "LL_Stop";
                                 _msg.DescComando = "Fine Carica da LL";

@@ -158,33 +158,33 @@ namespace ChargerLogic
                 // ora in base al comando cambio faccio lettura:
                 switch (_comando)
                 {
-                    case (byte)TipoComando.ACK:
+                    case (byte)TipoComando.ACK_PACKET:
                         {
                             Log.Debug("Display: ACK");
                             break;
                         }
                         
-                    case (byte)TipoComando.NACK:
+                    case (byte)TipoComando.NACK_PACKET:
                         {
                             Log.Debug("Display: --> NACK <---");
                             _crc = 0;
                             break;
                         }
 
-                    case (byte)TipoComando.Start:
+                    case (byte)TipoComando.CMD_CONNECT:
                         {
                             Log.Debug("Display: START Comunicazione");
                             _crc = 0;
                             break;
                         }
 
-                    case (byte)TipoComando.DI_R_LeggiMemoria: // Lettura frammento memoria
+                    case (byte)TipoComando.CMD_READ_MEMORY: // Lettura frammento memoria
                         {
 
                             // leggo la parte dati
                             _pacchettoMem = new PacchettoReadMem();
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
-                            if (_comando != (byte)TipoComando.DI_R_LeggiMemoria)
+                            if (_comando != (byte)TipoComando.CMD_READ_MEMORY)
                             {   // dove non ho la testata corretta recupero i 2 bytes del comando
                                 Array.Copy(_messaggio, preambleLenght - 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             }
@@ -199,13 +199,13 @@ namespace ChargerLogic
                             break;
                         }
 
-                    case (byte)TipoComando.DI_W_SalvaImmagineMemoria:
+                    case (byte)TipoComando.CMD_IMAGE_RX_START:
                         break;
-                    case (byte)TipoComando.DI_MostraSchermata:
+                    case (byte)TipoComando.CMD_DRAW_SCREEN:
                         break;
-                    case (byte)TipoComando.DI_ResetBoard:
+                    case (byte)TipoComando.CMD_RESET_BOARD:
                         break;
-                    case (byte)TipoComando.DI_Stato:
+                    case (byte)TipoComando.CMD_STATE_DEVICE:
                         {
 
                             // leggo la parte dati
@@ -271,7 +271,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_Backlight);
+                _comando = (byte)(TipoComando.CMD_BACKLIGHT);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -364,7 +364,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_SwitchBaudRate);
+                _comando = (byte)(TipoComando.CMD_UART_SWITCH_BDRATE);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -455,7 +455,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_W_SetRTC);
+                _comando = (byte)(TipoComando.CMD_UPDATE_RTC);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -613,7 +613,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_LedRGB);
+                _comando = (byte)(TipoComando.CMD_LED_RGB);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -742,7 +742,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_DrawLine);
+                _comando = (byte)(TipoComando.CMD_DRAW_LINE);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -846,7 +846,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_MostraImmagine);
+                _comando = (byte)(TipoComando.CMD_DRAW_IMAGE);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -953,7 +953,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_MostraSchermata);
+                _comando = (byte)(TipoComando.CMD_DRAW_SCREEN);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1048,7 +1048,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_W_ScriviVariabile);
+                _comando = (byte)(TipoComando.CMD_RX_VARIABLE);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1148,7 +1148,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_R_LeggiMemoria);
+                _comando = (byte)(TipoComando.CMD_READ_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1262,7 +1262,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_W_SalvaImmagineMemoria);
+                _comando = (byte)(TipoComando.CMD_IMAGE_RX_START);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1693,7 +1693,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_W_SalvaSchermataMemoria);
+                _comando = (byte)(TipoComando.CMD_SCREEN_RX_START);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;
@@ -1882,7 +1882,7 @@ namespace ChargerLogic
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
 
-                _comando = (byte)(TipoComando.DI_ScrollSchermate);
+                _comando = (byte)(TipoComando.CMD_SCROLL_SCREEN);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -103,6 +103,9 @@
     <Reference Include="FTDIWrapper, Version=3.0.0.56, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Essy.FTDIWrapper.1.0.0\lib\net35\FTDIWrapper.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal, Version=3.5.605.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
+      <HintPath>..\packages\32feet.NET.3.5.0.0\lib\net\InTheHand.Net.Personal.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
@@ -534,6 +537,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StringheStatistica.resx</DependentUpon>
     </Compile>
+    <Compile Include="Servizi\DeviceBt.cs" />
     <Compile Include="Servizi\echoMessaggio.cs" />
     <Compile Include="Servizi\GestioneTempi.cs" />
     <Compile Include="Servizi\JsonCustomAdapter.cs" />
@@ -541,6 +545,7 @@
     <Compile Include="Servizi\ParametriSetupPro.cs" />
     <Compile Include="Servizi\HexEncoding.cs" />
     <Compile Include="Servizi\ParametriSistema.cs" />
+    <Compile Include="Servizi\ScannerBT.cs" />
     <Compile Include="Servizi\ScannerPorte.cs" />
     <Compile Include="Servizi\ScannerUSB.cs" />
     <Compile Include="Servizi\StringCipher.cs" />
@@ -1186,6 +1191,10 @@
     <None Include="Resources\home.png" />
     <None Include="Resources\ico SpyBatt.png" />
     <None Include="Resources\ico_wireless.bmp" />
+    <None Include="Resources\if_KO_16.png" />
+    <None Include="Resources\if_ok_16.png" />
+    <None Include="Resources\if_KO_32.png" />
+    <None Include="Resources\if_ok_32.png" />
     <Content Include="Resources\ind_due.png" />
     <Content Include="Resources\ind_tre.png" />
     <Content Include="Resources\IUIa.bmp" />
