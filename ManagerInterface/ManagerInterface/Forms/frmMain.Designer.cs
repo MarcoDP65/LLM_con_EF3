@@ -54,6 +54,7 @@
             this.mnuLLDisplayManager = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSpybat = new System.Windows.Forms.ToolStripMenuItem();
             this.caricaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sbWirelessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.archivioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.importaFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +78,7 @@
             this.mnuInformazioniSu = new System.Windows.Forms.ToolStripMenuItem();
             this.tstPulsanti = new System.Windows.Forms.ToolStrip();
             this.tstBtnCercaUsb = new System.Windows.Forms.ToolStripButton();
+            this.tstBtnCercaWireless = new System.Windows.Forms.ToolStripButton();
             this.tstBtnSave = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaRS232 = new System.Windows.Forms.ToolStripButton();
             this.tstBtnExport = new System.Windows.Forms.ToolStripButton();
@@ -85,8 +87,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tstBtnClose = new System.Windows.Forms.ToolStripButton();
             this.pdoStampaForm = new System.Drawing.Printing.PrintDocument();
-            this.tstBtnCercaWireless = new System.Windows.Forms.ToolStripButton();
-            this.sbWirelessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstMain.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.tstPulsanti.SuspendLayout();
@@ -271,6 +271,12 @@
             resources.ApplyResources(this.caricaToolStripMenuItem, "caricaToolStripMenuItem");
             this.caricaToolStripMenuItem.Click += new System.EventHandler(this.caricaToolStripMenuItem_Click);
             // 
+            // sbWirelessToolStripMenuItem
+            // 
+            this.sbWirelessToolStripMenuItem.Name = "sbWirelessToolStripMenuItem";
+            resources.ApplyResources(this.sbWirelessToolStripMenuItem, "sbWirelessToolStripMenuItem");
+            this.sbWirelessToolStripMenuItem.Click += new System.EventHandler(this.sbWirelessToolStripMenuItem_Click);
+            // 
             // archivioToolStripMenuItem
             // 
             this.archivioToolStripMenuItem.Name = "archivioToolStripMenuItem";
@@ -431,6 +437,14 @@
             this.tstBtnCercaUsb.Name = "tstBtnCercaUsb";
             this.tstBtnCercaUsb.Click += new System.EventHandler(this.tstBtnCercaUsb_Click);
             // 
+            // tstBtnCercaWireless
+            // 
+            this.tstBtnCercaWireless.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tstBtnCercaWireless.Image = global::PannelloCharger.Properties.Resources.wireless;
+            resources.ApplyResources(this.tstBtnCercaWireless, "tstBtnCercaWireless");
+            this.tstBtnCercaWireless.Name = "tstBtnCercaWireless";
+            this.tstBtnCercaWireless.Click += new System.EventHandler(this.tstBtnCercaWireless_Click);
+            // 
             // tstBtnSave
             // 
             this.tstBtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -479,20 +493,6 @@
             resources.ApplyResources(this.tstBtnClose, "tstBtnClose");
             this.tstBtnClose.Name = "tstBtnClose";
             this.tstBtnClose.Click += new System.EventHandler(this.tstBtnClose_Click);
-            // 
-            // tstBtnCercaWireless
-            // 
-            this.tstBtnCercaWireless.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tstBtnCercaWireless.Image = global::PannelloCharger.Properties.Resources.wireless;
-            resources.ApplyResources(this.tstBtnCercaWireless, "tstBtnCercaWireless");
-            this.tstBtnCercaWireless.Name = "tstBtnCercaWireless";
-            this.tstBtnCercaWireless.Click += new System.EventHandler(this.tstBtnCercaWireless_Click);
-            // 
-            // sbWirelessToolStripMenuItem
-            // 
-            this.sbWirelessToolStripMenuItem.Name = "sbWirelessToolStripMenuItem";
-            resources.ApplyResources(this.sbWirelessToolStripMenuItem, "sbWirelessToolStripMenuItem");
-            this.sbWirelessToolStripMenuItem.Click += new System.EventHandler(this.sbWirelessToolStripMenuItem_Click);
             // 
             // frmMain
             // 
