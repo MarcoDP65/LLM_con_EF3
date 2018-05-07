@@ -244,20 +244,6 @@ namespace PannelloCharger
             bool _esito;
             try
             {
-                /*
-
-                Non reinizializzo i componenti
-
-                InitializeComponent();
-                // Setto il bordo invisibile ai due groupbox dell'upd FW
-                grbFWdettUpload.Paint += PaintBorderlessGroupBox;
-                grbFWDettStato.Paint += PaintBorderlessGroupBox;
-                InizializzaOxyGrAnalisi();
-                ResizeRedraw = true;
-
-                Log.Debug("----------------------- frmSpyBat ---------------------------");
-
-                */
 
                 string IdApparato = IdCorrente;
                 LogicheBase Logiche = _logiche;
@@ -707,7 +693,8 @@ namespace PannelloCharger
                 {
                     LivelloCorrente = 99;
                 }
-                // Tab Generale
+
+
                 #region "Tab Generale"
                 if (LivelloCorrente < 3) _readonly = false; else _readonly = true;
                 txtCliente.ReadOnly = _readonly;

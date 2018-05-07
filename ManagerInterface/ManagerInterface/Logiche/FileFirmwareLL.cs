@@ -160,6 +160,7 @@ namespace ChargerLogic
                     _tempMem.Clear();
                     _contaBytes = 0;
 
+                    bool _shortAddr;
                     //  I blocchi devono avere la stessa dimensione
                     if (_blocchiFl_A01.Length != _blocchiFl_HEX.Length)
                     {
@@ -171,12 +172,38 @@ namespace ChargerLogic
                     {
                         return ExitCode.FormatoFileErrato;
                     }
+
+                    // il primo blocco può avere l'indirizzo a 2 o a 3 byte: se è a 2 a tutti gli indirizzi aggiungo in testa 3E se il resto è > 0x8000, 3F se <
+
                     _tempPtr = _blocchiFl_HEX[0];
-                    _tempPtr = _tempPtr.Substring(1, 6);
+
+                    if(_tempPtr.Length < 7)   // Oltre all'indirizzo puro, nella strnga vanno contate anche la "A" iniziale e la "," finale
+                    {
+                        _tempPtr = _tempPtr.Substring(1, 4);
+                        _shortAddr = true;
+                    }
+                    else
+                    {
+                        _tempPtr = _tempPtr.Substring(1, 6);
+                        _shortAddr = false;
+
+                    }
+
+                    //_tempPtr = _tempPtr.Substring(1, 6);
                     if (!UInt32.TryParse(_tempPtr, System.Globalization.NumberStyles.HexNumber, null, out _tempPtrNum))
                     {
                         return ExitCode.FormatoFileErrato;
                     }
+
+                    if(_shortAddr)
+                    {
+                        if (_tempPtrNum < 0x8000)
+                            _tempPtrNum += 0x3F0000;
+                        else
+                            _tempPtrNum += 0x3E0000;
+
+                    }
+
                     _AreaCorrente.AddrDestPacchetto = _tempPtrNum;
 
                     for (int _righe = 1; _righe < _blocchiFl_A01.Length; _righe++)
