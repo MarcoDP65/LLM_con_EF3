@@ -117,9 +117,6 @@ namespace ChargerLogic
                 lastError = Ex.Message;
             }
 
-
-
-
         }
 
 
@@ -603,6 +600,10 @@ namespace ChargerLogic
                     FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
                     ftStatus = usbLadeLight.Write(messaggio, (uint)NumByte, ref bytesScritti);
                     Log.Debug("LL Scritura di " + NumByte.ToString() + " Bytes");
+                    Log.Debug("Comando LL: --> 0x" + hexdumpArray(messaggio));
+                    Log.Debug("---------------------------------------------------------");
+
+
                     if (ftStatus != FTDI.FT_STATUS.FT_OK)
                     {
                         // Wait for a key press
@@ -624,6 +625,29 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+
+        private string hexdumpArray(byte[] buffer)
+        {
+            try
+            {
+                string _risposta = "";
+
+                if (buffer == null)
+                    return "";
+
+                for (int _i = 0; _i < buffer.Length; _i++)
+                {
+                    _risposta += buffer[_i].ToString("X2");
+                }
+                return _risposta;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
 
         public bool statoCanaleLadeLight()
         {

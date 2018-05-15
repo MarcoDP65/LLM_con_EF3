@@ -47,6 +47,8 @@ namespace ChargerLogic
 
                 Thread.CurrentThread.CurrentUICulture = _parametri.currentCulture;
 
+                ControllaAttesa(UltimaScrittura);
+
                 if (true)  //ApparatoConnesso)
                 {
                     // Se previsto, prima resetto la scheda
@@ -344,6 +346,9 @@ namespace ChargerLogic
 
                 if (ApparatoConnesso)
                 {
+
+                    ControllaAttesa(UltimaScrittura);
+
                     // Eseguo solo se la connessione all'apparato è attiva
                     _mS.StatoFirmwareScheda = new MessaggioLadeLight.StatoFirmware();
                     _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_INFO_BL;
@@ -413,6 +418,7 @@ namespace ChargerLogic
 
                 bool _recordPresente;
 
+                ControllaAttesa(UltimaScrittura);
 
                 if (ApparatoConnesso)
                 {
@@ -482,6 +488,7 @@ namespace ChargerLogic
 
                 bool _recordPresente;
 
+                ControllaAttesa(UltimaScrittura);
 
                 if (ApparatoConnesso)
                 {

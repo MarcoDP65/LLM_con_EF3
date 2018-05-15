@@ -676,6 +676,7 @@ namespace ChargerLogic
                     Log.Debug(" Switch FW: " + Area.ToString());
                     Log.Debug("----------------------------------------------------------");
 
+                    ControllaAttesa(UltimaScrittura);
 
                     _mS.ComponiMessaggioSwitchFW(Area);
                     Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
@@ -743,6 +744,8 @@ namespace ChargerLogic
                     Log.Debug("+---------------------------------------------------------");
                     Log.Debug("| Switch to BootLoader                                    ");
                     Log.Debug("+---------------------------------------------------------");
+
+                    ControllaAttesa(UltimaScrittura);
 
 
                     _mS.ComponiMessaggioSwitchBL();

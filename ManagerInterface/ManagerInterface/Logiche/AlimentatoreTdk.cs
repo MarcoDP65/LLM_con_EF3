@@ -15,6 +15,7 @@ namespace PannelloCharger
         bool _statoCom = false;
         SerialPort _serialPort;
         string _serBuffer;
+
         public NumberFormatInfo NfiEn = new CultureInfo("en-US", false).NumberFormat;
         string _lastMessage = "";
 
@@ -113,8 +114,6 @@ namespace PannelloCharger
                 {
                     _serialPort = new SerialPort(Porta, 9600, Parity.None, 8, StopBits.One);
                     _serialPort.Handshake = Handshake.None;
-                    //cEventHelper.RemoveEventHandler(_serialPort, "DataReceived");
-                    //_serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
                     _serialPort.ReadTimeout = 500;
                     _serialPort.WriteTimeout = 500;
                     _serialPort.NewLine = "\r";

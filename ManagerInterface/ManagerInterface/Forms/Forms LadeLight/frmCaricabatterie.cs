@@ -65,7 +65,6 @@ namespace PannelloCharger
 
         public frmCaricabatterie(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
         {
-            bool _esito;
             try
             {
 
@@ -77,14 +76,6 @@ namespace PannelloCharger
                 attivaCaricabatterie(ref _par, SerialeCollegata);
                 InizializzaScheda();
                 this.Cursor = Cursors.Arrow;
-/*                _msg = new SerialMessage();
-                _cb = new CaricaBatteria(ref _parametri);
-                //_sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
-                string _idCorrente = IdApparato;
-                abilitaSalvataggi(false);
-
-                CaricaTestata(IdApparato, Logiche, SerialeCollegata);
-*/
 
             }
             catch (Exception Ex)
@@ -128,6 +119,7 @@ namespace PannelloCharger
                     this.Hide();  //Close();
                     return;
                 }
+
                 _esito = _cb.VerificaPresenza();
                 if (_esito)
                 {
@@ -144,18 +136,6 @@ namespace PannelloCharger
                     _cbCollegato = true;
                     _apparatoPresente = _esito;
                     return;
-                    /*
-                    _esito = _cb.CaricaCicli();
-                    if (_esito)
-                    {
-                        txtNumCicli.Text = _cb.CicliPresenti.NumCicli.ToString();
-                    }
-                    else 
-                    { 
-                        txtNumCicli.Text = "2";
-                    }
-
-                    */
 
                 }
 
@@ -195,10 +175,6 @@ namespace PannelloCharger
             cmbPaCondStop.Items.Add("Timer");
             cmbPaCondStop.Items.Add("dV/dt");
             cmbPaCondStop.SelectedIndex = 0;
-
-           // cmbFSerBaudrateOC.DataSource = Lista;
-          //  cmbFSerBaudrateOC.DisplayMember = "descrizione";
-          //  cmbFSerBaudrateOC.ValueMember = "SettingValue";
 
         }
 
@@ -1674,6 +1650,196 @@ namespace PannelloCharger
             {
                 Log.Error("btnFwSwitchBL_Click: " + Ex.Message);
             }
+        }
+
+        private void cmdMemRead_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                uint _StartAddr;
+                ushort _NumByte;
+                bool _esito;
+
+                if (chkMemHex.Checked)
+                {
+                    if (uint.TryParse(txtMemAddrR.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemAddrR.Text, out _StartAddr) != true) return;
+                }
+
+
+
+                if (ushort.TryParse(txtMemLenR.Text, out _NumByte) != true) return;
+
+                if (_NumByte < 1) _NumByte = 1;
+                if (_NumByte > 242) _NumByte = 242;
+                txtMemLenR.Text = _NumByte.ToString();
+
+                if (_StartAddr < 0) _StartAddr = 0;
+                if (chkMemHex.Checked)
+                    txtMemAddrR.Text = _StartAddr.ToString("X6");
+                else
+                    txtMemAddrR.Text = _StartAddr.ToString();
+
+                txtMemDataGrid.Text = "";
+                _esito = LeggiBloccoMemoria(_StartAddr, _NumByte);
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+        }
+
+        public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte)
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+
+                txtMemDataGrid.Text = "";
+                _Dati = new byte[NumByte];
+                _esito = _cb.LeggiBloccoMemoria(StartAddr, NumByte, out _Dati);
+
+                if (_esito == true)
+                {
+
+
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtMemDataGrid.Text = _risposta;
+
+                }
+                else
+                {
+                    txtMemDataGrid.Text = "Lettura Fallita";
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LeggiBloccoMemoria: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        public bool CaricaStatoAreaFw(byte IdArea, byte StatoFirmware)
+        {
+            bool _esito = false;
+            byte[] _bufferDati = new byte[64];
+            FirmwareLLManager _tempFW = new FirmwareLLManager();
+            FirmwareLLManager.ExitCode _esitoFW = FirmwareLLManager.ExitCode.ErroreGenerico;
+            uint _area;
+
+            try
+            {
+
+                Log.Info("Lettura area FW 1 ");
+                if (IdArea == 1)
+                {
+
+                    txtFwRevA1State.Text = "KO";
+                    txtFwRevA1State.ForeColor = Color.Red;
+                    txtFwRevA1RevFw.Text = "";
+                    txtFwRevA1RilFw.Text = "";
+                    txtFWRevA1Addr1.Text = "";
+                    txtFWRevA1Addr2.Text = "";
+                    txtFWRevA1Addr3.Text = "";
+                    txtFWRevA1Addr4.Text = "";
+                    txtFWRevA1Addr5.Text = "";
+                    _area = 0x1C0000;
+                }
+                else
+                {
+                    txtFwRevA2State.Text = "KO";
+                    txtFwRevA2State.ForeColor = Color.Red;
+                    txtFwRevA2RevFw.Text = "";
+                    txtFwRevA2RilFw.Text = "";
+                    txtFWRevA2Addr1.Text = "";
+                    txtFWRevA2Addr2.Text = "";
+                    txtFWRevA2Addr3.Text = "";
+                    txtFWRevA2Addr4.Text = "";
+                    txtFWRevA2Addr5.Text = "";
+                    _area = 0x1E0000;
+
+                }
+
+
+                _esito = _cb.LeggiBloccoMemoria(_area, 64, out _bufferDati);
+
+
+                if (_esito)
+                {
+                    _esitoFW = _tempFW.AnalizzaArrayTestata(_bufferDati);
+                    if (_esitoFW == FirmwareLLManager.ExitCode.OK && _tempFW.FirmwareBlock.TestataOK)
+                    {
+                        if (IdArea == 1)
+                        {
+                            txtFwRevA1State.Text = "OK";
+                            txtFwRevA1State.ForeColor = Color.Black;
+                            txtFwRevA1RevFw.Text = _tempFW.FirmwareBlock.Release;
+                            txtFwRevA1RilFw.Text = _tempFW.FirmwareBlock.ReleaseDisplay;
+
+
+
+                            txtFWRevA1Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
+                            txtFWRevA1Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
+                            txtFWRevA1Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
+                            txtFWRevA1Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
+                            txtFWRevA1Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
+
+                        }
+                        else
+                        {
+                            txtFwRevA2State.Text = "OK";
+                            txtFwRevA2State.ForeColor = Color.Black;
+                            txtFwRevA2RevFw.Text = _tempFW.FirmwareBlock.Release;
+                            txtFwRevA2RilFw.Text = _tempFW.FirmwareBlock.ReleaseDisplay;
+
+                            txtFWRevA2Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
+                            txtFWRevA2Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
+                            txtFWRevA2Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
+                            txtFWRevA2Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
+                            txtFWRevA2Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
+                        }
+                    }
+
+                }
+
+                return _esito;
+
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+        private void label103_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -863,16 +863,29 @@ namespace PannelloCharger
                 grbProgParEqual.Visible = _enabled;
 
 
-                if (_sb.sbData.fwLevel >= 6)
-                    grbVarParametriSig.Visible = _enabled;
-                else
-                    grbVarParametriSig.Visible = false;
 
 
                 if (LivelloCorrente > 2)
                     grbVarResetScheda.Visible = false;
 
 
+                #endregion
+
+                #region "Dati Sistema"
+                // accessibile solo a Factory 
+                if (LivelloCorrente > 0)
+                {
+                    tabCaricaBatterie.TabPages.Remove(tbpParametriCalibrazione);
+                    _readonly = true;
+                }
+
+                if (_sb.sbData.fwLevel >= 6)
+                    grbVarParametriSig.Visible = _enabled;
+                else
+                    grbVarParametriSig.Visible = false;
+
+
+                _enabled = (_readonly == false);
                 #endregion
 
                 #region "Accesso Memoria"
@@ -1210,10 +1223,15 @@ namespace PannelloCharger
 
                 txtVarVBattT.Text = "";
                 txtVarVBatt.Text = "";
+                txtDataSysVBatt.Text = "";
                 txtVarV3.Text = "";
+                txtDataSysV3.Text = "";
                 txtVarV2.Text = "";
+                txtDataSysV2.Text = "";
                 txtVarV1.Text = "";
+                txtDataSysV1.Text = "";
                 txtVaIbatt.Text = "";
+                txtDataSysIBatt.Text = "";
                 txtVarAhCarica.Text = "";
                 txtVarAhScarica.Text = "";
                 txtVarTempNTC.Text = "";
@@ -1236,8 +1254,10 @@ namespace PannelloCharger
                     {
 
                         // Prima i valori sempre validi
-                        txtVarVBattT.Text = _sb.sbVariabili.TensioneTampone.ToString();
                         txtVarVBatt.Text = _sb.sbVariabili.TensioneIstantanea.ToString();
+                        txtDataSysVBatt.Text = _sb.sbVariabili.TensioneIstantanea.ToString();
+
+                        txtVarVBattT.Text = _sb.sbVariabili.TensioneTampone.ToString();
                         txtVarTempNTC.Text = _sb.sbVariabili.TempNTC.ToString();
                         //poi, se ho Vbatt
                         if (_sb.sbVariabili.TensioneIstantanea > 9)
@@ -1245,7 +1265,14 @@ namespace PannelloCharger
                             txtVarV3.Text = _sb.sbVariabili.Tensione3.ToString();
                             txtVarV2.Text = _sb.sbVariabili.Tensione2.ToString();
                             txtVarV1.Text = _sb.sbVariabili.Tensione1.ToString();
+
+                            txtDataSysV3.Text = _sb.sbVariabili.Tensione3.ToString();
+                            txtDataSysV2.Text = _sb.sbVariabili.Tensione2.ToString();
+                            txtDataSysV1.Text = _sb.sbVariabili.Tensione1.ToString();
+
                             txtVaIbatt.Text = _sb.sbVariabili.CorrenteBatteria.ToString();
+                            txtDataSysIBatt.Text = _sb.sbVariabili.CorrenteBatteria.ToString();
+
                             txtVarAhCarica.Text = FunzioniMR.StringaCorrente((short)_sb.sbVariabili.AhCaricati);
                             txtVarAhScarica.Text = FunzioniMR.StringaCorrente((short)_sb.sbVariabili.AhScaricati);
                             txtVarElettrolita.Text = _sb.sbVariabili.PresenzaElettrolita.ToString();
@@ -1271,6 +1298,8 @@ namespace PannelloCharger
                     {
                         txtVarVBattT.Text = _sb.sbVariabili.strTensioneTampone;
                         txtVarVBatt.Text = _sb.sbVariabili.strTensioneIstantanea;
+                        txtDataSysVBatt.Text = _sb.sbVariabili.strTensioneIstantanea;
+
                         txtVarTempNTC.Text = _sb.sbVariabili.strTempNTC;
 
                         //poi, se ho Vbatt
@@ -1279,9 +1308,26 @@ namespace PannelloCharger
                             txtVarV3.Text = _sb.sbVariabili.strTensione3;
                             txtVarV2.Text = _sb.sbVariabili.strTensione2;
                             txtVarV1.Text = _sb.sbVariabili.strTensione1;
+
+
+                            txtDataSysV3.Text = _sb.sbVariabili.strTensione3;
+                            txtDataSysV2.Text = _sb.sbVariabili.strTensione2;
+                            txtDataSysV1.Text = _sb.sbVariabili.strTensione1;
+
+
+                            txtDataSysIBatt.Text = _sb.sbVariabili.strCorrenteBatteria;
                             txtVaIbatt.Text = _sb.sbVariabili.strCorrenteBatteria;
-                            if (_sb.sbVariabili.CorrenteBatteria < 0) txtVaIbatt.ForeColor = Color.Red;
-                            else txtVaIbatt.ForeColor = Color.Black;
+
+                            if (_sb.sbVariabili.CorrenteBatteria < 0)
+                            {
+                                txtVaIbatt.ForeColor = Color.Red;
+                                txtDataSysIBatt.ForeColor = Color.Red;
+                            }
+                            else
+                            {
+                                txtVaIbatt.ForeColor = Color.Black;
+                                txtDataSysIBatt.ForeColor = Color.Black;
+                            }
                             txtVarAhCarica.Text = _sb.sbVariabili.strAhCaricati;
                             txtVarAhScarica.Text = _sb.sbVariabili.strAhScaricati;
                             txtVarElettrolita.Text = _sb.sbVariabili.strPresenzaElettrolita;
@@ -5671,10 +5717,6 @@ namespace PannelloCharger
                 Log.Error("cmdMemRead_Click: " + Ex.Message);
             }
 
-
-
-
-
         }
 
         public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte)
@@ -7569,47 +7611,6 @@ namespace PannelloCharger
 
         }
 
-        /// <summary>
-        /// Handles the Click event of the btnFwSwitchArea control.
-        /// Commuta l'app attiva tra BL, Area A1 e Area A2 (definita tramite option button)
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
-        private void btnFwSwitchArea_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (rbtFwArea1.Checked)
-                {
-                    SwitchAreaFw(_sb.Id, _sb.apparatoPresente, 1);
-                    return;
-                }
-                else
-                {
-                    if (rbtFwArea2.Checked)
-                    {
-                        SwitchAreaFw(_sb.Id, _sb.apparatoPresente, 2);
-                        return;
-                    }
-                    else
-                    {
-                        if (rbtFwBootLdr.Checked)
-                        {
-                            SwitchAreaBl(_sb.Id, _sb.apparatoPresente);
-                            return;
-                        }
-
-                    }
-
-                }
-
-            }
-            catch
-            {
-
-            }
-        }
-
         private void btnClonaCaricaOrigine_Click(object sender, EventArgs e)
         {
             bool _esito;
@@ -7991,8 +7992,9 @@ namespace PannelloCharger
                 Alimentatore.MdiParent = this.MdiParent;
                 Alimentatore.StartPosition = FormStartPosition.CenterParent;
                 if (Alimentatore != null)
+                {
                     Alimentatore.Show();
-
+                }
                 Lambda = Alimentatore;
 
             }
@@ -9811,6 +9813,67 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("chkTestataIgnoraNumLunghi_CheckedChanged: " + Ex.Message);
+            }
+        }
+
+        private void btnDatiSysLeggiVariabili_Click(object sender, EventArgs e)
+        {
+            bool _esito;
+            this.Cursor = Cursors.WaitCursor;
+            _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
+            MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
+            this.Cursor = Cursors.Default;
+
+
+        }
+
+        private void btnFwSwitchBL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtFwAreaTestata.Text != "BL")
+                {
+                    SwitchAreaBl(_sb.Id, _sb.apparatoPresente);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwSwitchBL_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnFwSwitchArea1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtFwAreaTestata.Text != "A1")
+                {
+                    SwitchAreaFw(_sb.Id, _sb.apparatoPresente, 1);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwSwitchArea1_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnFwSwitchArea2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtFwAreaTestata.Text != "A2")
+                {
+                    SwitchAreaFw(_sb.Id, _sb.apparatoPresente, 2);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFwSwitchArea1_Click: " + Ex.Message);
             }
         }
     }

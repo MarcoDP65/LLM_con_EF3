@@ -672,31 +672,45 @@ namespace ChargerLogic
 
                     FirmwareBlock.Release = SerialMessage.ArrayToString(ArrayTestata, _startPos, 6);
                     _startPos += 6;
-                    FirmwareBlock.crc = SerialMessage.ArrayToUshort(ArrayTestata, _startPos, 2);
+                    FirmwareBlock.ReleaseDisplay = SerialMessage.ArrayToString(ArrayTestata, _startPos, 6);
+                    _startPos += 6;
+
+                    FirmwareBlock.LenPkt = ArrayTestata[_startPos];
+                    _startPos += 1;
+                    FirmwareBlock.NumSezioni = ArrayTestata[_startPos];
+                    _startPos += 1;
+                    FirmwareBlock.CrcFW = SerialMessage.ArrayToShort(ArrayTestata, _startPos, 2);
                     _startPos += 2;
-                    //FirmwareBlock.AddrFlash1 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+
+                    FirmwareBlock.AddrSez1 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
                     _startPos += 4;
-                    FirmwareBlock.LenFlash = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    FirmwareBlock.LenSez1 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
                     _startPos += 4;
-                    //FirmwareBlock.AddrFlash2 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    FirmwareBlock.AddrSez2 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
                     _startPos += 4;
-                    //FirmwareBlock.LenFlash2 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    FirmwareBlock.LenSez2 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
                     _startPos += 4;
-                    //FirmwareBlock.AddrProxy = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    FirmwareBlock.AddrSez3 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
                     _startPos += 4;
-                    //FirmwareBlock.LenProxy = SerialMessage.ArrayToUshort(ArrayTestata, _startPos, 2);
+                    FirmwareBlock.LenSez3 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+                    FirmwareBlock.AddrSez4 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+                    FirmwareBlock.LenSez4 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+                    FirmwareBlock.AddrSez5 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+                    FirmwareBlock.LenSez5 = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+                    // Vuoto
+                    _startPos += 6;
+
+                    // Crc record testata ( primi 62 bytes)
+                    FirmwareBlock.CrcTest = SerialMessage.ArrayToShort(ArrayTestata, _startPos, 2);
                     _startPos += 2;
-                    FirmwareBlock.ReleaseDateBlock[0] = ArrayTestata[_startPos];
-                    _startPos += 1;
-                    FirmwareBlock.ReleaseDateBlock[1] = ArrayTestata[_startPos];
-                    _startPos += 1;
-                    FirmwareBlock.ReleaseDateBlock[2] = ArrayTestata[_startPos];
-                    _startPos += 1;
-
-                    FirmwareBlock.ReleaseDate = FunzioniMR.StringaDataTS(FirmwareBlock.ReleaseDateBlock);
 
 
-                    // Se i primi 6 bytes (versione APP) sono a FF o a 00 la testataa non è valida (vuota)
+                    // Se i primi 6 bytes (versione APP) sono a FF o a 00 la testata non è valida (vuota)
                     if ((ArrayTestata[0] == 0 && ArrayTestata[1] == 0 && ArrayTestata[2] == 0 && ArrayTestata[3] == 0 && ArrayTestata[4] == 0 && ArrayTestata[5] == 0)
                         | (ArrayTestata[0] == 0xFF && ArrayTestata[1] == 0xFF && ArrayTestata[2] == 0xFF && ArrayTestata[3] == 0xFF && ArrayTestata[4] == 0xFF && ArrayTestata[5] == 0xFF))
                     {
@@ -882,15 +896,32 @@ namespace ChargerLogic
     public class BloccoFirmwareLL
     {
         public string Release { get; set; }
+        public byte[] ReleaseData { get; set; }
+   
+        public string ReleaseDisplay { get; set; }
+        public byte[] ReleaseDispData { get; set; }
+
         public string ReleaseDate { get; set; }
         public byte[] ReleaseDateBlock { get; set; }
 
-        public uint LenFlash { get; set; }
-        public UInt32 AddrStartAppPtr { get; set; }
-        public UInt32 AddrStartApp { get; set; }
-        public byte[] DataAddraApp { get; set; }
-        public byte[] DataFlash { get; set; }
-        public UInt32 DataFlashPtr { get; set; }
+        public int LenPkt { get; set; }   // Lunghezza singolo pacchetto / messaggio. variabile in funzione USB/RS485/BLE
+        public int NumSezioni { get; set; }
+
+        public ulong AddrSez1 { get; set; }
+        public ulong AddrSez2 { get; set; }
+        public ulong AddrSez3 { get; set; }
+        public ulong AddrSez4 { get; set; }
+        public ulong AddrSez5 { get; set; }
+
+        public ulong LenSez1 { get; set; }
+        public ulong LenSez2 { get; set; }
+        public ulong LenSez3 { get; set; }
+        public ulong LenSez4 { get; set; }
+        public ulong LenSez5 { get; set; }
+
+        public short CrcFW { get; set; }
+        public short CrcTest { get; set; }
+
 
         public List<AreaDatiFWLL> ListaAree = new List<AreaDatiFWLL>();
 
@@ -917,11 +948,22 @@ namespace ChargerLogic
             ReleaseDateBlock[1] = 1;
             ReleaseDateBlock[2] = 15;
 
-            LenFlash = 0;
-            AddrStartApp = 0;
+            AddrSez1 = 0;
+            AddrSez2 = 0;
+            AddrSez3 = 0;
+            AddrSez4 = 0;
+            AddrSez5 = 0;
 
-            crc = 0;
-            DataFlash = new byte[0];
+            LenSez1 = 0;
+            LenSez2 = 0;
+            LenSez3 = 0;
+            LenSez4 = 0;
+            LenSez5 = 0;
+
+            CrcFW = 0;
+            CrcTest = 0;
+
+            NumSezioni = 0;
 
             MessaggioTestata = new byte[64];
             for (int _i = 0; _i < 64; _i++)

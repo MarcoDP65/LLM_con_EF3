@@ -24,6 +24,8 @@ namespace ChargerLogic
         private parametriSistema _parametri;
         private static Queue<byte> codaDatiSER = new Queue<byte>();
 
+        public DateTime UltimaScrittura;   // Registro l'istante dell'ultima scrittura
+
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         internal delegate void SerialDataReceivedEventHandlerDelegate(object sender, SerialDataReceivedEventArgs e);
         delegate void SetTextCallback(string text);
@@ -40,18 +42,19 @@ namespace ChargerLogic
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
 
         public llVariabili llVariabiliAttuali = new llVariabili();
+
         public System.Collections.Generic.List< SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List< SerialMessage.CicloDiCarica>();
 
-        /* ----------------------------------------------------------
-        *  Dichiarazione eventi per la gestione avanzamento
-        * ---------------------------------------------------------
-        */
+        // -------------------------------------------------------
+        //    Dichiarazione eventi per la gestione avanzamento
+        // -------------------------------------------------------
+
         public event StepHandler Step;
-        public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e); //sbWaitEventStep e);
-                                                                                          // ----------------------------------------------------------
+
+
+        public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e); 
 
         public llStatoFirmware StatoFirmware = new llStatoFirmware();
-
 
         private Boolean _firmwarePresente = false;
 
@@ -354,7 +357,6 @@ namespace ChargerLogic
             catch { return 0; }
         }
 
-
         private void LL_UsbWaiter()
         {
             Log.Info("LLUSB Start Waiting...");
@@ -441,6 +443,9 @@ namespace ChargerLogic
 
             try
             {
+
+                //ControllaAttesa(UltimaScrittura);
+
                 _parametri = parametri;
                 _mS = new MessaggioLadeLight();
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
@@ -469,7 +474,6 @@ namespace ChargerLogic
 
         }
 
-
         public bool apriPorta()
         {
             bool _esito;
@@ -478,7 +482,6 @@ namespace ChargerLogic
             return _esito;
 
         }
-
 
         public bool VerificaPresenza()
         {
@@ -519,6 +522,8 @@ namespace ChargerLogic
                 return false;
             } 
         }
+
+
 
         public bool StartComunicazione(int TimeoutRisposta = 50)
         {
@@ -590,8 +595,6 @@ namespace ChargerLogic
         }
 
 
-
-
         public bool CaricaCicli()
         {
             try
@@ -600,6 +603,8 @@ namespace ChargerLogic
                 CicliInMemoria = new System.Collections.Generic.List< SerialMessage.CicloDiCarica>();
                 if (_mS.CicliPresenti.NumCicli > 0)
                 {
+                    ControllaAttesa(UltimaScrittura);
+
                     _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_CRG;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
@@ -629,6 +634,9 @@ namespace ChargerLogic
             {
                 bool _esito;
 
+                ControllaAttesa(UltimaScrittura);
+
+                //_mS.Comando = (SerialMessage.TipoComando)0xD3;// SerialMessage.TipoComando.CMD_READ_RTC;
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_RTC;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
@@ -650,11 +658,13 @@ namespace ChargerLogic
             }
         }
 
+
         public bool LeggiCicloAttuale()
         {
             try
             {
                 bool _esito;
+                ControllaAttesa(UltimaScrittura);
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_PROG;
                 _mS.ComponiMessaggio();
@@ -677,12 +687,15 @@ namespace ChargerLogic
                 return false;
             }
         }
+  
         
         public bool LeggiVariabili()
         {
             try
             {
                 bool _esito;
+
+                ControllaAttesa(UltimaScrittura);
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_VARIABLE;
                 _mS.ComponiMessaggio();
@@ -723,11 +736,14 @@ namespace ChargerLogic
             }
         }
 
+
         public bool ProxySBSig60(ref byte[] PacchettoDati )
         {
             try
             {
                 bool _esito;
+                ControllaAttesa(UltimaScrittura);
+
                 _mS.DatiStrategia = new SerialMessage.ProxyComandoStrategia();
                 DatiRisposta = new byte[240];
 
@@ -772,6 +788,8 @@ namespace ChargerLogic
             {
                 bool _esito;
 
+                ControllaAttesa(UltimaScrittura);
+
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_ALL_MEMORY;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
@@ -794,6 +812,7 @@ namespace ChargerLogic
             }
         }
       
+
         /// <summary>
         /// Carico direttamente da memoria l'area passata come parametro
         /// </summary>
@@ -808,6 +827,10 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
+
+                // Verifico che il canale sia attivo
+
+                ControllaAttesa(UltimaScrittura);
 
                 if (NumByte < 1) NumByte = 1;
                 if (NumByte > 242)
@@ -829,7 +852,7 @@ namespace ChargerLogic
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
-                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
                 Log.Debug(_mS.hexdumpArray(_mS._pacchettoMem.memDataDecoded));
 
@@ -854,6 +877,7 @@ namespace ChargerLogic
             }
         }
 
+
         /// <summary>
         /// Scrivi il blocco dati in memoria flash.
         /// </summary>
@@ -868,6 +892,8 @@ namespace ChargerLogic
             try
             {
                 bool _esito = true;
+
+                ControllaAttesa(UltimaScrittura);
 
                 if (NumByte < 0) NumByte = 0;
                 if (NumByte > 242)
@@ -909,6 +935,37 @@ namespace ChargerLogic
             }
         }
 
+
+        public bool ControllaAttesa(DateTime UltimoIstante, int MilliecondiTimeOut = 4800)
+        {
+            bool _risposta = false;
+            try
+            {
+                DateTime _ora = DateTime.Now;
+                TimeSpan _durata = _ora.Subtract(UltimoIstante);
+
+                Log.Debug("Controllo attesa ------>> Last:" + UltimoIstante.ToString() + " - Tempo attesa: " + _durata.TotalMilliseconds.ToString());
+
+                if (_durata.TotalMilliseconds > MilliecondiTimeOut)
+                {
+                    Log.Debug("------>>           Tempo Stanby comunicazione superato");
+                    _risposta = StartComunicazione();
+                }
+
+                return _risposta;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("ControllaAttesa: " + Ex.Message);
+                _lastError = Ex.Message;
+                return _risposta;
+            }
+
+        }
+
+
+
         /// <summary>
         /// Cancella fisicamente un blocco di 4K dalla memoria flash mettendo tutti i Bytes a 0xFF
         /// </summary>
@@ -920,6 +977,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
+                ControllaAttesa(UltimaScrittura);
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_ERASE_4K_MEM;
 
@@ -949,6 +1007,7 @@ namespace ChargerLogic
             }
         }
 
+
         /// <summary>
         /// Cancella l'intera memoria flash (4MB). Cancella snche i dati relativi alla scheda corrente dal DB Locale
         /// </summary>
@@ -960,6 +1019,8 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
+
+                ControllaAttesa(UltimaScrittura);
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_ERASE_DATA_MEMORY;
 
@@ -995,12 +1056,13 @@ namespace ChargerLogic
         }
 
 
-
         public bool ScriviCicloCorrente()
         {
             try
             {
                 bool _esito;
+
+                ControllaAttesa(UltimaScrittura);
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_PROG_CYCLE_CRG;
                 _mS.CicloInMacchina = CicloInMacchina;
@@ -1033,6 +1095,9 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
+
+                ControllaAttesa(UltimaScrittura);
+
                 DateTime _now = DateTime.Now; 
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_UPDATE_RTC;
@@ -1218,15 +1283,6 @@ namespace ChargerLogic
 
         /******************************************************************************************************/
 
-
-
-
-
-
-
-
-
-
         private SerialMessage.TipoRisposta analizzaCoda()
         {
 
@@ -1330,12 +1386,16 @@ namespace ChargerLogic
                                 _inviaRisposta = false;
                                 break;
 
-                            case 0x03: // Cicli in memoria
+                            case (byte)SerialMessage.TipoComando.CMD_READ_LT_MEMORY:   //0x03: // Cicli in memoria
                                 Log.Debug("Cicli in memoria");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 break;
-                            case 0xD3: // read RTC
+                            case (byte)SerialMessage.TipoComando.CMD_READ_RTC:   //0xD3: // read RTC
                                 Log.Debug("Read RTC");
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                break;
+                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:   //0xD3: // read RTC
+                                Log.Debug("Read MEMORY");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 break;
                             default:

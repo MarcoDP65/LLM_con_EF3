@@ -2260,7 +2260,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabCb01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabCb01.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3736,7 +3736,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabStatSintesi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabStatSintesi.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3787,7 +3787,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabStatCockpit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabStatCockpit.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3844,7 +3844,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabStatComparazioni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabStatComparazioni.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -4684,7 +4684,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabStatistiche.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabStatistiche.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -5467,7 +5467,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabCb04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabCb04.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -7507,7 +7507,7 @@
     <value>42, 458</value>
   </data>
   <data name="flvwProgrammiCarica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1078, 193</value>
+    <value>1078, 149</value>
   </data>
   <data name="flvwProgrammiCarica.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -7531,7 +7531,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAttivaProgrammazione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>646, 669</value>
+    <value>644, 627</value>
   </data>
   <data name="btnAttivaProgrammazione.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 36</value>
@@ -7561,7 +7561,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnNuovoProgramma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>866, 669</value>
+    <value>864, 627</value>
   </data>
   <data name="btnNuovoProgramma.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 36</value>
@@ -7591,7 +7591,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnRicaricaProgr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 669</value>
+    <value>40, 627</value>
   </data>
   <data name="btnRicaricaProgr.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 36</value>
@@ -7945,7 +7945,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabCb02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabCb02.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -9040,7 +9040,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=3.0.0.11, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=3.0.0.12, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -9085,7 +9085,7 @@
     <value>4, 29</value>
   </data>
   <data name="tbpPianificazione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tbpPianificazione.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -9232,7 +9232,7 @@
     <value>18, 93</value>
   </data>
   <data name="btnCalScriviGiorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 27</value>
+    <value>337, 42</value>
   </data>
   <data name="btnCalScriviGiorno.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -9436,10 +9436,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbCalData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 191</value>
+    <value>38, 238</value>
   </data>
   <data name="grbCalData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>369, 137</value>
+    <value>370, 155</value>
   </data>
   <data name="grbCalData.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -9754,7 +9754,7 @@
     <value>12:00</value>
   </data>
   <data name="cmbOreRitardo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 70</value>
+    <value>181, 73</value>
   </data>
   <data name="cmbOreRitardo.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 26</value>
@@ -9838,7 +9838,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbAccensione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 361</value>
+    <value>558, 32</value>
   </data>
   <data name="grbAccensione.Size" type="System.Drawing.Size, System.Drawing">
     <value>401, 171</value>
@@ -9868,7 +9868,7 @@
     <value>191, 91</value>
   </data>
   <data name="btnScriviRtc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 27</value>
+    <value>159, 47</value>
   </data>
   <data name="btnScriviRtc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -9895,7 +9895,7 @@
     <value>19, 91</value>
   </data>
   <data name="btnLeggiRtc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 27</value>
+    <value>159, 47</value>
   </data>
   <data name="btnLeggiRtc.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -10036,7 +10036,7 @@
     <value>38, 32</value>
   </data>
   <data name="grbOraCorrente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 153</value>
+    <value>370, 171</value>
   </data>
   <data name="grbOraCorrente.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -10060,7 +10060,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabCb05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabCb05.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -10432,7 +10432,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabCb03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabCb03.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -10452,6 +10452,1833 @@
   <data name="&gt;&gt;tabCb03.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="chkParLetturaAuto.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkParLetturaAuto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="chkParLetturaAuto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkParLetturaAuto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 119</value>
+  </data>
+  <data name="chkParLetturaAuto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 22</value>
+  </data>
+  <data name="chkParLetturaAuto.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="chkParLetturaAuto.Text" xml:space="preserve">
+    <value>Lettura Automatica</value>
+  </data>
+  <data name="&gt;&gt;chkParLetturaAuto.Name" xml:space="preserve">
+    <value>chkParLetturaAuto</value>
+  </data>
+  <data name="&gt;&gt;chkParLetturaAuto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkParLetturaAuto.Parent" xml:space="preserve">
+    <value>grbVarLettturaImmediata</value>
+  </data>
+  <data name="&gt;&gt;chkParLetturaAuto.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkDatiDiretti.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkDatiDiretti.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="chkDatiDiretti.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkDatiDiretti.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 146</value>
+  </data>
+  <data name="chkDatiDiretti.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="chkDatiDiretti.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="chkDatiDiretti.Text" xml:space="preserve">
+    <value>Valori Effettivi</value>
+  </data>
+  <data name="&gt;&gt;chkDatiDiretti.Name" xml:space="preserve">
+    <value>chkDatiDiretti</value>
+  </data>
+  <data name="&gt;&gt;chkDatiDiretti.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkDatiDiretti.Parent" xml:space="preserve">
+    <value>grbVarLettturaImmediata</value>
+  </data>
+  <data name="&gt;&gt;chkDatiDiretti.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnLeggiVariabili.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="btnLeggiVariabili.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnLeggiVariabili.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 39</value>
+  </data>
+  <data name="btnLeggiVariabili.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 61</value>
+  </data>
+  <data name="btnLeggiVariabili.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="btnLeggiVariabili.Text" xml:space="preserve">
+    <value>Lettura Immediata</value>
+  </data>
+  <data name="&gt;&gt;btnLeggiVariabili.Name" xml:space="preserve">
+    <value>btnLeggiVariabili</value>
+  </data>
+  <data name="&gt;&gt;btnLeggiVariabili.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLeggiVariabili.Parent" xml:space="preserve">
+    <value>grbVarLettturaImmediata</value>
+  </data>
+  <data name="&gt;&gt;btnLeggiVariabili.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grbVarLettturaImmediata.Location" type="System.Drawing.Point, System.Drawing">
+    <value>896, 33</value>
+  </data>
+  <data name="grbVarLettturaImmediata.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 176</value>
+  </data>
+  <data name="grbVarLettturaImmediata.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="grbVarLettturaImmediata.Text" xml:space="preserve">
+    <value>Lettura Dati</value>
+  </data>
+  <data name="&gt;&gt;grbVarLettturaImmediata.Name" xml:space="preserve">
+    <value>grbVarLettturaImmediata</value>
+  </data>
+  <data name="&gt;&gt;grbVarLettturaImmediata.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVarLettturaImmediata.Parent" xml:space="preserve">
+    <value>tabSbFact</value>
+  </data>
+  <data name="&gt;&gt;grbVarLettturaImmediata.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkCliResetContatori.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkCliResetContatori.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkCliResetContatori.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 97</value>
+  </data>
+  <data name="chkCliResetContatori.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
+  </data>
+  <data name="chkCliResetContatori.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="chkCliResetContatori.Text" xml:space="preserve">
+    <value>Ripristina Stato Carica</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.Name" xml:space="preserve">
+    <value>chkCliResetContatori</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.Parent" xml:space="preserve">
+    <value>grbVarRestartScheda</value>
+  </data>
+  <data name="&gt;&gt;chkCliResetContatori.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnResetScheda.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
+  </data>
+  <data name="btnResetScheda.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnResetScheda.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 38</value>
+  </data>
+  <data name="btnResetScheda.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 53</value>
+  </data>
+  <data name="btnResetScheda.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="btnResetScheda.Text" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="&gt;&gt;btnResetScheda.Name" xml:space="preserve">
+    <value>btnResetScheda</value>
+  </data>
+  <data name="&gt;&gt;btnResetScheda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnResetScheda.Parent" xml:space="preserve">
+    <value>grbVarRestartScheda</value>
+  </data>
+  <data name="&gt;&gt;btnResetScheda.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grbVarRestartScheda.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="grbVarRestartScheda.Location" type="System.Drawing.Point, System.Drawing">
+    <value>896, 359</value>
+  </data>
+  <data name="grbVarRestartScheda.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 129</value>
+  </data>
+  <data name="grbVarRestartScheda.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="grbVarRestartScheda.Text" xml:space="preserve">
+    <value>Riavvio Scheda</value>
+  </data>
+  <data name="&gt;&gt;grbVarRestartScheda.Name" xml:space="preserve">
+    <value>grbVarRestartScheda</value>
+  </data>
+  <data name="&gt;&gt;grbVarRestartScheda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVarRestartScheda.Parent" xml:space="preserve">
+    <value>tabSbFact</value>
+  </data>
+  <data name="&gt;&gt;grbVarRestartScheda.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkFSerMantieniCliente.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFSerMantieniCliente.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkFSerMantieniCliente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 98</value>
+  </data>
+  <data name="chkFSerMantieniCliente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="chkFSerMantieniCliente.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="chkFSerMantieniCliente.Text" xml:space="preserve">
+    <value>Mantieni Dati Cliente</value>
+  </data>
+  <data name="&gt;&gt;chkFSerMantieniCliente.Name" xml:space="preserve">
+    <value>chkFSerMantieniCliente</value>
+  </data>
+  <data name="&gt;&gt;chkFSerMantieniCliente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkFSerMantieniCliente.Parent" xml:space="preserve">
+    <value>grbVarResetScheda</value>
+  </data>
+  <data name="&gt;&gt;chkFSerMantieniCliente.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 41</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 53</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnFSerCancellaMemoria.Text" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="&gt;&gt;btnFSerCancellaMemoria.Name" xml:space="preserve">
+    <value>btnFSerCancellaMemoria</value>
+  </data>
+  <data name="&gt;&gt;btnFSerCancellaMemoria.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFSerCancellaMemoria.Parent" xml:space="preserve">
+    <value>grbVarResetScheda</value>
+  </data>
+  <data name="&gt;&gt;btnFSerCancellaMemoria.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grbVarResetScheda.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="grbVarResetScheda.Location" type="System.Drawing.Point, System.Drawing">
+    <value>896, 224</value>
+  </data>
+  <data name="grbVarResetScheda.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 129</value>
+  </data>
+  <data name="grbVarResetScheda.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="grbVarResetScheda.Text" xml:space="preserve">
+    <value>Cancellazione Memoria</value>
+  </data>
+  <data name="&gt;&gt;grbVarResetScheda.Name" xml:space="preserve">
+    <value>grbVarResetScheda</value>
+  </data>
+  <data name="&gt;&gt;grbVarResetScheda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVarResetScheda.Parent" xml:space="preserve">
+    <value>tabSbFact</value>
+  </data>
+  <data name="&gt;&gt;grbVarResetScheda.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grbVariabiliConnVOK.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="grbVariabiliConnVOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="grbVariabiliConnVOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>648, 401</value>
+  </data>
+  <data name="grbVariabiliConnVOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 22</value>
+  </data>
+  <data name="grbVariabiliConnVOK.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="grbVariabiliConnVOK.Text" xml:space="preserve">
+    <value>Conn OK</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVOK.Name" xml:space="preserve">
+    <value>grbVariabiliConnVOK</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVOK.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVOK.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grbVariabiliConnV1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="grbVariabiliConnV1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="grbVariabiliConnV1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 21</value>
+  </data>
+  <data name="grbVariabiliConnV1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 22</value>
+  </data>
+  <data name="grbVariabiliConnV1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="grbVariabiliConnV1.Text" xml:space="preserve">
+    <value>V 1/4</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV1.Name" xml:space="preserve">
+    <value>grbVariabiliConnV1</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV1.Parent" xml:space="preserve">
+    <value>grbVariabiliStatoConn</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grbVariabiliConnV2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="grbVariabiliConnV2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="grbVariabiliConnV2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 21</value>
+  </data>
+  <data name="grbVariabiliConnV2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 22</value>
+  </data>
+  <data name="grbVariabiliConnV2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="grbVariabiliConnV2.Text" xml:space="preserve">
+    <value>V 2/4</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV2.Name" xml:space="preserve">
+    <value>grbVariabiliConnV2</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV2.Parent" xml:space="preserve">
+    <value>grbVariabiliStatoConn</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grbVariabiliConnV3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="grbVariabiliConnV3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="grbVariabiliConnV3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 21</value>
+  </data>
+  <data name="grbVariabiliConnV3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 22</value>
+  </data>
+  <data name="grbVariabiliConnV3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="grbVariabiliConnV3.Text" xml:space="preserve">
+    <value>V 3/4</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV3.Name" xml:space="preserve">
+    <value>grbVariabiliConnV3</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV3.Parent" xml:space="preserve">
+    <value>grbVariabiliStatoConn</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnV3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grbVariabiliConnVbatt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="grbVariabiliConnVbatt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="grbVariabiliConnVbatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 21</value>
+  </data>
+  <data name="grbVariabiliConnVbatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 22</value>
+  </data>
+  <data name="grbVariabiliConnVbatt.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="grbVariabiliConnVbatt.Text" xml:space="preserve">
+    <value>V Batt</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVbatt.Name" xml:space="preserve">
+    <value>grbVariabiliConnVbatt</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVbatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVbatt.Parent" xml:space="preserve">
+    <value>grbVariabiliStatoConn</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliConnVbatt.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grbVariabiliStatoConn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 380</value>
+  </data>
+  <data name="grbVariabiliStatoConn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>479, 59</value>
+  </data>
+  <data name="grbVariabiliStatoConn.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="grbVariabiliStatoConn.Text" xml:space="preserve">
+    <value>Stato Connessioni</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliStatoConn.Name" xml:space="preserve">
+    <value>grbVariabiliStatoConn</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliStatoConn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliStatoConn.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliStatoConn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblVarVBattT.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblVarVBattT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblVarVBattT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 126</value>
+  </data>
+  <data name="lblVarVBattT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 18</value>
+  </data>
+  <data name="lblVarVBattT.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="lblVarVBattT.Text" xml:space="preserve">
+    <value>V Batt Tampone</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBattT.Name" xml:space="preserve">
+    <value>lblVarVBattT</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBattT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBattT.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBattT.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtVarVBattT.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtVarVBattT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 148</value>
+  </data>
+  <data name="txtVarVBattT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 27</value>
+  </data>
+  <data name="txtVarVBattT.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="txtVarVBattT.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarVBattT.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBattT.Name" xml:space="preserve">
+    <value>txtVarVBattT</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBattT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBattT.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBattT.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtVarMemProgrammed.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtVarMemProgrammed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 350</value>
+  </data>
+  <data name="txtVarMemProgrammed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 24</value>
+  </data>
+  <data name="txtVarMemProgrammed.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="&gt;&gt;txtVarMemProgrammed.Name" xml:space="preserve">
+    <value>txtVarMemProgrammed</value>
+  </data>
+  <data name="&gt;&gt;txtVarMemProgrammed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarMemProgrammed.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarMemProgrammed.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 330</value>
+  </data>
+  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 18</value>
+  </data>
+  <data name="label28.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Stato SPY-BATT</value>
+  </data>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
+  </data>
+  <data name="&gt;&gt;label28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>649, 126</value>
+  </data>
+  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 18</value>
+  </data>
+  <data name="label29.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>C.F.</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label30.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>529, 126</value>
+  </data>
+  <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 18</value>
+  </data>
+  <data name="label30.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>S.o.C.</value>
+  </data>
+  <data name="&gt;&gt;label30.Name" xml:space="preserve">
+    <value>label30</value>
+  </data>
+  <data name="&gt;&gt;label30.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtVarRF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtVarRF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>652, 147</value>
+  </data>
+  <data name="txtVarRF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 27</value>
+  </data>
+  <data name="txtVarRF.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="txtVarRF.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarRF.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarRF.Name" xml:space="preserve">
+    <value>txtVarRF</value>
+  </data>
+  <data name="&gt;&gt;txtVarRF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarRF.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarRF.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="txtVarSoC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtVarSoC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 147</value>
+  </data>
+  <data name="txtVarSoC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 27</value>
+  </data>
+  <data name="txtVarSoC.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="txtVarSoC.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarSoC.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarSoC.Name" xml:space="preserve">
+    <value>txtVarSoC</value>
+  </data>
+  <data name="&gt;&gt;txtVarSoC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarSoC.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarSoC.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 213</value>
+  </data>
+  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 18</value>
+  </data>
+  <data name="label26.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>KWh Caricati</value>
+  </data>
+  <data name="&gt;&gt;label26.Name" xml:space="preserve">
+    <value>label26</value>
+  </data>
+  <data name="&gt;&gt;label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="txtVarWhCarica.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtVarWhCarica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 234</value>
+  </data>
+  <data name="txtVarWhCarica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 24</value>
+  </data>
+  <data name="txtVarWhCarica.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="txtVarWhCarica.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarWhCarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhCarica.Name" xml:space="preserve">
+    <value>txtVarWhCarica</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhCarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhCarica.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhCarica.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtVarWhScarica.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtVarWhScarica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 234</value>
+  </data>
+  <data name="txtVarWhScarica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 24</value>
+  </data>
+  <data name="txtVarWhScarica.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="txtVarWhScarica.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarWhScarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhScarica.Name" xml:space="preserve">
+    <value>txtVarWhScarica</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhScarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhScarica.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarWhScarica.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 213</value>
+  </data>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 18</value>
+  </data>
+  <data name="label27.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>KWh Scaricati</value>
+  </data>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
+  </data>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 127</value>
+  </data>
+  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 18</value>
+  </data>
+  <data name="label25.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Elettrolita</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="txtVarElettrolita.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtVarElettrolita.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 147</value>
+  </data>
+  <data name="txtVarElettrolita.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 27</value>
+  </data>
+  <data name="txtVarElettrolita.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="txtVarElettrolita.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarElettrolita.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarElettrolita.Name" xml:space="preserve">
+    <value>txtVarElettrolita</value>
+  </data>
+  <data name="&gt;&gt;txtVarElettrolita.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarElettrolita.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarElettrolita.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 127</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 18</value>
+  </data>
+  <data name="label24.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Temp Batt</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="txtVarTempNTC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt</value>
+  </data>
+  <data name="txtVarTempNTC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 147</value>
+  </data>
+  <data name="txtVarTempNTC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 27</value>
+  </data>
+  <data name="txtVarTempNTC.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="txtVarTempNTC.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarTempNTC.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarTempNTC.Name" xml:space="preserve">
+    <value>txtVarTempNTC</value>
+  </data>
+  <data name="&gt;&gt;txtVarTempNTC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarTempNTC.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarTempNTC.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>628, 35</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 18</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>I Batt</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="txtVaIbatt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtVaIbatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>627, 56</value>
+  </data>
+  <data name="txtVaIbatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtVaIbatt.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="txtVaIbatt.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVaIbatt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVaIbatt.Name" xml:space="preserve">
+    <value>txtVaIbatt</value>
+  </data>
+  <data name="&gt;&gt;txtVaIbatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVaIbatt.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVaIbatt.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="lblVarVBatt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblVarVBatt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblVarVBatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 35</value>
+  </data>
+  <data name="lblVarVBatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 18</value>
+  </data>
+  <data name="lblVarVBatt.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="lblVarVBatt.Text" xml:space="preserve">
+    <value>V Batt</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBatt.Name" xml:space="preserve">
+    <value>lblVarVBatt</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBatt.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;lblVarVBatt.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 35</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 18</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>V3</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>281, 35</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 18</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>V2</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 213</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 18</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Ah Caricati</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="txtVarAhCarica.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtVarAhCarica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 234</value>
+  </data>
+  <data name="txtVarAhCarica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 24</value>
+  </data>
+  <data name="txtVarAhCarica.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="txtVarAhCarica.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarAhCarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhCarica.Name" xml:space="preserve">
+    <value>txtVarAhCarica</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhCarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhCarica.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhCarica.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="txtVarVBatt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtVarVBatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 55</value>
+  </data>
+  <data name="txtVarVBatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtVarVBatt.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="txtVarVBatt.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarVBatt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBatt.Name" xml:space="preserve">
+    <value>txtVarVBatt</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBatt.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarVBatt.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="txtVarV3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtVarV3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 55</value>
+  </data>
+  <data name="txtVarV3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtVarV3.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="txtVarV3.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarV3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarV3.Name" xml:space="preserve">
+    <value>txtVarV3</value>
+  </data>
+  <data name="&gt;&gt;txtVarV3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarV3.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarV3.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="txtVarV2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtVarV2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 56</value>
+  </data>
+  <data name="txtVarV2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtVarV2.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="txtVarV2.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarV2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarV2.Name" xml:space="preserve">
+    <value>txtVarV2</value>
+  </data>
+  <data name="&gt;&gt;txtVarV2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarV2.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarV2.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="txtVarV1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtVarV1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 56</value>
+  </data>
+  <data name="txtVarV1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtVarV1.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="txtVarV1.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarV1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarV1.Name" xml:space="preserve">
+    <value>txtVarV1</value>
+  </data>
+  <data name="&gt;&gt;txtVarV1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarV1.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarV1.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 35</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 18</value>
+  </data>
+  <data name="label22.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>V1</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="txtVarAhScarica.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtVarAhScarica.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 234</value>
+  </data>
+  <data name="txtVarAhScarica.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 24</value>
+  </data>
+  <data name="txtVarAhScarica.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="txtVarAhScarica.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtVarAhScarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhScarica.Name" xml:space="preserve">
+    <value>txtVarAhScarica</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhScarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhScarica.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;txtVarAhScarica.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 213</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 18</value>
+  </data>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Ah Scaricati</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="grbVariabiliImmediate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="grbVariabiliImmediate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 33</value>
+  </data>
+  <data name="grbVariabiliImmediate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>777, 455</value>
+  </data>
+  <data name="grbVariabiliImmediate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="grbVariabiliImmediate.Text" xml:space="preserve">
+    <value>Variabili Scheda</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliImmediate.Name" xml:space="preserve">
+    <value>grbVariabiliImmediate</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliImmediate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliImmediate.Parent" xml:space="preserve">
+    <value>tabSbFact</value>
+  </data>
+  <data name="&gt;&gt;grbVariabiliImmediate.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabSbFact.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tabSbFact.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1692, 738</value>
+  </data>
+  <data name="tabSbFact.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabSbFact.Text" xml:space="preserve">
+    <value>Funzioni di Servizio</value>
+  </data>
+  <data name="&gt;&gt;tabSbFact.Name" xml:space="preserve">
+    <value>tabSbFact</value>
+  </data>
+  <data name="&gt;&gt;tabSbFact.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabSbFact.Parent" xml:space="preserve">
+    <value>tabCaricaBatterie</value>
+  </data>
+  <data name="&gt;&gt;tabSbFact.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="checkBox2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="checkBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 95</value>
+  </data>
+  <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="checkBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="checkBox2.Text" xml:space="preserve">
+    <value>Valori Effettivi</value>
+  </data>
+  <data name="&gt;&gt;checkBox2.Name" xml:space="preserve">
+    <value>checkBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox2.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;checkBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnDatiSysLeggiVariabili.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="btnDatiSysLeggiVariabili.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDatiSysLeggiVariabili.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 32</value>
+  </data>
+  <data name="btnDatiSysLeggiVariabili.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 46</value>
+  </data>
+  <data name="btnDatiSysLeggiVariabili.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="btnDatiSysLeggiVariabili.Text" xml:space="preserve">
+    <value>Lettura Immediata</value>
+  </data>
+  <data name="&gt;&gt;btnDatiSysLeggiVariabili.Name" xml:space="preserve">
+    <value>btnDatiSysLeggiVariabili</value>
+  </data>
+  <data name="&gt;&gt;btnDatiSysLeggiVariabili.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDatiSysLeggiVariabili.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;btnDatiSysLeggiVariabili.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1238, 390</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 129</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Lettura Dati</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>tbpParametriCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label295.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label295.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label295.Location" type="System.Drawing.Point, System.Drawing">
+    <value>612, 29</value>
+  </data>
+  <data name="label295.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 20</value>
+  </data>
+  <data name="label295.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="label295.Text" xml:space="preserve">
+    <value>I Batt</value>
+  </data>
+  <data name="&gt;&gt;label295.Name" xml:space="preserve">
+    <value>label295</value>
+  </data>
+  <data name="&gt;&gt;label295.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label295.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;label295.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDataSysIBatt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtDataSysIBatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>611, 50</value>
+  </data>
+  <data name="txtDataSysIBatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtDataSysIBatt.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="txtDataSysIBatt.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDataSysIBatt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysIBatt.Name" xml:space="preserve">
+    <value>txtDataSysIBatt</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysIBatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysIBatt.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysIBatt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label296.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label296.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label296.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 30</value>
+  </data>
+  <data name="label296.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="label296.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="label296.Text" xml:space="preserve">
+    <value>V Batt</value>
+  </data>
+  <data name="&gt;&gt;label296.Name" xml:space="preserve">
+    <value>label296</value>
+  </data>
+  <data name="&gt;&gt;label296.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label296.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;label296.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label297.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label297.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label297.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 30</value>
+  </data>
+  <data name="label297.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="label297.TabIndex" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="label297.Text" xml:space="preserve">
+    <value>V3</value>
+  </data>
+  <data name="&gt;&gt;label297.Name" xml:space="preserve">
+    <value>label297</value>
+  </data>
+  <data name="&gt;&gt;label297.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label297.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;label297.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label298.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label298.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label298.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 30</value>
+  </data>
+  <data name="label298.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="label298.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="label298.Text" xml:space="preserve">
+    <value>V2</value>
+  </data>
+  <data name="&gt;&gt;label298.Name" xml:space="preserve">
+    <value>label298</value>
+  </data>
+  <data name="&gt;&gt;label298.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label298.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;label298.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtDataSysVBatt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtDataSysVBatt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 50</value>
+  </data>
+  <data name="txtDataSysVBatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtDataSysVBatt.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="txtDataSysVBatt.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDataSysVBatt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysVBatt.Name" xml:space="preserve">
+    <value>txtDataSysVBatt</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysVBatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysVBatt.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysVBatt.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtDataSysV3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtDataSysV3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 50</value>
+  </data>
+  <data name="txtDataSysV3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtDataSysV3.TabIndex" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="txtDataSysV3.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDataSysV3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV3.Name" xml:space="preserve">
+    <value>txtDataSysV3</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV3.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtDataSysV2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtDataSysV2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 51</value>
+  </data>
+  <data name="txtDataSysV2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtDataSysV2.TabIndex" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="txtDataSysV2.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDataSysV2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV2.Name" xml:space="preserve">
+    <value>txtDataSysV2</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV2.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtDataSysV1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="txtDataSysV1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>414, 51</value>
+  </data>
+  <data name="txtDataSysV1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 30</value>
+  </data>
+  <data name="txtDataSysV1.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="txtDataSysV1.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDataSysV1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV1.Name" xml:space="preserve">
+    <value>txtDataSysV1</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV1.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;txtDataSysV1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label299.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label299.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label299.Location" type="System.Drawing.Point, System.Drawing">
+    <value>411, 30</value>
+  </data>
+  <data name="label299.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="label299.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="label299.Text" xml:space="preserve">
+    <value>V1</value>
+  </data>
+  <data name="&gt;&gt;label299.Name" xml:space="preserve">
+    <value>label299</value>
+  </data>
+  <data name="&gt;&gt;label299.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label299.Parent" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;label299.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="grbCalValoriLettura.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 38</value>
+  </data>
+  <data name="grbCalValoriLettura.Size" type="System.Drawing.Size, System.Drawing">
+    <value>913, 123</value>
+  </data>
+  <data name="grbCalValoriLettura.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="grbCalValoriLettura.Text" xml:space="preserve">
+    <value>Variabili Scheda</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriLettura.Name" xml:space="preserve">
+    <value>grbCalValoriLettura</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriLettura.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriLettura.Parent" xml:space="preserve">
+    <value>tbpParametriCalibrazione</value>
+  </data>
+  <data name="&gt;&gt;grbCalValoriLettura.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkFSerResetCnt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -10462,7 +12289,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkFSerResetCnt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 315</value>
+    <value>25, 328</value>
   </data>
   <data name="chkFSerResetCnt.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 21</value>
@@ -10489,7 +12316,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigNumLetture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 187</value>
+    <value>139, 195</value>
   </data>
   <data name="txtSigNumLetture.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 24</value>
@@ -10516,10 +12343,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigPercInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 244</value>
+    <value>151, 252</value>
   </data>
   <data name="txtSigPercInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
+    <value>111, 24</value>
   </data>
   <data name="txtSigPercInt.TabIndex" type="System.Int32, mscorlib">
     <value>79</value>
@@ -10543,10 +12370,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigPercErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 244</value>
+    <value>24, 252</value>
   </data>
   <data name="txtSigPercErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
+    <value>108, 24</value>
   </data>
   <data name="txtSigPercErr.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -10570,7 +12397,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigReg1Err.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 140</value>
+    <value>169, 148</value>
   </data>
   <data name="txtSigReg1Err.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -10597,7 +12424,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigReg0Err.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 140</value>
+    <value>63, 148</value>
   </data>
   <data name="txtSigReg0Err.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -10624,7 +12451,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigReg1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 105</value>
+    <value>169, 113</value>
   </data>
   <data name="txtSigReg1.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -10651,7 +12478,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtSigReg0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 105</value>
+    <value>62, 113</value>
   </data>
   <data name="txtSigReg0.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -10681,7 +12508,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSigPercInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 221</value>
+    <value>147, 229</value>
   </data>
   <data name="lblSigPercInt.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 20</value>
@@ -10711,7 +12538,7 @@
     <value>NoControl</value>
   </data>
   <data name="label291.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 191</value>
+    <value>59, 199</value>
   </data>
   <data name="label291.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
@@ -10741,7 +12568,7 @@
     <value>NoControl</value>
   </data>
   <data name="label290.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 221</value>
+    <value>21, 229</value>
   </data>
   <data name="label290.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 20</value>
@@ -10771,7 +12598,7 @@
     <value>NoControl</value>
   </data>
   <data name="label289.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 142</value>
+    <value>16, 150</value>
   </data>
   <data name="label289.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 20</value>
@@ -10801,7 +12628,7 @@
     <value>NoControl</value>
   </data>
   <data name="label288.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 109</value>
+    <value>16, 117</value>
   </data>
   <data name="label288.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 20</value>
@@ -10834,7 +12661,7 @@
     <value>NoControl</value>
   </data>
   <data name="label287.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 83</value>
+    <value>178, 91</value>
   </data>
   <data name="label287.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
@@ -10867,7 +12694,7 @@
     <value>NoControl</value>
   </data>
   <data name="label286.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 83</value>
+    <value>75, 91</value>
   </data>
   <data name="label286.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
@@ -10951,7 +12778,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFSerVerificaOC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 274</value>
+    <value>25, 282</value>
   </data>
   <data name="btnFSerVerificaOC.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 34</value>
@@ -10981,7 +12808,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFSerImpostaOC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 274</value>
+    <value>151, 282</value>
   </data>
   <data name="btnFSerImpostaOC.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 34</value>
@@ -11059,13 +12886,13 @@
     <value>20</value>
   </data>
   <data name="grbVarParametriSig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 335</value>
+    <value>1238, 13</value>
   </data>
   <data name="grbVarParametriSig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 356</value>
+    <value>295, 363</value>
   </data>
   <data name="grbVarParametriSig.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
+    <value>61</value>
   </data>
   <data name="grbVarParametriSig.Text" xml:space="preserve">
     <value>Parametri Comunicazione LL</value>
@@ -11077,97 +12904,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grbVarParametriSig.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
+    <value>tbpParametriCalibrazione</value>
   </data>
   <data name="&gt;&gt;grbVarParametriSig.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkCliResetContatori.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkCliResetContatori.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkCliResetContatori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 97</value>
-  </data>
-  <data name="chkCliResetContatori.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
-  <data name="chkCliResetContatori.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="chkCliResetContatori.Text" xml:space="preserve">
-    <value>Ripristina Stato Carica</value>
-  </data>
-  <data name="&gt;&gt;chkCliResetContatori.Name" xml:space="preserve">
-    <value>chkCliResetContatori</value>
-  </data>
-  <data name="&gt;&gt;chkCliResetContatori.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkCliResetContatori.Parent" xml:space="preserve">
-    <value>grbVarRestartScheda</value>
-  </data>
-  <data name="&gt;&gt;chkCliResetContatori.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnResetScheda.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
-  </data>
-  <data name="btnResetScheda.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnResetScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 38</value>
-  </data>
-  <data name="btnResetScheda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 53</value>
-  </data>
-  <data name="btnResetScheda.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="btnResetScheda.Text" xml:space="preserve">
-    <value>Restart</value>
-  </data>
-  <data name="&gt;&gt;btnResetScheda.Name" xml:space="preserve">
-    <value>btnResetScheda</value>
-  </data>
-  <data name="&gt;&gt;btnResetScheda.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnResetScheda.Parent" xml:space="preserve">
-    <value>grbVarRestartScheda</value>
-  </data>
-  <data name="&gt;&gt;btnResetScheda.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="grbVarRestartScheda.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="grbVarRestartScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 193</value>
-  </data>
-  <data name="grbVarRestartScheda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 129</value>
-  </data>
-  <data name="grbVarRestartScheda.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="grbVarRestartScheda.Text" xml:space="preserve">
-    <value>Riavvio Scheda</value>
-  </data>
-  <data name="&gt;&gt;grbVarRestartScheda.Name" xml:space="preserve">
-    <value>grbVarRestartScheda</value>
-  </data>
-  <data name="&gt;&gt;grbVarRestartScheda.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVarRestartScheda.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
-  </data>
-  <data name="&gt;&gt;grbVarRestartScheda.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lblSvcCausaLastReset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11473,13 +13213,13 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbSvcParametriMedie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>965, 193</value>
+    <value>969, 13</value>
   </data>
   <data name="grbSvcParametriMedie.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 191</value>
   </data>
   <data name="grbSvcParametriMedie.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>57</value>
   </data>
   <data name="grbSvcParametriMedie.Text" xml:space="preserve">
     <value>Parametri Sistema</value>
@@ -11491,96 +13231,9 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grbSvcParametriMedie.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
+    <value>tbpParametriCalibrazione</value>
   </data>
   <data name="&gt;&gt;grbSvcParametriMedie.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkFSerMantieniCliente.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkFSerMantieniCliente.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkFSerMantieniCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 98</value>
-  </data>
-  <data name="chkFSerMantieniCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="chkFSerMantieniCliente.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="chkFSerMantieniCliente.Text" xml:space="preserve">
-    <value>Mantieni Dati Cliente</value>
-  </data>
-  <data name="&gt;&gt;chkFSerMantieniCliente.Name" xml:space="preserve">
-    <value>chkFSerMantieniCliente</value>
-  </data>
-  <data name="&gt;&gt;chkFSerMantieniCliente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkFSerMantieniCliente.Parent" xml:space="preserve">
-    <value>grbVarResetScheda</value>
-  </data>
-  <data name="&gt;&gt;chkFSerMantieniCliente.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnFSerCancellaMemoria.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
-  </data>
-  <data name="btnFSerCancellaMemoria.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnFSerCancellaMemoria.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 41</value>
-  </data>
-  <data name="btnFSerCancellaMemoria.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 53</value>
-  </data>
-  <data name="btnFSerCancellaMemoria.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="btnFSerCancellaMemoria.Text" xml:space="preserve">
-    <value>Cancella</value>
-  </data>
-  <data name="&gt;&gt;btnFSerCancellaMemoria.Name" xml:space="preserve">
-    <value>btnFSerCancellaMemoria</value>
-  </data>
-  <data name="&gt;&gt;btnFSerCancellaMemoria.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnFSerCancellaMemoria.Parent" xml:space="preserve">
-    <value>grbVarResetScheda</value>
-  </data>
-  <data name="&gt;&gt;btnFSerCancellaMemoria.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="grbVarResetScheda.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="grbVarResetScheda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1222, 33</value>
-  </data>
-  <data name="grbVarResetScheda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 129</value>
-  </data>
-  <data name="grbVarResetScheda.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="grbVarResetScheda.Text" xml:space="preserve">
-    <value>Cancellazione Memoria</value>
-  </data>
-  <data name="&gt;&gt;grbVarResetScheda.Name" xml:space="preserve">
-    <value>grbVarResetScheda</value>
-  </data>
-  <data name="&gt;&gt;grbVarResetScheda.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVarResetScheda.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
-  </data>
-  <data name="&gt;&gt;grbVarResetScheda.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="btnAttivaCalibrazione.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -11725,13 +13378,13 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbCalibrazionePulsanti.Location" type="System.Drawing.Point, System.Drawing">
-    <value>965, 400</value>
+    <value>969, 219</value>
   </data>
   <data name="grbCalibrazionePulsanti.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 291</value>
+    <value>226, 300</value>
   </data>
   <data name="grbCalibrazionePulsanti.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>55</value>
   </data>
   <data name="&gt;&gt;grbCalibrazionePulsanti.Name" xml:space="preserve">
     <value>grbCalibrazionePulsanti</value>
@@ -11740,7 +13393,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grbCalibrazionePulsanti.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
+    <value>tbpParametriCalibrazione</value>
   </data>
   <data name="&gt;&gt;grbCalibrazionePulsanti.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -12757,13 +14410,13 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbCalibrazioni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 400</value>
+    <value>20, 228</value>
   </data>
   <data name="grbCalibrazioni.Size" type="System.Drawing.Size, System.Drawing">
     <value>913, 291</value>
   </data>
   <data name="grbCalibrazioni.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+    <value>53</value>
   </data>
   <data name="grbCalibrazioni.Text" xml:space="preserve">
     <value>Calibrazioni</value>
@@ -12775,1225 +14428,34 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grbCalibrazioni.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
+    <value>tbpParametriCalibrazione</value>
   </data>
   <data name="&gt;&gt;grbCalibrazioni.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="chkParLetturaAuto.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkParLetturaAuto.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="chkParLetturaAuto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkParLetturaAuto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>965, 113</value>
-  </data>
-  <data name="chkParLetturaAuto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
-  </data>
-  <data name="chkParLetturaAuto.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="chkParLetturaAuto.Text" xml:space="preserve">
-    <value>Lettura Automatica</value>
-  </data>
-  <data name="&gt;&gt;chkParLetturaAuto.Name" xml:space="preserve">
-    <value>chkParLetturaAuto</value>
-  </data>
-  <data name="&gt;&gt;chkParLetturaAuto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkParLetturaAuto.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
-  </data>
-  <data name="&gt;&gt;chkParLetturaAuto.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="chkDatiDiretti.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkDatiDiretti.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="chkDatiDiretti.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkDatiDiretti.Location" type="System.Drawing.Point, System.Drawing">
-    <value>965, 140</value>
-  </data>
-  <data name="chkDatiDiretti.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="chkDatiDiretti.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="chkDatiDiretti.Text" xml:space="preserve">
-    <value>Valori Effettivi</value>
-  </data>
-  <data name="&gt;&gt;chkDatiDiretti.Name" xml:space="preserve">
-    <value>chkDatiDiretti</value>
-  </data>
-  <data name="&gt;&gt;chkDatiDiretti.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkDatiDiretti.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
-  </data>
-  <data name="&gt;&gt;chkDatiDiretti.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="btnLeggiVariabili.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="btnLeggiVariabili.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnLeggiVariabili.Location" type="System.Drawing.Point, System.Drawing">
-    <value>965, 33</value>
-  </data>
-  <data name="btnLeggiVariabili.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 61</value>
-  </data>
-  <data name="btnLeggiVariabili.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="btnLeggiVariabili.Text" xml:space="preserve">
-    <value>Lettura Immediata</value>
-  </data>
-  <data name="&gt;&gt;btnLeggiVariabili.Name" xml:space="preserve">
-    <value>btnLeggiVariabili</value>
-  </data>
-  <data name="&gt;&gt;btnLeggiVariabili.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLeggiVariabili.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
-  </data>
-  <data name="&gt;&gt;btnLeggiVariabili.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="grbVariabiliConnVOK.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="grbVariabiliConnVOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="grbVariabiliConnVOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>362, 21</value>
-  </data>
-  <data name="grbVariabiliConnVOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 22</value>
-  </data>
-  <data name="grbVariabiliConnVOK.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="grbVariabiliConnVOK.Text" xml:space="preserve">
-    <value>Conn OK</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVOK.Name" xml:space="preserve">
-    <value>grbVariabiliConnVOK</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVOK.Parent" xml:space="preserve">
-    <value>grbVariabiliStatoConn</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVOK.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="grbVariabiliConnV1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="grbVariabiliConnV1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="grbVariabiliConnV1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 21</value>
-  </data>
-  <data name="grbVariabiliConnV1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 22</value>
-  </data>
-  <data name="grbVariabiliConnV1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="grbVariabiliConnV1.Text" xml:space="preserve">
-    <value>V 1/4</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV1.Name" xml:space="preserve">
-    <value>grbVariabiliConnV1</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV1.Parent" xml:space="preserve">
-    <value>grbVariabiliStatoConn</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="grbVariabiliConnV2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="grbVariabiliConnV2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="grbVariabiliConnV2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 21</value>
-  </data>
-  <data name="grbVariabiliConnV2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 22</value>
-  </data>
-  <data name="grbVariabiliConnV2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="grbVariabiliConnV2.Text" xml:space="preserve">
-    <value>V 2/4</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV2.Name" xml:space="preserve">
-    <value>grbVariabiliConnV2</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV2.Parent" xml:space="preserve">
-    <value>grbVariabiliStatoConn</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="grbVariabiliConnV3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="grbVariabiliConnV3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="grbVariabiliConnV3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 21</value>
-  </data>
-  <data name="grbVariabiliConnV3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 22</value>
-  </data>
-  <data name="grbVariabiliConnV3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="grbVariabiliConnV3.Text" xml:space="preserve">
-    <value>V 3/4</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV3.Name" xml:space="preserve">
-    <value>grbVariabiliConnV3</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV3.Parent" xml:space="preserve">
-    <value>grbVariabiliStatoConn</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnV3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="grbVariabiliConnVbatt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="grbVariabiliConnVbatt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="grbVariabiliConnVbatt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 21</value>
-  </data>
-  <data name="grbVariabiliConnVbatt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 22</value>
-  </data>
-  <data name="grbVariabiliConnVbatt.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="grbVariabiliConnVbatt.Text" xml:space="preserve">
-    <value>V Batt</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVbatt.Name" xml:space="preserve">
-    <value>grbVariabiliConnVbatt</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVbatt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVbatt.Parent" xml:space="preserve">
-    <value>grbVariabiliStatoConn</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliConnVbatt.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="grbVariabiliStatoConn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>411, 210</value>
-  </data>
-  <data name="grbVariabiliStatoConn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>479, 59</value>
-  </data>
-  <data name="grbVariabiliStatoConn.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="grbVariabiliStatoConn.Text" xml:space="preserve">
-    <value>Stato Connessioni</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliStatoConn.Name" xml:space="preserve">
-    <value>grbVariabiliStatoConn</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliStatoConn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliStatoConn.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliStatoConn.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblVarVBattT.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblVarVBattT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblVarVBattT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 160</value>
-  </data>
-  <data name="lblVarVBattT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 18</value>
-  </data>
-  <data name="lblVarVBattT.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="lblVarVBattT.Text" xml:space="preserve">
-    <value>V Batt Tampone</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBattT.Name" xml:space="preserve">
-    <value>lblVarVBattT</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBattT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBattT.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBattT.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtVarVBattT.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarVBattT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 180</value>
-  </data>
-  <data name="txtVarVBattT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="txtVarVBattT.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="txtVarVBattT.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarVBattT.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBattT.Name" xml:space="preserve">
-    <value>txtVarVBattT</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBattT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBattT.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBattT.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtVarMemProgrammed.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarMemProgrammed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>411, 180</value>
-  </data>
-  <data name="txtVarMemProgrammed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>479, 24</value>
-  </data>
-  <data name="txtVarMemProgrammed.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="&gt;&gt;txtVarMemProgrammed.Name" xml:space="preserve">
-    <value>txtVarMemProgrammed</value>
-  </data>
-  <data name="&gt;&gt;txtVarMemProgrammed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarMemProgrammed.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarMemProgrammed.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 160</value>
-  </data>
-  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 18</value>
-  </data>
-  <data name="label28.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
-  <data name="label28.Text" xml:space="preserve">
-    <value>Stato SPY-BATT</value>
-  </data>
-  <data name="&gt;&gt;label28.Name" xml:space="preserve">
-    <value>label28</value>
-  </data>
-  <data name="&gt;&gt;label28.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>818, 102</value>
-  </data>
-  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 18</value>
-  </data>
-  <data name="label29.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="label29.Text" xml:space="preserve">
-    <value>C.F.</value>
-  </data>
-  <data name="&gt;&gt;label29.Name" xml:space="preserve">
-    <value>label29</value>
-  </data>
-  <data name="&gt;&gt;label29.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label30.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 102</value>
-  </data>
-  <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 18</value>
-  </data>
-  <data name="label30.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="label30.Text" xml:space="preserve">
-    <value>S.o.C.</value>
-  </data>
-  <data name="&gt;&gt;label30.Name" xml:space="preserve">
-    <value>label30</value>
-  </data>
-  <data name="&gt;&gt;label30.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="txtVarRF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarRF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>821, 122</value>
-  </data>
-  <data name="txtVarRF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="txtVarRF.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="txtVarRF.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarRF.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarRF.Name" xml:space="preserve">
-    <value>txtVarRF</value>
-  </data>
-  <data name="&gt;&gt;txtVarRF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarRF.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarRF.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="txtVarSoC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarSoC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>719, 122</value>
-  </data>
-  <data name="txtVarSoC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="txtVarSoC.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="txtVarSoC.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarSoC.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarSoC.Name" xml:space="preserve">
-    <value>txtVarSoC</value>
-  </data>
-  <data name="&gt;&gt;txtVarSoC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarSoC.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarSoC.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>529, 102</value>
-  </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 18</value>
-  </data>
-  <data name="label26.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>KWh Caricati</value>
-  </data>
-  <data name="&gt;&gt;label26.Name" xml:space="preserve">
-    <value>label26</value>
-  </data>
-  <data name="&gt;&gt;label26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="txtVarWhCarica.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarWhCarica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 122</value>
-  </data>
-  <data name="txtVarWhCarica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 24</value>
-  </data>
-  <data name="txtVarWhCarica.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="txtVarWhCarica.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarWhCarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhCarica.Name" xml:space="preserve">
-    <value>txtVarWhCarica</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhCarica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhCarica.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhCarica.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="txtVarWhScarica.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarWhScarica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>375, 122</value>
-  </data>
-  <data name="txtVarWhScarica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 24</value>
-  </data>
-  <data name="txtVarWhScarica.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="txtVarWhScarica.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarWhScarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhScarica.Name" xml:space="preserve">
-    <value>txtVarWhScarica</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhScarica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhScarica.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarWhScarica.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>372, 102</value>
-  </data>
-  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 18</value>
-  </data>
-  <data name="label27.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>KWh Scaricati</value>
-  </data>
-  <data name="&gt;&gt;label27.Name" xml:space="preserve">
-    <value>label27</value>
-  </data>
-  <data name="&gt;&gt;label27.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>793, 35</value>
-  </data>
-  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 18</value>
-  </data>
-  <data name="label25.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>Elettrolita</value>
-  </data>
-  <data name="&gt;&gt;label25.Name" xml:space="preserve">
-    <value>label25</value>
-  </data>
-  <data name="&gt;&gt;label25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="txtVarElettrolita.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarElettrolita.Location" type="System.Drawing.Point, System.Drawing">
-    <value>796, 55</value>
-  </data>
-  <data name="txtVarElettrolita.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 24</value>
-  </data>
-  <data name="txtVarElettrolita.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="txtVarElettrolita.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarElettrolita.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarElettrolita.Name" xml:space="preserve">
-    <value>txtVarElettrolita</value>
-  </data>
-  <data name="&gt;&gt;txtVarElettrolita.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarElettrolita.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarElettrolita.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 35</value>
-  </data>
-  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 18</value>
-  </data>
-  <data name="label24.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>Temp Batt</value>
-  </data>
-  <data name="&gt;&gt;label24.Name" xml:space="preserve">
-    <value>label24</value>
-  </data>
-  <data name="&gt;&gt;label24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="txtVarTempNTC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarTempNTC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>632, 55</value>
-  </data>
-  <data name="txtVarTempNTC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 24</value>
-  </data>
-  <data name="txtVarTempNTC.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="txtVarTempNTC.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarTempNTC.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarTempNTC.Name" xml:space="preserve">
-    <value>txtVarTempNTC</value>
-  </data>
-  <data name="&gt;&gt;txtVarTempNTC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarTempNTC.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarTempNTC.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>461, 35</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 18</value>
-  </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>I Batt</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="txtVaIbatt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVaIbatt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>464, 55</value>
-  </data>
-  <data name="txtVaIbatt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 24</value>
-  </data>
-  <data name="txtVaIbatt.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="txtVaIbatt.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVaIbatt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVaIbatt.Name" xml:space="preserve">
-    <value>txtVaIbatt</value>
-  </data>
-  <data name="&gt;&gt;txtVaIbatt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVaIbatt.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVaIbatt.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="lblVarVBatt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblVarVBatt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblVarVBatt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 35</value>
-  </data>
-  <data name="lblVarVBatt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 18</value>
-  </data>
-  <data name="lblVarVBatt.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="lblVarVBatt.Text" xml:space="preserve">
-    <value>V Batt</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBatt.Name" xml:space="preserve">
-    <value>lblVarVBatt</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBatt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBatt.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;lblVarVBatt.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 35</value>
-  </data>
-  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 18</value>
-  </data>
-  <data name="label19.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>V3</value>
-  </data>
-  <data name="&gt;&gt;label19.Name" xml:space="preserve">
-    <value>label19</value>
-  </data>
-  <data name="&gt;&gt;label19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 35</value>
-  </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 18</value>
-  </data>
-  <data name="label20.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>V2</value>
-  </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
-  </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 102</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 18</value>
-  </data>
-  <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Ah Caricati</value>
-  </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="txtVarAhCarica.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarAhCarica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 122</value>
-  </data>
-  <data name="txtVarAhCarica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 24</value>
-  </data>
-  <data name="txtVarAhCarica.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="txtVarAhCarica.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarAhCarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhCarica.Name" xml:space="preserve">
-    <value>txtVarAhCarica</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhCarica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhCarica.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhCarica.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="txtVarVBatt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarVBatt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 55</value>
-  </data>
-  <data name="txtVarVBatt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="txtVarVBatt.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="txtVarVBatt.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarVBatt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBatt.Name" xml:space="preserve">
-    <value>txtVarVBatt</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBatt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBatt.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarVBatt.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="txtVarV3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarV3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 55</value>
-  </data>
-  <data name="txtVarV3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="txtVarV3.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="txtVarV3.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarV3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarV3.Name" xml:space="preserve">
-    <value>txtVarV3</value>
-  </data>
-  <data name="&gt;&gt;txtVarV3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarV3.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarV3.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="txtVarV2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarV2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 55</value>
-  </data>
-  <data name="txtVarV2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="txtVarV2.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="txtVarV2.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarV2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarV2.Name" xml:space="preserve">
-    <value>txtVarV2</value>
-  </data>
-  <data name="&gt;&gt;txtVarV2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarV2.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarV2.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="txtVarV1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarV1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>302, 55</value>
-  </data>
-  <data name="txtVarV1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="txtVarV1.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="txtVarV1.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarV1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarV1.Name" xml:space="preserve">
-    <value>txtVarV1</value>
-  </data>
-  <data name="&gt;&gt;txtVarV1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarV1.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarV1.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 35</value>
-  </data>
-  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 18</value>
-  </data>
-  <data name="label22.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>V1</value>
-  </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
-  </data>
-  <data name="&gt;&gt;label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="txtVarAhScarica.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="txtVarAhScarica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 122</value>
-  </data>
-  <data name="txtVarAhScarica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 24</value>
-  </data>
-  <data name="txtVarAhScarica.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="txtVarAhScarica.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtVarAhScarica.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhScarica.Name" xml:space="preserve">
-    <value>txtVarAhScarica</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhScarica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhScarica.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;txtVarAhScarica.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 102</value>
-  </data>
-  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 18</value>
-  </data>
-  <data name="label23.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label23.Text" xml:space="preserve">
-    <value>Ah Scaricati</value>
-  </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="grbVariabiliImmediate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="grbVariabiliImmediate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 33</value>
-  </data>
-  <data name="grbVariabiliImmediate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>913, 291</value>
-  </data>
-  <data name="grbVariabiliImmediate.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="grbVariabiliImmediate.Text" xml:space="preserve">
-    <value>Variabili Scheda</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliImmediate.Name" xml:space="preserve">
-    <value>grbVariabiliImmediate</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliImmediate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliImmediate.Parent" xml:space="preserve">
-    <value>tabSbFact</value>
-  </data>
-  <data name="&gt;&gt;grbVariabiliImmediate.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="tabSbFact.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tbpParametriCalibrazione.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 29</value>
   </data>
-  <data name="tabSbFact.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+  <data name="tbpParametriCalibrazione.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1692, 738</value>
   </data>
-  <data name="tabSbFact.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="tbpParametriCalibrazione.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
-  <data name="tabSbFact.Text" xml:space="preserve">
-    <value>Funzioni di Servizio</value>
+  <data name="tbpParametriCalibrazione.Text" xml:space="preserve">
+    <value>Dati Sistema</value>
   </data>
-  <data name="&gt;&gt;tabSbFact.Name" xml:space="preserve">
-    <value>tabSbFact</value>
+  <data name="&gt;&gt;tbpParametriCalibrazione.Name" xml:space="preserve">
+    <value>tbpParametriCalibrazione</value>
   </data>
-  <data name="&gt;&gt;tabSbFact.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbpParametriCalibrazione.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabSbFact.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpParametriCalibrazione.Parent" xml:space="preserve">
     <value>tabCaricaBatterie</value>
   </data>
-  <data name="&gt;&gt;tabSbFact.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="&gt;&gt;tbpParametriCalibrazione.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -15001,7 +15463,7 @@
     <value>4, 29</value>
   </data>
   <data name="tabMemRead.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabMemRead.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -15019,7 +15481,7 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tabMemRead.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="tctCalGeneraExcel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16264,7 +16726,7 @@
     <value>4, 29</value>
   </data>
   <data name="tbpCalibrazioni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tbpCalibrazioni.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -16282,169 +16744,97 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpCalibrazioni.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
-  <data name="rbtFwBootLdr.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rbtFwBootLdr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="rbtFwBootLdr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnFwSwitchArea2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="rbtFwBootLdr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 31</value>
+  <data name="btnFwSwitchArea2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>356, 37</value>
   </data>
-  <data name="rbtFwBootLdr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 24</value>
+  <data name="btnFwSwitchArea2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 30</value>
   </data>
-  <data name="rbtFwBootLdr.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+  <data name="btnFwSwitchArea2.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
   </data>
-  <data name="rbtFwBootLdr.Text" xml:space="preserve">
-    <value>BL</value>
+  <data name="btnFwSwitchArea2.Text" xml:space="preserve">
+    <value>Area 2</value>
   </data>
-  <data name="&gt;&gt;rbtFwBootLdr.Name" xml:space="preserve">
-    <value>rbtFwBootLdr</value>
+  <data name="&gt;&gt;btnFwSwitchArea2.Name" xml:space="preserve">
+    <value>btnFwSwitchArea2</value>
   </data>
-  <data name="&gt;&gt;rbtFwBootLdr.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnFwSwitchArea2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rbtFwBootLdr.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchArea2.Parent" xml:space="preserve">
     <value>grbFwAttivazioneArea</value>
   </data>
-  <data name="&gt;&gt;rbtFwBootLdr.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchArea2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnFwCheckArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnFwSwitchArea1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnFwCheckArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>277, 25</value>
+  <data name="btnFwSwitchArea1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 37</value>
   </data>
-  <data name="btnFwCheckArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
+  <data name="btnFwSwitchArea1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 30</value>
   </data>
-  <data name="btnFwCheckArea.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+  <data name="btnFwSwitchArea1.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
   </data>
-  <data name="btnFwCheckArea.Text" xml:space="preserve">
-    <value>Verifica</value>
+  <data name="btnFwSwitchArea1.Text" xml:space="preserve">
+    <value>Area 1</value>
   </data>
-  <data name="&gt;&gt;btnFwCheckArea.Name" xml:space="preserve">
-    <value>btnFwCheckArea</value>
+  <data name="&gt;&gt;btnFwSwitchArea1.Name" xml:space="preserve">
+    <value>btnFwSwitchArea1</value>
   </data>
-  <data name="&gt;&gt;btnFwCheckArea.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchArea1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnFwCheckArea.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchArea1.Parent" xml:space="preserve">
     <value>grbFwAttivazioneArea</value>
   </data>
-  <data name="&gt;&gt;btnFwCheckArea.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchArea1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="btnFwSwitchArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnFwSwitchBL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnFwSwitchArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>383, 25</value>
+  <data name="btnFwSwitchBL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 37</value>
   </data>
-  <data name="btnFwSwitchArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
+  <data name="btnFwSwitchBL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 30</value>
   </data>
-  <data name="btnFwSwitchArea.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="btnFwSwitchBL.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
   </data>
-  <data name="btnFwSwitchArea.Text" xml:space="preserve">
-    <value>Attiva</value>
+  <data name="btnFwSwitchBL.Text" xml:space="preserve">
+    <value>BootLoader</value>
   </data>
-  <data name="&gt;&gt;btnFwSwitchArea.Name" xml:space="preserve">
-    <value>btnFwSwitchArea</value>
+  <data name="&gt;&gt;btnFwSwitchBL.Name" xml:space="preserve">
+    <value>btnFwSwitchBL</value>
   </data>
-  <data name="&gt;&gt;btnFwSwitchArea.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchBL.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnFwSwitchArea.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchBL.Parent" xml:space="preserve">
     <value>grbFwAttivazioneArea</value>
   </data>
-  <data name="&gt;&gt;btnFwSwitchArea.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnFwSwitchBL.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="rbtFwArea2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rbtFwArea2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="rbtFwArea2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rbtFwArea2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 31</value>
-  </data>
-  <data name="rbtFwArea2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
-  </data>
-  <data name="rbtFwArea2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="rbtFwArea2.Text" xml:space="preserve">
-    <value>A2</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea2.Name" xml:space="preserve">
-    <value>rbtFwArea2</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea2.Parent" xml:space="preserve">
-    <value>grbFwAttivazioneArea</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="rbtFwArea1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rbtFwArea1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="rbtFwArea1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rbtFwArea1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 31</value>
-  </data>
-  <data name="rbtFwArea1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
-  </data>
-  <data name="rbtFwArea1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="rbtFwArea1.Text" xml:space="preserve">
-    <value>A1</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea1.Name" xml:space="preserve">
-    <value>rbtFwArea1</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea1.Parent" xml:space="preserve">
-    <value>grbFwAttivazioneArea</value>
-  </data>
-  <data name="&gt;&gt;rbtFwArea1.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="grbFwAttivazioneArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbFwAttivazioneArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 190</value>
+    <value>16, 195</value>
   </data>
   <data name="grbFwAttivazioneArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>509, 68</value>
+    <value>509, 84</value>
   </data>
   <data name="grbFwAttivazioneArea.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -17806,7 +18196,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbFWArea2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 467</value>
+    <value>16, 497</value>
   </data>
   <data name="grbFWArea2.Size" type="System.Drawing.Size, System.Drawing">
     <value>509, 179</value>
@@ -18403,7 +18793,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="GrbFWArea1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 281</value>
+    <value>16, 299</value>
   </data>
   <data name="GrbFWArea1.Size" type="System.Drawing.Size, System.Drawing">
     <value>509, 179</value>
@@ -18457,7 +18847,7 @@
     <value>193, 93</value>
   </data>
   <data name="grbFWdettUpload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 155</value>
+    <value>344, 139</value>
   </data>
   <data name="grbFWdettUpload.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -20020,7 +20410,7 @@
     <value>4, 29</value>
   </data>
   <data name="tbpFirmware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tbpFirmware.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -20038,7 +20428,7 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpFirmware.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="optCloneDaDB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -21746,7 +22136,7 @@ SPY-BATT</value>
     <value>4, 29</value>
   </data>
   <data name="tbpClonaScheda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tbpClonaScheda.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -21764,7 +22154,7 @@ SPY-BATT</value>
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpClonaScheda.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="button2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -23741,7 +24131,7 @@ SPY-BATT</value>
     <value>4, 29</value>
   </data>
   <data name="tabCalibrazione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tabCalibrazione.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -23759,7 +24149,7 @@ SPY-BATT</value>
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tabCalibrazione.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="label276.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -28649,7 +29039,7 @@ SPY-BATT</value>
     <value>4, 29</value>
   </data>
   <data name="tbpStrategia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 764</value>
+    <value>1692, 738</value>
   </data>
   <data name="tbpStrategia.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -28667,7 +29057,7 @@ SPY-BATT</value>
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpStrategia.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="tabCaricaBatterie.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
@@ -28676,7 +29066,7 @@ SPY-BATT</value>
     <value>12, 12</value>
   </data>
   <data name="tabCaricaBatterie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1700, 797</value>
+    <value>1700, 771</value>
   </data>
   <data name="tabCaricaBatterie.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -28730,7 +29120,10 @@ SPY-BATT</value>
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1723, 837</value>
+    <value>1798, 793</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1616, 840</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>

@@ -188,10 +188,8 @@ namespace ChargerLogic
             serialeApparato.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(port_DataReceivedSb);
             dbCollegato = false;
 
-
-            //cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
-            //serialeApparato.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(port_DataReceivedSb);
             StatoFirmware = new sbStatoFirmware();
+
             sbData = new spybattData(dbCorrente);
             sbCliente = new sbDatiCliente(dbCorrente);
             SoglieAnalisi.CaricaSoglie(dbCorrente, "", "");
@@ -4885,10 +4883,12 @@ namespace ChargerLogic
 
                         _inviaRisposta = true;
                         Log.Debug("Comando: --> 0x" + _mS._comando.ToString("X2"));
+
+
                        switch (_mS._comando)
                         {
                            case (byte) SerialMessage.TipoComando.ACK_PACKET:  //0x6C: // ACK
-                                Log.Debug("Comando Ricevuto");
+                                Log.Debug("RX: SerialMessage.TipoRisposta.Ack");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 TipoRisposta = 1;
                                 _inviaRisposta = false;

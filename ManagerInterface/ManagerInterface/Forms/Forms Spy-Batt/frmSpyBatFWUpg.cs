@@ -159,7 +159,7 @@ namespace PannelloCharger
             }
         }
 
-        private void MostraStato(FirmwareManager.MascheraStato Valore, byte Stato, ref TextBox Cella, bool KOifFalse = false )
+        private bool MostraStato(FirmwareManager.MascheraStato Valore, byte Stato, ref TextBox Cella, bool KOifFalse = false )
         {
             try
             {
@@ -186,10 +186,11 @@ namespace PannelloCharger
                     }
                 }
 
+                return _esitocella;
             }
             catch
             {
-
+                return false;
             }
         }
 
@@ -207,6 +208,13 @@ namespace PannelloCharger
                 txtFwStatoSA1.Text = "";
                 txtFwStatoSA2.Text = "";
                 txtFwAreaTestata.Text = "";
+
+                btnFwSwitchBL.BackColor = Color.LightGray;
+                btnFwSwitchArea1.BackColor = Color.LightGray;
+                btnFwSwitchArea2.BackColor = Color.LightGray;
+                btnFwSwitchArea1.Enabled = false;
+                btnFwSwitchArea2.Enabled = false;
+
                 Log.Debug("----------------------- CaricaStatoFirmware ---------------------------");
 
 
@@ -226,8 +234,15 @@ namespace PannelloCharger
 
                         MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA1, true);
                         MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA2, true);
-                        MostraStato(FirmwareManager.MascheraStato.Blocco1SW, _sb.StatoFirmware.Stato, ref txtFwStatoSA1, false);
-                        MostraStato(FirmwareManager.MascheraStato.Blocco2SW, _sb.StatoFirmware.Stato, ref txtFwStatoSA2, false);
+                        if (MostraStato(FirmwareManager.MascheraStato.Blocco1SW, _sb.StatoFirmware.Stato, ref txtFwStatoSA1, false))
+                        {
+                            btnFwSwitchArea1.Enabled =true;
+                        }
+                        if (MostraStato(FirmwareManager.MascheraStato.Blocco2SW, _sb.StatoFirmware.Stato, ref txtFwStatoSA2, false))
+                        {
+                            btnFwSwitchArea2.Enabled = true;
+                        }
+                       
                         MostraStato(FirmwareManager.MascheraStato.FlashmPHW, _sb.StatoFirmware.Stato, ref txtFwStatoMicro, true);
 
                         _esitoFunzione = true;
@@ -237,6 +252,7 @@ namespace PannelloCharger
                         if ((_sb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
                         {
                             txtFwAreaTestata.Text = "BL";
+                            btnFwSwitchBL.BackColor = Color.LightGreen;
                         }
                         else
                         {
@@ -249,12 +265,14 @@ namespace PannelloCharger
                             if (_esitoMicro1)
                             {
                                 txtFwAreaTestata.Text = "A1";
+                                btnFwSwitchArea1.BackColor = Color.LightGreen;
                             }
                             else
                             {
                                 if (_esitoMicro2)
                                 {
                                     txtFwAreaTestata.Text = "A2";
+                                    btnFwSwitchArea2.BackColor = Color.LightGreen;
                                 }
 
                             }

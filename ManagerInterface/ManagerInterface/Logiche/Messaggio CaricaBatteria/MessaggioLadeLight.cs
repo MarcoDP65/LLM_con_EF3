@@ -672,6 +672,49 @@ namespace ChargerLogic
                         }
                         break;
 
+                    case (byte)TipoComando.CMD_READ_MEMORY:
+                        {
+                            _endPos = _messaggio.Length;
+                            _startPos = _endPos - 6;
+
+                            if (_messaggio[_startPos] != serENDPAC)
+                            {
+                                return EsitoRisposta.NonRiconosciuto;
+                            }
+                            _buffArray = new byte[_startPos - 1];
+
+                            // controllo CRC
+                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                            _startPos++;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)(_ret);
+                            _startPos += 2;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)((_tempShort << 8) + _ret);
+                            _crc = codCrc.ComputeChecksum(_buffArray);
+
+                            if (_crc != _tempShort)
+                            { return EsitoRisposta.BadCRC; }
+
+                            // ora leggo la parte dati
+                            _pacchettoMem = new PacchettoReadMem();
+                            _buffArray = new byte[(_endPos - (preambleLenght + 7))];
+                            if (_comando != (byte)TipoComando.CMD_READ_MEMORY)
+                            {   // dove non ho la testata corretta recupero i 2 bytes del comando
+                                Array.Copy(_messaggio, preambleLenght - 1, _buffArray, 0, _endPos - (preambleLenght + 7));
+                            }
+                            else
+                            {
+                                Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
+                            }
+
+                            _risposta = _pacchettoMem.analizzaMessaggio(_buffArray);
+                            if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
+
+                            break;
+                        }
+
+
 
                     default:
                         return EsitoRisposta.NonRiconosciuto;

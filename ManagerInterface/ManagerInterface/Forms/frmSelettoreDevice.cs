@@ -409,9 +409,6 @@ namespace PannelloCharger
 
 
 
-
-
-
         private void ApriLadeLight()
         {
             try

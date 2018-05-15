@@ -594,7 +594,7 @@ namespace ChargerLogic
                     FirmwareBlock.MessaggioTestata[_i] = 0xFF;
 
                 // Versione FW
-                _tempStr = FirmwareBlock.Release + "          ";  // in coda alla revisione aggiungo 8 spazi per completare eventuali stringhe incomplete
+                _tempStr = FirmwareBlock.Release + "          ";   // in coda alla revisione aggiungo 8 spazi per completare eventuali stringhe incomplete
                 for (int _i = 0; _i < 6; _i++)
                 {
                     FirmwareBlock.MessaggioTestata[_startByte] = (byte)_tempStr[_i];
@@ -661,30 +661,27 @@ namespace ChargerLogic
                 _startByte += 3;
 
                 // i bytes successsivi sono già inizializzati a 0xFF
-
                 // Aggiungo il CRC calcolato sui primi 62 byte
-                //if (_arrayLen>64) _arrayLen = 64;
-                /// calcolo il crc
-                //                byte[] _tempMessaggio = new byte[62];
-                //                Array.Copy(FirmwareBlock.MessaggioTestata,0, _tempMessaggio, 0, 62);
-                //                _tempCRC = codCrc.ComputeChecksum(_tempMessaggio);
+                // if (_arrayLen>64) _arrayLen = 64;
+                //  calcolo il crc
+                //    byte[] _tempMessaggio = new byte[62];
+                //    Array.Copy(FirmwareBlock.MessaggioTestata,0, _tempMessaggio, 0, 62);
+                //    _tempCRC = codCrc.ComputeChecksum(_tempMessaggio);
 
                 _tempCRC = codCrc.ComputePartialChecksum(FirmwareBlock.MessaggioTestata,62);
 
                 //Ora salvo il CRC negli ultimi 2 bytes
-                // CRC
 
                 DataSplitter.splitUshort(_tempCRC, ref lsb, ref msb);
                 FirmwareBlock.MessaggioTestata[62] = msb;
                 FirmwareBlock.MessaggioTestata[63] = lsb;
+
 
                 //TEST -- TEST -- TEST
                 // Corrompo la testata cambiando un byte
                 //FirmwareBlock.MessaggioTestata[60] = 0x00;
                 //FirmwareBlock.MessaggioTestata[61] = 0x00;
                 //TEST -- TEST -- TEST
-
-
 
 
                 LastError = "OK";
@@ -877,7 +874,6 @@ namespace ChargerLogic
                 return _esito;
             }
         }
-
     }
 
     
