@@ -31,6 +31,8 @@ namespace ChargerLogic
         //public CalibrazioniSpybatt valoriCalibrazione;
         //public ImmagineDumpMem DumpMem;
         public StatoFirmware StatoFirmwareScheda;
+        public byte StatoAreaFW { get; set; }
+
         //public ComandoStrategia ComandoStrat;
         //public ParametriSpybatt ParametriGenerali;
         public OcBaudRate BrOCcorrente = OcBaudRate.OFF;
@@ -671,6 +673,41 @@ namespace ChargerLogic
                             return EsitoRisposta.ErroreGenerico;
                         }
                         break;
+
+                    case (byte)TipoComando.CMD_CTRL_APP:
+                        {
+                            if (_messaggio.Length < 31)
+                            {
+                                return EsitoRisposta.LunghezzaErrata;
+                            }
+
+                            _endPos = _messaggio.Length;
+                            _startPos = _endPos - 6;
+
+                            if (_messaggio[_startPos] != serENDPAC)
+                            {
+                                return EsitoRisposta.NonRiconosciuto;
+                            }
+                            _buffArray = new byte[_startPos - 1];
+
+                            // controllo CRC
+                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                            _startPos++;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)(_ret);
+                            _startPos += 2;
+                            _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            _tempShort = (ushort)((_tempShort << 8) + _ret);
+                            _crc = codCrc.ComputeChecksum(_buffArray);
+
+                            if (_crc != _tempShort)
+                            { return EsitoRisposta.BadCRC; }
+
+                            // ora leggo la parte dati: 1 solo byte di dati
+                            StatoAreaFW = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                            return EsitoRisposta.MessaggioOk;
+
+                        }
 
                     case (byte)TipoComando.CMD_READ_MEMORY:
                         {

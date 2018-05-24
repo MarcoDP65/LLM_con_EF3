@@ -889,6 +889,9 @@ namespace ChargerLogic
             ListaAree.Clear();
             DatiOK = false;
 
+            crc = 0;
+            DataFlash = new byte[0];
+
         }
 
     }
@@ -921,6 +924,14 @@ namespace ChargerLogic
 
         public short CrcFW { get; set; }
         public short CrcTest { get; set; }
+
+
+        public uint LenFlash { get; set; }
+        public UInt32 AddrStartAppPtr { get; set; }
+        public UInt32 AddrStartApp { get; set; }
+        public byte[] DataAddraApp { get; set; }
+        public byte[] DataFlash { get; set; }
+        public UInt32 DataFlashPtr { get; set; }
 
 
         public List<AreaDatiFWLL> ListaAree = new List<AreaDatiFWLL>();
@@ -969,6 +980,8 @@ namespace ChargerLogic
             for (int _i = 0; _i < 64; _i++)
                 MessaggioTestata[_i] = 0x00;
             TotaleBlocchi = 0;
+            crc = 0;
+            DataFlash = new byte[0];
             DatiOK = false;
             TestataOK = false;
 

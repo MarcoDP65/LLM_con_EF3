@@ -680,8 +680,8 @@ namespace PannelloCharger
                 string _tempId = "";
                 _cb.VerificaPresenza();
                 CaricaStatoFirmware(ref _tempId, _logiche, _cb.apparatoPresente);
-                //CaricaStatoAreaFw(1, _sb.StatoFirmware.Stato);
-                //CaricaStatoAreaFw(2, _sb.StatoFirmware.Stato);
+                CaricaStatoAreaFw(1, _cb.StatoFirmware.Stato);
+                CaricaStatoAreaFw(2, _cb.StatoFirmware.Stato);
             }
             catch (Exception Ex)
             {

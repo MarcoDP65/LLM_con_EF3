@@ -4878,6 +4878,7 @@ namespace ChargerLogic
                         // Analizzo il contenuto del messaggio 
                         //-----------------------------------------------------------------------------------------
                         _esito = _mS.analizzaMessaggio(_dataBuffer, sbData.fwLevel, skipHead);
+
                         UltimaRisposta = _esito; // SerialMessage.EsitoRisposta.MessaggioOk;
                         //-----------------------------------------------------------------------------------------
 
@@ -4885,16 +4886,16 @@ namespace ChargerLogic
                         Log.Debug("Comando: --> 0x" + _mS._comando.ToString("X2"));
 
 
-                       switch (_mS._comando)
+                        switch (_mS._comando)
                         {
-                           case (byte) SerialMessage.TipoComando.ACK_PACKET:  //0x6C: // ACK
+                            case (byte)SerialMessage.TipoComando.ACK_PACKET:  //0x6C: // ACK
                                 Log.Debug("RX: SerialMessage.TipoRisposta.Ack");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 TipoRisposta = 1;
                                 _inviaRisposta = false;
 
                                 break;
-                           case (byte) SerialMessage.TipoComando.EVENT_MEM_CODE:  // 0x6D: // ACK Pacchetto
+                            case (byte)SerialMessage.TipoComando.EVENT_MEM_CODE:  // 0x6D: // ACK Pacchetto
                                 Log.Debug("Esito Comando Ricevuto");
                                 //_datiRicevuti = SerialMessage.TipoRisposta.Ack;   ???????????????
                                 // 16/07/15 il messaggio 0x0D inviato dopo comando che prevede la scrittura su memoria flash esterna per indicare l'esito;
@@ -4907,7 +4908,7 @@ namespace ChargerLogic
                                     case (byte)SerialMessage.TipoComando.CMD_WRITE_CLIENT_DATA:
                                         {
                                             _inviaRisposta = false;
-                                           // _datiRicevuti = SerialMessage.TipoRisposta.Ack;
+                                            // _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                             break;
                                         }
                                     case (byte)SerialMessage.TipoComando.CMD_WRITE_MEMORY:
@@ -4924,21 +4925,21 @@ namespace ChargerLogic
                                 }
 
                                 break;
-                           case (byte)SerialMessage.TipoComando.NACK_PACKET:  //0x71: //NAK
+                            case (byte)SerialMessage.TipoComando.NACK_PACKET:  //0x71: //NAK
                                 TipoRisposta = 2;
                                 UltimaRisposta = SerialMessage.EsitoRisposta.NonRiconosciuto;
                                 _datiRicevuti = SerialMessage.TipoRisposta.Nack;
                                 Log.Debug("Comando Errato: Ricevuto NAK");
-                                 _inviaRisposta = false;
-                                 break;
+                                _inviaRisposta = false;
+                                break;
 
                             case (byte)SerialMessage.TipoComando.CMD_BREAK:  // 0x1C: //BREAK
-                                 TipoRisposta = 2;
-                                 UltimaRisposta = SerialMessage.EsitoRisposta.MessaggioOk;
-                                 _datiRicevuti = SerialMessage.TipoRisposta.Break;
-                                 Log.Debug("Comando Corretto: Ricevuto BREAK --> fermo gli invii");
-                                 _inviaRisposta = false;
-                                 break;
+                                TipoRisposta = 2;
+                                UltimaRisposta = SerialMessage.EsitoRisposta.MessaggioOk;
+                                _datiRicevuti = SerialMessage.TipoRisposta.Break;
+                                Log.Debug("Comando Corretto: Ricevuto BREAK --> fermo gli invii");
+                                _inviaRisposta = false;
+                                break;
 
                             case (byte)SerialMessage.TipoComando.CMD_READ_LT_MEMORY:
                                 _CicliMemoriaLunga.Add(_mS.CicloLungo);
@@ -4949,7 +4950,7 @@ namespace ChargerLogic
                             case (byte)SerialMessage.TipoComando.CMD_READ_ST_MEMORY:
                                 _CicliMemoriaBreve.Add(_mS._CicloBreve);
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
-                                Log.Warn("Accodato Ciclo Breve per il ciclo Lungo " + _mS._CicloBreve.IdEvento.ToString() + " in posizione " + _CicliMemoriaBreve.Count.ToString() );
+                                Log.Warn("Accodato Ciclo Breve per il ciclo Lungo " + _mS._CicloBreve.IdEvento.ToString() + " in posizione " + _CicliMemoriaBreve.Count.ToString());
                                 break;
 
                             case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:
@@ -4974,7 +4975,17 @@ namespace ChargerLogic
                             case (byte)SerialMessage.TipoComando.CMD_READ_CLIENT_DATA:
                                 Log.Debug("Lettura Dati Cliente " + _mS.CustomerData.stepReceived.ToString());
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
-                                _inviaRisposta = false;// _mS.CustomerData.datiPronti;
+                                if (_mS.fwAckLevel > 9)
+                                {
+                                    _inviaRisposta = false;
+                                }
+                                else
+                                {
+                                    _inviaRisposta = true;
+                                }
+
+
+                               // _inviaRisposta = false;// _mS.CustomerData.datiPronti;
                                 break;
 
                             case (byte)SerialMessage.TipoComando.CMD_READ_PROG_DATA:
@@ -4982,6 +4993,15 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 Log.Debug("Accodata programmazione " + _mS.ProgRicarica.IdProgramma.ToString() + " in posizione " + _Programmazioni.Count.ToString());
                                 //if ( _Programmazioni.Count < 23)  _inviaRisposta = false;
+                                //if (_mS.fwAckLevel > 9)
+                                //{
+                                    _inviaRisposta = false;
+                                //}
+                                //else
+                                //{
+                                //    _inviaRisposta = true;
+                               // }
+
                                 break;
 
                             case (byte)SerialMessage.TipoComando.CMD_PROGRAM_SPYBATT:
@@ -5043,7 +5063,16 @@ namespace ChargerLogic
                             case (byte)SerialMessage.TipoComando.CMD_INFO_BL:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 // _inviaRisposta = true;  -----> da verificare
-                                _inviaRisposta = false;
+                                //_inviaRisposta = false;
+                                if (_mS.fwAckLevel > 9)
+                                {
+                                    _inviaRisposta = false;
+                                }
+                                else
+                                {
+                                    _inviaRisposta = true;
+                                }
+
                                 break;
 
                             case (byte)SerialMessage.TipoComando.CMD_READ_RTC:

@@ -499,6 +499,7 @@ namespace ChargerLogic
                 _esito = aspettaRisposta(AttesaTimeout, 0,true,false);
                 if (_mS._comando == (byte)SerialMessage.TipoComando.ACK_PACKET)  
                 {
+                    _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                     _mS.Comando = SerialMessage.TipoComando.CMD_UART_HOST_CONNECTED;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
@@ -530,6 +531,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito = false;
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_CONNECT;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
@@ -604,7 +606,7 @@ namespace ChargerLogic
                 if (_mS.CicliPresenti.NumCicli > 0)
                 {
                     ControllaAttesa(UltimaScrittura);
-
+                    _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                     _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_CRG;
                     _mS.ComponiMessaggio();
                     _rxRisposta = false;
@@ -687,8 +689,39 @@ namespace ChargerLogic
                 return false;
             }
         }
-  
-        
+
+
+        public bool ControllaStatoAreaFW(byte Area = 1)
+        {
+            try
+            {
+                bool _esito;
+                ControllaAttesa(UltimaScrittura);
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
+                _mS.Comando = SerialMessage.TipoComando.CMD_CTRL_APP;
+                _mS.ComponiMessaggioVerificaAreaFW(Area);
+                _rxRisposta = false;
+                Log.Debug("Leggi stato area FW LL");
+                Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(AttesaTimeout, 1, true);
+                CicloInMacchina = _mS.CicloInMacchina;
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+
         public bool LeggiVariabili()
         {
             try
@@ -696,7 +729,7 @@ namespace ChargerLogic
                 bool _esito;
 
                 ControllaAttesa(UltimaScrittura);
-
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_VARIABLE;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
@@ -746,7 +779,7 @@ namespace ChargerLogic
 
                 _mS.DatiStrategia = new SerialMessage.ProxyComandoStrategia();
                 DatiRisposta = new byte[240];
-
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_SIG60_PROXY;
                 _mS.ComponiMessaggioNew(PacchettoDati);
                 _rxRisposta = false;
@@ -901,7 +934,7 @@ namespace ChargerLogic
                     return false;
                 }
 
-
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_WRITE_MEMORY;
 
 
@@ -979,6 +1012,7 @@ namespace ChargerLogic
                 bool _esito;
                 ControllaAttesa(UltimaScrittura);
 
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_ERASE_4K_MEM;
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -1022,6 +1056,7 @@ namespace ChargerLogic
 
                 ControllaAttesa(UltimaScrittura);
 
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_ERASE_DATA_MEMORY;
 
 
@@ -1064,6 +1099,7 @@ namespace ChargerLogic
 
                 ControllaAttesa(UltimaScrittura);
 
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_PROG_CYCLE_CRG;
                 _mS.CicloInMacchina = CicloInMacchina;
                 _mS.ComponiMessaggioCicloProgrammato();
@@ -1098,8 +1134,9 @@ namespace ChargerLogic
 
                 ControllaAttesa(UltimaScrittura);
 
-                DateTime _now = DateTime.Now; 
+                DateTime _now = DateTime.Now;
 
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_UPDATE_RTC;
                 _mS.DatiRTC = new SerialMessage.comandoRTC();
                 _mS.DatiRTC.anno = ( ushort ) _now.Year;
@@ -1382,6 +1419,12 @@ namespace ChargerLogic
 
                             case (byte)SerialMessage.TipoComando.CMD_FW_UPDATE:
                                 Log.Debug("ISwitch App");
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.CMD_CTRL_APP:
+                                Log.Debug("LL CMD_CTRL_APP");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 break;

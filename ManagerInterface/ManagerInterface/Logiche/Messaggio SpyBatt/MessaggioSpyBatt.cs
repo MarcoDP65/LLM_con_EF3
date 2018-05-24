@@ -47,20 +47,145 @@ namespace ChargerLogic
         public byte _esitoPacchetto;
         public EsitoMessaggio EsitoComando;
 
-        public int fwLevel = 0;
+        public int fwLevel { get; set; }
+        public int fwAckLevel { get; private set; }
 
         private EsitoRisposta _ultimaRisposta = EsitoRisposta.MessaggioVuoto;
 
         public MessaggioSpyBatt()
         {
             fwLevel = 0;
+            fwAckLevel = 0;
         }
 
 
         public MessaggioSpyBatt(int LivelloFirmware)
         {
-            fwLevel = LivelloFirmware;
+            fwAckLevel = LivelloFirmware;
         }
+
+
+        private bool SetAckLevel(string FwRelease )
+        {
+            try
+            {
+
+                return true;
+            }
+            catch
+            {
+                fwAckLevel = 0;
+                return false;
+            }
+        }
+
+
+        public int fwLevelDef(string FwLevelId)
+        {
+
+            try
+            {
+                string _LocalVer = ""; // _sb.SwVersion.Substring(0, 4);  // controllo solo i primi 4 caratteri della versione perignorare la build
+
+                if (FwLevelId == null) return 6; // da -1 a 4 per Marco
+
+                if (FwLevelId.Length >= 4) _LocalVer = FwLevelId.Substring(0, 4);
+
+                switch (_LocalVer)
+                {
+                    case "1.04":
+                    case "1.05":
+                    case "1.06":
+                        return 0;
+                    // break;
+
+                    case "1.07":
+                        return 1;
+                    // break;
+
+                    case "1.08":
+                        if (FwLevelId == "1.08.01")
+                            return 2;
+                        else
+                            return 3;
+                    // break;
+                    case "1.09":
+                        return 3;
+
+                    case "1.10":
+                    case "1.11":
+                    case "1.12":
+                    case "1.13":
+                    case "2.01":
+                        return 4;
+                    case "2.02":
+                        {
+                            switch (FwLevelId)
+                            {
+                                case "2.02.01":
+                                case "2.02.02":
+                                case "2.02.03":
+                                    return 4;
+                                case "2.02.04":
+                                case "2.02.05":
+                                case "2.02.06":
+                                case "2.02.07":
+                                case "2.02.08":
+                                    return 5;
+                                default:
+                                    return 5;
+                            }
+
+                        }
+                    case "2.03":
+                        switch (FwLevelId)
+                        {
+                            case "2.03.05":
+                            case "2.03.06":
+                                return 7;
+                            default:
+                                return 6;
+                        }
+
+
+                    case "2.04":
+                        switch (FwLevelId)
+                        {
+
+                            case "2.04.06":
+                                return 9;
+                            case "2.04.07":
+                            case "2.04.08":
+                                return 10;
+                            default:
+                                return 8;
+                        }
+
+                    case "3.00":
+                    case "3.01":
+                        {
+                            return 10;
+                        }
+
+
+                    default:
+                        //variante per marco
+                        //return -1;
+                        return 8;
+                        //  break;
+                }
+            }
+            catch
+            {
+                return -1;
+            }
+
+
+        }
+
+
+
+
 
         new public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel, bool skipHead = false, bool CreateMsgObject = false)
         {
@@ -230,6 +355,7 @@ namespace ChargerLogic
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
                             Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             _risposta = Intestazione.analizzaMessaggio(_buffArray);
+                            fwAckLevel = fwLevelDef(Intestazione.revSoftware);
                             if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
 
                             break;
@@ -656,6 +782,7 @@ namespace ChargerLogic
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
                             Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             _risposta = StatoFirmwareScheda.analizzaMessaggio(_buffArray, fwLevel);
+                            fwAckLevel = fwLevelDef(StatoFirmwareScheda.RevFirmware);
                             if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
 
                             break;

@@ -443,6 +443,275 @@ namespace PannelloCharger
             }
         }
 
+        public bool ScriviParametriCarica()
+        {
+            try
+            {
+                SerialMessage.cicloAttuale _tempCiclo = new SerialMessage.cicloAttuale();
+
+                byte _numParametri = 0;
+                ushort _divK = 10;
+                _cb.CicloInMacchina = new SerialMessage.cicloAttuale()
+                {
+                    LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length,
+                    NomeCiclo = txtPaNomeProfilo.Text,
+                    TipoCiclo = (byte)cmbPaProfilo.SelectedIndex
+                };
+
+
+                if (txtPaCapacita.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaCapacita.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL()
+                        {
+                            idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaNominale,
+                            ValoreParametro = result
+                        };
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+                /*
+                if (txtPaCapDaCaricare.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaCapDaCaricare.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaDaRicaricare;
+                        _par.ValoreParametro = result;
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+
+                if (txtPaTempoMax.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaTempoMax.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoMassimoCarica;
+                        _par.ValoreParametro = result;
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+                */
+
+                if (txtPaSoglia.Text.Length > 0)
+                {
+                    Double dresult;
+                    ushort result;
+
+                    if (Double.TryParse(txtPaSoglia.Text, out dresult))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella;
+                        result = (ushort)(dresult * 100);
+                        _par.ValoreParametro = result;
+                        txtPaSoglia.Text = dresult.ToString("0.00");
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+
+                }
+
+
+                if (txtPaParDivK.Text.Length > 0)
+                {
+
+                    ushort result;
+
+                    if (ushort.TryParse(txtPaParDivK.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.DivisoreK;
+                        _par.ValoreParametro = result;
+                        txtPaParDivK.Text = result.ToString("0");
+                        _divK = result;
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+
+                }
+
+
+
+                if (txtPaParKp.Text.Length > 0)
+                {
+                    Double dresult;
+                    ushort result;
+
+                    if (Double.TryParse(txtPaParKp.Text, out dresult))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ParametroKP;
+                        result = (ushort)(dresult * _divK);
+                        _par.ValoreParametro = result;
+                        dresult = (double)result / _divK;
+                        txtPaParKp.Text = dresult.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+
+                }
+
+                if (txtPaParKi.Text.Length > 0)
+                {
+                    Double dresult;
+                    ushort result;
+
+                    if (Double.TryParse(txtPaParKi.Text, out dresult))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ParametroKI;
+                        result = (ushort)(dresult * _divK);
+                        _par.ValoreParametro = result;
+                        dresult = (double)result / _divK;
+                        txtPaParKi.Text = dresult.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+
+                }
+
+
+                if (txtPaParKd.Text.Length > 0)
+                {
+                    Double dresult;
+                    ushort result;
+
+                    if (Double.TryParse(txtPaParKd.Text, out dresult))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ParametroKD;
+                        result = (ushort)(dresult * _divK);
+                        _par.ValoreParametro = result;
+                        dresult = (double)result / _divK;
+                        txtPaParKd.Text = dresult.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+
+                }
+
+
+                if (txtPaCorrente.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaCorrente.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteCarica;
+                        _par.ValoreParametro = result;
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+
+                if (txtPaTensione.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaTensione.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneNominale;
+                        _par.ValoreParametro = result;
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+
+                if (cmbPaCondStop.SelectedIndex > -1)
+                {
+
+                    ParametroLL _par = new ParametroLL();
+                    _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CondizioneStop;
+                    _par.ValoreParametro = (ushort)cmbPaCondStop.SelectedIndex;
+                    _cb.CicloInMacchina.Parametri.Add(_par);
+                    _numParametri++;
+
+                }
+
+                if (txtPaCoeffK.Text.Length > 0)
+                {
+                    Double dresult;
+                    ushort result;
+
+                    if (Double.TryParse(txtPaCoeffK.Text, out dresult))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CoeffK;
+                        result = (ushort)(dresult * 10);
+                        _par.ValoreParametro = result;
+                        dresult = result / 10;
+                        txtPaCoeffK.Text = dresult.ToString("0.0");
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+
+                }
+
+                if (txtPaTempoT2Min.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaTempoT2Min.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT2Min;
+                        _par.ValoreParametro = result;
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+
+                if (txtPaTempoT2Max.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaTempoT2Max.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL();
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT2Max;
+                        _par.ValoreParametro = result;
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+
+                if (txtPaFreqSwitch.Text.Length > 0)
+                {
+                    ushort result;
+                    if (ushort.TryParse(txtPaFreqSwitch.Text, out result))
+                    {
+                        ParametroLL _par = new ParametroLL()
+                        {
+                            idParametro = (byte)SerialMessage.ParametroLadeLight.FrequenzaSwitching,
+                            ValoreParametro = result
+                        };
+                        _cb.CicloInMacchina.Parametri.Add(_par);
+                        _numParametri++;
+                    }
+                }
+
+                _cb.CicloInMacchina.NumeroParametri = _numParametri;
+
+                _cb.ScriviCicloCorrente();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
+
         /// <summary>
         /// Aggiorno il form con i dati di ciclo attivo dell'ultima lettura
         /// </summary>
@@ -1769,6 +2038,8 @@ namespace PannelloCharger
                     txtFWRevA1Addr3.Text = "";
                     txtFWRevA1Addr4.Text = "";
                     txtFWRevA1Addr5.Text = "";
+                    txtFwRevA1Size.Text = "";
+                    txtFwRevA1MsgSize.Text = "";
                     _area = 0x1C0000;
                 }
                 else
@@ -1782,6 +2053,8 @@ namespace PannelloCharger
                     txtFWRevA2Addr3.Text = "";
                     txtFWRevA2Addr4.Text = "";
                     txtFWRevA2Addr5.Text = "";
+                    txtFwRevA2Size.Text = "";
+                    txtFwRevA2MsgSize.Text = "";
                     _area = 0x1E0000;
 
                 }
@@ -1802,13 +2075,15 @@ namespace PannelloCharger
                             txtFwRevA1RevFw.Text = _tempFW.FirmwareBlock.Release;
                             txtFwRevA1RilFw.Text = _tempFW.FirmwareBlock.ReleaseDisplay;
 
+                            txtFwRevA1Size.Text = _tempFW.FirmwareBlock.NumSezioni.ToString();
+                            txtFwRevA1MsgSize.Text = _tempFW.FirmwareBlock.LenPkt.ToString("X2");
 
 
-                            txtFWRevA1Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
-                            txtFWRevA1Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
-                            txtFWRevA1Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
-                            txtFWRevA1Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
-                            txtFWRevA1Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
+                            txtFWRevA1Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
+                            txtFWRevA1Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
+                            txtFWRevA1Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
+                            txtFWRevA1Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
+                            txtFWRevA1Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
 
                         }
                         else
@@ -1818,11 +2093,14 @@ namespace PannelloCharger
                             txtFwRevA2RevFw.Text = _tempFW.FirmwareBlock.Release;
                             txtFwRevA2RilFw.Text = _tempFW.FirmwareBlock.ReleaseDisplay;
 
-                            txtFWRevA2Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
-                            txtFWRevA2Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
-                            txtFWRevA2Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
-                            txtFWRevA2Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
-                            txtFWRevA2Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "/" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
+                            txtFwRevA2Size.Text = _tempFW.FirmwareBlock.NumSezioni.ToString();
+                            txtFwRevA2MsgSize.Text = _tempFW.FirmwareBlock.LenPkt.ToString("X2");
+
+                            txtFWRevA2Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
+                            txtFWRevA2Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
+                            txtFWRevA2Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
+                            txtFWRevA2Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
+                            txtFWRevA2Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
                         }
                     }
 
@@ -1840,6 +2118,19 @@ namespace PannelloCharger
         private void label103_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtFwStatoSA2_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+               _cb.ControllaStatoAreaFW(2);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtFwStatoSA2_DoubleClick: " + Ex.Message);
+                
+            }
         }
     }
 
