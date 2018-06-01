@@ -147,7 +147,10 @@ namespace ChargerLogic
                 // comando
                 //_startPos = 21;
                 _comando = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-
+                if (_comando == 0x58)
+                {
+                    Log.Debug("Messaggio Display ricevuto: " + hexdumpArray(_messaggio));
+                }
                 Log.Debug("Messaggio Display ricevuto: " + _comando.ToString("X2"));
 
                 //preparo la risposta: il preambolo è uguale al messaggio 

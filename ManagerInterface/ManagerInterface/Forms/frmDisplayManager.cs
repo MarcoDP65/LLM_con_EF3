@@ -583,15 +583,8 @@ namespace PannelloCharger
                 //"Image files (*.jpg, *.jpeg, *.bmp, *.png) | *.jpg; *.jpeg; *.bmp; *.png";
                 ofdImportDati.Filter = "Immagini (*.jpg, *.jpeg, *.bmp, *.png) | *.jpg; *.jpeg; *.bmp; *.png|All files (*.*)|*.*";
                 // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
+
                 string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                /*
-                _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
-                if (!Directory.Exists(_pathTeorico))
-                {
-                    Directory.CreateDirectory(_pathTeorico);
-                }
-                sfdExportDati.InitialDirectory = _pathTeorico;
-                */
                 ofdImportDati.ShowDialog();
 
                 txtNuovoFile.Text = ofdImportDati.FileName;
@@ -2045,11 +2038,10 @@ namespace PannelloCharger
                     txtSchCmdTempoOFF.Text = _tempCmd.TimeOffVar.ToString();
                     txtSchCmdText.Text = _tempCmd.Messaggio;
                     txtSchCmdNum.Text = _tempCmd.Numero.ToString();
-                   // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX, _tempCmd.PosY, Color.Red);
-                  //  ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX +1, _tempCmd.PosY, Color.Red);
-                   // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX, _tempCmd.PosY +1, Color.Red);
-                  //  ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX+1, _tempCmd.PosY+1, Color.Red);
-
+                    // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX, _tempCmd.PosY, Color.Red);
+                    // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX +1, _tempCmd.PosY, Color.Red);
+                    // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX, _tempCmd.PosY +1, Color.Red);
+                    // ((Bitmap)pbxSchImmagine.Image).SetPixel(_tempCmd.PosX+1, _tempCmd.PosY+1, Color.Red);
                     Pen pen = new Pen(Color.Red);
                     Graphics _g = pbxSchImmagine.CreateGraphics();
                     _g.DrawRectangle(pen, _tempCmd.PosX, _tempCmd.PosY, 12, 12);
@@ -2216,10 +2208,30 @@ namespace PannelloCharger
         {
             try
             {
+                bool Esito;
+                if (cmbRtBaudRate.SelectedIndex > 0)
+                {
+                    DisplaySetup.BaudRate Velocita = (DisplaySetup.BaudRate)cmbRtBaudRate.SelectedIndex;
+                    Esito = _disp.ImpostaBaudrate(Velocita);
+                    if (Esito && chkRtRiavvioAutomatico.Checked)
+                    {
+                        ChiudiPorta();
+                        cboBaudRate.Text = cmbRtBaudRate.Text;
+                        ApriPorta();
 
-                DisplaySetup.BaudRate Velocita = (DisplaySetup.BaudRate)cmbRtBaudRate.SelectedIndex;
-                _disp.ImpostaBaudrate(Velocita);
+                        bool verifica = _disp.VerificaPresenza();
 
+                        if (verifica)
+                        {
+                            btnApriComunicazione.ForeColor = Color.Green;
+                        }
+                        else
+                        {
+                            btnApriComunicazione.ForeColor = Color.Red;
+                        }
+
+                    }
+                }
             }
 
             catch (Exception Ex)
@@ -2509,6 +2521,65 @@ namespace PannelloCharger
 
         private void btnMemCFExec_Click(object sender, EventArgs e)
         {
+            try
+            {
+                uint _StartAddr;
+                int _bloccoCorrente;
+                ushort _NumBlocchi;
+                bool _esito;
+
+                if (chkMemHex.Checked)
+                {
+                    if (uint.TryParse(txtMemCFStartAdd.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemCFStartAdd.Text, out _StartAddr) != true) return;
+                }
+
+
+                _NumBlocchi = 0;
+                if (ushort.TryParse(txtMemCFBlocchi.Text, out _NumBlocchi) != true) return;
+
+
+                if (_NumBlocchi > 0)
+                {
+
+                    for (int _cicloBlocchi = 0; _cicloBlocchi < _NumBlocchi; _cicloBlocchi++)
+                    {
+                        _bloccoCorrente = _cicloBlocchi + 1;
+                        _esito = _disp.CancellaBlocco4K(_StartAddr);
+                        if (!_esito)
+                        {
+                            MessageBox.Show("Cancellazione del blocco " + _bloccoCorrente.ToString() + " non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            _StartAddr += 0x1000;
+                            txtMemCFStartAdd.Text = _StartAddr.ToString("X6");
+                            txtMemCFBlocchi.Text = _bloccoCorrente.ToString();
+                            Application.DoEvents();
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Inserire un numero di blocchi valido", "Esportazione dati Corrente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+
 
         }
 

@@ -473,33 +473,6 @@ namespace PannelloCharger
                         _numParametri++;
                     }
                 }
-                /*
-                if (txtPaCapDaCaricare.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaCapDaCaricare.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaDaRicaricare;
-                        _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                if (txtPaTempoMax.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaTempoMax.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoMassimoCarica;
-                        _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-                */
 
                 if (txtPaSoglia.Text.Length > 0)
                 {
@@ -519,23 +492,20 @@ namespace PannelloCharger
 
                 }
 
-
-                if (txtPaParDivK.Text.Length > 0)
+                // Flag Usa Spybatt
                 {
-
-                    ushort result;
-
-                    if (ushort.TryParse(txtPaParDivK.Text, out result))
+                    ParametroLL _par = new ParametroLL();
+                    _par.idParametro = (byte)SerialMessage.ParametroLadeLight.DivisoreK;
+                    if ( chkPaUsaSpyBatt.Checked)
                     {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.DivisoreK;
-                        _par.ValoreParametro = result;
-                        txtPaParDivK.Text = result.ToString("0");
-                        _divK = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
+                        _par.ValoreParametro = 1;
                     }
-
+                    else
+                    {
+                        _par.ValoreParametro = 0;
+                    }
+                    _cb.CicloInMacchina.Parametri.Add(_par);
+                    _numParametri++;
                 }
 
 
@@ -736,12 +706,13 @@ namespace PannelloCharger
                 txtPaCoeffK.Text = "";
                 txtPaTempoT2Min.Text = "";
                 txtPaTempoT2Max.Text = "";
+                chkPaUsaSpyBatt.CheckState = CheckState.Indeterminate;
 
                 if (CicloAttuale.datiPronti)
                 {
                     txtPaNomeProfilo.Text = CicloAttuale.NomeCiclo;
                     cmbPaProfilo.SelectedIndex = CicloAttuale.TipoCiclo;
-
+                     
                     foreach(ParametroLL _par in CicloAttuale.Parametri)
                     {
                         float _tempVal;
@@ -783,6 +754,16 @@ namespace PannelloCharger
                             case (byte)SerialMessage.ParametroLadeLight.DivisoreK:
                                 txtPaParDivK.Text = _par.ValoreParametro.ToString();
                                 _divK = _par.ValoreParametro;
+                                if(_divK > 0)
+                                {
+                                    //chkPaUsaSpyBatt.Checked = true;
+                                    chkPaUsaSpyBatt.CheckState = CheckState.Checked;
+                                }
+                                else
+                                {
+                                    //chkPaUsaSpyBatt.Checked = false;
+                                    chkPaUsaSpyBatt.CheckState = CheckState.Unchecked;
+                                }
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.ParametroKP:
                                 _tempVal = (float)_par.ValoreParametro / _divK;
@@ -837,7 +818,6 @@ namespace PannelloCharger
             */
         }
 
-
         private void tabCb01_Click(object sender, EventArgs e)
         {
 
@@ -847,8 +827,6 @@ namespace PannelloCharger
         {
             this.Close();
         }
-
-
 
         private void frmCaricabatterie_Resize(object sender, EventArgs e)
         {
@@ -866,7 +844,6 @@ namespace PannelloCharger
             }
 
         }
-
 
         public void CaricaListaCicli()
         {
@@ -965,8 +942,6 @@ namespace PannelloCharger
             {
             }
         }
-
-
 
         private void chkParLetturaAuto_CheckedChanged(object sender, EventArgs e)
         {
@@ -1327,10 +1302,6 @@ namespace PannelloCharger
             CaricaCicloAttuale();
         }
 
-
-
-
-
         private void btnCaricaMemoria_Click(object sender, EventArgs e)
         {
             bool _esito;
@@ -1351,7 +1322,7 @@ namespace PannelloCharger
 
         private void btnPaSalvaDati_Click(object sender, EventArgs e)
         {
-            ScriviParametriAttuali();
+            ScriviParametriCarica();
         }
 
         private void btnLeggiVariabili_Click(object sender, EventArgs e)
@@ -1660,7 +1631,6 @@ namespace PannelloCharger
 
         }
 
-
         private void btnFWFileSBFsearch_Click(object sender, EventArgs e)
         {
             sfdExportDati.Filter = "LLF LADE Light Firmware File (*.llf)|*.llf|All files (*.*)|*.*";
@@ -1669,7 +1639,6 @@ namespace PannelloCharger
             btnFWLanciaTrasmissione.Enabled = false;
 
         }
-
 
         private void btnFWFileCCSLoad_Click(object sender, EventArgs e)
         {
@@ -1732,11 +1701,11 @@ namespace PannelloCharger
                 Log.Error("btnFWFileSBFLoad_Click: " + Ex.Message);
             }
         }
+
         private void btnFWFileSBFLoad_Click(object sender, EventArgs e)
         {
             CaricafileLLCCS();
         }
-
 
         private void btnFWLanciaTrasmissione_Click(object sender, EventArgs e)
         {
@@ -2131,6 +2100,11 @@ namespace PannelloCharger
                 Log.Error("txtFwStatoSA2_DoubleClick: " + Ex.Message);
                 
             }
+        }
+
+        private void cmbPaProfilo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -24,13 +24,11 @@ namespace ChargerLogic
 
         public static SerialPort serialeApparato;
         private static MessaggioDisplay _mD; // = new MessaggioSpyBatt();
- //       private parametriSistema _parametri;
+ //     private parametriSistema _parametri;
 
         private static Queue<byte> codaDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
         private static Queue<byte> echoDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
 
-        
-        
         public List<DisplaySetup.Immagine> Immagini = new List<DisplaySetup.Immagine>();
         public List<DisplaySetup.Schermata> Schermate = new List<DisplaySetup.Schermata>();
         public List<DisplaySetup.Variabile> Variabili = new List<DisplaySetup.Variabile>();
@@ -57,8 +55,6 @@ namespace ChargerLogic
         public bool apparatoPresente = false;
         public DisplaySetup Data = new DisplaySetup();
 
-
-
         public UnitaDisplay(ref SerialPort PortaSeriale )
             {
             _mD = new MessaggioDisplay();
@@ -74,7 +70,6 @@ namespace ChargerLogic
 
 
         }
-
 
         private void port_DataReceivedDisplay(object sender, SerialDataReceivedEventArgs e)
         {
@@ -251,7 +246,6 @@ namespace ChargerLogic
                 return _risposta;
             }
         }
-
 
         /// <summary>
         /// Carico direttamente da memoria l'area passata come parametro
@@ -641,7 +635,6 @@ namespace ChargerLogic
             }
         }
 
-
         public bool PulisciSchermo()
         {
             bool _risposta = false;
@@ -807,7 +800,6 @@ namespace ChargerLogic
             }
         }
 
-
         public bool CaricaSchermata (DisplaySetup.Schermata Screen)
         {
             bool _risposta = false;
@@ -882,7 +874,7 @@ namespace ChargerLogic
                                 echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
                             }
                             scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
-                            _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true, false, false, false, true);
+                            _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true, false, false, false,false);
 
                             _currPos += _dimCorrente;
                             int _residuo = Screen.Size - _currPos;
@@ -937,7 +929,6 @@ namespace ChargerLogic
 
         }
 
-
         public bool ImpostaVariabile(byte Id, string Valore)
         {
             bool _risposta = false;
@@ -968,6 +959,49 @@ namespace ChargerLogic
                 return _risposta;
             }
         }
+
+
+        /// <summary>
+        /// Cancella fisicamente un blocco di 4K dalla memoria flash mettendo tutti i Bytes a 0xFF
+        /// </summary>
+        /// <returns></returns>
+        public bool CancellaBlocco4K(uint StartAddr)
+        {
+
+
+            try
+            {
+                bool _esito;
+                ///ControllaAttesa(UltimaScrittura);
+
+                _mD.Comando = SerialMessage.TipoComando.CMD_ERASE_4K_MEM;
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Cancellazione di 4Kbytes dall'indirizzo " + StartAddr.ToString("X2"));
+
+                _mD.ComponiMessaggioCancella4KMem(StartAddr);
+                Log.Debug(_mD.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                //Log.Debug("------------------------------------------------------------------------------------------------------------");
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                return false;
+            }
+        }
+
+
 
 
 

@@ -181,7 +181,7 @@ namespace ChargerLogic
                                             _dumpDatiSER.Enqueue(_TempB);
                                         }
 
-                                        Log.Debug("ECHO: " + FunzioniComuni.HexdumpQueue(_dumpDatiSER));
+                                        //Log.Debug("ECHO: " + FunzioniComuni.HexdumpQueue(_dumpDatiSER));
                                         
                                         _echoJump = true;
                                         _trovatoETX = false;
@@ -459,6 +459,11 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Scrittura Testata Immagine");
+                                break;
+                            case (byte)SerialMessage.TipoComando.CMD_SCREEN_RX_START:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                Log.Debug("Scrittura Testata Schermata");
                                 break;
                             case (byte)SerialMessage.TipoComando.CMD_STATE_DEVICE:
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;

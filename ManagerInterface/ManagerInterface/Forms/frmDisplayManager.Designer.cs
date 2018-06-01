@@ -35,6 +35,9 @@
             this.btnPrimaLettura = new System.Windows.Forms.Button();
             this.cmdLeggiRTC = new System.Windows.Forms.Button();
             this.btnApriComunicazione = new System.Windows.Forms.Button();
+            this.label77 = new System.Windows.Forms.Label();
+            this.btnRtSetBaudRate = new System.Windows.Forms.Button();
+            this.cmbRtBaudRate = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -228,9 +231,6 @@
             this.btnRtImpostaVariabile = new System.Windows.Forms.Button();
             this.cmbRtValVariabile = new System.Windows.Forms.ComboBox();
             this.label78 = new System.Windows.Forms.Label();
-            this.btnRtSetBaudRate = new System.Windows.Forms.Button();
-            this.cmbRtBaudRate = new System.Windows.Forms.ComboBox();
-            this.label77 = new System.Windows.Forms.Label();
             this.btnRtSetRTC = new System.Windows.Forms.Button();
             this.btnRtDrawSchermata = new System.Windows.Forms.Button();
             this.label57 = new System.Windows.Forms.Label();
@@ -332,6 +332,7 @@
             this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.chkRtRiavvioAutomatico = new System.Windows.Forms.CheckBox();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpConnessione.SuspendLayout();
             this.pnlComandiImmediati.SuspendLayout();
@@ -410,18 +411,22 @@
             // pnlComandiImmediati
             // 
             this.pnlComandiImmediati.BackColor = System.Drawing.Color.White;
+            this.pnlComandiImmediati.Controls.Add(this.chkRtRiavvioAutomatico);
             this.pnlComandiImmediati.Controls.Add(this.button1);
             this.pnlComandiImmediati.Controls.Add(this.btnPrimaLettura);
             this.pnlComandiImmediati.Controls.Add(this.cmdLeggiRTC);
             this.pnlComandiImmediati.Controls.Add(this.btnApriComunicazione);
-            this.pnlComandiImmediati.Location = new System.Drawing.Point(651, 37);
+            this.pnlComandiImmediati.Controls.Add(this.label77);
+            this.pnlComandiImmediati.Controls.Add(this.btnRtSetBaudRate);
+            this.pnlComandiImmediati.Controls.Add(this.cmbRtBaudRate);
+            this.pnlComandiImmediati.Location = new System.Drawing.Point(646, 37);
             this.pnlComandiImmediati.Name = "pnlComandiImmediati";
-            this.pnlComandiImmediati.Size = new System.Drawing.Size(298, 198);
+            this.pnlComandiImmediati.Size = new System.Drawing.Size(307, 236);
             this.pnlComandiImmediati.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(28, 219);
+            this.button1.Location = new System.Drawing.Point(28, 310);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(192, 28);
@@ -433,7 +438,7 @@
             // 
             // btnPrimaLettura
             // 
-            this.btnPrimaLettura.Location = new System.Drawing.Point(28, 299);
+            this.btnPrimaLettura.Location = new System.Drawing.Point(28, 390);
             this.btnPrimaLettura.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrimaLettura.Name = "btnPrimaLettura";
             this.btnPrimaLettura.Size = new System.Drawing.Size(136, 28);
@@ -444,7 +449,7 @@
             // 
             // cmdLeggiRTC
             // 
-            this.cmdLeggiRTC.Location = new System.Drawing.Point(28, 263);
+            this.cmdLeggiRTC.Location = new System.Drawing.Point(28, 354);
             this.cmdLeggiRTC.Margin = new System.Windows.Forms.Padding(4);
             this.cmdLeggiRTC.Name = "cmdLeggiRTC";
             this.cmdLeggiRTC.Size = new System.Drawing.Size(136, 28);
@@ -456,14 +461,50 @@
             // btnApriComunicazione
             // 
             this.btnApriComunicazione.Enabled = false;
+            this.btnApriComunicazione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApriComunicazione.Location = new System.Drawing.Point(28, 22);
             this.btnApriComunicazione.Margin = new System.Windows.Forms.Padding(4);
             this.btnApriComunicazione.Name = "btnApriComunicazione";
-            this.btnApriComunicazione.Size = new System.Drawing.Size(192, 28);
+            this.btnApriComunicazione.Size = new System.Drawing.Size(246, 56);
             this.btnApriComunicazione.TabIndex = 33;
             this.btnApriComunicazione.Text = "Start Comunicazione";
             this.btnApriComunicazione.UseVisualStyleBackColor = true;
             this.btnApriComunicazione.Click += new System.EventHandler(this.btnApriComunicazione_Click);
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(25, 113);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(142, 17);
+            this.label77.TabIndex = 111;
+            this.label77.Text = "Nuovo BAUDRATE";
+            // 
+            // btnRtSetBaudRate
+            // 
+            this.btnRtSetBaudRate.Location = new System.Drawing.Point(28, 150);
+            this.btnRtSetBaudRate.Name = "btnRtSetBaudRate";
+            this.btnRtSetBaudRate.Size = new System.Drawing.Size(246, 33);
+            this.btnRtSetBaudRate.TabIndex = 113;
+            this.btnRtSetBaudRate.Text = "Reimposta BaudRate";
+            this.btnRtSetBaudRate.UseVisualStyleBackColor = true;
+            this.btnRtSetBaudRate.Click += new System.EventHandler(this.btnRtSetBaudRate_Click);
+            // 
+            // cmbRtBaudRate
+            // 
+            this.cmbRtBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRtBaudRate.FormattingEnabled = true;
+            this.cmbRtBaudRate.Items.AddRange(new object[] {
+            "9600",
+            "19200",
+            "38400",
+            "57600",
+            "115200"});
+            this.cmbRtBaudRate.Location = new System.Drawing.Point(187, 110);
+            this.cmbRtBaudRate.Name = "cmbRtBaudRate";
+            this.cmbRtBaudRate.Size = new System.Drawing.Size(87, 24);
+            this.cmbRtBaudRate.TabIndex = 112;
             // 
             // panel1
             // 
@@ -2401,9 +2442,6 @@
             this.tbpRealTime.Controls.Add(this.btnRtImpostaVariabile);
             this.tbpRealTime.Controls.Add(this.cmbRtValVariabile);
             this.tbpRealTime.Controls.Add(this.label78);
-            this.tbpRealTime.Controls.Add(this.btnRtSetBaudRate);
-            this.tbpRealTime.Controls.Add(this.cmbRtBaudRate);
-            this.tbpRealTime.Controls.Add(this.label77);
             this.tbpRealTime.Controls.Add(this.btnRtSetRTC);
             this.tbpRealTime.Controls.Add(this.btnRtDrawSchermata);
             this.tbpRealTime.Controls.Add(this.label57);
@@ -2649,41 +2687,6 @@
             this.label78.Size = new System.Drawing.Size(104, 20);
             this.label78.TabIndex = 114;
             this.label78.Text = "VARIABILE";
-            // 
-            // btnRtSetBaudRate
-            // 
-            this.btnRtSetBaudRate.Location = new System.Drawing.Point(1306, 360);
-            this.btnRtSetBaudRate.Name = "btnRtSetBaudRate";
-            this.btnRtSetBaudRate.Size = new System.Drawing.Size(207, 41);
-            this.btnRtSetBaudRate.TabIndex = 113;
-            this.btnRtSetBaudRate.Text = "Imposta BaudRate";
-            this.btnRtSetBaudRate.UseVisualStyleBackColor = true;
-            this.btnRtSetBaudRate.Click += new System.EventHandler(this.btnRtSetBaudRate_Click);
-            // 
-            // cmbRtBaudRate
-            // 
-            this.cmbRtBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRtBaudRate.FormattingEnabled = true;
-            this.cmbRtBaudRate.Items.AddRange(new object[] {
-            "9600",
-            "19200",
-            "38400",
-            "57600",
-            "115200"});
-            this.cmbRtBaudRate.Location = new System.Drawing.Point(1426, 309);
-            this.cmbRtBaudRate.Name = "cmbRtBaudRate";
-            this.cmbRtBaudRate.Size = new System.Drawing.Size(87, 24);
-            this.cmbRtBaudRate.TabIndex = 112;
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(1302, 310);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(109, 20);
-            this.label77.TabIndex = 111;
-            this.label77.Text = "BAUDRATE";
             // 
             // btnRtSetRTC
             // 
@@ -3304,7 +3307,6 @@
             this.grbMemCancFisica.TabIndex = 84;
             this.grbMemCancFisica.TabStop = false;
             this.grbMemCancFisica.Text = "Cancellazione 4K Memoria";
-            this.grbMemCancFisica.Visible = false;
             // 
             // rbtMemAreaApp2
             // 
@@ -3410,12 +3412,13 @@
             // 
             this.grbMemCancellazione.BackColor = System.Drawing.Color.White;
             this.grbMemCancellazione.Controls.Add(this.cmdMemClear);
-            this.grbMemCancellazione.Location = new System.Drawing.Point(703, 17);
+            this.grbMemCancellazione.Location = new System.Drawing.Point(944, 280);
             this.grbMemCancellazione.Name = "grbMemCancellazione";
             this.grbMemCancellazione.Size = new System.Drawing.Size(202, 109);
             this.grbMemCancellazione.TabIndex = 83;
             this.grbMemCancellazione.TabStop = false;
             this.grbMemCancellazione.Text = "Cancellazione Memoria";
+            this.grbMemCancellazione.Visible = false;
             // 
             // cmdMemClear
             // 
@@ -3727,6 +3730,18 @@
             this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
             this.flvStatoListaImg.VirtualMode = true;
             // 
+            // chkRtRiavvioAutomatico
+            // 
+            this.chkRtRiavvioAutomatico.AutoSize = true;
+            this.chkRtRiavvioAutomatico.Checked = true;
+            this.chkRtRiavvioAutomatico.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRtRiavvioAutomatico.Location = new System.Drawing.Point(28, 191);
+            this.chkRtRiavvioAutomatico.Name = "chkRtRiavvioAutomatico";
+            this.chkRtRiavvioAutomatico.Size = new System.Drawing.Size(150, 21);
+            this.chkRtRiavvioAutomatico.TabIndex = 114;
+            this.chkRtRiavvioAutomatico.Text = "Riavvio Automatico";
+            this.chkRtRiavvioAutomatico.UseVisualStyleBackColor = true;
+            // 
             // frmDisplayManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3739,6 +3754,7 @@
             this.tbcMainDisplayManager.ResumeLayout(false);
             this.tbpConnessione.ResumeLayout(false);
             this.pnlComandiImmediati.ResumeLayout(false);
+            this.pnlComandiImmediati.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tbpArchivioModelli.ResumeLayout(false);
@@ -4112,5 +4128,6 @@
         private System.Windows.Forms.TextBox txtRtValBtn03;
         private System.Windows.Forms.TextBox txtRtValBtn04;
         private System.Windows.Forms.TextBox txtRtValBtn05;
+        private System.Windows.Forms.CheckBox chkRtRiavvioAutomatico;
     }
 }
