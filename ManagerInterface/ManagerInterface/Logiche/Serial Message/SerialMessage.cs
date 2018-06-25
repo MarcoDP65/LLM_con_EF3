@@ -5,11 +5,13 @@ using System.Text;
 using log4net;
 using log4net.Config;
 
+using Utility;
+
 namespace ChargerLogic
 {
     public class SerialMessage
     {
-        private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+        private static ILog Log = LogManager.GetLogger("SerialMessage");
 
         public enum InitialCrcValue : ushort { Zeros, NonZero1 = 0xffff, NonZero2 = 0x1D0F };
         public enum RequiredActionOutcome : byte {Success = 0x0F,Failed = 0xF0, UnDone = 0xFF,Undefined = 0x00};
@@ -3085,6 +3087,7 @@ namespace ChargerLogic
 
                     if(decodificaArray(_messaggio,ref _risposta))
                     {
+                        Log.Debug(FunzioniMR.hexdumpArray(_risposta));
                         startByte = 0;
                         Matricola = ArrayToUint32(_risposta, startByte, 4);
                         startByte += 4;

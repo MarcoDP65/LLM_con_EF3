@@ -27,6 +27,7 @@ namespace MoriData
         [MaxLength(20)]
         public string LastUser { get; set; }
 
+
         public string RevBootloader { get; set; }
         public string RevFirmware { get; set; }
         public string RevDisplay { get; set; }

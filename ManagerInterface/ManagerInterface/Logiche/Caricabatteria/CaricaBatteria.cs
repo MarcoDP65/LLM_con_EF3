@@ -40,8 +40,11 @@ namespace ChargerLogic
         public SerialMessage.comandoRTC OrologioSistema = new SerialMessage.comandoRTC();
         public SerialMessage.cicloAttuale CicloInMacchina = new SerialMessage.cicloAttuale();
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
+        public llParametriApparato ParametriApparato = new llParametriApparato();
 
         public llVariabili llVariabiliAttuali = new llVariabili();
+
+        public List<_llModelloCb> ModelliLL;
 
         public System.Collections.Generic.List< SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List< SerialMessage.CicloDiCarica>();
 
@@ -453,6 +456,7 @@ namespace ChargerLogic
                 _mS.SerialNumber = Seriale;
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
+                inizializzaModelli();
                 // Attivo gli eventi sia USB che COM
 
                 FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
@@ -487,6 +491,10 @@ namespace ChargerLogic
         {
             try
             {
+                bool _esito = CaricaIntestazioneLL();
+                return _esito;
+
+                /*
                 bool _esito = false;
                 _mS.Comando = SerialMessage.TipoComando.CMD_CONNECT;
                 _mS.ComponiMessaggio();
@@ -514,6 +522,7 @@ namespace ChargerLogic
 
                 }
                 return _esito;
+                */
             }
 
             catch (Exception Ex)
@@ -523,6 +532,54 @@ namespace ChargerLogic
                 return false;
             } 
         }
+
+
+
+        public bool CaricaIntestazioneLL()
+        {
+            try
+            {
+                bool _esito = false;
+                SerialMessage.EsitoRisposta _esitoMsg;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
+                _mS.ComponiMessaggio();
+                _rxRisposta = false;
+                Log.Debug("NEW START");
+
+                byte[] _Dati = new byte[128];
+
+                // Leggo dal primo banco memoria fissa
+                _esito = LeggiBloccoMemoria(0, 128, out _Dati);
+                Log.Debug(FunzioniComuni.HexdumpArray(_Dati));
+                //_mS.
+                MessaggioLadeLight.PrimoBloccoMemoria BloccoIntestazione;
+                BloccoIntestazione = new MessaggioLadeLight.PrimoBloccoMemoria();
+                _esitoMsg = BloccoIntestazione.analizzaMessaggio(_Dati, 1);
+
+                Intestazione = new SerialMessage.comandoIniziale();
+
+                if (_esitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                {
+                    _esito = true;
+                    Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
+                    Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
+
+                }
+
+                _cbCollegato = _esito;
+                apparatoPresente = _esito;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
 
 
 
@@ -875,7 +932,7 @@ namespace ChargerLogic
                 Dati = new byte[NumByte];
 
 
-                _mS.Comando = SerialMessage.TipoComando.CMD_READ_ALL_MEMORY;
+                _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
                 _mS._pacchettoMem = new SerialMessage.PacchettoReadMem();
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
@@ -945,7 +1002,7 @@ namespace ChargerLogic
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
-                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 if (modoDeso != true)
                 {
                     _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
@@ -1192,7 +1249,102 @@ namespace ChargerLogic
         }
 
 
-/*************************************************************************************************************************************/
+
+        public bool LeggiParametriApparato()
+        {
+            try
+            {
+                bool _esito;
+                ParametriApparato = new llParametriApparato();
+                MessaggioLadeLight.PrimoBloccoMemoria ImmagineMemoria = new MessaggioLadeLight.PrimoBloccoMemoria();
+                SerialMessage.EsitoRisposta EsitoMsg;
+
+                byte[] _datiTemp = new byte[128] ;
+                _esito = LeggiBloccoMemoria(0, 128, out _datiTemp);
+
+                if (_esito)
+                {
+                    EsitoMsg =  ImmagineMemoria.analizzaMessaggio(_datiTemp,1);
+                    if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                    {
+                        ParametriApparato.llParApp.ProduttoreApparato = ImmagineMemoria.ProduttoreApparato;
+                        ParametriApparato.llParApp.NomeApparato = ImmagineMemoria.NomeApparato;
+                        ParametriApparato.llParApp.SerialeApparato = ImmagineMemoria.SerialeApparato;
+                        ParametriApparato.llParApp.SerialeZVT = ImmagineMemoria.SerialeZVT;
+                        ParametriApparato.llParApp.SerialePFC = ImmagineMemoria.SerialePFC;
+                        ParametriApparato.llParApp.SerialeDISP = ImmagineMemoria.SerialeDISP;
+
+
+                    }
+
+                }
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+        public bool ScriviParametriApparato()
+        {
+            try
+            {
+                bool _esito = false;
+                MessaggioLadeLight.PrimoBloccoMemoria ImmagineMemoria = new MessaggioLadeLight.PrimoBloccoMemoria();
+                SerialMessage.EsitoRisposta EsitoMsg;
+
+                // Prima vuoto il blocco
+                _esito = CancellaBlocco4K(0);
+
+
+
+                ImmagineMemoria.ProduttoreApparato = ParametriApparato.llParApp.ProduttoreApparato;
+                ImmagineMemoria.NomeApparato = ParametriApparato.llParApp.NomeApparato;
+                ImmagineMemoria.SerialeApparato = ParametriApparato.llParApp.SerialeApparato;
+                ImmagineMemoria.TipoApparato = ParametriApparato.llParApp.TipoApparato;
+                ImmagineMemoria.DataSetupApparato = ParametriApparato.llParApp.DataSetupApparato;
+
+                ImmagineMemoria.SerialeZVT = ParametriApparato.llParApp.SerialeZVT;
+                ImmagineMemoria.HardwareZVT = ParametriApparato.llParApp.HardwareZVT;
+
+                ImmagineMemoria.SerialePFC = ParametriApparato.llParApp.SerialePFC;
+                ImmagineMemoria.SoftwarePFC = ParametriApparato.llParApp.SoftwarePFC;
+                ImmagineMemoria.HardwarePFC = ParametriApparato.llParApp.HardwarePFC;
+
+
+
+                if (ImmagineMemoria.GeneraByteArray())
+                {
+                    byte[] _datiTemp = new byte[128];
+                    _datiTemp = ImmagineMemoria.dataBuffer;
+                    _esito = ScriviBloccoMemoria(0, 128, _datiTemp);
+                }
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+
+
+
+        /*************************************************************************************************************************************/
 
         private void port_DataReceivedCBOLD(object sender, SerialDataReceivedEventArgs e)
         {
@@ -1429,18 +1581,23 @@ namespace ChargerLogic
                                 _inviaRisposta = false;
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.CMD_READ_LT_MEMORY:   //0x03: // Cicli in memoria
+                            case (byte)SerialMessage.TipoComando.CMD_READ_LT_MEMORY:   
                                 Log.Debug("Cicli in memoria");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 break;
-                            case (byte)SerialMessage.TipoComando.CMD_READ_RTC:   //0xD3: // read RTC
+                            case (byte)SerialMessage.TipoComando.CMD_READ_RTC:  
                                 Log.Debug("Read RTC");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 break;
-                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:   //0xD3: // read RTC
+                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:  
                                 Log.Debug("Read MEMORY");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 break;
+                            case (byte)SerialMessage.TipoComando.EVENT_MEM_CODE:
+                                Log.Debug("MEMORY Event");
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                break;                            
                             default:
                                 Log.Debug("Altro Comando");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
@@ -1480,7 +1637,17 @@ namespace ChargerLogic
                 return _datiRicevuti;
             }
         }
-        
+
+        public bool inizializzaModelli()
+        {
+            ModelliLL = new List<_llModelloCb>();
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "Non Definito", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "Trifase 24-80 / 120", CorrenteMin  = 10, CorrenteMax = 120,TensioneMin = 24,TensioneMax = 80,Ordine=1,Trifase=1 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 48, Ordine = 2, Trifase = 1 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x01, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0 });
+            return true;
+        }
+
 
     }
 }

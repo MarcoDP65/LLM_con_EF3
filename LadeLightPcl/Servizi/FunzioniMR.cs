@@ -375,8 +375,6 @@ namespace Utility
             }
         }
 
-
-
         public static string StringaDurataBase(uint Secondi)
         {
             try
@@ -505,9 +503,6 @@ namespace Utility
                 return 0;
             }
         }
-
-
-
 
         public static string StringaCapacita(int Capacita,int divisore = 1,byte Decimali = 1)
         {
@@ -1560,7 +1555,6 @@ namespace Utility
             }
         }
 
-
         /// <summary>
         /// Crea una stringa con la rappresentazione esadecimale della coda passata 
         /// </summary>
@@ -1675,7 +1669,6 @@ namespace Utility
 
         }
 
-
         public static void SplitSShort(short value, ref byte _byte1, ref byte _byte2)
 
         {
@@ -1689,8 +1682,6 @@ namespace Utility
             }
 
         }
-
-
 
         /// <summary>
         /// Converte la data/ora passata come argomento in un array di bytes
@@ -1762,8 +1753,6 @@ namespace Utility
             return _tempArray;
         }
 
-
-
         public static byte[] StringToArray(string source, int ArrayLen, int Start = 0)
         {
             string _tempString = "";
@@ -1793,6 +1782,60 @@ namespace Utility
                 return null;
             }
         }
+
+        /// <summary>
+        /// Convert Hexadecimals string to array.
+        /// </summary>
+        /// <param name="source">The source string.</param>
+        /// <param name="ArrayLen">Length of the array.</param>
+        /// <param name="Start">The start.</param>
+        /// <returns> Converte la stringa nel valore esadecimale rappresentato allineando il valore a destra e riempiendo </returns>
+        public static byte[] HexStringToArray(string source, int ArrayLen)
+        {
+            string _tempString ;
+           
+            try
+            {
+
+                _tempString = "";
+                byte[] _tempBuf = new byte[ArrayLen];
+                byte _tempValue;
+
+                     // Preparo l'array esadecimale inizializzato a 0
+                for (int _i = 0; _i < ArrayLen; _i++)
+                {
+                    _tempBuf[_i] = 0x00;
+                    _tempString += "00";
+                }
+           
+                // ora carico i bytes, scorrrendo la stringa da dx verso sx 2 caratteri alla volta
+                _tempString += source;
+                int sourceLen = _tempString.Length;
+
+                string TempByte;
+                // la stringa è sicuramente lunga abbastanza per estrarre ArrayLen coppie di cifre
+                for (int _i = 1; _i <= ArrayLen; _i++)
+                {
+                    TempByte = _tempString.Substring(( sourceLen - _i * 2 ), 2);
+                    byte.TryParse(TempByte, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _tempValue);
+                    _tempBuf[ArrayLen - _i] = _tempValue;
+                }
+
+                return _tempBuf;
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+
+
+
+
+
 
         public static ushort UshortFromArray(byte[] data, int position)
         {

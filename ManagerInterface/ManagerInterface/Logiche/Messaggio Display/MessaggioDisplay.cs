@@ -1957,8 +1957,5 @@ namespace ChargerLogic
         }
 
 
-
-
-
     }
 }

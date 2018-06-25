@@ -754,6 +754,7 @@ namespace ChargerLogic
 
 
                     default:
+                        Log.Debug("analizzaMessaggio: Non Riconosciuto " + _comando.ToString());
                         return EsitoRisposta.NonRiconosciuto;
 
                 }

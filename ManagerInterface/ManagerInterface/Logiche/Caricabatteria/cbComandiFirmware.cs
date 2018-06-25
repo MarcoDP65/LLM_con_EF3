@@ -139,7 +139,7 @@ namespace ChargerLogic
 
                     Log.Debug("----------------------------------------------------------------------------------------------------------------------------------------");
 
-                    _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);
+                    _esito = aspettaRisposta(elementiComuni.Timeout5sec, 0, true);
 
                     Log.Debug("Invio testata: " + _esito.ToString());
                     Log.Debug("----------------------------------------------------------------------------------------------------------------------------------------");

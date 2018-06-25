@@ -139,11 +139,6 @@ namespace PannelloCharger
 
                 }
 
-
-                
-
-                //            ComPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(port_DataReceived);
-
             }
             catch 
             { }
@@ -175,6 +170,12 @@ namespace PannelloCharger
             cmbPaCondStop.Items.Add("Timer");
             cmbPaCondStop.Items.Add("dV/dt");
             cmbPaCondStop.SelectedIndex = 0;
+
+            cmbInitTipoApparato.DataSource = _cb.ModelliLL;
+            cmbInitTipoApparato.ValueMember = "IdModelloLL";
+            cmbInitTipoApparato.DisplayMember = "NomeModello";
+
+
 
         }
 
@@ -2103,6 +2104,227 @@ namespace PannelloCharger
         }
 
         private void cmbPaProfilo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbInitDatiBase_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnScriviInizializzazione_Click(object sender, EventArgs e)
+        {
+            SalvaInizializzazione();
+        }
+
+        public bool SalvaInizializzazione()
+        {
+            try
+            {
+                if (_cb.ParametriApparato == null)
+                {
+                    _cb.ParametriApparato = new llParametriApparato();
+                }
+
+                _cb.ParametriApparato.llParApp.ProduttoreApparato = txtInitManufactured.Text;
+                _cb.ParametriApparato.llParApp.NomeApparato = txtInitProductId.Text;
+
+                uint TmpInt;
+                bool _esito;
+                byte[] tempVal;
+
+                TmpInt = 0xFFFFFFFF;
+                if (uint.TryParse(txtInitSerialeApparato.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out TmpInt))
+                {
+                    _cb.ParametriApparato.llParApp.SerialeApparato = TmpInt;
+                }
+
+                // Tipo Apparato
+                _cb.ParametriApparato.llParApp.TipoApparato = (byte)cmbInitTipoApparato.SelectedValue;
+
+                // Data
+                byte[] dataInit = FunzioniMR.toArrayDataTS(txtInitDataInizializ.Text);
+                uint DataUint = dataInit[0];
+                DataUint = (DataUint << 8) + dataInit[1];
+                DataUint = (DataUint << 8) + dataInit[2];
+                _cb.ParametriApparato.llParApp.DataSetupApparato = DataUint;
+
+                // Seriale scheda ZVT
+                if (txtInitNumSerZVT.Text.Trim() != "")
+                {
+                    tempVal = FunzioniComuni.HexStringToArray(txtInitNumSerZVT.Text, 8);
+                }
+                else
+                {
+                    tempVal = new byte[8] { 0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
+                }
+                _cb.ParametriApparato.llParApp.SerialeZVT = tempVal;
+
+                // Rev HW ZVT
+                _cb.ParametriApparato.llParApp.HardwareZVT = txtInitRevHwZVT.Text;
+
+
+                // Seriale scheda PFC
+                if (txtInitNumSerPFC.Text.Trim() != "")
+                {
+                    tempVal = FunzioniComuni.HexStringToArray(txtInitNumSerPFC.Text, 8);
+                }
+                else
+                {
+                    tempVal = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                }
+                _cb.ParametriApparato.llParApp.SerialePFC = tempVal;
+
+                // Rev SW PFC
+                _cb.ParametriApparato.llParApp.SoftwarePFC = txtInitRevFwPFC.Text;
+                // Rev HW PFC
+                _cb.ParametriApparato.llParApp.HardwarePFC = txtInitRevHwPFC.Text;
+
+
+
+                // Seriale scheda DISP
+                if (txtInitNumSerDISP.Text.Trim() != "")
+                {
+                    tempVal = FunzioniComuni.HexStringToArray(txtInitNumSerDISP.Text, 8);
+                }
+                else
+                {
+                    tempVal = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                }
+                _cb.ParametriApparato.llParApp.SerialeDISP = tempVal;
+
+                // Rev SW DISP
+                _cb.ParametriApparato.llParApp.SoftwareDISP = txtInitRevFwDISP.Text;
+                // Rev HW DISP
+                _cb.ParametriApparato.llParApp.HardwareDisp = txtInitRevHwDISP.Text;
+
+
+
+
+
+
+                _esito = _cb.ScriviParametriApparato();
+
+                return _esito;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SalvaInizializzazione: " + Ex.Message);
+                return false;
+
+            }
+        }
+
+        private void cmdMemWrite_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public uint CalcolaMatricola()
+        {
+            try
+            {
+
+                bool _esito;
+                byte _annoMatr = 18;
+
+                uint matricola = 0;
+
+                if (byte.TryParse(txtInitAnnoMatricola.Text, out _annoMatr))
+                {
+                    _annoMatr = (byte)(_annoMatr & 0x3F);
+                    _annoMatr = (byte)(_annoMatr << 2);
+
+                }
+
+                matricola = (uint)( _annoMatr << 16 );
+
+                uint _numMatr = 0;
+
+                if (uint.TryParse(txtInitNumeroMatricola.Text, out _numMatr))
+                {
+                    _numMatr = (uint)(_numMatr & 0x0003FFFF);
+
+                }
+
+                matricola += _numMatr;
+
+                txtInitSerialeApparato.Text = matricola.ToString("X6");
+
+                return matricola;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("CalcolaMatricola: " + Ex.Message);
+                return 0;
+
+            }
+
+        }
+
+        private void txtInitAnnoMatricola_Leave(object sender, EventArgs e)
+        {
+            CalcolaMatricola();
+        }
+
+        private void txtInitNumeroMatricola_Leave(object sender, EventArgs e)
+        {
+            CalcolaMatricola();
+        }
+
+        private void txtInitNumSerZVT_Leave(object sender, EventArgs e)
+        {
+            if (txtInitNumSerZVT.Text.Trim() != "")
+            {
+                byte[] tempVal;
+                tempVal = FunzioniComuni.HexStringToArray(txtInitNumSerZVT.Text, 8);
+                txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(tempVal);
+            }
+            else
+            {
+                txtInitNumSerZVT.Text = "";
+            }
+        }
+
+        private void txtInitNumSerPFC_Leave(object sender, EventArgs e)
+        {
+            if (txtInitNumSerPFC.Text.Trim() != "")
+            {
+                byte[] tempVal;
+                tempVal = FunzioniComuni.HexStringToArray(txtInitNumSerPFC.Text, 8);
+                txtInitNumSerPFC.Text = FunzioniComuni.HexdumpArray(tempVal);
+            }
+            else
+            {
+                txtInitNumSerPFC.Text = "";
+            }
+        }
+
+        private void txtInitNumSerDISP_Leave(object sender, EventArgs e)
+        {
+            if (txtInitNumSerDISP.Text.Trim() != "")
+            {
+                byte[] tempVal;
+                tempVal = FunzioniComuni.HexStringToArray(txtInitNumSerDISP.Text, 8);
+                txtInitNumSerDISP.Text = FunzioniComuni.HexdumpArray(tempVal);
+            }
+            else
+            {
+                txtInitNumSerDISP.Text = "";
+            }
+
+        }
+
+        private void tabInizializzazione_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCaricaInizializzazione_Click(object sender, EventArgs e)
         {
 
         }

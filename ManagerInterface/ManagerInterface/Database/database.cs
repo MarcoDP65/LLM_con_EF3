@@ -323,15 +323,6 @@ namespace MoriData
             }
         }
 
-        /*
-        public bool TableExists(String tableName, SQLiteConnection connection)
-        {
-            SQLiteCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT * FROM sqlite_master WHERE type = 'table' AND name = @name";
-            cmd.Parameters.Add("@name", DbType.String).Value = tableName;
-            return (cmd.ExecuteScalar() != null);
-        }
-        */
         public void inizializzaAlberoNavigazione()
         {
             bool TabellaCompilata = checkInit("_NodoStruttura");

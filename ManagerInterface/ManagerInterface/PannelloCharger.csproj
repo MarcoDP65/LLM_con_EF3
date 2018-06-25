@@ -225,6 +225,8 @@
     <Compile Include="Componenti\PannelloTurno.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Database\llModelliCb.cs" />
+    <Compile Include="Database\llParametriApparato.cs" />
     <Compile Include="Database\llStatoFirmware.cs" />
     <Compile Include="Database\database.cs" />
     <Compile Include="Database\dataUtility.cs" />
@@ -508,6 +510,7 @@
     <Compile Include="Logiche\SpyBatt\SpyBattComandiScheda.cs" />
     <Compile Include="Logiche\StatMemLungaSB.cs" />
     <Compile Include="Logiche\StepCarica.cs" />
+    <Compile Include="Logiche\StepProgrammazione.cs" />
     <Compile Include="Logiche\StrutturaImpianto.cs" />
     <Compile Include="Logiche\utente.cs" />
     <Compile Include="Program.cs" />
