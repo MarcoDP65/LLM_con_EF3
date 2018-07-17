@@ -21,8 +21,16 @@ namespace MoriData
 
         public string BatteryType { get; set; }
         public byte SortOrder { get; set; }
-        public byte StandardChargeProfile { get; set; }    // 0x00 IUIa / 0x01 IWa
-        public byte Obsolete { get; set; }                 // if != 0 not usable for new setting
+        public byte StandardChargeProfile { get; set; }      // 0x00 IUIa / 0x01 IWa / 0x02 LI
+        public byte Obsolete { get; set; }                   // if != 0 not usable for new setting
+        public ushort VoltCella { get; set; }                 // in V/100
+        public ushort VoltSoglia { get; set; }                // in V/100
+        public ushort VCellaMin { get; set; }                 // in V/100
+        public ushort VCellaMax { get; set; }                 // in V/100
+        public ushort UsaSpybatt { get; set; }                // in 0: NO , 1:SI
+        public ushort AbilitaEqual { get; set; }              // in 0: NO , 1:SI
+        public ushort AbilitaAttesaBMS { get; set; }          // in 0: NO , 1:SI
+
 
         public DateTime CreationDate { get; set; }
         public DateTime RevisionDate { get; set; }
@@ -118,6 +126,51 @@ namespace MoriData
             }
 
         }
+
+
+        public ushort VoltCella
+        {
+            get { return _sbTb.VoltCella; }
+            set { _sbTb.VoltCella = value; _datiSalvati = false; }
+        }
+
+        public ushort VoltSoglia
+        {
+            get { return _sbTb.VoltSoglia; }
+            set { _sbTb.VoltSoglia = value; _datiSalvati = false; }
+        }
+
+
+        public ushort VCellaMin
+        {
+            get { return _sbTb.VCellaMin; }
+            set { _sbTb.VCellaMin = value; _datiSalvati = false; }
+        }
+
+        public ushort VCellaMax
+        {
+            get { return _sbTb.VCellaMax; }
+            set { _sbTb.VCellaMax = value; _datiSalvati = false; }
+        }
+
+        public ushort UsaSpybatt
+        {
+            get { return _sbTb.UsaSpybatt; }
+            set { _sbTb.UsaSpybatt = value; _datiSalvati = false; }
+        }
+
+        public ushort AbilitaEqual
+        {
+            get { return _sbTb.AbilitaEqual; }
+            set { _sbTb.AbilitaEqual = value; _datiSalvati = false; }
+        }
+
+        public ushort AbilitaAttesaBMS
+        {
+            get { return _sbTb.AbilitaAttesaBMS; }
+            set { _sbTb.AbilitaAttesaBMS = value; _datiSalvati = false; }
+        }
+
         #endregion
 
     }

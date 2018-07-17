@@ -285,6 +285,7 @@ namespace ChargerLogic
 
 
             public byte[] SerialeZVT { get; set; }
+            public string LottoZVT { get; set; }
             public string HardwareZVT { get; set; }
             public byte[] SerialePFC { get; set; }
             public string HardwarePFC { get; set; }
@@ -297,8 +298,13 @@ namespace ChargerLogic
             public uint SizeExternMemory { get; set; }
             public byte MaxProgrammazioni { get; set; }
             public byte ModelloMemoria { get; set; }
-            public ushort CrcPacchetto { get; set; }
+            public string IDApparato { get; set; }
+            public uint DataInitZVT { get; set; }
+            public uint DataInitPFC { get; set; }
+            public uint DataInitDISP { get; set; }
 
+
+            public ushort CrcPacchetto { get; set; }
 
 
 
@@ -322,13 +328,13 @@ namespace ChargerLogic
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length <128 )
+                    if (_messaggio.Length <242 )
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
-                    CrcPacchetto = ArrayToUshort(_messaggio, 126, 2);
+                    CrcPacchetto = ArrayToUshort(_messaggio, 240, 2);
                     if (CrcPacchetto == 0xFFFF)
                     {
                         // CRC non coerente
@@ -336,8 +342,8 @@ namespace ChargerLogic
                     }
 
                     // Controllo il CRC
-                    byte[] _verificaCrc = new byte[126];
-                    for ( int _i = 0; _i< 126; _i++)
+                    byte[] _verificaCrc = new byte[240];
+                    for ( int _i = 0; _i< 240; _i++)
                     {
                         _verificaCrc[_i] = _messaggio[_i];
                     }
@@ -362,12 +368,23 @@ namespace ChargerLogic
                     NomeApparato = ArrayToString(_messaggio, startByte, 10);
                     startByte += 10;
                     SerialeApparato = ArrayToUint32(_messaggio, startByte, 3);
+                    if(SerialeApparato != 0xFFFFFF)
+                    {
+                        ProgressivoCodice = SerialeApparato & 0x03FFFF;
+                        AnnoCodice = (byte)(_messaggio[startByte] >> 2);
+                    }
+                    else
+                    {
+                        ProgressivoCodice = 0;
+                        AnnoCodice = 0;
+                    }
                     startByte += 3;
                     TipoApparato = _messaggio[startByte];
                     startByte += 1;
                     DataSetupApparato = ArrayToUint32(_messaggio, startByte, 3);
                     startByte += 3;
                     SerialeZVT = SubArray(_messaggio, startByte, 8);
+                    LottoZVT = FunzioniMR.DecodificaStringaLottoZVT(SerialeZVT);
                     startByte += 8;
                     HardwareZVT = ArrayToString(_messaggio, startByte, 8);
                     startByte += 8;
@@ -393,6 +410,11 @@ namespace ChargerLogic
                     startByte += 1;
                     ModelloMemoria = _messaggio[startByte];
                     startByte += 1;
+                    IDApparato = ArrayToString(_messaggio, startByte, 8);
+                    startByte += 8;
+
+
+
 
                     datiPronti = true;
 
@@ -410,8 +432,8 @@ namespace ChargerLogic
             {
                 try
                 {
-                    byte[] _datamap = new byte[128];
-                    byte[] _dataSet = new byte[126];
+                    byte[] _datamap = new byte[242];
+                    byte[] _dataSet = new byte[240];
                     byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
@@ -425,7 +447,7 @@ namespace ChargerLogic
                     byte _byte4 = 0;
 
                     // Preparo l'array vuoto
-                    for (int _i = 0; _i < 128; _i++)
+                    for (int _i = 0; _i < 242; _i++)
                     {
                         _datamap[_i] = 0xFF;
                     }
@@ -505,7 +527,11 @@ namespace ChargerLogic
                     {
                         _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(SoftwarePFC, _i);
                     }
-
+                    // Rev HardwarePFC
+                    for (int _i = 0; _i < 8; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(HardwarePFC, _i);
+                    }
 
                     //Seriale DISP
                     if (SerialeDISP == null)
@@ -528,17 +554,18 @@ namespace ChargerLogic
                     // Rev Software DISP
                     for (int _i = 0; _i < 8; _i++)
                     {
-                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(SoftwarePFC, _i);
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(SoftwareDISP, _i);
                     }
 
                     // Rev Hardware DISP
                     for (int _i = 0; _i < 8; _i++)
                     {
-                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(SoftwarePFC, _i);
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(HardwareDisp, _i);
                     }
 
 
                     // MaxRecordBrevi (3 bytes)
+                    MaxRecordBrevi = 0x010800;
                     FunzioniComuni.SplitUint32(MaxRecordBrevi, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
 
                     _datamap[_arrayInit++] = _byte2;
@@ -546,12 +573,14 @@ namespace ChargerLogic
                     _datamap[_arrayInit++] = _byte4;
 
                     // Max Testate carica (2 bytes)
-                    FunzioniComuni.SplitUshort(MaxRecordCarica, ref _byte1, ref _byte2);
+                    MaxRecordCarica = 0x0200;
+                    FunzioniComuni.SplitUshort(MaxRecordCarica, ref _byte2, ref _byte1);
 
                     _datamap[_arrayInit++] = _byte1;
                     _datamap[_arrayInit++] = _byte2;
 
                     // SizeExternMemory (3 bytes)
+                    SizeExternMemory = 0x200000;
                     FunzioniComuni.SplitUint32(SizeExternMemory, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
 
                     _datamap[_arrayInit++] = _byte2;
@@ -559,21 +588,319 @@ namespace ChargerLogic
                     _datamap[_arrayInit++] = _byte4;
 
                     //Max Programmazioni
+                    MaxProgrammazioni = 0x10;
                     _datamap[_arrayInit++] = MaxProgrammazioni;
 
                     //ModelloMemoria
+                    ModelloMemoria = 0x01;
                     _datamap[_arrayInit++] = ModelloMemoria;
 
-                    for (int _i = 0; _i < 126; _i++)
+                    // IDApparato ( Stringa 8 bytes )
+
+                    for (int _i = 0; _i < 8; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(IDApparato, _i);
+                    }
+
+
+                    /*            
+
+                    public uint DataInitZVT { get; set; }
+                    public uint DataInitPFC { get; set; }
+                    public uint DataInitDISP { get; set; }
+                    
+                     */
+
+
+
+                    for (int _i = 0; _i < 240; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
-                    
+
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[126] = _byte1;
-                    _datamap[127] = _byte2;
+                    _datamap[240] = _byte2;
+                    _datamap[241] = _byte1;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+
+public bool VuotaPacchetto()
+{
+try
+{
+ProduttoreApparato = "MORI RADDRIZZATORI";
+NomeApparato = "LADE LIGHT";
+SerialeApparato = 0;
+AnnoCodice = 18;
+ProgressivoCodice = 0;
+TipoApparato = 1;
+DataSetupApparato = 0x010112;
+SerialeZVT = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+HardwareZVT = "";
+SerialePFC = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+HardwarePFC = "";
+SoftwarePFC = "";
+SerialeDISP = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+HardwareDisp = "";
+SoftwareDISP = "";
+MaxRecordBrevi = 0;
+MaxRecordCarica = 0;
+SizeExternMemory = 0x20000;
+MaxProgrammazioni = 16;
+ModelloMemoria = 1;
+
+CrcPacchetto = 0;
+
+return true;
+}
+catch
+{
+return false;
+}
+}
+
+
+
+
+}
+
+        public class MessaggioProgrammazione
+        {
+            public byte TipoProgrammazione { get; set; }
+            public byte OpzioniProgrammazione { get; set; }
+            public ushort IdProgrammazione { get; set; }
+            public byte ProgUsed { get; set; }
+            public byte[] AreaParametri { get; set; }
+            public byte LenNomeCiclo { get; private set; }
+            public string NomeCiclo { get; set; }
+            public byte IdProfilo { get; set; }
+            public byte NumParametri { get; set; }
+            public List<ParametroLL> Parametri;
+
+            public ushort CrcPacchetto { get; set; }
+
+
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 242)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    CrcPacchetto = ArrayToUshort(_messaggio, 240, 2);
+                    if (CrcPacchetto == 0xFFFF)
+                    {
+                        // CRC non coerente
+                        return EsitoRisposta.MessaggioVuoto;
+                    }
+
+                    // Controllo il CRC
+                    byte[] _verificaCrc = new byte[240];
+                    for (int _i = 0; _i < 240; _i++)
+                    {
+                        _verificaCrc[_i] = _messaggio[_i];
+                    }
+                    _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
+
+
+                    if (CrcPacchetto != _tempCRC)
+                    {
+                        // CRC non coerente
+                        return EsitoRisposta.BadCRC;
+
+                    }
+
+
+                    startByte = 0;
+
+                    Log.Debug(" ----------------------  Pacchetto Programmazione  -----------------------------------------");
+
+                    
+                    TipoProgrammazione = _messaggio[startByte];
+                    startByte += 1;
+                    OpzioniProgrammazione = _messaggio[startByte];
+                    startByte += 1;
+                    IdProgrammazione = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    //-----------------
+                    startByte = 20;   // al momento ignoro tutto fino al byte 20
+                    //-----------------
+                    ProgUsed = _messaggio[startByte];
+
+
+                    //-----------------
+                    startByte = 32;   // al momento ignoro tutto fino al byte 32
+                    //-----------------
+
+                    LenNomeCiclo = _messaggio[startByte];
+                    startByte += 1;
+                    IdProfilo = _messaggio[startByte];
+                    startByte += 1;
+                    NumParametri = _messaggio[startByte];
+                    startByte += 1;
+                    if (LenNomeCiclo > 0)
+                    {
+                        NomeCiclo = ArrayToString(_messaggio, startByte, LenNomeCiclo);
+                        startByte += LenNomeCiclo;
+                    }
+
+                    Parametri = new List<ParametroLL>();
+
+                    for (int _i = 0; _i < NumParametri; _i++)
+                    {
+                        ParametroLL _Par = new ParametroLL();
+                        _Par.idParametro = _messaggio[startByte];
+                        startByte += 1;
+                        _Par.ValoreParametro = ArrayToUshort(_messaggio, startByte, 2);
+                        startByte += 2;
+
+                        Parametri.Add(_Par);
+
+                    }
+
+                    AreaParametri = SubArray(_messaggio, 32, 64);
+
+
+                    datiPronti = true;
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+            public bool GeneraByteArray()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[242];
+                    byte[] _dataSet = new byte[240];
+                    byte[] _tempString;
+                    int _arrayInit = 0;
+                    ushort _temCRC = 0x0000;
+
+                    Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 242; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                    }
+
+                    // Tipo Programmazione
+                    _datamap[_arrayInit++] = TipoProgrammazione;
+
+                    // Opzioni Programmazione
+                    _datamap[_arrayInit++] = OpzioniProgrammazione;
+
+
+                    // Id Programmazione
+                    
+                    FunzioniComuni.SplitUshort(IdProgrammazione, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    //Program Used; salto direttamente al byte 20
+                    _arrayInit = 19;
+                    _datamap[_arrayInit++] = ProgUsed;
+
+                    //--------------------------------------------------------------------------------------------------------------------
+                    // Da byte 33 (pos32) registro la stringa parametro nel precedente formato:
+                    // 0 - Lunghezza  nome
+                    // 1 - Tipo Ciclo
+                    // 2 - Numero parametri
+                    // 3 .. -Nome (vedi parametro )
+                    // Per ogni parametro 
+                    //   0    - Id Parametro
+                    //   1-2  - Valore Ushort
+                    // Dim max per l'area 64 Bytes
+                    //--------------------------------------------------------------------------------------------------------------------
+                    _arrayInit = 32;
+
+                    // Lunghezza nome; Se NomeCiclo è lungo + di 6 lo taglio a 6
+                    if (NomeCiclo.Length > 6) NomeCiclo = NomeCiclo.Substring(0, 6);
+                    _datamap[_arrayInit++] = (byte)NomeCiclo.Length;
+
+                    // Tipo Ciclo
+                    _datamap[_arrayInit++] = IdProfilo;
+
+                    // Numero Parametri
+                    _datamap[_arrayInit++] = NumParametri;
+
+                    // Nome
+                    for (int _i = 0; _i < NomeCiclo.Length; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(NomeCiclo, _i);
+                    }
+
+                    foreach(ParametroLL _Par in Parametri)
+                    {
+                        _datamap[_arrayInit++] = _Par.idParametro;
+
+                        FunzioniComuni.SplitUshort(_Par.ValoreParametro, ref _byte2, ref _byte1);
+                        _datamap[_arrayInit++] = _byte1;
+                        _datamap[_arrayInit++] = _byte2;
+
+
+                    }
+
+
+
+
+
+                    for (int _i = 0; _i < 240; _i++)
+                    {
+                        _dataSet[_i] = _datamap[_i];
+                    }
+
+                    _temCRC = codCrc.ComputeChecksum(_dataSet);
+
+                    FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
+                    _datamap[240] = _byte2;
+                    _datamap[241] = _byte1;
 
                     dataBuffer = _datamap;
 
@@ -591,29 +918,18 @@ namespace ChargerLogic
             {
                 try
                 {
-                    ProduttoreApparato = "MORI RADDRIZZATORI";
-                    NomeApparato = "LADE LIGHT";
-                    SerialeApparato = 0;
-                    AnnoCodice = 18;
-                    ProgressivoCodice = 0;
-                    TipoApparato = 1;
-                    DataSetupApparato = 0x010112;
-                    SerialeZVT = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-                    HardwareZVT = "";
-                    SerialePFC = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-                    HardwarePFC = "";
-                    SoftwarePFC = "";
-                    SerialeDISP = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-                    HardwareDisp = "";
-                    SoftwareDISP = "";
-                    MaxRecordBrevi = 0;
-                    MaxRecordCarica = 0;
-                    SizeExternMemory = 0x20000;
-                    MaxProgrammazioni = 16;
-                    ModelloMemoria = 1;
+
+                    TipoProgrammazione = 0;
+                    OpzioniProgrammazione = 0;
+                    IdProgrammazione = 0;
+                    ProgUsed = 0xFF;  // 0xFF = false => ciclo mai usato
+                    AreaParametri = null;
+                    NomeCiclo = "";
+                    IdProfilo = 0 ;
+                    NumParametri = 0;
+                    Parametri = null; 
 
                     CrcPacchetto = 0;
-
                     return true;
                 }
                 catch

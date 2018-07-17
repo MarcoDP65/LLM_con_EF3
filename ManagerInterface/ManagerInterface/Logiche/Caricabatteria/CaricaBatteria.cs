@@ -42,9 +42,12 @@ namespace ChargerLogic
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
         public llParametriApparato ParametriApparato = new llParametriApparato();
 
+        public LadeLightData ApparatoLL;
+
         public llVariabili llVariabiliAttuali = new llVariabili();
 
         public List<_llModelloCb> ModelliLL;
+        public List<_llProfiloCarica> ProfiliCarica;
 
         public System.Collections.Generic.List< SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List< SerialMessage.CicloDiCarica>();
 
@@ -457,6 +460,7 @@ namespace ChargerLogic
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
                 inizializzaModelli();
+                inizializzaProfili();
                 // Attivo gli eventi sia USB che COM
 
                 FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
@@ -533,6 +537,51 @@ namespace ChargerLogic
             } 
         }
 
+        public bool CaricaApparatoLL()
+        {
+            try
+            {
+                bool _esito = CaricaIntestazioneLL();
+                return _esito;
+
+                /*
+                bool _esito = false;
+                _mS.Comando = SerialMessage.TipoComando.CMD_CONNECT;
+                _mS.ComponiMessaggio();
+                _rxRisposta = false;
+                Log.Debug("START");
+                Log.Debug(_mS.hexdumpMessaggio());
+
+                // Leggo la testata apparato
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(AttesaTimeout, 0,true,false);
+                if (_mS._comando == (byte)SerialMessage.TipoComando.ACK_PACKET)  
+                {
+                    _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
+                    _mS.Comando = SerialMessage.TipoComando.CMD_UART_HOST_CONNECTED;
+                    _mS.ComponiMessaggio();
+                    _rxRisposta = false;
+                    Log.Debug("PRIMA LETTURA");
+                    Log.Debug(_mS.hexdumpMessaggio());
+                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    _esito = aspettaRisposta(AttesaTimeout, 1,true,false);
+                    Intestazione = _mS.Intestazione;
+                    _cbCollegato = _esito;
+                    apparatoPresente = _esito;
+                    return _esito;
+
+                }
+                return _esito;
+                */
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
 
 
         public bool CaricaIntestazioneLL()
@@ -563,7 +612,7 @@ namespace ChargerLogic
                     _esito = true;
                     Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
                     Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
-
+                   
                 }
 
                 _cbCollegato = _esito;
@@ -580,6 +629,55 @@ namespace ChargerLogic
         }
 
 
+        public bool CaricaApparatoA0()
+        {
+            try
+            {
+                bool _esito = false;
+                SerialMessage.EsitoRisposta _esitoMsg;
+
+                // Leggo dal primo banco memoria fissa
+                _esito = LeggiParametriApparato();
+
+                if (_esito)
+                {
+
+                    // Se la matricola è inizializzata carico il recors da DB e lo allineo, altrimenti vado in modalità SOLORAM
+                    if ((ParametriApparato.llParApp.SerialeApparato == 0x00 ) || ((ParametriApparato.llParApp.SerialeApparato & 0xFFFFFF ) == 0xFFFFFF))
+                    {
+                        // Matricola vuota
+                        ApparatoLL = new LadeLightData();
+                        ApparatoLL.Id = "000000";
+
+
+                    }
+                    else
+                    {
+                        // C'è la matricola --> registro il record
+                        ApparatoLL = new LadeLightData();
+                        // ApparatoLL.caricaDati(ParametriApparato.s);
+                    }
+
+
+
+
+                    //Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
+                    //Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
+
+                }
+
+                _cbCollegato = _esito;
+                apparatoPresente = _esito;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
 
 
 
@@ -1259,8 +1357,8 @@ namespace ChargerLogic
                 MessaggioLadeLight.PrimoBloccoMemoria ImmagineMemoria = new MessaggioLadeLight.PrimoBloccoMemoria();
                 SerialMessage.EsitoRisposta EsitoMsg;
 
-                byte[] _datiTemp = new byte[128] ;
-                _esito = LeggiBloccoMemoria(0, 128, out _datiTemp);
+                byte[] _datiTemp = new byte[242] ;
+                _esito = LeggiBloccoMemoria(0, 242, out _datiTemp);
 
                 if (_esito)
                 {
@@ -1270,10 +1368,29 @@ namespace ChargerLogic
                         ParametriApparato.llParApp.ProduttoreApparato = ImmagineMemoria.ProduttoreApparato;
                         ParametriApparato.llParApp.NomeApparato = ImmagineMemoria.NomeApparato;
                         ParametriApparato.llParApp.SerialeApparato = ImmagineMemoria.SerialeApparato;
-                        ParametriApparato.llParApp.SerialeZVT = ImmagineMemoria.SerialeZVT;
-                        ParametriApparato.llParApp.SerialePFC = ImmagineMemoria.SerialePFC;
-                        ParametriApparato.llParApp.SerialeDISP = ImmagineMemoria.SerialeDISP;
+                        ParametriApparato.llParApp.AnnoCodice = ImmagineMemoria.AnnoCodice;
+                        ParametriApparato.llParApp.ProgressivoCodice = ImmagineMemoria.ProgressivoCodice;
+                        ParametriApparato.llParApp.TipoApparato = ImmagineMemoria.TipoApparato;
+                        ParametriApparato.llParApp.DataSetupApparato = ImmagineMemoria.DataSetupApparato;
 
+                        ParametriApparato.llParApp.SerialeZVT = ImmagineMemoria.SerialeZVT;
+                        ParametriApparato.llParApp.HardwareZVT = ImmagineMemoria.HardwareZVT;
+                        ParametriApparato.llParApp.IdLottoZVT = ImmagineMemoria.LottoZVT;
+
+                        ParametriApparato.llParApp.SerialePFC = ImmagineMemoria.SerialePFC;
+                        ParametriApparato.llParApp.HardwarePFC = ImmagineMemoria.HardwarePFC;
+                        ParametriApparato.llParApp.SoftwarePFC = ImmagineMemoria.SoftwarePFC;
+
+                        ParametriApparato.llParApp.SerialeDISP = ImmagineMemoria.SerialeDISP;
+                        ParametriApparato.llParApp.HardwareDisp = ImmagineMemoria.HardwareDisp;
+                        ParametriApparato.llParApp.SoftwareDISP = ImmagineMemoria.SoftwareDISP;
+
+                        ParametriApparato.llParApp.MaxRecordBrevi = ImmagineMemoria.MaxRecordBrevi;
+                        ParametriApparato.llParApp.MaxRecordCarica = ImmagineMemoria.MaxRecordCarica;
+                        ParametriApparato.llParApp.SizeExternMemory = ImmagineMemoria.SizeExternMemory;
+                        ParametriApparato.llParApp.MaxProgrammazioni = ImmagineMemoria.MaxProgrammazioni;
+                        ParametriApparato.llParApp.ModelloMemoria = ImmagineMemoria.ModelloMemoria;
+                        ParametriApparato.llParApp.IdApparato = ImmagineMemoria.IDApparato;
 
                     }
 
@@ -1317,14 +1434,21 @@ namespace ChargerLogic
                 ImmagineMemoria.SerialePFC = ParametriApparato.llParApp.SerialePFC;
                 ImmagineMemoria.SoftwarePFC = ParametriApparato.llParApp.SoftwarePFC;
                 ImmagineMemoria.HardwarePFC = ParametriApparato.llParApp.HardwarePFC;
+                ImmagineMemoria.SerialeDISP = ParametriApparato.llParApp.SerialeDISP;
+                ImmagineMemoria.HardwareDisp = ParametriApparato.llParApp.HardwareDisp;
+                ImmagineMemoria.SoftwareDISP = ParametriApparato.llParApp.SoftwareDISP;
 
+
+
+
+                ImmagineMemoria.IDApparato = ParametriApparato.llParApp.IdApparato;
 
 
                 if (ImmagineMemoria.GeneraByteArray())
                 {
-                    byte[] _datiTemp = new byte[128];
+                    byte[] _datiTemp = new byte[242];
                     _datiTemp = ImmagineMemoria.dataBuffer;
-                    _esito = ScriviBloccoMemoria(0, 128, _datiTemp);
+                    _esito = ScriviBloccoMemoria(0, 242, _datiTemp);
                 }
 
 
@@ -1645,6 +1769,20 @@ namespace ChargerLogic
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "Trifase 24-80 / 120", CorrenteMin  = 10, CorrenteMax = 120,TensioneMin = 24,TensioneMax = 80,Ordine=1,Trifase=1 });
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 48, Ordine = 2, Trifase = 1 });
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x01, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0 });
+            return true;
+        }
+
+        public bool inizializzaProfili()
+        {
+            ProfiliCarica = new List<_llProfiloCarica>();
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x00, NomeProfilo = "Non Definito", DutataFase2 = 0, Attivo = 2, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 0 });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x01, NomeProfilo = "IWa", DutataFase2 = 0, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 1 });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x02, NomeProfilo = "IU", DutataFase2 = 0, Attivo = 1, FlagPb = 0, FlagGel = 1, FlagLitio = 0, Ordine = 2 });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x03, NomeProfilo = "IUIa", DutataFase2 = 0, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 3 });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x04, NomeProfilo = "IWa Pb13", DutataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 4 });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x05, NomeProfilo = "IWa Pb11", DutataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 5 });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x06, NomeProfilo = "IWa Pb8", DutataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 6 });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DutataFase2 = 0, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7 });
             return true;
         }
 

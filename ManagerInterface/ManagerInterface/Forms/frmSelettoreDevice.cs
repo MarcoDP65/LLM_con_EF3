@@ -439,7 +439,7 @@ namespace PannelloCharger
                 Log.Debug("NUOVO LL");
                 //frmSpyBat sbCorrente = new frmSpyBat(ref varGlobali, true, "", logiche, esitoCanaleApparato, true);
 
-                frmCaricabatterie cbCorrente = new frmCaricabatterie(ref _varGlobali, true);
+                frmCaricabatterie cbCorrente = new frmCaricabatterie(ref _varGlobali, true,"",logiche, esitoCanaleApparato, true);
                 cbCorrente.Cursor = Cursors.WaitCursor;
 
                 cbCorrente.MdiParent = this.MdiParent;

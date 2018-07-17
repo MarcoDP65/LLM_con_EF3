@@ -45,6 +45,8 @@ namespace MoriData
                 CreateTable<_NodoStruttura>();
                 CreateTable<_lmEventiDb>();
 
+                CreateTable<_ladelight>();
+
                 inizializzaUtente();
                 inizializzaDefSoglie();
                 inizializzaSoglie();

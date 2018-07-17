@@ -36,9 +36,10 @@ namespace MoriData
         public byte TipoApparato { get; set; }
         public uint DataSetupApparato { get; set; }
 
-
+        public String IdLottoZVT { get; set; }       
         public byte[] SerialeZVT { get; set; }
         public string HardwareZVT { get; set; }
+        public String IdLottoPFC { get; set; }
         public byte[] SerialePFC { get; set; }
         public string HardwarePFC { get; set; }
         public string SoftwarePFC { get; set; }
@@ -64,7 +65,7 @@ namespace MoriData
 
     public class llParametriApparato
     {
-        public string nullID { get { return "0000000000000000"; } }
+        public string nullID { get { return "000000"; } }
         public _llParametriApparato llParApp = new _llParametriApparato();
         public bool valido;
         public MoriData._db _database;
@@ -95,9 +96,9 @@ namespace MoriData
 
 
 
-        private _llStatoFirmware _caricaDati(int _id)
+        private _llParametriApparato _caricaDati(int _id)
         {
-            return (from s in _database.Table<_llStatoFirmware>()
+            return (from s in _database.Table<_llParametriApparato>()
                     where s.IdLocale == _id
                     select s).FirstOrDefault();
         }
@@ -106,7 +107,7 @@ namespace MoriData
         {
             try
             {
-                //_llParApp = _caricaDati(idLocale);
+                llParApp = _caricaDati(idLocale);
                 if (llParApp == null)
                 {
                     llParApp = new _llParametriApparato();
@@ -179,6 +180,34 @@ namespace MoriData
                     _datiSalvati = false;
                 }
             }
+        }
+
+        public string IdApparato
+        {
+            get
+            {
+                return llParApp.IdApparato;
+            }
+
+        }
+
+        public uint SerialeApparato
+        {
+            get
+            {
+                return llParApp.SerialeApparato;
+            }
+            set
+            {
+                llParApp.SerialeApparato = value;
+                //if (value != 0x00 && value != 0xFFFFFF )
+                //{
+                //    llParApp.IdApparato = "LL" + llParApp.SerialeApparato.ToString("x6");
+                //}
+
+            }
+
+
         }
 
         #endregion

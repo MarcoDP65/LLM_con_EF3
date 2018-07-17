@@ -2582,8 +2582,6 @@ namespace ChargerLogic
 
             }
 
-
-
         }
 
         public class cicloAttuale
@@ -2979,7 +2977,6 @@ namespace ChargerLogic
 
         }
 
-
         public class VariabiliLadeLight
         {
 
@@ -3045,7 +3042,6 @@ namespace ChargerLogic
 
 
         }
-
 
         public class comandoIniziale
         {

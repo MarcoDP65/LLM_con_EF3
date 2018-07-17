@@ -200,10 +200,71 @@ namespace ChargerLogic
             {
                 TipiBattria = new List<sbTipoBatteria>();
 
-                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x00, BatteryType = "N.D.", SortOrder = 0, StandardChargeProfile = 0x00, Obsolete = 0xFF });
-                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x71, BatteryType = "Pb/Lead", SortOrder = 1, StandardChargeProfile = 0x01, Obsolete = 0x00 });
-                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x02, BatteryType = "Gel", SortOrder = 2, StandardChargeProfile = 0x0, Obsolete = 0x00 });
-                TipiBattria.Add(new sbTipoBatteria() { BatteryTypeId = 0x03, BatteryType = "Lithium", SortOrder = 3, StandardChargeProfile = 0x0, Obsolete = 0x00 });
+                TipiBattria.Add(new sbTipoBatteria()
+                {
+                    BatteryTypeId = 0x00,
+                    BatteryType = "N.D.",
+                    SortOrder = 0,
+                    StandardChargeProfile = 0x00,
+                    Obsolete = 0xFF,
+                    VoltCella = 0,
+                    VoltSoglia = 0,
+                    VCellaMin = 0,
+                    VCellaMax = 0,
+                    UsaSpybatt = 0,
+                    AbilitaEqual = 0,
+                    AbilitaAttesaBMS = 0
+                });
+
+
+                TipiBattria.Add(new sbTipoBatteria()
+                {
+                    BatteryTypeId = 0x71,
+                    BatteryType = "Pb/Lead",
+                    SortOrder = 1,
+                    StandardChargeProfile = 0x01,
+                    Obsolete = 0x00,
+                    VoltCella = 200,
+                    VoltSoglia = 240,
+                    VCellaMin = 100,
+                    VCellaMax = 265,
+                    UsaSpybatt = 1,
+                    AbilitaEqual = 0x300C,
+                    AbilitaAttesaBMS = 0x0000
+                });
+
+
+                TipiBattria.Add(new sbTipoBatteria()
+                {
+                    BatteryTypeId = 0x02,
+                    BatteryType = "Gel",
+                    SortOrder = 2,
+                    StandardChargeProfile = 0x0,
+                    Obsolete = 0x00,
+                    VoltCella = 200,
+                    VoltSoglia = 240,
+                    VCellaMin = 100,
+                    VCellaMax = 240,
+                    UsaSpybatt = 1,
+                    AbilitaEqual = 0x0000,
+                    AbilitaAttesaBMS = 0x0000
+                });
+
+                TipiBattria.Add(new sbTipoBatteria()
+                {
+                    BatteryTypeId = 0x03,
+                    BatteryType = "Lithium",
+                    SortOrder = 3,
+                    StandardChargeProfile = 0x0,
+                    Obsolete = 0x00,
+                    VoltCella = 0xFFFF,
+                    VoltSoglia = 0,
+                    VCellaMin = 0,
+                    VCellaMax = 0,
+                    UsaSpybatt = 0,
+                    AbilitaEqual = 0,
+                    AbilitaAttesaBMS = 0x05F0
+                });
             }
             catch (Exception Ex)
             {

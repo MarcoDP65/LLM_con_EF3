@@ -62,6 +62,8 @@ namespace PannelloCharger
             new ValoreLista("ON 57.6K", SerialMessage.OcBaudRate.br_57k6, false),
         };
 
+        private llParametriApparato _tempParametri;
+
 
         public frmCaricabatterie(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
         {
@@ -101,13 +103,13 @@ namespace PannelloCharger
         }
 
 
-        public void attivaCaricabatterie(ref parametriSistema _par,bool CaricaDati)
+        public void attivaCaricabatterie(ref parametriSistema _par,bool CaricaDati )
         {
             bool _esito;
             try
             {
-                _parametri = _par;
-                InitializeComponent();
+                //_parametri = _par;
+                //InitializeComponent();
                 ResizeRedraw = true;
                 _msg = new SerialMessage();
                 _cb = new CaricaBatteria(ref _parametri);
@@ -120,10 +122,33 @@ namespace PannelloCharger
                     return;
                 }
 
-                _esito = _cb.VerificaPresenza();
+                //_esito = _cb.VerificaPresenza();
+                _tempParametri = new llParametriApparato();
+                _esito = _cb.CaricaApparatoA0();
                 if (_esito)
                 {
 
+                    _tempParametri = _cb.ParametriApparato;
+                    
+
+                    if(_tempParametri.IdApparato == null)
+                    {
+                        // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
+                        // Attivo solo la tab inizializzazione, se sono abilitato 
+
+                        MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        //this.Close();
+                        return;
+                    }
+
+                    _cb.ApparatoLL = new LadeLightData(_logiche.dbDati.connessione, _tempParametri);
+
+
+                    txtGenIdApparato.Text = _cb.ApparatoLL._ll.Id;
+                    txtGenSerialeZVT.Text = _cb.ApparatoLL._ll.SerialeZVT;
+
+
+                    /*
                     txtMatricola.Text = _cb.Intestazione.Matricola.ToString();
                     txtProgressivo.Text = _cb.Intestazione.Progressivo.ToString();
                     txtDataPrimaInst.Text = _cb.Intestazione.PrimaInstallazione;
@@ -133,6 +158,8 @@ namespace PannelloCharger
                     txtFwCb.Text = _cb.Intestazione.revSoftware;
                     txtFwDisp.Text = _cb.Intestazione.revDisplay;
                     txtNumCicli.Text = "2";
+                    */
+
                     _cbCollegato = true;
                     _apparatoPresente = _esito;
                     return;
@@ -175,7 +202,9 @@ namespace PannelloCharger
             cmbInitTipoApparato.ValueMember = "IdModelloLL";
             cmbInitTipoApparato.DisplayMember = "NomeModello";
 
-
+            cmbProfiloTipoBatteria.DataSource = _parametri.TipiBattria;
+            cmbProfiloTipoBatteria.ValueMember = "BatteryTypeId";
+            cmbProfiloTipoBatteria.DisplayMember = "BatteryType";
 
         }
 
@@ -834,8 +863,6 @@ namespace PannelloCharger
 
             try
             {
-
-
                 tabCaricaBatterie.Width = this.Width - 42;
                 tabCaricaBatterie.Height = this.Height - 109;
             }
@@ -863,12 +890,14 @@ namespace PannelloCharger
                 _esito = _cb.VerificaPresenza();
                 if (_esito)
                 {
+                    /*
                     txtMatricola.Text = _cb.Intestazione.Matricola.ToString();
                     txtProgressivo.Text = _cb.Intestazione.Progressivo.ToString();
                     txtDataPrimaInst.Text = _cb.Intestazione.PrimaInstallazione;
                     txtModello.Text = _cb.Intestazione.modello;
                     txtTensione.Text = _cb.Intestazione.tensioneNominale.ToString();
                     txtCorrente.Text = _cb.Intestazione.correnteNominale.ToString();
+                    */
 
                 }
 
@@ -2199,7 +2228,7 @@ namespace PannelloCharger
                 // Rev HW DISP
                 _cb.ParametriApparato.llParApp.HardwareDisp = txtInitRevHwDISP.Text;
 
-
+                _cb.ParametriApparato.llParApp.IdApparato = txtInitIDApparato.Text;
 
 
 
@@ -2249,9 +2278,15 @@ namespace PannelloCharger
 
                 }
 
-                matricola += _numMatr;
+                        matricola += _numMatr;
+
+
 
                 txtInitSerialeApparato.Text = matricola.ToString("X6");
+                string _tempMatricola = "LL" + txtInitSerialeApparato.Text;
+                byte[] _arrayMatr = FunzioniComuni.StringToArray(_tempMatricola, 8, 0);
+
+                txtInitIDApparato.Text = _tempMatricola; // FunzioniComuni.HexdumpArray(_arrayMatr,false);
 
                 return matricola;
 
@@ -2326,7 +2361,108 @@ namespace PannelloCharger
 
         private void btnCaricaInizializzazione_Click(object sender, EventArgs e)
         {
+            LeggiInizializzazione();
+        }
 
+        public bool LeggiInizializzazione()
+        {
+            try
+            {
+                bool _esito;
+
+                txtInitManufactured.Text = "";
+                txtInitProductId.Text = "";
+                txtInitDataInizializ.Text = "";
+                txtInitAnnoMatricola.Text = "";
+                txtInitNumeroMatricola.Text = "";
+                txtInitSerialeApparato.Text = "";
+                txtInitIDApparato.Text = "";
+
+                cmbInitTipoApparato.SelectedValue = 0;
+
+                txtInitNumLottoZVT.Text = "";
+                txtInitNumLottoPFC.Text = "";
+                txtInitNumSerZVT.Text = "";
+                txtInitRevHwZVT.Text = "";
+
+                _esito = _cb.LeggiParametriApparato();
+
+                if (_esito)
+                {
+                    txtInitManufactured.Text = _cb.ParametriApparato.llParApp.ProduttoreApparato;
+                    txtInitProductId.Text = _cb.ParametriApparato.llParApp.NomeApparato;
+                    txtInitDataInizializ.Text = FunzioniMR.StringaDataTS(_cb.ParametriApparato.llParApp.DataSetupApparato);
+                    txtInitAnnoMatricola.Text = _cb.ParametriApparato.llParApp.AnnoCodice.ToString("00");
+                    txtInitNumeroMatricola.Text = _cb.ParametriApparato.llParApp.ProgressivoCodice.ToString("000000");
+                    txtInitSerialeApparato.Text = _cb.ParametriApparato.llParApp.SerialeApparato.ToString("x6");
+                    txtInitIDApparato.Text = _cb.ParametriApparato.llParApp.IdApparato;
+
+                    cmbInitTipoApparato.SelectedValue = _cb.ParametriApparato.llParApp.TipoApparato;
+
+                    txtInitNumLottoZVT.Text = _cb.ParametriApparato.llParApp.IdLottoZVT;
+                    txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeZVT);
+                    txtInitRevHwZVT.Text = _cb.ParametriApparato.llParApp.HardwareZVT;
+
+                    txtInitNumLottoPFC.Text = _cb.ParametriApparato.llParApp.IdLottoPFC;
+                    txtInitNumSerPFC.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialePFC);
+                    txtInitRevHwPFC.Text = _cb.ParametriApparato.llParApp.HardwarePFC;
+                    txtInitRevFwPFC.Text = _cb.ParametriApparato.llParApp.SoftwarePFC;
+
+                    txtInitNumSerDISP.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeDISP);
+                    txtInitRevHwDISP.Text = _cb.ParametriApparato.llParApp.HardwareDisp;
+                    txtInitRevFwDISP.Text = _cb.ParametriApparato.llParApp.SoftwareDISP;
+
+                    txtInitMaxBrevi.Text = _cb.ParametriApparato.llParApp.MaxRecordBrevi.ToString();
+                    txtInitMaxLunghi.Text = _cb.ParametriApparato.llParApp.MaxRecordCarica.ToString();
+                    txtInitMaxProg.Text = _cb.ParametriApparato.llParApp.MaxProgrammazioni.ToString();
+                    txtInitModelloMemoria.Text = _cb.ParametriApparato.llParApp.ModelloMemoria.ToString();
+
+                }
+
+                return _esito;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SalvaInizializzazione: " + Ex.Message);
+                return false;
+
+            }
+        }
+
+
+        private void txtInitNumLottoZVT_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                txtInitNumSerZVT.Text = "";
+
+
+                // se cambiato
+                if (FunzioniMR.VerificaStringaLottoZVT(txtInitNumLottoZVT.Text))
+                {
+                    byte[] _tempByte;
+
+                    _tempByte = FunzioniMR.CodificaStringaLottoZVT(txtInitNumLottoZVT.Text);
+
+                    if (_tempByte != null)
+                    {
+                        txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(_tempByte,false) + "0A0A";
+                    }
+
+
+                }
+                else
+                {
+                    txtInitNumSerZVT.Text = "";
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("txtInitNumLottoZVT_Leave: " + Ex.Message);
+
+            }
         }
     }
 

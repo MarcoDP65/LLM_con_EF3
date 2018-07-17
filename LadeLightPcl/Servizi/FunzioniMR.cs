@@ -57,7 +57,7 @@ namespace Utility
             }
         }
 
-        public static string StringaTensione(int Tensione) 
+        public static string StringaTensione(int Tensione)
         {
             try
             {
@@ -83,9 +83,9 @@ namespace Utility
 
                 // se le celle sono 0 non mostro nulla
                 if (NumCelle > 0) _celleEff = NumCelle;
-                else return "" ;
+                else return "";
 
-                _inVolt = (float)Tensione / ( 100 * _celleEff );
+                _inVolt = (float)Tensione / (100 * _celleEff);
                 _tensioni = _inVolt.ToString("0.00");
                 return _tensioni;
             }
@@ -95,14 +95,14 @@ namespace Utility
             }
         }
 
-        public static string StringaTensioneCella(float Tensione )
+        public static string StringaTensioneCella(float Tensione)
         {
             try
             {
                 string _tensioni = "";
                 float _inVolt;
 
-                _inVolt = (float)Tensione / 100 ;
+                _inVolt = (float)Tensione / 100;
                 _tensioni = _inVolt.ToString("0.00");
                 return _tensioni;
             }
@@ -118,7 +118,7 @@ namespace Utility
             {
                 string _correnti = "";
                 float _inAmpere;
-                _inAmpere = Math.Abs( (float)Corrente / 10 );
+                _inAmpere = Math.Abs((float)Corrente / 10);
                 _correnti = _inAmpere.ToString(Formato);
                 return _correnti;
             }
@@ -228,7 +228,7 @@ namespace Utility
             }
         }
 
-        public static string StringaSoC(byte Valore )
+        public static string StringaSoC(byte Valore)
         {
             try
             {
@@ -252,7 +252,7 @@ namespace Utility
             {
                 string _correnti = "";
                 float _inGradi;
-                _inGradi = Temperatura; 
+                _inGradi = Temperatura;
                 _correnti = _inGradi.ToString("0");
                 if (Temperatura < 150)
                     return _correnti;
@@ -274,10 +274,10 @@ namespace Utility
                 sbyte _sigTemp = (sbyte)Temperatura;
                 _inGradi = _sigTemp;
                 _gradi = _inGradi.ToString();
-               // if (Temperatura < 150)
-                    return _gradi;
-              //  else
-              //      return "-";
+                // if (Temperatura < 150)
+                return _gradi;
+                //  else
+                //      return "-";
             }
             catch
             {
@@ -328,6 +328,33 @@ namespace Utility
             }
         }
 
+
+        public static string StringaDataTS(uint DataShort)
+        {
+            try
+            {
+                byte d1 = 0;
+                byte d2 = 0;
+                byte d3 = 0;
+                byte d4 = 0;
+
+                FunzioniComuni.SplitUint32(DataShort, ref d1, ref d2, ref d3, ref d4);
+
+                string _timestamp = "";
+                short _tempAnno = 2000;
+                _timestamp += d2.ToString("00");
+                _timestamp += "/" + d3.ToString("00");
+                _tempAnno += (short)d4;
+                _timestamp += "/" + _tempAnno.ToString("0000");
+                return _timestamp;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+
         public static byte[] toArrayDataTS(string DataShort)
         {
             byte[] _arrayResult = new byte[3];
@@ -337,15 +364,15 @@ namespace Utility
 
             try
             {
-                
+
                 bool _esitoCast = false;
                 DateTime _tempData = new DateTime();
                 _esitoCast = DateTime.TryParse(DataShort, out _tempData);
-                if(_esitoCast)
+                if (_esitoCast)
                 {
                     _arrayResult[0] = (byte)_tempData.Day;
                     _arrayResult[1] = (byte)_tempData.Month;
-                    _arrayResult[2] = (byte)(_tempData.Year-2000);
+                    _arrayResult[2] = (byte)(_tempData.Year - 2000);
 
                 }
 
@@ -411,7 +438,7 @@ namespace Utility
                 {
                     //if (t.Hours > 0)
                     //{
-                        _tempo = string.Format("{0:D2}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
+                    _tempo = string.Format("{0:D2}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
                     //}
                     //else
                     //{
@@ -483,7 +510,7 @@ namespace Utility
             }
         }
 
-        public static float ValoreEffettivo(int Valore, int Divisore = 1 )
+        public static float ValoreEffettivo(int Valore, int Divisore = 1)
         {
             try
             {
@@ -504,14 +531,14 @@ namespace Utility
             }
         }
 
-        public static string StringaCapacita(int Capacita,int divisore = 1,byte Decimali = 1)
+        public static string StringaCapacita(int Capacita, int divisore = 1, byte Decimali = 1)
         {
             try
             {
                 string _correnti = "";
                 string _mask = "0.0";
 
-                switch(Decimali)
+                switch (Decimali)
                 {
                     case 0:
                         _mask = "0";
@@ -627,7 +654,7 @@ namespace Utility
             }
         }
 
-        public static string StringaPotenza(UInt32 Potenza,int divisore = 1, byte Decimali = 1)
+        public static string StringaPotenza(UInt32 Potenza, int divisore = 1, byte Decimali = 1)
         {
             try
             {
@@ -657,7 +684,7 @@ namespace Utility
 
 
                 if (divisore == 0) divisore = 1;
-                _inGradi = (float)Potenza / (float)( 1000 * divisore);
+                _inGradi = (float)Potenza / (float)(1000 * divisore);
                 _correnti = _inGradi.ToString(_mask);
                 return _correnti;
             }
@@ -753,13 +780,13 @@ namespace Utility
                 if (Codice == null)
                     return "";
 
-                if (Codice.Length == 16 )              
+                if (Codice.Length == 16)
                 {
                     string _tempTesto = "";
-                    _tempTesto += Codice.Substring(0,4) ;
-                    _tempTesto += ":" + Codice.Substring(4,4) ;
-                    _tempTesto += ":" + Codice.Substring(8,4) ;
-                    _tempTesto += ":" + Codice.Substring(12,4) ;
+                    _tempTesto += Codice.Substring(0, 4);
+                    _tempTesto += ":" + Codice.Substring(4, 4);
+                    _tempTesto += ":" + Codice.Substring(8, 4);
+                    _tempTesto += ":" + Codice.Substring(12, 4);
 
                     return _tempTesto;
                 }
@@ -779,7 +806,7 @@ namespace Utility
         {
             try
             {
-                if(Codice == null) return "";
+                if (Codice == null) return "";
 
                 if (Codice.Length == 6)
                 {
@@ -810,7 +837,7 @@ namespace Utility
                 for (int _i = 0; _i < buffer.Length; _i++)
                 {
                     _risposta += buffer[_i].ToString("X2");
-                    if (SeparaBytes & _i<( buffer.Length -1))
+                    if (SeparaBytes & _i < (buffer.Length - 1))
                     {
                         _risposta += " ";
                     }
@@ -846,7 +873,7 @@ namespace Utility
             {
                 return ValIfNull;
             }
-        
+
         }
 
         public static ushort ConvertiMSshort(string Testo, int Fattore = 1, ushort ValIfNull = 0)
@@ -901,7 +928,7 @@ namespace Utility
                 return _valore;
 
             }
-            catch 
+            catch
             {
                 return ValIfNull;
             }
@@ -948,9 +975,9 @@ namespace Utility
 
                 return _CelleRelative;
             }
-            catch 
+            catch
             {
-            return null;
+                return null;
             }
 
         }
@@ -960,13 +987,13 @@ namespace Utility
             try
             {
                 DateTime _valore; // = new DateTime(1,1,1);
-                //_valore.Add( Intervallo );
- 
+                                  //_valore.Add( Intervallo );
+
                 _valore = Convert.ToDateTime(Intervallo.ToString());
                 return _valore;
 
             }
-            catch 
+            catch
             {
                 DateTime _valore;
                 DateTime.TryParse("01/01/2000 00:00", out _valore);
@@ -1092,6 +1119,140 @@ namespace Utility
 
 
         }
+
+        /// <summary>
+        /// Verifica se la stringa lotto è formattata correttamente.
+        /// formato previsto:  dddd/AA/T/nnn
+        /// dove dddd è il ddt di trasporto
+        ///        AA è l'anno di riferimento
+        ///         T è il codice identificativo del terzista
+        ///       nnn è il progressivo del pezzo all'interno del lotto 
+        /// I blocchi sono separati dal carattere "/"      
+        /// 
+        /// </summary>
+        /// <param name="IdLotto">The identifier lotto.</param>
+        /// <returns>True se OK</returns>
+        public static bool VerificaStringaLottoZVT(String IdLotto)
+        {
+            try
+            {
+                ushort _valore;
+
+                if (IdLotto.Length != 13) return false;
+                if (IdLotto.Substring(4, 1) != "/") return false;
+                if (IdLotto.Substring(7, 1) != "/") return false;
+                if (IdLotto.Substring(9, 1) != "/") return false;
+                if (!(ushort.TryParse(IdLotto.Substring(0, 4), out _valore))) return false;
+                if (!(ushort.TryParse(IdLotto.Substring(5, 2), out _valore))) return false;
+                if (!(ushort.TryParse(IdLotto.Substring(10, 3), out _valore))) return false;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        public static byte[] CodificaStringaLottoZVT(String IdLotto)
+        {
+            byte[] _tempCodice = new byte[6];
+            try
+            {
+                ushort _valoreUS;
+                byte _valoreB;
+                byte _loVal = 0;
+                byte _hiVal = 0;
+
+                for (int _i = 0; _i < 6; _i++)
+                {
+                    _tempCodice[_i] = 0;
+                }
+
+                if (!VerificaStringaLottoZVT(IdLotto)) return _tempCodice;
+                // Documento
+                if (ushort.TryParse(IdLotto.Substring(0, 4), out _valoreUS))
+                {
+                    FunzioniComuni.SplitUshort(_valoreUS, ref _loVal, ref _hiVal);
+                    _tempCodice[0] = _hiVal;
+                    _tempCodice[1] = _loVal;
+                }
+                // Anno
+                if (byte.TryParse(IdLotto.Substring(5, 2), out _loVal))
+                {
+                    _tempCodice[2] = _loVal;
+                }
+                // Terzista
+                _valoreB = (byte)IdLotto[8];
+                _tempCodice[3] = _valoreB;
+
+                // Progressivo
+                if (ushort.TryParse(IdLotto.Substring(10, 3), out _valoreUS))
+                {
+                    FunzioniComuni.SplitUshort(_valoreUS, ref _loVal, ref _hiVal);
+                    _tempCodice[4] = _hiVal;
+                    _tempCodice[5] = _loVal;
+                }
+
+                return _tempCodice;
+            }
+            catch
+            {
+
+                for (int _i = 0; _i < 6; _i++)
+                {
+                    _tempCodice[_i] = 0;
+                }
+                return _tempCodice;
+            }
+
+
+        }
+
+        public static string DecodificaStringaLottoZVT(byte[] IdLotto)
+        {
+            string _tempStr = "";
+            try
+            {
+                ushort _valoreUS;
+                byte _valoreB;
+                byte _loVal = 0;
+                byte _hiVal = 0;
+
+                int CheckSum = 0;
+
+                for (int _i = 0; _i < 6; _i++)
+                {
+                    CheckSum += IdLotto[_i];
+                }
+
+                if (CheckSum == 0x05FA) return _tempStr;
+                // Documento
+                _valoreUS = (ushort)((IdLotto[0] << 8) + IdLotto[1]);
+                _tempStr += _valoreUS.ToString("0000");
+                _tempStr += "/";
+                // Anno
+                _tempStr += IdLotto[2].ToString("00");
+                _tempStr += "/";
+                // Terzista
+                _tempStr += (char)(IdLotto[3]);
+                _tempStr += "/";
+                // Progressivo
+                _valoreUS = (ushort)((IdLotto[4] << 8) + IdLotto[5]);
+                _tempStr += _valoreUS.ToString("000");
+
+
+                return _tempStr;
+            }
+            catch
+            {
+                return "";
+            }
+
+
+        }
+
+
 
 
     }
@@ -1541,11 +1702,13 @@ namespace Utility
             try
             {
                 string _risposta = "";
-
-                for (int _i = 0; _i < buffer.Length; _i++)
+                if (buffer != null)
                 {
-                    _risposta += buffer[_i].ToString("X2");
-                    if (SplitByte & (_i != (buffer.Length - 1))) _risposta += " ";
+                    for (int _i = 0; _i < buffer.Length; _i++)
+                    {
+                        _risposta += buffer[_i].ToString("X2");
+                        if (SplitByte & (_i != (buffer.Length - 1))) _risposta += " ";
+                    }
                 }
                 return _risposta;
             }
@@ -1829,12 +1992,6 @@ namespace Utility
                 return null;
             }
         }
-
-
-
-
-
-
 
 
         public static ushort UshortFromArray(byte[] data, int position)
