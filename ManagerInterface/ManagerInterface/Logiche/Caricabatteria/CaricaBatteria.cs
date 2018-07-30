@@ -19,6 +19,7 @@ namespace ChargerLogic
 {
     public partial class CaricaBatteria
     {
+
         public SerialPort serialeApparato;
         private static MessaggioLadeLight _mS;
         private parametriSistema _parametri;
@@ -34,22 +35,30 @@ namespace ChargerLogic
         int lastByte = 0;
         bool readingMessage = false;
         public int TipoRisposta;
-        static bool _rxRisposta ;
+        static bool _rxRisposta;
         public SerialMessage.comandoIniziale Intestazione = new SerialMessage.comandoIniziale();
         public SerialMessage.cicliPresenti CicliPresenti = new SerialMessage.cicliPresenti();
         public SerialMessage.comandoRTC OrologioSistema = new SerialMessage.comandoRTC();
         public SerialMessage.cicloAttuale CicloInMacchina = new SerialMessage.cicloAttuale();
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
         public llParametriApparato ParametriApparato = new llParametriApparato();
+        public llMappaMemoria Memoria = new llMappaMemoria(1);
 
         public LadeLightData ApparatoLL;
 
         public llVariabili llVariabiliAttuali = new llVariabili();
 
+        public llProgrammaCarica ProgrammaAttivo;
+        public List<llProgrammaCarica> ProgrammiDefiniti;
+
         public List<_llModelloCb> ModelliLL;
         public List<_llProfiloCarica> ProfiliCarica;
+        public List<llDurataCarica> DurateCarica;
+        public List<llDurataProfilo> DurateProfilo;
+        public List<_llProfiloTipoBatt> ProfiloTipoBatt;
 
-        public System.Collections.Generic.List< SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List< SerialMessage.CicloDiCarica>();
+
+        public System.Collections.Generic.List<SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List<SerialMessage.CicloDiCarica>();
 
         // -------------------------------------------------------
         //    Dichiarazione eventi per la gestione avanzamento
@@ -58,7 +67,7 @@ namespace ChargerLogic
         public event StepHandler Step;
 
 
-        public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e); 
+        public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e);
 
         public llStatoFirmware StatoFirmware = new llStatoFirmware();
 
@@ -179,7 +188,7 @@ namespace ChargerLogic
                                 }
                                 else
                                 {
-                                    if(codaDatiSER.Count >= risposteAttese)
+                                    if (codaDatiSER.Count >= risposteAttese)
                                     {
                                         _trovatoETX = true;
                                         Log.Debug("DUMPMEM:Dati in coda LL (USB) " + codaDatiSER.Count.ToString());
@@ -285,11 +294,11 @@ namespace ChargerLogic
                     }
                     if (!_inAttesa)
                     {
-                        Log.Debug("Aspetta risposta LL ricevuti " + _risposteRicevute.ToString() + " di " + risposteAttese.ToString() + " in " + DateTime.Now.Subtract(_startRicezione).ToString() + " secondi" );
+                        Log.Debug("Aspetta risposta LL ricevuti " + _risposteRicevute.ToString() + " di " + risposteAttese.ToString() + " in " + DateTime.Now.Subtract(_startRicezione).ToString() + " secondi");
                     }
                     else
                     {
-                        Log.Debug("Aspetta risposta LL - raggiunto timeout " +  DateTime.Now.Subtract(_startRicezione).ToString() + " secondi");
+                        Log.Debug("Aspetta risposta LL - raggiunto timeout " + DateTime.Now.Subtract(_startRicezione).ToString() + " secondi");
 
                     }
 
@@ -334,7 +343,7 @@ namespace ChargerLogic
                 TimeSpan _durata = _ora.Subtract(inizio);
                 double _decimiEffettivi = _durata.TotalSeconds * 10;
 
-                if (_decimiEffettivi > DecimiTimeOut)
+                if (_decimiEffettivi > (DecimiTimeOut * 5))
                 {
                     return true;
                 }
@@ -372,7 +381,7 @@ namespace ChargerLogic
                 LL_USBeventWait.WaitOne();                // Wait for notification
                 Log.Info("LLUSB Notified");
                 usb_DataReceivedLL();
-                  
+
             } while (true);
         }
 
@@ -461,10 +470,14 @@ namespace ChargerLogic
                 serialeApparato = _parametri.serialeCorrente;
                 inizializzaModelli();
                 inizializzaProfili();
+                inizializzaDurate();
+                inizializzaDurateProfilo();
+                inizializzaBatteriaProfilo();
+
                 // Attivo gli eventi sia USB che COM
 
                 FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
-                
+
                 // USB
                 cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
                 Log.Debug("cEventHelper.RemoveEventHandler serialeApparato");
@@ -534,7 +547,7 @@ namespace ChargerLogic
                 Log.Error(Ex.Message);
                 _lastError = Ex.Message;
                 return false;
-            } 
+            }
         }
 
         public bool CaricaApparatoLL()
@@ -543,6 +556,7 @@ namespace ChargerLogic
             {
                 bool _esito = CaricaIntestazioneLL();
                 return _esito;
+
 
                 /*
                 bool _esito = false;
@@ -595,10 +609,10 @@ namespace ChargerLogic
                 _rxRisposta = false;
                 Log.Debug("NEW START");
 
-                byte[] _Dati = new byte[128];
+                byte[] _Dati = new byte[242];
 
                 // Leggo dal primo banco memoria fissa
-                _esito = LeggiBloccoMemoria(0, 128, out _Dati);
+                _esito = LeggiBloccoMemoria(0, 240, out _Dati);
                 Log.Debug(FunzioniComuni.HexdumpArray(_Dati));
                 //_mS.
                 MessaggioLadeLight.PrimoBloccoMemoria BloccoIntestazione;
@@ -612,7 +626,7 @@ namespace ChargerLogic
                     _esito = true;
                     Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
                     Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
-                   
+
                 }
 
                 _cbCollegato = _esito;
@@ -643,7 +657,7 @@ namespace ChargerLogic
                 {
 
                     // Se la matricola è inizializzata carico il recors da DB e lo allineo, altrimenti vado in modalità SOLORAM
-                    if ((ParametriApparato.llParApp.SerialeApparato == 0x00 ) || ((ParametriApparato.llParApp.SerialeApparato & 0xFFFFFF ) == 0xFFFFFF))
+                    if ((ParametriApparato.llParApp.SerialeApparato == 0x00) || ((ParametriApparato.llParApp.SerialeApparato & 0xFFFFFF) == 0xFFFFFF))
                     {
                         // Matricola vuota
                         ApparatoLL = new LadeLightData();
@@ -679,6 +693,60 @@ namespace ChargerLogic
             }
         }
 
+        public bool CaricaProgramma(byte IdPosizione)
+        {
+            try
+            {
+                bool _esito = false;
+                SerialMessage.EsitoRisposta _esitoMsg;
+
+                if (IdPosizione > 15) IdPosizione = 15;
+
+                // Leggo dal primo banco memoria fissa
+                _esito = LeggiParametriApparato();
+
+                if (_esito)
+                {
+
+                    // Se la matricola è inizializzata carico il recors da DB e lo allineo, altrimenti vado in modalità SOLORAM
+                    if ((ParametriApparato.llParApp.SerialeApparato == 0x00) || ((ParametriApparato.llParApp.SerialeApparato & 0xFFFFFF) == 0xFFFFFF))
+                    {
+                        // Matricola vuota
+                        ApparatoLL = new LadeLightData();
+                        ApparatoLL.Id = "000000";
+
+
+                    }
+                    else
+                    {
+                        // C'è la matricola --> registro il record
+                        ApparatoLL = new LadeLightData();
+                        // ApparatoLL.caricaDati(ParametriApparato.s);
+                    }
+
+
+
+
+                    //Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
+                    //Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
+
+                }
+
+                _cbCollegato = _esito;
+                apparatoPresente = _esito;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
+
+
 
 
         public bool StartComunicazione(int TimeoutRisposta = 50)
@@ -713,7 +781,7 @@ namespace ChargerLogic
         /// <param name="AttesaIniziale">Millisecondi di attesa iniziale prima di cominciare col polling.</param>
         /// <param name="Timeout">Timeout complessivo per l'operazione.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool AttendiRiconnessione(int AttesaIniziale = 10,int Timeout = 5000)
+        public bool AttendiRiconnessione(int AttesaIniziale = 10, int Timeout = 5000)
         {
             DateTime _startFunzione;
             bool _esito = false;
@@ -732,13 +800,13 @@ namespace ChargerLogic
 
                 _connessioneAttiva = StartComunicazione();
 
-                while (!_connessioneAttiva )
+                while (!_connessioneAttiva)
                 {
                     if (raggiuntoTimeout(_startFunzione, Timeout)) break;
                     _connessioneAttiva = StartComunicazione();
 
                 }
-                _esito =_connessioneAttiva;
+                _esito = _connessioneAttiva;
 
                 return _esito;
             }
@@ -757,7 +825,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
-                CicliInMemoria = new System.Collections.Generic.List< SerialMessage.CicloDiCarica>();
+                CicliInMemoria = new System.Collections.Generic.List<SerialMessage.CicloDiCarica>();
                 if (_mS.CicliPresenti.NumCicli > 0)
                 {
                     ControllaAttesa(UltimaScrittura);
@@ -773,7 +841,7 @@ namespace ChargerLogic
                     CicliPresenti = _mS.CicliPresenti;
                 }
 
-                    return true; //_esito;
+                return true; //_esito;
             }
 
             catch (Exception Ex)
@@ -898,7 +966,7 @@ namespace ChargerLogic
                     llVariabiliAttuali = new MoriData.llVariabili();
                     llVariabiliAttuali.IdApparato = "00";
                     llVariabiliAttuali.IstanteLettura = DateTime.Now;
-                    llVariabiliAttuali.TensioneTampone = 0; 
+                    llVariabiliAttuali.TensioneTampone = 0;
                     llVariabiliAttuali.TensioneIstantanea = _mS.VariabiliAttuali.Vbatt;
                     llVariabiliAttuali.CorrenteIstantanea = _mS.VariabiliAttuali.Ibatt;
                     llVariabiliAttuali.AhCaricati = _mS.VariabiliAttuali.AhCaricati;
@@ -908,7 +976,7 @@ namespace ChargerLogic
                     //llVariabiliAttuali.IstanteLettura = DateTime.now();
 
                 }
-            
+
                 //CicloInMacchina = _mS.CicloInMacchina;
 
 
@@ -925,7 +993,7 @@ namespace ChargerLogic
         }
 
 
-        public bool ProxySBSig60(ref byte[] PacchettoDati )
+        public bool ProxySBSig60(ref byte[] PacchettoDati)
         {
             try
             {
@@ -949,11 +1017,11 @@ namespace ChargerLogic
 
                 if (_esito)
                 {
-                    for (int _i= 0; _i<240; _i++)
+                    for (int _i = 0; _i < 240; _i++)
                     {
                         DatiRisposta[_i] = _mS.DatiStrategia.RxBuffer[_i];
                     }
-                    
+
                 }
                 PacchettoDati = DatiRisposta;
 
@@ -985,10 +1053,10 @@ namespace ChargerLogic
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 object Risposta;
 
-                _esito = aspettaRisposta(AttesaTimeout, out Risposta,2048000,false,false,elementiComuni.tipoMessaggio.DumpMemoria);
+                _esito = aspettaRisposta(AttesaTimeout, out Risposta, 2048000, false, false, elementiComuni.tipoMessaggio.DumpMemoria);
                 CicloInMacchina = _mS.CicloInMacchina;
 
-                return _esito; 
+                return _esito;
 
             }
 
@@ -999,7 +1067,7 @@ namespace ChargerLogic
                 return false;
             }
         }
-      
+
 
         /// <summary>
         /// Carico direttamente da memoria l'area passata come parametro
@@ -1021,7 +1089,7 @@ namespace ChargerLogic
                 ControllaAttesa(UltimaScrittura);
 
                 if (NumByte < 1) NumByte = 1;
-                if (NumByte > 242)
+                if (NumByte > 240)
                 {
                     Dati = null;
                     return false;
@@ -1084,7 +1152,7 @@ namespace ChargerLogic
                 ControllaAttesa(UltimaScrittura);
 
                 if (NumByte < 0) NumByte = 0;
-                if (NumByte > 242)
+                if (NumByte > 250)
                 {
                     return false;
                 }
@@ -1294,20 +1362,20 @@ namespace ChargerLogic
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
                 _mS.Comando = SerialMessage.TipoComando.CMD_UPDATE_RTC;
                 _mS.DatiRTC = new SerialMessage.comandoRTC();
-                _mS.DatiRTC.anno = ( ushort ) _now.Year;
-                _mS.DatiRTC.mese = ( byte ) _now.Month;
-                _mS.DatiRTC.giorno = ( byte ) _now.Day;
-                _mS.DatiRTC.giornoSett = ( byte ) _now.DayOfWeek;
-                _mS.DatiRTC.ore = ( byte ) _now.Hour;
-                _mS.DatiRTC.minuti = ( byte ) _now.Minute;
-                _mS.DatiRTC.secondi = ( byte ) _now.Second;
+                _mS.DatiRTC.anno = (ushort)_now.Year;
+                _mS.DatiRTC.mese = (byte)_now.Month;
+                _mS.DatiRTC.giorno = (byte)_now.Day;
+                _mS.DatiRTC.giornoSett = (byte)_now.DayOfWeek;
+                _mS.DatiRTC.ore = (byte)_now.Hour;
+                _mS.DatiRTC.minuti = (byte)_now.Minute;
+                _mS.DatiRTC.secondi = (byte)_now.Second;
 
                 _mS.ComponiMessaggioOra();
                 _rxRisposta = false;
                 Log.Debug("Scrivi RTC");
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
 
-                _esito = aspettaRisposta(AttesaTimeout, 0,true,false);
+                _esito = aspettaRisposta(AttesaTimeout, 0, true, false);
 
                 return _esito; //_esito;
             }
@@ -1322,14 +1390,14 @@ namespace ChargerLogic
 
 
         public bool RiceviMessaggio()
-            {
-                try {
+        {
+            try {
 
-                    return false;
-                }
-                catch { return false; }
-
+                return false;
             }
+            catch { return false; }
+
+        }
 
 
         public bool primaConnessione()
@@ -1343,7 +1411,7 @@ namespace ChargerLogic
             {
                 return false;
             }
-        
+
         }
 
 
@@ -1357,12 +1425,12 @@ namespace ChargerLogic
                 MessaggioLadeLight.PrimoBloccoMemoria ImmagineMemoria = new MessaggioLadeLight.PrimoBloccoMemoria();
                 SerialMessage.EsitoRisposta EsitoMsg;
 
-                byte[] _datiTemp = new byte[242] ;
-                _esito = LeggiBloccoMemoria(0, 242, out _datiTemp);
+                byte[] _datiTemp = new byte[240];
+                _esito = LeggiBloccoMemoria(0, 240, out _datiTemp);
 
                 if (_esito)
                 {
-                    EsitoMsg =  ImmagineMemoria.analizzaMessaggio(_datiTemp,1);
+                    EsitoMsg = ImmagineMemoria.analizzaMessaggio(_datiTemp, 1);
                     if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
                     {
                         ParametriApparato.llParApp.ProduttoreApparato = ImmagineMemoria.ProduttoreApparato;
@@ -1417,8 +1485,6 @@ namespace ChargerLogic
                 MessaggioLadeLight.PrimoBloccoMemoria ImmagineMemoria = new MessaggioLadeLight.PrimoBloccoMemoria();
                 SerialMessage.EsitoRisposta EsitoMsg;
 
-                // Prima vuoto il blocco
-                _esito = CancellaBlocco4K(0);
 
 
 
@@ -1446,9 +1512,59 @@ namespace ChargerLogic
 
                 if (ImmagineMemoria.GeneraByteArray())
                 {
-                    byte[] _datiTemp = new byte[242];
+                    // da far diventare unica
+                    _esito = CancellaBlocco4K(0);
+
+                    byte[] _datiTemp = new byte[2];
                     _datiTemp = ImmagineMemoria.dataBuffer;
-                    _esito = ScriviBloccoMemoria(0, 242, _datiTemp);
+                    _esito = ScriviBloccoMemoria(0x00, 240, _datiTemp);
+                }
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+        public bool SalvaProgrammazioniApparato()
+        {
+            try
+            {
+                bool _esito = false;
+
+                MessaggioLadeLight.MessaggioProgrammazione NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione();
+                SerialMessage.EsitoRisposta EsitoMsg;
+
+                // Prima vuoto il blocco
+                _esito = CancellaBlocco4K(0x2000);
+
+                NuovoPrg.TipoProgrammazione = 0;
+                NuovoPrg.OpzioniProgrammazione = 0;
+                NuovoPrg.IdProgrammazione = ProgrammaAttivo.IdProgramma;
+                NuovoPrg.ProgInUse = ProgrammaAttivo.ProgrammaInUso;
+                NuovoPrg.NomeCiclo = ProgrammaAttivo.ProgramName;
+
+                NuovoPrg.Parametri = new List<ParametroLL>();
+                NuovoPrg.Parametri.Clear();
+
+                foreach (ParametroLL _par in ProgrammaAttivo.ListaParametri)
+                {
+                    NuovoPrg.Parametri.Add(_par);
+                }
+
+
+                if (NuovoPrg.GeneraByteArray())
+                {
+                    byte[] _datiTemp = new byte[242];
+                    _datiTemp = NuovoPrg.dataBuffer;
+                    _esito = ScriviBloccoMemoria(0x2000, 242, _datiTemp);
                 }
 
 
@@ -1467,7 +1583,6 @@ namespace ChargerLogic
 
 
 
-
         /*************************************************************************************************************************************/
 
         private void port_DataReceivedCBOLD(object sender, SerialDataReceivedEventArgs e)
@@ -1482,7 +1597,7 @@ namespace ChargerLogic
                 codaDatiSER.Enqueue(data[_i]);
                 if (data[_i] == SerialMessage.serETX)
                 {
-                _trovatoETX = true;
+                    _trovatoETX = true;
                 }
             }
             if (_trovatoETX)
@@ -1705,23 +1820,25 @@ namespace ChargerLogic
                                 _inviaRisposta = false;
                                 break;
 
-                            case (byte)SerialMessage.TipoComando.CMD_READ_LT_MEMORY:   
+                            case (byte)SerialMessage.TipoComando.CMD_READ_LT_MEMORY:
                                 Log.Debug("Cicli in memoria");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
                                 break;
-                            case (byte)SerialMessage.TipoComando.CMD_READ_RTC:  
+                            case (byte)SerialMessage.TipoComando.CMD_READ_RTC:
                                 Log.Debug("Read RTC");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 break;
-                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:  
+                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:
                                 Log.Debug("Read MEMORY");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
                                 break;
                             case (byte)SerialMessage.TipoComando.EVENT_MEM_CODE:
                                 Log.Debug("MEMORY Event");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
-                                break;                            
+                                break;
                             default:
                                 Log.Debug("Altro Comando");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
@@ -1766,7 +1883,7 @@ namespace ChargerLogic
         {
             ModelliLL = new List<_llModelloCb>();
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "Non Definito", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0 });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "Trifase 24-80 / 120", CorrenteMin  = 10, CorrenteMax = 120,TensioneMin = 24,TensioneMax = 80,Ordine=1,Trifase=1 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "Trifase 24-80 / 120", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 80, Ordine = 1, Trifase = 1 });
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 48, Ordine = 2, Trifase = 1 });
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x01, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0 });
             return true;
@@ -1786,6 +1903,85 @@ namespace ChargerLogic
             return true;
         }
 
+        public bool inizializzaDurate()
+        {
+            DurateCarica = new List<llDurataCarica>();
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 780, Descrizione = "13:00", Ordine = 0 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 720, Descrizione = "12:00", Ordine = 1 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 660, Descrizione = "11:00", Ordine = 2 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 600, Descrizione = "10:00", Ordine = 3 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 540, Descrizione = " 9:00", Ordine = 4 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 480, Descrizione = " 8:00", Ordine = 5 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 420, Descrizione = " 7:00", Ordine = 6 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 360, Descrizione = " 6:00", Ordine = 7 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 300, Descrizione = " 5:00", Ordine = 8 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 240, Descrizione = " 4:00", Ordine = 9 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 180, Descrizione = " 3:00", Ordine = 10 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 120, Descrizione = " 2:00", Ordine = 11 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 60, Descrizione = " 1:00", Ordine = 12 });
+            return true;
+        }
+
+        public bool inizializzaDurateProfilo()
+        {
+            DurateProfilo = new List<llDurataProfilo>();
+
+            //Litio
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 720, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 660, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 600, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 540, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 480, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 420, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 360, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 300, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 240, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 180, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 120, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 60, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+
+            //Gel - IU
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 600, IdProfiloCaricaLL = 0x02, Attivo = 1 });
+
+            //Piombo IWa generico
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x01, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 660, IdProfiloCaricaLL = 0x01, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 480, IdProfiloCaricaLL = 0x01, Attivo = 1 });
+
+            //Piombo IWa 13
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x04, Attivo = 1 });
+
+            //Piombo IWa 11
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 660, IdProfiloCaricaLL = 0x05, Attivo = 1 });
+
+            //Piombo IWa 8
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 480, IdProfiloCaricaLL = 0x06, Attivo = 1 });
+
+            return true;
+        }
+
+
+        public bool inizializzaBatteriaProfilo()
+        {
+
+            ProfiloTipoBatt = new List<_llProfiloTipoBatt>();
+
+            // Piombo
+            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x01, Attivo = 0 });
+            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x04, Attivo = 1 });
+            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x05, Attivo = 1 });
+            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x06, Attivo = 1 });
+
+            // Gel
+            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x72, IdProfiloCaricaLL = 0x02, Attivo = 1 });
+
+            // Litio
+            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x73, IdProfiloCaricaLL = 0x07, Attivo = 1 });
+
+            return true;
+        }
 
     }
+
 }

@@ -328,35 +328,36 @@ namespace ChargerLogic
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length <242 )
+                    if (_messaggio.Length <240 )
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
-                    CrcPacchetto = ArrayToUshort(_messaggio, 240, 2);
+                    CrcPacchetto = ArrayToUshort(_messaggio, 238, 2);
                     if (CrcPacchetto == 0xFFFF)
                     {
                         // CRC non coerente
-                        return EsitoRisposta.MessaggioVuoto;
+                        //return EsitoRisposta.MessaggioVuoto;
                     }
-
-                    // Controllo il CRC
-                    byte[] _verificaCrc = new byte[240];
-                    for ( int _i = 0; _i< 240; _i++)
+                    else
                     {
-                        _verificaCrc[_i] = _messaggio[_i];
+                        // Controllo il CRC
+                        byte[] _verificaCrc = new byte[238];
+                        for (int _i = 0; _i < 238; _i++)
+                        {
+                            _verificaCrc[_i] = _messaggio[_i];
+                        }
+                        _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
+
+
+                        if (CrcPacchetto != _tempCRC)
+                        {
+                            // CRC non coerente
+                            return EsitoRisposta.BadCRC;
+
+                        }
                     }
-                    _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
-
-
-                    if (CrcPacchetto != _tempCRC)
-                    {
-                        // CRC non coerente
-                        return EsitoRisposta.BadCRC;
-
-                    }
-
 
 
                     startByte = 0;
@@ -432,8 +433,8 @@ namespace ChargerLogic
             {
                 try
                 {
-                    byte[] _datamap = new byte[242];
-                    byte[] _dataSet = new byte[240];
+                    byte[] _datamap = new byte[240];
+                    byte[] _dataSet = new byte[238];
                     byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
@@ -447,7 +448,7 @@ namespace ChargerLogic
                     byte _byte4 = 0;
 
                     // Preparo l'array vuoto
-                    for (int _i = 0; _i < 242; _i++)
+                    for (int _i = 0; _i < 240; _i++)
                     {
                         _datamap[_i] = 0xFF;
                     }
@@ -613,7 +614,7 @@ namespace ChargerLogic
 
 
 
-                    for (int _i = 0; _i < 240; _i++)
+                    for (int _i = 0; _i < 238; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
@@ -621,8 +622,8 @@ namespace ChargerLogic
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[240] = _byte2;
-                    _datamap[241] = _byte1;
+                    _datamap[238] = _byte2;
+                    _datamap[239] = _byte1;
 
                     dataBuffer = _datamap;
 
@@ -681,7 +682,7 @@ return false;
             public byte TipoProgrammazione { get; set; }
             public byte OpzioniProgrammazione { get; set; }
             public ushort IdProgrammazione { get; set; }
-            public byte ProgUsed { get; set; }
+            public byte ProgInUse { get; set; }
             public byte[] AreaParametri { get; set; }
             public byte LenNomeCiclo { get; private set; }
             public string NomeCiclo { get; set; }
@@ -758,7 +759,7 @@ return false;
                     //-----------------
                     startByte = 20;   // al momento ignoro tutto fino al byte 20
                     //-----------------
-                    ProgUsed = _messaggio[startByte];
+                    ProgInUse = _messaggio[startByte];
 
 
                     //-----------------
@@ -845,7 +846,7 @@ return false;
 
                     //Program Used; salto direttamente al byte 20
                     _arrayInit = 19;
-                    _datamap[_arrayInit++] = ProgUsed;
+                    _datamap[_arrayInit++] = ProgInUse;
 
                     //--------------------------------------------------------------------------------------------------------------------
                     // Da byte 33 (pos32) registro la stringa parametro nel precedente formato:
@@ -868,6 +869,7 @@ return false;
                     _datamap[_arrayInit++] = IdProfilo;
 
                     // Numero Parametri
+                    NumParametri = (byte)Parametri.Count;
                     _datamap[_arrayInit++] = NumParametri;
 
                     // Nome
@@ -922,7 +924,7 @@ return false;
                     TipoProgrammazione = 0;
                     OpzioniProgrammazione = 0;
                     IdProgrammazione = 0;
-                    ProgUsed = 0xFF;  // 0xFF = false => ciclo mai usato
+                    ProgInUse = 0xFF;  // 0xFF = false => ciclo mai usato
                     AreaParametri = null;
                     NomeCiclo = "";
                     IdProfilo = 0 ;

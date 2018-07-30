@@ -227,9 +227,11 @@
     </Compile>
     <Compile Include="Database\LadeLightData.cs" />
     <Compile Include="Database\llDurataCarica.cs" />
+    <Compile Include="Database\llMappaMemoria.cs" />
     <Compile Include="Database\llModelliCb.cs" />
     <Compile Include="Database\llParametriApparato.cs" />
     <Compile Include="Database\llProfiloCarica.cs" />
+    <Compile Include="Database\llProgrammaCarica.cs" />
     <Compile Include="Database\llStatoFirmware.cs" />
     <Compile Include="Database\database.cs" />
     <Compile Include="Database\dataUtility.cs" />

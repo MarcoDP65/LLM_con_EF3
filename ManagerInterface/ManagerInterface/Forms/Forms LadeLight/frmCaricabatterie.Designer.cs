@@ -40,11 +40,11 @@
             this.cmbFSerBaudrateOC = new System.Windows.Forms.ComboBox();
             this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
             this.cmbPaDurataCarica = new System.Windows.Forms.ComboBox();
-            this.cmbProfiloTipoBatteria = new System.Windows.Forms.ComboBox();
+            this.cmbPaTipoBatteria = new System.Windows.Forms.ComboBox();
             this.label136 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPaEqualNumPulse = new System.Windows.Forms.TextBox();
             this.label134 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPaEqualAttesa = new System.Windows.Forms.TextBox();
             this.label135 = new System.Windows.Forms.Label();
             this.chkPaAttivaEqual = new System.Windows.Forms.CheckBox();
             this.label133 = new System.Windows.Forms.Label();
@@ -92,7 +92,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtPaCorrente = new System.Windows.Forms.TextBox();
+            this.txtPaCorrenteMax = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtPaSoglia = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -659,12 +659,16 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.chkPaAttivaRiarmoBms = new System.Windows.Forms.CheckBox();
             this.chkPaRiarmaBms = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPaBMSTempoAttesa = new System.Windows.Forms.TextBox();
             this.label156 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtPaBMSTempoErogazione = new System.Windows.Forms.TextBox();
             this.label157 = new System.Windows.Forms.Label();
+            this.txtPaNomeSetup = new System.Windows.Forms.TextBox();
+            this.label152 = new System.Windows.Forms.Label();
+            this.txtPaVMax = new System.Windows.Forms.TextBox();
+            this.label207 = new System.Windows.Forms.Label();
             this.tabProfiloAttuale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaProfili)).BeginInit();
             this.grbVarParametriSig.SuspendLayout();
@@ -851,18 +855,22 @@
             // grbCicloCorrente
             // 
             this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
-            this.grbCicloCorrente.Controls.Add(this.textBox3);
+            this.grbCicloCorrente.Controls.Add(this.txtPaVMax);
+            this.grbCicloCorrente.Controls.Add(this.label207);
+            this.grbCicloCorrente.Controls.Add(this.txtPaNomeSetup);
+            this.grbCicloCorrente.Controls.Add(this.label152);
+            this.grbCicloCorrente.Controls.Add(this.txtPaBMSTempoAttesa);
             this.grbCicloCorrente.Controls.Add(this.label156);
-            this.grbCicloCorrente.Controls.Add(this.textBox5);
+            this.grbCicloCorrente.Controls.Add(this.txtPaBMSTempoErogazione);
             this.grbCicloCorrente.Controls.Add(this.label157);
-            this.grbCicloCorrente.Controls.Add(this.checkBox5);
+            this.grbCicloCorrente.Controls.Add(this.chkPaAttivaRiarmoBms);
             this.grbCicloCorrente.Controls.Add(this.chkPaRiarmaBms);
             this.grbCicloCorrente.Controls.Add(this.cmbPaDurataCarica);
-            this.grbCicloCorrente.Controls.Add(this.cmbProfiloTipoBatteria);
+            this.grbCicloCorrente.Controls.Add(this.cmbPaTipoBatteria);
             this.grbCicloCorrente.Controls.Add(this.label136);
-            this.grbCicloCorrente.Controls.Add(this.textBox1);
+            this.grbCicloCorrente.Controls.Add(this.txtPaEqualNumPulse);
             this.grbCicloCorrente.Controls.Add(this.label134);
-            this.grbCicloCorrente.Controls.Add(this.textBox4);
+            this.grbCicloCorrente.Controls.Add(this.txtPaEqualAttesa);
             this.grbCicloCorrente.Controls.Add(this.label135);
             this.grbCicloCorrente.Controls.Add(this.chkPaAttivaEqual);
             this.grbCicloCorrente.Controls.Add(this.label133);
@@ -910,7 +918,7 @@
             this.grbCicloCorrente.Controls.Add(this.label15);
             this.grbCicloCorrente.Controls.Add(this.textBox6);
             this.grbCicloCorrente.Controls.Add(this.label14);
-            this.grbCicloCorrente.Controls.Add(this.txtPaCorrente);
+            this.grbCicloCorrente.Controls.Add(this.txtPaCorrenteMax);
             this.grbCicloCorrente.Controls.Add(this.label13);
             this.grbCicloCorrente.Controls.Add(this.txtPaSoglia);
             this.grbCicloCorrente.Controls.Add(this.label12);
@@ -936,14 +944,15 @@
             this.cmbPaDurataCarica.Size = new System.Drawing.Size(182, 28);
             this.cmbPaDurataCarica.TabIndex = 65;
             // 
-            // cmbProfiloTipoBatteria
+            // cmbPaTipoBatteria
             // 
-            this.cmbProfiloTipoBatteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.cmbProfiloTipoBatteria.FormattingEnabled = true;
-            this.cmbProfiloTipoBatteria.Location = new System.Drawing.Point(21, 54);
-            this.cmbProfiloTipoBatteria.Name = "cmbProfiloTipoBatteria";
-            this.cmbProfiloTipoBatteria.Size = new System.Drawing.Size(309, 28);
-            this.cmbProfiloTipoBatteria.TabIndex = 64;
+            this.cmbPaTipoBatteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.cmbPaTipoBatteria.FormattingEnabled = true;
+            this.cmbPaTipoBatteria.Location = new System.Drawing.Point(21, 54);
+            this.cmbPaTipoBatteria.Name = "cmbPaTipoBatteria";
+            this.cmbPaTipoBatteria.Size = new System.Drawing.Size(309, 28);
+            this.cmbPaTipoBatteria.TabIndex = 64;
+            this.cmbPaTipoBatteria.SelectedIndexChanged += new System.EventHandler(this.cmbPaTipoBatteria_SelectedIndexChanged);
             // 
             // label136
             // 
@@ -954,14 +963,14 @@
             this.label136.TabIndex = 63;
             this.label136.Text = "Tipo Batteria";
             // 
-            // textBox1
+            // txtPaEqualNumPulse
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(556, 234);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 27);
-            this.textBox1.TabIndex = 62;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaEqualNumPulse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaEqualNumPulse.Location = new System.Drawing.Point(556, 234);
+            this.txtPaEqualNumPulse.Name = "txtPaEqualNumPulse";
+            this.txtPaEqualNumPulse.Size = new System.Drawing.Size(135, 27);
+            this.txtPaEqualNumPulse.TabIndex = 62;
+            this.txtPaEqualNumPulse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label134
             // 
@@ -972,14 +981,14 @@
             this.label134.TabIndex = 61;
             this.label134.Text = "Numero Impulsi";
             // 
-            // textBox4
+            // txtPaEqualAttesa
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(382, 234);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(135, 27);
-            this.textBox4.TabIndex = 60;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaEqualAttesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaEqualAttesa.Location = new System.Drawing.Point(382, 234);
+            this.txtPaEqualAttesa.Name = "txtPaEqualAttesa";
+            this.txtPaEqualAttesa.Size = new System.Drawing.Size(135, 27);
+            this.txtPaEqualAttesa.TabIndex = 60;
+            this.txtPaEqualAttesa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label135
             // 
@@ -999,6 +1008,7 @@
             this.chkPaAttivaEqual.TabIndex = 58;
             this.chkPaAttivaEqual.ThreeState = true;
             this.chkPaAttivaEqual.UseVisualStyleBackColor = true;
+            this.chkPaAttivaEqual.CheckedChanged += new System.EventHandler(this.chkPaAttivaEqual_CheckedChanged);
             // 
             // label133
             // 
@@ -1154,7 +1164,7 @@
             this.btnPaSalvaDati.Name = "btnPaSalvaDati";
             this.btnPaSalvaDati.Size = new System.Drawing.Size(160, 33);
             this.btnPaSalvaDati.TabIndex = 41;
-            this.btnPaSalvaDati.Text = "Aggiorna Scheda";
+            this.btnPaSalvaDati.Text = "Salva Profilo";
             this.btnPaSalvaDati.UseVisualStyleBackColor = true;
             this.btnPaSalvaDati.Click += new System.EventHandler(this.btnPaSalvaDati_Click);
             // 
@@ -1296,7 +1306,7 @@
             this.btnCicloCorrente.Name = "btnCicloCorrente";
             this.btnCicloCorrente.Size = new System.Drawing.Size(160, 33);
             this.btnCicloCorrente.TabIndex = 26;
-            this.btnCicloCorrente.Text = "Leggi da Scheda";
+            this.btnCicloCorrente.Text = "Leggi Profili";
             this.btnCicloCorrente.UseVisualStyleBackColor = true;
             this.btnCicloCorrente.Click += new System.EventHandler(this.btnCicloCorrente_Click);
             // 
@@ -1421,19 +1431,19 @@
             this.label14.TabIndex = 12;
             this.label14.Text = "I Preciclo (A)";
             // 
-            // txtPaCorrente
+            // txtPaCorrenteMax
             // 
-            this.txtPaCorrente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaCorrente.Location = new System.Drawing.Point(556, 165);
-            this.txtPaCorrente.Name = "txtPaCorrente";
-            this.txtPaCorrente.Size = new System.Drawing.Size(135, 27);
-            this.txtPaCorrente.TabIndex = 11;
-            this.txtPaCorrente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaCorrenteMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaCorrenteMax.Location = new System.Drawing.Point(730, 165);
+            this.txtPaCorrenteMax.Name = "txtPaCorrenteMax";
+            this.txtPaCorrenteMax.Size = new System.Drawing.Size(135, 27);
+            this.txtPaCorrenteMax.TabIndex = 11;
+            this.txtPaCorrenteMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(553, 145);
+            this.label13.Location = new System.Drawing.Point(727, 145);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(115, 17);
             this.label13.TabIndex = 10;
@@ -1453,14 +1463,14 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(379, 145);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(92, 17);
+            this.label12.Size = new System.Drawing.Size(151, 17);
             this.label12.TabIndex = 8;
-            this.label12.Text = "Soglia (V/cel)";
+            this.label12.Text = "TensioneSoglia (V/cel)";
             // 
             // txtPaTempoMax
             // 
             this.txtPaTempoMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaTempoMax.Location = new System.Drawing.Point(818, 55);
+            this.txtPaTempoMax.Location = new System.Drawing.Point(730, 234);
             this.txtPaTempoMax.Name = "txtPaTempoMax";
             this.txtPaTempoMax.Size = new System.Drawing.Size(107, 27);
             this.txtPaTempoMax.TabIndex = 7;
@@ -1478,7 +1488,7 @@
             // txtPaCapacita
             // 
             this.txtPaCapacita.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaCapacita.Location = new System.Drawing.Point(556, 53);
+            this.txtPaCapacita.Location = new System.Drawing.Point(556, 54);
             this.txtPaCapacita.Name = "txtPaCapacita";
             this.txtPaCapacita.Size = new System.Drawing.Size(135, 27);
             this.txtPaCapacita.TabIndex = 5;
@@ -1487,7 +1497,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(553, 33);
+            this.label5.Location = new System.Drawing.Point(553, 34);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 17);
             this.label5.TabIndex = 4;
@@ -7068,7 +7078,7 @@
             this.tabInizializzazione.Size = new System.Drawing.Size(1720, 696);
             this.tabInizializzazione.TabIndex = 13;
             this.tabInizializzazione.Text = "Inizializzazione";
-            this.tabInizializzazione.Click += new System.EventHandler(this.tabInizializzazione_Click);
+            this.tabInizializzazione.Enter += new System.EventHandler(this.tabInizializzazione_Enter);
             // 
             // grbInitLimiti
             // 
@@ -7788,17 +7798,18 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // checkBox5
+            // chkPaAttivaRiarmoBms
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Checked = true;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.checkBox5.Location = new System.Drawing.Point(21, 315);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(18, 17);
-            this.checkBox5.TabIndex = 67;
-            this.checkBox5.ThreeState = true;
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.chkPaAttivaRiarmoBms.AutoSize = true;
+            this.chkPaAttivaRiarmoBms.Checked = true;
+            this.chkPaAttivaRiarmoBms.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.chkPaAttivaRiarmoBms.Location = new System.Drawing.Point(21, 315);
+            this.chkPaAttivaRiarmoBms.Name = "chkPaAttivaRiarmoBms";
+            this.chkPaAttivaRiarmoBms.Size = new System.Drawing.Size(18, 17);
+            this.chkPaAttivaRiarmoBms.TabIndex = 67;
+            this.chkPaAttivaRiarmoBms.ThreeState = true;
+            this.chkPaAttivaRiarmoBms.UseVisualStyleBackColor = true;
+            this.chkPaAttivaRiarmoBms.CheckedChanged += new System.EventHandler(this.chkPaAttivaRiarmoBms_CheckedChanged);
             // 
             // chkPaRiarmaBms
             // 
@@ -7809,14 +7820,14 @@
             this.chkPaRiarmaBms.TabIndex = 66;
             this.chkPaRiarmaBms.Text = "Impulsi Riarmo BMS";
             // 
-            // textBox3
+            // txtPaBMSTempoAttesa
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(548, 309);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(135, 27);
-            this.textBox3.TabIndex = 71;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaBMSTempoAttesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaBMSTempoAttesa.Location = new System.Drawing.Point(556, 309);
+            this.txtPaBMSTempoAttesa.Name = "txtPaBMSTempoAttesa";
+            this.txtPaBMSTempoAttesa.Size = new System.Drawing.Size(135, 27);
+            this.txtPaBMSTempoAttesa.TabIndex = 71;
+            this.txtPaBMSTempoAttesa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label156
             // 
@@ -7827,14 +7838,14 @@
             this.label156.TabIndex = 70;
             this.label156.Text = "Attesa Risposta";
             // 
-            // textBox5
+            // txtPaBMSTempoErogazione
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(374, 309);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(135, 27);
-            this.textBox5.TabIndex = 69;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaBMSTempoErogazione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaBMSTempoErogazione.Location = new System.Drawing.Point(382, 309);
+            this.txtPaBMSTempoErogazione.Name = "txtPaBMSTempoErogazione";
+            this.txtPaBMSTempoErogazione.Size = new System.Drawing.Size(135, 27);
+            this.txtPaBMSTempoErogazione.TabIndex = 69;
+            this.txtPaBMSTempoErogazione.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label157
             // 
@@ -7845,11 +7856,48 @@
             this.label157.TabIndex = 68;
             this.label157.Text = "Tempo Erogazione";
             // 
+            // txtPaNomeSetup
+            // 
+            this.txtPaNomeSetup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaNomeSetup.Location = new System.Drawing.Point(730, 54);
+            this.txtPaNomeSetup.MaxLength = 6;
+            this.txtPaNomeSetup.Name = "txtPaNomeSetup";
+            this.txtPaNomeSetup.Size = new System.Drawing.Size(135, 27);
+            this.txtPaNomeSetup.TabIndex = 73;
+            this.txtPaNomeSetup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label152
+            // 
+            this.label152.AutoSize = true;
+            this.label152.Location = new System.Drawing.Point(727, 34);
+            this.label152.Name = "label152";
+            this.label152.Size = new System.Drawing.Size(45, 17);
+            this.label152.TabIndex = 72;
+            this.label152.Text = "Nome";
+            // 
+            // txtPaVMax
+            // 
+            this.txtPaVMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaVMax.Location = new System.Drawing.Point(556, 167);
+            this.txtPaVMax.Name = "txtPaVMax";
+            this.txtPaVMax.Size = new System.Drawing.Size(135, 27);
+            this.txtPaVMax.TabIndex = 75;
+            this.txtPaVMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label207
+            // 
+            this.label207.AutoSize = true;
+            this.label207.Location = new System.Drawing.Point(553, 147);
+            this.label207.Name = "label207";
+            this.label207.Size = new System.Drawing.Size(141, 17);
+            this.label207.TabIndex = 74;
+            this.label207.Text = "Tensione Max (V/cel)";
+            // 
             // frmCaricabatterie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1783, 826);
+            this.ClientSize = new System.Drawing.Size(1819, 932);
             this.Controls.Add(this.tabCaricaBatterie);
             this.Controls.Add(this.btnSalvaCaricabatteria);
             this.Controls.Add(this.btnApparatoOk);
@@ -8066,7 +8114,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtPaCorrente;
+        private System.Windows.Forms.TextBox txtPaCorrenteMax;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtPaSoglia;
         private System.Windows.Forms.Label label12;
@@ -8562,9 +8610,9 @@
         private System.Windows.Forms.Label label132;
         private System.Windows.Forms.ComboBox cmbInitTipoApparato;
         private System.Windows.Forms.MaskedTextBox txtInitDataInizializ;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPaEqualNumPulse;
         private System.Windows.Forms.Label label134;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPaEqualAttesa;
         private System.Windows.Forms.Label label135;
         private System.Windows.Forms.CheckBox chkPaAttivaEqual;
         private System.Windows.Forms.Label label133;
@@ -8573,7 +8621,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.ComboBox cmbProfiloTipoBatteria;
+        private System.Windows.Forms.ComboBox cmbPaTipoBatteria;
         private System.Windows.Forms.Label label136;
         private System.Windows.Forms.ComboBox cmbPaDurataCarica;
         private System.Windows.Forms.GroupBox grbDatiCliente;
@@ -8623,11 +8671,15 @@
         private System.Windows.Forms.Label label146;
         private System.Windows.Forms.TextBox txtGenSerialeZVT;
         private System.Windows.Forms.Label label151;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPaBMSTempoAttesa;
         private System.Windows.Forms.Label label156;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPaBMSTempoErogazione;
         private System.Windows.Forms.Label label157;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox chkPaAttivaRiarmoBms;
         private System.Windows.Forms.Label chkPaRiarmaBms;
+        private System.Windows.Forms.TextBox txtPaNomeSetup;
+        private System.Windows.Forms.Label label152;
+        private System.Windows.Forms.TextBox txtPaVMax;
+        private System.Windows.Forms.Label label207;
     }
 }

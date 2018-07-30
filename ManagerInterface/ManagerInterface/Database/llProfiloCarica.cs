@@ -35,7 +35,14 @@ namespace MoriData
 
     }
 
+    public class _llProfiloTipoBatt
+    {
+        [PrimaryKey]
+        public byte IdProfiloCaricaLL { get; set; }
+        public byte BatteryTypeId { get; set; }
 
+        public byte Attivo { get; set; }
+    }
 }
 
 

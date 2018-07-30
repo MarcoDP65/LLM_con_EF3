@@ -274,10 +274,7 @@ namespace Utility
                 sbyte _sigTemp = (sbyte)Temperatura;
                 _inGradi = _sigTemp;
                 _gradi = _inGradi.ToString();
-                // if (Temperatura < 150)
                 return _gradi;
-                //  else
-                //      return "-";
             }
             catch
             {

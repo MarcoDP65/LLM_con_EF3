@@ -133,6 +133,9 @@ namespace ChargerLogic
             ParametroKP = 0x51,
             ParametroKI = 0x52,
             ParametroKD = 0x53,
+            EqualFineCarica = 0x54,
+            RiarmoBMS = 0x55,
+            TipoBatteria = 0x56,
             CondizioneStop = 0xF0,
             CoeffK = 0xF1,   // 1 decimale
         }

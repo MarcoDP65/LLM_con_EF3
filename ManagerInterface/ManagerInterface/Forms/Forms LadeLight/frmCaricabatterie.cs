@@ -137,8 +137,24 @@ namespace PannelloCharger
                         // Attivo solo la tab inizializzazione, se sono abilitato 
 
                         MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                       // MascheraTabPages(1);
+
                         //this.Close();
                         return;
+                    }
+                    else
+                    {
+                        if (_tempParametri.IdApparato == "????????" || _tempParametri.IdApparato.Trim() =="" )
+                        {
+                            // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
+                            // Attivo solo la tab inizializzazione, se sono abilitato 
+
+                            MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            // this.Close();
+                            // MascheraTabPages(1);
+                            return;
+                        }
+
                     }
 
                     _cb.ApparatoLL = new LadeLightData(_logiche.dbDati.connessione, _tempParametri);
@@ -202,9 +218,9 @@ namespace PannelloCharger
             cmbInitTipoApparato.ValueMember = "IdModelloLL";
             cmbInitTipoApparato.DisplayMember = "NomeModello";
 
-            cmbProfiloTipoBatteria.DataSource = _parametri.TipiBattria;
-            cmbProfiloTipoBatteria.ValueMember = "BatteryTypeId";
-            cmbProfiloTipoBatteria.DisplayMember = "BatteryType";
+            cmbPaTipoBatteria.DataSource = _parametri.TipiBattria;
+            cmbPaTipoBatteria.ValueMember = "BatteryTypeId";
+            cmbPaTipoBatteria.DisplayMember = "BatteryType";
 
         }
 
@@ -364,10 +380,10 @@ namespace PannelloCharger
                 }
 
 
-                if (txtPaCorrente.Text.Length > 0)
+                if (txtPaCorrenteMax.Text.Length > 0)
                 {
                     ushort result;
-                    if (ushort.TryParse(txtPaCorrente.Text, out result))
+                    if (ushort.TryParse(txtPaCorrenteMax.Text, out result))
                     {
                         ParametroLL _par = new ParametroLL();
                         _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteCarica;
@@ -477,228 +493,44 @@ namespace PannelloCharger
         {
             try
             {
-                SerialMessage.cicloAttuale _tempCiclo = new SerialMessage.cicloAttuale();
+                ushort result;
+                float resultF;
 
-                byte _numParametri = 0;
-                ushort _divK = 10;
-                _cb.CicloInMacchina = new SerialMessage.cicloAttuale()
+                // Se il ciclo attuale non è mai stato usato, sovrascrivo
+                if (_cb.ProgrammaAttivo == null)
                 {
-                    LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length,
-                    NomeCiclo = txtPaNomeProfilo.Text,
-                    TipoCiclo = (byte)cmbPaProfilo.SelectedIndex
-                };
-
-
-                if (txtPaCapacita.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaCapacita.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL()
-                        {
-                            idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaNominale,
-                            ValoreParametro = result
-                        };
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                if (txtPaSoglia.Text.Length > 0)
-                {
-                    Double dresult;
-                    ushort result;
-
-                    if (Double.TryParse(txtPaSoglia.Text, out dresult))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella;
-                        result = (ushort)(dresult * 100);
-                        _par.ValoreParametro = result;
-                        txtPaSoglia.Text = dresult.ToString("0.00");
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
+                    _cb.ProgrammaAttivo = new llProgrammaCarica();
 
                 }
 
-                // Flag Usa Spybatt
+                if (_cb.ProgrammaAttivo.ProgrammaInUso != 0xFF)
                 {
-                    ParametroLL _par = new ParametroLL();
-                    _par.idParametro = (byte)SerialMessage.ParametroLadeLight.DivisoreK;
-                    if ( chkPaUsaSpyBatt.Checked)
-                    {
-                        _par.ValoreParametro = 1;
-                    }
-                    else
-                    {
-                        _par.ValoreParametro = 0;
-                    }
-                    _cb.CicloInMacchina.Parametri.Add(_par);
-                    _numParametri++;
+                    //scorro la lista, butto l'ultimo se già 16 presenti
+                    // AL MOMENTO SOVRASCRIVO SEMPRE LO STESSO
                 }
 
+                _cb.ProgrammaAttivo.IdProgramma = 1; // diventa progressivo
+                _cb.ProgrammaAttivo.ProgrammaInUso = 0xFF;
 
+                // Nome
+                string _tempStr = txtPaNomeSetup.Text.Trim();
+                _cb.ProgrammaAttivo.ProgramName = _tempStr;
 
-                if (txtPaParKp.Text.Length > 0)
-                {
-                    Double dresult;
-                    ushort result;
+                _cb.ProgrammaAttivo.BatteryType = (byte)cmbPaTipoBatteria.SelectedValue;
 
-                    if (Double.TryParse(txtPaParKp.Text, out dresult))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ParametroKP;
-                        result = (ushort)(dresult * _divK);
-                        _par.ValoreParametro = result;
-                        dresult = (double)result / _divK;
-                        txtPaParKp.Text = dresult.ToString(FunzioniMR.StringaModelloDivisore(_divK));
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
+                _cb.ProgrammaAttivo.BatteryVdef = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
+                _cb.ProgrammaAttivo.BatteryAhdef = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
 
-                }
+                _cb.ProgrammaAttivo.IdProfilo = (byte)cmbPaProfilo.SelectedIndex; //(byte)cmbPaProfilo.SelectedValue;
 
-                if (txtPaParKi.Text.Length > 0)
-                {
-                    Double dresult;
-                    ushort result;
+                _cb.ProgrammaAttivo.DurataMaxCarica = 0; //(byte)cmbPaDurataCarica.SelectedValue;
+                _cb.ProgrammaAttivo.PercTempoFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Min.Text, 1, 0);
 
-                    if (Double.TryParse(txtPaParKi.Text, out dresult))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ParametroKI;
-                        result = (ushort)(dresult * _divK);
-                        _par.ValoreParametro = result;
-                        dresult = (double)result / _divK;
-                        txtPaParKi.Text = dresult.ToString(FunzioniMR.StringaModelloDivisore(_divK));
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
+                _cb.ProgrammaAttivo.VSoglia = FunzioniMR.ConvertiUshort(txtPaSoglia.Text, 100, 0);
+                _cb.ProgrammaAttivo.VMax = FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0);
+                _cb.ProgrammaAttivo.GeneraListaParametri();
 
-                }
-
-
-                if (txtPaParKd.Text.Length > 0)
-                {
-                    Double dresult;
-                    ushort result;
-
-                    if (Double.TryParse(txtPaParKd.Text, out dresult))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ParametroKD;
-                        result = (ushort)(dresult * _divK);
-                        _par.ValoreParametro = result;
-                        dresult = (double)result / _divK;
-                        txtPaParKd.Text = dresult.ToString(FunzioniMR.StringaModelloDivisore(_divK));
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-
-                }
-
-
-                if (txtPaCorrente.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaCorrente.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteCarica;
-                        _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                if (txtPaTensione.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaTensione.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneNominale;
-                        _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                if (cmbPaCondStop.SelectedIndex > -1)
-                {
-
-                    ParametroLL _par = new ParametroLL();
-                    _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CondizioneStop;
-                    _par.ValoreParametro = (ushort)cmbPaCondStop.SelectedIndex;
-                    _cb.CicloInMacchina.Parametri.Add(_par);
-                    _numParametri++;
-
-                }
-
-                if (txtPaCoeffK.Text.Length > 0)
-                {
-                    Double dresult;
-                    ushort result;
-
-                    if (Double.TryParse(txtPaCoeffK.Text, out dresult))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CoeffK;
-                        result = (ushort)(dresult * 10);
-                        _par.ValoreParametro = result;
-                        dresult = result / 10;
-                        txtPaCoeffK.Text = dresult.ToString("0.0");
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-
-                }
-
-                if (txtPaTempoT2Min.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaTempoT2Min.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT2Min;
-                        _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                if (txtPaTempoT2Max.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaTempoT2Max.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT2Max;
-                        _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                if (txtPaFreqSwitch.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaFreqSwitch.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL()
-                        {
-                            idParametro = (byte)SerialMessage.ParametroLadeLight.FrequenzaSwitching,
-                            ValoreParametro = result
-                        };
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                _cb.CicloInMacchina.NumeroParametri = _numParametri;
-
-                _cb.ScriviCicloCorrente();
+                _cb.SalvaProgrammazioniApparato();
 
                 return true;
             }
@@ -729,7 +561,7 @@ namespace PannelloCharger
                 txtPaCapacita.Text = "";
                 txtPaTempoMax.Text = "";
                 txtPaSoglia.Text = "";
-                txtPaCorrente.Text = "";
+                txtPaCorrenteMax.Text = "";
                 txtPaTensione.Text = "";
 
                 cmbPaCondStop.SelectedIndex = 0;
@@ -760,7 +592,7 @@ namespace PannelloCharger
                                 txtPaSoglia.Text = _tempVal.ToString("0.00");
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.CorrenteCarica:
-                                txtPaCorrente.Text = _par.ValoreParametro.ToString();
+                                txtPaCorrenteMax.Text = _par.ValoreParametro.ToString();
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.TensioneNominale:
                                 txtPaTensione.Text = _par.ValoreParametro.ToString();
@@ -1082,7 +914,7 @@ namespace PannelloCharger
 
                 if (e.TabPage == tabProfiloAttuale)
                 {
-                    if (_apparatoPresente) CaricaCicloAttuale(); 
+                   // if (_apparatoPresente) CaricaCicloAttuale(); 
                 }
 
                 if (e.TabPage == tbpFirmware)
@@ -1353,6 +1185,10 @@ namespace PannelloCharger
         private void btnPaSalvaDati_Click(object sender, EventArgs e)
         {
             ScriviParametriCarica();
+
+            // Leggi Parametri.....
+
+
         }
 
         private void btnLeggiVariabili_Click(object sender, EventArgs e)
@@ -2385,32 +2221,47 @@ namespace PannelloCharger
                 txtInitNumSerZVT.Text = "";
                 txtInitRevHwZVT.Text = "";
 
+                txtInitNumLottoPFC.Text = "";
+                txtInitNumSerPFC.Text = "";
+                txtInitRevHwPFC.Text = "";
+                txtInitRevFwPFC.Text = "";
+
+                txtInitNumSerDISP.Text = "";
+                txtInitRevHwDISP.Text = "";
+                txtInitRevFwDISP.Text = "";
+
+
                 _esito = _cb.LeggiParametriApparato();
 
                 if (_esito)
                 {
                     txtInitManufactured.Text = _cb.ParametriApparato.llParApp.ProduttoreApparato;
                     txtInitProductId.Text = _cb.ParametriApparato.llParApp.NomeApparato;
-                    txtInitDataInizializ.Text = FunzioniMR.StringaDataTS(_cb.ParametriApparato.llParApp.DataSetupApparato);
-                    txtInitAnnoMatricola.Text = _cb.ParametriApparato.llParApp.AnnoCodice.ToString("00");
-                    txtInitNumeroMatricola.Text = _cb.ParametriApparato.llParApp.ProgressivoCodice.ToString("000000");
-                    txtInitSerialeApparato.Text = _cb.ParametriApparato.llParApp.SerialeApparato.ToString("x6");
-                    txtInitIDApparato.Text = _cb.ParametriApparato.llParApp.IdApparato;
 
-                    cmbInitTipoApparato.SelectedValue = _cb.ParametriApparato.llParApp.TipoApparato;
+                    if( _cb.ParametriApparato.llParApp.IdApparato != "????????" && _cb.ParametriApparato.llParApp.IdApparato !="")
+                    {
+                        txtInitDataInizializ.Text = FunzioniMR.StringaDataTS(_cb.ParametriApparato.llParApp.DataSetupApparato);
+                        txtInitAnnoMatricola.Text = _cb.ParametriApparato.llParApp.AnnoCodice.ToString("00");
+                        txtInitNumeroMatricola.Text = _cb.ParametriApparato.llParApp.ProgressivoCodice.ToString("000000");
+                        txtInitSerialeApparato.Text = _cb.ParametriApparato.llParApp.SerialeApparato.ToString("x6");
+                        txtInitIDApparato.Text = _cb.ParametriApparato.llParApp.IdApparato;
 
-                    txtInitNumLottoZVT.Text = _cb.ParametriApparato.llParApp.IdLottoZVT;
-                    txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeZVT);
-                    txtInitRevHwZVT.Text = _cb.ParametriApparato.llParApp.HardwareZVT;
+                        cmbInitTipoApparato.SelectedValue = _cb.ParametriApparato.llParApp.TipoApparato;
 
-                    txtInitNumLottoPFC.Text = _cb.ParametriApparato.llParApp.IdLottoPFC;
-                    txtInitNumSerPFC.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialePFC);
-                    txtInitRevHwPFC.Text = _cb.ParametriApparato.llParApp.HardwarePFC;
-                    txtInitRevFwPFC.Text = _cb.ParametriApparato.llParApp.SoftwarePFC;
+                        txtInitNumLottoZVT.Text = _cb.ParametriApparato.llParApp.IdLottoZVT;
+                        txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeZVT);
+                        txtInitRevHwZVT.Text = _cb.ParametriApparato.llParApp.HardwareZVT;
 
-                    txtInitNumSerDISP.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeDISP);
-                    txtInitRevHwDISP.Text = _cb.ParametriApparato.llParApp.HardwareDisp;
-                    txtInitRevFwDISP.Text = _cb.ParametriApparato.llParApp.SoftwareDISP;
+                        txtInitNumLottoPFC.Text = _cb.ParametriApparato.llParApp.IdLottoPFC;
+                        txtInitNumSerPFC.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialePFC);
+                        txtInitRevHwPFC.Text = _cb.ParametriApparato.llParApp.HardwarePFC;
+                        txtInitRevFwPFC.Text = _cb.ParametriApparato.llParApp.SoftwarePFC;
+
+                        txtInitNumSerDISP.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeDISP);
+                        txtInitRevHwDISP.Text = _cb.ParametriApparato.llParApp.HardwareDisp;
+                        txtInitRevFwDISP.Text = _cb.ParametriApparato.llParApp.SoftwareDISP;
+                    }
+
 
                     txtInitMaxBrevi.Text = _cb.ParametriApparato.llParApp.MaxRecordBrevi.ToString();
                     txtInitMaxLunghi.Text = _cb.ParametriApparato.llParApp.MaxRecordCarica.ToString();
@@ -2443,6 +2294,7 @@ namespace PannelloCharger
                 if (FunzioniMR.VerificaStringaLottoZVT(txtInitNumLottoZVT.Text))
                 {
                     byte[] _tempByte;
+                    txtInitNumLottoZVT.Text = txtInitNumLottoZVT.Text.ToUpper();
 
                     _tempByte = FunzioniMR.CodificaStringaLottoZVT(txtInitNumLottoZVT.Text);
 
@@ -2464,6 +2316,114 @@ namespace PannelloCharger
 
             }
         }
+
+        private void chkPaAttivaEqual_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkPaAttivaEqual.Checked)
+                {
+                    txtPaEqualAttesa.Enabled = true;
+                    txtPaEqualAttesa.Text = "48";
+                    txtPaEqualNumPulse.Enabled = true;
+                    txtPaEqualNumPulse.Text = "12";
+
+                }
+                else
+                {
+                    txtPaEqualAttesa.Enabled = false;
+                    txtPaEqualAttesa.Text = "";
+                    txtPaEqualNumPulse.Enabled = false;
+                    txtPaEqualNumPulse.Text = "";
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaAttivaEqual_CheckedChanged: " + Ex.Message);
+
+            }
+
+        }
+
+        private void chkPaAttivaRiarmoBms_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkPaAttivaRiarmoBms.Checked)
+                {
+                    txtPaBMSTempoAttesa.Enabled = true;
+                    txtPaBMSTempoAttesa.Text = "240";
+                    txtPaBMSTempoErogazione.Enabled = true;
+                    txtPaBMSTempoErogazione.Text = "5";
+
+                }
+                else
+                {
+                    txtPaBMSTempoAttesa.Enabled = false;
+                    txtPaBMSTempoAttesa.Text = "";
+                    txtPaBMSTempoErogazione.Enabled = false;
+                    txtPaBMSTempoErogazione.Text = "";
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaAttivaEqual_CheckedChanged: " + Ex.Message);
+
+            }
+        }
+
+        private void tabInizializzazione_Enter(object sender, EventArgs e)
+        {
+            LeggiInizializzazione();
+        }
+
+        private void MascheraTabPages(int MaskLevel)
+        {
+            try
+            {
+                // Mask 0 Tutto acceso
+                // Mask 1 lascio solo init
+
+
+                foreach ( TabPage _pag in tabCaricaBatterie.TabPages)
+                {
+                    if (MaskLevel == 1 )
+                    {
+                        if(_pag.Name != "tabInizializzazione")
+                        {
+                            tabCaricaBatterie.TabPages.Remove(_pag);
+                        }
+                    }
+
+
+                }
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaAttivaEqual_CheckedChanged: " + Ex.Message);
+            }
+
+
+        }
+
+        private void cmbPaTipoBatteria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbProfiloTipoBatteria_SelectedIndexChanged: " + Ex.Message);
+            }
+        }
+
+
     }
 
 }

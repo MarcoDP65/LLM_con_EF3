@@ -24,8 +24,7 @@ namespace PannelloCharger
 {
     public partial class frmMain : MdiParent
     {
-        //private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+        private static ILog Log = LogManager.GetLogger("frmMain");
         public LogicheBase logiche;
         public parametriSistema varGlobali;
         private CaricaBatteria cbCorrente;

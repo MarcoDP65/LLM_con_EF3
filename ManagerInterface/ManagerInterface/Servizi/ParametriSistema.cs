@@ -64,6 +64,9 @@ namespace ChargerLogic
 
         public List<sbTipoBatteria> TipiBattria;
 
+
+
+
         public  parametriSistema()
         {
             try
@@ -215,8 +218,6 @@ namespace ChargerLogic
                     AbilitaEqual = 0,
                     AbilitaAttesaBMS = 0
                 });
-
-
                 TipiBattria.Add(new sbTipoBatteria()
                 {
                     BatteryTypeId = 0x71,
@@ -232,14 +233,12 @@ namespace ChargerLogic
                     AbilitaEqual = 0x300C,
                     AbilitaAttesaBMS = 0x0000
                 });
-
-
                 TipiBattria.Add(new sbTipoBatteria()
                 {
-                    BatteryTypeId = 0x02,
+                    BatteryTypeId = 0x72,
                     BatteryType = "Gel",
                     SortOrder = 2,
-                    StandardChargeProfile = 0x0,
+                    StandardChargeProfile = 0x00,
                     Obsolete = 0x00,
                     VoltCella = 200,
                     VoltSoglia = 240,
@@ -249,13 +248,12 @@ namespace ChargerLogic
                     AbilitaEqual = 0x0000,
                     AbilitaAttesaBMS = 0x0000
                 });
-
                 TipiBattria.Add(new sbTipoBatteria()
                 {
-                    BatteryTypeId = 0x03,
+                    BatteryTypeId = 0x73,
                     BatteryType = "Lithium",
                     SortOrder = 3,
-                    StandardChargeProfile = 0x0,
+                    StandardChargeProfile = 0x00,
                     Obsolete = 0x00,
                     VoltCella = 0xFFFF,
                     VoltSoglia = 0,
@@ -265,6 +263,7 @@ namespace ChargerLogic
                     AbilitaEqual = 0,
                     AbilitaAttesaBMS = 0x05F0
                 });
+
             }
             catch (Exception Ex)
             {
@@ -687,7 +686,6 @@ namespace ChargerLogic
             }
         }
 
-
         private string hexdumpArray(byte[] buffer)
         {
             try
@@ -708,7 +706,6 @@ namespace ChargerLogic
                 return "";
             }
         }
-
 
         public bool statoCanaleLadeLight()
         {
