@@ -216,7 +216,8 @@ namespace ChargerLogic
                     VCellaMax = 0,
                     UsaSpybatt = 0,
                     AbilitaEqual = 0,
-                    AbilitaAttesaBMS = 0
+                    AbilitaAttesaBMS = 0,
+                    TensioniFisse = 0
                 });
                 TipiBattria.Add(new sbTipoBatteria()
                 {
@@ -231,7 +232,8 @@ namespace ChargerLogic
                     VCellaMax = 265,
                     UsaSpybatt = 1,
                     AbilitaEqual = 0x300C,
-                    AbilitaAttesaBMS = 0x0000
+                    AbilitaAttesaBMS = 0x0000,
+                    TensioniFisse = 1
                 });
                 TipiBattria.Add(new sbTipoBatteria()
                 {
@@ -246,7 +248,8 @@ namespace ChargerLogic
                     VCellaMax = 240,
                     UsaSpybatt = 1,
                     AbilitaEqual = 0x0000,
-                    AbilitaAttesaBMS = 0x0000
+                    AbilitaAttesaBMS = 0x0000,
+                    TensioniFisse = 1
                 });
                 TipiBattria.Add(new sbTipoBatteria()
                 {
@@ -261,7 +264,8 @@ namespace ChargerLogic
                     VCellaMax = 0,
                     UsaSpybatt = 0,
                     AbilitaEqual = 0,
-                    AbilitaAttesaBMS = 0x05F0
+                    AbilitaAttesaBMS = 0x05F0,
+                    TensioniFisse = 0
                 });
 
             }

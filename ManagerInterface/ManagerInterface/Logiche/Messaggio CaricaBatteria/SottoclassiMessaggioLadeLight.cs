@@ -190,8 +190,11 @@ namespace ChargerLogic
                     if (decodificaArray(_messaggio, ref _risposta))
                     {
                         startByte = 0;
-                        Log.Debug(" ---------------------- Info Firmware -----------------------------------------");
+                        Log.Debug(" ---------------------- Programmazione Carica -----------------------------------------");
                         Log.Debug(FunzioniMR.hexdumpArray(_risposta));
+
+                        // Parte Fissa:
+
                         /*
                         Stato = _risposta[startByte];
                         startByte += 1;
@@ -714,13 +717,13 @@ return false;
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length < 242)
+                    if (_messaggio.Length < 240)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
-                    CrcPacchetto = ArrayToUshort(_messaggio, 240, 2);
+                    CrcPacchetto = ArrayToUshort(_messaggio, 238, 2);
                     if (CrcPacchetto == 0xFFFF)
                     {
                         // CRC non coerente
@@ -729,7 +732,7 @@ return false;
 
                     // Controllo il CRC
                     byte[] _verificaCrc = new byte[240];
-                    for (int _i = 0; _i < 240; _i++)
+                    for (int _i = 0; _i < 238; _i++)
                     {
                         _verificaCrc[_i] = _messaggio[_i];
                     }

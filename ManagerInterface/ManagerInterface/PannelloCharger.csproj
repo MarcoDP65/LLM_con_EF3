@@ -236,6 +236,7 @@
     <Compile Include="Database\database.cs" />
     <Compile Include="Database\dataUtility.cs" />
     <Compile Include="Database\lingue.cs" />
+    <Compile Include="Database\llTensioneBatteria.cs" />
     <Compile Include="Database\llVariabili.cs" />
     <Compile Include="Database\lmEventiDb.cs" />
     <Compile Include="Database\sbAnalisiCorrente.cs" />
@@ -481,6 +482,7 @@
     </Compile>
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
     <Compile Include="Logiche\Caricabatteria\CaricaBatteria.cs" />
+    <Compile Include="Logiche\Caricabatteria\CaricabatteriaInizializzazioni.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiFirmware.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiMemoria.cs" />
     <Compile Include="Logiche\Caricabatteria\sottoclassiCaricaBatteria.cs">

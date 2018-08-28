@@ -5014,12 +5014,14 @@ namespace ChargerLogic
                             case (byte)SerialMessage.TipoComando.CMD_READ_VARIABLE:
                                 Log.Debug("Lettura Variabili " + _mS.variabiliScheda.ToString());
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                //_inviaRisposta = false; // !!!!!!!
                                 //_inviaRisposta = _mS.variabiliScheda.datiPronti;
                                 break;
 
                             case (byte)SerialMessage.TipoComando.CMD_READ_VAL_CALIB:
                                 Log.Debug("Lettura Calibrazioni " + _mS.valoriCalibrazione.ToString());
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                //_inviaRisposta = false; // !!!!!!!
                                 //_inviaRisposta = _mS.variabiliScheda.datiPronti;
                                 break;
 

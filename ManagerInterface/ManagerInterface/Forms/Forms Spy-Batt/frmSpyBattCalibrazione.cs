@@ -1536,6 +1536,7 @@ namespace PannelloCharger
                 }
 
                 // Sono ancora in calibrazione, calibro a zero
+                
                 System.Threading.Thread.Sleep(_millisecondi);
                 Lambda.Alimentatatore.ImpostaCorrente(0);
                 System.Threading.Thread.Sleep(_millisecondi * SecondiAttesa);
@@ -1567,7 +1568,7 @@ namespace PannelloCharger
                     SequenzaCorrente.Descrizione = txtCalStepCorrente.Text;
                     return false;
                 }
-
+                
                 //esco dalla calibrazone
                 _esito = _sb.ModalitaCalibrazione();
                 if (_esito)
@@ -3494,7 +3495,7 @@ namespace PannelloCharger
                     default:
                         {
                             _imageTitle = Titolo;
-                            _message = "Errore NON DEFINITO";
+                            _message = "Errore NON DEFINITO (" + Result.ToString()+ ")";
                             _pulsanti = MessageBoxButtons.OK;
                             _icona = MessageBoxIcon.Error;
                             break;

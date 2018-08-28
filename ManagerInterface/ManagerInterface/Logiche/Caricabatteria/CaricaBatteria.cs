@@ -56,7 +56,8 @@ namespace ChargerLogic
         public List<llDurataCarica> DurateCarica;
         public List<llDurataProfilo> DurateProfilo;
         public List<_llProfiloTipoBatt> ProfiloTipoBatt;
-
+        public List<llTensioneBatteria> TensioniBatteria;
+        public List<llTensioniModello> TensioniModello;
 
         public System.Collections.Generic.List<SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List<SerialMessage.CicloDiCarica>();
 
@@ -468,11 +469,8 @@ namespace ChargerLogic
                 _mS.SerialNumber = Seriale;
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
-                inizializzaModelli();
-                inizializzaProfili();
-                inizializzaDurate();
-                inizializzaDurateProfilo();
-                inizializzaBatteriaProfilo();
+
+                InizializzaDatiLocali();
 
                 // Attivo gli eventi sia USB che COM
 
@@ -642,7 +640,6 @@ namespace ChargerLogic
             }
         }
 
-
         public bool CaricaApparatoA0()
         {
             try
@@ -693,47 +690,77 @@ namespace ChargerLogic
             }
         }
 
-        public bool CaricaProgramma(byte IdPosizione)
+        public llProgrammaCarica CaricaProgramma(byte IdPosizione)
+        {
+            try
+            {
+                bool _esito = false;
+                SerialMessage.EsitoRisposta _esitoMsg;
+                llProgrammaCarica tempPrg = new llProgrammaCarica();
+                MessaggioLadeLight.MessaggioProgrammazione ImmagineCarica = new MessaggioLadeLight.MessaggioProgrammazione();
+                SerialMessage.EsitoRisposta EsitoMsg;
+
+                if (IdPosizione > 15) IdPosizione = 15;
+
+                uint StartAddr = (uint)(0x2000 + ( 256 * IdPosizione ));
+
+                byte[] _datiTemp = new byte[240];
+                _esito = LeggiBloccoMemoria(StartAddr, 240, out _datiTemp);
+
+                if (_esito)
+                {
+                    EsitoMsg = ImmagineCarica.analizzaMessaggio(_datiTemp, 1);
+                    if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                    {
+                        tempPrg.IdProgramma = ImmagineCarica.IdProgrammazione;
+                        tempPrg.TipoRecord = ImmagineCarica.TipoProgrammazione;
+
+
+                        return tempPrg;
+                    }
+
+                }
+
+                return null;  // llProgrammaCarica
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return null;
+            }
+
+        }
+
+        public bool CaricaAreaProgrammi()
         {
             try
             {
                 bool _esito = false;
                 SerialMessage.EsitoRisposta _esitoMsg;
 
-                if (IdPosizione > 15) IdPosizione = 15;
+                ProgrammiDefiniti = new List<llProgrammaCarica>();
 
-                // Leggo dal primo banco memoria fissa
-                _esito = LeggiParametriApparato();
+                // Comincio a leggere dal primo messaggio da 240 bytes nell'area programmazioni e continuo a scorrere fino a che non ho
+                // tipo record = 0xFF o ho raggiunto l'ultimo ( 15 con inizio 0 ) 
 
-                if (_esito)
+                for(byte contacicli = 0; contacicli <16; contacicli++)
                 {
-
-                    // Se la matricola è inizializzata carico il recors da DB e lo allineo, altrimenti vado in modalità SOLORAM
-                    if ((ParametriApparato.llParApp.SerialeApparato == 0x00) || ((ParametriApparato.llParApp.SerialeApparato & 0xFFFFFF) == 0xFFFFFF))
+                    llProgrammaCarica _tempProgramma = CaricaProgramma(contacicli);
+                    if(_tempProgramma.TipoRecord != 0xFF)
                     {
-                        // Matricola vuota
-                        ApparatoLL = new LadeLightData();
-                        ApparatoLL.Id = "000000";
-
-
+                        ProgrammiDefiniti.Add(_tempProgramma);
+                        _esito = true; // ho almeno 1 programma;
                     }
                     else
                     {
-                        // C'è la matricola --> registro il record
-                        ApparatoLL = new LadeLightData();
-                        // ApparatoLL.caricaDati(ParametriApparato.s);
+                        break;
                     }
-
-
-
-
-                    //Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
-                    //Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
 
                 }
 
-                _cbCollegato = _esito;
-                apparatoPresente = _esito;
+                
                 return _esito;
             }
 
@@ -1562,9 +1589,9 @@ namespace ChargerLogic
 
                 if (NuovoPrg.GeneraByteArray())
                 {
-                    byte[] _datiTemp = new byte[242];
+                    byte[] _datiTemp = new byte[240];
                     _datiTemp = NuovoPrg.dataBuffer;
-                    _esito = ScriviBloccoMemoria(0x2000, 242, _datiTemp);
+                    _esito = ScriviBloccoMemoria(0x2000, 240, _datiTemp);
                 }
 
 
@@ -1879,108 +1906,6 @@ namespace ChargerLogic
             }
         }
 
-        public bool inizializzaModelli()
-        {
-            ModelliLL = new List<_llModelloCb>();
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "Non Definito", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0 });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "Trifase 24-80 / 120", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 80, Ordine = 1, Trifase = 1 });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 48, Ordine = 2, Trifase = 1 });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x01, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0 });
-            return true;
-        }
-
-        public bool inizializzaProfili()
-        {
-            ProfiliCarica = new List<_llProfiloCarica>();
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x00, NomeProfilo = "Non Definito", DutataFase2 = 0, Attivo = 2, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 0 });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x01, NomeProfilo = "IWa", DutataFase2 = 0, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 1 });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x02, NomeProfilo = "IU", DutataFase2 = 0, Attivo = 1, FlagPb = 0, FlagGel = 1, FlagLitio = 0, Ordine = 2 });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x03, NomeProfilo = "IUIa", DutataFase2 = 0, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 3 });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x04, NomeProfilo = "IWa Pb13", DutataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 4 });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x05, NomeProfilo = "IWa Pb11", DutataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 5 });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x06, NomeProfilo = "IWa Pb8", DutataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 6 });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DutataFase2 = 0, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7 });
-            return true;
-        }
-
-        public bool inizializzaDurate()
-        {
-            DurateCarica = new List<llDurataCarica>();
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 780, Descrizione = "13:00", Ordine = 0 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 720, Descrizione = "12:00", Ordine = 1 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 660, Descrizione = "11:00", Ordine = 2 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 600, Descrizione = "10:00", Ordine = 3 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 540, Descrizione = " 9:00", Ordine = 4 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 480, Descrizione = " 8:00", Ordine = 5 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 420, Descrizione = " 7:00", Ordine = 6 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 360, Descrizione = " 6:00", Ordine = 7 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 300, Descrizione = " 5:00", Ordine = 8 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 240, Descrizione = " 4:00", Ordine = 9 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 180, Descrizione = " 3:00", Ordine = 10 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 120, Descrizione = " 2:00", Ordine = 11 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 60, Descrizione = " 1:00", Ordine = 12 });
-            return true;
-        }
-
-        public bool inizializzaDurateProfilo()
-        {
-            DurateProfilo = new List<llDurataProfilo>();
-
-            //Litio
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 720, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 660, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 600, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 540, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 480, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 420, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 360, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 300, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 240, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 180, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 120, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 60, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-
-            //Gel - IU
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 600, IdProfiloCaricaLL = 0x02, Attivo = 1 });
-
-            //Piombo IWa generico
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x01, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 660, IdProfiloCaricaLL = 0x01, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 480, IdProfiloCaricaLL = 0x01, Attivo = 1 });
-
-            //Piombo IWa 13
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x04, Attivo = 1 });
-
-            //Piombo IWa 11
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 660, IdProfiloCaricaLL = 0x05, Attivo = 1 });
-
-            //Piombo IWa 8
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 480, IdProfiloCaricaLL = 0x06, Attivo = 1 });
-
-            return true;
-        }
-
-
-        public bool inizializzaBatteriaProfilo()
-        {
-
-            ProfiloTipoBatt = new List<_llProfiloTipoBatt>();
-
-            // Piombo
-            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x01, Attivo = 0 });
-            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x04, Attivo = 1 });
-            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x05, Attivo = 1 });
-            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x71, IdProfiloCaricaLL = 0x06, Attivo = 1 });
-
-            // Gel
-            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x72, IdProfiloCaricaLL = 0x02, Attivo = 1 });
-
-            // Litio
-            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x73, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-
-            return true;
-        }
 
     }
 

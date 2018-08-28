@@ -27,9 +27,10 @@ namespace MoriData
         public ushort VoltSoglia { get; set; }                // in V/100
         public ushort VCellaMin { get; set; }                 // in V/100
         public ushort VCellaMax { get; set; }                 // in V/100
-        public ushort UsaSpybatt { get; set; }                // in 0: NO , 1:SI
-        public ushort AbilitaEqual { get; set; }              // in 0: NO , 1:SI
-        public ushort AbilitaAttesaBMS { get; set; }          // in 0: NO , 1:SI
+        public ushort UsaSpybatt { get; set; }                // Valori: 0: NO , 1:SI
+        public ushort AbilitaEqual { get; set; }              // Valori: 0: NO , 1:SI
+        public ushort AbilitaAttesaBMS { get; set; }          // Valori: 0: NO , 1:SI
+        public byte TensioniFisse { get; set; }               // Valori: 0: NO , 1:SI
 
 
         public DateTime CreationDate { get; set; }
@@ -170,6 +171,18 @@ namespace MoriData
             get { return _sbTb.AbilitaAttesaBMS; }
             set { _sbTb.AbilitaAttesaBMS = value; _datiSalvati = false; }
         }
+
+        public byte TensioniFisse
+        {
+            get { return _sbTb.TensioniFisse; }
+            set
+            {
+                _sbTb.TensioniFisse = value;
+                _datiSalvati = false;
+            }
+        }
+        
+
 
         #endregion
 

@@ -413,6 +413,21 @@ namespace MoriData
                 }
             }
         }
+
+        public string strIdProgramma
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.IdProgramma.ToString();
+                }
+                else
+                    return "";
+            }
+
+        }
+
         public DateTime CreationDate
         {
             get { return _llprc.CreationDate; }
@@ -715,7 +730,51 @@ namespace MoriData
             }
         }
 
-        
+        public byte TipoRecord
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.TipoRecord;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.TipoRecord = value;
+                _datiSalvati = false;
+            }
+        }
+        public string strTipoRecord 
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.TipoRecord.ToString("x2");
+                return "00";
+            }
+        }
+
+        public byte OpzioniAttive
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.OpzioniAttive;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.OpzioniAttive = value;
+                _datiSalvati = false;
+            }
+        }
+        public string strOpzioniAttive
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.OpzioniAttive.ToString("x2");
+                return "00";
+            }
+
+        }
+
 
 
         #endregion Class Parameter

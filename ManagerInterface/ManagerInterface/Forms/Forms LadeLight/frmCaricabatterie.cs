@@ -37,6 +37,11 @@ namespace PannelloCharger
 
         bool _apparatoPresente = false;
 
+        // Liste per la gestione degli elenchi filtrati di profili e durate
+        private List<_llProfiloCarica> ProfiliCarica;
+        private List<llDurataCarica> DurateCarica;
+        private List<llTensioneBatteria> TensioniBatteria;
+
 
         /* ----------------------------------------------------------
          *  Dichiarazione eventi per la gestione avanzamento
@@ -198,6 +203,7 @@ namespace PannelloCharger
         /// </summary>
         private void InizializzaScheda()
         {
+            /*
             cmbPaProfilo.Items.Clear();
             cmbPaProfilo.Items.Add("N.D.");
             cmbPaProfilo.Items.Add("IWa");
@@ -207,6 +213,7 @@ namespace PannelloCharger
             cmbPaProfilo.Items.Add("IWa Pb11");
             cmbPaProfilo.Items.Add("IWa Pb8");
             cmbPaProfilo.SelectedIndex = 0;
+            */
 
             cmbPaCondStop.Items.Clear();
             cmbPaCondStop.Items.Add("N.D.");
@@ -221,6 +228,10 @@ namespace PannelloCharger
             cmbPaTipoBatteria.DataSource = _parametri.TipiBattria;
             cmbPaTipoBatteria.ValueMember = "BatteryTypeId";
             cmbPaTipoBatteria.DisplayMember = "BatteryType";
+
+            // NUOVA VERSIONE
+            InizializzaVistaProgrammazioni();
+
 
         }
 
@@ -760,6 +771,7 @@ namespace PannelloCharger
 
         public void CaricaCicloAttuale()
         {
+            // NON USATA ??????
             bool _esito;
             try
             {
@@ -777,6 +789,32 @@ namespace PannelloCharger
             {
             }
         }
+
+        public void CaricaListaProgrammazioni()
+        {
+            bool _esito;
+            try
+            {
+
+
+                _esito = _cb.CaricaAreaProgrammi();
+
+
+                if (_esito)
+                {
+
+                    MostraCicloAttuale(_cb.CicloInMacchina);
+
+                }
+
+            }
+            catch
+            {
+            }
+        }
+
+
+
 
         public void CaricaVariabili()
         {
@@ -1968,11 +2006,7 @@ namespace PannelloCharger
             }
         }
 
-        private void cmbPaProfilo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         private void grbInitDatiBase_Enter(object sender, EventArgs e)
         {
 
@@ -2415,7 +2449,74 @@ namespace PannelloCharger
         {
             try
             {
+                byte TipoBatt;
+                sbTipoBatteria TempBatt = (sbTipoBatteria)cmbPaTipoBatteria.SelectedItem;
 
+                if (TempBatt == null)
+                {
+
+                }
+                else
+                {
+                    // Carico i profili in base al tipo
+                    TipoBatt = (byte)TempBatt.BatteryTypeId;
+
+                    var Listatemp = from p in _cb.ProfiliCarica
+                                    join pt in _cb.ProfiloTipoBatt on p.IdProfiloCaricaLL equals pt.IdProfiloCaricaLL
+                                    where pt.BatteryTypeId == TipoBatt
+                                    select p;
+
+                    ProfiliCarica = new List<_llProfiloCarica>();
+
+                    foreach (var pc in Listatemp)
+                    {
+                        ProfiliCarica.Add((_llProfiloCarica)pc);
+                    }
+                    cmbPaProfilo.SelectedItem = null;
+
+                    cmbPaProfilo.DataSource = ProfiliCarica;
+                    cmbPaProfilo.ValueMember = "IdProfiloCaricaLL";
+                    cmbPaProfilo.DisplayMember = "NomeProfilo";
+
+                    // Carico le tensioni in base al tipo
+
+                    _llParametriApparato TipoLL = _cb.ParametriApparato.llParApp;
+
+                    if (TempBatt.TensioniFisse == 0 || TipoLL == null)
+                    {
+                        // Textbox
+                        txtPaTensione.Visible = true;
+                        cmbPaTensione.Visible = false;
+
+                    }
+                    else
+                    {
+                        txtPaTensione.Visible = false;
+                        cmbPaTensione.Visible = true;
+
+                        byte TipoApp = TipoLL.TipoApparato;
+
+                        var Listatens = from t in _cb.TensioniBatteria
+                                        join tm in _cb.TensioniModello on t.IdTensione equals tm.IdTensione
+                                        where tm.IdModelloLL == TipoApp
+                                        select t;
+
+                        TensioniBatteria = new List<llTensioneBatteria>() ;
+                        foreach (var t in Listatens)
+                        {
+                            TensioniBatteria.Add((llTensioneBatteria)t);
+                        }
+
+                        cmbPaTensione.SelectedItem = null;
+
+                        cmbPaTensione.DataSource = TensioniBatteria;
+                        cmbPaTensione.ValueMember = "IdTensione";
+                        cmbPaTensione.DisplayMember = "Descrizione";
+
+                    }
+
+                }
+               
             }
             catch (Exception Ex)
             {
@@ -2423,7 +2524,237 @@ namespace PannelloCharger
             }
         }
 
+        private void cmbPaProfilo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                byte TipoProf;
 
+                if (cmbPaProfilo.SelectedItem == null)
+                {
+                    cmbPaDurataCarica.SelectedItem = null;
+                }
+                else
+                {
+                    TipoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).IdProfiloCaricaLL;
+
+                    var Listatemp = from p in _cb.DurateCarica
+                                    join pt in _cb.DurateProfilo on p.IdDurataCaricaLL equals pt.IdDurataCaricaLL
+                                    where pt.IdProfiloCaricaLL == TipoProf
+                                    select p;
+
+                    DurateCarica = new List<llDurataCarica>();
+
+                    foreach (var pc in Listatemp)
+                    {
+                        DurateCarica.Add((llDurataCarica)pc);
+                    }
+
+
+                    cmbPaDurataCarica.DataSource = DurateCarica;
+                    cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
+                    cmbPaDurataCarica.DisplayMember = "Descrizione";
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbPaDurataCarica_SelectedIndexChanged: " + Ex.Message);
+            }
+
+
+        }
+
+        private void cmbPaDurataCarica_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                /*
+                byte TipoProf;
+
+                TipoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).IdProfiloCaricaLL;
+
+                var Listatemp = from p in _cb.DurateCarica
+                                join pt in _cb.DurateProfilo on p.IdDurataCaricaLL equals pt.IdDurataCaricaLL
+                                where pt.IdProfiloCaricaLL == TipoProf
+                                select p;
+
+                DurateCarica = new List<llDurataCarica>();
+
+                foreach (var pc in Listatemp)
+                {
+                    DurateCarica.Add((llDurataCarica)pc);
+                }
+
+
+                cmbPaDurataCarica.DataSource = DurateCarica;
+                cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
+                cmbPaDurataCarica.DisplayMember = "Descrizione";
+                */
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbPaDurataCarica_SelectedIndexChanged: " + Ex.Message);
+            }
+
+        }
+
+        private void cmbPaTensione_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Copio il valore nella textbox collegata
+            txtPaTensione.Text = cmbPaTensione.Text;
+
+        }
+
+
+        private void InizializzaVistaProgrammazioni()
+        {
+            try
+            {
+                HeaderFormatStyle _stile = new HeaderFormatStyle();
+                _stile.SetBackColor(Color.DarkGray);
+                _stile.SetForeColor(Color.Yellow);
+                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
+                _stile.SetFont(_carattere);
+                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
+
+                flwPaListaConfigurazioni.HeaderUsesThemes = false;
+                flwPaListaConfigurazioni.HeaderFormatStyle = _stile;
+                flwPaListaConfigurazioni.UseAlternatingBackColors = true;
+                flwPaListaConfigurazioni.AlternateRowBackColor = Color.LightGoldenrodYellow;
+
+                flwPaListaConfigurazioni.AllColumns.Clear();
+
+                flwPaListaConfigurazioni.View = View.Details;
+                flwPaListaConfigurazioni.ShowGroups = false;
+                flwPaListaConfigurazioni.GridLines = true;
+
+                BrightIdeasSoftware.OLVColumn colIdConfig = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Num",
+                    AspectName = "strIdProgramma",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colIdConfig);
+
+                BrightIdeasSoftware.OLVColumn colRowTipe = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Type",
+                    AspectName = "strTipoRecord",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colRowTipe);
+
+
+                BrightIdeasSoftware.OLVColumn colRowOpt = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Opt",
+                    AspectName = "",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colRowOpt);
+
+
+                BrightIdeasSoftware.OLVColumn colRowReadonly = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "M",
+                    ToolTipText = "Dati Modificabili",
+                    AspectName = "",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colRowReadonly);
+
+
+                BrightIdeasSoftware.OLVColumn colRowNomeSetup = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Nome",
+                    //ToolTipText = "Dati Modificabili",
+                    AspectName = "",
+                    Width = 200,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colRowNomeSetup);
+
+                BrightIdeasSoftware.OLVColumn colRowBattType = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Tipo",
+                    //ToolTipText = "Dati Modificabili",
+                    AspectName = "",
+                    Width = 120,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colRowBattType);
+
+                BrightIdeasSoftware.OLVColumn colRowBattVNom = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "V",
+                    //ToolTipText = "Dati Modificabili",
+                    AspectName = "",
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colRowBattVNom);
+
+                BrightIdeasSoftware.OLVColumn colRowBattAhNom = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Ah",
+                    //ToolTipText = "Dati Modificabili",
+                    AspectName = "",
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colRowBattAhNom);
+
+                /*
+                
+                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
+                colRowFiller.Text = "";
+                colRowFiller.Width = 60;
+                colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
+                colRowFiller.TextAlign = HorizontalAlignment.Right;
+                colRowFiller.FillsFreeSpace = true;
+                flvwProgrammiCarica.AllColumns.Add(colRowFiller);
+                */
+                flwPaListaConfigurazioni.RebuildColumns();
+                flwPaListaConfigurazioni.SetObjects(_cb.ProgrammiDefiniti);
+                flwPaListaConfigurazioni.BuildList();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("InizializzaVistaLunghi: " + Ex.Message);
+            }
+        }
+
+        private void btnPaCaricaListaProfili_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                
+                CaricaListaProgrammazioni();
+                flwPaListaConfigurazioni.Refresh();
+                //flwPaListaConfigurazioni.SetObjects(_cb.ProgrammiDefiniti);
+                //flwPaListaConfigurazioni.BuildList();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaCaricaListaProfili_Click: " + Ex.Message);
+            }
+        }
     }
 
 }
