@@ -2494,6 +2494,190 @@ namespace ChargerLogic
             }
         }
 
+        public class ComandoEsp32
+        {
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public ushort numBytes;
+            public UInt32 memAddress;
+            public byte[] memData;
+            public byte[] memDataDecoded;
+
+            public byte ComandoLibreria;
+            public byte LunghezzaDati;
+            public byte EsitoChiamata;
+
+
+            public bool datiPronti;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempShort;
+                byte _tempByte;
+
+                try
+                {
+                    datiPronti = false;
+                    LunghezzaDati = 0;
+                    if (_messaggio.Length < 2)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+                    numBytes = (ushort)(_messaggio.Length / 2);
+                    _risposta = new byte[numBytes];
+                    memData = new byte[numBytes];
+
+                    if (decodificaArray(_messaggio, ref _risposta))
+                    {
+                        startByte = 0;
+                        memData = _messaggio;
+                        memDataDecoded = _risposta;
+                    }
+
+                    if (memData.Length < 3)
+                        return EsitoRisposta.RispostaNonValida;
+
+
+
+                    ComandoLibreria = memDataDecoded[0];
+                    LunghezzaDati = memDataDecoded[1];
+                    if ((memDataDecoded.Length - LunghezzaDati) != 3)
+                        return EsitoRisposta.LunghezzaErrata;
+                    EsitoChiamata = memData[2];
+                    datiPronti = true;
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+
+
+
+            public EsitoRisposta componiMessaggio(byte[] _messaggio)
+            {
+                ushort _tempShort;
+                byte _tempByte;
+                byte[] _tempArray;
+                byte[] _tempMessaggio = new byte[10];
+                byte[] _tempFromShort = new byte[2];
+
+                try
+                {
+                    //l'intestazione deve essere pronta
+
+                    datiPronti = false;
+
+                    if (_messaggio.Length != 10) { return EsitoRisposta.NonRiconosciuto; }
+
+                    _tempByte = decodificaByte(_messaggio[0], _messaggio[1]);
+                    _tempShort = (ushort)(_tempByte);
+                    _tempByte = decodificaByte(_messaggio[2], _messaggio[3]);
+                    _tempShort = (ushort)((_tempShort << 8) + _tempByte);
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+            public string DescComandoEsp32
+            {
+                get
+                {
+                    switch (ComandoLibreria)
+                    {
+                        case 0x01:
+                            return "CMD_R - Reset Libreria";
+
+                        case 0x02:
+                            return "CMD_IS - Richiesta Strategia";
+
+                        case 0x03:
+                            return "CMD_AV - Avanzamento Carica";
+
+                        case 0x04:
+                            return "CMD_STP - Arresto Forzato della carica";
+
+                        case 0x05:
+                            return "CMD_SIS - Richiesta Strategia";
+
+                        case 0xA0:
+                            return "CMD_QRY - Richiesta Informazioni";
+
+                        case 0x54:
+                            return "CMD_RDTE - Legge il Tipo Lungo Attuale";
+
+                        case 0x55:
+                            return "CMD_WRTE - Forza il Tipo Lungo Attuale";
+
+                        default:
+                            return ComandoLibreria.ToString("X2");
+
+                    }
+                }
+            }
+
+            /// <summary>
+            /// In base al comando corrente ritorna una stringa con i parametri in chiaro.
+            /// </summary>
+            /// <value>
+            /// </value>
+            public string ParComandoEsp32
+            {
+                get
+                {
+                    switch (ComandoLibreria)
+                    {
+                        case 0x01:
+                            return "CMD_R - Reset Libreria";
+
+                        case 0x02:
+                            return "Richiesta Strategia\nUno\nDue\nTre Quattro e cinque";
+
+                        case 0x03:
+                            return "CMD_AV - Avanzamento Carica";
+
+                        case 0x04:
+                            return "CMD_STP - Arresto Forzato della carica";
+
+                        case 0x05:
+                            return "Richiesta Strategia\nUno\nDue\nTre Quattro e cinque";
+
+                        case 0xA0:
+                            return "CMD_QRY - Richiesta Informazioni";
+
+                        case 0x54:
+                            return "CMD_RDTE - Legge il Tipo Lungo Attuale";
+
+                        case 0x55:
+                            return "CMD_WRTE - Forza il Tipo Lungo Attuale";
+
+                        default:
+                            return ComandoLibreria.ToString("X2");
+
+                    }
+                }
+            }
+
+
+        }
+
+
+
+
         public class EsitoMessaggio
         {
             public enum Esiti : byte { OK = 0x0F, KO = 0xF0 };

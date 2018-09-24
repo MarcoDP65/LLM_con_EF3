@@ -437,7 +437,6 @@ namespace PannelloCharger
 
         }
 
-
         public bool LanciaComandoStrategiaChechPar()
         {
             try
@@ -572,11 +571,6 @@ namespace PannelloCharger
 
         }
 
-
-
-
-
-
         public bool LanciaComandoStrategiaAvanzamentoFase()
         {
             try
@@ -647,7 +641,6 @@ namespace PannelloCharger
 
         }
 
-
         public bool LanciaComandoStrategiaLetturaVariabili()
         {
             try
@@ -693,7 +686,6 @@ namespace PannelloCharger
             }
 
         }
-
 
         public bool LanciaComandoStrategia(byte Modo)
         {
@@ -911,7 +903,6 @@ namespace PannelloCharger
             }
         }
 
-
         private bool MostraPassoCorrente(StepCarica StepCorrente)
         {
             try
@@ -941,8 +932,6 @@ namespace PannelloCharger
                 return false;
             }
         }
-
-
         
         private void inizializzaComboPro()
         {
@@ -972,7 +961,6 @@ namespace PannelloCharger
             }
         }
      
-
 
     }
 }

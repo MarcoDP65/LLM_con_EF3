@@ -41,9 +41,11 @@ namespace ChargerLogic
         public SerialMessage.comandoRTC OrologioSistema = new SerialMessage.comandoRTC();
         public SerialMessage.cicloAttuale CicloInMacchina = new SerialMessage.cicloAttuale();
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
+
+
         public llParametriApparato ParametriApparato = new llParametriApparato();
         public llMappaMemoria Memoria = new llMappaMemoria(1);
-
+        public llContatoriApparato ContatoriLL = new llContatoriApparato();
         public LadeLightData ApparatoLL;
 
         public llVariabili llVariabiliAttuali = new llVariabili();
@@ -762,6 +764,63 @@ namespace ChargerLogic
 
                 
                 return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
+
+
+        public bool CaricaAreaContatori()
+        {
+            try
+            {
+                bool _esito = false;
+                SerialMessage.EsitoRisposta _esitoMsg;
+                MessaggioLadeLight.MessaggioAreaContatori MsgContatoriLL = new MessaggioLadeLight.MessaggioAreaContatori();
+                SerialMessage.EsitoRisposta EsitoMsg;
+
+                ContatoriLL = new llContatoriApparato();
+
+                uint StartAddr = 0x3000;
+
+                byte[] _datiTemp = new byte[240];
+                _esito = LeggiBloccoMemoria(StartAddr, 240, out _datiTemp);
+
+                if (_esito)
+                {
+                    EsitoMsg = MsgContatoriLL.analizzaMessaggio(_datiTemp, 1);
+                    if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                    {
+
+                        ContatoriLL.DataPrimaCarica = MsgContatoriLL.DataPrimaCarica;
+                        ContatoriLL.CntCicliTotali = MsgContatoriLL.CntCicliTotali;
+                        ContatoriLL.CntCicliStaccoBatt = MsgContatoriLL.CntCicliStaccoBatt;
+                        ContatoriLL.CntCicliStop = MsgContatoriLL.CntCicliStop;
+                        ContatoriLL.CntCicliLess3H = MsgContatoriLL.CntCicliLess3H;
+                        ContatoriLL.CntCicli3Hto6H = MsgContatoriLL.CntCicli3Hto6H;
+                        ContatoriLL.CntCicli6Hto9H = MsgContatoriLL.CntCicli6Hto9H;
+                        ContatoriLL.CntCicliOver9H = MsgContatoriLL.CntCicliOver9H;
+                        ContatoriLL.CntProgrammazioni = MsgContatoriLL.CntProgrammazioni;
+                        ContatoriLL.CntCicliBrevi = MsgContatoriLL.CntCicliBrevi;
+                        ContatoriLL.PntNextBreve = MsgContatoriLL.PntNextBreve;
+                        ContatoriLL.CntCariche = MsgContatoriLL.CntCariche;
+                        ContatoriLL.PntNextCarica = MsgContatoriLL.PntNextCarica;
+
+                        ContatoriLL.valido = true;
+
+                        return true;
+                    }
+
+                }
+
+                return false; 
+
             }
 
             catch (Exception Ex)

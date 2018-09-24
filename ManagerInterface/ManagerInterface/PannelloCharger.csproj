@@ -226,6 +226,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Database\LadeLightData.cs" />
+    <Compile Include="Database\llContatoriApparato.cs" />
     <Compile Include="Database\llDurataCarica.cs" />
     <Compile Include="Database\llMappaMemoria.cs" />
     <Compile Include="Database\llModelliCb.cs" />
@@ -306,6 +307,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattEvt.cs" />
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattProxyEsp.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmAboutBox.cs">
       <SubType>Form</SubType>
     </Compile>

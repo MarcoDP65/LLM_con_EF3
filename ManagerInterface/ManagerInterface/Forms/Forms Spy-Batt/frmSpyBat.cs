@@ -9876,5 +9876,20 @@ namespace PannelloCharger
                 Log.Error("btnFwSwitchArea1_Click: " + Ex.Message);
             }
         }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEsp32Test01_Click(object sender, EventArgs e)
+        {
+            LanciaComandoTestEsp32(01);
+        }
+
+        private void btnEsp32SetLed_Click(object sender, EventArgs e)
+        {
+            LanciaComandoEsp32SetLed(0x00);
+        }
     }
 }

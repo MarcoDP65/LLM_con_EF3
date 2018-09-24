@@ -676,6 +676,64 @@ namespace PannelloCharger
         }
 
 
+        /// <summary>
+        /// Aggiorno il form con i dati di ciclo attivo dell'ultima lettura
+        /// </summary>
+        /// <returns></returns>
+        public bool MostraContatori()
+        {
+
+            try
+            {
+
+                //Prima Vuoto tutto
+                txtContDtPrimaCarica.Text = "";
+                txtContDtUltimaCanc.Text = "";
+                txtContBreviSalvati.Text = "";
+                txtContCariche3to6.Text = "";
+                txtContCariche6to9.Text = "";
+                txtContCaricheOver9.Text = "";
+                txtContCaricheSalvate.Text = "";
+                txtContCaricheStop.Text = "";
+                txtContCaricheStrappo.Text = "";
+                txtContCaricheTotali.Text = "";
+                txtContCaricheUnder3.Text = "";
+                txtContNumCancellazioni.Text = "";
+                txtContPntNextBreve.Text = "";
+                txtContPntNextCarica.Text = "";
+
+                if (_cb.ContatoriLL.valido)
+                {
+                    txtContDtPrimaCarica.Text = _cb.ContatoriLL.strDataPrimaCarica;
+                    txtContDtUltimaCanc.Text = "";
+                    txtContBreviSalvati.Text = _cb.ContatoriLL.CntCicliBrevi.ToString();
+                    txtContCariche3to6.Text = _cb.ContatoriLL.CntCicli3Hto6H.ToString();
+                    txtContCariche6to9.Text = _cb.ContatoriLL.CntCicli6Hto9H.ToString();
+                    txtContCaricheOver9.Text = _cb.ContatoriLL.CntCicliOver9H.ToString();
+                    txtContCaricheSalvate.Text = _cb.ContatoriLL.CntCariche.ToString();
+                    txtContCaricheStop.Text = _cb.ContatoriLL.CntCicliStop.ToString();
+                    txtContCaricheStrappo.Text = _cb.ContatoriLL.CntCicliStaccoBatt.ToString();
+                    txtContCaricheTotali.Text = _cb.ContatoriLL.CntCicliTotali.ToString();
+                    txtContCaricheUnder3.Text = _cb.ContatoriLL.CntCicliLess3H.ToString();
+                    //txtContNumCancellazioni.Text = _cb.ContatoriLL.cn.ToString();
+                    txtContPntNextBreve.Text = _cb.ContatoriLL.strPntNextBreve;
+                    txtContPntNextCarica.Text = _cb.ContatoriLL.strPntNextCarica;
+                }
+
+
+
+                return true;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+
+                return false;
+            }
+        }
+
+
 
 
         private void abilitaSalvataggi(bool _stato)
@@ -708,6 +766,10 @@ namespace PannelloCharger
             {
                 tabCaricaBatterie.Width = this.Width - 42;
                 tabCaricaBatterie.Height = this.Height - 109;
+
+                // Tab Cicli
+                lvwCicliMacchina.Width = tabCb04.Width - 20;
+
             }
             catch
             {
@@ -813,6 +875,28 @@ namespace PannelloCharger
             }
         }
 
+        public void CaricaAreaContatori()
+        {
+            bool _esito;
+            try
+            {
+
+
+                _esito = _cb.CaricaAreaContatori();
+
+
+                if (_esito)
+                {
+
+                    MostraContatori();
+
+                }
+
+            }
+            catch
+            {
+            }
+        }
 
 
 
@@ -2754,6 +2838,21 @@ namespace PannelloCharger
             {
                 Log.Error("btnPaCaricaListaProfili_Click: " + Ex.Message);
             }
+        }
+
+        private void btnCaricaContatori_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                CaricaAreaContatori();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaCaricaListaProfili_Click: " + Ex.Message);
+            }
+
         }
     }
 

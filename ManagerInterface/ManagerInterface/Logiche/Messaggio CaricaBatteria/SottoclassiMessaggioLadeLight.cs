@@ -948,6 +948,588 @@ return false;
 
         }
 
+        public class MessaggioAreaContatori
+        {
+            public byte[] DataPrimaCarica;
+            public UInt32 CntCicliTotali;
+            public UInt32 CntCicliStaccoBatt;
+            public UInt32 CntCicliStop;
+            public UInt32 CntCicliLess3H;
+            public UInt32 CntCicli3Hto6H;
+            public UInt32 CntCicli6Hto9H;
+            public UInt32 CntCicliOver9H;
+            public ushort CntProgrammazioni;
+
+            public UInt32 CntCicliBrevi;
+            public UInt32 PntNextBreve;
+
+            public UInt32 CntCariche;
+            public UInt32 PntNextCarica;
+
+            public ushort CntMemReset;
+            public byte[] DataUltimaCancellazione;
+
+
+            public ushort CrcPacchetto { get; set; }
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public MessaggioAreaContatori()
+            {
+                VuotaPacchetto();
+            }
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 240)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+
+
+                    startByte = 0;
+                    Log.Debug(" ----------------------  Area Contatori  -----------------------------------------");
+
+
+                    DataPrimaCarica = SubArray(_messaggio, startByte, 5);
+                    startByte += 5;
+                    CntCicliTotali = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    CntCicliStop = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    CntCicliStaccoBatt = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    CntCicliLess3H = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    CntCicli3Hto6H = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    CntCicli6Hto9H = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    CntCicliOver9H = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    CntProgrammazioni = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    CntCicliBrevi = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    PntNextBreve = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+                    CntCariche = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    PntNextCarica = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+                    CntMemReset = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    DataUltimaCancellazione = SubArray(_messaggio, startByte, 5);
+                    startByte += 3;
+
+                    datiPronti = true;
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+            public bool GeneraByteArray()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[240];
+                    byte[] _dataSet = new byte[238];
+                    byte[] _tempString;
+                    int _arrayInit = 0;
+                    ushort _temCRC = 0x0000;
+
+                    Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 240; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                    }
+
+
+
+
+
+                    for (int _i = 0; _i < 238; _i++)
+                    {
+                        _dataSet[_i] = _datamap[_i];
+                    }
+
+                    _temCRC = codCrc.ComputeChecksum(_dataSet);
+
+                    FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
+                    _datamap[238] = _byte2;
+                    _datamap[239] = _byte1;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+
+            public bool VuotaPacchetto()
+            {
+                try
+                {
+
+                    DataPrimaCarica = new byte[5] { 01, 01, 18, 0, 0 };
+
+                    CntCicliTotali = 0;
+                    CntCicliStop = 0;
+                    CntCicliStaccoBatt = 0;
+                    CntCicliLess3H = 0;
+                    CntCicli3Hto6H = 0;
+                    CntCicli6Hto9H = 0;
+                    CntCicliOver9H = 0;
+                    CntProgrammazioni = 0;
+
+                    CntCicliBrevi = 0;
+                    PntNextBreve = 0;
+
+                    CntCariche = 0 ;
+                    PntNextCarica = 0;
+
+                    CntMemReset = 0;
+                    DataUltimaCancellazione = new byte[3] { 01, 01, 18 };
+
+
+                    CrcPacchetto = 0;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+
+
+
+        }
+
+        public class MessaggioMemoriaBreve
+        {
+
+            public UInt32 NumeroCarica;
+            public ushort NumeroEvtBreve;
+            public byte[] DataOraEvento;
+            public short VBatt;
+            public short IBattMin;
+            public short IBatt;
+            public short IBattMax;
+            public byte TempBatt;
+            public byte TempIGBT1;
+            public byte TempIGBT2;
+            public byte TempIGBT3;
+            public byte TempIGBT4;
+            public byte TempDiode;
+            public UInt32 VettoreErrori;
+            public ushort DurataBreve;
+
+            public ushort CrcPacchetto { get; set; }
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public MessaggioMemoriaBreve()
+            {
+                VuotaPacchetto();
+            }
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 240)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    CrcPacchetto = ArrayToUshort(_messaggio, 238, 2);
+                    if (CrcPacchetto == 0xFFFF)
+                    {
+                        // CRC non coerente
+                        //return EsitoRisposta.MessaggioVuoto;
+                    }
+                    else
+                    {
+                        // Controllo il CRC
+                        byte[] _verificaCrc = new byte[238];
+                        for (int _i = 0; _i < 238; _i++)
+                        {
+                            _verificaCrc[_i] = _messaggio[_i];
+                        }
+                        _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
+
+
+                        if (CrcPacchetto != _tempCRC)
+                        {
+                            // CRC non coerente
+                            return EsitoRisposta.BadCRC;
+
+                        }
+                    }
+
+
+                    startByte = 0;
+                    Log.Debug(" ----------------------  Record Breve  -----------------------------------------");
+
+
+
+                    NumeroCarica = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+                    NumeroEvtBreve = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    DataOraEvento = SubArray(_messaggio, startByte, 5);
+                    startByte += 5;
+                    VBatt = ArrayToShort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    IBattMin = ArrayToShort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    IBatt = ArrayToShort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    IBattMax = ArrayToShort(_messaggio, startByte, 2);
+                    startByte += 1;
+                    TempBatt = _messaggio[ startByte];
+                    startByte += 1;
+                    TempIGBT1 = _messaggio[startByte];
+                    startByte += 1;
+                    TempIGBT2 = _messaggio[startByte];
+                    startByte += 1;
+                    TempIGBT3 = _messaggio[startByte];
+                    startByte += 1;
+                    TempIGBT4 = _messaggio[startByte];
+                    startByte += 1;
+                    TempDiode = _messaggio[startByte];
+                    startByte += 1;
+                    VettoreErrori = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+                    DurataBreve = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    datiPronti = true;
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+            public bool GeneraByteArray()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[240];
+                    byte[] _dataSet = new byte[238];
+                    byte[] _tempString;
+                    int _arrayInit = 0;
+                    ushort _temCRC = 0x0000;
+
+                    Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 240; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                    }
+
+
+
+
+
+                    for (int _i = 0; _i < 238; _i++)
+                    {
+                        _dataSet[_i] = _datamap[_i];
+                    }
+
+                    _temCRC = codCrc.ComputeChecksum(_dataSet);
+
+                    FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
+                    _datamap[238] = _byte2;
+                    _datamap[239] = _byte1;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+
+            public bool VuotaPacchetto()
+            {
+                try
+                {
+
+                    NumeroCarica = 0;
+                    NumeroEvtBreve = 0;
+                    DataOraEvento = new byte[5] { 01, 01, 18, 0, 0 };
+                    VBatt = 0;
+                    IBattMin = 0;
+                    IBatt = 0;
+                    IBattMax = 0;
+                    TempBatt = 0;
+                    TempIGBT1 = 0;
+                    TempIGBT2 = 0;
+                    TempIGBT3 = 0;
+                    TempIGBT4 = 0;
+                    TempDiode = 0;
+                    VettoreErrori = 0;
+                    DurataBreve = 0;
+
+                    CrcPacchetto = 0;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+
+
+
+        }
+
+        public class MessaggioMemoriaLunga
+        {
+
+            public UInt32 NumeroCarica;
+            public byte[] IdSpyBatt;
+            public ushort IdProgrammazione;
+            public UInt32 PntPrimoBreve;
+            public ushort CntCicliBrevi;
+            public byte[] DataOraStart;
+            public byte[] DataOraStop;
+            public ushort AhCaricati;
+            public UInt32 WhCaricati;
+            public byte ModStop;
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public MessaggioMemoriaLunga()
+            {
+                VuotaPacchetto();
+            }
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 240)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+
+
+                    startByte = 0;
+                    Log.Debug(" ----------------------  Record Lungo  -----------------------------------------");
+                    
+                    NumeroCarica = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+
+                    IdSpyBatt = SubArray(_messaggio, startByte, 8);
+                    startByte += 8;
+
+                    IdProgrammazione = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    PntPrimoBreve = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+
+                    CntCicliBrevi = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    DataOraStart = SubArray(_messaggio, startByte, 5);
+                    startByte += 5;
+
+                    DataOraStop = SubArray(_messaggio, startByte, 5);
+                    startByte += 5;
+
+                    AhCaricati = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    WhCaricati = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    ModStop = _messaggio[startByte];
+                    startByte += 1;
+
+  
+                    datiPronti = true;
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+            public bool GeneraByteArray()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[240];
+                    byte[] _dataSet = new byte[238];
+                    byte[] _tempString;
+                    int _arrayInit = 0;
+                    ushort _temCRC = 0x0000;
+
+                    Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 240; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                    }
+
+
+
+
+
+                    for (int _i = 0; _i < 238; _i++)
+                    {
+                        _dataSet[_i] = _datamap[_i];
+                    }
+
+                    _temCRC = codCrc.ComputeChecksum(_dataSet);
+
+                    FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
+                    _datamap[238] = _byte2;
+                    _datamap[239] = _byte1;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+
+            public bool VuotaPacchetto()
+            {
+                try
+                {
+
+                    NumeroCarica = 0;
+                    IdSpyBatt = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
+                    IdProgrammazione = 0;
+                    PntPrimoBreve = 0;
+                    CntCicliBrevi = 0;
+                    DataOraStart = new byte[5] { 01, 01, 18, 0, 0 };
+                    DataOraStop = new byte[5] { 01, 01, 18, 0, 0 };
+                    AhCaricati = 0;
+                    WhCaricati = 0;
+                    ModStop = 0;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+
+
+
+        }
 
 
     }

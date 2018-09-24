@@ -76,6 +76,7 @@ namespace ChargerLogic
             CMD_SIG60_READ_SETTING = 0x7E,
             CMD_CHRG_STRATEGY = 0x80,
             CMD_SIG60_PROXY = 0x82,
+            CMD_ESP32_PROXY = 0x85,
             CMD_SCROLL_SCREEN = 0x94,
             CMD_DRAW_SCREEN = 0x96,
             CMD_DRAW_LINE = 0xA5,
@@ -2068,7 +2069,7 @@ namespace ChargerLogic
 
         {
             _byte4 = (byte)(_value & 0x000000FF);
-            _byte3 = (byte)((_value >> 8) & 0x000000FF);
+            _byte3 = (byte)((_value >> 8 ) & 0x000000FF);
             _byte2 = (byte)((_value >> 16) & 0x000000FF);
             _byte1 = (byte)((_value >> 24) & 0x000000FF);
         }

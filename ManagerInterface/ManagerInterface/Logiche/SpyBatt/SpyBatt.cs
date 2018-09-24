@@ -3617,7 +3617,6 @@ namespace ChargerLogic
             }
         }
 
-
         public bool ComandoStrategiaAggiornaTE(byte TELocale, out byte[] Dati)
         {
 
@@ -3680,7 +3679,6 @@ namespace ChargerLogic
             }
         }
 
-
         public bool ComandoInfoStrategia(byte ComandoStrategia, out byte[] Dati)
         {
 
@@ -3733,10 +3731,130 @@ namespace ChargerLogic
                 return false;
             }
         }
+        //
+        // -------------------------------
+
+        // -------------------------------
+        // esp32
+        public bool LanciaComandoTestEsp32(byte ComandoEsp32, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+                ControllaAttesa(UltimaScrittura);
 
 
 
+                Dati = new byte[252];
 
+
+                _mS.Comando = SerialMessage.TipoComando.CMD_ESP32_PROXY;
+                _mS.CmdEsp32 = new MessaggioSpyBatt.ComandoEsp32();
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio ComandoEsp32 -  " + ComandoEsp32.ToString("X2"));
+
+                _mS.ComponiMessaggioTestEsp32(ComandoEsp32);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
+
+                int _totDati = _mS.ComandoStrat.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
+        public bool ComandoEsp32SetLed(byte StatoLed, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+                //byte msb = 0;
+                //byte lsb = 0;
+                ControllaAttesa(UltimaScrittura);
+
+                byte[] _cmdEsp32 = new byte[3];
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.CMD_ESP32_PROXY;
+                _mS.CmdEsp32 = new MessaggioSpyBatt.ComandoEsp32();
+
+                //_cmdEsp32[0] = 0x80;
+
+                _cmdEsp32[0] = 0x01;
+                _cmdEsp32[1] = 0x03;
+                _cmdEsp32[2] = StatoLed;
+
+
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio comando base CMD_ESP32_PROXY - CMD_LED ");
+
+                _mS.ComponiMessaggioOpenEsp32(_cmdEsp32);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.CmdEsp32.memDataDecoded));
+
+                int _totDati = _mS.CmdEsp32.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
+        //
+        // -------------------------------
 
         /// <summary>
         /// Entra / Esce dallo stato CALIBRAZIONE
@@ -3780,7 +3898,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-
 
         public string StringaTensione(uint Tensione)
         {
@@ -4963,6 +5080,12 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 Log.Debug("Lettura Comando Strategia Memoria");
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.CMD_ESP32_PROXY:
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
+                                Log.Debug("Comando Proxy Esp32");
                                 break;
 
                             case (byte)SerialMessage.TipoComando.CMD_CONNECT:     // ex start 0x0F:
