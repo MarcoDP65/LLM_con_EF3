@@ -179,7 +179,6 @@
             this.lblCliCliente = new System.Windows.Forms.Label();
             this.btnCaricaMemoria = new System.Windows.Forms.Button();
             this.tabCb04 = new System.Windows.Forms.TabPage();
-            this.lvwCicliMacchina = new System.Windows.Forms.ListView();
             this.tabOrologio = new System.Windows.Forms.TabPage();
             this.grbAccensione = new System.Windows.Forms.GroupBox();
             this.lblOrarioAccensione = new System.Windows.Forms.Label();
@@ -706,6 +705,7 @@
             this.txtCicliNumRecord = new System.Windows.Forms.TextBox();
             this.label223 = new System.Windows.Forms.Label();
             this.chkCicliCaricaBrevi = new System.Windows.Forms.CheckBox();
+            this.flvCicliListaCariche = new BrightIdeasSoftware.FastObjectListView();
             this.tabProfiloAttuale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).BeginInit();
             this.grbVarParametriSig.SuspendLayout();
@@ -783,6 +783,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
             this.grbVariabiliImmediate.SuspendLayout();
             this.grbCicli.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvCicliListaCariche)).BeginInit();
             this.SuspendLayout();
             // 
             // tabProfiloAttuale
@@ -2497,23 +2498,14 @@
             // 
             // tabCb04
             // 
+            this.tabCb04.Controls.Add(this.flvCicliListaCariche);
             this.tabCb04.Controls.Add(this.grbCicli);
-            this.tabCb04.Controls.Add(this.lvwCicliMacchina);
             this.tabCb04.Location = new System.Drawing.Point(4, 22);
             this.tabCb04.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabCb04.Name = "tabCb04";
             this.tabCb04.Size = new System.Drawing.Size(1288, 563);
             this.tabCb04.TabIndex = 3;
             this.tabCb04.Text = "Memoria Cicli";
-            // 
-            // lvwCicliMacchina
-            // 
-            this.lvwCicliMacchina.Location = new System.Drawing.Point(11, 13);
-            this.lvwCicliMacchina.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lvwCicliMacchina.Name = "lvwCicliMacchina";
-            this.lvwCicliMacchina.Size = new System.Drawing.Size(1263, 325);
-            this.lvwCicliMacchina.TabIndex = 0;
-            this.lvwCicliMacchina.UseCompatibleStateImageBehavior = false;
             // 
             // tabOrologio
             // 
@@ -8966,6 +8958,7 @@
             this.btnCicliVuotaLista.TabIndex = 0;
             this.btnCicliVuotaLista.Text = "Vuota lista";
             this.btnCicliVuotaLista.UseVisualStyleBackColor = true;
+            this.btnCicliVuotaLista.Click += new System.EventHandler(this.btnCicliVuotaLista_Click);
             // 
             // btnCicliCaricaLista
             // 
@@ -8975,6 +8968,7 @@
             this.btnCicliCaricaLista.TabIndex = 1;
             this.btnCicliCaricaLista.Text = "Carica Cicli";
             this.btnCicliCaricaLista.UseVisualStyleBackColor = true;
+            this.btnCicliCaricaLista.Click += new System.EventHandler(this.btnCicliCaricaLista_Click);
             // 
             // txtCicliAddrPrmo
             // 
@@ -9021,6 +9015,19 @@
             this.chkCicliCaricaBrevi.TabIndex = 6;
             this.chkCicliCaricaBrevi.Text = "Brevi";
             this.chkCicliCaricaBrevi.UseVisualStyleBackColor = true;
+            // 
+            // flvCicliListaCariche
+            // 
+            this.flvCicliListaCariche.CellEditUseWholeCell = false;
+            this.flvCicliListaCariche.Location = new System.Drawing.Point(11, 13);
+            this.flvCicliListaCariche.Margin = new System.Windows.Forms.Padding(2);
+            this.flvCicliListaCariche.Name = "flvCicliListaCariche";
+            this.flvCicliListaCariche.ShowGroups = false;
+            this.flvCicliListaCariche.Size = new System.Drawing.Size(1263, 352);
+            this.flvCicliListaCariche.TabIndex = 63;
+            this.flvCicliListaCariche.UseCompatibleStateImageBehavior = false;
+            this.flvCicliListaCariche.View = System.Windows.Forms.View.Details;
+            this.flvCicliListaCariche.VirtualMode = true;
             // 
             // frmCaricabatterie
             // 
@@ -9168,6 +9175,7 @@
             this.grbVariabiliImmediate.PerformLayout();
             this.grbCicli.ResumeLayout(false);
             this.grbCicli.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flvCicliListaCariche)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -9217,7 +9225,6 @@
         private System.Windows.Forms.Button btnSalvaCaricabatteria;
         private System.Windows.Forms.TextBox txtEsitoVerCavi;
         private System.Windows.Forms.Label lblEsito;
-        private System.Windows.Forms.ListView lvwCicliMacchina;
         private System.Windows.Forms.TabPage tabCb07;
         private System.Windows.Forms.GroupBox grbCicloCorrente;
         private System.Windows.Forms.TextBox txtPaTempoMax;
@@ -9851,5 +9858,6 @@
         private System.Windows.Forms.TextBox txtCicliAddrPrmo;
         private System.Windows.Forms.Button btnCicliCaricaLista;
         private System.Windows.Forms.Button btnCicliVuotaLista;
+        private BrightIdeasSoftware.FastObjectListView flvCicliListaCariche;
     }
 }

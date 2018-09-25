@@ -60,8 +60,13 @@ namespace ChargerLogic
         public List<_llProfiloTipoBatt> ProfiloTipoBatt;
         public List<llTensioneBatteria> TensioniBatteria;
         public List<llTensioniModello> TensioniModello;
+        public List<llMemoriaCicli> MemoriaCicli;
 
-        public System.Collections.Generic.List<SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List<SerialMessage.CicloDiCarica>();
+        public const byte SizeCharge = 36;
+        public const byte SizeShort = 30;
+
+
+        //public System.Collections.Generic.List<SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List<SerialMessage.CicloDiCarica>();
 
         // -------------------------------------------------------
         //    Dichiarazione eventi per la gestione avanzamento
@@ -905,7 +910,7 @@ namespace ChargerLogic
             }
         }
 
-
+/*
         public bool CaricaCicli()
         {
             try
@@ -938,7 +943,7 @@ namespace ChargerLogic
             }
         }
 
-
+*/
         public bool LeggiOrologio()
         {
             try

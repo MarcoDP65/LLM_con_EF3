@@ -768,7 +768,7 @@ namespace PannelloCharger
                 tabCaricaBatterie.Height = this.Height - 109;
 
                 // Tab Cicli
-                lvwCicliMacchina.Width = tabCb04.Width - 20;
+                flvCicliListaCariche.Width = tabCb04.Width - 20;
 
             }
             catch
@@ -1053,46 +1053,14 @@ namespace PannelloCharger
         }
 
 
-        private void CaricaTabelleCicli()
-        {
-
-            lvwCicliMacchina.View = View.Details;
-            lvwCicliMacchina.GridLines = true;
-            lvwCicliMacchina.FullRowSelect = true;
-            //Add column header
-            lvwCicliMacchina.Columns.Add("Ciclo", 30, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("Start", 120, HorizontalAlignment.Left);
-            lvwCicliMacchina.Columns.Add("V Start", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("V 5 min", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("I 5 min", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("V Stop", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("I Stop", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("Ah", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("Durata", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("Errori", 60, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("Cond Stop", 100, HorizontalAlignment.Center);
-            lvwCicliMacchina.Columns.Add("T da Prec", 80,HorizontalAlignment.Center);
  
-            //Add items in the listview
-            string[] arr = new string[12];
-            ListViewItem itm;
-
-            arr = new string[12] { "1", "31.1.2014 12.30", "2,11", "2,23", "29,7", "2,63", "14,2", "324", "13:30", "0", "2", "1g 03:40" };
-            itm = new ListViewItem(arr);
-            lvwCicliMacchina.Items.Add(itm);
-            arr = new string[12] { "2", "31.1.2014 12.30", "2,13", "2,25", "29,8", "2,64", "13,9", "336", "13:15", "0", "3", "3g 03:40" };
-            itm = new ListViewItem(arr);
-            lvwCicliMacchina.Items.Add(itm);
-        
-        }
-
         private void btnCaricaCicli_Click(object sender, EventArgs e)
         {
 
             try 
             {
 
-                CaricaTabelleCicli();
+                //CaricaTabelleCicli();
                 return;
 
             }
@@ -2853,6 +2821,55 @@ namespace PannelloCharger
                 Log.Error("btnPaCaricaListaProfili_Click: " + Ex.Message);
             }
 
+        }
+
+        private void btnCicliVuotaLista_Click(object sender, EventArgs e)
+        {
+            VuotaListaCariche();
+        }
+
+        private void btnCicliCaricaLista_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                uint _StartAddr;
+                ushort _NumByte;
+                bool _esito;
+
+                if (uint.TryParse(txtCicliAddrPrmo.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true)
+                {
+                    _StartAddr = 0x1B3000;
+                }
+
+                txtCicliAddrPrmo.Text = _StartAddr.ToString("X6");
+
+                if ( txtCicliNumRecord.Text =="-1")
+                {
+                    // tutti i record
+                    _NumByte = 0;
+                }
+                else
+                {
+                    if (ushort.TryParse(txtCicliNumRecord.Text, out _NumByte) != true)
+                    {
+                        _NumByte = 0;
+                    }
+                    else
+                    {
+                        if (_NumByte < 1) _NumByte = 0;
+                       // if (_NumByte > 242) _NumByte = 242;
+                    }
+
+                }
+                txtCicliNumRecord.Text = _NumByte.ToString();
+                CaricaListaCariche(_StartAddr, _NumByte);
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnCicliCaricaLista_Click: " + Ex.Message);
+            }
         }
     }
 

@@ -1397,7 +1397,7 @@ return false;
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length < 240)
+                    if (_messaggio.Length < 36)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
