@@ -331,13 +331,13 @@ namespace ChargerLogic
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length <240 )
+                    if (_messaggio.Length <236 )
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
-                    CrcPacchetto = ArrayToUshort(_messaggio, 238, 2);
+                    CrcPacchetto = ArrayToUshort(_messaggio, 234, 2);
                     if (CrcPacchetto == 0xFFFF)
                     {
                         // CRC non coerente
@@ -346,8 +346,8 @@ namespace ChargerLogic
                     else
                     {
                         // Controllo il CRC
-                        byte[] _verificaCrc = new byte[238];
-                        for (int _i = 0; _i < 238; _i++)
+                        byte[] _verificaCrc = new byte[234];
+                        for (int _i = 0; _i < 234; _i++)
                         {
                             _verificaCrc[_i] = _messaggio[_i];
                         }
@@ -436,8 +436,8 @@ namespace ChargerLogic
             {
                 try
                 {
-                    byte[] _datamap = new byte[240];
-                    byte[] _dataSet = new byte[238];
+                    byte[] _datamap = new byte[236];
+                    byte[] _dataSet = new byte[234];
                     byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
@@ -451,7 +451,7 @@ namespace ChargerLogic
                     byte _byte4 = 0;
 
                     // Preparo l'array vuoto
-                    for (int _i = 0; _i < 240; _i++)
+                    for (int _i = 0; _i < 236; _i++)
                     {
                         _datamap[_i] = 0xFF;
                     }
@@ -569,7 +569,7 @@ namespace ChargerLogic
 
 
                     // MaxRecordBrevi (3 bytes)
-                    MaxRecordBrevi = 0x010800;
+                    MaxRecordBrevi = 0x00E555;
                     FunzioniComuni.SplitUint32(MaxRecordBrevi, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
 
                     _datamap[_arrayInit++] = _byte2;
@@ -577,7 +577,7 @@ namespace ChargerLogic
                     _datamap[_arrayInit++] = _byte4;
 
                     // Max Testate carica (2 bytes)
-                    MaxRecordCarica = 0x0200;
+                    MaxRecordCarica = 0x01C7;
                     FunzioniComuni.SplitUshort(MaxRecordCarica, ref _byte2, ref _byte1);
 
                     _datamap[_arrayInit++] = _byte1;
@@ -617,7 +617,7 @@ namespace ChargerLogic
 
 
 
-                    for (int _i = 0; _i < 238; _i++)
+                    for (int _i = 0; _i < 234; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
@@ -625,8 +625,8 @@ namespace ChargerLogic
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[238] = _byte2;
-                    _datamap[239] = _byte1;
+                    _datamap[234] = _byte2;
+                    _datamap[235] = _byte1;
 
                     dataBuffer = _datamap;
 
@@ -686,6 +686,7 @@ return false;
             public byte OpzioniProgrammazione { get; set; }
             public ushort IdProgrammazione { get; set; }
             public byte ProgInUse { get; set; }
+            public byte[] DataInserimento { get; set; }
             public byte[] AreaParametri { get; set; }
             public byte LenNomeCiclo { get; private set; }
             public string NomeCiclo { get; set; }
@@ -814,8 +815,8 @@ return false;
             {
                 try
                 {
-                    byte[] _datamap = new byte[242];
-                    byte[] _dataSet = new byte[240];
+                    byte[] _datamap = new byte[236];
+                    byte[] _dataSet = new byte[234];
                     byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
@@ -829,7 +830,7 @@ return false;
                     byte _byte4 = 0;
 
                     // Preparo l'array vuoto
-                    for (int _i = 0; _i < 242; _i++)
+                    for (int _i = 0; _i < 236; _i++)
                     {
                         _datamap[_i] = 0xFF;
                     }
@@ -847,8 +848,26 @@ return false;
                     _datamap[_arrayInit++] = _byte1;
                     _datamap[_arrayInit++] = _byte2;
 
-                    //Program Used; salto direttamente al byte 20
-                    _arrayInit = 19;
+                    // Data inserimento
+                    if(DataInserimento == null)
+                    {
+                        DataInserimento = new byte[5];
+                        DateTime OraCorrente = DateTime.Now;
+                        DataInserimento[0] = (byte)(OraCorrente.Year - 2000 );
+                        DataInserimento[1] = (byte)(OraCorrente.Month);
+                        DataInserimento[2] = (byte)(OraCorrente.Day);
+                        DataInserimento[3] = (byte)(OraCorrente.Hour);
+                        DataInserimento[4] = (byte)(OraCorrente.Minute);
+                    }
+                    _arrayInit = 0x14;
+                    _datamap[_arrayInit++] = DataInserimento[0];
+                    _datamap[_arrayInit++] = DataInserimento[1];
+                    _datamap[_arrayInit++] = DataInserimento[2];
+                    _datamap[_arrayInit++] = DataInserimento[3];
+                    _datamap[_arrayInit++] = DataInserimento[4];
+
+                    //Program Used; salto direttamente al byte 0x1F
+                    _arrayInit = 0x1F;
                     _datamap[_arrayInit++] = ProgInUse;
 
                     //--------------------------------------------------------------------------------------------------------------------
@@ -862,7 +881,7 @@ return false;
                     //   1-2  - Valore Ushort
                     // Dim max per l'area 64 Bytes
                     //--------------------------------------------------------------------------------------------------------------------
-                    _arrayInit = 32;
+                    _arrayInit = 0x20;
 
                     // Lunghezza nome; Se NomeCiclo è lungo + di 6 lo taglio a 6
                     if (NomeCiclo.Length > 6) NomeCiclo = NomeCiclo.Substring(0, 6);
@@ -896,7 +915,7 @@ return false;
 
 
 
-                    for (int _i = 0; _i < 240; _i++)
+                    for (int _i = 0; _i < 234; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
@@ -904,8 +923,8 @@ return false;
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[240] = _byte2;
-                    _datamap[241] = _byte1;
+                    _datamap[234] = _byte2;
+                    _datamap[235] = _byte1;
 
                     dataBuffer = _datamap;
 

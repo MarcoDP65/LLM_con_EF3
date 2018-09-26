@@ -23,13 +23,15 @@ namespace MoriData
         public byte IdProfiloCaricaLL { get; set; }
 
         public string NomeProfilo { get; set; }
-        public ushort DutataFase2 { get; set; }
+        public ushort DurataFase2 { get; set; }
         public byte Attivo { get; set; }
         public byte FlagPb { get; set; }
         public byte FlagGel { get; set; }
         public byte FlagLitio { get; set; }
         public byte TipoBatteria { get; set; }
         public short AttesaBMS { get; set; }
+        public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
+        public byte AttivaRiarmoPulse { get; set; }  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
 
         public int Ordine { get; set; }
 

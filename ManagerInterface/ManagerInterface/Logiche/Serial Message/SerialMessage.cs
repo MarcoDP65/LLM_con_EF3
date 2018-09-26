@@ -125,19 +125,20 @@ namespace ChargerLogic
             TempoT2Min = 0x02,
             TempoT2Max = 0x03,
             TensioneNominale = 0x10,
-            TensioneSogliaCella= 0x11,   // 2 decimali
+            TensioneSogliaCella = 0x11,   // 2 decimali
+            TensioneMassimaCella = 0x12,  // 2 decimali
             CorrenteCarica = 0x21,
             CapacitaNominale = 0x31,
             CapacitaDaRicaricare = 0x32,
             FrequenzaSwitching = 0x40,
-            DivisoreK = 0x50,  // da trasmettere SEMPRE prima dei parametri K
+            DivisoreK = 0x50,  // da trasmettere SEMPRE prima dei parametri K --> ora è Usa SPY-BATT se presente
             ParametroKP = 0x51,
             ParametroKI = 0x52,
             ParametroKD = 0x53,
             EqualFineCarica = 0x54,
             RiarmoBMS = 0x55,
             TipoBatteria = 0x56,
-            CondizioneStop = 0xF0,
+            CondizioneStop = 0xF0, 
             CoeffK = 0xF1,   // 1 decimale
         }
 

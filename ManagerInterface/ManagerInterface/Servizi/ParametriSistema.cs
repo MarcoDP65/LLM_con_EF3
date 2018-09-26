@@ -652,7 +652,62 @@ namespace ChargerLogic
             }
 
         }
+        /*
+        public bool chiudiLadeLight()
+        {
+            lastError = "";
 
+            FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
+            try
+            {
+                if (CanaleLadeLight == CanaleDispositivo.USB)
+                {
+                    Log.Debug("Chiudo il canale USB: " + usbLadeLightSerNum);
+
+                    if (usbLadeLightSerNum != "")
+                    {
+
+                        if (usbLadeLight.IsOpen)
+                        {
+
+                            // Open device by serial number
+                            ftStatus = usbLadeLight.Close();
+                            if (ftStatus != FTDI.FT_STATUS.FT_OK)
+                            {
+                                // Wait for a key press
+                                Log.Error("Failed to open device (error " + ftStatus.ToString() + ")");
+                                return false;
+                            }
+                        }
+                        Log.Debug("Ladelight USB: IsOpen=" + usbLadeLight.IsOpen.ToString());
+                        return !usbLadeLight.IsOpen;
+                    }
+                    return !usbLadeLight.IsOpen;
+
+                }
+                else
+                {
+                    if (!SytemUtility.PortExist(serialeLadeLight.PortName))
+                    {
+                        return false;
+                    }
+
+                    if ( serialeLadeLight.IsOpen)
+                    {
+                        serialeLadeLight.Close();
+                    }
+                    return !serialeLadeLight.IsOpen;
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                lastError = Ex.Message;
+                return false;
+            }
+
+        }
+        */
         public bool scriviMessaggioLadeLight(byte[] messaggio, int Start, int NumByte)
         {
 

@@ -529,16 +529,48 @@ namespace PannelloCharger
 
                 _cb.ProgrammaAttivo.BatteryType = (byte)cmbPaTipoBatteria.SelectedValue;
 
+                // Tensione
                 _cb.ProgrammaAttivo.BatteryVdef = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
+                // Capacità
                 _cb.ProgrammaAttivo.BatteryAhdef = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
+                // ID Profilo
+                byte TipoProf;
 
-                _cb.ProgrammaAttivo.IdProfilo = (byte)cmbPaProfilo.SelectedIndex; //(byte)cmbPaProfilo.SelectedValue;
+                if (cmbPaProfilo.SelectedItem == null)
+                {
+                    // Non Definito
+                    TipoProf = 0;
+                }
+                else
+                {
+                    TipoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).IdProfiloCaricaLL;
+                }
+                _cb.ProgrammaAttivo.IdProfilo = TipoProf;
 
-                _cb.ProgrammaAttivo.DurataMaxCarica = 0; //(byte)cmbPaDurataCarica.SelectedValue;
+                // Durata Carica, default 12 H
+                ushort MinutiCarica = 720;
+                if (cmbPaDurataCarica.SelectedItem != null)
+                {
+                    MinutiCarica = (ushort)((llDurataCarica)cmbPaDurataCarica.SelectedItem).IdDurataCaricaLL;
+                }
+
+                _cb.ProgrammaAttivo.DurataMaxCarica = MinutiCarica; 
+
                 _cb.ProgrammaAttivo.PercTempoFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Min.Text, 1, 0);
 
                 _cb.ProgrammaAttivo.VSoglia = FunzioniMR.ConvertiUshort(txtPaSoglia.Text, 100, 0);
                 _cb.ProgrammaAttivo.VMax = FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0);
+
+
+                _cb.ProgrammaAttivo.EqualTempoAttesa  = FunzioniMR.ConvertiByte(txtPaEqualAttesa.Text, 1, 0);
+                _cb.ProgrammaAttivo.EqualNumImpulsi = FunzioniMR.ConvertiByte(txtPaEqualNumPulse.Text, 1, 0);
+
+
+                _cb.ProgrammaAttivo.TempoErogazioneBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoErogazione.Text, 1, 0);
+                _cb.ProgrammaAttivo.TempoAttesaBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoAttesa.Text, 1, 0);
+
+
+
                 _cb.ProgrammaAttivo.GeneraListaParametri();
 
                 _cb.SalvaProgrammazioniApparato();
@@ -2581,6 +2613,7 @@ namespace PannelloCharger
             try
             {
                 byte TipoProf;
+                byte ModoProf;
 
                 if (cmbPaProfilo.SelectedItem == null)
                 {
@@ -2606,6 +2639,54 @@ namespace PannelloCharger
                     cmbPaDurataCarica.DataSource = DurateCarica;
                     cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
                     cmbPaDurataCarica.DisplayMember = "Descrizione";
+
+                    ModoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).AttivaEqual;
+                    switch (ModoProf)
+                    {
+                        case 0x00:
+                            chkPaAttivaEqual.Checked = false;
+                            chkPaAttivaEqual.Enabled = false;
+                            break;
+                        case 0xF0:
+                            chkPaAttivaEqual.Checked = false;
+                            chkPaAttivaEqual.Enabled = true;
+                            break;
+                        case 0xFF:
+                            chkPaAttivaEqual.Checked = true;
+                            chkPaAttivaEqual.Enabled = false;
+                            break;
+                        default:
+                            chkPaAttivaEqual.Checked = false;
+                            chkPaAttivaEqual.Enabled = false;
+                            break;
+
+                    }
+
+
+                    ModoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).AttivaRiarmoPulse;
+                    switch (ModoProf)
+                    {
+                        case 0x00:
+                            chkPaAttivaRiarmoBms.Checked = false;
+                            chkPaAttivaRiarmoBms.Enabled = false;
+                            break;
+                        case 0xF0:
+                            chkPaAttivaRiarmoBms.Checked = false;
+                            chkPaAttivaRiarmoBms.Enabled = true;
+                            break;
+                        case 0xFF:
+                            chkPaAttivaRiarmoBms.Checked = true;
+                            chkPaAttivaRiarmoBms.Enabled = false;
+                            break;
+                        default:
+                            chkPaAttivaRiarmoBms.Checked = false;
+                            chkPaAttivaRiarmoBms.Enabled = false;
+                            break;
+
+                    }
+
+
+
                 }
 
             }
@@ -2621,6 +2702,38 @@ namespace PannelloCharger
         {
             try
             {
+                byte DurataF2;
+                byte TipoBatt;
+                sbTipoBatteria TempBatt = (sbTipoBatteria)cmbPaTipoBatteria.SelectedItem;
+
+                if (TempBatt == null)
+                {
+                    TipoBatt = 0;
+                }
+                else
+                {
+                    TipoBatt = TempBatt.BatteryTypeId;
+                }
+
+
+
+                    if (cmbPaDurataCarica.SelectedItem == null)
+                {
+                    txtPaTempoT2Min.Text = "99";
+                    //MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                   
+                    DurataF2 = (byte)((llDurataCarica)cmbPaDurataCarica.SelectedItem).DurataFaseDue(TipoBatt);
+                    txtPaTempoT2Min.Text = DurataF2.ToString();
+                }
+
+
+                   //MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+
+
                 /*
                 byte TipoProf;
 
@@ -2655,7 +2768,14 @@ namespace PannelloCharger
         private void cmbPaTensione_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Copio il valore nella textbox collegata
-            txtPaTensione.Text = cmbPaTensione.Text;
+            if (cmbPaTensione.SelectedItem != null)
+            {
+                txtPaTensione.Text = ((llTensioneBatteria)cmbPaTensione.SelectedItem).Descrizione;
+            }
+            else
+            {
+                txtPaTensione.Text = "";
+            }
 
         }
 
@@ -2869,6 +2989,24 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("btnCicliCaricaLista_Click: " + Ex.Message);
+            }
+        }
+
+        private void frmCaricabatterie_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                // Chiudo la connessione
+                if(_cb.StopComunicazione())
+                {
+                    _cb.chiudiPorta();
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmCaricabatterie_FormClosed: " + Ex.Message);
             }
         }
     }

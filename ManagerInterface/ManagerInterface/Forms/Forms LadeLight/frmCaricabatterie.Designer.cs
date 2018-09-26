@@ -917,7 +917,6 @@
             // grbCicloCorrente
             // 
             this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
-            this.grbCicloCorrente.Controls.Add(this.cmbPaTensione);
             this.grbCicloCorrente.Controls.Add(this.txtPaVMax);
             this.grbCicloCorrente.Controls.Add(this.label207);
             this.grbCicloCorrente.Controls.Add(this.txtPaNomeSetup);
@@ -990,6 +989,7 @@
             this.grbCicloCorrente.Controls.Add(this.txtPaCapacita);
             this.grbCicloCorrente.Controls.Add(this.label5);
             this.grbCicloCorrente.Controls.Add(this.label4);
+            this.grbCicloCorrente.Controls.Add(this.cmbPaTensione);
             this.grbCicloCorrente.Location = new System.Drawing.Point(31, 235);
             this.grbCicloCorrente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grbCicloCorrente.Name = "grbCicloCorrente";
@@ -1005,7 +1005,7 @@
             this.cmbPaTensione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
             this.cmbPaTensione.FormattingEnabled = true;
-            this.cmbPaTensione.Location = new System.Drawing.Point(286, 43);
+            this.cmbPaTensione.Location = new System.Drawing.Point(287, 44);
             this.cmbPaTensione.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbPaTensione.Name = "cmbPaTensione";
             this.cmbPaTensione.Size = new System.Drawing.Size(102, 25);
@@ -1096,14 +1096,12 @@
             // chkPaAttivaRiarmoBms
             // 
             this.chkPaAttivaRiarmoBms.AutoSize = true;
-            this.chkPaAttivaRiarmoBms.Checked = true;
-            this.chkPaAttivaRiarmoBms.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.chkPaAttivaRiarmoBms.Enabled = false;
             this.chkPaAttivaRiarmoBms.Location = new System.Drawing.Point(16, 256);
             this.chkPaAttivaRiarmoBms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkPaAttivaRiarmoBms.Name = "chkPaAttivaRiarmoBms";
             this.chkPaAttivaRiarmoBms.Size = new System.Drawing.Size(15, 14);
             this.chkPaAttivaRiarmoBms.TabIndex = 67;
-            this.chkPaAttivaRiarmoBms.ThreeState = true;
             this.chkPaAttivaRiarmoBms.UseVisualStyleBackColor = true;
             this.chkPaAttivaRiarmoBms.CheckedChanged += new System.EventHandler(this.chkPaAttivaRiarmoBms_CheckedChanged);
             // 
@@ -1192,12 +1190,12 @@
             // chkPaAttivaEqual
             // 
             this.chkPaAttivaEqual.AutoSize = true;
+            this.chkPaAttivaEqual.Enabled = false;
             this.chkPaAttivaEqual.Location = new System.Drawing.Point(16, 193);
             this.chkPaAttivaEqual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkPaAttivaEqual.Name = "chkPaAttivaEqual";
             this.chkPaAttivaEqual.Size = new System.Drawing.Size(15, 14);
             this.chkPaAttivaEqual.TabIndex = 58;
-            this.chkPaAttivaEqual.ThreeState = true;
             this.chkPaAttivaEqual.UseVisualStyleBackColor = true;
             this.chkPaAttivaEqual.CheckedChanged += new System.EventHandler(this.chkPaAttivaEqual_CheckedChanged);
             // 
@@ -1214,14 +1212,11 @@
             // chkPaUsaSpyBatt
             // 
             this.chkPaUsaSpyBatt.AutoSize = true;
-            this.chkPaUsaSpyBatt.Checked = true;
-            this.chkPaUsaSpyBatt.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.chkPaUsaSpyBatt.Location = new System.Drawing.Point(16, 223);
             this.chkPaUsaSpyBatt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkPaUsaSpyBatt.Name = "chkPaUsaSpyBatt";
             this.chkPaUsaSpyBatt.Size = new System.Drawing.Size(15, 14);
             this.chkPaUsaSpyBatt.TabIndex = 56;
-            this.chkPaUsaSpyBatt.ThreeState = true;
             this.chkPaUsaSpyBatt.UseVisualStyleBackColor = true;
             // 
             // txtPaParDivK
@@ -1392,7 +1387,7 @@
             this.txtPaTensione.Location = new System.Drawing.Point(286, 71);
             this.txtPaTensione.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPaTensione.Name = "txtPaTensione";
-            this.txtPaTensione.Size = new System.Drawing.Size(102, 23);
+            this.txtPaTensione.Size = new System.Drawing.Size(85, 23);
             this.txtPaTensione.TabIndex = 39;
             this.txtPaTensione.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -9041,6 +9036,7 @@
             this.Name = "frmCaricabatterie";
             this.ShowIcon = false;
             this.Text = "Caricabatterie";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCaricabatterie_FormClosed);
             this.Load += new System.EventHandler(this.frmCaricabatterie_Load);
             this.Resize += new System.EventHandler(this.frmCaricabatterie_Resize);
             this.tabProfiloAttuale.ResumeLayout(false);

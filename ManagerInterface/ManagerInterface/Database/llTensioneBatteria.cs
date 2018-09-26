@@ -35,6 +35,7 @@ namespace MoriData
         public ushort IdTensione { get; set; }
         [Indexed(Name = "IDXTensioniModello", Order = 2, Unique = true)]
         public byte IdModelloLL { get; set; }
+        public string TxTensione { get; set; }
 
         public byte Attivo { get; set; }
 

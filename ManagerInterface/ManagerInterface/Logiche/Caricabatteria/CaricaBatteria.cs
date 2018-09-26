@@ -509,6 +509,14 @@ namespace ChargerLogic
 
         }
 
+        public bool chiudiPorta()
+        {
+            //_esito = _parametri.apriCom();
+            _parametri.chiudiCanaleLadeLight();
+            return true;
+
+        }
+
         public bool VerificaPresenza()
         {
             try
@@ -711,8 +719,8 @@ namespace ChargerLogic
 
                 uint StartAddr = (uint)(0x2000 + ( 256 * IdPosizione ));
 
-                byte[] _datiTemp = new byte[240];
-                _esito = LeggiBloccoMemoria(StartAddr, 240, out _datiTemp);
+                byte[] _datiTemp = new byte[226];
+                _esito = LeggiBloccoMemoria(StartAddr, 226, out _datiTemp);
 
                 if (_esito)
                 {
@@ -863,6 +871,31 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+        public bool StopComunicazione(int TimeoutRisposta = 50)
+        {
+            try
+            {
+                bool _esito = false;
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
+                _mS.Comando = SerialMessage.TipoComando.CMD_DISCONNECT;
+                _mS.ComponiMessaggio();
+                _rxRisposta = false;
+                Log.Debug("STOP");
+                Log.Debug(_mS.hexdumpMessaggio());
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(TimeoutRisposta, 0, true, false);
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
 
 
 
@@ -1243,7 +1276,7 @@ namespace ChargerLogic
                 ControllaAttesa(UltimaScrittura);
 
                 if (NumByte < 0) NumByte = 0;
-                if (NumByte > 250)
+                if (NumByte > 236)
                 {
                     return false;
                 }
@@ -1608,7 +1641,7 @@ namespace ChargerLogic
 
                     byte[] _datiTemp = new byte[2];
                     _datiTemp = ImmagineMemoria.dataBuffer;
-                    _esito = ScriviBloccoMemoria(0x00, 240, _datiTemp);
+                    _esito = ScriviBloccoMemoria(0x00, 236, _datiTemp);
                 }
 
 
@@ -1641,9 +1674,12 @@ namespace ChargerLogic
                 NuovoPrg.IdProgrammazione = ProgrammaAttivo.IdProgramma;
                 NuovoPrg.ProgInUse = ProgrammaAttivo.ProgrammaInUso;
                 NuovoPrg.NomeCiclo = ProgrammaAttivo.ProgramName;
+                NuovoPrg.DataInserimento = null;
+                NuovoPrg.IdProfilo = ProgrammaAttivo.IdProfilo;
 
                 NuovoPrg.Parametri = new List<ParametroLL>();
                 NuovoPrg.Parametri.Clear();
+
 
                 foreach (ParametroLL _par in ProgrammaAttivo.ListaParametri)
                 {
@@ -1653,9 +1689,9 @@ namespace ChargerLogic
 
                 if (NuovoPrg.GeneraByteArray())
                 {
-                    byte[] _datiTemp = new byte[240];
+                    byte[] _datiTemp = new byte[236];
                     _datiTemp = NuovoPrg.dataBuffer;
-                    _esito = ScriviBloccoMemoria(0x2000, 240, _datiTemp);
+                    _esito = ScriviBloccoMemoria(0x2000, 236, _datiTemp);
                 }
 
 

@@ -274,6 +274,12 @@ namespace MoriData
                 _par.ValoreParametro = _llprc.VSoglia;
                 ListaParametri.Add(_par);
 
+                // Tensione Massima
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella;
+                _par.ValoreParametro = _llprc.VMax;
+                ListaParametri.Add(_par);
+
                 // Capacità Nominale
                 _par = new ParametroLL();
                 _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaNominale;
@@ -330,6 +336,9 @@ namespace MoriData
                             break;
                         case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella:
                             _llprc.VSoglia = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneMassimaCella:
+                            _llprc.VMax = _par.ValoreParametro;
                             break;
                         case (byte)SerialMessage.ParametroLadeLight.TensioneNominale:
                             _llprc.BatteryVdef = _par.ValoreParametro;
