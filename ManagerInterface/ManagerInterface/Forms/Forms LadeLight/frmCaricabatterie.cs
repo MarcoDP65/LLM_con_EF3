@@ -569,6 +569,14 @@ namespace PannelloCharger
                 _cb.ProgrammaAttivo.TempoErogazioneBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoErogazione.Text, 1, 0);
                 _cb.ProgrammaAttivo.TempoAttesaBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoAttesa.Text, 1, 0);
 
+                if (chkPaUsaSpyBatt.Checked)
+                {
+                    _cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt = 0x00;
+                }
+                else
+                {
+                    _cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt = 0xF0;
+                }
 
 
                 _cb.ProgrammaAttivo.GeneraListaParametri();
@@ -600,7 +608,7 @@ namespace PannelloCharger
                 //Prima Vuoto tutto
                 txtPaNomeProfilo.Text = "";
 
-                cmbPaProfilo.SelectedIndex = 0;
+                //cmbPaProfilo.SelectedIndex = 0;
                 txtPaCapacita.Text = "";
                 txtPaTempoMax.Text = "";
                 txtPaSoglia.Text = "";
@@ -865,12 +873,12 @@ namespace PannelloCharger
 
         public void CaricaCicloAttuale()
         {
-            // NON USATA ??????
+
             bool _esito;
             try
             {
 
-                _esito = _cb.LeggiCicloAttuale();
+                _esito = _cb.CaricaProgrammaAttivo();
                 if (_esito)
                 {
 
@@ -1283,6 +1291,19 @@ namespace PannelloCharger
 
         private void btnCicloCorrente_Click(object sender, EventArgs e)
         {
+            try
+            {
+                bool Esito;
+
+                Esito = _cb.CaricaProgrammaAttivo();
+                MostraCicloCorrente();
+
+
+            }
+            catch
+            {
+
+            }
             CaricaCicloAttuale();
         }
 
@@ -3008,6 +3029,11 @@ namespace PannelloCharger
             {
                 Log.Error("frmCaricabatterie_FormClosed: " + Ex.Message);
             }
+        }
+
+        private void btnSalvaCaricabatteria_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

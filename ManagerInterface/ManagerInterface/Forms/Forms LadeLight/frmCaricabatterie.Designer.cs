@@ -810,6 +810,7 @@
             this.btnPaCaricaListaProfili.TabIndex = 64;
             this.btnPaCaricaListaProfili.Text = "Carica Profili";
             this.btnPaCaricaListaProfili.UseVisualStyleBackColor = true;
+            this.btnPaCaricaListaProfili.Visible = false;
             this.btnPaCaricaListaProfili.Click += new System.EventHandler(this.btnPaCaricaListaProfili_Click);
             // 
             // lblPaTitoloLista
@@ -1384,7 +1385,7 @@
             // txtPaTensione
             // 
             this.txtPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaTensione.Location = new System.Drawing.Point(286, 71);
+            this.txtPaTensione.Location = new System.Drawing.Point(286, 44);
             this.txtPaTensione.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPaTensione.Name = "txtPaTensione";
             this.txtPaTensione.Size = new System.Drawing.Size(85, 23);
@@ -1524,7 +1525,7 @@
             this.btnCicloCorrente.Name = "btnCicloCorrente";
             this.btnCicloCorrente.Size = new System.Drawing.Size(120, 27);
             this.btnCicloCorrente.TabIndex = 26;
-            this.btnCicloCorrente.Text = "Leggi Profili";
+            this.btnCicloCorrente.Text = "Leggi Profilo Attivo";
             this.btnCicloCorrente.UseVisualStyleBackColor = true;
             this.btnCicloCorrente.Click += new System.EventHandler(this.btnCicloCorrente_Click);
             // 
@@ -3963,7 +3964,7 @@
             this.txtMemLenR.Name = "txtMemLenR";
             this.txtMemLenR.Size = new System.Drawing.Size(39, 21);
             this.txtMemLenR.TabIndex = 10;
-            this.txtMemLenR.Text = "64";
+            this.txtMemLenR.Text = "240";
             this.txtMemLenR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtMemAddrR
@@ -8919,6 +8920,7 @@
             this.btnSalvaCaricabatteria.TabIndex = 3;
             this.btnSalvaCaricabatteria.Text = "Salva";
             this.btnSalvaCaricabatteria.UseVisualStyleBackColor = true;
+            this.btnSalvaCaricabatteria.Click += new System.EventHandler(this.btnSalvaCaricabatteria_Click);
             // 
             // tmrLetturaAutomatica
             // 

@@ -704,6 +704,24 @@ namespace ChargerLogic
                 return false;
             }
         }
+        public bool CaricaProgrammaAttivo()
+        {
+            try
+            {
+                ProgrammaAttivo = CaricaProgramma(0);
+
+                return true;
+        
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
 
         public llProgrammaCarica CaricaProgramma(byte IdPosizione)
         {
@@ -729,7 +747,12 @@ namespace ChargerLogic
                     {
                         tempPrg.IdProgramma = ImmagineCarica.IdProgrammazione;
                         tempPrg.TipoRecord = ImmagineCarica.TipoProgrammazione;
+                        tempPrg.ProgramName = ImmagineCarica.NomeCiclo;
+                        tempPrg.IdProfilo = ImmagineCarica.IdProfilo;
 
+
+                        tempPrg.ListaParametri = ImmagineCarica.Parametri;
+                        tempPrg.AnalizzaListaParametri();
 
                         return tempPrg;
                     }
@@ -1008,12 +1031,18 @@ namespace ChargerLogic
         }
 
 
-        public bool LeggiCicloAttuale()
+        /// <summary>
+        /// Legge la programmazione attiva in pos. 0
+        /// </summary>
+        /// <returns></returns>
+        public bool LeggiCicloAttivo()
         {
             try
             {
                 bool _esito;
                 ControllaAttesa(UltimaScrittura);
+
+
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_PROG;
                 _mS.ComponiMessaggio();
@@ -1036,6 +1065,10 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+
+
+
 
 
         public bool ControllaStatoAreaFW(byte Area = 1)
@@ -1213,7 +1246,7 @@ namespace ChargerLogic
                 ControllaAttesa(UltimaScrittura);
 
                 if (NumByte < 1) NumByte = 1;
-                if (NumByte > 240)
+                if (NumByte > 240 )
                 {
                     Dati = null;
                     return false;
@@ -1689,9 +1722,9 @@ namespace ChargerLogic
 
                 if (NuovoPrg.GeneraByteArray())
                 {
-                    byte[] _datiTemp = new byte[236];
+                    byte[] _datiTemp = new byte[226];
                     _datiTemp = NuovoPrg.dataBuffer;
-                    _esito = ScriviBloccoMemoria(0x2000, 236, _datiTemp);
+                    _esito = ScriviBloccoMemoria(0x2000, 226, _datiTemp);
                 }
 
 

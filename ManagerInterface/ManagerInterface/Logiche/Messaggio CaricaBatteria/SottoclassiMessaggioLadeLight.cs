@@ -718,13 +718,13 @@ return false;
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length < 240)
+                    if (_messaggio.Length < 226)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
-                    CrcPacchetto = ArrayToUshort(_messaggio, 238, 2);
+                    CrcPacchetto = ArrayToUshort(_messaggio, 224, 2);
                     if (CrcPacchetto == 0xFFFF)
                     {
                         // CRC non coerente
@@ -732,8 +732,8 @@ return false;
                     }
 
                     // Controllo il CRC
-                    byte[] _verificaCrc = new byte[240];
-                    for (int _i = 0; _i < 238; _i++)
+                    byte[] _verificaCrc = new byte[224];
+                    for (int _i = 0; _i < 224; _i++)
                     {
                         _verificaCrc[_i] = _messaggio[_i];
                     }
@@ -815,8 +815,8 @@ return false;
             {
                 try
                 {
-                    byte[] _datamap = new byte[236];
-                    byte[] _dataSet = new byte[234];
+                    byte[] _datamap = new byte[226];
+                    byte[] _dataSet = new byte[224];
                     byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
@@ -830,7 +830,7 @@ return false;
                     byte _byte4 = 0;
 
                     // Preparo l'array vuoto
-                    for (int _i = 0; _i < 236; _i++)
+                    for (int _i = 0; _i < 226; _i++)
                     {
                         _datamap[_i] = 0xFF;
                     }
@@ -915,7 +915,7 @@ return false;
 
 
 
-                    for (int _i = 0; _i < 234; _i++)
+                    for (int _i = 0; _i < 224; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
@@ -923,8 +923,8 @@ return false;
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[234] = _byte2;
-                    _datamap[235] = _byte1;
+                    _datamap[224] = _byte2;
+                    _datamap[225] = _byte1;
 
                     dataBuffer = _datamap;
 

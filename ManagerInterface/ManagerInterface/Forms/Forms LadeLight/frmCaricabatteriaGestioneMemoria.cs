@@ -181,7 +181,6 @@ namespace PannelloCharger
             }
         }
 
-
         public bool CaricaListaCariche( UInt32 StartAddr, ushort NumRows = 0)
         {
 
@@ -198,6 +197,36 @@ namespace PannelloCharger
                 return false;
             }
         }
+
+
+        public bool MostraCicloCorrente()
+        {
+            try
+            {
+                txtPaNomeProfilo.Text = "";
+
+                //cmbPaProfilo.SelectedIndex = 0;
+                txtPaCapacita.Text = "";
+                txtPaTempoMax.Text = "";
+                txtPaSoglia.Text = "";
+                txtPaCorrenteMax.Text = "";
+                txtPaTensione.Text = "";
+
+                cmbPaCondStop.SelectedIndex = 0;
+                txtPaCoeffK.Text = "";
+                txtPaTempoT2Min.Text = "";
+                txtPaTempoT2Max.Text = "";
+                chkPaUsaSpyBatt.CheckState = CheckState.Indeterminate;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
 
     }
 }
