@@ -249,7 +249,7 @@ namespace PannelloCharger
                         txtPaEqualAttesa.Text = "";
                     }
 
-                    chkPaUsaSpyBatt.Checked = (_cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt != 0);
+                    chkPaUsaSpyBatt.Checked = (_cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt == 0);
 
 
                     if (_cb.ProgrammaAttivo.TempoAttesaBMS> 0 || _cb.ProgrammaAttivo.TempoErogazioneBMS > 0)
