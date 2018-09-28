@@ -203,7 +203,8 @@ namespace PannelloCharger
         {
             try
             {
-                txtPaNomeProfilo.Text = "";
+                txtPaNomeSetup.Text = "";
+                txtPaCapacita.Text = "";
 
                 //cmbPaProfilo.SelectedIndex = 0;
                 txtPaCapacita.Text = "";
@@ -216,7 +217,59 @@ namespace PannelloCharger
                 txtPaCoeffK.Text = "";
                 txtPaTempoT2Min.Text = "";
                 txtPaTempoT2Max.Text = "";
-                chkPaUsaSpyBatt.CheckState = CheckState.Indeterminate;
+                chkPaUsaSpyBatt.Checked = false;
+                if (_cb.ProgrammaAttivo != null)
+                {
+                    txtPaNomeSetup.Text = _cb.ProgrammaAttivo.ProgramName;
+                    txtPaCapacita.Text = FunzioniMR.StringaCapacita(_cb.ProgrammaAttivo.BatteryAhdef,10) ;
+                    List<sbTipoBatteria> Lista = (List<sbTipoBatteria>)(cmbPaTipoBatteria.DataSource);
+                    cmbPaTipoBatteria.SelectedItem = Lista.Find(x => x.BatteryTypeId == _cb.ProgrammaAttivo.BatteryType);
+                    List<_llProfiloCarica> ListaP = (List<_llProfiloCarica>)(cmbPaProfilo.DataSource);
+                    cmbPaProfilo.SelectedItem = ListaP.Find(x => x.IdProfiloCaricaLL == _cb.ProgrammaAttivo.IdProfilo);
+                    List<llTensioneBatteria> ListaV = (List<llTensioneBatteria>)(cmbPaTensione.DataSource);
+                    cmbPaTensione.SelectedItem = ListaV.Find(x => x.IdTensione == _cb.ProgrammaAttivo.BatteryVdef);
+                    txtPaTensione.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.BatteryVdef);
+                    List<llDurataCarica> ListaD = (List<llDurataCarica>)(cmbPaDurataCarica.DataSource);
+                    cmbPaDurataCarica.SelectedItem = ListaD.Find(x => x.IdDurataCaricaLL == _cb.ProgrammaAttivo.DurataMaxCarica);
+                    txtPaTempoT2Min.Text = _cb.ProgrammaAttivo.PercTempoFase2.ToString();
+                    txtPaSoglia.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VSoglia);
+                    txtPaVMax.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VMax);
+                    txtPaCorrenteMax.Text = FunzioniMR.StringaCorrente((short)_cb.ProgrammaAttivo.CorrenteMax);
+
+                    if (_cb.ProgrammaAttivo.EqualNumImpulsi >0 || _cb.ProgrammaAttivo.EqualTempoAttesa>0)
+                    {
+                        chkPaAttivaEqual.Checked = true;
+                        txtPaEqualNumPulse.Text = _cb.ProgrammaAttivo.EqualNumImpulsi.ToString();
+                        txtPaEqualAttesa.Text = _cb.ProgrammaAttivo.EqualTempoAttesa.ToString();
+                    }
+                    else
+                    {
+                        chkPaAttivaEqual.Checked = false;
+                        txtPaEqualNumPulse.Text = "";
+                        txtPaEqualAttesa.Text = "";
+                    }
+
+                    chkPaUsaSpyBatt.Checked = (_cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt != 0);
+
+
+                    if (_cb.ProgrammaAttivo.TempoAttesaBMS> 0 || _cb.ProgrammaAttivo.TempoErogazioneBMS > 0)
+                    {
+                        chkPaAttivaRiarmoBms.Checked = true;
+                        txtPaBMSTempoAttesa.Text = _cb.ProgrammaAttivo.TempoAttesaBMS.ToString();
+                        txtPaBMSTempoErogazione.Text = _cb.ProgrammaAttivo.TempoErogazioneBMS.ToString();
+                    }
+                    else
+                    {
+                        chkPaAttivaRiarmoBms.Checked = false;
+                        txtPaBMSTempoAttesa.Text = "";
+                        txtPaBMSTempoErogazione.Text = "";
+                    }
+
+
+                }
+
+
+
 
                 return true;
             }

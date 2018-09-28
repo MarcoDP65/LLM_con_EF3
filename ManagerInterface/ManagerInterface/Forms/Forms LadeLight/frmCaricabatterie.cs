@@ -560,6 +560,8 @@ namespace PannelloCharger
 
                 _cb.ProgrammaAttivo.VSoglia = FunzioniMR.ConvertiUshort(txtPaSoglia.Text, 100, 0);
                 _cb.ProgrammaAttivo.VMax = FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0);
+                _cb.ProgrammaAttivo.CorrenteMax = FunzioniMR.ConvertiUshort(txtPaCorrenteMax.Text, 10, 0);
+
 
 
                 _cb.ProgrammaAttivo.EqualTempoAttesa  = FunzioniMR.ConvertiByte(txtPaEqualAttesa.Text, 1, 0);
@@ -1304,7 +1306,6 @@ namespace PannelloCharger
             {
 
             }
-            CaricaCicloAttuale();
         }
 
         private void btnCaricaMemoria_Click(object sender, EventArgs e)

@@ -128,6 +128,7 @@ namespace ChargerLogic
             TensioneSogliaCella = 0x11,   // 2 decimali
             TensioneMassimaCella = 0x12,  // 2 decimali
             CorrenteCarica = 0x21,
+            CorrenteMassima = 0x22,
             CapacitaNominale = 0x31,
             CapacitaDaRicaricare = 0x32,
             FrequenzaSwitching = 0x40,

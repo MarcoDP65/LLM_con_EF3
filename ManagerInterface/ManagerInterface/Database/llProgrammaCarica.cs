@@ -276,8 +276,14 @@ namespace MoriData
 
                 // Tensione Massima
                 _par = new ParametroLL();
-                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella;
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneMassimaCella;
                 _par.ValoreParametro = _llprc.VMax;
+                ListaParametri.Add(_par);
+
+                // Corrente Massima
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteMassima;
+                _par.ValoreParametro = _llprc.CorrenteMax;
                 ListaParametri.Add(_par);
 
                 // Capacità Nominale
@@ -340,6 +346,9 @@ namespace MoriData
                         case (byte)SerialMessage.ParametroLadeLight.TensioneMassimaCella:
                             _llprc.VMax = _par.ValoreParametro;
                             break;
+                        case (byte)SerialMessage.ParametroLadeLight.CorrenteMassima:
+                            _llprc.CorrenteMax = _par.ValoreParametro;
+                            break;
                         case (byte)SerialMessage.ParametroLadeLight.TensioneNominale:
                             _llprc.BatteryVdef = _par.ValoreParametro;
                             break;
@@ -359,8 +368,8 @@ namespace MoriData
                             break;
                         case (byte)SerialMessage.ParametroLadeLight.RiarmoBMS:
                             FunzioniComuni.SplitUshort(_par.ValoreParametro, ref loval, ref hival);
-                            _llprc.EqualTempoAttesa = hival;
-                            _llprc.EqualNumImpulsi = loval;
+                            _llprc.TempoAttesaBMS = hival;
+                            _llprc.TempoErogazioneBMS = loval;
                             break;
                         default:
                             break;
