@@ -672,6 +672,15 @@ namespace MoriData
             }
         }
 
+        public string strPuntatorePrimoBreve
+        {
+            get
+            {
+                return _llmc.PuntatorePrimoBreve.ToString("x6");
+            }
+
+        }
+
         public int NumEventiBrevi
         {
             get { return _llmc.NumEventiBrevi; }
@@ -937,7 +946,7 @@ namespace MoriData
                 {
                     case 0x00:
                         {
-                            _descrStato = "Strappo (00)";
+                            _descrStato = "Strappo(00)";
                             break;
                         }
                     case 0x01:

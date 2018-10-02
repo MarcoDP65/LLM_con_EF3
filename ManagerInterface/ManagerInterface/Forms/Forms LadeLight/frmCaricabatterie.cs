@@ -49,9 +49,9 @@ namespace PannelloCharger
          */
         public event StepHandler Step;
         public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e); //sbWaitEventStep e);
-                                                                                        // ----------------------------------------------------------
+                                                                                          // ----------------------------------------------------------
 
-
+        private llMemoriaCicli CicloCorrente;
 
         public List<llVariabili> ListaValori = new List<llVariabili>();  // lista per listview realtime logger
         public List<ParametriArea> ListaAreeLLF = new List<ParametriArea>();  // lista per listview file Firmware upload
@@ -810,7 +810,8 @@ namespace PannelloCharger
                 tabCaricaBatterie.Height = this.Height - 109;
 
                 // Tab Cicli
-                flvCicliListaCariche.Width = tabCb04.Width - 20;
+                spcCicliListeDati.Width = tabCb04.Width - 20;
+                //flvCicliListaCariche.Width = tabCb04.Width - 20;
 
             }
             catch
@@ -2999,7 +3000,6 @@ namespace PannelloCharger
                     else
                     {
                         if (_NumByte < 1) _NumByte = 0;
-                       // if (_NumByte > 242) _NumByte = 242;
                     }
 
                 }
@@ -3035,6 +3035,61 @@ namespace PannelloCharger
         private void btnSalvaCaricabatteria_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void flvCicliListaCariche_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                llMemoriaCicli CicloSel;
+                if(flvCicliListaCariche.SelectedObject == null)
+                {
+                    btnCicliCaricaBrevi.Enabled = false;
+                    btnCicliMostraBrevi.Enabled = false;
+                }
+                else
+                {
+                    CicloSel = (llMemoriaCicli)flvCicliListaCariche.SelectedObject;
+
+                    if (CicloSel.NumEventiBrevi > 0) btnCicliCaricaBrevi.Enabled = true;
+                    if (CicloSel.NumEventiBreviCaricati > 0) btnCicliMostraBrevi.Enabled = true;
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("flvCicliListaCariche_SelectedIndexChanged: " + Ex.Message);
+            }
+        }
+
+        private void btnCicliCaricaBrevi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                llMemoriaCicli CicloSel;
+                if (flvCicliListaCariche.SelectedObject == null)
+                {
+                    btnCicliCaricaBrevi.Enabled = false;
+                    btnCicliMostraBrevi.Enabled = false;
+                }
+                else
+                {
+
+                    CicloCorrente = (llMemoriaCicli)flvCicliListaCariche.SelectedObject;
+                    CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi);
+                    InizializzaListaBrevi();
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("flvCicliListaCariche_SelectedIndexChanged: " + Ex.Message);
+            }
+
+
+
+            
         }
     }
 

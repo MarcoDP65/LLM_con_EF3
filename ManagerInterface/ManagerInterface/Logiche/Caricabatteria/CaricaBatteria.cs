@@ -61,9 +61,14 @@ namespace ChargerLogic
         public List<llTensioneBatteria> TensioniBatteria;
         public List<llTensioniModello> TensioniModello;
         public List<llMemoriaCicli> MemoriaCicli;
+        public List<llMemBreve> BreviCicloCorrente;
+
 
         public const byte SizeCharge = 36;
         public const byte SizeShort = 30;
+        public const UInt32 FirstShort = 0x005000;
+        public const UInt32 MaxByteShort = 0x1AEFFF;
+
 
 
         //public System.Collections.Generic.List<SerialMessage.CicloDiCarica> CicliInMemoria = new System.Collections.Generic.List<SerialMessage.CicloDiCarica>();

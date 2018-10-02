@@ -1174,12 +1174,12 @@ return false;
             public short IBattMin;
             public short IBatt;
             public short IBattMax;
-            public byte TempBatt;
-            public byte TempIGBT1;
-            public byte TempIGBT2;
-            public byte TempIGBT3;
-            public byte TempIGBT4;
-            public byte TempDiode;
+            public sbyte TempBatt;
+            public sbyte TempIGBT1;
+            public sbyte TempIGBT2;
+            public sbyte TempIGBT3;
+            public sbyte TempIGBT4;
+            public sbyte TempDiode;
             public UInt32 VettoreErrori;
             public ushort DurataBreve;
 
@@ -1210,36 +1210,12 @@ return false;
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length < 240)
+                    if (_messaggio.Length < 1)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
-                    CrcPacchetto = ArrayToUshort(_messaggio, 238, 2);
-                    if (CrcPacchetto == 0xFFFF)
-                    {
-                        // CRC non coerente
-                        //return EsitoRisposta.MessaggioVuoto;
-                    }
-                    else
-                    {
-                        // Controllo il CRC
-                        byte[] _verificaCrc = new byte[238];
-                        for (int _i = 0; _i < 238; _i++)
-                        {
-                            _verificaCrc[_i] = _messaggio[_i];
-                        }
-                        _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
-
-
-                        if (CrcPacchetto != _tempCRC)
-                        {
-                            // CRC non coerente
-                            return EsitoRisposta.BadCRC;
-
-                        }
-                    }
 
 
                     startByte = 0;
@@ -1260,18 +1236,18 @@ return false;
                     IBatt = ArrayToShort(_messaggio, startByte, 2);
                     startByte += 2;
                     IBattMax = ArrayToShort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    TempBatt = (sbyte)_messaggio[ startByte];
                     startByte += 1;
-                    TempBatt = _messaggio[ startByte];
+                    TempIGBT1 = (sbyte)_messaggio[startByte];
                     startByte += 1;
-                    TempIGBT1 = _messaggio[startByte];
+                    TempIGBT2 = (sbyte)_messaggio[startByte];
                     startByte += 1;
-                    TempIGBT2 = _messaggio[startByte];
+                    TempIGBT3 = (sbyte)_messaggio[startByte];
                     startByte += 1;
-                    TempIGBT3 = _messaggio[startByte];
+                    TempIGBT4 = (sbyte)_messaggio[startByte];
                     startByte += 1;
-                    TempIGBT4 = _messaggio[startByte];
-                    startByte += 1;
-                    TempDiode = _messaggio[startByte];
+                    TempDiode = (sbyte)_messaggio[startByte];
                     startByte += 1;
                     VettoreErrori = ArrayToUint32(_messaggio, startByte, 3);
                     startByte += 3;
@@ -1451,8 +1427,8 @@ return false;
                     AhCaricati = ArrayToUshort(_messaggio, startByte, 2);
                     startByte += 2;
 
-                    WhCaricati = ArrayToUshort(_messaggio, startByte, 2);
-                    startByte += 2;
+                    WhCaricati = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
 
                     ModStop = _messaggio[startByte];
                     startByte += 1;

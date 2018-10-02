@@ -39,7 +39,7 @@ namespace MoriData
         [MaxLength(20)]
         public string LastUser { get; set; }
         public string DataOraRegistrazione { get; set; }
-
+        public byte[] TimestampRegistrazione { get; set; }
 
         public int VBatt { get; set; }
         public int IBatt { get; set; }
@@ -306,6 +306,11 @@ namespace MoriData
 
             }
         }
+        public string strIdMemCiclo
+        {
+            get { return _llsm.IdMemCiclo.ToString(); }
+        }
+
         public int IdMemoriaBreve
         {
             get { return _llsm.IdMemoriaBreve; }
@@ -318,6 +323,11 @@ namespace MoriData
                 }
             }
         }
+        public string strIdMemoriaBreve
+        {
+            get { return _llsm.IdMemoriaBreve.ToString(); }
+        }
+
         public DateTime CreationDate
         {
             get { return _llsm.CreationDate; }
@@ -366,6 +376,24 @@ namespace MoriData
                 return DateTime.Now;
 
             }
+        }
+
+        // ------------------------------- TIMESTAMP -------------------
+
+
+        public byte[] TimestampRegistrazione
+        {
+            get { return _llsm.TimestampRegistrazione; }
+            set
+            {
+                _llsm.TimestampRegistrazione = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public string strTimestamp
+        {
+            get { return FunzioniMR.StringaTimestamp(_llsm.TimestampRegistrazione); }
         }
 
         // ------------------------------- TENSIONI -------------------
@@ -427,7 +455,7 @@ namespace MoriData
         {
             get
             {
-                return FunzioniMR.StringaCorrenteOLV((short)_llsm.IBattMin);
+                return FunzioniMR.StringaCorrente((short)_llsm.IBattMin);
             }
         }
 
@@ -449,7 +477,7 @@ namespace MoriData
         {
             get
             {
-                return FunzioniMR.StringaCorrenteOLV((short)_llsm.IBatt);
+                return FunzioniMR.StringaCorrenteOLV((short)_llsm.IBattMax);
             }
         }
 
