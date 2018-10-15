@@ -2546,9 +2546,9 @@ namespace ChargerLogic
 
                     ComandoLibreria = memDataDecoded[0];
                     LunghezzaDati = memDataDecoded[1];
-                    if ((memDataDecoded.Length - LunghezzaDati) != 3)
-                        return EsitoRisposta.LunghezzaErrata;
-                    EsitoChiamata = memData[2];
+                    //if ((memDataDecoded.Length - LunghezzaDati) != 3)
+                    //    return EsitoRisposta.LunghezzaErrata;
+                    EsitoChiamata = memDataDecoded[2];
                     datiPronti = true;
                     return EsitoRisposta.MessaggioOk;
                 }

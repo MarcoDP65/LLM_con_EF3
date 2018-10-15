@@ -40,10 +40,14 @@ namespace PannelloCharger
 
                 byte[] _Dati;
                 bool _esito;
-
-                txtStratDataGrid.Text = "";
+                txtEsp32CmdMsg.Text = "";
+                txtEsp32DataGrid.Text = "";
+                Application.DoEvents();
                 _Dati = new byte[252];
                 _esito = _sb.LanciaComandoTestEsp32(ComandoEsp32, out _Dati);
+                txtEsp32CmdMsg.Text = FunzioniComuni.HexdumpArray(_sb.UltimoMessaggio);
+                txtEsp32CmdMsg.Text += "\r\n--------------------------------------------------------------------------------------------------------------------------------\r\n";
+                txtEsp32CmdMsg.Text += FunzioniComuni.HexdumpArray(_sb.UltimoMessaggio, true, true);
 
                 if (_esito == true)
                 {
@@ -184,11 +188,16 @@ namespace PannelloCharger
 
                 byte[] _Dati;
                 bool _esito;
-                byte _comandoInfo = 0x52;
 
-                txtStratDataGrid.Text = "";
+                txtEsp32CmdMsg.Text = "";
+                txtEsp32DataGrid.Text = "";
+                Application.DoEvents();
                 _Dati = new byte[252];
                 _esito = _sb.ComandoEsp32SetLed(StatoLed, out _Dati);
+
+                txtEsp32CmdMsg.Text = FunzioniComuni.HexdumpArray(_sb.UltimoMessaggio);
+                txtEsp32CmdMsg.Text += "\r\n--------------------------------------------------------------------------------------------------------------------------------\r\n";
+                txtEsp32CmdMsg.Text += FunzioniComuni.HexdumpArray(_sb.UltimoMessaggio, true, true);
 
                 if (_esito == true & _Dati.Length > 3)
                 {
@@ -208,7 +217,56 @@ namespace PannelloCharger
 
                         }
                     }
-                    txtStratDataGrid.Text = _risposta;
+                    txtEsp32DataGrid.Text = _risposta;
+
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LanciaComandoTestStrategia: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        public bool LanciaComandoDirettoEsp32(byte ComandoEsp32)
+        {
+            try
+            {
+
+                byte[] _Dati;
+                bool _esito;
+                txtEsp32CmdMsg.Text = "";
+                txtEsp32DataGrid.Text = "";
+                Application.DoEvents();
+                _Dati = new byte[252];
+                _esito = _sb.LanciaComandoTestEsp32(ComandoEsp32, out _Dati);
+                txtEsp32CmdMsg.Text = FunzioniComuni.HexdumpArray(_sb.UltimoMessaggio);
+                txtEsp32CmdMsg.Text += "\r\n--------------------------------------------------------------------------------------------------------------------------------\r\n";
+                txtEsp32CmdMsg.Text += FunzioniComuni.HexdumpArray(_sb.UltimoMessaggio, true, true);
+
+                if (_esito == true)
+                {
+
+
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 15)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    txtEsp32DataGrid.Text = _risposta;
 
                 }
 

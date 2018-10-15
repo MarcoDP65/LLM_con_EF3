@@ -339,6 +339,7 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.txtCalMinuti = new System.Windows.Forms.TextBox();
@@ -1031,6 +1032,24 @@
             this.btnStratTest01 = new System.Windows.Forms.Button();
             this.txtStratDataGrid = new System.Windows.Forms.TextBox();
             this.tbpEsp32 = new System.Windows.Forms.TabPage();
+            this.txtEsp32CmdMsg = new System.Windows.Forms.TextBox();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label308 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label309 = new System.Windows.Forms.Label();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label310 = new System.Windows.Forms.Label();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.label311 = new System.Windows.Forms.Label();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.label312 = new System.Windows.Forms.Label();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.label313 = new System.Windows.Forms.Label();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.label314 = new System.Windows.Forms.Label();
+            this.txtEsp32ValSetLed = new System.Windows.Forms.TextBox();
+            this.label315 = new System.Windows.Forms.Label();
             this.txtEsp32DataGrid = new System.Windows.Forms.TextBox();
             this.panel23 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -1050,17 +1069,9 @@
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label307 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnEsp32Rst = new System.Windows.Forms.Button();
+            this.cmbEsp32SetLed = new System.Windows.Forms.ComboBox();
+            this.btnEsp32NoOp = new System.Windows.Forms.Button();
             this.btnEsp32SetLed = new System.Windows.Forms.Button();
             this.btnEsp32Test01 = new System.Windows.Forms.Button();
             this.lvwCicliBatteriaAA = new System.Windows.Forms.ListView();
@@ -1068,24 +1079,8 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label308 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.label309 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.label310 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.label311 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label312 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.label313 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.label314 = new System.Windows.Forms.Label();
-            this.txtEsp32ValSetLed = new System.Windows.Forms.TextBox();
-            this.label315 = new System.Windows.Forms.Label();
+            this.btnEsp32SetTxPower = new System.Windows.Forms.Button();
+            this.cmbEsp32SetTxPwr = new System.Windows.Forms.ComboBox();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -1205,9 +1200,9 @@
             this.panel1.SuspendLayout();
             this.grbStratComandiTest.SuspendLayout();
             this.tbpEsp32.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.panel23.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.panel24.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCaricaBatterie
@@ -3379,6 +3374,17 @@
             resources.ApplyResources(this.lblTurno3, "lblTurno3");
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
+            // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
             // 
             // tabCb05
             // 
@@ -8089,6 +8095,7 @@
             // tbpEsp32
             // 
             this.tbpEsp32.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpEsp32.Controls.Add(this.txtEsp32CmdMsg);
             this.tbpEsp32.Controls.Add(this.panel24);
             this.tbpEsp32.Controls.Add(this.txtEsp32DataGrid);
             this.tbpEsp32.Controls.Add(this.panel23);
@@ -8096,246 +8103,10 @@
             resources.ApplyResources(this.tbpEsp32, "tbpEsp32");
             this.tbpEsp32.Name = "tbpEsp32";
             // 
-            // txtEsp32DataGrid
+            // txtEsp32CmdMsg
             // 
-            resources.ApplyResources(this.txtEsp32DataGrid, "txtEsp32DataGrid");
-            this.txtEsp32DataGrid.Name = "txtEsp32DataGrid";
-            this.txtEsp32DataGrid.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
-            // 
-            // panel23
-            // 
-            this.panel23.BackColor = System.Drawing.Color.White;
-            this.panel23.Controls.Add(this.textBox3);
-            this.panel23.Controls.Add(this.label300);
-            this.panel23.Controls.Add(this.label301);
-            this.panel23.Controls.Add(this.label302);
-            this.panel23.Controls.Add(this.textBox4);
-            this.panel23.Controls.Add(this.textBox5);
-            this.panel23.Controls.Add(this.textBox7);
-            this.panel23.Controls.Add(this.label303);
-            this.panel23.Controls.Add(this.textBox9);
-            this.panel23.Controls.Add(this.label304);
-            this.panel23.Controls.Add(this.textBox12);
-            this.panel23.Controls.Add(this.label305);
-            this.panel23.Controls.Add(this.textBox13);
-            this.panel23.Controls.Add(this.label306);
-            this.panel23.Controls.Add(this.textBox14);
-            this.panel23.Controls.Add(this.label307);
-            resources.ApplyResources(this.panel23, "panel23");
-            this.panel23.Name = "panel23";
-            // 
-            // textBox3
-            // 
-            resources.ApplyResources(this.textBox3, "textBox3");
-            this.textBox3.Name = "textBox3";
-            // 
-            // label300
-            // 
-            resources.ApplyResources(this.label300, "label300");
-            this.label300.Name = "label300";
-            // 
-            // label301
-            // 
-            resources.ApplyResources(this.label301, "label301");
-            this.label301.Name = "label301";
-            // 
-            // label302
-            // 
-            resources.ApplyResources(this.label302, "label302");
-            this.label302.Name = "label302";
-            // 
-            // textBox4
-            // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
-            // 
-            // textBox5
-            // 
-            resources.ApplyResources(this.textBox5, "textBox5");
-            this.textBox5.Name = "textBox5";
-            // 
-            // textBox7
-            // 
-            resources.ApplyResources(this.textBox7, "textBox7");
-            this.textBox7.Name = "textBox7";
-            // 
-            // label303
-            // 
-            resources.ApplyResources(this.label303, "label303");
-            this.label303.Name = "label303";
-            // 
-            // textBox9
-            // 
-            resources.ApplyResources(this.textBox9, "textBox9");
-            this.textBox9.Name = "textBox9";
-            // 
-            // label304
-            // 
-            resources.ApplyResources(this.label304, "label304");
-            this.label304.Name = "label304";
-            // 
-            // textBox12
-            // 
-            resources.ApplyResources(this.textBox12, "textBox12");
-            this.textBox12.Name = "textBox12";
-            // 
-            // label305
-            // 
-            resources.ApplyResources(this.label305, "label305");
-            this.label305.Name = "label305";
-            // 
-            // textBox13
-            // 
-            resources.ApplyResources(this.textBox13, "textBox13");
-            this.textBox13.Name = "textBox13";
-            // 
-            // label306
-            // 
-            resources.ApplyResources(this.label306, "label306");
-            this.label306.Name = "label306";
-            // 
-            // textBox14
-            // 
-            resources.ApplyResources(this.textBox14, "textBox14");
-            this.textBox14.Name = "textBox14";
-            // 
-            // label307
-            // 
-            resources.ApplyResources(this.label307, "label307");
-            this.label307.Name = "label307";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.White;
-            this.groupBox5.Controls.Add(this.button3);
-            this.groupBox5.Controls.Add(this.button4);
-            this.groupBox5.Controls.Add(this.button5);
-            this.groupBox5.Controls.Add(this.button6);
-            this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Controls.Add(this.button9);
-            this.groupBox5.Controls.Add(this.button10);
-            this.groupBox5.Controls.Add(this.button11);
-            this.groupBox5.Controls.Add(this.button12);
-            this.groupBox5.Controls.Add(this.button14);
-            this.groupBox5.Controls.Add(this.btnEsp32SetLed);
-            this.groupBox5.Controls.Add(this.btnEsp32Test01);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
-            // 
-            // button3
-            // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.ForeColor = System.Drawing.Color.Red;
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.ForeColor = System.Drawing.Color.Red;
-            this.button6.Name = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.LightBlue;
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.LightBlue;
-            resources.ApplyResources(this.button9, "button9");
-            this.button9.Name = "button9";
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.LightBlue;
-            resources.ApplyResources(this.button11, "button11");
-            this.button11.Name = "button11";
-            this.button11.UseVisualStyleBackColor = false;
-            // 
-            // button12
-            // 
-            resources.ApplyResources(this.button12, "button12");
-            this.button12.ForeColor = System.Drawing.Color.Red;
-            this.button12.Name = "button12";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            resources.ApplyResources(this.button14, "button14");
-            this.button14.Name = "button14";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // btnEsp32SetLed
-            // 
-            resources.ApplyResources(this.btnEsp32SetLed, "btnEsp32SetLed");
-            this.btnEsp32SetLed.Name = "btnEsp32SetLed";
-            this.btnEsp32SetLed.UseVisualStyleBackColor = true;
-            this.btnEsp32SetLed.Click += new System.EventHandler(this.btnEsp32SetLed_Click);
-            // 
-            // btnEsp32Test01
-            // 
-            resources.ApplyResources(this.btnEsp32Test01, "btnEsp32Test01");
-            this.btnEsp32Test01.Name = "btnEsp32Test01";
-            this.btnEsp32Test01.UseVisualStyleBackColor = true;
-            this.btnEsp32Test01.Click += new System.EventHandler(this.btnEsp32Test01_Click);
-            // 
-            // lvwCicliBatteriaAA
-            // 
-            resources.ApplyResources(this.lvwCicliBatteriaAA, "lvwCicliBatteriaAA");
-            this.lvwCicliBatteriaAA.Name = "lvwCicliBatteriaAA";
-            this.lvwCicliBatteriaAA.UseCompatibleStateImageBehavior = false;
-            this.lvwCicliBatteriaAA.SelectedIndexChanged += new System.EventHandler(this.lvwCicliBatteria_SelectedIndexChanged);
-            // 
-            // tmrLetturaAutomatica
-            // 
-            this.tmrLetturaAutomatica.Interval = 1000;
-            this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
-            // 
-            // sfdImportDati
-            // 
-            this.sfdImportDati.FileName = "prova";
-            // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
+            resources.ApplyResources(this.txtEsp32CmdMsg, "txtEsp32CmdMsg");
+            this.txtEsp32CmdMsg.Name = "txtEsp32CmdMsg";
             // 
             // panel24
             // 
@@ -8343,6 +8114,7 @@
             this.panel24.Controls.Add(this.textBox16);
             this.panel24.Controls.Add(this.label308);
             this.panel24.Controls.Add(this.textBox17);
+            this.panel24.Controls.Add(this.label302);
             this.panel24.Controls.Add(this.label309);
             this.panel24.Controls.Add(this.textBox18);
             this.panel24.Controls.Add(this.label310);
@@ -8445,6 +8217,198 @@
             // 
             resources.ApplyResources(this.label315, "label315");
             this.label315.Name = "label315";
+            // 
+            // txtEsp32DataGrid
+            // 
+            resources.ApplyResources(this.txtEsp32DataGrid, "txtEsp32DataGrid");
+            this.txtEsp32DataGrid.Name = "txtEsp32DataGrid";
+            this.txtEsp32DataGrid.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.White;
+            this.panel23.Controls.Add(this.textBox3);
+            this.panel23.Controls.Add(this.label300);
+            this.panel23.Controls.Add(this.label301);
+            this.panel23.Controls.Add(this.textBox4);
+            this.panel23.Controls.Add(this.textBox5);
+            this.panel23.Controls.Add(this.textBox7);
+            this.panel23.Controls.Add(this.label303);
+            this.panel23.Controls.Add(this.textBox9);
+            this.panel23.Controls.Add(this.label304);
+            this.panel23.Controls.Add(this.textBox12);
+            this.panel23.Controls.Add(this.label305);
+            this.panel23.Controls.Add(this.textBox13);
+            this.panel23.Controls.Add(this.label306);
+            this.panel23.Controls.Add(this.textBox14);
+            this.panel23.Controls.Add(this.label307);
+            resources.ApplyResources(this.panel23, "panel23");
+            this.panel23.Name = "panel23";
+            // 
+            // textBox3
+            // 
+            resources.ApplyResources(this.textBox3, "textBox3");
+            this.textBox3.Name = "textBox3";
+            // 
+            // label300
+            // 
+            resources.ApplyResources(this.label300, "label300");
+            this.label300.Name = "label300";
+            // 
+            // label301
+            // 
+            resources.ApplyResources(this.label301, "label301");
+            this.label301.Name = "label301";
+            // 
+            // label302
+            // 
+            resources.ApplyResources(this.label302, "label302");
+            this.label302.Name = "label302";
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(this.textBox4, "textBox4");
+            this.textBox4.Name = "textBox4";
+            // 
+            // textBox5
+            // 
+            resources.ApplyResources(this.textBox5, "textBox5");
+            this.textBox5.Name = "textBox5";
+            // 
+            // textBox7
+            // 
+            resources.ApplyResources(this.textBox7, "textBox7");
+            this.textBox7.Name = "textBox7";
+            // 
+            // label303
+            // 
+            resources.ApplyResources(this.label303, "label303");
+            this.label303.Name = "label303";
+            // 
+            // textBox9
+            // 
+            resources.ApplyResources(this.textBox9, "textBox9");
+            this.textBox9.Name = "textBox9";
+            // 
+            // label304
+            // 
+            resources.ApplyResources(this.label304, "label304");
+            this.label304.Name = "label304";
+            // 
+            // textBox12
+            // 
+            resources.ApplyResources(this.textBox12, "textBox12");
+            this.textBox12.Name = "textBox12";
+            // 
+            // label305
+            // 
+            resources.ApplyResources(this.label305, "label305");
+            this.label305.Name = "label305";
+            // 
+            // textBox13
+            // 
+            resources.ApplyResources(this.textBox13, "textBox13");
+            this.textBox13.Name = "textBox13";
+            // 
+            // label306
+            // 
+            resources.ApplyResources(this.label306, "label306");
+            this.label306.Name = "label306";
+            // 
+            // textBox14
+            // 
+            resources.ApplyResources(this.textBox14, "textBox14");
+            this.textBox14.Name = "textBox14";
+            // 
+            // label307
+            // 
+            resources.ApplyResources(this.label307, "label307");
+            this.label307.Name = "label307";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.White;
+            this.groupBox5.Controls.Add(this.cmbEsp32SetTxPwr);
+            this.groupBox5.Controls.Add(this.btnEsp32SetTxPower);
+            this.groupBox5.Controls.Add(this.btnEsp32Rst);
+            this.groupBox5.Controls.Add(this.cmbEsp32SetLed);
+            this.groupBox5.Controls.Add(this.btnEsp32NoOp);
+            this.groupBox5.Controls.Add(this.btnEsp32SetLed);
+            this.groupBox5.Controls.Add(this.btnEsp32Test01);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // btnEsp32Rst
+            // 
+            resources.ApplyResources(this.btnEsp32Rst, "btnEsp32Rst");
+            this.btnEsp32Rst.Name = "btnEsp32Rst";
+            this.btnEsp32Rst.UseVisualStyleBackColor = true;
+            this.btnEsp32Rst.Click += new System.EventHandler(this.btnEsp32Rst_Click);
+            // 
+            // cmbEsp32SetLed
+            // 
+            this.cmbEsp32SetLed.FormattingEnabled = true;
+            this.cmbEsp32SetLed.Items.AddRange(new object[] {
+            resources.GetString("cmbEsp32SetLed.Items"),
+            resources.GetString("cmbEsp32SetLed.Items1"),
+            resources.GetString("cmbEsp32SetLed.Items2")});
+            resources.ApplyResources(this.cmbEsp32SetLed, "cmbEsp32SetLed");
+            this.cmbEsp32SetLed.Name = "cmbEsp32SetLed";
+            // 
+            // btnEsp32NoOp
+            // 
+            resources.ApplyResources(this.btnEsp32NoOp, "btnEsp32NoOp");
+            this.btnEsp32NoOp.Name = "btnEsp32NoOp";
+            this.btnEsp32NoOp.UseVisualStyleBackColor = true;
+            this.btnEsp32NoOp.Click += new System.EventHandler(this.btnEsp32NoOp_Click);
+            // 
+            // btnEsp32SetLed
+            // 
+            resources.ApplyResources(this.btnEsp32SetLed, "btnEsp32SetLed");
+            this.btnEsp32SetLed.Name = "btnEsp32SetLed";
+            this.btnEsp32SetLed.UseVisualStyleBackColor = true;
+            this.btnEsp32SetLed.Click += new System.EventHandler(this.btnEsp32SetLed_Click);
+            // 
+            // btnEsp32Test01
+            // 
+            resources.ApplyResources(this.btnEsp32Test01, "btnEsp32Test01");
+            this.btnEsp32Test01.Name = "btnEsp32Test01";
+            this.btnEsp32Test01.UseVisualStyleBackColor = true;
+            this.btnEsp32Test01.Click += new System.EventHandler(this.btnEsp32Test01_Click);
+            // 
+            // lvwCicliBatteriaAA
+            // 
+            resources.ApplyResources(this.lvwCicliBatteriaAA, "lvwCicliBatteriaAA");
+            this.lvwCicliBatteriaAA.Name = "lvwCicliBatteriaAA";
+            this.lvwCicliBatteriaAA.UseCompatibleStateImageBehavior = false;
+            this.lvwCicliBatteriaAA.SelectedIndexChanged += new System.EventHandler(this.lvwCicliBatteria_SelectedIndexChanged);
+            // 
+            // tmrLetturaAutomatica
+            // 
+            this.tmrLetturaAutomatica.Interval = 1000;
+            this.tmrLetturaAutomatica.Tick += new System.EventHandler(this.tmrLetturaAutomatica_Tick);
+            // 
+            // sfdImportDati
+            // 
+            this.sfdImportDati.FileName = "prova";
+            // 
+            // btnEsp32SetTxPower
+            // 
+            this.btnEsp32SetTxPower.Cursor = System.Windows.Forms.Cursors.Cross;
+            resources.ApplyResources(this.btnEsp32SetTxPower, "btnEsp32SetTxPower");
+            this.btnEsp32SetTxPower.Name = "btnEsp32SetTxPower";
+            this.btnEsp32SetTxPower.UseVisualStyleBackColor = true;
+            // 
+            // cmbEsp32SetTxPwr
+            // 
+            this.cmbEsp32SetTxPwr.FormattingEnabled = true;
+            this.cmbEsp32SetTxPwr.Items.AddRange(new object[] {
+            resources.GetString("cmbEsp32SetTxPwr.Items"),
+            resources.GetString("cmbEsp32SetTxPwr.Items1"),
+            resources.GetString("cmbEsp32SetTxPwr.Items2")});
+            resources.ApplyResources(this.cmbEsp32SetTxPwr, "cmbEsp32SetTxPwr");
+            this.cmbEsp32SetTxPwr.Name = "cmbEsp32SetTxPwr";
             // 
             // frmSpyBat
             // 
@@ -8656,11 +8620,11 @@
             this.grbStratComandiTest.ResumeLayout(false);
             this.tbpEsp32.ResumeLayout(false);
             this.tbpEsp32.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -9693,17 +9657,6 @@
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.Label label307;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnEsp32SetLed;
         private System.Windows.Forms.Button btnEsp32Test01;
         private System.Windows.Forms.Panel panel24;
@@ -9723,5 +9676,11 @@
         private System.Windows.Forms.Label label314;
         private System.Windows.Forms.TextBox txtEsp32ValSetLed;
         private System.Windows.Forms.Label label315;
+        private System.Windows.Forms.Button btnEsp32NoOp;
+        private System.Windows.Forms.TextBox txtEsp32CmdMsg;
+        private System.Windows.Forms.ComboBox cmbEsp32SetLed;
+        private System.Windows.Forms.Button btnEsp32Rst;
+        private System.Windows.Forms.ComboBox cmbEsp32SetTxPwr;
+        private System.Windows.Forms.Button btnEsp32SetTxPower;
     }
 }

@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>3.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -305,6 +305,7 @@
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBatFWUpg.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattClassiSupporto.cs" />
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattClonaScheda.cs">
       <SubType>Form</SubType>
     </Compile>

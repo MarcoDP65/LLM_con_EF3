@@ -9889,7 +9889,41 @@ namespace PannelloCharger
 
         private void btnEsp32SetLed_Click(object sender, EventArgs e)
         {
-            LanciaComandoEsp32SetLed(0x00);
+            try
+            {
+                byte LedState = 0;
+                switch(cmbEsp32SetLed.SelectedIndex)
+                {
+                    case 0:
+                        LedState = 0;
+                        break;
+                    case 1:
+                        LedState = 0xF0 ;
+                        break;
+                    case 2:
+                        LedState = 0xFF;
+                        break;
+                    default:
+                        LedState = 0;
+                        break;
+                }
+                LanciaComandoEsp32SetLed(LedState);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnEsp32SetLed_Click: " + Ex.Message);
+            }
+            
+        }
+
+        private void btnEsp32NoOp_Click(object sender, EventArgs e)
+        {
+            LanciaComandoTestEsp32(00);
+        }
+
+        private void btnEsp32Rst_Click(object sender, EventArgs e)
+        {
+            LanciaComandoDirettoEsp32(0x01);
         }
     }
 }

@@ -1694,7 +1694,7 @@ namespace Utility
         /// <param name="buffer"></param>
         /// <param name="SplitByte">Se True separa i bytes con uno spazio</param>
         /// <returns></returns>
-        public static string HexdumpArray(byte[] buffer, bool SplitByte = false)
+        public static string HexdumpArray(byte[] buffer, bool SplitByte = false, bool ModoArray = false)
         {
             try
             {
@@ -1703,7 +1703,9 @@ namespace Utility
                 {
                     for (int _i = 0; _i < buffer.Length; _i++)
                     {
+                        if (ModoArray) _risposta += "0x";
                         _risposta += buffer[_i].ToString("X2");
+                        if (ModoArray & (_i != (buffer.Length - 1))) _risposta += ",";
                         if (SplitByte & (_i != (buffer.Length - 1))) _risposta += " ";
                     }
                 }

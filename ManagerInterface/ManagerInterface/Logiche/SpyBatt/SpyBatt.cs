@@ -133,6 +133,8 @@ namespace ChargerLogic
         public event LongMemListHandler LMListChange ;
         public delegate void LongMemListHandler(UnitaSpyBatt sb, sbListaLunghiEvt lme);
 
+        public byte[] UltimoMessaggio { get; private set; }
+
  
         public UnitaSpyBatt(ref parametriSistema parametri, int LivelloAutorizzazione ) 
         {
@@ -3736,6 +3738,7 @@ namespace ChargerLogic
 
         // -------------------------------
         // esp32
+
         public bool LanciaComandoTestEsp32(byte ComandoEsp32, out byte[] Dati)
         {
 
@@ -3760,18 +3763,25 @@ namespace ChargerLogic
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
+                // Preparo la copia per la visualizzazione
+                UltimoMessaggio = new byte[_mS.MessageBuffer.Length];
+                for(int _cicloMsg = 0; _cicloMsg < _mS.MessageBuffer.Length; _cicloMsg++)
+                {
+                    UltimoMessaggio[_cicloMsg] = _mS.MessageBuffer[_cicloMsg];
+                }
+
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
                 // Log.Debug(_mS.hexdumpMessaggio());
-                Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
+                Log.Debug(_mS.hexdumpArray(_mS.CmdEsp32.memDataDecoded));
 
-                int _totDati = _mS.ComandoStrat.numBytes;
+                int _totDati = _mS.CmdEsp32.numBytes;
                 Dati = new byte[_totDati];
 
                 for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
                 {
 
-                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                    Dati[_ciclo] = _mS.CmdEsp32.memDataDecoded[_ciclo];
                 }
 
                 return _esito;
@@ -3810,7 +3820,7 @@ namespace ChargerLogic
 
                 //_cmdEsp32[0] = 0x80;
 
-                _cmdEsp32[0] = 0x01;
+                _cmdEsp32[0] = 0x02;
                 _cmdEsp32[1] = 0x03;
                 _cmdEsp32[2] = StatoLed;
 
@@ -3820,6 +3830,13 @@ namespace ChargerLogic
                 Log.Debug("Lancio comando base CMD_ESP32_PROXY - CMD_LED ");
 
                 _mS.ComponiMessaggioOpenEsp32(_cmdEsp32);
+                UltimoMessaggio = new byte[_mS.MessageBuffer.Length];
+                for (int _cicloMsg = 0; _cicloMsg < _mS.MessageBuffer.Length; _cicloMsg++)
+                {
+                    UltimoMessaggio[_cicloMsg] = _mS.MessageBuffer[_cicloMsg];
+                }
+
+
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
@@ -3835,7 +3852,7 @@ namespace ChargerLogic
                 for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
                 {
 
-                    Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
+                    Dati[_ciclo] = _mS.CmdEsp32.memDataDecoded[_ciclo];
                 }
 
                 return _esito;
@@ -3852,6 +3869,71 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+        public bool LanciaComandoDirettoEsp32(byte ComandoEsp32, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+                ControllaAttesa(UltimaScrittura);
+
+
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.CMD_ESP32_PROXY;
+                _mS.CmdEsp32 = new MessaggioSpyBatt.ComandoEsp32();
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lancio ComandoEsp32 -  " + ComandoEsp32.ToString("X2"));
+
+                _mS.ComponiMessaggioDirettoEsp32(ComandoEsp32);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                // Preparo la copia per la visualizzazione
+                UltimoMessaggio = new byte[_mS.MessageBuffer.Length];
+                for (int _cicloMsg = 0; _cicloMsg < _mS.MessageBuffer.Length; _cicloMsg++)
+                {
+                    UltimoMessaggio[_cicloMsg] = _mS.MessageBuffer[_cicloMsg];
+                }
+
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.CmdEsp32.memDataDecoded));
+
+                int _totDati = _mS.CmdEsp32.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.CmdEsp32.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
+
+
+
+
+
 
         //
         // -------------------------------
