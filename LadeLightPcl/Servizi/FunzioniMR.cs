@@ -906,7 +906,7 @@ namespace Utility
 
         }
 
-        public static byte ConvertiByte(string Testo, int Fattore = 1, byte ValIfNull = 0)
+        public static byte ConvertiByte(string Testo, int Fattore = 1, byte ValIfNull = 0,byte ValMax = 255)
         {
             try
             {
@@ -921,6 +921,10 @@ namespace Utility
                 {
                     _valore = ValIfNull;
                 }
+
+
+                if (_valore > ValMax) _valore = ValMax;
+
 
                 return _valore;
 

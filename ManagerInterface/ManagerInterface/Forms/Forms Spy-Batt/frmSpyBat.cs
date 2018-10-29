@@ -86,6 +86,8 @@ namespace PannelloCharger
         public System.Collections.Generic.List<mrDataPoint> ValoriPuntualiGrCalCorrenti = new List<mrDataPoint>();
         public System.Collections.Generic.List<StepCarica> PassiStrategia = new List<StepCarica>();
 
+        public Esp32Setting ModuloEsp32 = new Esp32Setting();
+
         private ParametriSetupPro _parametriPro = new ParametriSetupPro();
 
         public string IdCorrente;
@@ -9884,7 +9886,7 @@ namespace PannelloCharger
 
         private void btnEsp32Test01_Click(object sender, EventArgs e)
         {
-            LanciaComandoTestEsp32(01);
+            LanciaComandoTSTEsp32(txtEsp32TSTNumByte.Text, txtEsp32TSTValByte.Text);
         }
 
         private void btnEsp32SetLed_Click(object sender, EventArgs e)
@@ -9918,12 +9920,114 @@ namespace PannelloCharger
 
         private void btnEsp32NoOp_Click(object sender, EventArgs e)
         {
-            LanciaComandoTestEsp32(00);
+            LanciaComandoDirettoEsp32(00);
         }
 
         private void btnEsp32Rst_Click(object sender, EventArgs e)
         {
             LanciaComandoDirettoEsp32(0x01);
+        }
+
+        private void btnEsp32SetTxPower_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbEsp32SetAdvPwr.SelectedValue == null  || cmbEsp32SetTxPwr.SelectedValue == null)
+                {
+                    txtEsp32CmdMsg.Text = "";
+                    txtEsp32DataGrid.Text = "Valori Potenza nn validi";
+                    return;
+                }
+
+                byte[] DatiEsp = new byte[5];
+                DatiEsp[0] = 0x05; // CMD_PWR
+                DatiEsp[1] = 0x05; // Len
+                DatiEsp[2] = (byte)cmbEsp32SetAdvPwr.SelectedValue;
+                DatiEsp[3] = (byte)cmbEsp32SetAdvPwr.SelectedValue;
+                DatiEsp[4] = (byte)cmbEsp32SetAdvPwr.SelectedValue;
+
+                LanciaComandoEsp32Array(DatiEsp);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnEsp32SetLed_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnEsp32SetMode_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbEsp32SetMode.SelectedValue == null)
+                {
+                    txtEsp32CmdMsg.Text = "";
+                    txtEsp32DataGrid.Text = "Modo Modem non valido";
+                    return;
+                }
+
+                byte[] DatiEsp = new byte[4];
+                DatiEsp[0] = 0x08; // CMD_MODE
+                DatiEsp[1] = 0x04; // Len
+                DatiEsp[2] = (byte)cmbEsp32SetMode.SelectedValue;
+                if (chkEsp33RebootAfterCmd.Checked)
+                {
+                    DatiEsp[3] = 0xF0;
+                }
+                else
+                {
+                    DatiEsp[3] = 0x00;
+                }
+
+                LanciaComandoEsp32Array(DatiEsp);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnEsp32SetLed_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnEsp32QRY_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LanciaComandoTestEsp32(0X51);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnEsp32SetLed_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnEsp32SetMTU_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ushort _valMtu = FunzioniMR.ConvertiUshort(txtEsp32MtuSize.Text, 1, 0);
+                if (_valMtu < 22) _valMtu = 22;
+                if (_valMtu > 512) _valMtu = 512;
+                txtEsp32MtuSize.Text = _valMtu.ToString();
+
+                byte[] DatiEsp = new byte[5];
+                DatiEsp[0] = 0x07; // CMD_MTU
+                DatiEsp[1] = 0x04; // Len
+                FunzioniComuni.SplitUshort(_valMtu, ref DatiEsp[3], ref DatiEsp[2]);
+                if (chkEsp33RebootAfterCmd.Checked)
+                {
+                    DatiEsp[4] = 0xF0;
+                }
+                else
+                {
+                    DatiEsp[4] = 0x00;
+                }
+
+                LanciaComandoEsp32Array(DatiEsp);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnEsp32SetLed_Click: " + Ex.Message);
+            }
         }
     }
 }

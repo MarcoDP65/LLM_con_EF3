@@ -953,6 +953,19 @@ namespace PannelloCharger
                 cmbRabboccatore.SelectedIndex = 0;
 
 
+                cmbEsp32SetAdvPwr.DataSource = ModuloEsp32.LivelliTx;
+                cmbEsp32SetAdvPwr.DisplayMember = "Descrizione";
+                cmbEsp32SetAdvPwr.ValueMember = "ID";
+
+                cmbEsp32SetTxPwr.DataSource = ModuloEsp32.LivelliTx;
+                cmbEsp32SetTxPwr.DisplayMember = "Descrizione";
+                cmbEsp32SetTxPwr.ValueMember = "ID";
+
+                cmbEsp32SetMode.DataSource = ModuloEsp32.StatoModem;
+                cmbEsp32SetMode.DisplayMember = "Descrizione";
+                cmbEsp32SetMode.ValueMember = "ID";
+
+
 
             }
             catch (Exception Ex)

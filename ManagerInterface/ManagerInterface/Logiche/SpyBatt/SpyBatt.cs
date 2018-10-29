@@ -49,9 +49,9 @@ namespace ChargerLogic
 
         //Strutture Memoria
 
-        private bool _firmwarePresente = false;  
+        private bool _firmwarePresente = false;
 
-        private int _timeOut = 5 ;
+        private int _timeOut = 5;
         private DateTime _startRead;
         public bool dbCollegato;
         public bool apparatoPresente = false;
@@ -65,17 +65,17 @@ namespace ChargerLogic
         // dalla 1.09.01 : 8666
         public int MemorySlice = 8666;       //8356;    // Pachetti inviati durante il dump memoria
 
-        
+
         public bool RichiestaInterruzione = false;
-        
+
         /* ----------------------------------------------------------
          *  Dichiarazione eventi per la gestione avanzamento
          * ---------------------------------------------------------
          */
         public event StepHandler Step;
         public delegate void StepHandler(UnitaSpyBatt usb, ProgressChangedEventArgs e); //sbWaitEventStep e);
-       // ----------------------------------------------------------
- 
+                                                                                        // ----------------------------------------------------------
+
         internal delegate void SerialDataReceivedEventHandlerDelegate(object sender, SerialDataReceivedEventArgs e);
         delegate void SetTextCallback(string text);
         string InputData = String.Empty;
@@ -83,7 +83,7 @@ namespace ChargerLogic
         int lastByte = 0;
         bool readingMessage = false;
         public int TipoRisposta;
-        static bool _rxRisposta ;
+        static bool _rxRisposta;
         bool skipHead = false;
 
         public int LivelloUser = 2;
@@ -94,7 +94,7 @@ namespace ChargerLogic
         public MessaggioSpyBatt.cicliPresenti CicliPresenti = new MessaggioSpyBatt.cicliPresenti();
         public MessaggioSpyBatt.comandoRTC OrologioSistema = new MessaggioSpyBatt.comandoRTC();
         public MessaggioSpyBatt.cicloAttuale CicloInMacchina = new MessaggioSpyBatt.cicloAttuale();
-        
+
 
         private List<MessaggioSpyBatt.MemoriaPeriodoLungo> _CicliMemoriaLunga = new List<MessaggioSpyBatt.MemoriaPeriodoLungo>();
         private List<MessaggioSpyBatt.MemoriaPeriodoBreve> _CicliMemoriaBreve = new List<MessaggioSpyBatt.MemoriaPeriodoBreve>();
@@ -130,26 +130,26 @@ namespace ChargerLogic
         public SerialMessage.OcBaudRate BrOCcorrente = SerialMessage.OcBaudRate.OFF;
         public SerialMessage.OcEchoMode EchoOCcorrente = SerialMessage.OcEchoMode.OFF;
 
-        public event LongMemListHandler LMListChange ;
+        public event LongMemListHandler LMListChange;
         public delegate void LongMemListHandler(UnitaSpyBatt sb, sbListaLunghiEvt lme);
 
         public byte[] UltimoMessaggio { get; private set; }
 
- 
-        public UnitaSpyBatt(ref parametriSistema parametri, int LivelloAutorizzazione ) 
+
+        public UnitaSpyBatt(ref parametriSistema parametri, int LivelloAutorizzazione)
         {
 
             _parametri = parametri;
             LivelloUser = LivelloAutorizzazione;
             _mS = new MessaggioSpyBatt();
             _mS.Dispositivo = MessaggioSpyBatt.TipoDispositivo.Charger;
-             byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
-             byte[] numeroSeriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
-             _mS.SerialNumber = Seriale;
+            byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
+            byte[] numeroSeriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
+            _mS.SerialNumber = Seriale;
             _cbCollegato = false;
             serialeApparato = _parametri.serialeSpyBatt;
             InizializzaParametriCalibrazione();
-             // Attivo gli eventi sia USB che COM
+            // Attivo gli eventi sia USB che COM
 
             FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
             // USB
@@ -162,7 +162,7 @@ namespace ChargerLogic
             dbCollegato = false;
         }
 
-        public UnitaSpyBatt(ref parametriSistema parametri,MoriData._db dbCorrente, int LivelloAutorizzazione)
+        public UnitaSpyBatt(ref parametriSistema parametri, MoriData._db dbCorrente, int LivelloAutorizzazione)
         {
             LivelloUser = LivelloAutorizzazione;
             _parametri = parametri;
@@ -183,7 +183,7 @@ namespace ChargerLogic
             new Thread(UsbWaiter).Start();
             USBeventWait = new EventWaitHandle(false, EventResetMode.AutoReset);
             ftStatus = _parametri.usbSpyBatt.SetEventNotification(FTDI.FT_EVENTS.FT_EVENT_RXCHAR, USBeventWait);
-            */ 
+            */
 
             // COM
             cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
@@ -227,14 +227,14 @@ namespace ChargerLogic
             try
             {
                 bool _esito = false;
-                
+
                 _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_CONNECT;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
                 Log.Debug("SB START");
                 Log.Debug(_mS.hexdumpMessaggio());
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase,0,true);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
                 if ((_esito) && (_ultimaRisposta == SerialMessage.TipoRisposta.Ack))
                 {
                     _idCorrente = _mS.idCorrente;
@@ -252,7 +252,7 @@ namespace ChargerLogic
                 Log.Error("VerificaPresenza: " + Ex.Message);
                 _lastError = Ex.Message;
                 return _risposta;
-            } 
+            }
         }
 
         public bool ControllaAttesa(DateTime UltimoIstante, int MilliecondiTimeOut = 4800)
@@ -263,7 +263,7 @@ namespace ChargerLogic
                 DateTime _ora = DateTime.Now;
                 TimeSpan _durata = _ora.Subtract(UltimoIstante);
 
-                Log.Debug("Controllo attesa ------>> Last:"+ UltimoIstante.ToString() + " - Tempo attesa: " + _durata.TotalMilliseconds.ToString());
+                Log.Debug("Controllo attesa ------>> Last:" + UltimoIstante.ToString() + " - Tempo attesa: " + _durata.TotalMilliseconds.ToString());
 
                 if (_durata.TotalMilliseconds > MilliecondiTimeOut)
                 {
@@ -304,7 +304,7 @@ namespace ChargerLogic
 
         }
 
-        public bool PreparaEsportazione(bool Testata,bool Cliente,bool Programmi, bool MemLunga,bool MemBreve )
+        public bool PreparaEsportazione(bool Testata, bool Cliente, bool Programmi, bool MemLunga, bool MemBreve)
         {
             try
             {
@@ -399,7 +399,7 @@ namespace ChargerLogic
                         Programmazioni.Add(prog);
                         //prog.salvaDati();
                     }
-                   
+
                 }
 
                 Log.Warn("Fine CaricaProgrammazioni: " + ModelloDati.Programmazioni.Count.ToString());
@@ -421,7 +421,7 @@ namespace ChargerLogic
                                 sbMemBreve _cicloB = new sbMemBreve(dbCorrente);
                                 _cicloB._sbsm = _memB;
                                 _cicloB._sbsm.IdApparato = sbData.Id;
-                               _cicloL.CicliMemoriaBreve.Add(_cicloB);
+                                _cicloL.CicliMemoriaBreve.Add(_cicloB);
                             }
                             Log.Warn("Fine CaricaBrevi: " + _memL.CicliBrevi.Count.ToString());
 
@@ -431,7 +431,7 @@ namespace ChargerLogic
                     }
                     Log.Warn("Fine CaricaLunghi: " + ModelloDati.CicliLunghi.Count.ToString());
                 }
-                
+
                 _esito = true;
                 return _esito;
             }
@@ -450,7 +450,7 @@ namespace ChargerLogic
         /// <param name="IdApparato">ID dell'apparato collegato</param>
         /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
         /// <returns></returns>
-        public bool CaricaTestata(string IdApparato,bool ApparatoConnesso)
+        public bool CaricaTestata(string IdApparato, bool ApparatoConnesso)
 
         {
             try
@@ -483,14 +483,14 @@ namespace ChargerLogic
                     {
                         IntestazioneSb = _mS.Intestazione;
                         // prima di sovrascrivere i dati, se il numero di lunghi presenti sulla scheda 
-                        if(sbData.LongMem < (int)_mS.Intestazione.longRecordCounter)
+                        if (sbData.LongMem < (int)_mS.Intestazione.longRecordCounter)
 
                         {
-                           // int numclone = CreaClone();
-                           // if (numclone > 0)
-                          //  {
-                          //      sbData.cancellaDati(IdApparato);
-                          //  }
+                            // int numclone = CreaClone();
+                            // if (numclone > 0)
+                            //  {
+                            //      sbData.cancellaDati(IdApparato);
+                            //  }
                         }
 
 
@@ -513,7 +513,7 @@ namespace ChargerLogic
             catch (Exception Ex)
             {
                 Log.Error("CaricaTestata: " + Ex.Message);
-                Log.Error( Ex.TargetSite.ToString());
+                Log.Error(Ex.TargetSite.ToString());
                 return false;
             }
         }
@@ -528,7 +528,7 @@ namespace ChargerLogic
             try
             {
                 if (_idCorrente != "")
-                { 
+                {
                     if (apparatoPresente)
                     {
                         _esito = CaricaTestata(_idCorrente, apparatoPresente);
@@ -626,7 +626,7 @@ namespace ChargerLogic
                 _Dati = new byte[252];
                 _esito = LanciaComandoTestStrategia(0xA0, out _Dati);
 
-                if (_esito == true && _Dati.Length >0)
+                if (_esito == true && _Dati.Length > 0)
                 {
 
                     // Estraggo la versione attiva
@@ -658,7 +658,7 @@ namespace ChargerLogic
             {
                 bool _esito;
                 bool _recordPresente;
-                _recordPresente = sbCliente.caricaDati(IdApparato,1);
+                _recordPresente = sbCliente.caricaDati(IdApparato, 1);
                 if (_recordPresente != true)
                 {
                     sbCliente.IdApparato = IdApparato;
@@ -675,7 +675,7 @@ namespace ChargerLogic
 
                     // ASPETTO 1 secondo
                     Log.Debug("---------------------------------------------- Inizio Attesa 2 ---------------------------------");
-                     Thread.Sleep(2000);
+                    Thread.Sleep(2000);
                     Log.Debug("---------------------------------------------- Fine Attesa   ---------------------------------");
 
                     _mS.CustomerData = new MessaggioSpyBatt.DatiCliente();
@@ -700,11 +700,11 @@ namespace ChargerLogic
                             //return true;
                         }
                         _esito = aspettaRisposta(elementiComuni.TimeoutBase, 4, false);
-                        
+
 
                     }
                     while (_mS.CustomerData.datiPronti == false);
-//                    while (!_mS.CustomerData.datiPronti & !_esito) ;
+                    //                    while (!_mS.CustomerData.datiPronti & !_esito) ;
                     Log.Error("Uscito dal ciclo cliente; dati pronti =  " + _mS.CustomerData.datiPronti.ToString());
 
                     if (_mS.CustomerData.datiPronti)
@@ -720,7 +720,7 @@ namespace ChargerLogic
                         sbCliente.SerialNumber = _mS.CustomerData.SerialNumber;
                         sbCliente.ModoPianificazione = _mS.CustomerData.ModoPianificazione;
                         sbCliente.ModoBiberonaggio = _mS.CustomerData.ModoBiberonaggio;
-                        sbCliente.ModoRabboccatore = _mS.CustomerData.ModoRabboccatore ;
+                        sbCliente.ModoRabboccatore = _mS.CustomerData.ModoRabboccatore;
 
                         sbCliente.EqualPulseCurrent = _mS.CustomerData.EqualPulseCurrent;
                         sbCliente.EqualNumImpulsi = _mS.CustomerData.EqualNumImpulsi;
@@ -777,7 +777,7 @@ namespace ChargerLogic
                     _mS.DumpMem = new MessaggioSpyBatt.ImmagineDumpMem();
                     _mS.Comando = MessaggioSpyBatt.TipoComando.CMD_READ_ALL_MEMORY;
                     //_mS.ComponiMessaggio();
-                    if(AckPacchetto == true) _AckPacchetto = SerialMessage.LadeLightBool.True;
+                    if (AckPacchetto == true) _AckPacchetto = SerialMessage.LadeLightBool.True;
                     _mS.ComponiMessaggioLeggiInteraMemoria(_AckPacchetto);
 
                     _rxRisposta = false;
@@ -838,7 +838,7 @@ namespace ChargerLogic
                         //apro un'unica transazione sul DB
 
                         // prima, se previsto salvo  l'immagine su file 
-                        if(CreaHexDump == true)
+                        if (CreaHexDump == true)
                         {
 
                             if (HexDumpFile != "")
@@ -847,7 +847,7 @@ namespace ChargerLogic
                                 _tempImg.Apparato = ImageDump.TipoApparato.SpyBatt;
                                 _tempImg.Testata = sbData;
                                 _tempImg.DataBuffer = _mS.DumpMem.memImage;
-                                _tempImg.Timestamp= DateTime.Now;
+                                _tempImg.Timestamp = DateTime.Now;
                                 _tempImg.IntestazioneSb = IntestazioneSb;
 
                                 string _tempSer = JsonConvert.SerializeObject(_tempImg);
@@ -909,7 +909,7 @@ namespace ChargerLogic
 
                         Array.Copy(_mS.DumpMem.memImage, _areaStart, _TempMessaggio, 0, _areaSize);
                         Log.Warn("---------------------- TESTATA (NON ATTIVA) ------------------------------");
-                        
+
                         Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
 
                         // Non carico il record testata: i contatori non sono valorizzati: controllo solo che il record sia valido
@@ -1081,7 +1081,7 @@ namespace ChargerLogic
                         MessaggioSpyBatt.MemoriaPeriodoLungo _tempLunga;
                         MessaggioSpyBatt.MemoriaPeriodoBreve _tempBreve;
 
-                        if (_areaBlock > _mappaCorrente.MemLunga.NoOfElemets )
+                        if (_areaBlock > _mappaCorrente.MemLunga.NoOfElemets)
                         {
                             _areaBlock = _mappaCorrente.MemLunga.NoOfElemets;   //
                         }
@@ -1134,7 +1134,7 @@ namespace ChargerLogic
                                     }
                                     else
                                     {
-                                      
+
                                         continue;
                                     }
                                 }
@@ -1146,9 +1146,9 @@ namespace ChargerLogic
                                 _memLn.CaricaProgramma();
                                 _memLn.CicliMemoriaBreve.Clear();
                                 // Ora carico i brevi:
-                                if(_memLn.NumEventiBrevi > 00)
+                                if (_memLn.NumEventiBrevi > 00)
                                 {
-                                    if((_memLn.NumEventiBrevi != 0xFFFF) & (_memLn.PuntatorePrimoBreve < 0xFFFFFF ))
+                                    if ((_memLn.NumEventiBrevi != 0xFFFF) & (_memLn.PuntatorePrimoBreve < 0xFFFFFF))
                                     {
 
                                         _breviPresenti = true;
@@ -1171,7 +1171,7 @@ namespace ChargerLogic
 
                                     _areaSize = _mappaCorrente.MemBreve.ElemetSize;
                                     _areaStart = _mappaCorrente.MemBreve.StartAddress + (int)(_memLn.PuntatorePrimoBreve * _areaSize);
-                                    _areaBlock =  _memLn.NumEventiBrevi;
+                                    _areaBlock = _memLn.NumEventiBrevi;
 
 
                                     Log.Warn("---------------------- Cicli Brevi: " + _areaBlock.ToString() + " ------------------------------");
@@ -1199,7 +1199,7 @@ namespace ChargerLogic
                                             _areaStart = 0x002000;
                                         }
                                     }
-                                   
+
                                     // ora trasporto i messaggi nel modello
                                     Log.Debug("----------------------------------------------------------------------------------------");
                                     Log.Debug("Caricati gli eventi a breve (" + _CicliMemoriaBreve.Count.ToString() + ") aggiorno il DB");
@@ -1212,22 +1212,22 @@ namespace ChargerLogic
                                         //_memBr.caricaDati(_idCorrente, (int)IdCicloLungo, _numCiclo);
 
                                         // Aggiorno la lunga e ricarico le brevi
-                                            
+
                                         _memBr.IdApparato = _idCorrente;
                                         _memBr.IdMemoriaLunga = (int)_memLn.IdMemoriaLunga;
                                         _memBr.IdMemoriaBreve = _numCiclo;
                                         _memBr.DataOraRegistrazione = StringaTimestamp(_cicloBr.DataOraRegistrazione);
                                         _memBr.Vreg = _cicloBr.Vreg;
-                                            _memBr.V1 = _cicloBr.V1;
-                                            _memBr.V2 = _cicloBr.V2;
-                                            _memBr.V3 = _cicloBr.V3;
-                                            _memBr.Amed = _cicloBr.Amed;
-                                            _memBr.Amin = _cicloBr.Amin;
-                                            _memBr.Amax = _cicloBr.Amax;
-                                            _memBr.Tntc = _cicloBr.Tntc;
-                                            _memBr.PresenzaElettrolita = _cicloBr.PresenzaElettrolita;
-                                            _memBr.VbatBk = _cicloBr.VbatBk;
-                                            _numCiclo++;
+                                        _memBr.V1 = _cicloBr.V1;
+                                        _memBr.V2 = _cicloBr.V2;
+                                        _memBr.V3 = _cicloBr.V3;
+                                        _memBr.Amed = _cicloBr.Amed;
+                                        _memBr.Amin = _cicloBr.Amin;
+                                        _memBr.Amax = _cicloBr.Amax;
+                                        _memBr.Tntc = _cicloBr.Tntc;
+                                        _memBr.PresenzaElettrolita = _cicloBr.PresenzaElettrolita;
+                                        _memBr.VbatBk = _cicloBr.VbatBk;
+                                        _numCiclo++;
 
                                         _memLn.CicliMemoriaBreve.Add(_memBr);
                                     }
@@ -1237,7 +1237,7 @@ namespace ChargerLogic
 
 
 
-                               // Il ciclo è completo, lo accodo
+                                // Il ciclo è completo, lo accodo
                                 CicliMemoriaLunga.Add(_memLn);
 
                                 if (RunAsinc == true)
@@ -1274,7 +1274,7 @@ namespace ChargerLogic
                             ConsolidaBrevi();
                         }
 
-                        
+
                     }
                     else
                     {
@@ -1283,7 +1283,7 @@ namespace ChargerLogic
                     }
 
                     if (dbCorrente.IsInTransaction) dbCorrente.Commit();
-                    
+
                 }
                 return true;
             }
@@ -1308,7 +1308,7 @@ namespace ChargerLogic
             }
         }
 
-        private bool InizializzaLogger(string FileReport )
+        private bool InizializzaLogger(string FileReport)
         {
             try
             {
@@ -1324,7 +1324,7 @@ namespace ChargerLogic
         }
 
 
-        public bool AnalizzaHexDump(string IdApparato, MoriData._db dbCorrente, ImageDump Immagine, bool RunAsinc = false, bool ForzaRecupero = false, bool GeneraReport = false, string FileReport = "" )
+        public bool AnalizzaHexDump(string IdApparato, MoriData._db dbCorrente, ImageDump Immagine, bool RunAsinc = false, bool ForzaRecupero = false, bool GeneraReport = false, string FileReport = "")
         {
             try
             {
@@ -1344,7 +1344,7 @@ namespace ChargerLogic
                 if (FileReport == "")
                     GeneraReport = false;
 
-                txtLog.Open(FileReport,txtLogger.DataMode.OverWrite);
+                txtLog.Open(FileReport, txtLogger.DataMode.OverWrite);
 
                 bool _recordPresente;
 
@@ -1356,7 +1356,7 @@ namespace ChargerLogic
 
                     _testataAssente = (Immagine.IntestazioneSb == null);
 
-                    if (Immagine.Apparato == ImageDump.TipoApparato.SpyBatt) 
+                    if (Immagine.Apparato == ImageDump.TipoApparato.SpyBatt)
                     {
                         //apro un'unica transazione sul DB
 
@@ -1421,7 +1421,7 @@ namespace ChargerLogic
                             return false;
                         }
 
-                        if(_testataAssente)
+                        if (_testataAssente)
                         {
                             Immagine.IntestazioneSb = _mS.Intestazione;
                         }
@@ -1486,7 +1486,7 @@ namespace ChargerLogic
                             _esitoLettura = _mS.CustomerData.analizzaMessaggio(_TempMessaggio, true);
                             _areaStart += _areaSize;
                         }
-                       // _esitoLettura = _mS.Intestazione.analizzaMessaggio(_TempMessaggio, true);
+                        // _esitoLettura = _mS.Intestazione.analizzaMessaggio(_TempMessaggio, true);
                         if (_mS.CustomerData.datiPronti)
                         {
                             ModelloDati.Cliente = new _sbDatiCliente();
@@ -1496,7 +1496,7 @@ namespace ChargerLogic
                             ModelloDati.Cliente.BatteryModel = _mS.CustomerData.BatteryModel;
                             ModelloDati.Cliente.Client = _mS.CustomerData.Client;
                             ModelloDati.Cliente.ClientNote = _mS.CustomerData.ClientNote;
-                           
+
                         }
 
                         // Step 2.3: Carico i dati programmazione
@@ -1524,7 +1524,7 @@ namespace ChargerLogic
                             _esitoLettura = _mS.ProgRicarica.analizzaMessaggio(_TempMessaggio, true);
                             if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                             {
-                                if(_mS.ProgRicarica.IdProgramma == 0xFFFF)
+                                if (_mS.ProgRicarica.IdProgramma == 0xFFFF)
                                 {
                                     // Programma non inizializzato. esco dalla lettura programmi
                                     ModelloDati.Testata.ProgramCount = _Programmazioni.Count;
@@ -1616,7 +1616,7 @@ namespace ChargerLogic
                                 {
                                     // Programma non inizializzato. esco dalla lettura programmi
                                     ModelloDati.Testata.LongMem = _CicliMemoriaLunga.Count;
-                                    if(_testataAssente)
+                                    if (_testataAssente)
                                     {
                                         Immagine.IntestazioneSb.longRecordCounter = _maxLngNum;
                                         Immagine.IntestazioneSb.longRecordPoiter = _maxLngPtr;
@@ -1652,7 +1652,7 @@ namespace ChargerLogic
                                 sbMemLunga _memLn = new sbMemLunga(dbCorrente);
                                 bool _breviPresenti = false;
                                 _stepCorrente++;
-                               // _memLn.I ??
+                                // _memLn.I ??
 
                                 if (_ciclo.IdEvento >= (uint)0xFFFF)
                                 {
@@ -1889,12 +1889,12 @@ namespace ChargerLogic
                                     _tempBreve = new MessaggioSpyBatt.MemoriaPeriodoBreve();
                                     Array.Copy(Immagine.DataBuffer, _areaStart, _TempMessaggio, 0, _areaSize);
                                     //Log.Warn(FunzioniMR.hexdumpArray(_TempMessaggio, true));
-                                    _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true,true);
+                                    _esitoLettura = _tempBreve.analizzaMessaggio(_TempMessaggio, true, true);
                                     if (_esitoLettura == SerialMessage.EsitoRisposta.MessaggioOk)
                                     {
                                         if (_IdUltimoLungo != _tempBreve.IdEvento)
                                         {
-                                            Log.Debug("  Nuovo ID: "+ _tempBreve.IdEvento.ToString("X8"));
+                                            Log.Debug("  Nuovo ID: " + _tempBreve.IdEvento.ToString("X8"));
                                             _breveLoc = 0;
                                             _IdUltimoLungo = _tempBreve.IdEvento;
                                         }
@@ -1916,7 +1916,7 @@ namespace ChargerLogic
 
                                     }
 
-                                    if(_tempBreve.IdEvento == 0xFFFFFFFF)
+                                    if (_tempBreve.IdEvento == 0xFFFFFFFF)
                                     {
                                         if (_testataAssente)
                                         {
@@ -1999,7 +1999,7 @@ namespace ChargerLogic
 
                                 _areaStart += _areaSize;
                                 if (_areaStart > _ultimoBreve) _ultimoBreve = _areaStart;
-                                if(pacchetti_loggati >= 47419 )
+                                if (pacchetti_loggati >= 47419)
                                 {
                                     trovatoUltimo = true;
                                     txtLog.WriteLn("---------------------- Cicli Brevi: " + _numbrevi.ToString() + " ------------------------------");
@@ -2052,7 +2052,7 @@ namespace ChargerLogic
         }
 
 
-        public bool SpacchettaMemoria(string IdApparato, byte[] Immagine, MoriData._db dbCorrente,  bool RunAsinc = false)
+        public bool SpacchettaMemoria(string IdApparato, byte[] Immagine, MoriData._db dbCorrente, bool RunAsinc = false)
         {
             try
             {
@@ -2511,15 +2511,15 @@ namespace ChargerLogic
                 DataCicliMemoriaLunga.Clear();
 
 
-                if ( LMListChange != null)
+                if (LMListChange != null)
                 {
                     sbListaLunghiEvt eventoLM = new sbListaLunghiEvt();
                     eventoLM.EventiLunghi = CicliMemoriaLunga.Count;
                     LMListChange(this, eventoLM);
                 }
-                IEnumerable<_sbMemLunga> _TempCicli = dbCorrente.Query<_sbMemLunga> ( "select * from _sbMemLunga where IdApparato = ? order by IdMemoriaLunga desc", IdApparato);
+                IEnumerable<_sbMemLunga> _TempCicli = dbCorrente.Query<_sbMemLunga>("select * from _sbMemLunga where IdApparato = ? order by IdMemoriaLunga desc", IdApparato);
 
-                foreach ( _sbMemLunga Elemento in _TempCicli )
+                foreach (_sbMemLunga Elemento in _TempCicli)
                 {
                     sbMemLunga _cLoc;
                     _cLoc = new sbMemLunga(dbCorrente);
@@ -2527,10 +2527,10 @@ namespace ChargerLogic
                     if (_cLoc.caricaDati(Elemento.IdLocale))
                     {
                         _cLoc.VersoScarica = VersoScarica;
-                        CicliMemoriaLunga.Add( _cLoc );
+                        CicliMemoriaLunga.Add(_cLoc);
                         DataCicliMemoriaLunga.Add(_cLoc._sblm);
                     }
-                
+
                 }
 
                 return true;
@@ -2578,7 +2578,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool RicaricaCaricaCicliMemLunga(uint cicloStart, uint cicloEnd,MoriData._db dbCorrente, bool AggiornaTutto, bool caricaBrevi )
+        public bool RicaricaCaricaCicliMemLunga(uint cicloStart, uint cicloEnd, MoriData._db dbCorrente, bool AggiornaTutto, bool caricaBrevi)
         {
             object vuoto;
             return RicaricaCaricaCicliMemLunga(cicloStart, cicloEnd, dbCorrente, AggiornaTutto, caricaBrevi, out vuoto);
@@ -2649,7 +2649,7 @@ namespace ChargerLogic
         /// <param name="AggiornaTutto">se TRUE aggiorna anche i record già presenti</param>
         /// <param name="caricaBrevi">se TRUE carica direttamente i brevi</param>
         /// <returns>True se l'operazione termina senza errori</returns>
-        public bool RicaricaCaricaCicliMemLunga(uint cicloStart, uint cicloEnd, MoriData._db dbCorrente, bool AggiornaTutto, bool caricaBrevi, out object EsitoCaricamento, bool RunAsinc = false )
+        public bool RicaricaCaricaCicliMemLunga(uint cicloStart, uint cicloEnd, MoriData._db dbCorrente, bool AggiornaTutto, bool caricaBrevi, out object EsitoCaricamento, bool RunAsinc = false)
         {
             try
             {
@@ -2661,7 +2661,7 @@ namespace ChargerLogic
 
                 //_CicliMemoriaLunga = new System.Collections.Generic.List<MessaggioSpyBatt.MemoriaPeriodoLungo>();
                 Log.Debug("------  _CicliMemoriaLunga.Clear() --------");
-                Log.Debug("Inizio Lettura - " + _CicliMemoriaLunga.Count.ToString() + " Cicli presenti (" + cicloEnd.ToString() + " - " + cicloStart.ToString() + ")"); 
+                Log.Debug("Inizio Lettura - " + _CicliMemoriaLunga.Count.ToString() + " Cicli presenti (" + cicloEnd.ToString() + " - " + cicloStart.ToString() + ")");
                 _CicliMemoriaLunga.Clear();
                 RichiestaInterruzione = false;
                 if (sbData.fwLevel > 4)
@@ -2675,7 +2675,7 @@ namespace ChargerLogic
                 int ultimoCiclo = 0;
                 Log.Debug("----------------------------------------------------------------------------------------------------------------------------");
                 EsitoCaricamento = null;
-                if (true)  
+                if (true)
                 {
                     if (RunAsinc)
                     {
@@ -2688,7 +2688,7 @@ namespace ChargerLogic
                             _passo.Eventi = 1;
                             _passo.Step = -1;
                             _passo.EsecuzioneInterrotta = false;
-                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);    
+                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
                             Step(this, _stepEv);
                         }
 
@@ -2702,7 +2702,7 @@ namespace ChargerLogic
 
                     _mS.ComponiMessaggioCicloLungo(cicloStart);
                     _rxRisposta = false;
-                    _timeOut = (int)(( cicloEnd - cicloStart)/2) ;
+                    _timeOut = (int)((cicloEnd - cicloStart) / 2);
                     if (_timeOut < 10) _timeOut = 10;
                     Log.Debug("CICLI Lunga: start=" + cicloStart.ToString() + "  | Timeout: " + _timeOut.ToString());
                     Log.Debug(_mS.hexdumpMessaggio());
@@ -2714,9 +2714,9 @@ namespace ChargerLogic
                         //_esito = aspettaRisposta(elementiComuni.TimeoutBase, (int)(cicloEnd - cicloStart + 1), false,true);+1 ????
                         int _cicliAttesi = (int)(cicloEnd - cicloStart + 1);
 
-                        if (sbData.fwLevel > 4)                                                   
+                        if (sbData.fwLevel > 4)
                         {
-                  
+
                             _cicliAttesi += 1;
                         }
                         _esito = aspettaRisposta(elementiComuni.TimeoutBase, out _dataRx, _cicliAttesi, false, true, elementiComuni.tipoMessaggio.MemLunga);
@@ -2746,7 +2746,7 @@ namespace ChargerLogic
                         while (_esito && _CicliMemoriaLunga.Count <= (cicloEnd - cicloStart));
                     }
 
- 
+
 
 
                     Log.Debug(StringaLog);
@@ -2755,12 +2755,12 @@ namespace ChargerLogic
 
                 }
                 DateTime _startSave = DateTime.Now;
-                if( _CicliMemoriaLunga.Count > 0 )
+                if (_CicliMemoriaLunga.Count > 0)
                 {
                     CicliMemoriaLunga.Clear();
                     if (RunAsinc && caricaBrevi)
 
-                    { 
+                    {
                         //Preparo l'intestazione della finestra di avanzamento
                         if (Step != null)
                         {
@@ -2777,7 +2777,7 @@ namespace ChargerLogic
                     }
 
                     uint _lastId = 0;
-                     int _stepCorrente = 0;
+                    int _stepCorrente = 0;
 
                     foreach (MessaggioSpyBatt.MemoriaPeriodoLungo _ciclo in _CicliMemoriaLunga)
                     {
@@ -2800,7 +2800,7 @@ namespace ChargerLogic
 
                         if (_ciclo.IdEvento >= (uint)0xFFFF)
                         {
-                            if(_lastId > 0)
+                            if (_lastId > 0)
                             {
                                 // se il record è a FF e non ho uh precedente valido salto al record sucessivo
                                 Log.Warn("ID non valido " + _ciclo.IdEvento.ToString("X2") + " ! " + _lastId.ToString("X2"));
@@ -2819,7 +2819,7 @@ namespace ChargerLogic
                         {
                             // Aggiorno la lunga e ricarico le brevi solo se cambia il N° di brevi o la data fine
                             // oppure se setto a true il flag AggiornaTutto
-                            CaricaMessaggioMemLunga(_idCorrente, (uint)_ciclo.IdEvento, _ciclo,ref _memLn);
+                            CaricaMessaggioMemLunga(_idCorrente, (uint)_ciclo.IdEvento, _ciclo, ref _memLn);
 
                             _lastId = _ciclo.IdEvento;
                             //  Se previsto, carico direttamente i brevi
@@ -2869,14 +2869,14 @@ namespace ChargerLogic
                     }
 
 
-                //CaricaCicliMemLunga(_idCorrente, dbCorrente);
+                    //CaricaCicliMemLunga(_idCorrente, dbCorrente);
 
                 }
 
                 // Se previsto il caricamento dei brevi, consolido i valori intermedi
                 if (caricaBrevi) ConsolidaBrevi();
-                
-               
+
+
 
                 TimeSpan _tTrascorso = DateTime.Now.Subtract(_startSave);
                 string _messaggio1 = "Durata Salvataggio: " + _tTrascorso.TotalSeconds.ToString("0.000");
@@ -2911,10 +2911,10 @@ namespace ChargerLogic
                 ushort LenMemLunga = 51;
 
                 UInt32 AddrLettura;
-                
+
                 MessaggioSpyBatt.MemoriaPeriodoLungo _tempML;
 
-                if ( cicloStart <= cicloEnd )  //_mS.CicliPresenti.NumCicli > 0)
+                if (cicloStart <= cicloEnd)  //_mS.CicliPresenti.NumCicli > 0)
                 {
 
                     CicliMemoriaLunga.Clear();
@@ -2976,7 +2976,7 @@ namespace ChargerLogic
                         CicliMemoriaLunga.Add(_memLn);
                         // _memLn.salvaDati();
                     }
-                    
+
 
                 }
 
@@ -3009,7 +3009,7 @@ namespace ChargerLogic
                 _Programmazioni.Clear();
                 RichiestaInterruzione = false;
 
-                if (true)  
+                if (true)
                 {
                     ControllaAttesa(UltimaScrittura);
 
@@ -3088,7 +3088,7 @@ namespace ChargerLogic
                                 _progR.TempAllarme = _ciclo.TempAllarme;
                                 _progR.TempRipresa = _ciclo.TempRipresa;
                                 _progR.MaxSbilanciamento = _ciclo.MaxSbilanciamento;
-                                
+
                                 _progR.TensioneGas = _ciclo.TensioneGas;
                                 _progR.DerivaSuperiore = _ciclo.DerivaSuperiore;
                                 _progR.DerivaInferiore = _ciclo.DerivaInferiore;
@@ -3122,7 +3122,7 @@ namespace ChargerLogic
             }
 
             catch (Exception Ex)
-            {   
+            {
                 Log.Error(Ex.Message);
                 _lastError = Ex.Message;
                 return false;
@@ -3136,7 +3136,7 @@ namespace ChargerLogic
         /// <param name="NumByte">Numero di byte da leggere (max 242)</param>
         /// <param name="Dati">bytearray dati letti</param>
         /// <returns></returns>
-        public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte, out byte[] Dati )
+        public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte, out byte[] Dati)
         {
 
 
@@ -3169,15 +3169,15 @@ namespace ChargerLogic
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
-                Log.Debug(_mS.hexdumpArray( _mS._pacchettoMem.memDataDecoded));
+                Log.Debug(_mS.hexdumpArray(_mS._pacchettoMem.memDataDecoded));
 
-                for ( int _ciclo = 0; ((_ciclo<NumByte) && (_ciclo < _mS._pacchettoMem.numBytes )); _ciclo++)
+                for (int _ciclo = 0; ((_ciclo < NumByte) && (_ciclo < _mS._pacchettoMem.numBytes)); _ciclo++)
                 {
-                   
+
                     Dati[_ciclo] = _mS._pacchettoMem.memDataDecoded[_ciclo];
                 }
 
-                return _esito; 
+                return _esito;
 
 
             }
@@ -3232,7 +3232,7 @@ namespace ChargerLogic
                 }
                 else
                 {
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false,false,modoDeso);
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false, false, modoDeso);
 
                 }
 
@@ -3444,10 +3444,10 @@ namespace ChargerLogic
                 // Log.Debug(_mS.hexdumpMessaggio());
                 Log.Debug(_mS.hexdumpArray(_mS.ComandoStrat.memDataDecoded));
 
-                int _totDati = _mS.ComandoStrat.numBytes ;
+                int _totDati = _mS.ComandoStrat.numBytes;
                 Dati = new byte[_totDati];
 
-                for (int _ciclo = 0; (_ciclo < _totDati) ; _ciclo++)
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
                 {
 
                     Dati[_ciclo] = _mS.ComandoStrat.memDataDecoded[_ciclo];
@@ -3468,7 +3468,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax,ushort Imax, byte Rabb, byte FC, ushort Minuti, byte ForzaTE,out byte[] Dati)
+        public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax, ushort Imax, byte Rabb, byte FC, ushort Minuti, byte ForzaTE, out byte[] Dati)
         {
 
 
@@ -3547,7 +3547,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool ComandoStrategiaAggiornaContatori(ushort Capacity,ushort Dschg, ushort Chg, out byte[] Dati)
+        public bool ComandoStrategiaAggiornaContatori(ushort Capacity, ushort Dschg, ushort Chg, out byte[] Dati)
         {
 
 
@@ -3765,7 +3765,7 @@ namespace ChargerLogic
                 _startRead = DateTime.Now;
                 // Preparo la copia per la visualizzazione
                 UltimoMessaggio = new byte[_mS.MessageBuffer.Length];
-                for(int _cicloMsg = 0; _cicloMsg < _mS.MessageBuffer.Length; _cicloMsg++)
+                for (int _cicloMsg = 0; _cicloMsg < _mS.MessageBuffer.Length; _cicloMsg++)
                 {
                     UltimoMessaggio[_cicloMsg] = _mS.MessageBuffer[_cicloMsg];
                 }
@@ -3930,6 +3930,65 @@ namespace ChargerLogic
             }
         }
 
+        public bool LanciaComandoEsp32Array(byte[] ComandoEsp32, out byte[] Dati)
+        {
+
+
+            try
+            {
+                bool _esito;
+                ControllaAttesa(UltimaScrittura);
+
+
+
+                Dati = new byte[252];
+
+
+                _mS.Comando = SerialMessage.TipoComando.CMD_ESP32_PROXY;
+                _mS.CmdEsp32 = new MessaggioSpyBatt.ComandoEsp32();
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                //Log.Debug("Lancio ComandoEsp32 -  " + ComandoEsp32.ToString("X2"));
+
+                _mS.ComponiMessaggioOpenEsp32(ComandoEsp32);
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                // Preparo la copia per la visualizzazione
+                UltimoMessaggio = new byte[_mS.MessageBuffer.Length];
+                for (int _cicloMsg = 0; _cicloMsg < _mS.MessageBuffer.Length; _cicloMsg++)
+                {
+                    UltimoMessaggio[_cicloMsg] = _mS.MessageBuffer[_cicloMsg];
+                }
+
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                // Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpArray(_mS.CmdEsp32.memDataDecoded));
+
+                int _totDati = _mS.CmdEsp32.numBytes;
+                Dati = new byte[_totDati];
+
+                for (int _ciclo = 0; (_ciclo < _totDati); _ciclo++)
+                {
+
+                    Dati[_ciclo] = _mS.CmdEsp32.memDataDecoded[_ciclo];
+                }
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                Dati = null;
+                return false;
+            }
+        }
 
 
 

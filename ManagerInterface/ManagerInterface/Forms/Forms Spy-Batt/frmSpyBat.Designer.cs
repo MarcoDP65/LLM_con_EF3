@@ -339,7 +339,6 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.txtCalMinuti = new System.Windows.Forms.TextBox();
@@ -1033,54 +1032,48 @@
             this.txtStratDataGrid = new System.Windows.Forms.TextBox();
             this.tbpEsp32 = new System.Windows.Forms.TabPage();
             this.txtEsp32CmdMsg = new System.Windows.Forms.TextBox();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label308 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.label309 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.label310 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.label311 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label312 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.label313 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.label314 = new System.Windows.Forms.Label();
-            this.txtEsp32ValSetLed = new System.Windows.Forms.TextBox();
-            this.label315 = new System.Windows.Forms.Label();
             this.txtEsp32DataGrid = new System.Windows.Forms.TextBox();
-            this.panel23 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtEsp32TSTValByte = new System.Windows.Forms.TextBox();
+            this.label302 = new System.Windows.Forms.Label();
+            this.txtEsp32TSTNumByte = new System.Windows.Forms.TextBox();
+            this.label303 = new System.Windows.Forms.Label();
+            this.btnEsp32QRY = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label301 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label300 = new System.Windows.Forms.Label();
-            this.label301 = new System.Windows.Forms.Label();
-            this.label302 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label303 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label304 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label305 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label306 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label307 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.label321 = new System.Windows.Forms.Label();
+            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.label320 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.chkEsp33RebootAfterCmd = new System.Windows.Forms.CheckBox();
+            this.label319 = new System.Windows.Forms.Label();
+            this.cmbEsp32SetMode = new System.Windows.Forms.ComboBox();
+            this.btnEsp32SetMode = new System.Windows.Forms.Button();
+            this.label318 = new System.Windows.Forms.Label();
+            this.label317 = new System.Windows.Forms.Label();
+            this.label316 = new System.Windows.Forms.Label();
+            this.cmbEsp32SetTxPwr = new System.Windows.Forms.ComboBox();
+            this.cmbEsp32SetAdvPwr = new System.Windows.Forms.ComboBox();
+            this.btnEsp32SetTxPower = new System.Windows.Forms.Button();
             this.btnEsp32Rst = new System.Windows.Forms.Button();
             this.cmbEsp32SetLed = new System.Windows.Forms.ComboBox();
             this.btnEsp32NoOp = new System.Windows.Forms.Button();
             this.btnEsp32SetLed = new System.Windows.Forms.Button();
-            this.btnEsp32Test01 = new System.Windows.Forms.Button();
+            this.btnEsp32Test = new System.Windows.Forms.Button();
             this.lvwCicliBatteriaAA = new System.Windows.Forms.ListView();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.btnEsp32SetTxPower = new System.Windows.Forms.Button();
-            this.cmbEsp32SetTxPwr = new System.Windows.Forms.ComboBox();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
+            this.btnEsp32SetMTU = new System.Windows.Forms.Button();
+            this.txtEsp32MtuSize = new System.Windows.Forms.TextBox();
+            this.label304 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -1200,8 +1193,6 @@
             this.panel1.SuspendLayout();
             this.grbStratComandiTest.SuspendLayout();
             this.tbpEsp32.SuspendLayout();
-            this.panel24.SuspendLayout();
-            this.panel23.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -3374,17 +3365,6 @@
             resources.ApplyResources(this.lblTurno3, "lblTurno3");
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
-            // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
             // 
             // tabCb05
             // 
@@ -8096,9 +8076,7 @@
             // 
             this.tbpEsp32.BackColor = System.Drawing.Color.LightYellow;
             this.tbpEsp32.Controls.Add(this.txtEsp32CmdMsg);
-            this.tbpEsp32.Controls.Add(this.panel24);
             this.tbpEsp32.Controls.Add(this.txtEsp32DataGrid);
-            this.tbpEsp32.Controls.Add(this.panel23);
             this.tbpEsp32.Controls.Add(this.groupBox5);
             resources.ApplyResources(this.tbpEsp32, "tbpEsp32");
             this.tbpEsp32.Name = "tbpEsp32";
@@ -8108,142 +8086,89 @@
             resources.ApplyResources(this.txtEsp32CmdMsg, "txtEsp32CmdMsg");
             this.txtEsp32CmdMsg.Name = "txtEsp32CmdMsg";
             // 
-            // panel24
-            // 
-            this.panel24.BackColor = System.Drawing.Color.White;
-            this.panel24.Controls.Add(this.textBox16);
-            this.panel24.Controls.Add(this.label308);
-            this.panel24.Controls.Add(this.textBox17);
-            this.panel24.Controls.Add(this.label302);
-            this.panel24.Controls.Add(this.label309);
-            this.panel24.Controls.Add(this.textBox18);
-            this.panel24.Controls.Add(this.label310);
-            this.panel24.Controls.Add(this.textBox19);
-            this.panel24.Controls.Add(this.label311);
-            this.panel24.Controls.Add(this.textBox20);
-            this.panel24.Controls.Add(this.label312);
-            this.panel24.Controls.Add(this.textBox21);
-            this.panel24.Controls.Add(this.label313);
-            this.panel24.Controls.Add(this.textBox22);
-            this.panel24.Controls.Add(this.label314);
-            this.panel24.Controls.Add(this.txtEsp32ValSetLed);
-            this.panel24.Controls.Add(this.label315);
-            resources.ApplyResources(this.panel24, "panel24");
-            this.panel24.Name = "panel24";
-            // 
-            // textBox16
-            // 
-            resources.ApplyResources(this.textBox16, "textBox16");
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            // 
-            // label308
-            // 
-            resources.ApplyResources(this.label308, "label308");
-            this.label308.Name = "label308";
-            // 
-            // textBox17
-            // 
-            resources.ApplyResources(this.textBox17, "textBox17");
-            this.textBox17.Name = "textBox17";
-            this.textBox17.ReadOnly = true;
-            // 
-            // label309
-            // 
-            resources.ApplyResources(this.label309, "label309");
-            this.label309.Name = "label309";
-            // 
-            // textBox18
-            // 
-            resources.ApplyResources(this.textBox18, "textBox18");
-            this.textBox18.Name = "textBox18";
-            this.textBox18.ReadOnly = true;
-            // 
-            // label310
-            // 
-            resources.ApplyResources(this.label310, "label310");
-            this.label310.Name = "label310";
-            // 
-            // textBox19
-            // 
-            resources.ApplyResources(this.textBox19, "textBox19");
-            this.textBox19.Name = "textBox19";
-            this.textBox19.ReadOnly = true;
-            // 
-            // label311
-            // 
-            resources.ApplyResources(this.label311, "label311");
-            this.label311.Name = "label311";
-            // 
-            // textBox20
-            // 
-            resources.ApplyResources(this.textBox20, "textBox20");
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            // 
-            // label312
-            // 
-            resources.ApplyResources(this.label312, "label312");
-            this.label312.Name = "label312";
-            // 
-            // textBox21
-            // 
-            resources.ApplyResources(this.textBox21, "textBox21");
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            // 
-            // label313
-            // 
-            resources.ApplyResources(this.label313, "label313");
-            this.label313.Name = "label313";
-            // 
-            // textBox22
-            // 
-            resources.ApplyResources(this.textBox22, "textBox22");
-            this.textBox22.Name = "textBox22";
-            this.textBox22.ReadOnly = true;
-            // 
-            // label314
-            // 
-            resources.ApplyResources(this.label314, "label314");
-            this.label314.Name = "label314";
-            // 
-            // txtEsp32ValSetLed
-            // 
-            resources.ApplyResources(this.txtEsp32ValSetLed, "txtEsp32ValSetLed");
-            this.txtEsp32ValSetLed.Name = "txtEsp32ValSetLed";
-            // 
-            // label315
-            // 
-            resources.ApplyResources(this.label315, "label315");
-            this.label315.Name = "label315";
-            // 
             // txtEsp32DataGrid
             // 
             resources.ApplyResources(this.txtEsp32DataGrid, "txtEsp32DataGrid");
             this.txtEsp32DataGrid.Name = "txtEsp32DataGrid";
             this.txtEsp32DataGrid.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
             // 
-            // panel23
+            // groupBox5
             // 
-            this.panel23.BackColor = System.Drawing.Color.White;
-            this.panel23.Controls.Add(this.textBox3);
-            this.panel23.Controls.Add(this.label300);
-            this.panel23.Controls.Add(this.label301);
-            this.panel23.Controls.Add(this.textBox4);
-            this.panel23.Controls.Add(this.textBox5);
-            this.panel23.Controls.Add(this.textBox7);
-            this.panel23.Controls.Add(this.label303);
-            this.panel23.Controls.Add(this.textBox9);
-            this.panel23.Controls.Add(this.label304);
-            this.panel23.Controls.Add(this.textBox12);
-            this.panel23.Controls.Add(this.label305);
-            this.panel23.Controls.Add(this.textBox13);
-            this.panel23.Controls.Add(this.label306);
-            this.panel23.Controls.Add(this.textBox14);
-            this.panel23.Controls.Add(this.label307);
-            resources.ApplyResources(this.panel23, "panel23");
-            this.panel23.Name = "panel23";
+            this.groupBox5.BackColor = System.Drawing.Color.White;
+            this.groupBox5.Controls.Add(this.txtEsp32MtuSize);
+            this.groupBox5.Controls.Add(this.label304);
+            this.groupBox5.Controls.Add(this.btnEsp32SetMTU);
+            this.groupBox5.Controls.Add(this.txtEsp32TSTValByte);
+            this.groupBox5.Controls.Add(this.label302);
+            this.groupBox5.Controls.Add(this.txtEsp32TSTNumByte);
+            this.groupBox5.Controls.Add(this.label303);
+            this.groupBox5.Controls.Add(this.btnEsp32QRY);
+            this.groupBox5.Controls.Add(this.textBox4);
+            this.groupBox5.Controls.Add(this.label301);
+            this.groupBox5.Controls.Add(this.textBox3);
+            this.groupBox5.Controls.Add(this.label300);
+            this.groupBox5.Controls.Add(this.button5);
+            this.groupBox5.Controls.Add(this.button4);
+            this.groupBox5.Controls.Add(this.textBox24);
+            this.groupBox5.Controls.Add(this.label321);
+            this.groupBox5.Controls.Add(this.textBox23);
+            this.groupBox5.Controls.Add(this.label320);
+            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.chkEsp33RebootAfterCmd);
+            this.groupBox5.Controls.Add(this.label319);
+            this.groupBox5.Controls.Add(this.cmbEsp32SetMode);
+            this.groupBox5.Controls.Add(this.btnEsp32SetMode);
+            this.groupBox5.Controls.Add(this.label318);
+            this.groupBox5.Controls.Add(this.label317);
+            this.groupBox5.Controls.Add(this.label316);
+            this.groupBox5.Controls.Add(this.cmbEsp32SetTxPwr);
+            this.groupBox5.Controls.Add(this.cmbEsp32SetAdvPwr);
+            this.groupBox5.Controls.Add(this.btnEsp32SetTxPower);
+            this.groupBox5.Controls.Add(this.btnEsp32Rst);
+            this.groupBox5.Controls.Add(this.cmbEsp32SetLed);
+            this.groupBox5.Controls.Add(this.btnEsp32NoOp);
+            this.groupBox5.Controls.Add(this.btnEsp32SetLed);
+            this.groupBox5.Controls.Add(this.btnEsp32Test);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // txtEsp32TSTValByte
+            // 
+            resources.ApplyResources(this.txtEsp32TSTValByte, "txtEsp32TSTValByte");
+            this.txtEsp32TSTValByte.Name = "txtEsp32TSTValByte";
+            // 
+            // label302
+            // 
+            resources.ApplyResources(this.label302, "label302");
+            this.label302.Name = "label302";
+            // 
+            // txtEsp32TSTNumByte
+            // 
+            resources.ApplyResources(this.txtEsp32TSTNumByte, "txtEsp32TSTNumByte");
+            this.txtEsp32TSTNumByte.Name = "txtEsp32TSTNumByte";
+            // 
+            // label303
+            // 
+            resources.ApplyResources(this.label303, "label303");
+            this.label303.Name = "label303";
+            // 
+            // btnEsp32QRY
+            // 
+            resources.ApplyResources(this.btnEsp32QRY, "btnEsp32QRY");
+            this.btnEsp32QRY.Name = "btnEsp32QRY";
+            this.btnEsp32QRY.UseVisualStyleBackColor = true;
+            this.btnEsp32QRY.Click += new System.EventHandler(this.btnEsp32QRY_Click);
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(this.textBox4, "textBox4");
+            this.textBox4.Name = "textBox4";
+            // 
+            // label301
+            // 
+            resources.ApplyResources(this.label301, "label301");
+            this.label301.Name = "label301";
             // 
             // textBox3
             // 
@@ -8255,89 +8180,117 @@
             resources.ApplyResources(this.label300, "label300");
             this.label300.Name = "label300";
             // 
-            // label301
+            // button5
             // 
-            resources.ApplyResources(this.label301, "label301");
-            this.label301.Name = "label301";
+            this.button5.Cursor = System.Windows.Forms.Cursors.Cross;
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.Name = "button5";
+            this.button5.UseVisualStyleBackColor = true;
             // 
-            // label302
+            // button4
             // 
-            resources.ApplyResources(this.label302, "label302");
-            this.label302.Name = "label302";
+            this.button4.Cursor = System.Windows.Forms.Cursors.Cross;
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // textBox24
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
+            resources.ApplyResources(this.textBox24, "textBox24");
+            this.textBox24.Name = "textBox24";
             // 
-            // textBox5
+            // label321
             // 
-            resources.ApplyResources(this.textBox5, "textBox5");
-            this.textBox5.Name = "textBox5";
+            resources.ApplyResources(this.label321, "label321");
+            this.label321.Name = "label321";
             // 
-            // textBox7
+            // textBox23
             // 
-            resources.ApplyResources(this.textBox7, "textBox7");
-            this.textBox7.Name = "textBox7";
+            resources.ApplyResources(this.textBox23, "textBox23");
+            this.textBox23.Name = "textBox23";
             // 
-            // label303
+            // label320
             // 
-            resources.ApplyResources(this.label303, "label303");
-            this.label303.Name = "label303";
+            resources.ApplyResources(this.label320, "label320");
+            this.label320.Name = "label320";
             // 
-            // textBox9
+            // button3
             // 
-            resources.ApplyResources(this.textBox9, "textBox9");
-            this.textBox9.Name = "textBox9";
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // label304
+            // chkEsp33RebootAfterCmd
             // 
-            resources.ApplyResources(this.label304, "label304");
-            this.label304.Name = "label304";
+            resources.ApplyResources(this.chkEsp33RebootAfterCmd, "chkEsp33RebootAfterCmd");
+            this.chkEsp33RebootAfterCmd.ForeColor = System.Drawing.Color.Red;
+            this.chkEsp33RebootAfterCmd.Name = "chkEsp33RebootAfterCmd";
+            this.chkEsp33RebootAfterCmd.UseVisualStyleBackColor = true;
             // 
-            // textBox12
+            // label319
             // 
-            resources.ApplyResources(this.textBox12, "textBox12");
-            this.textBox12.Name = "textBox12";
+            resources.ApplyResources(this.label319, "label319");
+            this.label319.Name = "label319";
             // 
-            // label305
+            // cmbEsp32SetMode
             // 
-            resources.ApplyResources(this.label305, "label305");
-            this.label305.Name = "label305";
+            this.cmbEsp32SetMode.FormattingEnabled = true;
+            this.cmbEsp32SetMode.Items.AddRange(new object[] {
+            resources.GetString("cmbEsp32SetMode.Items"),
+            resources.GetString("cmbEsp32SetMode.Items1"),
+            resources.GetString("cmbEsp32SetMode.Items2")});
+            resources.ApplyResources(this.cmbEsp32SetMode, "cmbEsp32SetMode");
+            this.cmbEsp32SetMode.Name = "cmbEsp32SetMode";
             // 
-            // textBox13
+            // btnEsp32SetMode
             // 
-            resources.ApplyResources(this.textBox13, "textBox13");
-            this.textBox13.Name = "textBox13";
+            resources.ApplyResources(this.btnEsp32SetMode, "btnEsp32SetMode");
+            this.btnEsp32SetMode.Name = "btnEsp32SetMode";
+            this.btnEsp32SetMode.UseVisualStyleBackColor = true;
+            this.btnEsp32SetMode.Click += new System.EventHandler(this.btnEsp32SetMode_Click);
             // 
-            // label306
+            // label318
             // 
-            resources.ApplyResources(this.label306, "label306");
-            this.label306.Name = "label306";
+            resources.ApplyResources(this.label318, "label318");
+            this.label318.Name = "label318";
             // 
-            // textBox14
+            // label317
             // 
-            resources.ApplyResources(this.textBox14, "textBox14");
-            this.textBox14.Name = "textBox14";
+            resources.ApplyResources(this.label317, "label317");
+            this.label317.Name = "label317";
             // 
-            // label307
+            // label316
             // 
-            resources.ApplyResources(this.label307, "label307");
-            this.label307.Name = "label307";
+            resources.ApplyResources(this.label316, "label316");
+            this.label316.Name = "label316";
             // 
-            // groupBox5
+            // cmbEsp32SetTxPwr
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.White;
-            this.groupBox5.Controls.Add(this.cmbEsp32SetTxPwr);
-            this.groupBox5.Controls.Add(this.btnEsp32SetTxPower);
-            this.groupBox5.Controls.Add(this.btnEsp32Rst);
-            this.groupBox5.Controls.Add(this.cmbEsp32SetLed);
-            this.groupBox5.Controls.Add(this.btnEsp32NoOp);
-            this.groupBox5.Controls.Add(this.btnEsp32SetLed);
-            this.groupBox5.Controls.Add(this.btnEsp32Test01);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
+            this.cmbEsp32SetTxPwr.FormattingEnabled = true;
+            this.cmbEsp32SetTxPwr.Items.AddRange(new object[] {
+            resources.GetString("cmbEsp32SetTxPwr.Items"),
+            resources.GetString("cmbEsp32SetTxPwr.Items1"),
+            resources.GetString("cmbEsp32SetTxPwr.Items2")});
+            resources.ApplyResources(this.cmbEsp32SetTxPwr, "cmbEsp32SetTxPwr");
+            this.cmbEsp32SetTxPwr.Name = "cmbEsp32SetTxPwr";
+            // 
+            // cmbEsp32SetAdvPwr
+            // 
+            this.cmbEsp32SetAdvPwr.FormattingEnabled = true;
+            this.cmbEsp32SetAdvPwr.Items.AddRange(new object[] {
+            resources.GetString("cmbEsp32SetAdvPwr.Items"),
+            resources.GetString("cmbEsp32SetAdvPwr.Items1"),
+            resources.GetString("cmbEsp32SetAdvPwr.Items2")});
+            resources.ApplyResources(this.cmbEsp32SetAdvPwr, "cmbEsp32SetAdvPwr");
+            this.cmbEsp32SetAdvPwr.Name = "cmbEsp32SetAdvPwr";
+            // 
+            // btnEsp32SetTxPower
+            // 
+            this.btnEsp32SetTxPower.Cursor = System.Windows.Forms.Cursors.Cross;
+            resources.ApplyResources(this.btnEsp32SetTxPower, "btnEsp32SetTxPower");
+            this.btnEsp32SetTxPower.Name = "btnEsp32SetTxPower";
+            this.btnEsp32SetTxPower.UseVisualStyleBackColor = true;
+            this.btnEsp32SetTxPower.Click += new System.EventHandler(this.btnEsp32SetTxPower_Click);
             // 
             // btnEsp32Rst
             // 
@@ -8370,12 +8323,12 @@
             this.btnEsp32SetLed.UseVisualStyleBackColor = true;
             this.btnEsp32SetLed.Click += new System.EventHandler(this.btnEsp32SetLed_Click);
             // 
-            // btnEsp32Test01
+            // btnEsp32Test
             // 
-            resources.ApplyResources(this.btnEsp32Test01, "btnEsp32Test01");
-            this.btnEsp32Test01.Name = "btnEsp32Test01";
-            this.btnEsp32Test01.UseVisualStyleBackColor = true;
-            this.btnEsp32Test01.Click += new System.EventHandler(this.btnEsp32Test01_Click);
+            resources.ApplyResources(this.btnEsp32Test, "btnEsp32Test");
+            this.btnEsp32Test.Name = "btnEsp32Test";
+            this.btnEsp32Test.UseVisualStyleBackColor = true;
+            this.btnEsp32Test.Click += new System.EventHandler(this.btnEsp32Test01_Click);
             // 
             // lvwCicliBatteriaAA
             // 
@@ -8393,22 +8346,33 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // btnEsp32SetTxPower
+            // pannelloTurno1
             // 
-            this.btnEsp32SetTxPower.Cursor = System.Windows.Forms.Cursors.Cross;
-            resources.ApplyResources(this.btnEsp32SetTxPower, "btnEsp32SetTxPower");
-            this.btnEsp32SetTxPower.Name = "btnEsp32SetTxPower";
-            this.btnEsp32SetTxPower.UseVisualStyleBackColor = true;
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
             // 
-            // cmbEsp32SetTxPwr
+            // btnEsp32SetMTU
             // 
-            this.cmbEsp32SetTxPwr.FormattingEnabled = true;
-            this.cmbEsp32SetTxPwr.Items.AddRange(new object[] {
-            resources.GetString("cmbEsp32SetTxPwr.Items"),
-            resources.GetString("cmbEsp32SetTxPwr.Items1"),
-            resources.GetString("cmbEsp32SetTxPwr.Items2")});
-            resources.ApplyResources(this.cmbEsp32SetTxPwr, "cmbEsp32SetTxPwr");
-            this.cmbEsp32SetTxPwr.Name = "cmbEsp32SetTxPwr";
+            resources.ApplyResources(this.btnEsp32SetMTU, "btnEsp32SetMTU");
+            this.btnEsp32SetMTU.Name = "btnEsp32SetMTU";
+            this.btnEsp32SetMTU.UseVisualStyleBackColor = true;
+            this.btnEsp32SetMTU.Click += new System.EventHandler(this.btnEsp32SetMTU_Click);
+            // 
+            // txtEsp32MtuSize
+            // 
+            resources.ApplyResources(this.txtEsp32MtuSize, "txtEsp32MtuSize");
+            this.txtEsp32MtuSize.Name = "txtEsp32MtuSize";
+            // 
+            // label304
+            // 
+            resources.ApplyResources(this.label304, "label304");
+            this.label304.Name = "label304";
             // 
             // frmSpyBat
             // 
@@ -8620,11 +8584,8 @@
             this.grbStratComandiTest.ResumeLayout(false);
             this.tbpEsp32.ResumeLayout(false);
             this.tbpEsp32.PerformLayout();
-            this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
-            this.panel23.ResumeLayout(false);
-            this.panel23.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -9639,48 +9600,41 @@
         public System.Windows.Forms.Button btnFwSwitchBL;
         private System.Windows.Forms.TabPage tbpEsp32;
         private System.Windows.Forms.TextBox txtEsp32DataGrid;
-        private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label300;
-        private System.Windows.Forms.Label label301;
-        private System.Windows.Forms.Label label302;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label303;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label304;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label305;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label306;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Label label307;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnEsp32SetLed;
-        private System.Windows.Forms.Button btnEsp32Test01;
-        private System.Windows.Forms.Panel panel24;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.Label label308;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.Label label309;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.Label label310;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.Label label311;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Label label312;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.Label label313;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.Label label314;
-        private System.Windows.Forms.TextBox txtEsp32ValSetLed;
-        private System.Windows.Forms.Label label315;
+        private System.Windows.Forms.Button btnEsp32Test;
         private System.Windows.Forms.Button btnEsp32NoOp;
         private System.Windows.Forms.TextBox txtEsp32CmdMsg;
         private System.Windows.Forms.ComboBox cmbEsp32SetLed;
         private System.Windows.Forms.Button btnEsp32Rst;
-        private System.Windows.Forms.ComboBox cmbEsp32SetTxPwr;
+        private System.Windows.Forms.ComboBox cmbEsp32SetAdvPwr;
         private System.Windows.Forms.Button btnEsp32SetTxPower;
+        private System.Windows.Forms.Label label317;
+        private System.Windows.Forms.Label label316;
+        private System.Windows.Forms.ComboBox cmbEsp32SetTxPwr;
+        private System.Windows.Forms.Label label318;
+        private System.Windows.Forms.Label label319;
+        private System.Windows.Forms.ComboBox cmbEsp32SetMode;
+        private System.Windows.Forms.Button btnEsp32SetMode;
+        private System.Windows.Forms.CheckBox chkEsp33RebootAfterCmd;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label301;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label300;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.Label label321;
+        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.Label label320;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnEsp32QRY;
+        private System.Windows.Forms.TextBox txtEsp32TSTValByte;
+        private System.Windows.Forms.Label label302;
+        private System.Windows.Forms.TextBox txtEsp32TSTNumByte;
+        private System.Windows.Forms.Label label303;
+        private System.Windows.Forms.TextBox txtEsp32MtuSize;
+        private System.Windows.Forms.Label label304;
+        private System.Windows.Forms.Button btnEsp32SetMTU;
     }
 }

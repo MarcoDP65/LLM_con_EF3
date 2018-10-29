@@ -157,6 +157,9 @@ namespace ChargerLogic
                                 return 9;
                             case "2.04.07":
                             case "2.04.08":
+                            case "2.04.09":
+                            case "2.04.10":
+                            case "2.04.11":
                                 return 10;
                             default:
                                 return 8;
@@ -943,26 +946,31 @@ namespace ChargerLogic
 
                     case (byte)TipoComando.CMD_MODE_STOP_LT: // 0xD3: // read RTC
                         {
-                            _startPos = 39;
+                            //_startPos = 39;
+                            _endPos = _messaggio.Length;
+                            _startPos = _endPos - 6;
 
                             if (_messaggio[_startPos] != serENDPAC)
                             {
                                 return EsitoRisposta.NonRiconosciuto;
                             }
 
+                            _buffArray = new byte[_startPos - 1];
 
-                            _buffArray = new byte[38];
-                            Array.Copy(_messaggio, 1, _buffArray, 0, 38);
-                            _startPos = 40;
+                            // controllo CRC
+                            Array.Copy(_messaggio, 1, _buffArray, 0, (_startPos - 1));
+                            _startPos++;
                             _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
                             _tempShort = (ushort)(_ret);
-                            _startPos = 42;
+                            _startPos += 2;
                             _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
                             _tempShort = (ushort)((_tempShort << 8) + _ret);
                             _crc = codCrc.ComputeChecksum(_buffArray);
 
                             if (_crc != _tempShort)
                             { return EsitoRisposta.BadCRC; }
+
+
 
                             // ora leggo la parte dati
                             DatiRTCSB = new comandoRTC();
@@ -1035,8 +1043,10 @@ namespace ChargerLogic
                             if (_crc != _tempShort)
                             { return EsitoRisposta.BadCRC; }
 
+                            Log.Info("Risposta Comando ESP32 valida: ");
                             // ora leggo la parte dati
-                            if (CreateMsgObject) CmdEsp32 = new ComandoEsp32();
+                            //if (CreateMsgObject)
+                            CmdEsp32 = new ComandoEsp32();
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
                             Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
                             _risposta = CmdEsp32.analizzaMessaggio(_buffArray);
