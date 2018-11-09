@@ -51,7 +51,7 @@ namespace PannelloCharger
             FullDataBuffer = new byte[0];
             ListaMessaggi.Clear();
             InizializzaVistaMessaggi();
-            btnGetSerialPorts_Click(null,null);
+            btnGetSerialPorts_Click(null, null);
 
             RidimensionaControlli();
         }
@@ -372,7 +372,7 @@ namespace PannelloCharger
                 if (PortaConnessa())
                 {
 
-                    ComPort.Write(Messaggio,0, Messaggio.Length);
+                    ComPort.Write(Messaggio, 0, Messaggio.Length);
                     _esito = true;
                 }
 
@@ -430,6 +430,8 @@ namespace PannelloCharger
                 return;
             // Send data to whom ever interested
 
+            Log.Debug("SerialPort_DataReceived: " + dataLength.ToString("000") + " - " + FunzioniComuni.HexdumpArray(data, true));
+            //AccodaBuffer(data);
             NewSerialDataRecieved(this, new SerialDataEventArgs(data));
 
         }
@@ -442,8 +444,10 @@ namespace PannelloCharger
 
         public void _spManager_NewSerialDataRecieved(object sender, SerialDataEventArgs e)
         {
+
             try
             {
+
                 bool _trovatoETX = false;
                 if (this.InvokeRequired)
                 {
@@ -451,35 +455,107 @@ namespace PannelloCharger
                     this.BeginInvoke(new EventHandler<SerialDataEventArgs>(_spManager_NewSerialDataRecieved), new object[] { sender, e });
                     return;
                 }
+
                 int datiRicevuti = e.Data.Length;
+
                 for (int _i = 0; _i < datiRicevuti; _i++)
                 {
+                    _trovatoETX = false;
+                    if (e.Data[_i] == 0x02)
+                    {
+                        txtSerialEcho.AppendText("\r\n");
+                    }
 
+                    txtSerialEcho.AppendText(e.Data[_i].ToString("X2"));
 
-
-
-                    txtSerialEcho.AppendText( e.Data[_i].ToString("X2"));
                     if (e.Data[_i] == 0x03)
+                    {
+                        //txtSerialEcho.AppendText("\r\n");
+                    }
+                    else
+                    {
+
+                        txtSerialEcho.AppendText(" ");
+                    }
+
+
+
+                    // Accodo al buffer di salvataggio
+                    codaDatiSER.Enqueue(e.Data[_i]);
+
+                    if (e.Data[_i] == SerialMessage.serETX)
+                    {
+                        Log.Debug("Trovato Etx (SIG) --> " + _i.ToString());
+                        _trovatoETX = true;
+                    }
+                }
+
+                if (_trovatoETX)
+                {
+                    Log.Debug("Trovato Etx (USB) --> Analizza Coda");
+                    analizzaCodaSIG();
+
+                }
+                                  
+
+                
+
+                Log.Debug("Coda: " + codaDatiSER.Count.ToString() + " - " + FunzioniComuni.HexdumpQueue(codaDatiSER));
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("_spManager_NewSerialDataRecieved: " + Ex.Message);
+
+            }
+        }
+
+
+        public bool AccodaBuffer(byte[] RxData )
+        {
+
+            try
+            {
+
+                bool _trovatoETX = false;
+                int datiRicevuti = RxData.Length;
+                Log.Debug("NewSerial: " + FunzioniComuni.HexdumpArray(RxData));
+
+
+                for (int _i = 0; _i < datiRicevuti; _i++)
+                {
+                    _trovatoETX = false;
+                    if (RxData[_i] == 0x02)
+                    {
+                        txtSerialEcho.AppendText("\r\n>>");
+                    }
+
+                    txtSerialEcho.AppendText(RxData[_i].ToString("X2"));
+
+                    if (RxData[_i] == 0x03)
                     {
                         txtSerialEcho.AppendText("\r\n");
                     }
                     else
                     {
+
                         txtSerialEcho.AppendText(" ");
                     }
+                 
 
-                    
 
                     // Accodo al buffer di salvataggio
                     //int lastByte = FullDataBuffer.Length;
                     //Array.Resize(ref FullDataBuffer, lastByte + 1);
                     //FullDataBuffer[lastByte] = e.Data[_i];
-                    
 
+                    /*
                     codaDatiSER.Enqueue(e.Data[_i]);
+                    //Log.Debug(_i.ToString("000") + " - Coda: " + codaDatiSER.Count.ToString() + "  (0x" + e.Data[_i].ToString("X2"));
+
                     if (e.Data[_i] == SerialMessage.serETX)
                     {
-                        Log.Debug("Trovato Etx (SIG)");
+                        Log.Debug("Trovato Etx (SIG) --> " + _i.ToString());
                         _trovatoETX = true;
                     }
 
@@ -489,18 +565,21 @@ namespace PannelloCharger
                         analizzaCodaSIG();
 
                     }
-
+                    */
 
 
                 }
-               
+                return true;
+                //Log.Debug("Coda: " + codaDatiSER.Count.ToString() + " - " + FunzioniComuni.HexdumpQueue(codaDatiSER));
+
             }
             catch (Exception Ex)
             {
                 Log.Error("_spManager_NewSerialDataRecieved: " + Ex.Message);
-                
+                return false;
             }
         }
+
 
         private void btnSetSigRegister_Click(object sender, EventArgs e)
         {
@@ -561,7 +640,7 @@ namespace PannelloCharger
                     if (codaDatiSER.Contains(SerialMessage.serETX) == false)
                     {
 
-                        Log.Debug("NON trovato ETX");
+                        //Log.Debug("NON trovato ETX");
                         _datiRicevuti = SerialMessage.TipoRisposta.NonValido;
                         return _datiRicevuti;
                     }
@@ -681,7 +760,8 @@ namespace PannelloCharger
 
                         flvListaComandiSIG.SetObjects(ListaMessaggi);
                         flvListaComandiSIG.BuildList();
-                       // flvListaComandiSIG.RefreshObjects(ListaMessaggi);
+                        // flvListaComandiSIG.RefreshObjects(ListaMessaggi);
+                        Application.DoEvents();
                         Array.Resize(ref _dataBuffer, 0);
                         //return _datiRicevuti;
                     }

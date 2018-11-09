@@ -342,7 +342,6 @@ namespace MoriData
             }
         }
 
-
         public bool VerificaAggiornamentoDB()
         {
             try
@@ -378,8 +377,6 @@ namespace MoriData
                 return false;
             }
         }
-
-
 
         #endregion
 

@@ -10080,378 +10080,6 @@
   <data name="&gt;&gt;tabCb05.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 20</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 20</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>V max  V/cel</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>grbComboSonda</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 20</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>V min  V/cel</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>grbComboSonda</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 20</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 20</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>-mV/cel / °C</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>grbComboSonda</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="comboBox3.Items" xml:space="preserve">
-    <value>2,40</value>
-  </data>
-  <data name="comboBox3.Items1" xml:space="preserve">
-    <value>2,41</value>
-  </data>
-  <data name="comboBox3.Items2" xml:space="preserve">
-    <value>2,42</value>
-  </data>
-  <data name="comboBox3.Items3" xml:space="preserve">
-    <value>2,43</value>
-  </data>
-  <data name="comboBox3.Items4" xml:space="preserve">
-    <value>2,44</value>
-  </data>
-  <data name="comboBox3.Items5" xml:space="preserve">
-    <value>2,45</value>
-  </data>
-  <data name="comboBox3.Items6" xml:space="preserve">
-    <value>2,46</value>
-  </data>
-  <data name="comboBox3.Items7" xml:space="preserve">
-    <value>2,47</value>
-  </data>
-  <data name="comboBox3.Items8" xml:space="preserve">
-    <value>2,48</value>
-  </data>
-  <data name="comboBox3.Items9" xml:space="preserve">
-    <value>2,49</value>
-  </data>
-  <data name="comboBox3.Items10" xml:space="preserve">
-    <value>2,50</value>
-  </data>
-  <data name="comboBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>322, 40</value>
-  </data>
-  <data name="comboBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 28</value>
-  </data>
-  <data name="comboBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;comboBox3.Name" xml:space="preserve">
-    <value>comboBox3</value>
-  </data>
-  <data name="&gt;&gt;comboBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox3.Parent" xml:space="preserve">
-    <value>grbComboSonda</value>
-  </data>
-  <data name="&gt;&gt;comboBox3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="comboBox2.Items" xml:space="preserve">
-    <value>2,25</value>
-  </data>
-  <data name="comboBox2.Items1" xml:space="preserve">
-    <value>2,26</value>
-  </data>
-  <data name="comboBox2.Items2" xml:space="preserve">
-    <value>2,27</value>
-  </data>
-  <data name="comboBox2.Items3" xml:space="preserve">
-    <value>2,28</value>
-  </data>
-  <data name="comboBox2.Items4" xml:space="preserve">
-    <value>2,29</value>
-  </data>
-  <data name="comboBox2.Items5" xml:space="preserve">
-    <value>2,30</value>
-  </data>
-  <data name="comboBox2.Items6" xml:space="preserve">
-    <value>2,31</value>
-  </data>
-  <data name="comboBox2.Items7" xml:space="preserve">
-    <value>2,32</value>
-  </data>
-  <data name="comboBox2.Items8" xml:space="preserve">
-    <value>2,33</value>
-  </data>
-  <data name="comboBox2.Items9" xml:space="preserve">
-    <value>2,34</value>
-  </data>
-  <data name="comboBox2.Items10" xml:space="preserve">
-    <value>2,35</value>
-  </data>
-  <data name="comboBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 40</value>
-  </data>
-  <data name="comboBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 28</value>
-  </data>
-  <data name="comboBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBox2.Name" xml:space="preserve">
-    <value>comboBox2</value>
-  </data>
-  <data name="&gt;&gt;comboBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox2.Parent" xml:space="preserve">
-    <value>grbComboSonda</value>
-  </data>
-  <data name="&gt;&gt;comboBox2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cmbSonda01.Items" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cmbSonda01.Items1" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="cmbSonda01.Items2" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="cmbSonda01.Items3" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="cmbSonda01.Items4" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="cmbSonda01.Items5" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="cmbSonda01.Items6" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="cmbSonda01.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 40</value>
-  </data>
-  <data name="cmbSonda01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 28</value>
-  </data>
-  <data name="cmbSonda01.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cmbSonda01.Name" xml:space="preserve">
-    <value>cmbSonda01</value>
-  </data>
-  <data name="&gt;&gt;cmbSonda01.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbSonda01.Parent" xml:space="preserve">
-    <value>grbComboSonda</value>
-  </data>
-  <data name="&gt;&gt;cmbSonda01.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="grbComboSonda.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="grbComboSonda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 92</value>
-  </data>
-  <data name="grbComboSonda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>472, 98</value>
-  </data>
-  <data name="grbComboSonda.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;grbComboSonda.Name" xml:space="preserve">
-    <value>grbComboSonda</value>
-  </data>
-  <data name="&gt;&gt;grbComboSonda.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbComboSonda.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;grbComboSonda.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="opSonda02.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="opSonda02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="opSonda02.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 120</value>
-  </data>
-  <data name="opSonda02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 24</value>
-  </data>
-  <data name="opSonda02.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="opSonda02.Text" xml:space="preserve">
-    <value>ON</value>
-  </data>
-  <data name="&gt;&gt;opSonda02.Name" xml:space="preserve">
-    <value>opSonda02</value>
-  </data>
-  <data name="&gt;&gt;opSonda02.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;opSonda02.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;opSonda02.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="opSonda01.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="opSonda01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="opSonda01.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 50</value>
-  </data>
-  <data name="opSonda01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 24</value>
-  </data>
-  <data name="opSonda01.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="opSonda01.Text" xml:space="preserve">
-    <value>OFF</value>
-  </data>
-  <data name="&gt;&gt;opSonda01.Name" xml:space="preserve">
-    <value>opSonda01</value>
-  </data>
-  <data name="&gt;&gt;opSonda01.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;opSonda01.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;opSonda01.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 40</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>676, 230</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Sonda Termica</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tabCb03</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabCb03.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tabCb03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1692, 738</value>
-  </data>
-  <data name="tabCb03.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabCb03.Text" xml:space="preserve">
-    <value>Sonda Termica</value>
-  </data>
-  <data name="&gt;&gt;tabCb03.Name" xml:space="preserve">
-    <value>tabCb03</value>
-  </data>
-  <data name="&gt;&gt;tabCb03.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabCb03.Parent" xml:space="preserve">
-    <value>tabCaricaBatterie</value>
-  </data>
-  <data name="&gt;&gt;tabCb03.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="chkParLetturaAuto.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -11863,7 +11491,7 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tabSbFact.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="checkBox2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11932,7 +11560,7 @@
     <value>1</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1238, 390</value>
+    <value>1250, 13</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 129</value>
@@ -12886,7 +12514,7 @@
     <value>20</value>
   </data>
   <data name="grbVarParametriSig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1238, 13</value>
+    <value>1250, 156</value>
   </data>
   <data name="grbVarParametriSig.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 363</value>
@@ -14443,7 +14071,7 @@
     <value>16</value>
   </data>
   <data name="tbpParametriCalibrazione.Text" xml:space="preserve">
-    <value>Dati Sistema</value>
+    <value>Funzioni Avanzate</value>
   </data>
   <data name="&gt;&gt;tbpParametriCalibrazione.Name" xml:space="preserve">
     <value>tbpParametriCalibrazione</value>
@@ -14455,7 +14083,7 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpParametriCalibrazione.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -15481,7 +15109,7 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tabMemRead.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="tctCalGeneraExcel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16744,7 +16372,7 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpCalibrazioni.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="btnFwSwitchArea2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -20428,7 +20056,7 @@
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpFirmware.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="optCloneDaDB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22154,7 +21782,7 @@ SPY-BATT</value>
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpClonaScheda.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="button2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -24149,7 +23777,7 @@ SPY-BATT</value>
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tabCalibrazione.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="label276.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -29057,7 +28685,7 @@ SPY-BATT</value>
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpStrategia.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="txtEsp32CmdMsg.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -30149,7 +29777,7 @@ SPY-BATT</value>
     <value>tabCaricaBatterie</value>
   </data>
   <data name="&gt;&gt;tbpEsp32.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="tabCaricaBatterie.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>

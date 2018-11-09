@@ -31,6 +31,7 @@
             this.tbcMainDisplayManager = new System.Windows.Forms.TabControl();
             this.tbpConnessione = new System.Windows.Forms.TabPage();
             this.pnlComandiImmediati = new System.Windows.Forms.Panel();
+            this.chkRtRiavvioAutomatico = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPrimaLettura = new System.Windows.Forms.Button();
             this.cmdLeggiRTC = new System.Windows.Forms.Button();
@@ -332,7 +333,7 @@
             this.flvStatoListaImg = new BrightIdeasSoftware.FastObjectListView();
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.ofdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.chkRtRiavvioAutomatico = new System.Windows.Forms.CheckBox();
+            this.pgbStatoAvanzamento = new System.Windows.Forms.ProgressBar();
             this.tbcMainDisplayManager.SuspendLayout();
             this.tbpConnessione.SuspendLayout();
             this.pnlComandiImmediati.SuspendLayout();
@@ -392,7 +393,7 @@
             this.tbcMainDisplayManager.Location = new System.Drawing.Point(12, 12);
             this.tbcMainDisplayManager.Name = "tbcMainDisplayManager";
             this.tbcMainDisplayManager.SelectedIndex = 0;
-            this.tbcMainDisplayManager.Size = new System.Drawing.Size(1633, 697);
+            this.tbcMainDisplayManager.Size = new System.Drawing.Size(1633, 752);
             this.tbcMainDisplayManager.TabIndex = 0;
             // 
             // tbpConnessione
@@ -423,6 +424,18 @@
             this.pnlComandiImmediati.Name = "pnlComandiImmediati";
             this.pnlComandiImmediati.Size = new System.Drawing.Size(307, 236);
             this.pnlComandiImmediati.TabIndex = 1;
+            // 
+            // chkRtRiavvioAutomatico
+            // 
+            this.chkRtRiavvioAutomatico.AutoSize = true;
+            this.chkRtRiavvioAutomatico.Checked = true;
+            this.chkRtRiavvioAutomatico.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRtRiavvioAutomatico.Location = new System.Drawing.Point(28, 191);
+            this.chkRtRiavvioAutomatico.Name = "chkRtRiavvioAutomatico";
+            this.chkRtRiavvioAutomatico.Size = new System.Drawing.Size(150, 21);
+            this.chkRtRiavvioAutomatico.TabIndex = 114;
+            this.chkRtRiavvioAutomatico.Text = "Riavvio Automatico";
+            this.chkRtRiavvioAutomatico.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -3526,6 +3539,7 @@
             // tbpStatoScheda
             // 
             this.tbpStatoScheda.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpStatoScheda.Controls.Add(this.pgbStatoAvanzamento);
             this.tbpStatoScheda.Controls.Add(this.label54);
             this.tbpStatoScheda.Controls.Add(this.panel15);
             this.tbpStatoScheda.Controls.Add(this.flvStatoListaSch);
@@ -3535,7 +3549,7 @@
             this.tbpStatoScheda.Location = new System.Drawing.Point(4, 25);
             this.tbpStatoScheda.Name = "tbpStatoScheda";
             this.tbpStatoScheda.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpStatoScheda.Size = new System.Drawing.Size(1625, 668);
+            this.tbpStatoScheda.Size = new System.Drawing.Size(1625, 723);
             this.tbpStatoScheda.TabIndex = 7;
             this.tbpStatoScheda.Text = "Stato Scheda";
             // 
@@ -3621,6 +3635,7 @@
             this.btnStatoSchCarica.TabIndex = 80;
             this.btnStatoSchCarica.Text = "Carica";
             this.btnStatoSchCarica.UseVisualStyleBackColor = true;
+            this.btnStatoSchCarica.Click += new System.EventHandler(this.btnStatoSchCarica_Click);
             // 
             // flvStatoListaSch
             // 
@@ -3675,7 +3690,7 @@
             this.txtStatoImgEnd.Name = "txtStatoImgEnd";
             this.txtStatoImgEnd.Size = new System.Drawing.Size(53, 24);
             this.txtStatoImgEnd.TabIndex = 84;
-            this.txtStatoImgEnd.Text = "256";
+            this.txtStatoImgEnd.Text = "100";
             this.txtStatoImgEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label48
@@ -3730,23 +3745,19 @@
             this.flvStatoListaImg.View = System.Windows.Forms.View.Details;
             this.flvStatoListaImg.VirtualMode = true;
             // 
-            // chkRtRiavvioAutomatico
+            // pgbStatoAvanzamento
             // 
-            this.chkRtRiavvioAutomatico.AutoSize = true;
-            this.chkRtRiavvioAutomatico.Checked = true;
-            this.chkRtRiavvioAutomatico.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRtRiavvioAutomatico.Location = new System.Drawing.Point(28, 191);
-            this.chkRtRiavvioAutomatico.Name = "chkRtRiavvioAutomatico";
-            this.chkRtRiavvioAutomatico.Size = new System.Drawing.Size(150, 21);
-            this.chkRtRiavvioAutomatico.TabIndex = 114;
-            this.chkRtRiavvioAutomatico.Text = "Riavvio Automatico";
-            this.chkRtRiavvioAutomatico.UseVisualStyleBackColor = true;
+            this.pgbStatoAvanzamento.Location = new System.Drawing.Point(29, 676);
+            this.pgbStatoAvanzamento.Name = "pgbStatoAvanzamento";
+            this.pgbStatoAvanzamento.Size = new System.Drawing.Size(824, 26);
+            this.pgbStatoAvanzamento.TabIndex = 27;
+            this.pgbStatoAvanzamento.Visible = false;
             // 
             // frmDisplayManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1657, 735);
+            this.ClientSize = new System.Drawing.Size(1657, 844);
             this.Controls.Add(this.tbcMainDisplayManager);
             this.Name = "frmDisplayManager";
             this.Text = "frmDisplayManager";
@@ -4129,5 +4140,6 @@
         private System.Windows.Forms.TextBox txtRtValBtn04;
         private System.Windows.Forms.TextBox txtRtValBtn05;
         private System.Windows.Forms.CheckBox chkRtRiavvioAutomatico;
+        private System.Windows.Forms.ProgressBar pgbStatoAvanzamento;
     }
 }

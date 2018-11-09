@@ -1393,8 +1393,17 @@ namespace PannelloCharger
             {
                 ushort _valStart = FunzioniMR.ConvertiUshort(txtStatoImgStart.Text, 1, 0);
                 ushort _valEnd = FunzioniMR.ConvertiUshort(txtStatoImgEnd.Text, 1, 256);
+                _disp.Immagini.Clear();
+                InizializzaVistaImmaginiPresenti();
+
+                //Application.DoEvents();
+                //Thread.Sleep(500);
+
+
+
 
                 _disp.CaricaListaImmaginiPresenti(_valStart, _valEnd);
+
                 InizializzaVistaImmaginiPresenti();
 
 
@@ -1428,6 +1437,7 @@ namespace PannelloCharger
                 flvStatoListaImg.ShowGroups = false;
                 flvStatoListaImg.GridLines = true;
                 flvStatoListaImg.CheckBoxes = false;
+                flvStatoListaImg.FullRowSelect = true;
 
                 BrightIdeasSoftware.OLVColumn colIdImg = new BrightIdeasSoftware.OLVColumn();
                 colIdImg.Text = "ID";
@@ -1440,7 +1450,7 @@ namespace PannelloCharger
                 BrightIdeasSoftware.OLVColumn colNomeImg = new BrightIdeasSoftware.OLVColumn();
                 colNomeImg.Text = "Nome";
                 colNomeImg.AspectName = "Nome";
-                colNomeImg.Width = 200;
+                colNomeImg.Width = 100;
                 colNomeImg.HeaderTextAlign = HorizontalAlignment.Left;
                 colNomeImg.TextAlign = HorizontalAlignment.Left;
                 flvStatoListaImg.AllColumns.Add(colNomeImg);
@@ -2742,6 +2752,11 @@ namespace PannelloCharger
             {
                 Log.Error("btnRtLeggiPulsanti_Click: " + Ex.Message);
             }
+
+        }
+
+        private void btnStatoSchCarica_Click(object sender, EventArgs e)
+        {
 
         }
     }

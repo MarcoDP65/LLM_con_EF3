@@ -1153,17 +1153,6 @@ namespace PannelloCharger
 
         }
 
-        private void opSonda02_CheckedChanged(object sender, EventArgs e)
-        {
-            grbComboSonda.Enabled = true;
-        }
-
-        private void opSonda01_CheckedChanged(object sender, EventArgs e)
-        {
-            grbComboSonda.Enabled = false;
-
-        }
-
         private void grbCicloCorrente_Enter(object sender, EventArgs e)
         {
 
@@ -1174,28 +1163,7 @@ namespace PannelloCharger
 
         }
 
-        private void opbBatGEL_CheckedChanged(object sender, EventArgs e)
-        {
-            grbBoxPiombo.Enabled = false; 
-            grbBoxWet.Enabled = true;
-        }
 
-        private void opbBatPB_CheckedChanged(object sender, EventArgs e)
-        {
-            grbBoxPiombo.Enabled = true;
-            grbBoxWet.Enabled = false;
-
-        }
-
-        private void opbCicloIWA_CheckedChanged(object sender, EventArgs e)
-        {
-            grbTopIUIa.Visible = false;
-            grbTopIWa.Visible = true;
-            gbFormazione.Enabled = true;
-            gbEqualizzazione.Enabled = true;
-            gbStopIWa.Visible = true;
-            gbStopIUIa.Visible = false;
-        }
 
         private void pbxIWAsmall_Click(object sender, EventArgs e)
         {
@@ -1206,16 +1174,7 @@ namespace PannelloCharger
              frmGrafico.ShowDialog();
         }
 
-        private void opbCicloIUIA_CheckedChanged(object sender, EventArgs e)
-        {
-            grbTopIUIa.Visible = true;
-            grbTopIWa.Visible = false;
-            gbFormazione.Enabled = false;
-            gbEqualizzazione.Enabled = false;
-            gbStopIWa.Visible = false;
-            gbStopIUIa.Visible = true;
 
-        }
 
         private void pbminIUIa_Click(object sender, EventArgs e)
         {
@@ -1237,7 +1196,7 @@ namespace PannelloCharger
 
         private void frmCaricabatterie_Load(object sender, EventArgs e)
         {
-            grbTopIUIa.Visible = false;
+           
             this.Cursor = Cursors.Arrow;
             this.Width += 10;
         }
@@ -1252,45 +1211,8 @@ namespace PannelloCharger
 
         }
 
-        private void rbSov0_CheckedChanged(object sender, EventArgs e)
-        {
-            cmbSov.Enabled = false;
-        }
 
-        private void rbSov1_CheckedChanged(object sender, EventArgs e)
-        {
-            cmbSov.Enabled = true;
-        }
 
-        private void opStop1_CheckedChanged(object sender, EventArgs e)
-        {
-            gbStop0.Enabled = false;
-            gbStop1.Enabled = true;
-        }
-
-        private void opStop0_CheckedChanged(object sender, EventArgs e)
-        {
-            gbStop1.Enabled = false;
-            gbStop0.Enabled = true;
-        }
-
-        private void opMant1_CheckedChanged(object sender, EventArgs e)
-        {
-            gbMant1.Enabled = true;
-            gbMant2.Enabled = false;
-        }
-
-        private void opMant0_CheckedChanged(object sender, EventArgs e)
-        {
-            gbMant1.Enabled = false;
-            gbMant2.Enabled = false;
-        }
-
-        private void opMant2_CheckedChanged(object sender, EventArgs e)
-        {
-            gbMant1.Enabled = false;
-            gbMant2.Enabled = true;
-        }
 
         private void btnCicloCorrente_Click(object sender, EventArgs e)
         {

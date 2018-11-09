@@ -339,6 +339,7 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.txtCalMinuti = new System.Windows.Forms.TextBox();
@@ -368,17 +369,6 @@
             this.lblOraRTC = new System.Windows.Forms.Label();
             this.txtDataRtc = new System.Windows.Forms.TextBox();
             this.lblDataRTC = new System.Windows.Forms.Label();
-            this.tabCb03 = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.grbComboSonda = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.cmbSonda01 = new System.Windows.Forms.ComboBox();
-            this.opSonda02 = new System.Windows.Forms.RadioButton();
-            this.opSonda01 = new System.Windows.Forms.RadioButton();
             this.tabSbFact = new System.Windows.Forms.TabPage();
             this.grbVarLettturaImmediata = new System.Windows.Forms.GroupBox();
             this.chkParLetturaAuto = new System.Windows.Forms.CheckBox();
@@ -1034,6 +1024,9 @@
             this.txtEsp32CmdMsg = new System.Windows.Forms.TextBox();
             this.txtEsp32DataGrid = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtEsp32MtuSize = new System.Windows.Forms.TextBox();
+            this.label304 = new System.Windows.Forms.Label();
+            this.btnEsp32SetMTU = new System.Windows.Forms.Button();
             this.txtEsp32TSTValByte = new System.Windows.Forms.TextBox();
             this.label302 = new System.Windows.Forms.Label();
             this.txtEsp32TSTNumByte = new System.Windows.Forms.TextBox();
@@ -1070,10 +1063,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
-            this.btnEsp32SetMTU = new System.Windows.Forms.Button();
-            this.txtEsp32MtuSize = new System.Windows.Forms.TextBox();
-            this.label304 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -1130,9 +1119,6 @@
             this.grbCalData.SuspendLayout();
             this.grbAccensione.SuspendLayout();
             this.grbOraCorrente.SuspendLayout();
-            this.tabCb03.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.grbComboSonda.SuspendLayout();
             this.tabSbFact.SuspendLayout();
             this.grbVarLettturaImmediata.SuspendLayout();
             this.grbVarRestartScheda.SuspendLayout();
@@ -1207,7 +1193,6 @@
             this.tabCaricaBatterie.Controls.Add(this.tabCb02);
             this.tabCaricaBatterie.Controls.Add(this.tbpPianificazione);
             this.tabCaricaBatterie.Controls.Add(this.tabCb05);
-            this.tabCaricaBatterie.Controls.Add(this.tabCb03);
             this.tabCaricaBatterie.Controls.Add(this.tabSbFact);
             this.tabCaricaBatterie.Controls.Add(this.tbpParametriCalibrazione);
             this.tabCaricaBatterie.Controls.Add(this.tabMemRead);
@@ -3366,6 +3351,17 @@
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
             // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
+            // 
             // tabCb05
             // 
             this.tabCb05.Controls.Add(this.grbCalData);
@@ -3613,115 +3609,6 @@
             // 
             resources.ApplyResources(this.lblDataRTC, "lblDataRTC");
             this.lblDataRTC.Name = "lblDataRTC";
-            // 
-            // tabCb03
-            // 
-            this.tabCb03.Controls.Add(this.groupBox4);
-            resources.ApplyResources(this.tabCb03, "tabCb03");
-            this.tabCb03.Name = "tabCb03";
-            this.tabCb03.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.grbComboSonda);
-            this.groupBox4.Controls.Add(this.opSonda02);
-            this.groupBox4.Controls.Add(this.opSonda01);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // grbComboSonda
-            // 
-            this.grbComboSonda.Controls.Add(this.label11);
-            this.grbComboSonda.Controls.Add(this.label10);
-            this.grbComboSonda.Controls.Add(this.label9);
-            this.grbComboSonda.Controls.Add(this.comboBox3);
-            this.grbComboSonda.Controls.Add(this.comboBox2);
-            this.grbComboSonda.Controls.Add(this.cmbSonda01);
-            resources.ApplyResources(this.grbComboSonda, "grbComboSonda");
-            this.grbComboSonda.Name = "grbComboSonda";
-            this.grbComboSonda.TabStop = false;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            resources.GetString("comboBox3.Items"),
-            resources.GetString("comboBox3.Items1"),
-            resources.GetString("comboBox3.Items2"),
-            resources.GetString("comboBox3.Items3"),
-            resources.GetString("comboBox3.Items4"),
-            resources.GetString("comboBox3.Items5"),
-            resources.GetString("comboBox3.Items6"),
-            resources.GetString("comboBox3.Items7"),
-            resources.GetString("comboBox3.Items8"),
-            resources.GetString("comboBox3.Items9"),
-            resources.GetString("comboBox3.Items10")});
-            resources.ApplyResources(this.comboBox3, "comboBox3");
-            this.comboBox3.Name = "comboBox3";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            resources.GetString("comboBox2.Items"),
-            resources.GetString("comboBox2.Items1"),
-            resources.GetString("comboBox2.Items2"),
-            resources.GetString("comboBox2.Items3"),
-            resources.GetString("comboBox2.Items4"),
-            resources.GetString("comboBox2.Items5"),
-            resources.GetString("comboBox2.Items6"),
-            resources.GetString("comboBox2.Items7"),
-            resources.GetString("comboBox2.Items8"),
-            resources.GetString("comboBox2.Items9"),
-            resources.GetString("comboBox2.Items10")});
-            resources.ApplyResources(this.comboBox2, "comboBox2");
-            this.comboBox2.Name = "comboBox2";
-            // 
-            // cmbSonda01
-            // 
-            this.cmbSonda01.FormattingEnabled = true;
-            this.cmbSonda01.Items.AddRange(new object[] {
-            resources.GetString("cmbSonda01.Items"),
-            resources.GetString("cmbSonda01.Items1"),
-            resources.GetString("cmbSonda01.Items2"),
-            resources.GetString("cmbSonda01.Items3"),
-            resources.GetString("cmbSonda01.Items4"),
-            resources.GetString("cmbSonda01.Items5"),
-            resources.GetString("cmbSonda01.Items6")});
-            resources.ApplyResources(this.cmbSonda01, "cmbSonda01");
-            this.cmbSonda01.Name = "cmbSonda01";
-            // 
-            // opSonda02
-            // 
-            resources.ApplyResources(this.opSonda02, "opSonda02");
-            this.opSonda02.Name = "opSonda02";
-            this.opSonda02.UseVisualStyleBackColor = true;
-            this.opSonda02.CheckedChanged += new System.EventHandler(this.opSonda02_CheckedChanged);
-            // 
-            // opSonda01
-            // 
-            resources.ApplyResources(this.opSonda01, "opSonda01");
-            this.opSonda01.Checked = true;
-            this.opSonda01.Name = "opSonda01";
-            this.opSonda01.TabStop = true;
-            this.opSonda01.UseVisualStyleBackColor = true;
-            this.opSonda01.CheckedChanged += new System.EventHandler(this.opSonda01_CheckedChanged);
             // 
             // tabSbFact
             // 
@@ -8133,6 +8020,23 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
+            // txtEsp32MtuSize
+            // 
+            resources.ApplyResources(this.txtEsp32MtuSize, "txtEsp32MtuSize");
+            this.txtEsp32MtuSize.Name = "txtEsp32MtuSize";
+            // 
+            // label304
+            // 
+            resources.ApplyResources(this.label304, "label304");
+            this.label304.Name = "label304";
+            // 
+            // btnEsp32SetMTU
+            // 
+            resources.ApplyResources(this.btnEsp32SetMTU, "btnEsp32SetMTU");
+            this.btnEsp32SetMTU.Name = "btnEsp32SetMTU";
+            this.btnEsp32SetMTU.UseVisualStyleBackColor = true;
+            this.btnEsp32SetMTU.Click += new System.EventHandler(this.btnEsp32SetMTU_Click);
+            // 
             // txtEsp32TSTValByte
             // 
             resources.ApplyResources(this.txtEsp32TSTValByte, "txtEsp32TSTValByte");
@@ -8346,34 +8250,6 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
-            // 
-            // btnEsp32SetMTU
-            // 
-            resources.ApplyResources(this.btnEsp32SetMTU, "btnEsp32SetMTU");
-            this.btnEsp32SetMTU.Name = "btnEsp32SetMTU";
-            this.btnEsp32SetMTU.UseVisualStyleBackColor = true;
-            this.btnEsp32SetMTU.Click += new System.EventHandler(this.btnEsp32SetMTU_Click);
-            // 
-            // txtEsp32MtuSize
-            // 
-            resources.ApplyResources(this.txtEsp32MtuSize, "txtEsp32MtuSize");
-            this.txtEsp32MtuSize.Name = "txtEsp32MtuSize";
-            // 
-            // label304
-            // 
-            resources.ApplyResources(this.label304, "label304");
-            this.label304.Name = "label304";
-            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -8472,11 +8348,6 @@
             this.grbAccensione.PerformLayout();
             this.grbOraCorrente.ResumeLayout(false);
             this.grbOraCorrente.PerformLayout();
-            this.tabCb03.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.grbComboSonda.ResumeLayout(false);
-            this.grbComboSonda.PerformLayout();
             this.tabSbFact.ResumeLayout(false);
             this.grbVarLettturaImmediata.ResumeLayout(false);
             this.grbVarLettturaImmediata.PerformLayout();
@@ -8617,18 +8488,7 @@
         private System.Windows.Forms.TextBox txtEventiCSLunghi;
         private System.Windows.Forms.Label lblEventiTotali;
         private System.Windows.Forms.TabPage tabCb02;
-        private System.Windows.Forms.TabPage tabCb03;
         private System.Windows.Forms.TabPage tabCb05;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox grbComboSonda;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox cmbSonda01;
-        private System.Windows.Forms.RadioButton opSonda02;
-        private System.Windows.Forms.RadioButton opSonda01;
         private System.Windows.Forms.GroupBox grbAccensione;
         private System.Windows.Forms.Label lblOrarioAccensione;
         private System.Windows.Forms.ComboBox cmbMinAccensione;

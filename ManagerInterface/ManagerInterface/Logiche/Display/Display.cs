@@ -749,7 +749,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool CaricaListaImmaginiPresenti(ushort Start,ushort Stop, bool ElencaVuote = false, bool CaricaBitmap = false)
+        public bool CaricaListaImmaginiPresenti(ushort Start,ushort Stop, bool ElencaVuote = false, bool CaricaBitmap = false, bool VuotaLista = true)
         {
             bool _risposta = false;
             bool _esitoRead = false;
@@ -767,7 +767,8 @@ namespace ChargerLogic
                     Start = Stop;
                 }
 
-                Immagini.Clear();
+                if (VuotaLista)Immagini.Clear();
+
 
                 for (ushort _imgCount = Start; _imgCount <= Stop; _imgCount++)
                 {
@@ -786,9 +787,8 @@ namespace ChargerLogic
                         _risposta = true;
                         
                     }
-
-                    Thread.Sleep(500);
-
+                    //Application.DoEvents();
+                    //Thread.Sleep(500);
                 }
 
                 return _risposta;

@@ -757,17 +757,6 @@ namespace PannelloCharger
 
                 #endregion
 
-                #region "Sonda Termica"
-                if (LivelloCorrente < 1)
-                    _readonly = false;
-                else
-                {
-                    tabCaricaBatterie.TabPages.Remove(tabCb03);
-                    _readonly = true;
-                }
-                _enabled = (_readonly == false);
-                #endregion
-
                 #region "Statistiche"
                 if (LivelloCorrente < 2)
                     _readonly = false;
@@ -1965,15 +1954,6 @@ namespace PannelloCharger
             MostraDettaglioRiga();
         }
 
-        private void opSonda01_CheckedChanged(object sender, EventArgs e)
-        {
-            grbComboSonda.Enabled = false;
-        }
-
-        private void opSonda02_CheckedChanged(object sender, EventArgs e)
-        {
-            grbComboSonda.Enabled = true;
-        }
 
         private void rbtAccensione01_CheckedChanged(object sender, EventArgs e)
         {
@@ -9822,8 +9802,19 @@ namespace PannelloCharger
         {
             bool _esito;
             this.Cursor = Cursors.WaitCursor;
+            // Variabili
             _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
             MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
+            // Contatori
+            _sb.CaricaParametri(_sb.Id, _apparatoPresente);
+            MostraParametriGenerali();
+            // Sig
+            _sb.CaricaStatoOC(_sb.Id, _apparatoPresente, chkFSerResetCnt.Checked);
+            MostraParametriOC();
+            // Calibrazioni
+            _esito = _sb.CaricaCalibrazioni(_sb.Id, _apparatoPresente);
+            MostraCalibrazioni(_esito, (chkDatiDiretti.Checked == true));
+
             this.Cursor = Cursors.Default;
 
 
