@@ -417,7 +417,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.txtVarAhScarica = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.tbpParametriCalibrazione = new System.Windows.Forms.TabPage();
+            this.tabFunzioniAvanzate = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.btnDatiSysLeggiVariabili = new System.Windows.Forms.Button();
@@ -1024,6 +1024,11 @@
             this.txtEsp32CmdMsg = new System.Windows.Forms.TextBox();
             this.txtEsp32DataGrid = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtEsp32ADVMax = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtEsp32ADVMin = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnEsp32SetAdvTime = new System.Windows.Forms.Button();
             this.txtEsp32MtuSize = new System.Windows.Forms.TextBox();
             this.label304 = new System.Windows.Forms.Label();
             this.btnEsp32SetMTU = new System.Windows.Forms.Button();
@@ -1038,11 +1043,11 @@
             this.label300 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.txtEsp32MDMPause = new System.Windows.Forms.TextBox();
             this.label321 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.txtEsp32MDMTx = new System.Windows.Forms.TextBox();
             this.label320 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnEsp32SetModem = new System.Windows.Forms.Button();
             this.chkEsp33RebootAfterCmd = new System.Windows.Forms.CheckBox();
             this.label319 = new System.Windows.Forms.Label();
             this.cmbEsp32SetMode = new System.Windows.Forms.ComboBox();
@@ -1125,7 +1130,7 @@
             this.grbVarResetScheda.SuspendLayout();
             this.grbVariabiliImmediate.SuspendLayout();
             this.grbVariabiliStatoConn.SuspendLayout();
-            this.tbpParametriCalibrazione.SuspendLayout();
+            this.tabFunzioniAvanzate.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.grbCalValoriLettura.SuspendLayout();
             this.grbVarParametriSig.SuspendLayout();
@@ -1194,7 +1199,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tbpPianificazione);
             this.tabCaricaBatterie.Controls.Add(this.tabCb05);
             this.tabCaricaBatterie.Controls.Add(this.tabSbFact);
-            this.tabCaricaBatterie.Controls.Add(this.tbpParametriCalibrazione);
+            this.tabCaricaBatterie.Controls.Add(this.tabFunzioniAvanzate);
             this.tabCaricaBatterie.Controls.Add(this.tabMemRead);
             this.tabCaricaBatterie.Controls.Add(this.tbpCalibrazioni);
             this.tabCaricaBatterie.Controls.Add(this.tbpFirmware);
@@ -3941,17 +3946,17 @@
             resources.ApplyResources(this.label23, "label23");
             this.label23.Name = "label23";
             // 
-            // tbpParametriCalibrazione
+            // tabFunzioniAvanzate
             // 
-            this.tbpParametriCalibrazione.BackColor = System.Drawing.Color.LightYellow;
-            this.tbpParametriCalibrazione.Controls.Add(this.groupBox3);
-            this.tbpParametriCalibrazione.Controls.Add(this.grbCalValoriLettura);
-            this.tbpParametriCalibrazione.Controls.Add(this.grbVarParametriSig);
-            this.tbpParametriCalibrazione.Controls.Add(this.grbSvcParametriMedie);
-            this.tbpParametriCalibrazione.Controls.Add(this.grbCalibrazionePulsanti);
-            this.tbpParametriCalibrazione.Controls.Add(this.grbCalibrazioni);
-            resources.ApplyResources(this.tbpParametriCalibrazione, "tbpParametriCalibrazione");
-            this.tbpParametriCalibrazione.Name = "tbpParametriCalibrazione";
+            this.tabFunzioniAvanzate.BackColor = System.Drawing.Color.LightYellow;
+            this.tabFunzioniAvanzate.Controls.Add(this.groupBox3);
+            this.tabFunzioniAvanzate.Controls.Add(this.grbCalValoriLettura);
+            this.tabFunzioniAvanzate.Controls.Add(this.grbVarParametriSig);
+            this.tabFunzioniAvanzate.Controls.Add(this.grbSvcParametriMedie);
+            this.tabFunzioniAvanzate.Controls.Add(this.grbCalibrazionePulsanti);
+            this.tabFunzioniAvanzate.Controls.Add(this.grbCalibrazioni);
+            resources.ApplyResources(this.tabFunzioniAvanzate, "tabFunzioniAvanzate");
+            this.tabFunzioniAvanzate.Name = "tabFunzioniAvanzate";
             // 
             // groupBox3
             // 
@@ -4793,6 +4798,7 @@
             // 
             resources.ApplyResources(this.txtMemAddrR, "txtMemAddrR");
             this.txtMemAddrR.Name = "txtMemAddrR";
+            this.txtMemAddrR.TextChanged += new System.EventHandler(this.txtMemAddrR_TextChanged);
             // 
             // cmdMemRead
             // 
@@ -7982,6 +7988,11 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.White;
+            this.groupBox5.Controls.Add(this.txtEsp32ADVMax);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.txtEsp32ADVMin);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.btnEsp32SetAdvTime);
             this.groupBox5.Controls.Add(this.txtEsp32MtuSize);
             this.groupBox5.Controls.Add(this.label304);
             this.groupBox5.Controls.Add(this.btnEsp32SetMTU);
@@ -7996,11 +8007,11 @@
             this.groupBox5.Controls.Add(this.label300);
             this.groupBox5.Controls.Add(this.button5);
             this.groupBox5.Controls.Add(this.button4);
-            this.groupBox5.Controls.Add(this.textBox24);
+            this.groupBox5.Controls.Add(this.txtEsp32MDMPause);
             this.groupBox5.Controls.Add(this.label321);
-            this.groupBox5.Controls.Add(this.textBox23);
+            this.groupBox5.Controls.Add(this.txtEsp32MDMTx);
             this.groupBox5.Controls.Add(this.label320);
-            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.btnEsp32SetModem);
             this.groupBox5.Controls.Add(this.chkEsp33RebootAfterCmd);
             this.groupBox5.Controls.Add(this.label319);
             this.groupBox5.Controls.Add(this.cmbEsp32SetMode);
@@ -8019,6 +8030,34 @@
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
+            // 
+            // txtEsp32ADVMax
+            // 
+            resources.ApplyResources(this.txtEsp32ADVMax, "txtEsp32ADVMax");
+            this.txtEsp32ADVMax.Name = "txtEsp32ADVMax";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // txtEsp32ADVMin
+            // 
+            resources.ApplyResources(this.txtEsp32ADVMin, "txtEsp32ADVMin");
+            this.txtEsp32ADVMin.Name = "txtEsp32ADVMin";
+            this.txtEsp32ADVMin.TextChanged += new System.EventHandler(this.txtEsp32ADVMin_TextChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // btnEsp32SetAdvTime
+            // 
+            resources.ApplyResources(this.btnEsp32SetAdvTime, "btnEsp32SetAdvTime");
+            this.btnEsp32SetAdvTime.Name = "btnEsp32SetAdvTime";
+            this.btnEsp32SetAdvTime.UseVisualStyleBackColor = true;
+            this.btnEsp32SetAdvTime.Click += new System.EventHandler(this.btnEsp32SetAdvTime_Click);
             // 
             // txtEsp32MtuSize
             // 
@@ -8098,31 +8137,31 @@
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox24
+            // txtEsp32MDMPause
             // 
-            resources.ApplyResources(this.textBox24, "textBox24");
-            this.textBox24.Name = "textBox24";
+            resources.ApplyResources(this.txtEsp32MDMPause, "txtEsp32MDMPause");
+            this.txtEsp32MDMPause.Name = "txtEsp32MDMPause";
             // 
             // label321
             // 
             resources.ApplyResources(this.label321, "label321");
             this.label321.Name = "label321";
             // 
-            // textBox23
+            // txtEsp32MDMTx
             // 
-            resources.ApplyResources(this.textBox23, "textBox23");
-            this.textBox23.Name = "textBox23";
+            resources.ApplyResources(this.txtEsp32MDMTx, "txtEsp32MDMTx");
+            this.txtEsp32MDMTx.Name = "txtEsp32MDMTx";
             // 
             // label320
             // 
             resources.ApplyResources(this.label320, "label320");
             this.label320.Name = "label320";
             // 
-            // button3
+            // btnEsp32SetModem
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnEsp32SetModem, "btnEsp32SetModem");
+            this.btnEsp32SetModem.Name = "btnEsp32SetModem";
+            this.btnEsp32SetModem.UseVisualStyleBackColor = true;
             // 
             // chkEsp33RebootAfterCmd
             // 
@@ -8359,7 +8398,7 @@
             this.grbVariabiliImmediate.PerformLayout();
             this.grbVariabiliStatoConn.ResumeLayout(false);
             this.grbVariabiliStatoConn.PerformLayout();
-            this.tbpParametriCalibrazione.ResumeLayout(false);
+            this.tabFunzioniAvanzate.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.grbCalValoriLettura.ResumeLayout(false);
@@ -9360,7 +9399,7 @@
         private System.Windows.Forms.TextBox txtCalErrorePrc;
         private System.Windows.Forms.TextBox txtCalErrMaxPrc;
         private System.Windows.Forms.Label label294;
-        private System.Windows.Forms.TabPage tbpParametriCalibrazione;
+        private System.Windows.Forms.TabPage tabFunzioniAvanzate;
         private System.Windows.Forms.GroupBox grbVarParametriSig;
         private System.Windows.Forms.CheckBox chkFSerResetCnt;
         private System.Windows.Forms.TextBox txtSigNumLetture;
@@ -9483,11 +9522,11 @@
         private System.Windows.Forms.Label label300;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox txtEsp32MDMPause;
         private System.Windows.Forms.Label label321;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox txtEsp32MDMTx;
         private System.Windows.Forms.Label label320;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnEsp32SetModem;
         private System.Windows.Forms.Button btnEsp32QRY;
         private System.Windows.Forms.TextBox txtEsp32TSTValByte;
         private System.Windows.Forms.Label label302;
@@ -9496,5 +9535,10 @@
         private System.Windows.Forms.TextBox txtEsp32MtuSize;
         private System.Windows.Forms.Label label304;
         private System.Windows.Forms.Button btnEsp32SetMTU;
+        private System.Windows.Forms.TextBox txtEsp32ADVMax;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtEsp32ADVMin;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnEsp32SetAdvTime;
     }
 }

@@ -57,6 +57,12 @@ namespace MoriData
 
         public DateTime IstanteLettura { get; set; }
 
+        public ushort VMin { get; set; }
+        public ushort VMax { get; set; }
+        public ushort Amax { get; set; }
+
+        public byte PresenzaRabboccatore { get; set; }
+
         public override string ToString()
         {
             return IdApparato + " -> " + IstanteLettura.ToString();
@@ -200,11 +206,6 @@ namespace MoriData
             set
             {
                 llParApp.SerialeApparato = value;
-                //if (value != 0x00 && value != 0xFFFFFF )
-                //{
-                //    llParApp.IdApparato = "LL" + llParApp.SerialeApparato.ToString("x6");
-                //}
-
             }
 
 

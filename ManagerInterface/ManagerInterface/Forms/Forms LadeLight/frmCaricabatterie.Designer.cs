@@ -265,7 +265,6 @@
             this.cmbInitTipoApparato = new System.Windows.Forms.ComboBox();
             this.label99 = new System.Windows.Forms.Label();
             this.txtInitSerialeApparato = new System.Windows.Forms.TextBox();
-            this.label98 = new System.Windows.Forms.Label();
             this.txtInitNumeroMatricola = new System.Windows.Forms.TextBox();
             this.label88 = new System.Windows.Forms.Label();
             this.txtInitAnnoMatricola = new System.Windows.Forms.TextBox();
@@ -583,6 +582,15 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.txtInitVMin = new System.Windows.Forms.TextBox();
+            this.txtInitVMax = new System.Windows.Forms.TextBox();
+            this.txtInitAMax = new System.Windows.Forms.TextBox();
+            this.chkInitPresenzaRabb = new System.Windows.Forms.CheckBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.tabProfiloAttuale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).BeginInit();
             this.grbVarParametriSig.SuspendLayout();
@@ -3257,6 +3265,14 @@
             // grbInitDatiBase
             // 
             this.grbInitDatiBase.BackColor = System.Drawing.Color.White;
+            this.grbInitDatiBase.Controls.Add(this.label26);
+            this.grbInitDatiBase.Controls.Add(this.label11);
+            this.grbInitDatiBase.Controls.Add(this.label10);
+            this.grbInitDatiBase.Controls.Add(this.label9);
+            this.grbInitDatiBase.Controls.Add(this.chkInitPresenzaRabb);
+            this.grbInitDatiBase.Controls.Add(this.txtInitAMax);
+            this.grbInitDatiBase.Controls.Add(this.txtInitVMax);
+            this.grbInitDatiBase.Controls.Add(this.txtInitVMin);
             this.grbInitDatiBase.Controls.Add(this.txtInitIDApparato);
             this.grbInitDatiBase.Controls.Add(this.label144);
             this.grbInitDatiBase.Controls.Add(this.txtInitDataInizializ);
@@ -3334,6 +3350,7 @@
             this.cmbInitTipoApparato.Name = "cmbInitTipoApparato";
             this.cmbInitTipoApparato.Size = new System.Drawing.Size(256, 28);
             this.cmbInitTipoApparato.TabIndex = 30;
+            this.cmbInitTipoApparato.SelectedIndexChanged += new System.EventHandler(this.cmbInitTipoApparato_SelectedIndexChanged);
             // 
             // label99
             // 
@@ -3355,15 +3372,6 @@
             this.txtInitSerialeApparato.Size = new System.Drawing.Size(92, 27);
             this.txtInitSerialeApparato.TabIndex = 27;
             this.txtInitSerialeApparato.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label98
-            // 
-            this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(197, 98);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(51, 17);
-            this.label98.TabIndex = 26;
-            this.label98.Text = "Codice";
             // 
             // txtInitNumeroMatricola
             // 
@@ -7046,6 +7054,97 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // txtInitVMin
+            // 
+            this.txtInitVMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitVMin.Location = new System.Drawing.Point(313, 180);
+            this.txtInitVMin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtInitVMin.MaxLength = 18;
+            this.txtInitVMin.Name = "txtInitVMin";
+            this.txtInitVMin.ReadOnly = true;
+            this.txtInitVMin.Size = new System.Drawing.Size(68, 27);
+            this.txtInitVMin.TabIndex = 68;
+            this.txtInitVMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtInitVMax
+            // 
+            this.txtInitVMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitVMax.Location = new System.Drawing.Point(387, 180);
+            this.txtInitVMax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtInitVMax.MaxLength = 18;
+            this.txtInitVMax.Name = "txtInitVMax";
+            this.txtInitVMax.ReadOnly = true;
+            this.txtInitVMax.Size = new System.Drawing.Size(68, 27);
+            this.txtInitVMax.TabIndex = 69;
+            this.txtInitVMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtInitAMax
+            // 
+            this.txtInitAMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitAMax.Location = new System.Drawing.Point(482, 180);
+            this.txtInitAMax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtInitAMax.MaxLength = 18;
+            this.txtInitAMax.Name = "txtInitAMax";
+            this.txtInitAMax.ReadOnly = true;
+            this.txtInitAMax.Size = new System.Drawing.Size(68, 27);
+            this.txtInitAMax.TabIndex = 70;
+            this.txtInitAMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // chkInitPresenzaRabb
+            // 
+            this.chkInitPresenzaRabb.AutoSize = true;
+            this.chkInitPresenzaRabb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkInitPresenzaRabb.Location = new System.Drawing.Point(585, 186);
+            this.chkInitPresenzaRabb.Name = "chkInitPresenzaRabb";
+            this.chkInitPresenzaRabb.Size = new System.Drawing.Size(18, 17);
+            this.chkInitPresenzaRabb.TabIndex = 71;
+            this.chkInitPresenzaRabb.UseVisualStyleBackColor = true;
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(197, 98);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(51, 17);
+            this.label98.TabIndex = 26;
+            this.label98.Text = "Codice";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(310, 161);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 17);
+            this.label9.TabIndex = 72;
+            this.label9.Text = "V Min";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(387, 161);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 17);
+            this.label10.TabIndex = 73;
+            this.label10.Text = "V Max";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(480, 161);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 17);
+            this.label11.TabIndex = 74;
+            this.label11.Text = "A Max";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(571, 160);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(46, 17);
+            this.label26.TabIndex = 75;
+            this.label26.Text = "Rabb.";
+            // 
             // frmCaricabatterie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -7590,7 +7689,6 @@
         private System.Windows.Forms.Label label106;
         private System.Windows.Forms.Label label99;
         private System.Windows.Forms.TextBox txtInitSerialeApparato;
-        private System.Windows.Forms.Label label98;
         private System.Windows.Forms.TextBox txtInitNumeroMatricola;
         private System.Windows.Forms.Label label88;
         private System.Windows.Forms.Label label132;
@@ -7712,5 +7810,14 @@
         private BrightIdeasSoftware.FastObjectListView flvCicliListaBrevi;
         private System.Windows.Forms.Button btnCicliMostraBrevi;
         private System.Windows.Forms.Button btnCicliCaricaBrevi;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkInitPresenzaRabb;
+        private System.Windows.Forms.TextBox txtInitAMax;
+        private System.Windows.Forms.TextBox txtInitVMax;
+        private System.Windows.Forms.TextBox txtInitVMin;
+        private System.Windows.Forms.Label label98;
     }
 }

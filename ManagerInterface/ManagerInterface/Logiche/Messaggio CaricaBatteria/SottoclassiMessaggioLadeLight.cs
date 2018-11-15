@@ -305,6 +305,11 @@ namespace ChargerLogic
             public uint DataInitZVT { get; set; }
             public uint DataInitPFC { get; set; }
             public uint DataInitDISP { get; set; }
+            public ushort VMin { get; set; }
+            public ushort VMax { get; set; }
+            public ushort Amax { get; set; }
+            public byte PresenzaRabboccatore { get; set; }
+
 
 
             public ushort CrcPacchetto { get; set; }
@@ -417,7 +422,14 @@ namespace ChargerLogic
                     IDApparato = ArrayToString(_messaggio, startByte, 8);
                     startByte += 8;
 
-
+                    VMin = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    VMax = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    Amax = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    PresenzaRabboccatore = _messaggio[startByte];
+                    startByte += 1;
 
 
                     datiPronti = true;
@@ -606,15 +618,24 @@ namespace ChargerLogic
                         _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(IDApparato, _i);
                     }
 
+                    // VMIN
+                    FunzioniComuni.SplitUshort(VMin, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
 
-                    /*            
+                    // VMAX
+                    FunzioniComuni.SplitUshort(VMax, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
 
-                    public uint DataInitZVT { get; set; }
-                    public uint DataInitPFC { get; set; }
-                    public uint DataInitDISP { get; set; }
-                    
-                     */
+                    // AMAX
+                    FunzioniComuni.SplitUshort(Amax, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
 
+                    // Rabboccatore
+
+                    _datamap[_arrayInit++] = PresenzaRabboccatore;
 
 
                     for (int _i = 0; _i < 234; _i++)

@@ -866,7 +866,7 @@ namespace PannelloCharger
                 // accessibile solo a Factory 
                 if (LivelloCorrente > 0)
                 {
-                    tabCaricaBatterie.TabPages.Remove(tbpParametriCalibrazione);
+                    tabCaricaBatterie.TabPages.Remove(tabFunzioniAvanzate);
                     _readonly = true;
                 }
 
@@ -4155,6 +4155,30 @@ namespace PannelloCharger
                             this.Cursor = Cursors.Default;
                         }
                     }
+                if (e.TabPage == tabFunzioniAvanzate)
+                {
+                    //Entrando nel tab Funzioni di servizio, se sono collegato ad uno SB, leggo i parametri, lo stato del Sig e i parametri di sistema.
+                    if (_apparatoPresente)
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+
+                        // Variabili
+                        _esito = _sb.CaricaVariabili(_sb.Id, _apparatoPresente);
+                        MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
+                        // Contatori
+                        _sb.CaricaParametri(_sb.Id, _apparatoPresente);
+                        MostraParametriGenerali();
+                        // Sig
+                        _sb.CaricaStatoOC(_sb.Id, _apparatoPresente, chkFSerResetCnt.Checked);
+                        MostraParametriOC();
+                        // Calibrazioni
+                        _esito = _sb.CaricaCalibrazioni(_sb.Id, _apparatoPresente);
+                        MostraCalibrazioni(_esito, (chkDatiDiretti.Checked == true));
+
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+
                 if (e.TabPage == tabCb05)
                 {
                     // Se entro nel tab orologio, carico l'ora corrente dallo Spy-Batt
@@ -10002,7 +10026,7 @@ namespace PannelloCharger
 
                 byte[] DatiEsp = new byte[5];
                 DatiEsp[0] = 0x07; // CMD_MTU
-                DatiEsp[1] = 0x04; // Len
+                DatiEsp[1] = 0x05; // Len
                 FunzioniComuni.SplitUshort(_valMtu, ref DatiEsp[3], ref DatiEsp[2]);
                 if (chkEsp33RebootAfterCmd.Checked)
                 {
@@ -10019,6 +10043,54 @@ namespace PannelloCharger
             {
                 Log.Error("btnEsp32SetLed_Click: " + Ex.Message);
             }
+        }
+
+        private void btnEsp32SetAdvTime_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ushort _valMin = FunzioniMR.ConvertiHexUshort(txtEsp32ADVMin.Text, 6);
+                ushort _valMax = FunzioniMR.ConvertiHexUshort(txtEsp32ADVMax.Text, 6);
+
+                if (_valMin < 6) _valMin = 6;
+                if (_valMin > 0xC80) _valMin = 0xC80;
+                txtEsp32ADVMin.Text = _valMin.ToString("x4");
+
+                if (_valMax < 6) _valMax = 6;
+                if (_valMax > 0xC80) _valMax = 0xC80;
+                if (_valMax < _valMin) _valMax = _valMin;
+                txtEsp32ADVMax.Text = _valMax.ToString("x4");
+
+                byte[] DatiEsp = new byte[7];
+                DatiEsp[0] = 0x06; // CMD_ADV
+                DatiEsp[1] = 0x07; // Len
+                FunzioniComuni.SplitUshort(_valMin, ref DatiEsp[3], ref DatiEsp[2]);
+                FunzioniComuni.SplitUshort(_valMax, ref DatiEsp[5], ref DatiEsp[4]);
+                if (chkEsp33RebootAfterCmd.Checked)
+                {
+                    DatiEsp[6] = 0xF0;
+                }
+                else
+                {
+                    DatiEsp[6] = 0x00;
+                }
+
+                LanciaComandoEsp32Array(DatiEsp);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnEsp32SetLed_Click: " + Ex.Message);
+            }
+        }
+
+        private void txtMemAddrR_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEsp32ADVMin_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -2130,6 +2130,21 @@ namespace PannelloCharger
                 _cb.ParametriApparato.llParApp.IdApparato = txtInitIDApparato.Text;
 
 
+                // Tensioni e corrente max apparato
+                _cb.ParametriApparato.llParApp.VMin = FunzioniMR.ConvertiUshort(txtInitVMin.Text, 100, 0);
+                _cb.ParametriApparato.llParApp.VMax = FunzioniMR.ConvertiUshort(txtInitVMax.Text, 100, 0);
+                _cb.ParametriApparato.llParApp.Amax = FunzioniMR.ConvertiUshort(txtInitAMax.Text, 10, 0);
+
+                // Presenza modulo rabboccatore
+                if(chkInitPresenzaRabb.Checked)
+                {
+                    _cb.ParametriApparato.llParApp.PresenzaRabboccatore = 0xF0;
+                }
+                else
+                {
+                    _cb.ParametriApparato.llParApp.PresenzaRabboccatore = 0x0F;
+                }
+
 
 
                 _esito = _cb.ScriviParametriApparato();
@@ -2293,6 +2308,12 @@ namespace PannelloCharger
                 txtInitRevHwDISP.Text = "";
                 txtInitRevFwDISP.Text = "";
 
+                txtInitVMin.Text = "";
+                txtInitVMax.Text = "";
+                txtInitAMax.Text = "";
+
+                chkInitPresenzaRabb.Checked = false;
+
 
                 _esito = _cb.LeggiParametriApparato();
 
@@ -2323,6 +2344,18 @@ namespace PannelloCharger
                         txtInitNumSerDISP.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeDISP);
                         txtInitRevHwDISP.Text = _cb.ParametriApparato.llParApp.HardwareDisp;
                         txtInitRevFwDISP.Text = _cb.ParametriApparato.llParApp.SoftwareDISP;
+
+                        //_tempVal = (float)_par.ValoreParametro / 100;
+                        //txtPaSoglia.Text = _tempVal.ToString("0.00");
+
+                        txtInitVMin.Text = FunzioniMR.StringaTensione(_cb.ParametriApparato.llParApp.VMin);
+                        txtInitVMax.Text = FunzioniMR.StringaTensione(_cb.ParametriApparato.llParApp.VMax);
+                        txtInitAMax.Text = FunzioniMR.StringaCorrenteLL(_cb.ParametriApparato.llParApp.Amax);
+                        if (_cb.ParametriApparato.llParApp.PresenzaRabboccatore == 0xF0)
+                        {
+                            chkInitPresenzaRabb.Checked = true;
+                        }
+
                     }
 
 
@@ -3012,6 +3045,36 @@ namespace PannelloCharger
 
 
             
+        }
+
+
+        private void cmbInitTipoApparato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                _llModelloCb TempMod = (_llModelloCb)cmbInitTipoApparato.SelectedItem;
+
+                if (TempMod == null)
+                {
+                    txtInitVMin.Text = "";
+                    txtInitVMax.Text = "";
+                    txtInitAMax.Text = "";
+                }
+                else
+                {
+                    txtInitVMin.Text = TempMod.TensioneMin.ToString("0.00");
+                    txtInitVMax.Text = TempMod.TensioneMax.ToString("0.00");
+                    txtInitAMax.Text = TempMod.CorrenteMax.ToString("0.0");
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbInitTipoApparato_SelectedIndexChanged: " + Ex.Message);
+            }
         }
     }
 

@@ -66,13 +66,15 @@
             this.btnCmdStopCom = new System.Windows.Forms.Button();
             this.btnCmdStartCom = new System.Windows.Forms.Button();
             this.pnlComandiLista = new System.Windows.Forms.Panel();
-            this.txtSerialEcho = new System.Windows.Forms.TextBox();
             this.tmrInvioAutomatico = new System.Windows.Forms.Timer(this.components);
+            this.rtfSerialEcho = new System.Windows.Forms.RichTextBox();
+            this.trbOcMonitorZoom = new System.Windows.Forms.TrackBar();
             this.pnlPorta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvListaComandiSIG)).BeginInit();
             this.pnlFile.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlComandiLista.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trbOcMonitorZoom)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlPorta
@@ -456,20 +458,29 @@
             this.pnlComandiLista.Size = new System.Drawing.Size(346, 62);
             this.pnlComandiLista.TabIndex = 24;
             // 
-            // txtSerialEcho
-            // 
-            this.txtSerialEcho.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSerialEcho.Location = new System.Drawing.Point(23, 561);
-            this.txtSerialEcho.Multiline = true;
-            this.txtSerialEcho.Name = "txtSerialEcho";
-            this.txtSerialEcho.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtSerialEcho.Size = new System.Drawing.Size(1739, 182);
-            this.txtSerialEcho.TabIndex = 2;
-            // 
             // tmrInvioAutomatico
             // 
             this.tmrInvioAutomatico.Interval = 10000;
             this.tmrInvioAutomatico.Tick += new System.EventHandler(this.tmrInvioAutomatico_Tick);
+            // 
+            // rtfSerialEcho
+            // 
+            this.rtfSerialEcho.Font = new System.Drawing.Font("Courier New", 7.8F);
+            this.rtfSerialEcho.Location = new System.Drawing.Point(23, 562);
+            this.rtfSerialEcho.Name = "rtfSerialEcho";
+            this.rtfSerialEcho.Size = new System.Drawing.Size(1739, 163);
+            this.rtfSerialEcho.TabIndex = 25;
+            this.rtfSerialEcho.Text = "";
+            // 
+            // trbOcMonitorZoom
+            // 
+            this.trbOcMonitorZoom.Location = new System.Drawing.Point(23, 747);
+            this.trbOcMonitorZoom.Minimum = 1;
+            this.trbOcMonitorZoom.Name = "trbOcMonitorZoom";
+            this.trbOcMonitorZoom.Size = new System.Drawing.Size(352, 56);
+            this.trbOcMonitorZoom.TabIndex = 26;
+            this.trbOcMonitorZoom.Value = 1;
+            this.trbOcMonitorZoom.ValueChanged += new System.EventHandler(this.trbOcMonitorZoom_ValueChanged);
             // 
             // frmMonitorSig60
             // 
@@ -477,12 +488,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(1790, 826);
+            this.Controls.Add(this.trbOcMonitorZoom);
+            this.Controls.Add(this.rtfSerialEcho);
             this.Controls.Add(this.pnlComandiLista);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlFile);
             this.Controls.Add(this.flvListaComandiSIG);
             this.Controls.Add(this.btnChiudi);
-            this.Controls.Add(this.txtSerialEcho);
             this.Controls.Add(this.pnlPorta);
             this.Name = "frmMonitorSig60";
             this.ShowIcon = false;
@@ -497,6 +509,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlComandiLista.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trbOcMonitorZoom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,7 +548,6 @@
         private System.Windows.Forms.Button btnCmdStopCom;
         private System.Windows.Forms.Button btnCmdStartCom;
         private System.Windows.Forms.Panel pnlComandiLista;
-        private System.Windows.Forms.TextBox txtSerialEcho;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNumCaratteri;
         private System.Windows.Forms.CheckBox chkSendStop;
@@ -543,5 +555,7 @@
         private System.Windows.Forms.Button btnCmdSendNoise;
         private System.Windows.Forms.CheckBox chkSendAuto;
         private System.Windows.Forms.Timer tmrInvioAutomatico;
+        private System.Windows.Forms.RichTextBox rtfSerialEcho;
+        private System.Windows.Forms.TrackBar trbOcMonitorZoom;
     }
 }

@@ -873,6 +873,30 @@ namespace Utility
 
         }
 
+        public static ushort ConvertiHexUshort(string Testo, ushort ValIfNull = 0)
+        {
+            try
+            {
+                ushort _valore;
+
+                bool result = ushort.TryParse(Testo, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _valore);
+                
+                if (!result)
+                {
+                    _valore = ValIfNull;
+                }
+
+                return _valore;
+
+            }
+            catch
+            {
+                return ValIfNull;
+            }
+
+        }
+
+
         public static ushort ConvertiMSshort(string Testo, int Fattore = 1, ushort ValIfNull = 0)
         {
             try

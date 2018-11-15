@@ -1622,6 +1622,11 @@ namespace ChargerLogic
                         ParametriApparato.llParApp.ModelloMemoria = ImmagineMemoria.ModelloMemoria;
                         ParametriApparato.llParApp.IdApparato = ImmagineMemoria.IDApparato;
 
+                        ParametriApparato.llParApp.VMin = ImmagineMemoria.VMin;
+                        ParametriApparato.llParApp.VMax = ImmagineMemoria.VMax;
+                        ParametriApparato.llParApp.Amax = ImmagineMemoria.Amax;
+                        ParametriApparato.llParApp.PresenzaRabboccatore = ImmagineMemoria.PresenzaRabboccatore;
+
                     }
 
                 }
@@ -1666,10 +1671,15 @@ namespace ChargerLogic
                 ImmagineMemoria.HardwareDisp = ParametriApparato.llParApp.HardwareDisp;
                 ImmagineMemoria.SoftwareDISP = ParametriApparato.llParApp.SoftwareDISP;
 
-
-
-
                 ImmagineMemoria.IDApparato = ParametriApparato.llParApp.IdApparato;
+
+                ImmagineMemoria.VMin = ParametriApparato.llParApp.VMin;
+                ImmagineMemoria.VMax = ParametriApparato.llParApp.VMax;
+                ImmagineMemoria.Amax = ParametriApparato.llParApp.Amax;
+                ImmagineMemoria.PresenzaRabboccatore = ParametriApparato.llParApp.PresenzaRabboccatore;
+
+
+
 
 
                 if (ImmagineMemoria.GeneraByteArray())

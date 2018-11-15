@@ -332,7 +332,8 @@ namespace PannelloCharger
                 _comando[0] = 0x1D;
                 ScriviMessaggioByte(_comando);
                 Thread.Sleep(200);
-                txtSerialEcho.AppendText("\r\n");
+                //txtSerialEcho.AppendText("\r\n");
+                rtfSerialEcho.AppendText("\r\n");
             }
 
             catch (Exception Ex)
@@ -438,7 +439,8 @@ namespace PannelloCharger
 
         private void btnSigEchoCLS_Click(object sender, EventArgs e)
         {
-            txtSerialEcho.Text = "";
+            //txtSerialEcho.Text = "";
+            rtfSerialEcho.Text = "";
         }
 
 
@@ -463,19 +465,23 @@ namespace PannelloCharger
                     _trovatoETX = false;
                     if (e.Data[_i] == 0x02)
                     {
-                        txtSerialEcho.AppendText("\r\n");
+                        //txtSerialEcho.AppendText("\r\n");
+                        rtfSerialEcho.AppendText("\r\n");
                     }
 
-                    txtSerialEcho.AppendText(e.Data[_i].ToString("X2"));
+                    //txtSerialEcho.AppendText(e.Data[_i].ToString("X2"));
+                    rtfSerialEcho.AppendText(e.Data[_i].ToString("X2"));
 
                     if (e.Data[_i] == 0x03)
                     {
                         //txtSerialEcho.AppendText("\r\n");
+                        rtfSerialEcho.AppendText("\r\n");
                     }
                     else
                     {
 
-                        txtSerialEcho.AppendText(" ");
+                        //txtSerialEcho.AppendText(" ");
+                        rtfSerialEcho.AppendText(" ");
                     }
 
 
@@ -486,6 +492,7 @@ namespace PannelloCharger
                     if (e.Data[_i] == SerialMessage.serETX)
                     {
                         Log.Debug("Trovato Etx (SIG) --> " + _i.ToString());
+                        analizzaCodaSIG();
                         _trovatoETX = true;
                     }
                 }
@@ -527,19 +534,24 @@ namespace PannelloCharger
                     _trovatoETX = false;
                     if (RxData[_i] == 0x02)
                     {
-                        txtSerialEcho.AppendText("\r\n>>");
+                        //txtSerialEcho.AppendText("\r\n>>");
+                        rtfSerialEcho.AppendText("\r\n>>");
+
                     }
 
-                    txtSerialEcho.AppendText(RxData[_i].ToString("X2"));
+                    //txtSerialEcho.AppendText(RxData[_i].ToString("X2"));
+                    rtfSerialEcho.AppendText(RxData[_i].ToString("X2"));
 
                     if (RxData[_i] == 0x03)
                     {
-                        txtSerialEcho.AppendText("\r\n");
+                        //txtSerialEcho.AppendText("\r\n");
+                        rtfSerialEcho.AppendText("\r\n");
                     }
                     else
                     {
 
-                        txtSerialEcho.AppendText(" ");
+                        //txtSerialEcho.AppendText(" ");
+                        rtfSerialEcho.AppendText(" ");
                     }
                  
 
@@ -614,7 +626,8 @@ namespace PannelloCharger
             
             ScriviMessaggioByte(_comando);
             Thread.Sleep(500);
-            txtSerialEcho.AppendText("\r\n");
+            //txtSerialEcho.AppendText("\r\n");
+            rtfSerialEcho.AppendText("\r\n");
 
         }
 
@@ -681,14 +694,15 @@ namespace PannelloCharger
 
                         _msg.Dispositivo = _mS.idCorrente;
                         _msg.Sottocomando = "";
+                        string _tempId = _msg.Dispositivo.Substring(0, 2);
                         // In base al serial number riconosco il tipo dispositivo da cui arriva il messaggio
-                        switch (_mS.idCorrente)
+                        switch (_tempId) //_mS.idCorrente)
                         {
-                            case "0101010100000000":
+                            case "01": //01010100000000":
                                 _msg.TipoDispositivo = "Monitor";
                                 _msg.Device = echoMessaggio.TipoDevice.Monitor;
                                 break;
-                            case "0000000000000000":
+                            case "00": //00000000000000":
                                 _msg.TipoDispositivo = "LADE Light";
                                 _msg.Device = echoMessaggio.TipoDevice.LADELight;
                                 break;
@@ -1223,7 +1237,8 @@ namespace PannelloCharger
                     DataModel.ListaMessaggi = ListaMessaggi;
                     DataModel.Note = txtEchoFileNote.Text;
                     DataModel.HexDump = FullDataBuffer;
-                    DataModel.HexDumpText = txtSerialEcho.Text;
+                    //DataModel.HexDumpText = txtSerialEcho.Text;
+                    DataModel.HexDumpText = rtfSerialEcho.Text;
 
 
                     string _tempSer = JsonConvert.SerializeObject(DataModel);
@@ -1317,7 +1332,8 @@ namespace PannelloCharger
                         flvListaComandiSIG.SetObjects(ListaMessaggi);
                         flvListaComandiSIG.BuildList();
                         txtEchoFileNote.Text = _importData.Note;
-                        txtSerialEcho.Text = _importData.HexDumpText;
+                        //txtSerialEcho.Text = _importData.HexDumpText;
+                        rtfSerialEcho.Text = _importData.HexDumpText;
                         FullDataBuffer = _importData.HexDump;
                         _dataBuffer = new byte[0];
 
@@ -1347,7 +1363,8 @@ namespace PannelloCharger
                 ListaMessaggi.Clear();
                 flvListaComandiSIG.SetObjects(ListaMessaggi);
                 flvListaComandiSIG.BuildList();
-                txtSerialEcho.Text = "";
+                //txtSerialEcho.Text = "";
+                rtfSerialEcho.Text = "";
                 FullDataBuffer = new byte[0];
                 _dataBuffer = new byte[0];
 
@@ -1407,13 +1424,15 @@ namespace PannelloCharger
                 if (this.Width > 800)
                 {
                     flvListaComandiSIG.Width = this.Width - 330;
-                    txtSerialEcho.Width = this.Width - 55;
+                    //txtSerialEcho.Width = this.Width - 55;
+                    rtfSerialEcho.Width = this.Width - 55;
                     btnChiudi.Left = this.Width - 132;
                 }
                 if (this.Height > 700)
                 {
                     flvListaComandiSIG.Height = this.Height - 295;
-                    txtSerialEcho.Top = this.Height - 255;
+                    //txtSerialEcho.Top = this.Height - 255;
+                    rtfSerialEcho.Top = this.Height - 255;
                     btnChiudi.Top =   this.Height - 90;
                 }
 
@@ -1453,7 +1472,8 @@ namespace PannelloCharger
                 ScriviMessaggioByte(_mS.MessageBuffer);
                 Thread.Sleep(200);
 
-                txtSerialEcho.AppendText("\r\n");
+                //txtSerialEcho.AppendText("\r\n");
+                rtfSerialEcho.AppendText("\r\n");
             }
 
             catch (Exception Ex)
@@ -1475,7 +1495,9 @@ namespace PannelloCharger
                 ScriviMessaggioByte(_mS.MessageBuffer);
                 Thread.Sleep(200);
 
-                txtSerialEcho.AppendText("\r\n");
+                //txtSerialEcho.AppendText("\r\n");
+                rtfSerialEcho.AppendText("\r\n");
+
             }
 
             catch (Exception Ex)
@@ -1495,7 +1517,9 @@ namespace PannelloCharger
                 byte _currByte;
                 if (ComPort.IsOpen)
                 {
-                    txtSerialEcho.AppendText("\r\n");
+                    //txtSerialEcho.AppendText("\r\n");
+                    rtfSerialEcho.AppendText("\r\n");
+
                     if (int.TryParse(txtNumCaratteri.Text, out _numChar))
                     {
 
@@ -1619,6 +1643,18 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("btnGetSigRegister_Click: " + Ex.Message);
+            }
+        }
+
+        private void trbOcMonitorZoom_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                rtfSerialEcho.ZoomFactor = (float)(trbOcMonitorZoom.Value * 0.25 );
+            }
+            catch
+            {
+
             }
         }
     }
