@@ -479,7 +479,7 @@
             this.trbOcMonitorZoom.Name = "trbOcMonitorZoom";
             this.trbOcMonitorZoom.Size = new System.Drawing.Size(352, 56);
             this.trbOcMonitorZoom.TabIndex = 26;
-            this.trbOcMonitorZoom.Value = 1;
+            this.trbOcMonitorZoom.Value = 4;
             this.trbOcMonitorZoom.ValueChanged += new System.EventHandler(this.trbOcMonitorZoom_ValueChanged);
             // 
             // frmMonitorSig60

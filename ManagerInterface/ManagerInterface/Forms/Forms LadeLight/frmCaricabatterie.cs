@@ -1361,8 +1361,6 @@ namespace PannelloCharger
                 flvwLettureParametri.AllColumns.Add(colCorrCaricata);
 
 
-
-
                 //-------------------------------------------- 
 
 

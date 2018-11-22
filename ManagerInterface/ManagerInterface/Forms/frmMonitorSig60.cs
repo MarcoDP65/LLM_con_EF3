@@ -432,7 +432,6 @@ namespace PannelloCharger
             // Send data to whom ever interested
 
             Log.Debug("SerialPort_DataReceived: " + dataLength.ToString("000") + " - " + FunzioniComuni.HexdumpArray(data, true));
-            //AccodaBuffer(data);
             NewSerialDataRecieved(this, new SerialDataEventArgs(data));
 
         }
@@ -492,7 +491,7 @@ namespace PannelloCharger
                     if (e.Data[_i] == SerialMessage.serETX)
                     {
                         Log.Debug("Trovato Etx (SIG) --> " + _i.ToString());
-                        analizzaCodaSIG();
+                        //analizzaCodaSIG();
                         _trovatoETX = true;
                     }
                 }
@@ -501,11 +500,7 @@ namespace PannelloCharger
                 {
                     Log.Debug("Trovato Etx (USB) --> Analizza Coda");
                     analizzaCodaSIG();
-
                 }
-                                  
-
-                
 
                 Log.Debug("Coda: " + codaDatiSER.Count.ToString() + " - " + FunzioniComuni.HexdumpQueue(codaDatiSER));
 
@@ -753,6 +748,14 @@ namespace PannelloCharger
                                 _msg.DescComando = "Chiusura Canale SIG";
                                 _msg.Parametri = "";
                                 break;
+                            case (byte)SerialMessage.TipoComando.CMD_UPDATE_RTC:  //0x1D
+                                Log.Debug("Update RTC");
+                                _msg.Comando = "SB_SetRtc";
+                                _msg.DescComando = "Aggiornamento RTC";
+                                _msg.Parametri = "";
+                                break;
+
+
                             case (byte)SerialMessage.TipoComando.CMD_MODE_STOP_LT:  //0x63
                                 Log.Debug("Fine Carica da LL");
                                 _msg.Comando = "LL_Stop";
@@ -916,40 +919,59 @@ namespace PannelloCharger
                         }
                         else
                         {
-                            // ------------------ prima riga -------
-                            rigaParametri = "Lib:" + _Dati[0x03].ToString() + "." + _Dati[0x04].ToString("00") + "." + FunzioniComuni.UshortFromArray(_Dati, 0x05).ToString("000");
-                            rigaParametri += " - Cfg:" + _Dati[0x08].ToString();
-                            rigaParametri += " - ID:" + FunzioniComuni.ArrayToString(_Dati, 0x1D, 5);
-                            RigaBase.Parametri = rigaParametri;
-                            // Ora il pacchetto in ordine inverso
-                            //Quarta Riga
-                            _msgPar = new echoMessaggio();
-                            _msgPar.SegueRiga = true;
-                            _msgPar.Device = RigaBase.Device;
-                            _msgPar.Comando = "3";
-                            rigaParametri = "Esito:" + _Dati[0x02].ToString("x2") ;
-                            _msgPar.Parametri = rigaParametri;
-                            ListaMessaggi.Insert(0, _msgPar);
-                            //Terza Riga
-                            _msgPar = new echoMessaggio();
-                            _msgPar.SegueRiga = true;
-                            _msgPar.Device = RigaBase.Device;
-                            _msgPar.Comando = "2";
-                            rigaParametri = "Mod. P:" + _Dati[0x16].ToString() + " - Giorno:" + DataOraMR.SiglaGiorno(_Dati[0x17] + 1) + "-" + _Dati[0x17].ToString();
-                            rigaParametri += " - Min: " + ((ushort)((_Dati[0x19] << 8) + _Dati[0x1A])).ToString();
-                            rigaParametri += " - FC:" + FunzioniMR.StringaFattoreCarica(_Dati[0x1B]);
-                            _msgPar.Parametri = rigaParametri;
-                            ListaMessaggi.Insert(0, _msgPar);
-                            _msgPar = new echoMessaggio();
-                            //Seconda Riga
-                            _msgPar.SegueRiga = true;
-                            _msgPar.Device = RigaBase.Device;
-                            _msgPar.Comando = "1";
-                            rigaParametri = "V:" + FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x09));
-                            rigaParametri += " - Ah: " + FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0B));
-                            rigaParametri += " - Vgas:" + FunzioniMR.StringaTensioneCella(FunzioniComuni.UshortFromArray(_Dati, 0x11));
-                            _msgPar.Parametri = rigaParametri;
-                            ListaMessaggi.Insert(0, _msgPar);
+                            if (_Dati.Length < 0x1C)
+                            {
+                                // ------------------ prima riga -------
+                                rigaParametri = "Lunghezza Errata: " + _Dati.Length.ToString();
+                                RigaBase.Parametri = rigaParametri;
+                                // Ora l'Hexdump
+                                //Quarta Riga
+                                _msgPar = new echoMessaggio();
+                                _msgPar.SegueRiga = true;
+                                _msgPar.Device = RigaBase.Device;
+                                _msgPar.Comando = "3";
+                                rigaParametri = FunzioniComuni.HexdumpArray(_Dati);
+                                _msgPar.Parametri = rigaParametri;
+                                ListaMessaggi.Insert(0, _msgPar);
+
+                            }
+                            else
+                            {
+                                // ------------------ prima riga -------
+                                rigaParametri = "Lib:" + _Dati[0x03].ToString() + "." + _Dati[0x04].ToString("00") + "." + FunzioniComuni.UshortFromArray(_Dati, 0x05).ToString("000");
+                                rigaParametri += " - Cfg:" + _Dati[0x08].ToString();
+                                rigaParametri += " - ID:" + FunzioniComuni.ArrayToString(_Dati, 0x1D, 5);
+                                RigaBase.Parametri = rigaParametri;
+                                // Ora il pacchetto in ordine inverso
+                                //Quarta Riga
+                                _msgPar = new echoMessaggio();
+                                _msgPar.SegueRiga = true;
+                                _msgPar.Device = RigaBase.Device;
+                                _msgPar.Comando = "3";
+                                rigaParametri = "Esito:" + _Dati[0x02].ToString("x2");
+                                _msgPar.Parametri = rigaParametri;
+                                ListaMessaggi.Insert(0, _msgPar);
+                                //Terza Riga
+                                _msgPar = new echoMessaggio();
+                                _msgPar.SegueRiga = true;
+                                _msgPar.Device = RigaBase.Device;
+                                _msgPar.Comando = "2";
+                                rigaParametri = "Mod. P:" + _Dati[0x16].ToString() + " - Giorno:" + DataOraMR.SiglaGiorno(_Dati[0x17] + 1) + "-" + _Dati[0x17].ToString();
+                                rigaParametri += " - Min: " + ((ushort)((_Dati[0x19] << 8) + _Dati[0x1A])).ToString();
+                                rigaParametri += " - FC:" + FunzioniMR.StringaFattoreCarica(_Dati[0x1B]);
+                                _msgPar.Parametri = rigaParametri;
+                                ListaMessaggi.Insert(0, _msgPar);
+                                _msgPar = new echoMessaggio();
+                                //Seconda Riga
+                                _msgPar.SegueRiga = true;
+                                _msgPar.Device = RigaBase.Device;
+                                _msgPar.Comando = "1";
+                                rigaParametri = "V:" + FunzioniMR.StringaTensione(FunzioniComuni.UshortFromArray(_Dati, 0x09));
+                                rigaParametri += " - Ah: " + FunzioniMR.StringaCorrenteLL(FunzioniComuni.UshortFromArray(_Dati, 0x0B));
+                                rigaParametri += " - Vgas:" + FunzioniMR.StringaTensioneCella(FunzioniComuni.UshortFromArray(_Dati, 0x11));
+                                _msgPar.Parametri = rigaParametri;
+                                ListaMessaggi.Insert(0, _msgPar);
+                            }
 
                         }
 
