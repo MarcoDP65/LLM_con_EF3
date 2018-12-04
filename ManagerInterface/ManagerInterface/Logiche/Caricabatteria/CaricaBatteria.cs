@@ -911,8 +911,11 @@ namespace ChargerLogic
                 _rxRisposta = false;
                 Log.Debug("STOP");
                 Log.Debug(_mS.hexdumpMessaggio());
-                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(TimeoutRisposta, 0, true, false);
+                _esito = _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                if (_esito)
+                {
+                    _esito = aspettaRisposta(TimeoutRisposta, 0, true, false);
+                }
                 return _esito;
             }
 

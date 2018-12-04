@@ -214,10 +214,13 @@ namespace ChargerLogic
                     VoltSoglia = 0,
                     VCellaMin = 0,
                     VCellaMax = 0,
+                    VminRiconoscimento = 0,
+                    VmaxRiconoscimento = 0,
                     UsaSpybatt = 0,
                     AbilitaEqual = 0,
                     AbilitaAttesaBMS = 0,
-                    TensioniFisse = 0
+                    TensioniFisse = 0,
+                    DivisoreCelle = 0
                 });
                 TipiBattria.Add(new sbTipoBatteria()
                 {
@@ -230,10 +233,13 @@ namespace ChargerLogic
                     VoltSoglia = 240,
                     VCellaMin = 100,
                     VCellaMax = 265,
+                    VminRiconoscimento = 150,
+                    VmaxRiconoscimento = 240,
                     UsaSpybatt = 1,
                     AbilitaEqual = 0x300C,
                     AbilitaAttesaBMS = 0x0000,
-                    TensioniFisse = 1
+                    TensioniFisse = 1,
+                    DivisoreCelle= 2
                 });
                 TipiBattria.Add(new sbTipoBatteria()
                 {
@@ -246,10 +252,13 @@ namespace ChargerLogic
                     VoltSoglia = 240,
                     VCellaMin = 100,
                     VCellaMax = 240,
+                    VminRiconoscimento = 150,
+                    VmaxRiconoscimento = 240,
                     UsaSpybatt = 1,
                     AbilitaEqual = 0x0000,
                     AbilitaAttesaBMS = 0x0000,
-                    TensioniFisse = 1
+                    TensioniFisse = 1,
+                    DivisoreCelle = 2
                 });
                 TipiBattria.Add(new sbTipoBatteria()
                 {
@@ -262,10 +271,13 @@ namespace ChargerLogic
                     VoltSoglia = 0,
                     VCellaMin = 0,
                     VCellaMax = 0,
+                    VminRiconoscimento = 0,
+                    VmaxRiconoscimento = 0,
                     UsaSpybatt = 0,
                     AbilitaEqual = 0,
                     AbilitaAttesaBMS = 0x05F0,
-                    TensioniFisse = 0
+                    TensioniFisse = 0,
+                    DivisoreCelle = 0
                 });
 
             }

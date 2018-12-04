@@ -121,26 +121,54 @@ namespace ChargerLogic
 
         public enum ParametroLadeLight : byte
         {
-            TempoMassimoCarica = 0x01,
-            TempoT2Min = 0x02,
-            TempoT2Max = 0x03,
-            TensioneNominale = 0x10,
-            TensioneSogliaCella = 0x11,   // 2 decimali
-            TensioneMassimaCella = 0x12,  // 2 decimali
-            CorrenteCarica = 0x21,
-            CorrenteMassima = 0x22,
+            TempoT1Max = 0x01,                       // In Minuti
+            TempoT2Min = 0x02,                       // In Minuti
+            TempoT2Max = 0x03,                       // In Minuti
+            TempoT3Max = 0x04,                       // In Minuti
+            CoeffK     = 0xF1,                       // 1 decimale, %tempo fase 2 rispetto a fase 1
+
+            TensioneNominale = 0x10,                 // V Totale,    2 decimali  
+            TensioneSogliaF1 = 0x11,                 // V per Cella, 2 decimali  Pb 2.40
+            TensioneRaccordoF1 = 0x12,               // V per Cella, 2 decimali  Pb 2.45
+            TensioneMassimaCella = 0x13,             // V per Cella, 2 decimali  Pb 2.65
+            TensioneLimiteCella = 0x14,              // V per Cella, 2 decimali  Pb 2.78
+            TensioneMinimaRiconoscimento = 0x1A,     // V per Cella, 2 decimali  Pb 1.50
+            TensioneMassimaRiconoscimento = 0x1B,    // V per Cella, 2 decimali  Pb 2.40
+
+            CorrenteCarica = 0x21,                   // A, 1 decimale
+            CorrenteMassima = 0x22,                  // A, 1 decimale
+            CorrenteF3 = 0x23,                       // A, 1 decimale
+
             CapacitaNominale = 0x31,
-            CapacitaDaRicaricare = 0x32,
-            FrequenzaSwitching = 0x40,
-            DivisoreK = 0x50,  // da trasmettere SEMPRE prima dei parametri K --> ora è Usa SPY-BATT se presente
-            ParametroKP = 0x51,
-            ParametroKI = 0x52,
-            ParametroKD = 0x53,
-            EqualFineCarica = 0x54,
+            CapacitaDaRicaricare = 0x32,             // Attualmente non in uso
+
+            FrequenzaSwitching = 0x40,               // Attualmente non in uso
+
+            DivisoreK = 0x50,                        // da trasmettere SEMPRE prima dei parametri K --> ora è Usa SPY-BATT se presente
+
+            ParametroKP = 0x51,                      // Attualmente non in uso
+            ParametroKI = 0x52,                      // Attualmente non in uso
+            ParametroKD = 0x53,                      // Attualmente non in uso
+
+
+
+
             RiarmoBMS = 0x55,
             TipoBatteria = 0x56,
+            NumeroCelle = 0x57,
+
+            EqualFineCaricaAttesa =         0x60,
+            EqualFineCaricaNumImpulsi =     0x61,
+            EqualFineCaricaDurataP =        0x62,
+            EqualFineCaricaDurataI =        0x63,
+            EqualFineCaricaCorrenteImp =    0x64,
+
+
+
+            TipoProfilo = 0x80,
+
             CondizioneStop = 0xF0, 
-            CoeffK = 0xF1,   // 1 decimale
+            
         }
 
         /// <summary>

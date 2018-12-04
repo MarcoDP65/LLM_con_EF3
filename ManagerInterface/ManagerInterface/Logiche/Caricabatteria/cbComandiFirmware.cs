@@ -468,6 +468,54 @@ namespace ChargerLogic
         }
 
 
+
+        /// <summary>
+        /// Forza il riavvio della scheda
+        /// </summary>
+        /// <returns></returns>
+        public bool ResetScheda()
+        {
+
+
+            try
+            {
+                bool _esito;
+                ControllaAttesa(UltimaScrittura);
+
+                _mS.Comando = SerialMessage.TipoComando.CMD_RESET_BOARD;
+
+
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug(" RESET SCHEDA ");
+
+                _mS.ComponiMessaggio();
+        
+
+                Log.Debug(_mS.hexdumpMessaggio());
+                _rxRisposta = false;
+                _startRead = DateTime.Now;
+                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug("------------------------------------------------------------------------------------------------------------");
+
+                return _esito;
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+
+
         /// <summary>
         /// Commuta L'app attiva se qualla dell'area indicata come parametro
         /// </summary>

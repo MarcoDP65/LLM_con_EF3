@@ -19,7 +19,7 @@ namespace PannelloCharger {
     // tramite uno strumento quale ResGen o Visual Studio.
     // Per aggiungere o rimuovere un membro, modificare il file con estensione ResX ed eseguire nuovamente ResGen
     // con l'opzione /str oppure ricompilare il progetto VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class StringheComuni {
@@ -435,6 +435,24 @@ namespace PannelloCharger {
         internal static string Mercoledi {
             get {
                 return ResourceManager.GetString("Mercoledi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Profilo Fisso.
+        /// </summary>
+        internal static string ModoRicaricaProfilo {
+            get {
+                return ResourceManager.GetString("ModoRicaricaProfilo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Strategia Pianificata.
+        /// </summary>
+        internal static string ModoRicaricaStrategia {
+            get {
+                return ResourceManager.GetString("ModoRicaricaStrategia", resourceCulture);
             }
         }
         

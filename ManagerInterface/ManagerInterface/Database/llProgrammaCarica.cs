@@ -37,18 +37,34 @@ namespace MoriData
 
         public string DataInstallazione { get; set; }
         public string ProgramName { get; set; }
-        public byte BatteryType { get; set; }
+        public byte   BatteryType { get; set; }
         public ushort BatteryVdef { get; set; }
         public ushort BatteryAhdef { get; set; }
+        public byte   NumeroCelle { get; set; }
+
         public ushort VSoglia { get; set; }
+        public ushort VRaccordoF1 { get; set; }
         public ushort VMax { get; set; }
+        public ushort VCellLimite { get; set; }
+        public ushort BatteryVminRec { get; set; }
+        public ushort BatteryVmaxRec { get; set; }
+
         public ushort CorrenteMax { get; set; }
-        public byte EqualTempoAttesa { get; set; }
-        public byte EqualNumImpulsi { get; set; }
+        public ushort CorrenteFase3 { get; set; }
+
+        public ushort EqualTempoAttesa { get; set; }
+        public ushort EqualNumImpulsi { get; set; }
+        public ushort EqualDurataPausa { get; set; }
+        public ushort EqualDurataImpulso { get; set; }
+        public ushort EqualCorrenteImpulso { get; set; }
 
         public byte IdProfilo { get; set; }
         public ushort DurataMaxCarica { get; set; }
         public ushort PercTempoFase2 { get; set; }
+        public ushort DurataMinFase2 { get; set; }
+        public ushort DurataMaxFase2 { get; set; }
+        public ushort DurataMaxFase3 { get; set; }
+
 
         public byte AbilitaComunicazioneSpybatt { get; set; }
 
@@ -250,16 +266,44 @@ namespace MoriData
                 _par.ValoreParametro = _llprc.BatteryType;
                 ListaParametri.Add(_par);
 
+                // Tipo Profilo
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TipoProfilo;
+                _par.ValoreParametro = _llprc.IdProfilo;
+                ListaParametri.Add(_par);
+
                 // Durata Carica
                 _par = new ParametroLL();
-                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoMassimoCarica;
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT1Max;
                 _par.ValoreParametro = _llprc.DurataMaxCarica;
                 ListaParametri.Add(_par);
 
                 // Durata Fase 2
                 _par = new ParametroLL();
                 _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT2Min;
+                _par.ValoreParametro = _llprc.DurataMinFase2;
+                ListaParametri.Add(_par);
+
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT2Max;
+                _par.ValoreParametro = _llprc.DurataMaxFase2;
+                ListaParametri.Add(_par);
+
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CoeffK;
                 _par.ValoreParametro = _llprc.PercTempoFase2;
+                ListaParametri.Add(_par);
+
+                // Durata Fase 3
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT3Max;
+                _par.ValoreParametro = _llprc.DurataMaxFase3;
+                ListaParametri.Add(_par);
+
+                // Numero Celle
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.NumeroCelle;
+                _par.ValoreParametro = _llprc.NumeroCelle;
                 ListaParametri.Add(_par);
 
                 // Tensione Nominale
@@ -270,8 +314,14 @@ namespace MoriData
 
                 // Tensione di soglia
                 _par = new ParametroLL();
-                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella;
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaF1;
                 _par.ValoreParametro = _llprc.VSoglia;
+                ListaParametri.Add(_par);
+
+                // Tensione di raccordo F1
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneRaccordoF1;
+                _par.ValoreParametro = _llprc.VRaccordoF1;
                 ListaParametri.Add(_par);
 
                 // Tensione Massima
@@ -280,10 +330,20 @@ namespace MoriData
                 _par.ValoreParametro = _llprc.VMax;
                 ListaParametri.Add(_par);
 
-                // Corrente Massima
+                // Tensione Limite
                 _par = new ParametroLL();
-                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteMassima;
-                _par.ValoreParametro = _llprc.CorrenteMax;
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneLimiteCella;
+                _par.ValoreParametro = _llprc.VCellLimite;
+                ListaParametri.Add(_par);
+
+                // Tensioni Riconoscimento
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneMinimaRiconoscimento;
+                _par.ValoreParametro = _llprc.BatteryVminRec;
+                ListaParametri.Add(_par);
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneMassimaRiconoscimento;
+                _par.ValoreParametro = _llprc.BatteryVmaxRec;
                 ListaParametri.Add(_par);
 
                 // Capacità Nominale
@@ -292,13 +352,47 @@ namespace MoriData
                 _par.ValoreParametro = _llprc.BatteryAhdef;
                 ListaParametri.Add(_par);
 
-                // Equal fine carica
+                // Corrente Massima (  == Corrente di carica )
                 _par = new ParametroLL();
-                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCarica;
-                _par.ValoreParametro = _llprc.EqualTempoAttesa;
-                _par.ValoreParametro = (ushort)(_par.ValoreParametro << 8);
-                _par.ValoreParametro += _llprc.EqualNumImpulsi;
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteMassima;
+                _par.ValoreParametro = _llprc.CorrenteMax;
                 ListaParametri.Add(_par);
+
+                // Corrente Fase 3
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteF3;
+                _par.ValoreParametro = _llprc.CorrenteFase3;
+                ListaParametri.Add(_par);
+
+
+
+                // Equal fine carica:
+                // Attesa Iniziale
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaAttesa;
+                _par.ValoreParametro = _llprc.EqualTempoAttesa;
+                ListaParametri.Add(_par);
+                // Numero Impulsi
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaNumImpulsi;
+                _par.ValoreParametro = _llprc.EqualNumImpulsi;
+                ListaParametri.Add(_par);
+                // Tempo Pausa
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaDurataP;
+                _par.ValoreParametro = _llprc.EqualDurataPausa;
+                ListaParametri.Add(_par);
+                // Tempo Erogazione
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaDurataI;
+                _par.ValoreParametro = _llprc.EqualDurataImpulso;
+                ListaParametri.Add(_par);
+                // Corrente Impulso
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaCorrenteImp;
+                _par.ValoreParametro = _llprc.EqualCorrenteImpulso;
+                ListaParametri.Add(_par);
+
 
                 // Riarmo BMS
                 _par = new ParametroLL();
@@ -334,38 +428,84 @@ namespace MoriData
                 {
                     switch (_par.idParametro)
                     {
-                        case (byte)SerialMessage.ParametroLadeLight.CapacitaNominale:
-                            _llprc.BatteryAhdef = _par.ValoreParametro;
-                            break;
-                        case (byte)SerialMessage.ParametroLadeLight.TempoMassimoCarica:
-                            _llprc.DurataMaxCarica = _par.ValoreParametro;
-                            break;
-                        case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella:
-                            _llprc.VSoglia = _par.ValoreParametro;
-                            break;
-                        case (byte)SerialMessage.ParametroLadeLight.TensioneMassimaCella:
-                            _llprc.VMax = _par.ValoreParametro;
-                            break;
-                        case (byte)SerialMessage.ParametroLadeLight.CorrenteMassima:
-                            _llprc.CorrenteMax = _par.ValoreParametro;
-                            break;
-                        case (byte)SerialMessage.ParametroLadeLight.TensioneNominale:
-                            _llprc.BatteryVdef = _par.ValoreParametro;
-                            break;
-                        case (byte)SerialMessage.ParametroLadeLight.TempoT2Min:
-                            _llprc.PercTempoFase2 = _par.ValoreParametro;
+
+                        case (byte)SerialMessage.ParametroLadeLight.TipoProfilo:
+                            _llprc.IdProfilo = (byte)_par.ValoreParametro;
                             break;
                         case (byte)SerialMessage.ParametroLadeLight.TipoBatteria:
                             _llprc.BatteryType = (byte)_par.ValoreParametro;
                             break;
+                        case (byte)SerialMessage.ParametroLadeLight.CapacitaNominale:
+                            _llprc.BatteryAhdef = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TempoT1Max:
+                            _llprc.DurataMaxCarica = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TempoT2Min:
+                            _llprc.DurataMinFase2 = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TempoT2Max:
+                            _llprc.DurataMaxFase2= _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.CoeffK:
+                            _llprc.PercTempoFase2 = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TempoT3Max:
+                            _llprc.DurataMaxFase3 = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.NumeroCelle:
+                            _llprc.NumeroCelle = (byte)_par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneNominale:
+                            _llprc.BatteryVdef = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaF1:
+                            _llprc.VSoglia = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneRaccordoF1:
+                            _llprc.VRaccordoF1 = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneMassimaCella:
+                            _llprc.VMax = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneLimiteCella:
+                            _llprc.VCellLimite = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneMinimaRiconoscimento:
+                            _llprc.BatteryVminRec = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneMassimaRiconoscimento:
+                            _llprc.BatteryVmaxRec = _par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.CorrenteMassima:
+                            _llprc.CorrenteMax = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.CorrenteF3:
+                            _llprc.CorrenteFase3 = _par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaAttesa:
+                            _llprc.EqualTempoAttesa = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaNumImpulsi:
+                            _llprc.EqualNumImpulsi = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaDurataP:
+                            _llprc.EqualDurataPausa = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaDurataI:
+                            _llprc.EqualDurataImpulso = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaCorrenteImp:
+                            _llprc.EqualCorrenteImpulso = _par.ValoreParametro;
+                            break;
+
+
                         case (byte)SerialMessage.ParametroLadeLight.DivisoreK:
                             _llprc.AbilitaComunicazioneSpybatt = (byte)_par.ValoreParametro;
                             break;
-                        case (byte)SerialMessage.ParametroLadeLight.EqualFineCarica:
-                            FunzioniComuni.SplitUshort(_par.ValoreParametro, ref loval, ref hival);
-                            _llprc.EqualTempoAttesa = hival;
-                            _llprc.EqualNumImpulsi = loval;
-                            break;
+
                         case (byte)SerialMessage.ParametroLadeLight.RiarmoBMS:
                             FunzioniComuni.SplitUshort(_par.ValoreParametro, ref loval, ref hival);
                             _llprc.TempoAttesaBMS = hival;
@@ -500,7 +640,6 @@ namespace MoriData
                 {
                     return 0;
                 }
-                return 0;
 
             }
             set
@@ -548,6 +687,20 @@ namespace MoriData
             }
         }
 
+        public byte NumeroCelle
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.NumeroCelle;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.NumeroCelle = value;
+                _datiSalvati = false;
+            }
+        }
+
         public ushort VSoglia
         {
             get
@@ -570,6 +723,27 @@ namespace MoriData
             }
         }
 
+        public ushort VRaccordoF1
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.VRaccordoF1;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            set
+            {
+                _llprc.VRaccordoF1 = value;
+                _datiSalvati = false;
+            }
+        }
+
         public ushort VMax
         {
             get
@@ -582,7 +756,6 @@ namespace MoriData
                 {
                     return 0;
                 }
-                return 0;
 
             }
             set
@@ -591,6 +764,71 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+        public ushort VCellLimite
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.VCellLimite;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            set
+            {
+                _llprc.VCellLimite = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort VMinRec
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.BatteryVminRec;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            set
+            {
+                _llprc.BatteryVminRec = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort VMaxRec
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.BatteryVmaxRec;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            set
+            {
+                _llprc.BatteryVmaxRec = value;
+                _datiSalvati = false;
+            }
+        }
+
+
 
         public ushort CorrenteMax
         {
@@ -604,7 +842,6 @@ namespace MoriData
                 {
                     return 0;
                 }
-                return 0;
 
             }
             set
@@ -614,7 +851,28 @@ namespace MoriData
             }
         }
 
-        public byte EqualTempoAttesa
+        public ushort CorrenteFase3
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.CorrenteFase3;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            set
+            {
+                _llprc.CorrenteFase3 = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort EqualTempoAttesa
         {
             get
             {
@@ -628,7 +886,7 @@ namespace MoriData
             }
         }
 
-        public byte EqualNumImpulsi
+        public ushort EqualNumImpulsi
         {
             get
             {
@@ -642,6 +900,47 @@ namespace MoriData
             }
         }
 
+        public ushort EqualDurataPausa
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.EqualDurataPausa;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.EqualDurataPausa = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort EqualDurataImpulso
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.EqualDurataImpulso;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.EqualDurataImpulso = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort EqualCorrenteImpulso
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.EqualCorrenteImpulso;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.EqualCorrenteImpulso = value;
+                _datiSalvati = false;
+            }
+        }
         public byte IdProfilo
         {
             get
@@ -688,6 +987,60 @@ namespace MoriData
             set
             {
                 _llprc.PercTempoFase2 = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort DurataMinFase2
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.DurataMinFase2;
+                }
+                else
+                    return 0;
+            }
+            set
+            {
+                _llprc.DurataMinFase2 = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort DurataMaxFase2
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.DurataMaxFase2;
+                }
+                else
+                    return 0;
+            }
+            set
+            {
+                _llprc.DurataMaxFase2 = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public ushort DurataMaxFase3
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.DurataMaxFase3;
+                }
+                else
+                    return 0;
+            }
+            set
+            {
+                _llprc.DurataMaxFase3 = value;
                 _datiSalvati = false;
             }
         }

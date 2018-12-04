@@ -312,4 +312,10 @@
   <data name="PianificazioneTurniExt" xml:space="preserve">
     <value>Turni</value>
   </data>
+  <data name="ModoRicaricaProfilo" xml:space="preserve">
+    <value>Profilo Fisso</value>
+  </data>
+  <data name="ModoRicaricaStrategia" xml:space="preserve">
+    <value>Strategia Pianificata</value>
+  </data>
 </root>

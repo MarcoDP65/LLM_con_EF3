@@ -1068,6 +1068,8 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -2582,6 +2584,8 @@
             // grbProgrImpianto
             // 
             this.grbProgrImpianto.BackColor = System.Drawing.Color.White;
+            this.grbProgrImpianto.Controls.Add(this.comboBox1);
+            this.grbProgrImpianto.Controls.Add(this.label11);
             this.grbProgrImpianto.Controls.Add(this.btnPianSalvaCliente);
             this.grbProgrImpianto.Controls.Add(this.btnPianRefresh);
             this.grbProgrImpianto.Controls.Add(this.cmbModoPianificazione);
@@ -8289,6 +8293,17 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // comboBox1
+            // 
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Name = "comboBox1";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -9540,5 +9555,7 @@
         private System.Windows.Forms.TextBox txtEsp32ADVMin;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnEsp32SetAdvTime;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label11;
     }
 }

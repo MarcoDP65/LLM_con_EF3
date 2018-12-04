@@ -82,6 +82,7 @@ namespace PannelloCharger
                 _logiche = Logiche;
                 attivaCaricabatterie(ref _par, SerialeCollegata);
                 InizializzaScheda();
+                RidimensionaControlli();
                 this.Cursor = Cursors.Arrow;
 
             }
@@ -96,8 +97,15 @@ namespace PannelloCharger
         {
             try
             {
-                attivaCaricabatterie(ref _par, CaricaDati);
-                InizializzaScheda();
+                if (attivaCaricabatterie(ref _par, CaricaDati))
+                {
+                    InizializzaScheda();
+                    RidimensionaControlli();
+                }
+                else
+                {
+                    this.Close();
+                }
 
             }
             catch (Exception Ex)
@@ -108,7 +116,7 @@ namespace PannelloCharger
         }
 
 
-        public void attivaCaricabatterie(ref parametriSistema _par,bool CaricaDati )
+        public bool attivaCaricabatterie(ref parametriSistema _par,bool CaricaDati )
         {
             bool _esito;
             try
@@ -124,7 +132,7 @@ namespace PannelloCharger
                 {
                     MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.Hide();  //Close();
-                    return;
+                    return _esito;
                 }
 
                 //_esito = _cb.VerificaPresenza();
@@ -145,7 +153,7 @@ namespace PannelloCharger
                        // MascheraTabPages(1);
 
                         //this.Close();
-                        return;
+                        return true;
                     }
                     else
                     {
@@ -157,7 +165,7 @@ namespace PannelloCharger
                             MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             // this.Close();
                             // MascheraTabPages(1);
-                            return;
+                            return true;
                         }
 
                     }
@@ -183,13 +191,17 @@ namespace PannelloCharger
 
                     _cbCollegato = true;
                     _apparatoPresente = _esito;
-                    return;
+                    return true;
 
                 }
 
+                return false;
+
             }
             catch 
-            { }
+            {
+                return false;
+            }
 
         }
         public frmCaricabatterie()
@@ -203,23 +215,7 @@ namespace PannelloCharger
         /// </summary>
         private void InizializzaScheda()
         {
-            /*
-            cmbPaProfilo.Items.Clear();
-            cmbPaProfilo.Items.Add("N.D.");
-            cmbPaProfilo.Items.Add("IWa");
-            cmbPaProfilo.Items.Add("IU");
-            cmbPaProfilo.Items.Add("IUIa");
-            cmbPaProfilo.Items.Add("IWa Pb13");
-            cmbPaProfilo.Items.Add("IWa Pb11");
-            cmbPaProfilo.Items.Add("IWa Pb8");
-            cmbPaProfilo.SelectedIndex = 0;
-            */
 
-            cmbPaCondStop.Items.Clear();
-            cmbPaCondStop.Items.Add("N.D.");
-            cmbPaCondStop.Items.Add("Timer");
-            cmbPaCondStop.Items.Add("dV/dt");
-            cmbPaCondStop.SelectedIndex = 0;
 
             cmbInitTipoApparato.DataSource = _cb.ModelliLL;
             cmbInitTipoApparato.ValueMember = "IdModelloLL";
@@ -245,8 +241,8 @@ namespace PannelloCharger
                 ushort _divK = 10;
                 _cb.CicloInMacchina = new SerialMessage.cicloAttuale()
                 {
-                    LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length,
-                    NomeCiclo = txtPaNomeProfilo.Text,
+                   // LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length,
+                   // NomeCiclo = txtPaNomeProfilo.Text,
                     TipoCiclo = (byte)cmbPaProfilo.SelectedIndex
                 };
 
@@ -266,6 +262,7 @@ namespace PannelloCharger
                     }
                 }
 
+                /*
                 if (txtPaCapDaCaricare.Text.Length > 0)
                 {
                     ushort result;
@@ -278,14 +275,16 @@ namespace PannelloCharger
                         _numParametri++;
                     }
                 }
+                */
 
-                if (txtPaTempoMax.Text.Length > 0)
+
+                if (txtPaTempoT2Max.Text.Length > 0)
                 {
                     ushort result;
-                    if (ushort.TryParse(txtPaTempoMax.Text, out result))
+                    if (ushort.TryParse(txtPaTempoT2Max.Text, out result))
                     {
                         ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoMassimoCarica;
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT1Max;
                         _par.ValoreParametro = result;
                         _cb.CicloInMacchina.Parametri.Add(_par);
                         _numParametri++;
@@ -301,7 +300,7 @@ namespace PannelloCharger
                     if (Double.TryParse(txtPaSoglia.Text, out dresult))
                     {
                         ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella;
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneSogliaF1;
                         result = (ushort)(dresult * 100);
                         _par.ValoreParametro = result;
                         txtPaSoglia.Text = dresult.ToString("0.00");
@@ -311,7 +310,7 @@ namespace PannelloCharger
 
                 }
 
-
+                /*
                 if (txtPaParDivK.Text.Length > 0)
                 {
                     
@@ -389,7 +388,7 @@ namespace PannelloCharger
                     }
 
                 }
-
+                */
 
                 if (txtPaCorrenteMax.Text.Length > 0)
                 {
@@ -416,7 +415,7 @@ namespace PannelloCharger
                         _numParametri++;
                     }
                 }
-
+                /*
                 if (cmbPaCondStop.SelectedIndex > -1)
                 {
                  
@@ -427,6 +426,7 @@ namespace PannelloCharger
                         _numParametri++;
                     
                 }
+                */
 
                 if (txtPaCoeffK.Text.Length > 0)
                 {
@@ -468,21 +468,6 @@ namespace PannelloCharger
                         ParametroLL _par = new ParametroLL();
                         _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT2Max;
                         _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-
-                if (txtPaFreqSwitch.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaFreqSwitch.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL()
-                        {
-                            idParametro = (byte)SerialMessage.ParametroLadeLight.FrequenzaSwitching,
-                            ValoreParametro = result
-                        };
                         _cb.CicloInMacchina.Parametri.Add(_par);
                         _numParametri++;
                     }
@@ -531,6 +516,17 @@ namespace PannelloCharger
 
                 // Tensione
                 _cb.ProgrammaAttivo.BatteryVdef = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
+                // Numero Celle
+                _cb.ProgrammaAttivo.NumeroCelle = FunzioniMR.ConvertiByte(txtPaNumCelle.Text, 1, 1);
+
+                // Tensioni Soglia
+                _cb.ProgrammaAttivo.VSoglia = FunzioniMR.ConvertiUshort(txtPaSoglia.Text, 100, 0);
+                _cb.ProgrammaAttivo.VRaccordoF1 = FunzioniMR.ConvertiUshort(txtPaRaccordoF1.Text, 100, 0);
+                _cb.ProgrammaAttivo.VMax = FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0);
+                _cb.ProgrammaAttivo.VCellLimite = FunzioniMR.ConvertiUshort(txtPaVLimite.Text, 100, 0);
+                _cb.ProgrammaAttivo.VMinRec = FunzioniMR.ConvertiUshort(txtPaVMinRic.Text, 100, 0);
+                _cb.ProgrammaAttivo.VMaxRec = FunzioniMR.ConvertiUshort(txtPaVMaxRic.Text, 100, 0);
+
                 // Capacità
                 _cb.ProgrammaAttivo.BatteryAhdef = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
                 // ID Profilo
@@ -554,18 +550,24 @@ namespace PannelloCharger
                     MinutiCarica = (ushort)((llDurataCarica)cmbPaDurataCarica.SelectedItem).IdDurataCaricaLL;
                 }
 
-                _cb.ProgrammaAttivo.DurataMaxCarica = MinutiCarica; 
+                _cb.ProgrammaAttivo.DurataMaxCarica = MinutiCarica; // Max fase 1
 
-                _cb.ProgrammaAttivo.PercTempoFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Min.Text, 1, 0);
+                _cb.ProgrammaAttivo.DurataMinFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Min.Text, 1, 0);
+                _cb.ProgrammaAttivo.DurataMaxFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Max.Text, 1, 0);
+                _cb.ProgrammaAttivo.PercTempoFase2 = FunzioniMR.ConvertiUshort(txtPaCoeffK.Text, 1, 0);
+                _cb.ProgrammaAttivo.DurataMaxFase3 = FunzioniMR.ConvertiUshort(txtPaTempoT3Max.Text, 1, 0);
 
-                _cb.ProgrammaAttivo.VSoglia = FunzioniMR.ConvertiUshort(txtPaSoglia.Text, 100, 0);
-                _cb.ProgrammaAttivo.VMax = FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0);
+
                 _cb.ProgrammaAttivo.CorrenteMax = FunzioniMR.ConvertiUshort(txtPaCorrenteMax.Text, 10, 0);
+                _cb.ProgrammaAttivo.CorrenteFase3 = FunzioniMR.ConvertiUshort(txtPaCorrenteF3.Text, 10, 0);
 
 
 
                 _cb.ProgrammaAttivo.EqualTempoAttesa  = FunzioniMR.ConvertiByte(txtPaEqualAttesa.Text, 1, 0);
                 _cb.ProgrammaAttivo.EqualNumImpulsi = FunzioniMR.ConvertiByte(txtPaEqualNumPulse.Text, 1, 0);
+                _cb.ProgrammaAttivo.EqualDurataPausa = FunzioniMR.ConvertiByte(txtPaEqualPulsePause.Text, 1, 0);
+                _cb.ProgrammaAttivo.EqualDurataImpulso = FunzioniMR.ConvertiByte(txtPaEqualPulseTime.Text, 1, 0);
+                _cb.ProgrammaAttivo.EqualCorrenteImpulso = FunzioniMR.ConvertiByte(txtPaEqualPulseCurrent.Text, 10, 0);
 
 
                 _cb.ProgrammaAttivo.TempoErogazioneBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoErogazione.Text, 1, 0);
@@ -608,16 +610,16 @@ namespace PannelloCharger
             {
 
                 //Prima Vuoto tutto
-                txtPaNomeProfilo.Text = "";
+                //txtPaNomeProfilo.Text = "";
 
                 //cmbPaProfilo.SelectedIndex = 0;
                 txtPaCapacita.Text = "";
-                txtPaTempoMax.Text = "";
+                txtPaTempoT2Max.Text = "";
                 txtPaSoglia.Text = "";
                 txtPaCorrenteMax.Text = "";
                 txtPaTensione.Text = "";
 
-                cmbPaCondStop.SelectedIndex = 0;
+                //cmbPaCondStop.SelectedIndex = 0;
                 txtPaCoeffK.Text = "";
                 txtPaTempoT2Min.Text = "";
                 txtPaTempoT2Max.Text = "";
@@ -625,7 +627,7 @@ namespace PannelloCharger
 
                 if (CicloAttuale.datiPronti)
                 {
-                    txtPaNomeProfilo.Text = CicloAttuale.NomeCiclo;
+                    //txtPaNomeProfilo.Text = CicloAttuale.NomeCiclo;
                     cmbPaProfilo.SelectedIndex = CicloAttuale.TipoCiclo;
                      
                     foreach(ParametroLL _par in CicloAttuale.Parametri)
@@ -637,10 +639,10 @@ namespace PannelloCharger
                             case (byte)SerialMessage.ParametroLadeLight.CapacitaNominale:
                                 txtPaCapacita.Text = _par.ValoreParametro.ToString();
                                 break;
-                            case (byte)SerialMessage.ParametroLadeLight.TempoMassimoCarica:
-                                txtPaTempoMax.Text = _par.ValoreParametro.ToString();
+                            case (byte)SerialMessage.ParametroLadeLight.TempoT1Max:
+                                //txtPaTempoMax.Text = _par.ValoreParametro.ToString();
                                 break;
-                            case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaCella:      
+                            case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaF1:      
                                 _tempVal = (float)_par.ValoreParametro / 100;
                                 txtPaSoglia.Text = _tempVal.ToString("0.00");
                                 break;
@@ -649,9 +651,6 @@ namespace PannelloCharger
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.TensioneNominale:
                                 txtPaTensione.Text = _par.ValoreParametro.ToString();
-                                break;
-                            case (byte)SerialMessage.ParametroLadeLight.CondizioneStop:
-                                cmbPaCondStop.SelectedIndex = _par.ValoreParametro;
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.CoeffK:
                                 _tempVal = (float)_par.ValoreParametro / 10;
@@ -664,10 +663,10 @@ namespace PannelloCharger
                                 txtPaTempoT2Max.Text = _par.ValoreParametro.ToString();
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.FrequenzaSwitching:
-                                txtPaFreqSwitch.Text = _par.ValoreParametro.ToString();
+                                //txtPaFreqSwitch.Text = _par.ValoreParametro.ToString();
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.DivisoreK:
-                                txtPaParDivK.Text = _par.ValoreParametro.ToString();
+                                //txtPaParDivK.Text = _par.ValoreParametro.ToString();
                                 _divK = _par.ValoreParametro;
                                 if(_divK > 0)
                                 {
@@ -682,18 +681,18 @@ namespace PannelloCharger
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.ParametroKP:
                                 _tempVal = (float)_par.ValoreParametro / _divK;
-                                txtPaParKp.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                               // txtPaParKp.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.ParametroKI:
                                 _tempVal = (float)_par.ValoreParametro / _divK;
-                                txtPaParKi.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                               // txtPaParKi.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.ParametroKD:
                                 _tempVal = (float)_par.ValoreParametro / _divK;
-                                txtPaParKd.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                               // txtPaParKd.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.CapacitaDaRicaricare:
-                                txtPaCapDaCaricare.Text = _par.ValoreParametro.ToString();
+                              //  txtPaCapDaCaricare.Text = _par.ValoreParametro.ToString();
                                 break;
 
                         }
@@ -806,6 +805,22 @@ namespace PannelloCharger
 
             try
             {
+
+                RidimensionaControlli();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmCaricabatterie_Resize: " + Ex.Message);
+            }
+
+        }
+
+
+        private void RidimensionaControlli()
+        {
+            try
+            {
                 tabCaricaBatterie.Width = this.Width - 42;
                 tabCaricaBatterie.Height = this.Height - 109;
 
@@ -814,12 +829,12 @@ namespace PannelloCharger
                 //flvCicliListaCariche.Width = tabCb04.Width - 20;
 
             }
-            catch
+            catch (Exception Ex)
             {
-
+                Log.Error("RidimensionaControlli: " + Ex.Message);
             }
-
         }
+
 
         public void CaricaListaCicli()
         {
@@ -850,8 +865,9 @@ namespace PannelloCharger
                 }
 
             }
-            catch 
-            { 
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaListaCicli: " + Ex.Message);
             }
         }
 
@@ -869,8 +885,9 @@ namespace PannelloCharger
                 }
 
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("CaricaOrologio: " + Ex.Message);
             }
         }
 
@@ -890,8 +907,9 @@ namespace PannelloCharger
                 }
 
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("CaricaCicloAttuale: " + Ex.Message);
             }
         }
 
@@ -913,8 +931,9 @@ namespace PannelloCharger
                 }
 
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("CaricaListaProgrammazioni: " + Ex.Message);
             }
         }
 
@@ -936,8 +955,9 @@ namespace PannelloCharger
                 }
 
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("CaricaAreaContatori: " + Ex.Message);
             }
         }
 
@@ -965,8 +985,9 @@ namespace PannelloCharger
 
 
             }
-            catch
+            catch (Exception Ex)
             {
+                Log.Error("CaricaVariabili: " + Ex.Message);
             }
         }
 
@@ -2067,7 +2088,14 @@ namespace PannelloCharger
                 }
 
                 // Tipo Apparato
-                _cb.ParametriApparato.llParApp.TipoApparato = (byte)cmbInitTipoApparato.SelectedValue;
+                if (cmbInitTipoApparato.SelectedValue == null)
+                {
+                    // apparato non selezionato
+                }
+                else
+                {
+                    _cb.ParametriApparato.llParApp.TipoApparato = (byte)cmbInitTipoApparato.SelectedValue;
+                }
 
                 // Data
                 byte[] dataInit = FunzioniMR.toArrayDataTS(txtInitDataInizializ.Text);
@@ -2320,7 +2348,7 @@ namespace PannelloCharger
                     txtInitManufactured.Text = _cb.ParametriApparato.llParApp.ProduttoreApparato;
                     txtInitProductId.Text = _cb.ParametriApparato.llParApp.NomeApparato;
 
-                    if( _cb.ParametriApparato.llParApp.IdApparato != "????????" && _cb.ParametriApparato.llParApp.IdApparato !="")
+                    if (_cb.ParametriApparato.llParApp.IdApparato != "????????" && _cb.ParametriApparato.llParApp.IdApparato != "")
                     {
                         txtInitDataInizializ.Text = FunzioniMR.StringaDataTS(_cb.ParametriApparato.llParApp.DataSetupApparato);
                         txtInitAnnoMatricola.Text = _cb.ParametriApparato.llParApp.AnnoCodice.ToString("00");
@@ -2330,15 +2358,29 @@ namespace PannelloCharger
 
                         cmbInitTipoApparato.SelectedValue = _cb.ParametriApparato.llParApp.TipoApparato;
 
+                        txtInitVMin.Text = FunzioniMR.StringaTensione(_cb.ParametriApparato.llParApp.VMin);
+                        txtInitVMax.Text = FunzioniMR.StringaTensione(_cb.ParametriApparato.llParApp.VMax);
+                        txtInitAMax.Text = FunzioniMR.StringaCorrenteLL(_cb.ParametriApparato.llParApp.Amax);
+
+                    }
+
+                    if (_cb.ParametriApparato.llParApp.IdLottoZVT != null)
+                    {
+
                         txtInitNumLottoZVT.Text = _cb.ParametriApparato.llParApp.IdLottoZVT;
                         txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeZVT);
                         txtInitRevHwZVT.Text = _cb.ParametriApparato.llParApp.HardwareZVT;
+                    }
+                    if (_cb.ParametriApparato.llParApp.IdLottoPFC != null)
+                    {
 
                         txtInitNumLottoPFC.Text = _cb.ParametriApparato.llParApp.IdLottoPFC;
                         txtInitNumSerPFC.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialePFC);
                         txtInitRevHwPFC.Text = _cb.ParametriApparato.llParApp.HardwarePFC;
                         txtInitRevFwPFC.Text = _cb.ParametriApparato.llParApp.SoftwarePFC;
-
+                    }
+                    if (_cb.ParametriApparato.llParApp.SerialeDISP != null)
+                    {
                         txtInitNumSerDISP.Text = FunzioniComuni.HexdumpArray(_cb.ParametriApparato.llParApp.SerialeDISP);
                         txtInitRevHwDISP.Text = _cb.ParametriApparato.llParApp.HardwareDisp;
                         txtInitRevFwDISP.Text = _cb.ParametriApparato.llParApp.SoftwareDISP;
@@ -2346,16 +2388,12 @@ namespace PannelloCharger
                         //_tempVal = (float)_par.ValoreParametro / 100;
                         //txtPaSoglia.Text = _tempVal.ToString("0.00");
 
-                        txtInitVMin.Text = FunzioniMR.StringaTensione(_cb.ParametriApparato.llParApp.VMin);
-                        txtInitVMax.Text = FunzioniMR.StringaTensione(_cb.ParametriApparato.llParApp.VMax);
-                        txtInitAMax.Text = FunzioniMR.StringaCorrenteLL(_cb.ParametriApparato.llParApp.Amax);
-                        if (_cb.ParametriApparato.llParApp.PresenzaRabboccatore == 0xF0)
-                        {
-                            chkInitPresenzaRabb.Checked = true;
-                        }
-
                     }
 
+                    if (_cb.ParametriApparato.llParApp.PresenzaRabboccatore == 0xF0)
+                    {
+                        chkInitPresenzaRabb.Checked = true;
+                    }
 
                     txtInitMaxBrevi.Text = _cb.ParametriApparato.llParApp.MaxRecordBrevi.ToString();
                     txtInitMaxLunghi.Text = _cb.ParametriApparato.llParApp.MaxRecordCarica.ToString();
@@ -2575,8 +2613,17 @@ namespace PannelloCharger
 
                     }
 
+                    // In ultimo precarico i valori fissi
+
+                    txtPaSoglia.Text = FunzioniMR.StringaTensioneCella(TempBatt.VoltSoglia,true);
+                    txtPaVMax.Text = FunzioniMR.StringaTensioneCella(TempBatt.VCellaMax,true);
+                    txtPaVMinRic.Text = FunzioniMR.StringaTensioneCella(TempBatt.VminRiconoscimento, true);
+                    txtPaVMaxRic.Text = FunzioniMR.StringaTensioneCella(TempBatt.VmaxRiconoscimento, true);
+
+
+
                 }
-               
+
             }
             catch (Exception Ex)
             {
@@ -2693,46 +2740,18 @@ namespace PannelloCharger
 
 
 
-                    if (cmbPaDurataCarica.SelectedItem == null)
-                {
-                    txtPaTempoT2Min.Text = "99";
-                    //MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
+               // if (cmbPaDurataCarica.SelectedItem == null)
+               // {
+                    txtPaTempoT2Min.Text = "60";
+                    txtPaTempoT2Max.Text = "210";
+               // }
+               // else
+               // {
                    
-                    DurataF2 = (byte)((llDurataCarica)cmbPaDurataCarica.SelectedItem).DurataFaseDue(TipoBatt);
-                    txtPaTempoT2Min.Text = DurataF2.ToString();
-                }
-
-
-                   //MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-
-
-                /*
-                byte TipoProf;
-
-                TipoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).IdProfiloCaricaLL;
-
-                var Listatemp = from p in _cb.DurateCarica
-                                join pt in _cb.DurateProfilo on p.IdDurataCaricaLL equals pt.IdDurataCaricaLL
-                                where pt.IdProfiloCaricaLL == TipoProf
-                                select p;
-
-                DurateCarica = new List<llDurataCarica>();
-
-                foreach (var pc in Listatemp)
-                {
-                    DurateCarica.Add((llDurataCarica)pc);
-                }
-
-
-                cmbPaDurataCarica.DataSource = DurateCarica;
-                cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
-                cmbPaDurataCarica.DisplayMember = "Descrizione";
-                */
-
+               //     DurataF2 = (byte)((llDurataCarica)cmbPaDurataCarica.SelectedItem).DurataFaseDue(TipoBatt);
+               //     txtPaTempoT2Min.Text = DurataF2.ToString();
+               // }
+                                           
             }
             catch (Exception Ex)
             {
@@ -2744,13 +2763,43 @@ namespace PannelloCharger
         private void cmbPaTensione_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Copio il valore nella textbox collegata
+
+
             if (cmbPaTensione.SelectedItem != null)
             {
                 txtPaTensione.Text = ((llTensioneBatteria)cmbPaTensione.SelectedItem).Descrizione;
+                if(cmbPaTipoBatteria.SelectedItem == null)
+                {
+                    txtPaNumCelle.Text = "1";
+                }
+                else
+                {
+                    if(cmbPaTipoBatteria.SelectedItem == null)
+                    {
+                        txtPaNumCelle.Text = "1";
+                    }
+                    else
+                    {
+                        sbTipoBatteria TempBatt = (sbTipoBatteria)cmbPaTipoBatteria.SelectedItem;
+                        if (TempBatt.VoltCella == 0)
+                        {
+                            txtPaNumCelle.Text = "1";
+                        }
+                        else
+                        {
+                            txtPaNumCelle.Text = (((llTensioneBatteria)cmbPaTensione.SelectedItem).IdTensione/ TempBatt.VoltCella).ToString("0");
+                        }
+
+
+                    }
+                }
+
             }
+
             else
             {
                 txtPaTensione.Text = "";
+                txtPaNumCelle.Text = "1";
             }
 
         }
@@ -2886,24 +2935,6 @@ namespace PannelloCharger
             }
         }
 
-        private void btnPaCaricaListaProfili_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                
-                CaricaListaProgrammazioni();
-                flwPaListaConfigurazioni.Refresh();
-                //flwPaListaConfigurazioni.SetObjects(_cb.ProgrammiDefiniti);
-                //flwPaListaConfigurazioni.BuildList();
-
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("btnPaCaricaListaProfili_Click: " + Ex.Message);
-            }
-        }
-
         private void btnCaricaContatori_Click(object sender, EventArgs e)
         {
             try
@@ -2974,7 +3005,7 @@ namespace PannelloCharger
                 // Chiudo la connessione
                 if(_cb.StopComunicazione())
                 {
-                    _cb.chiudiPorta();
+                    //_cb.chiudiPorta();
 
                 }
 
@@ -3073,6 +3104,43 @@ namespace PannelloCharger
             {
                 Log.Error("cmbInitTipoApparato_SelectedIndexChanged: " + Ex.Message);
             }
+        }
+
+        private void rbtMemParametriInit_Click(object sender, EventArgs e)
+        {
+            if (rbtMemParametriInit.Checked)
+            {
+                txtMemCFStartAdd.Text = "000000";
+                txtMemCFBlocchi.Text = "1";
+            }
+        }
+
+        private void rbtMemAreaLibera_Click(object sender, EventArgs e)
+        {
+            if (rbtMemAreaLibera.Checked)
+            {
+                txtMemCFStartAdd.Text = "0";
+                txtMemCFBlocchi.Text = "1";
+            }
+        }
+
+        private void btnMemResetBoard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnMemResetBoard_Click: " + Ex.Message);
+            }
+        }
+
+        private void tbpPaProfiloAttivo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

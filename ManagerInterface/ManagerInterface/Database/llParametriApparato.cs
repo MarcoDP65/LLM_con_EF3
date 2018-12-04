@@ -208,8 +208,32 @@ namespace MoriData
                 llParApp.SerialeApparato = value;
             }
 
+        }
+
+
+        public bool SchedaInizializzata
+        {
+            get
+            {
+                return false;
+            }
 
         }
+        public bool ApparatoDefinito
+        {
+            get
+            {
+                return false;
+            }
+
+        }
+
+
+
+
+
+
+
 
         #endregion
 

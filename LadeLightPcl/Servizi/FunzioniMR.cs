@@ -95,15 +95,23 @@ namespace Utility
             }
         }
 
-        public static string StringaTensioneCella(float Tensione)
+        public static string StringaTensioneCella(float Tensione, bool BlankIfZero = false)
         {
             try
             {
                 string _tensioni = "";
-                float _inVolt;
+                if (BlankIfZero && Tensione == 0)
+                {
+                    // Non faccio nulla, lascio il blank
+                }
+                else
+                {
 
-                _inVolt = (float)Tensione / 100;
-                _tensioni = _inVolt.ToString("0.00");
+                    float _inVolt;
+
+                    _inVolt = (float)Tensione / 100;
+                    _tensioni = _inVolt.ToString("0.00");
+                }
                 return _tensioni;
             }
             catch

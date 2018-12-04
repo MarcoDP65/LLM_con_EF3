@@ -427,26 +427,31 @@ namespace PannelloCharger
                 }
 
                 esitoCanaleApparato = _varGlobali.apriLadeLight();
-
-                foreach (Form form in Application.OpenForms)
+                if (esitoCanaleApparato)
                 {
-                    if (form.GetType() == typeof(frmCaricabatterie))
+                    foreach (Form form in Application.OpenForms)
                     {
-                        form.Activate();
-                        return;
+                        if (form.GetType() == typeof(frmCaricabatterie))
+                        {
+                            form.Activate();
+                            return;
+                        }
                     }
+                    Log.Debug("NUOVO LL");
+                    //frmSpyBat sbCorrente = new frmSpyBat(ref varGlobali, true, "", logiche, esitoCanaleApparato, true);
+
+                    frmCaricabatterie cbCorrente = new frmCaricabatterie(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+                    cbCorrente.Cursor = Cursors.WaitCursor;
+
+                    cbCorrente.MdiParent = this.MdiParent;
+                    cbCorrente.StartPosition = FormStartPosition.CenterParent;
+                    //cbCorrente.Cursor = Cursors.WaitCursor;
+                    cbCorrente.Show();
                 }
-                Log.Debug("NUOVO LL");
-                //frmSpyBat sbCorrente = new frmSpyBat(ref varGlobali, true, "", logiche, esitoCanaleApparato, true);
-
-                frmCaricabatterie cbCorrente = new frmCaricabatterie(ref _varGlobali, true,"",logiche, esitoCanaleApparato, true);
-                cbCorrente.Cursor = Cursors.WaitCursor;
-
-                cbCorrente.MdiParent = this.MdiParent;
-                cbCorrente.StartPosition = FormStartPosition.CenterParent;
-                //cbCorrente.Cursor = Cursors.WaitCursor;
-                cbCorrente.Show();
-
+                else
+                {
+                    MessageBox.Show("Nessuna risposta dal dispositivo selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             catch (Exception Ex)
             {

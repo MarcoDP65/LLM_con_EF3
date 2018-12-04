@@ -14,6 +14,7 @@ namespace ChargerLogic
 {
     public class ParametriSetupPro
     {
+        public enum ModoRicarica : byte { NonDefinito = 0x00, ProfiloFisso = 0x01, Strategia = 0x02};
         public enum TipoPianificazione : byte { NonDefinita = 0x00, Tempo = 0x01, Turni = 0x02,TempoEsteso = 0x11, TurniEsteso = 0x12 };
         public enum ModoEqualizzazione : byte { NO = 0x00, Full = 0x01};
         public enum BitParametro : byte { Equal= 0, Rabboccatore = 1,Biberonaggio = 2,StartDelayed = 4,DeleteDelay = 5};
@@ -23,7 +24,16 @@ namespace ChargerLogic
             RitON_ForceOFF = 0x10,
             RitON_ForceON = 0x11,
         }
-          
+
+        public List<Pianificazione> ModiRicarica = new List<Pianificazione>
+                               {
+                                    new Pianificazione { Codice = (byte)ModoRicarica.NonDefinito, Descrizione  = PannelloCharger.StringheComuni.PianificazioneNessuna,FwLevelMin = 0 ,FwLevelMax = 999},
+                                    new Pianificazione { Codice = (byte)ModoRicarica.ProfiloFisso, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempo,FwLevelMin = 0 ,FwLevelMax = 9},
+                                    new Pianificazione { Codice = (byte)ModoRicarica.Strategia, Descrizione  = PannelloCharger.StringheComuni.PianificazioneTempoExt,FwLevelMin = 8 ,FwLevelMax = 999},
+
+                               };
+
+
         public List<Pianificazione> TipiPianificazione = new List<Pianificazione>
                                {
                                     new Pianificazione { Codice = (byte)TipoPianificazione.NonDefinita, Descrizione  = PannelloCharger.StringheComuni.PianificazioneNessuna,FwLevelMin = 0 ,FwLevelMax = 999},

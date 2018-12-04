@@ -21,8 +21,8 @@ namespace MoriData
 
         public string BatteryType { get; set; }
         public byte SortOrder { get; set; }
-        public byte StandardChargeProfile { get; set; }      // 0x00 IUIa / 0x01 IWa / 0x02 LI
-        public byte Obsolete { get; set; }                   // if != 0 not usable for new setting
+        public byte StandardChargeProfile { get; set; }       // 0x00 IUIa / 0x01 IWa / 0x02 LI
+        public byte Obsolete { get; set; }                    // if != 0 not usable for new setting
         public ushort VoltCella { get; set; }                 // in V/100
         public ushort VoltSoglia { get; set; }                // in V/100
         public ushort VCellaMin { get; set; }                 // in V/100
@@ -31,7 +31,10 @@ namespace MoriData
         public ushort AbilitaEqual { get; set; }              // Valori: 0: NO , 1:SI
         public ushort AbilitaAttesaBMS { get; set; }          // Valori: 0: NO , 1:SI
         public byte TensioniFisse { get; set; }               // Valori: 0: NO , 1:SI
+        public ushort VminRiconoscimento { get; set; }        // in V/100
+        public ushort VmaxRiconoscimento { get; set; }        // in V/100
 
+        public byte DivisoreCelle { get; set; }               // se 0 cella singola
 
         public DateTime CreationDate { get; set; }
         public DateTime RevisionDate { get; set; }
@@ -135,6 +138,18 @@ namespace MoriData
             set { _sbTb.VoltCella = value; _datiSalvati = false; }
         }
 
+        public ushort VminRiconoscimento
+        {
+            get { return _sbTb.VminRiconoscimento; }
+            set { _sbTb.VminRiconoscimento = value; _datiSalvati = false; }
+        }
+
+        public ushort VmaxRiconoscimento
+        {
+            get { return _sbTb.VmaxRiconoscimento; }
+            set { _sbTb.VmaxRiconoscimento = value; _datiSalvati = false; }
+        }
+
         public ushort VoltSoglia
         {
             get { return _sbTb.VoltSoglia; }
@@ -175,14 +190,14 @@ namespace MoriData
         public byte TensioniFisse
         {
             get { return _sbTb.TensioniFisse; }
-            set
-            {
-                _sbTb.TensioniFisse = value;
-                _datiSalvati = false;
-            }
+            set { _sbTb.TensioniFisse = value; _datiSalvati = false; }
         }
-        
 
+        public byte DivisoreCelle
+        {
+            get { return _sbTb.DivisoreCelle; }
+            set { _sbTb.DivisoreCelle = value; _datiSalvati = false; }
+        }
 
         #endregion
 
