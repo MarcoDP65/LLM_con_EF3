@@ -105,6 +105,7 @@ namespace PannelloCharger
             bool _esitoBool;
             try
             {
+                btnFWLanciaTrasmissione.Enabled = false;
                 txtFWInSBFRev.Text = "";
                 txtFWLibSBFRev.Text = "";
                 txtFWInSBFDtRev.Text = "";
@@ -134,11 +135,16 @@ namespace PannelloCharger
                     {
                         _esitoBool = _firmMng.VersioneAmmessa(_firmMng.FirmwareData.Release, _sb.sbData.HwVersion.ToString(), _sb.StatoFirmware.strRevBootloader);
                     }
+                    else
+                    {
+                        return false;
+                    }
 
                     if(!_esitoBool)
 
                     {
                         MessageBox.Show(StringheMessaggio.strFirmwareNonValido, "Firmware", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnFWLanciaTrasmissione.Enabled = false;
                         return false;
                     }
 
@@ -232,8 +238,8 @@ namespace PannelloCharger
                         txtFwRevBootloader.Text = _sb.StatoFirmware.strRevBootloader;
                         txtFwRevFirmware.Text = _sb.StatoFirmware.strRevFirmware;
 
-                        MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA1, true);
-                        MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA2, true);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA1, false);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA2, false);
                         if (MostraStato(FirmwareManager.MascheraStato.Blocco1SW, _sb.StatoFirmware.Stato, ref txtFwStatoSA1, false))
                         {
                             btnFwSwitchArea1.Enabled =true;

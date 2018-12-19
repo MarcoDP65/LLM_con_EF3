@@ -26,7 +26,7 @@ namespace PannelloCharger
         private int _maxAvanzamentoB = 100;
         private int _valAvanzamentoB = 50;
 
-        private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+        private static ILog Log = LogManager.GetLogger("--> Form Avanzamento");
         
         private BackgroundWorker sbWorker;
 

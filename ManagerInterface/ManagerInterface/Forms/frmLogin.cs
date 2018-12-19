@@ -128,6 +128,7 @@ namespace PannelloCharger
                         vGlobali.currentUser = txtUsername.Text ;
                         vGlobali.currentPassword = txtPassword.Text;
                         vGlobali.currentSaveLogin = chkSalvaPassword.Checked;
+                        vGlobali.NoLockClearSB = Logiche.currentUser.NoLockClearSB;
                         vGlobali.SalvaImpostazioniDefault();
 
                         this.DialogResult = DialogResult.OK;

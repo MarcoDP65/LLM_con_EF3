@@ -40,7 +40,7 @@ namespace PannelloCharger
         bool _apparatoPresente = false;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialogSB;
 
-        private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+        private static ILog Log = LogManager.GetLogger("Form SpyBat");
         private frmAvanzamentoCicli _avCicli = new frmAvanzamentoCicli();
         //static 
         UnitaSpyBatt _sb;
@@ -204,14 +204,17 @@ namespace PannelloCharger
                 IdCorrente = _sb.Id;
                 _apparatoPresente = SerialeCollegata;
                 // se l'apparato è presente e le configurazioni su scheda superano quelle in mem, aggiorno
+                /*  13/12/18 --- Spostato all'i
                 if (_apparatoPresente)
                     if ( true ) //_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
                     {
 
                         RicaricaProgrammazioni();
                     }
+                */
 
-                CaricaProgrammazioni();
+
+               // CaricaProgrammazioni();
 
 
                 if ((_sb.sbData.LongMem > 0) && (_sb.sbData.LongMem < 30000)) _aggiornaStatistiche = true;
@@ -980,6 +983,17 @@ namespace PannelloCharger
                 _enabled = (_readonly == false);
                 #endregion
 
+                #region "Esp32"
+                // accessibile solo a Factory 
+                if (LivelloCorrente > 0)
+                {
+                    tabCaricaBatterie.TabPages.Remove(tbpEsp32);
+                    _readonly = true;
+                }
+
+                _enabled = (_readonly == false);
+                #endregion
+
 
             }
             catch (Exception Ex)
@@ -988,6 +1002,55 @@ namespace PannelloCharger
             }
 
         }
+
+
+        public bool RefreshTestata(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
+        {
+            bool _esito;
+            try
+            {
+                Log.Info("Rilettura testata scheda SPY-BATT " + IdApparato);
+                // _esito = caricaDati(IdApparato, Logiche, SerialeCollegata);
+                _esito = _sb.VerificaPresenza();
+
+                if (!_esito)
+                {
+
+                }
+
+                IdApparato = _sb.Id;
+
+                _esito = _sb.CaricaTestata(IdApparato, SerialeCollegata);
+
+                if (_sb.UltimaRispostaRicevuta == SerialMessage.TipoRisposta.Nack)
+                {
+                    // ho il bootloader ma non la app attiva
+                    MostraTestata();
+                    txtRevSWSb.Text = "N.D.";
+                    txtRevSWSb.ForeColor = Color.Red;
+                    Log.Info("Stato scheda SPY-BATT: LD OK, APP KO ");
+                    return false;
+                }
+
+
+                if (_esito)
+                {
+                    IdApparato = _sb.Id;
+                    MostraTestata();
+
+                    txtTestataPtrProgr.Text = _sb.sbData.NumeroCloni().ToString();
+                }
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+                return false;
+            }
+        }
+
+
 
 
         public bool CaricaTestata(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
@@ -1029,8 +1092,12 @@ namespace PannelloCharger
                     // se l'apparato è collegato abilito i salvataggi
                     abilitaSalvataggi(_apparatoPresente);
 
-                    _sb.CaricaParametri(_sb.Id, _apparatoPresente);
-                    MostraParametriGenerali();
+                    Log.Debug("Caricamento Parametri: FwLevel = " + _sb.sbData.fwLevel.ToString());
+                    if (_sb.sbData.fwLevel > 4)
+                    {
+                        _sb.CaricaParametri(_sb.Id, _apparatoPresente);
+                        MostraParametriGenerali();
+                    }
 
                 }
 
@@ -1583,8 +1650,8 @@ namespace PannelloCharger
                 // 18/11/15 - Prima di ricaricare la lista, ricarico la restata per leggere il contatore aggiornato
                 //_esito = _sb.CaricaTestata();
 
-
                 _esito = _sb.RicaricaProgrammazioni(1, (ushort)_sb.sbData.ProgramCount, _logiche.dbDati.connessione, true);
+//                _esito = _sb.RicaricaProgrammazioniV1(1, (ushort)_sb.sbData.ProgramCount, _logiche.dbDati.connessione, true);
                 flvwProgrammiCarica.RefreshObject(_sb.Programmazioni);
             }
             catch (Exception Ex)
@@ -3498,6 +3565,7 @@ namespace PannelloCharger
             txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
 
             RicaricaProgrammazioni();
+
             CaricaProgrammazioni();
 
             this.Cursor = Cursors.Default;
@@ -3675,7 +3743,10 @@ namespace PannelloCharger
 
                     bool _esito;
                     this.Cursor = Cursors.WaitCursor;
-                    CaricaTestata(_sb.Id, _logiche, _apparatoPresente);
+                    Log.Debug((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count).ToString() + " Lunghi da leggere --> lancio il dump");
+                    //CaricaTestata(_sb.Id, _logiche, _apparatoPresente);
+                    RefreshTestata(_sb.Id, _logiche, _apparatoPresente);
+
                     if (chkEraseDB.Checked == true)
                         _esito = _sb.sbData.cancellaDati(_sb.Id);
                     
@@ -5783,103 +5854,123 @@ namespace PannelloCharger
             {
                 bool _esito;
                 SerialMessage.Crc16Ccitt codCrc = new SerialMessage.Crc16Ccitt(SerialMessage.InitialCrcValue.NonZero1);
-
-                // Prima chiedo il codice di autorizzazione, se ho meno di 30 cicli registrati
-                if (_sb.sbData.LongMem > 30)
+                byte AbilitaCancellazione = 0;
+                if (_logiche.currentUser != null)
                 {
-                    frmRichiestaCodice _richiesta = new frmRichiestaCodice();
-                    _richiesta.ShowDialog();
-                    if (_richiesta.DialogResult == DialogResult.OK)
+                    AbilitaCancellazione = _logiche.currentUser.NoLockClearSB;
+                }
+                else
+                {
+                    AbilitaCancellazione = 0;
+                }
+
+
+                if (AbilitaCancellazione > 0)
+                {
+                    // Abilitato
+                }
+                else
+                {
+
+
+                    // Prima chiedo il codice di autorizzazione, se ho meno di 30 cicli registrati
+                    if (_sb.sbData.LongMem > 30)
                     {
-                        if (_richiesta.CodiceAutorizzazione.Length != 16)
+                        frmRichiestaCodice _richiesta = new frmRichiestaCodice();
+                        _richiesta.ShowDialog();
+                        if (_richiesta.DialogResult == DialogResult.OK)
                         {
-                            // Lunghezza codice errata. Esco
-                            MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            _richiesta.Dispose();
-                            return;
+                            if (_richiesta.CodiceAutorizzazione.Length != 16)
+                            {
+                                // Lunghezza codice errata. Esco
+                                MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                _richiesta.Dispose();
+                                return;
+                            }
+                            else
+                            {
+                                //La lunghezza è giusta, tento la decodifica
+                                string _codice = "";
+                                string _cR = _richiesta.CodiceAutorizzazione;
+
+                                // step 1, riordino
+                                _codice = "" + _cR[0] + _cR[15] + _cR[1] + _cR[14] + _cR[2] + _cR[13] + _cR[3] + _cR[12] + _cR[4] + _cR[11] + _cR[5] + _cR[10] + _cR[6] + _cR[9] + _cR[7] + _cR[8];
+
+
+                                //Step 2,confronto il crc
+                                string _dati = _codice.Substring(0, 12);
+                                string _crcOrigine = _codice.Substring(12, 4);
+
+                                byte[] PrimaCodifica = Encoding.ASCII.GetBytes(_dati);
+                                ushort _crcEsito = codCrc.ComputeChecksum(PrimaCodifica);
+                                string _strcrcEsito = _crcEsito.ToString("x4");
+                                _strcrcEsito = _strcrcEsito.ToUpper();
+                                if (_crcOrigine != _strcrcEsito)
+                                {
+                                    MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    _richiesta.Dispose();
+                                    return;
+                                }
+                                // Il crc corrisponde, proseguo: Confronto l'ID spybatt
+
+
+                                int _hexId = 0;
+                                byte[] array = Encoding.ASCII.GetBytes(_sb.Id);
+
+                                // Loop through contents of the array.
+                                int _step = 0;
+                                foreach (byte element in array)
+                                {
+                                    _step += 9;
+                                    _hexId += (element * _step);
+                                }
+                                string _codiceSB = _hexId.ToString("x6");
+                                _codiceSB = _codiceSB.ToUpper();
+                                if (_codice.Substring(0, 6) != _codiceSB)
+                                {
+                                    // Codice Spybatt non corrispondente
+
+                                    MessageBox.Show(StringheComuni.CancellaMemoriaR5, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    _richiesta.Dispose();
+                                    return;
+                                }
+
+                                // Lo spybatt è corretto: se il N° cicli non si scosta di più di 5, cancello
+                                uint _cicliOrigine;
+                                if (uint.TryParse(_codice.Substring(6, 6), NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _cicliOrigine) != true)
+                                {
+                                    // La conversione in numero è fallita, esco
+                                    MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    _richiesta.Dispose();
+                                    return;
+
+
+                                }
+
+                                //ora vedo lo scostamento
+                                if ((_sb.sbData.LongMem - _cicliOrigine) > 5)
+                                {
+                                    // i cicli non corrispondono
+                                    MessageBox.Show(StringheComuni.CancellaMemoriaR4, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    _richiesta.Dispose();
+                                    return;
+
+                                }
+
+                                // TUTTO OK, il codice è valido, proseguo
+                                _richiesta.Dispose();
+
+                            }
+
                         }
                         else
                         {
-                            //La lunghezza è giusta, tento la decodifica
-                            string _codice = "";
-                            string _cR = _richiesta.CodiceAutorizzazione;
-
-                            // step 1, riordino
-                            _codice = "" + _cR[0] + _cR[15] + _cR[1] + _cR[14] + _cR[2] + _cR[13] + _cR[3] + _cR[12] + _cR[4] + _cR[11] + _cR[5] + _cR[10] + _cR[6] + _cR[9] + _cR[7] + _cR[8];
-
-
-                            //Step 2,confronto il crc
-                            string _dati = _codice.Substring(0, 12);
-                            string _crcOrigine = _codice.Substring(12, 4);
-
-                            byte[] PrimaCodifica = Encoding.ASCII.GetBytes(_dati);
-                            ushort _crcEsito = codCrc.ComputeChecksum(PrimaCodifica);
-                            string _strcrcEsito = _crcEsito.ToString("x4");
-                            _strcrcEsito = _strcrcEsito.ToUpper();
-                            if (_crcOrigine != _strcrcEsito)
-                            {
-                                MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                _richiesta.Dispose();
-                                return;
-                            }
-                            // Il crc corrisponde, proseguo: Confronto l'ID spybatt
-
-
-                            int _hexId = 0;
-                            byte[] array = Encoding.ASCII.GetBytes(_sb.Id);
-
-                            // Loop through contents of the array.
-                            int _step = 0;
-                            foreach (byte element in array)
-                            {
-                                _step += 9;
-                                _hexId += (element * _step);
-                            }
-                            string _codiceSB = _hexId.ToString("x6");
-                            _codiceSB = _codiceSB.ToUpper();
-                            if (_codice.Substring(0, 6) != _codiceSB)
-                            {
-                                // Codice Spybatt non corrispondente
-
-                                MessageBox.Show(StringheComuni.CancellaMemoriaR5, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                _richiesta.Dispose();
-                                return;
-                            }
-
-                            // Lo spybatt è corretto: se il N° cicli non si scosta di più di 5, cancello
-                            uint _cicliOrigine;
-                            if (uint.TryParse(_codice.Substring(6, 6), NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _cicliOrigine) != true)
-                            {
-                                // La conversione in numero è fallita, esco
-                                MessageBox.Show(StringheComuni.CancellaMemoriaR3, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                _richiesta.Dispose();
-                                return;
-
-
-                            }
-
-                            //ora vedo lo scostamento
-                            if ((_sb.sbData.LongMem - _cicliOrigine) > 5)
-                            {
-                                // i cicli non corrispondono
-                                MessageBox.Show(StringheComuni.CancellaMemoriaR4, StringheComuni.CancellaMemoria, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                _richiesta.Dispose();
-                                return;
-
-                            }
-
-                            // TUTTO OK, il codice è valido, proseguo
                             _richiesta.Dispose();
-
+                            return;
                         }
-
-                    }
-                    else
-                    {
-                        _richiesta.Dispose();
-                        return;
-                    }
+                    } // end if longmem > 30
                 }
+
                 DialogResult risposta = MessageBox.Show(StringheComuni.CancellaMemoriaR1 + "\n" + StringheComuni.CancellaMemoriaR2,
                 StringheComuni.CancellaMemoria,
                 MessageBoxButtons.YesNo,
@@ -7459,23 +7550,26 @@ namespace PannelloCharger
         {
             try
             {
+                bool esitoVerifica = false;
                 if (txtFWFileSBFrd.Text == "") return;
 
                 btnFWLanciaTrasmissione.Enabled = false;
-                CaricafileSBF();
+                esitoVerifica = CaricafileSBF();
 
-
-                PreparaTrasmissioneFW();
-                bool _esitocella = false;
-
-                _esitocella = ((byte)FirmwareManager.MascheraStato.Blocco1HW & _sb.StatoFirmware.Stato) == (byte)FirmwareManager.MascheraStato.Blocco1HW;
-                if (_esitocella == true)
+                if (esitoVerifica)
                 {
-                    txtFWSBFArea.Text = "1";
-                }
-                else
-                {
-                    txtFWSBFArea.Text = "2";
+                    PreparaTrasmissioneFW();
+                    bool _esitocella = false;
+
+                    _esitocella = ((byte)FirmwareManager.MascheraStato.Blocco1HW & _sb.StatoFirmware.Stato) == (byte)FirmwareManager.MascheraStato.Blocco1HW;
+                    if (_esitocella == true)
+                    {
+                        txtFWSBFArea.Text = "1";
+                    }
+                    else
+                    {
+                        txtFWSBFArea.Text = "2";
+                    }
                 }
             }
             catch (Exception Ex)

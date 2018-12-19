@@ -223,6 +223,8 @@
             this.lblEventiTotali = new System.Windows.Forms.Label();
             this.tabCb02 = new System.Windows.Forms.TabPage();
             this.grbProgrImpianto = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnPianSalvaCliente = new System.Windows.Forms.Button();
             this.btnPianRefresh = new System.Windows.Forms.Button();
             this.cmbModoPianificazione = new System.Windows.Forms.ComboBox();
@@ -1068,8 +1070,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -2597,6 +2597,17 @@
             resources.ApplyResources(this.grbProgrImpianto, "grbProgrImpianto");
             this.grbProgrImpianto.Name = "grbProgrImpianto";
             this.grbProgrImpianto.TabStop = false;
+            // 
+            // comboBox1
+            // 
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Name = "comboBox1";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
             // btnPianSalvaCliente
             // 
@@ -8292,17 +8303,6 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
-            // 
-            // comboBox1
-            // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Name = "comboBox1";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
             // 
             // frmSpyBat
             // 

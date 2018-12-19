@@ -380,7 +380,10 @@ namespace MoriData
 
         public byte BatteryCells
         {
-            get { return _sbpr.BatteryCells; }
+            get {
+                if (_sbpr != null) return _sbpr.BatteryCells;
+                return 0x00;
+                }
             set
             {
                 _sbpr.BatteryCells = value;

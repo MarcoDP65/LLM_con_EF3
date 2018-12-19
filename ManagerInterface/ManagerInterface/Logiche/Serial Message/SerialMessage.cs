@@ -125,7 +125,12 @@ namespace ChargerLogic
             TempoT2Min = 0x02,                       // In Minuti
             TempoT2Max = 0x03,                       // In Minuti
             TempoT3Max = 0x04,                       // In Minuti
-            CoeffK     = 0xF1,                       // 1 decimale, %tempo fase 2 rispetto a fase 1
+
+            CoeffK     = 0x05,                       // INTERO, %tempo fase 2 rispetto a fase 1
+            TempoT0Max = 0x06,                       // In Minuti
+
+            // CoeffK = 0xF1,  Vecchio Valore        // 1 decimale, %tempo fase 2 rispetto a fase 1
+
 
             TensioneNominale = 0x10,                 // V Totale,    2 decimali  
             TensioneSogliaF1 = 0x11,                 // V per Cella, 2 decimali  Pb 2.40
@@ -138,32 +143,40 @@ namespace ChargerLogic
             CorrenteCarica = 0x21,                   // A, 1 decimale
             CorrenteMassima = 0x22,                  // A, 1 decimale
             CorrenteF3 = 0x23,                       // A, 1 decimale
+            CorrenteFinaleF2 = 0x24,                 // A, 1 decimale
+            CorrenteRaccordo = 0x25,                 // A, 1 decimale
+            CorrentePreciclo = 0x26,                 // A, 1 decimale
+
 
             CapacitaNominale = 0x31,
             CapacitaDaRicaricare = 0x32,             // Attualmente non in uso
 
             FrequenzaSwitching = 0x40,               // Attualmente non in uso
 
-            DivisoreK = 0x50,                        // da trasmettere SEMPRE prima dei parametri K --> ora è Usa SPY-BATT se presente
-
+            DivisoreK = 0x50,                        // da trasmettere SEMPRE prima dei parametri K 
+                                                     // --> ora è USA SPY-BATT se presente, 0xF0 == false, 0x0F == True --> USA SB
+ 
             ParametroKP = 0x51,                      // Attualmente non in uso
             ParametroKI = 0x52,                      // Attualmente non in uso
             ParametroKD = 0x53,                      // Attualmente non in uso
-
-
 
 
             RiarmoBMS = 0x55,
             TipoBatteria = 0x56,
             NumeroCelle = 0x57,
 
-            EqualFineCaricaAttesa =         0x60,
-            EqualFineCaricaNumImpulsi =     0x61,
-            EqualFineCaricaDurataP =        0x62,
-            EqualFineCaricaDurataI =        0x63,
-            EqualFineCaricaCorrenteImp =    0x64,
+            EqualFineCaricaAttesa =         0x60,   // Minuti
+            EqualFineCaricaNumImpulsi =     0x61,   // intero
+            EqualFineCaricaDurataP =        0x62,   // Minuti
+            EqualFineCaricaDurataI =        0x63,   // Minuti
+            EqualFineCaricaCorrenteImp =    0x64,   // A, 1 decimale
 
 
+            MantenimentoAttesa =            0x70,   // Minuti
+            MantenimentoTensIniziale =      0x71,   // V per Cella, 2 decimali
+            MantenimentoTensFinale =        0x72,   // V per Cella, 2 decimali
+            MantenimentoTMaxErogazione =    0x73,   // Minuti
+            MantenimentoCorrErogazione =    0x74,   // A, 1 decimale
 
             TipoProfilo = 0x80,
 

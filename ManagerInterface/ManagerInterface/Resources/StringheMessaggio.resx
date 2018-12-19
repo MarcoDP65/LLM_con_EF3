@@ -235,7 +235,7 @@
     <value>Conf</value>
   </data>
   <data name="strFirmwareNonValido" xml:space="preserve">
-    <value>Versione Firmware non riconosciuta</value>
+    <value>Versione Firmware non valida o non riconosciuta</value>
   </data>
   <data name="strMsgAggFWFase1" xml:space="preserve">
     <value>Fase 1 - Invio Testata</value>

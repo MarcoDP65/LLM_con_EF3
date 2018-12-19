@@ -56,6 +56,7 @@ namespace ChargerLogic
         public bool currentSaveLogin = true;
         public bool firstRun = false;
         public bool FtdiCaricato = false;
+        public byte NoLockClearSB;
 
         // Gestione Impostazioni Stampante
         public PrinterSettings ImpostazioniStampante { get; set; }

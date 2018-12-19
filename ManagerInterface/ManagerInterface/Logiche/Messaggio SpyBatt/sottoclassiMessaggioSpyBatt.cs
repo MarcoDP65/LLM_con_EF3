@@ -66,7 +66,6 @@ namespace ChargerLogic
                 memFree = 0;
             }
 
-
             public bool GeneraByteArray()
             {
                 try
@@ -289,6 +288,7 @@ namespace ChargerLogic
 
         }
 
+
         public class MemoriaPeriodoLungo
         {
             public byte TipoEvento;
@@ -452,6 +452,7 @@ namespace ChargerLogic
                         startByte += 2;
                         PresenzaElettrolita = _risposta[startByte];
                         startByte += 1;
+
                         // Gestione Correnti
                         // Dalla 1.10.01  (FW 4) sdoppiamento Caricati e scaricati
 

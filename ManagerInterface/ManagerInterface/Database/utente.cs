@@ -30,6 +30,7 @@ namespace MoriData
         public int Livello { get; set; }
         public int Lingua { get; set; }
         public int Attivo { get; set; }
+        public byte NoLockClearSB { get; set; }
 
         public override string ToString()
         {
@@ -47,6 +48,7 @@ namespace MoriData
         public string password;
         public int livello;
         public bool valido;
+        public byte NoLockClearSB = 0;
         public MoriData._db _database;
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
@@ -94,6 +96,7 @@ namespace MoriData
                         Log.Debug(_usr.ToString());
                         username = _usr.NomeUtente;
                         login = _usr.Username;
+                        NoLockClearSB = _usr.NoLockClearSB;
 
                         if (_usr.Livello < 2 )
                         {
