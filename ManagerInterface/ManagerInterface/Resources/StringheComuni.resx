@@ -318,4 +318,10 @@
   <data name="ModoRicaricaStrategia" xml:space="preserve">
     <value>Strategia Pianificata</value>
   </data>
+  <data name="DumpCicliKO" xml:space="preserve">
+    <value>Lettura ultime fasi non riuscita</value>
+  </data>
+  <data name="DumpCicliOK" xml:space="preserve">
+    <value>Lettura ultime fasi completata</value>
+  </data>
 </root>

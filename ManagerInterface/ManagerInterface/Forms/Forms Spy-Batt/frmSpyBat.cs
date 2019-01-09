@@ -204,17 +204,17 @@ namespace PannelloCharger
                 IdCorrente = _sb.Id;
                 _apparatoPresente = SerialeCollegata;
                 // se l'apparato è presente e le configurazioni su scheda superano quelle in mem, aggiorno
-                /*  13/12/18 --- Spostato all'i
+                //  13/12/18 --- Spostato all'i
                 if (_apparatoPresente)
-                    if ( true ) //_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
+                    if (_sb.sbData.ProgramCount != _sb.Programmazioni.Count)
                     {
 
                         RicaricaProgrammazioni();
                     }
-                */
+                
 
 
-               // CaricaProgrammazioni();
+                CaricaProgrammazioni();
 
 
                 if ((_sb.sbData.LongMem > 0) && (_sb.sbData.LongMem < 30000)) _aggiornaStatistiche = true;
@@ -815,7 +815,7 @@ namespace PannelloCharger
                         grbProgrammazione.Height = 108;
                         grbProgrImpianto.Height = 76;
                         grbProgrImpianto.Top = 147;
-                        flvwProgrammiCarica.Height = 300;
+                        flvwProgrammiCarica.Height = 250;
                         flvwProgrammiCarica.Top = 235;
 
                         break;
@@ -3699,8 +3699,9 @@ namespace PannelloCharger
         {
             try
             {
+                int _cicliDaLeggere = _sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count;
 
-                if (((_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count) < 25) && chkAckDumpMem.Checked != true)
+                if((_cicliDaLeggere < 25) && chkAckDumpMem.Checked != true)
                 {
                     uint _primoElemento = 1;
                     sbMemLunga _tempLungo;
@@ -3753,9 +3754,18 @@ namespace PannelloCharger
                     DumpInteraMemoria(false);
                     this.Cursor = Cursors.Default;
                 }
+                if (_sb.sbData.LongMem - _sb.CicliMemoriaLunga.Count < 2)
+                {
+                    MessageBox.Show(StringheComuni.DumpCicliOK, StringheComuni.AvTitolo01Dati, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(StringheComuni.DumpCicliKO, StringheComuni.AvTitolo01Dati, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch
             {
+                MessageBox.Show(StringheComuni.DumpCicliKO, StringheComuni.AvTitolo01Dati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Cursor = Cursors.Default;
 
             }

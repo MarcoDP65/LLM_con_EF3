@@ -277,6 +277,24 @@ namespace PannelloCharger {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Lettura ultime fasi non riuscita.
+        /// </summary>
+        internal static string DumpCicliKO {
+            get {
+                return ResourceManager.GetString("DumpCicliKO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Lettura ultime fasi completata.
+        /// </summary>
+        internal static string DumpCicliOK {
+            get {
+                return ResourceManager.GetString("DumpCicliOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Elettrolita.
         /// </summary>
         internal static string Elettrolita {

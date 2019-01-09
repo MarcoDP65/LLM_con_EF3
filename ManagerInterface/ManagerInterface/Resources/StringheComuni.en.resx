@@ -300,4 +300,10 @@
   <data name="AttivaConfigKO" xml:space="preserve">
     <value>Setup Activation Failed</value>
   </data>
+  <data name="DumpCicliKO" xml:space="preserve">
+    <value>Download Last Phases Failed</value>
+  </data>
+  <data name="DumpCicliOK" xml:space="preserve">
+    <value>Download Last Phases Completed</value>
+  </data>
 </root>
