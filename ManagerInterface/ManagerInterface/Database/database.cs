@@ -186,7 +186,7 @@ namespace MoriData
             if (!TabellaCompilata)
             {
                 _utente[] usr = {
-                                  //new _utente { Id = 10, Username = "FACTORY", Password = Utility.StringCipher.PasswordEncrypt("factory"), NomeUtente = "Livello Factory", Livello = 0, Lingua = 0, Attivo = 1 ,NoLockClearSB = 1},
+                                  new _utente { Id = 10, Username = "FACTORY", Password = Utility.StringCipher.PasswordEncrypt("factory"), NomeUtente = "Livello Factory", Livello = 0, Lingua = 0, Attivo = 1 ,NoLockClearSB = 1},
                                   new _utente { Id = 20, Username = "SERVICE", Password = Utility.StringCipher.PasswordEncrypt("MS13ZXY6645AHKY"), NomeUtente = "Livello Service", Livello = 1, Lingua = 0, Attivo = 1 ,NoLockClearSB = 1},
                                   new _utente { Id = 30, Username = "POWERUSER", Password = Utility.StringCipher.PasswordEncrypt("PU51KSX33R"), NomeUtente = "Livello Power User", Livello = 2, Lingua = 0, Attivo = 1 ,NoLockClearSB = 0},
                                   new _utente { Id = 31, Username = "TECHUSER", Password = Utility.StringCipher.PasswordEncrypt("35T1Q477L"), NomeUtente = "Livello Technical User", Livello = 2, Lingua = 0, Attivo = 1,NoLockClearSB = 1 },

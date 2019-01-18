@@ -19,7 +19,7 @@ namespace MoriData
     public class _mbTipoBatteria
     {
         [PrimaryKey]
-        public byte BatteryTypeId { get; set; }
+        public ushort BatteryTypeId { get; set; }
 
         public string BatteryType { get; set; }
         public byte idTecnologia { get; set; }
@@ -67,7 +67,7 @@ namespace MoriData
 
         #region Class Parameters
 
-        public byte BatteryTypeId
+        public ushort BatteryTypeId
         {
             get { return _mbTb.BatteryTypeId; }
             set

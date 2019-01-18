@@ -17,6 +17,7 @@ namespace ChargerLogic
    public class parametriSistema
     {
         public enum CanaleDispositivo : uint { Seriale = 0x00, USB = 0x01 , BTStream = 0x02};
+        public CicloDiCarica ParametriProfilo;
 
         public Stream streamCorrente;
         public SerialPort serialeCorrente ;
@@ -78,6 +79,8 @@ namespace ChargerLogic
 
                 CaricaImpostazioniDefault();
 
+                ParametriProfilo = new CicloDiCarica();
+
                 InizializzaTipiBatteria();
 
                 UltimoMessaggio = DateTime.Now;
@@ -86,6 +89,8 @@ namespace ChargerLogic
                 {
                     currentCulture = new CultureInfo(currentCultureValue);
                 }
+
+                
             }
             catch (Exception Ex)
             {
@@ -198,6 +203,8 @@ namespace ChargerLogic
         }
 
 
+
+
         private void InizializzaTipiBatteria()
         {
             try
@@ -306,6 +313,7 @@ namespace ChargerLogic
 
             }
         }
+
 
         #region "Comunicazione SPY-BATT"
 

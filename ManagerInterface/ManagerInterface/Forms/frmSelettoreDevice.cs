@@ -31,6 +31,7 @@ namespace PannelloCharger
         public List<DeviceBt> ListaWless;
         public parametriSistema _varGlobali;
         public LogicheBase logiche;
+        public CicloDiCarica ParametriProfilo;
 
         private BackgroundWorker bgWlessSWcan;
 
@@ -431,7 +432,7 @@ namespace PannelloCharger
                 {
                     foreach (Form form in Application.OpenForms)
                     {
-                        if (form.GetType() == typeof(frmCaricabatterie))
+                        if (form.GetType() == typeof(frmCaricabatterieV2))
                         {
                             form.Activate();
                             return;
@@ -440,11 +441,12 @@ namespace PannelloCharger
                     Log.Debug("NUOVO LL");
                     //frmSpyBat sbCorrente = new frmSpyBat(ref varGlobali, true, "", logiche, esitoCanaleApparato, true);
 
-                    frmCaricabatterie cbCorrente = new frmCaricabatterie(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+                    frmCaricabatterieV2 cbCorrente = new frmCaricabatterieV2(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
                     cbCorrente.Cursor = Cursors.WaitCursor;
 
                     cbCorrente.MdiParent = this.MdiParent;
                     cbCorrente.StartPosition = FormStartPosition.CenterParent;
+                    cbCorrente.ParametriProfilo = ParametriProfilo;
                     //cbCorrente.Cursor = Cursors.WaitCursor;
                     cbCorrente.Show();
                 }

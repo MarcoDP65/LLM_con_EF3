@@ -61,6 +61,10 @@ namespace PannelloCharger
                 varGlobali = new parametriSistema();
                 logiche = new LogicheBase();
                 cbCorrente = new CaricaBatteria(ref varGlobali);
+
+                // ParametriProfilo --> in futuro valutare se spostare i dati su DB SQLite
+                ParametriProfilo = new CicloDiCarica();
+
                 Toolbar.reset();
                 AggiornaToolbar(Toolbar);
                 Log.Debug("Main Caricato ");
@@ -403,7 +407,7 @@ namespace PannelloCharger
                 Log.Debug("NUOVO LL");
                 //frmSpyBat sbCorrente = new frmSpyBat(ref varGlobali, true, "", logiche, esitoCanaleApparato, true);
 
-                frmCaricabatterie cbCorrente = new frmCaricabatterie(ref varGlobali, true);
+                frmCaricabatterieV2 cbCorrente = new frmCaricabatterieV2(ref varGlobali, true);
                 cbCorrente.Cursor = Cursors.WaitCursor;
 
                 cbCorrente.MdiParent = this;

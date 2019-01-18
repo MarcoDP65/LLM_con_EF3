@@ -2340,6 +2340,91 @@ namespace Utility
         }
 
 
+        public static ushort CalcolaFormula(string Variabile, ushort ValoreVar, string Formula, int Divisore = 1)
+        {
+            try
+            {
+                // Verifico la lunghezza minima (3)
+                if (Formula.Length < 3)
+                {
+                    return 0;
+                }
+
+                string VarUsata = Formula.Substring(0, 1);
+                string OperazioneUsata = Formula.Substring(1, 1);
+                string ValoreFormula = Formula.Substring(2);
+
+                ushort ValParametro;
+                ushort ValFormula = 0;
+                bool result = ushort.TryParse(ValoreFormula, out ValParametro);
+
+                if (!result)
+                {
+                    return 0;
+                }
+
+                if (OperazioneUsata == "#")
+                {
+                    // Assegnazione diretta
+                    return ValFormula;
+                }
+
+                // Controllo che la variabile sia quella in formula
+                if (VarUsata != Variabile)
+                {
+                    return 0;
+                }
+
+                switch (OperazioneUsata)
+                {
+                    case "/":
+                        {
+                            if (ValParametro != 0)
+                            {
+                                ValFormula = (ushort)(ValoreVar / ValParametro);
+                            }
+                            break;
+                        }
+
+                    case "*":
+                        {
+                            ValFormula = (ushort)(ValoreVar * ValParametro);
+                            break;
+                        }
+
+                    default:
+                        {
+                            ValFormula = 0;
+                            break;
+                        }
+                }
+
+
+                return ValFormula;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public static ushort StatoParametro(string Formula)
+        {
+            try
+            {
+                if (Formula != "")
+                {
+                    return 1;
+                }    
+                return 0;
+            }
+
+            catch
+            {
+                return 0;
+            }
+        }
+
 
 
     }
@@ -2407,6 +2492,8 @@ namespace Utility
             }
         }
 
+
+ 
 
 
     }

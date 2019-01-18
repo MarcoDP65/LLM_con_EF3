@@ -85,37 +85,9 @@ namespace ChargerLogic
             CMD_STATE_DEVICE = 0xE1,
             CMD_BUSY = 0xE2,
 
-
             ACK_PACKET = 0x6C,
             EVENT_MEM_CODE = 0x6D,
             NACK_PACKET = 0x71,
-
-
-
-
-
-            // Start = 0x0F,  obsoleto, -> CMD_CONNECT
-            // Strobe = 0xFF, 
-            // Stop = 0xF0,
-            //ReadRTC = 0xD3, 
-            //UpdateRTC = 0xD2, 
-            //FirmwareUpdate = 0xD5,
-            //ACK = 0x44,
-            //NACK = 0x45,
-            //BREAK = 0x1C,
-            // CMD_RESET_BOARD = 0x5F,
-            // DI_CancellaInteraMemoria = 0x3A, --> comando rimosso
-            // DI_Cancella4K = 0x24,       --> rimosso -->  0x2E
-            // DI_R_LeggiMemoria = 0x3C,   --> rimosso -->  0x33
-            // DI_W_ScriviMemoria = 0xC3,  --> rimosso -->  0x35
-            // DI_W_ScriviVariabile = 0xC4,--> rimosso -->  0x4D
-            // DI_W_SetRTC = 0xD2,
-            //LL_CancellaInteraMemoria = 0x29,
-            //LL_Cancella4K = 0x2F,
-            //LL_R_LeggiMemoria = 0x34,
-            //LL_W_ScriviMemoria = 0x36,
-            //LL_R_DumpMemoria = 0x37,
-            
 
         };
 
@@ -179,6 +151,8 @@ namespace ChargerLogic
             MantenimentoCorrErogazione =    0x74,   // A, 1 decimale
 
             TipoProfilo = 0x80,
+
+            TipoCassone = 0x90,
 
             CondizioneStop = 0xF0, 
             

@@ -1,4 +1,4 @@
-﻿
+﻿// class mbProfiloCarica
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace MoriData
     /// llProfiloCarica: struttura record per il salvataggio dati modello Lade Light
     /// </summary>
     /// 
-    public class _llProfiloCarica
+    public class _mbProfiloCarica
     {
         [PrimaryKey]
         public byte IdProfiloCaricaLL { get; set; }
@@ -38,16 +38,4 @@ namespace MoriData
 
     }
 
-    public class _llProfiloTipoBatt
-    {
-        [PrimaryKey]
-        public byte IdProfiloCaricaLL { get; set; }
-        public byte BatteryTypeId { get; set; }
-
-        public byte Attivo { get; set; }
-    }
 }
-
-
-
-

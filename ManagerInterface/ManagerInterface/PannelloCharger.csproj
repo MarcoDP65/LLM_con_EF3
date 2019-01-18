@@ -223,9 +223,13 @@
     <Compile Include="Componenti\PannelloTurno.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Database\GestioneBatterie\InizializzazioneBatterie.cs" />
+    <Compile Include="Database\GestioneBatterie\mbParProfiloTipoBatt.cs" />
     <Compile Include="Database\GestioneBatterie\mbProduttore.cs" />
+    <Compile Include="Database\GestioneBatterie\mbProfiloCarica.cs" />
     <Compile Include="Database\GestioneBatterie\mbTecnologia.cs" />
     <Compile Include="Database\GestioneBatterie\mbTipoBatteria.cs" />
+    <Compile Include="Database\GestioneBatterie\ParametriCiclo.cs" />
     <Compile Include="Database\LadeLightData.cs" />
     <Compile Include="Database\llContatoriApparato.cs" />
     <Compile Include="Database\llDurataCarica.cs" />
@@ -277,6 +281,21 @@
     </Compile>
     <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms LadeLight V2\frmCaricaBatteriaComandiProxyV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms LadeLight V2\frmCaricabatteriaGestioneMemoriaV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms LadeLight V2\frmCaricabatterieFunzioniFirmwareV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.Designer.cs">
+      <DependentUpon>frmCaricabatterieV2.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Forms LadeLight\frmCaricabatteriaClassiSupporto.cs" />
     <Compile Include="Forms\Forms LadeLight\frmCaricaBatteriaComandiProxy.cs">
@@ -518,6 +537,7 @@
     <Compile Include="Logiche\Messaggio SpyBatt\MessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\sottoclassiMessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio Display\MessaggioDisplay.cs" />
+    <Compile Include="Logiche\ModelloCiclo.cs" />
     <Compile Include="Logiche\ModelloTurno.cs" />
     <Compile Include="Logiche\Serial Message\SerialMessage.cs" />
     <Compile Include="Logiche\SpyBatt\comandiMessaggiSpyBatt.cs" />
@@ -533,6 +553,11 @@
     <Compile Include="Logiche\utente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\profili\ModelliProfilo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelliProfilo.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\StringheColonneTabelle.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -615,6 +640,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.fr.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.es.resx">
+      <DependentUpon>frmCaricabatterieV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.fr-FR.resx">
+      <DependentUpon>frmCaricabatterieV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.fr.resx">
+      <DependentUpon>frmCaricabatterieV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.hi-IN.resx">
+      <DependentUpon>frmCaricabatterieV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.resx">
+      <DependentUpon>frmCaricabatterieV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.fr-FR.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
@@ -1093,6 +1133,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resources\profili\ModelliProfilo.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelliProfilo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\StringheColonneTabelle.en.resx" />
     <EmbeddedResource Include="Resources\StringheColonneTabelle.fr-FR.resx" />
     <EmbeddedResource Include="Resources\StringheColonneTabelle.fr.resx" />
@@ -1218,13 +1262,16 @@
     <None Include="Resources\if_ok_32.png" />
     <Content Include="Resources\ind_due.png" />
     <Content Include="Resources\ind_tre.png" />
+    <None Include="Resources\IU650.png" />
     <Content Include="Resources\IUIa.bmp" />
+    <None Include="Resources\IUIa650.png" />
     <Content Include="Resources\IWa.bmp" />
     <None Include="Resources\LogoSpyBatt.bmp" />
     <None Include="Resources\reset.png" />
     <None Include="Resources\Logo e-charger PRO sfondato.png" />
     <None Include="Resources\plant.png" />
     <None Include="Resources\lade_light_INTEGRATED.PNG" />
+    <None Include="Resources\IWa650.png" />
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
     <None Include="Resources\Sfondo_SPYBATT.bmp" />
