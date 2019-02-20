@@ -1309,8 +1309,6 @@ namespace ChargerLogic
         /// <returns></returns>
         public bool ScriviBloccoMemoria(uint StartAddr, ushort NumByte, byte[] Dati, bool modoDeso = false)
         {
-
-
             try
             {
                 bool _esito = true;
@@ -1335,11 +1333,8 @@ namespace ChargerLogic
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                if (modoDeso != true)
-                {
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
-                }
 
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
 
                 Log.Debug(_mS.hexdumpMessaggio());
 
@@ -2021,8 +2016,7 @@ namespace ChargerLogic
                                 break;
                             case (byte)SerialMessage.TipoComando.EVENT_MEM_CODE:
                                 Log.Debug("MEMORY Event");
-//                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
-                                _datiRicevuti = SerialMessage.TipoRisposta.Ack;
+                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 break;
                             default:

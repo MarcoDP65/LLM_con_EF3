@@ -360,7 +360,28 @@ namespace ChargerLogic
 
                         break;
 
-                   
+                    case (byte)TipoComando.EVENT_MEM_CODE:
+
+                        _startPos = 27;
+                        if (_messaggio[_startPos] != serENDPAC)
+                        {
+                            return EsitoRisposta.NonRiconosciuto;
+                        }
+                        _buffArray = new byte[26];
+                        Array.Copy(_messaggio, 1, _buffArray, 0, 26);
+                        _startPos = 28;
+                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                        _tempShort = (ushort)(_ret);
+                        _startPos = 30;
+                        _ret = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                        _tempShort = (ushort)((_tempShort << 8) + _ret);
+                        _crc = codCrc.ComputeChecksum(_buffArray);
+
+                        if (_crc != _tempShort)
+                        { return EsitoRisposta.BadCRC; }
+
+                        break;
+
                     case (byte)TipoComando.NACK_PACKET: //NAK
                         {
                             _crc = 0;

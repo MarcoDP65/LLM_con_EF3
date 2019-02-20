@@ -803,10 +803,11 @@
             // 
             // btnPaProfileRefresh
             // 
+            this.btnPaProfileRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaProfileRefresh.Location = new System.Drawing.Point(14, 419);
             this.btnPaProfileRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.btnPaProfileRefresh.Name = "btnPaProfileRefresh";
-            this.btnPaProfileRefresh.Size = new System.Drawing.Size(231, 24);
+            this.btnPaProfileRefresh.Size = new System.Drawing.Size(231, 39);
             this.btnPaProfileRefresh.TabIndex = 134;
             this.btnPaProfileRefresh.Text = "Refresh Parametri";
             this.btnPaProfileRefresh.UseVisualStyleBackColor = true;
@@ -1818,6 +1819,7 @@
             this.txtPaCapacita.Size = new System.Drawing.Size(144, 23);
             this.txtPaCapacita.TabIndex = 5;
             this.txtPaCapacita.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaCapacita.TextChanged += new System.EventHandler(this.txtPaCapacita_TextChanged);
             this.txtPaCapacita.Leave += new System.EventHandler(this.txtPaCapacita_Leave);
             // 
             // label5

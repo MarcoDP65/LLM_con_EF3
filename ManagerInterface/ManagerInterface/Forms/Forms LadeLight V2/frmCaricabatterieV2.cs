@@ -2525,6 +2525,8 @@ namespace PannelloCharger
                 }
                 else
                 {
+                    btnPaProfileRefresh.ForeColor = Color.Red;
+
                     // Carico i profili in base al tipo
                     TipoBatt = (ushort)TempBatt.BatteryTypeId;
 
@@ -2620,8 +2622,10 @@ namespace PannelloCharger
                 byte TipoProf;
                 byte ModoProf;
 
+                btnPaProfileRefresh.ForeColor = Color.Red;
                 if (cmbPaProfilo.SelectedItem == null)
                 {
+
                     cmbPaDurataCarica.SelectedItem = null;
 
                     picPaImmagineProfilo.BackColor = Color.LightGray;
@@ -2778,6 +2782,7 @@ namespace PannelloCharger
 
             if (cmbPaTensione.SelectedItem != null)
             {
+                btnPaProfileRefresh.ForeColor = Color.Red;
                 txtPaTensione.Text = ((llTensioneBatteria)cmbPaTensione.SelectedItem).Descrizione;
                 if (!ProfiloInCaricamento)
                 {
@@ -3266,7 +3271,8 @@ namespace PannelloCharger
 
                 bool esitoRicalcolo = ModCicloCorrente.CalcolaParametri(_Batteria._mbTb, _Profilo, _Tensione, _Capacita, _Celle, _ModelloCB);
 
-               // MostraParametriCiclo(!esitoRicalcolo);
+                btnPaProfileRefresh.ForeColor = Color.Black;
+                // MostraParametriCiclo(!esitoRicalcolo);
                 return esitoRicalcolo;
             }
             catch (Exception Ex)
@@ -3313,6 +3319,7 @@ namespace PannelloCharger
                         mbTipoBatteria TempBatt = (from tb in (List<mbTipoBatteria>)cmbPaTipoBatteria.DataSource
                                                    where tb.BatteryTypeId == ModCicloCorrente.Batteria.BatteryTypeId
                                                    select tb).FirstOrDefault();
+
                         cmbPaTipoBatteria.SelectedItem = TempBatt;
 
                         if (ModCicloCorrente.Batteria != null)
@@ -3346,7 +3353,7 @@ namespace PannelloCharger
                     }
 
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, ModCicloCorrente.NumeroCelle, 4, 3);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 4, 2);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 5, 2);
 
 
 
@@ -3411,8 +3418,21 @@ namespace PannelloCharger
             }
         }
 
+        private void txtPaCapacita_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ProfiloInCaricamento)
+                {
+                    btnPaProfileRefresh.ForeColor = Color.Red; 
+                }
 
+            }
+            catch
+            {
 
+            }
+        }
     }
 
 }

@@ -336,7 +336,7 @@ namespace ChargerLogic
             ParametriAttivi = new ParametriCiclo();
         }
 
-        public bool CalcolaParametri(_mbTipoBatteria Batteria, _mbProfiloCarica Profilo,ushort Tensione, ushort Capacita, ushort Celle, _llModelloCb ModelloCB )
+        public bool CalcolaParametri(_mbTipoBatteria Batteria, _mbProfiloCarica Profilo,ushort Tensione, ushort CapacitaDefinita, ushort Celle, _llModelloCb ModelloCB )
         {
             try
             {
@@ -344,7 +344,7 @@ namespace ChargerLogic
                 ParametriAttivi = new ParametriCiclo();
                 _mbProfiloTipoBatt ModelloProfilo;
 
-                if (Batteria == null || Profilo == null || Tensione < 1200 || Capacita < 50)
+                if (Batteria == null || Profilo == null || Tensione < 1200 || CapacitaDefinita < 50)
                 {
                     ValoriCiclo.Esito = 0xFF;
                     ValoriCiclo.Messaggio = "Parametri iniziali non corretti";
@@ -373,6 +373,7 @@ namespace ChargerLogic
 
                 }
                 NumeroCelle = Celle;
+                Capacita = CapacitaDefinita;
 
                 ParametriAttivi.TempoT0Max = FunzioniComuni.StatoParametro( ModelloProfilo.TempoT0Max);
                 ValoriCiclo.TempoT0Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT0Max);
