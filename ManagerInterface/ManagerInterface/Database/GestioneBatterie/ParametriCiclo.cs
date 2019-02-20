@@ -33,7 +33,7 @@ namespace MoriData
         public byte Attivo { get; set; }
 
 
-        public short AttesaBMS { get; set; }
+        public ushort AttesaBMS { get; set; }
         public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
         public byte AttivaRiarmoPulse { get; set; }  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
 
@@ -63,6 +63,10 @@ namespace MoriData
         public ushort MantTensIniziale { get; set; }
         public ushort MantTensFinale { get; set; }
 
+        public ushort TensRiconoscimentoMin { get; set; }
+        public ushort TensRiconoscimentoMax { get; set; }
+
+
         // Correnti
         public ushort CorrenteI0 { get; set; }
         public ushort CorrenteI1 { get; set; }
@@ -77,6 +81,12 @@ namespace MoriData
         public ushort EqualNumImpulsi { get; set; }
 
         public ushort EqualAttivabile { get; set; }
+        public ushort EqualAttivo { get; set; }
+
+        public ushort MantAttivabile { get; set; }
+        public ushort MantAttivo { get; set; }
+
+        public ushort AbilitaSpyBatt { get; set; }
 
         public int Ordine { get; set; }
 
@@ -102,7 +112,7 @@ namespace MoriData
 
             AttesaBMS = 0;
             AttivaEqual = 0;        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
-            AttivaRiarmoPulse = 0; // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
+            AttivaRiarmoPulse = 0;  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
 
             // Tempi
             TempoT0Max = 0;
@@ -130,6 +140,9 @@ namespace MoriData
             MantTensIniziale = 0;
             MantTensFinale = 0;
 
+            TensRiconoscimentoMin = 0;
+            TensRiconoscimentoMax = 0;
+
             // Correnti
             CorrenteI0 = 0;
             CorrenteI1 = 0;
@@ -143,6 +156,7 @@ namespace MoriData
             EqualNumImpulsi = 0;
 
             EqualAttivabile = 0;
+            MantAttivabile = 0;
 
             Ordine = 0;
 

@@ -46,11 +46,11 @@ namespace MoriData
         public byte[] SerialeDISP { get; set; }
         public string HardwareDisp { get; set; }
         public string SoftwareDISP { get; set; }
-        public uint MaxRecordBrevi { get; set; }
-        public ushort MaxRecordCarica { get; set; }
-        public uint SizeExternMemory { get; set; }
-        public byte MaxProgrammazioni { get; set; }
-        public byte ModelloMemoria { get; set; }
+        public uint MaxRecordBrevi { get; set; }      // Da non modificare 
+        public ushort MaxRecordCarica { get; set; }   // Da non modificare
+        public uint SizeExternMemory { get; set; }    // Da non modificare
+        public byte MaxProgrammazioni { get; set; }   // Da non modificare
+        public byte ModelloMemoria { get; set; }      // Da non modificare
         public ushort CrcPacchetto { get; set; }
 
         public byte Stato { get; set; }

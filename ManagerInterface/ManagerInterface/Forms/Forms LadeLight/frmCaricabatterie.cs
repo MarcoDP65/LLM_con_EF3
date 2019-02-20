@@ -396,7 +396,7 @@ namespace PannelloCharger
                     if (ushort.TryParse(txtPaCorrenteMax.Text, out result))
                     {
                         ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteCarica;
+                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CorrenteCaricaI1;
                         _par.ValoreParametro = result;
                         _cb.CicloInMacchina.Parametri.Add(_par);
                         _numParametri++;
@@ -646,7 +646,7 @@ namespace PannelloCharger
                                 _tempVal = (float)_par.ValoreParametro / 100;
                                 txtPaSoglia.Text = _tempVal.ToString("0.00");
                                 break;
-                            case (byte)SerialMessage.ParametroLadeLight.CorrenteCarica:
+                            case (byte)SerialMessage.ParametroLadeLight.CorrenteCaricaI1:
                                 txtPaCorrenteMax.Text = _par.ValoreParametro.ToString();
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.TensioneNominale:

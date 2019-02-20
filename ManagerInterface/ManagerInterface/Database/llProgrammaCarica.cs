@@ -37,7 +37,7 @@ namespace MoriData
 
         public string DataInstallazione { get; set; }
         public string ProgramName { get; set; }
-        public byte   BatteryType { get; set; }
+        public ushort BatteryType { get; set; }
         public ushort BatteryVdef { get; set; }
         public ushort BatteryAhdef { get; set; }
         public byte   NumeroCelle { get; set; }
@@ -58,7 +58,7 @@ namespace MoriData
         public ushort EqualDurataImpulso { get; set; }
         public ushort EqualCorrenteImpulso { get; set; }
 
-        public byte IdProfilo { get; set; }
+        public ushort IdProfilo { get; set; }
         public ushort DurataMaxCarica { get; set; }
         public ushort PercTempoFase2 { get; set; }
         public ushort DurataMinFase2 { get; set; }
@@ -673,7 +673,7 @@ namespace MoriData
             }
         }
 
-        public byte BatteryType
+        public ushort BatteryType
         {
             get
             {
@@ -941,7 +941,7 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
-        public byte IdProfilo
+        public ushort IdProfilo
         {
             get
             {

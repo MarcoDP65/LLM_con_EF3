@@ -2345,14 +2345,15 @@ namespace Utility
             try
             {
                 // Verifico la lunghezza minima (3)
-                if (Formula.Length < 3)
+                if (Formula.Length < 4)
                 {
                     return 0;
                 }
 
-                string VarUsata = Formula.Substring(0, 1);
-                string OperazioneUsata = Formula.Substring(1, 1);
-                string ValoreFormula = Formula.Substring(2);
+                string Visualizzazione = Formula.Substring(0, 1);
+                string VarUsata = Formula.Substring(1, 1);
+                string OperazioneUsata = Formula.Substring(2, 1);
+                string ValoreFormula = Formula.Substring(3);
 
                 ushort ValParametro;
                 ushort ValFormula = 0;
@@ -2363,20 +2364,23 @@ namespace Utility
                     return 0;
                 }
 
-                if (OperazioneUsata == "#")
-                {
-                    // Assegnazione diretta
-                    return ValFormula;
-                }
 
                 // Controllo che la variabile sia quella in formula
-                if (VarUsata != Variabile)
+                if (VarUsata != Variabile && Variabile != "#" )
                 {
                     return 0;
                 }
 
                 switch (OperazioneUsata)
                 {
+                    case "#":
+                    case "@":
+                        {
+                            ValFormula = ValParametro;
+                            break;
+                        }
+
+
                     case "/":
                         {
                             if (ValParametro != 0)
@@ -2412,11 +2416,39 @@ namespace Utility
         {
             try
             {
-                if (Formula != "")
+                ushort esito = 0;
+                string OperazioneUsata = "";
+                if (Formula.Length > 0)
                 {
-                    return 1;
-                }    
-                return 0;
+                    OperazioneUsata = Formula.Substring(0, 1);
+                }
+                
+                switch (OperazioneUsata)
+                {
+                    case "":
+                        {
+                            esito = 0;
+                            break;
+                        }
+                    case "#":
+                        {
+                            esito = 1;
+                            break;
+                        }
+                    case "=":
+                        {
+                            esito = 4;
+                            break;
+                        }
+
+                    default:
+                        {
+                            esito = 1;
+                            break;
+                        }
+                }
+
+                return esito;
             }
 
             catch
@@ -2424,7 +2456,6 @@ namespace Utility
                 return 0;
             }
         }
-
 
 
     }

@@ -581,7 +581,7 @@ namespace ChargerLogic
 
 
                     // MaxRecordBrevi (3 bytes)
-                    MaxRecordBrevi = 0x00E555;
+                    // -> MaxRecordBrevi = 0x00E555;
                     FunzioniComuni.SplitUint32(MaxRecordBrevi, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
 
                     _datamap[_arrayInit++] = _byte2;
@@ -589,14 +589,14 @@ namespace ChargerLogic
                     _datamap[_arrayInit++] = _byte4;
 
                     // Max Testate carica (2 bytes)
-                    MaxRecordCarica = 0x01C7;
+                    // -> MaxRecordCarica = 0x01C7;
                     FunzioniComuni.SplitUshort(MaxRecordCarica, ref _byte2, ref _byte1);
 
                     _datamap[_arrayInit++] = _byte1;
                     _datamap[_arrayInit++] = _byte2;
 
                     // SizeExternMemory (3 bytes)
-                    SizeExternMemory = 0x200000;
+                    // -> SizeExternMemory = 0x200000;
                     FunzioniComuni.SplitUint32(SizeExternMemory, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
 
                     _datamap[_arrayInit++] = _byte2;
@@ -604,11 +604,11 @@ namespace ChargerLogic
                     _datamap[_arrayInit++] = _byte4;
 
                     //Max Programmazioni
-                    MaxProgrammazioni = 0x10;
+                    // -> MaxProgrammazioni = 0x10;
                     _datamap[_arrayInit++] = MaxProgrammazioni;
 
                     //ModelloMemoria
-                    ModelloMemoria = 0x01;
+                    // -> ModelloMemoria = 0x01;
                     _datamap[_arrayInit++] = ModelloMemoria;
 
                     // IDApparato ( Stringa 8 bytes )
@@ -711,7 +711,7 @@ return false;
             public byte[] AreaParametri { get; set; }
             public byte LenNomeCiclo { get; private set; }
             public string NomeCiclo { get; set; }
-            public byte IdProfilo { get; set; }
+            public ushort IdProfilo { get; set; }
             public byte NumParametri { get; set; }
             public List<ParametroLL> Parametri;
 
@@ -909,7 +909,7 @@ return false;
                     _datamap[_arrayInit++] = (byte)NomeCiclo.Length;
 
                     // Tipo Ciclo
-                    _datamap[_arrayInit++] = IdProfilo;
+                    _datamap[_arrayInit++] = (byte)IdProfilo;
 
                     // Numero Parametri
                     NumParametri = (byte)Parametri.Count;
@@ -922,6 +922,131 @@ return false;
                     }
 
                     foreach(ParametroLL _Par in Parametri)
+                    {
+                        _datamap[_arrayInit++] = _Par.idParametro;
+
+                        FunzioniComuni.SplitUshort(_Par.ValoreParametro, ref _byte2, ref _byte1);
+                        _datamap[_arrayInit++] = _byte1;
+                        _datamap[_arrayInit++] = _byte2;
+
+                    }
+
+
+
+
+
+                    for (int _i = 0; _i < 224; _i++)
+                    {
+                        _dataSet[_i] = _datamap[_i];
+                    }
+
+                    _temCRC = codCrc.ComputeChecksum(_dataSet);
+
+                    FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
+                    _datamap[224] = _byte2;
+                    _datamap[225] = _byte1;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+            public bool GeneraByteArrayV2()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[226];
+                    byte[] _dataSet = new byte[224];
+                    byte[] _tempString;
+                    int _arrayInit = 0;
+                    ushort _temCRC = 0x0000;
+
+                    Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 226; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                    }
+
+                    // Tipo Programmazione
+                    _datamap[_arrayInit++] = TipoProgrammazione;
+
+                    // Opzioni Programmazione
+                    _datamap[_arrayInit++] = OpzioniProgrammazione;
+
+
+                    // Id Programmazione
+
+                    FunzioniComuni.SplitUshort(IdProgrammazione, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // Data inserimento
+                    if (DataInserimento == null)
+                    {
+                        DataInserimento = new byte[5];
+                        DateTime OraCorrente = DateTime.Now;
+                        DataInserimento[0] = (byte)(OraCorrente.Year - 2000);
+                        DataInserimento[1] = (byte)(OraCorrente.Month);
+                        DataInserimento[2] = (byte)(OraCorrente.Day);
+                        DataInserimento[3] = (byte)(OraCorrente.Hour);
+                        DataInserimento[4] = (byte)(OraCorrente.Minute);
+                    }
+                    _arrayInit = 0x14;
+                    _datamap[_arrayInit++] = DataInserimento[0];
+                    _datamap[_arrayInit++] = DataInserimento[1];
+                    _datamap[_arrayInit++] = DataInserimento[2];
+                    _datamap[_arrayInit++] = DataInserimento[3];
+                    _datamap[_arrayInit++] = DataInserimento[4];
+
+                    //Program Used; salto direttamente al byte 0x1F
+                    _arrayInit = 0x1F;
+                    _datamap[_arrayInit++] = ProgInUse;
+
+                    //--------------------------------------------------------------------------------------------------------------------
+                    // Da byte 33 (pos32) registro la stringa parametro nel precedente formato:
+                    // 0 - Lunghezza  nome
+                    // 1 - Tipo Ciclo
+                    // 2 - Numero parametri
+                    // 3 .. -Nome (vedi parametro )
+                    // Per ogni parametro 
+                    //   0    - Id Parametro
+                    //   1-2  - Valore Ushort
+                    // Dim max per l'area 64 Bytes
+                    //--------------------------------------------------------------------------------------------------------------------
+                    _arrayInit = 0x20;
+
+                    // Lunghezza nome; Se NomeCiclo è lungo + di 6 lo taglio a 6
+                    if (NomeCiclo.Length > 6) NomeCiclo = NomeCiclo.Substring(0, 6);
+                    _datamap[_arrayInit++] = (byte)NomeCiclo.Length;
+
+                    // Tipo Ciclo
+                    _datamap[_arrayInit++] = (byte)IdProfilo;
+
+                    // Numero Parametri
+                    NumParametri = (byte)Parametri.Count;
+                    _datamap[_arrayInit++] = NumParametri;
+
+                    // Nome
+                    for (int _i = 0; _i < NomeCiclo.Length; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(NomeCiclo, _i);
+                    }
+
+                    foreach (ParametroLL _Par in Parametri)
                     {
                         _datamap[_arrayInit++] = _Par.idParametro;
 
@@ -957,6 +1082,7 @@ return false;
                 }
 
             }
+
 
 
             public bool VuotaPacchetto()
@@ -1436,14 +1562,14 @@ return false;
                     PntPrimoBreve = ArrayToUint32(_messaggio, startByte, 3);
                     startByte += 3;
 
-                    CntCicliBrevi = ArrayToUshort(_messaggio, startByte, 2);
-                    startByte += 2;
-
                     DataOraStart = SubArray(_messaggio, startByte, 5);
                     startByte += 5;
 
                     DataOraStop = SubArray(_messaggio, startByte, 5);
                     startByte += 5;
+
+                    CntCicliBrevi = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
 
                     AhCaricati = ArrayToUshort(_messaggio, startByte, 2);
                     startByte += 2;

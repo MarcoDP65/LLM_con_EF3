@@ -13,6 +13,17 @@ namespace ChargerLogic
     {
         public byte idParametro { get; set; }
         public ushort ValoreParametro{ get; set; }
+        public ParametroLL()
+        {
+            idParametro = 0;
+            ValoreParametro = 0;
+        }
+        public ParametroLL(byte Id, ushort Valore)
+        {
+            idParametro = Id;
+            ValoreParametro = Valore;
+        }
+
     }
 
     public class ElementoMemoria

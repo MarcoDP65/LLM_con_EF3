@@ -56,6 +56,8 @@ namespace MoriData
         public string TensioneRaccordoVr { get; set; }
         public string TensioneMassimaVMax { get; set; }
         public string TensioneLimiteVLim { get; set; }
+        public string TensRiconoscimentoMin { get; set; }
+        public string TensRiconoscimentoMax { get; set; }
 
         public string MantTensIniziale { get; set; }
         public string MantTensFinale { get; set; }
@@ -74,6 +76,9 @@ namespace MoriData
         public string EqualNumImpulsi { get; set; }
 
         public string EqualAttivabile { get; set; }
+        public string MantAttivabile { get; set; }
+
+        public string AbilitaSpyBatt { get; set; }
 
         public int Ordine { get; set; }
 

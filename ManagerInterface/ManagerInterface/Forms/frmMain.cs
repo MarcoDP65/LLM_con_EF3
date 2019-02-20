@@ -62,9 +62,6 @@ namespace PannelloCharger
                 logiche = new LogicheBase();
                 cbCorrente = new CaricaBatteria(ref varGlobali);
 
-                // ParametriProfilo --> in futuro valutare se spostare i dati su DB SQLite
-                ParametriProfilo = new CicloDiCarica();
-
                 Toolbar.reset();
                 AggiornaToolbar(Toolbar);
                 Log.Debug("Main Caricato ");

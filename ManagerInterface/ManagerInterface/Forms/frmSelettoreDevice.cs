@@ -446,7 +446,7 @@ namespace PannelloCharger
 
                     cbCorrente.MdiParent = this.MdiParent;
                     cbCorrente.StartPosition = FormStartPosition.CenterParent;
-                    cbCorrente.ParametriProfilo = ParametriProfilo;
+                    //cbCorrente.ParametriProfilo = ParametriProfilo;
                     //cbCorrente.Cursor = Cursors.WaitCursor;
                     cbCorrente.Show();
                 }

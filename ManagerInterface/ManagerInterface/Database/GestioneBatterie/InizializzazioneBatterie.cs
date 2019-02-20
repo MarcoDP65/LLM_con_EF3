@@ -69,10 +69,11 @@ namespace ChargerLogic
         public bool inizializzaBatterie()
         {
             ModelliBatteria = new List<mbTipoBatteria>();
-       
-            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x1001, SortOrder = 1, BatteryType = "Batteria standard Pb/Lead", DivisoreCelle = 2, StandardChargeProfile = 0x04 });
-            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x2001, SortOrder = 2, BatteryType = "Batteria standard GEL", DivisoreCelle = 2, StandardChargeProfile = 0x04 });
-            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x3001, SortOrder = 3, BatteryType = "Batteria standard Litio", DivisoreCelle = 0, StandardChargeProfile = 0x04 });
+
+            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x0000, SortOrder = 0, BatteryType = "N.D.", DivisoreCelle = 200, StandardChargeProfile = 0x00 ,OldBatteryTypeId = 0x00,TensioniFisse = 0});
+            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x1001, SortOrder = 1, BatteryType = "Batteria standard Pb/Lead", DivisoreCelle = 200, StandardChargeProfile = 0x04, OldBatteryTypeId = 0x71, TensioniFisse = 1});
+            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x2001, SortOrder = 2, BatteryType = "Batteria standard GEL", DivisoreCelle = 200, StandardChargeProfile = 0x02, OldBatteryTypeId = 0x72, TensioniFisse = 1 });
+            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x3001, SortOrder = 3, BatteryType = "Batteria standard Litio", DivisoreCelle = 0, StandardChargeProfile = 0x03, OldBatteryTypeId = 0x73, TensioniFisse = 0 });
 
             return true;
         }
@@ -81,166 +82,193 @@ namespace ChargerLogic
         {
             ParametriCarica = new List<_mbProfiloTipoBatt>() ;
 
-            #region "Ciclo IWa 13"
+            #region "Ciclo IWa 13 - Pb/Lead"
             ParametriCarica.Add(
                 new _mbProfiloTipoBatt()
                 {
                     IdProfiloCaricaLL = 0x04,
                     BatteryTypeId = 0x1001,
                     // tempi
-                    TempoT0Max = "",
-                    TempoT1Max = "##780",
-                    TempoT2Min = "##060",
-                    TempoT2Max = "##210",
+                    TempoT0Max = "###60",
+                    TempoT1Max = "=##780",
+                    TempoT2Min = "=##060",
+                    TempoT2Max = "=##210",
                     TempoT3Max = "",
-                    FattoreK = "##060",
-                    EqualTempoAttesa = "##480",
-                    EqualTempoImpulso = "##5",
-                    EqualTempoPausa = "##25",
-                    MantTempoAttesa = "##360",
-                    MantTempoMaxErogazione = "##15",
+                    FattoreK = "=##060",
+                    EqualTempoAttesa = "=##480",
+                    EqualTempoImpulso = "=##5",
+                    EqualTempoPausa = "=##25",
+                    MantTempoAttesa = "=##360",
+                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
-                    TensionePrecicloV0 = "##190",
-                    TensioneSogliaVs = "##240",
-                    TensioneRaccordoVr = "##245",
-                    TensioneMassimaVMax = "##265",
-                    TensioneLimiteVLim = "##278",
-                    MantTensIniziale = "##210",
-                    MantTensFinale = "##230",
+                    TensionePrecicloV0 = "###190",
+                    TensioneSogliaVs = "=##240",
+                    TensioneRaccordoVr = "=##245",
+                    TensioneMassimaVMax = "=##265",
+                    TensioneLimiteVLim = "=##278",
+                    TensRiconoscimentoMin = "=##150",
+                    TensRiconoscimentoMax = "=##240",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
                     //Correnti
-                    CorrenteI0 = "C/24",
-                    CorrenteI1 = "C/12",
-                    CorrenteFinaleI2 = "C/24",
-                    CorrenteMassima = "C/5",
+                    CorrenteI0 = "#C/24",
+                    CorrenteI1 = "=C/12",
+                    CorrenteFinaleI2 = "=C/24",
+                    CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
-                    CorrenteRaccordoIr = "C/13",
-                    MantCorrenteImpulso = "C/24",
-                    EqualCorrenteImpulso = "C/24",
+                    CorrenteRaccordoIr = "=C/13",
+                    MantCorrenteImpulso = "=C/24",
+                    EqualCorrenteImpulso = "=C/24",
 
-                    EqualNumImpulsi = "##12",
+                    EqualNumImpulsi = "=##12",
+                    EqualAttivabile = "~##1",
+                    MantAttivabile = "=##1",
+
+                    AbilitaSpyBatt ="~##0",
 
                 } );
             #endregion "Ciclo IWa 13"
 
-            #region "Ciclo IWa 11"
+            #region "Ciclo IWa 11 - Pb/Lead"
             ParametriCarica.Add(
                 new _mbProfiloTipoBatt()
                 {
                     IdProfiloCaricaLL = 0x05,
                     BatteryTypeId = 0x1001,
                     // tempi
-                    TempoT0Max = "",
-                    TempoT1Max = "##660",
-                    TempoT2Min = "##60",
-                    TempoT2Max = "##210",
+                    TempoT0Max = "###060",
+                    TempoT1Max = "=##660",
+                    TempoT2Min = "=##60",
+                    TempoT2Max = "=##210",
                     TempoT3Max = "",
-                    FattoreK = "##60",
-                    EqualTempoAttesa = "##480",
-                    EqualTempoImpulso = "##5",
-                    EqualTempoPausa = "##25",
+                    FattoreK = "=##60",
+                    EqualTempoAttesa = "=##480",
+                    EqualTempoImpulso = "=##5",
+                    EqualTempoPausa = "=##25",
                     MantTempoAttesa = "##360",
-                    MantTempoMaxErogazione = "##15",
+                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
-                    TensionePrecicloV0 = "##190",
-                    TensioneSogliaVs = "##240",
-                    TensioneRaccordoVr = "##245",
-                    TensioneMassimaVMax = "##265",
-                    TensioneLimiteVLim = "##278",
-                    MantTensIniziale = "##210",
-                    MantTensFinale = "##230",
+                    TensionePrecicloV0 = "###190",
+                    TensioneSogliaVs = "=##240",
+                    TensioneRaccordoVr = "=##245",
+                    TensioneMassimaVMax = "=##265",
+                    TensioneLimiteVLim = "=##278",
+                    TensRiconoscimentoMin = "=##150",
+                    TensRiconoscimentoMax = "=##240",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
                     //Correnti
-                    CorrenteI0 = "C/20",
-                    CorrenteI1 = "C/10",
-                    CorrenteFinaleI2 = "C/24",
-                    CorrenteMassima = "C/5",
+                    CorrenteI0 = "#C/20",
+                    CorrenteI1 = "=C/10",
+                    CorrenteFinaleI2 = "=C/24",
+                    CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
-                    CorrenteRaccordoIr = "C/13",
-                    MantCorrenteImpulso = "C/24",
-                    EqualCorrenteImpulso = "C/24",
+                    CorrenteRaccordoIr = "=C/13",
+                    MantCorrenteImpulso = "=C/24",
+                    EqualCorrenteImpulso = "=C/24",
 
-                    EqualNumImpulsi = "##12",
+                    EqualNumImpulsi = "=##12",
+                    EqualAttivabile = "~##1",
+
+                    MantAttivabile = "=##1",
+
+                    AbilitaSpyBatt = "~##1",
 
                 });
             #endregion "Ciclo IWa 11"
 
-            #region "Ciclo IWa 8"
+            #region "Ciclo IWa 8 - Pb/Lead"
             ParametriCarica.Add(
                 new _mbProfiloTipoBatt()
                 {
                     IdProfiloCaricaLL = 0x06,
                     BatteryTypeId = 0x1001,
                     // tempi
-                    TempoT0Max = "",
-                    TempoT1Max = "##480",
-                    TempoT2Min = "##60",
-                    TempoT2Max = "##210",
+                    TempoT0Max = "###060",
+                    TempoT1Max = "=##480",
+                    TempoT2Min = "=##60",
+                    TempoT2Max = "=##210",
                     TempoT3Max = "",
-                    FattoreK = "##120",
-                    EqualTempoAttesa = "##480",
-                    EqualTempoImpulso = "##5",
-                    EqualTempoPausa = "##25",
-                    MantTempoAttesa = "##360",
-                    MantTempoMaxErogazione = "##15",
+                    FattoreK = "=##120",
+                    EqualTempoAttesa = "=##480",
+                    EqualTempoImpulso = "=##5",
+                    EqualTempoPausa = "=##25",
+                    MantTempoAttesa = "=##360",
+                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
-                    TensionePrecicloV0 = "##190",
-                    TensioneSogliaVs = "##240",
-                    TensioneRaccordoVr = "##245",
-                    TensioneMassimaVMax = "##265",
-                    TensioneLimiteVLim = "##278",
-                    MantTensIniziale = "##210",
-                    MantTensFinale = "##230",
+                    TensionePrecicloV0 = "###190",
+                    TensioneSogliaVs = "=##240",
+                    TensioneRaccordoVr = "=##245",
+                    TensioneMassimaVMax = "=##265",
+                    TensioneLimiteVLim = "=##278",
+                    TensRiconoscimentoMin = "=##150",
+                    TensRiconoscimentoMax = "=##240",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
                     //Correnti
-                    CorrenteI0 = "C/12",
-                    CorrenteI1 = "C/6",
-                    CorrenteFinaleI2 = "C/24",
-                    CorrenteMassima = "C/5",
+                    CorrenteI0 = "#C/12",
+                    CorrenteI1 = "=C/6",
+                    CorrenteFinaleI2 = "=C/24",
+                    CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
-                    CorrenteRaccordoIr = "C/13",
-                    MantCorrenteImpulso = "C/24",
-                    EqualCorrenteImpulso = "C/24",
+                    CorrenteRaccordoIr = "=C/13",
+                    MantCorrenteImpulso = "=C/24",
+                    EqualCorrenteImpulso = "=C/24",
 
-                    EqualNumImpulsi = "##12",
+                    EqualNumImpulsi = "=##12",
+                    EqualAttivabile = "~##1",
+
+                    MantAttivabile = "=##1",
+
+                    AbilitaSpyBatt = "~##0",
 
                 });
             #endregion "Ciclo IWa 8"
 
-            #region "Ciclo IU"
+            #region "Ciclo IU - GEL"
             ParametriCarica.Add(
                 new _mbProfiloTipoBatt()
                 {
                     IdProfiloCaricaLL = 0x02,
                     BatteryTypeId = 0x2001,
                     // tempi
-                    TempoT0Max = "",
-                    TempoT1Max = "##600",
-                    TempoT2Min = "##120",
-                    TempoT2Max = "##300",
+                    TempoT0Max = "###060",
+                    TempoT1Max = "=##600",
+                    TempoT2Min = "=##120",
+                    TempoT2Max = "=##300",
                     TempoT3Max = "",
-                    FattoreK = "##100",
+                    FattoreK = "=##100",
                     EqualTempoAttesa = "",
                     EqualTempoImpulso = "",
                     EqualTempoPausa = "",
-                    MantTempoAttesa = "##360",
-                    MantTempoMaxErogazione = "##15",
+                    MantTempoAttesa = "=##360",
+                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
-                    TensionePrecicloV0 = "##190",
-                    TensioneSogliaVs = "##240",
+                    TensionePrecicloV0 = "###190",
+                    TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "",
                     TensioneMassimaVMax = "",
                     TensioneLimiteVLim = "",
-                    MantTensIniziale = "##210",
-                    MantTensFinale = "##230",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
+                    TensRiconoscimentoMin = "=##150",
+                    TensRiconoscimentoMax = "=##240",
                     //Correnti
-                    CorrenteI0 = "C/20",
-                    CorrenteI1 = "C/10",
-                    CorrenteFinaleI2 = "C/24",
-                    CorrenteMassima = "C/5",
+                    CorrenteI0 = "#C/20",
+                    CorrenteI1 = "=C/10",
+                    CorrenteFinaleI2 = "=C/24",
+                    CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "",
-                    MantCorrenteImpulso = "C/50",
+                    MantCorrenteImpulso = "=C/50",
                     EqualCorrenteImpulso = "",
 
+                    MantAttivabile = "=##1",
+
                     EqualNumImpulsi = "",
+
+                    AbilitaSpyBatt = "~##0",
+
 
                 });
             #endregion "Ciclo IU"
@@ -252,36 +280,43 @@ namespace ChargerLogic
                     IdProfiloCaricaLL = 0x03,
                     BatteryTypeId = 0x1001,
                     // tempi
-                    TempoT0Max = "",
-                    TempoT1Max = "##600",
-                    TempoT2Min = "##0",
-                    TempoT2Max = "##300",
-                    TempoT3Max = "##240",
-                    FattoreK = "##100",
-                    EqualTempoAttesa = "##480",
-                    EqualTempoImpulso = "##5",
-                    EqualTempoPausa = "##25",
-                    MantTempoAttesa = "##360",
-                    MantTempoMaxErogazione = "##15",
+                    TempoT0Max = "###060",
+                    TempoT1Max = "=##600",
+                    TempoT2Min = "=##0",
+                    TempoT2Max = "=##300",
+                    TempoT3Max = "=##240",
+                    FattoreK = "=##100",
+                    EqualTempoAttesa = "=##480",
+                    EqualTempoImpulso = "=##5",
+                    EqualTempoPausa = "=##25",
+                    MantTempoAttesa = "=##360",
+                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
-                    TensionePrecicloV0 = "##190",
-                    TensioneSogliaVs = "##240",
+                    TensionePrecicloV0 = "###190",
+                    TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "",
                     TensioneMassimaVMax = "",
                     TensioneLimiteVLim = "",
-                    MantTensIniziale = "##210",
-                    MantTensFinale = "##230",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
+                    TensRiconoscimentoMin = "=##150",
+                    TensRiconoscimentoMax = "=##240",
                     //Correnti
-                    CorrenteI0 = "C/20",
-                    CorrenteI1 = "C/10",
-                    CorrenteFinaleI2 = "C/24",
-                    CorrenteMassima = "C/5",
+                    CorrenteI0 = "#C/20",
+                    CorrenteI1 = "=C/10",
+                    CorrenteFinaleI2 = "=C/24",
+                    CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "",
-                    MantCorrenteImpulso = "C/50",
-                    EqualCorrenteImpulso = "C/24",
+                    MantCorrenteImpulso = "=C/50",
+                    EqualCorrenteImpulso = "=C/24",
 
-                    EqualNumImpulsi = "##10",
+                    EqualNumImpulsi = "=##10",
+                    EqualAttivabile = "~##1",
+                    MantAttivabile = "=##1",
+
+                    AbilitaSpyBatt = "~##0",
+
 
                 });
             #endregion "Ciclo IUIa - Pb/Lead"
@@ -291,38 +326,45 @@ namespace ChargerLogic
                 new _mbProfiloTipoBatt()
                 {
                     IdProfiloCaricaLL = 0x03,
-                    BatteryTypeId = 0x1001,
+                    BatteryTypeId = 0x2001,
                     // tempi
-                    TempoT0Max = "",
-                    TempoT1Max = "##600",
-                    TempoT2Min = "##0",
-                    TempoT2Max = "##300",
-                    TempoT3Max = "##240",
-                    FattoreK = "##100",
+                    TempoT0Max = "###060",
+                    TempoT1Max = "=##600",
+                    TempoT2Min = "=##0",
+                    TempoT2Max = "=##300",
+                    TempoT3Max = "=##240",
+                    FattoreK = "=##100",
                     EqualTempoAttesa = "",
                     EqualTempoImpulso = "",
                     EqualTempoPausa = "",
-                    MantTempoAttesa = "##360",
-                    MantTempoMaxErogazione = "##15",
+                    MantTempoAttesa = "=##360",
+                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
-                    TensionePrecicloV0 = "##190",
-                    TensioneSogliaVs = "##240",
+                    TensionePrecicloV0 = "###190",
+                    TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "",
                     TensioneMassimaVMax = "",
                     TensioneLimiteVLim = "",
-                    MantTensIniziale = "##210",
-                    MantTensFinale = "##230",
+                    TensRiconoscimentoMin = "=##150",
+                    TensRiconoscimentoMax = "=##240",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
                     //Correnti
-                    CorrenteI0 = "C/20",
-                    CorrenteI1 = "C/10",
-                    CorrenteFinaleI2 = "C/24",
-                    CorrenteMassima = "C/5",
+                    CorrenteI0 = "=C/20",
+                    CorrenteI1 = "=C/10",
+                    CorrenteFinaleI2 = "=C/24",
+                    CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "",
-                    MantCorrenteImpulso = "C/50",
+                    MantCorrenteImpulso = "=C/50",
                     EqualCorrenteImpulso = "",
 
                     EqualNumImpulsi = "",
+                    EqualAttivabile = "",
+                    MantAttivabile = "",
+
+                    AbilitaSpyBatt = "~##0",
+
 
                 });
             #endregion "Ciclo IUIa - Pb/Lead"

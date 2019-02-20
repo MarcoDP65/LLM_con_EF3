@@ -80,6 +80,7 @@ namespace ChargerLogic
                 CaricaImpostazioniDefault();
 
                 ParametriProfilo = new CicloDiCarica();
+                ParametriProfilo.InizializzaDatiLocali();
 
                 InizializzaTipiBatteria();
 

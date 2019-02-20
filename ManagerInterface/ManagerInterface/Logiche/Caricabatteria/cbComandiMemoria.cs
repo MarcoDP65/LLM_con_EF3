@@ -166,7 +166,7 @@ namespace ChargerLogic
 
 
 
-        public List<llMemBreve> CaricaListaBrevi(UInt32 StartAddr, ushort NumRows = 0)
+        public List<llMemBreve> CaricaListaBrevi(UInt32 StartAddr, ushort NumRows = 0, uint IdCiclo = 0 )
         {
 
             bool _esito;
@@ -182,16 +182,42 @@ namespace ChargerLogic
 
                 UInt32 AddrCorrente;
 
-
-                for (byte contacicli = 0; contacicli < NumRows; contacicli++)
+                if (NumRows == 0xFFFF)
                 {
-                    AddrCorrente = FirstShort + (StartAddr + contacicli) * SizeShort;
-                    // public const byte SizeShort = 26;
-                    // public const UInt32 FirstShort = 0x005000;
+                    // manca il numero cicli. vado in scansione 
+                    byte contacicli = 0;
+                    bool trovatoUltimo = false;
 
-                    llMemBreve _tempBreve = CaricaDatiMemBreve(AddrCorrente);
-                    ListaBrevi.Add(_tempBreve);
+                    while ( !trovatoUltimo)
+                    {
+                        AddrCorrente = FirstShort + (StartAddr + contacicli) * SizeShort;
+                        llMemBreve _tempBreve = CaricaDatiMemBreve(AddrCorrente);
+                        if (_tempBreve.IdMemCiclo == IdCiclo )
+                        {
+                            ListaBrevi.Add(_tempBreve);
+                            contacicli += 1;
+                            trovatoUltimo = false;
+                        }
+                        else
+                        {
+                            trovatoUltimo = true;
+                        }
+                    }
 
+                    
+
+                }
+                else
+                {
+                    // Il numero è definito. leggo esattamente i brevi indicati.
+                    for (byte contacicli = 0; contacicli < NumRows; contacicli++)
+                    {
+                        AddrCorrente = FirstShort + (StartAddr + contacicli) * SizeShort;
+
+                        llMemBreve _tempBreve = CaricaDatiMemBreve(AddrCorrente);
+                        ListaBrevi.Add(_tempBreve);
+
+                    }
                 }
 
 

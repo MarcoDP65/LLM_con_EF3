@@ -109,16 +109,16 @@ namespace ChargerLogic
             TensioneRaccordoF1 = 0x12,               // V per Cella, 2 decimali  Pb 2.45
             TensioneMassimaCella = 0x13,             // V per Cella, 2 decimali  Pb 2.65
             TensioneLimiteCella = 0x14,              // V per Cella, 2 decimali  Pb 2.78
+            TensionePrecicloV0 = 0x15,               // V per Cella, 2 decimali  Pb 2.78
             TensioneMinimaRiconoscimento = 0x1A,     // V per Cella, 2 decimali  Pb 1.50
-            TensioneMassimaRiconoscimento = 0x1B,    // V per Cella, 2 decimali  Pb 2.40
+            TensioneMassimaRiconoscimento = 0x1B,    // V per Cella, 2 decimali  Pb 1.90
 
-            CorrenteCarica = 0x21,                   // A, 1 decimale
+            CorrenteCaricaI1 = 0x21,                 // A, 1 decimale
             CorrenteMassima = 0x22,                  // A, 1 decimale
             CorrenteF3 = 0x23,                       // A, 1 decimale
             CorrenteFinaleF2 = 0x24,                 // A, 1 decimale
             CorrenteRaccordo = 0x25,                 // A, 1 decimale
-            CorrentePreciclo = 0x26,                 // A, 1 decimale
-
+            CorrentePrecicloI0 = 0x26,               // A, 1 decimale
 
             CapacitaNominale = 0x31,
             CapacitaDaRicaricare = 0x32,             // Attualmente non in uso
@@ -126,7 +126,8 @@ namespace ChargerLogic
             FrequenzaSwitching = 0x40,               // Attualmente non in uso
 
             DivisoreK = 0x50,                        // da trasmettere SEMPRE prima dei parametri K 
-                                                     // --> ora è USA SPY-BATT se presente, 0xF0 == false, 0x0F == True --> USA SB
+                                                     // --> ora è USA SPY-BATT, sempre presente, 0x00 == USA SB/TOKEN, 
+                                                     //                                          0xF0 == false ( !=0 ) --> usa programmazione corrente
  
             ParametroKP = 0x51,                      // Attualmente non in uso
             ParametroKI = 0x52,                      // Attualmente non in uso
@@ -142,13 +143,14 @@ namespace ChargerLogic
             EqualFineCaricaDurataP =        0x62,   // Minuti
             EqualFineCaricaDurataI =        0x63,   // Minuti
             EqualFineCaricaCorrenteImp =    0x64,   // A, 1 decimale
-
+            EqualAttivo =                   0x6F,   // 000F TRUE / 00F0 False
 
             MantenimentoAttesa =            0x70,   // Minuti
             MantenimentoTensIniziale =      0x71,   // V per Cella, 2 decimali
             MantenimentoTensFinale =        0x72,   // V per Cella, 2 decimali
             MantenimentoTMaxErogazione =    0x73,   // Minuti
             MantenimentoCorrErogazione =    0x74,   // A, 1 decimale
+            MantenimentoAttivo =            0x7F,   // 000F TRUE / 00F0 False
 
             TipoProfilo = 0x80,
 

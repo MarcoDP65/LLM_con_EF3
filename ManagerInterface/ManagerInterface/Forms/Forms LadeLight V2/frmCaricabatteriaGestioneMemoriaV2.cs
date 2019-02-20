@@ -220,8 +220,8 @@ namespace PannelloCharger
                 //cmbPaProfilo.SelectedIndex = 0;
                 txtPaCapacita.Text = "";
                 txtPaTempoT2Max.Text = "";
-                txtPaSoglia.Text = "";
-                txtPaCorrenteMax.Text = "";
+                txtPaSogliaVs.Text = "";
+                txtPaCorrenteI1.Text = "";
                 txtPaTensione.Text = "";
 
                 //cmbPaCondStop.SelectedIndex = 0;
@@ -248,7 +248,7 @@ namespace PannelloCharger
                     txtPaCoeffK.Text = _cb.ProgrammaAttivo.PercTempoFase2.ToString();
                     txtPaTempoT3Max.Text = _cb.ProgrammaAttivo.DurataMaxFase3.ToString();
 
-                    txtPaSoglia.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VSoglia);
+                    txtPaSogliaVs.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VSoglia);
                     txtPaRaccordoF1.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VRaccordoF1);
                     txtPaVMax.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VMax);
                     txtPaVLimite.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VCellLimite);
@@ -259,7 +259,7 @@ namespace PannelloCharger
                     txtPaCorrenteF3.Text = FunzioniMR.StringaCorrente((short)_cb.ProgrammaAttivo.CorrenteFase3);
 
 
-                    txtPaCorrenteMax.Text = FunzioniMR.StringaCorrente((short)_cb.ProgrammaAttivo.CorrenteMax);
+                    txtPaCorrenteI1.Text = FunzioniMR.StringaCorrente((short)_cb.ProgrammaAttivo.CorrenteMax);
 
                     if (_cb.ProgrammaAttivo.EqualNumImpulsi >0 || _cb.ProgrammaAttivo.EqualTempoAttesa>0)
                     {
@@ -501,7 +501,7 @@ namespace PannelloCharger
             }
         }
 
-        public List<llMemBreve> CaricaListaBrevi(UInt32 StartAddr, ushort NumRows = 0)
+        public List<llMemBreve> CaricaListaBrevi(UInt32 StartAddr, ushort NumRows = 0, uint IdCiclo = 0)
         {
 
             bool _esito;
@@ -510,7 +510,7 @@ namespace PannelloCharger
             {
                 ListaBrevi = new List<llMemBreve>();
 
-                ListaBrevi = _cb.CaricaListaBrevi(StartAddr, NumRows);
+                ListaBrevi = _cb.CaricaListaBrevi(StartAddr, NumRows,IdCiclo);
 
                 //InizializzaListaCariche();
                 return ListaBrevi;

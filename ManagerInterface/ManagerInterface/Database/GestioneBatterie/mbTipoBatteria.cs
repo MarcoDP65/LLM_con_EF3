@@ -41,6 +41,10 @@ namespace MoriData
 
         public byte DivisoreCelle { get; set; }               // se 0 cella singola
 
+        public byte OldBatteryTypeId { get; set; }
+
+        public ushort IdProfiloDefault { get; set; }          // in V/100
+
         public DateTime CreationDate { get; set; }
         public DateTime RevisionDate { get; set; }
         public string LastUser { get; set; }
@@ -74,6 +78,18 @@ namespace MoriData
             {
 
                 _mbTb.BatteryTypeId = value;
+                _datiSalvati = false;
+
+            }
+        }
+
+        public byte OldBatteryTypeId
+        {
+            get { return _mbTb.OldBatteryTypeId; }
+            set
+            {
+
+                _mbTb.OldBatteryTypeId = value;
                 _datiSalvati = false;
 
             }
@@ -202,6 +218,12 @@ namespace MoriData
         {
             get { return _mbTb.DivisoreCelle; }
             set { _mbTb.DivisoreCelle = value; _datiSalvati = false; }
+        }
+
+        public ushort IdProfiloDefault
+        {
+            get { return _mbTb.IdProfiloDefault; }
+            set { _mbTb.IdProfiloDefault = value; _datiSalvati = false; }
         }
 
         #endregion

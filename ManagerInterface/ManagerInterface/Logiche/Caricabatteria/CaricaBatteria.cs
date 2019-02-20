@@ -66,7 +66,7 @@ namespace ChargerLogic
 
         public const byte SizeCharge = 36;
         public const byte SizeShort = 30;
-        public const UInt32 FirstShort = 0x005000;
+        public const UInt32 FirstShort = 0x006000;   // dal 08/02/2019 spostato  da 0x5000 a 0x6000
         public const UInt32 MaxByteShort = 0x1AEFFF;
 
 
@@ -354,9 +354,10 @@ namespace ChargerLogic
             {
                 DateTime _ora = DateTime.Now;
                 TimeSpan _durata = _ora.Subtract(inizio);
+                int _moltiplicatore = 1;  // Solo per debug, per estendere il tempo di attesa
                 double _decimiEffettivi = _durata.TotalSeconds * 10;
 
-                if (_decimiEffettivi > (DecimiTimeOut * 5))
+                if (_decimiEffettivi > (DecimiTimeOut * _moltiplicatore))
                 {
                     return true;
                 }
@@ -1657,9 +1658,17 @@ namespace ChargerLogic
 
 
 
+                // Dati ripresi tal quale dall'originale
 
                 ImmagineMemoria.ProduttoreApparato = ParametriApparato.llParApp.ProduttoreApparato;
                 ImmagineMemoria.NomeApparato = ParametriApparato.llParApp.NomeApparato;
+                ImmagineMemoria.MaxRecordBrevi = ParametriApparato.llParApp.MaxRecordBrevi;
+                ImmagineMemoria.MaxRecordCarica = ParametriApparato.llParApp.MaxRecordCarica;
+                ImmagineMemoria.SizeExternMemory = ParametriApparato.llParApp.SizeExternMemory;
+                ImmagineMemoria.MaxProgrammazioni = ParametriApparato.llParApp.MaxProgrammazioni;
+                ImmagineMemoria.ModelloMemoria = ParametriApparato.llParApp.ModelloMemoria;
+
+                
                 ImmagineMemoria.SerialeApparato = ParametriApparato.llParApp.SerialeApparato;
                 ImmagineMemoria.TipoApparato = ParametriApparato.llParApp.TipoApparato;
                 ImmagineMemoria.DataSetupApparato = ParametriApparato.llParApp.DataSetupApparato;
@@ -1680,8 +1689,6 @@ namespace ChargerLogic
                 ImmagineMemoria.VMax = ParametriApparato.llParApp.VMax;
                 ImmagineMemoria.Amax = ParametriApparato.llParApp.Amax;
                 ImmagineMemoria.PresenzaRabboccatore = ParametriApparato.llParApp.PresenzaRabboccatore;
-
-
 
 
 
@@ -1717,7 +1724,7 @@ namespace ChargerLogic
                 MessaggioLadeLight.MessaggioProgrammazione NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione();
                 SerialMessage.EsitoRisposta EsitoMsg;
 
-                // Prima vuoto il blocco
+                // Prima vuoto il blocco  --> inserire la gestione dell'intera pagina
                 _esito = CancellaBlocco4K(0x2000);
 
                 NuovoPrg.TipoProgrammazione = 0;
@@ -2014,7 +2021,8 @@ namespace ChargerLogic
                                 break;
                             case (byte)SerialMessage.TipoComando.EVENT_MEM_CODE:
                                 Log.Debug("MEMORY Event");
-                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+//                                _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _datiRicevuti = SerialMessage.TipoRisposta.Ack;
                                 _inviaRisposta = false;
                                 break;
                             default:
