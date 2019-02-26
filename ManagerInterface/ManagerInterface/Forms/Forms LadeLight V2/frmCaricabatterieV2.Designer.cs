@@ -783,10 +783,12 @@
             // lblPaAttivaMant
             // 
             this.lblPaAttivaMant.AutoSize = true;
+            this.lblPaAttivaMant.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaAttivaMant.ForeColor = System.Drawing.Color.Blue;
             this.lblPaAttivaMant.Location = new System.Drawing.Point(32, 330);
             this.lblPaAttivaMant.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPaAttivaMant.Name = "lblPaAttivaMant";
-            this.lblPaAttivaMant.Size = new System.Drawing.Size(74, 13);
+            this.lblPaAttivaMant.Size = new System.Drawing.Size(86, 13);
             this.lblPaAttivaMant.TabIndex = 136;
             this.lblPaAttivaMant.Text = "Mantenimento";
             // 

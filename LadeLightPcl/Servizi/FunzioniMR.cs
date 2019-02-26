@@ -2440,6 +2440,11 @@ namespace Utility
                             esito = 4;
                             break;
                         }
+                    case "~":
+                        {
+                            esito = 5;
+                            break;
+                        }
 
                     default:
                         {

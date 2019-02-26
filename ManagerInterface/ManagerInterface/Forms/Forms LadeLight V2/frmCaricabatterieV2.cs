@@ -450,6 +450,9 @@ namespace PannelloCharger
 
                 // Nome
                 string _tempStr = txtPaNomeSetup.Text.Trim();
+                // Cassone
+                ModCicloCorrente.ValoriCiclo.TipoCassone = FunzioniMR.ConvertiUshort(txtPaCassone.Text, 1, 0);
+
 
                 // Generale
                 ModCicloCorrente.NomeProfilo = _tempStr;
@@ -3297,8 +3300,8 @@ namespace PannelloCharger
                     {
                         txtPaNomeSetup.Text = "";
                         txtPaIdSetup.Text = "";
-
                     }
+
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaV0, 0, 0, 1);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaPrefaseI0, 0, 0, 2);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaDurataMaxT0, 0, 0, 3);
@@ -3314,6 +3317,7 @@ namespace PannelloCharger
                     {
                         txtPaNomeSetup.Text = ModCicloCorrente.NomeProfilo;
                         txtPaIdSetup.Text = ModCicloCorrente.IdProgramma.ToString();
+                        txtPaCassone.Text = ModCicloCorrente.ValoriCiclo.TipoCassone.ToString();
                         // Allineo il tipo batteria
 
                         mbTipoBatteria TempBatt = (from tb in (List<mbTipoBatteria>)cmbPaTipoBatteria.DataSource
@@ -3379,7 +3383,7 @@ namespace PannelloCharger
 
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaEqual, ref lblPaAttivaEqual, ModCicloCorrente.ValoriCiclo.EqualAttivabile, ModCicloCorrente.ParametriAttivi.EqualAttivabile, 3);
                     txtPaEqualAttesa.Text = "";
-                    if (chkPaAttivaEqual.Checked)
+                    if (true) // (chkPaAttivaEqual.Checked)
                     {
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualAttesa, ModCicloCorrente.ValoriCiclo.EqualTempoAttesa, ModCicloCorrente.ParametriAttivi.EqualTempoAttesa, 3);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualNumPulse, ModCicloCorrente.ValoriCiclo.EqualNumImpulsi, ModCicloCorrente.ParametriAttivi.EqualNumImpulsi, 3);
@@ -3389,8 +3393,8 @@ namespace PannelloCharger
                     }
 
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaMant, ref lblPaAttivaMant, ModCicloCorrente.ValoriCiclo.MantAttivabile, ModCicloCorrente.ParametriAttivi.MantAttivabile, 3);
-                    txtPaEqualAttesa.Text = "";
-                    if (chkPaAttivaEqual.Checked)
+                   
+                    if (true) // (chkPaAttivaMant.Checked)
                     {
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantAttesa, ModCicloCorrente.ValoriCiclo.MantTempoAttesa, ModCicloCorrente.ParametriAttivi.MantTempoAttesa, 3);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmin, ModCicloCorrente.ValoriCiclo.MantTensIniziale, ModCicloCorrente.ParametriAttivi.MantTensIniziale, 1);

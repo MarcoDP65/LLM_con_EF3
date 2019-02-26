@@ -95,11 +95,6 @@ namespace ChargerLogic
                     TempoT2Max = "=##210",
                     TempoT3Max = "",
                     FattoreK = "=##060",
-                    EqualTempoAttesa = "=##480",
-                    EqualTempoImpulso = "=##5",
-                    EqualTempoPausa = "=##25",
-                    MantTempoAttesa = "=##360",
-                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
                     TensionePrecicloV0 = "###190",
                     TensioneSogliaVs = "=##240",
@@ -108,8 +103,7 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "=##278",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    MantTensIniziale = "=##210",
-                    MantTensFinale = "=##230",
+
                     //Correnti
                     CorrenteI0 = "#C/24",
                     CorrenteI1 = "=C/12",
@@ -117,14 +111,22 @@ namespace ChargerLogic
                     CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "=C/13",
-                    MantCorrenteImpulso = "=C/24",
+                   
+                    EqualAttivabile = "~##1",
+                    EqualNumImpulsi = "=##12",
+                    EqualTempoAttesa = "=##480",
+                    EqualTempoImpulso = "=##5",
+                    EqualTempoPausa = "=##25",
                     EqualCorrenteImpulso = "=C/24",
 
-                    EqualNumImpulsi = "=##12",
-                    EqualAttivabile = "~##1",
-                    MantAttivabile = "=##1",
+                    MantAttivabile = "~##1",
+                    MantTempoAttesa = "=##360",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
+                    MantTempoMaxErogazione = "=##15",
+                    MantCorrenteImpulso = "=C/24",
 
-                    AbilitaSpyBatt ="~##0",
+                    AbilitaSpyBatt = "~##1",
 
                 } );
             #endregion "Ciclo IWa 13"
@@ -142,11 +144,6 @@ namespace ChargerLogic
                     TempoT2Max = "=##210",
                     TempoT3Max = "",
                     FattoreK = "=##60",
-                    EqualTempoAttesa = "=##480",
-                    EqualTempoImpulso = "=##5",
-                    EqualTempoPausa = "=##25",
-                    MantTempoAttesa = "##360",
-                    MantTempoMaxErogazione = "=##15",
                     // Tensioni
                     TensionePrecicloV0 = "###190",
                     TensioneSogliaVs = "=##240",
@@ -155,24 +152,30 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "=##278",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    MantTensIniziale = "=##210",
-                    MantTensFinale = "=##230",
-                    //Correnti
+                     //Correnti
                     CorrenteI0 = "#C/20",
                     CorrenteI1 = "=C/10",
                     CorrenteFinaleI2 = "=C/24",
                     CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "=C/13",
-                    MantCorrenteImpulso = "=C/24",
+
+                    EqualAttivabile = "~##1",
+                    EqualNumImpulsi = "=##12",
+                    EqualTempoAttesa = "=##480",
+                    EqualTempoImpulso = "=##5",
+                    EqualTempoPausa = "=##25",
                     EqualCorrenteImpulso = "=C/24",
 
-                    EqualNumImpulsi = "=##12",
-                    EqualAttivabile = "~##1",
-
-                    MantAttivabile = "=##1",
+                    MantAttivabile = "~##1",
+                    MantTempoAttesa = "=##360",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
+                    MantTempoMaxErogazione = "=##15",
+                    MantCorrenteImpulso = "=C/24",
 
                     AbilitaSpyBatt = "~##1",
+
 
                 });
             #endregion "Ciclo IWa 11"
@@ -190,11 +193,7 @@ namespace ChargerLogic
                     TempoT2Max = "=##210",
                     TempoT3Max = "",
                     FattoreK = "=##120",
-                    EqualTempoAttesa = "=##480",
-                    EqualTempoImpulso = "=##5",
-                    EqualTempoPausa = "=##25",
-                    MantTempoAttesa = "=##360",
-                    MantTempoMaxErogazione = "=##15",
+
                     // Tensioni
                     TensionePrecicloV0 = "###190",
                     TensioneSogliaVs = "=##240",
@@ -203,8 +202,7 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "=##278",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    MantTensIniziale = "=##210",
-                    MantTensFinale = "=##230",
+
                     //Correnti
                     CorrenteI0 = "#C/12",
                     CorrenteI1 = "=C/6",
@@ -212,15 +210,22 @@ namespace ChargerLogic
                     CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "=C/13",
-                    MantCorrenteImpulso = "=C/24",
+
+                    EqualAttivabile = "~##1",
+                    EqualNumImpulsi = "=##12",
+                    EqualTempoAttesa = "=##480",
+                    EqualTempoImpulso = "=##5",
+                    EqualTempoPausa = "=##25",
                     EqualCorrenteImpulso = "=C/24",
 
-                    EqualNumImpulsi = "=##12",
-                    EqualAttivabile = "~##1",
+                    MantAttivabile = "~##1",
+                    MantTempoAttesa = "=##360",
+                    MantTensIniziale = "=##210",
+                    MantTensFinale = "=##230",
+                    MantTempoMaxErogazione = "=##15",
+                    MantCorrenteImpulso = "=C/24",
 
-                    MantAttivabile = "=##1",
-
-                    AbilitaSpyBatt = "~##0",
+                    AbilitaSpyBatt = "~##1",
 
                 });
             #endregion "Ciclo IWa 8"

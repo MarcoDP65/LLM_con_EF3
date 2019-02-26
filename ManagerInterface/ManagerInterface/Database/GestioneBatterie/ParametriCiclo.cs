@@ -31,7 +31,7 @@ namespace MoriData
         public byte IdProfiloCaricaLL { get; set; }
         public ushort BatteryTypeId { get; set; }
         public byte Attivo { get; set; }
-
+        public ushort TipoCassone { get; set; }
 
         public ushort AttesaBMS { get; set; }
         public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
@@ -108,7 +108,7 @@ namespace MoriData
             IdProfiloCaricaLL = 0;
             BatteryTypeId = 0;
             Attivo = 0;
-
+            TipoCassone = 0;
 
             AttesaBMS = 0;
             AttivaEqual = 0;        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
