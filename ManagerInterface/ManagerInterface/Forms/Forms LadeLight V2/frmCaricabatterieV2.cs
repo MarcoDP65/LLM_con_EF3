@@ -206,6 +206,9 @@ namespace PannelloCharger
                     */
 
                     _cbCollegato = true;
+
+                    CaricaAreaContatori();
+
                     _apparatoPresente = _esito;
                     return true;
 
@@ -781,6 +784,11 @@ namespace PannelloCharger
 
                 // Tab Cicli
                 spcCicliListeDati.Width = tabCb04.Width - 20;
+                spcCicliListeDati.Height = tabCb04.Height - 140;
+
+                grbCicli.Top = tabCb04.Height - 110;
+                grbCicli.Width = tabCb04.Width - 20;
+
                 //flvCicliListaCariche.Width = tabCb04.Width - 20;
 
             }
@@ -2985,6 +2993,8 @@ namespace PannelloCharger
                 ushort _NumByte;
                 bool _esito;
 
+                LeggiMemoriaCicli();
+                /*
                 if (uint.TryParse(txtCicliAddrPrmo.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true)
                 {
                     _StartAddr = 0x1B3000;
@@ -3011,7 +3021,7 @@ namespace PannelloCharger
                 }
                 txtCicliNumRecord.Text = _NumByte.ToString();
                 CaricaListaCariche(_StartAddr, _NumByte);
-
+                */
 
             }
             catch (Exception Ex)
@@ -3019,6 +3029,57 @@ namespace PannelloCharger
                 Log.Error("btnCicliCaricaLista_Click: " + Ex.Message);
             }
         }
+
+        public bool LeggiMemoriaCicli(bool LeggiBrevi = false)
+        {
+            try
+            {
+                uint _StartAddr;
+                ushort _NumByte;
+                bool _esito;
+
+                if (uint.TryParse(txtCicliAddrPrmo.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true)
+                {
+                    _StartAddr = 0x1B3000;
+                }
+
+                txtCicliAddrPrmo.Text = _StartAddr.ToString("X6");
+
+                if (txtCicliNumRecord.Text == "-1")
+                {
+                    // tutti i record
+                    _NumByte = 0;
+                }
+                else
+                {
+                    if (ushort.TryParse(txtCicliNumRecord.Text, out _NumByte) != true)
+                    {
+                        _NumByte = 0;
+                    }
+                    else
+                    {
+                        if (_NumByte < 1) _NumByte = 0;
+                    }
+
+                }
+
+                txtCicliNumRecord.Text = _NumByte.ToString();
+                CaricaListaCariche(_StartAddr, _NumByte);
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnCicliCaricaLista_Click: " + Ex.Message);
+                return false;
+            }
+        }
+
+
+
+
+
+
 
         private void frmCaricabatterie_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -3436,6 +3497,118 @@ namespace PannelloCharger
             {
 
             }
+        }
+
+        private void flvCicliListaCariche_FormatRow(object sender, FormatRowEventArgs e)
+        {
+            //coloro la riga in base al Tipo Evento
+            llMemoriaCicli _testataCiclo = (llMemoriaCicli)e.Model;
+            switch (_testataCiclo.CondizioneStop)
+            {
+                case 0xFF:  // "Registrazione non completata";
+                    e.Item.BackColor = Color.Red;
+                    break;
+                case 0x01:  //"Strappo";
+                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.LightYellow:Color.LightGoldenrodYellow);
+                    break;
+                case 0x04:  //"Assenza rete";
+                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.AliceBlue : Color.LightCyan);
+                    break;
+                case 0x0B:  //"?";
+                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.MistyRose : Color.LightPink);
+                    break;
+                default:    // "Evento Anomalo"
+                    e.Item.BackColor = Color.LightYellow;
+                    break;
+            }
+
+            /*
+            if (_testataCiclo.NumEventiBrevi == _testataCiclo.NumEventiBreviCaricati)
+            {
+                e.Item.CheckState = CheckState.Indeterminate;
+            }
+            */
+
+        }
+
+        private void rbtMemParametriInit_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtMemDatiCliente_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtMemDatiCliente_Click(object sender, EventArgs e)
+        {
+            if (rbtMemDatiCliente.Checked)
+            {
+                txtMemCFStartAdd.Text = "001000";
+                txtMemCFBlocchi.Text = "1";
+            }
+        }
+
+        private void rbtMemProgrammazioni_Click(object sender, EventArgs e)
+        {
+            if (rbtMemProgrammazioni.Checked)
+            {
+                txtMemCFStartAdd.Text = "002000";
+                txtMemCFBlocchi.Text = "1";
+            }
+        }
+
+        private void rbtMemContatori_Click(object sender, EventArgs e)
+        {
+            if (rbtMemContatori.Checked)
+            {
+                txtMemCFStartAdd.Text = "003000";
+                txtMemCFBlocchi.Text = "1";
+            }
+        }
+
+        private void rbtMemBrevi_Click(object sender, EventArgs e)
+        {
+            if (rbtMemBrevi.Checked)
+            {
+                txtMemCFStartAdd.Text = "006000";
+                txtMemCFBlocchi.Text = "429";
+            }
+        }
+
+        private void rbtMemLunghi_Click(object sender, EventArgs e)
+        {
+            if (rbtMemLunghi.Checked)
+            {
+                txtMemCFStartAdd.Text = "1B3000";
+                txtMemCFBlocchi.Text = "4";
+            }
+        }
+
+        private void flvCicliListaCariche_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            try
+            {
+                FastObjectListView _lista = (FastObjectListView)sender;
+                llMemoriaCicli CicloSel;
+
+                if (_lista.SelectedObject != null)
+                {
+                    this.Cursor = Cursors.WaitCursor;
+                    CicloCorrente = (llMemoriaCicli)_lista.SelectedObject;
+                    CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi, CicloCorrente.IdMemoriaLunga);
+                    InizializzaListaBrevi();
+                    this.Cursor = Cursors.Arrow;
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
+            }
+
         }
     }
 

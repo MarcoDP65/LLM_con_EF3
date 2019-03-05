@@ -313,7 +313,34 @@
             this.txtInitManufactured = new System.Windows.Forms.TextBox();
             this.lblInitManufactured = new System.Windows.Forms.Label();
             this.tabMemRead = new System.Windows.Forms.TabPage();
+            this.grbMemAzzeraLogger = new System.Windows.Forms.GroupBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.btnMemClearLogExec = new System.Windows.Forms.Button();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.grbMemCaricaLogger = new System.Windows.Forms.GroupBox();
+            this.btnMemRewriteExec = new System.Windows.Forms.Button();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.grbMemSalvaLogger = new System.Windows.Forms.GroupBox();
+            this.btnMemSaveExec = new System.Windows.Forms.Button();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.grbMemCancFisica = new System.Windows.Forms.GroupBox();
+            this.rbtMemLunghi = new System.Windows.Forms.RadioButton();
+            this.rbtMemBrevi = new System.Windows.Forms.RadioButton();
+            this.rbtMemProgrammazioni = new System.Windows.Forms.RadioButton();
+            this.rbtMemContatori = new System.Windows.Forms.RadioButton();
             this.btnMemResetBoard = new System.Windows.Forms.Button();
             this.rbtMemDatiCliente = new System.Windows.Forms.RadioButton();
             this.rbtMemParametriInit = new System.Windows.Forms.RadioButton();
@@ -663,6 +690,9 @@
             this.grbInitCalibrazione.SuspendLayout();
             this.grbInitDatiBase.SuspendLayout();
             this.tabMemRead.SuspendLayout();
+            this.grbMemAzzeraLogger.SuspendLayout();
+            this.grbMemCaricaLogger.SuspendLayout();
+            this.grbMemSalvaLogger.SuspendLayout();
             this.grbMemCancFisica.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.grbMemScrittura.SuspendLayout();
@@ -2737,7 +2767,7 @@
             // 
             // btnCaricaMemoria
             // 
-            this.btnCaricaMemoria.Location = new System.Drawing.Point(1083, 45);
+            this.btnCaricaMemoria.Location = new System.Drawing.Point(1083, 39);
             this.btnCaricaMemoria.Margin = new System.Windows.Forms.Padding(2);
             this.btnCaricaMemoria.Name = "btnCaricaMemoria";
             this.btnCaricaMemoria.Size = new System.Drawing.Size(146, 24);
@@ -2787,7 +2817,9 @@
             this.flvCicliListaCariche.UseCompatibleStateImageBehavior = false;
             this.flvCicliListaCariche.View = System.Windows.Forms.View.Details;
             this.flvCicliListaCariche.VirtualMode = true;
+            this.flvCicliListaCariche.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.flvCicliListaCariche_FormatRow);
             this.flvCicliListaCariche.SelectedIndexChanged += new System.EventHandler(this.flvCicliListaCariche_SelectedIndexChanged);
+            this.flvCicliListaCariche.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.flvCicliListaCariche_MouseDoubleClick);
             // 
             // flvCicliListaBrevi
             // 
@@ -2816,7 +2848,7 @@
             this.grbCicli.Controls.Add(this.btnCicliVuotaLista);
             this.grbCicli.Location = new System.Drawing.Point(15, 389);
             this.grbCicli.Name = "grbCicli";
-            this.grbCicli.Size = new System.Drawing.Size(1259, 136);
+            this.grbCicli.Size = new System.Drawing.Size(1259, 99);
             this.grbCicli.TabIndex = 1;
             this.grbCicli.TabStop = false;
             this.grbCicli.Text = "Lettura Cicli";
@@ -2824,7 +2856,7 @@
             // btnCicliMostraBrevi
             // 
             this.btnCicliMostraBrevi.Enabled = false;
-            this.btnCicliMostraBrevi.Location = new System.Drawing.Point(513, 32);
+            this.btnCicliMostraBrevi.Location = new System.Drawing.Point(516, 17);
             this.btnCicliMostraBrevi.Name = "btnCicliMostraBrevi";
             this.btnCicliMostraBrevi.Size = new System.Drawing.Size(102, 27);
             this.btnCicliMostraBrevi.TabIndex = 8;
@@ -2834,7 +2866,7 @@
             // btnCicliCaricaBrevi
             // 
             this.btnCicliCaricaBrevi.Enabled = false;
-            this.btnCicliCaricaBrevi.Location = new System.Drawing.Point(405, 32);
+            this.btnCicliCaricaBrevi.Location = new System.Drawing.Point(408, 17);
             this.btnCicliCaricaBrevi.Name = "btnCicliCaricaBrevi";
             this.btnCicliCaricaBrevi.Size = new System.Drawing.Size(102, 27);
             this.btnCicliCaricaBrevi.TabIndex = 7;
@@ -2845,7 +2877,7 @@
             // chkCicliCaricaBrevi
             // 
             this.chkCicliCaricaBrevi.AutoSize = true;
-            this.chkCicliCaricaBrevi.Location = new System.Drawing.Point(273, 85);
+            this.chkCicliCaricaBrevi.Location = new System.Drawing.Point(276, 71);
             this.chkCicliCaricaBrevi.Name = "chkCicliCaricaBrevi";
             this.chkCicliCaricaBrevi.Size = new System.Drawing.Size(50, 17);
             this.chkCicliCaricaBrevi.TabIndex = 6;
@@ -2855,7 +2887,7 @@
             // label223
             // 
             this.label223.AutoSize = true;
-            this.label223.Location = new System.Drawing.Point(206, 67);
+            this.label223.Location = new System.Drawing.Point(209, 52);
             this.label223.Name = "label223";
             this.label223.Size = new System.Drawing.Size(50, 13);
             this.label223.TabIndex = 5;
@@ -2863,7 +2895,7 @@
             // 
             // txtCicliNumRecord
             // 
-            this.txtCicliNumRecord.Location = new System.Drawing.Point(206, 83);
+            this.txtCicliNumRecord.Location = new System.Drawing.Point(209, 68);
             this.txtCicliNumRecord.Name = "txtCicliNumRecord";
             this.txtCicliNumRecord.Size = new System.Drawing.Size(61, 20);
             this.txtCicliNumRecord.TabIndex = 4;
@@ -2873,7 +2905,7 @@
             // label209
             // 
             this.label209.AutoSize = true;
-            this.label209.Location = new System.Drawing.Point(111, 67);
+            this.label209.Location = new System.Drawing.Point(114, 52);
             this.label209.Name = "label209";
             this.label209.Size = new System.Drawing.Size(89, 13);
             this.label209.TabIndex = 3;
@@ -2881,7 +2913,7 @@
             // 
             // txtCicliAddrPrmo
             // 
-            this.txtCicliAddrPrmo.Location = new System.Drawing.Point(114, 83);
+            this.txtCicliAddrPrmo.Location = new System.Drawing.Point(117, 68);
             this.txtCicliAddrPrmo.Name = "txtCicliAddrPrmo";
             this.txtCicliAddrPrmo.Size = new System.Drawing.Size(86, 20);
             this.txtCicliAddrPrmo.TabIndex = 2;
@@ -2890,7 +2922,7 @@
             // 
             // btnCicliCaricaLista
             // 
-            this.btnCicliCaricaLista.Location = new System.Drawing.Point(114, 32);
+            this.btnCicliCaricaLista.Location = new System.Drawing.Point(117, 17);
             this.btnCicliCaricaLista.Name = "btnCicliCaricaLista";
             this.btnCicliCaricaLista.Size = new System.Drawing.Size(209, 27);
             this.btnCicliCaricaLista.TabIndex = 1;
@@ -2900,7 +2932,7 @@
             // 
             // btnCicliVuotaLista
             // 
-            this.btnCicliVuotaLista.Location = new System.Drawing.Point(6, 32);
+            this.btnCicliVuotaLista.Location = new System.Drawing.Point(9, 17);
             this.btnCicliVuotaLista.Name = "btnCicliVuotaLista";
             this.btnCicliVuotaLista.Size = new System.Drawing.Size(102, 27);
             this.btnCicliVuotaLista.TabIndex = 0;
@@ -4036,6 +4068,9 @@
             // tabMemRead
             // 
             this.tabMemRead.BackColor = System.Drawing.Color.LightYellow;
+            this.tabMemRead.Controls.Add(this.grbMemAzzeraLogger);
+            this.tabMemRead.Controls.Add(this.grbMemCaricaLogger);
+            this.tabMemRead.Controls.Add(this.grbMemSalvaLogger);
             this.tabMemRead.Controls.Add(this.grbMemCancFisica);
             this.tabMemRead.Controls.Add(this.groupBox9);
             this.tabMemRead.Controls.Add(this.txtMemDataGrid);
@@ -4050,9 +4085,281 @@
             this.tabMemRead.TabIndex = 10;
             this.tabMemRead.Text = "Accesso Memoria";
             // 
+            // grbMemAzzeraLogger
+            // 
+            this.grbMemAzzeraLogger.BackColor = System.Drawing.Color.White;
+            this.grbMemAzzeraLogger.Controls.Add(this.checkBox10);
+            this.grbMemAzzeraLogger.Controls.Add(this.btnMemClearLogExec);
+            this.grbMemAzzeraLogger.Controls.Add(this.checkBox7);
+            this.grbMemAzzeraLogger.Controls.Add(this.checkBox8);
+            this.grbMemAzzeraLogger.Controls.Add(this.checkBox9);
+            this.grbMemAzzeraLogger.Controls.Add(this.label41);
+            this.grbMemAzzeraLogger.Location = new System.Drawing.Point(993, 350);
+            this.grbMemAzzeraLogger.Name = "grbMemAzzeraLogger";
+            this.grbMemAzzeraLogger.Size = new System.Drawing.Size(258, 151);
+            this.grbMemAzzeraLogger.TabIndex = 54;
+            this.grbMemAzzeraLogger.TabStop = false;
+            this.grbMemAzzeraLogger.Text = "Azzera Memoria Cicli";
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Checked = true;
+            this.checkBox10.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox10.ForeColor = System.Drawing.Color.Red;
+            this.checkBox10.Location = new System.Drawing.Point(23, 106);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(66, 19);
+            this.checkBox10.TabIndex = 38;
+            this.checkBox10.Text = "Reboot";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
+            // btnMemClearLogExec
+            // 
+            this.btnMemClearLogExec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemClearLogExec.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemClearLogExec.Location = new System.Drawing.Point(141, 102);
+            this.btnMemClearLogExec.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMemClearLogExec.Name = "btnMemClearLogExec";
+            this.btnMemClearLogExec.Size = new System.Drawing.Size(88, 34);
+            this.btnMemClearLogExec.TabIndex = 37;
+            this.btnMemClearLogExec.Text = "Esegui";
+            this.btnMemClearLogExec.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Checked = true;
+            this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox7.Location = new System.Drawing.Point(23, 81);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(100, 19);
+            this.checkBox7.TabIndex = 36;
+            this.checkBox7.Text = "Brevi / Lunghi";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Checked = true;
+            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox8.Location = new System.Drawing.Point(23, 56);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(75, 19);
+            this.checkBox8.TabIndex = 35;
+            this.checkBox8.Text = "Contatori";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Checked = true;
+            this.checkBox9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox9.Location = new System.Drawing.Point(23, 31);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(118, 19);
+            this.checkBox9.TabIndex = 34;
+            this.checkBox9.Text = "Programmazioni";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label41.Location = new System.Drawing.Point(-100, 34);
+            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(82, 15);
+            this.label41.TabIndex = 33;
+            this.label41.Text = "File Firmware";
+            // 
+            // grbMemCaricaLogger
+            // 
+            this.grbMemCaricaLogger.BackColor = System.Drawing.Color.White;
+            this.grbMemCaricaLogger.Controls.Add(this.btnMemRewriteExec);
+            this.grbMemCaricaLogger.Controls.Add(this.checkBox4);
+            this.grbMemCaricaLogger.Controls.Add(this.checkBox5);
+            this.grbMemCaricaLogger.Controls.Add(this.checkBox6);
+            this.grbMemCaricaLogger.Controls.Add(this.label40);
+            this.grbMemCaricaLogger.Controls.Add(this.button5);
+            this.grbMemCaricaLogger.Controls.Add(this.textBox3);
+            this.grbMemCaricaLogger.Location = new System.Drawing.Point(993, 181);
+            this.grbMemCaricaLogger.Name = "grbMemCaricaLogger";
+            this.grbMemCaricaLogger.Size = new System.Drawing.Size(258, 151);
+            this.grbMemCaricaLogger.TabIndex = 53;
+            this.grbMemCaricaLogger.TabStop = false;
+            this.grbMemCaricaLogger.Text = "Sovrascrivi Memoria Cicli";
+            // 
+            // btnMemRewriteExec
+            // 
+            this.btnMemRewriteExec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemRewriteExec.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemRewriteExec.Location = new System.Drawing.Point(141, 102);
+            this.btnMemRewriteExec.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMemRewriteExec.Name = "btnMemRewriteExec";
+            this.btnMemRewriteExec.Size = new System.Drawing.Size(88, 34);
+            this.btnMemRewriteExec.TabIndex = 37;
+            this.btnMemRewriteExec.Text = "Esegui";
+            this.btnMemRewriteExec.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(23, 111);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(100, 19);
+            this.checkBox4.TabIndex = 36;
+            this.checkBox4.Text = "Brevi / Lunghi";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(23, 86);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(75, 19);
+            this.checkBox5.TabIndex = 35;
+            this.checkBox5.Text = "Contatori";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(23, 61);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(118, 19);
+            this.checkBox6.TabIndex = 34;
+            this.checkBox6.Text = "Programmazioni";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label40.Location = new System.Drawing.Point(-100, 34);
+            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(82, 15);
+            this.label40.TabIndex = 33;
+            this.label40.Text = "File Firmware";
+            // 
+            // button5
+            // 
+            this.button5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button5.Location = new System.Drawing.Point(204, 28);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(25, 24);
+            this.button5.TabIndex = 32;
+            this.button5.Text = "...";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox3.Location = new System.Drawing.Point(19, 30);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(181, 21);
+            this.textBox3.TabIndex = 31;
+            // 
+            // grbMemSalvaLogger
+            // 
+            this.grbMemSalvaLogger.BackColor = System.Drawing.Color.White;
+            this.grbMemSalvaLogger.Controls.Add(this.btnMemSaveExec);
+            this.grbMemSalvaLogger.Controls.Add(this.checkBox3);
+            this.grbMemSalvaLogger.Controls.Add(this.checkBox2);
+            this.grbMemSalvaLogger.Controls.Add(this.checkBox1);
+            this.grbMemSalvaLogger.Controls.Add(this.label37);
+            this.grbMemSalvaLogger.Controls.Add(this.button2);
+            this.grbMemSalvaLogger.Controls.Add(this.textBox1);
+            this.grbMemSalvaLogger.Location = new System.Drawing.Point(993, 16);
+            this.grbMemSalvaLogger.Name = "grbMemSalvaLogger";
+            this.grbMemSalvaLogger.Size = new System.Drawing.Size(258, 151);
+            this.grbMemSalvaLogger.TabIndex = 52;
+            this.grbMemSalvaLogger.TabStop = false;
+            this.grbMemSalvaLogger.Text = "Salva Memoria Cicli";
+            // 
+            // btnMemSaveExec
+            // 
+            this.btnMemSaveExec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemSaveExec.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemSaveExec.Location = new System.Drawing.Point(141, 102);
+            this.btnMemSaveExec.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMemSaveExec.Name = "btnMemSaveExec";
+            this.btnMemSaveExec.Size = new System.Drawing.Size(88, 34);
+            this.btnMemSaveExec.TabIndex = 37;
+            this.btnMemSaveExec.Text = "Esegui";
+            this.btnMemSaveExec.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(23, 111);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(100, 19);
+            this.checkBox3.TabIndex = 36;
+            this.checkBox3.Text = "Brevi / Lunghi";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(23, 86);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(75, 19);
+            this.checkBox2.TabIndex = 35;
+            this.checkBox2.Text = "Contatori";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(23, 61);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(118, 19);
+            this.checkBox1.TabIndex = 34;
+            this.checkBox1.Text = "Programmazioni";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label37.Location = new System.Drawing.Point(-100, 34);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(82, 15);
+            this.label37.TabIndex = 33;
+            this.label37.Text = "File Firmware";
+            // 
+            // button2
+            // 
+            this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button2.Location = new System.Drawing.Point(204, 28);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 24);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBox1.Location = new System.Drawing.Point(19, 30);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(181, 21);
+            this.textBox1.TabIndex = 31;
+            // 
             // grbMemCancFisica
             // 
             this.grbMemCancFisica.BackColor = System.Drawing.Color.White;
+            this.grbMemCancFisica.Controls.Add(this.rbtMemLunghi);
+            this.grbMemCancFisica.Controls.Add(this.rbtMemBrevi);
+            this.grbMemCancFisica.Controls.Add(this.rbtMemProgrammazioni);
+            this.grbMemCancFisica.Controls.Add(this.rbtMemContatori);
             this.grbMemCancFisica.Controls.Add(this.btnMemResetBoard);
             this.grbMemCancFisica.Controls.Add(this.rbtMemDatiCliente);
             this.grbMemCancFisica.Controls.Add(this.rbtMemParametriInit);
@@ -4071,19 +4378,71 @@
             this.grbMemCancFisica.Margin = new System.Windows.Forms.Padding(2);
             this.grbMemCancFisica.Name = "grbMemCancFisica";
             this.grbMemCancFisica.Padding = new System.Windows.Forms.Padding(2);
-            this.grbMemCancFisica.Size = new System.Drawing.Size(304, 319);
+            this.grbMemCancFisica.Size = new System.Drawing.Size(271, 372);
             this.grbMemCancFisica.TabIndex = 51;
             this.grbMemCancFisica.TabStop = false;
             this.grbMemCancFisica.Text = "Cancellazione 4K Memoria";
+            // 
+            // rbtMemLunghi
+            // 
+            this.rbtMemLunghi.AutoSize = true;
+            this.rbtMemLunghi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtMemLunghi.Location = new System.Drawing.Point(14, 224);
+            this.rbtMemLunghi.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtMemLunghi.Name = "rbtMemLunghi";
+            this.rbtMemLunghi.Size = new System.Drawing.Size(152, 19);
+            this.rbtMemLunghi.TabIndex = 25;
+            this.rbtMemLunghi.Text = "Lunghi ( 0x1B3000 / 4 )";
+            this.rbtMemLunghi.UseVisualStyleBackColor = true;
+            this.rbtMemLunghi.Click += new System.EventHandler(this.rbtMemLunghi_Click);
+            // 
+            // rbtMemBrevi
+            // 
+            this.rbtMemBrevi.AutoSize = true;
+            this.rbtMemBrevi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtMemBrevi.Location = new System.Drawing.Point(14, 201);
+            this.rbtMemBrevi.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtMemBrevi.Name = "rbtMemBrevi";
+            this.rbtMemBrevi.Size = new System.Drawing.Size(154, 19);
+            this.rbtMemBrevi.TabIndex = 24;
+            this.rbtMemBrevi.Text = "Brevi ( 0x006000 / 429 )";
+            this.rbtMemBrevi.UseVisualStyleBackColor = true;
+            this.rbtMemBrevi.Click += new System.EventHandler(this.rbtMemBrevi_Click);
+            // 
+            // rbtMemProgrammazioni
+            // 
+            this.rbtMemProgrammazioni.AutoSize = true;
+            this.rbtMemProgrammazioni.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtMemProgrammazioni.Location = new System.Drawing.Point(14, 155);
+            this.rbtMemProgrammazioni.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtMemProgrammazioni.Name = "rbtMemProgrammazioni";
+            this.rbtMemProgrammazioni.Size = new System.Drawing.Size(205, 19);
+            this.rbtMemProgrammazioni.TabIndex = 23;
+            this.rbtMemProgrammazioni.Text = "Programmazioni ( 0x002000 / 1 )";
+            this.rbtMemProgrammazioni.UseVisualStyleBackColor = true;
+            this.rbtMemProgrammazioni.Click += new System.EventHandler(this.rbtMemProgrammazioni_Click);
+            // 
+            // rbtMemContatori
+            // 
+            this.rbtMemContatori.AutoSize = true;
+            this.rbtMemContatori.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rbtMemContatori.Location = new System.Drawing.Point(14, 178);
+            this.rbtMemContatori.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtMemContatori.Name = "rbtMemContatori";
+            this.rbtMemContatori.Size = new System.Drawing.Size(162, 19);
+            this.rbtMemContatori.TabIndex = 22;
+            this.rbtMemContatori.Text = "Contatori ( 0x003000 / 1 )";
+            this.rbtMemContatori.UseVisualStyleBackColor = true;
+            this.rbtMemContatori.Click += new System.EventHandler(this.rbtMemContatori_Click);
             // 
             // btnMemResetBoard
             // 
             this.btnMemResetBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnMemResetBoard.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnMemResetBoard.Location = new System.Drawing.Point(171, 258);
+            this.btnMemResetBoard.Location = new System.Drawing.Point(171, 323);
             this.btnMemResetBoard.Margin = new System.Windows.Forms.Padding(2);
             this.btnMemResetBoard.Name = "btnMemResetBoard";
-            this.btnMemResetBoard.Size = new System.Drawing.Size(116, 34);
+            this.btnMemResetBoard.Size = new System.Drawing.Size(88, 34);
             this.btnMemResetBoard.TabIndex = 21;
             this.btnMemResetBoard.Text = "Reboot";
             this.btnMemResetBoard.UseVisualStyleBackColor = true;
@@ -4100,6 +4459,8 @@
             this.rbtMemDatiCliente.TabIndex = 20;
             this.rbtMemDatiCliente.Text = "Dati Cliente ( 0x001000 / 1 )";
             this.rbtMemDatiCliente.UseVisualStyleBackColor = true;
+            this.rbtMemDatiCliente.CheckedChanged += new System.EventHandler(this.rbtMemDatiCliente_CheckedChanged);
+            this.rbtMemDatiCliente.Click += new System.EventHandler(this.rbtMemDatiCliente_Click);
             // 
             // rbtMemParametriInit
             // 
@@ -4112,13 +4473,14 @@
             this.rbtMemParametriInit.TabIndex = 19;
             this.rbtMemParametriInit.Text = "Parametri Iniziali ( 0x000000 / 1 )";
             this.rbtMemParametriInit.UseVisualStyleBackColor = true;
+            this.rbtMemParametriInit.CheckedChanged += new System.EventHandler(this.rbtMemParametriInit_CheckedChanged);
             this.rbtMemParametriInit.Click += new System.EventHandler(this.rbtMemParametriInit_Click);
             // 
             // rbtMemAreaApp2
             // 
             this.rbtMemAreaApp2.AutoSize = true;
             this.rbtMemAreaApp2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtMemAreaApp2.Location = new System.Drawing.Point(14, 188);
+            this.rbtMemAreaApp2.Location = new System.Drawing.Point(14, 287);
             this.rbtMemAreaApp2.Margin = new System.Windows.Forms.Padding(2);
             this.rbtMemAreaApp2.Name = "rbtMemAreaApp2";
             this.rbtMemAreaApp2.Size = new System.Drawing.Size(159, 19);
@@ -4131,7 +4493,7 @@
             // 
             this.rbtMemAreaApp1.AutoSize = true;
             this.rbtMemAreaApp1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtMemAreaApp1.Location = new System.Drawing.Point(14, 164);
+            this.rbtMemAreaApp1.Location = new System.Drawing.Point(14, 263);
             this.rbtMemAreaApp1.Margin = new System.Windows.Forms.Padding(2);
             this.rbtMemAreaApp1.Name = "rbtMemAreaApp1";
             this.rbtMemAreaApp1.Size = new System.Drawing.Size(159, 19);
@@ -4170,7 +4532,7 @@
             // txtMemCFBlocchi
             // 
             this.txtMemCFBlocchi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtMemCFBlocchi.Location = new System.Drawing.Point(107, 29);
+            this.txtMemCFBlocchi.Location = new System.Drawing.Point(108, 32);
             this.txtMemCFBlocchi.Margin = new System.Windows.Forms.Padding(2);
             this.txtMemCFBlocchi.Name = "txtMemCFBlocchi";
             this.txtMemCFBlocchi.Size = new System.Drawing.Size(39, 21);
@@ -4184,7 +4546,7 @@
             this.chkMemCFStartAddHex.Checked = true;
             this.chkMemCFStartAddHex.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkMemCFStartAddHex.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkMemCFStartAddHex.Location = new System.Drawing.Point(14, 54);
+            this.chkMemCFStartAddHex.Location = new System.Drawing.Point(14, 57);
             this.chkMemCFStartAddHex.Margin = new System.Windows.Forms.Padding(2);
             this.chkMemCFStartAddHex.Name = "chkMemCFStartAddHex";
             this.chkMemCFStartAddHex.Size = new System.Drawing.Size(95, 19);
@@ -4206,7 +4568,7 @@
             // txtMemCFStartAdd
             // 
             this.txtMemCFStartAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtMemCFStartAdd.Location = new System.Drawing.Point(14, 30);
+            this.txtMemCFStartAdd.Location = new System.Drawing.Point(14, 32);
             this.txtMemCFStartAdd.Margin = new System.Windows.Forms.Padding(2);
             this.txtMemCFStartAdd.Name = "txtMemCFStartAdd";
             this.txtMemCFStartAdd.Size = new System.Drawing.Size(79, 21);
@@ -4221,7 +4583,7 @@
             this.btnMemCFExec.Location = new System.Drawing.Point(171, 22);
             this.btnMemCFExec.Margin = new System.Windows.Forms.Padding(2);
             this.btnMemCFExec.Name = "btnMemCFExec";
-            this.btnMemCFExec.Size = new System.Drawing.Size(116, 34);
+            this.btnMemCFExec.Size = new System.Drawing.Size(88, 34);
             this.btnMemCFExec.TabIndex = 8;
             this.btnMemCFExec.Text = "Esegui";
             this.btnMemCFExec.UseVisualStyleBackColor = true;
@@ -7854,6 +8216,12 @@
             this.grbInitDatiBase.PerformLayout();
             this.tabMemRead.ResumeLayout(false);
             this.tabMemRead.PerformLayout();
+            this.grbMemAzzeraLogger.ResumeLayout(false);
+            this.grbMemAzzeraLogger.PerformLayout();
+            this.grbMemCaricaLogger.ResumeLayout(false);
+            this.grbMemCaricaLogger.PerformLayout();
+            this.grbMemSalvaLogger.ResumeLayout(false);
+            this.grbMemSalvaLogger.PerformLayout();
             this.grbMemCancFisica.ResumeLayout(false);
             this.grbMemCancFisica.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -8504,5 +8872,32 @@
         private System.Windows.Forms.Label label157;
         private System.Windows.Forms.Label chkPaRiarmaBms;
         private System.Windows.Forms.CheckBox chkPaAttivaRiarmoBms;
+        private System.Windows.Forms.GroupBox grbMemSalvaLogger;
+        private System.Windows.Forms.Button btnMemSaveExec;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton rbtMemLunghi;
+        private System.Windows.Forms.RadioButton rbtMemBrevi;
+        private System.Windows.Forms.RadioButton rbtMemProgrammazioni;
+        private System.Windows.Forms.RadioButton rbtMemContatori;
+        private System.Windows.Forms.GroupBox grbMemAzzeraLogger;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.Button btnMemClearLogExec;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.GroupBox grbMemCaricaLogger;
+        private System.Windows.Forms.Button btnMemRewriteExec;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

@@ -48,6 +48,19 @@ namespace PannelloCharger
                 flvCicliListaCariche.FullRowSelect = true;
                 flvCicliListaCariche.MultiSelect = false;
 
+                BrightIdeasSoftware.OLVColumn sortColIdMemCiclo = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "ID",
+                    AspectName = "strSortIdMemCiclo",
+                    Width = 0,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                    
+                    
+                };
+
+                flvCicliListaCariche.AllColumns.Add(sortColIdMemCiclo);
+
                 BrightIdeasSoftware.OLVColumn colIdMemCiclo = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "ID",
@@ -169,6 +182,7 @@ namespace PannelloCharger
 
                 flvCicliListaCariche.RebuildColumns();
                 flvCicliListaCariche.SetObjects(_cb.MemoriaCicli);
+                flvCicliListaCariche.Sort(sortColIdMemCiclo, SortOrder.Descending);
                 flvCicliListaCariche.BuildList();
             }
             catch (Exception Ex)
@@ -193,14 +207,61 @@ namespace PannelloCharger
             }
         }
 
-        public bool CaricaListaCariche( UInt32 StartAddr, ushort NumRows = 0)
+        public bool CaricaListaCariche( UInt32 StartAddr, ushort NumRows = 0, bool TaskExt = false)
         {
-
+            object EsitoCaricamento;
             bool _esito;
             try
             {
-                _esito = _cb.CaricaListaCicli(StartAddr, NumRows);
+                this.Cursor = Cursors.WaitCursor;
+                if (!_cb.ContatoriLL.valido)
+                {
+                   if(! _cb.CaricaAreaContatori())
+                    {
+                        this.Cursor = Cursors.Arrow;
+                        return false;
+                    }
+                }
+
+                if (NumRows == 0)
+                {
+                    NumRows = (ushort)_cb.ContatoriLL.CntCariche;
+                }
+
+
+
+
+                if (NumRows > 10)
+                {
+                    Log.Debug("Lancio lettura lunghi");
+                   
+                    _avCicli.ParametriWorker.MainCount = 100;
+                    _avCicli.llLocale = _cb;
+                    _avCicli.ValStart = (int)0;
+                    _avCicli.AddrStart = StartAddr;
+                    _avCicli.ValFine = (int)NumRows;// _sb.sbData.LongMem;
+                    _avCicli.DbDati = _logiche.dbDati.connessione;
+                    _avCicli.CaricaBrevi = false; // chkCaricaBrevi.Checked;
+                    _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
+                    _avCicli.TipoComando = elementiComuni.tipoMessaggio.MemLungaLL;
+                    Log.Debug("FRM RicaricaCicli: ");
+
+                    //_esito = _sb.RicaricaCaricaCicliMemLunga(Inizio, (uint)_sb.sbData.LongMem, _logiche.dbDati.connessione, true, CaricaBrevi);
+
+                    // Apro il form con le progressbar
+                    _avCicli.ShowDialog(this);
+
+                    // _esito = _cb.CaricaListaCicli(StartAddr, NumRows, out EsitoCaricamento, false, true);
+                    _esito = true;
+
+                }
+                else
+                {
+                    _esito = _cb.CaricaListaCicli(StartAddr, NumRows, out EsitoCaricamento, false, false);
+                }
+
                 InizializzaListaCariche();
+                this.Cursor = Cursors.Arrow;
                 return _esito;
             }
             catch (Exception Ex)
@@ -477,6 +538,19 @@ namespace PannelloCharger
                     TextAlign = HorizontalAlignment.Right,
                 };
                 flvCicliListaBrevi.AllColumns.Add(colstrTempDiode);
+
+                BrightIdeasSoftware.OLVColumn colstrVettoreErrori = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Vett Err",
+                    //ToolTipText = "Dati Modificabili",
+                    AspectName = "strVettoreErrori",
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvCicliListaBrevi.AllColumns.Add(colstrVettoreErrori);
+
+
 
 
 

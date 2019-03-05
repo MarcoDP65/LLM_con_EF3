@@ -21,7 +21,11 @@ namespace ChargerLogic
                                           AggiornamentoFirmware = 5,
                                           ClonazioneScheda = 6,
                                           AggiornamentoFirmwareLL = 10,
- 
+                                          MemLungaLL = 11,
+                                          MemBreveLL = 12,
+                                          ContatoriLL = 13,
+                                          ProgrammazioniLL = 14,
+
                                           NonDefinito = -1 };
 
         public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Nack = 2, Break = 3, Dati = 10, NonValido = -1 };

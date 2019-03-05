@@ -199,7 +199,8 @@ namespace PannelloCharger
             bool _esito;
             try
             {
-                _esito = _cb.CaricaListaCicli(StartAddr, NumRows);
+                object OutVal;
+                _esito = _cb.CaricaListaCicli(StartAddr, NumRows, out OutVal);
                 InizializzaListaCariche();
                 return _esito;
             }

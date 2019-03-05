@@ -77,10 +77,13 @@ namespace ChargerLogic
         //    Dichiarazione eventi per la gestione avanzamento
         // -------------------------------------------------------
 
+        public bool RichiestaInterruzione = false;
+
         public event StepHandler Step;
-
-
         public delegate void StepHandler(CaricaBatteria ull, ProgressChangedEventArgs e);
+
+        // -------------------------------------------------------
+
 
         public llStatoFirmware StatoFirmware = new llStatoFirmware();
 
@@ -2058,7 +2061,6 @@ namespace ChargerLogic
                 return _datiRicevuti;
             }
         }
-
 
     }
 

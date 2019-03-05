@@ -67,26 +67,80 @@ namespace ChargerLogic
 
         }
 
-        public bool CaricaListaCicli(UInt32 StartAddr, ushort NumRows = 0)
+        public bool CaricaListaCicli(UInt32 StartAddr, ushort NumRows, out object EsitoCaricamento, bool caricaBrevi = false,  bool RunAsinc = false)
         {
             try
             {
                 bool _esito = false;
-                SerialMessage.EsitoRisposta _esitoMsg;
+                object _dataRx;
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
 
+                SerialMessage.EsitoRisposta _esitoMsg;
+                EsitoCaricamento = null;
+
+                // Vuoto l'elenco corrente
                 MemoriaCicli = new List<llMemoriaCicli>();
+
 
                 if (NumRows < 1) NumRows = 0xFFFF;
                 UInt32 AddrCorrente;
 
+                if (RunAsinc)
+                {
+                    //Preparo l'intestazione della finestra di avanzamento                                                                                                          
+                    if (Step != null)
+                    {
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Fase 1 - Caricamento Eventi Lunghi LL";
+                        _passo.Eventi = 1;
+                        _passo.Step = -1;
+                        _passo.EsecuzioneInterrotta = false;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        Step(this, _stepEv);
+                    }
+
+                }
+
 
                 for (byte contacicli = 0; contacicli < NumRows; contacicli++)
                 {
+                    if (RichiestaInterruzione)
+                    {
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Fase 2 - Caricamento Eventi Brevi";
+                        _passo.Eventi = 1;
+                        _passo.Step = -1;
+                        _passo.EsecuzioneInterrotta = true;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        Step(this, _stepEv);
+                        break;
+                    }
+
+
                     AddrCorrente = StartAddr + (UInt32)(SizeCharge * contacicli);
                     llMemoriaCicli _tempCiclo = CaricaDatiCiclo(AddrCorrente);
                     if (_tempCiclo.IdMemoriaLunga != 0xFFFFFFFF)
                     {
                         MemoriaCicli.Add(_tempCiclo);
+                        //prima avanzo il contatore lunghi
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        int _progress = 0;
+                        double _valProgress = 0;
+                        _passo.TipoDati = elementiComuni.tipoMessaggio.MemLungaLL;
+                        _passo.Titolo = "";
+                        _passo.Eventi = NumRows;
+                        _passo.Step = contacicli;
+                        if (_passo.Eventi > 0)
+                        {
+                            _valProgress = (_passo.Step * 100) / _passo.Eventi;
+                        }
+                        _progress = (int)_valProgress;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                        Step(this, _stepEv);
+
                         _esito = true; // ho almeno 1 programma;
                     }
                     else
@@ -104,6 +158,7 @@ namespace ChargerLogic
             {
                 Log.Error(Ex.Message);
                 _lastError = Ex.Message;
+                EsitoCaricamento = null;
                 return false;
             }
 

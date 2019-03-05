@@ -630,6 +630,23 @@ namespace MoriData
             }
         }
 
+
+        public string strVettoreErrori
+        {
+            get
+            {
+                if (_llsm.VettoreErrori == 0)
+                {
+                    return "";
+                }
+                else
+                {
+                    return _llsm.VettoreErrori.ToString("X8");
+                }
+            }
+
+        }
+
         public ushort DurataBreve
         {
             get { return _llsm.DurataBreve; }

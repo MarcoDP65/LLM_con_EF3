@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>3.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -236,6 +236,7 @@
     <Compile Include="Database\llMappaMemoria.cs" />
     <Compile Include="Database\llMemBreve.cs" />
     <Compile Include="Database\llMemoriaCicli.cs" />
+    <Compile Include="Database\llMemoryImage.cs" />
     <Compile Include="Database\llModelliCb.cs" />
     <Compile Include="Database\llParametriApparato.cs" />
     <Compile Include="Database\llProfiloCarica.cs" />

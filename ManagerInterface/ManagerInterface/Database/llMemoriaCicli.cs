@@ -628,6 +628,12 @@ namespace MoriData
 
         }
 
+        // [OLVColumn(IsVisible = true, Width = 100, DisplayIndex = 1, TextAlign = HorizontalAlignment.Right)]
+        public string strSortIdMemCiclo
+        {
+            get { return _llmc.IdMemCiclo.ToString("00000000"); }
+
+        }
 
         [OLVColumn(IsVisible = false)]
         public DateTime CreationDate
