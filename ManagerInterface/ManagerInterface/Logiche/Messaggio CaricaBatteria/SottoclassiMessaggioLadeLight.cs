@@ -405,9 +405,9 @@ namespace ChargerLogic
                     startByte += 8;
                     SerialeDISP = SubArray(_messaggio, startByte, 8);
                     startByte += 8;
-                    HardwareDisp = ArrayToString(_messaggio, startByte, 8);
-                    startByte += 8;
                     SoftwareDISP = ArrayToString(_messaggio, startByte, 8);
+                    startByte += 8;
+                    HardwareDisp = ArrayToString(_messaggio, startByte, 8);
                     startByte += 8;
                     MaxRecordBrevi = ArrayToUint32(_messaggio, startByte, 3);
                     startByte += 3;

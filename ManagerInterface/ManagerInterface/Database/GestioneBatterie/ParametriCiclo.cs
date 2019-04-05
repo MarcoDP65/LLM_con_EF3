@@ -65,6 +65,7 @@ namespace MoriData
 
         public ushort TensRiconoscimentoMin { get; set; }
         public ushort TensRiconoscimentoMax { get; set; }
+        public ushort TensMinStop { get; set; }
 
 
         // Correnti
@@ -142,6 +143,7 @@ namespace MoriData
 
             TensRiconoscimentoMin = 0;
             TensRiconoscimentoMax = 0;
+            TensMinStop = 0;
 
             // Correnti
             CorrenteI0 = 0;

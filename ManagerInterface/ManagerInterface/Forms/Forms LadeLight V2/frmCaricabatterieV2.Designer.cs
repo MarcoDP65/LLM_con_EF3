@@ -650,6 +650,8 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.txtPaVMinStop = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.tabProfiloAttuale.SuspendLayout();
             this.tbcPaSottopagina.SuspendLayout();
             this.tbpPaProfiloAttivo.SuspendLayout();
@@ -1555,6 +1557,8 @@
             // 
             // tbpPaParSoglia
             // 
+            this.tbpPaParSoglia.Controls.Add(this.txtPaVMinStop);
+            this.tbpPaParSoglia.Controls.Add(this.label42);
             this.tbpPaParSoglia.Controls.Add(this.txtPaBMSTempoAttesa);
             this.tbpPaParSoglia.Controls.Add(this.label156);
             this.tbpPaParSoglia.Controls.Add(this.txtPaBMSTempoErogazione);
@@ -1640,7 +1644,7 @@
             // txtPaCorrenteMassima
             // 
             this.txtPaCorrenteMassima.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaCorrenteMassima.Location = new System.Drawing.Point(477, 38);
+            this.txtPaCorrenteMassima.Location = new System.Drawing.Point(605, 38);
             this.txtPaCorrenteMassima.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaCorrenteMassima.Name = "txtPaCorrenteMassima";
             this.txtPaCorrenteMassima.Size = new System.Drawing.Size(102, 23);
@@ -1650,7 +1654,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(477, 22);
+            this.label25.Location = new System.Drawing.Point(605, 22);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(89, 13);
@@ -8139,6 +8143,26 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
+            // txtPaVMinStop
+            // 
+            this.txtPaVMinStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaVMinStop.Location = new System.Drawing.Point(399, 38);
+            this.txtPaVMinStop.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPaVMinStop.Name = "txtPaVMinStop";
+            this.txtPaVMinStop.Size = new System.Drawing.Size(102, 23);
+            this.txtPaVMinStop.TabIndex = 134;
+            this.txtPaVMinStop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(399, 21);
+            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(76, 13);
+            this.label42.TabIndex = 133;
+            this.label42.Text = "V/cell minStop";
+            // 
             // frmCaricabatterieV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8899,5 +8923,7 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPaVMinStop;
+        private System.Windows.Forms.Label label42;
     }
 }

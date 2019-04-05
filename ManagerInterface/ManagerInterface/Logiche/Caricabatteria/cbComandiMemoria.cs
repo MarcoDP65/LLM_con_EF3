@@ -138,9 +138,11 @@ namespace ChargerLogic
                             _valProgress = (_passo.Step * 100) / _passo.Eventi;
                         }
                         _progress = (int)_valProgress;
-                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
-                        Step(this, _stepEv);
-
+                        if (RunAsinc)
+                        {
+                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                            Step(this, _stepEv);
+                        }
                         _esito = true; // ho almeno 1 programma;
                     }
                     else

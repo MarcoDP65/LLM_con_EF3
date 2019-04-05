@@ -59,6 +59,8 @@ namespace MoriData
         public string TensRiconoscimentoMin { get; set; }
         public string TensRiconoscimentoMax { get; set; }
 
+        public string TensMinimaStop { get; set; }
+
         public string MantTensIniziale { get; set; }
         public string MantTensFinale { get; set; }
 

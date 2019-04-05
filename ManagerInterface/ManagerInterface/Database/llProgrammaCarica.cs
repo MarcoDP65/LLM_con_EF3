@@ -48,6 +48,7 @@ namespace MoriData
         public ushort VCellLimite { get; set; }
         public ushort BatteryVminRec { get; set; }
         public ushort BatteryVmaxRec { get; set; }
+        public ushort BatteryVminStop { get; set; }
 
         public ushort CorrenteMax { get; set; }
         public ushort CorrenteFase3 { get; set; }
@@ -345,6 +346,10 @@ namespace MoriData
                 _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneMassimaRiconoscimento;
                 _par.ValoreParametro = _llprc.BatteryVmaxRec;
                 ListaParametri.Add(_par);
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TensioneMinimaStop;
+                _par.ValoreParametro = _llprc.BatteryVminStop;
+                ListaParametri.Add(_par);
 
                 // Capacità Nominale
                 _par = new ParametroLL();
@@ -476,6 +481,9 @@ namespace MoriData
                             break;
                         case (byte)SerialMessage.ParametroLadeLight.TensioneMassimaRiconoscimento:
                             _llprc.BatteryVmaxRec = _par.ValoreParametro;
+                            break;
+                        case (byte)SerialMessage.ParametroLadeLight.TensioneMinimaStop:
+                            _llprc.BatteryVminStop = _par.ValoreParametro;
                             break;
 
                         case (byte)SerialMessage.ParametroLadeLight.CorrenteMassima:
@@ -828,6 +836,26 @@ namespace MoriData
             }
         }
 
+        public ushort VMinStop
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return _llprc.BatteryVminStop;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            set
+            {
+                _llprc.BatteryVminStop = value;
+                _datiSalvati = false;
+            }
+        }
 
 
         public ushort CorrenteMax

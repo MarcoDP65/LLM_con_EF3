@@ -112,6 +112,7 @@ namespace ChargerLogic
             TensionePrecicloV0 = 0x15,               // V per Cella, 2 decimali  Pb 2.78
             TensioneMinimaRiconoscimento = 0x1A,     // V per Cella, 2 decimali  Pb 1.50
             TensioneMassimaRiconoscimento = 0x1B,    // V per Cella, 2 decimali  Pb 1.90
+            TensioneMinimaStop = 0x1C,               // V per Cella, 2 decimali  Pb 2.05
 
             CorrenteCaricaI1 = 0x21,                 // A, 1 decimale
             CorrenteMassima = 0x22,                  // A, 1 decimale

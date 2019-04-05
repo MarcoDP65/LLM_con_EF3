@@ -312,6 +312,11 @@ namespace ChargerLogic
                             ParametriAttivi.TensRiconoscimentoMax = StatoCella;
                             numeroValori += 1;
                             break;
+                        case SerialMessage.ParametroLadeLight.TensioneMinimaStop:
+                            ValoriCiclo.TensMinStop = dato.ValoreParametro;
+                            ParametriAttivi.TensMinStop = StatoCella;
+                            numeroValori += 1;
+                            break;
                         case SerialMessage.ParametroLadeLight.TensioneLimiteCella:
                             ValoriCiclo.TensioneLimiteVLim = dato.ValoreParametro;
                             ParametriAttivi.TensioneLimiteVLim = StatoCella;
@@ -437,6 +442,9 @@ namespace ChargerLogic
                 ValoriCiclo.TensRiconoscimentoMin = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensRiconoscimentoMin);
                 ParametriAttivi.TensRiconoscimentoMax = FunzioniComuni.StatoParametro(ModelloProfilo.TensRiconoscimentoMax);
                 ValoriCiclo.TensRiconoscimentoMax = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensRiconoscimentoMax);
+                ParametriAttivi.TensMinStop = FunzioniComuni.StatoParametro(ModelloProfilo.TensMinimaStop);
+                ValoriCiclo.TensMinStop = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensMinimaStop);
+
                 ParametriAttivi.TensioneLimiteVLim = FunzioniComuni.StatoParametro(ModelloProfilo.TensioneLimiteVLim);
                 ValoriCiclo.TensioneLimiteVLim = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensioneLimiteVLim);
 
@@ -733,6 +741,13 @@ namespace ChargerLogic
                 if (true)  // (ParametriAttivi.TensRiconoscimentoMax > 0)
                 {
                     NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TensioneMassimaRiconoscimento, ValoriCiclo.TensRiconoscimentoMax);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (ParametriAttivi.TensMinStop > 0)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TensioneMinimaStop, ValoriCiclo.TensMinStop);
                     ListaParametri.Add(NuovoParametro);
                     NumParametriAttivi += 1;
                 }

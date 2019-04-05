@@ -188,23 +188,6 @@ namespace PannelloCharger
                     txtGenMatricola.Text = _cb.Intestazione.Matricola.ToString();
                     txtGenModello.Text = _cb.Intestazione.modello;
 
-
-
-                    //txtGenAnnoMatricola.Text = _cb.Intestazione..ToString();
-
-
-                    /*
-                    txtMatricola.Text = _cb.Intestazione.Matricola.ToString();
-                    txtProgressivo.Text = _cb.Intestazione.Progressivo.ToString();
-                    txtDataPrimaInst.Text = _cb.Intestazione.PrimaInstallazione;
-                    txtModello.Text = _cb.Intestazione.modello;
-                    txtTensione.Text = _cb.Intestazione.tensioneNominale.ToString();
-                    txtCorrente.Text = _cb.Intestazione.correnteNominale.ToString();
-                    txtFwCb.Text = _cb.Intestazione.revSoftware;
-                    txtFwDisp.Text = _cb.Intestazione.revDisplay;
-                    txtNumCicli.Text = "2";
-                    */
-
                     _cbCollegato = true;
 
                     CaricaAreaContatori();
@@ -280,21 +263,6 @@ namespace PannelloCharger
                         _numParametri++;
                     }
                 }
-
-                /*
-                if (txtPaCapDaCaricare.Text.Length > 0)
-                {
-                    ushort result;
-                    if (ushort.TryParse(txtPaCapDaCaricare.Text, out result))
-                    {
-                        ParametroLL _par = new ParametroLL();
-                        _par.idParametro = (byte)SerialMessage.ParametroLadeLight.CapacitaDaRicaricare;
-                        _par.ValoreParametro = result;
-                        _cb.CicloInMacchina.Parametri.Add(_par);
-                        _numParametri++;
-                    }
-                }
-                */
 
 
                 if (txtPaTempoT2Max.Text.Length > 0)
@@ -542,6 +510,7 @@ namespace PannelloCharger
                 // Soglie
                 ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin = FunzioniMR.ConvertiUshort(txtPaVMinRic.Text, 100, 0);
                 ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax = FunzioniMR.ConvertiUshort(txtPaVMaxRic.Text, 100, 0);
+                ModCicloCorrente.ValoriCiclo.TensMinStop = FunzioniMR.ConvertiUshort(txtPaVMinStop.Text, 100, 0);
                 ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim = FunzioniMR.ConvertiUshort(txtPaVLimite.Text, 100, 0);
                 ModCicloCorrente.ValoriCiclo.CorrenteMassima = FunzioniMR.ConvertiUshort(txtPaCorrenteMassima.Text, 10, 0);
 
@@ -1063,7 +1032,8 @@ namespace PannelloCharger
 
                 if (e.TabPage == tabProfiloAttuale)
                 {
-                   // if (_apparatoPresente) CaricaCicloAttuale(); 
+                    RidimensionaControlli();
+                    // if (_apparatoPresente) CaricaCicloAttuale(); 
                 }
 
                 if (e.TabPage == tbpFirmware)
@@ -2364,9 +2334,6 @@ namespace PannelloCharger
                         txtInitRevHwDISP.Text = _cb.ParametriApparato.llParApp.HardwareDisp;
                         txtInitRevFwDISP.Text = _cb.ParametriApparato.llParApp.SoftwareDISP;
 
-                        //_tempVal = (float)_par.ValoreParametro / 100;
-                        //txtPaSoglia.Text = _tempVal.ToString("0.00");
-
                     }
 
                     if (_cb.ParametriApparato.llParApp.PresenzaRabboccatore == 0xF0)
@@ -3466,6 +3433,7 @@ namespace PannelloCharger
 
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMin, 1);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMaxRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMax, 1);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinStop, ModCicloCorrente.ValoriCiclo.TensMinStop, ModCicloCorrente.ParametriAttivi.TensMinStop, 1);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVLimite, ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim, ModCicloCorrente.ParametriAttivi.TensioneLimiteVLim, 1);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteMassima, ModCicloCorrente.ValoriCiclo.CorrenteMassima, ModCicloCorrente.ParametriAttivi.CorrenteMassima, 2);
 
