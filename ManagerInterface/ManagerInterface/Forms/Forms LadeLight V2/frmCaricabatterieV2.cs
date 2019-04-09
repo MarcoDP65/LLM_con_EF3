@@ -749,7 +749,7 @@ namespace PannelloCharger
             try
             {
                 tabCaricaBatterie.Width = this.Width - 42;
-                tabCaricaBatterie.Height = this.Height - 109;
+                tabCaricaBatterie.Height = this.Height - 75; // 109;
 
                 // Tab Cicli
                 spcCicliListeDati.Width = tabCb04.Width - 20;
@@ -2956,39 +2956,9 @@ namespace PannelloCharger
         {
             try
             {
-                uint _StartAddr;
-                ushort _NumByte;
-                bool _esito;
 
                 LeggiMemoriaCicli();
-                /*
-                if (uint.TryParse(txtCicliAddrPrmo.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true)
-                {
-                    _StartAddr = 0x1B3000;
-                }
 
-                txtCicliAddrPrmo.Text = _StartAddr.ToString("X6");
-
-                if ( txtCicliNumRecord.Text =="-1")
-                {
-                    // tutti i record
-                    _NumByte = 0;
-                }
-                else
-                {
-                    if (ushort.TryParse(txtCicliNumRecord.Text, out _NumByte) != true)
-                    {
-                        _NumByte = 0;
-                    }
-                    else
-                    {
-                        if (_NumByte < 1) _NumByte = 0;
-                    }
-
-                }
-                txtCicliNumRecord.Text = _NumByte.ToString();
-                CaricaListaCariche(_StartAddr, _NumByte);
-                */
 
             }
             catch (Exception Ex)
@@ -3210,7 +3180,7 @@ namespace PannelloCharger
                 bool esitoRicalcolo;
                 //DefinisciValoriProfilo();
                 esitoRicalcolo = RicalcolaParametriCiclo();
-                MostraParametriCiclo(false,!esitoRicalcolo);
+                MostraParametriCiclo(false,!esitoRicalcolo,chkPaSbloccaValori.Checked);
 
             }
 
@@ -3315,7 +3285,7 @@ namespace PannelloCharger
 
 
 
-        private bool MostraParametriCiclo( bool ParametriBase = false, bool SoloClear = false)
+        private bool MostraParametriCiclo( bool ParametriBase = false, bool SoloClear = false, bool SbloccaValori = false)
         {
             try
             {
@@ -3330,13 +3300,13 @@ namespace PannelloCharger
                         txtPaIdSetup.Text = "";
                     }
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaV0, 0, 0, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaPrefaseI0, 0, 0, 2);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaDurataMaxT0, 0, 0, 3);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaV0, 0, 0, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaPrefaseI0, 0, 0, 2, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaDurataMaxT0, 0, 0, 3, SbloccaValori);
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaVs, 0, 0, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteI1, 0, 0, 2);
-                    FunzioniUI.ImpostaTextBoxUshort(ref cmbPaDurataMaxT1, 0, 0, 3);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaVs, 0, 0, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteI1, 0, 0, 2, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref cmbPaDurataMaxT1, 0, 0, 3, SbloccaValori);
 
                 }
                 else
@@ -3364,7 +3334,7 @@ namespace PannelloCharger
                                 cmbPaTensione.SelectedItem = TensBatt;
                             }
                             
-                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaTensione, ModCicloCorrente.Tensione, 1, 1);
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaTensione, ModCicloCorrente.Tensione, 1, 1, SbloccaValori);
                             txtPaTensione.Visible = true;
                         }
 
@@ -3384,58 +3354,58 @@ namespace PannelloCharger
 
                     }
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, ModCicloCorrente.NumeroCelle, 4, 3);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 5, 2);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, ModCicloCorrente.NumeroCelle, 4, 3, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 5, 2, SbloccaValori);
 
 
 
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaV0, ModCicloCorrente.ValoriCiclo.TensionePrecicloV0, ModCicloCorrente.ParametriAttivi.TensionePrecicloV0, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaPrefaseI0, ModCicloCorrente.ValoriCiclo.CorrenteI0, ModCicloCorrente.ParametriAttivi.CorrenteI0, 2);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaDurataMaxT0, ModCicloCorrente.ValoriCiclo.TempoT0Max, ModCicloCorrente.ParametriAttivi.TempoT0Max, 3);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaV0, ModCicloCorrente.ValoriCiclo.TensionePrecicloV0, ModCicloCorrente.ParametriAttivi.TensionePrecicloV0, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaPrefaseI0, ModCicloCorrente.ValoriCiclo.CorrenteI0, ModCicloCorrente.ParametriAttivi.CorrenteI0, 2, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaDurataMaxT0, ModCicloCorrente.ValoriCiclo.TempoT0Max, ModCicloCorrente.ParametriAttivi.TempoT0Max, 3, SbloccaValori);
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaVs, ModCicloCorrente.ValoriCiclo.TensioneSogliaVs, ModCicloCorrente.ParametriAttivi.TensioneSogliaVs, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteI1, ModCicloCorrente.ValoriCiclo.CorrenteI1, ModCicloCorrente.ParametriAttivi.CorrenteI1, 2);
-                    FunzioniUI.ImpostaTextBoxUshort(ref cmbPaDurataMaxT1, ModCicloCorrente.ValoriCiclo.TempoT1Max, ModCicloCorrente.ParametriAttivi.TempoT1Max, 3);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaVs, ModCicloCorrente.ValoriCiclo.TensioneSogliaVs, ModCicloCorrente.ParametriAttivi.TensioneSogliaVs, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteI1, ModCicloCorrente.ValoriCiclo.CorrenteI1, ModCicloCorrente.ParametriAttivi.CorrenteI1, 2, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref cmbPaDurataMaxT1, ModCicloCorrente.ValoriCiclo.TempoT1Max, ModCicloCorrente.ParametriAttivi.TempoT1Max, 3, SbloccaValori);
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaRaccordoF1, ModCicloCorrente.ValoriCiclo.TensioneRaccordoVr, ModCicloCorrente.ParametriAttivi.TensioneRaccordoVr, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteRaccordo, ModCicloCorrente.ValoriCiclo.CorrenteRaccordoIr, ModCicloCorrente.ParametriAttivi.CorrenteRaccordoIr, 2);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteF3, ModCicloCorrente.ValoriCiclo.CorrenteFinaleI2, ModCicloCorrente.ParametriAttivi.CorrenteFinaleI2, 2);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMax, ModCicloCorrente.ValoriCiclo.TensioneMassimaVMax, ModCicloCorrente.ParametriAttivi.TensioneMassimaVMax, 1);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaRaccordoF1, ModCicloCorrente.ValoriCiclo.TensioneRaccordoVr, ModCicloCorrente.ParametriAttivi.TensioneRaccordoVr, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteRaccordo, ModCicloCorrente.ValoriCiclo.CorrenteRaccordoIr, ModCicloCorrente.ParametriAttivi.CorrenteRaccordoIr, 2, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteF3, ModCicloCorrente.ValoriCiclo.CorrenteFinaleI2, ModCicloCorrente.ParametriAttivi.CorrenteFinaleI2, 2, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMax, ModCicloCorrente.ValoriCiclo.TensioneMassimaVMax, ModCicloCorrente.ParametriAttivi.TensioneMassimaVMax, 1, SbloccaValori);
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT2Min, ModCicloCorrente.ValoriCiclo.TempoT2Min, ModCicloCorrente.ParametriAttivi.TempoT2Min, 3);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT2Max, ModCicloCorrente.ValoriCiclo.TempoT2Max, ModCicloCorrente.ParametriAttivi.TempoT2Max, 3);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCoeffK, ModCicloCorrente.ValoriCiclo.FattoreK, ModCicloCorrente.ParametriAttivi.FattoreK, 3);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT2Min, ModCicloCorrente.ValoriCiclo.TempoT2Min, ModCicloCorrente.ParametriAttivi.TempoT2Min, 3, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT2Max, ModCicloCorrente.ValoriCiclo.TempoT2Max, ModCicloCorrente.ParametriAttivi.TempoT2Max, 3, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCoeffK, ModCicloCorrente.ValoriCiclo.FattoreK, ModCicloCorrente.ParametriAttivi.FattoreK, 3, SbloccaValori);
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT3Max, ModCicloCorrente.ValoriCiclo.TempoT3Max, ModCicloCorrente.ParametriAttivi.TempoT3Max, 3);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT3Max, ModCicloCorrente.ValoriCiclo.TempoT3Max, ModCicloCorrente.ParametriAttivi.TempoT3Max, 3, SbloccaValori);
 
-                    FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaEqual, ref lblPaAttivaEqual, ModCicloCorrente.ValoriCiclo.EqualAttivabile, ModCicloCorrente.ParametriAttivi.EqualAttivabile, 3);
+                    FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaEqual, ref lblPaAttivaEqual, ModCicloCorrente.ValoriCiclo.EqualAttivabile, ModCicloCorrente.ParametriAttivi.EqualAttivabile, 3, SbloccaValori);
                     txtPaEqualAttesa.Text = "";
                     if (true) // (chkPaAttivaEqual.Checked)
                     {
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualAttesa, ModCicloCorrente.ValoriCiclo.EqualTempoAttesa, ModCicloCorrente.ParametriAttivi.EqualTempoAttesa, 3);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualNumPulse, ModCicloCorrente.ValoriCiclo.EqualNumImpulsi, ModCicloCorrente.ParametriAttivi.EqualNumImpulsi, 3);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualPulsePause, ModCicloCorrente.ValoriCiclo.EqualTempoPausa, ModCicloCorrente.ParametriAttivi.EqualTempoPausa, 3);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualPulseTime, ModCicloCorrente.ValoriCiclo.EqualTempoImpulso, ModCicloCorrente.ParametriAttivi.EqualTempoImpulso, 3);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualPulseCurrent, ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso, ModCicloCorrente.ParametriAttivi.EqualCorrenteImpulso, 2);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualAttesa, ModCicloCorrente.ValoriCiclo.EqualTempoAttesa, ModCicloCorrente.ParametriAttivi.EqualTempoAttesa, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualNumPulse, ModCicloCorrente.ValoriCiclo.EqualNumImpulsi, ModCicloCorrente.ParametriAttivi.EqualNumImpulsi, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualPulsePause, ModCicloCorrente.ValoriCiclo.EqualTempoPausa, ModCicloCorrente.ParametriAttivi.EqualTempoPausa, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualPulseTime, ModCicloCorrente.ValoriCiclo.EqualTempoImpulso, ModCicloCorrente.ParametriAttivi.EqualTempoImpulso, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualPulseCurrent, ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso, ModCicloCorrente.ParametriAttivi.EqualCorrenteImpulso, 2, SbloccaValori);
                     }
 
-                    FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaMant, ref lblPaAttivaMant, ModCicloCorrente.ValoriCiclo.MantAttivabile, ModCicloCorrente.ParametriAttivi.MantAttivabile, 3);
+                    FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaMant, ref lblPaAttivaMant, ModCicloCorrente.ValoriCiclo.MantAttivabile, ModCicloCorrente.ParametriAttivi.MantAttivabile, 3, SbloccaValori);
                    
                     if (true) // (chkPaAttivaMant.Checked)
                     {
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantAttesa, ModCicloCorrente.ValoriCiclo.MantTempoAttesa, ModCicloCorrente.ParametriAttivi.MantTempoAttesa, 3);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmin, ModCicloCorrente.ValoriCiclo.MantTensIniziale, ModCicloCorrente.ParametriAttivi.MantTensIniziale, 1);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmax, ModCicloCorrente.ValoriCiclo.MantTensFinale, ModCicloCorrente.ParametriAttivi.MantTensFinale, 1);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantDurataMax, ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione, ModCicloCorrente.ParametriAttivi.MantTempoMaxErogazione, 3);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantCorrente, ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso, ModCicloCorrente.ParametriAttivi.MantCorrenteImpulso, 2);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantAttesa, ModCicloCorrente.ValoriCiclo.MantTempoAttesa, ModCicloCorrente.ParametriAttivi.MantTempoAttesa, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmin, ModCicloCorrente.ValoriCiclo.MantTensIniziale, ModCicloCorrente.ParametriAttivi.MantTensIniziale, 1, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmax, ModCicloCorrente.ValoriCiclo.MantTensFinale, ModCicloCorrente.ParametriAttivi.MantTensFinale, 1, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantDurataMax, ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione, ModCicloCorrente.ParametriAttivi.MantTempoMaxErogazione, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantCorrente, ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso, ModCicloCorrente.ParametriAttivi.MantCorrenteImpulso, 2, SbloccaValori);
                     }
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMin, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMaxRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMax, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinStop, ModCicloCorrente.ValoriCiclo.TensMinStop, ModCicloCorrente.ParametriAttivi.TensMinStop, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVLimite, ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim, ModCicloCorrente.ParametriAttivi.TensioneLimiteVLim, 1);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteMassima, ModCicloCorrente.ValoriCiclo.CorrenteMassima, ModCicloCorrente.ParametriAttivi.CorrenteMassima, 2);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMin, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMaxRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMax, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinStop, ModCicloCorrente.ValoriCiclo.TensMinStop, ModCicloCorrente.ParametriAttivi.TensMinStop, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaVLimite, ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim, ModCicloCorrente.ParametriAttivi.TensioneLimiteVLim, 1, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteMassima, ModCicloCorrente.ValoriCiclo.CorrenteMassima, ModCicloCorrente.ParametriAttivi.CorrenteMassima, 2, SbloccaValori);
 
 
                 }
@@ -3577,6 +3547,18 @@ namespace PannelloCharger
                 this.Cursor = Cursors.Arrow;
             }
 
+        }
+
+        private void chkPaSbloccaValori_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MostraParametriCiclo(false, false, chkPaSbloccaValori.Checked);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaSbloccaValori_CheckedChanged: " + Ex.Message);
+            }
         }
     }
 

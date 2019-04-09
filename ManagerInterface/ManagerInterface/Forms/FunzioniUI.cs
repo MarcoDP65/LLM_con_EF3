@@ -20,7 +20,7 @@ namespace PannelloCharger
 
         private static ILog Log = LogManager.GetLogger("FunzioniUI");
 
-        public static bool ImpostaTextBoxUshort(ref TextBox txtValore, ushort Valore, ushort Stato, byte TipoDati)
+        public static bool ImpostaTextBoxUshort(ref TextBox txtValore, ushort Valore, ushort Stato, byte TipoDati, bool SbloccaValore)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace PannelloCharger
                     case 5:
                         {
                             txtValore.Enabled = true;
-                            txtValore.ReadOnly = (bool)(Stato == 4);
+                            txtValore.ReadOnly = (bool)((Stato == 4) && !SbloccaValore );
                             switch (TipoDati)
                             {
                                 case 0:  // valore diretto
@@ -120,7 +120,7 @@ namespace PannelloCharger
             }
         }
 
-        public static bool ImpostaCheckBoxUshort(ref CheckBox chkValore,ref Label lblDescription, ushort Valore, ushort Stato, byte TipoDati)
+        public static bool ImpostaCheckBoxUshort(ref CheckBox chkValore,ref Label lblDescription, ushort Valore, ushort Stato, byte TipoDati, bool SbloccaValore)
         {
             try
             {
@@ -145,7 +145,8 @@ namespace PannelloCharger
                     case 5:
                         {
                             chkValore.Checked = (bool)(Valore>0);
-                            chkValore.Enabled = true;
+                            chkValore.Enabled = true || SbloccaValore;
+
                             if (lblDescription != null)
                             {
                                 lblDescription.Enabled = true;
