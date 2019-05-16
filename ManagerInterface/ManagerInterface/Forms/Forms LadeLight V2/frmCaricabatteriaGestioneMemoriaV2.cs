@@ -48,6 +48,19 @@ namespace PannelloCharger
                 flvCicliListaCariche.FullRowSelect = true;
                 flvCicliListaCariche.MultiSelect = false;
 
+
+                BrightIdeasSoftware.OLVColumn sortColPopsizioneCiclo = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Pos",
+                    AspectName = "Posizione",
+                    Width = 0,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+
+
+                };
+
+
                 BrightIdeasSoftware.OLVColumn sortColIdMemCiclo = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "ID",
@@ -182,7 +195,7 @@ namespace PannelloCharger
 
                 flvCicliListaCariche.RebuildColumns();
                 flvCicliListaCariche.SetObjects(_cb.MemoriaCicli);
-                flvCicliListaCariche.Sort(sortColIdMemCiclo, SortOrder.Descending);
+                flvCicliListaCariche.Sort(sortColPopsizioneCiclo, SortOrder.Descending);
                 flvCicliListaCariche.BuildList();
             }
             catch (Exception Ex)

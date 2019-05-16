@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+//using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -2233,6 +2233,7 @@ namespace Utility
 
         }
 
+        /*
         // Convert the Bitmap to grayscale.
         public static Bitmap ConvertToGrayscale(Bitmap Immagine, bool UseAverage)
         {
@@ -2257,6 +2258,7 @@ namespace Utility
 
 
         }
+        */
 
         /// <summary>
         /// Compresses the string.

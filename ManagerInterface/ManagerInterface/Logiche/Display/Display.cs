@@ -431,18 +431,27 @@ namespace ChargerLogic
                             echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
                         }
                         scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
-                        _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
-
-                        _currPos += _dimCorrente;
-                        int _residuo = Img.Size - _currPos;
-
-                        if (_residuo > DimBloccoDati)
+                        _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);
+                        if (!_esito)
                         {
-                            _dimCorrente = DimBloccoDati;
+                            Log.Debug("- Blocco Immagine N° " + ++NumBlocco + " trasferimento falito");
+                            return _esito;
+
                         }
                         else
                         {
-                            _dimCorrente = (byte)_residuo;
+
+                            _currPos += _dimCorrente;
+                            int _residuo = Img.Size - _currPos;
+
+                            if (_residuo > DimBloccoDati)
+                            {
+                                _dimCorrente = DimBloccoDati;
+                            }
+                            else
+                            {
+                                _dimCorrente = (byte)_residuo;
+                            }
                         }
 
                     }
@@ -906,7 +915,7 @@ namespace ChargerLogic
                                 echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
                             }
                             scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
-                            _esito = aspettaRisposta(elementiComuni.TimeoutBase,1, true,false,false,false,true);
+                            _esito = aspettaRisposta(elementiComuni.TimeoutLungo,1, true,false,false,false,true);
                         }
 
 
@@ -949,7 +958,7 @@ namespace ChargerLogic
                     echoDatiSER.Enqueue(_mD.MessageBuffer[i]);
                 }
                 scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 0, true);
                 return _esito;
             }
 

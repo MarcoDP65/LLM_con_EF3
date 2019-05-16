@@ -1048,9 +1048,9 @@ namespace PannelloCharger
                     _valId = 1;
                 }
 
-                if (_valId > 10)
+                if (_valId > 20)
                 {
-                    _valId = 10;
+                    _valId = 20;
                 }
 
                 txtVarIdVariabile.Text = _valId.ToString();
@@ -2305,10 +2305,18 @@ namespace PannelloCharger
         {
             try
             {
+                int _tentativo = 0;
+                int _maxTentativi = 5;
                 int _counter = 0;
+                bool _esito;
+
                 pgbModStatoInvio.Visible = true;
+
                 if (Immagini)
                 {
+                    _counter = 0;
+                    _esito = false;
+
                     pgbModStatoInvio.Minimum = 0;
                     pgbModStatoInvio.Value = 0;
                     pgbModStatoInvio.Maximum = _disp.Data.Modello.Immagini.Count;
@@ -2317,27 +2325,41 @@ namespace PannelloCharger
                     txtModImmaginiTrasmesse.Text = _counter.ToString();
                     Application.DoEvents();
 
-                     foreach (DisplaySetup.Immagine _img in _disp.Data.Modello.Immagini)
+                    foreach (DisplaySetup.Immagine _img in _disp.Data.Modello.Immagini)
                     {
-                        _img.BmpToBuffer();
-                        if (_disp.CaricaImmagine(_img))
+                        _counter++;
+                        pgbModStatoInvio.Value = _counter;
+                        Application.DoEvents();
+                        for (_tentativo = 1; _tentativo <= _maxTentativi; _tentativo++)
                         {
-                            _counter++;
-                            pgbModStatoInvio.Value = _counter;
-                            txtModImmaginiTrasmesse.Text = _counter.ToString();
+                            _img.BmpToBuffer();
+                            _esito = _disp.CaricaImmagine(_img);
+                            
+                            txtModImmaginiTrasmesse.Text = _counter.ToString() + "." + _tentativo.ToString();
                             Application.DoEvents();
+                            if (_esito)
+                            {
+                                break;
+                            }
+
                         }
-                        else
+                        if (!_esito)
                         {
+                            MessageBox.Show("Caricamento immagine Fallito");
                             break;
                         }
+
                     }
                 }
+
 
                 _counter = 0;
 
                 if (Schermate)
                 {
+                    _counter = 0;
+                    _esito = false;
+
                     byte[] _sequenza = new byte[_disp.Data.Modello.Schermate.Count] ;
                     pgbModStatoInvio.Minimum = 0;
                     pgbModStatoInvio.Value = 0;
@@ -2350,22 +2372,31 @@ namespace PannelloCharger
                     {
                         _sch.BmpToBuffer();
 
-                        if (_disp.CaricaSchermata(_sch))
+                        _counter++;
+                        pgbModStatoInvio.Value = _counter;
+                        Application.DoEvents();
+                        for (_tentativo = 1; _tentativo <= _maxTentativi; _tentativo++)
                         {
-                            _sequenza[_counter] = (byte)_sch.Id;
-
-                            _counter++;
-                            pgbModStatoInvio.Value = _counter;
-                            txtModSchermateTrasmesse.Text = _counter.ToString();
+                            _esito = _disp.CaricaSchermata(_sch);
+                            _sequenza[_counter-1] = (byte)_sch.Id;
+                            
+                            txtModSchermateTrasmesse.Text = _counter.ToString() + "." + _tentativo.ToString();
                             Application.DoEvents();
+                            if (_esito)
+                            {
+                                break;
+                            }
+
                         }
-                        else
+                        if (!_esito)
                         {
+                            MessageBox.Show("Caricamento schermata Fallito");
                             break;
                         }
+
                     }
 
-                    _disp.ScrollSchermate(_sequenza, 10);
+                    _disp.ScrollSchermate(_sequenza, 15);
 
 
                 }
@@ -2374,29 +2405,36 @@ namespace PannelloCharger
 
                 if (Variabili)
                 {
+                    _counter = 0;
+                    _esito = false;
 
                     pgbModStatoInvio.Minimum = 0;
                     pgbModStatoInvio.Value = 0;
                     pgbModStatoInvio.Maximum = _disp.Data.Modello.Variabili.Count;
 
-                    txtModSchermateTrasmesse.Text = _counter.ToString();
+                    txtModVariabiliTrasmesse.Text = _counter.ToString();
                     Application.DoEvents();
 
                     foreach (DisplaySetup.Variabile _var in _disp.Data.Modello.Variabili)
                     {
-                       
 
-
-                        if (_disp.ImpostaVariabile(_var.Id, _var.Valore))
+                        _counter++;
+                        pgbModStatoInvio.Value = _counter;
+                        Application.DoEvents();
+                        for (_tentativo = 1; _tentativo <= _maxTentativi; _tentativo++)
                         {
-
-                            _counter++;
-                            pgbModStatoInvio.Value = _counter;
-                            txtModVariabiliTrasmesse.Text = _counter.ToString();
+                            _esito = _disp.ImpostaVariabile(_var.Id, _var.Valore);                            
+                            txtModVariabiliTrasmesse.Text = _counter.ToString() + "." + _tentativo.ToString();
                             Application.DoEvents();
+                            if (_esito)
+                            {
+                                break;
+                            }
+
                         }
-                        else
+                        if (!_esito)
                         {
+                            MessageBox.Show("Caricamento variabili Fallito");
                             break;
                         }
                     }

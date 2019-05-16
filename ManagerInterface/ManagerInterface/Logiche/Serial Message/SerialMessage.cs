@@ -2231,7 +2231,6 @@ namespace ChargerLogic
             }
         }
 
-
         public static UInt16 ArrayToUint16(byte[] source, int start, int lenght)
         {
             UInt16 _tempVal16 = 0;
@@ -2302,7 +2301,6 @@ namespace ChargerLogic
                 return 0;
             }
         }
-
 
         public static Int32 ArrayToSint32(byte[] source, int start, int lenght)
         {

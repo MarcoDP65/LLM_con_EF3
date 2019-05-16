@@ -122,7 +122,8 @@ namespace ChargerLogic
 
                     AddrCorrente = StartAddr + (UInt32)(SizeCharge * contacicli);
                     llMemoriaCicli _tempCiclo = CaricaDatiCiclo(AddrCorrente);
-                    if (_tempCiclo.IdMemoriaLunga != 0xFFFFFFFF)
+                    _tempCiclo.Posizione = contacicli;
+                    if (true) //_tempCiclo.IdMemoriaLunga != 0xFFFFFFFF)
                     {
                         MemoriaCicli.Add(_tempCiclo);
                         //prima avanzo il contatore lunghi

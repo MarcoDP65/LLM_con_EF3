@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PannelloCharger", "ManagerInterface\PannelloCharger.csproj", "{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LadeLightPcl", "..\LadeLightPcl\LadeLightPcl.csproj", "{CD7B5A1C-4014-4707-90CC-824FA4FFBF10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdiHelper", "..\MdiHelper\MdiHelper.csproj", "{4443444A-0788-4A40-8812-9AFFA11B2E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLPlantService", "LLPlantService\LLPlantService.csproj", "{B7054E19-B956-4702-B4DD-7388AC5ACF5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LLComponents", "LLComponents\LLComponents.csproj", "{7615F30A-5167-444A-AC71-5439CFFFE8EC}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LADELIGHT Manager Setup", "LADELIGHT Manager Setup\LADELIGHT Manager Setup.vdproj", "{C62F7CC8-4F91-4D4A-89D4-E3941D9AA40A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D90FBC3E-64DF-4AD4-BD0D-31EA3905D387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7B5A1C-4014-4707-90CC-824FA4FFBF10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7B5A1C-4014-4707-90CC-824FA4FFBF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7B5A1C-4014-4707-90CC-824FA4FFBF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7B5A1C-4014-4707-90CC-824FA4FFBF10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4443444A-0788-4A40-8812-9AFFA11B2E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4443444A-0788-4A40-8812-9AFFA11B2E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4443444A-0788-4A40-8812-9AFFA11B2E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4443444A-0788-4A40-8812-9AFFA11B2E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7054E19-B956-4702-B4DD-7388AC5ACF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7054E19-B956-4702-B4DD-7388AC5ACF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7054E19-B956-4702-B4DD-7388AC5ACF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7054E19-B956-4702-B4DD-7388AC5ACF5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7615F30A-5167-444A-AC71-5439CFFFE8EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C62F7CC8-4F91-4D4A-89D4-E3941D9AA40A}.Debug|Any CPU.ActiveCfg = Debug
+		{C62F7CC8-4F91-4D4A-89D4-E3941D9AA40A}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_NeutralResourcesLanguage = it-IT
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_ConfirmAddLanguageFile = True
+		SolutionGuid = {93F9884D-788F-46E3-B2DA-ED81E839C53D}
+	EndGlobalSection
+EndGlobal

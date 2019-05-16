@@ -39,7 +39,7 @@ namespace MoriData
         public DateTime RevisionDate { get; set; }
         [MaxLength(20)]
         public string LastUser { get; set; }
-
+        public int Posizione { get; set; }
         public ushort DurataBreve = 300;
         public ushort IdProgramma { get; set; }
         public UInt32 PuntatorePrimoBreve { get; set; }
@@ -693,6 +693,16 @@ namespace MoriData
             set
             {
                 _llmc.NumEventiBrevi = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public int Posizione
+        {
+            get { return _llmc.Posizione; }
+            set
+            {
+                _llmc.Posizione = value;
                 _datiSalvati = false;
             }
         }

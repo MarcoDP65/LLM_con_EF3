@@ -904,8 +904,8 @@ return false;
                     //--------------------------------------------------------------------------------------------------------------------
                     _arrayInit = 0x20;
 
-                    // Lunghezza nome; Se NomeCiclo è lungo + di 6 lo taglio a 6
-                    if (NomeCiclo.Length > 6) NomeCiclo = NomeCiclo.Substring(0, 6);
+                    // Lunghezza nome; Se NomeCiclo è lungo + di 8 lo taglio a 8
+                    if (NomeCiclo.Length > 8) NomeCiclo = NomeCiclo.Substring(0, 8);
                     _datamap[_arrayInit++] = (byte)NomeCiclo.Length;
 
                     // Tipo Ciclo
@@ -1029,8 +1029,8 @@ return false;
                     //--------------------------------------------------------------------------------------------------------------------
                     _arrayInit = 0x20;
 
-                    // Lunghezza nome; Se NomeCiclo è lungo + di 6 lo taglio a 6
-                    if (NomeCiclo.Length > 6) NomeCiclo = NomeCiclo.Substring(0, 6);
+                    // Lunghezza nome; Se NomeCiclo è lungo + di 8 lo taglio a 8
+                    if (NomeCiclo.Length > 8) NomeCiclo = NomeCiclo.Substring(0, 8);
                     _datamap[_arrayInit++] = (byte)NomeCiclo.Length;
 
                     // Tipo Ciclo

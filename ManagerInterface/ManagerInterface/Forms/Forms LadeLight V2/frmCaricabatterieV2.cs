@@ -2648,8 +2648,8 @@ namespace PannelloCharger
                     cmbPaDurataCarica.DataSource = DurateCarica;
                     cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
                     cmbPaDurataCarica.DisplayMember = "Descrizione";
-
-                    ModoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).AttivaEqual;
+                    txtPaNomeSetup.Text = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).NomeProfilo;
+                    ModoProf = (byte)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).AttivaEqual;
                     switch (ModoProf)
                     {
                         case 0x00:
@@ -2672,7 +2672,7 @@ namespace PannelloCharger
                     }
 
 
-                    ModoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).AttivaRiarmoPulse;
+                    ModoProf = (byte)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).AttivaRiarmoPulse;
                     switch (ModoProf)
                     {
                         case 0x00:
