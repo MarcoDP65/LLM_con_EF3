@@ -358,7 +358,7 @@ namespace MoriData
         {
             try
             {
-                if (_llmc.IdApparato != nullID & _llmc.IdApparato != null & _llmc.IdMemCiclo != null)
+                if (_llmc.IdApparato != nullID & _llmc.IdApparato != null ) // & _llmc.IdMemCiclo != null)
                 {
 
                     _llMemoriaCicli _TestDati = _caricaDati(_llmc.IdApparato, _llmc.IdMemCiclo);

@@ -629,7 +629,7 @@ namespace ChargerLogic
             }
         }
 
-        new public cicloAttuale CicloAttivo;
+        public cicloAttuale CicloAttivo;
 
         public bool raggiuntoTimeout(DateTime inizio, int SecondiTimeOut)
         {

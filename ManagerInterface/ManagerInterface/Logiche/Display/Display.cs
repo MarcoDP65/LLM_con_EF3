@@ -884,6 +884,12 @@ namespace ChargerLogic
                             }
                             scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
                             _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true, false, false, false,false);
+                            // Se fallisce un pacchetto esco con esito negativo
+                            if(!_esito)
+                            {
+                                Log.Debug("Trasmissione blocco " + _currPos.ToString() );
+                                return _esito;
+                            }
 
                             _currPos += _dimCorrente;
                             int _residuo = Screen.Size - _currPos;
@@ -916,6 +922,11 @@ namespace ChargerLogic
                             }
                             scriviMessaggio(_mD.MessageBuffer, 0, _mD.MessageBuffer.Length);
                             _esito = aspettaRisposta(elementiComuni.TimeoutLungo,1, true,false,false,false,true);
+                            if (!_esito)
+                            {
+                                Log.Debug("Trasmissione blocco " + _currPos.ToString());
+                                return _esito;
+                            }
                         }
 
 

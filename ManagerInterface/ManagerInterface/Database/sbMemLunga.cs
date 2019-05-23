@@ -369,7 +369,7 @@ namespace MoriData
         {
             try
             {
-                if (_sblm.IdApparato != nullID & _sblm.IdApparato != null & _sblm.IdMemoriaLunga != null)
+                if (_sblm.IdApparato != nullID & _sblm.IdApparato != null ) // & _sblm.IdMemoriaLunga != null)
                 {
 
                     _sbMemLunga _TestDati = _caricaDati(_sblm.IdApparato, _sblm.IdMemoriaLunga);

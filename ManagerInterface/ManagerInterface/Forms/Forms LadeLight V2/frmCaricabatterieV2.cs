@@ -388,8 +388,8 @@ namespace PannelloCharger
         {
             try
             {
-                ushort result;
-                float resultF;
+                //ushort result;
+                //float resultF;
                 bool esito;
 
 
@@ -1391,7 +1391,7 @@ namespace PannelloCharger
                     File.AppendAllText(filePath, sb.ToString());
 
                     int _elementi = ListaValori.Count;
-                    string[] arr;
+                    //string[] arr;
 
                     foreach (llVariabili _vac in ListaValori)
                     {
@@ -2718,7 +2718,7 @@ namespace PannelloCharger
         {
             try
             {
-                byte DurataF2;
+                //byte DurataF2;
                 byte TipoBatt;
                 sbTipoBatteria TempBatt = (sbTipoBatteria)cmbPaTipoBatteria.SelectedItem;
 
@@ -3070,7 +3070,7 @@ namespace PannelloCharger
         {
             try
             {
-                llMemoriaCicli CicloSel;
+                //llMemoriaCicli CicloSel;
                 if (flvCicliListaCariche.SelectedObject == null)
                 {
                     btnCicliCaricaBrevi.Enabled = false;
@@ -3530,7 +3530,7 @@ namespace PannelloCharger
             try
             {
                 FastObjectListView _lista = (FastObjectListView)sender;
-                llMemoriaCicli CicloSel;
+                //llMemoriaCicli CicloSel;
 
                 if (_lista.SelectedObject != null)
                 {

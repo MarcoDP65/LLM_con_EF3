@@ -490,7 +490,7 @@ namespace ChargerLogic
 
                 // Attivo gli eventi sia USB che COM
 
-                FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
+                // FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
 
                 // USB
                 cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
@@ -1652,7 +1652,7 @@ namespace ChargerLogic
             {
                 bool _esito = false;
                 MessaggioLadeLight.PrimoBloccoMemoria ImmagineMemoria = new MessaggioLadeLight.PrimoBloccoMemoria();
-                SerialMessage.EsitoRisposta EsitoMsg;
+                //SerialMessage.EsitoRisposta EsitoMsg;
 
 
 
@@ -1720,7 +1720,7 @@ namespace ChargerLogic
                 bool _esito = false;
 
                 MessaggioLadeLight.MessaggioProgrammazione NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione();
-                SerialMessage.EsitoRisposta EsitoMsg;
+                //SerialMessage.EsitoRisposta EsitoMsg;
 
                 // Prima vuoto il blocco  --> inserire la gestione dell'intera pagina
                 _esito = CancellaBlocco4K(0x2000);

@@ -16,10 +16,7 @@ namespace MoriData
 
     public class _db : SQLiteConnection
     {
-
-
-
-        
+ 
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
         public _db(string _dbName) : base(new SQLitePlatformWin32(), _dbName)

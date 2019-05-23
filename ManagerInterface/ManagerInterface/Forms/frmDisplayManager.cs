@@ -2449,6 +2449,7 @@ namespace PannelloCharger
             {
                 Log.Error("AggiornaScheda: " + Ex.Message);
                 pgbModStatoInvio.Visible = false;
+
             }
         }
 
