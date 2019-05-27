@@ -502,7 +502,7 @@ namespace PannelloCharger
                 ModCicloCorrente.ValoriCiclo.MantAttivabile = (ushort)(chkPaAttivaMant.Checked == true ? 0x00F0 : 0x000F);
                 ModCicloCorrente.ValoriCiclo.MantTempoAttesa = FunzioniMR.ConvertiUshort(txtPaMantAttesa.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.MantTensIniziale = FunzioniMR.ConvertiUshort(txtPaMantVmin.Text, 100, 0);
-                ModCicloCorrente.ValoriCiclo.MantTensFinale = FunzioniMR.ConvertiUshort(txtPaMantVmax.Text, 1, 0);
+                ModCicloCorrente.ValoriCiclo.MantTensFinale = FunzioniMR.ConvertiUshort(txtPaMantVmax.Text, 100, 0);
                 ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione = FunzioniMR.ConvertiUshort(txtPaMantDurataMax.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso = FunzioniMR.ConvertiUshort(txtPaMantCorrente.Text, 10, 0);
 
@@ -2648,7 +2648,10 @@ namespace PannelloCharger
                     cmbPaDurataCarica.DataSource = DurateCarica;
                     cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
                     cmbPaDurataCarica.DisplayMember = "Descrizione";
-                    txtPaNomeSetup.Text = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).NomeProfilo;
+                    if (!ProfiloInCaricamento)
+                    {
+                        txtPaNomeSetup.Text = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).NomeProfilo;
+                    }
                     ModoProf = (byte)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).AttivaEqual;
                     switch (ModoProf)
                     {
@@ -3406,8 +3409,7 @@ namespace PannelloCharger
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinStop, ModCicloCorrente.ValoriCiclo.TensMinStop, ModCicloCorrente.ParametriAttivi.TensMinStop, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVLimite, ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim, ModCicloCorrente.ParametriAttivi.TensioneLimiteVLim, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteMassima, ModCicloCorrente.ValoriCiclo.CorrenteMassima, ModCicloCorrente.ParametriAttivi.CorrenteMassima, 2, SbloccaValori);
-
-
+                    
                 }
 
 

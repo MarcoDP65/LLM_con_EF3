@@ -150,6 +150,7 @@ namespace PannelloCharger
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrCondizioneStop);
 
+                /*
                 BrightIdeasSoftware.OLVColumn colstrChargerStop = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "stop",
@@ -160,6 +161,7 @@ namespace PannelloCharger
                     TextAlign = HorizontalAlignment.Left,
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrChargerStop);
+                */
 
                 BrightIdeasSoftware.OLVColumn colstrNumEventiBrevi = new BrightIdeasSoftware.OLVColumn()
                 {

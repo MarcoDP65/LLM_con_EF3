@@ -14,6 +14,7 @@ using System.Threading;
 using System.ComponentModel;
 
 using SQLite.Net;
+using System.Windows.Forms;
 
 namespace ChargerLogic
 {
@@ -1397,6 +1398,22 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
+
+                // DEBUG: verifica cancellazioni blocco 0
+
+                if (StartAddr == 0)
+                {
+                    DialogResult risposta = MessageBox.Show("Richiesta cancellazione AREA 0 (Inizializzazione)\nConfermi l'operazione ?","Cancellazione Memoria",
+                    MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                    if (risposta != System.Windows.Forms.DialogResult.Yes)
+                    {
+                        return false;
+                    }
+
+                }
+                //Fine DEBUG
+
                 ControllaAttesa(UltimaScrittura);
 
                 _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
