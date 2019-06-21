@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using log4net;
 using log4net.Config;
-
+using MoriData;
 using Utility;
 
 
@@ -310,12 +310,8 @@ namespace ChargerLogic
             public ushort Amax { get; set; }
             public byte PresenzaRabboccatore { get; set; }
 
-
-
             public ushort CrcPacchetto { get; set; }
-
-
-
+            
             byte[] _dataBuffer;
             public byte[] dataBuffer;
             public bool datiPronti;
@@ -336,7 +332,7 @@ namespace ChargerLogic
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length <236 )
+                    if (_messaggio.Length < 236)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
@@ -377,7 +373,7 @@ namespace ChargerLogic
                     NomeApparato = ArrayToString(_messaggio, startByte, 10);
                     startByte += 10;
                     SerialeApparato = ArrayToUint32(_messaggio, startByte, 3);
-                    if(SerialeApparato != 0xFFFFFF)
+                    if (SerialeApparato != 0xFFFFFF)
                     {
                         ProgressivoCodice = SerialeApparato & 0x03FFFF;
                         AnnoCodice = (byte)(_messaggio[startByte] >> 2);
@@ -661,45 +657,45 @@ namespace ChargerLogic
             }
 
 
-public bool VuotaPacchetto()
-{
-try
-{
-ProduttoreApparato = "MORI RADDRIZZATORI";
-NomeApparato = "LADE LIGHT";
-SerialeApparato = 0;
-AnnoCodice = 18;
-ProgressivoCodice = 0;
-TipoApparato = 1;
-DataSetupApparato = 0x010112;
-SerialeZVT = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-HardwareZVT = "";
-SerialePFC = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-HardwarePFC = "";
-SoftwarePFC = "";
-SerialeDISP = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-HardwareDisp = "";
-SoftwareDISP = "";
-MaxRecordBrevi = 0;
-MaxRecordCarica = 0;
-SizeExternMemory = 0x20000;
-MaxProgrammazioni = 16;
-ModelloMemoria = 1;
+            public bool VuotaPacchetto()
+            {
+                try
+                {
+                    ProduttoreApparato = "MORI RADDRIZZATORI";
+                    NomeApparato = "LADE LIGHT";
+                    SerialeApparato = 0;
+                    AnnoCodice = 18;
+                    ProgressivoCodice = 0;
+                    TipoApparato = 1;
+                    DataSetupApparato = 0x010112;
+                    SerialeZVT = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                    HardwareZVT = "";
+                    SerialePFC = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                    HardwarePFC = "";
+                    SoftwarePFC = "";
+                    SerialeDISP = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                    HardwareDisp = "";
+                    SoftwareDISP = "";
+                    MaxRecordBrevi = 0;
+                    MaxRecordCarica = 0;
+                    SizeExternMemory = 0x20000;
+                    MaxProgrammazioni = 16;
+                    ModelloMemoria = 1;
 
-CrcPacchetto = 0;
+                    CrcPacchetto = 0;
 
-return true;
-}
-catch
-{
-return false;
-}
-}
-
-
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
 
 
-}
+
+
+        }
 
         public class MessaggioProgrammazione
         {
@@ -830,7 +826,6 @@ return false;
                 }
 
             }
-
 
             public bool GeneraByteArray()
             {
@@ -1083,8 +1078,6 @@ return false;
 
             }
 
-
-
             public bool VuotaPacchetto()
             {
                 try
@@ -1109,8 +1102,41 @@ return false;
                 }
             }
 
+            public MessaggioProgrammazione (llProgrammaCarica Programma)
+            {
+                try
+                {
+                    if (Programma != null)
+                    {
+
+                        TipoProgrammazione = 0;
+                        OpzioniProgrammazione = 0;
+                        IdProgrammazione = Programma.IdProgramma;
+                        ProgInUse = Programma.ProgrammaInUso;
+                        NomeCiclo = Programma.ProgramName;
+                        DataInserimento = null;
+                        IdProfilo = Programma.IdProfilo;
+
+                        Parametri = new List<ParametroLL>();
+                        Parametri.Clear();
 
 
+                        foreach (ParametroLL _par in Programma.ListaParametri)
+                        {
+                            Parametri.Add(_par);
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+
+            }
+            public MessaggioProgrammazione()
+            {
+
+            }
 
         }
 

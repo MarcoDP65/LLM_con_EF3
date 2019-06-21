@@ -230,46 +230,46 @@ namespace PannelloCharger
                 txtPaTempoT2Min.Text = "";
                 txtPaTempoT2Max.Text = "";
                 chkPaUsaSpyBatt.Checked = false;
-                if (_cb.ProgrammaAttivo != null)
+                if (_cb.Programmazioni.ProgrammaAttivo != null)
                 {
-                    txtPaNomeSetup.Text = _cb.ProgrammaAttivo.ProgramName;
-                    txtPaCapacita.Text = FunzioniMR.StringaCapacita(_cb.ProgrammaAttivo.BatteryAhdef,10) ;
+                    txtPaNomeSetup.Text = _cb.Programmazioni.ProgrammaAttivo.ProgramName;
+                    txtPaCapacita.Text = FunzioniMR.StringaCapacita(_cb.Programmazioni.ProgrammaAttivo.BatteryAhdef,10) ;
                     List<sbTipoBatteria> Lista = (List<sbTipoBatteria>)(cmbPaTipoBatteria.DataSource);
-                    cmbPaTipoBatteria.SelectedItem = Lista.Find(x => x.BatteryTypeId == _cb.ProgrammaAttivo.BatteryType);
+                    cmbPaTipoBatteria.SelectedItem = Lista.Find(x => x.BatteryTypeId == _cb.Programmazioni.ProgrammaAttivo.BatteryType);
                     List<_llProfiloCarica> ListaP = (List<_llProfiloCarica>)(cmbPaProfilo.DataSource);
-                    cmbPaProfilo.SelectedItem = ListaP.Find(x => x.IdProfiloCaricaLL == _cb.ProgrammaAttivo.IdProfilo);
+                    cmbPaProfilo.SelectedItem = ListaP.Find(x => x.IdProfiloCaricaLL == _cb.Programmazioni.ProgrammaAttivo.IdProfilo);
                     List<llTensioneBatteria> ListaV = (List<llTensioneBatteria>)(cmbPaTensione.DataSource);
-                    cmbPaTensione.SelectedItem = ListaV.Find(x => x.IdTensione == _cb.ProgrammaAttivo.BatteryVdef);
-                    txtPaTensione.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.BatteryVdef);
+                    cmbPaTensione.SelectedItem = ListaV.Find(x => x.IdTensione == _cb.Programmazioni.ProgrammaAttivo.BatteryVdef);
+                    txtPaTensione.Text = FunzioniMR.StringaTensione(_cb.Programmazioni.ProgrammaAttivo.BatteryVdef);
                     List<llDurataCarica> ListaD = (List<llDurataCarica>)(cmbPaDurataCarica.DataSource);
 
-                    cmbPaDurataCarica.SelectedItem = ListaD.Find(x => x.IdDurataCaricaLL == _cb.ProgrammaAttivo.DurataMaxCarica);
-                    txtPaTempoT2Min.Text = _cb.ProgrammaAttivo.DurataMinFase2.ToString();
-                    txtPaTempoT2Max.Text = _cb.ProgrammaAttivo.DurataMaxFase2.ToString();
-                    txtPaCoeffK.Text = _cb.ProgrammaAttivo.PercTempoFase2.ToString();
-                    txtPaTempoT3Max.Text = _cb.ProgrammaAttivo.DurataMaxFase3.ToString();
+                    cmbPaDurataCarica.SelectedItem = ListaD.Find(x => x.IdDurataCaricaLL == _cb.Programmazioni.ProgrammaAttivo.DurataMaxCarica);
+                    txtPaTempoT2Min.Text = _cb.Programmazioni.ProgrammaAttivo.DurataMinFase2.ToString();
+                    txtPaTempoT2Max.Text = _cb.Programmazioni.ProgrammaAttivo.DurataMaxFase2.ToString();
+                    txtPaCoeffK.Text = _cb.Programmazioni.ProgrammaAttivo.PercTempoFase2.ToString();
+                    txtPaTempoT3Max.Text = _cb.Programmazioni.ProgrammaAttivo.DurataMaxFase3.ToString();
 
-                    txtPaSoglia.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VSoglia);
-                    txtPaRaccordoF1.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VRaccordoF1);
-                    txtPaVMax.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VMax);
-                    txtPaVLimite.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VCellLimite);
-                    txtPaVMinRic.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VMinRec);
-                    txtPaVMaxRic.Text = FunzioniMR.StringaTensione(_cb.ProgrammaAttivo.VMaxRec);
+                    txtPaSoglia.Text = FunzioniMR.StringaTensione(_cb.Programmazioni.ProgrammaAttivo.VSoglia);
+                    txtPaRaccordoF1.Text = FunzioniMR.StringaTensione(_cb.Programmazioni.ProgrammaAttivo.VRaccordoF1);
+                    txtPaVMax.Text = FunzioniMR.StringaTensione(_cb.Programmazioni.ProgrammaAttivo.VMax);
+                    txtPaVLimite.Text = FunzioniMR.StringaTensione(_cb.Programmazioni.ProgrammaAttivo.VCellLimite);
+                    txtPaVMinRic.Text = FunzioniMR.StringaTensione(_cb.Programmazioni.ProgrammaAttivo.VMinRec);
+                    txtPaVMaxRic.Text = FunzioniMR.StringaTensione(_cb.Programmazioni.ProgrammaAttivo.VMaxRec);
 
-                    txtPaNumCelle.Text = _cb.ProgrammaAttivo.NumeroCelle.ToString();
-                    txtPaCorrenteF3.Text = FunzioniMR.StringaCorrente((short)_cb.ProgrammaAttivo.CorrenteFase3);
+                    txtPaNumCelle.Text = _cb.Programmazioni.ProgrammaAttivo.NumeroCelle.ToString();
+                    txtPaCorrenteF3.Text = FunzioniMR.StringaCorrente((short)_cb.Programmazioni.ProgrammaAttivo.CorrenteFase3);
 
 
-                    txtPaCorrenteMax.Text = FunzioniMR.StringaCorrente((short)_cb.ProgrammaAttivo.CorrenteMax);
+                    txtPaCorrenteMax.Text = FunzioniMR.StringaCorrente((short)_cb.Programmazioni.ProgrammaAttivo.CorrenteMax);
 
-                    if (_cb.ProgrammaAttivo.EqualNumImpulsi >0 || _cb.ProgrammaAttivo.EqualTempoAttesa>0)
+                    if (_cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi >0 || _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa>0)
                     {
                         chkPaAttivaEqual.Checked = true;
-                        txtPaEqualNumPulse.Text = _cb.ProgrammaAttivo.EqualNumImpulsi.ToString();
-                        txtPaEqualAttesa.Text = _cb.ProgrammaAttivo.EqualTempoAttesa.ToString();
-                        txtPaEqualPulsePause.Text = _cb.ProgrammaAttivo.EqualDurataPausa.ToString();
-                        txtPaEqualPulseTime.Text = _cb.ProgrammaAttivo.EqualDurataImpulso.ToString();
-                        txtPaEqualPulseCurrent.Text = FunzioniMR.StringaCorrente((short)_cb.ProgrammaAttivo.EqualCorrenteImpulso );
+                        txtPaEqualNumPulse.Text = _cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi.ToString();
+                        txtPaEqualAttesa.Text = _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa.ToString();
+                        txtPaEqualPulsePause.Text = _cb.Programmazioni.ProgrammaAttivo.EqualDurataPausa.ToString();
+                        txtPaEqualPulseTime.Text = _cb.Programmazioni.ProgrammaAttivo.EqualDurataImpulso.ToString();
+                        txtPaEqualPulseCurrent.Text = FunzioniMR.StringaCorrente((short)_cb.Programmazioni.ProgrammaAttivo.EqualCorrenteImpulso );
 
                     }
                     else
@@ -283,14 +283,14 @@ namespace PannelloCharger
 
                     }
 
-                    chkPaUsaSpyBatt.Checked = (_cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt == 0);
+                    chkPaUsaSpyBatt.Checked = (_cb.Programmazioni.ProgrammaAttivo.AbilitaComunicazioneSpybatt == 0);
 
 
-                    if (_cb.ProgrammaAttivo.TempoAttesaBMS> 0 || _cb.ProgrammaAttivo.TempoErogazioneBMS > 0)
+                    if (_cb.Programmazioni.ProgrammaAttivo.TempoAttesaBMS> 0 || _cb.Programmazioni.ProgrammaAttivo.TempoErogazioneBMS > 0)
                     {
                         chkPaAttivaRiarmoBms.Checked = true;
-                        txtPaBMSTempoAttesa.Text = _cb.ProgrammaAttivo.TempoAttesaBMS.ToString();
-                        txtPaBMSTempoErogazione.Text = _cb.ProgrammaAttivo.TempoErogazioneBMS.ToString();
+                        txtPaBMSTempoAttesa.Text = _cb.Programmazioni.ProgrammaAttivo.TempoAttesaBMS.ToString();
+                        txtPaBMSTempoErogazione.Text = _cb.Programmazioni.ProgrammaAttivo.TempoErogazioneBMS.ToString();
                     }
                     else
                     {

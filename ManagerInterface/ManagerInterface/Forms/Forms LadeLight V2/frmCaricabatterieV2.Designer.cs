@@ -459,6 +459,10 @@
             this.tbcPaSottopagina = new System.Windows.Forms.TabControl();
             this.tbpPaProfiloAttivo = new System.Windows.Forms.TabPage();
             this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
+            this.btnPaCaricaCicli = new System.Windows.Forms.Button();
+            this.txtPaTestoDebug = new System.Windows.Forms.TextBox();
+            this.btnPaGeneraCloni = new System.Windows.Forms.Button();
+            this.btnPaSalvaDatiN = new System.Windows.Forms.Button();
             this.chkPaSbloccaValori = new System.Windows.Forms.CheckBox();
             this.lblPaSbloccaValori = new System.Windows.Forms.Label();
             this.chkPaAttivaMant = new System.Windows.Forms.CheckBox();
@@ -5946,6 +5950,10 @@
             // grbCicloCorrente
             // 
             this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
+            this.grbCicloCorrente.Controls.Add(this.btnPaCaricaCicli);
+            this.grbCicloCorrente.Controls.Add(this.txtPaTestoDebug);
+            this.grbCicloCorrente.Controls.Add(this.btnPaGeneraCloni);
+            this.grbCicloCorrente.Controls.Add(this.btnPaSalvaDatiN);
             this.grbCicloCorrente.Controls.Add(this.chkPaSbloccaValori);
             this.grbCicloCorrente.Controls.Add(this.lblPaSbloccaValori);
             this.grbCicloCorrente.Controls.Add(this.chkPaAttivaMant);
@@ -5980,10 +5988,58 @@
             this.grbCicloCorrente.Text = "Profilo  Attivo";
             this.grbCicloCorrente.Enter += new System.EventHandler(this.grbCicloCorrente_Enter);
             // 
+            // btnPaCaricaCicli
+            // 
+            this.btnPaCaricaCicli.AutoEllipsis = true;
+            this.btnPaCaricaCicli.Location = new System.Drawing.Point(1039, 228);
+            this.btnPaCaricaCicli.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPaCaricaCicli.Name = "btnPaCaricaCicli";
+            this.btnPaCaricaCicli.Size = new System.Drawing.Size(120, 27);
+            this.btnPaCaricaCicli.TabIndex = 143;
+            this.btnPaCaricaCicli.Text = "Carica Configurazioni";
+            this.btnPaCaricaCicli.UseVisualStyleBackColor = true;
+            this.btnPaCaricaCicli.Click += new System.EventHandler(this.btnPaCaricaCicli_Click);
+            // 
+            // txtPaTestoDebug
+            // 
+            this.txtPaTestoDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaTestoDebug.Location = new System.Drawing.Point(1039, 59);
+            this.txtPaTestoDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPaTestoDebug.MaxLength = 8;
+            this.txtPaTestoDebug.Multiline = true;
+            this.txtPaTestoDebug.Name = "txtPaTestoDebug";
+            this.txtPaTestoDebug.Size = new System.Drawing.Size(120, 128);
+            this.txtPaTestoDebug.TabIndex = 142;
+            this.txtPaTestoDebug.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnPaGeneraCloni
+            // 
+            this.btnPaGeneraCloni.AutoEllipsis = true;
+            this.btnPaGeneraCloni.Location = new System.Drawing.Point(1039, 28);
+            this.btnPaGeneraCloni.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPaGeneraCloni.Name = "btnPaGeneraCloni";
+            this.btnPaGeneraCloni.Size = new System.Drawing.Size(120, 27);
+            this.btnPaGeneraCloni.TabIndex = 141;
+            this.btnPaGeneraCloni.Text = "Genera copie";
+            this.btnPaGeneraCloni.UseVisualStyleBackColor = true;
+            this.btnPaGeneraCloni.Click += new System.EventHandler(this.btnPaGeneraCloni_Click);
+            // 
+            // btnPaSalvaDatiN
+            // 
+            this.btnPaSalvaDatiN.AutoEllipsis = true;
+            this.btnPaSalvaDatiN.Location = new System.Drawing.Point(1039, 435);
+            this.btnPaSalvaDatiN.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPaSalvaDatiN.Name = "btnPaSalvaDatiN";
+            this.btnPaSalvaDatiN.Size = new System.Drawing.Size(120, 27);
+            this.btnPaSalvaDatiN.TabIndex = 140;
+            this.btnPaSalvaDatiN.Text = "Salva Profilo (16)";
+            this.btnPaSalvaDatiN.UseVisualStyleBackColor = true;
+            this.btnPaSalvaDatiN.Click += new System.EventHandler(this.btnPaSalvaDatiN_Click);
+            // 
             // chkPaSbloccaValori
             // 
             this.chkPaSbloccaValori.AutoSize = true;
-            this.chkPaSbloccaValori.Location = new System.Drawing.Point(1040, 351);
+            this.chkPaSbloccaValori.Location = new System.Drawing.Point(1039, 321);
             this.chkPaSbloccaValori.Margin = new System.Windows.Forms.Padding(2);
             this.chkPaSbloccaValori.Name = "chkPaSbloccaValori";
             this.chkPaSbloccaValori.Size = new System.Drawing.Size(15, 14);
@@ -5996,7 +6052,7 @@
             this.lblPaSbloccaValori.AutoSize = true;
             this.lblPaSbloccaValori.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaSbloccaValori.ForeColor = System.Drawing.Color.Red;
-            this.lblPaSbloccaValori.Location = new System.Drawing.Point(1055, 351);
+            this.lblPaSbloccaValori.Location = new System.Drawing.Point(1054, 321);
             this.lblPaSbloccaValori.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPaSbloccaValori.Name = "lblPaSbloccaValori";
             this.lblPaSbloccaValori.Size = new System.Drawing.Size(79, 13);
@@ -6028,7 +6084,7 @@
             // 
             // btnCicloCorrente
             // 
-            this.btnCicloCorrente.Location = new System.Drawing.Point(1040, 391);
+            this.btnCicloCorrente.Location = new System.Drawing.Point(1039, 348);
             this.btnCicloCorrente.Margin = new System.Windows.Forms.Padding(2);
             this.btnCicloCorrente.Name = "btnCicloCorrente";
             this.btnCicloCorrente.Size = new System.Drawing.Size(120, 27);
@@ -6120,6 +6176,7 @@
             this.txtPaIdSetup.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaIdSetup.MaxLength = 6;
             this.txtPaIdSetup.Name = "txtPaIdSetup";
+            this.txtPaIdSetup.ReadOnly = true;
             this.txtPaIdSetup.Size = new System.Drawing.Size(41, 23);
             this.txtPaIdSetup.TabIndex = 122;
             this.txtPaIdSetup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -6958,7 +7015,7 @@
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.Blue;
-            this.label30.Location = new System.Drawing.Point(188, 84);
+            this.label30.Location = new System.Drawing.Point(188, 85);
             this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(67, 17);
@@ -6981,7 +7038,7 @@
             this.label136.AutoSize = true;
             this.label136.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label136.ForeColor = System.Drawing.Color.Blue;
-            this.label136.Location = new System.Drawing.Point(14, 28);
+            this.label136.Location = new System.Drawing.Point(14, 27);
             this.label136.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label136.Name = "label136";
             this.label136.Size = new System.Drawing.Size(102, 17);
@@ -7036,7 +7093,7 @@
             // 
             // btnPaSalvaDati
             // 
-            this.btnPaSalvaDati.Location = new System.Drawing.Point(1040, 431);
+            this.btnPaSalvaDati.Location = new System.Drawing.Point(1039, 384);
             this.btnPaSalvaDati.Margin = new System.Windows.Forms.Padding(2);
             this.btnPaSalvaDati.Name = "btnPaSalvaDati";
             this.btnPaSalvaDati.Size = new System.Drawing.Size(120, 27);
@@ -7050,7 +7107,7 @@
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.ForeColor = System.Drawing.Color.Blue;
-            this.label60.Location = new System.Drawing.Point(11, 84);
+            this.label60.Location = new System.Drawing.Point(14, 85);
             this.label60.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(147, 17);
@@ -7085,7 +7142,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(14, 145);
+            this.label5.Location = new System.Drawing.Point(14, 144);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 17);
@@ -7097,7 +7154,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(11, 211);
+            this.label4.Location = new System.Drawing.Point(11, 210);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 17);
@@ -7142,7 +7199,6 @@
             // flwPaListaConfigurazioni
             // 
             this.flwPaListaConfigurazioni.CellEditUseWholeCell = false;
-            this.flwPaListaConfigurazioni.Enabled = false;
             this.flwPaListaConfigurazioni.Location = new System.Drawing.Point(9, 18);
             this.flwPaListaConfigurazioni.Margin = new System.Windows.Forms.Padding(2);
             this.flwPaListaConfigurazioni.Name = "flwPaListaConfigurazioni";
@@ -7152,6 +7208,7 @@
             this.flwPaListaConfigurazioni.UseCompatibleStateImageBehavior = false;
             this.flwPaListaConfigurazioni.View = System.Windows.Forms.View.Details;
             this.flwPaListaConfigurazioni.VirtualMode = true;
+            this.flwPaListaConfigurazioni.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.flwPaListaConfigurazioni_FormatRow);
             // 
             // btnPaCaricaListaProfili
             // 
@@ -8925,5 +8982,9 @@
         private System.Windows.Forms.Label lblCliCliente;
         private System.Windows.Forms.Button btnCaricaMemoria;
         private System.Windows.Forms.TabControl tabCaricaBatterie;
+        private System.Windows.Forms.Button btnPaSalvaDatiN;
+        private System.Windows.Forms.Button btnPaGeneraCloni;
+        private System.Windows.Forms.TextBox txtPaTestoDebug;
+        private System.Windows.Forms.Button btnPaCaricaCicli;
     }
 }

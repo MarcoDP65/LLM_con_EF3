@@ -75,16 +75,61 @@ namespace MoriData
         public byte ProgrammaInUso { get; set; }
 
         public byte TipoRecord { get; set; }
-        public byte OpzioniAttive { get; set; } 
+        public byte OpzioniAttive { get; set; }
 
+        public bool IsEqual( _llProgrammaCarica ProgCarica)
+        {
+            try
+            {
 
+                if (IdApparato != ProgCarica.IdApparato) return false;
+                if (IdProgramma != ProgCarica.IdProgramma) return false;
+                if (DataInstallazione != ProgCarica.DataInstallazione ) return false;
+                if (ProgramName != ProgCarica.ProgramName) return false;
+                if (BatteryType != ProgCarica.BatteryType) return false;
+                if (BatteryVdef != ProgCarica.BatteryVdef) return false;
+                if (BatteryAhdef != ProgCarica.BatteryAhdef) return false;
+                if (VSoglia != ProgCarica.VSoglia) return false;
+                if (VRaccordoF1 != ProgCarica.VRaccordoF1) return false;
+                if (VMax != ProgCarica.VMax) return false;
+                if (VCellLimite != ProgCarica.VCellLimite) return false;
+                if (BatteryVminRec != ProgCarica.BatteryVminRec) return false;
+                if (BatteryVmaxRec != ProgCarica.BatteryVmaxRec) return false;
+                if (BatteryVminStop != ProgCarica.BatteryVminStop) return false;
+                if (CorrenteMax != ProgCarica.CorrenteMax) return false;
+                if (CorrenteFase3 != ProgCarica.CorrenteFase3) return false;
+                if (EqualTempoAttesa != ProgCarica.EqualTempoAttesa) return false;
+                if (EqualNumImpulsi != ProgCarica.EqualNumImpulsi) return false;
+                if (EqualDurataPausa != ProgCarica.EqualDurataPausa) return false;
+                if (EqualDurataImpulso != ProgCarica.EqualDurataImpulso) return false;
+                if (EqualCorrenteImpulso != ProgCarica.EqualCorrenteImpulso) return false;
+                if (IdProfilo != ProgCarica.IdProfilo) return false;
+                if (DurataMaxCarica != ProgCarica.DurataMaxCarica) return false;
+                if (PercTempoFase2 != ProgCarica.PercTempoFase2) return false;
+                if (DurataMinFase2 != ProgCarica.DurataMinFase2) return false;
+                if (DurataMaxFase2 != ProgCarica.DurataMaxFase2) return false;
+                if (DurataMaxFase3 != ProgCarica.DurataMaxFase3) return false;
+                if (AbilitaComunicazioneSpybatt != ProgCarica.AbilitaComunicazioneSpybatt) return false;
+                if (TempoErogazioneBMS != ProgCarica.TempoErogazioneBMS) return false;
+                if (TempoAttesaBMS != ProgCarica.TempoAttesaBMS) return false;
+                if (ProgrammaInUso != ProgCarica.ProgrammaInUso) return false;
+                if (TipoRecord != ProgCarica.TipoRecord) return false;
+                if (OpzioniAttive != ProgCarica.OpzioniAttive) return false;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
     }
 
     public class llProgrammaCarica
     {
-
+        public parametriSistema Parametri { get; set; }
         public string nullID { get { return "LL000000"; } }
         public _llProgrammaCarica _llprc = new _llProgrammaCarica();
         public bool valido;
@@ -92,6 +137,9 @@ namespace MoriData
         private static ILog Log = LogManager.GetLogger("llProgrammaCarica");
         public bool _datiSalvati;
         public bool _recordPresente;
+        public byte PosizioneCorrente { get; set; }
+        public bool ProgrammaAttivo { get; set; }
+
 
         public List<ParametroLL> ListaParametri;
 
@@ -438,7 +486,7 @@ namespace MoriData
                             _llprc.IdProfilo = (byte)_par.ValoreParametro;
                             break;
                         case (byte)SerialMessage.ParametroLadeLight.TipoBatteria:
-                            _llprc.BatteryType = (byte)_par.ValoreParametro;
+                            _llprc.BatteryType = _par.ValoreParametro;
                             break;
                         case (byte)SerialMessage.ParametroLadeLight.CapacitaNominale:
                             _llprc.BatteryAhdef = _par.ValoreParametro;
@@ -533,6 +581,20 @@ namespace MoriData
             }
         }
 
+        public bool IsEqual(llProgrammaCarica ProgCarica)
+        {
+            try
+            {
+                if (!_llprc.IsEqual(ProgCarica._llprc)) return false;
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         #region Class Parameters
 
@@ -590,6 +652,15 @@ namespace MoriData
                 }
                 else
                     return "";
+            }
+
+        }
+
+        public string strPosizioneCorrente
+        {
+            get
+            {
+                return PosizioneCorrente.ToString("000");
             }
 
         }
@@ -657,6 +728,23 @@ namespace MoriData
             }
         }
 
+        public string strBatteryVdef
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return FunzioniMR.StringaTensione(_llprc.BatteryVdef);
+                }
+                else
+                    return "N.D.";
+            
+            }
+        }
+
+
+
+
         /// <summary>
         /// Capacità nominale batteria.
         /// </summary>
@@ -680,6 +768,21 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+        public string strBatteryAhdef
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return FunzioniMR.StringaCorrenteLL( _llprc.BatteryAhdef) ;
+                }
+                else
+                    return "N.D.";
+            }
+
+        }
+
 
         public ushort BatteryType
         {
@@ -1173,6 +1276,95 @@ namespace MoriData
             }
 
         }
+
+        public ushort TipoBatteria
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.BatteryType;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.BatteryType = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public string strTipoBatteria
+        {
+            get
+            {
+                try
+                {
+                    if (_llprc != null)
+                    {
+                        mbTipoBatteria TipoBase = Parametri.ParametriProfilo.ModelliBatteria.Find(x => x.BatteryTypeId == _llprc.BatteryType);
+                        if (TipoBase != null)
+                        {
+                            return TipoBase.BatteryType;
+                        }
+                        else
+                        {
+                            return "N.D.";
+                        }
+
+                    }
+                    return "";
+                }
+                catch
+                {
+                    return "N.D.";
+                }
+            }
+
+        }
+
+
+        public ushort TipoProfilo
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.IdProfilo;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.IdProfilo = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public string strTipoProfilo
+        {
+            get
+            {
+                try
+                {
+                    if (_llprc != null)
+                    {
+                        _mbProfiloCarica TipoBase = Parametri.ParametriProfilo.ProfiliCarica.Find(x => x.IdProfiloCaricaLL == _llprc.IdProfilo);
+                        if (TipoBase != null)
+                        {
+                            return TipoBase.NomeProfilo;
+                        }
+                        else
+                        {
+                            return "N.D.";
+                        }
+
+                    }
+                    return "";
+                }
+                catch
+                {
+                    return "N.D.";
+                }
+            }
+        }
+
+
+        
 
 
 

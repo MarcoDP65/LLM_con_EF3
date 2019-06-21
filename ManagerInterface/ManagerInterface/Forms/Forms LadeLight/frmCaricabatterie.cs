@@ -493,42 +493,42 @@ namespace PannelloCharger
                 float resultF;
 
                 // Se il ciclo attuale non è mai stato usato, sovrascrivo
-                if (_cb.ProgrammaAttivo == null)
+                if (_cb.Programmazioni.ProgrammaAttivo == null)
                 {
-                    _cb.ProgrammaAttivo = new llProgrammaCarica();
+                    _cb.Programmazioni.ProgrammaAttivo = new llProgrammaCarica();
 
                 }
 
-                if (_cb.ProgrammaAttivo.ProgrammaInUso != 0xFF)
+                if (_cb.Programmazioni.ProgrammaAttivo.ProgrammaInUso != 0xFF)
                 {
                     //scorro la lista, butto l'ultimo se già 16 presenti
                     // AL MOMENTO SOVRASCRIVO SEMPRE LO STESSO
                 }
 
-                _cb.ProgrammaAttivo.IdProgramma = 1; // diventa progressivo
-                _cb.ProgrammaAttivo.ProgrammaInUso = 0xFF;
+                _cb.Programmazioni.ProgrammaAttivo.IdProgramma = 1; // diventa progressivo
+                _cb.Programmazioni.ProgrammaAttivo.ProgrammaInUso = 0xFF;
 
                 // Nome
                 string _tempStr = txtPaNomeSetup.Text.Trim();
-                _cb.ProgrammaAttivo.ProgramName = _tempStr;
+                _cb.Programmazioni.ProgrammaAttivo.ProgramName = _tempStr;
 
-                _cb.ProgrammaAttivo.BatteryType = (byte)cmbPaTipoBatteria.SelectedValue;
+                _cb.Programmazioni.ProgrammaAttivo.BatteryType = (byte)cmbPaTipoBatteria.SelectedValue;
 
                 // Tensione
-                _cb.ProgrammaAttivo.BatteryVdef = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
+                _cb.Programmazioni.ProgrammaAttivo.BatteryVdef = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
                 // Numero Celle
-                _cb.ProgrammaAttivo.NumeroCelle = FunzioniMR.ConvertiByte(txtPaNumCelle.Text, 1, 1);
+                _cb.Programmazioni.ProgrammaAttivo.NumeroCelle = FunzioniMR.ConvertiByte(txtPaNumCelle.Text, 1, 1);
 
                 // Tensioni Soglia
-                _cb.ProgrammaAttivo.VSoglia = FunzioniMR.ConvertiUshort(txtPaSoglia.Text, 100, 0);
-                _cb.ProgrammaAttivo.VRaccordoF1 = FunzioniMR.ConvertiUshort(txtPaRaccordoF1.Text, 100, 0);
-                _cb.ProgrammaAttivo.VMax = FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0);
-                _cb.ProgrammaAttivo.VCellLimite = FunzioniMR.ConvertiUshort(txtPaVLimite.Text, 100, 0);
-                _cb.ProgrammaAttivo.VMinRec = FunzioniMR.ConvertiUshort(txtPaVMinRic.Text, 100, 0);
-                _cb.ProgrammaAttivo.VMaxRec = FunzioniMR.ConvertiUshort(txtPaVMaxRic.Text, 100, 0);
+                _cb.Programmazioni.ProgrammaAttivo.VSoglia = FunzioniMR.ConvertiUshort(txtPaSoglia.Text, 100, 0);
+                _cb.Programmazioni.ProgrammaAttivo.VRaccordoF1 = FunzioniMR.ConvertiUshort(txtPaRaccordoF1.Text, 100, 0);
+                _cb.Programmazioni.ProgrammaAttivo.VMax = FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0);
+                _cb.Programmazioni.ProgrammaAttivo.VCellLimite = FunzioniMR.ConvertiUshort(txtPaVLimite.Text, 100, 0);
+                _cb.Programmazioni.ProgrammaAttivo.VMinRec = FunzioniMR.ConvertiUshort(txtPaVMinRic.Text, 100, 0);
+                _cb.Programmazioni.ProgrammaAttivo.VMaxRec = FunzioniMR.ConvertiUshort(txtPaVMaxRic.Text, 100, 0);
 
                 // Capacità
-                _cb.ProgrammaAttivo.BatteryAhdef = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
+                _cb.Programmazioni.ProgrammaAttivo.BatteryAhdef = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
                 // ID Profilo
                 byte TipoProf;
 
@@ -541,7 +541,7 @@ namespace PannelloCharger
                 {
                     TipoProf = (byte)((_llProfiloCarica)cmbPaProfilo.SelectedItem).IdProfiloCaricaLL;
                 }
-                _cb.ProgrammaAttivo.IdProfilo = TipoProf;
+                _cb.Programmazioni.ProgrammaAttivo.IdProfilo = TipoProf;
 
                 // Durata Carica, default 12 H
                 ushort MinutiCarica = 720;
@@ -550,40 +550,40 @@ namespace PannelloCharger
                     MinutiCarica = (ushort)((llDurataCarica)cmbPaDurataCarica.SelectedItem).IdDurataCaricaLL;
                 }
 
-                _cb.ProgrammaAttivo.DurataMaxCarica = MinutiCarica; // Max fase 1
+                _cb.Programmazioni.ProgrammaAttivo.DurataMaxCarica = MinutiCarica; // Max fase 1
 
-                _cb.ProgrammaAttivo.DurataMinFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Min.Text, 1, 0);
-                _cb.ProgrammaAttivo.DurataMaxFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Max.Text, 1, 0);
-                _cb.ProgrammaAttivo.PercTempoFase2 = FunzioniMR.ConvertiUshort(txtPaCoeffK.Text, 1, 0);
-                _cb.ProgrammaAttivo.DurataMaxFase3 = FunzioniMR.ConvertiUshort(txtPaTempoT3Max.Text, 1, 0);
-
-
-                _cb.ProgrammaAttivo.CorrenteMax = FunzioniMR.ConvertiUshort(txtPaCorrenteMax.Text, 10, 0);
-                _cb.ProgrammaAttivo.CorrenteFase3 = FunzioniMR.ConvertiUshort(txtPaCorrenteF3.Text, 10, 0);
+                _cb.Programmazioni.ProgrammaAttivo.DurataMinFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Min.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.DurataMaxFase2 = FunzioniMR.ConvertiUshort(txtPaTempoT2Max.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.PercTempoFase2 = FunzioniMR.ConvertiUshort(txtPaCoeffK.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.DurataMaxFase3 = FunzioniMR.ConvertiUshort(txtPaTempoT3Max.Text, 1, 0);
 
 
-
-                _cb.ProgrammaAttivo.EqualTempoAttesa  = FunzioniMR.ConvertiByte(txtPaEqualAttesa.Text, 1, 0);
-                _cb.ProgrammaAttivo.EqualNumImpulsi = FunzioniMR.ConvertiByte(txtPaEqualNumPulse.Text, 1, 0);
-                _cb.ProgrammaAttivo.EqualDurataPausa = FunzioniMR.ConvertiByte(txtPaEqualPulsePause.Text, 1, 0);
-                _cb.ProgrammaAttivo.EqualDurataImpulso = FunzioniMR.ConvertiByte(txtPaEqualPulseTime.Text, 1, 0);
-                _cb.ProgrammaAttivo.EqualCorrenteImpulso = FunzioniMR.ConvertiByte(txtPaEqualPulseCurrent.Text, 10, 0);
+                _cb.Programmazioni.ProgrammaAttivo.CorrenteMax = FunzioniMR.ConvertiUshort(txtPaCorrenteMax.Text, 10, 0);
+                _cb.Programmazioni.ProgrammaAttivo.CorrenteFase3 = FunzioniMR.ConvertiUshort(txtPaCorrenteF3.Text, 10, 0);
 
 
-                _cb.ProgrammaAttivo.TempoErogazioneBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoErogazione.Text, 1, 0);
-                _cb.ProgrammaAttivo.TempoAttesaBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoAttesa.Text, 1, 0);
+
+                _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa  = FunzioniMR.ConvertiByte(txtPaEqualAttesa.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi = FunzioniMR.ConvertiByte(txtPaEqualNumPulse.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.EqualDurataPausa = FunzioniMR.ConvertiByte(txtPaEqualPulsePause.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.EqualDurataImpulso = FunzioniMR.ConvertiByte(txtPaEqualPulseTime.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.EqualCorrenteImpulso = FunzioniMR.ConvertiByte(txtPaEqualPulseCurrent.Text, 10, 0);
+
+
+                _cb.Programmazioni.ProgrammaAttivo.TempoErogazioneBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoErogazione.Text, 1, 0);
+                _cb.Programmazioni.ProgrammaAttivo.TempoAttesaBMS = FunzioniMR.ConvertiByte(txtPaBMSTempoAttesa.Text, 1, 0);
 
                 if (chkPaUsaSpyBatt.Checked)
                 {
-                    _cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt = 0x00;
+                    _cb.Programmazioni.ProgrammaAttivo.AbilitaComunicazioneSpybatt = 0x00;
                 }
                 else
                 {
-                    _cb.ProgrammaAttivo.AbilitaComunicazioneSpybatt = 0xF0;
+                    _cb.Programmazioni.ProgrammaAttivo.AbilitaComunicazioneSpybatt = 0xF0;
                 }
 
 
-                _cb.ProgrammaAttivo.GeneraListaParametri();
+                _cb.Programmazioni.ProgrammaAttivo.GeneraListaParametri();
 
                 _cb.SalvaProgrammazioniApparato();
 
@@ -2926,7 +2926,7 @@ namespace PannelloCharger
                 flvwProgrammiCarica.AllColumns.Add(colRowFiller);
                 */
                 flwPaListaConfigurazioni.RebuildColumns();
-                flwPaListaConfigurazioni.SetObjects(_cb.ProgrammiDefiniti);
+                flwPaListaConfigurazioni.SetObjects(_cb.Programmazioni.ProgrammiDefiniti);
                 flwPaListaConfigurazioni.BuildList();
             }
             catch (Exception Ex)

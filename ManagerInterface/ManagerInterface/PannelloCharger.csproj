@@ -517,6 +517,7 @@
     <Compile Include="Logiche\Caricabatteria\CaricabatteriaInizializzazioni.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiFirmware.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiMemoria.cs" />
+    <Compile Include="Logiche\Caricabatteria\cbProgrammazioni.cs" />
     <Compile Include="Logiche\Caricabatteria\sottoclassiCaricaBatteria.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -54,10 +54,12 @@ namespace ChargerLogic
 
                 ProfiloRegistrato.BatteryVdef = Tensione;
                 ProfiloRegistrato.BatteryAhdef = Capacita;
+                ProfiloRegistrato.IdProfilo = Profilo.IdProfiloCaricaLL;
 
                 GeneraListaValori();
 
                 ProfiloRegistrato.ListaParametri = ListaParametri;
+
 
 
                 return true;
@@ -201,7 +203,7 @@ namespace ChargerLogic
 
                         case SerialMessage.ParametroLadeLight.TempoT2Max:
                             ValoriCiclo.TempoT2Max = dato.ValoreParametro;
-                            ParametriAttivi.TempoT2Min = StatoCella;
+                            ParametriAttivi.TempoT2Max = StatoCella;
                             numeroValori += 1;
                             break;
 
@@ -584,7 +586,7 @@ namespace ChargerLogic
                 return false;
             }
         }
-
+ 
 
 
 

@@ -192,6 +192,9 @@ namespace PannelloCharger
 
                     CaricaAreaContatori();
 
+                    // ora carico il ciclo corrente e i contatori programmazioni
+
+
                     _apparatoPresente = _esito;
                     return true;
 
@@ -268,7 +271,7 @@ namespace PannelloCharger
                 if (txtPaTempoT2Max.Text.Length > 0)
                 {
                     ushort result;
-                    if (ushort.TryParse(txtPaTempoT2Max.Text, out result))
+                    if (ushort.TryParse(cmbPaDurataMaxT1.Text, out result))
                     {
                         ParametroLL _par = new ParametroLL();
                         _par.idParametro = (byte)SerialMessage.ParametroLadeLight.TempoT1Max;
@@ -382,25 +385,54 @@ namespace PannelloCharger
 
 
 
-
-
-        public bool ScriviParametriCarica()
+        public bool CopiaParametriCarica(int NumCopie)
         {
             try
             {
-                //ushort result;
-                //float resultF;
+
                 bool esito;
 
 
                 // Ricarico i valori impostati nelle textbox
                 esito = LeggiValoriParametriCarica();
 
-                if( esito )
+                if (esito)
                 {
                     MostraParametriCiclo(false);
                     ModCicloCorrente.GeneraProgrammaCarica();
-                    _cb.ProgrammaAttivo = ModCicloCorrente.ProfiloRegistrato;
+                    _cb.Programmazioni.ProgrammaAttivo = ModCicloCorrente.ProfiloRegistrato;
+                    _cb.SalvaProgrammazioniApparato();
+
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        public bool ScriviParametriCarica()
+        {
+            try
+            {
+
+                bool esito;
+
+
+                // Carico i valori impostati nelle textbox
+                esito = LeggiValoriParametriCarica();
+                ModCicloCorrente.IdProgramma = (ushort)(_cb.Programmazioni.UltimoIdProgamma + 1);
+
+                if ( esito )
+                {
+                    // Riscrivo i valori nelle textBox per conferma poi salvo i valori 
+                    MostraParametriCiclo(false);
+                    ModCicloCorrente.GeneraProgrammaCarica();
+                    _cb.Programmazioni.ProgrammaAttivo = ModCicloCorrente.ProfiloRegistrato;
+                    _cb.PreparaSalvataggioProgrammazioni();
                     _cb.SalvaProgrammazioniApparato();
 
                 }
@@ -427,7 +459,7 @@ namespace PannelloCharger
 
                 // Generale
                 ModCicloCorrente.NomeProfilo = _tempStr;
-                ModCicloCorrente.IdProgramma = FunzioniMR.ConvertiUshort(txtPaIdSetup.Text, 1, 0);
+                //ModCicloCorrente.IdProgramma = FunzioniMR.ConvertiUshort(txtPaIdSetup.Text, 1, 0);
 
                 // Batteria
                 if (cmbPaTipoBatteria.SelectedItem != null)
@@ -567,7 +599,7 @@ namespace PannelloCharger
                                 txtPaCapacita.Text = _par.ValoreParametro.ToString();
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.TempoT1Max:
-                                //txtPaTempoMax.Text = _par.ValoreParametro.ToString();
+                                cmbPaDurataMaxT1.Text = _par.ValoreParametro.ToString();
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaF1:      
                                 _tempVal = (float)_par.ValoreParametro / 100;
@@ -1150,7 +1182,6 @@ namespace PannelloCharger
 
         private void frmCaricabatterie_Load(object sender, EventArgs e)
         {
-           
             this.Cursor = Cursors.Arrow;
             this.Width += 10;
         }
@@ -1180,7 +1211,7 @@ namespace PannelloCharger
                 {
                     //MostraCicloCorrente();
                     ProfiloInCaricamento = true;
-                    ModCicloCorrente.ProfiloRegistrato = _cb.ProgrammaAttivo;
+                    ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
                     ModCicloCorrente.EstraiDaProgrammaCarica();
 
                     MostraParametriCiclo(true,false);
@@ -1348,6 +1379,11 @@ namespace PannelloCharger
                 Log.Error("InizializzaVistaLunghi: " + Ex.Message);
             }
         }
+
+
+
+
+
 
         private void btnVarFilesearch_Click(object sender, EventArgs e)
         {
@@ -2815,6 +2851,9 @@ namespace PannelloCharger
                 Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
                 _stile.SetFont(_carattere);
                 Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
+                Font _carTesto = new Font("Tahoma", 10, FontStyle.Regular);
+
+
 
                 flwPaListaConfigurazioni.HeaderUsesThemes = false;
                 flwPaListaConfigurazioni.HeaderFormatStyle = _stile;
@@ -2826,79 +2865,70 @@ namespace PannelloCharger
                 flwPaListaConfigurazioni.View = View.Details;
                 flwPaListaConfigurazioni.ShowGroups = false;
                 flwPaListaConfigurazioni.GridLines = true;
+                flwPaListaConfigurazioni.Font = _carTesto;
+                flwPaListaConfigurazioni.RowHeight = 25;
+                flwPaListaConfigurazioni.FullRowSelect = true;
 
                 BrightIdeasSoftware.OLVColumn colIdConfig = new BrightIdeasSoftware.OLVColumn()
                 {
-                    Text = "Num",
+                    Text = "ID",
                     AspectName = "strIdProgramma",
                     Width = 60,
                     HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
                 };
                 flwPaListaConfigurazioni.AllColumns.Add(colIdConfig);
 
-                BrightIdeasSoftware.OLVColumn colRowTipe = new BrightIdeasSoftware.OLVColumn()
+                BrightIdeasSoftware.OLVColumn colPosizione = new BrightIdeasSoftware.OLVColumn()
                 {
-                    Text = "Type",
-                    AspectName = "strTipoRecord",
+                    Text = "Pos",
+                    AspectName = "strPosizioneCorrente",
                     Width = 60,
                     HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
                 };
-                flwPaListaConfigurazioni.AllColumns.Add(colRowTipe);
+                flwPaListaConfigurazioni.AllColumns.Add(colPosizione);
 
-
-                BrightIdeasSoftware.OLVColumn colRowOpt = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Opt",
-                    AspectName = "",
-                    Width = 60,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
-                };
-                flwPaListaConfigurazioni.AllColumns.Add(colRowOpt);
-
-
-                BrightIdeasSoftware.OLVColumn colRowReadonly = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "M",
-                    ToolTipText = "Dati Modificabili",
-                    AspectName = "",
-                    Width = 60,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
-                };
-                flwPaListaConfigurazioni.AllColumns.Add(colRowReadonly);
-
-
-                BrightIdeasSoftware.OLVColumn colRowNomeSetup = new BrightIdeasSoftware.OLVColumn()
+                BrightIdeasSoftware.OLVColumn colProgName = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "Nome",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "",
-                    Width = 200,
+                    AspectName = "ProgramName",
+                    Width = 100,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
+                    
                 };
-                flwPaListaConfigurazioni.AllColumns.Add(colRowNomeSetup);
+                flwPaListaConfigurazioni.AllColumns.Add(colProgName);
 
-                BrightIdeasSoftware.OLVColumn colRowBattType = new BrightIdeasSoftware.OLVColumn()
+
+                BrightIdeasSoftware.OLVColumn colBatteryType = new BrightIdeasSoftware.OLVColumn()
                 {
-                    Text = "Tipo",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "",
-                    Width = 120,
+                    Text = "Tipo Batt.",
+                    AspectName = "strTipoBatteria",
+                    Width = 300,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
                 };
-                flwPaListaConfigurazioni.AllColumns.Add(colRowBattType);
+                flwPaListaConfigurazioni.AllColumns.Add(colBatteryType);
+
+
+                BrightIdeasSoftware.OLVColumn colNomeProfilo = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Profilo",
+                    ToolTipText = "Nome Profilo",
+                    AspectName = "strTipoProfilo",
+                    Width = 150,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flwPaListaConfigurazioni.AllColumns.Add(colNomeProfilo);
 
                 BrightIdeasSoftware.OLVColumn colRowBattVNom = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "V",
                     //ToolTipText = "Dati Modificabili",
-                    AspectName = "",
-                    Width = 80,
+                    AspectName = "strBatteryVdef",
+                    Width = 120,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
                 };
@@ -2908,14 +2938,14 @@ namespace PannelloCharger
                 {
                     Text = "Ah",
                     //ToolTipText = "Dati Modificabili",
-                    AspectName = "",
-                    Width = 80,
+                    AspectName = "strBatteryAhdef",
+                    Width = 120,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
                 };
                 flwPaListaConfigurazioni.AllColumns.Add(colRowBattAhNom);
 
-                /*
+                
                 
                 BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
                 colRowFiller.Text = "";
@@ -2923,10 +2953,11 @@ namespace PannelloCharger
                 colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
                 colRowFiller.TextAlign = HorizontalAlignment.Right;
                 colRowFiller.FillsFreeSpace = true;
-                flvwProgrammiCarica.AllColumns.Add(colRowFiller);
-                */
+                flwPaListaConfigurazioni.AllColumns.Add(colRowFiller);
+
+                flwPaListaConfigurazioni.Sort(colPosizione);
                 flwPaListaConfigurazioni.RebuildColumns();
-                flwPaListaConfigurazioni.SetObjects(_cb.ProgrammiDefiniti);
+                flwPaListaConfigurazioni.SetObjects(_cb.Programmazioni.ProgrammiDefiniti);
                 flwPaListaConfigurazioni.BuildList();
             }
             catch (Exception Ex)
@@ -2934,6 +2965,24 @@ namespace PannelloCharger
                 Log.Error("InizializzaVistaLunghi: " + Ex.Message);
             }
         }
+
+        private void flwPaListaConfigurazioni_FormatRow(object sender, FormatRowEventArgs e)
+        {
+            //coloro la riga in base al Tipo Evento
+            llProgrammaCarica _progCorrente = (llProgrammaCarica)e.Model;
+            if(_progCorrente.ProgrammaAttivo)
+            {
+                e.Item.BackColor = Color.LightGreen;
+            }
+
+        }
+
+
+
+
+
+
+
 
         private void btnCaricaContatori_Click(object sender, EventArgs e)
         {
@@ -3320,13 +3369,12 @@ namespace PannelloCharger
                         txtPaIdSetup.Text = ModCicloCorrente.IdProgramma.ToString();
                         txtPaCassone.Text = ModCicloCorrente.ValoriCiclo.TipoCassone.ToString();
                         // Allineo il tipo batteria
-
+                        
                         mbTipoBatteria TempBatt = (from tb in (List<mbTipoBatteria>)cmbPaTipoBatteria.DataSource
                                                    where tb.BatteryTypeId == ModCicloCorrente.Batteria.BatteryTypeId
                                                    select tb).FirstOrDefault();
-
                         cmbPaTipoBatteria.SelectedItem = TempBatt;
-
+                        
                         if (ModCicloCorrente.Batteria != null)
                         {
                             if (ModCicloCorrente.Batteria.TensioniFisse != 0)
@@ -3561,6 +3609,74 @@ namespace PannelloCharger
             {
                 Log.Error("chkPaSbloccaValori_CheckedChanged: " + Ex.Message);
             }
+        }
+
+        private void btnPaSalvaDatiN_Click(object sender, EventArgs e)
+        {
+            //ScriviParametriCarica();
+            foreach (llProgrammaCarica tempPrg in _cb.Programmazioni.ProgrammiDefiniti)
+            {
+                tempPrg.PosizioneCorrente += 1;
+            }
+
+        }
+
+        private void btnPaGeneraCloni_Click(object sender, EventArgs e)
+        {
+            DateTime Inizio = DateTime.Now;
+            DateTime Fine;
+
+            byte[] bloccop = new byte[10];
+            txtPaTestoDebug.Text = "";
+            int Address = 0x2000;
+
+            for( int _ciclo = 0; _ciclo < 16; _ciclo++ )
+            {
+                if (_cb.LeggiBloccoMemoria((uint)(Address + _ciclo * 256), 10, out bloccop))
+                {
+                   txtPaTestoDebug.Text +=  bloccop[0].ToString("x2") + " ";
+                }
+            }
+            Fine = DateTime.Now;
+            txtPaTestoDebug.Text += "\r\n"+ Fine.Subtract(Inizio).TotalMilliseconds.ToString("0.0");
+
+        }
+
+        private void btnPaCaricaCicli_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool Esito;
+
+                Esito = _cb.LeggiProgrammazioni(); 
+
+                if (Esito)
+                {
+                    //MostraCicloCorrente();
+                    ProfiloInCaricamento = true;
+                    ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
+                    ModCicloCorrente.EstraiDaProgrammaCarica();
+
+                    MostraParametriCiclo(true, false);
+                    ProfiloInCaricamento = false;
+
+                    InizializzaVistaProgrammazioni();
+
+
+                }
+                else
+                {
+                    MostraParametriCiclo(true, true);
+                }
+
+
+
+            }
+            catch
+            {
+                ProfiloInCaricamento = false;
+            }
+
         }
     }
 
