@@ -460,9 +460,6 @@
             this.tbpPaProfiloAttivo = new System.Windows.Forms.TabPage();
             this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
             this.btnPaCaricaCicli = new System.Windows.Forms.Button();
-            this.txtPaTestoDebug = new System.Windows.Forms.TextBox();
-            this.btnPaGeneraCloni = new System.Windows.Forms.Button();
-            this.btnPaSalvaDatiN = new System.Windows.Forms.Button();
             this.chkPaSbloccaValori = new System.Windows.Forms.CheckBox();
             this.lblPaSbloccaValori = new System.Windows.Forms.Label();
             this.chkPaAttivaMant = new System.Windows.Forms.CheckBox();
@@ -5951,9 +5948,6 @@
             // 
             this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
             this.grbCicloCorrente.Controls.Add(this.btnPaCaricaCicli);
-            this.grbCicloCorrente.Controls.Add(this.txtPaTestoDebug);
-            this.grbCicloCorrente.Controls.Add(this.btnPaGeneraCloni);
-            this.grbCicloCorrente.Controls.Add(this.btnPaSalvaDatiN);
             this.grbCicloCorrente.Controls.Add(this.chkPaSbloccaValori);
             this.grbCicloCorrente.Controls.Add(this.lblPaSbloccaValori);
             this.grbCicloCorrente.Controls.Add(this.chkPaAttivaMant);
@@ -5991,7 +5985,7 @@
             // btnPaCaricaCicli
             // 
             this.btnPaCaricaCicli.AutoEllipsis = true;
-            this.btnPaCaricaCicli.Location = new System.Drawing.Point(1039, 228);
+            this.btnPaCaricaCicli.Location = new System.Drawing.Point(1039, 397);
             this.btnPaCaricaCicli.Margin = new System.Windows.Forms.Padding(2);
             this.btnPaCaricaCicli.Name = "btnPaCaricaCicli";
             this.btnPaCaricaCicli.Size = new System.Drawing.Size(120, 27);
@@ -5999,42 +5993,6 @@
             this.btnPaCaricaCicli.Text = "Carica Configurazioni";
             this.btnPaCaricaCicli.UseVisualStyleBackColor = true;
             this.btnPaCaricaCicli.Click += new System.EventHandler(this.btnPaCaricaCicli_Click);
-            // 
-            // txtPaTestoDebug
-            // 
-            this.txtPaTestoDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaTestoDebug.Location = new System.Drawing.Point(1039, 59);
-            this.txtPaTestoDebug.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaTestoDebug.MaxLength = 8;
-            this.txtPaTestoDebug.Multiline = true;
-            this.txtPaTestoDebug.Name = "txtPaTestoDebug";
-            this.txtPaTestoDebug.Size = new System.Drawing.Size(120, 128);
-            this.txtPaTestoDebug.TabIndex = 142;
-            this.txtPaTestoDebug.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnPaGeneraCloni
-            // 
-            this.btnPaGeneraCloni.AutoEllipsis = true;
-            this.btnPaGeneraCloni.Location = new System.Drawing.Point(1039, 28);
-            this.btnPaGeneraCloni.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPaGeneraCloni.Name = "btnPaGeneraCloni";
-            this.btnPaGeneraCloni.Size = new System.Drawing.Size(120, 27);
-            this.btnPaGeneraCloni.TabIndex = 141;
-            this.btnPaGeneraCloni.Text = "Genera copie";
-            this.btnPaGeneraCloni.UseVisualStyleBackColor = true;
-            this.btnPaGeneraCloni.Click += new System.EventHandler(this.btnPaGeneraCloni_Click);
-            // 
-            // btnPaSalvaDatiN
-            // 
-            this.btnPaSalvaDatiN.AutoEllipsis = true;
-            this.btnPaSalvaDatiN.Location = new System.Drawing.Point(1039, 435);
-            this.btnPaSalvaDatiN.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPaSalvaDatiN.Name = "btnPaSalvaDatiN";
-            this.btnPaSalvaDatiN.Size = new System.Drawing.Size(120, 27);
-            this.btnPaSalvaDatiN.TabIndex = 140;
-            this.btnPaSalvaDatiN.Text = "Salva Profilo (16)";
-            this.btnPaSalvaDatiN.UseVisualStyleBackColor = true;
-            this.btnPaSalvaDatiN.Click += new System.EventHandler(this.btnPaSalvaDatiN_Click);
             // 
             // chkPaSbloccaValori
             // 
@@ -6052,7 +6010,7 @@
             this.lblPaSbloccaValori.AutoSize = true;
             this.lblPaSbloccaValori.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaSbloccaValori.ForeColor = System.Drawing.Color.Red;
-            this.lblPaSbloccaValori.Location = new System.Drawing.Point(1054, 321);
+            this.lblPaSbloccaValori.Location = new System.Drawing.Point(1058, 321);
             this.lblPaSbloccaValori.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPaSbloccaValori.Name = "lblPaSbloccaValori";
             this.lblPaSbloccaValori.Size = new System.Drawing.Size(79, 13);
@@ -6084,7 +6042,7 @@
             // 
             // btnCicloCorrente
             // 
-            this.btnCicloCorrente.Location = new System.Drawing.Point(1039, 348);
+            this.btnCicloCorrente.Location = new System.Drawing.Point(1039, 28);
             this.btnCicloCorrente.Margin = new System.Windows.Forms.Padding(2);
             this.btnCicloCorrente.Name = "btnCicloCorrente";
             this.btnCicloCorrente.Size = new System.Drawing.Size(120, 27);
@@ -7093,12 +7051,12 @@
             // 
             // btnPaSalvaDati
             // 
-            this.btnPaSalvaDati.Location = new System.Drawing.Point(1039, 384);
+            this.btnPaSalvaDati.Location = new System.Drawing.Point(1039, 435);
             this.btnPaSalvaDati.Margin = new System.Windows.Forms.Padding(2);
             this.btnPaSalvaDati.Name = "btnPaSalvaDati";
             this.btnPaSalvaDati.Size = new System.Drawing.Size(120, 27);
             this.btnPaSalvaDati.TabIndex = 41;
-            this.btnPaSalvaDati.Text = "Salva Profilo";
+            this.btnPaSalvaDati.Text = "Salva Configurazione";
             this.btnPaSalvaDati.UseVisualStyleBackColor = true;
             this.btnPaSalvaDati.Click += new System.EventHandler(this.btnPaSalvaDati_Click);
             // 
@@ -8982,9 +8940,6 @@
         private System.Windows.Forms.Label lblCliCliente;
         private System.Windows.Forms.Button btnCaricaMemoria;
         private System.Windows.Forms.TabControl tabCaricaBatterie;
-        private System.Windows.Forms.Button btnPaSalvaDatiN;
-        private System.Windows.Forms.Button btnPaGeneraCloni;
-        private System.Windows.Forms.TextBox txtPaTestoDebug;
         private System.Windows.Forms.Button btnPaCaricaCicli;
     }
 }

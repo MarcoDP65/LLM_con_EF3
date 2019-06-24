@@ -1263,6 +1263,8 @@
     <None Include="Resources\if_ok_16.png" />
     <None Include="Resources\if_KO_32.png" />
     <None Include="Resources\if_ok_32.png" />
+    <None Include="Resources\if_GRAY_16.png" />
+    <None Include="Resources\if_GRAY_32.png" />
     <Content Include="Resources\ind_due.png" />
     <Content Include="Resources\ind_tre.png" />
     <None Include="Resources\IU650.png" />
@@ -1275,6 +1277,7 @@
     <None Include="Resources\plant.png" />
     <None Include="Resources\lade_light_INTEGRATED.PNG" />
     <None Include="Resources\IWa650.png" />
+    <None Include="Resources\OFF_16.png" />
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
     <None Include="Resources\Sfondo_SPYBATT.bmp" />

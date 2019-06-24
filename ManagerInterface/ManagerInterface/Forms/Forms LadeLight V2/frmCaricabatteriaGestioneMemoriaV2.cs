@@ -41,6 +41,7 @@ namespace PannelloCharger
                 flvCicliListaCariche.AlternateRowBackColor = Color.LightGoldenrodYellow;
 
                 flvCicliListaCariche.AllColumns.Clear();
+                flvCicliListaCariche.RowHeight = 18;
 
                 flvCicliListaCariche.View = View.Details;
                 flvCicliListaCariche.ShowGroups = false;
@@ -150,18 +151,47 @@ namespace PannelloCharger
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrCondizioneStop);
 
-                /*
+                
                 BrightIdeasSoftware.OLVColumn colstrChargerStop = new BrightIdeasSoftware.OLVColumn()
                 {
-                    Text = "stop",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "",
-                    Width = 80,
+                    Text = "Causale Stop",
+                    ToolTipText = "Motivo fermata carica",
+                    AspectName = "strChargerStop",
+                    Width = 150,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrChargerStop);
-                */
+
+
+                BrightIdeasSoftware.OLVColumn colEqualReq = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Eq R",
+                    ToolTipText = "Equalizzazione Richiesta",
+                    AspectName = "strEqualRequest",
+                    Width = 45,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "OK", Properties.Resources.OK_16, "KO", Properties.Resources.KO_16, "OFF", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colEqualReq);
+
+                BrightIdeasSoftware.OLVColumn colEqualEff = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Eq E",
+                    ToolTipText = "Equalizzazione Effettuata",
+                    AspectName = "strEqualEffettuato",
+                    Width = 45,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "OK", Properties.Resources.OK_16, "KO", Properties.Resources.KO_16, "OFF", Properties.Resources.GRAY_16})
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colEqualEff);
+
+
+
 
                 BrightIdeasSoftware.OLVColumn colstrNumEventiBrevi = new BrightIdeasSoftware.OLVColumn()
                 {

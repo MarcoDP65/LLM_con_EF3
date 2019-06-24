@@ -193,7 +193,7 @@ namespace PannelloCharger
                     CaricaAreaContatori();
 
                     // ora carico il ciclo corrente e i contatori programmazioni
-
+                    CaricaProgrammazioni();
 
                     _apparatoPresente = _esito;
                     return true;
@@ -791,7 +791,10 @@ namespace PannelloCharger
                 grbCicli.Width = tabCb04.Width - 20;
 
                 //flvCicliListaCariche.Width = tabCb04.Width - 20;
-
+                if (tbpPaListaProfili.Width > 200)
+                {
+                    flwPaListaConfigurazioni.Width = tbpPaListaProfili.Width - 30;
+                }
             }
             catch (Exception Ex)
             {
@@ -1252,6 +1255,7 @@ namespace PannelloCharger
         private void btnPaSalvaDati_Click(object sender, EventArgs e)
         {
             ScriviParametriCarica();
+            CaricaProgrammazioni();
         }
 
 
@@ -3611,44 +3615,13 @@ namespace PannelloCharger
             }
         }
 
-        private void btnPaSalvaDatiN_Click(object sender, EventArgs e)
-        {
-            //ScriviParametriCarica();
-            foreach (llProgrammaCarica tempPrg in _cb.Programmazioni.ProgrammiDefiniti)
-            {
-                tempPrg.PosizioneCorrente += 1;
-            }
-
-        }
-
-        private void btnPaGeneraCloni_Click(object sender, EventArgs e)
-        {
-            DateTime Inizio = DateTime.Now;
-            DateTime Fine;
-
-            byte[] bloccop = new byte[10];
-            txtPaTestoDebug.Text = "";
-            int Address = 0x2000;
-
-            for( int _ciclo = 0; _ciclo < 16; _ciclo++ )
-            {
-                if (_cb.LeggiBloccoMemoria((uint)(Address + _ciclo * 256), 10, out bloccop))
-                {
-                   txtPaTestoDebug.Text +=  bloccop[0].ToString("x2") + " ";
-                }
-            }
-            Fine = DateTime.Now;
-            txtPaTestoDebug.Text += "\r\n"+ Fine.Subtract(Inizio).TotalMilliseconds.ToString("0.0");
-
-        }
-
-        private void btnPaCaricaCicli_Click(object sender, EventArgs e)
+        public bool CaricaProgrammazioni()
         {
             try
             {
                 bool Esito;
 
-                Esito = _cb.LeggiProgrammazioni(); 
+                Esito = _cb.LeggiProgrammazioni();
 
                 if (Esito)
                 {
@@ -3669,7 +3642,23 @@ namespace PannelloCharger
                     MostraParametriCiclo(true, true);
                 }
 
+                return true;
 
+            }
+            catch
+            {
+                ProfiloInCaricamento = false;
+                return false;
+            }
+        }
+
+        private void btnPaCaricaCicli_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool Esito;
+
+                Esito = CaricaProgrammazioni(); 
 
             }
             catch

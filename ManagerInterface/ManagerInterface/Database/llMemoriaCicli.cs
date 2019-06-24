@@ -794,7 +794,14 @@ namespace MoriData
 
         public string DataOraFine
         {
-            get { return _llmc.DataOraFine; }
+            get
+            {
+                if (_llmc.NumEventiBrevi != 0xFFFF)
+                {
+                    return _llmc.DataOraFine;
+                }
+                else return "";
+            }
             set
             {
                 _llmc.DataOraFine = value;
@@ -839,13 +846,27 @@ namespace MoriData
 
         public String strDurata
         {
-            get { return _llmc.Durata.ToString(); }
+            get
+            {
+                if (_llmc.NumEventiBrevi != 0xFFFF)
+                {
+                    TimeSpan DurataCalc = dtDataOraFine.Subtract(dtDataOraStart);
+                    return DurataCalc.ToString();
+                }
+                else return "";
+            }
 
         }
 
         public int Ah
         {
-            get { return _llmc.Ah; }
+            get
+            {
+
+                    return _llmc.Ah;
+
+            }
+
             set
             {
                 _llmc.Ah = value;
@@ -857,7 +878,11 @@ namespace MoriData
         {
             get
             {
+                if (_llmc.NumEventiBrevi != 0xFFFF)
+                {
                     return FunzioniMR.StringaCapacita(_llmc.Ah, DivisoreCorrente, DecimaliCorrente);
+                }
+                else return "";
             }
         }
 
@@ -881,7 +906,11 @@ namespace MoriData
         {
             get
             {
-                return FunzioniMR.StringaPotenza(_llmc.Wh, DivisorePotenza, DecimaliPotenza);
+                if (_llmc.NumEventiBrevi != 0xFFFF)
+                {
+                    return FunzioniMR.StringaPotenza(_llmc.Wh, DivisorePotenza, DecimaliPotenza);
+                }
+                else return "";
             }
         }
 
@@ -906,7 +935,12 @@ namespace MoriData
         {
             get
             {
-                return _llmc.CondizioneStop.ToString("X2");
+                if (_llmc.NumEventiBrevi != 0xFFFF)
+                {
+                    byte CodizioneVera = (byte)(_llmc.CondizioneStop & 0x3F);
+                    return CodizioneVera.ToString("X2");
+                }
+                else return "";
             }
         }
 
@@ -953,48 +987,156 @@ namespace MoriData
 
         }
 
+        public bool EqualRequest
+        {
+            get
+            {
+                return ((_llmc.CondizioneStop & 0x80) == 0x80);
+
+            }
+        }
+
+        public string strEqualRequest
+        {
+            get
+            {
+                if (_llmc.CondizioneStop == 0xFF) return "OFF";
+
+                if ((_llmc.CondizioneStop & 0x80) == 0x80)
+                {
+                    return "OK";
+                }
+                else
+                {
+                    return "KO";
+                }
+            }
+        }
+
+
+        public string strEqualEffettuato
+        {
+            get
+            {
+                if (_llmc.CondizioneStop == 0xFF) return "OFF";
+
+                if ((_llmc.CondizioneStop & 0x80) == 0x80)
+                {
+
+                    if ((_llmc.CondizioneStop & 0x40) == 0x40)
+                    {
+                        return "KO";
+                    }
+                    else
+                    {
+                        return "OK";
+                    }
+                }
+                else
+                {
+                    return "OFF";
+                }
+            }
+
+        }
+
+
+
+
+        public bool EqualEffettuato
+        {
+            get
+            {
+                return ((_llmc.CondizioneStop & 0x40) == 0x40);
+            }
+        }
+
+
+
+
         public string strChargerStop
         {
             get
             {
                 string _descrStato = "?";
-                switch (_llmc.CondizioneStop)
+                byte CodizioneVera = (byte)(_llmc.CondizioneStop & 0x3F);
+
+                switch (CodizioneVera)
                 {
                     case 0x00:
                         {
-                            _descrStato = "Strappo(00)";
+                            _descrStato = "Carica Completa";
                             break;
                         }
                     case 0x01:
                         {
-                            _descrStato = "Ah-SB (01)";
+                            _descrStato = "Stacco Batteria";
                             break;
                         }
 
                     case 0x02:
                         {
-                            _descrStato = "Ah-LL (02)";
+                            _descrStato = "Ah Raggiunti (SPY BATT)";
                             break;
                         }
                     case 0x03:
                         {
-                            _descrStato = "KBD (03)";
+                            _descrStato = "Ah Raggiunti (LL)";
                             break;
                         }
                     case 0x04:
                         {
-                            _descrStato = "Adap E (04)";
+                            _descrStato = "STOP Premuto";
                             break;
                         }
                     case 0x05:
                         {
-                            _descrStato = "Adap I (05)";
+                            _descrStato = "Tempo Massimo (SPY BATT)";
                             break;
                         }
-
+                    case 0x06:
+                        {
+                            _descrStato = "Tempo Massimo Programmato";
+                            break;
+                        }
+                    case 0x07:
+                        {
+                            _descrStato = "Stop da SPY BATT";
+                            break;
+                        }
+                    case 0x08:
+                        {
+                            _descrStato = "Assenza Rete prolungata";
+                            break;
+                        }
+                    case 0x09:
+                        {
+                            _descrStato = "Anomalia PFC";
+                            break;
+                        }
+                    case 0x0A:
+                        {
+                            _descrStato = "Guasto Fusibile";
+                            break;
+                        }
+                    case 0x0B:
+                        {
+                            _descrStato = "Anomalia Sensore Corrente";
+                            break;
+                        }
+                    case 0x0C:
+                        {
+                            _descrStato = "Limite Shut Down interni";
+                            break;
+                        }
+                    case 0x0D:
+                        {
+                            _descrStato = "Tensione Limite Raggiunta";
+                            break;
+                        }
                     default:
                         {
-                            _descrStato = "N.D. (" + _llmc.CondizioneStop.ToString("x2") + ")";
+                            _descrStato = "N.D. (" + CodizioneVera.ToString("x2") + ")";
                             break;
                         }
                 }
@@ -1003,8 +1145,6 @@ namespace MoriData
             }
 
         }
-
-
 
         #endregion Class Parameter
 
