@@ -3136,8 +3136,17 @@ namespace PannelloCharger
                 {
 
                     CicloCorrente = (llMemoriaCicli)flvCicliListaCariche.SelectedObject;
-                    CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi, CicloCorrente.IdMemoriaLunga);
-                    InizializzaListaBrevi();
+
+                    if(CicloCorrente.CicliMemoriaBreve.Count< CicloCorrente.NumEventiBrevi)
+                    {
+                        // non ho tutto in memoria, ricarico
+                        CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi, CicloCorrente.IdMemoriaLunga);
+                        // InizializzaListaBrevi();
+
+                    }
+
+                    MostraDettaglioRiga(CicloCorrente);
+
 
                 }
 
@@ -3145,12 +3154,40 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("flvCicliListaCariche_SelectedIndexChanged: " + Ex.Message);
+            }     
+        }
+
+        private void MostraDettaglioRiga(llMemoriaCicli CicloSel)
+        {
+            try
+            {
+                Log.Debug("MostraDettaglioRiga");
+
+                if (CicloSel != null)
+                {
+                    Log.Debug("MostraDettaglioRiga LL Start");
+                    frmListaCicliBreviLL CicliBreviLL = new frmListaCicliBreviLL();
+                    CicliBreviLL.MdiParent = this.MdiParent;
+                    CicliBreviLL.StartPosition = FormStartPosition.CenterParent;
+                    CicliBreviLL.parametri = _parametri;
+
+                    CicliBreviLL.CicloCorrente = CicloSel;
+                    CicliBreviLL.Show();
+                    CicliBreviLL.MostraCicli();
+                   
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDettaglioRiga: " + Ex.Message);
             }
 
-
-
-            
         }
+
+
+
+
+
 
 
         private void cmbInitTipoApparato_SelectedIndexChanged(object sender, EventArgs e)

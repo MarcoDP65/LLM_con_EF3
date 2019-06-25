@@ -280,6 +280,12 @@
     <Compile Include="Forms\Forms Deso\frmDesoClonaScheda.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.Designer.cs">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -637,6 +643,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Deso\frmDeso.resx">
       <DependentUpon>frmDeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.de.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.en.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.es.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.fr-FR.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.fr.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.hi-IN.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.hi.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Dett Brevi LL\frmListaCicliBreviLL.resx">
+      <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Dett Brevi\frmListaCicliBreve.fr-FR.resx">
       <DependentUpon>frmListaCicliBreve.cs</DependentUpon>

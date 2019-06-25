@@ -754,7 +754,15 @@ namespace MoriData
 
         public string strNumEventiBrevi
         {
-            get { return NumEventiBreviCaricati.ToString() + " / " + NumEventiBrevi.ToString(); }
+            get
+            {
+                if (_llmc.NumEventiBrevi != 0xFFFF)
+                {
+                    return NumEventiBreviCaricati.ToString() + " / " + NumEventiBrevi.ToString();
+                }
+                else return "";
+
+            }
         }
 
         public string DataOraStart
@@ -1061,7 +1069,9 @@ namespace MoriData
                 string _descrStato = "?";
                 byte CodizioneVera = (byte)(_llmc.CondizioneStop & 0x3F);
 
-                switch (CodizioneVera)
+                if (_llmc.NumEventiBrevi == 0xFFFF) return ""; 
+
+                    switch (CodizioneVera)
                 {
                     case 0x00:
                         {
