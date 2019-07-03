@@ -180,6 +180,144 @@
   <metadata name="sfdNuovoCSV.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.Name" xml:space="preserve">
+    <value>txtTipoProfilo</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.Name" xml:space="preserve">
+    <value>txtTipoBatteria</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgramma.Name" xml:space="preserve">
+    <value>txtNumProgramma</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgramma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgramma.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtNumProgramma.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtCapacitaNominale.Name" xml:space="preserve">
+    <value>txtCapacitaNominale</value>
+  </data>
+  <data name="&gt;&gt;txtCapacitaNominale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCapacitaNominale.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtCapacitaNominale.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNominale.Name" xml:space="preserve">
+    <value>txtTensioneNominale</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNominale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNominale.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNominale.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNom.Name" xml:space="preserve">
+    <value>txtTensioneNom</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNom.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtTensioneNom.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="grbProgrammazione.Location" type="System.Drawing.Point, System.Drawing">
+    <value>653, 16</value>
+  </data>
+  <data name="grbProgrammazione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbProgrammazione.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbProgrammazione.Size" type="System.Drawing.Size, System.Drawing">
+    <value>412, 76</value>
+  </data>
+  <data name="grbProgrammazione.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="grbProgrammazione.Text" xml:space="preserve">
+    <value>Configurazione</value>
+  </data>
   <data name="&gt;&gt;grbProgrammazione.Name" xml:space="preserve">
     <value>grbProgrammazione</value>
   </data>
@@ -192,6 +330,120 @@
   <data name="&gt;&gt;grbProgrammazione.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.Name" xml:space="preserve">
+    <value>txtCausaleStop</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtFineEvento.Name" xml:space="preserve">
+    <value>txtFineEvento</value>
+  </data>
+  <data name="&gt;&gt;txtFineEvento.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFineEvento.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;txtFineEvento.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtInizioEvento.Name" xml:space="preserve">
+    <value>txtInizioEvento</value>
+  </data>
+  <data name="&gt;&gt;txtInizioEvento.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtInizioEvento.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;txtInizioEvento.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtIdEventoLungo.Name" xml:space="preserve">
+    <value>txtIdEventoLungo</value>
+  </data>
+  <data name="&gt;&gt;txtIdEventoLungo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtIdEventoLungo.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;txtIdEventoLungo.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="grbContatori.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 16</value>
+  </data>
+  <data name="grbContatori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbContatori.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbContatori.Size" type="System.Drawing.Size, System.Drawing">
+    <value>597, 76</value>
+  </data>
+  <data name="grbContatori.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="grbContatori.Text" xml:space="preserve">
+    <value>Contatori</value>
+  </data>
   <data name="&gt;&gt;grbContatori.Name" xml:space="preserve">
     <value>grbContatori</value>
   </data>
@@ -203,6 +455,18 @@
   </data>
   <data name="&gt;&gt;grbContatori.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="flvCicliListaBrevi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 106</value>
+  </data>
+  <data name="flvCicliListaBrevi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="flvCicliListaBrevi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1270, 318</value>
+  </data>
+  <data name="flvCicliListaBrevi.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;flvCicliListaBrevi.Name" xml:space="preserve">
     <value>flvCicliListaBrevi</value>
@@ -226,7 +490,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpDatiCiclo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>913, 457</value>
+    <value>1300, 457</value>
   </data>
   <data name="tbpDatiCiclo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -331,7 +595,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabCicloBreve.Size" type="System.Drawing.Size, System.Drawing">
-    <value>921, 483</value>
+    <value>1308, 483</value>
   </data>
   <data name="tabCicloBreve.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -346,108 +610,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabCicloBreve.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>grbProgrammazione</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtNumProgramma.Name" xml:space="preserve">
-    <value>txtNumProgramma</value>
-  </data>
-  <data name="&gt;&gt;txtNumProgramma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtNumProgramma.Parent" xml:space="preserve">
-    <value>grbProgrammazione</value>
-  </data>
-  <data name="&gt;&gt;txtNumProgramma.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>grbProgrammazione</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtCapacitaNominale.Name" xml:space="preserve">
-    <value>txtCapacitaNominale</value>
-  </data>
-  <data name="&gt;&gt;txtCapacitaNominale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCapacitaNominale.Parent" xml:space="preserve">
-    <value>grbProgrammazione</value>
-  </data>
-  <data name="&gt;&gt;txtCapacitaNominale.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNominale.Name" xml:space="preserve">
-    <value>txtTensioneNominale</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNominale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNominale.Parent" xml:space="preserve">
-    <value>grbProgrammazione</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNominale.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNom.Name" xml:space="preserve">
-    <value>txtTensioneNom</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNom.Parent" xml:space="preserve">
-    <value>grbProgrammazione</value>
-  </data>
-  <data name="&gt;&gt;txtTensioneNom.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="grbProgrammazione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>374, 16</value>
-  </data>
-  <data name="grbProgrammazione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbProgrammazione.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbProgrammazione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>514, 76</value>
-  </data>
-  <data name="grbProgrammazione.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="grbProgrammazione.Text" xml:space="preserve">
-    <value>Configurazione</value>
-  </data>
-  <data name="&gt;&gt;grbProgrammazione.Name" xml:space="preserve">
-    <value>grbProgrammazione</value>
-  </data>
-  <data name="&gt;&gt;grbProgrammazione.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbProgrammazione.Parent" xml:space="preserve">
-    <value>tbpDatiCiclo</value>
-  </data>
-  <data name="&gt;&gt;grbProgrammazione.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
@@ -478,7 +640,7 @@
     <value>grbProgrammazione</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="txtNumProgramma.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -511,25 +673,25 @@
     <value>grbProgrammazione</value>
   </data>
   <data name="&gt;&gt;txtNumProgramma.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 19</value>
+    <value>205, 19</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
+    <value>49, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Capacità nom.</value>
+    <value>Capacità</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -541,19 +703,19 @@
     <value>grbProgrammazione</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="txtCapacitaNominale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtCapacitaNominale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 35</value>
+    <value>208, 35</value>
   </data>
   <data name="txtCapacitaNominale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtCapacitaNominale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>63, 21</value>
   </data>
   <data name="txtCapacitaNominale.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -574,19 +736,19 @@
     <value>grbProgrammazione</value>
   </data>
   <data name="&gt;&gt;txtCapacitaNominale.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="txtTensioneNominale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtTensioneNominale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 35</value>
+    <value>141, 35</value>
   </data>
   <data name="txtTensioneNominale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtTensioneNominale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>63, 21</value>
   </data>
   <data name="txtTensioneNominale.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -607,25 +769,25 @@
     <value>grbProgrammazione</value>
   </data>
   <data name="&gt;&gt;txtTensioneNominale.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="txtTensioneNom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="txtTensioneNom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 19</value>
+    <value>140, 19</value>
   </data>
   <data name="txtTensioneNom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="txtTensioneNom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 13</value>
+    <value>51, 13</value>
   </data>
   <data name="txtTensioneNom.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="txtTensioneNom.Text" xml:space="preserve">
-    <value>Tensione nom.</value>
+    <value>Tensione</value>
   </data>
   <data name="&gt;&gt;txtTensioneNom.Name" xml:space="preserve">
     <value>txtTensioneNom</value>
@@ -637,115 +799,13 @@
     <value>grbProgrammazione</value>
   </data>
   <data name="&gt;&gt;txtTensioneNom.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>grbContatori</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtFineEvento.Name" xml:space="preserve">
-    <value>txtFineEvento</value>
-  </data>
-  <data name="&gt;&gt;txtFineEvento.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFineEvento.Parent" xml:space="preserve">
-    <value>grbContatori</value>
-  </data>
-  <data name="&gt;&gt;txtFineEvento.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtInizioEvento.Name" xml:space="preserve">
-    <value>txtInizioEvento</value>
-  </data>
-  <data name="&gt;&gt;txtInizioEvento.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtInizioEvento.Parent" xml:space="preserve">
-    <value>grbContatori</value>
-  </data>
-  <data name="&gt;&gt;txtInizioEvento.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>grbContatori</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtIdEventoLungo.Name" xml:space="preserve">
-    <value>txtIdEventoLungo</value>
-  </data>
-  <data name="&gt;&gt;txtIdEventoLungo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtIdEventoLungo.Parent" xml:space="preserve">
-    <value>grbContatori</value>
-  </data>
-  <data name="&gt;&gt;txtIdEventoLungo.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>grbContatori</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="grbContatori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 16</value>
-  </data>
-  <data name="grbContatori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbContatori.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbContatori.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 76</value>
-  </data>
-  <data name="grbContatori.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="grbContatori.Text" xml:space="preserve">
-    <value>Contatori</value>
-  </data>
-  <data name="&gt;&gt;grbContatori.Name" xml:space="preserve">
-    <value>grbContatori</value>
-  </data>
-  <data name="&gt;&gt;grbContatori.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbContatori.Parent" xml:space="preserve">
-    <value>tbpDatiCiclo</value>
-  </data>
-  <data name="&gt;&gt;grbContatori.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>9</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 19</value>
+    <value>224, 20</value>
   </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -769,19 +829,19 @@
     <value>grbContatori</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtFineEvento.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtFineEvento.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 35</value>
+    <value>227, 35</value>
   </data>
   <data name="txtFineEvento.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFineEvento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 21</value>
+    <value>133, 21</value>
   </data>
   <data name="txtFineEvento.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -799,19 +859,19 @@
     <value>grbContatori</value>
   </data>
   <data name="&gt;&gt;txtFineEvento.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtInizioEvento.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtInizioEvento.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 35</value>
+    <value>90, 35</value>
   </data>
   <data name="txtInizioEvento.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtInizioEvento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 21</value>
+    <value>133, 21</value>
   </data>
   <data name="txtInizioEvento.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -829,13 +889,13 @@
     <value>grbContatori</value>
   </data>
   <data name="&gt;&gt;txtInizioEvento.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 19</value>
+    <value>87, 19</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -859,7 +919,7 @@
     <value>grbContatori</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtIdEventoLungo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -871,7 +931,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtIdEventoLungo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 21</value>
+    <value>62, 21</value>
   </data>
   <data name="txtIdEventoLungo.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -892,7 +952,7 @@
     <value>grbContatori</value>
   </data>
   <data name="&gt;&gt;txtIdEventoLungo.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -904,13 +964,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
+    <value>37, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Evento</value>
+    <value>Carica</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -922,31 +982,7 @@
     <value>grbContatori</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="flvCicliListaBrevi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 106</value>
-  </data>
-  <data name="flvCicliListaBrevi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="flvCicliListaBrevi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>873, 318</value>
-  </data>
-  <data name="flvCicliListaBrevi.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;flvCicliListaBrevi.Name" xml:space="preserve">
-    <value>flvCicliListaBrevi</value>
-  </data>
-  <data name="&gt;&gt;flvCicliListaBrevi.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
-  </data>
-  <data name="&gt;&gt;flvCicliListaBrevi.Parent" xml:space="preserve">
-    <value>tbpDatiCiclo</value>
-  </data>
-  <data name="&gt;&gt;flvCicliListaBrevi.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="chkIntervalloRelativo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1125,6 +1161,195 @@
   <data name="&gt;&gt;txtNuovoFile.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txtCausaleStop.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtCausaleStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>364, 35</value>
+  </data>
+  <data name="txtCausaleStop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtCausaleStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 21</value>
+  </data>
+  <data name="txtCausaleStop.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="txtCausaleStop.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.Name" xml:space="preserve">
+    <value>txtCausaleStop</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;txtCausaleStop.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>364, 20</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>grbContatori</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 19</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Batteria</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtTipoBatteria.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtTipoBatteria.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 35</value>
+  </data>
+  <data name="txtTipoBatteria.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtTipoBatteria.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="txtTipoBatteria.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="txtTipoBatteria.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.Name" xml:space="preserve">
+    <value>txtTipoBatteria</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtTipoBatteria.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>272, 19</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Ciclo</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtTipoProfilo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtTipoProfilo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 35</value>
+  </data>
+  <data name="txtTipoProfilo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtTipoProfilo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="txtTipoProfilo.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="txtTipoProfilo.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.Name" xml:space="preserve">
+    <value>txtTipoProfilo</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.Parent" xml:space="preserve">
+    <value>grbProgrammazione</value>
+  </data>
+  <data name="&gt;&gt;txtTipoProfilo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1135,7 +1360,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1013, 582</value>
+    <value>1420, 582</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

@@ -564,6 +564,7 @@
             this.cmbPaTensione = new System.Windows.Forms.ComboBox();
             this.txtPaTensione = new System.Windows.Forms.TextBox();
             this.tbpPaListaProfili = new System.Windows.Forms.TabPage();
+            this.btnPaAttivaConfigurazione = new System.Windows.Forms.Button();
             this.flwPaListaConfigurazioni = new BrightIdeasSoftware.FastObjectListView();
             this.btnPaCaricaListaProfili = new System.Windows.Forms.Button();
             this.tbpPaCfgAvanzate = new System.Windows.Forms.TabPage();
@@ -575,10 +576,9 @@
             this.cmbFSerBaudrateOC = new System.Windows.Forms.ComboBox();
             this.lblPaTitoloLista = new System.Windows.Forms.Label();
             this.tabCb04 = new System.Windows.Forms.TabPage();
-            this.spcCicliListeDati = new System.Windows.Forms.SplitContainer();
             this.flvCicliListaCariche = new BrightIdeasSoftware.FastObjectListView();
-            this.flvCicliListaBrevi = new BrightIdeasSoftware.FastObjectListView();
             this.grbCicli = new System.Windows.Forms.GroupBox();
+            this.btnCicliCaricaArea = new System.Windows.Forms.Button();
             this.btnCicliMostraBrevi = new System.Windows.Forms.Button();
             this.btnCicliCaricaBrevi = new System.Windows.Forms.Button();
             this.chkCicliCaricaBrevi = new System.Windows.Forms.CheckBox();
@@ -713,12 +713,7 @@
             this.tbpPaCfgAvanzate.SuspendLayout();
             this.grbVarParametriSig.SuspendLayout();
             this.tabCb04.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spcCicliListeDati)).BeginInit();
-            this.spcCicliListeDati.Panel1.SuspendLayout();
-            this.spcCicliListeDati.Panel2.SuspendLayout();
-            this.spcCicliListeDati.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvCicliListaCariche)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flvCicliListaBrevi)).BeginInit();
             this.grbCicli.SuspendLayout();
             this.tabGenerale.SuspendLayout();
             this.grbMainContatori.SuspendLayout();
@@ -7143,6 +7138,7 @@
             // 
             // tbpPaListaProfili
             // 
+            this.tbpPaListaProfili.Controls.Add(this.btnPaAttivaConfigurazione);
             this.tbpPaListaProfili.Controls.Add(this.flwPaListaConfigurazioni);
             this.tbpPaListaProfili.Controls.Add(this.btnPaCaricaListaProfili);
             this.tbpPaListaProfili.Location = new System.Drawing.Point(4, 22);
@@ -7154,6 +7150,19 @@
             this.tbpPaListaProfili.Text = "Lista Profili";
             this.tbpPaListaProfili.UseVisualStyleBackColor = true;
             // 
+            // btnPaAttivaConfigurazione
+            // 
+            this.btnPaAttivaConfigurazione.Enabled = false;
+            this.btnPaAttivaConfigurazione.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaAttivaConfigurazione.Location = new System.Drawing.Point(9, 434);
+            this.btnPaAttivaConfigurazione.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPaAttivaConfigurazione.Name = "btnPaAttivaConfigurazione";
+            this.btnPaAttivaConfigurazione.Size = new System.Drawing.Size(294, 35);
+            this.btnPaAttivaConfigurazione.TabIndex = 65;
+            this.btnPaAttivaConfigurazione.Text = "Attiva Configurazione";
+            this.btnPaAttivaConfigurazione.UseVisualStyleBackColor = true;
+            this.btnPaAttivaConfigurazione.Click += new System.EventHandler(this.btnPaAttivaConfigurazione_Click);
+            // 
             // flwPaListaConfigurazioni
             // 
             this.flwPaListaConfigurazioni.CellEditUseWholeCell = false;
@@ -7161,12 +7170,13 @@
             this.flwPaListaConfigurazioni.Margin = new System.Windows.Forms.Padding(2);
             this.flwPaListaConfigurazioni.Name = "flwPaListaConfigurazioni";
             this.flwPaListaConfigurazioni.ShowGroups = false;
-            this.flwPaListaConfigurazioni.Size = new System.Drawing.Size(981, 441);
+            this.flwPaListaConfigurazioni.Size = new System.Drawing.Size(981, 402);
             this.flwPaListaConfigurazioni.TabIndex = 63;
             this.flwPaListaConfigurazioni.UseCompatibleStateImageBehavior = false;
             this.flwPaListaConfigurazioni.View = System.Windows.Forms.View.Details;
             this.flwPaListaConfigurazioni.VirtualMode = true;
             this.flwPaListaConfigurazioni.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.flwPaListaConfigurazioni_FormatRow);
+            this.flwPaListaConfigurazioni.SelectedIndexChanged += new System.EventHandler(this.flwPaListaConfigurazioni_SelectedIndexChanged);
             // 
             // btnPaCaricaListaProfili
             // 
@@ -7283,7 +7293,7 @@
             // 
             // tabCb04
             // 
-            this.tabCb04.Controls.Add(this.spcCicliListeDati);
+            this.tabCb04.Controls.Add(this.flvCicliListaCariche);
             this.tabCb04.Controls.Add(this.grbCicli);
             this.tabCb04.Location = new System.Drawing.Point(4, 22);
             this.tabCb04.Margin = new System.Windows.Forms.Padding(2);
@@ -7292,32 +7302,15 @@
             this.tabCb04.TabIndex = 3;
             this.tabCb04.Text = "Memoria Cicli";
             // 
-            // spcCicliListeDati
-            // 
-            this.spcCicliListeDati.Location = new System.Drawing.Point(15, 19);
-            this.spcCicliListeDati.Name = "spcCicliListeDati";
-            // 
-            // spcCicliListeDati.Panel1
-            // 
-            this.spcCicliListeDati.Panel1.Controls.Add(this.flvCicliListaCariche);
-            // 
-            // spcCicliListeDati.Panel2
-            // 
-            this.spcCicliListeDati.Panel2.Controls.Add(this.flvCicliListaBrevi);
-            this.spcCicliListeDati.Size = new System.Drawing.Size(1259, 364);
-            this.spcCicliListeDati.SplitterDistance = 743;
-            this.spcCicliListeDati.TabIndex = 65;
-            // 
             // flvCicliListaCariche
             // 
             this.flvCicliListaCariche.CellEditUseWholeCell = false;
-            this.flvCicliListaCariche.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flvCicliListaCariche.Location = new System.Drawing.Point(0, 0);
+            this.flvCicliListaCariche.Location = new System.Drawing.Point(15, 17);
             this.flvCicliListaCariche.Margin = new System.Windows.Forms.Padding(2);
             this.flvCicliListaCariche.Name = "flvCicliListaCariche";
             this.flvCicliListaCariche.ShowGroups = false;
-            this.flvCicliListaCariche.Size = new System.Drawing.Size(743, 364);
-            this.flvCicliListaCariche.TabIndex = 64;
+            this.flvCicliListaCariche.Size = new System.Drawing.Size(1259, 353);
+            this.flvCicliListaCariche.TabIndex = 66;
             this.flvCicliListaCariche.UseCompatibleStateImageBehavior = false;
             this.flvCicliListaCariche.View = System.Windows.Forms.View.Details;
             this.flvCicliListaCariche.VirtualMode = true;
@@ -7325,22 +7318,9 @@
             this.flvCicliListaCariche.SelectedIndexChanged += new System.EventHandler(this.flvCicliListaCariche_SelectedIndexChanged);
             this.flvCicliListaCariche.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.flvCicliListaCariche_MouseDoubleClick);
             // 
-            // flvCicliListaBrevi
-            // 
-            this.flvCicliListaBrevi.CellEditUseWholeCell = false;
-            this.flvCicliListaBrevi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flvCicliListaBrevi.Location = new System.Drawing.Point(0, 0);
-            this.flvCicliListaBrevi.Margin = new System.Windows.Forms.Padding(2);
-            this.flvCicliListaBrevi.Name = "flvCicliListaBrevi";
-            this.flvCicliListaBrevi.ShowGroups = false;
-            this.flvCicliListaBrevi.Size = new System.Drawing.Size(512, 364);
-            this.flvCicliListaBrevi.TabIndex = 65;
-            this.flvCicliListaBrevi.UseCompatibleStateImageBehavior = false;
-            this.flvCicliListaBrevi.View = System.Windows.Forms.View.Details;
-            this.flvCicliListaBrevi.VirtualMode = true;
-            // 
             // grbCicli
             // 
+            this.grbCicli.Controls.Add(this.btnCicliCaricaArea);
             this.grbCicli.Controls.Add(this.btnCicliMostraBrevi);
             this.grbCicli.Controls.Add(this.btnCicliCaricaBrevi);
             this.grbCicli.Controls.Add(this.chkCicliCaricaBrevi);
@@ -7356,6 +7336,16 @@
             this.grbCicli.TabIndex = 1;
             this.grbCicli.TabStop = false;
             this.grbCicli.Text = "Lettura Cicli";
+            // 
+            // btnCicliCaricaArea
+            // 
+            this.btnCicliCaricaArea.Location = new System.Drawing.Point(409, 52);
+            this.btnCicliCaricaArea.Name = "btnCicliCaricaArea";
+            this.btnCicliCaricaArea.Size = new System.Drawing.Size(209, 27);
+            this.btnCicliCaricaArea.TabIndex = 9;
+            this.btnCicliCaricaArea.Text = "Carica Area Cicli";
+            this.btnCicliCaricaArea.UseVisualStyleBackColor = true;
+            this.btnCicliCaricaArea.Click += new System.EventHandler(this.btnCicliCaricaArea_Click);
             // 
             // btnCicliMostraBrevi
             // 
@@ -8185,7 +8175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 572);
+            this.ClientSize = new System.Drawing.Size(1309, 652);
             this.Controls.Add(this.tabCaricaBatterie);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCaricabatterieV2";
@@ -8296,12 +8286,7 @@
             this.grbVarParametriSig.ResumeLayout(false);
             this.grbVarParametriSig.PerformLayout();
             this.tabCb04.ResumeLayout(false);
-            this.spcCicliListeDati.Panel1.ResumeLayout(false);
-            this.spcCicliListeDati.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.spcCicliListeDati)).EndInit();
-            this.spcCicliListeDati.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flvCicliListaCariche)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flvCicliListaBrevi)).EndInit();
             this.grbCicli.ResumeLayout(false);
             this.grbCicli.PerformLayout();
             this.tabGenerale.ResumeLayout(false);
@@ -8862,9 +8847,6 @@
         private System.Windows.Forms.ComboBox cmbFSerBaudrateOC;
         private System.Windows.Forms.Label lblPaTitoloLista;
         private System.Windows.Forms.TabPage tabCb04;
-        private System.Windows.Forms.SplitContainer spcCicliListeDati;
-        private BrightIdeasSoftware.FastObjectListView flvCicliListaCariche;
-        private BrightIdeasSoftware.FastObjectListView flvCicliListaBrevi;
         private System.Windows.Forms.GroupBox grbCicli;
         private System.Windows.Forms.Button btnCicliMostraBrevi;
         private System.Windows.Forms.Button btnCicliCaricaBrevi;
@@ -8941,5 +8923,8 @@
         private System.Windows.Forms.Button btnCaricaMemoria;
         private System.Windows.Forms.TabControl tabCaricaBatterie;
         private System.Windows.Forms.Button btnPaCaricaCicli;
+        private BrightIdeasSoftware.FastObjectListView flvCicliListaCariche;
+        private System.Windows.Forms.Button btnCicliCaricaArea;
+        private System.Windows.Forms.Button btnPaAttivaConfigurazione;
     }
 }

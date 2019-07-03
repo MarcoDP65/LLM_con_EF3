@@ -161,6 +161,8 @@ namespace PannelloCharger
                 flvCicliListaBrevi.GridLines = true;
                 flvCicliListaBrevi.FullRowSelect = true;
                 flvCicliListaBrevi.MultiSelect = false;
+                flvCicliListaBrevi.GridLines = true;
+
 
                 BrightIdeasSoftware.OLVColumn colIdMemCiclo = new BrightIdeasSoftware.OLVColumn()
                 {
@@ -321,6 +323,7 @@ namespace PannelloCharger
                     ToolTipText = "Errore Calibrazione corrente zero all'accensione",
                     AspectName = "strErrCalib",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -335,6 +338,7 @@ namespace PannelloCharger
                     ToolTipText = "Errore Comunicazione con una periferica",
                     AspectName = "strErrComm",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -348,6 +352,7 @@ namespace PannelloCharger
                     ToolTipText = "Tensione batteria non corretta alla partenza",
                     AspectName = "strErrVbatt",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -362,6 +367,7 @@ namespace PannelloCharger
                     ToolTipText = "Anomalia interna dell'apparecchiatura",
                     AspectName = "strErrInt",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -375,6 +381,7 @@ namespace PannelloCharger
                     ToolTipText = "Anomalia da Spy-batt 01",
                     AspectName = "strErrSB1",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -388,6 +395,7 @@ namespace PannelloCharger
                     ToolTipText = "Fusibile di uscita Aperto",
                     AspectName = "strErrFuse",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -401,6 +409,7 @@ namespace PannelloCharger
                     ToolTipText = "Mancanza rete o problema alimentazione",
                     AspectName = "strErrAlim",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -414,6 +423,7 @@ namespace PannelloCharger
                     ToolTipText = "Corrente di Batteria",
                     AspectName = "strErrIbat",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -428,6 +438,7 @@ namespace PannelloCharger
                     ToolTipText = "Batteria staccata mentre era in carica",
                     AspectName = "strErrStrappo",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -442,6 +453,7 @@ namespace PannelloCharger
                     ToolTipText = "Parametri residenti in memoria non correttia",
                     AspectName = "strErrParam",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -456,6 +468,7 @@ namespace PannelloCharger
                     ToolTipText = "Parametri SpyBatt non adatti al caricabatteria",
                     AspectName = "strErrParamSB",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -470,6 +483,7 @@ namespace PannelloCharger
                     ToolTipText = "Memoria esterna non funzionante",
                     AspectName = "strErrMemExt",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -483,6 +497,7 @@ namespace PannelloCharger
                     ToolTipText = "Memoria NON INIZIALIZZATA",
                     AspectName = "strErrNoInit",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -496,6 +511,7 @@ namespace PannelloCharger
                     ToolTipText = "Numero di Shut Down superiore al valore massimo consentito",
                     AspectName = "strErrMaxSD",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -509,6 +525,7 @@ namespace PannelloCharger
                     ToolTipText = "E’ stato rilevato un Interrupt su PIN I_PK ",
                     AspectName = "strErrMaxIPK",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -522,6 +539,7 @@ namespace PannelloCharger
                     ToolTipText = "Buco di rete (tempo inferiore a 1 secondo)",
                     AspectName = "strErrPwHole",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -535,6 +553,7 @@ namespace PannelloCharger
                     ToolTipText = "Assenza di rete",
                     AspectName = "strErrPwOff",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -548,6 +567,7 @@ namespace PannelloCharger
                     ToolTipText = "Timer di Pre Ciclo scaduto e tensione non adeguata",
                     AspectName = "strErrTmr0",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -561,6 +581,7 @@ namespace PannelloCharger
                     ToolTipText = "Timer di Fase 1 scaduto e tensione non adeguata",
                     AspectName = "strErrTmr1",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -574,6 +595,7 @@ namespace PannelloCharger
                     ToolTipText = "Pulsanti display in anomalia",
                     AspectName = "strErrDispPulse",
                     Width = 20,
+                    Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
@@ -587,9 +609,11 @@ namespace PannelloCharger
                     ToolTipText = "Tensione PFC anomala",
                     AspectName = "strErrPFC",
                     Width = 20,
+                    Sortable = false,      
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
                 };
                 flvCicliListaBrevi.AllColumns.Add(colstrVettErrPFC);
 
@@ -680,13 +704,12 @@ namespace PannelloCharger
                 int _ciclo = 0;
   
             // Prima Carico la testata
-
-
                 // Ciclo Lungo
-                //txtIdEventoLungo.Text = CicloLungo.IdMemoriaLunga.ToString(); // EventoLungo.IdEvento.ToString();
-                //txtInizioEvento.Text = CicloLungo.DataOraStart; //_sb.StringaTimestamp(EventoLungo.DataOraStart);
-                //txtFineEvento.Text = CicloLungo.DataOraFine; //_sb.StringaTimestamp(EventoLungo.DataOraFine);
-                //this.Text = StringheMessaggio.strTitoloListaBrevi + " " + CicloLungo.IdMemoriaLunga.ToString();
+                txtIdEventoLungo.Text = CicloCorrente.strIdMemCiclo;
+                txtInizioEvento.Text = CicloCorrente.DataOraStart;
+                txtFineEvento.Text = CicloCorrente.DataOraFine;
+                txtCausaleStop.Text = CicloCorrente.strChargerStop;
+                this.Text = StringheMessaggio.strTitoloListaBrevi + " " + CicloCorrente.strIdMemCiclo;
                 //Programma
                 /*
                 txtNumProgramma.Text = CicloLungo.ProgrammaAttivo.IdProgramma.ToString();
@@ -1948,6 +1971,11 @@ namespace PannelloCharger
             {
                 Log.Error("frmSpyBat_Activated: " + Ex.Message);
             }
+        }
+
+        private void flvCicliListaBrevi_MouseHover(object sender, EventArgs e)
+        {
+            int a = 0;
         }
     }
 

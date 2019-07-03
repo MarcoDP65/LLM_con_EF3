@@ -25,6 +25,7 @@ namespace ChargerLogic
                                           MemBreveLL = 12,
                                           ContatoriLL = 13,
                                           ProgrammazioniLL = 14,
+                                          AreaMemLungaLL = 15,
 
                                           NonDefinito = -1 };
 

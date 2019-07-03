@@ -56,6 +56,12 @@
             this.btnGeneraCsv = new System.Windows.Forms.Button();
             this.btnSfoglia = new System.Windows.Forms.Button();
             this.txtNuovoFile = new System.Windows.Forms.TextBox();
+            this.txtCausaleStop = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTipoBatteria = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtTipoProfilo = new System.Windows.Forms.TextBox();
             this.tabCicloBreve.SuspendLayout();
             this.tbpDatiCiclo.SuspendLayout();
             this.grbProgrammazione.SuspendLayout();
@@ -106,6 +112,10 @@
             // grbProgrammazione
             // 
             this.grbProgrammazione.BackColor = System.Drawing.Color.White;
+            this.grbProgrammazione.Controls.Add(this.label3);
+            this.grbProgrammazione.Controls.Add(this.txtTipoProfilo);
+            this.grbProgrammazione.Controls.Add(this.label2);
+            this.grbProgrammazione.Controls.Add(this.txtTipoBatteria);
             this.grbProgrammazione.Controls.Add(this.label8);
             this.grbProgrammazione.Controls.Add(this.txtNumProgramma);
             this.grbProgrammazione.Controls.Add(this.label7);
@@ -152,6 +162,8 @@
             // grbContatori
             // 
             this.grbContatori.BackColor = System.Drawing.Color.White;
+            this.grbContatori.Controls.Add(this.label1);
+            this.grbContatori.Controls.Add(this.txtCausaleStop);
             this.grbContatori.Controls.Add(this.label6);
             this.grbContatori.Controls.Add(this.txtFineEvento);
             this.grbContatori.Controls.Add(this.txtInizioEvento);
@@ -208,6 +220,7 @@
             this.flvCicliListaBrevi.UseCompatibleStateImageBehavior = false;
             this.flvCicliListaBrevi.View = System.Windows.Forms.View.Details;
             this.flvCicliListaBrevi.VirtualMode = true;
+            this.flvCicliListaBrevi.MouseHover += new System.EventHandler(this.flvCicliListaBrevi_MouseHover);
             // 
             // tbpUtilita
             // 
@@ -255,6 +268,39 @@
             resources.ApplyResources(this.txtNuovoFile, "txtNuovoFile");
             this.txtNuovoFile.Name = "txtNuovoFile";
             this.txtNuovoFile.TextChanged += new System.EventHandler(this.txtNuovoFile_TextChanged_1);
+            // 
+            // txtCausaleStop
+            // 
+            resources.ApplyResources(this.txtCausaleStop, "txtCausaleStop");
+            this.txtCausaleStop.Name = "txtCausaleStop";
+            this.txtCausaleStop.ReadOnly = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // txtTipoBatteria
+            // 
+            resources.ApplyResources(this.txtTipoBatteria, "txtTipoBatteria");
+            this.txtTipoBatteria.Name = "txtTipoBatteria";
+            this.txtTipoBatteria.ReadOnly = true;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // txtTipoProfilo
+            // 
+            resources.ApplyResources(this.txtTipoProfilo, "txtTipoProfilo");
+            this.txtTipoProfilo.Name = "txtTipoProfilo";
+            this.txtTipoProfilo.ReadOnly = true;
             // 
             // frmListaCicliBreviLL
             // 
@@ -313,5 +359,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkIntervalloRelativo;
         private System.Windows.Forms.TabPage tbpAndamentoOxy;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtTipoProfilo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTipoBatteria;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCausaleStop;
     }
 }

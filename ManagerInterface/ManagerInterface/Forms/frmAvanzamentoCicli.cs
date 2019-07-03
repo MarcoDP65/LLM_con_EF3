@@ -358,6 +358,21 @@ namespace PannelloCharger
 
                         break;
                     }
+                case elementiComuni.tipoMessaggio.AreaMemLungaLL:
+                    {
+                        _stepBg.Titolo = StringheComuni.AvTitolo02Lunghi;  // "Caricamento Eventi Lunghi";
+                        _stepBg.Step = -1;
+                        // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio lettura: MemLunga " + ValStart.ToString() + " - " + ValFine.ToString());
+                        object _esitoLunghi;
+                        // _esito = _cb.CaricaListaCicli(StartAddr, NumRows, out EsitoCaricamento, false, true);
+
+                        _esito = llLocale.LeggiBloccoLunghi(true);
+
+                        break;
+                    }
+
                 case elementiComuni.tipoMessaggio.MemBreve:
                     {
                         _stepBg.Titolo = StringheComuni.AvTitolo03Brevi;  // "Caricamento Eventi Brevi";
@@ -515,6 +530,62 @@ namespace PannelloCharger
                 case elementiComuni.tipoMessaggio.MemLunga:
                     {
                         //if (_statoE.TipoDati == elementiComuni.tipoMessaggio.MemLunga)
+                        {
+                            if (_firstRecordReceived != true)
+                            {
+                                _firstRecord = DateTime.Now;
+                                TimeSpan _durata = _firstRecord.Subtract(_startCompute);
+                                if (_statoE == null)
+                                {
+                                    _messaggio2 = "Evento non formato - tempo: " + _durata.TotalSeconds.ToString("0.00");
+                                }
+                                else
+                                {
+                                    _messaggio2 = "Primo Evento: step " + _statoE.Step.ToString() + " - tempo: " + _durata.TotalSeconds.ToString("0.00");
+                                    _firstRecordReceived = true;
+                                }
+                                lblMsg02.Text = _messaggio2;
+
+                            }
+
+
+                            TimeSpan _tTrascorso = DateTime.Now.Subtract(_startCompute);
+                            if (_statoE == null)
+                            {
+                                _messaggio1 = "Evento non formato - tempo: " + _tTrascorso.TotalSeconds.ToString("0.000");
+                            }
+                            else
+                            {
+                                double _previsto = 0;
+                                if (_statoE.Step > 0)
+                                {
+                                    _previsto = (_tTrascorso.TotalSeconds * _statoE.Eventi) / _statoE.Step;
+                                }
+                                //                _messaggio1 = "Step: " + _statoE.Step.ToString() + " di " + _statoE.Eventi.ToString() + " - tempo: " + _tTrascorso.TotalSeconds.ToString("0.000") + " di " + _previsto.ToString("0.000");
+
+                                if (_statoE.TipoDati == elementiComuni.tipoMessaggio.MemLunga)
+                                {
+                                    _messaggio1 = "Step: " + _statoE.Step.ToString() + " di " + _statoE.Eventi.ToString() + " - tempo: " + _tTrascorso.TotalSeconds.ToString("0.00") + " s di " + _previsto.ToString("0.000") + " s";
+                                }
+                                else
+                                {
+                                    _messaggio1 = "Step: " + _statoE.Step.ToString() + " di " + _statoE.Eventi.ToString() + " - tempo trascorso: " + _tTrascorso.TotalSeconds.ToString("0.000") + " s";
+                                }
+
+                                _firstRecordReceived = true;
+                                lblAvanzmentoL.Text = e.ProgressPercentage.ToString() + "%";
+                                lblMsg01.Text = _messaggio1;
+
+                            }
+                            //Log.Info("Worker Progress " + e.ProgressPercentage.ToString() + " (" + _statoE.Step.ToString() + ")");
+                            pgbAvanamentoL.Value = _localProgressPercentage;
+                            lblMessaggioAvanzamento.Text = "Processing......" + pgbAvanamentoL.Value.ToString() + "%";
+                        }
+                        break;
+                    }
+                case elementiComuni.tipoMessaggio.AreaMemLungaLL:
+                    {
+                        //if (_statoE.TipoDati == elementiComuni.tipoMessaggio.MemLungaLL)
                         {
                             if (_firstRecordReceived != true)
                             {

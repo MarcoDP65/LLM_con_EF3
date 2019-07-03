@@ -502,6 +502,7 @@ namespace MoriData
         {
             get
             {
+                if (_llsm.TempBatt == 0xFF) return "";
                 sbyte _tmpTemp = (sbyte)_llsm.TempBatt;
                 return FunzioniMR.StringaTemperatura(_tmpTemp);
             }

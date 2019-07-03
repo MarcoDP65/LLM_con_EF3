@@ -67,6 +67,59 @@ namespace ChargerLogic
 
         }
 
+        public llMemoriaCicli AnalizzaDatiCiclo(byte[] ArrayDati)
+        {
+            try
+            {
+
+                if (ArrayDati.Length != SizeCharge)
+                {
+                    // Array di dimensioni errate. non è una carica. Esco prima di iniziare
+                    return null;
+                }
+
+                bool _esito = false;
+                llMemoriaCicli tempPrg = new llMemoriaCicli();
+                MessaggioLadeLight.MessaggioMemoriaLunga ImmagineCarica = new MessaggioLadeLight.MessaggioMemoriaLunga();
+                SerialMessage.EsitoRisposta EsitoMsg;
+
+                EsitoMsg = ImmagineCarica.analizzaMessaggio(ArrayDati, 1);
+                if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                {
+                    tempPrg.IdMemoriaLunga = ImmagineCarica.NumeroCarica;
+                    tempPrg.IdSpyBatt = ImmagineCarica.IdSpyBatt;
+                    tempPrg.IdProgramma = ImmagineCarica.IdProgrammazione;
+                    tempPrg.PuntatorePrimoBreve = ImmagineCarica.PntPrimoBreve;
+                    tempPrg.NumEventiBrevi = ImmagineCarica.CntCicliBrevi;
+                    tempPrg.DataOraStart = FunzioniMR.StringaTimestamp(ImmagineCarica.DataOraStart);
+                    tempPrg.DataOraFine = FunzioniMR.StringaTimestamp(ImmagineCarica.DataOraStop);
+                    tempPrg.Ah = ImmagineCarica.AhCaricati;
+                    tempPrg.Wh = (int)ImmagineCarica.WhCaricati;
+                    tempPrg.ModStop = ImmagineCarica.ModStop;
+
+
+                    return tempPrg;
+                }
+
+                
+
+                return null;  // llProgrammaCarica
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return null;
+            }
+
+        }
+
+
+
+
+
+
         public bool CaricaListaCicli(UInt32 StartAddr, ushort NumRows, out object EsitoCaricamento, bool caricaBrevi = false,  bool RunAsinc = false)
         {
             try
@@ -262,8 +315,6 @@ namespace ChargerLogic
                         }
                     }
 
-                    
-
                 }
                 else
                 {
@@ -273,8 +324,14 @@ namespace ChargerLogic
                         AddrCorrente = FirstShort + (StartAddr + contacicli) * SizeShort;
 
                         llMemBreve _tempBreve = CaricaDatiMemBreve(AddrCorrente);
-                        ListaBrevi.Add(_tempBreve);
-
+                        if (_tempBreve.IdMemCiclo == IdCiclo)
+                        {
+                            ListaBrevi.Add(_tempBreve);
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
 
@@ -290,6 +347,182 @@ namespace ChargerLogic
             }
 
         }
+
+        public bool LeggiBloccoLunghi(bool RunAsinc = false)
+        {
+            try
+            {
+                bool _esito;
+
+                if (RunAsinc)
+                {
+                    //Preparo l'intestazione della finestra di avanzamento                                                                                                          
+                    if (Step != null)
+                    {
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Fase 1 - Caricamento Eventi Lunghi LL";
+                        _passo.Eventi = 1;
+                        _passo.Step = -1;
+                        _passo.EsecuzioneInterrotta = false;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        Step(this, _stepEv);
+                    }
+
+                }
+
+
+
+                Log.Debug("Inizio lettura ara lunghi");
+                DateTime Inizio = DateTime.Now;
+                BloccoLunghi = new byte[LEN_AREA_RECORD_LUNGHI];
+
+                int DimPacchetto = 240;
+                int LenPacchetto = 240;
+                int NumPacchetto = 0;
+                byte[] TmpBuffer = new byte[LenPacchetto];
+                bool FineLettura = false;
+                int IndirizzoRelativo = 0;
+
+                while (!FineLettura)
+                {
+                    if ((LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo) >= LenPacchetto)
+                    {
+                        DimPacchetto = LenPacchetto;
+                    }
+                    else
+                    {
+                        DimPacchetto = LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo;
+                    }
+                    uint TempAddr = (uint)(ADDR_START_RECORD_LUNGHI + IndirizzoRelativo);
+                    _esito = LeggiBloccoMemoria(TempAddr, (ushort)DimPacchetto, out TmpBuffer);
+                    if (_esito)
+                    {
+                        for (int _ciclo = 0; _ciclo < DimPacchetto; _ciclo++)
+                        {
+                            BloccoLunghi[IndirizzoRelativo + _ciclo] = TmpBuffer[_ciclo];
+                        }
+                        IndirizzoRelativo += DimPacchetto;
+                        NumPacchetto++;
+                        if (IndirizzoRelativo >= LEN_AREA_RECORD_LUNGHI)
+                        {
+                            FineLettura = true;
+                        }
+                        if (RunAsinc)
+                        {
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                            int _progress = 0;
+                            double _valProgress = 0;
+                            _passo.TipoDati = elementiComuni.tipoMessaggio.AreaMemLungaLL;
+                            _passo.Titolo = "";
+                            _passo.Eventi = LEN_AREA_RECORD_LUNGHI;
+                            _passo.Step = IndirizzoRelativo;
+                            if (_passo.Eventi > 0)
+                            {
+                                _valProgress = (_passo.Step * 100) / _passo.Eventi;
+                            }
+                            _progress = (int)_valProgress;
+
+                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                            Step(this, _stepEv);
+                        }
+
+                    }
+                    else
+                    {
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Fase 2 - Caricamento Eventi Brevi";
+                        _passo.Eventi = 1;
+                        _passo.Step = -1;
+                        _passo.EsecuzioneInterrotta = true;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        Step(this, _stepEv);
+                        Log.Debug("Lettura area lunghi => lettura interrotta: " + IndirizzoRelativo.ToString("x4"));
+                        break;
+                    }
+
+                }
+
+                TimeSpan Tempo = DateTime.Now.Subtract(Inizio);
+                Log.Debug("Lettura area lunghi => Elapsed: " + Tempo.TotalMilliseconds.ToString() + " ( " + NumPacchetto.ToString() + " )");
+
+                // ora inizio lo spacchettamento
+                AnalizzaAreaLunghi(ContatoriLL.CntCariche, ContatoriLL.PntNextCarica);
+
+
+                return FineLettura;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+        public bool AnalizzaAreaLunghi(uint UltimaCarica,uint PntProssimaCarica)
+        {
+            bool _esito = false;
+            try
+            {
+
+                MemoriaCicli = new List<llMemoriaCicli>();
+                byte[] _tempCarica = new byte[SizeCharge];
+                int posizione = 0;
+                
+                if (PntProssimaCarica < 1) return false;
+                UInt32 AddrUltimaCarica = (((PntProssimaCarica - 1) * SizeCharge) % 0x4000 );
+                bool DatiValidi = true;
+                uint AddrLocale;
+                while (DatiValidi)
+                {
+                    for(int _cnt = 0; _cnt < SizeCharge; _cnt++)
+                    {
+                        AddrLocale = (uint)((AddrUltimaCarica + _cnt) % 0x4000);
+                        _tempCarica[_cnt] = BloccoLunghi[AddrLocale];
+                    }
+                    if(AddrUltimaCarica < SizeCharge)
+                    {
+                        //se il puntatore inizliale divanta < 0, riparto dalla fine
+                        AddrUltimaCarica += 0x4000;
+                    }
+                    AddrUltimaCarica -= SizeCharge;
+
+                    llMemoriaCicli TempCarica = AnalizzaDatiCiclo(_tempCarica);
+                    if (TempCarica == null)
+                    {
+                        DatiValidi = false;
+                    }
+                    else
+                    {
+                        if (TempCarica.IdMemoriaLunga == 0xFFFFFFFF)
+                        {
+                            DatiValidi = false;
+                        }
+                        else
+                        {
+                            TempCarica.Posizione = posizione;
+                            MemoriaCicli.Add(TempCarica);
+                            posizione++;
+                            _esito = true;
+                        }
+
+                    }
+
+                }
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
 
 
     }

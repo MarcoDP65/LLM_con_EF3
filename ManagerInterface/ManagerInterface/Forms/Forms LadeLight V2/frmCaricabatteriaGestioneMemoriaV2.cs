@@ -28,6 +28,8 @@ namespace PannelloCharger
         {
             try
             {
+                // strSortIdMemCiclo
+
                 HeaderFormatStyle _stile = new HeaderFormatStyle();
                 _stile.SetBackColor(Color.DarkGray);
                 _stile.SetForeColor(Color.Yellow);
@@ -50,10 +52,10 @@ namespace PannelloCharger
                 flvCicliListaCariche.MultiSelect = false;
 
 
-                BrightIdeasSoftware.OLVColumn sortColPopsizioneCiclo = new BrightIdeasSoftware.OLVColumn()
+                BrightIdeasSoftware.OLVColumn sortColPosizioneCiclo = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "Pos",
-                    AspectName = "Posizione",
+                    AspectName = "strSortIdMemCiclo",
                     Width = 0,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
@@ -227,7 +229,7 @@ namespace PannelloCharger
 
                 flvCicliListaCariche.RebuildColumns();
                 flvCicliListaCariche.SetObjects(_cb.MemoriaCicli);
-                flvCicliListaCariche.Sort(sortColPopsizioneCiclo, SortOrder.Descending);
+                flvCicliListaCariche.Sort(sortColPosizioneCiclo, SortOrder.Descending);
                 flvCicliListaCariche.BuildList();
             }
             catch (Exception Ex)
@@ -316,7 +318,8 @@ namespace PannelloCharger
             }
         }
 
-        public bool MostraCicloCorrente()
+        public bool 
+            MostraCicloCorrente()
         {
             try
             {
@@ -419,207 +422,7 @@ namespace PannelloCharger
 
         }
 
-        private void InizializzaListaBrevi()
-        {
-            try
-            {
-                HeaderFormatStyle _stile = new HeaderFormatStyle();
-                _stile.SetBackColor(Color.DarkGray);
-                _stile.SetForeColor(Color.Yellow);
-                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
-                _stile.SetFont(_carattere);
-                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
-
-                flvCicliListaBrevi.HeaderUsesThemes = false;
-                flvCicliListaBrevi.HeaderFormatStyle = _stile;
-                flvCicliListaBrevi.UseAlternatingBackColors = true;
-                flvCicliListaBrevi.AlternateRowBackColor = Color.LightGoldenrodYellow;
-
-                flvCicliListaBrevi.AllColumns.Clear();
-
-                flvCicliListaBrevi.View = View.Details;
-                flvCicliListaBrevi.ShowGroups = false;
-                flvCicliListaBrevi.GridLines = true;
-                flvCicliListaBrevi.FullRowSelect = true;
-                flvCicliListaBrevi.MultiSelect = false;
-
-                BrightIdeasSoftware.OLVColumn colIdMemCiclo = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "ID",
-                    AspectName = "strIdMemCiclo",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colIdMemCiclo);
-
-                BrightIdeasSoftware.OLVColumn colIdMemBreve = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "breve",
-                    AspectName = "strIdMemoriaBreve",
-                    Width = 60,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colIdMemBreve);
-
-                BrightIdeasSoftware.OLVColumn colDataOraStart = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Ora",
-                    AspectName = "strTimestamp",
-                    Width = 100,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colDataOraStart);
-
-
-                BrightIdeasSoftware.OLVColumn colstrVBatt = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Vmed",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strVBatt",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrVBatt);
-
-                BrightIdeasSoftware.OLVColumn colstrIBatt = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Imed",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strIBatt",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrIBatt);
-
-                BrightIdeasSoftware.OLVColumn colstrIBattMin = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Imin",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strIBattMin",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrIBattMin);
-
-                BrightIdeasSoftware.OLVColumn colstrIBattMax = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Imax",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strIBattMax",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrIBattMax);
-
-                BrightIdeasSoftware.OLVColumn colstrTBatt = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "T batt",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strTempBatt",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrTBatt);
-
-                BrightIdeasSoftware.OLVColumn colstrTIGBT1 = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "T i1",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strTempIGBT1",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrTIGBT1);
-
-                BrightIdeasSoftware.OLVColumn colstrTIGBT2 = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "T i2",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strTempIGBT2",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrTIGBT2);
-
-                BrightIdeasSoftware.OLVColumn colstrTIGBT3 = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "T i3",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strTempIGBT3",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrTIGBT3);
-
-                BrightIdeasSoftware.OLVColumn colstrTIGBT4 = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "T i4",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strTempIGBT4",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrTIGBT4);
-
-                BrightIdeasSoftware.OLVColumn colstrTempDiode = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "T d1",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strTempDiode",
-                    Width = 50,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrTempDiode);
-
-                BrightIdeasSoftware.OLVColumn colstrVettoreErrori = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Vett Err",
-                    //ToolTipText = "Dati Modificabili",
-                    AspectName = "strVettoreErrori",
-                    Width = 80,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colstrVettoreErrori);
-
-
-
-
-
-                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = " ",
-                    AspectName = "",
-                    Width = 60,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Right,
-                    FillsFreeSpace = true,
-                };
-                flvCicliListaBrevi.AllColumns.Add(colRowFiller);
-
-                flvCicliListaBrevi.RebuildColumns();
-                flvCicliListaBrevi.SetObjects(CicloCorrente.CicliMemoriaBreve);
-                flvCicliListaBrevi.BuildList();
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("InizializzaVistaLunghi: " + Ex.Message);
-            }
-        }
-
+ 
         public List<llMemBreve> CaricaListaBrevi(UInt32 StartAddr, ushort NumRows = 0, uint IdCiclo = 0)
         {
 

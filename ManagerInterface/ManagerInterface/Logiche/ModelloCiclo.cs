@@ -49,6 +49,7 @@ namespace ChargerLogic
                 ProfiloRegistrato = new llProgrammaCarica();
                 ///// ProfiloRegistrato.IdProfilo = IdProfilo; // tipo dati ????
                 // ProfiloRegistrato.IdProgramma = idp
+                ProfiloRegistrato.TipoBatteria = Batteria.BatteryTypeId;
                 ProfiloRegistrato.IdProgramma = IdProgramma;
                 ProfiloRegistrato.ProgramName = NomeProfilo;
 
@@ -265,8 +266,8 @@ namespace ChargerLogic
                         // Mantenimento
                         #region "Mantenimento"
                         case SerialMessage.ParametroLadeLight.MantenimentoAttivo:
-                            ValoriCiclo.MantAttivo = dato.ValoreParametro;
-                            ParametriAttivi.MantAttivo = StatoCella;
+                            ValoriCiclo.MantAttivabile = dato.ValoreParametro;
+                            ParametriAttivi.MantAttivabile = StatoCella;
                             numeroValori += 1;
                             break;
 

@@ -707,6 +707,14 @@ namespace MoriData
             }
         }
 
+        public string strPosizioneOrd
+        {
+            get
+            {
+                return _llmc.Posizione.ToString("00000000");
+            }
+        }
+
         public int NumEventiBreviCaricati
         {
             get

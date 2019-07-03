@@ -421,9 +421,18 @@ namespace PannelloCharger
 
                 bool esito;
 
+      
+                // Se almeno 1 parametro è diverso dal ciclo attivo corrente lo salvo come nuovo ciclo
+                esito = VerificaValoriParametriCarica();
+                if (esito)
+                {
+                    //coincide col programma esistente. esco
+                    return false;
+                }
 
                 // Carico i valori impostati nelle textbox
                 esito = LeggiValoriParametriCarica();
+
                 ModCicloCorrente.IdProgramma = (ushort)(_cb.Programmazioni.UltimoIdProgamma + 1);
 
                 if ( esito )
@@ -523,7 +532,7 @@ namespace PannelloCharger
                 ModCicloCorrente.ValoriCiclo.TempoT3Max = FunzioniMR.ConvertiUshort(txtPaTempoT3Max.Text, 1, 0);
 
                 // Equalizzazione
-                ModCicloCorrente.ValoriCiclo.EqualAttivabile = (ushort)(chkPaAttivaEqual.Checked == true ? 0x00F0 : 0x000F);
+                ModCicloCorrente.ValoriCiclo.EqualAttivabile = (ushort)(chkPaAttivaEqual.Checked == true ? 0x000F : 0x00F0);
                 ModCicloCorrente.ValoriCiclo.EqualTempoAttesa = FunzioniMR.ConvertiUshort(txtPaEqualAttesa.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.EqualNumImpulsi = FunzioniMR.ConvertiUshort(txtPaEqualNumPulse.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.EqualTempoPausa = FunzioniMR.ConvertiUshort(txtPaEqualPulsePause.Text, 1, 0);
@@ -531,7 +540,7 @@ namespace PannelloCharger
                 ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso = FunzioniMR.ConvertiUshort(txtPaEqualPulseCurrent.Text, 10, 0);
 
                 // Mantenimento
-                ModCicloCorrente.ValoriCiclo.MantAttivabile = (ushort)(chkPaAttivaMant.Checked == true ? 0x00F0 : 0x000F);
+                ModCicloCorrente.ValoriCiclo.MantAttivabile = (ushort)(chkPaAttivaMant.Checked == true ? 0x000F : 0x00F0);
                 ModCicloCorrente.ValoriCiclo.MantTempoAttesa = FunzioniMR.ConvertiUshort(txtPaMantAttesa.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.MantTensIniziale = FunzioniMR.ConvertiUshort(txtPaMantVmin.Text, 100, 0);
                 ModCicloCorrente.ValoriCiclo.MantTensFinale = FunzioniMR.ConvertiUshort(txtPaMantVmax.Text, 100, 0);
@@ -555,6 +564,117 @@ namespace PannelloCharger
             }
         }
 
+        public bool VerificaValoriParametriCarica()
+        {
+            try
+            {
+
+
+                // Cassone
+                if (ModCicloCorrente.ValoriCiclo.TipoCassone != FunzioniMR.ConvertiUshort(txtPaCassone.Text, 1, 0)) return false;
+
+                // Nome
+                string _tempStr = txtPaNomeSetup.Text.Trim();
+                // Generale
+                if (ModCicloCorrente.NomeProfilo != _tempStr ) return false;
+                //ModCicloCorrente.IdProgramma = FunzioniMR.ConvertiUshort(txtPaIdSetup.Text, 1, 0);
+
+                // Batteria
+                if (cmbPaTipoBatteria.SelectedItem != null)
+                {
+                    mbTipoBatteria tmpBat = (mbTipoBatteria)(cmbPaTipoBatteria.SelectedItem);
+                    if (ModCicloCorrente.Batteria.BatteryTypeId != tmpBat.BatteryTypeId) return false;
+                }
+                else
+                {
+                    // Non ho una batteria attiva. mi fermo quì
+                    return false;
+                }
+
+                // Tensione
+                if (ModCicloCorrente.Tensione != FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0)) return false;
+                // Numero Celle
+                if (ModCicloCorrente.NumeroCelle != FunzioniMR.ConvertiByte(txtPaNumCelle.Text, 1, 1)) return false;
+                // Capacità
+                if (ModCicloCorrente.Capacita != FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0)) return false;
+                // Profilo
+                if (cmbPaProfilo.SelectedItem != null)
+                {
+                    _mbProfiloCarica tmpPC = (_mbProfiloCarica)(cmbPaProfilo.SelectedItem);
+                    if (ModCicloCorrente.Profilo.IdProfiloCaricaLL != tmpPC.IdProfiloCaricaLL) return false;
+                }
+                else
+                {
+                    // Non ho un profilo attivo. mi fermo quì
+                    return false;
+                }
+
+                // Flag:
+                // Equal
+                //if (ModCicloCorrente.ValoriCiclo.EqualAttivo != (ushort)(chkPaAttivaEqual.Checked ? 0x000F : 0x00F0)) return false;
+
+                // Mant:
+                //if (ModCicloCorrente.ValoriCiclo.MantAttivo != (ushort)(chkPaAttivaMant.Checked ? 0x000F : 0x00F0)) return false;
+
+                // Usa SB
+                if (ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt != (ushort)(chkPaUsaSpyBatt.Checked ? 0x0000 : 0x00F0)) return false;
+
+
+                // Preciclo
+                if (ModCicloCorrente.ValoriCiclo.CorrenteI0 != FunzioniMR.ConvertiUshort(txtPaPrefaseI0.Text, 10, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TensionePrecicloV0 != FunzioniMR.ConvertiUshort(txtPaSogliaV0.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TempoT0Max != FunzioniMR.ConvertiUshort(txtPaDurataMaxT0.Text, 1, 0)) return false;
+
+                // Fase 1 (I) 
+                if (ModCicloCorrente.ValoriCiclo.TensioneSogliaVs != FunzioniMR.ConvertiUshort(txtPaSogliaVs.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.CorrenteI1 != FunzioniMR.ConvertiUshort(txtPaCorrenteI1.Text, 10, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TempoT1Max != FunzioniMR.ConvertiUshort(cmbPaDurataMaxT1.Text, 1, 0)) return false;
+
+                // Fase 2 (U o W) 
+                if (ModCicloCorrente.ValoriCiclo.TensioneRaccordoVr != FunzioniMR.ConvertiUshort(txtPaRaccordoF1.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.CorrenteRaccordoIr != FunzioniMR.ConvertiUshort(txtPaCorrenteRaccordo.Text, 10, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.CorrenteFinaleI2 != FunzioniMR.ConvertiUshort(txtPaCorrenteF3.Text, 10, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TensioneMassimaVMax != FunzioniMR.ConvertiUshort(txtPaVMax.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TempoT2Min != FunzioniMR.ConvertiUshort(txtPaTempoT2Min.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TempoT2Max != FunzioniMR.ConvertiUshort(txtPaTempoT2Max.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.FattoreK != FunzioniMR.ConvertiUshort(txtPaCoeffK.Text, 1, 0)) return false;
+
+                // Fase 3 (I) 
+                if (ModCicloCorrente.ValoriCiclo.TempoT3Max != FunzioniMR.ConvertiUshort(txtPaTempoT3Max.Text, 1, 0)) return false;
+
+                // Equalizzazione
+                if (ModCicloCorrente.ValoriCiclo.EqualAttivabile != (ushort)(chkPaAttivaEqual.Checked == true ? 0x000F : 0x00F0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.EqualTempoAttesa != FunzioniMR.ConvertiUshort(txtPaEqualAttesa.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.EqualNumImpulsi != FunzioniMR.ConvertiUshort(txtPaEqualNumPulse.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.EqualTempoPausa != FunzioniMR.ConvertiUshort(txtPaEqualPulsePause.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.EqualTempoImpulso != FunzioniMR.ConvertiUshort(txtPaEqualPulseTime.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso != FunzioniMR.ConvertiUshort(txtPaEqualPulseCurrent.Text, 10, 0)) return false;
+
+                // Mantenimento
+                if (ModCicloCorrente.ValoriCiclo.MantAttivabile != (ushort)(chkPaAttivaMant.Checked == true ? 0x000F : 0x000F0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.MantTempoAttesa != FunzioniMR.ConvertiUshort(txtPaMantAttesa.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.MantTensIniziale != FunzioniMR.ConvertiUshort(txtPaMantVmin.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.MantTensFinale != FunzioniMR.ConvertiUshort(txtPaMantVmax.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione != FunzioniMR.ConvertiUshort(txtPaMantDurataMax.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso != FunzioniMR.ConvertiUshort(txtPaMantCorrente.Text, 10, 0)) return false;
+
+
+                // Soglie
+                if (ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin != FunzioniMR.ConvertiUshort(txtPaVMinRic.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax != FunzioniMR.ConvertiUshort(txtPaVMaxRic.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TensMinStop != FunzioniMR.ConvertiUshort(txtPaVMinStop.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim != FunzioniMR.ConvertiUshort(txtPaVLimite.Text, 100, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.CorrenteMassima != FunzioniMR.ConvertiUshort(txtPaCorrenteMassima.Text, 10, 0)) return false;
+
+                // TRUE => nessun parametro è stato modificato.
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LeggiValoriParametriCarica: " + Ex.Message);
+                return false;
+            }
+        }
 
 
 
@@ -784,8 +904,8 @@ namespace PannelloCharger
                 tabCaricaBatterie.Height = this.Height - 75; // 109;
 
                 // Tab Cicli
-                spcCicliListeDati.Width = tabCb04.Width - 20;
-                spcCicliListeDati.Height = tabCb04.Height - 140;
+                flvCicliListaCariche.Width = tabCb04.Width - 20;
+                flvCicliListaCariche.Height = tabCb04.Height - 140;
 
                 grbCicli.Top = tabCb04.Height - 110;
                 grbCicli.Width = tabCb04.Width - 20;
@@ -3141,8 +3261,6 @@ namespace PannelloCharger
                     {
                         // non ho tutto in memoria, ricarico
                         CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi, CicloCorrente.IdMemoriaLunga);
-                        // InizializzaListaBrevi();
-
                     }
 
                     MostraDettaglioRiga(CicloCorrente);
@@ -3519,6 +3637,8 @@ namespace PannelloCharger
                 if (!ProfiloInCaricamento)
                 {
                     btnPaProfileRefresh.ForeColor = Color.Red; 
+
+
                 }
 
             }
@@ -3532,31 +3652,29 @@ namespace PannelloCharger
         {
             //coloro la riga in base al Tipo Evento
             llMemoriaCicli _testataCiclo = (llMemoriaCicli)e.Model;
-            switch (_testataCiclo.CondizioneStop)
+            byte StopReale = (byte)(_testataCiclo.CondizioneStop & 0x3F);
+
+            switch (StopReale)
             {
-                case 0xFF:  // "Registrazione non completata";
+                case 0x3F:  // "Registrazione non completata"; ex 0xFF
                     e.Item.BackColor = Color.Red;
                     break;
+                case 0x00:  //"OK";
+                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) != 0) ? Color.Azure :Color.PowderBlue);
+                    break;
                 case 0x01:  //"Strappo";
-                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.LightYellow:Color.LightGoldenrodYellow);
+                    //e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.LightYellow:Color.LightGoldenrodYellow);
                     break;
                 case 0x04:  //"Assenza rete";
-                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.AliceBlue : Color.LightCyan);
+                   //e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.AliceBlue : Color.LightCyan);
                     break;
                 case 0x0B:  //"?";
-                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.MistyRose : Color.LightPink);
+                    //e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.MistyRose : Color.LightPink);
                     break;
                 default:    // "Evento Anomalo"
-                    e.Item.BackColor = Color.LightYellow;
+                    //e.Item.BackColor = Color.LightYellow;
                     break;
             }
-
-            /*
-            if (_testataCiclo.NumEventiBrevi == _testataCiclo.NumEventiBreviCaricati)
-            {
-                e.Item.CheckState = CheckState.Indeterminate;
-            }
-            */
 
         }
 
@@ -3623,14 +3741,26 @@ namespace PannelloCharger
                 FastObjectListView _lista = (FastObjectListView)sender;
                 //llMemoriaCicli CicloSel;
 
-                if (_lista.SelectedObject != null)
+                if (flvCicliListaCariche.SelectedObject == null)
                 {
-                    this.Cursor = Cursors.WaitCursor;
-                    CicloCorrente = (llMemoriaCicli)_lista.SelectedObject;
-                    CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi, CicloCorrente.IdMemoriaLunga);
-                    InizializzaListaBrevi();
-                    this.Cursor = Cursors.Arrow;
+                    btnCicliCaricaBrevi.Enabled = false;
+                    btnCicliMostraBrevi.Enabled = false;
                 }
+                else
+                {
+
+                    CicloCorrente = (llMemoriaCicli)flvCicliListaCariche.SelectedObject;
+
+                    if (CicloCorrente.CicliMemoriaBreve.Count < CicloCorrente.NumEventiBrevi)
+                    {
+                        // non ho tutto in memoria, ricarico
+                        CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi, CicloCorrente.IdMemoriaLunga);
+                    }
+
+                    MostraDettaglioRiga(CicloCorrente);
+
+                }
+
             }
             catch (Exception Ex)
             {
@@ -3701,6 +3831,124 @@ namespace PannelloCharger
             catch
             {
                 ProfiloInCaricamento = false;
+            }
+
+        }
+
+        private void btnCicliCaricaArea_Click(object sender, EventArgs e)
+        {
+            Log.Debug("Lancio lettura lunghi");
+
+            _avCicli.ParametriWorker.MainCount = 100;
+            _avCicli.llLocale = _cb;
+            _avCicli.ValStart = (int)0;
+            _avCicli.AddrStart = 0x1B3000; //   StartAddr;
+            _avCicli.ValFine = 0x4000; //(int)NumRows;// _sb.sbData.LongMem;
+            _avCicli.DbDati = _logiche.dbDati.connessione;
+            _avCicli.CaricaBrevi = false; // chkCaricaBrevi.Checked;
+            _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
+            _avCicli.TipoComando = elementiComuni.tipoMessaggio.AreaMemLungaLL;
+            Log.Debug("FRM RicaricaCicli: ");
+
+            //_esito = _sb.RicaricaCaricaCicliMemLunga(Inizio, (uint)_sb.sbData.LongMem, _logiche.dbDati.connessione, true, CaricaBrevi);
+
+            // Apro il form con le progressbar
+            _avCicli.ShowDialog(this);
+            InizializzaListaCariche();
+
+
+            // this.Cursor = Cursors.WaitCursor;
+            // _cb.LeggiBloccoLunghi();
+            // this.Cursor = Cursors.Default;
+
+        }
+
+        private void flwPaListaConfigurazioni_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = (FastObjectListView)sender;
+                //llMemoriaCicli CicloSel;+
+
+                if (flwPaListaConfigurazioni.SelectedObject == null)
+                {
+                    btnPaAttivaConfigurazione.Enabled = false;
+                }
+                else
+                {
+
+                    llProgrammaCarica tmpRigaSel = (llProgrammaCarica)flwPaListaConfigurazioni.SelectedObject;
+
+                    if (tmpRigaSel.PosizioneCorrente != 0)
+                        btnPaAttivaConfigurazione.Enabled = true;
+                    else
+                        btnPaAttivaConfigurazione.Enabled = false;
+
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("flwPaListaConfigurazioni_SelectedIndexChanged: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
+            }
+        }
+
+        private void btnPaAttivaConfigurazione_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //FastObjectListView _lista = (FastObjectListView)sender;
+                //llMemoriaCicli CicloSel;+
+
+                if (flwPaListaConfigurazioni.SelectedObject == null)
+                {
+                    return;
+                }
+                else
+                {
+
+                    llProgrammaCarica tmpRigaSel = (llProgrammaCarica)flwPaListaConfigurazioni.SelectedObject;
+
+                    if (tmpRigaSel.PosizioneCorrente == 0)
+                        return;
+                    else
+                    {
+                        // Riposiziono tuuuti gli elementi: quelli prima del selezionato in posizione +1, 
+                        //                                  il selezionato in posizione 0
+                        //                                  quelli dopo il selezioato, invariati
+                        foreach ( llProgrammaCarica TPC in _cb.Programmazioni.ProgrammiDefiniti)
+                        {
+                            if (TPC.PosizioneCorrente < tmpRigaSel.PosizioneCorrente)
+                            {
+                                TPC.PosizioneCorrente += 1;
+                            }
+                            else
+                            {
+                                if (TPC.PosizioneCorrente == tmpRigaSel.PosizioneCorrente)
+                                {
+                                    TPC.PosizioneCorrente = 0;
+                                }
+
+                            }
+                        }
+
+                        _cb.SalvaProgrammazioniApparato();
+                        CaricaProgrammazioni();
+
+
+                    }
+                        btnPaAttivaConfigurazione.Enabled = false;
+
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaAttivaConfigurazione_Click: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
             }
 
         }

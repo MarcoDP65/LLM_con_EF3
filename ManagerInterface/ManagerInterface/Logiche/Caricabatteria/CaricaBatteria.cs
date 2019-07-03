@@ -23,6 +23,8 @@ namespace ChargerLogic
         public const int  ADDR_START_PROGRAMMAZIONI = 0x2000;
         public const byte ADDR_START_PAR_PROGRAM    = 0xF6;
 
+        public const int ADDR_START_RECORD_LUNGHI = 0x1B3000;
+        public const int LEN_AREA_RECORD_LUNGHI = 0x4000;
 
 
         public SerialPort serialeApparato;
@@ -54,6 +56,8 @@ namespace ChargerLogic
         public LadeLightData ApparatoLL;
 
         public llVariabili llVariabiliAttuali = new llVariabili();
+
+        public byte[] BloccoLunghi; 
 
         /*
         public ushort UltimoIdProgamma { get; set; }
@@ -1088,6 +1092,9 @@ namespace ChargerLogic
             }
         }
 
+ 
+
+
 
 
         public bool LeggiProgrammazioni()
@@ -1388,16 +1395,16 @@ namespace ChargerLogic
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
                 _mS._pacchettoMem = new SerialMessage.PacchettoReadMem();
 
-                Log.Debug("-----------------------------------------------------------------------------------------------------------");
-                Log.Debug("Lettura di " + NumByte.ToString() + " bytes dall'indirizzo " + StartAddr.ToString("X2"));
+                //Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                //Log.Debug("Lettura di " + NumByte.ToString() + " bytes dall'indirizzo " + StartAddr.ToString("X2"));
 
                 _mS.ComponiMessaggioLeggiMem(StartAddr, NumByte);
-                Log.Debug(_mS.hexdumpMessaggio());
+                //Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
-                Log.Debug(_mS.hexdumpArray(_mS._pacchettoMem.memDataDecoded));
+                //Log.Debug(_mS.hexdumpArray(_mS._pacchettoMem.memDataDecoded));
 
                 for (int _ciclo = 0; ((_ciclo < NumByte) && (_ciclo < _mS._pacchettoMem.numBytes)); _ciclo++)
                 {

@@ -31,6 +31,17 @@ namespace ChargerLogic
         }
 
 
+        public llProgrammaCarica ProgrammazioneAttiva
+        {
+            get
+            {
+                if (ProgrammiDefiniti == null) return null;
+                if (ProgrammiDefiniti.Count < 1) return null;
+                return ProgrammiDefiniti.Find(x => x.PosizioneCorrente == 0);
+            }
+        }
+
+
 /*
         public bool CaricaProgrammaAttivo()
         {

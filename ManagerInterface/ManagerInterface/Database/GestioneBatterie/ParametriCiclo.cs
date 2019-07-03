@@ -171,8 +171,59 @@ namespace MoriData
             return true;
         }
           
+        public _llProgrammaCarica To_llPC()
+        {
+            _llProgrammaCarica _llPC = new _llProgrammaCarica();
+
+            _llPC.IdLocale = 0;
+            _llPC.IdProgramma = 0;
+            //public string ProgramName { get; set; }
+            _llPC.BatteryType = BatteryTypeId;
+            //public ushort BatteryVdef { get; set; }
+            //public ushort BatteryAhdef { get; set; }
+            //public byte NumeroCelle { get; set; }
+
+            _llPC.VSoglia = TensioneSogliaVs;
+            _llPC.VRaccordoF1 = TensioneRaccordoVr;
+            _llPC.VMax = TensioneMassimaVMax;
+            _llPC.VCellLimite = TensioneLimiteVLim;
+            _llPC.BatteryVminRec = TensRiconoscimentoMin;
+            _llPC.BatteryVmaxRec = TensRiconoscimentoMax;
+            _llPC.BatteryVminStop = TensMinStop;
+
+            _llPC.CorrenteMax = CorrenteMassima;
+            _llPC.CorrenteFase3 = CorrenteI3;
+
+            _llPC.EqualTempoAttesa = EqualTempoAttesa;
+            _llPC.EqualNumImpulsi = EqualNumImpulsi;
+            _llPC.EqualDurataPausa = EqualTempoPausa;
+            _llPC.EqualDurataImpulso = EqualTempoImpulso;
+            _llPC.EqualCorrenteImpulso = EqualCorrenteImpulso;
+
+            _llPC.IdProfilo = IdProfiloCaricaLL;
+            //_llPC.DurataMaxCarica { get; set; }
+            _llPC.PercTempoFase2 = FattoreK;
+            _llPC.DurataMinFase2 = TempoT2Min;
+            _llPC.DurataMaxFase2 = TempoT2Max;
+            _llPC.DurataMaxFase3 = TempoT3Max;
+
+
+            //_llPC.AbilitaComunicazioneSpybatt = (byte) AbilitaSpyBatt;
+
+            //_llPC.TempoErogazioneBMS { get; set; }
+            //_llPC.TempoAttesaBMS { get; set; }
+
+            //_llPC.ProgrammaInUso { get; set; }
+
+            //_llPC.TipoRecord { get; set; }
+            //_llPC.OpzioniAttive { get; set; }
+
+
+            return _llPC;
 
     }
+
+}
 
 
 }

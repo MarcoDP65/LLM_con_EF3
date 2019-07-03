@@ -12,7 +12,7 @@ namespace ChargerLogic
     public class SerialMessage
     {
         private static ILog Log = LogManager.GetLogger("SerialMessage");
-
+        public enum LLBoolean : byte { lltrue = 0x0F, llfalse = 0xF0};
         public enum InitialCrcValue : ushort { Zeros, NonZero1 = 0xffff, NonZero2 = 0x1D0F };
         public enum RequiredActionOutcome : byte {Success = 0x0F,Failed = 0xF0, UnDone = 0xFF,Undefined = 0x00};
         public enum TipoDispositivo : ushort { PcOrSmart = 0xBCBC, Charger = 0x0000, SpyBat = 0x0003 };
@@ -144,14 +144,14 @@ namespace ChargerLogic
             EqualFineCaricaDurataP =        0x62,   // Minuti
             EqualFineCaricaDurataI =        0x63,   // Minuti
             EqualFineCaricaCorrenteImp =    0x64,   // A, 1 decimale
-            EqualAttivo =                   0x6F,   // 000F TRUE / 00F0 False
+            EqualAttivo =                   0x6F,   // 000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e E.A. = true posso partire
 
             MantenimentoAttesa =            0x70,   // Minuti
             MantenimentoTensIniziale =      0x71,   // V per Cella, 2 decimali
             MantenimentoTensFinale =        0x72,   // V per Cella, 2 decimali
             MantenimentoTMaxErogazione =    0x73,   // Minuti
             MantenimentoCorrErogazione =    0x74,   // A, 1 decimale
-            MantenimentoAttivo =            0x7F,   // 000F TRUE / 00F0 False
+            MantenimentoAttivo =            0x7F,   // 000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e M.A. = true posso partire
 
             TipoProfilo = 0x80,
 
@@ -166,6 +166,7 @@ namespace ChargerLogic
         /// </summary>
         public enum OcBaudRate : byte { OFF = 0x00, br_9k6 = 0x21, br_19k2 = 0x31, br_38k4 = 0x01, br_57k6 = 0x11 };
         public enum OcEchoMode : byte { OFF = 0x00, Listening = 0xAC, Echo = 0xEC };
+
 
 
         // Da rendere dinamico
