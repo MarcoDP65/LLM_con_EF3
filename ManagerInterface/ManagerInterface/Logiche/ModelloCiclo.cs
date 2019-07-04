@@ -352,7 +352,7 @@ namespace ChargerLogic
             ParametriAttivi = new ParametriCiclo();
         }
 
-        public bool CalcolaParametri(_mbTipoBatteria Batteria, _mbProfiloCarica Profilo,ushort Tensione, ushort CapacitaDefinita, ushort Celle, _llModelloCb ModelloCB )
+        public CaricaBatteria.EsitoRicalcolo CalcolaParametri(_mbTipoBatteria Batteria, _mbProfiloCarica Profilo,ushort Tensione, ushort CapacitaDefinita, ushort Celle, _llModelloCb ModelloCB )
         {
             try
             {
@@ -366,7 +366,7 @@ namespace ChargerLogic
                 {
                     ValoriCiclo.Esito = 0xFF;
                     ValoriCiclo.Messaggio = "Parametri iniziali non corretti";
-                    return false;
+                    return CaricaBatteria.EsitoRicalcolo.ParNonValidi;
                 }
 
                 ModelloProfilo = (from p in DatiModello.ParametriCarica
@@ -378,7 +378,7 @@ namespace ChargerLogic
                     // Abbinamento batteria / ciclo non previsto
                     ValoriCiclo.Esito = 0xF1;
                     ValoriCiclo.Messaggio = "Abbinamento batteria / ciclo non previsto";
-                    return false;
+                    return CaricaBatteria.EsitoRicalcolo.ParNonValidi;
                 }
 
                 // Prima controllo che tensioni e correnti siano compatibili col CB. se il cb non è indicato, sono compatibili a priori
@@ -398,12 +398,21 @@ namespace ChargerLogic
                 ParametriAttivi.CorrenteI0 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteI0);
                 ValoriCiclo.CorrenteI0 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteI0);
                 ParametriAttivi.TensionePrecicloV0 = FunzioniComuni.StatoParametro(ModelloProfilo.TensionePrecicloV0);
+                if ((ValoriCiclo.CorrenteI0/10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
+                
                 ValoriCiclo.TensionePrecicloV0 = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensionePrecicloV0);
 
                 ParametriAttivi.TempoT1Max = FunzioniComuni.StatoParametro(ModelloProfilo.TempoT1Max);
                 ValoriCiclo.TempoT1Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT1Max);
                 ParametriAttivi.CorrenteI1 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteI1);
                 ValoriCiclo.CorrenteI1 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteI1);
+                if ((ValoriCiclo.CorrenteI1 / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
                 ParametriAttivi.TensioneSogliaVs = FunzioniComuni.StatoParametro(ModelloProfilo.TensioneSogliaVs);
                 ValoriCiclo.TensioneSogliaVs = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensioneSogliaVs);
 
@@ -421,6 +430,10 @@ namespace ChargerLogic
 
                 ParametriAttivi.CorrenteFinaleI2 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteFinaleI2);
                 ValoriCiclo.CorrenteFinaleI2 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteFinaleI2);
+                if ((ValoriCiclo.CorrenteFinaleI2 / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
                 ParametriAttivi.TensioneMassimaVMax = FunzioniComuni.StatoParametro(ModelloProfilo.TensioneMassimaVMax);
                 ValoriCiclo.TensioneMassimaVMax = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensioneMassimaVMax);
 
@@ -461,12 +474,12 @@ namespace ChargerLogic
 
 
 
-                return true;
+                return CaricaBatteria.EsitoRicalcolo.OK;
             }
             catch (Exception Ex)
             {
                 Log.Error("CalcolaParametri: " + Ex.Message);
-                return false;
+                return CaricaBatteria.EsitoRicalcolo.ErrGenerico;
             }
         }
 

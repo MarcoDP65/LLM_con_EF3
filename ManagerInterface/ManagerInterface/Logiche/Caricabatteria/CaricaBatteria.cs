@@ -26,6 +26,7 @@ namespace ChargerLogic
         public const int ADDR_START_RECORD_LUNGHI = 0x1B3000;
         public const int LEN_AREA_RECORD_LUNGHI = 0x4000;
 
+        public enum EsitoRicalcolo : byte  { OK =  0x00, ErrIMax = 0x11, ErrIMin = 0x12, ErrVMax = 0x21, ErrVMin = 0x22,ErrGenerico = 0xF0,ParNonValidi = 0xF1, ErrUndef = 0xFF }
 
         public SerialPort serialeApparato;
         private static MessaggioLadeLight _mS;
@@ -51,6 +52,8 @@ namespace ChargerLogic
         public cbProgrammazioni Programmazioni = new cbProgrammazioni();
 
         public llParametriApparato ParametriApparato = new llParametriApparato();
+        public _llModelloCb ModelloCorrente;
+
         public llMappaMemoria Memoria = new llMappaMemoria(1);
         public llContatoriApparato ContatoriLL = new llContatoriApparato();
         public LadeLightData ApparatoLL;
@@ -708,6 +711,14 @@ namespace ChargerLogic
                     }
 
 
+                    if (ParametriApparato.llParApp != null)
+                    {
+                        ModelloCorrente = ModelliLL.Find(x => x.IdModelloLL == ParametriApparato.llParApp.TipoApparato);
+                    }
+                    else
+                    {
+                        ModelloCorrente = null;
+                    }
 
 
                     //Intestazione.Matricola = BloccoIntestazione.SerialeApparato;

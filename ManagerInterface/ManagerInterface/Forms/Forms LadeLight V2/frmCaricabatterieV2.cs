@@ -1374,8 +1374,10 @@ namespace PannelloCharger
 
         private void btnPaSalvaDati_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             ScriviParametriCarica();
             CaricaProgrammazioni();
+            this.Cursor = Cursors.Default;
         }
 
 
@@ -2740,8 +2742,9 @@ namespace PannelloCharger
 
                         bool esitoRicalcolo;
                         //DefinisciValoriProfilo();
-                        esitoRicalcolo = RicalcolaParametriCiclo();
-                        MostraParametriCiclo(false, !esitoRicalcolo);
+                        esitoRicalcolo = RicalcolaParametriCiclo(false);
+                        MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked);
+
                     }
 
                 }
@@ -3457,9 +3460,10 @@ namespace PannelloCharger
         {
             try
             {
-                // Ripristino le eventuali schede nascoste 
-
-                RicalcolaParametriCiclo();
+                bool esitoRicalcolo;
+                //DefinisciValoriProfilo();
+                esitoRicalcolo = RicalcolaParametriCiclo();
+                MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked);
 
             }
             catch (Exception Ex)
@@ -3469,7 +3473,7 @@ namespace PannelloCharger
             }
         }
 
-        private bool RicalcolaParametriCiclo()
+        private bool RicalcolaParametriCiclo(bool MessaggioEsito = true)
         {
             try
             {
@@ -3478,14 +3482,62 @@ namespace PannelloCharger
                 ushort _Tensione = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
                 ushort _Capacita = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
                 ushort _Celle = FunzioniMR.ConvertiUshort(txtPaNumCelle.Text, 1, 0);
-                _llModelloCb _ModelloCB = null;
+                _llModelloCb _ModelloCB = _cb.ModelloCorrente;
+
+                string messaggioErrore;
+                //    null;
 
 
-                bool esitoRicalcolo = ModCicloCorrente.CalcolaParametri(_Batteria._mbTb, _Profilo, _Tensione, _Capacita, _Celle, _ModelloCB);
+                CaricaBatteria.EsitoRicalcolo esitoRicalcolo = ModCicloCorrente.CalcolaParametri(_Batteria._mbTb, _Profilo, _Tensione, _Capacita, _Celle, _ModelloCB);
 
                 btnPaProfileRefresh.ForeColor = Color.Black;
                 // MostraParametriCiclo(!esitoRicalcolo);
-                return esitoRicalcolo;
+
+                if (esitoRicalcolo == CaricaBatteria.EsitoRicalcolo.OK)
+                {
+                    btnPaSalvaDati.Enabled = true;
+                }
+                else
+                {
+                    btnPaSalvaDati.Enabled = false;
+                    messaggioErrore = "";
+                    switch (esitoRicalcolo)
+                    {
+                        case CaricaBatteria.EsitoRicalcolo.OK:
+                            break;
+                        case CaricaBatteria.EsitoRicalcolo.ErrIMax:
+                        case CaricaBatteria.EsitoRicalcolo.ErrIMin:
+                        case CaricaBatteria.EsitoRicalcolo.ErrVMax:
+                        case CaricaBatteria.EsitoRicalcolo.ErrVMin:
+                            {
+                                messaggioErrore = "Il ciclo richiesto non è effettuabile con questo modello di caricabatteria";
+                            }
+                            break;
+                        case CaricaBatteria.EsitoRicalcolo.ErrGenerico:
+                        case CaricaBatteria.EsitoRicalcolo.ParNonValidi:
+                        case CaricaBatteria.EsitoRicalcolo.ErrUndef:
+                            {
+                                messaggioErrore = "Il mancano informazioni per poter definire il ciclo di carica richiesto";
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if(MessaggioEsito)
+                    {
+                        MessageBox.Show(messaggioErrore, "Ricalcolo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+
+
+
+                return ( esitoRicalcolo == CaricaBatteria.EsitoRicalcolo.OK);
+
+
+
             }
             catch (Exception Ex)
             {
@@ -3496,7 +3548,7 @@ namespace PannelloCharger
 
 
 
-        private bool MostraParametriCiclo( bool ParametriBase = false, bool SoloClear = false, bool SbloccaValori = false)
+        private bool MostraParametriCiclo( bool ParametriBase = false, bool SoloClear = false, bool SbloccaValori = false , bool SkipCapacità = false)
         {
             try
             {
@@ -3565,8 +3617,11 @@ namespace PannelloCharger
                     }
 
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, ModCicloCorrente.NumeroCelle, 4, 3, SbloccaValori);
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 5, 2, SbloccaValori);
-
+                    if (!SkipCapacità)
+                    {
+                        // se sono entrato da txtCapacita_change evito di riformattare
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 5, 2, SbloccaValori);
+                    }
 
 
 
@@ -3636,6 +3691,11 @@ namespace PannelloCharger
             {
                 if (!ProfiloInCaricamento)
                 {
+                    bool esitoRicalcolo;
+                    //DefinisciValoriProfilo();
+                    esitoRicalcolo = RicalcolaParametriCiclo(false);
+                    MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked,true);
+
                     btnPaProfileRefresh.ForeColor = Color.Red; 
 
 
@@ -3918,6 +3978,8 @@ namespace PannelloCharger
                         // Riposiziono tuuuti gli elementi: quelli prima del selezionato in posizione +1, 
                         //                                  il selezionato in posizione 0
                         //                                  quelli dopo il selezioato, invariati
+
+                        this.Cursor = Cursors.WaitCursor;
                         foreach ( llProgrammaCarica TPC in _cb.Programmazioni.ProgrammiDefiniti)
                         {
                             if (TPC.PosizioneCorrente < tmpRigaSel.PosizioneCorrente)
@@ -3936,10 +3998,11 @@ namespace PannelloCharger
 
                         _cb.SalvaProgrammazioniApparato();
                         CaricaProgrammazioni();
+                        this.Cursor = Cursors.Default;
 
 
                     }
-                        btnPaAttivaConfigurazione.Enabled = false;
+                    btnPaAttivaConfigurazione.Enabled = false;
 
 
                 }
