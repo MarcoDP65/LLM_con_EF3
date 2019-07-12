@@ -496,6 +496,7 @@ namespace ChargerLogic
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
                 Log.Debug(_mS.hexdumpMessaggio());
                 Log.Debug("------------------------------------------------------------------------------------------------------------");
 

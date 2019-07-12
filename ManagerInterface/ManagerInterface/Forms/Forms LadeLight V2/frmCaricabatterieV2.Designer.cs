@@ -589,6 +589,8 @@
             this.btnCicliCaricaLista = new System.Windows.Forms.Button();
             this.btnCicliVuotaLista = new System.Windows.Forms.Button();
             this.tabGenerale = new System.Windows.Forms.TabPage();
+            this.btnGenAzzzeraContatoriTot = new System.Windows.Forms.Button();
+            this.btnGenAzzzeraContatori = new System.Windows.Forms.Button();
             this.btnCaricaContatori = new System.Windows.Forms.Button();
             this.grbMainContatori = new System.Windows.Forms.GroupBox();
             this.label222 = new System.Windows.Forms.Label();
@@ -653,6 +655,7 @@
             this.lblCliCliente = new System.Windows.Forms.Label();
             this.btnCaricaMemoria = new System.Windows.Forms.Button();
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
+            this.btnGenResetBoard = new System.Windows.Forms.Button();
             this.tabMonitor.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
@@ -7339,7 +7342,8 @@
             // 
             // btnCicliCaricaArea
             // 
-            this.btnCicliCaricaArea.Location = new System.Drawing.Point(409, 52);
+            this.btnCicliCaricaArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCicliCaricaArea.Location = new System.Drawing.Point(6, 17);
             this.btnCicliCaricaArea.Name = "btnCicliCaricaArea";
             this.btnCicliCaricaArea.Size = new System.Drawing.Size(209, 27);
             this.btnCicliCaricaArea.TabIndex = 9;
@@ -7350,19 +7354,21 @@
             // btnCicliMostraBrevi
             // 
             this.btnCicliMostraBrevi.Enabled = false;
-            this.btnCicliMostraBrevi.Location = new System.Drawing.Point(516, 17);
+            this.btnCicliMostraBrevi.Location = new System.Drawing.Point(931, 19);
             this.btnCicliMostraBrevi.Name = "btnCicliMostraBrevi";
             this.btnCicliMostraBrevi.Size = new System.Drawing.Size(102, 27);
             this.btnCicliMostraBrevi.TabIndex = 8;
             this.btnCicliMostraBrevi.Text = "Mostra Brevi";
             this.btnCicliMostraBrevi.UseVisualStyleBackColor = true;
+            this.btnCicliMostraBrevi.Click += new System.EventHandler(this.BtnCicliMostraBrevi_Click);
             // 
             // btnCicliCaricaBrevi
             // 
             this.btnCicliCaricaBrevi.Enabled = false;
-            this.btnCicliCaricaBrevi.Location = new System.Drawing.Point(408, 17);
+            this.btnCicliCaricaBrevi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCicliCaricaBrevi.Location = new System.Drawing.Point(234, 17);
             this.btnCicliCaricaBrevi.Name = "btnCicliCaricaBrevi";
-            this.btnCicliCaricaBrevi.Size = new System.Drawing.Size(102, 27);
+            this.btnCicliCaricaBrevi.Size = new System.Drawing.Size(209, 27);
             this.btnCicliCaricaBrevi.TabIndex = 7;
             this.btnCicliCaricaBrevi.Text = "Carica Brevi";
             this.btnCicliCaricaBrevi.UseVisualStyleBackColor = true;
@@ -7371,7 +7377,7 @@
             // chkCicliCaricaBrevi
             // 
             this.chkCicliCaricaBrevi.AutoSize = true;
-            this.chkCicliCaricaBrevi.Location = new System.Drawing.Point(276, 71);
+            this.chkCicliCaricaBrevi.Location = new System.Drawing.Point(824, 76);
             this.chkCicliCaricaBrevi.Name = "chkCicliCaricaBrevi";
             this.chkCicliCaricaBrevi.Size = new System.Drawing.Size(50, 17);
             this.chkCicliCaricaBrevi.TabIndex = 6;
@@ -7381,7 +7387,7 @@
             // label223
             // 
             this.label223.AutoSize = true;
-            this.label223.Location = new System.Drawing.Point(209, 52);
+            this.label223.Location = new System.Drawing.Point(757, 57);
             this.label223.Name = "label223";
             this.label223.Size = new System.Drawing.Size(50, 13);
             this.label223.TabIndex = 5;
@@ -7389,7 +7395,7 @@
             // 
             // txtCicliNumRecord
             // 
-            this.txtCicliNumRecord.Location = new System.Drawing.Point(209, 68);
+            this.txtCicliNumRecord.Location = new System.Drawing.Point(757, 73);
             this.txtCicliNumRecord.Name = "txtCicliNumRecord";
             this.txtCicliNumRecord.Size = new System.Drawing.Size(61, 20);
             this.txtCicliNumRecord.TabIndex = 4;
@@ -7399,7 +7405,7 @@
             // label209
             // 
             this.label209.AutoSize = true;
-            this.label209.Location = new System.Drawing.Point(114, 52);
+            this.label209.Location = new System.Drawing.Point(662, 57);
             this.label209.Name = "label209";
             this.label209.Size = new System.Drawing.Size(89, 13);
             this.label209.TabIndex = 3;
@@ -7407,7 +7413,7 @@
             // 
             // txtCicliAddrPrmo
             // 
-            this.txtCicliAddrPrmo.Location = new System.Drawing.Point(117, 68);
+            this.txtCicliAddrPrmo.Location = new System.Drawing.Point(665, 73);
             this.txtCicliAddrPrmo.Name = "txtCicliAddrPrmo";
             this.txtCicliAddrPrmo.Size = new System.Drawing.Size(86, 20);
             this.txtCicliAddrPrmo.TabIndex = 2;
@@ -7416,7 +7422,7 @@
             // 
             // btnCicliCaricaLista
             // 
-            this.btnCicliCaricaLista.Location = new System.Drawing.Point(117, 17);
+            this.btnCicliCaricaLista.Location = new System.Drawing.Point(665, 19);
             this.btnCicliCaricaLista.Name = "btnCicliCaricaLista";
             this.btnCicliCaricaLista.Size = new System.Drawing.Size(209, 27);
             this.btnCicliCaricaLista.TabIndex = 1;
@@ -7426,7 +7432,7 @@
             // 
             // btnCicliVuotaLista
             // 
-            this.btnCicliVuotaLista.Location = new System.Drawing.Point(9, 17);
+            this.btnCicliVuotaLista.Location = new System.Drawing.Point(548, 19);
             this.btnCicliVuotaLista.Name = "btnCicliVuotaLista";
             this.btnCicliVuotaLista.Size = new System.Drawing.Size(102, 27);
             this.btnCicliVuotaLista.TabIndex = 0;
@@ -7437,6 +7443,9 @@
             // tabGenerale
             // 
             this.tabGenerale.BackColor = System.Drawing.Color.LightYellow;
+            this.tabGenerale.Controls.Add(this.btnGenResetBoard);
+            this.tabGenerale.Controls.Add(this.btnGenAzzzeraContatoriTot);
+            this.tabGenerale.Controls.Add(this.btnGenAzzzeraContatori);
             this.tabGenerale.Controls.Add(this.btnCaricaContatori);
             this.tabGenerale.Controls.Add(this.grbMainContatori);
             this.tabGenerale.Controls.Add(this.GrbMainDatiApparato);
@@ -7450,9 +7459,31 @@
             this.tabGenerale.Text = "Generale";
             this.tabGenerale.Click += new System.EventHandler(this.tabCb01_Click);
             // 
+            // btnGenAzzzeraContatoriTot
+            // 
+            this.btnGenAzzzeraContatoriTot.Location = new System.Drawing.Point(1083, 320);
+            this.btnGenAzzzeraContatoriTot.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenAzzzeraContatoriTot.Name = "btnGenAzzzeraContatoriTot";
+            this.btnGenAzzzeraContatoriTot.Size = new System.Drawing.Size(146, 24);
+            this.btnGenAzzzeraContatoriTot.TabIndex = 24;
+            this.btnGenAzzzeraContatoriTot.Text = "Azzera Tutti i Contatori";
+            this.btnGenAzzzeraContatoriTot.UseVisualStyleBackColor = true;
+            this.btnGenAzzzeraContatoriTot.Click += new System.EventHandler(this.BtnGenAzzzeraContatoriTot_Click);
+            // 
+            // btnGenAzzzeraContatori
+            // 
+            this.btnGenAzzzeraContatori.Location = new System.Drawing.Point(1083, 294);
+            this.btnGenAzzzeraContatori.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenAzzzeraContatori.Name = "btnGenAzzzeraContatori";
+            this.btnGenAzzzeraContatori.Size = new System.Drawing.Size(146, 24);
+            this.btnGenAzzzeraContatori.TabIndex = 23;
+            this.btnGenAzzzeraContatori.Text = "Azzera Contatori";
+            this.btnGenAzzzeraContatori.UseVisualStyleBackColor = true;
+            this.btnGenAzzzeraContatori.Click += new System.EventHandler(this.BtnGenAzzeraContatori_Click);
+            // 
             // btnCaricaContatori
             // 
-            this.btnCaricaContatori.Location = new System.Drawing.Point(1083, 296);
+            this.btnCaricaContatori.Location = new System.Drawing.Point(1083, 250);
             this.btnCaricaContatori.Margin = new System.Windows.Forms.Padding(2);
             this.btnCaricaContatori.Name = "btnCaricaContatori";
             this.btnCaricaContatori.Size = new System.Drawing.Size(146, 24);
@@ -8170,6 +8201,19 @@
             this.tabCaricaBatterie.Size = new System.Drawing.Size(1293, 550);
             this.tabCaricaBatterie.TabIndex = 0;
             this.tabCaricaBatterie.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabCaricaBatterie_Selected);
+            // 
+            // btnGenResetBoard
+            // 
+            this.btnGenResetBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenResetBoard.ForeColor = System.Drawing.Color.Red;
+            this.btnGenResetBoard.Location = new System.Drawing.Point(1083, 444);
+            this.btnGenResetBoard.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenResetBoard.Name = "btnGenResetBoard";
+            this.btnGenResetBoard.Size = new System.Drawing.Size(146, 49);
+            this.btnGenResetBoard.TabIndex = 25;
+            this.btnGenResetBoard.Text = "Riavvia Scheda";
+            this.btnGenResetBoard.UseVisualStyleBackColor = true;
+            this.btnGenResetBoard.Click += new System.EventHandler(this.BtnGenResetBoard_Click);
             // 
             // frmCaricabatterieV2
             // 
@@ -8926,5 +8970,8 @@
         private BrightIdeasSoftware.FastObjectListView flvCicliListaCariche;
         private System.Windows.Forms.Button btnCicliCaricaArea;
         private System.Windows.Forms.Button btnPaAttivaConfigurazione;
+        private System.Windows.Forms.Button btnGenAzzzeraContatori;
+        private System.Windows.Forms.Button btnGenAzzzeraContatoriTot;
+        private System.Windows.Forms.Button btnGenResetBoard;
     }
 }

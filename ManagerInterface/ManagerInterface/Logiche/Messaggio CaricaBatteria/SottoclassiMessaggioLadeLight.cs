@@ -833,7 +833,7 @@ namespace ChargerLogic
                 {
                     byte[] _datamap = new byte[226];
                     byte[] _dataSet = new byte[224];
-                    byte[] _tempString;
+//                    byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
 
@@ -1189,7 +1189,7 @@ namespace ChargerLogic
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length < 240)
+                    if (_messaggio.Length < 0x38)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
@@ -1229,9 +1229,10 @@ namespace ChargerLogic
                     startByte += 3;
                     CntMemReset = ArrayToUshort(_messaggio, startByte, 2);
                     startByte += 2;
-
-                    DataUltimaCancellazione = SubArray(_messaggio, startByte, 5);
+                    if (CntMemReset == 0xFFFF) CntMemReset = 0;
+                    DataUltimaCancellazione = SubArray(_messaggio, startByte, 3);
                     startByte += 3;
+
 
                     datiPronti = true;
 
@@ -1249,8 +1250,8 @@ namespace ChargerLogic
             {
                 try
                 {
-                    byte[] _datamap = new byte[240];
-                    byte[] _dataSet = new byte[238];
+                    byte[] _datamap = new byte[0x38];
+                    byte[] _dataSet = new byte[0x36];
                     byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
@@ -1264,16 +1265,116 @@ namespace ChargerLogic
                     byte _byte4 = 0;
 
                     // Preparo l'array vuoto
-                    for (int _i = 0; _i < 240; _i++)
+                    for (int _i = 0; _i < 0x38; _i++)
                     {
                         _datamap[_i] = 0xFF;
+
                     }
 
+                    //  DataPrimaCarica
+                    _datamap[_arrayInit++] = DataPrimaCarica[0];
+                    _datamap[_arrayInit++] = DataPrimaCarica[1];
+                    _datamap[_arrayInit++] = DataPrimaCarica[2];
+                    _datamap[_arrayInit++] = DataPrimaCarica[3];
+                    _datamap[_arrayInit++] = DataPrimaCarica[4];
+
+                    //  CntCicliTotali
+                    FunzioniComuni.SplitUint32(CntCicliTotali, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //  CntCicliStop
+                    FunzioniComuni.SplitUint32(CntCicliStop, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //  CntCicliStaccoBatt
+                    FunzioniComuni.SplitUint32(CntCicliStaccoBatt, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
 
 
+                    //  CntCicliLess3H
+                    FunzioniComuni.SplitUint32(CntCicliLess3H, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //  CntCicli3Hto6H
+                    FunzioniComuni.SplitUint32(CntCicli3Hto6H, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //  CntCicli6Hto9H
+                    FunzioniComuni.SplitUint32(CntCicli6Hto9H, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //  CntCicliOver9H
+                    FunzioniComuni.SplitUint32(CntCicliOver9H, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
 
 
-                    for (int _i = 0; _i < 238; _i++)
+                    //  CntProgrammazioni
+                    FunzioniComuni.SplitUshort(CntProgrammazioni, ref _byte1, ref _byte2);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    //  CntCicliBrevi
+                    FunzioniComuni.SplitUint32(CntCicliBrevi, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //  PntNextBreve
+                    FunzioniComuni.SplitUint32(CntCicliOver9H, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+
+                    //  CntCariche
+                    FunzioniComuni.SplitUint32(CntCariche, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //  PntNextCarica
+                    FunzioniComuni.SplitUint32(PntNextCarica, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+
+                    //  CntMemReset
+                    FunzioniComuni.SplitUshort(CntMemReset, ref _byte1, ref _byte2);
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte1;
+
+
+                    //  DataUltimaCancellazione
+                    _datamap[_arrayInit++] = DataUltimaCancellazione[0];
+                    _datamap[_arrayInit++] = DataUltimaCancellazione[1];
+                    _datamap[_arrayInit++] = DataUltimaCancellazione[2];
+
+                    // Genero il CRC in posizione 0x36
+                    for (int _i = 0; _i < 0x36; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
@@ -1281,8 +1382,8 @@ namespace ChargerLogic
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[238] = _byte2;
-                    _datamap[239] = _byte1;
+                    _datamap[0x36] = _byte1;
+                    _datamap[0x37] = _byte2;
 
                     dataBuffer = _datamap;
 
@@ -1371,9 +1472,9 @@ namespace ChargerLogic
             public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
             {
 
-                byte[] _risposta;
+                //byte[] _risposta;
                 int startByte = 0;
-                ushort _tempCRC;
+                //ushort _tempCRC;
                 Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
 
 

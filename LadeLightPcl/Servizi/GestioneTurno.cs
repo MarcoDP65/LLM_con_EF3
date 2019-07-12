@@ -25,7 +25,7 @@ namespace PannelloCharger
 
     public class ParametriTurno
     {
-        int _numeroTurno;
+       // int _numeroTurno;
         int _giornoSettimana;
         OraTurnoMR _inizioCambioTurno;
         OraTurnoMR _fineCambioTurno;

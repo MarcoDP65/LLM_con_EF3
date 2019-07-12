@@ -448,7 +448,7 @@ namespace PannelloCharger
 
                 BrightIdeasSoftware.OLVColumn colstrVettErrParam = new BrightIdeasSoftware.OLVColumn()
                 {
-                    Text = "I Batt.",
+                    Text = "Param Err.",
                     IsHeaderVertical = true,
                     ToolTipText = "Parametri residenti in memoria non correttia",
                     AspectName = "strErrParam",
@@ -616,6 +616,52 @@ namespace PannelloCharger
 
                 };
                 flvCicliListaBrevi.AllColumns.Add(colstrVettErrPFC);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrSEC = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Security",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Contatto di sicurezza",
+                    AspectName = "strErrSecurity",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaBrevi.AllColumns.Add(colstrVettErrSEC);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrThermal = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Termica",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Anomalia Termica",
+                    AspectName = "strErrThermal",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaBrevi.AllColumns.Add(colstrVettErrThermal);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrUndef = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "N.D.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Errore non definito",
+                    AspectName = "strErrUndef",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaBrevi.AllColumns.Add(colstrVettErrUndef);
 
                 BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn()
                 {

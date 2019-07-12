@@ -973,6 +973,53 @@ namespace MoriData
             }
         }
 
+
+        public string strErrSecurity
+        {
+            get
+            {
+                if ((_llsm.VettoreErrori & 0x200000) == 0x200000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+        public string strErrThermal
+        {
+            get
+            {
+                if ((_llsm.VettoreErrori & 0x400000) == 0x400000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrUndef
+        {
+            get
+            {
+                if ((_llsm.VettoreErrori & 0x800000) == 0x800000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+
+
         public ushort DurataBreve
         {
             get { return _llsm.DurataBreve; }

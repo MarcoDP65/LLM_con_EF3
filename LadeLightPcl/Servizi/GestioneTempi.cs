@@ -14,7 +14,7 @@ namespace PannelloCharger
     {
         public static string SiglaGiorno(int giorno)
         {
-            string _giornoCorrente = "";
+           // string _giornoCorrente = "";
             try
             {
                 switch (giorno)

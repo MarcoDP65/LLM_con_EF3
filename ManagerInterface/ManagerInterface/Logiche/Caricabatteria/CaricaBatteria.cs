@@ -23,8 +23,14 @@ namespace ChargerLogic
         public const int  ADDR_START_PROGRAMMAZIONI = 0x2000;
         public const byte ADDR_START_PAR_PROGRAM    = 0xF6;
 
+        public const int ADDR_START_CONTATORI = 0x3000;
+        public const int ADDR_START_BACKUP_CONTATORI = 0x4000;
+
         public const int ADDR_START_RECORD_LUNGHI = 0x1B3000;
         public const int LEN_AREA_RECORD_LUNGHI = 0x4000;
+
+        public const int ADDR_START_RECORD_BREVI = 0x6000;
+        public const int BLOCCHI_RECORD_BREVI = 429;
 
         public enum EsitoRicalcolo : byte  { OK =  0x00, ErrIMax = 0x11, ErrIMin = 0x12, ErrVMax = 0x21, ErrVMin = 0x22,ErrGenerico = 0xF0,ParNonValidi = 0xF1, ErrUndef = 0xFF }
 
@@ -881,7 +887,8 @@ namespace ChargerLogic
                         ContatoriLL.PntNextBreve = MsgContatoriLL.PntNextBreve;
                         ContatoriLL.CntCariche = MsgContatoriLL.CntCariche;
                         ContatoriLL.PntNextCarica = MsgContatoriLL.PntNextCarica;
-
+                        ContatoriLL.CntMemReset = MsgContatoriLL.CntMemReset;
+                        ContatoriLL.DataUltimaCancellazione = FunzioniComuni.ArrayCopy( MsgContatoriLL.DataUltimaCancellazione);
                         ContatoriLL.valido = true;
 
                         return true;
@@ -901,6 +908,132 @@ namespace ChargerLogic
             }
 
         }
+
+
+        public bool AzzeraContatori( bool AzzeraTotale = false)
+        {
+            try
+            {
+                bool _esito = false;
+                SerialMessage.EsitoRisposta _esitoMsg;
+                MessaggioLadeLight.MessaggioAreaContatori MsgContatoriLL = new MessaggioLadeLight.MessaggioAreaContatori();
+                SerialMessage.EsitoRisposta EsitoMsg;
+                byte[] _datitemp;
+
+                if(!ContatoriLL.valido)
+                {
+                    return false;
+                }
+
+                if ((ContatoriLL.CntCariche == 0) && !AzzeraTotale)
+                {
+                    // Il numero cariche è già a 0 non ho nulla da azzerare
+                    return false;
+                }
+
+                for (int cnt = 0; cnt<3;cnt++)
+                {
+                    MsgContatoriLL.DataPrimaCarica[cnt] = ContatoriLL.DataPrimaCarica[cnt];
+                }
+                MsgContatoriLL.CntCicliTotali = 0;
+
+                if (!AzzeraTotale) MsgContatoriLL.CntCicliTotali = ContatoriLL.CntCicliTotali;
+
+                MsgContatoriLL.CntCicliStaccoBatt = 0;
+                MsgContatoriLL.CntCicliStop = 0;
+                MsgContatoriLL.CntCicliLess3H = 0;
+                MsgContatoriLL.CntCicli3Hto6H = 0;
+                MsgContatoriLL.CntCicli6Hto9H = 0;
+                MsgContatoriLL.CntCicliOver9H = 0;
+
+                MsgContatoriLL.CntProgrammazioni = ContatoriLL.CntProgrammazioni;
+
+                MsgContatoriLL.CntCicliBrevi = 0;
+                MsgContatoriLL.PntNextBreve = 0; 
+                MsgContatoriLL.CntCariche = 0;
+                MsgContatoriLL.PntNextCarica = 0;
+                MsgContatoriLL.CntMemReset = (ushort)(ContatoriLL.CntMemReset + 1);
+                DateTime adesso = DateTime.Now;
+                MsgContatoriLL.DataUltimaCancellazione[2] = (byte)(adesso.Year - 2000);
+                MsgContatoriLL.DataUltimaCancellazione[1] = (byte)(adesso.Month);
+                MsgContatoriLL.DataUltimaCancellazione[0] = (byte)(adesso.Day);
+
+                if(MsgContatoriLL.GeneraByteArray())
+                {
+                    _datitemp = MsgContatoriLL.dataBuffer;
+
+                    _esito = CancellaBlocco4K(ADDR_START_CONTATORI);
+                    _esito = ScriviBloccoMemoria(ADDR_START_CONTATORI, (ushort)_datitemp.Length, _datitemp);
+
+                    _esito = CancellaBlocco4K(ADDR_START_BACKUP_CONTATORI);
+                    _esito = ScriviBloccoMemoria(ADDR_START_BACKUP_CONTATORI, (ushort)_datitemp.Length, _datitemp);
+                    for( int  delta = 0; delta < 0x4000; delta += 0x1000)
+                    {
+                        CancellaBlocco4K((uint)(ADDR_START_RECORD_LUNGHI + delta));
+                    }
+                    CancellaBlocco4K(ADDR_START_RECORD_BREVI);
+
+                    ResetScheda();
+
+
+                }
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
+
+        public bool SalvaAreaContatori()
+        {
+            try
+            {
+                bool _esito = false;
+                SerialMessage.EsitoRisposta _esitoMsg;
+                MessaggioLadeLight.MessaggioAreaContatori MsgContatoriLL = new MessaggioLadeLight.MessaggioAreaContatori();
+                SerialMessage.EsitoRisposta EsitoMsg;
+                byte[] _datitemp;
+
+                if (!ContatoriLL.valido)
+                {
+                    return false;
+                }
+
+
+                if (MsgContatoriLL.GeneraByteArray())
+                {
+                    _datitemp = MsgContatoriLL.dataBuffer;
+
+                    _esito = false;
+
+                    if (CancellaBlocco4K(ADDR_START_CONTATORI)) _esito = ScriviBloccoMemoria(ADDR_START_CONTATORI, (ushort)_datitemp.Length, _datitemp);
+                    if(CancellaBlocco4K(ADDR_START_BACKUP_CONTATORI)) _esito = _esito && ScriviBloccoMemoria(ADDR_START_BACKUP_CONTATORI, (ushort)_datitemp.Length, _datitemp);
+                    
+                }
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
+
+
 
 
 
@@ -1473,7 +1606,7 @@ namespace ChargerLogic
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
 
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase,0, true);
 
                 Log.Debug(_mS.hexdumpMessaggio());
 
@@ -1536,9 +1669,9 @@ namespace ChargerLogic
 
                 // DEBUG: verifica cancellazioni blocco 0
 
-                if (StartAddr == 0)
+                if (StartAddr < 0x1000)
                 {
-                    DialogResult risposta = MessageBox.Show("Richiesta cancellazione AREA 0 (Inizializzazione)\nConfermi l'operazione ?","Cancellazione Memoria",
+                    DialogResult risposta = MessageBox.Show("Richiesta cancellazione AREA 0 (Inizializzazione)\nConfermi l'operazione ?\nStart = " + StartAddr.ToString("6x"), "Cancellazione Memoria",
                     MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
                     if (risposta != System.Windows.Forms.DialogResult.Yes)

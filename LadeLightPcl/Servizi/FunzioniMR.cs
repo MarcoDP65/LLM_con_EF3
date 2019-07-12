@@ -1248,7 +1248,7 @@ namespace Utility
             try
             {
                 ushort _valoreUS;
-                byte _valoreB;
+                //byte _valoreB;
                 byte _loVal = 0;
                 byte _hiVal = 0;
 
@@ -2048,6 +2048,32 @@ namespace Utility
                 return _tempValue;
             }
         }
+
+
+        public static byte[] ArrayCopy(byte[] source, int lenght = 0, int start = 0)
+        {
+            try
+            {
+                byte[] outData;
+                if (lenght == 0)
+                {
+                    lenght = source.Length - start;
+                }
+                outData = new byte[lenght];
+
+                for (int _i = 0; _i < lenght; _i++)
+                {
+                    outData[_i] = source[_i + start];
+                }
+                
+                return outData;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
 
         public static short ArrayToShort(byte[] source, int start, int lenght)
         {

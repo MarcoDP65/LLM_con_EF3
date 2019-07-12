@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO.Ports;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
-using BrightIdeasSoftware;
-
+﻿using BrightIdeasSoftware;
 using ChargerLogic;
 using log4net;
-using log4net.Config;
-
 using MoriData;
-using Utility;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Resources;
+using System.Text;
+using System.Windows.Forms;
+using Utility;
 
 namespace PannelloCharger
 {
@@ -25,7 +21,7 @@ namespace PannelloCharger
 
     {
         parametriSistema _parametri;
-        SerialMessage _msg ;
+        SerialMessage _msg;
         LogicheBase _logiche;
 
         //public CicloDiCarica ParametriProfilo;
@@ -128,7 +124,7 @@ namespace PannelloCharger
         }
 
 
-        public bool attivaCaricabatterie(ref parametriSistema _par,bool CaricaDati )
+        public bool attivaCaricabatterie(ref parametriSistema _par, bool CaricaDati)
         {
             bool _esito;
             try
@@ -154,9 +150,9 @@ namespace PannelloCharger
                 {
 
                     _tempParametri = _cb.ParametriApparato;
-                    
 
-                    if(_tempParametri.IdApparato == null)
+
+                    if (_tempParametri.IdApparato == null)
                     {
                         // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
                         // Attivo solo la tab inizializzazione, se sono abilitato 
@@ -167,7 +163,7 @@ namespace PannelloCharger
                     }
                     else
                     {
-                        if (_tempParametri.IdApparato == "????????" || _tempParametri.IdApparato.Trim() =="" )
+                        if (_tempParametri.IdApparato == "????????" || _tempParametri.IdApparato.Trim() == "")
                         {
                             // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
                             // Attivo solo la tab inizializzazione, se sono abilitato 
@@ -203,7 +199,7 @@ namespace PannelloCharger
                 return false;
 
             }
-            catch 
+            catch
             {
                 return false;
             }
@@ -243,16 +239,16 @@ namespace PannelloCharger
                 SerialMessage.cicloAttuale _tempCiclo = new SerialMessage.cicloAttuale();
 
                 byte _numParametri = 0;
-                ushort _divK = 10;
+                //ushort _divK = 10;
                 _cb.CicloInMacchina = new SerialMessage.cicloAttuale()
                 {
-                   // LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length,
-                   // NomeCiclo = txtPaNomeProfilo.Text,
+                    // LunghezzaNome = (byte)txtPaNomeProfilo.Text.Length,
+                    // NomeCiclo = txtPaNomeProfilo.Text,
                     TipoCiclo = (byte)cmbPaProfilo.SelectedIndex
                 };
 
 
-                if (txtPaCapacita.Text.Length>0)
+                if (txtPaCapacita.Text.Length > 0)
                 {
                     ushort result;
                     if (ushort.TryParse(txtPaCapacita.Text, out result))
@@ -421,7 +417,7 @@ namespace PannelloCharger
 
                 bool esito;
 
-      
+
                 // Se almeno 1 parametro è diverso dal ciclo attivo corrente lo salvo come nuovo ciclo
                 esito = VerificaValoriParametriCarica();
                 if (esito)
@@ -435,7 +431,7 @@ namespace PannelloCharger
 
                 ModCicloCorrente.IdProgramma = (ushort)(_cb.Programmazioni.UltimoIdProgamma + 1);
 
-                if ( esito )
+                if (esito)
                 {
                     // Riscrivo i valori nelle textBox per conferma poi salvo i valori 
                     MostraParametriCiclo(false);
@@ -488,7 +484,7 @@ namespace PannelloCharger
                 // Capacità
                 ModCicloCorrente.Capacita = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
                 // Profilo
-                if(cmbPaProfilo.SelectedItem != null )
+                if (cmbPaProfilo.SelectedItem != null)
                 {
                     ModCicloCorrente.Profilo = (_mbProfiloCarica)cmbPaProfilo.SelectedItem;
                 }
@@ -576,7 +572,7 @@ namespace PannelloCharger
                 // Nome
                 string _tempStr = txtPaNomeSetup.Text.Trim();
                 // Generale
-                if (ModCicloCorrente.NomeProfilo != _tempStr ) return false;
+                if (ModCicloCorrente.NomeProfilo != _tempStr) return false;
                 //ModCicloCorrente.IdProgramma = FunzioniMR.ConvertiUshort(txtPaIdSetup.Text, 1, 0);
 
                 // Batteria
@@ -682,7 +678,7 @@ namespace PannelloCharger
         /// Aggiorno il form con i dati di ciclo attivo dell'ultima lettura
         /// </summary>
         /// <returns></returns>
-        public bool MostraCicloAttuale(SerialMessage.cicloAttuale CicloAttuale )
+        public bool MostraCicloAttuale(SerialMessage.cicloAttuale CicloAttuale)
         {
             ushort _divK = 10;
             try
@@ -708,8 +704,8 @@ namespace PannelloCharger
                 {
                     //txtPaNomeProfilo.Text = CicloAttuale.NomeCiclo;
                     cmbPaProfilo.SelectedIndex = CicloAttuale.TipoCiclo;
-                     
-                    foreach(ParametroLL _par in CicloAttuale.Parametri)
+
+                    foreach (ParametroLL _par in CicloAttuale.Parametri)
                     {
                         float _tempVal;
 
@@ -721,7 +717,7 @@ namespace PannelloCharger
                             case (byte)SerialMessage.ParametroLadeLight.TempoT1Max:
                                 cmbPaDurataMaxT1.Text = _par.ValoreParametro.ToString();
                                 break;
-                            case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaF1:      
+                            case (byte)SerialMessage.ParametroLadeLight.TensioneSogliaF1:
                                 _tempVal = (float)_par.ValoreParametro / 100;
                                 txtPaSogliaVs.Text = _tempVal.ToString("0.00");
                                 break;
@@ -747,7 +743,7 @@ namespace PannelloCharger
                             case (byte)SerialMessage.ParametroLadeLight.DivisoreK:
                                 //txtPaParDivK.Text = _par.ValoreParametro.ToString();
                                 _divK = _par.ValoreParametro;
-                                if(_divK > 0)
+                                if (_divK > 0)
                                 {
                                     //chkPaUsaSpyBatt.Checked = true;
                                     chkPaUsaSpyBatt.CheckState = CheckState.Checked;
@@ -760,18 +756,18 @@ namespace PannelloCharger
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.ParametroKP:
                                 _tempVal = (float)_par.ValoreParametro / _divK;
-                               // txtPaParKp.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                                // txtPaParKp.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.ParametroKI:
                                 _tempVal = (float)_par.ValoreParametro / _divK;
-                               // txtPaParKi.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                                // txtPaParKi.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.ParametroKD:
                                 _tempVal = (float)_par.ValoreParametro / _divK;
-                               // txtPaParKd.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
+                                // txtPaParKd.Text = _tempVal.ToString(FunzioniMR.StringaModelloDivisore(_divK));
                                 break;
                             case (byte)SerialMessage.ParametroLadeLight.CapacitaDaRicaricare:
-                              //  txtPaCapDaCaricare.Text = _par.ValoreParametro.ToString();
+                                //  txtPaCapDaCaricare.Text = _par.ValoreParametro.ToString();
                                 break;
 
                         }
@@ -790,7 +786,7 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error(Ex.Message);
- 
+
                 return false;
             }
         }
@@ -825,7 +821,7 @@ namespace PannelloCharger
                 if (_cb.ContatoriLL.valido)
                 {
                     txtContDtPrimaCarica.Text = _cb.ContatoriLL.strDataPrimaCarica;
-                    txtContDtUltimaCanc.Text = "";
+                    txtContDtUltimaCanc.Text = _cb.ContatoriLL.strDataUltimaCancellazione;
                     txtContBreviSalvati.Text = _cb.ContatoriLL.CntCicliBrevi.ToString();
                     txtContCariche3to6.Text = _cb.ContatoriLL.CntCicli3Hto6H.ToString();
                     txtContCariche6to9.Text = _cb.ContatoriLL.CntCicli6Hto9H.ToString();
@@ -834,10 +830,19 @@ namespace PannelloCharger
                     txtContCaricheStop.Text = _cb.ContatoriLL.CntCicliStop.ToString();
                     txtContCaricheStrappo.Text = _cb.ContatoriLL.CntCicliStaccoBatt.ToString();
                     txtContCaricheTotali.Text = _cb.ContatoriLL.CntCicliTotali.ToString();
-                    txtContCaricheUnder3.Text = _cb.ContatoriLL.CntCicliLess3H.ToString();
-                    //txtContNumCancellazioni.Text = _cb.ContatoriLL.cn.ToString();
+                    txtContCaricheUnder3.Text = _cb.ContatoriLL.CntCicliLess3H.ToString();               
                     txtContPntNextBreve.Text = _cb.ContatoriLL.strPntNextBreve;
                     txtContPntNextCarica.Text = _cb.ContatoriLL.strPntNextCarica;
+
+                    txtContNumCancellazioni.Text = _cb.ContatoriLL.CntMemReset.ToString();
+                    if (_cb.ContatoriLL.CntMemReset>0)
+                    {
+                        txtContDtUltimaCanc.Text = _cb.ContatoriLL.strDataUltimaCancellazione;
+                    }
+                    else
+                    {
+                        txtContDtUltimaCanc.Text = "";
+                    }
                 }
 
 
@@ -990,7 +995,7 @@ namespace PannelloCharger
                 {
 
                     MostraCicloAttuale(_cb.CicloInMacchina);
-      
+
                 }
 
             }
@@ -1058,9 +1063,9 @@ namespace PannelloCharger
 
                 _esito = _cb.LeggiVariabili();
 
-                
+
                 MostraVariabili(_esito, (chkDatiDiretti.Checked == true));
-                if(chkParRegistraLetture.Checked)
+                if (chkParRegistraLetture.Checked)
                 {
                     llVariabili _tmpValore = new llVariabili();
                     _tmpValore = _cb.llVariabiliAttuali;
@@ -1115,7 +1120,7 @@ namespace PannelloCharger
 
 
 
-                if (DatiPresenti )
+                if (DatiPresenti)
                 {
                     if (ValoriReali)
                     {
@@ -1135,7 +1140,7 @@ namespace PannelloCharger
                         txtVarTempoTrascorso.Text = _cb.llVariabiliAttuali.strSecondsFromStart;
                         txtVarMemProgrammed.Text = _cb.llVariabiliAttuali.strStatoLL;
 
-    
+
                     }
 
                 }
@@ -1165,7 +1170,7 @@ namespace PannelloCharger
                         txtOraRtc.Text = _cb.OrologioSistema.ore.ToString("00") + ":" + _cb.OrologioSistema.minuti.ToString("00");
                         txtDataRtc.Text = _cb.OrologioSistema.giorno.ToString("00") + "/" + _cb.OrologioSistema.mese.ToString("00") + "/" + _cb.OrologioSistema.anno.ToString("0000");
                     }
-                
+
                 }
 
             }
@@ -1205,11 +1210,11 @@ namespace PannelloCharger
         }
 
 
- 
+
         private void btnCaricaCicli_Click(object sender, EventArgs e)
         {
 
-            try 
+            try
             {
 
                 //CaricaTabelleCicli();
@@ -1278,9 +1283,9 @@ namespace PannelloCharger
         {
             frmGraficoCiclo frmGrafico = new frmGraficoCiclo();
             //sbDettaglioCar.MdiParent = this;
-             frmGrafico.StartPosition = FormStartPosition.CenterParent;
-             frmGrafico.TipoGrafico(0);
-             frmGrafico.ShowDialog();
+            frmGrafico.StartPosition = FormStartPosition.CenterParent;
+            frmGrafico.TipoGrafico(0);
+            frmGrafico.ShowDialog();
         }
 
 
@@ -1337,12 +1342,12 @@ namespace PannelloCharger
                     ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
                     ModCicloCorrente.EstraiDaProgrammaCarica();
 
-                    MostraParametriCiclo(true,false);
+                    MostraParametriCiclo(true, false);
                     ProfiloInCaricamento = false;
                 }
                 else
                 {
-                    MostraParametriCiclo(true,true);
+                    MostraParametriCiclo(true, true);
                 }
 
 
@@ -1363,7 +1368,7 @@ namespace PannelloCharger
                 _esito = _cb.LeggiMemoriaScheda();
                 if (_esito)
                 {
-                 //   tatPaCapacita.Text = _cb.CicloInMacchina.capacita.ToString();
+                    //   tatPaCapacita.Text = _cb.CicloInMacchina.capacita.ToString();
                 }
 
             }
@@ -1383,7 +1388,6 @@ namespace PannelloCharger
 
         private void btnLeggiVariabili_Click(object sender, EventArgs e)
         {
-            bool _esito;
             this.Cursor = Cursors.WaitCursor;
             CaricaVariabili();
             this.Cursor = Cursors.Default;
@@ -1391,7 +1395,6 @@ namespace PannelloCharger
 
         private void tmrLetturaAutomatica_Tick(object sender, EventArgs e)
         {
-            bool _esito;
             this.Cursor = Cursors.WaitCursor;
             CaricaVariabili();
             this.Cursor = Cursors.Default;
@@ -1403,7 +1406,7 @@ namespace PannelloCharger
             {
                 ListaValori.Clear();
                 InizializzaVistaParametri();
-                
+
             }
         }
 
@@ -1578,7 +1581,7 @@ namespace PannelloCharger
                         _ciclo++;
 
                     }
-    
+
 
                     MessageBox.Show("File generato", "Esportazione dati Corrente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -1603,7 +1606,6 @@ namespace PannelloCharger
 
         private void btnStratTest01_Click(object sender, EventArgs e)
         {
-            bool _esito;
             this.Cursor = Cursors.WaitCursor;
             ChiamataProxySig60(36);
             this.Cursor = Cursors.Default;
@@ -1611,7 +1613,6 @@ namespace PannelloCharger
 
         private void btnStratTest02_Click(object sender, EventArgs e)
         {
-            bool _esito;
             this.Cursor = Cursors.WaitCursor;
             ChiamataProxySig60(2);
             this.Cursor = Cursors.Default;
@@ -1619,7 +1620,6 @@ namespace PannelloCharger
 
         private void btnStratTestERR_Click(object sender, EventArgs e)
         {
-            bool _esito;
             this.Cursor = Cursors.WaitCursor;
             ChiamataProxySig60(3);
             this.Cursor = Cursors.Default;
@@ -1770,7 +1770,6 @@ namespace PannelloCharger
         {
             try
             {
-                bool _esito;
                 this.Cursor = Cursors.WaitCursor;
                 AggiornaFirmware();
                 _cb.VerificaPresenza();
@@ -2152,16 +2151,16 @@ namespace PannelloCharger
         {
             try
             {
-               _cb.ControllaStatoAreaFW(2);
+                _cb.ControllaStatoAreaFW(2);
             }
             catch (Exception Ex)
             {
                 Log.Error("txtFwStatoSA2_DoubleClick: " + Ex.Message);
-                
+
             }
         }
 
- 
+
         private void grbInitDatiBase_Enter(object sender, EventArgs e)
         {
 
@@ -2222,7 +2221,7 @@ namespace PannelloCharger
                 }
                 else
                 {
-                    tempVal = new byte[8] { 0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
+                    tempVal = new byte[8] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                 }
                 _cb.ParametriApparato.llParApp.SerialeZVT = tempVal;
 
@@ -2273,7 +2272,7 @@ namespace PannelloCharger
                 _cb.ParametriApparato.llParApp.Amax = FunzioniMR.ConvertiUshort(txtInitAMax.Text, 10, 0);
 
                 // Presenza modulo rabboccatore
-                if(chkInitPresenzaRabb.Checked)
+                if (chkInitPresenzaRabb.Checked)
                 {
                     _cb.ParametriApparato.llParApp.PresenzaRabboccatore = 0xF0;
                 }
@@ -2307,7 +2306,6 @@ namespace PannelloCharger
             try
             {
 
-                bool _esito;
                 byte _annoMatr = 18;
 
                 uint matricola = 0;
@@ -2319,7 +2317,7 @@ namespace PannelloCharger
 
                 }
 
-                matricola = (uint)( _annoMatr << 16 );
+                matricola = (uint)(_annoMatr << 16);
 
                 uint _numMatr = 0;
 
@@ -2329,7 +2327,7 @@ namespace PannelloCharger
 
                 }
 
-                        matricola += _numMatr;
+                matricola += _numMatr;
 
 
 
@@ -2540,7 +2538,7 @@ namespace PannelloCharger
 
                     if (_tempByte != null)
                     {
-                        txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(_tempByte,false) + "0A0A";
+                        txtInitNumSerZVT.Text = FunzioniComuni.HexdumpArray(_tempByte, false) + "0A0A";
                     }
 
 
@@ -2628,11 +2626,11 @@ namespace PannelloCharger
                 // Mask 1 lascio solo init
 
 
-                foreach ( TabPage _pag in tabCaricaBatterie.TabPages)
+                foreach (TabPage _pag in tabCaricaBatterie.TabPages)
                 {
-                    if (MaskLevel == 1 )
+                    if (MaskLevel == 1)
                     {
-                        if(_pag.Name != "tabInizializzazione")
+                        if (_pag.Name != "tabInizializzazione")
                         {
                             tabCaricaBatterie.TabPages.Remove(_pag);
                         }
@@ -2661,7 +2659,7 @@ namespace PannelloCharger
 
                 if (TempBatt == null)
                 {
-                    
+
                 }
                 else
                 {
@@ -2681,7 +2679,7 @@ namespace PannelloCharger
                     foreach (var pc in Listatemp)
                     {
                         ProfiliCarica.Add((_mbProfiloCarica)pc);
-                        if (TempBatt.StandardChargeProfile == pc.IdProfiloCaricaLL )
+                        if (TempBatt.StandardChargeProfile == pc.IdProfiloCaricaLL)
                         {
                             profiloDefault = pc;
                         }
@@ -2716,7 +2714,7 @@ namespace PannelloCharger
                                         where tm.IdModelloLL == TipoApp
                                         select t;
 
-                        TensioniBatteria = new List<llTensioneBatteria>() ;
+                        TensioniBatteria = new List<llTensioneBatteria>();
                         foreach (var t in Listatens)
                         {
                             TensioniBatteria.Add((llTensioneBatteria)t);
@@ -2779,7 +2777,7 @@ namespace PannelloCharger
                     if ((_mbProfiloCarica)cmbPaProfilo.SelectedItem != null)
                     {
                         string Grafico = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).Grafico;
-                        if(Grafico == "")
+                        if (Grafico == "")
                         {
                             picPaImmagineProfilo.BackColor = Color.LightGray;
                             picPaImmagineProfilo.Image = null;
@@ -2899,18 +2897,18 @@ namespace PannelloCharger
 
 
 
-               // if (cmbPaDurataCarica.SelectedItem == null)
-               // {
-                    txtPaTempoT2Min.Text = "60";
-                    txtPaTempoT2Max.Text = "210";
-               // }
-               // else
-               // {
-                   
-               //     DurataF2 = (byte)((llDurataCarica)cmbPaDurataCarica.SelectedItem).DurataFaseDue(TipoBatt);
-               //     txtPaTempoT2Min.Text = DurataF2.ToString();
-               // }
-                                           
+                // if (cmbPaDurataCarica.SelectedItem == null)
+                // {
+                txtPaTempoT2Min.Text = "60";
+                txtPaTempoT2Max.Text = "210";
+                // }
+                // else
+                // {
+
+                //     DurataF2 = (byte)((llDurataCarica)cmbPaDurataCarica.SelectedItem).DurataFaseDue(TipoBatt);
+                //     txtPaTempoT2Min.Text = DurataF2.ToString();
+                // }
+
             }
             catch (Exception Ex)
             {
@@ -3023,7 +3021,7 @@ namespace PannelloCharger
                     Width = 100,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
-                    
+
                 };
                 flwPaListaConfigurazioni.AllColumns.Add(colProgName);
 
@@ -3072,8 +3070,8 @@ namespace PannelloCharger
                 };
                 flwPaListaConfigurazioni.AllColumns.Add(colRowBattAhNom);
 
-                
-                
+
+
                 BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
                 colRowFiller.Text = "";
                 colRowFiller.Width = 60;
@@ -3097,7 +3095,7 @@ namespace PannelloCharger
         {
             //coloro la riga in base al Tipo Evento
             llProgrammaCarica _progCorrente = (llProgrammaCarica)e.Model;
-            if(_progCorrente.ProgrammaAttivo)
+            if (_progCorrente.ProgrammaAttivo)
             {
                 e.Item.BackColor = Color.LightGreen;
             }
@@ -3152,7 +3150,6 @@ namespace PannelloCharger
             {
                 uint _StartAddr;
                 ushort _NumByte;
-                bool _esito;
 
                 if (uint.TryParse(txtCicliAddrPrmo.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true)
                 {
@@ -3202,7 +3199,7 @@ namespace PannelloCharger
             try
             {
                 // Chiudo la connessione
-                if(_cb.StopComunicazione())
+                if (_cb.StopComunicazione())
                 {
                     //_cb.chiudiPorta();
 
@@ -3225,7 +3222,7 @@ namespace PannelloCharger
             try
             {
                 llMemoriaCicli CicloSel;
-                if(flvCicliListaCariche.SelectedObject == null)
+                if (flvCicliListaCariche.SelectedObject == null)
                 {
                     btnCicliCaricaBrevi.Enabled = false;
                     btnCicliMostraBrevi.Enabled = false;
@@ -3260,7 +3257,7 @@ namespace PannelloCharger
 
                     CicloCorrente = (llMemoriaCicli)flvCicliListaCariche.SelectedObject;
 
-                    if(CicloCorrente.CicliMemoriaBreve.Count< CicloCorrente.NumEventiBrevi)
+                    if (CicloCorrente.CicliMemoriaBreve.Count < CicloCorrente.NumEventiBrevi)
                     {
                         // non ho tutto in memoria, ricarico
                         CicloCorrente.CicliMemoriaBreve = CaricaListaBrevi(CicloCorrente.PuntatorePrimoBreve, (ushort)CicloCorrente.NumEventiBrevi, CicloCorrente.IdMemoriaLunga);
@@ -3275,7 +3272,7 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("flvCicliListaCariche_SelectedIndexChanged: " + Ex.Message);
-            }     
+            }
         }
 
         private void MostraDettaglioRiga(llMemoriaCicli CicloSel)
@@ -3295,7 +3292,7 @@ namespace PannelloCharger
                     CicliBreviLL.CicloCorrente = CicloSel;
                     CicliBreviLL.Show();
                     CicliBreviLL.MostraCicli();
-                   
+
                 }
             }
             catch (Exception Ex)
@@ -3394,7 +3391,7 @@ namespace PannelloCharger
                 bool esitoRicalcolo;
                 //DefinisciValoriProfilo();
                 esitoRicalcolo = RicalcolaParametriCiclo();
-                MostraParametriCiclo(false,!esitoRicalcolo,chkPaSbloccaValori.Checked);
+                MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked);
 
             }
 
@@ -3418,7 +3415,7 @@ namespace PannelloCharger
 
                 btnPaSalvaDati.Enabled = false;
 
-                if (TempBatt == null || TempProfilo == null || TempVbat == 0 || TempCap == 0 )
+                if (TempBatt == null || TempProfilo == null || TempVbat == 0 || TempCap == 0)
                 {
                     return false;
                 }
@@ -3524,7 +3521,7 @@ namespace PannelloCharger
                             break;
                     }
 
-                    if(MessaggioEsito)
+                    if (MessaggioEsito)
                     {
                         MessageBox.Show(messaggioErrore, "Ricalcolo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -3534,7 +3531,7 @@ namespace PannelloCharger
 
 
 
-                return ( esitoRicalcolo == CaricaBatteria.EsitoRicalcolo.OK);
+                return (esitoRicalcolo == CaricaBatteria.EsitoRicalcolo.OK);
 
 
 
@@ -3548,7 +3545,7 @@ namespace PannelloCharger
 
 
 
-        private bool MostraParametriCiclo( bool ParametriBase = false, bool SoloClear = false, bool SbloccaValori = false , bool SkipCapacità = false)
+        private bool MostraParametriCiclo(bool ParametriBase = false, bool SoloClear = false, bool SbloccaValori = false, bool SkipCapacità = false)
         {
             try
             {
@@ -3580,12 +3577,12 @@ namespace PannelloCharger
                         txtPaIdSetup.Text = ModCicloCorrente.IdProgramma.ToString();
                         txtPaCassone.Text = ModCicloCorrente.ValoriCiclo.TipoCassone.ToString();
                         // Allineo il tipo batteria
-                        
+
                         mbTipoBatteria TempBatt = (from tb in (List<mbTipoBatteria>)cmbPaTipoBatteria.DataSource
                                                    where tb.BatteryTypeId == ModCicloCorrente.Batteria.BatteryTypeId
                                                    select tb).FirstOrDefault();
                         cmbPaTipoBatteria.SelectedItem = TempBatt;
-                        
+
                         if (ModCicloCorrente.Batteria != null)
                         {
                             if (ModCicloCorrente.Batteria.TensioniFisse != 0)
@@ -3595,7 +3592,7 @@ namespace PannelloCharger
                                                                select tb).FirstOrDefault();
                                 cmbPaTensione.SelectedItem = TensBatt;
                             }
-                            
+
                             FunzioniUI.ImpostaTextBoxUshort(ref txtPaTensione, ModCicloCorrente.Tensione, 1, 1, SbloccaValori);
                             txtPaTensione.Visible = true;
                         }
@@ -3656,7 +3653,7 @@ namespace PannelloCharger
                     }
 
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaMant, ref lblPaAttivaMant, ModCicloCorrente.ValoriCiclo.MantAttivabile, ModCicloCorrente.ParametriAttivi.MantAttivabile, 3, SbloccaValori);
-                   
+
                     if (true) // (chkPaAttivaMant.Checked)
                     {
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantAttesa, ModCicloCorrente.ValoriCiclo.MantTempoAttesa, ModCicloCorrente.ParametriAttivi.MantTempoAttesa, 3, SbloccaValori);
@@ -3671,7 +3668,7 @@ namespace PannelloCharger
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinStop, ModCicloCorrente.ValoriCiclo.TensMinStop, ModCicloCorrente.ParametriAttivi.TensMinStop, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVLimite, ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim, ModCicloCorrente.ParametriAttivi.TensioneLimiteVLim, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteMassima, ModCicloCorrente.ValoriCiclo.CorrenteMassima, ModCicloCorrente.ParametriAttivi.CorrenteMassima, 2, SbloccaValori);
-                    
+
                 }
 
 
@@ -3694,9 +3691,9 @@ namespace PannelloCharger
                     bool esitoRicalcolo;
                     //DefinisciValoriProfilo();
                     esitoRicalcolo = RicalcolaParametriCiclo(false);
-                    MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked,true);
+                    MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked, true);
 
-                    btnPaProfileRefresh.ForeColor = Color.Red; 
+                    btnPaProfileRefresh.ForeColor = Color.Red;
 
 
                 }
@@ -3720,13 +3717,13 @@ namespace PannelloCharger
                     e.Item.BackColor = Color.Red;
                     break;
                 case 0x00:  //"OK";
-                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) != 0) ? Color.Azure :Color.PowderBlue);
+                    e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) != 0) ? Color.Azure : Color.PowderBlue);
                     break;
                 case 0x01:  //"Strappo";
                     //e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.LightYellow:Color.LightGoldenrodYellow);
                     break;
                 case 0x04:  //"Assenza rete";
-                   //e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.AliceBlue : Color.LightCyan);
+                            //e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.AliceBlue : Color.LightCyan);
                     break;
                 case 0x0B:  //"?";
                     //e.Item.BackColor = (((_testataCiclo.IdMemoriaLunga % 2) == 0) ? Color.MistyRose : Color.LightPink);
@@ -3885,7 +3882,7 @@ namespace PannelloCharger
             {
                 bool Esito;
 
-                Esito = CaricaProgrammazioni(); 
+                Esito = CaricaProgrammazioni();
 
             }
             catch
@@ -3980,7 +3977,7 @@ namespace PannelloCharger
                         //                                  quelli dopo il selezioato, invariati
 
                         this.Cursor = Cursors.WaitCursor;
-                        foreach ( llProgrammaCarica TPC in _cb.Programmazioni.ProgrammiDefiniti)
+                        foreach (llProgrammaCarica TPC in _cb.Programmazioni.ProgrammiDefiniti)
                         {
                             if (TPC.PosizioneCorrente < tmpRigaSel.PosizioneCorrente)
                             {
@@ -4014,6 +4011,66 @@ namespace PannelloCharger
                 this.Cursor = Cursors.Arrow;
             }
 
+        }
+
+        private void BtnCicliMostraBrevi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnGenAzzeraContatori_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Risposta =  MessageBox.Show("Confermi l'azzeramento contatori ?", "CONTATORI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Risposta == DialogResult.OK)
+                {
+                    _cb.AzzeraContatori();
+                    CaricaAreaContatori();
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("BtnGenAzzzeraContatori_Click: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
+            }
+
+        }
+
+        private void BtnGenAzzzeraContatoriTot_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Risposta = MessageBox.Show("Confermi l'azzeramento contatori ?", "CONTATORI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Risposta == DialogResult.OK)
+                {
+                    _cb.AzzeraContatori(true);
+                    CaricaAreaContatori();
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("BtnGenAzzzeraContatori_Click: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
+            }
+        }
+
+        private void BtnGenResetBoard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _cb.ResetScheda();
+
+                // Ora ritento la connessione ogni 5 secondi con un max di 2 minuti finchè non riparte
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("BtnGenResetBoard_Click: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
+            }
         }
     }
 

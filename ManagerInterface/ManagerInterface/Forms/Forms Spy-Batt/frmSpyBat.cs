@@ -4647,7 +4647,7 @@ namespace PannelloCharger
         {
             try
             {
-                string _Flag;
+                //string _Flag;
                 string _titoloGrafico = "";
                 string _modelloIntervallo;
                 double _fattoreCorrente = 0;
@@ -5068,11 +5068,11 @@ namespace PannelloCharger
         {
             try
             {
-                string _Flag;
-                string _titoloGrafico = "";
-                string _modelloIntervallo;
-                double _fattoreCorrente = 0;
-                double _dtInSecondi;
+                //string _Flag;
+                //string _titoloGrafico = "";
+                //string _modelloIntervallo;
+                //double _fattoreCorrente = 0;
+                //double _dtInSecondi;
 
                 // Preparo le serie di valori
 
@@ -5081,15 +5081,15 @@ namespace PannelloCharger
                 if (DatiGraph == null) return;
                 if (DatiGraph.DatiValidi != true) return;
 
-                double ValMinX;
-                double ValMaxX;
+                //double ValMinX;
+                //double ValMaxX;
 
-                double ValMinY;
+                //double ValMinY;
                 double ValMaxY;
 
-                ValMinX = 0;
-                ValMinY = 0;
-                ValMaxX = 100;
+                //ValMinX = 0;
+                //ValMinY = 0;
+                //ValMaxX = 100;
 
 
                 // Inizializzo il controllo OxyPlot.PlotModel ( oxyGraficoCiclo )

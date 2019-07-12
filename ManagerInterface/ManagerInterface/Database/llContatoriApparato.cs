@@ -381,6 +381,44 @@ namespace MoriData
             get { return "0x" + llContApp.PntNextCarica.ToString("X4"); }
         }
 
+        public ushort CntMemReset
+        {
+            get { return llContApp.CntMemReset; }
+            set
+            {
+                if (value != null)
+                {
+                    llContApp.CntMemReset = value;
+                    _datiSalvati = false;
+                }
+            }
+        }
+
+        public byte[] DataUltimaCancellazione
+        {
+            get { return llContApp.DataUltimaCancellazione; }
+            set
+            {
+                if (value != null)
+                {
+                    llContApp.DataUltimaCancellazione = value;
+                    _datiSalvati = false;
+                }
+            }
+        }
+
+
+        public string strDataUltimaCancellazione
+        {
+            get
+            {
+                return FunzioniMR.StringaDataTS(llContApp.DataUltimaCancellazione);
+            }
+
+        }
+
+
+
         #endregion
 
 
