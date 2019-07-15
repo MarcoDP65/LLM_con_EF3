@@ -4025,8 +4025,10 @@ namespace PannelloCharger
                 DialogResult Risposta =  MessageBox.Show("Confermi l'azzeramento contatori ?", "CONTATORI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Risposta == DialogResult.OK)
                 {
+                    this.Cursor = Cursors.WaitCursor;
                     _cb.AzzeraContatori();
                     CaricaAreaContatori();
+                    this.Cursor = Cursors.Arrow;
                 }
 
             }
@@ -4038,21 +4040,23 @@ namespace PannelloCharger
 
         }
 
-        private void BtnGenAzzzeraContatoriTot_Click(object sender, EventArgs e)
+        private void BtnGenAzzeraContatoriTot_Click(object sender, EventArgs e)
         {
             try
             {
                 DialogResult Risposta = MessageBox.Show("Confermi l'azzeramento contatori ?", "CONTATORI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Risposta == DialogResult.OK)
                 {
+                    this.Cursor = Cursors.WaitCursor;
                     _cb.AzzeraContatori(true);
                     CaricaAreaContatori();
+                    this.Cursor = Cursors.Arrow;
                 }
 
             }
             catch (Exception Ex)
             {
-                Log.Error("BtnGenAzzzeraContatori_Click: " + Ex.Message);
+                Log.Error("BtnGenAzzeraContatori_Click: " + Ex.Message);
                 this.Cursor = Cursors.Arrow;
             }
         }
@@ -4061,15 +4065,15 @@ namespace PannelloCharger
         {
             try
             {
+                this.Cursor = Cursors.WaitCursor;
                 _cb.ResetScheda();
-
-                // Ora ritento la connessione ogni 5 secondi con un max di 2 minuti finchè non riparte
+                this.Cursor = Cursors.Default;
 
             }
             catch (Exception Ex)
             {
                 Log.Error("BtnGenResetBoard_Click: " + Ex.Message);
-                this.Cursor = Cursors.Arrow;
+                this.Cursor = Cursors.Default;
             }
         }
     }

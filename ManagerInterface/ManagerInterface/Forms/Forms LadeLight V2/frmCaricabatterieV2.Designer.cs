@@ -7468,7 +7468,7 @@
             this.btnGenAzzzeraContatoriTot.TabIndex = 24;
             this.btnGenAzzzeraContatoriTot.Text = "Azzera Tutti i Contatori";
             this.btnGenAzzzeraContatoriTot.UseVisualStyleBackColor = true;
-            this.btnGenAzzzeraContatoriTot.Click += new System.EventHandler(this.BtnGenAzzzeraContatoriTot_Click);
+            this.btnGenAzzzeraContatoriTot.Click += new System.EventHandler(this.BtnGenAzzeraContatoriTot_Click);
             // 
             // btnGenAzzzeraContatori
             // 

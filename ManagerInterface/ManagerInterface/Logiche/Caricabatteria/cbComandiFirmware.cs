@@ -494,11 +494,28 @@ namespace ChargerLogic
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
-                _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
 
                 Log.Debug(_mS.hexdumpMessaggio());
                 Log.Debug("------------------------------------------------------------------------------------------------------------");
+
+                // ora attendo la riconnessione:
+
+                
+                DateTime Inizio = DateTime.Now;
+                bool connesso = false;
+                System.Threading.Thread.Sleep(4000);  // aspetto 4 secondi prima di tentare la connessione
+
+                while (!connesso)
+                {
+                    System.Threading.Thread.Sleep(1000);// aspetto un altro secondo prima di tentare la connessione
+                    connesso = StartComunicazione(5);
+                }
+
+
+
+
 
                 return _esito;
 

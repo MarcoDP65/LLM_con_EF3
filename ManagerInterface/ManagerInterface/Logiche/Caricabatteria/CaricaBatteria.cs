@@ -648,6 +648,7 @@ namespace ChargerLogic
         {
             try
             {
+
                 bool _esito = false;
                 SerialMessage.EsitoRisposta _esitoMsg;
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
