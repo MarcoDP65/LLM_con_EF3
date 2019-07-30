@@ -895,7 +895,7 @@ namespace ChargerLogic
                     // Per ogni parametro 
                     //   0    - Id Parametro
                     //   1-2  - Valore Ushort
-                    // Dim max per l'area 64 Bytes
+                    // Dim max per l'area 65 parametri, 208 bytes
                     //--------------------------------------------------------------------------------------------------------------------
                     _arrayInit = 0x20;
 
@@ -1331,8 +1331,8 @@ namespace ChargerLogic
 
                     //  CntProgrammazioni
                     FunzioniComuni.SplitUshort(CntProgrammazioni, ref _byte1, ref _byte2);
-                    _datamap[_arrayInit++] = _byte1;
                     _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte1;
 
                     //  CntCicliBrevi
                     FunzioniComuni.SplitUint32(CntCicliBrevi, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
@@ -1402,7 +1402,7 @@ namespace ChargerLogic
                 try
                 {
 
-                    DataPrimaCarica = new byte[5] { 01, 01, 18, 0, 0 };
+                    DataPrimaCarica = new byte[5] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 
                     CntCicliTotali = 0;
                     CntCicliStop = 0;
@@ -1420,7 +1420,7 @@ namespace ChargerLogic
                     PntNextCarica = 0;
 
                     CntMemReset = 0;
-                    DataUltimaCancellazione = new byte[3] { 01, 01, 18 };
+                    DataUltimaCancellazione = new byte[3] { 0xFF, 0xFF, 0xFF };
 
 
                     CrcPacchetto = 0;

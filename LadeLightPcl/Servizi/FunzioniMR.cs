@@ -160,6 +160,22 @@ namespace Utility
             }
         }
 
+        public static string StringaOreMinutiLL(ushort Minuti)
+        {
+            try
+            {
+                string _Orario = "";
+                ushort _minuti = (ushort)( Minuti % 60 );
+                ushort _ore = (ushort)(Minuti / 60);
+                _Orario = _ore.ToString("0") + ":" + _minuti.ToString("00");
+                return _Orario;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
         public static string StringaCorrenteOLV(short Corrente)
         {
             try
@@ -860,11 +876,15 @@ namespace Utility
             try
             {
                 ushort _valore;
-                float number;
-                bool result = float.TryParse(Testo, out number);
+                double number;
+                double _fattore;
+                double _valoreD;
+                bool result = double.TryParse(Testo, out number);
                 if (result)
                 {
-                    _valore = (ushort)(number * Fattore);
+                    _fattore = (double)Fattore;
+                    _valoreD = Math.Round(number * Fattore,2);
+                    _valore = (ushort)(_valoreD);
                 }
                 else
                 {

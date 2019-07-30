@@ -135,23 +135,33 @@ namespace ChargerLogic
             ParametroKD = 0x53,                      // Attualmente non in uso
 
 
-            RiarmoBMS = 0x55,
-            TipoBatteria = 0x56,
-            NumeroCelle = 0x57,
+            RiarmoBMS =                     0x55,
+            TipoBatteria =                  0x56,
+            NumeroCelle =                   0x57,
+            Safety =                        0x58,   // Contatto Safety sul cavo 0x0F Attivo; 0xF0 non presente
+
 
             EqualFineCaricaAttesa =         0x60,   // Minuti
             EqualFineCaricaNumImpulsi =     0x61,   // intero
             EqualFineCaricaDurataP =        0x62,   // Minuti
             EqualFineCaricaDurataI =        0x63,   // Minuti
             EqualFineCaricaCorrenteImp =    0x64,   // A, 1 decimale
-            EqualAttivo =                   0x6F,   // 000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e E.A. = true posso partire
+            EqualAttivo =                   0x6F,   // Attivabile da remoto;000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e E.A. = true posso partire
 
             MantenimentoAttesa =            0x70,   // Minuti
             MantenimentoTensIniziale =      0x71,   // V per Cella, 2 decimali
             MantenimentoTensFinale =        0x72,   // V per Cella, 2 decimali
             MantenimentoTMaxErogazione =    0x73,   // Minuti
             MantenimentoCorrErogazione =    0x74,   // A, 1 decimale
-            MantenimentoAttivo =            0x7F,   // 000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e M.A. = true posso partire
+            MantenimentoAttivo =            0x7F,   // Attivabile da remoto;000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e M.A. = true posso partire
+
+            OpportunityOraInizio =          0xA1,   // Ora inizio periodo opportunity. In MINUTI
+            OpportunityOraFine =            0xA2,   // Ora fine periodo opportunity. In MINUTI
+            OpportunityDurataMax =          0xA3,   // Durata Massima carica opportunity. In MINUTI
+            OpportunityCorrente =           0xA6,   // A, 1 decimale
+            OpportunityTensioneStop =       0xA8,   // V/el, 2 decimali
+            OpportunityAttivo =             0xAF,   // Attivabile da remoto; 000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e M.A. = true posso partire
+
 
             TipoProfilo = 0x80,
 
@@ -263,12 +273,15 @@ namespace ChargerLogic
                 {
                     Array.Copy(_messaggio, messaggioRisposta, 21);
                 }
+
                 // codice esito, 0x44 OK, 0x45 Ko, 0x1C Break
 //                if (Esito == EsitoRisposta.MessaggioOk)
 //                {
                 //splitUshort(codificaByte( (byte)Esito), ref messaggioRisposta[21], ref messaggioRisposta[22]);
+
                 splitUshort(codificaByte((byte)_dispositivo), ref messaggioRisposta[20], ref messaggioRisposta[19]);
                 splitUshort(codificaByte(_comando), ref messaggioRisposta[22], ref messaggioRisposta[21]);
+
                 //                }
 //                else
 //                {

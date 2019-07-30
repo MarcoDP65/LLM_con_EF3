@@ -56,6 +56,12 @@ namespace PannelloCharger
                                         txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
                                         break;
                                     }
+                                case 4:  // Minuti -> hh:mm
+                                    {
+                                        txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
+                                        break;
+                                    }
+
                                 default:  // valore diretto
                                     {
                                         txtValore.Text = Valore.ToString();
@@ -86,6 +92,11 @@ namespace PannelloCharger
                                 case 2:  // Corrente
                                     {
                                         txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
+                                        break;
+                                    }
+                                case 4:  // Minuti -> hh:mm
+                                    {
+                                        txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
                                         break;
                                     }
                                 default:  // valore diretto

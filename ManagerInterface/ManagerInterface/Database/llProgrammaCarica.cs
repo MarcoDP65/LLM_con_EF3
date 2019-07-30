@@ -34,7 +34,6 @@ namespace MoriData
         public DateTime RevisionDate { get; set; }
         [MaxLength(20)]
         public string LastUser { get; set; }
-
         public string DataInstallazione { get; set; }
         public string ProgramName { get; set; }
         public ushort BatteryType { get; set; }
@@ -58,7 +57,6 @@ namespace MoriData
         public ushort EqualDurataPausa { get; set; }
         public ushort EqualDurataImpulso { get; set; }
         public ushort EqualCorrenteImpulso { get; set; }
-
         public ushort IdProfilo { get; set; }
         public ushort DurataMaxCarica { get; set; }
         public ushort PercTempoFase2 { get; set; }
@@ -66,14 +64,18 @@ namespace MoriData
         public ushort DurataMaxFase2 { get; set; }
         public ushort DurataMaxFase3 { get; set; }
 
+        public ushort OpportunityOraInizio { get; set; }
+        public ushort OpportunityOraFine { get; set; }
+        public ushort OpportunityDurataMax { get; set; }
+        public ushort OpportunityTensioneMax { get; set; }
+        public ushort OpportunityCorrente { get; set; }
 
+
+        public byte AbilitaContattoSafety { get; set; }
         public byte AbilitaComunicazioneSpybatt { get; set; }
-
         public byte TempoErogazioneBMS { get; set; }
         public byte TempoAttesaBMS { get; set; }
-
         public byte ProgrammaInUso { get; set; }
-
         public byte TipoRecord { get; set; }
         public byte OpzioniAttive { get; set; }
 

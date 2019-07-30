@@ -30,9 +30,12 @@ namespace ChargerLogic
         public const int LEN_AREA_RECORD_LUNGHI = 0x4000;
 
         public const int ADDR_START_RECORD_BREVI = 0x6000;
+        public const int LEN_AREA_RECORD_BREVI = 0x1AD000;
         public const int BLOCCHI_RECORD_BREVI = 429;
+        public const int LEN_RECORD_BREVE = 30;
 
-        public enum EsitoRicalcolo : byte  { OK =  0x00, ErrIMax = 0x11, ErrIMin = 0x12, ErrVMax = 0x21, ErrVMin = 0x22,ErrGenerico = 0xF0,ParNonValidi = 0xF1, ErrUndef = 0xFF }
+
+        public enum EsitoRicalcolo : byte  { OK =  0x00, ErrIMax = 0x11, ErrIMin = 0x12, ErrVMax = 0x21, ErrVMin = 0x22,ErrGenerico = 0xF0,ParNonValidi = 0xF1, ErrCBNonDef= 0xF2, ErrUndef = 0xFF }
 
         public SerialPort serialeApparato;
         private static MessaggioLadeLight _mS;
@@ -66,7 +69,9 @@ namespace ChargerLogic
 
         public llVariabili llVariabiliAttuali = new llVariabili();
 
-        public byte[] BloccoLunghi; 
+        public byte[] BloccoLunghi;
+        public byte[] BloccoBrevi;
+
 
         /*
         public ushort UltimoIdProgamma { get; set; }
@@ -207,6 +212,8 @@ namespace ChargerLogic
                                 Log.Warn("Failed to read LL data (error " + ftStatus.ToString() + ")");
                                 //return false;
                             }
+
+                            UltimaScrittura = DateTime.Now;
 
                             // Log.Debug("Dati Ricevuti LL (USB) " + numBytesRead.ToString());
                             for (int _i = 0; _i < numBytesRead; _i++)
@@ -932,9 +939,16 @@ namespace ChargerLogic
                     return false;
                 }
 
-                for (int cnt = 0; cnt<3;cnt++)
+                for (int cnt = 0; cnt<5;cnt++)
                 {
-                    MsgContatoriLL.DataPrimaCarica[cnt] = ContatoriLL.DataPrimaCarica[cnt];
+                    if (AzzeraTotale)
+                    {
+                        MsgContatoriLL.DataPrimaCarica[cnt] = 0xFF;
+                    }
+                    else
+                    {
+                        MsgContatoriLL.DataPrimaCarica[cnt] = ContatoriLL.DataPrimaCarica[cnt];
+                    }
                 }
                 MsgContatoriLL.CntCicliTotali = 0;
 
@@ -993,6 +1007,53 @@ namespace ChargerLogic
 
         }
 
+        public bool IncrementaConteggioProgrammazioni()
+        {
+            try
+            {
+                bool _esito = false;
+
+                MessaggioLadeLight.MessaggioAreaContatori MsgContatoriLL = new MessaggioLadeLight.MessaggioAreaContatori();
+                SerialMessage.EsitoRisposta EsitoMsg;
+                byte[] _datitemp;
+
+                if (!ContatoriLL.valido)
+                {
+                    return false;
+                }
+
+                ContatoriLL.CntProgrammazioni += 1;
+                MsgContatoriLL = ContatoriLL.GeneraMessaggio();
+
+
+                if (MsgContatoriLL.GeneraByteArray())
+                {
+                    _datitemp = MsgContatoriLL.dataBuffer;
+
+                    _esito = false;
+
+                    if (CancellaBlocco4K(ADDR_START_CONTATORI)) _esito = ScriviBloccoMemoria(ADDR_START_CONTATORI, (ushort)_datitemp.Length, _datitemp);
+                    if (CancellaBlocco4K(ADDR_START_BACKUP_CONTATORI)) _esito = _esito && ScriviBloccoMemoria(ADDR_START_BACKUP_CONTATORI, (ushort)_datitemp.Length, _datitemp);
+                }
+
+
+                return _esito;
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
+
+
+
+
+
         public bool SalvaAreaContatori()
         {
             try
@@ -1007,7 +1068,8 @@ namespace ChargerLogic
                 {
                     return false;
                 }
-
+                // carico il messaggio a partire dal record contatori!!
+                MsgContatoriLL = ContatoriLL.GeneraMessaggio();
 
                 if (MsgContatoriLL.GeneraByteArray())
                 {
@@ -1137,40 +1199,7 @@ namespace ChargerLogic
             }
         }
 
-/*
-        public bool CaricaCicli()
-        {
-            try
-            {
-                bool _esito;
-                CicliInMemoria = new System.Collections.Generic.List<SerialMessage.CicloDiCarica>();
-                if (_mS.CicliPresenti.NumCicli > 0)
-                {
-                    ControllaAttesa(UltimaScrittura);
-                    _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
-                    _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_CRG;
-                    _mS.ComponiMessaggio();
-                    _rxRisposta = false;
-                    Log.Debug("CICLI");
-                    //_parametri.serialeCorrente.Write(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
 
-                    _esito = aspettaRisposta(AttesaTimeout);
-                    CicliPresenti = _mS.CicliPresenti;
-                }
-
-                return true; //_esito;
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error(Ex.Message);
-                _lastError = Ex.Message;
-                return false;
-            }
-        }
-
-*/
         public bool LeggiOrologio()
         {
             try
@@ -2140,6 +2169,7 @@ namespace ChargerLogic
                 }
 
                 // 4 per ultimo scrivo i contatori
+                Log.Debug("Scrivo i contatori programmazioni");
 
                 byte[] datiCont = new byte[10];
                 datiCont[0] = (byte)Programmazioni.ProgrammiDefiniti.Count;

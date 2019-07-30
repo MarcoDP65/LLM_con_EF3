@@ -951,10 +951,16 @@ namespace MoriData
         {
             get
             {
+                string Valore = "";
                 if (_llmc.NumEventiBrevi != 0xFFFF)
                 {
                     byte CodizioneVera = (byte)(_llmc.CondizioneStop & 0x3F);
-                    return CodizioneVera.ToString("X2");
+                    Valore = CodizioneVera.ToString("X2");
+                    CodizioneVera = (byte)(_llmc.CondizioneStop & 0xC0);
+                    Valore = Valore +" (" + CodizioneVera.ToString("X2") + ")";
+
+
+                    return Valore;
                 }
                 else return "";
             }
@@ -1016,7 +1022,7 @@ namespace MoriData
         {
             get
             {
-                if (_llmc.CondizioneStop == 0xFF) return "OFF";
+                if (_llmc.CondizioneStop == 0xFF) return "KO";
 
                 if ((_llmc.CondizioneStop & 0x80) == 0x80)
                 {
@@ -1024,7 +1030,7 @@ namespace MoriData
                 }
                 else
                 {
-                    return "KO";
+                    return "OFF";
                 }
             }
         }
@@ -1034,7 +1040,7 @@ namespace MoriData
         {
             get
             {
-                if (_llmc.CondizioneStop == 0xFF) return "OFF";
+                if (_llmc.CondizioneStop == 0xFF) return "KO";
 
                 if ((_llmc.CondizioneStop & 0x80) == 0x80)
                 {

@@ -26,7 +26,7 @@ namespace ChargerLogic
                                           ContatoriLL = 13,
                                           ProgrammazioniLL = 14,
                                           AreaMemLungaLL = 15,
-
+                                          AreaMemBreveLL = 16,
                                           NonDefinito = -1 };
 
         public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Nack = 2, Break = 3, Dati = 10, NonValido = -1 };

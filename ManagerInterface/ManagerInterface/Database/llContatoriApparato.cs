@@ -14,6 +14,7 @@ using log4net;
 using log4net.Config;
 
 using Utility;
+using ChargerLogic;
 
 namespace MoriData
 {
@@ -166,6 +167,48 @@ namespace MoriData
                 return false;
             }
         }
+
+
+        public MessaggioLadeLight.MessaggioAreaContatori  GeneraMessaggio()
+        {
+            try
+            {
+
+                MessaggioLadeLight.MessaggioAreaContatori MsgContatoriLL = new MessaggioLadeLight.MessaggioAreaContatori();
+
+                if (!valido)
+                {
+                    return null;
+                }
+
+                MsgContatoriLL.DataPrimaCarica = FunzioniComuni.ArrayCopy(DataPrimaCarica);
+                MsgContatoriLL.CntCicliTotali = CntCicliTotali;
+                MsgContatoriLL.CntCicliStaccoBatt = CntCicliStaccoBatt;
+                MsgContatoriLL.CntCicliStop = CntCicliStop;
+                MsgContatoriLL.CntCicliLess3H = CntCicliLess3H;
+                MsgContatoriLL.CntCicli3Hto6H = CntCicli3Hto6H;
+                MsgContatoriLL.CntCicli6Hto9H = CntCicli6Hto9H;
+                MsgContatoriLL.CntCicliOver9H = CntCicliOver9H;
+                MsgContatoriLL.CntProgrammazioni = CntProgrammazioni;
+                MsgContatoriLL.CntCicliBrevi = CntCicliBrevi;
+                MsgContatoriLL.PntNextBreve = PntNextBreve;
+                MsgContatoriLL.CntCariche = CntCariche;
+                MsgContatoriLL.PntNextCarica = PntNextCarica;
+                MsgContatoriLL.CntMemReset = CntMemReset;
+                MsgContatoriLL.DataUltimaCancellazione = FunzioniComuni.ArrayCopy(DataUltimaCancellazione);
+
+                return MsgContatoriLL;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                return null;
+            }
+
+        }
+
+
 
         #region Class Parameters
 

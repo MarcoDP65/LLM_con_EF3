@@ -127,7 +127,15 @@ namespace ChargerLogic
                     MantTempoMaxErogazione = "=##15",
                     MantCorrenteImpulso = "=C/24",
 
+                    OpportunityOraInizio = "=##420",   // 13  ore --> fine alle 18, inizio alle 7
+                    OpportunityOraFine = "~##1140",
+                    OpportunityDurataMax = "=##240",
+                    OpportunityCorrente = "=C/4",
+                    OpportunityTensioneMax = "=##240",
+                    OpportunityAttivabile = "~##1",
+
                     AbilitaSpyBatt = "~##1",
+                    AbilitaSafety = "~##0",
 
                 } );
             #endregion "Ciclo IWa 13"
@@ -176,7 +184,15 @@ namespace ChargerLogic
                     MantTempoMaxErogazione = "=##15",
                     MantCorrenteImpulso = "=C/24",
 
+                    OpportunityOraInizio = "=##300",   // 11  ore --> fine alle 18, inizio alle 5
+                    OpportunityOraFine = "~##1140",
+                    OpportunityDurataMax = "=##240",
+                    OpportunityCorrente = "=C/4",
+                    OpportunityTensioneMax = "=##240",
+                    OpportunityAttivabile = "~##1",
+
                     AbilitaSpyBatt = "~##1",
+                    AbilitaSafety = "~##0",
 
 
                 });
@@ -228,7 +244,15 @@ namespace ChargerLogic
                     MantTempoMaxErogazione = "=##15",
                     MantCorrenteImpulso = "=C/24",
 
+                    OpportunityOraInizio = "=##240",   // 8  ore --> fine alle 20, inizio alle 4
+                    OpportunityOraFine = "~##1200",
+                    OpportunityDurataMax = "=##240",
+                    OpportunityCorrente = "=C/4",
+                    OpportunityTensioneMax = "=##240",
+                    OpportunityAttivabile = "~##1",
+
                     AbilitaSpyBatt = "~##1",
+                    AbilitaSafety = "~##0",
 
                 });
             #endregion "Ciclo IWa 8"
@@ -272,11 +296,20 @@ namespace ChargerLogic
                     MantCorrenteImpulso = "=C/50",
                     EqualCorrenteImpulso = "",
 
+                    OpportunityOraInizio = "=##240",   // 10  ore --> fine alle 18, inizio alle 4
+                    OpportunityOraFine = "~##1140",
+                    OpportunityDurataMax = "=##240",
+                    OpportunityCorrente = "=C/4",
+                    OpportunityTensioneMax = "=##240",
+                    OpportunityAttivabile = "~##1",
+
+
                     MantAttivabile = "=##1",
 
                     EqualNumImpulsi = "",
 
                     AbilitaSpyBatt = "~##0",
+                    AbilitaSafety = "~##0",
 
 
                 });
@@ -325,7 +358,16 @@ namespace ChargerLogic
                     EqualAttivabile = "~##1",
                     MantAttivabile = "=##1",
 
+                    OpportunityOraInizio = "=##300",   // 11  ore --> fine alle 18, inizio alle 5
+                    OpportunityOraFine = "~##1140",
+                    OpportunityDurataMax = "=##240",
+                    OpportunityCorrente = "=C/4",
+                    OpportunityTensioneMax = "=##240",
+                    OpportunityAttivabile = "~##1",
+
+
                     AbilitaSpyBatt = "~##0",
+                    AbilitaSafety = "~##0",
 
 
                 });
@@ -374,7 +416,15 @@ namespace ChargerLogic
                     EqualAttivabile = "",
                     MantAttivabile = "",
 
+                    OpportunityOraInizio = "=##300",   // 11  ore --> fine alle 18, inizio alle 5
+                    OpportunityOraFine = "~##1140",
+                    OpportunityDurataMax = "=##240",
+                    OpportunityCorrente = "=C/4",
+                    OpportunityTensioneMax = "=##240",
+                    OpportunityAttivabile = "~##1",
+
                     AbilitaSpyBatt = "~##0",
+                    AbilitaSafety = "~##0",
 
 
                 });

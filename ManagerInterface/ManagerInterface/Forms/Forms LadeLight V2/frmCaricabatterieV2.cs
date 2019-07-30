@@ -417,20 +417,22 @@ namespace PannelloCharger
 
                 bool esito;
 
-
-                // Se almeno 1 parametro è diverso dal ciclo attivo corrente lo salvo come nuovo ciclo
-                esito = VerificaValoriParametriCarica();
-                if (esito)
+                // Se so già che devo salvare, non faccio nemmeno il controllo dati:
+                if (ModCicloCorrente.DatiSalvati)
                 {
-                    //coincide col programma esistente. esco
-                    return false;
+                    // Se almeno 1 parametro è diverso dal ciclo attivo corrente lo salvo come nuovo ciclo
+                    esito = VerificaValoriParametriCarica();
+                    if (esito)
+                    {
+                        //coincide col programma esistente. esco
+                        return true;
+                    }
                 }
-
                 // Carico i valori impostati nelle textbox
                 esito = LeggiValoriParametriCarica();
 
                 ModCicloCorrente.IdProgramma = (ushort)(_cb.Programmazioni.UltimoIdProgamma + 1);
-
+                bool esitoSalvataggio = false;
                 if (esito)
                 {
                     // Riscrivo i valori nelle textBox per conferma poi salvo i valori 
@@ -438,11 +440,11 @@ namespace PannelloCharger
                     ModCicloCorrente.GeneraProgrammaCarica();
                     _cb.Programmazioni.ProgrammaAttivo = ModCicloCorrente.ProfiloRegistrato;
                     _cb.PreparaSalvataggioProgrammazioni();
-                    _cb.SalvaProgrammazioniApparato();
+                    esitoSalvataggio = _cb.SalvaProgrammazioniApparato();
 
                 }
 
-                return true;
+                return esitoSalvataggio;
             }
             catch
             {
@@ -504,6 +506,9 @@ namespace PannelloCharger
                 // Usa SB
                 ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt = (ushort)(chkPaUsaSpyBatt.Checked ? 0x0000 : 0x00F0);
 
+                // Usa Safety
+                ModCicloCorrente.ValoriCiclo.AbilitaSafety = (ushort)(chkPaUsaSafety.Checked ? 0x000F : 0x00F0);
+
 
                 // Preciclo
                 ModCicloCorrente.ValoriCiclo.CorrenteI0 = FunzioniMR.ConvertiUshort(txtPaPrefaseI0.Text, 10, 0);
@@ -542,6 +547,15 @@ namespace PannelloCharger
                 ModCicloCorrente.ValoriCiclo.MantTensFinale = FunzioniMR.ConvertiUshort(txtPaMantVmax.Text, 100, 0);
                 ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione = FunzioniMR.ConvertiUshort(txtPaMantDurataMax.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso = FunzioniMR.ConvertiUshort(txtPaMantCorrente.Text, 10, 0);
+
+                // Opportunity
+                ModCicloCorrente.ValoriCiclo.OpportunityAttivabile = (ushort)(chkPaAttivaOppChg.Checked == true ? 0x000F : 0x00F0);
+                ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = FunzioniMR.ConvertiUshort(txtPaOppOraInizio.Text, 1, 0);
+                ModCicloCorrente.ValoriCiclo.OpportunityOraFine = FunzioniMR.ConvertiUshort(txtPaOppOraFine.Text, 1, 0);
+                ModCicloCorrente.ValoriCiclo.OpportunityDurataMax = FunzioniMR.ConvertiUshort(txtPaOppDurataMax.Text, 1, 0);
+                ModCicloCorrente.ValoriCiclo.OpportunityCorrente = FunzioniMR.ConvertiUshort(txtPaOppCorrente.Text, 10, 0);
+                ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax = FunzioniMR.ConvertiUshort(txtPaOppVSoglia.Text, 100, 0);
+
 
 
                 // Soglie
@@ -817,6 +831,8 @@ namespace PannelloCharger
                 txtContNumCancellazioni.Text = "";
                 txtContPntNextBreve.Text = "";
                 txtContPntNextCarica.Text = "";
+                txtContNumProgrammazioni.Text = "";
+
 
                 if (_cb.ContatoriLL.valido)
                 {
@@ -830,12 +846,14 @@ namespace PannelloCharger
                     txtContCaricheStop.Text = _cb.ContatoriLL.CntCicliStop.ToString();
                     txtContCaricheStrappo.Text = _cb.ContatoriLL.CntCicliStaccoBatt.ToString();
                     txtContCaricheTotali.Text = _cb.ContatoriLL.CntCicliTotali.ToString();
-                    txtContCaricheUnder3.Text = _cb.ContatoriLL.CntCicliLess3H.ToString();               
+                    txtContCaricheUnder3.Text = _cb.ContatoriLL.CntCicliLess3H.ToString();
                     txtContPntNextBreve.Text = _cb.ContatoriLL.strPntNextBreve;
                     txtContPntNextCarica.Text = _cb.ContatoriLL.strPntNextCarica;
+                    txtContNumProgrammazioni.Text = _cb.ContatoriLL.CntProgrammazioni.ToString(); ;
+
 
                     txtContNumCancellazioni.Text = _cb.ContatoriLL.CntMemReset.ToString();
-                    if (_cb.ContatoriLL.CntMemReset>0)
+                    if (_cb.ContatoriLL.CntMemReset > 0)
                     {
                         txtContDtUltimaCanc.Text = _cb.ContatoriLL.strDataUltimaCancellazione;
                     }
@@ -1379,9 +1397,21 @@ namespace PannelloCharger
 
         private void btnPaSalvaDati_Click(object sender, EventArgs e)
         {
+            bool esitoSalvataggio = false;
             this.Cursor = Cursors.WaitCursor;
-            ScriviParametriCarica();
+            esitoSalvataggio = ScriviParametriCarica();
+
             CaricaProgrammazioni();
+            if (esitoSalvataggio)
+            {
+                MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                IncrementaContatoreConf();
+            }
+            else
+            {
+                MessageBox.Show("Aggiornamento configurazione non riuscito", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
             this.Cursor = Cursors.Default;
         }
 
@@ -2559,22 +2589,25 @@ namespace PannelloCharger
         {
             try
             {
-
-                if (chkPaAttivaEqual.Checked)
+                if (!ProfiloInCaricamento)
                 {
-                    txtPaEqualAttesa.Enabled = true;
-                    txtPaEqualAttesa.Text = "48";
-                    txtPaEqualNumPulse.Enabled = true;
-                    txtPaEqualNumPulse.Text = "12";
 
-                }
-                else
-                {
-                    txtPaEqualAttesa.Enabled = false;
-                    txtPaEqualAttesa.Text = "";
-                    txtPaEqualNumPulse.Enabled = false;
-                    txtPaEqualNumPulse.Text = "";
+                    if (chkPaAttivaEqual.Checked)
+                    {
+                        txtPaEqualAttesa.Enabled = true;
+                        txtPaEqualAttesa.Text = "48";
+                        txtPaEqualNumPulse.Enabled = true;
+                        txtPaEqualNumPulse.Text = "12";
 
+                    }
+                    else
+                    {
+                        txtPaEqualAttesa.Enabled = false;
+                        txtPaEqualAttesa.Text = "";
+                        txtPaEqualNumPulse.Enabled = false;
+                        txtPaEqualNumPulse.Text = "";
+
+                    }
                 }
             }
             catch (Exception Ex)
@@ -3663,6 +3696,22 @@ namespace PannelloCharger
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantCorrente, ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso, ModCicloCorrente.ParametriAttivi.MantCorrenteImpulso, 2, SbloccaValori);
                     }
 
+
+
+                    FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaOppChg, ref lblPaAttivaOppChg, ModCicloCorrente.ValoriCiclo.OpportunityAttivabile, ModCicloCorrente.ParametriAttivi.OpportunityAttivabile, 3, SbloccaValori);
+
+                    if (true) // (chkPaAttivaOppChg.Checked)
+                    {
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppVSoglia, ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax, ModCicloCorrente.ParametriAttivi.OpportunityTensioneMax, 1, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppCorrente, ModCicloCorrente.ValoriCiclo.OpportunityCorrente, ModCicloCorrente.ParametriAttivi.OpportunityCorrente, 2, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppDurataMax, ModCicloCorrente.ValoriCiclo.OpportunityDurataMax, ModCicloCorrente.ParametriAttivi.OpportunityDurataMax, 3, SbloccaValori);
+                    }
+
+
+
+
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMin, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMaxRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMax, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinStop, ModCicloCorrente.ValoriCiclo.TensMinStop, ModCicloCorrente.ParametriAttivi.TensMinStop, 1, SbloccaValori);
@@ -3854,7 +3903,7 @@ namespace PannelloCharger
                     ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
                     ModCicloCorrente.EstraiDaProgrammaCarica();
 
-                    MostraParametriCiclo(true, false);
+                    MostraParametriCiclo(true, false, chkPaSbloccaValori.Checked);
                     ProfiloInCaricamento = false;
 
                     InizializzaVistaProgrammazioni();
@@ -3914,10 +3963,6 @@ namespace PannelloCharger
             InizializzaListaCariche();
 
 
-            // this.Cursor = Cursors.WaitCursor;
-            // _cb.LeggiBloccoLunghi();
-            // this.Cursor = Cursors.Default;
-
         }
 
         private void flwPaListaConfigurazioni_SelectedIndexChanged(object sender, EventArgs e)
@@ -3975,7 +4020,7 @@ namespace PannelloCharger
                         // Riposiziono tuuuti gli elementi: quelli prima del selezionato in posizione +1, 
                         //                                  il selezionato in posizione 0
                         //                                  quelli dopo il selezioato, invariati
-
+                        bool esitoSalvataggio = false;
                         this.Cursor = Cursors.WaitCursor;
                         foreach (llProgrammaCarica TPC in _cb.Programmazioni.ProgrammiDefiniti)
                         {
@@ -3993,8 +4038,20 @@ namespace PannelloCharger
                             }
                         }
 
-                        _cb.SalvaProgrammazioniApparato();
+                        esitoSalvataggio = _cb.SalvaProgrammazioniApparato();
                         CaricaProgrammazioni();
+
+                        if (esitoSalvataggio)
+                        {
+                            MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            IncrementaContatoreConf();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Aggiornamento configurazione non riuscito", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+
+
                         this.Cursor = Cursors.Default;
 
 
@@ -4022,7 +4079,7 @@ namespace PannelloCharger
         {
             try
             {
-                DialogResult Risposta =  MessageBox.Show("Confermi l'azzeramento contatori ?", "CONTATORI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult Risposta = MessageBox.Show("Confermi l'azzeramento contatori ?", "CONTATORI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Risposta == DialogResult.OK)
                 {
                     this.Cursor = Cursors.WaitCursor;
@@ -4039,6 +4096,27 @@ namespace PannelloCharger
             }
 
         }
+
+        public bool IncrementaContatoreConf()
+        {
+            try
+            {
+                bool esito = false;
+                _cb.CaricaAreaContatori();
+                //esito = _cb.IncrementaConteggioProgrammazioni();
+                CaricaAreaContatori();
+
+                return esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("BtnGenAzzzeraContatori_Click: " + Ex.Message);
+                return false;
+
+            }
+
+        }
+
 
         private void BtnGenAzzeraContatoriTot_Click(object sender, EventArgs e)
         {
@@ -4076,6 +4154,217 @@ namespace PannelloCharger
                 this.Cursor = Cursors.Default;
             }
         }
-    }
 
+        public bool AttivaSalvataggioConfigurazione()
+        {
+            try
+            {
+                bool esito;
+                ushort _Tensione = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
+                ushort _Capacita = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
+                ushort _Celle = FunzioniMR.ConvertiUshort(txtPaNumCelle.Text, 1, 0);
+                _llModelloCb _ModelloCB = _cb.ModelloCorrente;
+
+                // Se almeno 1 parametro è diverso dal ciclo attivo corrente lo salvo come nuovo ciclo
+                esito = VerificaValoriParametriCarica();
+                if (esito)
+                {
+                    //coincide col programma esistente. esco
+                    return true;
+                }
+                // Carico i valori impostati nelle textbox
+                esito = LeggiValoriParametriCarica();
+                // Se sono quì ho passato il controllo e almeno 1 dato è cambiato
+                ModCicloCorrente.DatiSalvati = false;
+
+                CaricaBatteria.EsitoRicalcolo esitoVerifica = ModCicloCorrente.VerificaParametri(_Tensione, _Capacita, _Celle, _ModelloCB);
+
+                switch (esitoVerifica)
+                {
+                    case CaricaBatteria.EsitoRicalcolo.OK:
+                        // tutti i parametri sono validi. attivo il pulsante
+                        btnPaSalvaDati.Enabled = true;
+                        esito = true;
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrIMax:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        MessageBox.Show("Corrente richiesta troppo elevata", "Verifica Parametri", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrIMin:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrVMax:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        MessageBox.Show("Tensione richiesta troppo elevata", "Verifica Parametri", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrVMin:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrGenerico:
+                    case CaricaBatteria.EsitoRicalcolo.ParNonValidi:
+                    case CaricaBatteria.EsitoRicalcolo.ErrCBNonDef:
+                    case CaricaBatteria.EsitoRicalcolo.ErrUndef:
+                        {
+                            btnPaSalvaDati.Enabled = false;
+                            esito = false;
+                        }
+                        break;
+         
+                    default:
+                        // non faccio nulla ....
+                        break;
+                }
+
+                return esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("AttivaSalvataggioConfigurazione: " + Ex.Message);
+                return false;
+            }
+        }
+
+        #region "Gestione Modifiche"
+        private void TxtPaMantVmin_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaMantVmin.ForeColor = Color.Red;
+                txtPaMantVmin.Select();
+            }
+            else
+                txtPaMantVmin.ForeColor = Color.Black;
+        }
+
+        private void TxtPaMantVmax_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaMantVmax.ForeColor = Color.Red;
+                txtPaMantVmax.Select();
+            }
+            else
+                txtPaMantVmax.ForeColor = Color.Black;
+        }
+
+        private void TxtPaSogliaV0_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaSogliaV0.ForeColor = Color.Red;
+                txtPaSogliaV0.Select();
+            }
+            else
+                txtPaSogliaV0.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaPrefaseI0_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaPrefaseI0.ForeColor = Color.Red;
+                txtPaPrefaseI0.Select();
+            }
+            else
+                txtPaPrefaseI0.ForeColor = Color.Black;
+        }
+
+        private void TxtPaDurataMaxT0_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaDurataMaxT0.ForeColor = Color.Red;
+                txtPaDurataMaxT0.Select();
+            }
+            else
+                txtPaDurataMaxT0.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaSogliaVs_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaSogliaVs.ForeColor = Color.Red;
+                txtPaSogliaVs.Select();
+            }
+            else
+                txtPaSogliaVs.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaCorrenteI1_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCorrenteI1.ForeColor = Color.Red;
+                txtPaCorrenteI1.Select();
+            }
+            else
+                txtPaCorrenteI1.ForeColor = Color.Black;
+
+        }
+
+        private void CmbPaDurataMaxT1_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                cmbPaDurataMaxT1.ForeColor = Color.Red;
+                cmbPaDurataMaxT1.Select();
+            }
+            else
+                cmbPaDurataMaxT1.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaRaccordoF1_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaRaccordoF1.ForeColor = Color.Red;
+                txtPaRaccordoF1.Select();
+            }
+            else
+                txtPaRaccordoF1.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaCorrenteRaccordo_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCorrenteRaccordo.ForeColor = Color.Red;
+                txtPaCorrenteRaccordo.Select();
+            }
+            else
+                txtPaCorrenteRaccordo.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaCorrenteF3_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCorrenteF3.ForeColor = Color.Red;
+                txtPaCorrenteF3.Select();
+            }
+            else
+                txtPaCorrenteF3.ForeColor = Color.Black;
+
+        }
+
+
+
+
+
+        #endregion
+
+
+    }
 }
+

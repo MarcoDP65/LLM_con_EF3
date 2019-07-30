@@ -53,6 +53,11 @@ namespace MoriData
 
         public ushort FattoreK { get; set; }
 
+        public ushort OpportunityOraInizio { get; set; }
+        public ushort OpportunityOraFine { get; set; }
+        public ushort OpportunityDurataMax { get; set; }
+
+
         // Tensioni
         public ushort TensionePrecicloV0 { get; set; }
         public ushort TensioneSogliaVs { get; set; }
@@ -66,6 +71,7 @@ namespace MoriData
         public ushort TensRiconoscimentoMin { get; set; }
         public ushort TensRiconoscimentoMax { get; set; }
         public ushort TensMinStop { get; set; }
+        public ushort OpportunityTensioneMax { get; set; }
 
 
         // Correnti
@@ -78,6 +84,7 @@ namespace MoriData
 
         public ushort EqualCorrenteImpulso { get; set; }
         public ushort MantCorrenteImpulso { get; set; }
+        public ushort OpportunityCorrente { get; set; }
 
         public ushort EqualNumImpulsi { get; set; }
 
@@ -87,7 +94,12 @@ namespace MoriData
         public ushort MantAttivabile { get; set; }
         public ushort MantAttivo { get; set; }
 
+        public ushort OpportunityAttivabile { get; set; }
+        public ushort OpportunityAttivo { get; set; }
+
+
         public ushort AbilitaSpyBatt { get; set; }
+        public ushort AbilitaSafety { get; set; }
 
         public int Ordine { get; set; }
 
@@ -129,6 +141,10 @@ namespace MoriData
             MantTempoAttesa = 0;
             MantTempoMaxErogazione = 0;
 
+            OpportunityOraInizio = 0;
+            OpportunityOraFine = 0;
+            OpportunityDurataMax = 0;
+
             FattoreK = 0;
 
             // Tensioni
@@ -140,7 +156,7 @@ namespace MoriData
 
             MantTensIniziale = 0;
             MantTensFinale = 0;
-
+            OpportunityTensioneMax = 0;
             TensRiconoscimentoMin = 0;
             TensRiconoscimentoMax = 0;
             TensMinStop = 0;
@@ -156,9 +172,16 @@ namespace MoriData
             EqualCorrenteImpulso = 0;
             MantCorrenteImpulso = 0;
             EqualNumImpulsi = 0;
+            OpportunityCorrente = 0;
 
             EqualAttivabile = 0;
             MantAttivabile = 0;
+
+            OpportunityAttivo = 0;
+            OpportunityAttivabile = 0;
+
+            AbilitaSafety = 0;
+            AbilitaSpyBatt = 0;
 
             Ordine = 0;
 

@@ -23,6 +23,7 @@ namespace ChargerLogic
         public ushort Capacita { get; set; }
         public string NomeProfilo { get; set; }
         public ushort IdProgramma { get; set; }
+        public bool DatiSalvati { get; set; }
 
         public llProgrammaCarica ProfiloRegistrato;
 
@@ -39,6 +40,7 @@ namespace ChargerLogic
             ParametriAttivi = new ParametriCiclo();
             ListaParametri = new List<ParametroLL>();
             ProfiloRegistrato = new llProgrammaCarica();
+            DatiSalvati = true;
             NumParametriAttivi = 0;
         }
 
@@ -128,6 +130,11 @@ namespace ChargerLogic
 
                         case SerialMessage.ParametroLadeLight.DivisoreK:
                             ValoriCiclo.AbilitaSpyBatt = dato.ValoreParametro;
+                            numeroValori += 1;
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.Safety:
+                            ValoriCiclo.AbilitaSafety = dato.ValoreParametro;
                             numeroValori += 1;
                             break;
 
@@ -303,6 +310,49 @@ namespace ChargerLogic
 
                         #endregion "Mantenimento"
 
+                        // Opportunity
+                        #region "Opportunity Charge"
+                        case SerialMessage.ParametroLadeLight.OpportunityAttivo:
+                            ValoriCiclo.OpportunityAttivabile = dato.ValoreParametro;
+                            ParametriAttivi.OpportunityAttivabile = StatoCella;
+                            numeroValori += 1;
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.OpportunityOraInizio:
+                            ValoriCiclo.OpportunityOraInizio = dato.ValoreParametro;
+                            ParametriAttivi.OpportunityOraInizio = StatoCella;
+                            numeroValori += 1;
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.OpportunityOraFine:
+                            ValoriCiclo.OpportunityOraFine = dato.ValoreParametro;
+                            ParametriAttivi.OpportunityOraFine = StatoCella;
+                            numeroValori += 1;
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.OpportunityDurataMax:
+                            ValoriCiclo.OpportunityDurataMax = dato.ValoreParametro;
+                            ParametriAttivi.OpportunityDurataMax = StatoCella;
+                            numeroValori += 1;
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.OpportunityCorrente:
+                            ValoriCiclo.OpportunityCorrente = dato.ValoreParametro;
+                            ParametriAttivi.OpportunityCorrente = StatoCella;
+                            numeroValori += 1;
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.OpportunityTensioneStop:
+                            ValoriCiclo.OpportunityTensioneMax = dato.ValoreParametro;
+                            ParametriAttivi.OpportunityTensioneMax = StatoCella;
+                            numeroValori += 1;
+                            break;
+
+                        #endregion "Opportunity Charge"
+
+
+
+
                         // Soglie
                         #region"Soglie"
                         case SerialMessage.ParametroLadeLight.TensioneMinimaRiconoscimento:
@@ -451,7 +501,14 @@ namespace ChargerLogic
                 ValoriCiclo.MantAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.MantAttivabile);
 
                 CalcolaMantenimento(ValoriCiclo.MantAttivabile,  Tensione,  CapacitaDefinita,  ModelloProfilo, ModelloCB);
- 
+
+                // Opportunity
+                ParametriAttivi.OpportunityAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityAttivabile);
+                ValoriCiclo.OpportunityAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.OpportunityAttivabile);
+
+                CalcolaOpportunityChg(ValoriCiclo.OpportunityAttivabile, Tensione, CapacitaDefinita, ModelloProfilo, ModelloCB);
+
+
 
                 // Soglie
                 ParametriAttivi.TensRiconoscimentoMin = FunzioniComuni.StatoParametro(ModelloProfilo.TensRiconoscimentoMin);
@@ -471,6 +528,9 @@ namespace ChargerLogic
                 // Varie
                 ValoriCiclo.AbilitaSpyBatt = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.AbilitaSpyBatt);
                 ParametriAttivi.AbilitaSpyBatt = FunzioniComuni.StatoParametro(ModelloProfilo.AbilitaSpyBatt);
+
+                ValoriCiclo.AbilitaSpyBatt = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.AbilitaSafety);
+                ParametriAttivi.AbilitaSafety = FunzioniComuni.StatoParametro(ModelloProfilo.AbilitaSafety);
 
 
 
@@ -600,7 +660,144 @@ namespace ChargerLogic
                 return false;
             }
         }
- 
+
+        /// <summary>
+        /// Controllo che tensioni e correnti siano compatibili col CB. se il cb non è indicato, sono non compatibili a priori
+        /// </summary>
+        /// <param name="ModelloCB"></param>
+        /// <returns></returns>
+        public CaricaBatteria.EsitoRicalcolo VerificaParametri(ushort Tensione, ushort CapacitaDefinita, ushort Celle, _llModelloCb ModelloCB)
+        {
+            try
+            {
+                //ValoriCiclo = new ParametriCiclo();
+
+                if (ModelloCB == null)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrCBNonDef;
+                }
+
+                // Preciclo
+                if (((double)(ValoriCiclo.TensionePrecicloV0 * Celle) / 100) > ModelloCB.TensioneMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrVMax;
+                }
+                if ((ValoriCiclo.CorrenteI0 / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
+
+                // Fase 1  (I)
+                if (   (((double)(ValoriCiclo.TensioneSogliaVs * Celle) / 100) > ModelloCB.TensioneMax) 
+                    || (((double)(ValoriCiclo.TensioneRaccordoVr * Celle) / 100) > ModelloCB.TensioneMax))
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrVMax;
+                }
+                if ((ValoriCiclo.CorrenteI1 / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
+
+                if ((ValoriCiclo.CorrenteRaccordoIr / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
+
+                // Fase 2
+                if ((ValoriCiclo.CorrenteFinaleI2 / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
+
+
+
+                // equal
+
+                //CalcolaEqualizzazione(ValoriCiclo.EqualAttivabile, Tensione, CapacitaDefinita, ModelloProfilo, ModelloCB);
+
+                // Mant
+
+                //CalcolaMantenimento(ValoriCiclo.MantAttivabile, Tensione, CapacitaDefinita, ModelloProfilo, ModelloCB);
+
+  
+
+
+                return CaricaBatteria.EsitoRicalcolo.OK;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CalcolaParametri: " + Ex.Message);
+                return CaricaBatteria.EsitoRicalcolo.ErrGenerico;
+            }
+        }
+
+        public bool CalcolaOpportunityChg(ushort Attivazione, ushort Tensione, ushort CapacitaDefinita, _mbProfiloTipoBatt ModelloProfilo, _llModelloCb ModelloCB)
+        {
+            try
+            {
+                bool AzzeraValori = false;
+                double FattoreCorrente = 1;
+                ushort TempCorrente;
+
+                if (ModelloProfilo == null)
+                {
+                    // Abbinamento batteria / ciclo non previsto
+                    AzzeraValori = true;
+                }
+
+                if (Attivazione == 0 || Attivazione == 0xF0F0)
+                {
+                    AzzeraValori = true;
+                }
+
+                ValoriCiclo.OpportunityAttivo = Attivazione;
+
+                if (AzzeraValori)
+                {
+                    ParametriAttivi.OpportunityOraInizio = 0;
+                    ValoriCiclo.OpportunityOraInizio = 0;
+                    ParametriAttivi.OpportunityOraFine = 0;
+                    ValoriCiclo.OpportunityOraFine = 0;
+                    ParametriAttivi.OpportunityDurataMax = 0;
+                    ValoriCiclo.OpportunityDurataMax = 0;
+                    ParametriAttivi.OpportunityCorrente = 0;
+                    ValoriCiclo.OpportunityCorrente = 0;
+                    ParametriAttivi.OpportunityTensioneMax = 0;
+                    ValoriCiclo.OpportunityTensioneMax = 0;
+
+                }
+                else
+                {
+                    ParametriAttivi.OpportunityOraInizio = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityOraInizio);
+                    ValoriCiclo.OpportunityOraInizio = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.OpportunityOraInizio);
+                    ParametriAttivi.OpportunityOraFine = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityOraFine);
+                    ValoriCiclo.OpportunityOraFine = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.OpportunityOraFine);
+                    ParametriAttivi.OpportunityCorrente = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityCorrente);
+                    ValoriCiclo.OpportunityCorrente = FunzioniComuni.CalcolaFormula("C", CapacitaDefinita, ModelloProfilo.OpportunityCorrente);
+                    TempCorrente = ValoriCiclo.OpportunityCorrente;
+                    if (ValoriCiclo.OpportunityCorrente > (ModelloCB.CorrenteMax * 10))
+                    {
+                        ValoriCiclo.OpportunityCorrente = (ushort)(ModelloCB.CorrenteMax * 10);
+                    }
+
+                    FattoreCorrente =  (double)TempCorrente / (double)ValoriCiclo.OpportunityCorrente;
+
+                    ParametriAttivi.OpportunityDurataMax = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityDurataMax);
+                    ValoriCiclo.OpportunityDurataMax =(ushort)(FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.OpportunityDurataMax) * FattoreCorrente);
+
+                    ParametriAttivi.OpportunityTensioneMax = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityTensioneMax);
+                    ValoriCiclo.OpportunityTensioneMax = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.OpportunityTensioneMax);
+
+                }
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CalcolaParametri: " + Ex.Message);
+                return false;
+            }
+        }
 
 
 
@@ -747,6 +944,14 @@ namespace ChargerLogic
                     NumParametriAttivi += 1;
                 }
 
+                if (true)  // (ParametriAttivi.AbilitaSafety > 0) --> lo passo sempre
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.Safety, ValoriCiclo.AbilitaSafety);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+
                 if (true)  // (ParametriAttivi.TensRiconoscimentoMin > 0)
                 {
                     NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TensioneMinimaRiconoscimento, ValoriCiclo.TensRiconoscimentoMin);
@@ -788,7 +993,7 @@ namespace ChargerLogic
                     ListaParametri.Add(NuovoParametro);
                     NumParametriAttivi += 1;
                 }
-
+                
 
                 if (true)  // (ParametriAttivi.EqualAttivo > 0)
                 {
@@ -863,6 +1068,48 @@ namespace ChargerLogic
                 if (true)  // (ParametriAttivi.MantenimentoCorrErogazione > 0)
                 {
                     NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.MantenimentoCorrErogazione, ValoriCiclo.MantCorrenteImpulso);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (ParametriAttivi.OpportunityAttivo > 0)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.OpportunityAttivo, ValoriCiclo.OpportunityAttivo);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (ParametriAttivi.OpportunityOraInizio > 0)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.OpportunityOraInizio, ValoriCiclo.OpportunityOraInizio);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (ParametriAttivi.OpportunityOraFine > 0)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.OpportunityOraFine, ValoriCiclo.OpportunityOraFine);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (ParametriAttivi.OpportunityDurataMax > 0)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.OpportunityDurataMax, ValoriCiclo.OpportunityDurataMax);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (ParametriAttivi.OpportunityCorrente > 0)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.OpportunityCorrente, ValoriCiclo.OpportunityCorrente);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (ParametriAttivi.OpportunityTensioneStop > 0)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.OpportunityTensioneStop, ValoriCiclo.OpportunityTensioneMax);
                     ListaParametri.Add(NuovoParametro);
                     NumParametriAttivi += 1;
                 }

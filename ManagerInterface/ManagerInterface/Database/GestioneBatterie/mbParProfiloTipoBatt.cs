@@ -77,10 +77,23 @@ namespace MoriData
 
         public string EqualNumImpulsi { get; set; }
 
+        public string OpportunityOraInizio { get; set; }
+        public string OpportunityOraFine { get; set; }
+        public string OpportunityDurataMax { get; set; }
+        public string OpportunityTensioneMax { get; set; }
+        public string OpportunityCorrente { get; set; }
+
+
+
+
         public string EqualAttivabile { get; set; }
         public string MantAttivabile { get; set; }
+        public string OpportunityAttivabile { get; set; }
+
+
 
         public string AbilitaSpyBatt { get; set; }
+        public string AbilitaSafety { get; set; }
 
         public int Ordine { get; set; }
 
