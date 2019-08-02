@@ -58,6 +58,17 @@ namespace MoriData
         public byte CondizioneStop { get; set; }
         public byte[] IdSpyBatt;
 
+        public int Vbat5m { get; set; }
+        public int Ibat5m { get; set; }
+        public int VbatFinale { get; set; }
+        public int IbatFinale { get; set; }
+
+
+        public byte OpzioniCarica { get; set; }
+        public UInt32 VettoreErrori { get; set; }
+
+
+
         public DateTime DataLastDownload { get; set; }
 
         public override string ToString()
@@ -936,6 +947,157 @@ namespace MoriData
         }
 
 
+        public int Vbat5m
+        {
+            get { return _llmc.Vbat5m; }
+            set
+            {
+                _llmc.Vbat5m = value;
+                _datiSalvati = false;
+            }
+        }
+        public float ValVbat5m
+        {
+            get { return FunzioniMR.ValoreEffettivo(_llmc.Vbat5m, 100); }
+        }  
+
+        public string strVbat5m
+        {
+            get
+            {
+                if (_llmc.Vbat5m != 0xFFFF)
+                {
+                    return FunzioniMR.StringaTensione(_llmc.Vbat5m);
+                }
+                else return "";
+            }
+        }
+
+
+        public int VbatFinale
+        {
+            get { return _llmc.VbatFinale; }
+            set
+            {
+                _llmc.VbatFinale = value;
+                _datiSalvati = false;
+            }
+        }
+        public float ValVbatFinale
+        {
+            get { return FunzioniMR.ValoreEffettivo(_llmc.VbatFinale, 100); }
+        }
+
+        public string strVbatFinale
+        {
+            get
+            {
+                if (_llmc.VbatFinale != 0xFFFF)
+                {
+                    return FunzioniMR.StringaTensione(_llmc.VbatFinale);
+                }
+                else return "";
+            }
+        }
+
+
+
+        public int Ibat5m
+        {
+            get { return _llmc.Ibat5m; }
+            set
+            {
+                _llmc.Ibat5m = value;
+                _datiSalvati = false;
+            }
+        }
+        public float ValIbat5m
+        {
+            get { return FunzioniMR.ValoreEffettivo(_llmc.Ibat5m, 10); }
+        }
+
+        public string strIbat5m
+        {
+            get
+            {
+                if (_llmc.Ibat5m != 0xFFFF)
+                {
+                    return FunzioniMR.StringaCorrente((short)_llmc.Ibat5m);
+                }
+                else return "";
+            }
+        }
+
+
+        public int IbatFinale
+        {
+            get { return _llmc.IbatFinale; }
+            set
+            {
+                _llmc.IbatFinale = value;
+                _datiSalvati = false;
+            }
+        }
+        public float ValIbatFinale
+        {
+            get { return FunzioniMR.ValoreEffettivo(_llmc.IbatFinale, 10); }
+        }
+
+        public string strIbatFinale
+        {
+            get
+            {
+                if (_llmc.Ibat5m != 0xFFFF)
+                {
+                    return FunzioniMR.StringaCorrente((short)_llmc.IbatFinale);
+                }
+                else return "";
+            }
+        }
+
+        public byte OpzioniCarica
+        {
+            get { return _llmc.OpzioniCarica; }
+            set
+            {
+                _llmc.OpzioniCarica = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public string strOpzioniCarica
+        {
+            get
+            {
+
+                return _llmc.OpzioniCarica.ToString("X2");
+
+            }
+        }
+
+        public UInt32 VettoreErrori
+        {
+            get { return _llmc.VettoreErrori; }
+            set
+            {
+                _llmc.VettoreErrori = value;
+                _datiSalvati = false;
+            }
+        }
+
+        public string strVettoreErrori
+        {
+            get
+            {
+
+                return _llmc.VettoreErrori.ToString("X6");
+
+            }
+        }
+
+
+
+
         public byte CondizioneStop
         {
             get { return _llmc.CondizioneStop; }
@@ -1035,7 +1197,6 @@ namespace MoriData
             }
         }
 
-
         public string strEqualEffettuato
         {
             get
@@ -1061,9 +1222,6 @@ namespace MoriData
             }
 
         }
-
-
-
 
         public bool EqualEffettuato
         {

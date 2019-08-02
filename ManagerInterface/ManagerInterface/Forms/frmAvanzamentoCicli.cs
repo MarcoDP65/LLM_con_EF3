@@ -365,9 +365,7 @@ namespace PannelloCharger
                         // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
                         sbWorker.ReportProgress(0, _stepBg);
                         Log.Debug("Lancio lettura: MemLunga " + ValStart.ToString() + " - " + ValFine.ToString());
-                        object _esitoLunghi;
-                        // _esito = _cb.CaricaListaCicli(StartAddr, NumRows, out EsitoCaricamento, false, true);
-
+                        
                         _esito = llLocale.LeggiBloccoLunghi(true);
 
                         break;

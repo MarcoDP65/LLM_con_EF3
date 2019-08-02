@@ -1636,9 +1636,15 @@ namespace ChargerLogic
             public UInt32 PntPrimoBreve;
             public ushort CntCicliBrevi;
             public byte[] DataOraStart;
+            public ushort Vbat5m;
+            public ushort Ibat5m;
             public byte[] DataOraStop;
+            public ushort VbatFinale;
+            public ushort IbatFinale;
             public ushort AhCaricati;
             public UInt32 WhCaricati;
+            public byte OpzioniCarica;
+            public UInt32 VettoreErrori;
             public byte ModStop;
 
             byte[] _dataBuffer;
@@ -1652,6 +1658,35 @@ namespace ChargerLogic
             }
 
             public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+                try
+                {
+                    switch(fwLevel)
+                    {
+                        case 1:
+
+                            return analizzaMessaggioMappa1(_messaggio);
+
+                        case 2:
+
+                            return analizzaMessaggioMappa2(_messaggio);
+
+                        default:
+
+                            return analizzaMessaggioMappa1(_messaggio);
+
+                    }
+
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+
+                }
+
+            }
+
+            public EsitoRisposta analizzaMessaggioMappa1(byte[] _messaggio)
             {
 
                 byte[] _risposta;
@@ -1719,6 +1754,93 @@ namespace ChargerLogic
 
             }
 
+            public EsitoRisposta analizzaMessaggioMappa2(byte[] _messaggio)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 48)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+
+
+                    startByte = 0;
+                    Log.Debug(" ----------------------  Record Lungo  -----------------------------------------");
+
+                    NumeroCarica = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+
+                    IdSpyBatt = SubArray(_messaggio, startByte, 8);
+                    startByte += 8;
+
+                    IdProgrammazione = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    PntPrimoBreve = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+
+                    DataOraStart = SubArray(_messaggio, startByte, 5);
+                    startByte += 5;
+                    
+                    Vbat5m = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    Ibat5m = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    DataOraStop = SubArray(_messaggio, startByte, 5);
+                    startByte += 5;
+
+                    VbatFinale = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    IbatFinale = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    CntCicliBrevi = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    AhCaricati = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    WhCaricati = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
+
+                    OpzioniCarica = _messaggio[startByte];
+                    startByte += 1;
+
+                    VettoreErrori = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+
+                    ModStop = _messaggio[startByte];
+                    startByte += 1;
+
+
+                    datiPronti = true;
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
 
             public bool GeneraByteArray()
             {
@@ -1782,9 +1904,15 @@ namespace ChargerLogic
                     PntPrimoBreve = 0;
                     CntCicliBrevi = 0;
                     DataOraStart = new byte[5] { 01, 01, 18, 0, 0 };
+                    Vbat5m = 0;
+                    Ibat5m = 0;
+                    VbatFinale = 0;
+                    IbatFinale = 0;              
                     DataOraStop = new byte[5] { 01, 01, 18, 0, 0 };
                     AhCaricati = 0;
                     WhCaricati = 0;
+                    OpzioniCarica = 0;
+                    VettoreErrori = 0;
                     ModStop = 0;
 
                     return true;

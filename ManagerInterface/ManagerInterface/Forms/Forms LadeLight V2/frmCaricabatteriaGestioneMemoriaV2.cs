@@ -119,6 +119,46 @@ namespace PannelloCharger
                 };
                 flvCicliListaCariche.AllColumns.Add(colDurata);
 
+                BrightIdeasSoftware.OLVColumn colstrV5Min = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "V 5m",
+                    AspectName = "strVbat5m",
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrV5Min);
+
+                BrightIdeasSoftware.OLVColumn colstrI5Min = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "I 5m",
+                    AspectName = "strIbat5m",
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrI5Min);
+
+                BrightIdeasSoftware.OLVColumn colstrVFin = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "V Fin",
+                    AspectName = "strVbatFinale",
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVFin);
+
+
+                BrightIdeasSoftware.OLVColumn colstrIFin = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "I Fin",
+                    AspectName = "strIbatFinale",
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrIFin);
 
                 BrightIdeasSoftware.OLVColumn colstrAh = new BrightIdeasSoftware.OLVColumn()
                 {
@@ -164,6 +204,28 @@ namespace PannelloCharger
                     TextAlign = HorizontalAlignment.Left,
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrChargerStop);
+
+                BrightIdeasSoftware.OLVColumn colstrChargerOpt = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Opzioni",
+                    ToolTipText = "Opzioni carica",
+                    AspectName = "strOpzioniCarica",
+                    Width = 150,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrChargerOpt);
+
+                BrightIdeasSoftware.OLVColumn colstrChargerErr = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Errori",
+                    ToolTipText = "Vettore Errori",
+                    AspectName = "strVettoreErrori",
+                    Width = 150,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrChargerErr);
 
 
                 BrightIdeasSoftware.OLVColumn colEqualReq = new BrightIdeasSoftware.OLVColumn()

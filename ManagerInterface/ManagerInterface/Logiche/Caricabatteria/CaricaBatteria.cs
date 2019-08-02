@@ -92,7 +92,7 @@ namespace ChargerLogic
 
         
 
-        public const byte SizeCharge = 36;
+        //public const byte SizeCharge = 36;
         public const byte SizeShort = 30;
         public const UInt32 FirstShort = 0x006000;   // dal 08/02/2019 spostato  da 0x5000 a 0x6000
         public const UInt32 MaxByteShort = 0x1AEFFF;
@@ -680,6 +680,7 @@ namespace ChargerLogic
                     _esito = true;
                     Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
                     Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
+
 
                 }
 
@@ -1937,6 +1938,9 @@ namespace ChargerLogic
                         ParametriApparato.llParApp.SizeExternMemory = ImmagineMemoria.SizeExternMemory;
                         ParametriApparato.llParApp.MaxProgrammazioni = ImmagineMemoria.MaxProgrammazioni;
                         ParametriApparato.llParApp.ModelloMemoria = ImmagineMemoria.ModelloMemoria;
+
+                        Memoria = new llMappaMemoria(ImmagineMemoria.ModelloMemoria);
+
                         ParametriApparato.llParApp.IdApparato = ImmagineMemoria.IDApparato;
 
                         ParametriApparato.llParApp.VMin = ImmagineMemoria.VMin;

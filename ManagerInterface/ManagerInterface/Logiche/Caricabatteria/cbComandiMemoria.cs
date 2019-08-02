@@ -28,7 +28,7 @@ namespace ChargerLogic
                 llMemoriaCicli tempPrg = new llMemoriaCicli();
                 MessaggioLadeLight.MessaggioMemoriaLunga ImmagineCarica = new MessaggioLadeLight.MessaggioMemoriaLunga();
                 SerialMessage.EsitoRisposta EsitoMsg;
-
+                ushort SizeCharge = Memoria.MappaCorrente.RecordLunghi.SizeMsgDati;
 
                 byte[] _datiTemp = new byte[SizeCharge];
                 _esito = LeggiBloccoMemoria(StartAddr, SizeCharge, out _datiTemp);
@@ -72,6 +72,7 @@ namespace ChargerLogic
         {
             try
             {
+                ushort SizeCharge = Memoria.MappaCorrente.RecordLunghi.SizeMsgDati;
 
                 if (ArrayDati.Length != SizeCharge)
                 {
@@ -84,7 +85,7 @@ namespace ChargerLogic
                 MessaggioLadeLight.MessaggioMemoriaLunga ImmagineCarica = new MessaggioLadeLight.MessaggioMemoriaLunga();
                 SerialMessage.EsitoRisposta EsitoMsg;
 
-                EsitoMsg = ImmagineCarica.analizzaMessaggio(ArrayDati, 1);
+                EsitoMsg = ImmagineCarica.analizzaMessaggio(ArrayDati, ParametriApparato.llParApp.ModelloMemoria);
                 if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
                 {
                     tempPrg.IdMemoriaLunga = ImmagineCarica.NumeroCarica;
@@ -96,6 +97,15 @@ namespace ChargerLogic
                     tempPrg.DataOraFine = FunzioniMR.StringaTimestamp(ImmagineCarica.DataOraStop);
                     tempPrg.Ah = ImmagineCarica.AhCaricati;
                     tempPrg.Wh = (int)ImmagineCarica.WhCaricati;
+                    tempPrg.Vbat5m = ImmagineCarica.Vbat5m;
+                    tempPrg.Ibat5m = ImmagineCarica.Ibat5m;
+                    tempPrg.VbatFinale = ImmagineCarica.VbatFinale;
+                    tempPrg.IbatFinale = ImmagineCarica.IbatFinale;
+
+                    tempPrg.OpzioniCarica = ImmagineCarica.OpzioniCarica;
+                    tempPrg.VettoreErrori = ImmagineCarica.VettoreErrori;
+
+
                     tempPrg.ModStop = ImmagineCarica.ModStop;
 
 
@@ -125,6 +135,7 @@ namespace ChargerLogic
                 object _dataRx;
                 elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
                 elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
+                ushort SizeCharge = Memoria.MappaCorrente.RecordLunghi.SizeMsgDati;
 
                 SerialMessage.EsitoRisposta _esitoMsg;
                 EsitoCaricamento = null;
@@ -361,6 +372,13 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
+                byte ModMemoria = ParametriApparato.llParApp.ModelloMemoria;
+                // innanzitutto verifico che modello memoria usare.
+
+                int _ADDR_START_RECORD_LUNGHI = (int)Memoria.MappaCorrente.RecordLunghi.AddrArea;
+                int _LEN_AREA_RECORD_LUNGHI = Memoria.MappaCorrente.RecordLunghi.NumPagine * 0x01000 ;
+
+  
 
                 if (RunAsinc)
                 {
@@ -369,7 +387,7 @@ namespace ChargerLogic
                     {
                         elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                         _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                        _passo.Titolo = "Fase 1 - Caricamento Eventi Lunghi LL";
+                        _passo.Titolo = "Fase 1 - Caricamento Eventi Lunghi LL - " + Memoria.MappaCorrente.IdModelloLL; ;
                         _passo.Eventi = 1;
                         _passo.Step = -1;
                         _passo.EsecuzioneInterrotta = false;
@@ -381,9 +399,9 @@ namespace ChargerLogic
 
 
 
-                Log.Debug("Inizio lettura ara lunghi");
+                Log.Debug("Inizio lettura area lunghi");
                 DateTime Inizio = DateTime.Now;
-                BloccoLunghi = new byte[LEN_AREA_RECORD_LUNGHI];
+                BloccoLunghi = new byte[_LEN_AREA_RECORD_LUNGHI];
 
                 int DimPacchetto = 240;
                 int LenPacchetto = 240;
@@ -394,15 +412,15 @@ namespace ChargerLogic
 
                 while (!FineLettura)
                 {
-                    if ((LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo) >= LenPacchetto)
+                    if ((_LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo) >= LenPacchetto)
                     {
                         DimPacchetto = LenPacchetto;
                     }
                     else
                     {
-                        DimPacchetto = LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo;
+                        DimPacchetto = _LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo;
                     }
-                    uint TempAddr = (uint)(ADDR_START_RECORD_LUNGHI + IndirizzoRelativo);
+                    uint TempAddr = (uint)(_ADDR_START_RECORD_LUNGHI + IndirizzoRelativo);
                     _esito = LeggiBloccoMemoria(TempAddr, (ushort)DimPacchetto, out TmpBuffer);
                     if (_esito)
                     {
@@ -412,7 +430,7 @@ namespace ChargerLogic
                         }
                         IndirizzoRelativo += DimPacchetto;
                         NumPacchetto++;
-                        if (IndirizzoRelativo >= LEN_AREA_RECORD_LUNGHI)
+                        if (IndirizzoRelativo >= _LEN_AREA_RECORD_LUNGHI)
                         {
                             FineLettura = true;
                         }
@@ -423,7 +441,7 @@ namespace ChargerLogic
                             double _valProgress = 0;
                             _passo.TipoDati = elementiComuni.tipoMessaggio.AreaMemLungaLL;
                             _passo.Titolo = "";
-                            _passo.Eventi = LEN_AREA_RECORD_LUNGHI;
+                            _passo.Eventi = _LEN_AREA_RECORD_LUNGHI;
                             _passo.Step = IndirizzoRelativo;
                             if (_passo.Eventi > 0)
                             {
@@ -599,13 +617,14 @@ namespace ChargerLogic
             bool _esito = false;
             try
             {
+                ushort SizeCharge = Memoria.MappaCorrente.RecordLunghi.SizeMsgDati;
 
                 MemoriaCicli = new List<llMemoriaCicli>();
                 byte[] _tempCarica = new byte[SizeCharge];
                 int posizione = 0;
                 
                 if (PntProssimaCarica < 1) return false;
-                UInt32 AddrUltimaCarica = (((PntProssimaCarica - 1) * SizeCharge) % 0x4000 );
+                UInt32 AddrUltimaCarica = (((PntProssimaCarica - 1) * SizeCharge) );
                 bool DatiValidi = true;
                 uint AddrLocale;
                 byte[] AreaBrevi = null;
@@ -614,13 +633,13 @@ namespace ChargerLogic
                 {
                     for(int _cnt = 0; _cnt < SizeCharge; _cnt++)
                     {
-                        AddrLocale = (uint)((AddrUltimaCarica + _cnt) % 0x4000);
+                        AddrLocale = (uint)((AddrUltimaCarica + _cnt));
                         _tempCarica[_cnt] = BloccoLunghi[AddrLocale];
                     }
                     if(AddrUltimaCarica < SizeCharge)
                     {
                         //se il puntatore inizliale divanta < 0, riparto dalla fine
-                        AddrUltimaCarica += 0x4000;
+                        AddrUltimaCarica += 0x00;
                     }
                     AddrUltimaCarica -= SizeCharge;
 
@@ -675,6 +694,7 @@ namespace ChargerLogic
 
                 //private System.Collections.Generic.List<_llMemBreve> CicliMemBreveDB = new System.Collections.Generic.List<_llMemBreve>();
                 //public System.Collections.Generic.List<llMemBreve> CicliMemoriaBreve = new System.Collections.Generic.List<llMemBreve>();
+                ushort SizeCharge = Memoria.MappaCorrente.RecordLunghi.SizeMsgDati;
 
                 CicliMemBreve = new List<llMemBreve>();
                 byte[] _tempBreve = new byte[SizeCharge];

@@ -3956,8 +3956,23 @@ namespace PannelloCharger
             _avCicli.ParametriWorker.MainCount = 100;
             _avCicli.llLocale = _cb;
             _avCicli.ValStart = (int)0;
-            _avCicli.AddrStart = 0x1B3000; //   StartAddr;
-            _avCicli.ValFine = 0x4000; //(int)NumRows;// _sb.sbData.LongMem;
+            switch(_cb.ParametriApparato.llParApp.ModelloMemoria)
+            {
+                case 1:
+                    _avCicli.AddrStart = 0x1B3000; //   StartAddr;
+                    _avCicli.ValFine = 0x4000; //(int)NumRows;// _sb.sbData.LongMem;
+                    break;
+                case 2:
+                    _avCicli.AddrStart = 0x1B4000; //   StartAddr;
+                    _avCicli.ValFine = 0x3000; //(int)NumRows;// _sb.sbData.LongMem;
+                    break;
+                default:
+                    _avCicli.AddrStart = 0x1B3000; //   StartAddr;
+                    _avCicli.ValFine = 0x4000; //(int)NumRows;// _sb.sbData.LongMem;
+                    break;
+            }
+
+
             _avCicli.DbDati = _logiche.dbDati.connessione;
             _avCicli.CaricaBrevi = false; // chkCaricaBrevi.Checked;
             _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
@@ -3968,8 +3983,8 @@ namespace PannelloCharger
 
             // Apro il form con le progressbar
             _avCicli.ShowDialog(this);
-            InizializzaListaCariche();
 
+            InizializzaListaCariche();
 
         }
 
