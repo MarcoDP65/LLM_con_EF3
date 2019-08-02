@@ -44,6 +44,8 @@ namespace PannelloCharger
         public bool DatiInCaricamento { get; private set; }
         public bool ProfiloInCaricamento { get; private set; }
 
+        public Color OppChargeAttivo = Color.Red;
+        public Color OppChargeSpento = Color.Green;
 
 
         /* ----------------------------------------------------------
@@ -504,7 +506,7 @@ namespace PannelloCharger
                 ModCicloCorrente.ValoriCiclo.MantAttivo = (ushort)(chkPaAttivaMant.Checked ? 0x000F : 0x00F0);
 
                 // Usa SB
-                ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt = (ushort)(chkPaUsaSpyBatt.Checked ? 0x0000 : 0x00F0);
+                ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt = (ushort)(chkPaUsaSpyBatt.Checked ? 0x000F : 0x00F0);
 
                 // Usa Safety
                 ModCicloCorrente.ValoriCiclo.AbilitaSafety = (ushort)(chkPaUsaSafety.Checked ? 0x000F : 0x00F0);
@@ -550,8 +552,9 @@ namespace PannelloCharger
 
                 // Opportunity
                 ModCicloCorrente.ValoriCiclo.OpportunityAttivabile = (ushort)(chkPaAttivaOppChg.Checked == true ? 0x000F : 0x00F0);
-                ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = FunzioniMR.ConvertiUshort(txtPaOppOraInizio.Text, 1, 0);
-                ModCicloCorrente.ValoriCiclo.OpportunityOraFine = FunzioniMR.ConvertiUshort(txtPaOppOraFine.Text, 1, 0);
+                // non leggo le textbox degli orari: lo slider aggiorna direttamente il parametro
+                //ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = FunzioniMR.ConvertiUshort(txtPaOppOraInizio.Text, 1, 0);  
+                //ModCicloCorrente.ValoriCiclo.OpportunityOraFine = FunzioniMR.ConvertiUshort(txtPaOppOraFine.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.OpportunityDurataMax = FunzioniMR.ConvertiUshort(txtPaOppDurataMax.Text, 1, 0);
                 ModCicloCorrente.ValoriCiclo.OpportunityCorrente = FunzioniMR.ConvertiUshort(txtPaOppCorrente.Text, 10, 0);
                 ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax = FunzioniMR.ConvertiUshort(txtPaOppVSoglia.Text, 100, 0);
@@ -3640,7 +3643,9 @@ namespace PannelloCharger
                         }
 
 
-                        chkPaUsaSpyBatt.Checked = (ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt == 0);
+                        chkPaUsaSpyBatt.Checked = (ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt == 0x000F);
+                        chkPaUsaSafety.Checked = (ModCicloCorrente.ValoriCiclo.AbilitaSafety == 0x000F);
+
 
                         //cmbPaProfilo
 
@@ -3702,11 +3707,15 @@ namespace PannelloCharger
 
                     if (true) // (chkPaAttivaOppChg.Checked)
                     {
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 3, SbloccaValori);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppVSoglia, ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax, ModCicloCorrente.ParametriAttivi.OpportunityTensioneMax, 1, SbloccaValori);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppCorrente, ModCicloCorrente.ValoriCiclo.OpportunityCorrente, ModCicloCorrente.ParametriAttivi.OpportunityCorrente, 2, SbloccaValori);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppDurataMax, ModCicloCorrente.ValoriCiclo.OpportunityDurataMax, ModCicloCorrente.ParametriAttivi.OpportunityDurataMax, 3, SbloccaValori);
+
+                        chkPaOppNotturno.Checked = (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+                        OppNotturno(true);
+                        
                     }
 
 
@@ -3743,7 +3752,6 @@ namespace PannelloCharger
                     MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked, true);
 
                     btnPaProfileRefresh.ForeColor = Color.Red;
-
 
                 }
 
@@ -4362,9 +4370,155 @@ namespace PannelloCharger
 
 
 
+
         #endregion
 
 
+        private void rslPaOppFinestra_ValueChanged(object sender, EventArgs e)
+        {
+            //            txtPaOppOraInizio    ModCicloCorrente.ValoriCiclo.OpportunityOraInizio
+            //            txtPaOppOraFine      ModCicloCorrente.ValoriCiclo.OpportunityOraFine
+
+            ushort FineGiornata;
+
+            if (chkPaOppNotturno.Checked)
+            {
+                // NOTTURNO
+                if (rslPaOppFinestra.SliderMax != ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                {
+                    ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)rslPaOppFinestra.SliderMax;
+                    FineGiornata = (ushort)(1440 - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+                    if ((ModCicloCorrente.ValoriCiclo.OpportunityOraFine + FineGiornata) < 240)
+                    {
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(240 - FineGiornata);
+                        rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                    }
+
+                }
+                else
+                {
+                    if (rslPaOppFinestra.SliderMin != ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
+                    {
+                        if (rslPaOppFinestra.SliderMin > 1200) rslPaOppFinestra.SliderMin = 1200; // Se l'inizio passa dopo la mezzanotte  non è più notturno --> inizio < fine
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)rslPaOppFinestra.SliderMin;
+                        FineGiornata = (ushort)(1440 - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+                        if ((ModCicloCorrente.ValoriCiclo.OpportunityOraFine + FineGiornata) < 240)
+                        {
+                            ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(240 - FineGiornata);
+                            rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        }
+
+                    }
+                }
+
+                txtPaOppOraFine.Text = FunzioniMR.StringaOreMinutiLL( ModCicloCorrente.ValoriCiclo.OpportunityOraFine );
+                txtPaOppOraInizio.Text = FunzioniMR.StringaOreMinutiLL(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+
+            }
+            else
+            {
+                // DIURNO
+
+                if (rslPaOppFinestra.SliderMax != ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
+                {
+                    if (rslPaOppFinestra.SliderMax < 240) rslPaOppFinestra.SliderMax = 240;
+
+                    ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)rslPaOppFinestra.SliderMax;
+                    FineGiornata = (ushort)(1440 - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+                    if ((ModCicloCorrente.ValoriCiclo.OpportunityOraFine - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < 240)
+                    {
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(ModCicloCorrente.ValoriCiclo.OpportunityOraFine - 240);
+                        rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                    }
+
+                }
+                else
+                {
+                    if (rslPaOppFinestra.SliderMin != ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                    {
+                        if (rslPaOppFinestra.SliderMin > 1200) rslPaOppFinestra.SliderMin = 1200; // Se l'inizio passa dopo la mezzanotte  non è più notturno --> inizio < fine
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)rslPaOppFinestra.SliderMin;
+                        if ((ModCicloCorrente.ValoriCiclo.OpportunityOraFine - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < 240)
+                        {
+                            ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio + 240 );
+                            rslPaOppFinestra.SliderMax = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        }
+
+                    }
+                }
+
+                txtPaOppOraFine.Text = FunzioniMR.StringaOreMinutiLL(ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+                txtPaOppOraInizio.Text = FunzioniMR.StringaOreMinutiLL(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+
+                
+            }
+
+            OppNotturno(true);
+
+        }
+
+        private void ChkPaOppNotturno_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkPaOppNotturno.Checked)
+                {
+                    ushort tempval;
+
+                    if (ModCicloCorrente.ValoriCiclo.OpportunityOraFine < ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                    {
+                        //ero effettivamente in notturno. passo a diurno
+                        tempval = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraFine = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = tempval;
+                    }
+
+                }
+                else
+                {
+                    ushort tempval;
+
+                    if (ModCicloCorrente.ValoriCiclo.OpportunityOraFine >= ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                    {
+                        //ero effettivamente in notturno. passo a diurno
+                        tempval = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraFine = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = tempval;
+                    }
+                }
+
+                txtPaOppOraFine.Text = FunzioniMR.StringaOreMinutiLL(ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+                txtPaOppOraInizio.Text = FunzioniMR.StringaOreMinutiLL(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+
+                OppNotturno(true);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void OppNotturno( bool Notturno )
+        {
+            try
+            {
+                if (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
+                {
+                    rslPaOppFinestra.ChannelColor = OppChargeSpento;
+                    rslPaOppFinestra.RangeColor = OppChargeAttivo;
+
+                }
+                else
+                {
+                    rslPaOppFinestra.ChannelColor = OppChargeAttivo;
+                    rslPaOppFinestra.RangeColor = OppChargeSpento;
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
 

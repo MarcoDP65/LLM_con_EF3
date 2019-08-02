@@ -535,6 +535,8 @@
             this.txtPaMantAttesa = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.tbpPaPCOpp = new System.Windows.Forms.TabPage();
+            this.chkPaOppNotturno = new System.Windows.Forms.CheckBox();
+            this.rslPaOppFinestra = new Syncfusion.Windows.Forms.Tools.RangeSlider();
             this.txtPaOppDurataMax = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.txtPaOppCorrente = new System.Windows.Forms.TextBox();
@@ -673,6 +675,7 @@
             this.lblCliCliente = new System.Windows.Forms.Label();
             this.btnCaricaMemoria = new System.Windows.Forms.Button();
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.tabMonitor.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
@@ -6851,6 +6854,8 @@
             // 
             // tbpPaPCOpp
             // 
+            this.tbpPaPCOpp.Controls.Add(this.chkPaOppNotturno);
+            this.tbpPaPCOpp.Controls.Add(this.rslPaOppFinestra);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppDurataMax);
             this.tbpPaPCOpp.Controls.Add(this.label50);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppCorrente);
@@ -6868,20 +6873,51 @@
             this.tbpPaPCOpp.Text = "Opportunity";
             this.tbpPaPCOpp.UseVisualStyleBackColor = true;
             // 
+            // chkPaOppNotturno
+            // 
+            this.chkPaOppNotturno.AutoSize = true;
+            this.chkPaOppNotturno.Location = new System.Drawing.Point(149, 81);
+            this.chkPaOppNotturno.Name = "chkPaOppNotturno";
+            this.chkPaOppNotturno.Size = new System.Drawing.Size(89, 17);
+            this.chkPaOppNotturno.TabIndex = 134;
+            this.chkPaOppNotturno.Text = "Uso Notturno";
+            this.chkPaOppNotturno.UseVisualStyleBackColor = true;
+            this.chkPaOppNotturno.CheckedChanged += new System.EventHandler(this.ChkPaOppNotturno_CheckedChanged);
+            // 
+            // rslPaOppFinestra
+            // 
+            this.rslPaOppFinestra.BeforeTouchSize = new System.Drawing.Size(315, 22);
+            this.rslPaOppFinestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.rslPaOppFinestra.ForeColor = System.Drawing.Color.Black;
+            this.rslPaOppFinestra.HighlightedThumbColor = System.Drawing.Color.Blue;
+            this.rslPaOppFinestra.Location = new System.Drawing.Point(33, 35);
+            this.rslPaOppFinestra.Maximum = 1440;
+            this.rslPaOppFinestra.Name = "rslPaOppFinestra";
+            this.rslPaOppFinestra.PushedThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rslPaOppFinestra.ShowTicks = false;
+            this.rslPaOppFinestra.Size = new System.Drawing.Size(315, 22);
+            this.rslPaOppFinestra.SliderMax = 1200;
+            this.rslPaOppFinestra.SliderMin = 240;
+            this.rslPaOppFinestra.TabIndex = 133;
+            this.rslPaOppFinestra.ThemeName = "Default";
+            this.rslPaOppFinestra.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.rslPaOppFinestra.TickFrequency = 15;
+            this.rslPaOppFinestra.ValueChanged += new System.EventHandler(this.rslPaOppFinestra_ValueChanged);
+            // 
             // txtPaOppDurataMax
             // 
             this.txtPaOppDurataMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaOppDurataMax.Location = new System.Drawing.Point(552, 34);
+            this.txtPaOppDurataMax.Location = new System.Drawing.Point(412, 42);
             this.txtPaOppDurataMax.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaOppDurataMax.Name = "txtPaOppDurataMax";
-            this.txtPaOppDurataMax.Size = new System.Drawing.Size(104, 23);
+            this.txtPaOppDurataMax.Size = new System.Drawing.Size(75, 23);
             this.txtPaOppDurataMax.TabIndex = 132;
             this.txtPaOppDurataMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(551, 18);
+            this.label50.Location = new System.Drawing.Point(409, 26);
             this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(88, 13);
@@ -6891,57 +6927,57 @@
             // txtPaOppCorrente
             // 
             this.txtPaOppCorrente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaOppCorrente.Location = new System.Drawing.Point(437, 34);
+            this.txtPaOppCorrente.Location = new System.Drawing.Point(606, 42);
             this.txtPaOppCorrente.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaOppCorrente.Name = "txtPaOppCorrente";
-            this.txtPaOppCorrente.Size = new System.Drawing.Size(104, 23);
+            this.txtPaOppCorrente.Size = new System.Drawing.Size(75, 23);
             this.txtPaOppCorrente.TabIndex = 130;
             this.txtPaOppCorrente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(436, 18);
+            this.label49.Location = new System.Drawing.Point(603, 23);
             this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(47, 13);
+            this.label49.Size = new System.Drawing.Size(63, 13);
             this.label49.TabIndex = 129;
-            this.label49.Text = "Corrente";
+            this.label49.Text = "Corrente (A)";
             // 
             // txtPaOppVSoglia
             // 
             this.txtPaOppVSoglia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaOppVSoglia.Location = new System.Drawing.Point(296, 34);
+            this.txtPaOppVSoglia.Location = new System.Drawing.Point(512, 42);
             this.txtPaOppVSoglia.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaOppVSoglia.Name = "txtPaOppVSoglia";
-            this.txtPaOppVSoglia.Size = new System.Drawing.Size(104, 23);
+            this.txtPaOppVSoglia.Size = new System.Drawing.Size(75, 23);
             this.txtPaOppVSoglia.TabIndex = 128;
             this.txtPaOppVSoglia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(295, 18);
+            this.label48.Location = new System.Drawing.Point(511, 23);
             this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(103, 13);
+            this.label48.Size = new System.Drawing.Size(80, 13);
             this.label48.TabIndex = 127;
-            this.label48.Text = "Tensione Max (V/el)";
+            this.label48.Text = "Tensione (V/el)";
             // 
             // txtPaOppOraFine
             // 
             this.txtPaOppOraFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaOppOraFine.Location = new System.Drawing.Point(137, 34);
+            this.txtPaOppOraFine.Location = new System.Drawing.Point(273, 76);
             this.txtPaOppOraFine.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaOppOraFine.Name = "txtPaOppOraFine";
-            this.txtPaOppOraFine.Size = new System.Drawing.Size(104, 23);
+            this.txtPaOppOraFine.Size = new System.Drawing.Size(75, 23);
             this.txtPaOppOraFine.TabIndex = 126;
             this.txtPaOppOraFine.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(136, 18);
+            this.label47.Location = new System.Drawing.Point(270, 61);
             this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(47, 13);
@@ -6951,17 +6987,17 @@
             // txtPaOppOraInizio
             // 
             this.txtPaOppOraInizio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaOppOraInizio.Location = new System.Drawing.Point(21, 34);
+            this.txtPaOppOraInizio.Location = new System.Drawing.Point(33, 76);
             this.txtPaOppOraInizio.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaOppOraInizio.Name = "txtPaOppOraInizio";
-            this.txtPaOppOraInizio.Size = new System.Drawing.Size(104, 23);
+            this.txtPaOppOraInizio.Size = new System.Drawing.Size(75, 23);
             this.txtPaOppOraInizio.TabIndex = 124;
             this.txtPaOppOraInizio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(20, 18);
+            this.label46.Location = new System.Drawing.Point(32, 60);
             this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(51, 13);
@@ -9212,5 +9248,8 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TextBox txtPaOppOraInizio;
         private System.Windows.Forms.Label label46;
+        private Syncfusion.Windows.Forms.Tools.RangeSlider rslPaOppFinestra;
+        private System.Windows.Forms.CheckBox chkPaOppNotturno;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
     }
 }
