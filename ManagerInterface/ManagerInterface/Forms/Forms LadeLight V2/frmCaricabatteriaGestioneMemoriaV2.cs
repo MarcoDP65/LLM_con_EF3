@@ -63,7 +63,6 @@ namespace PannelloCharger
 
                 };
 
-
                 BrightIdeasSoftware.OLVColumn sortColIdMemCiclo = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "ID",
@@ -149,7 +148,6 @@ namespace PannelloCharger
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrVFin);
 
-
                 BrightIdeasSoftware.OLVColumn colstrIFin = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "I Fin",
@@ -192,7 +190,6 @@ namespace PannelloCharger
                     TextAlign = HorizontalAlignment.Center,
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrCondizioneStop);
-
                 
                 BrightIdeasSoftware.OLVColumn colstrChargerStop = new BrightIdeasSoftware.OLVColumn()
                 {
@@ -210,23 +207,11 @@ namespace PannelloCharger
                     Text = "Opzioni",
                     ToolTipText = "Opzioni carica",
                     AspectName = "strOpzioniCarica",
-                    Width = 150,
+                    Width = 100,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrChargerOpt);
-
-                BrightIdeasSoftware.OLVColumn colstrChargerErr = new BrightIdeasSoftware.OLVColumn()
-                {
-                    Text = "Errori",
-                    ToolTipText = "Vettore Errori",
-                    AspectName = "strVettoreErrori",
-                    Width = 150,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
-                };
-                flvCicliListaCariche.AllColumns.Add(colstrChargerErr);
-
 
                 BrightIdeasSoftware.OLVColumn colEqualReq = new BrightIdeasSoftware.OLVColumn()
                 {
@@ -253,6 +238,372 @@ namespace PannelloCharger
 
                 };
                 flvCicliListaCariche.AllColumns.Add(colEqualEff);
+
+                BrightIdeasSoftware.OLVColumn colstrChargerErr = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Errori",
+                    ToolTipText = "Vettore Errori",
+                    AspectName = "strVettoreErrori",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Center,
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrChargerErr);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrCalibr = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Cal.Corr.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Errore Calibrazione corrente zero all'accensione",
+                    AspectName = "strErrCalib",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrCalibr);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrComm = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Comm.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Errore Comunicazione con una periferica",
+                    AspectName = "strErrComm",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrComm);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrVBatt = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "V Batt.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Tensione batteria non corretta alla partenza",
+                    AspectName = "strErrVbatt",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrVBatt);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrInternal = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Internal",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Anomalia interna dell'apparecchiatura",
+                    AspectName = "strErrInt",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrInternal);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrSpyBatt = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Batt.Err.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Anomalia da Spy-batt 01",
+                    AspectName = "strErrSB1",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrSpyBatt);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrFuse = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Fuse",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Fusibile di uscita Aperto",
+                    AspectName = "strErrFuse",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrFuse);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrAlim = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Alim.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Mancanza rete o problema alimentazione",
+                    AspectName = "strErrAlim",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrAlim);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrIbat = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "I Batt.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Corrente di Batteria",
+                    AspectName = "strErrIbat",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrIbat);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrStrappo = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Strappo",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Batteria staccata mentre era in carica",
+                    AspectName = "strErrStrappo",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrStrappo);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrParam = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Param Err.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Parametri residenti in memoria non correttia",
+                    AspectName = "strErrParam",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrParam);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrParamSB = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Param SB",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Parametri SpyBatt non adatti al caricabatteria",
+                    AspectName = "strErrParamSB",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrParamSB);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrExtMem = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Memory",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Memoria esterna non funzionante",
+                    AspectName = "strErrMemExt",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrExtMem);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrInit = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Init.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Memoria NON INIZIALIZZATA",
+                    AspectName = "strErrNoInit",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrInit);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrMaxSD = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Max SD",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Numero di Shut Down superiore al valore massimo consentito",
+                    AspectName = "strErrMaxSD",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrMaxSD);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrIPK = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Max IPK",
+                    IsHeaderVertical = true,
+                    ToolTipText = "E’ stato rilevato un Interrupt su PIN I_PK ",
+                    AspectName = "strErrMaxIPK",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrIPK);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrPWHole = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Pw Hole",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Buco di rete (tempo inferiore a 1 secondo)",
+                    AspectName = "strErrPwHole",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrPWHole);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrPWKO = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Ass.Rete",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Assenza di rete",
+                    AspectName = "strErrPwOff",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrPWKO);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrPreCT = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "T.Fase 0",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Timer di Pre Ciclo scaduto e tensione non adeguata",
+                    AspectName = "strErrTmr0",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrPreCT);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrTmrF1 = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "T.Fase 1",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Timer di Fase 1 scaduto e tensione non adeguata",
+                    AspectName = "strErrTmr1",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrTmrF1);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrDispPulse = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Disp.Puls.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Pulsanti display in anomalia",
+                    AspectName = "strErrDispPulse",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrDispPulse);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrPFC = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "PFC",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Tensione PFC anomala",
+                    AspectName = "strErrPFC",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrPFC);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrSEC = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Security",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Contatto di sicurezza",
+                    AspectName = "strErrSecurity",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrSEC);
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrThermal = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Termica",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Anomalia Termica",
+                    AspectName = "strErrThermal",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrThermal);
+
+
+                BrightIdeasSoftware.OLVColumn colstrVettErrUndef = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "N.D.",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Errore non definito",
+                    AspectName = "strErrUndef",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.KO_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettErrUndef);
+
+
+
+
+
+
+
 
 
 
@@ -380,8 +731,7 @@ namespace PannelloCharger
             }
         }
 
-        public bool 
-            MostraCicloCorrente()
+        public bool MostraCicloCorrente()
         {
             try
             {
@@ -432,6 +782,8 @@ namespace PannelloCharger
 
                     txtPaCorrenteI1.Text = FunzioniMR.StringaCorrente((short)_cb.Programmazioni.ProgrammaAttivo.CorrenteMax);
 
+                    MostraEqualCCorrente();
+                    /*
                     if (_cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi >0 || _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa>0)
                     {
                         chkPaAttivaEqual.Checked = true;
@@ -452,6 +804,7 @@ namespace PannelloCharger
                         txtPaEqualPulseCurrent.Text = "";
 
                     }
+                    */
 
                     chkPaUsaSpyBatt.Checked = (_cb.Programmazioni.ProgrammaAttivo.AbilitaComunicazioneSpybatt == 0);
 
@@ -484,7 +837,206 @@ namespace PannelloCharger
 
         }
 
+        public bool MostraEqualCCorrente()
+        {
+            try
+            {
+                
+                txtPaEqualNumPulse.Text = "";
+                txtPaEqualAttesa.Text = "";
+                txtPaEqualPulsePause.Text = "";
+                txtPaEqualPulseTime.Text = "";
+                txtPaEqualPulseCurrent.Text = "";
+
+                if (_cb.Programmazioni.ProgrammaAttivo != null)
+                {
+                    if (_cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi > 0 || _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa > 0)
+                    {
+                        chkPaAttivaEqual.Checked = true;
+                        txtPaEqualNumPulse.Text = _cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi.ToString();
+                        txtPaEqualAttesa.Text = _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa.ToString();
+                        txtPaEqualPulsePause.Text = _cb.Programmazioni.ProgrammaAttivo.EqualDurataPausa.ToString();
+                        txtPaEqualPulseTime.Text = _cb.Programmazioni.ProgrammaAttivo.EqualDurataImpulso.ToString();
+                        txtPaEqualPulseCurrent.Text = FunzioniMR.StringaCorrente((short)_cb.Programmazioni.ProgrammaAttivo.EqualCorrenteImpulso);
+
+                    }
+                    else
+                    {
+                        chkPaAttivaEqual.Checked = false;
+                        txtPaEqualNumPulse.Text = "";
+                        txtPaEqualAttesa.Text = "";
+                        txtPaEqualPulsePause.Text = "";
+                        txtPaEqualPulseTime.Text = "";
+                        txtPaEqualPulseCurrent.Text = "";
+
+                        txtPaEqualNumPulse.Enabled = false;
+                        txtPaEqualAttesa.Enabled = false;
+                        txtPaEqualPulsePause.Enabled = false;
+                        txtPaEqualPulseTime.Enabled = false;
+                        txtPaEqualPulseCurrent.Enabled = false;
+
+                    }
+
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+        public bool MostraMantCCorrente()
+        {
+            try
+            {
+
+                txtPaEqualNumPulse.Text = "";
+                txtPaEqualAttesa.Text = "";
+                txtPaEqualPulsePause.Text = "";
+                txtPaEqualPulseTime.Text = "";
+                txtPaEqualPulseCurrent.Text = "";
+
+                if (_cb.Programmazioni.ProgrammaAttivo != null)
+                {
+                    if (_cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi > 0 || _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa > 0)
+                    {
+                        chkPaAttivaEqual.Checked = true;
+                        txtPaEqualNumPulse.Text = _cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi.ToString();
+                        txtPaEqualAttesa.Text = _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa.ToString();
+                        txtPaEqualPulsePause.Text = _cb.Programmazioni.ProgrammaAttivo.EqualDurataPausa.ToString();
+                        txtPaEqualPulseTime.Text = _cb.Programmazioni.ProgrammaAttivo.EqualDurataImpulso.ToString();
+                        txtPaEqualPulseCurrent.Text = FunzioniMR.StringaCorrente((short)_cb.Programmazioni.ProgrammaAttivo.EqualCorrenteImpulso);
+
+                        /*
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantAttesa, ModCicloCorrente.ValoriCiclo.MantTempoAttesa, ModCicloCorrente.ParametriAttivi.MantTempoAttesa, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmin, ModCicloCorrente.ValoriCiclo.MantTensIniziale, ModCicloCorrente.ParametriAttivi.MantTensIniziale, 1, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmax, ModCicloCorrente.ValoriCiclo.MantTensFinale, ModCicloCorrente.ParametriAttivi.MantTensFinale, 1, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantDurataMax, ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione, ModCicloCorrente.ParametriAttivi.MantTempoMaxErogazione, 3, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantCorrente, ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso, ModCicloCorrente.ParametriAttivi.MantCorrenteImpulso, 2, SbloccaValori);
+
+                        */
+
+                    }
+                    else
+                    {
+                        chkPaAttivaEqual.Checked = false;
+                        txtPaMantAttesa.Text = "";
+                        txtPaMantVmin.Text = "";
+                        txtPaMantVmax.Text = "";
+                        txtPaMantDurataMax.Text = "";
+                        txtPaMantCorrente.Text = "";
+
+                        txtPaMantAttesa.Enabled = false;
+                        txtPaMantVmin.Enabled = false;
+                        txtPaMantVmax.Enabled = false;
+                        txtPaMantDurataMax.Enabled = false;
+                        txtPaMantCorrente.Enabled = false;
+
+                    }
+
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+
+
+
+        public bool AssegnaEqualCCorrente()
+        {
+            try
+            {
+
+                // if (ModCicloCorrente.ValoriCiclo.EqualAttivo == 0xF0F0)
+
+                txtPaEqualNumPulse.Text = ModCicloCorrente.ValoriCiclo.EqualNumImpulsi.ToString();
+                _cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi = ModCicloCorrente.ValoriCiclo.EqualNumImpulsi;
+
+                txtPaEqualAttesa.Text = ModCicloCorrente.ValoriCiclo.EqualTempoAttesa.ToString();
+                _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa = ModCicloCorrente.ValoriCiclo.EqualTempoAttesa;
+
+                txtPaEqualPulsePause.Text = ModCicloCorrente.ValoriCiclo.EqualTempoPausa.ToString();
+                _cb.Programmazioni.ProgrammaAttivo.EqualDurataPausa = ModCicloCorrente.ValoriCiclo.EqualTempoPausa;
+
+                txtPaEqualPulseTime.Text = ModCicloCorrente.ValoriCiclo.EqualTempoImpulso.ToString();
+                _cb.Programmazioni.ProgrammaAttivo.EqualDurataImpulso = ModCicloCorrente.ValoriCiclo.EqualTempoImpulso;
+
+                txtPaEqualPulseCurrent.Text = FunzioniMR.StringaCorrente((short)ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso);
+                _cb.Programmazioni.ProgrammaAttivo.EqualCorrenteImpulso = ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso;
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public bool AssegnaMantCCorrente()
+        {
+            try
+            {
+
+
+                bool SbloccaValori = chkPaSbloccaValori.Checked;
+
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantAttesa, ModCicloCorrente.ValoriCiclo.MantTempoAttesa, ModCicloCorrente.ParametriAttivi.MantTempoAttesa, 3, SbloccaValori);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmin, ModCicloCorrente.ValoriCiclo.MantTensIniziale, ModCicloCorrente.ParametriAttivi.MantTensIniziale, 1, SbloccaValori);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantVmax, ModCicloCorrente.ValoriCiclo.MantTensFinale, ModCicloCorrente.ParametriAttivi.MantTensFinale, 1, SbloccaValori);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantDurataMax, ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione, ModCicloCorrente.ParametriAttivi.MantTempoMaxErogazione, 3, SbloccaValori);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantCorrente, ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso, ModCicloCorrente.ParametriAttivi.MantCorrenteImpulso, 2, SbloccaValori);
  
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public bool AssegnaOppCCorrente()
+        {
+            try
+            {
+
+
+                bool SbloccaValori = chkPaSbloccaValori.Checked;
+
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppVSoglia, ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax, ModCicloCorrente.ParametriAttivi.OpportunityTensioneMax, 1, SbloccaValori);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppCorrente, ModCicloCorrente.ValoriCiclo.OpportunityCorrente, ModCicloCorrente.ParametriAttivi.OpportunityCorrente, 2, SbloccaValori);
+                FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppDurataMax, ModCicloCorrente.ValoriCiclo.OpportunityDurataMax, ModCicloCorrente.ParametriAttivi.OpportunityDurataMax, 3, SbloccaValori);
+
+                OppNotturno((ModCicloCorrente.ValoriCiclo.OpportunityOraInizio >= ModCicloCorrente.ValoriCiclo.OpportunityOraFine));
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+
+
         public List<llMemBreve> CaricaListaBrevi(UInt32 StartAddr, ushort NumRows = 0, uint IdCiclo = 0)
         {
 

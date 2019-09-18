@@ -126,6 +126,19 @@
   <metadata name="sfdImportDati.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>670, 15</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ImgPaOppPuntoVerde.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAUlJREFUSEu1VjtOAzEQdYNAkWxImYoGiYIDUHGNJReJRKTEewZKSiQOtMWSS/AR
+        DWnhvTFbsJ4s+xme9OLPzLyJ7bET14n7i2NXhsLF8Ii2RvuJ9uun5ZjzhfgNxoM7cvF0BZEXEf2L9KM/
+        43ph4y8RWGVC/VhJfCe2/tqV/l0JHkDEU0eFrGBqgobQyVbEvRy/RYdY/T4jHpruOI3UFbD8+lbRUIru
+        +YnDoMiMlozhFlslF0p3sCD10akzgy1rriQ9Ff9F6qsGa+Jjn03acs8ku9akNXdI4p8UgyGhj84yN5hy
+        iSSLGTqvLYMNo38TfUEZ7jIHC8awTgmI9H49q45jSb3sZ3kzv8IhfagBgwkd6qnYnt1MT4R46nSC32Ds
+        1jHu4AraSGe0TtWhiLVJP/qP+muUyhv3SC4sX4bmCWKLsczD3pSpBue+AQPSEDd/yHmkAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
   <metadata name="directoryEntry1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>797, 15</value>
   </metadata>

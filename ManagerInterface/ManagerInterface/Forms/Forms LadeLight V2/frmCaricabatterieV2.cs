@@ -672,6 +672,16 @@ namespace PannelloCharger
                 if (ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso != FunzioniMR.ConvertiUshort(txtPaMantCorrente.Text, 10, 0)) return false;
 
 
+                // Opportunity
+                
+                if (ModCicloCorrente.ValoriCiclo.OpportunityAttivabile != (ushort)(chkPaAttivaOppChg.Checked == true ? 0x000F : 0x000F0)) return false;
+                // non leggo le textbox degli orari: lo slider aggiorna direttamente il parametro
+                //ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = FunzioniMR.ConvertiUshort(txtPaOppOraInizio.Text, 1, 0);  
+                //ModCicloCorrente.ValoriCiclo.OpportunityOraFine = FunzioniMR.ConvertiUshort(txtPaOppOraFine.Text, 1, 0);
+                if (ModCicloCorrente.ValoriCiclo.OpportunityDurataMax != FunzioniMR.ConvertiUshort(txtPaOppDurataMax.Text, 1, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.OpportunityCorrente != FunzioniMR.ConvertiUshort(txtPaOppCorrente.Text, 10, 0)) return false;
+                if (ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax != FunzioniMR.ConvertiUshort(txtPaOppVSoglia.Text, 100, 0)) return false;
+
                 // Soglie
                 if (ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin != FunzioniMR.ConvertiUshort(txtPaVMinRic.Text, 100, 0)) return false;
                 if (ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax != FunzioniMR.ConvertiUshort(txtPaVMaxRic.Text, 100, 0)) return false;
@@ -2596,19 +2606,37 @@ namespace PannelloCharger
                 {
 
                     if (chkPaAttivaEqual.Checked)
-                    {
-                        txtPaEqualAttesa.Enabled = true;
-                        txtPaEqualAttesa.Text = "48";
-                        txtPaEqualNumPulse.Enabled = true;
-                        txtPaEqualNumPulse.Text = "12";
+                     {
+                        ProfiloInCaricamento = true;
+
+
+  
+                        if (ModCicloCorrente.ModelloProfilo == null)
+                        {
+                            /// TODO: Ricarico il modello corrente --> ???? da verificare dove lo perde
+                            ModCicloCorrente.ModelloProfilo = (from p in ModCicloCorrente.DatiModello.ParametriCarica
+                                                               where p.BatteryTypeId == ModCicloCorrente.Batteria.BatteryTypeId && p.IdProfiloCaricaLL == ModCicloCorrente.Profilo.IdProfiloCaricaLL
+                                                               select p).FirstOrDefault();
+
+                        }
+
+
+
+                        ModCicloCorrente.CalcolaEqualizzazione(0x0F0F, ModCicloCorrente.Tensione, ModCicloCorrente.Capacita, _cb.ModelloCorrente);
+                        AssegnaEqualCCorrente();
+                        //MostraEqualCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
 
                     }
                     else
                     {
-                        txtPaEqualAttesa.Enabled = false;
-                        txtPaEqualAttesa.Text = "";
-                        txtPaEqualNumPulse.Enabled = false;
-                        txtPaEqualNumPulse.Text = "";
+                        ProfiloInCaricamento = true;
+                        ModCicloCorrente.CalcolaEqualizzazione(0,0,0, null);
+                        AssegnaEqualCCorrente();
+                        MostraEqualCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
 
                     }
                 }
@@ -2620,6 +2648,109 @@ namespace PannelloCharger
             }
 
         }
+
+        private void chkPaAttivaMant_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ProfiloInCaricamento)
+                {
+
+                    if (chkPaAttivaMant.Checked)
+                    {
+                        ProfiloInCaricamento = true;
+
+
+
+                        if (ModCicloCorrente.ModelloProfilo == null)
+                        {
+                            /// TODO: Ricarico il modello corrente --> ???? da verificare dove lo perde
+                            ModCicloCorrente.ModelloProfilo = (from p in ModCicloCorrente.DatiModello.ParametriCarica
+                                                               where p.BatteryTypeId == ModCicloCorrente.Batteria.BatteryTypeId && p.IdProfiloCaricaLL == ModCicloCorrente.Profilo.IdProfiloCaricaLL
+                                                               select p).FirstOrDefault();
+
+                        }
+
+
+
+                        ModCicloCorrente.CalcolaMantenimento(0x0F0F, ModCicloCorrente.Tensione, ModCicloCorrente.Capacita, _cb.ModelloCorrente);
+                        AssegnaMantCCorrente();
+                       // MostraMantCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                    else
+                    {
+                        ProfiloInCaricamento = true;
+                        ModCicloCorrente.CalcolaMantenimento(0, 0, 0, null);
+                        AssegnaMantCCorrente();
+                        //MostraEqualCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaAttivaMant_CheckedChanged: " + Ex.Message);
+
+            }
+
+        }
+
+        private void ChkPaAttivaOppChg_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ProfiloInCaricamento)
+                {
+
+                    if (chkPaAttivaOppChg.Checked)
+                    {
+                        ProfiloInCaricamento = true;
+
+
+
+                        if (ModCicloCorrente.ModelloProfilo == null)
+                        {
+                            /// TODO: Ricarico il modello corrente --> ???? da verificare dove lo perde
+                            ModCicloCorrente.ModelloProfilo = (from p in ModCicloCorrente.DatiModello.ParametriCarica
+                                                               where p.BatteryTypeId == ModCicloCorrente.Batteria.BatteryTypeId && p.IdProfiloCaricaLL == ModCicloCorrente.Profilo.IdProfiloCaricaLL
+                                                               select p).FirstOrDefault();
+
+                        }
+
+
+
+                        ModCicloCorrente.CalcolaOpportunityChg(0x0F0F, ModCicloCorrente.Tensione, ModCicloCorrente.Capacita, _cb.ModelloCorrente);
+                        AssegnaOppCCorrente();
+
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                    else
+                    {
+                        ProfiloInCaricamento = true;
+                        ModCicloCorrente.CalcolaOpportunityChg(0, 0, 0, null);
+                        AssegnaOppCCorrente();
+
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ChkPaAttivaOppChg_CheckedChanged: " + Ex.Message);
+
+            }
+
+        }
+
 
         private void chkPaAttivaRiarmoBms_CheckedChanged(object sender, EventArgs e)
         {
@@ -3001,7 +3132,6 @@ namespace PannelloCharger
 
         }
 
-
         private void InizializzaVistaProgrammazioni()
         {
             try
@@ -3138,13 +3268,6 @@ namespace PannelloCharger
 
         }
 
-
-
-
-
-
-
-
         private void btnCaricaContatori_Click(object sender, EventArgs e)
         {
             try
@@ -3223,12 +3346,6 @@ namespace PannelloCharger
                 return false;
             }
         }
-
-
-
-
-
-
 
         private void frmCaricabatterie_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -3337,12 +3454,6 @@ namespace PannelloCharger
             }
 
         }
-
-
-
-
-
-
 
         private void cmbInitTipoApparato_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3681,6 +3792,8 @@ namespace PannelloCharger
 
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaEqual, ref lblPaAttivaEqual, ModCicloCorrente.ValoriCiclo.EqualAttivabile, ModCicloCorrente.ParametriAttivi.EqualAttivabile, 3, SbloccaValori);
                     txtPaEqualAttesa.Text = "";
+                    MostraEqualCCorrente();
+
                     if (true) // (chkPaAttivaEqual.Checked)
                     {
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualAttesa, ModCicloCorrente.ValoriCiclo.EqualTempoAttesa, ModCicloCorrente.ParametriAttivi.EqualTempoAttesa, 3, SbloccaValori);
@@ -3692,6 +3805,7 @@ namespace PannelloCharger
 
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaMant, ref lblPaAttivaMant, ModCicloCorrente.ValoriCiclo.MantAttivabile, ModCicloCorrente.ParametriAttivi.MantAttivabile, 3, SbloccaValori);
 
+                   
                     if (true) // (chkPaAttivaMant.Checked)
                     {
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantAttesa, ModCicloCorrente.ValoriCiclo.MantTempoAttesa, ModCicloCorrente.ParametriAttivi.MantTempoAttesa, 3, SbloccaValori);
@@ -4401,20 +4515,29 @@ namespace PannelloCharger
                 // NOTTURNO
                 if (rslPaOppFinestra.SliderMax != ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
                 {
+                    if (rslPaOppFinestra.SliderMax < (ModCicloCorrente.DurataMaxCarica)) rslPaOppFinestra.SliderMax = (ModCicloCorrente.DurataMaxCarica);
+
                     ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)rslPaOppFinestra.SliderMax;
+
                     FineGiornata = (ushort)(1440 - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
                     if ((ModCicloCorrente.ValoriCiclo.OpportunityOraFine + FineGiornata) < 240)
                     {
                         ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(240 - FineGiornata);
                         rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
                     }
+                    if ((ModCicloCorrente.ValoriCiclo.OpportunityOraInizio - ModCicloCorrente.ValoriCiclo.OpportunityOraFine) < ModCicloCorrente.DurataMaxCarica)
+                    {
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio - ModCicloCorrente.DurataMaxCarica);
+                        rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                    }
+
 
                 }
                 else
                 {
                     if (rslPaOppFinestra.SliderMin != ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
                     {
-                        if (rslPaOppFinestra.SliderMin > 1200) rslPaOppFinestra.SliderMin = 1200; // Se l'inizio passa dopo la mezzanotte  non è più notturno --> inizio < fine
+                        if (rslPaOppFinestra.SliderMin >  (1440 - ModCicloCorrente.DurataMaxCarica)) rslPaOppFinestra.SliderMin = (1440 - ModCicloCorrente.DurataMaxCarica); // Se l'inizio passa dopo la mezzanotte  non è più notturno --> inizio < fine
                         ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)rslPaOppFinestra.SliderMin;
                         FineGiornata = (ushort)(1440 - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
                         if ((ModCicloCorrente.ValoriCiclo.OpportunityOraFine + FineGiornata) < 240)
@@ -4422,7 +4545,11 @@ namespace PannelloCharger
                             ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(240 - FineGiornata);
                             rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
                         }
-
+                        if ((ModCicloCorrente.ValoriCiclo.OpportunityOraInizio - ModCicloCorrente.ValoriCiclo.OpportunityOraFine) < ModCicloCorrente.DurataMaxCarica)
+                        {
+                            ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(ModCicloCorrente.ValoriCiclo.OpportunityOraFine + ModCicloCorrente.DurataMaxCarica);
+                            rslPaOppFinestra.SliderMax = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                        }
                     }
                 }
 
@@ -4445,6 +4572,13 @@ namespace PannelloCharger
                         ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(ModCicloCorrente.ValoriCiclo.OpportunityOraFine - 240);
                         rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
                     }
+                    if ((1440 -ModCicloCorrente.ValoriCiclo.OpportunityOraFine + ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < ModCicloCorrente.DurataMaxCarica)
+                    {
+                        ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(ModCicloCorrente.DurataMaxCarica + ModCicloCorrente.ValoriCiclo.OpportunityOraFine - 1440);
+                        rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                    }
+
+
 
                 }
                 else
@@ -4456,6 +4590,11 @@ namespace PannelloCharger
                         if ((ModCicloCorrente.ValoriCiclo.OpportunityOraFine - ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < 240)
                         {
                             ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio + 240 );
+                            rslPaOppFinestra.SliderMax = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        }
+                        if ((1440 - ModCicloCorrente.ValoriCiclo.OpportunityOraFine + ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < ModCicloCorrente.DurataMaxCarica)
+                        {
+                            ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio + 1440 - ModCicloCorrente.DurataMaxCarica);
                             rslPaOppFinestra.SliderMax = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
                         }
 
@@ -4480,12 +4619,18 @@ namespace PannelloCharger
                 {
                     ushort tempval;
 
-                    if (ModCicloCorrente.ValoriCiclo.OpportunityOraFine < ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                    if (ModCicloCorrente.ValoriCiclo.OpportunityOraFine > ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
                     {
                         //ero effettivamente in notturno. passo a diurno
                         tempval = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
                         ModCicloCorrente.ValoriCiclo.OpportunityOraFine = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
                         ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = tempval;
+                        int templeft = txtPaOppOraFine.Left;
+                        txtPaOppOraFine.Left = txtPaOppOraInizio.Left;
+                        txtPaOppOraInizio.Left = templeft;
+                        templeft = lblPaOppOraFine.Left;
+                        lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
+                        lblPaOppOraInizio.Left = templeft;
                     }
 
                 }
@@ -4493,12 +4638,18 @@ namespace PannelloCharger
                 {
                     ushort tempval;
 
-                    if (ModCicloCorrente.ValoriCiclo.OpportunityOraFine >= ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                    if (ModCicloCorrente.ValoriCiclo.OpportunityOraFine <= ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
                     {
                         //ero effettivamente in notturno. passo a diurno
                         tempval = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
                         ModCicloCorrente.ValoriCiclo.OpportunityOraFine = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
                         ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = tempval;
+                        int templeft = txtPaOppOraFine.Left;
+                        txtPaOppOraFine.Left = txtPaOppOraInizio.Left;
+                        txtPaOppOraInizio.Left = templeft;
+                        templeft = lblPaOppOraFine.Left;
+                        lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
+                        lblPaOppOraInizio.Left = templeft;
                     }
                 }
 
@@ -4534,6 +4685,7 @@ namespace PannelloCharger
 
             }
         }
-    }
+
+     }
 }
 

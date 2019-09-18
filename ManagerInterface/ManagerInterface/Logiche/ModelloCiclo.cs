@@ -16,6 +16,7 @@ namespace ChargerLogic
         public List<ParametroLL> ListaParametri;
         public int NumParametriAttivi = 0;
 
+        public _mbProfiloTipoBatt ModelloProfilo { get; set; }
         public mbTipoBatteria Batteria;
         public _mbProfiloCarica Profilo;
         public ushort Tensione { get; set; }
@@ -24,6 +25,8 @@ namespace ChargerLogic
         public string NomeProfilo { get; set; }
         public ushort IdProgramma { get; set; }
         public bool DatiSalvati { get; set; }
+
+        public ushort DurataMaxCarica { get; set; }
 
         public llProgrammaCarica ProfiloRegistrato;
 
@@ -42,6 +45,7 @@ namespace ChargerLogic
             ProfiloRegistrato = new llProgrammaCarica();
             DatiSalvati = true;
             NumParametriAttivi = 0;
+            ModelloProfilo = null;
         }
 
         public bool GeneraProgrammaCarica()
@@ -384,6 +388,9 @@ namespace ChargerLogic
                     }
                 }
 
+                CaricaBatteria.EsitoRicalcolo esitoRicalcolo = CalcolaParametriFissi(Batteria._mbTb, Profilo, Tensione, Capacita, NumeroCelle,null);
+
+
 
                 return true;
             }
@@ -408,7 +415,7 @@ namespace ChargerLogic
             {
                 ValoriCiclo = new ParametriCiclo();
                 ParametriAttivi = new ParametriCiclo();
-                _mbProfiloTipoBatt ModelloProfilo;
+             
                 bool AttivaArea;
 
 
@@ -442,6 +449,7 @@ namespace ChargerLogic
                 }
                 NumeroCelle = Celle;
                 Capacita = CapacitaDefinita;
+                DurataMaxCarica = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.DurataNominale);
 
                 ParametriAttivi.TempoT0Max = FunzioniComuni.StatoParametro( ModelloProfilo.TempoT0Max);
                 ValoriCiclo.TempoT0Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT0Max);
@@ -494,19 +502,19 @@ namespace ChargerLogic
                 ParametriAttivi.EqualAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo.EqualAttivabile);
                 ValoriCiclo.EqualAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.EqualAttivabile);
 
-                CalcolaEqualizzazione(ValoriCiclo.EqualAttivabile, Tensione, CapacitaDefinita, ModelloProfilo, ModelloCB);
+                CalcolaEqualizzazione(ValoriCiclo.EqualAttivabile, Tensione, CapacitaDefinita, ModelloCB);
 
                 // Mant
                 ParametriAttivi.MantAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo.MantAttivabile);
                 ValoriCiclo.MantAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.MantAttivabile);
 
-                CalcolaMantenimento(ValoriCiclo.MantAttivabile,  Tensione,  CapacitaDefinita,  ModelloProfilo, ModelloCB);
+                CalcolaMantenimento(ValoriCiclo.MantAttivabile,  Tensione,  CapacitaDefinita, ModelloCB);
 
                 // Opportunity
                 ParametriAttivi.OpportunityAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityAttivabile);
                 ValoriCiclo.OpportunityAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.OpportunityAttivabile);
 
-                CalcolaOpportunityChg(ValoriCiclo.OpportunityAttivabile, Tensione, CapacitaDefinita, ModelloProfilo, ModelloCB);
+                CalcolaOpportunityChg(ValoriCiclo.OpportunityAttivabile, Tensione, CapacitaDefinita, ModelloCB);
 
 
 
@@ -543,8 +551,50 @@ namespace ChargerLogic
             }
         }
 
+        public CaricaBatteria.EsitoRicalcolo CalcolaParametriFissi(_mbTipoBatteria Batteria, _mbProfiloCarica Profilo, ushort Tensione, ushort CapacitaDefinita, ushort Celle, _llModelloCb ModelloCB)
+        {
+            try
+            {
+                //ValoriCiclo = new ParametriCiclo();
+                //ParametriAttivi = new ParametriCiclo();
+                _mbProfiloTipoBatt ModelloProfilo;
+                //bool AttivaArea;
 
-        public bool CalcolaMantenimento(ushort Attivazione, ushort Tensione, ushort CapacitaDefinita, _mbProfiloTipoBatt ModelloProfilo,_llModelloCb ModelloCB)
+
+                if (Batteria == null || Profilo == null || Tensione < 1200 || CapacitaDefinita < 50)
+                {
+                    ValoriCiclo.Esito = 0xFF;
+                    ValoriCiclo.Messaggio = "Parametri iniziali non corretti";
+                    return CaricaBatteria.EsitoRicalcolo.ParNonValidi;
+                }
+
+                ModelloProfilo = (from p in DatiModello.ParametriCarica
+                                  where p.BatteryTypeId == Batteria.BatteryTypeId && p.IdProfiloCaricaLL == Profilo.IdProfiloCaricaLL
+                                  select p).FirstOrDefault();
+
+                if (ModelloProfilo == null)
+                {
+                    // Abbinamento batteria / ciclo non previsto
+                    ValoriCiclo.Esito = 0xF1;
+                    ValoriCiclo.Messaggio = "Abbinamento batteria / ciclo non previsto";
+                    return CaricaBatteria.EsitoRicalcolo.ParNonValidi;
+                }
+
+                DurataMaxCarica = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.DurataNominale);
+
+                return CaricaBatteria.EsitoRicalcolo.OK;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CalcolaParametri: " + Ex.Message);
+                return CaricaBatteria.EsitoRicalcolo.ErrGenerico;
+            }
+        }
+
+
+
+
+        public bool CalcolaMantenimento(ushort Attivazione, ushort Tensione, ushort CapacitaDefinita,_llModelloCb ModelloCB)
         {
             try
             {
@@ -605,12 +655,12 @@ namespace ChargerLogic
             }
         }
 
-        public bool CalcolaEqualizzazione(ushort Attivazione, ushort Tensione, ushort CapacitaDefinita, _mbProfiloTipoBatt ModelloProfilo, _llModelloCb ModelloCB)
+        public bool CalcolaEqualizzazione(ushort Attivazione, ushort Tensione, ushort CapacitaDefinita , _llModelloCb ModelloCB)
         {
             try
             {
                 bool AzzeraValori = false;
-
+                
                 if (ModelloProfilo == null)
                 {
                     // Abbinamento batteria / ciclo non previsto
@@ -731,7 +781,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool CalcolaOpportunityChg(ushort Attivazione, ushort Tensione, ushort CapacitaDefinita, _mbProfiloTipoBatt ModelloProfilo, _llModelloCb ModelloCB)
+        public bool CalcolaOpportunityChg(ushort Attivazione, ushort Tensione, ushort CapacitaDefinita,  _llModelloCb ModelloCB)
         {
             try
             {

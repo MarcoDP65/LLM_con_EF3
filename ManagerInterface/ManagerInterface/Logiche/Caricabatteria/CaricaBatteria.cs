@@ -2158,6 +2158,7 @@ namespace ChargerLogic
                     return false;
 
                 }
+
                 uint AdrDati = ADDR_START_PROGRAMMAZIONI;
                 MessaggioLadeLight.MessaggioProgrammazione NuovoPrg;
                 foreach (llProgrammaCarica tempPrg in Programmazioni.ProgrammiDefiniti.OrderBy(prg => prg.PosizioneCorrente))

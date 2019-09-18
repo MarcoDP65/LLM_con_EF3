@@ -155,7 +155,7 @@ namespace PannelloCharger
                     case 4:
                     case 5:
                         {
-                            chkValore.Checked = (bool)(Valore>0);
+                            chkValore.Checked = !((Valore == 0) || (Valore == 0x00F0) || (Valore == 0xF0F0));
                             chkValore.Enabled = true || SbloccaValore;
 
                             if (lblDescription != null)

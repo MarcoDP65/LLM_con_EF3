@@ -1094,9 +1094,384 @@ namespace MoriData
 
             }
         }
+        /**********************************************************************************************/
+        /*   Dettaglio Errori                                                                         */
+        /**********************************************************************************************/
+        public string strErrCalib
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000001) == 0x000001)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+        public string strErrComm
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000002) == 0x000002)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrVbatt
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000004) == 0x000004)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrInt
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000008) == 0x000008)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrSB1
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000010) == 0x000010)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrFuse
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000020) == 0x000020)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrAlim
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000040) == 0x000040)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrIbat
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000080) == 0x000080)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrStrappo
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000100) == 0x000100)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+        public string strErrParam
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000200) == 0x000200)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+        public string strErrParamSB
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000400) == 0x000400)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+        public string strErrMemExt
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x000800) == 0x000800)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strErrNoInit
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x001000) == 0x001000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrMaxSD
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x002000) == 0x002000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrMaxIPK
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x004000) == 0x004000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrPwHole
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x008000) == 0x008000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrPwOff
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x010000) == 0x010000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrTmr0
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x020000) == 0x020000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrTmr1
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x040000) == 0x040000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrDispPulse
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x080000) == 0x080000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrPFC
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x100000) == 0x100000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+
+        public string strErrSecurity
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x200000) == 0x200000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+        public string strErrThermal
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x400000) == 0x400000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string strErrUndef1
+        {
+            get
+            {
+                if ((_llmc.VettoreErrori & 0x800000) == 0x800000)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
 
 
 
+
+
+
+
+        /**********************************************************************************************/
 
         public byte CondizioneStop
         {

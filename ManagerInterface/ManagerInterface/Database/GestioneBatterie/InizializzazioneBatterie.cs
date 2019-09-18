@@ -95,6 +95,7 @@ namespace ChargerLogic
                     TempoT2Max = "=##210",
                     TempoT3Max = "",
                     FattoreK = "=##060",
+                    DurataNominale = "=##780",
                     // Tensioni
                     TensionePrecicloV0 = "###190",
                     TensioneSogliaVs = "=##240",
@@ -153,6 +154,7 @@ namespace ChargerLogic
                     TempoT2Max = "=##210",
                     TempoT3Max = "",
                     FattoreK = "=##60",
+                    DurataNominale = "=##660",
                     // Tensioni
                     TensionePrecicloV0 = "###190",
                     TensioneSogliaVs = "=##240",
@@ -211,6 +213,7 @@ namespace ChargerLogic
                     TempoT2Max = "=##210",
                     TempoT3Max = "",
                     FattoreK = "=##120",
+                    DurataNominale = "=##480",
 
                     // Tensioni
                     TensionePrecicloV0 = "###190",
@@ -270,6 +273,7 @@ namespace ChargerLogic
                     TempoT2Max = "=##300",
                     TempoT3Max = "",
                     FattoreK = "=##100",
+                    DurataNominale = "=##600",
                     EqualTempoAttesa = "",
                     EqualTempoImpulso = "",
                     EqualTempoPausa = "",
@@ -328,6 +332,7 @@ namespace ChargerLogic
                     TempoT2Max = "=##300",
                     TempoT3Max = "=##240",
                     FattoreK = "=##100",
+                    DurataNominale = "=##600",
                     EqualTempoAttesa = "=##480",
                     EqualTempoImpulso = "=##5",
                     EqualTempoPausa = "=##25",
@@ -386,6 +391,7 @@ namespace ChargerLogic
                     TempoT2Max = "=##300",
                     TempoT3Max = "=##240",
                     FattoreK = "=##100",
+                    DurataNominale = "=##600",
                     EqualTempoAttesa = "",
                     EqualTempoImpulso = "",
                     EqualTempoPausa = "",
@@ -429,6 +435,7 @@ namespace ChargerLogic
 
                 });
             #endregion "Ciclo IUIa - Pb/Lead"
+
 
 
             return true;

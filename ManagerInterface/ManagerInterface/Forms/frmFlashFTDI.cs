@@ -272,6 +272,27 @@ namespace PannelloCharger
                                 //-----------------------------------------------------
                             }
 
+                            if (optFTDIidbatt.Checked)
+                            {
+                                // ID-BATT Programmer
+                                //-----------------------------------------------------
+                                _epromCorrente.ProductID = 0x7A72;
+                                _epromCorrente.Manufacturer = FunzioniMR.CompletaAZero("BATTERY CHARGER INDUSTRY", 32);
+                                _epromCorrente.Description = FunzioniMR.CompletaAZero("ID-BATT PROGRAMMER", 64);
+                                _epromCorrente.IsVCP = 0x01;
+                                //-----------------------------------------------------
+                                _epromCorrente.I2CDeviceId = 0x123456;
+                                //-----------------------------------------------------
+                                _epromCorrente.Cbus0 = 0x00;
+                                _epromCorrente.Cbus1 = 0x00;
+                                _epromCorrente.Cbus2 = 0x00;
+                                _epromCorrente.Cbus3 = 0x00;
+                                _epromCorrente.Cbus4 = 0x00;
+                                _epromCorrente.Cbus5 = 0x0F;
+                                _epromCorrente.Cbus6 = 0x00;
+                                //-----------------------------------------------------
+                            }
+
 
                             if (optFTDISBFinto.Checked)
                             {
@@ -316,6 +337,26 @@ namespace PannelloCharger
                                 //-----------------------------------------------------
                             }
 
+                            if (optFTDIBattRegen.Checked)
+                            {
+                                // DESOLFATATORE
+                                //-----------------------------------------------------
+                                _epromCorrente.ProductID = 0x7A76;
+                                _epromCorrente.Manufacturer = FunzioniMR.CompletaAZero("MORI RADDRIZZATORI", 32);
+                                _epromCorrente.Description = FunzioniMR.CompletaAZero("BATTERY REGENERATOR", 64);
+                                _epromCorrente.IsVCP = 0x01;
+                                //-----------------------------------------------------
+                                _epromCorrente.I2CDeviceId = 0x134567;
+                                //-----------------------------------------------------
+                                _epromCorrente.Cbus0 = 0x00;
+                                _epromCorrente.Cbus1 = 0x00;
+                                _epromCorrente.Cbus2 = 0x00;
+                                _epromCorrente.Cbus3 = 0x00;
+                                _epromCorrente.Cbus4 = 0x00;
+                                _epromCorrente.Cbus5 = 0x04;
+                                _epromCorrente.Cbus6 = 0x00;
+                                //-----------------------------------------------------
+                            }
 
 
 

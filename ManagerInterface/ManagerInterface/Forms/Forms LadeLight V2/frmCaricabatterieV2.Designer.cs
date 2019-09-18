@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCaricabatterieV2));
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
@@ -535,6 +536,8 @@
             this.txtPaMantAttesa = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.tbpPaPCOpp = new System.Windows.Forms.TabPage();
+            this.lblPaOppPuntoVerde = new System.Windows.Forms.Label();
+            this.ImgPaOppPuntoVerde = new System.Windows.Forms.PictureBox();
             this.chkPaOppNotturno = new System.Windows.Forms.CheckBox();
             this.rslPaOppFinestra = new Syncfusion.Windows.Forms.Tools.RangeSlider();
             this.txtPaOppDurataMax = new System.Windows.Forms.TextBox();
@@ -544,9 +547,9 @@
             this.txtPaOppVSoglia = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.txtPaOppOraFine = new System.Windows.Forms.TextBox();
-            this.label47 = new System.Windows.Forms.Label();
+            this.lblPaOppOraFine = new System.Windows.Forms.Label();
             this.txtPaOppOraInizio = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
+            this.lblPaOppOraInizio = new System.Windows.Forms.Label();
             this.tbpPaParSoglia = new System.Windows.Forms.TabPage();
             this.txtPaVMinStop = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
@@ -731,6 +734,7 @@
             this.tbpPaPCEqual.SuspendLayout();
             this.tbpPaPCMant.SuspendLayout();
             this.tbpPaPCOpp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImgPaOppPuntoVerde)).BeginInit();
             this.tbpPaParSoglia.SuspendLayout();
             this.tbpPaListaProfili.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).BeginInit();
@@ -838,6 +842,7 @@
             this.flvwLettureParametri.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwLettureParametri.CellEditUseWholeCell = false;
             this.flvwLettureParametri.FullRowSelect = true;
+            this.flvwLettureParametri.HideSelection = false;
             this.flvwLettureParametri.Location = new System.Drawing.Point(429, 19);
             this.flvwLettureParametri.Margin = new System.Windows.Forms.Padding(2);
             this.flvwLettureParametri.Name = "flvwLettureParametri";
@@ -2834,6 +2839,7 @@
             // lvwFWInFileStruct
             // 
             this.lvwFWInFileStruct.CellEditUseWholeCell = false;
+            this.lvwFWInFileStruct.HideSelection = false;
             this.lvwFWInFileStruct.Location = new System.Drawing.Point(271, 117);
             this.lvwFWInFileStruct.Margin = new System.Windows.Forms.Padding(2);
             this.lvwFWInFileStruct.Name = "lvwFWInFileStruct";
@@ -3565,6 +3571,7 @@
             // flwFWFileLLFStruct
             // 
             this.flwFWFileLLFStruct.CellEditUseWholeCell = false;
+            this.flwFWFileLLFStruct.HideSelection = false;
             this.flwFWFileLLFStruct.Location = new System.Drawing.Point(194, 89);
             this.flwFWFileLLFStruct.Margin = new System.Windows.Forms.Padding(2);
             this.flwFWFileLLFStruct.Name = "flwFWFileLLFStruct";
@@ -6015,6 +6022,7 @@
             this.chkPaAttivaOppChg.Size = new System.Drawing.Size(15, 14);
             this.chkPaAttivaOppChg.TabIndex = 147;
             this.chkPaAttivaOppChg.UseVisualStyleBackColor = true;
+            this.chkPaAttivaOppChg.CheckedChanged += new System.EventHandler(this.ChkPaAttivaOppChg_CheckedChanged);
             // 
             // lblPaAttivaOppChg
             // 
@@ -6095,6 +6103,7 @@
             this.chkPaAttivaMant.Size = new System.Drawing.Size(15, 14);
             this.chkPaAttivaMant.TabIndex = 137;
             this.chkPaAttivaMant.UseVisualStyleBackColor = true;
+            this.chkPaAttivaMant.CheckedChanged += new System.EventHandler(this.chkPaAttivaMant_CheckedChanged);
             // 
             // lblPaAttivaMant
             // 
@@ -6110,10 +6119,10 @@
             // 
             // btnCicloCorrente
             // 
-            this.btnCicloCorrente.Location = new System.Drawing.Point(1039, 28);
+            this.btnCicloCorrente.Location = new System.Drawing.Point(1025, 28);
             this.btnCicloCorrente.Margin = new System.Windows.Forms.Padding(2);
             this.btnCicloCorrente.Name = "btnCicloCorrente";
-            this.btnCicloCorrente.Size = new System.Drawing.Size(120, 27);
+            this.btnCicloCorrente.Size = new System.Drawing.Size(144, 27);
             this.btnCicloCorrente.TabIndex = 135;
             this.btnCicloCorrente.Text = "Leggi Profilo Attivo";
             this.btnCicloCorrente.UseVisualStyleBackColor = true;
@@ -6854,6 +6863,8 @@
             // 
             // tbpPaPCOpp
             // 
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppPuntoVerde);
+            this.tbpPaPCOpp.Controls.Add(this.ImgPaOppPuntoVerde);
             this.tbpPaPCOpp.Controls.Add(this.chkPaOppNotturno);
             this.tbpPaPCOpp.Controls.Add(this.rslPaOppFinestra);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppDurataMax);
@@ -6863,9 +6874,9 @@
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppVSoglia);
             this.tbpPaPCOpp.Controls.Add(this.label48);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppOraFine);
-            this.tbpPaPCOpp.Controls.Add(this.label47);
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppOraFine);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppOraInizio);
-            this.tbpPaPCOpp.Controls.Add(this.label46);
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppOraInizio);
             this.tbpPaPCOpp.Location = new System.Drawing.Point(4, 22);
             this.tbpPaPCOpp.Name = "tbpPaPCOpp";
             this.tbpPaPCOpp.Size = new System.Drawing.Size(719, 139);
@@ -6873,10 +6884,30 @@
             this.tbpPaPCOpp.Text = "Opportunity";
             this.tbpPaPCOpp.UseVisualStyleBackColor = true;
             // 
+            // lblPaOppPuntoVerde
+            // 
+            this.lblPaOppPuntoVerde.AutoSize = true;
+            this.lblPaOppPuntoVerde.Location = new System.Drawing.Point(56, 104);
+            this.lblPaOppPuntoVerde.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaOppPuntoVerde.Name = "lblPaOppPuntoVerde";
+            this.lblPaOppPuntoVerde.Size = new System.Drawing.Size(194, 13);
+            this.lblPaOppPuntoVerde.TabIndex = 137;
+            this.lblPaOppPuntoVerde.Text = "Periodo  attivazione Opportunity Charge";
+            // 
+            // ImgPaOppPuntoVerde
+            // 
+            this.ImgPaOppPuntoVerde.Image = ((System.Drawing.Image)(resources.GetObject("ImgPaOppPuntoVerde.Image")));
+            this.ImgPaOppPuntoVerde.Location = new System.Drawing.Point(35, 100);
+            this.ImgPaOppPuntoVerde.Name = "ImgPaOppPuntoVerde";
+            this.ImgPaOppPuntoVerde.Size = new System.Drawing.Size(16, 19);
+            this.ImgPaOppPuntoVerde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImgPaOppPuntoVerde.TabIndex = 136;
+            this.ImgPaOppPuntoVerde.TabStop = false;
+            // 
             // chkPaOppNotturno
             // 
             this.chkPaOppNotturno.AutoSize = true;
-            this.chkPaOppNotturno.Location = new System.Drawing.Point(149, 81);
+            this.chkPaOppNotturno.Location = new System.Drawing.Point(151, 72);
             this.chkPaOppNotturno.Name = "chkPaOppNotturno";
             this.chkPaOppNotturno.Size = new System.Drawing.Size(89, 17);
             this.chkPaOppNotturno.TabIndex = 134;
@@ -6890,7 +6921,7 @@
             this.rslPaOppFinestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.rslPaOppFinestra.ForeColor = System.Drawing.Color.Black;
             this.rslPaOppFinestra.HighlightedThumbColor = System.Drawing.Color.Blue;
-            this.rslPaOppFinestra.Location = new System.Drawing.Point(33, 35);
+            this.rslPaOppFinestra.Location = new System.Drawing.Point(35, 26);
             this.rslPaOppFinestra.Maximum = 1440;
             this.rslPaOppFinestra.Name = "rslPaOppFinestra";
             this.rslPaOppFinestra.PushedThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -6967,42 +6998,42 @@
             // txtPaOppOraFine
             // 
             this.txtPaOppOraFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaOppOraFine.Location = new System.Drawing.Point(273, 76);
+            this.txtPaOppOraFine.Location = new System.Drawing.Point(275, 67);
             this.txtPaOppOraFine.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaOppOraFine.Name = "txtPaOppOraFine";
             this.txtPaOppOraFine.Size = new System.Drawing.Size(75, 23);
             this.txtPaOppOraFine.TabIndex = 126;
             this.txtPaOppOraFine.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label47
+            // lblPaOppOraFine
             // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(270, 61);
-            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(47, 13);
-            this.label47.TabIndex = 125;
-            this.label47.Text = "Ora Fine";
+            this.lblPaOppOraFine.AutoSize = true;
+            this.lblPaOppOraFine.Location = new System.Drawing.Point(272, 52);
+            this.lblPaOppOraFine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaOppOraFine.Name = "lblPaOppOraFine";
+            this.lblPaOppOraFine.Size = new System.Drawing.Size(47, 13);
+            this.lblPaOppOraFine.TabIndex = 125;
+            this.lblPaOppOraFine.Text = "Ora Fine";
             // 
             // txtPaOppOraInizio
             // 
             this.txtPaOppOraInizio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaOppOraInizio.Location = new System.Drawing.Point(33, 76);
+            this.txtPaOppOraInizio.Location = new System.Drawing.Point(35, 67);
             this.txtPaOppOraInizio.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaOppOraInizio.Name = "txtPaOppOraInizio";
             this.txtPaOppOraInizio.Size = new System.Drawing.Size(75, 23);
             this.txtPaOppOraInizio.TabIndex = 124;
             this.txtPaOppOraInizio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label46
+            // lblPaOppOraInizio
             // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(32, 60);
-            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(51, 13);
-            this.label46.TabIndex = 123;
-            this.label46.Text = "Ora Inizio";
+            this.lblPaOppOraInizio.AutoSize = true;
+            this.lblPaOppOraInizio.Location = new System.Drawing.Point(34, 51);
+            this.lblPaOppOraInizio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaOppOraInizio.Name = "lblPaOppOraInizio";
+            this.lblPaOppOraInizio.Size = new System.Drawing.Size(51, 13);
+            this.lblPaOppOraInizio.TabIndex = 123;
+            this.lblPaOppOraInizio.Text = "Ora Inizio";
             // 
             // tbpPaParSoglia
             // 
@@ -7403,6 +7434,7 @@
             // flwPaListaConfigurazioni
             // 
             this.flwPaListaConfigurazioni.CellEditUseWholeCell = false;
+            this.flwPaListaConfigurazioni.HideSelection = false;
             this.flwPaListaConfigurazioni.Location = new System.Drawing.Point(9, 18);
             this.flwPaListaConfigurazioni.Margin = new System.Windows.Forms.Padding(2);
             this.flwPaListaConfigurazioni.Name = "flwPaListaConfigurazioni";
@@ -7542,6 +7574,7 @@
             // flvCicliListaCariche
             // 
             this.flvCicliListaCariche.CellEditUseWholeCell = false;
+            this.flvCicliListaCariche.HideSelection = false;
             this.flvCicliListaCariche.Location = new System.Drawing.Point(15, 17);
             this.flvCicliListaCariche.Margin = new System.Windows.Forms.Padding(2);
             this.flvCicliListaCariche.Name = "flvCicliListaCariche";
@@ -8580,6 +8613,7 @@
             this.tbpPaPCMant.PerformLayout();
             this.tbpPaPCOpp.ResumeLayout(false);
             this.tbpPaPCOpp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImgPaOppPuntoVerde)).EndInit();
             this.tbpPaParSoglia.ResumeLayout(false);
             this.tbpPaParSoglia.PerformLayout();
             this.tbpPaListaProfili.ResumeLayout(false);
@@ -9245,11 +9279,13 @@
         private System.Windows.Forms.TextBox txtPaOppVSoglia;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.TextBox txtPaOppOraFine;
-        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label lblPaOppOraFine;
         private System.Windows.Forms.TextBox txtPaOppOraInizio;
-        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label lblPaOppOraInizio;
         private Syncfusion.Windows.Forms.Tools.RangeSlider rslPaOppFinestra;
         private System.Windows.Forms.CheckBox chkPaOppNotturno;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        private System.Windows.Forms.Label lblPaOppPuntoVerde;
+        private System.Windows.Forms.PictureBox ImgPaOppPuntoVerde;
     }
 }

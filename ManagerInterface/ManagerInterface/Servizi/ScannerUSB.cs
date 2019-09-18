@@ -17,11 +17,16 @@ namespace PannelloCharger
         public string SpyBattUsbSerialNo;
         public string SeqDesUsbSerialNo;
         public string NoInitSerialNo;
+        public string IdBattUsbSerialNo;
+        public string RegenUsbSerialNo;
+
 
 
         public int NumDevLadeLight;
         public int NumDevSpyBatt;
+        public int NumDevIdBatt;
         public int NumDevSeqDes;
+        public int NumDevRegen;
         public int NumDevFTDInoInit;
         public List<UsbDevice> ListaPorte;
 
@@ -32,11 +37,15 @@ namespace PannelloCharger
         {
             LadeLightUsbSerialNo = null;
             SpyBattUsbSerialNo = null;
+            IdBattUsbSerialNo = null;
             SeqDesUsbSerialNo = null;
+            RegenUsbSerialNo = null;
             NoInitSerialNo = null;
             NumDevLadeLight = 0;
             NumDevSpyBatt = 0;
+            NumDevIdBatt = 0;
             NumDevSeqDes = 0;
+            NumDevRegen = 0;
             NumDevFTDInoInit = 0;
             
             ListaPorte = new List<UsbDevice>();
@@ -47,12 +56,17 @@ namespace PannelloCharger
         {
             LadeLightUsbSerialNo = null;
             SpyBattUsbSerialNo = null;
+            IdBattUsbSerialNo = null;
             SeqDesUsbSerialNo = null;
+            RegenUsbSerialNo = null;
             NoInitSerialNo = null;
             NumDevLadeLight = 0;
             NumDevSpyBatt = 0;
+            NumDevIdBatt = 0;
             NumDevSeqDes = 0;
+            NumDevRegen = 0;
             NumDevFTDInoInit = 0;
+
             string campo;
             string chiave;
 
@@ -117,13 +131,6 @@ namespace PannelloCharger
                         NoInitSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
                     }
 
-                    if (ftdiDeviceList[CicloDev].Description == "SEQ-DESO")
-                    {
-                        NumDevSpyBatt++;
-                        NumDevSeqDes++;
-                        SpyBattUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
-                        SeqDesUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
-                    }
 
                     if (ftdiDeviceList[CicloDev].Description == "DESOLFATATORE")
                     {
@@ -133,6 +140,17 @@ namespace PannelloCharger
                         SeqDesUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
                     }
 
+                    if (ftdiDeviceList[CicloDev].Description == "ID-BATT PROGRAMMER")
+                    {
+                        NumDevIdBatt++;
+                        IdBattUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                    }
+
+                    if (ftdiDeviceList[CicloDev].Description == "BATTERY REGENERATOR")
+                    {
+                        NumDevRegen++;
+                        RegenUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                    }
 
                 }
             }
@@ -144,7 +162,7 @@ namespace PannelloCharger
 
 
 
-            if (NumDevLadeLight > 0 || NumDevSpyBatt > 0 || NumDevFTDInoInit > 0)
+            if (NumDevLadeLight > 0 || NumDevSpyBatt > 0 || NumDevFTDInoInit > 0 || NumDevRegen >0 || NumDevIdBatt > 0)
             {
                 return true;
             }

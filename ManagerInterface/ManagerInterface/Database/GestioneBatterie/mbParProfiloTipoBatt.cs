@@ -40,6 +40,7 @@ namespace MoriData
         public string TempoT2Min { get; set; }
         public string TempoT2Max { get; set; }
         public string TempoT3Max { get; set; }
+        public string DurataNominale { get; set; }
 
         public string EqualTempoAttesa { get; set; }
         public string EqualTempoImpulso { get; set; }
