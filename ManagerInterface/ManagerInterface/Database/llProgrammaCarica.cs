@@ -78,6 +78,7 @@ namespace MoriData
         public byte ProgrammaInUso { get; set; }
         public byte TipoRecord { get; set; }
         public byte OpzioniAttive { get; set; }
+        public byte IdModelloLL { get; set; }
 
         public bool IsEqual( _llProgrammaCarica ProgCarica)
         {
@@ -448,6 +449,11 @@ namespace MoriData
                 _par.ValoreParametro = _llprc.EqualCorrenteImpulso;
                 ListaParametri.Add(_par);
 
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ModelloLadeLight;
+                _par.ValoreParametro = _llprc.IdModelloLL;
+                ListaParametri.Add(_par);
+
 
                 // Riarmo BMS
                 _par = new ParametroLL();
@@ -562,6 +568,10 @@ namespace MoriData
 
                         case (byte)SerialMessage.ParametroLadeLight.DivisoreK:
                             _llprc.AbilitaComunicazioneSpybatt = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.ModelloLadeLight:
+                            _llprc.IdModelloLL = (byte)_par.ValoreParametro;
                             break;
 
                         case (byte)SerialMessage.ParametroLadeLight.RiarmoBMS:
@@ -1269,6 +1279,22 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+        public byte IdModelloLL
+        {
+            get
+            {
+                if (_llprc != null) return _llprc.IdModelloLL;
+                return 0x00;
+            }
+            set
+            {
+                _llprc.IdModelloLL = value;
+                _datiSalvati = false;
+            }
+        }
+
+
         public string strOpzioniAttive
         {
             get

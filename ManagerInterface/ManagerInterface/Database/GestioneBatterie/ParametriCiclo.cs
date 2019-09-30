@@ -33,6 +33,8 @@ namespace MoriData
         public byte Attivo { get; set; }
         public ushort TipoCassone { get; set; }
 
+        public ushort IdModelloLL { get; set; }
+
         public ushort AttesaBMS { get; set; }
         public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
         public byte AttivaRiarmoPulse { get; set; }  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF

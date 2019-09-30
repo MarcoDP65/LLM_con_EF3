@@ -1,24 +1,27 @@
-﻿using System;
-using System.IO.Ports;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using log4net;
-using log4net.Config;
-using FTD2XX_NET;
-using MoriData;
-using Utility;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 
-using System.Threading;
-using System.ComponentModel;
-
-using SQLite.Net;
-
-namespace ChargerLogic
+namespace MoriData
 {
-    public partial class CaricaBatteriaOld
+    public class DatiConfigCariche
     {
+        public List<_llModelloCb> ModelliLL;
+        public List<_llProfiloCarica> ProfiliCarica;
+        public List<llDurataCarica> DurateCarica;
+        public List<llDurataProfilo> DurateProfilo;
+        public List<_llProfiloTipoBatt> ProfiloTipoBatt;
+        public List<llTensioneBatteria> TensioniBatteria;
+        public List<llTensioniModello> TensioniModello;
+
+
+        public DatiConfigCariche()
+        {
+            InizializzaDatiLocali();
+        }
 
         public bool InizializzaDatiLocali()
         {
@@ -45,7 +48,7 @@ namespace ChargerLogic
         public bool inizializzaProfili()
         {
             ProfiliCarica = new List<_llProfiloCarica>();
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x00, NomeProfilo = "Non Definito", DurataFase2 = 100, Attivo = 2, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 0, AttivaRiarmoPulse = 0, AttivaEqual = 0x00 ,Grafico= ""});
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x00, NomeProfilo = "Non Definito", DurataFase2 = 100, Attivo = 2, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 0, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, Grafico = "" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x01, NomeProfilo = "IWa", DurataFase2 = 100, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 1, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x02, NomeProfilo = "IU", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 1, FlagLitio = 0, Ordine = 2, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, Grafico = "IU650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x03, NomeProfilo = "IUIa", DurataFase2 = 100, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 3, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, Grafico = "IUIa650" });
@@ -55,7 +58,7 @@ namespace ChargerLogic
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, Grafico = "IUIa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x08, NomeProfilo = "IWa Pb13 Equal", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x09, NomeProfilo = "IWa Pb11 Equal", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 9, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x0A, NomeProfilo = "IWa Pb8 Equal", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 10 , AttivaRiarmoPulse = 0 ,AttivaEqual = 0xFF, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x0A, NomeProfilo = "IWa Pb8 Equal", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 10, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x0B, NomeProfilo = "Litio con BMS", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, Grafico = "" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x0C, NomeProfilo = "Litio con CAN", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, Grafico = "" });
             return true;
@@ -64,7 +67,7 @@ namespace ChargerLogic
         public bool inizializzaDurate()
         {
             DurateCarica = new List<llDurataCarica>();
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 780, Descrizione = "13:00", Ordine = 0, ProfiloGel = 100,ProfiloLitio = 100,ProfiloPb = 60,Attivo = 1});
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 780, Descrizione = "13:00", Ordine = 0, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 60, Attivo = 1 });
             DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 720, Descrizione = "12:00", Ordine = 1, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 60, Attivo = 1 });
             DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 660, Descrizione = "11:00", Ordine = 2, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 100, Attivo = 1 });
             DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 600, Descrizione = "10:00", Ordine = 3, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 100, Attivo = 1 });
@@ -76,7 +79,7 @@ namespace ChargerLogic
             DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 240, Descrizione = " 4:00", Ordine = 9, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 120, Attivo = 1 });
             DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 180, Descrizione = " 3:00", Ordine = 10, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 140, Attivo = 1 });
             DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 120, Descrizione = " 2:00", Ordine = 11, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 140, Attivo = 1 });
-            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL =  60, Descrizione = " 1:00", Ordine = 12, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 140, Attivo = 1 });
+            DurateCarica.Add(new llDurataCarica() { IdDurataCaricaLL = 60, Descrizione = " 1:00", Ordine = 12, ProfiloGel = 100, ProfiloLitio = 100, ProfiloPb = 140, Attivo = 1 });
             return true;
         }
 
@@ -108,7 +111,7 @@ namespace ChargerLogic
             DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 240, IdProfiloCaricaLL = 0x07, Attivo = 1 });
             DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 180, IdProfiloCaricaLL = 0x07, Attivo = 1 });
             DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 120, IdProfiloCaricaLL = 0x07, Attivo = 1 });
-            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 60, IdProfiloCaricaLL =  0x07, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 60, IdProfiloCaricaLL = 0x07, Attivo = 1 });
             //Gel - IU
             DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 600, IdProfiloCaricaLL = 0x02, Attivo = 1 });
 

@@ -220,7 +220,7 @@ namespace PannelloCharger
         {
 
 
-            cmbInitTipoApparato.DataSource = _cb.ModelliLL;
+            cmbInitTipoApparato.DataSource = _cb.DatiBase.ModelliLL;
             cmbInitTipoApparato.ValueMember = "IdModelloLL";
             cmbInitTipoApparato.DisplayMember = "NomeModello";
 
@@ -2876,8 +2876,8 @@ namespace PannelloCharger
 
                         byte TipoApp = TipoLL.TipoApparato;
 
-                        var Listatens = from t in _cb.TensioniBatteria
-                                        join tm in _cb.TensioniModello on t.IdTensione equals tm.IdTensione
+                        var Listatens = from t in _cb.DatiBase.TensioniBatteria
+                                        join tm in _cb.DatiBase.TensioniModello on t.IdTensione equals tm.IdTensione
                                         where tm.IdModelloLL == TipoApp
                                         select t;
 
@@ -2960,8 +2960,8 @@ namespace PannelloCharger
                         }
                     }
 
-                    var Listatemp = from p in _cb.DurateCarica
-                                    join pt in _cb.DurateProfilo on p.IdDurataCaricaLL equals pt.IdDurataCaricaLL
+                    var Listatemp = from p in _cb.DatiBase.DurateCarica
+                                    join pt in _cb.DatiBase.DurateProfilo on p.IdDurataCaricaLL equals pt.IdDurataCaricaLL
                                     where pt.IdProfiloCaricaLL == TipoProf
                                     select p;
 

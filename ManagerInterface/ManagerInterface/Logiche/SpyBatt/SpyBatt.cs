@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : LADELIGHT Manager
+// Author           : marco_000
+// Created          : 10-15-2018
+//
+// Last Modified By : marco_000
+// Last Modified On : 12-18-2018
+// ***********************************************************************
+// <copyright file="SpyBatt.cs" company="MORI Raddrizzatori">
+//     Copyright © 2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.IO;
 using System.IO.Ports;
 using System.Collections.Generic;
@@ -19,24 +32,23 @@ using Newtonsoft.Json;
 namespace ChargerLogic
 {
     /// <summary>
-    /// 
+    /// Class UnitaSpyBatt.
     /// </summary>
     public partial class UnitaSpyBatt
     {
+        /// <summary>
+        /// Enum StatoScheda
+        /// </summary>
         public enum StatoScheda : byte { NonCollegata = 0x00, SoloBootloader = 0x01, BLandFW = 0x02, SoloFW = 0x03 };
 
         /// <exclude />
         public static SerialPort serialeApparato;
-
         private static MessaggioSpyBatt _mS; // = new MessaggioSpyBatt();
         private parametriSistema _parametri;
 
         private static Queue<byte> codaDatiSER = new Queue<byte>();  // Buffer per la ricezione dati seriali
         private static ILog Log = LogManager.GetLogger("Classe SpyBatt:");
-
         public string FileHexDump = "c:\\Log\\HexDump.txt";
-
-        // Area Dati:
         public spybattData sbData = new spybattData();           // Testata
         public sbDatiCliente sbCliente = new sbDatiCliente();    // Dati Cliante 
         public sbMemLunga sbUltimoCiclo = new sbMemLunga();
@@ -47,10 +59,17 @@ namespace ChargerLogic
         public sbProgrammaRicarica ProgrammaCorrente;
         public sbSig60Parameters StatoSig60 = new sbSig60Parameters();
 
+        // strutture per la gestione del profilo LL
+        public llProgrammaCarica ProfiloAttivo = new llProgrammaCarica();
+        public DatiConfigCariche DatiBase { get; set; }
+        public _llModelloCb CbAttivo { get; set; }
+        public mbTipoBatteria BattAttiva { get; set; }
+
+        public ModelloCiclo ModCicloCorrente = new ModelloCiclo();
+
+
         //Strutture Memoria
-
         private bool _firmwarePresente = false;
-
         private int _timeOut = 5;
         private DateTime _startRead;
         public bool dbCollegato;
@@ -63,8 +82,10 @@ namespace ChargerLogic
         // Fino alla 1.08  8356
         // Fino alla 1.09: 8356
         // dalla 1.09.01 : 8666
+        /// <summary>
+        /// The memory slice
+        /// </summary>
         public int MemorySlice = 8666;       //8356;    // Pachetti inviati durante il dump memoria
-
 
         public bool RichiestaInterruzione = false;
 
@@ -83,39 +104,85 @@ namespace ChargerLogic
         int lastByte = 0;
         bool readingMessage = false;
         public int TipoRisposta;
+
         static bool _rxRisposta;
+
         bool skipHead = false;
 
         public int LivelloUser = 2;
+
         public DateTime UltimaScrittura;   // Registro l'istante dell'ultima scrittura
 
         public SerialMessage.EsitoRisposta UltimaRisposta;
+
         public MessaggioSpyBatt.comandoInizialeSB IntestazioneSb = new MessaggioSpyBatt.comandoInizialeSB();
+
         public MessaggioSpyBatt.cicliPresenti CicliPresenti = new MessaggioSpyBatt.cicliPresenti();
+
         public MessaggioSpyBatt.comandoRTC OrologioSistema = new MessaggioSpyBatt.comandoRTC();
+        /// <summary>
+        /// The ciclo in macchina
+        /// </summary>
         public MessaggioSpyBatt.cicloAttuale CicloInMacchina = new MessaggioSpyBatt.cicloAttuale();
 
 
+        /// <summary>
+        /// The cicli memoria lunga
+        /// </summary>
         private List<MessaggioSpyBatt.MemoriaPeriodoLungo> _CicliMemoriaLunga = new List<MessaggioSpyBatt.MemoriaPeriodoLungo>();
+        /// <summary>
+        /// The cicli memoria breve
+        /// </summary>
         private List<MessaggioSpyBatt.MemoriaPeriodoBreve> _CicliMemoriaBreve = new List<MessaggioSpyBatt.MemoriaPeriodoBreve>();
+        /// <summary>
+        /// The programmazioni
+        /// </summary>
         private List<MessaggioSpyBatt.ProgrammaRicarica> _Programmazioni = new List<MessaggioSpyBatt.ProgrammaRicarica>();
 
+        /// <summary>
+        /// The cicli in memoria
+        /// </summary>
         public List<MessaggioSpyBatt.CicloDiCarica> CicliInMemoria = new List<MessaggioSpyBatt.CicloDiCarica>();
 
+        /// <summary>
+        /// The cicli memoria lunga
+        /// </summary>
         public List<sbMemLunga> CicliMemoriaLunga = new List<sbMemLunga>();
+        /// <summary>
+        /// The programmazioni
+        /// </summary>
         public List<sbProgrammaRicarica> Programmazioni = new List<sbProgrammaRicarica>();
 
+        /// <summary>
+        /// The data cicli memoria lunga
+        /// </summary>
         public List<_sbMemLunga> DataCicliMemoriaLunga = new List<_sbMemLunga>();
+        /// <summary>
+        /// The data programmazioni
+        /// </summary>
         public List<_sbProgrammaRicarica> DataProgrammazioni = new List<_sbProgrammaRicarica>();
 
+        /// <summary>
+        /// The parametri calibrazione
+        /// </summary>
         public List<ParametroCalibrazione> ParametriCalibrazione = new List<ParametroCalibrazione>();
 
+        /// <summary>
+        /// The modello dati
+        /// </summary>
         public sbDataModel ModelloDati = new sbDataModel();
 
+        /// <summary>
+        /// The soglie analisi
+        /// </summary>
         public sbSetSoglie SoglieAnalisi = new sbSetSoglie();
 
+        /// <summary>
+        /// The numero seriale
+        /// </summary>
         public byte[] numeroSeriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
         string _idCorrente;
+
         private string _lastError;
         private bool _cbCollegato;
         private bool _inviaAckPacchettoDump = false;
@@ -132,10 +199,14 @@ namespace ChargerLogic
 
         public event LongMemListHandler LMListChange;
         public delegate void LongMemListHandler(UnitaSpyBatt sb, sbListaLunghiEvt lme);
-
         public byte[] UltimoMessaggio { get; private set; }
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitaSpyBatt"/> class.
+        /// </summary>
+        /// <param name="parametri">The parametri.</param>
+        /// <param name="LivelloAutorizzazione">The livello autorizzazione.</param>
         public UnitaSpyBatt(ref parametriSistema parametri, int LivelloAutorizzazione)
         {
 
@@ -150,6 +221,7 @@ namespace ChargerLogic
             serialeApparato = _parametri.serialeSpyBatt;
             InizializzaParametriCalibrazione();
             // Attivo gli eventi sia USB che COM
+            DatiBase = new DatiConfigCariche();
 
             FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
             // USB
@@ -162,6 +234,12 @@ namespace ChargerLogic
             dbCollegato = false;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitaSpyBatt"/> class.
+        /// </summary>
+        /// <param name="parametri">The parametri.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <param name="LivelloAutorizzazione">The livello autorizzazione.</param>
         public UnitaSpyBatt(ref parametriSistema parametri, MoriData._db dbCorrente, int LivelloAutorizzazione)
         {
             LivelloUser = LivelloAutorizzazione;
@@ -173,6 +251,7 @@ namespace ChargerLogic
             _mS.SerialNumber = Seriale;
             _cbCollegato = false;
             serialeApparato = _parametri.serialeSpyBatt;
+            DatiBase = new DatiConfigCariche();
 
             // Attivo gli eventi sia USB che COM
             /*
@@ -200,6 +279,10 @@ namespace ChargerLogic
 
         }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         public string Id
         {
             get
@@ -208,6 +291,10 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Apris the porta.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool apriPorta()
         {
             bool _esito;
@@ -219,7 +306,7 @@ namespace ChargerLogic
         /// <summary>
         /// Pro
         /// </summary>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool VerificaPresenza()
         {
             bool _risposta = false;
@@ -290,6 +377,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Controllas the attesa.
+        /// </summary>
+        /// <param name="UltimoIstante">The ultimo istante.</param>
+        /// <param name="MilliecondiTimeOut">The milliecondi time out.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ControllaAttesa(DateTime UltimoIstante, int MilliecondiTimeOut = 4800)
         {
             bool _risposta = false;
@@ -318,6 +411,12 @@ namespace ChargerLogic
 
         }
 
+        /// <summary>
+        /// Records the presente.
+        /// </summary>
+        /// <param name="IdApparato">The identifier apparato.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool recordPresente(string IdApparato, MoriData._db dbCorrente)
         {
             try
@@ -339,6 +438,15 @@ namespace ChargerLogic
 
         }
 
+        /// <summary>
+        /// Preparas the esportazione.
+        /// </summary>
+        /// <param name="Testata">if set to <c>true</c> [testata].</param>
+        /// <param name="Cliente">if set to <c>true</c> [cliente].</param>
+        /// <param name="Programmi">if set to <c>true</c> [programmi].</param>
+        /// <param name="MemLunga">if set to <c>true</c> [memory lunga].</param>
+        /// <param name="MemBreve">if set to <c>true</c> [memory breve].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool PreparaEsportazione(bool Testata, bool Cliente, bool Programmi, bool MemLunga, bool MemBreve)
         {
             try
@@ -409,6 +517,16 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Importas the modello.
+        /// </summary>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <param name="Testata">if set to <c>true</c> [testata].</param>
+        /// <param name="Cliente">if set to <c>true</c> [cliente].</param>
+        /// <param name="Programmi">if set to <c>true</c> [programmi].</param>
+        /// <param name="MemLunga">if set to <c>true</c> [memory lunga].</param>
+        /// <param name="MemBreve">if set to <c>true</c> [memory breve].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool importaModello(MoriData._db dbCorrente, bool Testata, bool Cliente, bool Programmi, bool MemLunga, bool MemBreve)
         {
             try
@@ -484,7 +602,7 @@ namespace ChargerLogic
         /// </summary>
         /// <param name="IdApparato">ID dell'apparato collegato</param>
         /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CaricaTestata(string IdApparato, bool ApparatoConnesso)
 
         {
@@ -554,9 +672,9 @@ namespace ChargerLogic
         }
 
         /// <summary>
-        /// 
+        /// Caricas the testata.
         /// </summary>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CaricaTestata()
         {
             bool _esito = false;
@@ -586,7 +704,7 @@ namespace ChargerLogic
         /// </summary>
         /// <param name="IdApparato">ID dell'apparato collegato</param>
         /// <param name="ApparatoConnesso">Se true tento la lettura diretta</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CaricaCalibrazioni(string IdApparato, bool ApparatoConnesso)
         {
             try
@@ -647,7 +765,7 @@ namespace ChargerLogic
         /// <summary>
         /// Legge direttamente dallo SPY-BATT la Versione della libreria strategia corrente.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>System.String.</returns>
         public string VersioneStrategia()
         {
             try
@@ -687,9 +805,9 @@ namespace ChargerLogic
         /// CaricaDatiCliente:  I dati relativi al cliente (4 Record)
         /// se la scheda è collegata aggiorna i dati con quelli presenti sulla scheda
         /// </summary>
-        /// <param name="IdApparato"></param>
+        /// <param name="IdApparato">The identifier apparato.</param>
         /// <param name="ApparatoConnesso">True se l'apparato è connesso via COM/USB port</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CaricaDatiCliente(string IdApparato, bool ApparatoConnesso)
         {
             try
@@ -789,7 +907,9 @@ namespace ChargerLogic
         /// <param name="dbCorrente">The database corrente.</param>
         /// <param name="AckPacchetto">Se true manda un ACK ad ogni pacchetto ricevuto.</param>
         /// <param name="RunAsinc">if set to <c>true</c> [run asinc].</param>
-        /// <returns></returns>
+        /// <param name="CreaHexDump">if set to <c>true</c> [crea hexadecimal dump].</param>
+        /// <param name="HexDumpFile">The hexadecimal dump file.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LeggiInteraMemoria(string IdApparato, bool ApparatoConnesso, MoriData._db dbCorrente, bool AckPacchetto, bool RunAsinc = false, bool CreaHexDump = false, string HexDumpFile = "")
         {
             try
@@ -1353,6 +1473,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Inizializzas the logger.
+        /// </summary>
+        /// <param name="FileReport">The file report.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool InizializzaLogger(string FileReport)
         {
             try
@@ -1369,6 +1494,17 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Analizzas the hexadecimal dump.
+        /// </summary>
+        /// <param name="IdApparato">The identifier apparato.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <param name="Immagine">The immagine.</param>
+        /// <param name="RunAsinc">if set to <c>true</c> [run asinc].</param>
+        /// <param name="ForzaRecupero">if set to <c>true</c> [forza recupero].</param>
+        /// <param name="GeneraReport">if set to <c>true</c> [genera report].</param>
+        /// <param name="FileReport">The file report.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool AnalizzaHexDump(string IdApparato, MoriData._db dbCorrente, ImageDump Immagine, bool RunAsinc = false, bool ForzaRecupero = false, bool GeneraReport = false, string FileReport = "")
         {
             try
@@ -2097,6 +2233,14 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Spacchettas the memoria.
+        /// </summary>
+        /// <param name="IdApparato">The identifier apparato.</param>
+        /// <param name="Immagine">The immagine.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <param name="RunAsinc">if set to <c>true</c> [run asinc].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool SpacchettaMemoria(string IdApparato, byte[] Immagine, MoriData._db dbCorrente, bool RunAsinc = false)
         {
             try
@@ -2548,6 +2692,12 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Caricas the cicli memory lunga.
+        /// </summary>
+        /// <param name="IdApparato">The identifier apparato.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CaricaCicliMemLunga(string IdApparato, MoriData._db dbCorrente)
         {
             try
@@ -2588,6 +2738,12 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Caricas the programmazioni.
+        /// </summary>
+        /// <param name="IdApparato">The identifier apparato.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CaricaProgrammazioni(string IdApparato, MoriData._db dbCorrente)
         {
             try
@@ -2637,12 +2793,29 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Ricaricas the carica cicli memory lunga.
+        /// </summary>
+        /// <param name="cicloStart">The ciclo start.</param>
+        /// <param name="cicloEnd">The ciclo end.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <param name="AggiornaTutto">if set to <c>true</c> [aggiorna tutto].</param>
+        /// <param name="caricaBrevi">if set to <c>true</c> [carica brevi].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool RicaricaCaricaCicliMemLunga(uint cicloStart, uint cicloEnd, MoriData._db dbCorrente, bool AggiornaTutto, bool caricaBrevi)
         {
             object vuoto;
             return RicaricaCaricaCicliMemLunga(cicloStart, cicloEnd, dbCorrente, AggiornaTutto, caricaBrevi, out vuoto);
         }
 
+        /// <summary>
+        /// Caricas the messaggio memory lunga.
+        /// </summary>
+        /// <param name="IdApparato">The identifier apparato.</param>
+        /// <param name="IdEvento">The identifier evento.</param>
+        /// <param name="MsgCiclo">The MSG ciclo.</param>
+        /// <param name="EventoLungo">The evento lungo.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected bool CaricaMessaggioMemLunga(String IdApparato, uint IdEvento, MessaggioSpyBatt.MemoriaPeriodoLungo MsgCiclo, ref sbMemLunga EventoLungo)
         {
 
@@ -2700,13 +2873,15 @@ namespace ChargerLogic
 
         /// <summary>
         /// Rilegge direttamente da SPY-BATT l'elenco dei cicli lunghi, aggiornando sia la lista in memoria che i dati su DB
-        /// Se il firmware è 2.02.04 o successivo l'ultimo ciclo è END + 1 perche il fw chiude il ciclo corrente 
+        /// Se il firmware è 2.02.04 o successivo l'ultimo ciclo è END + 1 perche il fw chiude il ciclo corrente
         /// </summary>
         /// <param name="cicloStart">Id primo ciclo da leggere</param>
         /// <param name="cicloEnd">Id ultimo ciclo da leggere</param>
         /// <param name="dbCorrente">Connessione dati attiva</param>
         /// <param name="AggiornaTutto">se TRUE aggiorna anche i record già presenti</param>
         /// <param name="caricaBrevi">se TRUE carica direttamente i brevi</param>
+        /// <param name="EsitoCaricamento">The esito caricamento.</param>
+        /// <param name="RunAsinc">if set to <c>true</c> [run asinc].</param>
         /// <returns>True se l'operazione termina senza errori</returns>
         public bool RicaricaCaricaCicliMemLunga(uint cicloStart, uint cicloEnd, MoriData._db dbCorrente, bool AggiornaTutto, bool caricaBrevi, out object EsitoCaricamento, bool RunAsinc = false)
         {
@@ -2957,7 +3132,7 @@ namespace ChargerLogic
         /// </summary>
         /// <param name="cicloStart">Primo ciclo da leggere</param>
         /// <param name="cicloEnd">Ultimo ciclo da leggere</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CaricaCicliMemLungaDaMem(uint cicloStart, uint cicloEnd)
         {
             // Carico direttamente da memoria i cicli lunghi da Start a fine
@@ -3189,6 +3364,14 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Ricaricas the programmazioni v1.
+        /// </summary>
+        /// <param name="cicloStart">The ciclo start.</param>
+        /// <param name="cicloEnd">The ciclo end.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <param name="AggiornaTutto">if set to <c>true</c> [aggiorna tutto].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool RicaricaProgrammazioniV1(ushort cicloStart, ushort cicloEnd, MoriData._db dbCorrente, bool AggiornaTutto)
         {
             try
@@ -3329,7 +3512,7 @@ namespace ChargerLogic
         /// <param name="StartAddr">Indirizzo (iniziale) del blocco da leggere</param>
         /// <param name="NumByte">Numero di byte da leggere (max 242)</param>
         /// <param name="Dati">bytearray dati letti</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte, out byte[] Dati)
         {
 
@@ -3392,7 +3575,8 @@ namespace ChargerLogic
         /// <param name="StartAddr">The start addr.</param>
         /// <param name="NumByte">The number of byte.</param>
         /// <param name="Dati">The data.</param>
-        /// <returns></returns>
+        /// <param name="modoDeso">if set to <c>true</c> [modo deso].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviBloccoMemoria(uint StartAddr, ushort NumByte, byte[] Dati, bool modoDeso = false)
         {
 
@@ -3422,11 +3606,12 @@ namespace ChargerLogic
                 _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 if (modoDeso != true)
                 {
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                    // da sistemare
+                    _esito = aspettaRisposta(elementiComuni.TimeoutLungo, 1, false);
                 }
                 else
                 {
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false, false, modoDeso);
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, false, false, modoDeso);
 
                 }
 
@@ -3449,7 +3634,8 @@ namespace ChargerLogic
         /// <summary>
         /// Cancella fisicamente un blocco di 4K dalla memoria flash mettendo tutti i Bytes a 0xFF
         /// </summary>
-        /// <returns></returns>
+        /// <param name="StartAddr">The start addr.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CancellaBlocco4K(uint StartAddr)
         {
 
@@ -3473,6 +3659,10 @@ namespace ChargerLogic
 
                 //Log.Debug("------------------------------------------------------------------------------------------------------------");
 
+                // dopo la cancellazione aspetto altri 200 ms per compensare latenze del modulo di memoria 
+                // ( con 100 ms dopo la cancellazione il modulo è ancora impegnato )
+                Thread.Sleep(200);
+
                 return _esito;
 
 
@@ -3491,7 +3681,7 @@ namespace ChargerLogic
         /// <summary>
         /// Cancella l'intera memoria flash (4MB). Cancella snche i dati relativi alla scheda corrente dal DB Locale
         /// </summary>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CancellaInteraMemoria()
         {
 
@@ -3545,7 +3735,8 @@ namespace ChargerLogic
         /// <summary>
         /// Forza il riavvio della scheda
         /// </summary>
-        /// <returns></returns>
+        /// <param name="ResetContatori">if set to <c>true</c> [reset contatori].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ResetScheda(bool ResetContatori = false)
         {
 
@@ -3609,6 +3800,12 @@ namespace ChargerLogic
         // -------------------------------
         // strategia
 
+        /// <summary>
+        /// Lancias the comando test strategia.
+        /// </summary>
+        /// <param name="ComandoStrategia">The comando strategia.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LanciaComandoTestStrategia(byte ComandoStrategia, out byte[] Dati)
         {
 
@@ -3662,6 +3859,19 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Lancias the comando strategia.
+        /// </summary>
+        /// <param name="Modo">The modo.</param>
+        /// <param name="Vmin">The vmin.</param>
+        /// <param name="Vmax">The vmax.</param>
+        /// <param name="Imax">The imax.</param>
+        /// <param name="Rabb">The rabb.</param>
+        /// <param name="FC">The fc.</param>
+        /// <param name="Minuti">The minuti.</param>
+        /// <param name="ForzaTE">The forza te.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LanciaComandoStrategia(byte Modo, ushort Vmin, ushort Vmax, ushort Imax, byte Rabb, byte FC, ushort Minuti, byte ForzaTE, out byte[] Dati)
         {
 
@@ -3741,6 +3951,14 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Comandoes the strategia aggiorna contatori.
+        /// </summary>
+        /// <param name="Capacity">The capacity.</param>
+        /// <param name="Dschg">The DSCHG.</param>
+        /// <param name="Chg">The CHG.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ComandoStrategiaAggiornaContatori(ushort Capacity, ushort Dschg, ushort Chg, out byte[] Dati)
         {
 
@@ -3813,6 +4031,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Comandoes the strategia aggiorna te.
+        /// </summary>
+        /// <param name="TELocale">The te locale.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ComandoStrategiaAggiornaTE(byte TELocale, out byte[] Dati)
         {
 
@@ -3875,6 +4099,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Comandoes the information strategia.
+        /// </summary>
+        /// <param name="ComandoStrategia">The comando strategia.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ComandoInfoStrategia(byte ComandoStrategia, out byte[] Dati)
         {
 
@@ -3933,6 +4163,12 @@ namespace ChargerLogic
         // -------------------------------
         // esp32
 
+        /// <summary>
+        /// Lancias the comando test esp32.
+        /// </summary>
+        /// <param name="ComandoEsp32">The comando esp32.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LanciaComandoTestEsp32(byte ComandoEsp32, out byte[] Dati)
         {
 
@@ -3993,6 +4229,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Comandoes the esp32 set led.
+        /// </summary>
+        /// <param name="StatoLed">The stato led.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ComandoEsp32SetLed(byte StatoLed, out byte[] Dati)
         {
 
@@ -4064,6 +4306,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Lancias the comando diretto esp32.
+        /// </summary>
+        /// <param name="ComandoEsp32">The comando esp32.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LanciaComandoDirettoEsp32(byte ComandoEsp32, out byte[] Dati)
         {
 
@@ -4124,6 +4372,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Lancias the comando esp32 array.
+        /// </summary>
+        /// <param name="ComandoEsp32">The comando esp32.</param>
+        /// <param name="Dati">The dati.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LanciaComandoEsp32Array(byte[] ComandoEsp32, out byte[] Dati)
         {
 
@@ -4194,7 +4448,7 @@ namespace ChargerLogic
         /// <summary>
         /// Entra / Esce dallo stato CALIBRAZIONE
         /// </summary>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ModalitaCalibrazione()
         {
 
@@ -4234,6 +4488,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Stringas the tensione.
+        /// </summary>
+        /// <param name="Tensione">The tensione.</param>
+        /// <returns>System.String.</returns>
         public string StringaTensione(uint Tensione)
         {
             try
@@ -4250,6 +4509,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Stringas the corrente.
+        /// </summary>
+        /// <param name="Corrente">The corrente.</param>
+        /// <returns>System.String.</returns>
         public string StringaCorrente(short Corrente)
         {
             try
@@ -4266,6 +4530,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Stringas the timestamp.
+        /// </summary>
+        /// <param name="Dataora">The dataora.</param>
+        /// <returns>System.String.</returns>
         public string StringaTimestamp(byte[] Dataora )
         {
             try
@@ -4286,6 +4555,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Stringas the durata.
+        /// </summary>
+        /// <param name="Secondi">The secondi.</param>
+        /// <param name="BlankIfZero">if set to <c>true</c> [blank if zero].</param>
+        /// <returns>System.String.</returns>
         public string StringaDurata(uint Secondi, bool BlankIfZero = false )
         {
             try
@@ -4315,6 +4590,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Stringas the presenza.
+        /// </summary>
+        /// <param name="Valore">The valore.</param>
+        /// <returns>System.String.</returns>
         public string StringaPresenza(byte Valore)
         {
             try
@@ -4341,6 +4621,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Stringas the tipo evento.
+        /// </summary>
+        /// <param name="Valore">The valore.</param>
+        /// <returns>System.String.</returns>
         public string StringaTipoEvento(int Valore)
         {
             try
@@ -4370,6 +4655,14 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Ricaricas the carica cicli memory breve.
+        /// </summary>
+        /// <param name="IdCicloLungo">The identifier ciclo lungo.</param>
+        /// <param name="PtrPrimoBreve">The PTR primo breve.</param>
+        /// <param name="Pacchetti">The pacchetti.</param>
+        /// <param name="dbCorrente">The database corrente.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool RicaricaCaricaCicliMemBreve(UInt32 IdCicloLungo,UInt32 PtrPrimoBreve,ushort Pacchetti,MoriData._db dbCorrente)
         {
             try
@@ -4468,11 +4761,8 @@ namespace ChargerLogic
         /// Caricamento da scheda dei cicli brevi e salvataggio su DB
         /// Variamte 1: passo come parametro il ciclo lungo di riferimento per fare il salvataggio in pacchetto singolo
         /// </summary>
-        /// <param name="IdCicloLungo"></param>
-        /// <param name="PtrPrimoBreve"></param>
-        /// <param name="Pacchetti"></param>
-        /// <param name="dbCorrente"></param>
-        /// <returns></returns>
+        /// <param name="CicloLungo">The ciclo lungo.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool RicaricaCaricaCicliMemBreve(sbMemLunga CicloLungo)
         {
             try
@@ -4594,6 +4884,10 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Consolidas the brevi.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ConsolidaBrevi()
         {
             try
@@ -4618,7 +4912,7 @@ namespace ChargerLogic
         /// <summary>
         /// Legge data e ora dall'RTC sulla scheda.
         /// </summary>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LeggiOrologio()
         {
             try
@@ -4648,6 +4942,10 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Scrivis the orologio.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviOrologio()
         {
             try
@@ -4684,6 +4982,15 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Forzas the orologio.
+        /// </summary>
+        /// <param name="Giorno">The giorno.</param>
+        /// <param name="Mese">The mese.</param>
+        /// <param name="Anno">The anno.</param>
+        /// <param name="Ore">The ore.</param>
+        /// <param name="Minuti">The minuti.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ForzaOrologio(int Giorno, int Mese, int Anno, int Ore, int Minuti)
         {
             try
@@ -4721,6 +5028,10 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Lancias the comando strategia.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LanciaComandoStrategia()
         {
             try
@@ -4757,6 +5068,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Scrivis the parametro cal.
+        /// </summary>
+        /// <param name="IdParametro">The identifier parametro.</param>
+        /// <param name="ValoreCalibrazione">The valore calibrazione.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviParametroCal(byte IdParametro, ushort ValoreCalibrazione)
         {
             try
@@ -4786,6 +5103,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Scrivis the dati cliente.
+        /// </summary>
+        /// <param name="ApparatoConnesso">if set to <c>true</c> [apparato connesso].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviDatiCliente(bool ApparatoConnesso)
         {
             try
@@ -4889,7 +5211,7 @@ namespace ChargerLogic
         /// <summary>
         /// imposta il memprogrammed e attende l'Ok scrittura dati
         /// </summary>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool AttivaProgramma()
         {
             try
@@ -4931,6 +5253,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Scrivis the programma.
+        /// </summary>
+        /// <param name="NuovoProgramma">The nuovo programma.</param>
+        /// <param name="MemProgrammed">if set to <c>true</c> [memory programmed].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviProgramma( sbProgrammaRicarica NuovoProgramma, bool MemProgrammed)
         {
             try
@@ -5006,6 +5334,10 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Ricevis the messaggio.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool RiceviMessaggio()
             {
                 try {
@@ -5016,6 +5348,10 @@ namespace ChargerLogic
 
             }
 
+        /// <summary>
+        /// Primas the connessione.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool primaConnessione()
         {
             try
@@ -5031,7 +5367,12 @@ namespace ChargerLogic
         
         }
 
-        private  void port_DataReceivedSb(object sender, SerialDataReceivedEventArgs e)
+        /// <summary>
+        /// Handles the DataReceivedSb event of the port control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SerialDataReceivedEventArgs"/> instance containing the event data.</param>
+        private void port_DataReceivedSb(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
@@ -5065,7 +5406,10 @@ namespace ChargerLogic
 
         }
 
-        private  void usb_DataReceivedSb()
+        /// <summary>
+        /// Usbs the data received sb.
+        /// </summary>
+        private void usb_DataReceivedSb()
         {
             try
             {
@@ -5135,6 +5479,10 @@ namespace ChargerLogic
 
         }
 
+        /// <summary>
+        /// Leggis the parametri lettura.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool LeggiParametriLettura()
         {
             try
@@ -5168,6 +5516,13 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Scrivis the parametri lettura.
+        /// </summary>
+        /// <param name="LettureCorrente">The letture corrente.</param>
+        /// <param name="LettureTensione">The letture tensione.</param>
+        /// <param name="DurataPausa">The durata pausa.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviParametriLettura(ushort LettureCorrente, ushort LettureTensione, ushort DurataPausa )
         {
             try
@@ -5195,6 +5550,12 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Scrivis the parametri oc.
+        /// </summary>
+        /// <param name="BRrichiesto">The b rrichiesto.</param>
+        /// <param name="AttivaEcho">The attiva echo.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviParametriOC(SerialMessage.OcBaudRate BRrichiesto, SerialMessage.OcEchoMode AttivaEcho)
         {
             try
@@ -5224,6 +5585,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Ricalcolas the soc.
+        /// </summary>
+        /// <param name="SalvaEsito">if set to <c>true</c> [salva esito].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool RicalcolaSoc(bool SalvaEsito = false)
         {
             try
@@ -5285,7 +5651,7 @@ namespace ChargerLogic
         /// <summary>
         /// In base al messaggio ricevuto (codice comando) definisce l'azione e l'eventuale risposta
         /// </summary>
-        /// <returns></returns>
+        /// <returns>SerialMessage.TipoRisposta.</returns>
         private SerialMessage.TipoRisposta analizzaCodaSB()
         {
 
@@ -5362,7 +5728,7 @@ namespace ChargerLogic
                                 //          richiede ACK con due eccezioni: 
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 TipoRisposta = 1;
-                                _inviaRisposta = true;
+                                _inviaRisposta = true; // ?????????????????????????????????????????????????????????????????????????????????????????????
                                 switch (_mS.EsitoComando.CodiceEvento)
                                 {
                                     case (byte)SerialMessage.TipoComando.CMD_WRITE_CLIENT_DATA:
@@ -5376,10 +5742,15 @@ namespace ChargerLogic
                                             _inviaRisposta = false;
                                             break;
                                         }
+                                    case (byte)SerialMessage.TipoComando.CMD_ERASE_4K_MEM:
+                                        {
+                                            _inviaRisposta = false;
+                                            break;
+                                        }
 
                                     default:
                                         {
-                                            _inviaRisposta = true;
+                                            _inviaRisposta = false;
                                             break;
                                         }
                                 }
@@ -5626,6 +5997,7 @@ namespace ChargerLogic
         /// <summary>
         /// Ritorno il tipo dell'ultima risposta ricevuta dalla scheda
         /// </summary>
+        /// <value>The ultima risposta ricevuta.</value>
         public SerialMessage.TipoRisposta UltimaRispostaRicevuta
         {
             get
@@ -5634,6 +6006,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Invertis the verso correnti ml.
+        /// </summary>
+        /// <param name="Verso">The verso.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool InvertiVersoCorrentiML(elementiComuni.VersoCorrente Verso)
         {
             try
@@ -5659,6 +6036,9 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Inizializzas the parametri calibrazione.
+        /// </summary>
         public void InizializzaParametriCalibrazione()
         {
             ParametriCalibrazione.Clear();

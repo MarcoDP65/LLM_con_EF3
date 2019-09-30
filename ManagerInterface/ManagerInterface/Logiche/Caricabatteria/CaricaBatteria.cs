@@ -79,14 +79,8 @@ namespace ChargerLogic
         public llProgrammaCarica ProgrammaAttivo;
         public List<llProgrammaCarica> ProgrammiDefiniti;
         */
+        public DatiConfigCariche  DatiBase { get; set; }
 
-        public List<_llModelloCb> ModelliLL;
-        public List<_llProfiloCarica> ProfiliCarica;
-        public List<llDurataCarica> DurateCarica;
-        public List<llDurataProfilo> DurateProfilo;
-        public List<_llProfiloTipoBatt> ProfiloTipoBatt;
-        public List<llTensioneBatteria> TensioniBatteria;
-        public List<llTensioniModello> TensioniModello;
         public List<llMemoriaCicli> MemoriaCicli;
         public List<llMemBreve> BreviCicloCorrente;
 
@@ -516,7 +510,8 @@ namespace ChargerLogic
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
 
-                InizializzaDatiLocali();
+                DatiBase = new DatiConfigCariche();
+                //InizializzaDatiLocali();
 
                 // Programmazioni
                 Programmazioni.UltimoIdProgamma = 0;
@@ -728,7 +723,7 @@ namespace ChargerLogic
 
                     if (ParametriApparato.llParApp != null)
                     {
-                        ModelloCorrente = ModelliLL.Find(x => x.IdModelloLL == ParametriApparato.llParApp.TipoApparato);
+                        ModelloCorrente = DatiBase.ModelliLL.Find(x => x.IdModelloLL == ParametriApparato.llParApp.TipoApparato);
                     }
                     else
                     {
@@ -1327,7 +1322,7 @@ namespace ChargerLogic
                         Programmazioni.NumeroRecordProg = 0;
                         Programmazioni.ProgrammiDefiniti.Clear();
                         Programmazioni.ProgrammaAttivo = null;
-                        return false;  // TRUE ?????? non h o dati, ma non sono in errore
+                        return false;  // TRUE ?????? non ho dati, ma non sono in errore
 
                     }
                     else
@@ -2141,7 +2136,7 @@ namespace ChargerLogic
                 }
 
                 // 2 - deve esserci la programmazione 0
-                llProgrammaCarica AttualeCorrente = (llProgrammaCarica)Programmazioni.ProgrammiDefiniti.Find(x => x.PosizioneCorrente == 0); ;
+                llProgrammaCarica AttualeCorrente = (llProgrammaCarica)Programmazioni.ProgrammiDefiniti.Find(x => x.PosizioneCorrente == 0); 
 
                 if (AttualeCorrente == null)
                 {
@@ -2166,6 +2161,9 @@ namespace ChargerLogic
                     NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione(tempPrg);
                     if (NuovoPrg.GeneraByteArray())
                     {
+                        Log.Info("Programma  " + NuovoPrg.IdProgrammazione.ToString() + ":");
+                        Log.Info(FunzioniComuni.HexdumpArray(NuovoPrg.dataBuffer));
+
                         byte[] _datiTemp = new byte[226];
                         _datiTemp = NuovoPrg.dataBuffer;
                         _esito = ScriviBloccoMemoria(AdrDati, 226, _datiTemp);

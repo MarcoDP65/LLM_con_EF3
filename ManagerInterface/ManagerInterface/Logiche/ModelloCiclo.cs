@@ -131,6 +131,11 @@ namespace ChargerLogic
                             numeroValori += 1;
                             break;
 
+                        case SerialMessage.ParametroLadeLight.ModelloLadeLight:
+                            ValoriCiclo.IdModelloLL = dato.ValoreParametro;
+                            numeroValori += 1;
+                            break;
+
 
                         case SerialMessage.ParametroLadeLight.DivisoreK:
                             ValoriCiclo.AbilitaSpyBatt = dato.ValoreParametro;
@@ -859,6 +864,12 @@ namespace ChargerLogic
                 ListaParametri = new List<ParametroLL>();
                 ParametroLL NuovoParametro;
                 // Parametribase:
+
+                // - Modello Ladelight
+                NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.ModelloLadeLight, ValoriCiclo.IdModelloLL);
+                ListaParametri.Add(NuovoParametro);
+                NumParametriAttivi += 1;
+
 
                 // - Tipo Batteria
                 NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TipoBatteria, Batteria.BatteryTypeId);

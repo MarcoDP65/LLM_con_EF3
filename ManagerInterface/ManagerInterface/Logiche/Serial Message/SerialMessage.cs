@@ -163,11 +163,12 @@ namespace ChargerLogic
             OpportunityAttivo =             0xAF,   // Attivabile da remoto; 000F TRUE / 00F0 False  --> se tutti i valori sono !=0 e M.A. = true posso partire
 
 
-            TipoProfilo = 0x80,
+            TipoProfilo =                   0x80,
 
-            TipoCassone = 0x90,
+            TipoCassone =                   0x90,
 
-            CondizioneStop = 0xF0, 
+            ModelloLadeLight =              0xE0,   // Modello caricabatterie: usato solo come riferimento nelle programmazioni di ID-BATT e SPY-BATT 
+            CondizioneStop =                0xF0, 
             
         }
 

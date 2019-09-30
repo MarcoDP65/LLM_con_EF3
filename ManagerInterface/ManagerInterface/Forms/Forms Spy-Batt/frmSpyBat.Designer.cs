@@ -306,6 +306,131 @@
             this.txtProgEqMinPulse = new System.Windows.Forms.TextBox();
             this.label268 = new System.Windows.Forms.Label();
             this.txtProgEqNumPulse = new System.Windows.Forms.TextBox();
+            this.tbpProfiloLLPro = new System.Windows.Forms.TabPage();
+            this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
+            this.cmbPaTipoLadeLight = new System.Windows.Forms.ComboBox();
+            this.label353 = new System.Windows.Forms.Label();
+            this.chkPaAttivaOppChg = new System.Windows.Forms.CheckBox();
+            this.lblPaAttivaOppChg = new System.Windows.Forms.Label();
+            this.chkPaUsaSafety = new System.Windows.Forms.CheckBox();
+            this.lblPaUsaSafety = new System.Windows.Forms.Label();
+            this.chkPaSbloccaValori = new System.Windows.Forms.CheckBox();
+            this.lblPaSbloccaValori = new System.Windows.Forms.Label();
+            this.chkPaAttivaMant = new System.Windows.Forms.CheckBox();
+            this.lblPaAttivaMant = new System.Windows.Forms.Label();
+            this.btnCicloCorrente = new System.Windows.Forms.Button();
+            this.btnPaProfileRefresh = new System.Windows.Forms.Button();
+            this.picPaImmagineProfilo = new System.Windows.Forms.PictureBox();
+            this.tbcPaSchedeValori = new System.Windows.Forms.TabControl();
+            this.tbpPaGeneraleCiclo = new System.Windows.Forms.TabPage();
+            this.txtPaCassone = new System.Windows.Forms.TextBox();
+            this.label305 = new System.Windows.Forms.Label();
+            this.txtPaIdSetup = new System.Windows.Forms.TextBox();
+            this.lblPaIdSetup = new System.Windows.Forms.Label();
+            this.txtPaNomeSetup = new System.Windows.Forms.TextBox();
+            this.label306 = new System.Windows.Forms.Label();
+            this.tbpPaPCStep0 = new System.Windows.Forms.TabPage();
+            this.txtPaDurataMaxT0 = new System.Windows.Forms.TextBox();
+            this.label307 = new System.Windows.Forms.Label();
+            this.txtPaPrefaseI0 = new System.Windows.Forms.TextBox();
+            this.label308 = new System.Windows.Forms.Label();
+            this.txtPaSogliaV0 = new System.Windows.Forms.TextBox();
+            this.label309 = new System.Windows.Forms.Label();
+            this.tbpPaPCStep1 = new System.Windows.Forms.TabPage();
+            this.cmbPaDurataMaxT1 = new System.Windows.Forms.TextBox();
+            this.cmbPaDurataCarica = new System.Windows.Forms.ComboBox();
+            this.label310 = new System.Windows.Forms.Label();
+            this.txtPaCorrenteI1 = new System.Windows.Forms.TextBox();
+            this.label311 = new System.Windows.Forms.Label();
+            this.txtPaSogliaVs = new System.Windows.Forms.TextBox();
+            this.label312 = new System.Windows.Forms.Label();
+            this.tbpPaPCStep2 = new System.Windows.Forms.TabPage();
+            this.txtPaVMax = new System.Windows.Forms.TextBox();
+            this.label313 = new System.Windows.Forms.Label();
+            this.label314 = new System.Windows.Forms.Label();
+            this.txtPaCoeffK = new System.Windows.Forms.TextBox();
+            this.label315 = new System.Windows.Forms.Label();
+            this.txtPaTempoT2Max = new System.Windows.Forms.TextBox();
+            this.txtPaTempoT2Min = new System.Windows.Forms.TextBox();
+            this.label322 = new System.Windows.Forms.Label();
+            this.txtPaCorrenteRaccordo = new System.Windows.Forms.TextBox();
+            this.label323 = new System.Windows.Forms.Label();
+            this.txtPaCorrenteF3 = new System.Windows.Forms.TextBox();
+            this.label324 = new System.Windows.Forms.Label();
+            this.txtPaRaccordoF1 = new System.Windows.Forms.TextBox();
+            this.label325 = new System.Windows.Forms.Label();
+            this.tbpPaPCStep3 = new System.Windows.Forms.TabPage();
+            this.label326 = new System.Windows.Forms.Label();
+            this.txtPaTempoT3Max = new System.Windows.Forms.TextBox();
+            this.tbpPaPCEqual = new System.Windows.Forms.TabPage();
+            this.txtPaEqualPulseCurrent = new System.Windows.Forms.TextBox();
+            this.label327 = new System.Windows.Forms.Label();
+            this.txtPaEqualPulseTime = new System.Windows.Forms.TextBox();
+            this.label328 = new System.Windows.Forms.Label();
+            this.txtPaEqualPulsePause = new System.Windows.Forms.TextBox();
+            this.label329 = new System.Windows.Forms.Label();
+            this.txtPaEqualNumPulse = new System.Windows.Forms.TextBox();
+            this.label330 = new System.Windows.Forms.Label();
+            this.txtPaEqualAttesa = new System.Windows.Forms.TextBox();
+            this.label331 = new System.Windows.Forms.Label();
+            this.tbpPaPCMant = new System.Windows.Forms.TabPage();
+            this.txtPaMantCorrente = new System.Windows.Forms.TextBox();
+            this.label332 = new System.Windows.Forms.Label();
+            this.txtPaMantDurataMax = new System.Windows.Forms.TextBox();
+            this.label333 = new System.Windows.Forms.Label();
+            this.txtPaMantVmax = new System.Windows.Forms.TextBox();
+            this.label334 = new System.Windows.Forms.Label();
+            this.txtPaMantVmin = new System.Windows.Forms.TextBox();
+            this.label335 = new System.Windows.Forms.Label();
+            this.txtPaMantAttesa = new System.Windows.Forms.TextBox();
+            this.label336 = new System.Windows.Forms.Label();
+            this.tbpPaPCOpp = new System.Windows.Forms.TabPage();
+            this.lblPaOppPuntoVerde = new System.Windows.Forms.Label();
+            this.ImgPaOppPuntoVerde = new System.Windows.Forms.PictureBox();
+            this.chkPaOppNotturno = new System.Windows.Forms.CheckBox();
+            this.rslPaOppFinestra = new Syncfusion.Windows.Forms.Tools.RangeSlider();
+            this.txtPaOppDurataMax = new System.Windows.Forms.TextBox();
+            this.label337 = new System.Windows.Forms.Label();
+            this.txtPaOppCorrente = new System.Windows.Forms.TextBox();
+            this.label338 = new System.Windows.Forms.Label();
+            this.txtPaOppVSoglia = new System.Windows.Forms.TextBox();
+            this.label339 = new System.Windows.Forms.Label();
+            this.txtPaOppOraFine = new System.Windows.Forms.TextBox();
+            this.lblPaOppOraFine = new System.Windows.Forms.Label();
+            this.txtPaOppOraInizio = new System.Windows.Forms.TextBox();
+            this.lblPaOppOraInizio = new System.Windows.Forms.Label();
+            this.tbpPaParSoglia = new System.Windows.Forms.TabPage();
+            this.txtPaVMinStop = new System.Windows.Forms.TextBox();
+            this.label340 = new System.Windows.Forms.Label();
+            this.txtPaBMSTempoAttesa = new System.Windows.Forms.TextBox();
+            this.label341 = new System.Windows.Forms.Label();
+            this.txtPaBMSTempoErogazione = new System.Windows.Forms.TextBox();
+            this.label342 = new System.Windows.Forms.Label();
+            this.chkPaRiarmaBms = new System.Windows.Forms.Label();
+            this.chkPaAttivaRiarmoBms = new System.Windows.Forms.CheckBox();
+            this.txtPaCorrenteMassima = new System.Windows.Forms.TextBox();
+            this.label343 = new System.Windows.Forms.Label();
+            this.txtPaVMaxRic = new System.Windows.Forms.TextBox();
+            this.label344 = new System.Windows.Forms.Label();
+            this.txtPaVMinRic = new System.Windows.Forms.TextBox();
+            this.label345 = new System.Windows.Forms.Label();
+            this.txtPaVLimite = new System.Windows.Forms.TextBox();
+            this.label346 = new System.Windows.Forms.Label();
+            this.txtPaNumCelle = new System.Windows.Forms.TextBox();
+            this.label347 = new System.Windows.Forms.Label();
+            this.cmbPaTipoBatteria = new System.Windows.Forms.ComboBox();
+            this.label348 = new System.Windows.Forms.Label();
+            this.chkPaAttivaEqual = new System.Windows.Forms.CheckBox();
+            this.lblPaAttivaEqual = new System.Windows.Forms.Label();
+            this.chkPaUsaSpyBatt = new System.Windows.Forms.CheckBox();
+            this.label349 = new System.Windows.Forms.Label();
+            this.btnPaSalvaDati = new System.Windows.Forms.Button();
+            this.label350 = new System.Windows.Forms.Label();
+            this.cmbPaProfilo = new System.Windows.Forms.ComboBox();
+            this.txtPaCapacita = new System.Windows.Forms.TextBox();
+            this.label351 = new System.Windows.Forms.Label();
+            this.label352 = new System.Windows.Forms.Label();
+            this.txtPaTensione = new System.Windows.Forms.TextBox();
             this.tbpPianificazione = new System.Windows.Forms.TabPage();
             this.tlpGrigliaTurni = new System.Windows.Forms.TableLayoutPanel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -341,7 +466,6 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.txtCalMinuti = new System.Windows.Forms.TextBox();
@@ -1070,6 +1194,7 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -1106,6 +1231,20 @@
             this.grbProgrammazione.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).BeginInit();
             this.grbProgParEqual.SuspendLayout();
+            this.tbpProfiloLLPro.SuspendLayout();
+            this.grbCicloCorrente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPaImmagineProfilo)).BeginInit();
+            this.tbcPaSchedeValori.SuspendLayout();
+            this.tbpPaGeneraleCiclo.SuspendLayout();
+            this.tbpPaPCStep0.SuspendLayout();
+            this.tbpPaPCStep1.SuspendLayout();
+            this.tbpPaPCStep2.SuspendLayout();
+            this.tbpPaPCStep3.SuspendLayout();
+            this.tbpPaPCEqual.SuspendLayout();
+            this.tbpPaPCMant.SuspendLayout();
+            this.tbpPaPCOpp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImgPaOppPuntoVerde)).BeginInit();
+            this.tbpPaParSoglia.SuspendLayout();
             this.tbpPianificazione.SuspendLayout();
             this.tlpGrigliaTurni.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -1198,6 +1337,7 @@
             this.tabCaricaBatterie.Controls.Add(this.tabStatistiche);
             this.tabCaricaBatterie.Controls.Add(this.tabCb04);
             this.tabCaricaBatterie.Controls.Add(this.tabCb02);
+            this.tabCaricaBatterie.Controls.Add(this.tbpProfiloLLPro);
             this.tabCaricaBatterie.Controls.Add(this.tbpPianificazione);
             this.tabCaricaBatterie.Controls.Add(this.tabCb05);
             this.tabCaricaBatterie.Controls.Add(this.tabSbFact);
@@ -2339,6 +2479,7 @@
             this.flvwListaSoglie.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwListaSoglie.CellEditUseWholeCell = false;
             this.flvwListaSoglie.FullRowSelect = true;
+            this.flvwListaSoglie.HideSelection = false;
             resources.ApplyResources(this.flvwListaSoglie, "flvwListaSoglie");
             this.flvwListaSoglie.Name = "flvwListaSoglie";
             this.flvwListaSoglie.ShowGroups = false;
@@ -2523,6 +2664,7 @@
             this.flvwCicliBatteria.CheckBoxes = true;
             resources.ApplyResources(this.flvwCicliBatteria, "flvwCicliBatteria");
             this.flvwCicliBatteria.FullRowSelect = true;
+            this.flvwCicliBatteria.HideSelection = false;
             this.flvwCicliBatteria.Name = "flvwCicliBatteria";
             this.flvwCicliBatteria.ShowGroups = false;
             this.flvwCicliBatteria.ShowImagesOnSubItems = true;
@@ -3035,6 +3177,7 @@
             // 
             this.flvwProgrammiCarica.CellEditUseWholeCell = false;
             resources.ApplyResources(this.flvwProgrammiCarica, "flvwProgrammiCarica");
+            this.flvwProgrammiCarica.HideSelection = false;
             this.flvwProgrammiCarica.Name = "flvwProgrammiCarica";
             this.flvwProgrammiCarica.ShowGroups = false;
             this.flvwProgrammiCarica.UseCompatibleStateImageBehavior = false;
@@ -3133,6 +3276,820 @@
             resources.ApplyResources(this.txtProgEqNumPulse, "txtProgEqNumPulse");
             this.txtProgEqNumPulse.Name = "txtProgEqNumPulse";
             this.txtProgEqNumPulse.Leave += new System.EventHandler(this.txtProgEqNumPulse_Leave);
+            // 
+            // tbpProfiloLLPro
+            // 
+            this.tbpProfiloLLPro.BackColor = System.Drawing.Color.LightYellow;
+            this.tbpProfiloLLPro.Controls.Add(this.grbCicloCorrente);
+            resources.ApplyResources(this.tbpProfiloLLPro, "tbpProfiloLLPro");
+            this.tbpProfiloLLPro.Name = "tbpProfiloLLPro";
+            // 
+            // grbCicloCorrente
+            // 
+            this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
+            this.grbCicloCorrente.Controls.Add(this.cmbPaTipoLadeLight);
+            this.grbCicloCorrente.Controls.Add(this.label353);
+            this.grbCicloCorrente.Controls.Add(this.chkPaAttivaOppChg);
+            this.grbCicloCorrente.Controls.Add(this.lblPaAttivaOppChg);
+            this.grbCicloCorrente.Controls.Add(this.chkPaUsaSafety);
+            this.grbCicloCorrente.Controls.Add(this.lblPaUsaSafety);
+            this.grbCicloCorrente.Controls.Add(this.chkPaSbloccaValori);
+            this.grbCicloCorrente.Controls.Add(this.lblPaSbloccaValori);
+            this.grbCicloCorrente.Controls.Add(this.chkPaAttivaMant);
+            this.grbCicloCorrente.Controls.Add(this.lblPaAttivaMant);
+            this.grbCicloCorrente.Controls.Add(this.btnCicloCorrente);
+            this.grbCicloCorrente.Controls.Add(this.btnPaProfileRefresh);
+            this.grbCicloCorrente.Controls.Add(this.picPaImmagineProfilo);
+            this.grbCicloCorrente.Controls.Add(this.tbcPaSchedeValori);
+            this.grbCicloCorrente.Controls.Add(this.txtPaNumCelle);
+            this.grbCicloCorrente.Controls.Add(this.label347);
+            this.grbCicloCorrente.Controls.Add(this.cmbPaTipoBatteria);
+            this.grbCicloCorrente.Controls.Add(this.label348);
+            this.grbCicloCorrente.Controls.Add(this.chkPaAttivaEqual);
+            this.grbCicloCorrente.Controls.Add(this.lblPaAttivaEqual);
+            this.grbCicloCorrente.Controls.Add(this.chkPaUsaSpyBatt);
+            this.grbCicloCorrente.Controls.Add(this.label349);
+            this.grbCicloCorrente.Controls.Add(this.btnPaSalvaDati);
+            this.grbCicloCorrente.Controls.Add(this.label350);
+            this.grbCicloCorrente.Controls.Add(this.cmbPaProfilo);
+            this.grbCicloCorrente.Controls.Add(this.txtPaCapacita);
+            this.grbCicloCorrente.Controls.Add(this.label351);
+            this.grbCicloCorrente.Controls.Add(this.label352);
+            this.grbCicloCorrente.Controls.Add(this.txtPaTensione);
+            resources.ApplyResources(this.grbCicloCorrente, "grbCicloCorrente");
+            this.grbCicloCorrente.Name = "grbCicloCorrente";
+            this.grbCicloCorrente.TabStop = false;
+            // 
+            // cmbPaTipoLadeLight
+            // 
+            resources.ApplyResources(this.cmbPaTipoLadeLight, "cmbPaTipoLadeLight");
+            this.cmbPaTipoLadeLight.FormattingEnabled = true;
+            this.cmbPaTipoLadeLight.Name = "cmbPaTipoLadeLight";
+            this.cmbPaTipoLadeLight.SelectedIndexChanged += new System.EventHandler(this.CmbPaTipoLadeLight_SelectedIndexChanged);
+            // 
+            // label353
+            // 
+            resources.ApplyResources(this.label353, "label353");
+            this.label353.ForeColor = System.Drawing.Color.Blue;
+            this.label353.Name = "label353";
+            // 
+            // chkPaAttivaOppChg
+            // 
+            resources.ApplyResources(this.chkPaAttivaOppChg, "chkPaAttivaOppChg");
+            this.chkPaAttivaOppChg.Name = "chkPaAttivaOppChg";
+            this.chkPaAttivaOppChg.UseVisualStyleBackColor = true;
+            this.chkPaAttivaOppChg.CheckedChanged += new System.EventHandler(this.ChkPaAttivaOppChg_CheckedChanged);
+            // 
+            // lblPaAttivaOppChg
+            // 
+            resources.ApplyResources(this.lblPaAttivaOppChg, "lblPaAttivaOppChg");
+            this.lblPaAttivaOppChg.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaAttivaOppChg.Name = "lblPaAttivaOppChg";
+            // 
+            // chkPaUsaSafety
+            // 
+            resources.ApplyResources(this.chkPaUsaSafety, "chkPaUsaSafety");
+            this.chkPaUsaSafety.Name = "chkPaUsaSafety";
+            this.chkPaUsaSafety.UseVisualStyleBackColor = true;
+            // 
+            // lblPaUsaSafety
+            // 
+            resources.ApplyResources(this.lblPaUsaSafety, "lblPaUsaSafety");
+            this.lblPaUsaSafety.ForeColor = System.Drawing.Color.Red;
+            this.lblPaUsaSafety.Name = "lblPaUsaSafety";
+            // 
+            // chkPaSbloccaValori
+            // 
+            resources.ApplyResources(this.chkPaSbloccaValori, "chkPaSbloccaValori");
+            this.chkPaSbloccaValori.Name = "chkPaSbloccaValori";
+            this.chkPaSbloccaValori.UseVisualStyleBackColor = true;
+            // 
+            // lblPaSbloccaValori
+            // 
+            resources.ApplyResources(this.lblPaSbloccaValori, "lblPaSbloccaValori");
+            this.lblPaSbloccaValori.ForeColor = System.Drawing.Color.Red;
+            this.lblPaSbloccaValori.Name = "lblPaSbloccaValori";
+            // 
+            // chkPaAttivaMant
+            // 
+            resources.ApplyResources(this.chkPaAttivaMant, "chkPaAttivaMant");
+            this.chkPaAttivaMant.Name = "chkPaAttivaMant";
+            this.chkPaAttivaMant.UseVisualStyleBackColor = true;
+            this.chkPaAttivaMant.CheckedChanged += new System.EventHandler(this.ChkPaAttivaMant_CheckedChanged);
+            // 
+            // lblPaAttivaMant
+            // 
+            resources.ApplyResources(this.lblPaAttivaMant, "lblPaAttivaMant");
+            this.lblPaAttivaMant.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaAttivaMant.Name = "lblPaAttivaMant";
+            // 
+            // btnCicloCorrente
+            // 
+            resources.ApplyResources(this.btnCicloCorrente, "btnCicloCorrente");
+            this.btnCicloCorrente.Name = "btnCicloCorrente";
+            this.btnCicloCorrente.UseVisualStyleBackColor = true;
+            this.btnCicloCorrente.Click += new System.EventHandler(this.BtnCicloCorrente_Click);
+            // 
+            // btnPaProfileRefresh
+            // 
+            resources.ApplyResources(this.btnPaProfileRefresh, "btnPaProfileRefresh");
+            this.btnPaProfileRefresh.Name = "btnPaProfileRefresh";
+            this.btnPaProfileRefresh.UseVisualStyleBackColor = true;
+            this.btnPaProfileRefresh.Click += new System.EventHandler(this.btnPaProfileRefresh_Click);
+            // 
+            // picPaImmagineProfilo
+            // 
+            this.picPaImmagineProfilo.BackColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.picPaImmagineProfilo, "picPaImmagineProfilo");
+            this.picPaImmagineProfilo.Name = "picPaImmagineProfilo";
+            this.picPaImmagineProfilo.TabStop = false;
+            // 
+            // tbcPaSchedeValori
+            // 
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaGeneraleCiclo);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCStep0);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCStep1);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCStep2);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCStep3);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCEqual);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCMant);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCOpp);
+            this.tbcPaSchedeValori.Controls.Add(this.tbpPaParSoglia);
+            resources.ApplyResources(this.tbcPaSchedeValori, "tbcPaSchedeValori");
+            this.tbcPaSchedeValori.Name = "tbcPaSchedeValori";
+            this.tbcPaSchedeValori.SelectedIndex = 0;
+            // 
+            // tbpPaGeneraleCiclo
+            // 
+            this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaCassone);
+            this.tbpPaGeneraleCiclo.Controls.Add(this.label305);
+            this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaIdSetup);
+            this.tbpPaGeneraleCiclo.Controls.Add(this.lblPaIdSetup);
+            this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaNomeSetup);
+            this.tbpPaGeneraleCiclo.Controls.Add(this.label306);
+            resources.ApplyResources(this.tbpPaGeneraleCiclo, "tbpPaGeneraleCiclo");
+            this.tbpPaGeneraleCiclo.Name = "tbpPaGeneraleCiclo";
+            this.tbpPaGeneraleCiclo.UseVisualStyleBackColor = true;
+            // 
+            // txtPaCassone
+            // 
+            resources.ApplyResources(this.txtPaCassone, "txtPaCassone");
+            this.txtPaCassone.Name = "txtPaCassone";
+            // 
+            // label305
+            // 
+            resources.ApplyResources(this.label305, "label305");
+            this.label305.Name = "label305";
+            // 
+            // txtPaIdSetup
+            // 
+            resources.ApplyResources(this.txtPaIdSetup, "txtPaIdSetup");
+            this.txtPaIdSetup.Name = "txtPaIdSetup";
+            this.txtPaIdSetup.ReadOnly = true;
+            // 
+            // lblPaIdSetup
+            // 
+            resources.ApplyResources(this.lblPaIdSetup, "lblPaIdSetup");
+            this.lblPaIdSetup.Name = "lblPaIdSetup";
+            // 
+            // txtPaNomeSetup
+            // 
+            resources.ApplyResources(this.txtPaNomeSetup, "txtPaNomeSetup");
+            this.txtPaNomeSetup.Name = "txtPaNomeSetup";
+            // 
+            // label306
+            // 
+            resources.ApplyResources(this.label306, "label306");
+            this.label306.Name = "label306";
+            // 
+            // tbpPaPCStep0
+            // 
+            this.tbpPaPCStep0.Controls.Add(this.txtPaDurataMaxT0);
+            this.tbpPaPCStep0.Controls.Add(this.label307);
+            this.tbpPaPCStep0.Controls.Add(this.txtPaPrefaseI0);
+            this.tbpPaPCStep0.Controls.Add(this.label308);
+            this.tbpPaPCStep0.Controls.Add(this.txtPaSogliaV0);
+            this.tbpPaPCStep0.Controls.Add(this.label309);
+            resources.ApplyResources(this.tbpPaPCStep0, "tbpPaPCStep0");
+            this.tbpPaPCStep0.Name = "tbpPaPCStep0";
+            this.tbpPaPCStep0.UseVisualStyleBackColor = true;
+            // 
+            // txtPaDurataMaxT0
+            // 
+            resources.ApplyResources(this.txtPaDurataMaxT0, "txtPaDurataMaxT0");
+            this.txtPaDurataMaxT0.Name = "txtPaDurataMaxT0";
+            // 
+            // label307
+            // 
+            resources.ApplyResources(this.label307, "label307");
+            this.label307.Name = "label307";
+            // 
+            // txtPaPrefaseI0
+            // 
+            resources.ApplyResources(this.txtPaPrefaseI0, "txtPaPrefaseI0");
+            this.txtPaPrefaseI0.Name = "txtPaPrefaseI0";
+            // 
+            // label308
+            // 
+            resources.ApplyResources(this.label308, "label308");
+            this.label308.Name = "label308";
+            // 
+            // txtPaSogliaV0
+            // 
+            resources.ApplyResources(this.txtPaSogliaV0, "txtPaSogliaV0");
+            this.txtPaSogliaV0.Name = "txtPaSogliaV0";
+            // 
+            // label309
+            // 
+            resources.ApplyResources(this.label309, "label309");
+            this.label309.Name = "label309";
+            // 
+            // tbpPaPCStep1
+            // 
+            this.tbpPaPCStep1.Controls.Add(this.cmbPaDurataMaxT1);
+            this.tbpPaPCStep1.Controls.Add(this.cmbPaDurataCarica);
+            this.tbpPaPCStep1.Controls.Add(this.label310);
+            this.tbpPaPCStep1.Controls.Add(this.txtPaCorrenteI1);
+            this.tbpPaPCStep1.Controls.Add(this.label311);
+            this.tbpPaPCStep1.Controls.Add(this.txtPaSogliaVs);
+            this.tbpPaPCStep1.Controls.Add(this.label312);
+            resources.ApplyResources(this.tbpPaPCStep1, "tbpPaPCStep1");
+            this.tbpPaPCStep1.Name = "tbpPaPCStep1";
+            this.tbpPaPCStep1.UseVisualStyleBackColor = true;
+            // 
+            // cmbPaDurataMaxT1
+            // 
+            resources.ApplyResources(this.cmbPaDurataMaxT1, "cmbPaDurataMaxT1");
+            this.cmbPaDurataMaxT1.Name = "cmbPaDurataMaxT1";
+            // 
+            // cmbPaDurataCarica
+            // 
+            resources.ApplyResources(this.cmbPaDurataCarica, "cmbPaDurataCarica");
+            this.cmbPaDurataCarica.FormattingEnabled = true;
+            this.cmbPaDurataCarica.Name = "cmbPaDurataCarica";
+            // 
+            // label310
+            // 
+            resources.ApplyResources(this.label310, "label310");
+            this.label310.Name = "label310";
+            // 
+            // txtPaCorrenteI1
+            // 
+            resources.ApplyResources(this.txtPaCorrenteI1, "txtPaCorrenteI1");
+            this.txtPaCorrenteI1.Name = "txtPaCorrenteI1";
+            // 
+            // label311
+            // 
+            resources.ApplyResources(this.label311, "label311");
+            this.label311.Name = "label311";
+            // 
+            // txtPaSogliaVs
+            // 
+            resources.ApplyResources(this.txtPaSogliaVs, "txtPaSogliaVs");
+            this.txtPaSogliaVs.Name = "txtPaSogliaVs";
+            // 
+            // label312
+            // 
+            resources.ApplyResources(this.label312, "label312");
+            this.label312.Name = "label312";
+            // 
+            // tbpPaPCStep2
+            // 
+            this.tbpPaPCStep2.Controls.Add(this.txtPaVMax);
+            this.tbpPaPCStep2.Controls.Add(this.label313);
+            this.tbpPaPCStep2.Controls.Add(this.label314);
+            this.tbpPaPCStep2.Controls.Add(this.txtPaCoeffK);
+            this.tbpPaPCStep2.Controls.Add(this.label315);
+            this.tbpPaPCStep2.Controls.Add(this.txtPaTempoT2Max);
+            this.tbpPaPCStep2.Controls.Add(this.txtPaTempoT2Min);
+            this.tbpPaPCStep2.Controls.Add(this.label322);
+            this.tbpPaPCStep2.Controls.Add(this.txtPaCorrenteRaccordo);
+            this.tbpPaPCStep2.Controls.Add(this.label323);
+            this.tbpPaPCStep2.Controls.Add(this.txtPaCorrenteF3);
+            this.tbpPaPCStep2.Controls.Add(this.label324);
+            this.tbpPaPCStep2.Controls.Add(this.txtPaRaccordoF1);
+            this.tbpPaPCStep2.Controls.Add(this.label325);
+            resources.ApplyResources(this.tbpPaPCStep2, "tbpPaPCStep2");
+            this.tbpPaPCStep2.Name = "tbpPaPCStep2";
+            this.tbpPaPCStep2.UseVisualStyleBackColor = true;
+            // 
+            // txtPaVMax
+            // 
+            resources.ApplyResources(this.txtPaVMax, "txtPaVMax");
+            this.txtPaVMax.Name = "txtPaVMax";
+            // 
+            // label313
+            // 
+            resources.ApplyResources(this.label313, "label313");
+            this.label313.Name = "label313";
+            // 
+            // label314
+            // 
+            resources.ApplyResources(this.label314, "label314");
+            this.label314.Name = "label314";
+            // 
+            // txtPaCoeffK
+            // 
+            resources.ApplyResources(this.txtPaCoeffK, "txtPaCoeffK");
+            this.txtPaCoeffK.Name = "txtPaCoeffK";
+            // 
+            // label315
+            // 
+            resources.ApplyResources(this.label315, "label315");
+            this.label315.Name = "label315";
+            // 
+            // txtPaTempoT2Max
+            // 
+            resources.ApplyResources(this.txtPaTempoT2Max, "txtPaTempoT2Max");
+            this.txtPaTempoT2Max.Name = "txtPaTempoT2Max";
+            // 
+            // txtPaTempoT2Min
+            // 
+            resources.ApplyResources(this.txtPaTempoT2Min, "txtPaTempoT2Min");
+            this.txtPaTempoT2Min.Name = "txtPaTempoT2Min";
+            // 
+            // label322
+            // 
+            resources.ApplyResources(this.label322, "label322");
+            this.label322.Name = "label322";
+            // 
+            // txtPaCorrenteRaccordo
+            // 
+            resources.ApplyResources(this.txtPaCorrenteRaccordo, "txtPaCorrenteRaccordo");
+            this.txtPaCorrenteRaccordo.Name = "txtPaCorrenteRaccordo";
+            // 
+            // label323
+            // 
+            resources.ApplyResources(this.label323, "label323");
+            this.label323.Name = "label323";
+            // 
+            // txtPaCorrenteF3
+            // 
+            resources.ApplyResources(this.txtPaCorrenteF3, "txtPaCorrenteF3");
+            this.txtPaCorrenteF3.Name = "txtPaCorrenteF3";
+            // 
+            // label324
+            // 
+            resources.ApplyResources(this.label324, "label324");
+            this.label324.Name = "label324";
+            // 
+            // txtPaRaccordoF1
+            // 
+            resources.ApplyResources(this.txtPaRaccordoF1, "txtPaRaccordoF1");
+            this.txtPaRaccordoF1.Name = "txtPaRaccordoF1";
+            // 
+            // label325
+            // 
+            resources.ApplyResources(this.label325, "label325");
+            this.label325.Name = "label325";
+            // 
+            // tbpPaPCStep3
+            // 
+            this.tbpPaPCStep3.Controls.Add(this.label326);
+            this.tbpPaPCStep3.Controls.Add(this.txtPaTempoT3Max);
+            resources.ApplyResources(this.tbpPaPCStep3, "tbpPaPCStep3");
+            this.tbpPaPCStep3.Name = "tbpPaPCStep3";
+            this.tbpPaPCStep3.UseVisualStyleBackColor = true;
+            // 
+            // label326
+            // 
+            resources.ApplyResources(this.label326, "label326");
+            this.label326.Name = "label326";
+            // 
+            // txtPaTempoT3Max
+            // 
+            resources.ApplyResources(this.txtPaTempoT3Max, "txtPaTempoT3Max");
+            this.txtPaTempoT3Max.Name = "txtPaTempoT3Max";
+            // 
+            // tbpPaPCEqual
+            // 
+            this.tbpPaPCEqual.Controls.Add(this.txtPaEqualPulseCurrent);
+            this.tbpPaPCEqual.Controls.Add(this.label327);
+            this.tbpPaPCEqual.Controls.Add(this.txtPaEqualPulseTime);
+            this.tbpPaPCEqual.Controls.Add(this.label328);
+            this.tbpPaPCEqual.Controls.Add(this.txtPaEqualPulsePause);
+            this.tbpPaPCEqual.Controls.Add(this.label329);
+            this.tbpPaPCEqual.Controls.Add(this.txtPaEqualNumPulse);
+            this.tbpPaPCEqual.Controls.Add(this.label330);
+            this.tbpPaPCEqual.Controls.Add(this.txtPaEqualAttesa);
+            this.tbpPaPCEqual.Controls.Add(this.label331);
+            resources.ApplyResources(this.tbpPaPCEqual, "tbpPaPCEqual");
+            this.tbpPaPCEqual.Name = "tbpPaPCEqual";
+            this.tbpPaPCEqual.UseVisualStyleBackColor = true;
+            // 
+            // txtPaEqualPulseCurrent
+            // 
+            resources.ApplyResources(this.txtPaEqualPulseCurrent, "txtPaEqualPulseCurrent");
+            this.txtPaEqualPulseCurrent.Name = "txtPaEqualPulseCurrent";
+            // 
+            // label327
+            // 
+            resources.ApplyResources(this.label327, "label327");
+            this.label327.Name = "label327";
+            // 
+            // txtPaEqualPulseTime
+            // 
+            resources.ApplyResources(this.txtPaEqualPulseTime, "txtPaEqualPulseTime");
+            this.txtPaEqualPulseTime.Name = "txtPaEqualPulseTime";
+            // 
+            // label328
+            // 
+            resources.ApplyResources(this.label328, "label328");
+            this.label328.Name = "label328";
+            // 
+            // txtPaEqualPulsePause
+            // 
+            resources.ApplyResources(this.txtPaEqualPulsePause, "txtPaEqualPulsePause");
+            this.txtPaEqualPulsePause.Name = "txtPaEqualPulsePause";
+            // 
+            // label329
+            // 
+            resources.ApplyResources(this.label329, "label329");
+            this.label329.Name = "label329";
+            // 
+            // txtPaEqualNumPulse
+            // 
+            resources.ApplyResources(this.txtPaEqualNumPulse, "txtPaEqualNumPulse");
+            this.txtPaEqualNumPulse.Name = "txtPaEqualNumPulse";
+            // 
+            // label330
+            // 
+            resources.ApplyResources(this.label330, "label330");
+            this.label330.Name = "label330";
+            // 
+            // txtPaEqualAttesa
+            // 
+            resources.ApplyResources(this.txtPaEqualAttesa, "txtPaEqualAttesa");
+            this.txtPaEqualAttesa.Name = "txtPaEqualAttesa";
+            // 
+            // label331
+            // 
+            resources.ApplyResources(this.label331, "label331");
+            this.label331.Name = "label331";
+            // 
+            // tbpPaPCMant
+            // 
+            this.tbpPaPCMant.Controls.Add(this.txtPaMantCorrente);
+            this.tbpPaPCMant.Controls.Add(this.label332);
+            this.tbpPaPCMant.Controls.Add(this.txtPaMantDurataMax);
+            this.tbpPaPCMant.Controls.Add(this.label333);
+            this.tbpPaPCMant.Controls.Add(this.txtPaMantVmax);
+            this.tbpPaPCMant.Controls.Add(this.label334);
+            this.tbpPaPCMant.Controls.Add(this.txtPaMantVmin);
+            this.tbpPaPCMant.Controls.Add(this.label335);
+            this.tbpPaPCMant.Controls.Add(this.txtPaMantAttesa);
+            this.tbpPaPCMant.Controls.Add(this.label336);
+            resources.ApplyResources(this.tbpPaPCMant, "tbpPaPCMant");
+            this.tbpPaPCMant.Name = "tbpPaPCMant";
+            this.tbpPaPCMant.UseVisualStyleBackColor = true;
+            // 
+            // txtPaMantCorrente
+            // 
+            resources.ApplyResources(this.txtPaMantCorrente, "txtPaMantCorrente");
+            this.txtPaMantCorrente.Name = "txtPaMantCorrente";
+            // 
+            // label332
+            // 
+            resources.ApplyResources(this.label332, "label332");
+            this.label332.Name = "label332";
+            // 
+            // txtPaMantDurataMax
+            // 
+            resources.ApplyResources(this.txtPaMantDurataMax, "txtPaMantDurataMax");
+            this.txtPaMantDurataMax.Name = "txtPaMantDurataMax";
+            // 
+            // label333
+            // 
+            resources.ApplyResources(this.label333, "label333");
+            this.label333.Name = "label333";
+            // 
+            // txtPaMantVmax
+            // 
+            resources.ApplyResources(this.txtPaMantVmax, "txtPaMantVmax");
+            this.txtPaMantVmax.Name = "txtPaMantVmax";
+            // 
+            // label334
+            // 
+            resources.ApplyResources(this.label334, "label334");
+            this.label334.Name = "label334";
+            // 
+            // txtPaMantVmin
+            // 
+            resources.ApplyResources(this.txtPaMantVmin, "txtPaMantVmin");
+            this.txtPaMantVmin.Name = "txtPaMantVmin";
+            // 
+            // label335
+            // 
+            resources.ApplyResources(this.label335, "label335");
+            this.label335.Name = "label335";
+            // 
+            // txtPaMantAttesa
+            // 
+            resources.ApplyResources(this.txtPaMantAttesa, "txtPaMantAttesa");
+            this.txtPaMantAttesa.Name = "txtPaMantAttesa";
+            // 
+            // label336
+            // 
+            resources.ApplyResources(this.label336, "label336");
+            this.label336.Name = "label336";
+            // 
+            // tbpPaPCOpp
+            // 
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppPuntoVerde);
+            this.tbpPaPCOpp.Controls.Add(this.ImgPaOppPuntoVerde);
+            this.tbpPaPCOpp.Controls.Add(this.chkPaOppNotturno);
+            this.tbpPaPCOpp.Controls.Add(this.rslPaOppFinestra);
+            this.tbpPaPCOpp.Controls.Add(this.txtPaOppDurataMax);
+            this.tbpPaPCOpp.Controls.Add(this.label337);
+            this.tbpPaPCOpp.Controls.Add(this.txtPaOppCorrente);
+            this.tbpPaPCOpp.Controls.Add(this.label338);
+            this.tbpPaPCOpp.Controls.Add(this.txtPaOppVSoglia);
+            this.tbpPaPCOpp.Controls.Add(this.label339);
+            this.tbpPaPCOpp.Controls.Add(this.txtPaOppOraFine);
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppOraFine);
+            this.tbpPaPCOpp.Controls.Add(this.txtPaOppOraInizio);
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppOraInizio);
+            resources.ApplyResources(this.tbpPaPCOpp, "tbpPaPCOpp");
+            this.tbpPaPCOpp.Name = "tbpPaPCOpp";
+            this.tbpPaPCOpp.UseVisualStyleBackColor = true;
+            // 
+            // lblPaOppPuntoVerde
+            // 
+            resources.ApplyResources(this.lblPaOppPuntoVerde, "lblPaOppPuntoVerde");
+            this.lblPaOppPuntoVerde.Name = "lblPaOppPuntoVerde";
+            // 
+            // ImgPaOppPuntoVerde
+            // 
+            resources.ApplyResources(this.ImgPaOppPuntoVerde, "ImgPaOppPuntoVerde");
+            this.ImgPaOppPuntoVerde.Name = "ImgPaOppPuntoVerde";
+            this.ImgPaOppPuntoVerde.TabStop = false;
+            // 
+            // chkPaOppNotturno
+            // 
+            resources.ApplyResources(this.chkPaOppNotturno, "chkPaOppNotturno");
+            this.chkPaOppNotturno.Name = "chkPaOppNotturno";
+            this.chkPaOppNotturno.UseVisualStyleBackColor = true;
+            // 
+            // rslPaOppFinestra
+            // 
+            this.rslPaOppFinestra.BeforeTouchSize = new System.Drawing.Size(315, 22);
+            resources.ApplyResources(this.rslPaOppFinestra, "rslPaOppFinestra");
+            this.rslPaOppFinestra.ForeColor = System.Drawing.Color.Black;
+            this.rslPaOppFinestra.HighlightedThumbColor = System.Drawing.Color.Blue;
+            this.rslPaOppFinestra.Maximum = 1440;
+            this.rslPaOppFinestra.Name = "rslPaOppFinestra";
+            this.rslPaOppFinestra.PushedThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rslPaOppFinestra.ShowTicks = false;
+            this.rslPaOppFinestra.SliderMax = 1200;
+            this.rslPaOppFinestra.SliderMin = 240;
+            this.rslPaOppFinestra.ThemeName = "Default";
+            this.rslPaOppFinestra.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.rslPaOppFinestra.TickFrequency = 15;
+            this.rslPaOppFinestra.ValueChanged += new System.EventHandler(this.RslPaOppFinestra_ValueChanged);
+            // 
+            // txtPaOppDurataMax
+            // 
+            resources.ApplyResources(this.txtPaOppDurataMax, "txtPaOppDurataMax");
+            this.txtPaOppDurataMax.Name = "txtPaOppDurataMax";
+            // 
+            // label337
+            // 
+            resources.ApplyResources(this.label337, "label337");
+            this.label337.Name = "label337";
+            // 
+            // txtPaOppCorrente
+            // 
+            resources.ApplyResources(this.txtPaOppCorrente, "txtPaOppCorrente");
+            this.txtPaOppCorrente.Name = "txtPaOppCorrente";
+            // 
+            // label338
+            // 
+            resources.ApplyResources(this.label338, "label338");
+            this.label338.Name = "label338";
+            // 
+            // txtPaOppVSoglia
+            // 
+            resources.ApplyResources(this.txtPaOppVSoglia, "txtPaOppVSoglia");
+            this.txtPaOppVSoglia.Name = "txtPaOppVSoglia";
+            // 
+            // label339
+            // 
+            resources.ApplyResources(this.label339, "label339");
+            this.label339.Name = "label339";
+            // 
+            // txtPaOppOraFine
+            // 
+            resources.ApplyResources(this.txtPaOppOraFine, "txtPaOppOraFine");
+            this.txtPaOppOraFine.Name = "txtPaOppOraFine";
+            // 
+            // lblPaOppOraFine
+            // 
+            resources.ApplyResources(this.lblPaOppOraFine, "lblPaOppOraFine");
+            this.lblPaOppOraFine.Name = "lblPaOppOraFine";
+            // 
+            // txtPaOppOraInizio
+            // 
+            resources.ApplyResources(this.txtPaOppOraInizio, "txtPaOppOraInizio");
+            this.txtPaOppOraInizio.Name = "txtPaOppOraInizio";
+            // 
+            // lblPaOppOraInizio
+            // 
+            resources.ApplyResources(this.lblPaOppOraInizio, "lblPaOppOraInizio");
+            this.lblPaOppOraInizio.Name = "lblPaOppOraInizio";
+            // 
+            // tbpPaParSoglia
+            // 
+            this.tbpPaParSoglia.Controls.Add(this.txtPaVMinStop);
+            this.tbpPaParSoglia.Controls.Add(this.label340);
+            this.tbpPaParSoglia.Controls.Add(this.txtPaBMSTempoAttesa);
+            this.tbpPaParSoglia.Controls.Add(this.label341);
+            this.tbpPaParSoglia.Controls.Add(this.txtPaBMSTempoErogazione);
+            this.tbpPaParSoglia.Controls.Add(this.label342);
+            this.tbpPaParSoglia.Controls.Add(this.chkPaRiarmaBms);
+            this.tbpPaParSoglia.Controls.Add(this.chkPaAttivaRiarmoBms);
+            this.tbpPaParSoglia.Controls.Add(this.txtPaCorrenteMassima);
+            this.tbpPaParSoglia.Controls.Add(this.label343);
+            this.tbpPaParSoglia.Controls.Add(this.txtPaVMaxRic);
+            this.tbpPaParSoglia.Controls.Add(this.label344);
+            this.tbpPaParSoglia.Controls.Add(this.txtPaVMinRic);
+            this.tbpPaParSoglia.Controls.Add(this.label345);
+            this.tbpPaParSoglia.Controls.Add(this.txtPaVLimite);
+            this.tbpPaParSoglia.Controls.Add(this.label346);
+            resources.ApplyResources(this.tbpPaParSoglia, "tbpPaParSoglia");
+            this.tbpPaParSoglia.Name = "tbpPaParSoglia";
+            this.tbpPaParSoglia.UseVisualStyleBackColor = true;
+            // 
+            // txtPaVMinStop
+            // 
+            resources.ApplyResources(this.txtPaVMinStop, "txtPaVMinStop");
+            this.txtPaVMinStop.Name = "txtPaVMinStop";
+            // 
+            // label340
+            // 
+            resources.ApplyResources(this.label340, "label340");
+            this.label340.Name = "label340";
+            // 
+            // txtPaBMSTempoAttesa
+            // 
+            resources.ApplyResources(this.txtPaBMSTempoAttesa, "txtPaBMSTempoAttesa");
+            this.txtPaBMSTempoAttesa.Name = "txtPaBMSTempoAttesa";
+            // 
+            // label341
+            // 
+            resources.ApplyResources(this.label341, "label341");
+            this.label341.Name = "label341";
+            // 
+            // txtPaBMSTempoErogazione
+            // 
+            resources.ApplyResources(this.txtPaBMSTempoErogazione, "txtPaBMSTempoErogazione");
+            this.txtPaBMSTempoErogazione.Name = "txtPaBMSTempoErogazione";
+            // 
+            // label342
+            // 
+            resources.ApplyResources(this.label342, "label342");
+            this.label342.Name = "label342";
+            // 
+            // chkPaRiarmaBms
+            // 
+            resources.ApplyResources(this.chkPaRiarmaBms, "chkPaRiarmaBms");
+            this.chkPaRiarmaBms.Name = "chkPaRiarmaBms";
+            // 
+            // chkPaAttivaRiarmoBms
+            // 
+            resources.ApplyResources(this.chkPaAttivaRiarmoBms, "chkPaAttivaRiarmoBms");
+            this.chkPaAttivaRiarmoBms.Name = "chkPaAttivaRiarmoBms";
+            this.chkPaAttivaRiarmoBms.UseVisualStyleBackColor = true;
+            // 
+            // txtPaCorrenteMassima
+            // 
+            resources.ApplyResources(this.txtPaCorrenteMassima, "txtPaCorrenteMassima");
+            this.txtPaCorrenteMassima.Name = "txtPaCorrenteMassima";
+            // 
+            // label343
+            // 
+            resources.ApplyResources(this.label343, "label343");
+            this.label343.Name = "label343";
+            // 
+            // txtPaVMaxRic
+            // 
+            resources.ApplyResources(this.txtPaVMaxRic, "txtPaVMaxRic");
+            this.txtPaVMaxRic.Name = "txtPaVMaxRic";
+            // 
+            // label344
+            // 
+            resources.ApplyResources(this.label344, "label344");
+            this.label344.Name = "label344";
+            // 
+            // txtPaVMinRic
+            // 
+            resources.ApplyResources(this.txtPaVMinRic, "txtPaVMinRic");
+            this.txtPaVMinRic.Name = "txtPaVMinRic";
+            // 
+            // label345
+            // 
+            resources.ApplyResources(this.label345, "label345");
+            this.label345.Name = "label345";
+            // 
+            // txtPaVLimite
+            // 
+            resources.ApplyResources(this.txtPaVLimite, "txtPaVLimite");
+            this.txtPaVLimite.Name = "txtPaVLimite";
+            // 
+            // label346
+            // 
+            resources.ApplyResources(this.label346, "label346");
+            this.label346.Name = "label346";
+            // 
+            // txtPaNumCelle
+            // 
+            resources.ApplyResources(this.txtPaNumCelle, "txtPaNumCelle");
+            this.txtPaNumCelle.Name = "txtPaNumCelle";
+            // 
+            // label347
+            // 
+            resources.ApplyResources(this.label347, "label347");
+            this.label347.ForeColor = System.Drawing.Color.Blue;
+            this.label347.Name = "label347";
+            // 
+            // cmbPaTipoBatteria
+            // 
+            resources.ApplyResources(this.cmbPaTipoBatteria, "cmbPaTipoBatteria");
+            this.cmbPaTipoBatteria.FormattingEnabled = true;
+            this.cmbPaTipoBatteria.Name = "cmbPaTipoBatteria";
+            this.cmbPaTipoBatteria.SelectedIndexChanged += new System.EventHandler(this.cmbPaTipoBatteria_SelectedIndexChanged);
+            // 
+            // label348
+            // 
+            resources.ApplyResources(this.label348, "label348");
+            this.label348.ForeColor = System.Drawing.Color.Blue;
+            this.label348.Name = "label348";
+            // 
+            // chkPaAttivaEqual
+            // 
+            resources.ApplyResources(this.chkPaAttivaEqual, "chkPaAttivaEqual");
+            this.chkPaAttivaEqual.Name = "chkPaAttivaEqual";
+            this.chkPaAttivaEqual.UseVisualStyleBackColor = true;
+            this.chkPaAttivaEqual.CheckedChanged += new System.EventHandler(this.ChkPaAttivaEqual_CheckedChanged);
+            // 
+            // lblPaAttivaEqual
+            // 
+            resources.ApplyResources(this.lblPaAttivaEqual, "lblPaAttivaEqual");
+            this.lblPaAttivaEqual.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaAttivaEqual.Name = "lblPaAttivaEqual";
+            // 
+            // chkPaUsaSpyBatt
+            // 
+            resources.ApplyResources(this.chkPaUsaSpyBatt, "chkPaUsaSpyBatt");
+            this.chkPaUsaSpyBatt.Name = "chkPaUsaSpyBatt";
+            this.chkPaUsaSpyBatt.UseVisualStyleBackColor = true;
+            // 
+            // label349
+            // 
+            resources.ApplyResources(this.label349, "label349");
+            this.label349.ForeColor = System.Drawing.Color.Red;
+            this.label349.Name = "label349";
+            // 
+            // btnPaSalvaDati
+            // 
+            resources.ApplyResources(this.btnPaSalvaDati, "btnPaSalvaDati");
+            this.btnPaSalvaDati.Name = "btnPaSalvaDati";
+            this.btnPaSalvaDati.UseVisualStyleBackColor = true;
+            this.btnPaSalvaDati.Click += new System.EventHandler(this.BtnPaSalvaDati_Click);
+            // 
+            // label350
+            // 
+            resources.ApplyResources(this.label350, "label350");
+            this.label350.ForeColor = System.Drawing.Color.Blue;
+            this.label350.Name = "label350";
+            // 
+            // cmbPaProfilo
+            // 
+            resources.ApplyResources(this.cmbPaProfilo, "cmbPaProfilo");
+            this.cmbPaProfilo.FormattingEnabled = true;
+            this.cmbPaProfilo.Name = "cmbPaProfilo";
+            this.cmbPaProfilo.SelectedIndexChanged += new System.EventHandler(this.cmbPaProfilo_SelectedIndexChanged);
+            // 
+            // txtPaCapacita
+            // 
+            resources.ApplyResources(this.txtPaCapacita, "txtPaCapacita");
+            this.txtPaCapacita.Name = "txtPaCapacita";
+            // 
+            // label351
+            // 
+            resources.ApplyResources(this.label351, "label351");
+            this.label351.ForeColor = System.Drawing.Color.Blue;
+            this.label351.Name = "label351";
+            // 
+            // label352
+            // 
+            resources.ApplyResources(this.label352, "label352");
+            this.label352.ForeColor = System.Drawing.Color.Blue;
+            this.label352.Name = "label352";
+            // 
+            // txtPaTensione
+            // 
+            resources.ApplyResources(this.txtPaTensione, "txtPaTensione");
+            this.txtPaTensione.Name = "txtPaTensione";
             // 
             // tbpPianificazione
             // 
@@ -3370,17 +4327,6 @@
             resources.ApplyResources(this.lblTurno3, "lblTurno3");
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
-            // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
             // 
             // tabCb05
             // 
@@ -5111,6 +6057,7 @@
             this.flvwLettureCorrente.CellEditUseWholeCell = false;
             resources.ApplyResources(this.flvwLettureCorrente, "flvwLettureCorrente");
             this.flvwLettureCorrente.FullRowSelect = true;
+            this.flvwLettureCorrente.HideSelection = false;
             this.flvwLettureCorrente.Name = "flvwLettureCorrente";
             this.flvwLettureCorrente.ShowGroups = false;
             this.flvwLettureCorrente.ShowImagesOnSubItems = true;
@@ -6589,6 +7536,7 @@
             this.flvwCalCorrentiVerifica.CellEditUseWholeCell = false;
             resources.ApplyResources(this.flvwCalCorrentiVerifica, "flvwCalCorrentiVerifica");
             this.flvwCalCorrentiVerifica.FullRowSelect = true;
+            this.flvwCalCorrentiVerifica.HideSelection = false;
             this.flvwCalCorrentiVerifica.Name = "flvwCalCorrentiVerifica";
             this.flvwCalCorrentiVerifica.ShowGroups = false;
             this.flvwCalCorrentiVerifica.ShowImagesOnSubItems = true;
@@ -8290,6 +9238,7 @@
             // 
             // lvwCicliBatteriaAA
             // 
+            this.lvwCicliBatteriaAA.HideSelection = false;
             resources.ApplyResources(this.lvwCicliBatteriaAA, "lvwCicliBatteriaAA");
             this.lvwCicliBatteriaAA.Name = "lvwCicliBatteriaAA";
             this.lvwCicliBatteriaAA.UseCompatibleStateImageBehavior = false;
@@ -8303,6 +9252,17 @@
             // sfdImportDati
             // 
             this.sfdImportDati.FileName = "prova";
+            // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
             // 
             // frmSpyBat
             // 
@@ -8376,6 +9336,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvwProgrammiCarica)).EndInit();
             this.grbProgParEqual.ResumeLayout(false);
             this.grbProgParEqual.PerformLayout();
+            this.tbpProfiloLLPro.ResumeLayout(false);
+            this.grbCicloCorrente.ResumeLayout(false);
+            this.grbCicloCorrente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPaImmagineProfilo)).EndInit();
+            this.tbcPaSchedeValori.ResumeLayout(false);
+            this.tbpPaGeneraleCiclo.ResumeLayout(false);
+            this.tbpPaGeneraleCiclo.PerformLayout();
+            this.tbpPaPCStep0.ResumeLayout(false);
+            this.tbpPaPCStep0.PerformLayout();
+            this.tbpPaPCStep1.ResumeLayout(false);
+            this.tbpPaPCStep1.PerformLayout();
+            this.tbpPaPCStep2.ResumeLayout(false);
+            this.tbpPaPCStep2.PerformLayout();
+            this.tbpPaPCStep3.ResumeLayout(false);
+            this.tbpPaPCStep3.PerformLayout();
+            this.tbpPaPCEqual.ResumeLayout(false);
+            this.tbpPaPCEqual.PerformLayout();
+            this.tbpPaPCMant.ResumeLayout(false);
+            this.tbpPaPCMant.PerformLayout();
+            this.tbpPaPCOpp.ResumeLayout(false);
+            this.tbpPaPCOpp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImgPaOppPuntoVerde)).EndInit();
+            this.tbpPaParSoglia.ResumeLayout(false);
+            this.tbpPaParSoglia.PerformLayout();
             this.tbpPianificazione.ResumeLayout(false);
             this.tlpGrigliaTurni.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
@@ -9557,5 +10541,130 @@
         private System.Windows.Forms.Button btnEsp32SetAdvTime;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TabPage tbpProfiloLLPro;
+        private System.Windows.Forms.GroupBox grbCicloCorrente;
+        private System.Windows.Forms.ComboBox cmbPaTipoLadeLight;
+        private System.Windows.Forms.Label label353;
+        private System.Windows.Forms.CheckBox chkPaAttivaOppChg;
+        private System.Windows.Forms.Label lblPaAttivaOppChg;
+        private System.Windows.Forms.CheckBox chkPaUsaSafety;
+        private System.Windows.Forms.Label lblPaUsaSafety;
+        private System.Windows.Forms.CheckBox chkPaSbloccaValori;
+        private System.Windows.Forms.Label lblPaSbloccaValori;
+        private System.Windows.Forms.CheckBox chkPaAttivaMant;
+        private System.Windows.Forms.Label lblPaAttivaMant;
+        private System.Windows.Forms.Button btnCicloCorrente;
+        private System.Windows.Forms.Button btnPaProfileRefresh;
+        private System.Windows.Forms.PictureBox picPaImmagineProfilo;
+        private System.Windows.Forms.TabControl tbcPaSchedeValori;
+        private System.Windows.Forms.TabPage tbpPaGeneraleCiclo;
+        private System.Windows.Forms.TextBox txtPaCassone;
+        private System.Windows.Forms.Label label305;
+        private System.Windows.Forms.TextBox txtPaIdSetup;
+        private System.Windows.Forms.Label lblPaIdSetup;
+        private System.Windows.Forms.TextBox txtPaNomeSetup;
+        private System.Windows.Forms.Label label306;
+        private System.Windows.Forms.TabPage tbpPaPCStep0;
+        private System.Windows.Forms.TextBox txtPaDurataMaxT0;
+        private System.Windows.Forms.Label label307;
+        private System.Windows.Forms.TextBox txtPaPrefaseI0;
+        private System.Windows.Forms.Label label308;
+        private System.Windows.Forms.TextBox txtPaSogliaV0;
+        private System.Windows.Forms.Label label309;
+        private System.Windows.Forms.TabPage tbpPaPCStep1;
+        private System.Windows.Forms.TextBox cmbPaDurataMaxT1;
+        private System.Windows.Forms.ComboBox cmbPaDurataCarica;
+        private System.Windows.Forms.Label label310;
+        private System.Windows.Forms.TextBox txtPaCorrenteI1;
+        private System.Windows.Forms.Label label311;
+        private System.Windows.Forms.TextBox txtPaSogliaVs;
+        private System.Windows.Forms.Label label312;
+        private System.Windows.Forms.TabPage tbpPaPCStep2;
+        private System.Windows.Forms.TextBox txtPaVMax;
+        private System.Windows.Forms.Label label313;
+        private System.Windows.Forms.Label label314;
+        private System.Windows.Forms.TextBox txtPaCoeffK;
+        private System.Windows.Forms.Label label315;
+        private System.Windows.Forms.TextBox txtPaTempoT2Max;
+        private System.Windows.Forms.TextBox txtPaTempoT2Min;
+        private System.Windows.Forms.Label label322;
+        private System.Windows.Forms.TextBox txtPaCorrenteRaccordo;
+        private System.Windows.Forms.Label label323;
+        private System.Windows.Forms.TextBox txtPaCorrenteF3;
+        private System.Windows.Forms.Label label324;
+        private System.Windows.Forms.TextBox txtPaRaccordoF1;
+        private System.Windows.Forms.Label label325;
+        private System.Windows.Forms.TabPage tbpPaPCStep3;
+        private System.Windows.Forms.Label label326;
+        private System.Windows.Forms.TextBox txtPaTempoT3Max;
+        private System.Windows.Forms.TabPage tbpPaPCEqual;
+        private System.Windows.Forms.TextBox txtPaEqualPulseCurrent;
+        private System.Windows.Forms.Label label327;
+        private System.Windows.Forms.TextBox txtPaEqualPulseTime;
+        private System.Windows.Forms.Label label328;
+        private System.Windows.Forms.TextBox txtPaEqualPulsePause;
+        private System.Windows.Forms.Label label329;
+        private System.Windows.Forms.TextBox txtPaEqualNumPulse;
+        private System.Windows.Forms.Label label330;
+        private System.Windows.Forms.TextBox txtPaEqualAttesa;
+        private System.Windows.Forms.Label label331;
+        private System.Windows.Forms.TabPage tbpPaPCMant;
+        private System.Windows.Forms.TextBox txtPaMantCorrente;
+        private System.Windows.Forms.Label label332;
+        private System.Windows.Forms.TextBox txtPaMantDurataMax;
+        private System.Windows.Forms.Label label333;
+        private System.Windows.Forms.TextBox txtPaMantVmax;
+        private System.Windows.Forms.Label label334;
+        private System.Windows.Forms.TextBox txtPaMantVmin;
+        private System.Windows.Forms.Label label335;
+        private System.Windows.Forms.TextBox txtPaMantAttesa;
+        private System.Windows.Forms.Label label336;
+        private System.Windows.Forms.TabPage tbpPaPCOpp;
+        private System.Windows.Forms.Label lblPaOppPuntoVerde;
+        private System.Windows.Forms.PictureBox ImgPaOppPuntoVerde;
+        private System.Windows.Forms.CheckBox chkPaOppNotturno;
+        private Syncfusion.Windows.Forms.Tools.RangeSlider rslPaOppFinestra;
+        private System.Windows.Forms.TextBox txtPaOppDurataMax;
+        private System.Windows.Forms.Label label337;
+        private System.Windows.Forms.TextBox txtPaOppCorrente;
+        private System.Windows.Forms.Label label338;
+        private System.Windows.Forms.TextBox txtPaOppVSoglia;
+        private System.Windows.Forms.Label label339;
+        private System.Windows.Forms.TextBox txtPaOppOraFine;
+        private System.Windows.Forms.Label lblPaOppOraFine;
+        private System.Windows.Forms.TextBox txtPaOppOraInizio;
+        private System.Windows.Forms.Label lblPaOppOraInizio;
+        private System.Windows.Forms.TabPage tbpPaParSoglia;
+        private System.Windows.Forms.TextBox txtPaVMinStop;
+        private System.Windows.Forms.Label label340;
+        private System.Windows.Forms.TextBox txtPaBMSTempoAttesa;
+        private System.Windows.Forms.Label label341;
+        private System.Windows.Forms.TextBox txtPaBMSTempoErogazione;
+        private System.Windows.Forms.Label label342;
+        private System.Windows.Forms.Label chkPaRiarmaBms;
+        private System.Windows.Forms.CheckBox chkPaAttivaRiarmoBms;
+        private System.Windows.Forms.TextBox txtPaCorrenteMassima;
+        private System.Windows.Forms.Label label343;
+        private System.Windows.Forms.TextBox txtPaVMaxRic;
+        private System.Windows.Forms.Label label344;
+        private System.Windows.Forms.TextBox txtPaVMinRic;
+        private System.Windows.Forms.Label label345;
+        private System.Windows.Forms.TextBox txtPaVLimite;
+        private System.Windows.Forms.Label label346;
+        private System.Windows.Forms.TextBox txtPaNumCelle;
+        private System.Windows.Forms.Label label347;
+        private System.Windows.Forms.ComboBox cmbPaTipoBatteria;
+        private System.Windows.Forms.Label label348;
+        private System.Windows.Forms.CheckBox chkPaAttivaEqual;
+        private System.Windows.Forms.Label lblPaAttivaEqual;
+        private System.Windows.Forms.CheckBox chkPaUsaSpyBatt;
+        private System.Windows.Forms.Label label349;
+        private System.Windows.Forms.Button btnPaSalvaDati;
+        private System.Windows.Forms.Label label350;
+        private System.Windows.Forms.ComboBox cmbPaProfilo;
+        private System.Windows.Forms.TextBox txtPaCapacita;
+        private System.Windows.Forms.Label label351;
+        private System.Windows.Forms.Label label352;
+        private System.Windows.Forms.TextBox txtPaTensione;
     }
 }

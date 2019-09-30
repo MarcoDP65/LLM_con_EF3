@@ -180,6 +180,10 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Gets or sets the giorno.
+        /// </summary>
+        /// <value>The giorno.</value>
         public byte Giorno
         {
             get
@@ -193,6 +197,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostras the durata.
+        /// </summary>
+        /// <param name="Minuti">The minuti.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraDurata(ushort Minuti = 0)
         {
             bool _esito = false;
@@ -221,6 +230,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostras the inizio equal.
+        /// </summary>
+        /// <param name="OreMinuti">The ore minuti.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraInizioEqual(byte OreMinuti = 0)
         {
             bool _esito = false;
@@ -239,6 +253,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostras the fc.
+        /// </summary>
+        /// <param name="fc">The fc.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraFC(byte fc = 0)
         {
             bool _esito = false;
@@ -265,11 +284,20 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Handles the Leave event of the mtxDurataCarica control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void mtxDurataCarica_Leave(object sender, EventArgs e)
         {
             VerificaDurataFase();
         }
 
+        /// <summary>
+        /// Verificas the durata fase.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool VerificaDurataFase()
         {
             bool StatoTurno = false;
@@ -320,6 +348,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Determines whether [is valid time] [the specified value].
+        /// </summary>
+        /// <param name="Value">The value.</param>
+        /// <returns><c>true</c> if [is valid time] [the specified value]; otherwise, <c>false</c>.</returns>
         private bool IsValidTime(string Value)
         {
 
@@ -340,6 +373,10 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Selezionatoes the specified attivo.
+        /// </summary>
+        /// <param name="Attivo">if set to <c>true</c> [attivo].</param>
         public void Selezionato(bool Attivo)
         {
             try
@@ -356,11 +393,20 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Handles the Leave event of the mtxInizioEqual control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void mtxInizioEqual_Leave(object sender, EventArgs e)
         {
             VerificaInizioEqual();
         }
 
+        /// <summary>
+        /// Verificas the inizio equal.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool VerificaInizioEqual()
         {
             bool StatoVerifica = false;
@@ -406,6 +452,10 @@ namespace PannelloCharger
         /// <value>
         ///   <c>true</c> se tutti i dati sono salvati; otherwise, <c>false</c>.
         /// </value>
+        /// <summary>
+        /// Gets or sets a value indicating whether [dati salvati].
+        /// </summary>
+        /// <value><c>true</c> if [dati salvati]; otherwise, <c>false</c>.</value>
         public bool DatiSalvati
         {
             get
@@ -424,16 +474,31 @@ namespace PannelloCharger
 
         }
 
+        /// <summary>
+        /// Handles the Leave event of the ctrlPannelloTempo control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ctrlPannelloTempo_Leave(object sender, EventArgs e)
         {
             Selezionato(false);
         }
 
+        /// <summary>
+        /// Handles the Enter event of the ctrlPannelloTempo control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ctrlPannelloTempo_Enter(object sender, EventArgs e)
         {
             Selezionato(true);
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the chkStartDelayed control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void chkStartDelayed_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -450,6 +515,10 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Shows the start delayed.
+        /// </summary>
+        /// <param name="enabled">if set to <c>true</c> [enabled].</param>
         private void ShowStartDelayed(bool enabled)
         {
             try
@@ -467,6 +536,11 @@ namespace PannelloCharger
 
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the chkEnableDeleteDelay control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void chkEnableDeleteDelay_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -481,6 +555,10 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Verificas the start differito.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool VerificaStartDifferito()
         {
             bool StatoVerifica = false;
@@ -519,6 +597,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostras the start differito.
+        /// </summary>
+        /// <param name="MinutiInizio">The minuti inizio.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraStartDifferito(ushort MinutiInizio = 0)
         {
             bool _esito = false;
@@ -540,6 +623,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostras the attesa massima.
+        /// </summary>
+        /// <param name="MinutiAttesa">The minuti attesa.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraAttesaMassima(ushort MinutiAttesa = 0)
         {
 
@@ -560,6 +648,12 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostras the attesa massima.
+        /// </summary>
+        /// <param name="Ore">The ore.</param>
+        /// <param name="Minuti">The minuti.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraAttesaMassima(byte Ore = 0, byte Minuti = 0)
         {
             bool _esito = false;
@@ -577,6 +671,10 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [modo esteso].
+        /// </summary>
+        /// <value><c>true</c> if [modo esteso]; otherwise, <c>false</c>.</value>
         public bool ModoEsteso
         {
             get
@@ -592,6 +690,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Handles the Leave event of the mtxInizioCarica control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void mtxInizioCarica_Leave(object sender, EventArgs e)
         {
             VerificaInizioCarica();
@@ -601,6 +704,10 @@ namespace PannelloCharger
         /// Verifica che l'orario inizio carica inserito sia un orario valido e lo trasforma in minuti dalle 00:00
         /// </summary>
         /// <returns><c>true</c> se orario valido.</returns>
+        /// <summary>
+        /// Verificas the inizio carica.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool VerificaInizioCarica()
         {
             try
@@ -648,6 +755,11 @@ namespace PannelloCharger
         /// </summary>
         /// <param name="Minuti">Minuti totali dalle 00:00.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <summary>
+        /// Mostras the orario inizio.
+        /// </summary>
+        /// <param name="Minuti">The minuti.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraOrarioInizio(ushort Minuti = 0)
         {
             bool _esito = false;
@@ -676,11 +788,20 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Handles the Leave event of the mtxAttesaMassima control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void mtxAttesaMassima_Leave(object sender, EventArgs e)
         {
             VerificaMassimaAttesa();
         }
 
+        /// <summary>
+        /// Verificas the massima attesa.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool VerificaMassimaAttesa()
         {
             try
@@ -723,6 +844,11 @@ namespace PannelloCharger
             }
         }
 
+        /// <summary>
+        /// Mostras the massima attesa.
+        /// </summary>
+        /// <param name="Minuti">The minuti.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool MostraMassimaAttesa(ushort Minuti = 0)
         {
             bool _esito = false;

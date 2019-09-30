@@ -23,8 +23,7 @@ using ChargerLogic;
 using MdiHelper;
 using log4net;
 using log4net.Config;
-
-
+using System.Resources;
 
 namespace PannelloCharger
 {
@@ -72,7 +71,7 @@ namespace PannelloCharger
 
         private OxyPlot.PlotModel due;
         public frmAlimentatore Lambda;
-
+        private List<_mbProfiloCarica> ProfiliCarica;
 
         // delegate is used to write to a UI control from a non-UI thread
         public delegate void SetTextDeleg(string text1);
@@ -88,6 +87,8 @@ namespace PannelloCharger
 
         public Esp32Setting ModuloEsp32 = new Esp32Setting();
 
+        public bool ProfiloInCaricamento { get; set; }
+
         private ParametriSetupPro _parametriPro = new ParametriSetupPro();
 
         public string IdCorrente;
@@ -102,6 +103,10 @@ namespace PannelloCharger
         /// Evento attivato al momento della variazione del flag _datiSalvati.
         /// </summary>
         public event EventHandler<DatiCambiatiEventArgs> DatiCambiati;
+
+        public Color OppChargeAttivo = Color.Red;
+        public Color OppChargeSpento = Color.Green;
+
 
 
         public frmSpyBat(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
@@ -122,6 +127,7 @@ namespace PannelloCharger
                 grbFWdettUpload.Paint += PaintBorderlessGroupBox;
                 grbFWDettStato.Paint += PaintBorderlessGroupBox;
 
+              
 
                 InizializzaOxyGrAnalisi();
                 InizializzaOxyGrCalibrazione();
@@ -143,6 +149,7 @@ namespace PannelloCharger
                 _stat = new StatMemLungaSB();
                 string _idCorrente = IdApparato;
                 abilitaSalvataggi(false);
+                InizializzaSchedaLL();
                 txtRevSWStratSb.Text = "";
 
                 // in futuro, inserire quì il precaricamento delle statistiche
@@ -1615,7 +1622,12 @@ namespace PannelloCharger
                     txtProTempAllarme.Text = FunzioniMR.StringaTemperatura(_sb.ProgrammaCorrente.TempAllarme);
                     txtProTempRiavvio.Text = FunzioniMR.StringaTemperatura(_sb.ProgrammaCorrente.TempRipresa);
 
+                    grbCicloCorrente.Enabled = true;
 
+                }
+                else
+                {
+                    grbCicloCorrente.Enabled = true;   // false;
 
                 }
 
@@ -10187,6 +10199,62 @@ namespace PannelloCharger
             }
         }
 
+        private void BtnPaSalvaDati_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                bool esito;
+                bool esitoSalvataggio = false;
+                this.Cursor = Cursors.WaitCursor;
+
+                esitoSalvataggio = ScriviParametriCarica();
+
+                if (esitoSalvataggio)
+                {
+                    MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Aggiornamento configurazione non riuscito", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+                this.Cursor = Cursors.Default;
+
+
+
+                /*
+
+                                byte[] ProgrammaDemo = new byte[]
+                                {
+                                    0x00,0x00,0x00,0x08,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x13,0x09,0x13,0x08,0x3A,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x00,
+                                    0x03,0x06,0x2D,0x55,0x4E,0x4F,0x56,0x10,0x01,0x10,0x09,0x60,0x57,0x00,0x0C,0x31,0x04,0xB0,0x80,0x00,0x06,0x06,0x00,0x3C,0x26,0x00,0x64,0x15,0x00,0xBE,0x01,0x01,
+                                    0xE0,0x21,0x00,0xC8,0x11,0x00,0xF0,0x12,0x00,0xF5,0x25,0x00,0x5C,0x02,0x00,0x3C,0x03,0x00,0xD2,0x05,0x00,0x78,0x24,0x00,0x32,0x04,0x00,0x00,0x13,0x01,0x09,0x50,
+                                    0x00,0x0F,0x58,0x00,0xF0,0x1A,0x00,0x96,0x1B,0x00,0xF0,0x1C,0x00,0xCD,0x14,0x01,0x16,0x22,0x00,0xF0,0x90,0x00,0x00,0x6F,0x00,0x0F,0x60,0x01,0xE0,0x61,0x00,0x0C,
+                                    0x63,0x00,0x05,0x62,0x00,0x19,0x64,0x00,0x32,0x7F,0x00,0x0F,0x70,0x01,0x68,0x71,0x00,0xD2,0x72,0x00,0xE6,0x73,0x00,0x0F,0x74,0x00,0x32,0xAF,0x0F,0x0F,0xA1,0x00,
+                                    0xF0,0xA2,0x04,0xB0,0xA3,0x00,0xF0,0xA6,0x01,0x2C,0xA8,0x00,0xF0,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                                    0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                                    0x26,0xF9
+                                };
+                */
+
+            }
+            catch
+            {
+
+                this.Cursor = Cursors.Default;
+
+            }
+
+        }
+
+
+
+
+
+
+
+
         private void txtMemAddrR_TextChanged(object sender, EventArgs e)
         {
 
@@ -10195,6 +10263,481 @@ namespace PannelloCharger
         private void txtEsp32ADVMin_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbPaTipoBatteria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ushort TipoBatt;
+                mbTipoBatteria TempBatt = (mbTipoBatteria)cmbPaTipoBatteria.SelectedItem;
+                _sb.BattAttiva = TempBatt;
+
+                AggiornaSelezioneProfili();
+
+
+
+            }
+
+
+            catch (Exception Ex)
+            {
+                Log.Error("cmbProfiloTipoBatteria_SelectedIndexChanged: " + Ex.Message, Ex);
+            }
+        }
+
+        private void CmbPaTipoLadeLight_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbPaTipoLadeLight.SelectedItem != null)
+                    _sb.CbAttivo = (_llModelloCb)cmbPaTipoLadeLight.SelectedItem;
+                else
+                    _sb.CbAttivo = null;
+
+                AggiornaSelezioneProfili();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbPaTipoBatteria_SelectedIndexChanged: " + Ex.Message);
+            }
+        }
+
+        private void btnPaProfileRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool esitoRicalcolo;
+                //DefinisciValoriProfilo();
+                esitoRicalcolo = RicalcolaParametriCiclo();
+                MostraParametriCiclo(false, !esitoRicalcolo, chkPaSbloccaValori.Checked);
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaProfileRefresh_Click: " + Ex.Message);
+            }
+        }
+
+        private void cmbPaProfilo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                byte TipoProf;
+                byte ModoProf;
+
+                btnPaProfileRefresh.ForeColor = Color.Red;
+                if (cmbPaProfilo.SelectedItem == null)
+                {
+
+                    cmbPaDurataCarica.SelectedItem = null;
+
+                    picPaImmagineProfilo.BackColor = Color.LightGray;
+                    picPaImmagineProfilo.Image = null;
+                }
+                else
+                {
+                    TipoProf = (byte)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).IdProfiloCaricaLL;
+
+                    if ((_mbProfiloCarica)cmbPaProfilo.SelectedItem != null)
+                    {
+                        string Grafico = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).Grafico;
+                        if (Grafico == "")
+                        {
+                            picPaImmagineProfilo.BackColor = Color.LightGray;
+                            picPaImmagineProfilo.Image = null;
+
+                        }
+                        else
+                        {
+                            ResourceManager rm = Resources.profili.ModelliProfilo.ResourceManager;
+                            Bitmap myImage = (Bitmap)rm.GetObject(Grafico);
+                            picPaImmagineProfilo.BackColor = Color.White;
+                            picPaImmagineProfilo.Image = myImage;
+
+                        }
+                    }
+                    /*
+                    var Listatemp = from p in _sb.DatiBase.DurateCarica
+                                    join pt in _cb.DatiBase.DurateProfilo on p.IdDurataCaricaLL equals pt.IdDurataCaricaLL
+                                    where pt.IdProfiloCaricaLL == TipoProf
+                                    select p;
+
+                    DurateCarica = new List<llDurataCarica>();
+
+                    foreach (var pc in Listatemp)
+                    {
+                        DurateCarica.Add((llDurataCarica)pc);
+                    }
+
+
+                    cmbPaDurataCarica.DataSource = DurateCarica;
+                    cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
+                    cmbPaDurataCarica.DisplayMember = "Descrizione";
+                    */
+
+                    if (!ProfiloInCaricamento)
+                    {
+                        txtPaNomeSetup.Text = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).NomeProfilo;
+                    }
+                    ModoProf = (byte)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).AttivaEqual;
+                    switch (ModoProf)
+                    {
+                        case 0x00:
+                            chkPaAttivaEqual.Checked = false;
+                            chkPaAttivaEqual.Enabled = false;
+                            break;
+                        case 0xF0:
+                            chkPaAttivaEqual.Checked = false;
+                            chkPaAttivaEqual.Enabled = true;
+                            break;
+                        case 0xFF:
+                            chkPaAttivaEqual.Checked = true;
+                            chkPaAttivaEqual.Enabled = false;
+                            break;
+                        default:
+                            chkPaAttivaEqual.Checked = false;
+                            chkPaAttivaEqual.Enabled = false;
+                            break;
+
+                    }
+
+
+                    ModoProf = (byte)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).AttivaRiarmoPulse;
+                    switch (ModoProf)
+                    {
+                        case 0x00:
+                            chkPaAttivaRiarmoBms.Checked = false;
+                            chkPaAttivaRiarmoBms.Enabled = false;
+                            break;
+                        case 0xF0:
+                            chkPaAttivaRiarmoBms.Checked = false;
+                            chkPaAttivaRiarmoBms.Enabled = true;
+                            break;
+                        case 0xFF:
+                            chkPaAttivaRiarmoBms.Checked = true;
+                            chkPaAttivaRiarmoBms.Enabled = false;
+                            break;
+                        default:
+                            chkPaAttivaRiarmoBms.Checked = false;
+                            chkPaAttivaRiarmoBms.Enabled = false;
+                            break;
+
+                    }
+                    if (!ProfiloInCaricamento)
+                    {
+
+                        bool esitoRicalcolo;
+                        //DefinisciValoriProfilo();
+                        esitoRicalcolo = RicalcolaParametriCiclo();
+                        MostraParametriCiclo(false, !esitoRicalcolo);
+
+                    }
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmbPaProfilo_SelectedIndexChanged: " + Ex.Message);
+            }
+
+
+        }
+
+        private void ChkPaAttivaEqual_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ProfiloInCaricamento)
+                {
+
+                    if (chkPaAttivaEqual.Checked)
+                    {
+                        ProfiloInCaricamento = true;
+
+
+
+                        if (_sb.ModCicloCorrente.ModelloProfilo == null)
+                        {
+                            /// TODO: Ricarico il modello corrente --> ???? da verificare dove lo perde
+                            _sb.ModCicloCorrente.ModelloProfilo = (from p in _sb.ModCicloCorrente.DatiModello.ParametriCarica
+                                                               where p.BatteryTypeId == _sb.ModCicloCorrente.Batteria.BatteryTypeId && p.IdProfiloCaricaLL == _sb.ModCicloCorrente.Profilo.IdProfiloCaricaLL
+                                                               select p).FirstOrDefault();
+
+                        }
+
+
+
+                        _sb.ModCicloCorrente.CalcolaEqualizzazione(0x0F0F, _sb.ModCicloCorrente.Tensione, _sb.ModCicloCorrente.Capacita,_sb.CbAttivo);
+                        AssegnaEqualCCorrente();
+                        //MostraEqualCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                    else
+                    {
+                        ProfiloInCaricamento = true;
+                        _sb.ModCicloCorrente.CalcolaEqualizzazione(0, 0, 0, null);
+                        AssegnaEqualCCorrente();
+                        MostraEqualCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaAttivaEqual_CheckedChanged: " + Ex.Message);
+
+            }
+
+        }
+
+        private void ChkPaAttivaMant_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ProfiloInCaricamento)
+                {
+
+                    if (chkPaAttivaMant.Checked)
+                    {
+                        ProfiloInCaricamento = true;
+
+
+
+                        if (_sb.ModCicloCorrente.ModelloProfilo == null)
+                        {
+                            /// TODO: Ricarico il modello corrente --> ???? da verificare dove lo perde
+                            _sb.ModCicloCorrente.ModelloProfilo = (from p in _sb.ModCicloCorrente.DatiModello.ParametriCarica
+                                                               where p.BatteryTypeId == _sb.ModCicloCorrente.Batteria.BatteryTypeId && p.IdProfiloCaricaLL == _sb.ModCicloCorrente.Profilo.IdProfiloCaricaLL
+                                                               select p).FirstOrDefault();
+
+                        }
+
+
+
+                        _sb.ModCicloCorrente.CalcolaMantenimento(0x0F0F, _sb.ModCicloCorrente.Tensione, _sb.ModCicloCorrente.Capacita, _sb.CbAttivo);
+                        AssegnaMantCCorrente();
+                        // MostraMantCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                    else
+                    {
+                        ProfiloInCaricamento = true;
+                        _sb.ModCicloCorrente.CalcolaMantenimento(0, 0, 0, null);
+                        AssegnaMantCCorrente();
+                        //MostraEqualCCorrente();
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaAttivaMant_CheckedChanged: " + Ex.Message);
+
+            }
+        }
+
+        private void ChkPaAttivaOppChg_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ProfiloInCaricamento)
+                {
+
+                    if (chkPaAttivaOppChg.Checked)
+                    {
+                        ProfiloInCaricamento = true;
+
+
+
+                        if (_sb.ModCicloCorrente.ModelloProfilo == null)
+                        {
+                            /// TODO: Ricarico il modello corrente --> ???? da verificare dove lo perde
+                            _sb.ModCicloCorrente.ModelloProfilo = (from p in _sb.ModCicloCorrente.DatiModello.ParametriCarica
+                                                               where p.BatteryTypeId == _sb.ModCicloCorrente.Batteria.BatteryTypeId && p.IdProfiloCaricaLL == _sb.ModCicloCorrente.Profilo.IdProfiloCaricaLL
+                                                               select p).FirstOrDefault();
+
+                        }
+
+
+
+                        _sb.ModCicloCorrente.CalcolaOpportunityChg(0x0F0F, _sb.ModCicloCorrente.Tensione, _sb.ModCicloCorrente.Capacita, _sb.CbAttivo);
+                        AssegnaOppCCorrente();
+
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                    else
+                    {
+                        ProfiloInCaricamento = true;
+                        _sb.ModCicloCorrente.CalcolaOpportunityChg(0, 0, 0, null);
+                        AssegnaOppCCorrente();
+
+                        btnPaSalvaDati.Enabled = true;
+                        ProfiloInCaricamento = false;
+
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ChkPaAttivaOppChg_CheckedChanged: " + Ex.Message);
+
+            }
+
+        }
+
+        private void RslPaOppFinestra_ValueChanged(object sender, EventArgs e)
+        {
+            //            txtPaOppOraInizio    ModCicloCorrente.ValoriCiclo.OpportunityOraInizio
+            //            txtPaOppOraFine      ModCicloCorrente.ValoriCiclo.OpportunityOraFine
+
+            ushort FineGiornata;
+
+            if (chkPaOppNotturno.Checked)
+            {
+                // NOTTURNO
+                if (rslPaOppFinestra.SliderMax != _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                {
+                    if (rslPaOppFinestra.SliderMax < (_sb.ModCicloCorrente.DurataMaxCarica)) rslPaOppFinestra.SliderMax = (_sb.ModCicloCorrente.DurataMaxCarica);
+
+                    _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)rslPaOppFinestra.SliderMax;
+
+                    FineGiornata = (ushort)(1440 - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+                    if ((_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine + FineGiornata) < 240)
+                    {
+                        _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(240 - FineGiornata);
+                        rslPaOppFinestra.SliderMin = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                    }
+                    if ((_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine) < _sb.ModCicloCorrente.DurataMaxCarica)
+                    {
+                        _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio - _sb.ModCicloCorrente.DurataMaxCarica);
+                        rslPaOppFinestra.SliderMin = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                    }
+
+
+                }
+                else
+                {
+                    if (rslPaOppFinestra.SliderMin != _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
+                    {
+                        if (rslPaOppFinestra.SliderMin > (1440 - _sb.ModCicloCorrente.DurataMaxCarica)) rslPaOppFinestra.SliderMin = (1440 - _sb.ModCicloCorrente.DurataMaxCarica); // Se l'inizio passa dopo la mezzanotte  non è più notturno --> inizio < fine
+                        _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)rslPaOppFinestra.SliderMin;
+                        FineGiornata = (ushort)(1440 - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+                        if ((_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine + FineGiornata) < 240)
+                        {
+                            _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(240 - FineGiornata);
+                            rslPaOppFinestra.SliderMin = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        }
+                        if ((_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine) < _sb.ModCicloCorrente.DurataMaxCarica)
+                        {
+                            _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine + _sb.ModCicloCorrente.DurataMaxCarica);
+                            rslPaOppFinestra.SliderMax = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                        }
+                    }
+                }
+
+                txtPaOppOraFine.Text = FunzioniMR.StringaOreMinutiLL(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+                txtPaOppOraInizio.Text = FunzioniMR.StringaOreMinutiLL(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+
+            }
+            else
+            {
+                // DIURNO
+
+                if (rslPaOppFinestra.SliderMax != _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
+                {
+                    if (rslPaOppFinestra.SliderMax < 240) rslPaOppFinestra.SliderMax = 240;
+
+                    _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)rslPaOppFinestra.SliderMax;
+                    FineGiornata = (ushort)(1440 - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+                    if ((_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < 240)
+                    {
+                        _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine - 240);
+                        rslPaOppFinestra.SliderMin = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                    }
+                    if ((1440 - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine + _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < _sb.ModCicloCorrente.DurataMaxCarica)
+                    {
+                        _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)(_sb.ModCicloCorrente.DurataMaxCarica + _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine - 1440);
+                        rslPaOppFinestra.SliderMin = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                    }
+
+
+
+                }
+                else
+                {
+                    if (rslPaOppFinestra.SliderMin != _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio)
+                    {
+                        if (rslPaOppFinestra.SliderMin > 1200) rslPaOppFinestra.SliderMin = 1200; // Se l'inizio passa dopo la mezzanotte  non è più notturno --> inizio < fine
+                        _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = (ushort)rslPaOppFinestra.SliderMin;
+                        if ((_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < 240)
+                        {
+                            _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio + 240);
+                            rslPaOppFinestra.SliderMax = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        }
+                        if ((1440 - _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine + _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio) < _sb.ModCicloCorrente.DurataMaxCarica)
+                        {
+                            _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine = (ushort)(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio + 1440 - _sb.ModCicloCorrente.DurataMaxCarica);
+                            rslPaOppFinestra.SliderMax = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                        }
+
+                    }
+                }
+
+                txtPaOppOraFine.Text = FunzioniMR.StringaOreMinutiLL(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+                txtPaOppOraInizio.Text = FunzioniMR.StringaOreMinutiLL(_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+
+
+            }
+
+            OppNotturno(true);
+
+
+
+        }
+
+        private void BtnCicloCorrente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _sb.ProfiloAttivo = _sb.CaricaProgrammaLL();
+
+                if (_sb.ProfiloAttivo != null )
+                {
+                    //MostraCicloCorrente();
+                    ProfiloInCaricamento = true;
+                    _sb.ModCicloCorrente.ProfiloRegistrato = _sb.ProfiloAttivo;
+                    _sb.ModCicloCorrente.EstraiDaProgrammaCarica();
+
+                    MostraParametriCiclo(true, false);
+                    ProfiloInCaricamento = false;
+                }
+                else
+                {
+                    MostraParametriCiclo(true, true);
+                }
+
+
+
+            }
+            catch
+            {
+                ProfiloInCaricamento = false;
+            }
         }
     }
 }

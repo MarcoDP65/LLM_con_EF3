@@ -2438,6 +2438,15 @@ namespace Utility
                             break;
                         }
 
+                    case "%":
+                        {
+                            if (ValParametro != 0)
+                            {
+                                ValFormula = (ushort)((ValoreVar * 10) / ValParametro);
+                            }
+                            break;
+                        }
+
                     case "*":
                         {
                             ValFormula = (ushort)(ValoreVar * ValParametro);

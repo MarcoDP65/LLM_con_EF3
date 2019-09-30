@@ -950,9 +950,6 @@ namespace PannelloCharger
         }
 
 
-
-
-
         public bool AssegnaEqualCCorrente()
         {
             try

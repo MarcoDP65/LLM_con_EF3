@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>3.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -234,6 +234,7 @@
     <Compile Include="Componenti\PannelloTurno.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Database\DatiConfigCariche.cs" />
     <Compile Include="Database\GestioneBatterie\InizializzazioneBatterie.cs" />
     <Compile Include="Database\GestioneBatterie\mbParProfiloTipoBatt.cs" />
     <Compile Include="Database\GestioneBatterie\mbProduttore.cs" />
@@ -351,6 +352,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattEvt.cs" />
+    <Compile Include="Forms\Forms Spy-Batt\frmSpyBattProgrammazioneLL.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBattProxyEsp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -531,7 +535,6 @@
     <Compile Include="Forms\FunzioniUI.cs" />
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
     <Compile Include="Logiche\Caricabatteria\CaricaBatteria.cs" />
-    <Compile Include="Logiche\Caricabatteria\CaricabatteriaInizializzazioni.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiFirmware.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiMemoria.cs" />
     <Compile Include="Logiche\Caricabatteria\cbProgrammazioni.cs" />

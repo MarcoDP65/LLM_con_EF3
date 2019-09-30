@@ -227,7 +227,7 @@ namespace ChargerLogic
 
                     //Correnti
                     CorrenteI0 = "#C/12",
-                    CorrenteI1 = "=C/6",
+                    CorrenteI1 = "=C%65",
                     CorrenteFinaleI2 = "=C/24",
                     CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
