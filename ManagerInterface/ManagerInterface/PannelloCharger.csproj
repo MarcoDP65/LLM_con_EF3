@@ -15,7 +15,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\marco_000\Desktop\CLIENTI\Mori\Sviluppo\Ladelight Manager 4.0\LLm Deploy\</PublishUrl>
+    <PublishUrl>C:\Users\marco_000\Desktop\CLIENTI\Mori\Sviluppo\Ladelight Manager 3.0\LLm Deploy\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -299,6 +299,9 @@
       <DependentUpon>frmListaCicliBreviLL.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Forms Dett Brevi\frmListaCicliBreveStampa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms ID-Batt Programmer\frmIdProgrammer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms LadeLight V2\frmCaricaBatteriaComandiProxyV2.cs">
@@ -1294,6 +1297,7 @@
     <Content Include="e-proOK.ico" />
     <None Include="Resources\folder.png" />
     <None Include="Resources\echarger 600.png" />
+    <None Include="Resources\coniglio16.png" />
     <Content Include="Resources\Grf-Car.bmp" />
     <Content Include="Resources\Grf-Scar.bmp" />
     <Content Include="Resources\Grf-V-Car.bmp" />

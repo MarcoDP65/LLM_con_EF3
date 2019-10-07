@@ -466,6 +466,7 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.txtCalMinuti = new System.Windows.Forms.TextBox();
@@ -1194,7 +1195,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -4327,6 +4327,17 @@
             resources.ApplyResources(this.lblTurno3, "lblTurno3");
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
+            // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
             // 
             // tabCb05
             // 
@@ -9253,17 +9264,6 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
-            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -9500,10 +9500,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabPage tabCb01;
-        private System.Windows.Forms.TabPage tabCb04;
-        private System.Windows.Forms.GroupBox grbTestata;
         private System.Windows.Forms.TextBox txtMatrSB;
         private System.Windows.Forms.Label lblGenID;
         private System.Windows.Forms.TextBox txtManufcturedBy;
@@ -9512,7 +9508,6 @@
         private System.Windows.Forms.Label lblFirmwDisp;
         private System.Windows.Forms.TextBox txtRevHWSb;
         private System.Windows.Forms.Label lblFirmwCb;
-        private System.Windows.Forms.GroupBox grbDatiCliente;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.TextBox txtMarcaBat;
         private System.Windows.Forms.Label lblCliMarcaBatt;
@@ -9525,8 +9520,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtEventiCSLunghi;
         private System.Windows.Forms.Label lblEventiTotali;
-        private System.Windows.Forms.TabPage tabCb02;
-        private System.Windows.Forms.TabPage tabCb05;
         private System.Windows.Forms.GroupBox grbAccensione;
         private System.Windows.Forms.Label lblOrarioAccensione;
         private System.Windows.Forms.ComboBox cmbMinAccensione;
@@ -9552,11 +9545,9 @@
         private System.Windows.Forms.TextBox txtMemDa;
         private System.Windows.Forms.Button btnCaricaDaMemoria;
         private BrightIdeasSoftware.FastObjectListView flvwProgrammiCarica;
-        private System.Windows.Forms.TabPage tabSbFact;
         private System.Windows.Forms.TextBox txtIdBat;
         private System.Windows.Forms.Label lblCliIdBatteria;
         private System.Windows.Forms.TextBox txtNoteCliente;
-        private System.Windows.Forms.Button btnSalvaCliente;
         private System.Windows.Forms.Button btnRicaricaProgr;
         private System.Windows.Forms.GroupBox grbProgrammazione;
         private System.Windows.Forms.Label label5;
@@ -9606,11 +9597,8 @@
         private System.Windows.Forms.Timer tmrLetturaAutomatica;
         private System.Windows.Forms.Button btnNuovoProgramma;
         private System.Windows.Forms.Button btnAttivaProgrammazione;
-        private System.Windows.Forms.TabPage tabStatistiche;
         private System.Windows.Forms.TabControl tbcStatistiche;
         private System.Windows.Forms.TabPage tabStatParametri;
-        private System.Windows.Forms.TabPage tabStatSintesi;
-        private System.Windows.Forms.TabPage tabStatCockpit;
         private System.Windows.Forms.GroupBox grbStatSelPeriodo;
         private System.Windows.Forms.GroupBox grbStatDate;
         private System.Windows.Forms.DateTimePicker dtpStatFine;
@@ -9673,8 +9661,6 @@
         private System.Windows.Forms.CheckBox chkStatGraficoDurCC;
         private System.Windows.Forms.CheckBox chkStatGraficoDoD;
         private System.Windows.Forms.CheckBox chkStatGraficoTemporale;
-        private System.Windows.Forms.TabControl tabCaricaBatterie;
-        private System.Windows.Forms.TabPage tabMemRead;
         private System.Windows.Forms.GroupBox grbMemLettura;
         private System.Windows.Forms.Label lblReadMemStartAddr;
         private System.Windows.Forms.TextBox txtMemAddrR;
@@ -9710,9 +9696,7 @@
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.TextBox txtStatNumScaricheOverT;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.TabPage tabStatComparazioni;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TabPage tbpCalibrazioni;
         private BrightIdeasSoftware.FastObjectListView flvwLettureCorrente;
         private System.Windows.Forms.Button btnCalCollegaTdk;
         private System.Windows.Forms.Label lblCalConnessione;
@@ -9753,7 +9737,6 @@
         private System.Windows.Forms.Button btnCalFilesearch;
         private System.Windows.Forms.TextBox txtCalFileCicli;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabPage tbpFirmware;
         private System.Windows.Forms.GroupBox grbFWArea2;
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.Label label83;
@@ -9896,7 +9879,6 @@
         private System.Windows.Forms.TextBox txtFWRevA2AddrN2;
         private System.Windows.Forms.TextBox txtFWRevA2LenN1;
         private System.Windows.Forms.TextBox txtFWRevA2AddrN1;
-        private System.Windows.Forms.TabPage tbpClonaScheda;
         private System.Windows.Forms.GroupBox grbCloneSBSource;
         public System.Windows.Forms.Button btnClonaCaricaOrigine;
         private System.Windows.Forms.TextBox textBox6;
@@ -9908,7 +9890,6 @@
         private System.Windows.Forms.GroupBox grbClonaRecordTestata;
         public System.Windows.Forms.Button btnClonaGeneraRecordTestata;
         private System.Windows.Forms.TextBox txtClonaRecordTestata;
-        private System.Windows.Forms.GroupBox grbTestataContatori;
         private System.Windows.Forms.TextBox txtTestataContLunghi;
         private System.Windows.Forms.Label label114;
         private System.Windows.Forms.TextBox txtTestataPtrProgr;
@@ -9944,7 +9925,6 @@
         private System.Windows.Forms.Label lblGenConf;
         private System.Windows.Forms.TextBox txtMainNumLunghi;
         private System.Windows.Forms.Label lblGenFasi;
-        private System.Windows.Forms.GroupBox grbMainDlOptions;
         private System.Windows.Forms.Button btnSfoglia;
         private System.Windows.Forms.TextBox txtNomeFileImmagine;
         private System.Windows.Forms.CheckBox chkSaveHexDump;
@@ -9994,15 +9974,12 @@
         private System.Windows.Forms.Label lblGenSerNum;
         private System.Windows.Forms.CheckBox chkFSerMantieniCliente;
         private System.Windows.Forms.CheckBox chkMemClearMantieniCliente;
-        private System.Windows.Forms.GroupBox grbDownloadDati;
         private System.Windows.Forms.Button btnRicaricaDati;
         private System.Windows.Forms.TextBox txtDataLastDownload;
         private System.Windows.Forms.Label label91;
-        private System.Windows.Forms.GroupBox grbAbilitazioneReset;
         private System.Windows.Forms.TextBox txtCodiceSblocco;
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.Button btnGeneraCodice;
-        private System.Windows.Forms.TabPage tabCalibrazione;
         private BrightIdeasSoftware.FastObjectListView flvwCalCorrentiVerifica;
         private System.Windows.Forms.GroupBox grbCalValoriAttuali;
         private System.Windows.Forms.TextBox txtCalErrMaxNeg;
@@ -10057,7 +10034,6 @@
         private System.Windows.Forms.Label label152;
         private System.Windows.Forms.TextBox txtCalErrMaxAss;
         private System.Windows.Forms.Button btnGraficiTest;
-        private System.Windows.Forms.TabPage tbpStrategia;
         private System.Windows.Forms.GroupBox grbStratComandiTest;
         private System.Windows.Forms.Button btnStratTest01;
         private System.Windows.Forms.TextBox txtStratDataGrid;
@@ -10347,7 +10323,6 @@
         private System.Windows.Forms.TextBox txtProgEqMinPulse;
         private System.Windows.Forms.Label label268;
         private System.Windows.Forms.TextBox txtProgEqNumPulse;
-        private System.Windows.Forms.TabPage tbpPianificazione;
         private System.Windows.Forms.GroupBox grbVarRestartScheda;
         private System.Windows.Forms.CheckBox chkCliResetContatori;
         private System.Windows.Forms.Button btnResetScheda;
@@ -10372,7 +10347,6 @@
         private System.Windows.Forms.Label label275;
         private System.Windows.Forms.Button btnStratReadPar;
         private System.Windows.Forms.Button btnStratSetPar;
-        private System.Windows.Forms.GroupBox grbCloneScheda;
         private System.Windows.Forms.TextBox txtTestataNoteClone;
         private System.Windows.Forms.Label label283;
         private System.Windows.Forms.TextBox txtTestataDataClone;
@@ -10398,7 +10372,6 @@
         private System.Windows.Forms.TextBox txtCalErrorePrc;
         private System.Windows.Forms.TextBox txtCalErrMaxPrc;
         private System.Windows.Forms.Label label294;
-        private System.Windows.Forms.TabPage tabFunzioniAvanzate;
         private System.Windows.Forms.GroupBox grbVarParametriSig;
         private System.Windows.Forms.CheckBox chkFSerResetCnt;
         private System.Windows.Forms.TextBox txtSigNumLetture;
@@ -10496,7 +10469,6 @@
         public System.Windows.Forms.Button btnFwSwitchArea2;
         public System.Windows.Forms.Button btnFwSwitchArea1;
         public System.Windows.Forms.Button btnFwSwitchBL;
-        private System.Windows.Forms.TabPage tbpEsp32;
         private System.Windows.Forms.TextBox txtEsp32DataGrid;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnEsp32SetLed;
@@ -10541,7 +10513,6 @@
         private System.Windows.Forms.Button btnEsp32SetAdvTime;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TabPage tbpProfiloLLPro;
         private System.Windows.Forms.GroupBox grbCicloCorrente;
         private System.Windows.Forms.ComboBox cmbPaTipoLadeLight;
         private System.Windows.Forms.Label label353;
@@ -10666,5 +10637,33 @@
         private System.Windows.Forms.Label label351;
         private System.Windows.Forms.Label label352;
         private System.Windows.Forms.TextBox txtPaTensione;
+        protected internal System.Windows.Forms.TabControl tabCaricaBatterie;
+        protected internal System.Windows.Forms.TabPage tabCalibrazione;
+        protected internal System.Windows.Forms.TabPage tabCb01;
+        protected internal System.Windows.Forms.TabPage tabCb04;
+        protected internal System.Windows.Forms.TabPage tabCb02;
+        protected internal System.Windows.Forms.TabPage tabCb05;
+        protected internal System.Windows.Forms.TabPage tabSbFact;
+        protected internal System.Windows.Forms.TabPage tabStatistiche;
+        protected internal System.Windows.Forms.TabPage tabStatSintesi;
+        protected internal System.Windows.Forms.TabPage tabStatCockpit;
+        protected internal System.Windows.Forms.TabPage tabMemRead;
+        protected internal System.Windows.Forms.TabPage tabStatComparazioni;
+        protected internal System.Windows.Forms.TabPage tbpCalibrazioni;
+        protected internal System.Windows.Forms.TabPage tbpFirmware;
+        protected internal System.Windows.Forms.TabPage tbpClonaScheda;
+        protected internal System.Windows.Forms.TabPage tbpStrategia;
+        protected internal System.Windows.Forms.TabPage tbpPianificazione;
+        protected internal System.Windows.Forms.TabPage tabFunzioniAvanzate;
+        protected internal System.Windows.Forms.TabPage tbpEsp32;
+        protected internal System.Windows.Forms.TabPage tbpProfiloLLPro;
+        protected internal System.Windows.Forms.GroupBox grbTestata;
+        protected internal System.Windows.Forms.GroupBox grbDatiCliente;
+        protected internal System.Windows.Forms.Button btnSalvaCliente;
+        protected internal System.Windows.Forms.GroupBox grbTestataContatori;
+        protected internal System.Windows.Forms.GroupBox grbMainDlOptions;
+        protected internal System.Windows.Forms.GroupBox grbDownloadDati;
+        protected internal System.Windows.Forms.GroupBox grbAbilitazioneReset;
+        protected internal System.Windows.Forms.GroupBox grbCloneScheda;
     }
 }

@@ -846,13 +846,17 @@ namespace MoriData
                 if (_llmc.DataOraFine.Length != 15)
                 {
                     // data non formattata correttamente
-                    return DateTime.Now;
+                    return DateTime.MinValue;
                 }
 
                 //if (DateTime.TryParseExact(_sbsm.DataOraRegistrazione,"dd/MM/yy HH:mm",CultureInfo.InvariantCulture,DateTimeStyles.None,out _dataora))
                 if (DateTime.TryParse(_llmc.DataOraFine, out _dataora))
                 {
                     return _dataora;
+                }
+                else
+                {
+                    return DateTime.MinValue;
                 }
 
 
@@ -875,7 +879,7 @@ namespace MoriData
         {
             get
             {
-                if (_llmc.NumEventiBrevi != 0xFFFF)
+                if (_llmc.NumEventiBrevi != 0xFFFF && dtDataOraFine != DateTime.MinValue)
                 {
                     TimeSpan DurataCalc = dtDataOraFine.Subtract(dtDataOraStart);
                     return DurataCalc.ToString();
@@ -1094,6 +1098,74 @@ namespace MoriData
 
             }
         }
+        /**********************************************************************************************/
+        /*   Dettaglio Opzioni                                                                         */
+        /**********************************************************************************************/
+        public string strOptOpportunity
+        {
+            get
+            {
+                if ((_llmc.OpzioniCarica & 0x01) == 0x01)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strOptSpyBatt
+        {
+            get
+            {
+                if ((_llmc.OpzioniCarica & 0x02) == 0x02)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strOptIdBatt
+        {
+            get
+            {
+                if ((_llmc.OpzioniCarica & 0x04) == 0x04)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+
+        public string strOptExternal
+        {
+            get
+            {
+                if ((_llmc.OpzioniCarica & 0x06) != 0x00)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
         /**********************************************************************************************/
         /*   Dettaglio Errori                                                                         */
         /**********************************************************************************************/

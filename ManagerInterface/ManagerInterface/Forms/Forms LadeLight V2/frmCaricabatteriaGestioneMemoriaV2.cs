@@ -213,6 +213,52 @@ namespace PannelloCharger
                 };
                 flvCicliListaCariche.AllColumns.Add(colstrChargerOpt);
 
+                BrightIdeasSoftware.OLVColumn colstrVettOptOC = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Opportunity",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Opportunity Charge",
+                    AspectName = "strOptOpportunity",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.coniglio16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettOptOC);
+
+                BrightIdeasSoftware.OLVColumn colstrVettOptSB = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "SPY-BATT",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Profilo SPY-BATT",
+                    AspectName = "strOptSpyBatt",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.OK_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettOptSB);
+
+                BrightIdeasSoftware.OLVColumn colstrVettOptIDB = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "ID-BATT",
+                    IsHeaderVertical = true,
+                    ToolTipText = "Profilo ID-BATT",
+                    AspectName = "strOptIdBatt",
+                    Width = 20,
+                    Sortable = false,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Center,
+                    Renderer = new MappedImageRenderer(new Object[] { "SI", Properties.Resources.OK_16, "NO", Properties.Resources.GRAY_16 })
+
+                };
+                flvCicliListaCariche.AllColumns.Add(colstrVettOptIDB);
+
+
                 BrightIdeasSoftware.OLVColumn colEqualReq = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "Eq R",

@@ -70,6 +70,11 @@ namespace ChargerLogic
             CMD_RESET_BOARD = 0X5F,
             CMD_MODE_STOP_LT = 0x63,
 
+            CMD_TOKEN_PROG_BATT = 0x90,
+            CMD_TOKEN_READ_BATT = 0x91,
+            CMD_TOKEN_SETTING   = 0x92,
+            CMD_TOKEN_READ_SETTING = 0x93,
+
             CMD_UART_SWITCH_BDRATE = 0x73,
             CMD_MEM_PROGRAMMED = 0x74,
             CMD_SIG60_SETTING = 0x7D,

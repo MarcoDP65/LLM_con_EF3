@@ -393,6 +393,14 @@ namespace PannelloCharger
                                 _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
                                 ApriDesolfatatore();
                                 return;
+
+                            case "ID-BATT PROGRAMMER":
+                                _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
+                                _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
+                                ApriIdProgrammer(_tempCanale.SerialNumber);
+                                return;
+
+                                
                             default:
                                 break;
                         }
@@ -506,6 +514,51 @@ namespace PannelloCharger
             }
 
         }
+
+        private void ApriIdProgrammer(string IdScheda = "")
+        {
+            try
+            {
+                bool esitoCanaleApparato = false;
+                // se la porta seriale non è aperta , la apro
+                // -- rev 14/09  se già aperta chiudo e riapro
+                if (_varGlobali.statoCanaleSpyBatt()) _varGlobali.chiudiCanaleSpyBatt();
+
+                this.Cursor = Cursors.WaitCursor;
+
+                esitoCanaleApparato = _varGlobali.apriSpyBat();
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmIdProgrammer))
+                    {
+                        frmIdProgrammer _tmpFrmIDP = (frmIdProgrammer)form;
+                        if (_tmpFrmIDP.IdCorrente == IdScheda)
+                        {
+                            form.Activate();
+                            return;
+                        }
+                    }
+                }
+                Log.Debug("NUOVO IDP");
+                frmIdProgrammer idpCorrente = new frmIdProgrammer(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+                idpCorrente.MdiParent = this.MdiParent; ;
+                idpCorrente.StartPosition = FormStartPosition.CenterParent;
+
+                this.Cursor = Cursors.Default;
+
+                idpCorrente.Show();
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain.ApriSpyBatt: " + Ex.Message);
+            }
+
+        }
+
+
 
         private void ApriDesolfatatore()
         {

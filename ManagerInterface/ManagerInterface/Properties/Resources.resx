@@ -214,4 +214,7 @@
   <data name="GRAY_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\if_GRAY_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="coniglio16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\coniglio16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

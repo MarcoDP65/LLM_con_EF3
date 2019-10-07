@@ -39,7 +39,7 @@ namespace PannelloCharger
         bool _apparatoPresente = false;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialogSB;
 
-        private static ILog Log = LogManager.GetLogger("Form SpyBat");
+        internal static ILog Log = LogManager.GetLogger("Form SpyBat");
         private frmAvanzamentoCicli _avCicli = new frmAvanzamentoCicli();
         //static 
         UnitaSpyBatt _sb;
@@ -690,7 +690,7 @@ namespace PannelloCharger
         }
 
 
-        public void applicaAutorizzazioni()
+        public virtual void applicaAutorizzazioni()
         {
             try
             {

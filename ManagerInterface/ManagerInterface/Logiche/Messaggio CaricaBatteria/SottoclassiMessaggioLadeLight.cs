@@ -760,7 +760,7 @@ namespace ChargerLogic
                     if (CrcPacchetto != _tempCRC)
                     {
                         // CRC non coerente
-                        System.Windows.Forms.MessageBox.Show("Errire CRC in lettura programmazione " + CrcPacchetto.ToString("X4") + " - " + _tempCRC.ToString("X4")
+                        System.Windows.Forms.MessageBox.Show("Errore CRC in lettura programmazione " + CrcPacchetto.ToString("X4") + " - " + _tempCRC.ToString("X4")
                                        , "CONFIGURAZIONE", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information); 
 
                         // return EsitoRisposta.BadCRC;
