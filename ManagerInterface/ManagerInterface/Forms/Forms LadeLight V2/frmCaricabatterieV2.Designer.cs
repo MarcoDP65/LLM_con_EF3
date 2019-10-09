@@ -4001,7 +4001,7 @@
             this.tabMemRead.Location = new System.Drawing.Point(4, 22);
             this.tabMemRead.Margin = new System.Windows.Forms.Padding(2);
             this.tabMemRead.Name = "tabMemRead";
-            this.tabMemRead.Size = new System.Drawing.Size(1285, 540);
+            this.tabMemRead.Size = new System.Drawing.Size(1285, 542);
             this.tabMemRead.TabIndex = 10;
             this.tabMemRead.Text = "Accesso Memoria";
             // 
@@ -8500,7 +8500,7 @@
             this.tabCaricaBatterie.Margin = new System.Windows.Forms.Padding(2);
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
-            this.tabCaricaBatterie.Size = new System.Drawing.Size(1293, 566);
+            this.tabCaricaBatterie.Size = new System.Drawing.Size(1293, 568);
             this.tabCaricaBatterie.TabIndex = 0;
             this.tabCaricaBatterie.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabCaricaBatterie_Selected);
             // 

@@ -48,6 +48,9 @@ namespace PannelloCharger
         public Color OppChargeSpento = Color.Green;
 
 
+        public int LeftPosPaOppOraFine { get; set; }
+        public int LeftPosPaOppOraInizio { get; set; }
+
         /* ----------------------------------------------------------
          *  Dichiarazione eventi per la gestione avanzamento
          * ---------------------------------------------------------
@@ -111,6 +114,7 @@ namespace PannelloCharger
                     ProfiloInCaricamento = false;
                     InizializzaScheda();
                     RidimensionaControlli();
+
                 }
                 else
                 {
@@ -211,6 +215,7 @@ namespace PannelloCharger
         {
             InitializeComponent();
             InizializzaScheda();
+
         }
 
         /// <summary>
@@ -951,6 +956,11 @@ namespace PannelloCharger
                 {
                     flwPaListaConfigurazioni.Width = tbpPaListaProfili.Width - 30;
                 }
+
+
+                LeftPosPaOppOraFine = txtPaOppOraFine.Left;
+
+                LeftPosPaOppOraInizio = txtPaOppOraFine.Left;
             }
             catch (Exception Ex)
             {
@@ -3821,18 +3831,63 @@ namespace PannelloCharger
 
                     if (true) // (chkPaAttivaOppChg.Checked)
                     {
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
+                        if (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
+                        {
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                            FunzioniUI.ImpostaTextBoxUshort(ref  txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
+                            chkPaOppNotturno.Checked = true;
+                            rslPaOppFinestra.SliderMax = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                            rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                            if (txtPaOppOraFine.Left > txtPaOppOraInizio.Left)
+                            {
+                                int templeft = txtPaOppOraFine.Left;
+                                txtPaOppOraFine.Left = txtPaOppOraInizio.Left;
+                                txtPaOppOraInizio.Left = templeft;
+                                templeft = lblPaOppOraFine.Left;
+                                lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
+                                lblPaOppOraInizio.Left = templeft;
+                            }
+
+                        }
+                        else
+                        {
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
+                            chkPaOppNotturno.Checked = false;
+                            rslPaOppFinestra.SliderMin = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                            rslPaOppFinestra.SliderMax = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                            if (txtPaOppOraFine.Left < txtPaOppOraInizio.Left)
+                            {
+                                int templeft = txtPaOppOraFine.Left;
+                                txtPaOppOraFine.Left = txtPaOppOraInizio.Left;
+                                txtPaOppOraInizio.Left = templeft;
+                                templeft = lblPaOppOraFine.Left;
+                                lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
+                                lblPaOppOraInizio.Left = templeft;
+                            }
+                        }
+
+
+                        //FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                        //FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppVSoglia, ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax, ModCicloCorrente.ParametriAttivi.OpportunityTensioneMax, 1, SbloccaValori);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppCorrente, ModCicloCorrente.ValoriCiclo.OpportunityCorrente, ModCicloCorrente.ParametriAttivi.OpportunityCorrente, 2, SbloccaValori);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppDurataMax, ModCicloCorrente.ValoriCiclo.OpportunityDurataMax, ModCicloCorrente.ParametriAttivi.OpportunityDurataMax, 3, SbloccaValori);
 
-                        chkPaOppNotturno.Checked = (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+                        //chkPaOppNotturno.Checked = (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+
                         OppNotturno(true);
                         
                     }
 
-
+                    if (ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax > 0 && ModCicloCorrente.ValoriCiclo.OpportunityCorrente>0 && ModCicloCorrente.ValoriCiclo.OpportunityDurataMax >0 )
+                    {
+                        chkPaAttivaOppChg.Checked = true;
+                    }
+                    else
+                    {
+                        chkPaAttivaOppChg.Checked = false;
+                    }
 
 
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinRic, ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin, ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMin, 1, SbloccaValori);
@@ -3880,6 +3935,7 @@ namespace PannelloCharger
         {
             //coloro la riga in base al Tipo Evento
             llMemoriaCicli _testataCiclo = (llMemoriaCicli)e.Model;
+            if (_testataCiclo == null) return;
             byte StopReale = (byte)(_testataCiclo.CondizioneStop & 0x3F);
 
             switch (StopReale)
@@ -4509,6 +4565,10 @@ namespace PannelloCharger
             //            txtPaOppOraFine      ModCicloCorrente.ValoriCiclo.OpportunityOraFine
 
             ushort FineGiornata;
+            if(ProfiloInCaricamento)
+            {
+                return ;
+            }
 
             if (chkPaOppNotturno.Checked)
             {
@@ -4555,6 +4615,7 @@ namespace PannelloCharger
 
                 txtPaOppOraFine.Text = FunzioniMR.StringaOreMinutiLL( ModCicloCorrente.ValoriCiclo.OpportunityOraFine );
                 txtPaOppOraInizio.Text = FunzioniMR.StringaOreMinutiLL(ModCicloCorrente.ValoriCiclo.OpportunityOraInizio);
+                btnPaSalvaDati.Enabled = true;
 
             }
             else
@@ -4625,12 +4686,14 @@ namespace PannelloCharger
                         tempval = ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
                         ModCicloCorrente.ValoriCiclo.OpportunityOraFine = ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
                         ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = tempval;
+
                         int templeft = txtPaOppOraFine.Left;
                         txtPaOppOraFine.Left = txtPaOppOraInizio.Left;
                         txtPaOppOraInizio.Left = templeft;
                         templeft = lblPaOppOraFine.Left;
                         lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
                         lblPaOppOraInizio.Left = templeft;
+                        btnPaSalvaDati.Enabled = true;
                     }
 
                 }
@@ -4650,6 +4713,7 @@ namespace PannelloCharger
                         templeft = lblPaOppOraFine.Left;
                         lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
                         lblPaOppOraInizio.Left = templeft;
+                        btnPaSalvaDati.Enabled = true;
                     }
                 }
 

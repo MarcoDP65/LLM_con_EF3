@@ -619,10 +619,10 @@ namespace PannelloCharger
 
                 BrightIdeasSoftware.OLVColumn colstrVettErrSEC = new BrightIdeasSoftware.OLVColumn()
                 {
-                    Text = "Security",
+                    Text = "Safety",
                     IsHeaderVertical = true,
                     ToolTipText = "Contatto di sicurezza",
-                    AspectName = "strErrSecurity",
+                    AspectName = "strErrSafety",
                     Width = 20,
                     Sortable = false,
                     HeaderTextAlign = HorizontalAlignment.Center,

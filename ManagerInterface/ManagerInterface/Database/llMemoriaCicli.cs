@@ -1493,7 +1493,7 @@ namespace MoriData
         }
 
 
-        public string strErrSecurity
+        public string strErrSafety
         {
             get
             {

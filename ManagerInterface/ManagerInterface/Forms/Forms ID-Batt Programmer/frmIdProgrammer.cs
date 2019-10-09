@@ -30,6 +30,9 @@ namespace PannelloCharger
 
     public partial class frmIdProgrammer : frmSpyBat
     {
+        public TabControl Parcheggio = new TabControl();
+
+
         public frmIdProgrammer(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate) : base(ref _par, CaricaDati, IdApparato, Logiche, SerialeCollegata,AutoUpdate)
         {
 
@@ -40,7 +43,8 @@ namespace PannelloCharger
 
         }
 
-        public override void applicaAutorizzazioni()
+        /*
+        public override void applicaAutorizzazioniOld()
         {
             base.applicaAutorizzazioni();
             AdattaGenerale();
@@ -60,6 +64,57 @@ namespace PannelloCharger
             tabCaricaBatterie.TabPages.Remove(tbpStrategia);
             tabCaricaBatterie.TabPages.Remove(tbpEsp32);
         }
+        */
+
+        public override void applicaAutorizzazioni()
+        {
+            base.applicaAutorizzazioni();
+            AdattaGenerale();
+            Parcheggio.TabPages.Add(tabStatSintesi);
+            tabCaricaBatterie.TabPages.Remove(tabStatSintesi);
+
+            Parcheggio.TabPages.Add(tabStatCockpit);
+            tabCaricaBatterie.TabPages.Remove(tabStatCockpit);
+
+            Parcheggio.TabPages.Add(tabStatComparazioni);
+            tabCaricaBatterie.TabPages.Remove(tabStatComparazioni);
+
+            Parcheggio.TabPages.Add(tabStatistiche);
+            tabCaricaBatterie.TabPages.Remove(tabStatistiche);
+
+            Parcheggio.TabPages.Add(tabCb04);
+            tabCaricaBatterie.TabPages.Remove(tabCb04);
+
+            Parcheggio.TabPages.Add(tabCb02);
+            tabCaricaBatterie.TabPages.Remove(tabCb02);                // Configurazione SB
+
+            // tabCaricaBatterie.TabPages.Remove(tbpProfiloLLPro);        Profilo LL
+
+            Parcheggio.TabPages.Add(tbpPianificazione);
+            tabCaricaBatterie.TabPages.Remove(tbpPianificazione);      // Pianificazione
+
+            Parcheggio.TabPages.Add(tabCb05);
+            tabCaricaBatterie.TabPages.Remove(tabCb05);
+
+            Parcheggio.TabPages.Add(tabSbFact);
+            tabCaricaBatterie.TabPages.Remove(tabSbFact);
+
+            Parcheggio.TabPages.Add(tbpCalibrazioni);
+            tabCaricaBatterie.TabPages.Remove(tbpCalibrazioni);
+
+            Parcheggio.TabPages.Add(tbpClonaScheda);
+            tabCaricaBatterie.TabPages.Remove(tbpClonaScheda);
+
+            Parcheggio.TabPages.Add(tabCalibrazione);
+            tabCaricaBatterie.TabPages.Remove(tabCalibrazione);
+
+            Parcheggio.TabPages.Add(tbpStrategia);
+            tabCaricaBatterie.TabPages.Remove(tbpStrategia);
+
+            Parcheggio.TabPages.Add(tbpEsp32);
+            tabCaricaBatterie.TabPages.Remove(tbpEsp32);
+        }
+
 
         public void AdattaGenerale()
         {
