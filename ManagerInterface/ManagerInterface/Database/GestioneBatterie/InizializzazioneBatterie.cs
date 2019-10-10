@@ -104,7 +104,7 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "=##278",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    TensMinimaStop = "=##205",
+                    TensMinimaStop = "=##180",
 
                     //Correnti
                     CorrenteI0 = "#C/24",
@@ -163,7 +163,7 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "=##278",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    TensMinimaStop = "=##205",
+                    TensMinimaStop = "=##180",
                     //Correnti
                     CorrenteI0 = "#C/20",
                     CorrenteI1 = "=C/10",
@@ -223,7 +223,7 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "=##278",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    TensMinimaStop = "=##205",
+                    TensMinimaStop = "=##180",
 
                     //Correnti
                     CorrenteI0 = "#C/12",
@@ -289,7 +289,7 @@ namespace ChargerLogic
                     MantTensFinale = "=##230",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    TensMinimaStop = "=##205",
+                    TensMinimaStop = "=##180",
                     //Correnti
                     CorrenteI0 = "#C/20",
                     CorrenteI1 = "=C/10",
@@ -348,7 +348,7 @@ namespace ChargerLogic
                     MantTensFinale = "=##230",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    TensMinimaStop = "=##205",
+                    TensMinimaStop = "=##180",
                     //Correnti
                     CorrenteI0 = "#C/20",
                     CorrenteI1 = "=C/10",
@@ -405,7 +405,7 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
-                    TensMinimaStop = "=##205",
+                    TensMinimaStop = "=##180",
                     MantTensIniziale = "=##210",
                     MantTensFinale = "=##230",
                     //Correnti

@@ -955,6 +955,7 @@ namespace ChargerLogic
 
             }
 
+            /*
             public bool GeneraByteArrayV2()
             {
                 try
@@ -1080,6 +1081,7 @@ namespace ChargerLogic
                 }
 
             }
+            */
 
             public bool VuotaPacchetto()
             {
@@ -1153,6 +1155,7 @@ namespace ChargerLogic
             public UInt32 CntCicli3Hto6H;
             public UInt32 CntCicli6Hto9H;
             public UInt32 CntCicliOver9H;
+            public UInt32 CntCicliOpportunity;
             public ushort CntProgrammazioni;
 
             public UInt32 CntCicliBrevi;
@@ -1235,6 +1238,8 @@ namespace ChargerLogic
                     if (CntMemReset == 0xFFFF) CntMemReset = 0;
                     DataUltimaCancellazione = SubArray(_messaggio, startByte, 3);
                     startByte += 3;
+                    CntCicliOpportunity = ArrayToUint32(_messaggio, startByte, 4);
+                    startByte += 4;
 
 
                     datiPronti = true;
@@ -1376,8 +1381,16 @@ namespace ChargerLogic
                     _datamap[_arrayInit++] = DataUltimaCancellazione[1];
                     _datamap[_arrayInit++] = DataUltimaCancellazione[2];
 
-                    // Genero il CRC in posizione 0x36
-                    for (int _i = 0; _i < 0x36; _i++)
+                    //  CntCicliOpportunity
+                    FunzioniComuni.SplitUint32(CntCicliOpportunity, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+
+                    // Genero il CRC in posizione 0x3A
+                    for (int _i = 0; _i < 0x3A; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
@@ -1385,8 +1398,8 @@ namespace ChargerLogic
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[0x36] = _byte1;
-                    _datamap[0x37] = _byte2;
+                    _datamap[0x3A] = _byte1;
+                    _datamap[0x3B] = _byte2;
 
                     dataBuffer = _datamap;
 
@@ -1415,6 +1428,7 @@ namespace ChargerLogic
                     CntCicli6Hto9H = 0;
                     CntCicliOver9H = 0;
                     CntProgrammazioni = 0;
+                    CntCicliOpportunity = 0;
 
                     CntCicliBrevi = 0;
                     PntNextBreve = 0;

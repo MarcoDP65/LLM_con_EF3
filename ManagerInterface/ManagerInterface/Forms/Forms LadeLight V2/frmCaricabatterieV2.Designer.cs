@@ -614,6 +614,8 @@
             this.btnGenAzzzeraContatori = new System.Windows.Forms.Button();
             this.btnCaricaContatori = new System.Windows.Forms.Button();
             this.grbMainContatori = new System.Windows.Forms.GroupBox();
+            this.txtContCaricheOpportunity = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.txtContNumProgrammazioni = new System.Windows.Forms.TextBox();
             this.label222 = new System.Windows.Forms.Label();
@@ -774,7 +776,7 @@
             this.tabMonitor.Location = new System.Drawing.Point(4, 22);
             this.tabMonitor.Margin = new System.Windows.Forms.Padding(2);
             this.tabMonitor.Name = "tabMonitor";
-            this.tabMonitor.Size = new System.Drawing.Size(1285, 540);
+            this.tabMonitor.Size = new System.Drawing.Size(1285, 542);
             this.tabMonitor.TabIndex = 8;
             this.tabMonitor.Text = "Monitor";
             // 
@@ -1043,7 +1045,7 @@
             this.tabCb02.Location = new System.Drawing.Point(4, 22);
             this.tabCb02.Margin = new System.Windows.Forms.Padding(2);
             this.tabCb02.Name = "tabCb02";
-            this.tabCb02.Size = new System.Drawing.Size(1285, 540);
+            this.tabCb02.Size = new System.Drawing.Size(1285, 542);
             this.tabCb02.TabIndex = 1;
             this.tabCb02.Text = "Cavi";
             // 
@@ -1301,7 +1303,7 @@
             this.tbpProxySig60.Location = new System.Drawing.Point(4, 22);
             this.tbpProxySig60.Margin = new System.Windows.Forms.Padding(2);
             this.tbpProxySig60.Name = "tbpProxySig60";
-            this.tbpProxySig60.Size = new System.Drawing.Size(1285, 540);
+            this.tbpProxySig60.Size = new System.Drawing.Size(1285, 542);
             this.tbpProxySig60.TabIndex = 9;
             this.tbpProxySig60.Text = "SIG60 Proxy";
             // 
@@ -2738,7 +2740,7 @@
             this.tbpFirmware.Location = new System.Drawing.Point(4, 22);
             this.tbpFirmware.Margin = new System.Windows.Forms.Padding(2);
             this.tbpFirmware.Name = "tbpFirmware";
-            this.tbpFirmware.Size = new System.Drawing.Size(1285, 540);
+            this.tbpFirmware.Size = new System.Drawing.Size(1285, 542);
             this.tbpFirmware.TabIndex = 12;
             this.tbpFirmware.Text = "Firmware";
             // 
@@ -4537,7 +4539,7 @@
             // 
             // txtMemDataGrid
             // 
-            this.txtMemDataGrid.Font = new System.Drawing.Font("Courier New", 12F);
+            this.txtMemDataGrid.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMemDataGrid.Location = new System.Drawing.Point(18, 226);
             this.txtMemDataGrid.Margin = new System.Windows.Forms.Padding(2);
             this.txtMemDataGrid.Multiline = true;
@@ -4817,7 +4819,7 @@
             this.tabInizializzazione.Location = new System.Drawing.Point(4, 22);
             this.tabInizializzazione.Margin = new System.Windows.Forms.Padding(2);
             this.tabInizializzazione.Name = "tabInizializzazione";
-            this.tabInizializzazione.Size = new System.Drawing.Size(1285, 540);
+            this.tabInizializzazione.Size = new System.Drawing.Size(1285, 542);
             this.tabInizializzazione.TabIndex = 13;
             this.tabInizializzazione.Text = "Inizializzazione";
             this.tabInizializzazione.Enter += new System.EventHandler(this.tabInizializzazione_Enter);
@@ -5684,7 +5686,7 @@
             this.tabOrologio.Location = new System.Drawing.Point(4, 22);
             this.tabOrologio.Margin = new System.Windows.Forms.Padding(2);
             this.tabOrologio.Name = "tabOrologio";
-            this.tabOrologio.Size = new System.Drawing.Size(1285, 540);
+            this.tabOrologio.Size = new System.Drawing.Size(1285, 542);
             this.tabOrologio.TabIndex = 2;
             this.tabOrologio.Text = "Orologio/Accensione";
             // 
@@ -5938,7 +5940,7 @@
             this.tabProfiloAttuale.Location = new System.Drawing.Point(4, 22);
             this.tabProfiloAttuale.Margin = new System.Windows.Forms.Padding(2);
             this.tabProfiloAttuale.Name = "tabProfiloAttuale";
-            this.tabProfiloAttuale.Size = new System.Drawing.Size(1285, 540);
+            this.tabProfiloAttuale.Size = new System.Drawing.Size(1285, 542);
             this.tabProfiloAttuale.TabIndex = 5;
             this.tabProfiloAttuale.Text = "Configurazione";
             // 
@@ -6045,6 +6047,7 @@
             this.chkPaUsaSafety.Size = new System.Drawing.Size(15, 14);
             this.chkPaUsaSafety.TabIndex = 145;
             this.chkPaUsaSafety.UseVisualStyleBackColor = true;
+            this.chkPaUsaSafety.CheckedChanged += new System.EventHandler(this.ChkPaUsaSafety_CheckedChanged);
             // 
             // lblPaUsaSafety
             // 
@@ -7299,6 +7302,7 @@
             this.chkPaUsaSpyBatt.Size = new System.Drawing.Size(15, 14);
             this.chkPaUsaSpyBatt.TabIndex = 56;
             this.chkPaUsaSpyBatt.UseVisualStyleBackColor = true;
+            this.chkPaUsaSpyBatt.CheckedChanged += new System.EventHandler(this.ChkPaUsaSpyBatt_CheckedChanged);
             // 
             // label69
             // 
@@ -7567,7 +7571,7 @@
             this.tabCb04.Location = new System.Drawing.Point(4, 22);
             this.tabCb04.Margin = new System.Windows.Forms.Padding(2);
             this.tabCb04.Name = "tabCb04";
-            this.tabCb04.Size = new System.Drawing.Size(1285, 540);
+            this.tabCb04.Size = new System.Drawing.Size(1285, 542);
             this.tabCb04.TabIndex = 3;
             this.tabCb04.Text = "Memoria Cicli";
             // 
@@ -7721,7 +7725,7 @@
             this.tabGenerale.Location = new System.Drawing.Point(4, 22);
             this.tabGenerale.Margin = new System.Windows.Forms.Padding(2);
             this.tabGenerale.Name = "tabGenerale";
-            this.tabGenerale.Size = new System.Drawing.Size(1285, 540);
+            this.tabGenerale.Size = new System.Drawing.Size(1285, 542);
             this.tabGenerale.TabIndex = 0;
             this.tabGenerale.Text = "Generale";
             this.tabGenerale.Click += new System.EventHandler(this.tabCb01_Click);
@@ -7775,6 +7779,8 @@
             // grbMainContatori
             // 
             this.grbMainContatori.BackColor = System.Drawing.Color.White;
+            this.grbMainContatori.Controls.Add(this.txtContCaricheOpportunity);
+            this.grbMainContatori.Controls.Add(this.label44);
             this.grbMainContatori.Controls.Add(this.label43);
             this.grbMainContatori.Controls.Add(this.txtContNumProgrammazioni);
             this.grbMainContatori.Controls.Add(this.label222);
@@ -7813,6 +7819,27 @@
             this.grbMainContatori.TabIndex = 21;
             this.grbMainContatori.TabStop = false;
             this.grbMainContatori.Text = "CONTATORI";
+            // 
+            // txtContCaricheOpportunity
+            // 
+            this.txtContCaricheOpportunity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContCaricheOpportunity.Location = new System.Drawing.Point(387, 97);
+            this.txtContCaricheOpportunity.Margin = new System.Windows.Forms.Padding(2);
+            this.txtContCaricheOpportunity.Name = "txtContCaricheOpportunity";
+            this.txtContCaricheOpportunity.Size = new System.Drawing.Size(104, 23);
+            this.txtContCaricheOpportunity.TabIndex = 43;
+            this.txtContCaricheOpportunity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.ForeColor = System.Drawing.Color.Red;
+            this.label44.Location = new System.Drawing.Point(385, 80);
+            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(100, 13);
+            this.label44.TabIndex = 42;
+            this.label44.Text = "Cariche Opportunity";
             // 
             // label43
             // 
@@ -9287,5 +9314,7 @@
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.Label lblPaOppPuntoVerde;
         private System.Windows.Forms.PictureBox ImgPaOppPuntoVerde;
+        private System.Windows.Forms.TextBox txtContCaricheOpportunity;
+        private System.Windows.Forms.Label label44;
     }
 }

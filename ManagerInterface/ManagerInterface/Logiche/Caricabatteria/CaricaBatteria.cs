@@ -886,6 +886,7 @@ namespace ChargerLogic
                         ContatoriLL.CntCicli3Hto6H = MsgContatoriLL.CntCicli3Hto6H;
                         ContatoriLL.CntCicli6Hto9H = MsgContatoriLL.CntCicli6Hto9H;
                         ContatoriLL.CntCicliOver9H = MsgContatoriLL.CntCicliOver9H;
+                        ContatoriLL.CntCicliOpportunity = MsgContatoriLL.CntCicliOpportunity;
                         ContatoriLL.CntProgrammazioni = MsgContatoriLL.CntProgrammazioni;
                         ContatoriLL.CntCicliBrevi = MsgContatoriLL.CntCicliBrevi;
                         ContatoriLL.PntNextBreve = MsgContatoriLL.PntNextBreve;
@@ -1722,8 +1723,9 @@ namespace ChargerLogic
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
-
-                //Log.Debug("------------------------------------------------------------------------------------------------------------");
+                Log.Debug("Aspetto 150 ms per l'effettiva riabilitazione della flash" );
+                System.Threading.Thread.Sleep(150);
+                Log.Debug("------------------------------------------------------------------------------------------------------------");
 
                 return _esito;
 
@@ -2441,6 +2443,7 @@ namespace ChargerLogic
                             case (byte)SerialMessage.TipoComando.CMD_READ_RTC:
                                 Log.Debug("Read RTC");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
+                                _inviaRisposta = false;
                                 break;
                             case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:
                                 Log.Debug("Read MEMORY");

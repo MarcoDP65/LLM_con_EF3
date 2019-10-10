@@ -39,6 +39,8 @@ namespace MoriData
         public UInt32 CntCicli3Hto6H;
         public UInt32 CntCicli6Hto9H;
         public UInt32 CntCicliOver9H;
+        public UInt32 CntCicliOpportunity;
+
         public ushort CntProgrammazioni;
 
         public UInt32 CntCicliBrevi;
@@ -196,6 +198,7 @@ namespace MoriData
                 MsgContatoriLL.PntNextCarica = PntNextCarica;
                 MsgContatoriLL.CntMemReset = CntMemReset;
                 MsgContatoriLL.DataUltimaCancellazione = FunzioniComuni.ArrayCopy(DataUltimaCancellazione);
+                MsgContatoriLL.CntCicliOpportunity = CntCicliOpportunity;
 
                 return MsgContatoriLL;
             }
@@ -271,7 +274,20 @@ namespace MoriData
         }
 
 
-        
+        public uint CntCicliOpportunity
+        {
+            get { return llContApp.CntCicliOpportunity; }
+            set
+            {
+                if (value != null)
+                {
+                    llContApp.CntCicliOpportunity = value;
+                    _datiSalvati = false;
+                }
+            }
+        }
+
+
         public uint CntCicliStop
         {
             get { return llContApp.CntCicliStop; }

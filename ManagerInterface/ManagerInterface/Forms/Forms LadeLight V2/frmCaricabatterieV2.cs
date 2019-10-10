@@ -30,6 +30,7 @@ namespace PannelloCharger
         private CaricaBatteria _cb;
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         private frmAvanzamentoCicli _avCicli = new frmAvanzamentoCicli();
+        public bool ApparatoConnesso { get; private set; }
 
         bool readingMessage = false;
         bool _portaCollegata;
@@ -83,7 +84,8 @@ namespace PannelloCharger
         {
             try
             {
-
+                bool EsitoApertura;
+                ApparatoConnesso = false;
                 _parametri = _par;
                 ProfiloInCaricamento = false;
                 InitializeComponent();
@@ -91,7 +93,8 @@ namespace PannelloCharger
 
 
                 _logiche = Logiche;
-                attivaCaricabatterie(ref _par, SerialeCollegata);
+                EsitoApertura = attivaCaricabatterie(ref _par, SerialeCollegata);
+                ApparatoConnesso = EsitoApertura;
                 InizializzaScheda();
                 RidimensionaControlli();
 
@@ -109,6 +112,8 @@ namespace PannelloCharger
         {
             try
             {
+                ApparatoConnesso = false;
+
                 if (attivaCaricabatterie(ref _par, CaricaDati))
                 {
                     ProfiloInCaricamento = false;
@@ -850,6 +855,7 @@ namespace PannelloCharger
                 txtContPntNextBreve.Text = "";
                 txtContPntNextCarica.Text = "";
                 txtContNumProgrammazioni.Text = "";
+                txtContCaricheOpportunity.Text = "";
 
 
                 if (_cb.ContatoriLL.valido)
@@ -868,6 +874,7 @@ namespace PannelloCharger
                     txtContPntNextBreve.Text = _cb.ContatoriLL.strPntNextBreve;
                     txtContPntNextCarica.Text = _cb.ContatoriLL.strPntNextCarica;
                     txtContNumProgrammazioni.Text = _cb.ContatoriLL.CntProgrammazioni.ToString(); ;
+                    txtContCaricheOpportunity.Text = _cb.ContatoriLL.CntCicliOpportunity.ToString();
 
 
                     txtContNumCancellazioni.Text = _cb.ContatoriLL.CntMemReset.ToString();
@@ -1427,8 +1434,11 @@ namespace PannelloCharger
             CaricaProgrammazioni();
             if (esitoSalvataggio)
             {
-                MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                _cb.ResetScheda();
                 IncrementaContatoreConf();
+                MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
@@ -2463,7 +2473,7 @@ namespace PannelloCharger
 
         private void btnCaricaInizializzazione_Click(object sender, EventArgs e)
         {
-            LeggiInizializzazione();
+             LeggiInizializzazione();
         }
 
         public bool LeggiInizializzazione()
@@ -2792,7 +2802,7 @@ namespace PannelloCharger
 
         private void tabInizializzazione_Enter(object sender, EventArgs e)
         {
-            LeggiInizializzazione();
+             LeggiInizializzazione();
         }
 
         private void MascheraTabPages(int MaskLevel)
@@ -4750,6 +4760,15 @@ namespace PannelloCharger
             }
         }
 
-     }
+        private void ChkPaUsaSpyBatt_CheckedChanged(object sender, EventArgs e)
+        {
+            btnPaSalvaDati.Enabled = true;
+        }
+
+        private void ChkPaUsaSafety_CheckedChanged(object sender, EventArgs e)
+        {
+            btnPaSalvaDati.Enabled = true;
+        }
+    }
 }
 

@@ -32,6 +32,7 @@ namespace PannelloCharger
         public parametriSistema _varGlobali;
         public LogicheBase logiche;
         public CicloDiCarica ParametriProfilo;
+        
 
         private BackgroundWorker bgWlessSWcan;
 
@@ -450,6 +451,14 @@ namespace PannelloCharger
                     //frmSpyBat sbCorrente = new frmSpyBat(ref varGlobali, true, "", logiche, esitoCanaleApparato, true);
 
                     frmCaricabatterieV2 cbCorrente = new frmCaricabatterieV2(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+
+                    if (!cbCorrente.ApparatoConnesso)
+                    {
+                        cbCorrente.Close();
+                        MessageBox.Show("Nessuna risposta dal dispositivo selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return ;                        
+                    }
+
                     cbCorrente.Cursor = Cursors.WaitCursor;
 
                     cbCorrente.MdiParent = this.MdiParent;
@@ -462,7 +471,7 @@ namespace PannelloCharger
                 }
                 else
                 {
-                    MessageBox.Show("Nessuna risposta dal dispositivo selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Nessuna risposta dal canale selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception Ex)
@@ -527,28 +536,33 @@ namespace PannelloCharger
                 this.Cursor = Cursors.WaitCursor;
 
                 esitoCanaleApparato = _varGlobali.apriSpyBat();
-
-                foreach (Form form in Application.OpenForms)
+                if (esitoCanaleApparato)
                 {
-                    if (form.GetType() == typeof(frmIdProgrammer))
+                    foreach (Form form in Application.OpenForms)
                     {
-                        frmIdProgrammer _tmpFrmIDP = (frmIdProgrammer)form;
-                        if (_tmpFrmIDP.IdCorrente == IdScheda)
+                        if (form.GetType() == typeof(frmIdProgrammer))
                         {
-                            form.Activate();
-                            return;
+                            frmIdProgrammer _tmpFrmIDP = (frmIdProgrammer)form;
+                            if (_tmpFrmIDP.IdCorrente == IdScheda)
+                            {
+                                form.Activate();
+                                return;
+                            }
                         }
                     }
+                    Log.Debug("NUOVO IDP");
+                    frmIdProgrammer idpCorrente = new frmIdProgrammer(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+                    idpCorrente.MdiParent = this.MdiParent; ;
+                    idpCorrente.StartPosition = FormStartPosition.CenterParent;
+
+                    this.Cursor = Cursors.Default;
+
+                    idpCorrente.Show();
                 }
-                Log.Debug("NUOVO IDP");
-                frmIdProgrammer idpCorrente = new frmIdProgrammer(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
-                idpCorrente.MdiParent = this.MdiParent; ;
-                idpCorrente.StartPosition = FormStartPosition.CenterParent;
-
-                this.Cursor = Cursors.Default;
-
-                idpCorrente.Show();
-
+                else
+                {
+                    MessageBox.Show("Nessuna risposta dal dispositivo selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
             }
             catch (Exception Ex)
