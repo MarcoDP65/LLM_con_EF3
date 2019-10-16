@@ -118,6 +118,39 @@ namespace PannelloCharger
                 };
                 flvCicliListaCariche.AllColumns.Add(colDurata);
 
+                BrightIdeasSoftware.OLVColumn colIdProgramma = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Id Prog",
+                    AspectName = "strIdProgramma",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvCicliListaCariche.AllColumns.Add(colIdProgramma);
+
+
+
+                BrightIdeasSoftware.OLVColumn colIdSB = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Id SB",
+                    AspectName = "strIdSpyBatt",
+                    Width = 140,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Center,
+                };
+                flvCicliListaCariche.AllColumns.Add(colIdSB);
+
+                BrightIdeasSoftware.OLVColumn colVnom = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "V Nom",
+                    AspectName = "strVNominale",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Center,
+                };
+                flvCicliListaCariche.AllColumns.Add(colVnom);
+
+
                 BrightIdeasSoftware.OLVColumn colstrV5Min = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "V 5m",

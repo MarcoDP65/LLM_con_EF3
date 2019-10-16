@@ -740,6 +740,7 @@ namespace MoriData
 
                         case "3.00":
                         case "3.01":
+                        case "3.02":
                             {
                                 return 10;
                             }
@@ -766,6 +767,7 @@ namespace MoriData
             {
                 try
                 {
+                    return true;
                     string _LocalVer = ""; // _sb.SwVersion.Substring(0, 4);  // controllo solo i primi 4 caratteri della versione perignorare la build
 
                     if (_sb.SwVersion == null) return false;
@@ -782,6 +784,7 @@ namespace MoriData
                         case "2.05":
                         case "3.00":
                         case "3.01":
+                        case "3.02":
                             return true;
 
                         default:
@@ -803,6 +806,7 @@ namespace MoriData
             {
                 try
                 {
+                    return true;
                     string _LocalVer = ""; // _sb.SwVersion.Substring(0, 4);  // controllo solo i primi 4 caratteri della versione perignorare la build
 
                     if (_sb.SwVersion == null) return false;
@@ -819,6 +823,7 @@ namespace MoriData
                         case "2.05":
                         case "3.00":
                         case "3.01":
+                        case "3.02":
                             return true;
 
                         default:
@@ -870,6 +875,7 @@ namespace MoriData
                         case "2.05":
                         case "3.00":
                         case "3.01":
+                        case "3.02":
                             return 8666;
 
                         default:

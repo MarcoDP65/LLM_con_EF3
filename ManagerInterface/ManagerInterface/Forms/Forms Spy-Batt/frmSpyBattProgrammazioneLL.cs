@@ -115,40 +115,43 @@ namespace PannelloCharger
                     cmbPaProfilo.DisplayMember = "NomeProfilo";
                     cmbPaProfilo.SelectedItem = profiloDefault;
 
-
+                    //--- non ativo su spybatt
                     // Carico le tensioni in base al tipo e verifico che la tensione impostata sia valida
-                    byte TipoApp = _sb.CbAttivo.IdModelloLL;
-                    var Listatens = from t in _sb.DatiBase.TensioniBatteria
-                                    join tm in _sb.DatiBase.TensioniModello on t.IdTensione equals tm.IdTensione
-                                    where ( tm.IdModelloLL == TipoApp )
-                                    && ( t.IdTensione == _sb.ProgrammaCorrente.BatteryVdef )
-                                    select t;
+                    //byte TipoApp = _sb.CbAttivo.IdModelloLL;
+                    //var Listatens = from t in _sb.DatiBase.TensioniBatteria
+                    //                join tm in _sb.DatiBase.TensioniModello on t.IdTensione equals tm.IdTensione
+                    //                where ( tm.IdModelloLL == TipoApp )
+                    //                && ( t.IdTensione == _sb.ProgrammaCorrente.BatteryVdef )
+                    //                select t;
 
-                    if (Listatens.Count() != 1)
-                    {
+                    //if (Listatens.Count() != 1)
+                    //{
                         // NON VALIDO
 
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         txtPaTensione.Text = FunzioniMR.StringaTensione(_sb.ProgrammaCorrente.BatteryVdef);
                         txtPaTensione.ReadOnly = true;
                         txtPaNumCelle.Text = _sb.ProgrammaCorrente.BatteryCells.ToString();
                         txtPaNumCelle.ReadOnly = true;
                         txtPaCapacita.Text = FunzioniMR.StringaCapacitaUint(_sb.ProgrammaCorrente.BatteryAhdef,10,0);
                         txtPaCapacita.ReadOnly = true;
-                    }
+                    //}
 
 
 
                 }
                 else
                 {
-                    ProfiliCarica.Clear();
-                    cmbPaProfilo.DataSource = ProfiliCarica;
-                    cmbPaProfilo.ValueMember = "IdProfiloCaricaLL";
-                    cmbPaProfilo.DisplayMember = "NomeProfilo";
+                    if (ProfiliCarica != null)
+                    {
+                        ProfiliCarica.Clear();
+                        cmbPaProfilo.DataSource = ProfiliCarica;
+                        cmbPaProfilo.ValueMember = "IdProfiloCaricaLL";
+                        cmbPaProfilo.DisplayMember = "NomeProfilo";
+                    }
                 }
 
 
@@ -303,8 +306,12 @@ namespace PannelloCharger
 
                         }
 
-
+                        /*
                         chkPaUsaSpyBatt.Checked = (_sb.ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt == 0x000F);
+                        */
+                        chkPaUsaSpyBatt.Checked = true;
+                        chkPaUsaSpyBatt.Enabled = false;
+
                         chkPaUsaSafety.Checked = (_sb.ModCicloCorrente.ValoriCiclo.AbilitaSafety == 0x000F);
 
 
@@ -752,7 +759,9 @@ namespace PannelloCharger
                 _sb.ModCicloCorrente.ValoriCiclo.MantAttivo = (ushort)(chkPaAttivaMant.Checked ? 0x000F : 0x00F0);
 
                 // Usa SB
-                _sb.ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt = (ushort)(chkPaUsaSpyBatt.Checked ? 0x000F : 0x00F0);
+                _sb.ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt = 0x000F; //(ushort)(chkPaUsaSpyBatt.Checked ? 0x000F : 0x00F0);
+                chkPaUsaSpyBatt.Checked = true;
+                chkPaUsaSpyBatt.Enabled = false;
 
                 // Usa Safety
                 _sb.ModCicloCorrente.ValoriCiclo.AbilitaSafety = (ushort)(chkPaUsaSafety.Checked ? 0x000F : 0x00F0);
@@ -876,7 +885,7 @@ namespace PannelloCharger
                 //if (ModCicloCorrente.ValoriCiclo.MantAttivo != (ushort)(chkPaAttivaMant.Checked ? 0x000F : 0x00F0)) return false;
 
                 // Usa SB
-                if (_sb.ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt != (ushort)(chkPaUsaSpyBatt.Checked ? 0x0000 : 0x00F0)) return false;
+                if (_sb.ModCicloCorrente.ValoriCiclo.AbilitaSpyBatt != (ushort)(chkPaUsaSpyBatt.Checked ? 0x000F : 0x00F0)) return false;
 
 
                 // Preciclo

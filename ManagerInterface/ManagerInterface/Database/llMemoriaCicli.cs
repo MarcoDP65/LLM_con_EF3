@@ -675,7 +675,52 @@ namespace MoriData
         }
         public string strIdProgramma
         {
-            get { return _llmc.IdProgramma.ToString(); }
+            get
+            {
+                if ((_llmc.OpzioniCarica & 0x06) == 0x00)
+                {
+                    return _llmc.IdProgramma.ToString();
+                }
+                else
+                {
+                    return "";
+                }
+            }
+
+        }
+
+        public string strVNominale
+        {
+            get
+            {
+                if ((_llmc.OpzioniCarica & 0x06) == 0x00)
+                {
+                    // NO spybatt, se i primi 2 bytes dell'ID != FFFF allora è la tensione nominale
+                    ushort Vnom = (ushort)((_llmc.IdSpyBatt[0] * 256) + _llmc.IdSpyBatt[1]);
+                    if(Vnom == 0xFFFF)
+                    {
+                        return "";
+                    }
+                    else
+
+                    {
+                        return FunzioniMR.StringaTensione(Vnom,0);
+                    }
+
+
+                }
+                else
+                {
+                    if (_llmc.IdProgramma < 2400 )
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return FunzioniMR.StringaTensione(_llmc.IdProgramma,0);
+                    }
+                }
+            }
 
         }
 
@@ -882,7 +927,7 @@ namespace MoriData
                 if (_llmc.NumEventiBrevi != 0xFFFF && dtDataOraFine != DateTime.MinValue)
                 {
                     TimeSpan DurataCalc = dtDataOraFine.Subtract(dtDataOraStart);
-                    return DurataCalc.ToString();
+                    return DurataCalc.Hours.ToString("00") + ":" + DurataCalc.Minutes.ToString("00");
                 }
                 else return "";
             }
@@ -1592,7 +1637,21 @@ namespace MoriData
         {
             get
             {
-                return _llmc.IdSpyBatt.ToString();
+                if ((_llmc.OpzioniCarica & 0x06) != 0x00)
+                {
+                    string _Id = "";
+                    _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":" ;
+                    _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
+                    _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
+                    _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2") ;
+
+                    return _Id;
+
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
@@ -1761,6 +1820,16 @@ namespace MoriData
                     case 0x0D:
                         {
                             _descrStato = "Tensione Limite Raggiunta";
+                            break;
+                        }
+                    case 0x0E:
+                        {
+                            _descrStato = "T0 o T1 scaduto / anomalia Termica";
+                            break;
+                        }
+                    case 0x0F:
+                        {
+                            _descrStato = "I = 0 per oltre 5 secondi";
                             break;
                         }
                     default:

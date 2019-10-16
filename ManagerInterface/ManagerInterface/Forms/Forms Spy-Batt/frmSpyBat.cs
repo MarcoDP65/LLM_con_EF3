@@ -1327,13 +1327,22 @@ namespace PannelloCharger
                         //poi, se ho Vbatt
                         if (_sb.sbVariabili.TensioneIstantanea > 9)
                         {
-                            txtVarV3.Text = _sb.sbVariabili.Tensione3.ToString();
-                            txtVarV2.Text = _sb.sbVariabili.Tensione2.ToString();
-                            txtVarV1.Text = _sb.sbVariabili.Tensione1.ToString();
-
-                            txtDataSysV3.Text = _sb.sbVariabili.Tensione3.ToString();
-                            txtDataSysV2.Text = _sb.sbVariabili.Tensione2.ToString();
-                            txtDataSysV1.Text = _sb.sbVariabili.Tensione1.ToString();
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x02) == 0x02)
+                            {
+                                txtVarV3.Text = _sb.sbVariabili.Tensione3.ToString();
+                                txtDataSysV3.Text = _sb.sbVariabili.Tensione3.ToString();
+                            }
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x04) == 0x04)
+                            {
+                                txtVarV2.Text = _sb.sbVariabili.Tensione2.ToString();
+                                txtDataSysV2.Text = _sb.sbVariabili.Tensione2.ToString();
+                            }
+                            if ((_sb.sbVariabili.ConnectionStatus & 0x08) == 0x08)
+                            {
+                                txtVarV1.Text = _sb.sbVariabili.Tensione1.ToString();
+                                txtDataSysV1.Text = _sb.sbVariabili.Tensione1.ToString();
+                            }
+                                         
 
                             txtVaIbatt.Text = _sb.sbVariabili.CorrenteBatteria.ToString();
                             txtDataSysIBatt.Text = _sb.sbVariabili.CorrenteBatteria.ToString();
@@ -1370,14 +1379,26 @@ namespace PannelloCharger
                         //poi, se ho Vbatt
                         if (_sb.sbVariabili.TensioneIstantanea > 9)
                         {
-                            txtVarV3.Text = _sb.sbVariabili.strTensione3;
-                            txtVarV2.Text = _sb.sbVariabili.strTensione2;
-                            txtVarV1.Text = _sb.sbVariabili.strTensione1;
+                            // 16/10/2019 Se in configurazione le intermedie sono a 0, non valorizzo le relative celle
 
-
-                            txtDataSysV3.Text = _sb.sbVariabili.strTensione3;
-                            txtDataSysV2.Text = _sb.sbVariabili.strTensione2;
-                            txtDataSysV1.Text = _sb.sbVariabili.strTensione1;
+                            if (_sb.ProgrammaCorrente != null)
+                            {
+                                if (_sb.ProgrammaCorrente.BatteryCell3 > 0)
+                                {
+                                    txtVarV3.Text = _sb.sbVariabili.strTensione3;
+                                    txtDataSysV3.Text = _sb.sbVariabili.strTensione3;
+                                }
+                                if (_sb.ProgrammaCorrente.BatteryCell2 > 0)
+                                {
+                                    txtVarV2.Text = _sb.sbVariabili.strTensione2;
+                                    txtDataSysV2.Text = _sb.sbVariabili.strTensione2;
+                                }
+                                if (_sb.ProgrammaCorrente.BatteryCell1 > 0)
+                                {
+                                    txtVarV1.Text = _sb.sbVariabili.strTensione1;
+                                    txtDataSysV1.Text = _sb.sbVariabili.strTensione1;
+                                }
+                            }
 
 
                             txtDataSysIBatt.Text = _sb.sbVariabili.strCorrenteBatteria;
@@ -1660,7 +1681,7 @@ namespace PannelloCharger
                 Log.Debug("RicaricaProgrammazioni: ");
 
                 // 18/11/15 - Prima di ricaricare la lista, ricarico la restata per leggere il contatore aggiornato
-                //_esito = _sb.CaricaTestata();
+                _esito = _sb.CaricaTestata();
 
                 _esito = _sb.RicaricaProgrammazioni(1, (ushort)_sb.sbData.ProgramCount, _logiche.dbDati.connessione, true);
 //                _esito = _sb.RicaricaProgrammazioniV1(1, (ushort)_sb.sbData.ProgramCount, _logiche.dbDati.connessione, true);
@@ -10359,24 +10380,6 @@ namespace PannelloCharger
 
                         }
                     }
-                    /*
-                    var Listatemp = from p in _sb.DatiBase.DurateCarica
-                                    join pt in _cb.DatiBase.DurateProfilo on p.IdDurataCaricaLL equals pt.IdDurataCaricaLL
-                                    where pt.IdProfiloCaricaLL == TipoProf
-                                    select p;
-
-                    DurateCarica = new List<llDurataCarica>();
-
-                    foreach (var pc in Listatemp)
-                    {
-                        DurateCarica.Add((llDurataCarica)pc);
-                    }
-
-
-                    cmbPaDurataCarica.DataSource = DurateCarica;
-                    cmbPaDurataCarica.ValueMember = "IdDurataCaricaLL";
-                    cmbPaDurataCarica.DisplayMember = "Descrizione";
-                    */
 
                     if (!ProfiloInCaricamento)
                     {
@@ -10451,6 +10454,8 @@ namespace PannelloCharger
         {
             try
             {
+                bool _localPiC = ProfiloInCaricamento;
+
                 if (!ProfiloInCaricamento)
                 {
 
@@ -10475,7 +10480,7 @@ namespace PannelloCharger
                         AssegnaEqualCCorrente();
                         //MostraEqualCCorrente();
                         btnPaSalvaDati.Enabled = true;
-                        ProfiloInCaricamento = false;
+                        ProfiloInCaricamento = _localPiC;
 
                     }
                     else
@@ -10485,7 +10490,7 @@ namespace PannelloCharger
                         AssegnaEqualCCorrente();
                         MostraEqualCCorrente();
                         btnPaSalvaDati.Enabled = true;
-                        ProfiloInCaricamento = false;
+                        ProfiloInCaricamento = _localPiC;
 
                     }
                 }
@@ -10730,8 +10735,6 @@ namespace PannelloCharger
                 {
                     MostraParametriCiclo(true, true);
                 }
-
-
 
             }
             catch

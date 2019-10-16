@@ -41,14 +41,29 @@ namespace Utility
             }
         }
 
-        public static string StringaTensioneCella(uint Tensione)
+        public static string StringaTensioneCella(uint Tensione,int decimali = 1)
         {
             try
             {
                 string _tensioni = "";
                 float _inVolt;
                 _inVolt = (float)Tensione / 100;
-                _tensioni = _inVolt.ToString("0.0");
+                switch (decimali)
+                {
+                    case 2:
+                        _tensioni = _inVolt.ToString("0.00");
+                        break;
+                    case 1:
+                        _tensioni = _inVolt.ToString("0.0");
+                        break;
+                    case 0:
+                        _tensioni = _inVolt.ToString("0");
+                        break;
+                    default:
+                        _tensioni = _inVolt.ToString("0.0");
+                        break;
+
+                }
                 return _tensioni;
             }
             catch
@@ -57,14 +72,29 @@ namespace Utility
             }
         }
 
-        public static string StringaTensione(int Tensione)
+        public static string StringaTensione(int Tensione, int decimali = 2)
         {
             try
             {
                 string _tensioni = "";
                 float _inVolt;
                 _inVolt = (float)Tensione / 100;
-                _tensioni = _inVolt.ToString("0.00");
+                switch (decimali)
+                {
+                    case 2:
+                        _tensioni = _inVolt.ToString("0.00");
+                        break;
+                    case 1:
+                        _tensioni = _inVolt.ToString("0.0");
+                        break;
+                    case 0:
+                        _tensioni = _inVolt.ToString("0");
+                        break;
+                    default:
+                        _tensioni = _inVolt.ToString("0.0");
+                        break;
+
+                }
                 return _tensioni;
             }
             catch

@@ -1435,7 +1435,8 @@ namespace PannelloCharger
             if (esitoSalvataggio)
             {
 
-                _cb.ResetScheda();
+                // _cb.ResetScheda();  il reset scheda non è abbastanza profondo da azzerare tutte le variabili
+
                 IncrementaContatoreConf();
                 MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

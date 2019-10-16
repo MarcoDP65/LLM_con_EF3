@@ -624,7 +624,7 @@ namespace ChargerLogic
                 int posizione = 0;
                 
                 if (PntProssimaCarica < 1) return false;
-                UInt32 AddrUltimaCarica = (((PntProssimaCarica - 1) * SizeCharge) );
+                UInt32 AddrUltimaCarica = ((PntProssimaCarica - 1) * SizeCharge) ;
                 bool DatiValidi = true;
                 uint AddrLocale;
                 byte[] AreaBrevi = null;
