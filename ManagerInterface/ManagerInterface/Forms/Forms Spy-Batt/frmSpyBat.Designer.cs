@@ -308,6 +308,7 @@
             this.txtProgEqNumPulse = new System.Windows.Forms.TextBox();
             this.tbpProfiloLLPro = new System.Windows.Forms.TabPage();
             this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
+            this.btnCancellaCicloCorrente = new System.Windows.Forms.Button();
             this.cmbPaTipoLadeLight = new System.Windows.Forms.ComboBox();
             this.label353 = new System.Windows.Forms.Label();
             this.chkPaAttivaOppChg = new System.Windows.Forms.CheckBox();
@@ -466,6 +467,7 @@
             this.lblTurno1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTurno3 = new System.Windows.Forms.Label();
+            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCb05 = new System.Windows.Forms.TabPage();
             this.grbCalData = new System.Windows.Forms.GroupBox();
             this.txtCalMinuti = new System.Windows.Forms.TextBox();
@@ -1194,7 +1196,6 @@
             this.tmrLetturaAutomatica = new System.Windows.Forms.Timer(this.components);
             this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             this.sfdImportDati = new System.Windows.Forms.OpenFileDialog();
-            this.pannelloTurno1 = new PannelloCharger.PannelloTurno();
             this.tabCaricaBatterie.SuspendLayout();
             this.tabCb01.SuspendLayout();
             this.grbCloneScheda.SuspendLayout();
@@ -3287,6 +3288,7 @@
             // grbCicloCorrente
             // 
             this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
+            this.grbCicloCorrente.Controls.Add(this.btnCancellaCicloCorrente);
             this.grbCicloCorrente.Controls.Add(this.cmbPaTipoLadeLight);
             this.grbCicloCorrente.Controls.Add(this.label353);
             this.grbCicloCorrente.Controls.Add(this.chkPaAttivaOppChg);
@@ -3319,6 +3321,13 @@
             resources.ApplyResources(this.grbCicloCorrente, "grbCicloCorrente");
             this.grbCicloCorrente.Name = "grbCicloCorrente";
             this.grbCicloCorrente.TabStop = false;
+            // 
+            // btnCancellaCicloCorrente
+            // 
+            resources.ApplyResources(this.btnCancellaCicloCorrente, "btnCancellaCicloCorrente");
+            this.btnCancellaCicloCorrente.Name = "btnCancellaCicloCorrente";
+            this.btnCancellaCicloCorrente.UseVisualStyleBackColor = true;
+            this.btnCancellaCicloCorrente.Click += new System.EventHandler(this.BtnCancellaCicloCorrente_Click);
             // 
             // cmbPaTipoLadeLight
             // 
@@ -3363,6 +3372,7 @@
             resources.ApplyResources(this.chkPaSbloccaValori, "chkPaSbloccaValori");
             this.chkPaSbloccaValori.Name = "chkPaSbloccaValori";
             this.chkPaSbloccaValori.UseVisualStyleBackColor = true;
+            this.chkPaSbloccaValori.CheckedChanged += new System.EventHandler(this.ChkPaSbloccaValori_CheckedChanged);
             // 
             // lblPaSbloccaValori
             // 
@@ -3478,6 +3488,7 @@
             // 
             resources.ApplyResources(this.txtPaDurataMaxT0, "txtPaDurataMaxT0");
             this.txtPaDurataMaxT0.Name = "txtPaDurataMaxT0";
+            this.txtPaDurataMaxT0.Leave += new System.EventHandler(this.TxtPaDurataMaxT0_Leave);
             // 
             // label307
             // 
@@ -3488,6 +3499,7 @@
             // 
             resources.ApplyResources(this.txtPaPrefaseI0, "txtPaPrefaseI0");
             this.txtPaPrefaseI0.Name = "txtPaPrefaseI0";
+            this.txtPaPrefaseI0.Leave += new System.EventHandler(this.TxtPaPrefaseI0_Leave);
             // 
             // label308
             // 
@@ -3498,6 +3510,7 @@
             // 
             resources.ApplyResources(this.txtPaSogliaV0, "txtPaSogliaV0");
             this.txtPaSogliaV0.Name = "txtPaSogliaV0";
+            this.txtPaSogliaV0.Leave += new System.EventHandler(this.TxtPaSogliaV0_Leave);
             // 
             // label309
             // 
@@ -3521,6 +3534,7 @@
             // 
             resources.ApplyResources(this.cmbPaDurataMaxT1, "cmbPaDurataMaxT1");
             this.cmbPaDurataMaxT1.Name = "cmbPaDurataMaxT1";
+            this.cmbPaDurataMaxT1.Leave += new System.EventHandler(this.CmbPaDurataMaxT1_Leave);
             // 
             // cmbPaDurataCarica
             // 
@@ -3537,6 +3551,7 @@
             // 
             resources.ApplyResources(this.txtPaCorrenteI1, "txtPaCorrenteI1");
             this.txtPaCorrenteI1.Name = "txtPaCorrenteI1";
+            this.txtPaCorrenteI1.Leave += new System.EventHandler(this.TxtPaCorrenteI1_Leave);
             // 
             // label311
             // 
@@ -3547,6 +3562,7 @@
             // 
             resources.ApplyResources(this.txtPaSogliaVs, "txtPaSogliaVs");
             this.txtPaSogliaVs.Name = "txtPaSogliaVs";
+            this.txtPaSogliaVs.Leave += new System.EventHandler(this.TxtPaSogliaVs_Leave);
             // 
             // label312
             // 
@@ -3572,11 +3588,13 @@
             resources.ApplyResources(this.tbpPaPCStep2, "tbpPaPCStep2");
             this.tbpPaPCStep2.Name = "tbpPaPCStep2";
             this.tbpPaPCStep2.UseVisualStyleBackColor = true;
+            this.tbpPaPCStep2.Leave += new System.EventHandler(this.TbpPaPCStep2_Leave);
             // 
             // txtPaVMax
             // 
             resources.ApplyResources(this.txtPaVMax, "txtPaVMax");
             this.txtPaVMax.Name = "txtPaVMax";
+            this.txtPaVMax.Leave += new System.EventHandler(this.TxtPaVMax_Leave);
             // 
             // label313
             // 
@@ -3592,6 +3610,7 @@
             // 
             resources.ApplyResources(this.txtPaCoeffK, "txtPaCoeffK");
             this.txtPaCoeffK.Name = "txtPaCoeffK";
+            this.txtPaCoeffK.Leave += new System.EventHandler(this.TxtPaCoeffK_Leave);
             // 
             // label315
             // 
@@ -3602,11 +3621,13 @@
             // 
             resources.ApplyResources(this.txtPaTempoT2Max, "txtPaTempoT2Max");
             this.txtPaTempoT2Max.Name = "txtPaTempoT2Max";
+            this.txtPaTempoT2Max.Leave += new System.EventHandler(this.TxtPaTempoT2Max_Leave);
             // 
             // txtPaTempoT2Min
             // 
             resources.ApplyResources(this.txtPaTempoT2Min, "txtPaTempoT2Min");
             this.txtPaTempoT2Min.Name = "txtPaTempoT2Min";
+            this.txtPaTempoT2Min.Leave += new System.EventHandler(this.TxtPaTempoT2Min_Leave);
             // 
             // label322
             // 
@@ -3617,6 +3638,7 @@
             // 
             resources.ApplyResources(this.txtPaCorrenteRaccordo, "txtPaCorrenteRaccordo");
             this.txtPaCorrenteRaccordo.Name = "txtPaCorrenteRaccordo";
+            this.txtPaCorrenteRaccordo.Leave += new System.EventHandler(this.TxtPaCorrenteRaccordo_Leave);
             // 
             // label323
             // 
@@ -3627,6 +3649,7 @@
             // 
             resources.ApplyResources(this.txtPaCorrenteF3, "txtPaCorrenteF3");
             this.txtPaCorrenteF3.Name = "txtPaCorrenteF3";
+            this.txtPaCorrenteF3.Leave += new System.EventHandler(this.TxtPaCorrenteF3_Leave);
             // 
             // label324
             // 
@@ -3637,6 +3660,7 @@
             // 
             resources.ApplyResources(this.txtPaRaccordoF1, "txtPaRaccordoF1");
             this.txtPaRaccordoF1.Name = "txtPaRaccordoF1";
+            this.txtPaRaccordoF1.Leave += new System.EventHandler(this.TxtPaRaccordoF1_Leave);
             // 
             // label325
             // 
@@ -3660,6 +3684,7 @@
             // 
             resources.ApplyResources(this.txtPaTempoT3Max, "txtPaTempoT3Max");
             this.txtPaTempoT3Max.Name = "txtPaTempoT3Max";
+            this.txtPaTempoT3Max.Leave += new System.EventHandler(this.TxtPaTempoT3Max_Leave);
             // 
             // tbpPaPCEqual
             // 
@@ -4329,6 +4354,17 @@
             resources.ApplyResources(this.lblTurno3, "lblTurno3");
             this.lblTurno3.ForeColor = System.Drawing.Color.White;
             this.lblTurno3.Name = "lblTurno3";
+            // 
+            // pannelloTurno1
+            // 
+            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
+            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
+            this.pannelloTurno1.FineCambioTurno = null;
+            this.pannelloTurno1.InEvidenza = false;
+            this.pannelloTurno1.InizioCambioTurno = null;
+            this.pannelloTurno1.Name = "pannelloTurno1";
+            this.pannelloTurno1.SolaLettura = false;
             // 
             // tabCb05
             // 
@@ -9255,17 +9291,6 @@
             // 
             this.sfdImportDati.FileName = "prova";
             // 
-            // pannelloTurno1
-            // 
-            this.pannelloTurno1.Backcolor = System.Drawing.Color.Transparent;
-            this.pannelloTurno1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pannelloTurno1, "pannelloTurno1");
-            this.pannelloTurno1.FineCambioTurno = null;
-            this.pannelloTurno1.InEvidenza = false;
-            this.pannelloTurno1.InizioCambioTurno = null;
-            this.pannelloTurno1.Name = "pannelloTurno1";
-            this.pannelloTurno1.SolaLettura = false;
-            // 
             // frmSpyBat
             // 
             resources.ApplyResources(this, "$this");
@@ -10667,5 +10692,6 @@
         protected internal System.Windows.Forms.GroupBox grbDownloadDati;
         protected internal System.Windows.Forms.GroupBox grbAbilitazioneReset;
         protected internal System.Windows.Forms.GroupBox grbCloneScheda;
+        private System.Windows.Forms.Button btnCancellaCicloCorrente;
     }
 }

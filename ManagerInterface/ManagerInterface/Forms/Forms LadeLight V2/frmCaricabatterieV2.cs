@@ -4770,6 +4770,67 @@ namespace PannelloCharger
         {
             btnPaSalvaDati.Enabled = true;
         }
+
+        private void TxtPaVMax_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaVMax.ForeColor = Color.Red;
+                txtPaVMax.Select();
+            }
+            else
+                txtPaVMax.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaTempoT2Min_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaTempoT2Min.ForeColor = Color.Red;
+                txtPaTempoT2Min.Select();
+            }
+            else
+                txtPaTempoT2Min.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaTempoT2Max_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaTempoT2Max.ForeColor = Color.Red;
+                txtPaTempoT2Max.Select();
+            }
+            else
+                txtPaTempoT2Max.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaCoeffK_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCoeffK.ForeColor = Color.Red;
+                txtPaCoeffK.Select();
+            }
+            else
+                txtPaCoeffK.ForeColor = Color.Black;
+
+
+        }
+
+        private void TxtPaTempoT3Max_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaTempoT3Max.ForeColor = Color.Red;
+                txtPaTempoT3Max.Select();
+            }
+            else
+                txtPaTempoT3Max.ForeColor = Color.Black;
+
+        }
     }
 }
 

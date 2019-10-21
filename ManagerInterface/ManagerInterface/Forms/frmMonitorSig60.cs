@@ -730,10 +730,30 @@ namespace PannelloCharger
                                 _msg.Sottocomando = _mS.ComandoStrat.DescComandoLibreria;
                                 _msg.DataArray = _mS.ComandoStrat.memDataDecoded;
                                 _msg.DescComando = "Comando Strategia";
-
                                 MostraParametriStrategia(ref _msg, _mS.ComandoStrat);
-
                                 break;
+
+                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:  //0x33
+                                Log.Debug("Read Memory");
+                                _msg.Comando = "CMD_READ_MEMORY";
+                                _msg.DescComando = "Read Memory";
+                                _msg.Parametri = "";
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.CMD_TOKEN_READ_BATT:  //0x33
+                                Log.Debug("SB/ID Read Batt");
+                                _msg.Comando = "CMD_TOKEN_READ_BATT";
+                                _msg.DescComando = "SB/ID Read Batt";
+                                _msg.Parametri = "";
+                                break;
+
+                            case (byte)SerialMessage.TipoComando.CMD_TOKEN_READ_SETTING:  //0x33
+                                Log.Debug("SB/ID Read Setting");
+                                _msg.Comando = "CMD_TOKEN_READ_SETTING";
+                                _msg.DescComando = "SB/ID Read Setting";
+                                _msg.Parametri = "";
+                                break;
+
 
                             case (byte)SerialMessage.TipoComando.CMD_CONNECT:  //0x6C
                                 Log.Debug("Apertura Canale SIG");
@@ -1072,7 +1092,7 @@ namespace PannelloCharger
                 BrightIdeasSoftware.OLVColumn colComando = new BrightIdeasSoftware.OLVColumn();
                 colComando.Text = "Comando";
                 colComando.AspectName = "Comando";
-                colComando.Width = 120;
+                colComando.Width = 150;
                 colComando.HeaderTextAlign = HorizontalAlignment.Left;
                 colComando.TextAlign = HorizontalAlignment.Left;
                 flvListaComandiSIG.AllColumns.Add(colComando);

@@ -8904,6 +8904,36 @@
   <data name="&gt;&gt;tabCb02.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="btnCancellaCicloCorrente.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCancellaCicloCorrente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1025, 59</value>
+  </data>
+  <data name="btnCancellaCicloCorrente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnCancellaCicloCorrente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 27</value>
+  </data>
+  <data name="btnCancellaCicloCorrente.TabIndex" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="btnCancellaCicloCorrente.Text" xml:space="preserve">
+    <value>Cancella Prof. Attivo</value>
+  </data>
+  <data name="&gt;&gt;btnCancellaCicloCorrente.Name" xml:space="preserve">
+    <value>btnCancellaCicloCorrente</value>
+  </data>
+  <data name="&gt;&gt;btnCancellaCicloCorrente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCancellaCicloCorrente.Parent" xml:space="preserve">
+    <value>grbCicloCorrente</value>
+  </data>
+  <data name="&gt;&gt;btnCancellaCicloCorrente.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cmbPaTipoLadeLight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
@@ -8929,7 +8959,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;cmbPaTipoLadeLight.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label353.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8965,7 +8995,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;label353.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkPaAttivaOppChg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8998,7 +9028,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;chkPaAttivaOppChg.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblPaAttivaOppChg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9034,7 +9064,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;lblPaAttivaOppChg.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkPaUsaSafety.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9064,7 +9094,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;chkPaUsaSafety.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lblPaUsaSafety.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9100,7 +9130,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;lblPaUsaSafety.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="chkPaSbloccaValori.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9130,7 +9160,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;chkPaSbloccaValori.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblPaSbloccaValori.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9166,7 +9196,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;lblPaSbloccaValori.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="chkPaAttivaMant.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9199,7 +9229,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;chkPaAttivaMant.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblPaAttivaMant.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9235,7 +9265,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;lblPaAttivaMant.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="btnCicloCorrente.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9265,7 +9295,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;btnCicloCorrente.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btnPaProfileRefresh.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -9298,7 +9328,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;btnPaProfileRefresh.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="picPaImmagineProfilo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9328,7 +9358,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;picPaImmagineProfilo.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="txtPaCassone.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -9363,6 +9393,9 @@
   <data name="label305.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label305.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label305.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -9373,7 +9406,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label305.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+    <value>48, 13</value>
   </data>
   <data name="label305.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
@@ -9429,6 +9462,9 @@
   <data name="lblPaIdSetup.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblPaIdSetup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="lblPaIdSetup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -9439,7 +9475,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="lblPaIdSetup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 17</value>
+    <value>18, 13</value>
   </data>
   <data name="lblPaIdSetup.TabIndex" type="System.Int32, mscorlib">
     <value>121</value>
@@ -9495,6 +9531,9 @@
   <data name="label306.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label306.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label306.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -9505,7 +9544,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label306.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 17</value>
+    <value>35, 13</value>
   </data>
   <data name="label306.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
@@ -9526,13 +9565,13 @@
     <value>5</value>
   </data>
   <data name="tbpPaGeneraleCiclo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
+    <value>4, 22</value>
   </data>
   <data name="tbpPaGeneraleCiclo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpPaGeneraleCiclo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 135</value>
+    <value>719, 139</value>
   </data>
   <data name="tbpPaGeneraleCiclo.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -9585,6 +9624,9 @@
   <data name="label307.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label307.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label307.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -9595,7 +9637,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label307.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 17</value>
+    <value>68, 13</value>
   </data>
   <data name="label307.TabIndex" type="System.Int32, mscorlib">
     <value>120</value>
@@ -9648,6 +9690,9 @@
   <data name="label308.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label308.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label308.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -9658,7 +9703,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label308.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
+    <value>75, 13</value>
   </data>
   <data name="label308.TabIndex" type="System.Int32, mscorlib">
     <value>118</value>
@@ -9711,6 +9756,9 @@
   <data name="label309.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label309.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label309.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -9721,7 +9769,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label309.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
+    <value>89, 13</value>
   </data>
   <data name="label309.TabIndex" type="System.Int32, mscorlib">
     <value>116</value>
@@ -9740,6 +9788,9 @@
   </data>
   <data name="&gt;&gt;label309.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="tbpPaPCStep0.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="tbpPaPCStep0.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -9810,6 +9861,9 @@
   <data name="cmbPaDurataCarica.TabIndex" type="System.Int32, mscorlib">
     <value>112</value>
   </data>
+  <data name="cmbPaDurataCarica.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;cmbPaDurataCarica.Name" xml:space="preserve">
     <value>cmbPaDurataCarica</value>
   </data>
@@ -9835,7 +9889,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label310.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
+    <value>104, 13</value>
   </data>
   <data name="label310.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
@@ -9898,7 +9952,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label311.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
+    <value>75, 13</value>
   </data>
   <data name="label311.TabIndex" type="System.Int32, mscorlib">
     <value>107</value>
@@ -9961,7 +10015,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label312.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
+    <value>88, 13</value>
   </data>
   <data name="label312.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
@@ -10044,6 +10098,9 @@
   <data name="label313.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label313.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label313.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -10054,7 +10111,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label313.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
+    <value>61, 13</value>
   </data>
   <data name="label313.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
@@ -10077,17 +10134,20 @@
   <data name="label314.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label314.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label314.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label314.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 79</value>
+    <value>263, 78</value>
   </data>
   <data name="label314.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label314.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
+    <value>62, 13</value>
   </data>
   <data name="label314.TabIndex" type="System.Int32, mscorlib">
     <value>118</value>
@@ -10140,6 +10200,9 @@
   <data name="label315.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label315.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label315.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -10150,7 +10213,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label315.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
+    <value>104, 13</value>
   </data>
   <data name="label315.TabIndex" type="System.Int32, mscorlib">
     <value>116</value>
@@ -10233,6 +10296,9 @@
   <data name="label322.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label322.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label322.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -10243,7 +10309,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label322.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 17</value>
+    <value>101, 13</value>
   </data>
   <data name="label322.TabIndex" type="System.Int32, mscorlib">
     <value>113</value>
@@ -10296,6 +10362,9 @@
   <data name="label323.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label323.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label323.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -10306,7 +10375,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label323.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 17</value>
+    <value>95, 13</value>
   </data>
   <data name="label323.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
@@ -10359,6 +10428,9 @@
   <data name="label324.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label324.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label324.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -10369,7 +10441,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label324.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 17</value>
+    <value>100, 13</value>
   </data>
   <data name="label324.TabIndex" type="System.Int32, mscorlib">
     <value>109</value>
@@ -10422,6 +10494,9 @@
   <data name="label325.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label325.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="label325.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -10432,7 +10507,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label325.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 17</value>
+    <value>100, 13</value>
   </data>
   <data name="label325.TabIndex" type="System.Int32, mscorlib">
     <value>107</value>
@@ -10495,7 +10570,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label326.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
+    <value>104, 13</value>
   </data>
   <data name="label326.TabIndex" type="System.Int32, mscorlib">
     <value>96</value>
@@ -10615,7 +10690,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label327.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
+    <value>84, 13</value>
   </data>
   <data name="label327.TabIndex" type="System.Int32, mscorlib">
     <value>109</value>
@@ -10678,7 +10753,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label328.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 17</value>
+    <value>103, 13</value>
   </data>
   <data name="label328.TabIndex" type="System.Int32, mscorlib">
     <value>107</value>
@@ -10741,7 +10816,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label329.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 17</value>
+    <value>98, 13</value>
   </data>
   <data name="label329.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
@@ -10804,7 +10879,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label330.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 17</value>
+    <value>79, 13</value>
   </data>
   <data name="label330.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
@@ -10867,7 +10942,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label331.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 17</value>
+    <value>108, 13</value>
   </data>
   <data name="label331.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -10957,7 +11032,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label332.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
+    <value>84, 13</value>
   </data>
   <data name="label332.TabIndex" type="System.Int32, mscorlib">
     <value>129</value>
@@ -11020,7 +11095,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label333.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 17</value>
+    <value>126, 13</value>
   </data>
   <data name="label333.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
@@ -11083,7 +11158,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label334.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 17</value>
+    <value>75, 13</value>
   </data>
   <data name="label334.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -11146,7 +11221,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label335.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
+    <value>88, 13</value>
   </data>
   <data name="label335.TabIndex" type="System.Int32, mscorlib">
     <value>123</value>
@@ -11209,7 +11284,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label336.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 17</value>
+    <value>89, 13</value>
   </data>
   <data name="label336.TabIndex" type="System.Int32, mscorlib">
     <value>121</value>
@@ -11269,7 +11344,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="lblPaOppPuntoVerde.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 17</value>
+    <value>194, 13</value>
   </data>
   <data name="lblPaOppPuntoVerde.TabIndex" type="System.Int32, mscorlib">
     <value>137</value>
@@ -11338,7 +11413,7 @@
     <value>151, 72</value>
   </data>
   <data name="chkPaOppNotturno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 21</value>
+    <value>89, 17</value>
   </data>
   <data name="chkPaOppNotturno.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -11425,7 +11500,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label337.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
+    <value>88, 13</value>
   </data>
   <data name="label337.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
@@ -11488,7 +11563,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label338.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 17</value>
+    <value>63, 13</value>
   </data>
   <data name="label338.TabIndex" type="System.Int32, mscorlib">
     <value>129</value>
@@ -11551,7 +11626,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label339.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 17</value>
+    <value>80, 13</value>
   </data>
   <data name="label339.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
@@ -11614,7 +11689,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="lblPaOppOraFine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+    <value>47, 13</value>
   </data>
   <data name="lblPaOppOraFine.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -11677,7 +11752,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="lblPaOppOraInizio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
+    <value>51, 13</value>
   </data>
   <data name="lblPaOppOraInizio.TabIndex" type="System.Int32, mscorlib">
     <value>123</value>
@@ -11764,7 +11839,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label340.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
+    <value>76, 13</value>
   </data>
   <data name="label340.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
@@ -11827,7 +11902,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label341.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 17</value>
+    <value>81, 13</value>
   </data>
   <data name="label341.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
@@ -11890,7 +11965,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label342.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
+    <value>96, 13</value>
   </data>
   <data name="label342.TabIndex" type="System.Int32, mscorlib">
     <value>129</value>
@@ -11923,7 +11998,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="chkPaRiarmaBms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 17</value>
+    <value>101, 13</value>
   </data>
   <data name="chkPaRiarmaBms.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
@@ -12019,7 +12094,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label343.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 17</value>
+    <value>89, 13</value>
   </data>
   <data name="label343.TabIndex" type="System.Int32, mscorlib">
     <value>113</value>
@@ -12082,7 +12157,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label344.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 17</value>
+    <value>95, 13</value>
   </data>
   <data name="label344.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
@@ -12145,7 +12220,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label345.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
+    <value>92, 13</value>
   </data>
   <data name="label345.TabIndex" type="System.Int32, mscorlib">
     <value>109</value>
@@ -12208,7 +12283,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label346.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
+    <value>65, 13</value>
   </data>
   <data name="label346.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -12252,6 +12327,9 @@
   <data name="&gt;&gt;tbpPaParSoglia.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="tbcPaSchedeValori.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="tbcPaSchedeValori.Location" type="System.Drawing.Point, System.Drawing">
     <value>284, 302</value>
   </data>
@@ -12274,7 +12352,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;tbcPaSchedeValori.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="txtPaNumCelle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -12304,7 +12382,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;txtPaNumCelle.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="label347.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12340,7 +12418,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;label347.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="cmbPaTipoBatteria.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -12367,7 +12445,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;cmbPaTipoBatteria.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="label348.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12403,7 +12481,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;label348.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="chkPaAttivaEqual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12436,7 +12514,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;chkPaAttivaEqual.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="lblPaAttivaEqual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12472,7 +12550,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;lblPaAttivaEqual.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="chkPaUsaSpyBatt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12505,7 +12583,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;chkPaUsaSpyBatt.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="label349.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12541,7 +12619,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;label349.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="btnPaSalvaDati.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -12571,7 +12649,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;btnPaSalvaDati.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="label350.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12607,7 +12685,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;label350.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="cmbPaProfilo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -12634,7 +12712,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;cmbPaProfilo.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="txtPaCapacita.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -12664,7 +12742,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;txtPaCapacita.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="label351.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12700,7 +12778,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;label351.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="label352.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -12736,7 +12814,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;label352.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="txtPaTensione.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -12766,7 +12844,7 @@
     <value>grbCicloCorrente</value>
   </data>
   <data name="&gt;&gt;txtPaTensione.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="grbCicloCorrente.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -37221,9 +37299,6 @@ SPY-BATT</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1348, 651</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

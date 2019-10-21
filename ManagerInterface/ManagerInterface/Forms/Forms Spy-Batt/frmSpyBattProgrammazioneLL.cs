@@ -21,8 +21,7 @@ using Utility;
 using MdiHelper;
 using log4net;
 using log4net.Config;
-
-
+using System.Resources;
 
 namespace PannelloCharger
 {
@@ -69,6 +68,8 @@ namespace PannelloCharger
                 cmbPaTipoBatteria.DataSource = _parametri.ParametriProfilo.ModelliBatteria;  //   TipiBattria;
                 cmbPaTipoBatteria.ValueMember = "BatteryTypeId";
                 cmbPaTipoBatteria.DisplayMember = "BatteryType";
+
+                VuotaPannelloCaricaLL();
 
                 return true;
             }
@@ -256,6 +257,8 @@ namespace PannelloCharger
                         txtPaIdSetup.Text = "";
                     }
 
+                    tbcPaSchedeValori.Enabled = false;
+
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaV0, 0, 0, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaPrefaseI0, 0, 0, 2, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaDurataMaxT0, 0, 0, 3, SbloccaValori);
@@ -267,6 +270,7 @@ namespace PannelloCharger
                 }
                 else
                 {
+                    tbcPaSchedeValori.Enabled = true;
                     if (ParametriBase)
                     {
                         txtPaNomeSetup.Text = _sb.ModCicloCorrente.NomeProfilo;
@@ -289,7 +293,7 @@ namespace PannelloCharger
 
 
 
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaTensione, _sb.ModCicloCorrente.Tensione, 1, 1, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaTensione, _sb.ModCicloCorrente.Tensione, 4, 1, SbloccaValori);
                         txtPaTensione.ReadOnly = true;
 
                         txtPaNumCelle.Text = _sb.ModCicloCorrente.NumeroCelle.ToString();
@@ -319,11 +323,11 @@ namespace PannelloCharger
 
                     }
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, _sb.ModCicloCorrente.NumeroCelle, 4, 3, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, _sb.ModCicloCorrente.NumeroCelle, 4, 3, false);
                     if (!SkipCapacità)
                     {
                         // se sono entrato da txtCapacita_change evito di riformattare
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, _sb.ModCicloCorrente.Capacita, 5, 2, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, _sb.ModCicloCorrente.Capacita, 4, 2, false);
                     }
 
 
@@ -373,6 +377,71 @@ namespace PannelloCharger
                     }
 
 
+                    FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaOppChg, ref lblPaAttivaOppChg, _sb.ModCicloCorrente.ValoriCiclo.OpportunityAttivabile, _sb.ModCicloCorrente.ParametriAttivi.OpportunityAttivabile, 3, SbloccaValori);
+
+                    if (true) // (chkPaAttivaOppChg.Checked)
+                    {
+                        if (_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
+                        {
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, _sb.ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine, _sb.ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
+                            chkPaOppNotturno.Checked = true;
+                            rslPaOppFinestra.SliderMax = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                            rslPaOppFinestra.SliderMin = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                            if (txtPaOppOraFine.Left > txtPaOppOraInizio.Left)
+                            {
+                                int templeft = txtPaOppOraFine.Left;
+                                txtPaOppOraFine.Left = txtPaOppOraInizio.Left;
+                                txtPaOppOraInizio.Left = templeft;
+                                templeft = lblPaOppOraFine.Left;
+                                lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
+                                lblPaOppOraInizio.Left = templeft;
+                            }
+
+                        }
+                        else
+                        {
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, _sb.ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine, _sb.ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
+                            chkPaOppNotturno.Checked = false;
+                            rslPaOppFinestra.SliderMin = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio;
+                            rslPaOppFinestra.SliderMax = _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine;
+                            if (txtPaOppOraFine.Left < txtPaOppOraInizio.Left)
+                            {
+                                int templeft = txtPaOppOraFine.Left;
+                                txtPaOppOraFine.Left = txtPaOppOraInizio.Left;
+                                txtPaOppOraInizio.Left = templeft;
+                                templeft = lblPaOppOraFine.Left;
+                                lblPaOppOraFine.Left = lblPaOppOraInizio.Left;
+                                lblPaOppOraInizio.Left = templeft;
+                            }
+                        }
+
+
+                        //FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
+                        //FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppVSoglia, _sb.ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax, _sb.ModCicloCorrente.ParametriAttivi.OpportunityTensioneMax, 1, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppCorrente, _sb.ModCicloCorrente.ValoriCiclo.OpportunityCorrente, _sb.ModCicloCorrente.ParametriAttivi.OpportunityCorrente, 2, SbloccaValori);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppDurataMax, _sb.ModCicloCorrente.ValoriCiclo.OpportunityDurataMax, _sb.ModCicloCorrente.ParametriAttivi.OpportunityDurataMax, 3, SbloccaValori);
+
+                        //chkPaOppNotturno.Checked = (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
+
+                        OppNotturno(true);
+
+                    }
+
+                    if (_sb.ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax > 0 && _sb.ModCicloCorrente.ValoriCiclo.OpportunityCorrente > 0 && _sb.ModCicloCorrente.ValoriCiclo.OpportunityDurataMax > 0)
+                    {
+                        chkPaAttivaOppChg.Checked = true;
+                    }
+                    else
+                    {
+                        chkPaAttivaOppChg.Checked = false;
+                    }
+
+
+
+                    /*
 
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaOppChg, ref lblPaAttivaOppChg, _sb.ModCicloCorrente.ValoriCiclo.OpportunityAttivabile, _sb.ModCicloCorrente.ParametriAttivi.OpportunityAttivabile, 3, SbloccaValori);
 
@@ -389,7 +458,7 @@ namespace PannelloCharger
 
                     }
 
-
+                    */
 
 
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinRic, _sb.ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin, _sb.ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMin, 1, SbloccaValori);
@@ -543,23 +612,28 @@ namespace PannelloCharger
             try
             {
 
-                // if (ModCicloCorrente.ValoriCiclo.EqualAttivo == 0xF0F0)
+                if (_sb.ProfiloAttivo == null)
+                {
+                    // non ho profilo definito. non faccio nulla
+                    return false;
+                }
+                else
+                {
+                    txtPaEqualNumPulse.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualNumImpulsi.ToString();
+                    _sb.ProfiloAttivo.EqualNumImpulsi = _sb.ModCicloCorrente.ValoriCiclo.EqualNumImpulsi;
 
-                txtPaEqualNumPulse.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualNumImpulsi.ToString();
-                _sb.ProfiloAttivo.EqualNumImpulsi = _sb.ModCicloCorrente.ValoriCiclo.EqualNumImpulsi;
+                    txtPaEqualAttesa.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoAttesa.ToString();
+                    _sb.ProfiloAttivo.EqualTempoAttesa = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoAttesa;
 
-                txtPaEqualAttesa.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoAttesa.ToString();
-                _sb.ProfiloAttivo.EqualTempoAttesa = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoAttesa;
+                    txtPaEqualPulsePause.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoPausa.ToString();
+                    _sb.ProfiloAttivo.EqualDurataPausa = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoPausa;
 
-                txtPaEqualPulsePause.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoPausa.ToString();
-                _sb.ProfiloAttivo.EqualDurataPausa = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoPausa;
+                    txtPaEqualPulseTime.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoImpulso.ToString();
+                    _sb.ProfiloAttivo.EqualDurataImpulso = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoImpulso;
 
-                txtPaEqualPulseTime.Text = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoImpulso.ToString();
-                _sb.ProfiloAttivo.EqualDurataImpulso = _sb.ModCicloCorrente.ValoriCiclo.EqualTempoImpulso;
-
-                txtPaEqualPulseCurrent.Text = FunzioniMR.StringaCorrente((short)_sb.ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso);
-                _sb.ProfiloAttivo.EqualCorrenteImpulso = _sb.ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso;
-
+                    txtPaEqualPulseCurrent.Text = FunzioniMR.StringaCorrente((short)_sb.ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso);
+                    _sb.ProfiloAttivo.EqualCorrenteImpulso = _sb.ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso;
+                }
 
                 return true;
             }
@@ -956,12 +1030,90 @@ namespace PannelloCharger
 
 
 
+        public bool VuotaPannelloCaricaLL()
+        {
+            try
+            {
+
+                if (_sb.ProgrammaCorrente != null)
+                {
+
+                    txtPaTensione.Text = FunzioniMR.StringaTensione(_sb.ProgrammaCorrente.BatteryVdef);
+                    txtPaTensione.ReadOnly = true;
+                    txtPaNumCelle.Text = _sb.ProgrammaCorrente.BatteryCells.ToString();
+                    txtPaNumCelle.ReadOnly = true;
+                    txtPaCapacita.Text = FunzioniMR.StringaCapacitaUint(_sb.ProgrammaCorrente.BatteryAhdef, 10, 0);
+                    txtPaCapacita.ReadOnly = true;
+                    // Cancello l'immagine della curva
+                    var myImage = new Bitmap(Properties.Resources.lade_light_INTEGRATED);
+                    picPaImmagineProfilo.BackColor = Color.White;
+                    picPaImmagineProfilo.Image = myImage;
+                    picPaImmagineProfilo.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                }
+                else
+                {
+                    txtPaTensione.Text = "";
+                    txtPaTensione.ReadOnly = true;
+                    txtPaNumCelle.Text = "";
+                    txtPaNumCelle.ReadOnly = true;
+                    txtPaCapacita.Text = "";
+                    txtPaCapacita.ReadOnly = true;
+
+
+                    // Cancello l'immagine della curva
+                    var myImage = new Bitmap(Properties.Resources.lade_light_INTEGRATED);
+                    picPaImmagineProfilo.BackColor = Color.White;
+                    picPaImmagineProfilo.Image = myImage;
+                    picPaImmagineProfilo.SizeMode = PictureBoxSizeMode.CenterImage;
+                }
+
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("VuotaPannelloCaricaLL: " + Ex.Message, Ex);
+                return false;
+            }
+        }
+
+
+        public bool CaricaProfiloLLAttivo()
+        {
+            try
+            {
+
+                _sb.ProfiloAttivo = _sb.CaricaProgrammaLL();
+
+                if (_sb.ProfiloAttivo != null)
+                {
+                    //MostraCicloCorrente();
+                    ProfiloInCaricamento = true;
+                    _sb.ModCicloCorrente.ProfiloRegistrato = _sb.ProfiloAttivo;
+                    _sb.ModCicloCorrente.EstraiDaProgrammaCarica();
+
+                    MostraParametriCiclo(true, false);
+                    ProfiloInCaricamento = false;
+                }
+                else
+                {
+                    VuotaPannelloCaricaLL();
+                    MostraParametriCiclo(true, true);
+                }
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaProfiloLLAttivo: " + Ex.Message, Ex);
+                ProfiloInCaricamento = false;
+                return false;
+            }
+        }
 
 
 
-
-
-        
 
 
 

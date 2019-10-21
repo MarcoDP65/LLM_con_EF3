@@ -6367,6 +6367,7 @@
             this.cmbPaDurataCarica.Name = "cmbPaDurataCarica";
             this.cmbPaDurataCarica.Size = new System.Drawing.Size(88, 25);
             this.cmbPaDurataCarica.TabIndex = 112;
+            this.cmbPaDurataCarica.Visible = false;
             this.cmbPaDurataCarica.SelectedIndexChanged += new System.EventHandler(this.cmbPaDurataCarica_SelectedIndexChanged_1);
             // 
             // label6
@@ -6456,6 +6457,7 @@
             this.txtPaVMax.Size = new System.Drawing.Size(102, 23);
             this.txtPaVMax.TabIndex = 120;
             this.txtPaVMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaVMax.Leave += new System.EventHandler(this.TxtPaVMax_Leave);
             // 
             // label207
             // 
@@ -6486,6 +6488,7 @@
             this.txtPaCoeffK.Size = new System.Drawing.Size(87, 23);
             this.txtPaCoeffK.TabIndex = 117;
             this.txtPaCoeffK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaCoeffK.Leave += new System.EventHandler(this.TxtPaCoeffK_Leave);
             // 
             // label27
             // 
@@ -6506,6 +6509,7 @@
             this.txtPaTempoT2Max.Size = new System.Drawing.Size(84, 23);
             this.txtPaTempoT2Max.TabIndex = 115;
             this.txtPaTempoT2Max.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaTempoT2Max.Leave += new System.EventHandler(this.TxtPaTempoT2Max_Leave);
             // 
             // txtPaTempoT2Min
             // 
@@ -6516,6 +6520,7 @@
             this.txtPaTempoT2Min.Size = new System.Drawing.Size(87, 23);
             this.txtPaTempoT2Min.TabIndex = 114;
             this.txtPaTempoT2Min.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaTempoT2Min.Leave += new System.EventHandler(this.TxtPaTempoT2Min_Leave);
             // 
             // label18
             // 
@@ -6621,6 +6626,7 @@
             this.txtPaTempoT3Max.Size = new System.Drawing.Size(102, 23);
             this.txtPaTempoT3Max.TabIndex = 95;
             this.txtPaTempoT3Max.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaTempoT3Max.Leave += new System.EventHandler(this.TxtPaTempoT3Max_Leave);
             // 
             // tbpPaPCEqual
             // 

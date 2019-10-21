@@ -639,7 +639,7 @@ namespace ChargerLogic
                     if(AddrUltimaCarica < SizeCharge)
                     {
                         //se il puntatore inizliale divanta < 0, riparto dalla fine
-                        AddrUltimaCarica += 0x00;
+                        AddrUltimaCarica = (UInt32)( 0x003000 - SizeCharge) ;
                     }
                     AddrUltimaCarica -= SizeCharge;
 

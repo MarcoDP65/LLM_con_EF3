@@ -693,6 +693,7 @@ namespace MoriData
         {
             get
             {
+
                 if ((_llmc.OpzioniCarica & 0x06) == 0x00)
                 {
                     // NO spybatt, se i primi 2 bytes dell'ID != FFFF allora è la tensione nominale
@@ -1650,7 +1651,14 @@ namespace MoriData
                 }
                 else
                 {
-                    return "";
+                    string _Id = "";
+                    _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":";
+                    _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
+                    _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
+                    _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2");
+
+                    return "( " + _Id + " )";
+                    //return "";
                 }
             }
         }
@@ -1753,7 +1761,7 @@ namespace MoriData
                 {
                     case 0x00:
                         {
-                            _descrStato = "Carica Completa";
+                            _descrStato = "Stop Automatico"; //"Carica Completa";
                             break;
                         }
                     case 0x01:
@@ -1774,7 +1782,7 @@ namespace MoriData
                         }
                     case 0x04:
                         {
-                            _descrStato = "STOP Premuto";
+                            _descrStato = "Stop da Pulsante";  //"STOP Premuto";
                             break;
                         }
                     case 0x05:
@@ -1784,7 +1792,7 @@ namespace MoriData
                         }
                     case 0x06:
                         {
-                            _descrStato = "Tempo Massimo Programmato";
+                            _descrStato = "Timer Sicurezza";  // "Tempo Massimo Programmato";
                             break;
                         }
                     case 0x07:
@@ -1804,7 +1812,7 @@ namespace MoriData
                         }
                     case 0x0A:
                         {
-                            _descrStato = "Guasto Fusibile";
+                            _descrStato = "Fusibile Batteria";
                             break;
                         }
                     case 0x0B:
@@ -1824,12 +1832,17 @@ namespace MoriData
                         }
                     case 0x0E:
                         {
-                            _descrStato = "T0 o T1 scaduto / anomalia Termica";
+                            _descrStato = "Timer Sicurezza con Termica";
                             break;
                         }
                     case 0x0F:
                         {
-                            _descrStato = "I = 0 per oltre 5 secondi";
+                            _descrStato = "Corrente Nulla"; // "I = 0 per oltre 5 secondi";
+                            break;
+                        }
+                    case 0x10:
+                        {
+                            _descrStato = "Stop per Termica";
                             break;
                         }
                     default:

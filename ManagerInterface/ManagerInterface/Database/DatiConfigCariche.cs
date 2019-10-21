@@ -38,10 +38,10 @@ namespace MoriData
         public bool inizializzaModelli()
         {
             ModelliLL = new List<_llModelloCb>();
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "Non Definito", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0 });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "Trifase 24-80 / 120", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 80, Ordine = 1, Trifase = 1 });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 48, Ordine = 2, Trifase = 1 });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x01, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "Non Definito", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0, Attivo = 0xff });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "Trifase 24-80 / 120", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 120, Ordine = 1, Trifase = 1, Attivo = 0x01 });  // V max--> 80/2*3 = 120
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 92, Ordine = 2, Trifase = 1, Attivo = 0x00 });   // V max--> 48/2*3 =  92
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x01, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0, Attivo = 0x00 });
             return true;
         }
 

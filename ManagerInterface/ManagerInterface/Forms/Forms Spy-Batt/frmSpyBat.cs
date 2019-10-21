@@ -222,6 +222,7 @@ namespace PannelloCharger
 
 
                 CaricaProgrammazioni();
+                CaricaProfiloLLAttivo();
 
 
                 if ((_sb.sbData.LongMem > 0) && (_sb.sbData.LongMem < 30000)) _aggiornaStatistiche = true;
@@ -323,6 +324,7 @@ namespace PannelloCharger
                     }
 
                 CaricaProgrammazioni();
+                CaricaProfiloLLAttivo();
 
                 InizializzaOxyGrSingolo();
                 applicaAutorizzazioni();
@@ -3592,7 +3594,7 @@ namespace PannelloCharger
 
             this.Cursor = Cursors.WaitCursor;
 
-            // 18/11/15 - Prima di ricaricare la lista, ricarico la restata per leggere il contatore aggiornato
+            // 18/11/15 - Prima di ricaricare la lista, ricarico la testata per leggere il contatore aggiornato
 
 
             txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
@@ -10243,22 +10245,6 @@ namespace PannelloCharger
                 this.Cursor = Cursors.Default;
 
 
-
-                /*
-
-                                byte[] ProgrammaDemo = new byte[]
-                                {
-                                    0x00,0x00,0x00,0x08,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x13,0x09,0x13,0x08,0x3A,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x00,
-                                    0x03,0x06,0x2D,0x55,0x4E,0x4F,0x56,0x10,0x01,0x10,0x09,0x60,0x57,0x00,0x0C,0x31,0x04,0xB0,0x80,0x00,0x06,0x06,0x00,0x3C,0x26,0x00,0x64,0x15,0x00,0xBE,0x01,0x01,
-                                    0xE0,0x21,0x00,0xC8,0x11,0x00,0xF0,0x12,0x00,0xF5,0x25,0x00,0x5C,0x02,0x00,0x3C,0x03,0x00,0xD2,0x05,0x00,0x78,0x24,0x00,0x32,0x04,0x00,0x00,0x13,0x01,0x09,0x50,
-                                    0x00,0x0F,0x58,0x00,0xF0,0x1A,0x00,0x96,0x1B,0x00,0xF0,0x1C,0x00,0xCD,0x14,0x01,0x16,0x22,0x00,0xF0,0x90,0x00,0x00,0x6F,0x00,0x0F,0x60,0x01,0xE0,0x61,0x00,0x0C,
-                                    0x63,0x00,0x05,0x62,0x00,0x19,0x64,0x00,0x32,0x7F,0x00,0x0F,0x70,0x01,0x68,0x71,0x00,0xD2,0x72,0x00,0xE6,0x73,0x00,0x0F,0x74,0x00,0x32,0xAF,0x0F,0x0F,0xA1,0x00,
-                                    0xF0,0xA2,0x04,0xB0,0xA3,0x00,0xF0,0xA6,0x01,0x2C,0xA8,0x00,0xF0,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
-                                    0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
-                                    0x26,0xF9
-                                };
-                */
-
             }
             catch
             {
@@ -10311,12 +10297,21 @@ namespace PannelloCharger
         {
             try
             {
+
+
                 if (cmbPaTipoLadeLight.SelectedItem != null)
                     _sb.CbAttivo = (_llModelloCb)cmbPaTipoLadeLight.SelectedItem;
                 else
                     _sb.CbAttivo = null;
 
-                AggiornaSelezioneProfili();
+                if (ProfiloInCaricamento)
+                {
+                    return;
+                }
+                else
+                {
+                    AggiornaSelezioneProfili();
+                }
 
             }
             catch (Exception Ex)
@@ -10355,8 +10350,10 @@ namespace PannelloCharger
 
                     cmbPaDurataCarica.SelectedItem = null;
 
-                    picPaImmagineProfilo.BackColor = Color.LightGray;
-                    picPaImmagineProfilo.Image = null;
+                    var myImage = new Bitmap(Properties.Resources.lade_light_INTEGRATED);
+                    picPaImmagineProfilo.BackColor = Color.White;
+                    picPaImmagineProfilo.Image = myImage;
+                    picPaImmagineProfilo.SizeMode = PictureBoxSizeMode.CenterImage;
                 }
                 else
                 {
@@ -10367,9 +10364,10 @@ namespace PannelloCharger
                         string Grafico = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).Grafico;
                         if (Grafico == "")
                         {
-                            picPaImmagineProfilo.BackColor = Color.LightGray;
-                            picPaImmagineProfilo.Image = null;
-
+                            var myImage = new Bitmap(Properties.Resources.lade_light_INTEGRATED);
+                            picPaImmagineProfilo.BackColor = Color.White;
+                            picPaImmagineProfilo.Image = myImage;
+                            picPaImmagineProfilo.SizeMode = PictureBoxSizeMode.CenterImage;
                         }
                         else
                         {
@@ -10377,6 +10375,8 @@ namespace PannelloCharger
                             Bitmap myImage = (Bitmap)rm.GetObject(Grafico);
                             picPaImmagineProfilo.BackColor = Color.White;
                             picPaImmagineProfilo.Image = myImage;
+                            picPaImmagineProfilo.SizeMode = PictureBoxSizeMode.Zoom;
+
 
                         }
                     }
@@ -10719,28 +10719,285 @@ namespace PannelloCharger
             try
             {
 
-                _sb.ProfiloAttivo = _sb.CaricaProgrammaLL();
-
-                if (_sb.ProfiloAttivo != null )
-                {
-                    //MostraCicloCorrente();
-                    ProfiloInCaricamento = true;
-                    _sb.ModCicloCorrente.ProfiloRegistrato = _sb.ProfiloAttivo;
-                    _sb.ModCicloCorrente.EstraiDaProgrammaCarica();
-
-                    MostraParametriCiclo(true, false);
-                    ProfiloInCaricamento = false;
-                }
-                else
-                {
-                    MostraParametriCiclo(true, true);
-                }
+                CaricaProfiloLLAttivo();
 
             }
             catch
             {
                 ProfiloInCaricamento = false;
             }
+        }
+
+        private void ChkPaSbloccaValori_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MostraParametriCiclo(false, false, chkPaSbloccaValori.Checked);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("chkPaSbloccaValori_CheckedChanged: " + Ex.Message);
+            }
+        } 
+        public bool AttivaSalvataggioConfigurazione()
+        {
+            try
+            {
+                bool esito;
+                ushort _Tensione = FunzioniMR.ConvertiUshort(txtPaTensione.Text, 100, 0);
+                ushort _Capacita = FunzioniMR.ConvertiUshort(txtPaCapacita.Text, 10, 0);
+                ushort _Celle = FunzioniMR.ConvertiUshort(txtPaNumCelle.Text, 1, 0);
+                _llModelloCb _ModelloCB = _sb.CbAttivo;
+
+                // Se almeno 1 parametro è diverso dal ciclo attivo corrente lo salvo come nuovo ciclo
+                esito = VerificaValoriParametriCarica();
+                if (esito)
+                {
+                    //coincide col programma esistente. esco
+                    return true;
+                }
+                // Carico i valori impostati nelle textbox
+                esito = LeggiValoriParametriCarica();
+                // Se sono quì ho passato il controllo e almeno 1 dato è cambiato
+                _sb.ModCicloCorrente.DatiSalvati = false;
+
+                CaricaBatteria.EsitoRicalcolo esitoVerifica = _sb.ModCicloCorrente.VerificaParametri(_Tensione, _Capacita, _Celle, _ModelloCB);
+
+                switch (esitoVerifica)
+                {
+                    case CaricaBatteria.EsitoRicalcolo.OK:
+                        // tutti i parametri sono validi. attivo il pulsante
+                        btnPaSalvaDati.Enabled = true;
+                        esito = true;
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrIMax:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        MessageBox.Show("Corrente richiesta troppo elevata", "Verifica Parametri", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrIMin:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrVMax:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        MessageBox.Show("Tensione richiesta troppo elevata", "Verifica Parametri", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrVMin:
+                        btnPaSalvaDati.Enabled = false;
+                        esito = false;
+                        break;
+                    case CaricaBatteria.EsitoRicalcolo.ErrGenerico:
+                    case CaricaBatteria.EsitoRicalcolo.ParNonValidi:
+                    case CaricaBatteria.EsitoRicalcolo.ErrCBNonDef:
+                    case CaricaBatteria.EsitoRicalcolo.ErrUndef:
+                        {
+                            btnPaSalvaDati.Enabled = false;
+                            esito = false;
+                        }
+                        break;
+
+                    default:
+                        // non faccio nulla ....
+                        break;
+                }
+
+                return esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("AttivaSalvataggioConfigurazione: " + Ex.Message);
+                return false;
+            }
+        }
+
+        private void TxtPaSogliaV0_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaSogliaV0.ForeColor = Color.Red;
+                txtPaSogliaV0.Select();
+            }
+            else
+                txtPaSogliaV0.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaPrefaseI0_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaPrefaseI0.ForeColor = Color.Red;
+                txtPaPrefaseI0.Select();
+            }
+            else
+                txtPaPrefaseI0.ForeColor = Color.Black;
+        }
+
+        private void TxtPaDurataMaxT0_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaDurataMaxT0.ForeColor = Color.Red;
+                txtPaDurataMaxT0.Select();
+            }
+            else
+                txtPaDurataMaxT0.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaSogliaVs_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaSogliaVs.ForeColor = Color.Red;
+                txtPaSogliaVs.Select();
+            }
+            else
+                txtPaSogliaVs.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaCorrenteI1_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCorrenteI1.ForeColor = Color.Red;
+                txtPaCorrenteI1.Select();
+            }
+            else
+                txtPaCorrenteI1.ForeColor = Color.Black;
+
+        }
+
+        private void CmbPaDurataMaxT1_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                cmbPaDurataMaxT1.ForeColor = Color.Red;
+                cmbPaDurataMaxT1.Select();
+            }
+            else
+                cmbPaDurataMaxT1.ForeColor = Color.Black;
+        }
+
+        private void TxtPaRaccordoF1_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaRaccordoF1.ForeColor = Color.Red;
+                txtPaRaccordoF1.Select();
+            }
+            else
+                txtPaRaccordoF1.ForeColor = Color.Black;
+        }
+
+        private void TxtPaCorrenteRaccordo_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCorrenteRaccordo.ForeColor = Color.Red;
+                txtPaCorrenteRaccordo.Select();
+            }
+            else
+                txtPaCorrenteRaccordo.ForeColor = Color.Black;
+        }
+
+        private void TxtPaCorrenteF3_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCorrenteF3.ForeColor = Color.Red;
+                txtPaCorrenteF3.Select();
+            }
+            else
+                txtPaCorrenteF3.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaVMax_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaVMax.ForeColor = Color.Red;
+                txtPaVMax.Select();
+            }
+            else
+                txtPaVMax.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaTempoT2Min_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaTempoT2Min.ForeColor = Color.Red;
+                txtPaTempoT2Min.Select();
+            }
+            else
+                txtPaTempoT2Min.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaTempoT2Max_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaTempoT2Max.ForeColor = Color.Red;
+                txtPaTempoT2Max.Select();
+            }
+            else
+                txtPaTempoT2Max.ForeColor = Color.Black;
+
+        }
+
+        private void TbpPaPCStep2_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtPaCoeffK_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaCoeffK.ForeColor = Color.Red;
+                txtPaCoeffK.Select();
+            }
+            else
+                txtPaCoeffK.ForeColor = Color.Black;
+
+        }
+
+        private void TxtPaTempoT3Max_Leave(object sender, EventArgs e)
+        {
+            if (!AttivaSalvataggioConfigurazione())
+            {
+                txtPaTempoT3Max.ForeColor = Color.Red;
+                txtPaTempoT3Max.Select();
+            }
+            else
+                txtPaTempoT3Max.ForeColor = Color.Black;
+        }
+
+        private void BtnCancellaCicloCorrente_Click(object sender, EventArgs e)
+        {
+            bool esito;
+            bool esitoSalvataggio = false;
+            this.Cursor = Cursors.WaitCursor;
+
+            esitoSalvataggio = _sb.CancellaProgrammazioneLL(_sb.Id, _sb.apparatoPresente);
+
+            if (esitoSalvataggio)
+            {
+                MessageBox.Show("Configurazione eliminata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Aggiornamento configurazione non riuscito", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            this.Cursor = Cursors.Default;
         }
     }
 }

@@ -26,6 +26,7 @@ namespace MoriData
         public double CorrenteMax { get; set; }
         public double TensioneMin { get; set; }
         public double TensioneMax { get; set; }
+        public byte Attivo { get; set; }
 
         public byte Trifase { get; set; }
         public int Ordine { get; set; }

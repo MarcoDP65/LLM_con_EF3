@@ -502,9 +502,9 @@ namespace MoriData
         {
             get
             {
-                if (_llsm.TempBatt == 0xFF) return "";
+                if (_llsm.TempBatt == 0xFF || _llsm.TempBatt == 0x80) return "(0x" + _llsm.TempBatt.ToString("x2") + ")";
                 sbyte _tmpTemp = (sbyte)_llsm.TempBatt;
-                return FunzioniMR.StringaTemperatura(_tmpTemp);
+                return FunzioniMR.StringaTemperatura(_tmpTemp) + "(0x" + _llsm.TempBatt.ToString("x2") + ")";
             }
         }
 

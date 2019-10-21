@@ -89,7 +89,7 @@ namespace ChargerLogic
                     IdProfiloCaricaLL = 0x04,
                     BatteryTypeId = 0x1001,
                     // tempi
-                    TempoT0Max = "###60",
+                    TempoT0Max = "=##60",
                     TempoT1Max = "=##780",
                     TempoT2Min = "=##060",
                     TempoT2Max = "=##210",
@@ -97,7 +97,7 @@ namespace ChargerLogic
                     FattoreK = "=##060",
                     DurataNominale = "=##780",
                     // Tensioni
-                    TensionePrecicloV0 = "###190",
+                    TensionePrecicloV0 = "=##190",
                     TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "=##245",
                     TensioneMassimaVMax = "=##265",
@@ -107,7 +107,7 @@ namespace ChargerLogic
                     TensMinimaStop = "=##180",
 
                     //Correnti
-                    CorrenteI0 = "#C/24",
+                    CorrenteI0 = "=C/24",
                     CorrenteI1 = "=C/12",
                     CorrenteFinaleI2 = "=C/24",
                     CorrenteMassima = "=C/5",
@@ -148,7 +148,7 @@ namespace ChargerLogic
                     IdProfiloCaricaLL = 0x05,
                     BatteryTypeId = 0x1001,
                     // tempi
-                    TempoT0Max = "###060",
+                    TempoT0Max = "=##060",
                     TempoT1Max = "=##660",
                     TempoT2Min = "=##60",
                     TempoT2Max = "=##210",
@@ -156,7 +156,7 @@ namespace ChargerLogic
                     FattoreK = "=##60",
                     DurataNominale = "=##660",
                     // Tensioni
-                    TensionePrecicloV0 = "###190",
+                    TensionePrecicloV0 = "=##190",
                     TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "=##245",
                     TensioneMassimaVMax = "=##265",
@@ -165,7 +165,7 @@ namespace ChargerLogic
                     TensRiconoscimentoMax = "=##240",
                     TensMinimaStop = "=##180",
                     //Correnti
-                    CorrenteI0 = "#C/20",
+                    CorrenteI0 = "=C/20",
                     CorrenteI1 = "=C/10",
                     CorrenteFinaleI2 = "=C/24",
                     CorrenteMassima = "=C/5",
@@ -207,7 +207,7 @@ namespace ChargerLogic
                     IdProfiloCaricaLL = 0x06,
                     BatteryTypeId = 0x1001,
                     // tempi
-                    TempoT0Max = "###060",
+                    TempoT0Max = "=##060",
                     TempoT1Max = "=##480",
                     TempoT2Min = "=##60",
                     TempoT2Max = "=##210",
@@ -216,7 +216,7 @@ namespace ChargerLogic
                     DurataNominale = "=##480",
 
                     // Tensioni
-                    TensionePrecicloV0 = "###190",
+                    TensionePrecicloV0 = "=##190",
                     TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "=##245",
                     TensioneMassimaVMax = "=##265",
@@ -226,7 +226,7 @@ namespace ChargerLogic
                     TensMinimaStop = "=##180",
 
                     //Correnti
-                    CorrenteI0 = "#C/12",
+                    CorrenteI0 = "=C/12",
                     CorrenteI1 = "=C%65",
                     CorrenteFinaleI2 = "=C/24",
                     CorrenteMassima = "=C/5",
