@@ -582,7 +582,14 @@ namespace PannelloCharger
                     if (_esito && (_cb.UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk))
                     {
 
+                        grbFwAttivazioneArea.Enabled = true;
+                        GrbFWArea1.Enabled = true;
+                        grbFWArea2.Enabled = true;
+                        grbFWAggiornamento.Enabled = true;
+                        grbFWPreparaFile.Enabled = true;
+
                         txtFwRevBootloader.Text = _cb.StatoFirmware.strRevBootloader;
+                        txtFwRevBootloader.ForeColor = Color.Black;
                         txtFwRevFirmware.Text = _cb.StatoFirmware.strRevFirmware;
                         txtFwRevDisplay.Text = _cb.StatoFirmware.strRevDisplay;
 
@@ -625,6 +632,19 @@ namespace PannelloCharger
                             }
                         }
                     }
+                    else
+                    {
+                        txtFwRevBootloader.Text = "N.D.";
+                        txtFwRevBootloader.ForeColor = Color.Red;
+                        txtFwRevFirmware.Text = "";
+                        txtFwRevDisplay.Text = "";
+                        grbFwAttivazioneArea.Enabled = false;
+                        GrbFWArea1.Enabled = false;
+                        grbFWArea2.Enabled = false;
+                        grbFWAggiornamento.Enabled = false;
+                        grbFWPreparaFile.Enabled = false;
+
+                    }
 
                 }
 
@@ -664,7 +684,7 @@ namespace PannelloCharger
                         Cella.Text = "KO";
                     }
                 }
-                return false;
+                return false; 
             }
             catch
             {
@@ -678,10 +698,16 @@ namespace PannelloCharger
             try
             {
                 string _tempId = "";
-                _cb.VerificaPresenza();
-                CaricaStatoFirmware(ref _tempId, _logiche, _cb.apparatoPresente);
-                CaricaStatoAreaFw(1, _cb.StatoFirmware.Stato);
-                CaricaStatoAreaFw(2, _cb.StatoFirmware.Stato);
+                bool _fwPresente;
+                if (_cb.VerificaPresenza())
+                {
+                    _fwPresente = CaricaStatoFirmware(ref _tempId, _logiche, _cb.apparatoPresente);
+                    if (_fwPresente)
+                    {
+                        CaricaStatoAreaFw(1, _cb.StatoFirmware.Stato);
+                        CaricaStatoAreaFw(2, _cb.StatoFirmware.Stato);
+                    }
+                }
             }
             catch (Exception Ex)
             {

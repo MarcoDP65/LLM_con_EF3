@@ -71,7 +71,6 @@ namespace PannelloCharger
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
                     
-                    
                 };
 
                 flvCicliListaCariche.AllColumns.Add(sortColIdMemCiclo);

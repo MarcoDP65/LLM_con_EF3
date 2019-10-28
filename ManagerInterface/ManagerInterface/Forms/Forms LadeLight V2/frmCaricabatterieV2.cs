@@ -4831,6 +4831,23 @@ namespace PannelloCharger
                 txtPaTempoT3Max.ForeColor = Color.Black;
 
         }
+
+        private void btnPaProfileChiudiCanale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_cb.StopComunicazione())
+                {
+                    btnPaSalvaDati.Enabled = false;
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaProfileChiudiCanale_Click: " + Ex.Message);
+            }
+        }
     }
 }
 

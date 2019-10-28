@@ -43,11 +43,13 @@ namespace MoriData
                 CreateTable<_lmEventiDb>();
 
                 CreateTable<_ladelight>();
+                CreateTable<_llMemoriaCicli>();
+                CreateTable<_llContatoriApparato>();
+                CreateTable<_llProgrammaCarica>();
 
                 inizializzaUtente();
                 inizializzaDefSoglie();
                 inizializzaSoglie();
-
 
                 inizializzaAlberoNavigazione();
 

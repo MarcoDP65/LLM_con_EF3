@@ -1945,6 +1945,269 @@ namespace ChargerLogic
 
         }
 
+        public class MessaggioDatiCliente
+        {
+            //  0x00 - 0x31 (50)  Cliente
+            //  0x32 - 0x63 (50)  Descrizione
+            //  0x64 - 0xB3 (80)  Note
+            //  0xB4 - 0xC2 (15)  Id Interno
+            //  0xC3 - 0xCC (10)  Nome Interno
+            //  0xCD - 0xD1 ( 5)  Data installazione
+            //  0xD2 - 0xEF liberi - area totale 240 bytes          
+            //  0xF0 - 0xF1 ( 2)  CRC interno
+
+            public string Cliente { get; set; }
+            public string Descrizione { get; set; }
+            public string Note { get; set; }
+            public string IdLocale { get; set; }
+            public string NomeLocale { get; set; }
+            public byte[] DataInstallazione { get; set; }
+
+            public ushort CrcPacchetto { get; set; }
+
+
+
+            byte[] _dataBuffer;
+            public byte[] dataBuffer;
+            public bool datiPronti;
+            public string lastError;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 242)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    CrcPacchetto = ArrayToUshort(_messaggio, 240, 2);
+                    if (CrcPacchetto == 0xFFFF)
+                    {
+                        // CRC non coerente
+                        return EsitoRisposta.MessaggioVuoto;
+                    }
+
+                    // Controllo il CRC
+                    byte[] _verificaCrc = new byte[240];
+                    for (int _i = 0; _i < 240; _i++)
+                    {
+                        _verificaCrc[_i] = _messaggio[_i];
+                    }
+                    _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
+
+
+                    if (CrcPacchetto != _tempCRC)
+                    {
+                        // CRC non coerente
+                        System.Windows.Forms.MessageBox.Show("Errore CRC in lettura dati cliente " + CrcPacchetto.ToString("X4") + " - " + _tempCRC.ToString("X4")
+                                       , "CONFIGURAZIONE", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                        // return EsitoRisposta.BadCRC;
+
+                    }
+
+
+                    startByte = 0;
+
+                    Log.Debug(" ----------------------  Dati Cliente  -----------------------------------------");
+
+                    // cliente
+                    Cliente = ArrayToString(_messaggio, startByte, 50);
+                    startByte += 50;
+
+                    // Descrizione
+                    Descrizione = ArrayToString(_messaggio, startByte, 50);
+                    startByte += 50;
+
+                    // Note
+                    Note = ArrayToString(_messaggio, startByte, 80);
+                    startByte += 80;
+
+
+                    // Id Interno
+                    IdLocale = ArrayToString(_messaggio, startByte, 15);
+                    startByte += 15;
+
+                    // Nome Interno
+                    NomeLocale = ArrayToString(_messaggio, startByte, 10);
+                    startByte += 10;
+
+                    // Data Installazione
+                    DataInstallazione = SubArray(_messaggio, startByte, 5);
+                    startByte += 5;
+
+                    datiPronti = true;
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+            public bool GeneraByteArray()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[242];
+                    byte[] _dataSet = new byte[240];
+                    //                    byte[] _tempString;
+                    int _arrayInit = 0;
+                    ushort _temCRC = 0x0000;
+
+                    Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 242; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                    }
+
+                    // Cliente
+                    for (int _i = 0; _i < 50; _i++)
+                    {
+                        if (_i < Cliente.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(Cliente, _i);
+                    }
+
+                    // Descrizione
+                    for (int _i = 0; _i < 50; _i++)
+                    {
+                        if (_i < Descrizione.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(Descrizione, _i);
+                    }
+
+
+                    // Note
+                    for (int _i = 0; _i < 80; _i++)
+                    {
+                        if (_i < Note.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(Note, _i);
+                    }
+
+
+                    // Id Interno
+                    for (int _i = 0; _i < 15; _i++)
+                    {
+                        if (_i < IdLocale.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(IdLocale, _i);
+                    }
+
+                    // Nome Interno
+                    for (int _i = 0; _i < 10; _i++)
+                    {
+                        if (_i < NomeLocale.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(NomeLocale, _i);
+                    }
+
+
+                    // Data Installazione
+                    if (DataInstallazione == null)
+                    {
+                        DataInstallazione = new byte[5];
+                        DateTime OraCorrente = DateTime.Now;
+                        DataInstallazione[0] = (byte)(OraCorrente.Year - 2000);
+                        DataInstallazione[1] = (byte)(OraCorrente.Month);
+                        DataInstallazione[2] = (byte)(OraCorrente.Day);
+                        DataInstallazione[3] = (byte)(OraCorrente.Hour);
+                        DataInstallazione[4] = (byte)(OraCorrente.Minute);
+                    }
+                    _arrayInit = 0xCD;
+                    _datamap[_arrayInit++] = DataInstallazione[0];
+                    _datamap[_arrayInit++] = DataInstallazione[1];
+                    _datamap[_arrayInit++] = DataInstallazione[2];
+                    _datamap[_arrayInit++] = DataInstallazione[3];
+                    _datamap[_arrayInit++] = DataInstallazione[4];
+
+
+                    // Ora calcolo il CRC
+
+                    for (int _i = 0; _i < 240; _i++)
+                    {
+                        _dataSet[_i] = _datamap[_i];
+                    }
+
+                    _temCRC = codCrc.ComputeChecksum(_dataSet);
+
+                    FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
+                    _datamap[240] = _byte2;
+                    _datamap[241] = _byte1;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+            public bool VuotaPacchetto()
+            {
+                try
+                {
+
+                    Cliente = "";
+                    Descrizione = "";
+                    Note = "";
+                    IdLocale = "";
+                    NomeLocale = "";
+                    DataInstallazione = new byte[5];
+
+                    CrcPacchetto = 0;
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            public MessaggioDatiCliente(llDatiCliente Dati)
+            {
+                try
+                {
+                    if (Dati != null)
+                    {
+                        Cliente = Dati.Client;
+                        Descrizione = Dati.Description;
+                        Note = Dati.Note;
+                        IdLocale = Dati.LocalId;
+                        NomeLocale = Dati.LocalName;
+                        DataInstallazione = new byte[5];
+                    }
+                }
+                catch
+                {
+
+                }
+
+            }
+            public MessaggioDatiCliente()
+            {
+                VuotaPacchetto();
+            }
+
+        }
+
 
     }
 

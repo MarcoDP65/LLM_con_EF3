@@ -460,6 +460,7 @@
             this.tbcPaSottopagina = new System.Windows.Forms.TabControl();
             this.tbpPaProfiloAttivo = new System.Windows.Forms.TabPage();
             this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
+            this.btnPaProfileChiudiCanale = new System.Windows.Forms.Button();
             this.chkPaAttivaOppChg = new System.Windows.Forms.CheckBox();
             this.lblPaAttivaOppChg = new System.Windows.Forms.Label();
             this.chkPaUsaSafety = new System.Windows.Forms.CheckBox();
@@ -672,8 +673,8 @@
             this.grbDatiCliente = new System.Windows.Forms.GroupBox();
             this.label254 = new System.Windows.Forms.Label();
             this.txtCliCodiceLL = new System.Windows.Forms.TextBox();
-            this.txtNoteCliente = new System.Windows.Forms.TextBox();
-            this.txtIdBat = new System.Windows.Forms.TextBox();
+            this.txtCliNote = new System.Windows.Forms.TextBox();
+            this.txtCliDescrizione = new System.Windows.Forms.TextBox();
             this.lblCliIdBatteria = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.lbNoteCliente = new System.Windows.Forms.Label();
@@ -5975,6 +5976,7 @@
             // grbCicloCorrente
             // 
             this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
+            this.grbCicloCorrente.Controls.Add(this.btnPaProfileChiudiCanale);
             this.grbCicloCorrente.Controls.Add(this.chkPaAttivaOppChg);
             this.grbCicloCorrente.Controls.Add(this.lblPaAttivaOppChg);
             this.grbCicloCorrente.Controls.Add(this.chkPaUsaSafety);
@@ -6013,6 +6015,19 @@
             this.grbCicloCorrente.TabStop = false;
             this.grbCicloCorrente.Text = "Profilo  Attivo";
             this.grbCicloCorrente.Enter += new System.EventHandler(this.grbCicloCorrente_Enter);
+            // 
+            // btnPaProfileChiudiCanale
+            // 
+            this.btnPaProfileChiudiCanale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaProfileChiudiCanale.ForeColor = System.Drawing.Color.Red;
+            this.btnPaProfileChiudiCanale.Location = new System.Drawing.Point(1025, 157);
+            this.btnPaProfileChiudiCanale.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPaProfileChiudiCanale.Name = "btnPaProfileChiudiCanale";
+            this.btnPaProfileChiudiCanale.Size = new System.Drawing.Size(144, 39);
+            this.btnPaProfileChiudiCanale.TabIndex = 148;
+            this.btnPaProfileChiudiCanale.Text = "Chiudi Canale";
+            this.btnPaProfileChiudiCanale.UseVisualStyleBackColor = true;
+            this.btnPaProfileChiudiCanale.Click += new System.EventHandler(this.btnPaProfileChiudiCanale_Click);
             // 
             // chkPaAttivaOppChg
             // 
@@ -7072,7 +7087,7 @@
             // txtPaVMinStop
             // 
             this.txtPaVMinStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaVMinStop.Location = new System.Drawing.Point(399, 38);
+            this.txtPaVMinStop.Location = new System.Drawing.Point(415, 38);
             this.txtPaVMinStop.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaVMinStop.Name = "txtPaVMinStop";
             this.txtPaVMinStop.Size = new System.Drawing.Size(102, 23);
@@ -7082,7 +7097,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(399, 21);
+            this.label42.Location = new System.Drawing.Point(415, 21);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(76, 13);
@@ -7213,7 +7228,7 @@
             // txtPaVLimite
             // 
             this.txtPaVLimite.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaVLimite.Location = new System.Drawing.Point(267, 38);
+            this.txtPaVLimite.Location = new System.Drawing.Point(283, 38);
             this.txtPaVLimite.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaVLimite.Name = "txtPaVLimite";
             this.txtPaVLimite.Size = new System.Drawing.Size(102, 23);
@@ -7223,7 +7238,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(267, 21);
+            this.label15.Location = new System.Drawing.Point(283, 21);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 13);
@@ -7459,7 +7474,7 @@
             // 
             // btnPaCaricaListaProfili
             // 
-            this.btnPaCaricaListaProfili.Location = new System.Drawing.Point(869, 495);
+            this.btnPaCaricaListaProfili.Location = new System.Drawing.Point(870, 438);
             this.btnPaCaricaListaProfili.Margin = new System.Windows.Forms.Padding(2);
             this.btnPaCaricaListaProfili.Name = "btnPaCaricaListaProfili";
             this.btnPaCaricaListaProfili.Size = new System.Drawing.Size(120, 27);
@@ -8406,8 +8421,8 @@
             this.grbDatiCliente.BackColor = System.Drawing.Color.White;
             this.grbDatiCliente.Controls.Add(this.label254);
             this.grbDatiCliente.Controls.Add(this.txtCliCodiceLL);
-            this.grbDatiCliente.Controls.Add(this.txtNoteCliente);
-            this.grbDatiCliente.Controls.Add(this.txtIdBat);
+            this.grbDatiCliente.Controls.Add(this.txtCliNote);
+            this.grbDatiCliente.Controls.Add(this.txtCliDescrizione);
             this.grbDatiCliente.Controls.Add(this.lblCliIdBatteria);
             this.grbDatiCliente.Controls.Add(this.txtCliente);
             this.grbDatiCliente.Controls.Add(this.lbNoteCliente);
@@ -8445,23 +8460,23 @@
             this.txtCliCodiceLL.TabIndex = 31;
             this.txtCliCodiceLL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtNoteCliente
+            // txtCliNote
             // 
-            this.txtNoteCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtNoteCliente.Location = new System.Drawing.Point(30, 160);
-            this.txtNoteCliente.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNoteCliente.Name = "txtNoteCliente";
-            this.txtNoteCliente.Size = new System.Drawing.Size(457, 23);
-            this.txtNoteCliente.TabIndex = 28;
+            this.txtCliNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCliNote.Location = new System.Drawing.Point(30, 160);
+            this.txtCliNote.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCliNote.Name = "txtCliNote";
+            this.txtCliNote.Size = new System.Drawing.Size(457, 23);
+            this.txtCliNote.TabIndex = 28;
             // 
-            // txtIdBat
+            // txtCliDescrizione
             // 
-            this.txtIdBat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtIdBat.Location = new System.Drawing.Point(128, 98);
-            this.txtIdBat.Margin = new System.Windows.Forms.Padding(2);
-            this.txtIdBat.Name = "txtIdBat";
-            this.txtIdBat.Size = new System.Drawing.Size(358, 23);
-            this.txtIdBat.TabIndex = 27;
+            this.txtCliDescrizione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCliDescrizione.Location = new System.Drawing.Point(128, 98);
+            this.txtCliDescrizione.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCliDescrizione.Name = "txtCliDescrizione";
+            this.txtCliDescrizione.Size = new System.Drawing.Size(358, 23);
+            this.txtCliDescrizione.TabIndex = 27;
             // 
             // lblCliIdBatteria
             // 
@@ -9283,8 +9298,8 @@
         private System.Windows.Forms.GroupBox grbDatiCliente;
         private System.Windows.Forms.Label label254;
         private System.Windows.Forms.TextBox txtCliCodiceLL;
-        private System.Windows.Forms.TextBox txtNoteCliente;
-        private System.Windows.Forms.TextBox txtIdBat;
+        private System.Windows.Forms.TextBox txtCliNote;
+        private System.Windows.Forms.TextBox txtCliDescrizione;
         private System.Windows.Forms.Label lblCliIdBatteria;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label lbNoteCliente;
@@ -9322,5 +9337,6 @@
         private System.Windows.Forms.PictureBox ImgPaOppPuntoVerde;
         private System.Windows.Forms.TextBox txtContCaricheOpportunity;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Button btnPaProfileChiudiCanale;
     }
 }
