@@ -67,7 +67,6 @@ namespace ChargerLogic
 
         }
 
-
         public llMemoriaCicli AnalizzaDatiCiclo(byte[] ArrayDati)
         {
             try
@@ -125,7 +124,6 @@ namespace ChargerLogic
             }
 
         }
-
 
         public bool CaricaListaCicli(UInt32 StartAddr, ushort NumRows, out object EsitoCaricamento, bool caricaBrevi = false,  bool RunAsinc = false)
         {
@@ -228,7 +226,6 @@ namespace ChargerLogic
 
         }
 
-
         public llMemBreve CaricaDatiMemBreve(UInt32 StartAddr)
         {
             try
@@ -282,8 +279,6 @@ namespace ChargerLogic
             }
 
         }
-
-
 
         public List<llMemBreve> CaricaListaBrevi(UInt32 StartAddr, ushort NumRows = 0, uint IdCiclo = 0 )
         {
@@ -751,7 +746,68 @@ namespace ChargerLogic
             }
         }
 
+        public bool ScriviDatiCliente()
+        {
+            try
+            {
+                MessaggioLadeLight.MessaggioDatiCliente MsgDatiCli = new MessaggioLadeLight.MessaggioDatiCliente(DatiCliente);
+                bool _esito = false;
+                if (MsgDatiCli.GeneraByteArray())
+                {
 
+                    _esito = CancellaBlocco4K(0x1000);
+                    byte[] _datiTemp = MsgDatiCli.dataBuffer;
+                    _esito = ScriviBloccoMemoria(0x1000, 236, _datiTemp);
+                }
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                return false;
+            }
+
+        }
+
+        public bool LeggiDatiCliente()
+        {
+            try
+            {
+                DatiCliente = new llDatiCliente();
+                MessaggioLadeLight.MessaggioDatiCliente MsgDatiCli = new MessaggioLadeLight.MessaggioDatiCliente();
+                bool _esito = false;
+                SerialMessage.EsitoRisposta EsitoMsg;
+
+                byte[] _datiTemp = new byte[236];
+                _esito = LeggiBloccoMemoria(0x001000, 236, out _datiTemp);
+
+                if (_esito)
+                {
+                    EsitoMsg = MsgDatiCli.analizzaMessaggio(_datiTemp, 1);
+                    if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                    {
+                        DatiCliente.Client = MsgDatiCli.Cliente;
+                        DatiCliente.Description = MsgDatiCli.Descrizione;
+                        DatiCliente.Note = MsgDatiCli.Note;
+                        DatiCliente.LocalId = MsgDatiCli.IdLocale;
+                        DatiCliente.LocalName = MsgDatiCli.NomeLocale;
+
+                    }
+                    else
+                        _esito = false;
+
+                }
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                return false;
+            }
+
+        }
 
     }
 }

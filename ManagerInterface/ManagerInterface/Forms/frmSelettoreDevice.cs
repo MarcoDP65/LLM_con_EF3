@@ -508,7 +508,7 @@ namespace PannelloCharger
                 }
                 Log.Debug("NUOVO SB");
                 frmSpyBat sbCorrente = new frmSpyBat(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
-                sbCorrente.MdiParent = this.MdiParent; ;
+                sbCorrente.MdiParent = this.MdiParent; 
                 sbCorrente.StartPosition = FormStartPosition.CenterParent;
 
                 this.Cursor = Cursors.Default;

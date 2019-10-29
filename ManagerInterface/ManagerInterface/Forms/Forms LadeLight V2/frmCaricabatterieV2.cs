@@ -4848,6 +4848,112 @@ namespace PannelloCharger
                 Log.Error("btnPaProfileChiudiCanale_Click: " + Ex.Message);
             }
         }
+
+        private void btnSalveCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                SalvaDatiCliente();
+                this.Cursor = Cursors.Default;
+
+            }
+            catch (Exception Ex)
+            {
+                this.Cursor = Cursors.Default;
+                Log.Error("btnSalveCliente_Click: " + Ex.Message);
+            }
+        }
+
+
+
+        public bool SalvaDatiCliente()
+        {
+            try
+            {
+                bool _esito;
+
+                if (_cb.DatiCliente == null)
+                {
+                    _cb.DatiCliente = new llDatiCliente();
+                }
+
+                _cb.DatiCliente.Client = txtCliente.Text.Trim();
+                _cb.DatiCliente.Description = txtCliDescrizione.Text.Trim();
+                _cb.DatiCliente.Note = txtCliNote.Text.Trim();
+                _cb.DatiCliente.LocalId = txtCliCodiceLL.Text.Trim();
+                _cb.DatiCliente.LocalName = txtCliCodiceLL.Text.Trim();
+
+                _esito = _cb.ScriviDatiCliente();
+                if (_esito)
+                {
+                    _cb.ScriviDatiCliente();
+                    MostraDatiCliente();
+                }
+                else
+                {
+                    MessageBox.Show("Salvataggio non riuscito", "DAI CLIENTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                return _esito;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SalvaInizializzazione: " + Ex.Message);
+                return false;
+
+            }
+        }
+
+        public bool MostraDatiCliente()
+        {
+            try
+            {
+
+                txtCliente.Text = "";
+                txtCliDescrizione.Text = "";
+                txtCliNote.Text = "";
+                txtCliCodiceLL.Text = "";
+                txtCliCodiceLL.Text = "";
+
+                if (_cb.DatiCliente == null)
+                {
+                    return false;
+                }
+
+                txtCliente.Text = _cb.DatiCliente.Client;
+                txtCliDescrizione.Text = _cb.DatiCliente.Description;
+                txtCliNote.Text = _cb.DatiCliente.Note;
+                txtCliCodiceLL.Text = _cb.DatiCliente.LocalId;
+                txtCliNomeIntLL.Text = _cb.DatiCliente.LocalName;
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SalvaInizializzazione: " + Ex.Message);
+                return false;
+
+            }
+        }
+
+        private void btnCaricaCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                _cb.LeggiDatiCliente();
+                MostraDatiCliente();
+                this.Cursor = Cursors.Default;
+
+            }
+            catch (Exception Ex)
+            {
+                this.Cursor = Cursors.Default;
+                Log.Error("btnSalveCliente_Click: " + Ex.Message);
+            }
+        }
     }
 }
 

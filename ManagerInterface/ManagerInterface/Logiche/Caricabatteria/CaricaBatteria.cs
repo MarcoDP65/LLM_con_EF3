@@ -58,6 +58,7 @@ namespace ChargerLogic
         public SerialMessage.comandoRTC OrologioSistema = new SerialMessage.comandoRTC();
         public SerialMessage.cicloAttuale CicloInMacchina = new SerialMessage.cicloAttuale();
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
+        
         public cbProgrammazioni Programmazioni = new cbProgrammazioni();
 
         public llParametriApparato ParametriApparato = new llParametriApparato();
@@ -66,6 +67,7 @@ namespace ChargerLogic
         public llMappaMemoria Memoria = new llMappaMemoria(1);
         public llContatoriApparato ContatoriLL = new llContatoriApparato();
         public LadeLightData ApparatoLL;
+        public llDatiCliente DatiCliente;
 
         public llVariabili llVariabiliAttuali = new llVariabili();
 
@@ -510,6 +512,7 @@ namespace ChargerLogic
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
 
+                DatiCliente = new llDatiCliente();
                 DatiBase = new DatiConfigCariche();
                 //InizializzaDatiLocali();
 
@@ -558,36 +561,6 @@ namespace ChargerLogic
             {
                 bool _esito = CaricaIntestazioneLL();
                 return _esito;
-
-                /*
-                bool _esito = false;
-                _mS.Comando = SerialMessage.TipoComando.CMD_CONNECT;
-                _mS.ComponiMessaggio();
-                _rxRisposta = false;
-                Log.Debug("START");
-                Log.Debug(_mS.hexdumpMessaggio());
-
-                // Leggo la testata apparato
-                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(AttesaTimeout, 0,true,false);
-                if (_mS._comando == (byte)SerialMessage.TipoComando.ACK_PACKET)  
-                {
-                    _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
-                    _mS.Comando = SerialMessage.TipoComando.CMD_UART_HOST_CONNECTED;
-                    _mS.ComponiMessaggio();
-                    _rxRisposta = false;
-                    Log.Debug("PRIMA LETTURA");
-                    Log.Debug(_mS.hexdumpMessaggio());
-                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(AttesaTimeout, 1,true,false);
-                    Intestazione = _mS.Intestazione;
-                    _cbCollegato = _esito;
-                    apparatoPresente = _esito;
-                    return _esito;
-
-                }
-                return _esito;
-                */
             }
 
             catch (Exception Ex)
@@ -1633,7 +1606,7 @@ namespace ChargerLogic
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
 
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase,0, true);
+                _esito = aspettaRisposta(elementiComuni.Timeout5sec,0, true);
 
                 Log.Debug(_mS.hexdumpMessaggio());
 

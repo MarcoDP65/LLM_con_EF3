@@ -610,6 +610,8 @@
             this.btnCicliCaricaLista = new System.Windows.Forms.Button();
             this.btnCicliVuotaLista = new System.Windows.Forms.Button();
             this.tabGenerale = new System.Windows.Forms.TabPage();
+            this.btnSalveCliente = new System.Windows.Forms.Button();
+            this.btnCaricaCliente = new System.Windows.Forms.Button();
             this.btnGenResetBoard = new System.Windows.Forms.Button();
             this.btnGenAzzzeraContatoriTot = new System.Windows.Forms.Button();
             this.btnGenAzzzeraContatori = new System.Windows.Forms.Button();
@@ -671,6 +673,8 @@
             this.txtGenMatricola = new System.Windows.Forms.TextBox();
             this.lblMatricola = new System.Windows.Forms.Label();
             this.grbDatiCliente = new System.Windows.Forms.GroupBox();
+            this.txtCliNomeIntLL = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.label254 = new System.Windows.Forms.Label();
             this.txtCliCodiceLL = new System.Windows.Forms.TextBox();
             this.txtCliNote = new System.Windows.Forms.TextBox();
@@ -7735,6 +7739,8 @@
             // tabGenerale
             // 
             this.tabGenerale.BackColor = System.Drawing.Color.LightYellow;
+            this.tabGenerale.Controls.Add(this.btnSalveCliente);
+            this.tabGenerale.Controls.Add(this.btnCaricaCliente);
             this.tabGenerale.Controls.Add(this.btnGenResetBoard);
             this.tabGenerale.Controls.Add(this.btnGenAzzzeraContatoriTot);
             this.tabGenerale.Controls.Add(this.btnGenAzzzeraContatori);
@@ -7750,6 +7756,28 @@
             this.tabGenerale.TabIndex = 0;
             this.tabGenerale.Text = "Generale";
             this.tabGenerale.Click += new System.EventHandler(this.tabCb01_Click);
+            // 
+            // btnSalveCliente
+            // 
+            this.btnSalveCliente.Location = new System.Drawing.Point(554, 221);
+            this.btnSalveCliente.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalveCliente.Name = "btnSalveCliente";
+            this.btnSalveCliente.Size = new System.Drawing.Size(146, 24);
+            this.btnSalveCliente.TabIndex = 27;
+            this.btnSalveCliente.Text = "Salva Dati Cliente";
+            this.btnSalveCliente.UseVisualStyleBackColor = true;
+            this.btnSalveCliente.Click += new System.EventHandler(this.btnSalveCliente_Click);
+            // 
+            // btnCaricaCliente
+            // 
+            this.btnCaricaCliente.Location = new System.Drawing.Point(554, 39);
+            this.btnCaricaCliente.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCaricaCliente.Name = "btnCaricaCliente";
+            this.btnCaricaCliente.Size = new System.Drawing.Size(146, 24);
+            this.btnCaricaCliente.TabIndex = 26;
+            this.btnCaricaCliente.Text = "Carica Dati Cliente";
+            this.btnCaricaCliente.UseVisualStyleBackColor = true;
+            this.btnCaricaCliente.Click += new System.EventHandler(this.btnCaricaCliente_Click);
             // 
             // btnGenResetBoard
             // 
@@ -7832,7 +7860,7 @@
             this.grbMainContatori.Controls.Add(this.label216);
             this.grbMainContatori.Controls.Add(this.txtContDtPrimaCarica);
             this.grbMainContatori.Controls.Add(this.label218);
-            this.grbMainContatori.Location = new System.Drawing.Point(555, 250);
+            this.grbMainContatori.Location = new System.Drawing.Point(554, 279);
             this.grbMainContatori.Margin = new System.Windows.Forms.Padding(2);
             this.grbMainContatori.Name = "grbMainContatori";
             this.grbMainContatori.Padding = new System.Windows.Forms.Padding(2);
@@ -8187,7 +8215,7 @@
             this.GrbMainDatiApparato.Controls.Add(this.txtGenAnnoMatricola);
             this.GrbMainDatiApparato.Controls.Add(this.txtGenMatricola);
             this.GrbMainDatiApparato.Controls.Add(this.lblMatricola);
-            this.GrbMainDatiApparato.Location = new System.Drawing.Point(15, 250);
+            this.GrbMainDatiApparato.Location = new System.Drawing.Point(14, 279);
             this.GrbMainDatiApparato.Margin = new System.Windows.Forms.Padding(2);
             this.GrbMainDatiApparato.Name = "GrbMainDatiApparato";
             this.GrbMainDatiApparato.Padding = new System.Windows.Forms.Padding(2);
@@ -8419,6 +8447,8 @@
             // grbDatiCliente
             // 
             this.grbDatiCliente.BackColor = System.Drawing.Color.White;
+            this.grbDatiCliente.Controls.Add(this.txtCliNomeIntLL);
+            this.grbDatiCliente.Controls.Add(this.label45);
             this.grbDatiCliente.Controls.Add(this.label254);
             this.grbDatiCliente.Controls.Add(this.txtCliCodiceLL);
             this.grbDatiCliente.Controls.Add(this.txtCliNote);
@@ -8427,22 +8457,42 @@
             this.grbDatiCliente.Controls.Add(this.txtCliente);
             this.grbDatiCliente.Controls.Add(this.lbNoteCliente);
             this.grbDatiCliente.Controls.Add(this.lblCliCliente);
-            this.grbDatiCliente.Enabled = false;
             this.grbDatiCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.grbDatiCliente.Location = new System.Drawing.Point(15, 22);
             this.grbDatiCliente.Margin = new System.Windows.Forms.Padding(2);
             this.grbDatiCliente.Name = "grbDatiCliente";
             this.grbDatiCliente.Padding = new System.Windows.Forms.Padding(2);
-            this.grbDatiCliente.Size = new System.Drawing.Size(513, 206);
+            this.grbDatiCliente.Size = new System.Drawing.Size(513, 233);
             this.grbDatiCliente.TabIndex = 19;
             this.grbDatiCliente.TabStop = false;
             this.grbDatiCliente.Text = "DATI CLIENTE";
+            // 
+            // txtCliNomeIntLL
+            // 
+            this.txtCliNomeIntLL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCliNomeIntLL.Location = new System.Drawing.Point(211, 187);
+            this.txtCliNomeIntLL.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCliNomeIntLL.MaxLength = 10;
+            this.txtCliNomeIntLL.Name = "txtCliNomeIntLL";
+            this.txtCliNomeIntLL.Size = new System.Drawing.Size(161, 23);
+            this.txtCliNomeIntLL.TabIndex = 34;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label45.Location = new System.Drawing.Point(209, 170);
+            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(93, 15);
+            this.label45.TabIndex = 33;
+            this.label45.Text = "Nome Apparato";
             // 
             // label254
             // 
             this.label254.AutoSize = true;
             this.label254.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label254.Location = new System.Drawing.Point(125, 81);
+            this.label254.Location = new System.Drawing.Point(27, 69);
             this.label254.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label254.Name = "label254";
             this.label254.Size = new System.Drawing.Size(72, 15);
@@ -8452,18 +8502,17 @@
             // txtCliCodiceLL
             // 
             this.txtCliCodiceLL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtCliCodiceLL.Location = new System.Drawing.Point(29, 98);
+            this.txtCliCodiceLL.Location = new System.Drawing.Point(29, 187);
             this.txtCliCodiceLL.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCliCodiceLL.MaxLength = 5;
+            this.txtCliCodiceLL.MaxLength = 15;
             this.txtCliCodiceLL.Name = "txtCliCodiceLL";
-            this.txtCliCodiceLL.Size = new System.Drawing.Size(85, 23);
+            this.txtCliCodiceLL.Size = new System.Drawing.Size(161, 23);
             this.txtCliCodiceLL.TabIndex = 31;
-            this.txtCliCodiceLL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCliNote
             // 
             this.txtCliNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtCliNote.Location = new System.Drawing.Point(30, 160);
+            this.txtCliNote.Location = new System.Drawing.Point(28, 134);
             this.txtCliNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtCliNote.Name = "txtCliNote";
             this.txtCliNote.Size = new System.Drawing.Size(457, 23);
@@ -8472,17 +8521,17 @@
             // txtCliDescrizione
             // 
             this.txtCliDescrizione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtCliDescrizione.Location = new System.Drawing.Point(128, 98);
+            this.txtCliDescrizione.Location = new System.Drawing.Point(28, 86);
             this.txtCliDescrizione.Margin = new System.Windows.Forms.Padding(2);
             this.txtCliDescrizione.Name = "txtCliDescrizione";
-            this.txtCliDescrizione.Size = new System.Drawing.Size(358, 23);
+            this.txtCliDescrizione.Size = new System.Drawing.Size(457, 23);
             this.txtCliDescrizione.TabIndex = 27;
             // 
             // lblCliIdBatteria
             // 
             this.lblCliIdBatteria.AutoSize = true;
             this.lblCliIdBatteria.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblCliIdBatteria.Location = new System.Drawing.Point(27, 81);
+            this.lblCliIdBatteria.Location = new System.Drawing.Point(27, 170);
             this.lblCliIdBatteria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCliIdBatteria.Name = "lblCliIdBatteria";
             this.lblCliIdBatteria.Size = new System.Drawing.Size(72, 15);
@@ -8492,17 +8541,17 @@
             // txtCliente
             // 
             this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtCliente.Location = new System.Drawing.Point(29, 42);
+            this.txtCliente.Location = new System.Drawing.Point(28, 42);
             this.txtCliente.Margin = new System.Windows.Forms.Padding(2);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(457, 23);
+            this.txtCliente.Size = new System.Drawing.Size(458, 23);
             this.txtCliente.TabIndex = 25;
             // 
             // lbNoteCliente
             // 
             this.lbNoteCliente.AutoSize = true;
             this.lbNoteCliente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbNoteCliente.Location = new System.Drawing.Point(28, 143);
+            this.lbNoteCliente.Location = new System.Drawing.Point(26, 117);
             this.lbNoteCliente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNoteCliente.Name = "lbNoteCliente";
             this.lbNoteCliente.Size = new System.Drawing.Size(33, 15);
@@ -9338,5 +9387,9 @@
         private System.Windows.Forms.TextBox txtContCaricheOpportunity;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Button btnPaProfileChiudiCanale;
+        private System.Windows.Forms.Button btnSalveCliente;
+        private System.Windows.Forms.Button btnCaricaCliente;
+        private System.Windows.Forms.TextBox txtCliNomeIntLL;
+        private System.Windows.Forms.Label label45;
     }
 }

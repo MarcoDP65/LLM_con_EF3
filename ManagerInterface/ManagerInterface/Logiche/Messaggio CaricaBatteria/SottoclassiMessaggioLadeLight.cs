@@ -741,6 +741,22 @@ namespace ChargerLogic
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
+                    // Se i primi byte sono a FF -> non è programmato. esco
+                    bool _valido = false;
+                    for (int _cver = 0; _cver<20; _cver++)
+                    {
+                        if(_messaggio[_cver] != 0xFF)
+                        {
+                            // Contriene qualcosa, analizzo il pacchetto
+                            _valido = true;
+                        }
+                    }
+                    if(!_valido)
+                    {
+                        return EsitoRisposta.MessaggioVuoto;
+                    }
+
+
                     CrcPacchetto = ArrayToUshort(_messaggio, 224, 2);
                     if (CrcPacchetto == 0xFFFF)
                     {
@@ -1987,13 +2003,13 @@ namespace ChargerLogic
                     VuotaPacchetto();
 
 
-                    if (_messaggio.Length < 242)
+                    if (_messaggio.Length < 236)
                     {
                         datiPronti = false;
                         return EsitoRisposta.NonRiconosciuto;
                     }
 
-                    CrcPacchetto = ArrayToUshort(_messaggio, 240, 2);
+                    CrcPacchetto = ArrayToUshort(_messaggio, 234, 2);
                     if (CrcPacchetto == 0xFFFF)
                     {
                         // CRC non coerente
@@ -2001,8 +2017,8 @@ namespace ChargerLogic
                     }
 
                     // Controllo il CRC
-                    byte[] _verificaCrc = new byte[240];
-                    for (int _i = 0; _i < 240; _i++)
+                    byte[] _verificaCrc = new byte[234];
+                    for (int _i = 0; _i < 234; _i++)
                     {
                         _verificaCrc[_i] = _messaggio[_i];
                     }
@@ -2064,8 +2080,8 @@ namespace ChargerLogic
             {
                 try
                 {
-                    byte[] _datamap = new byte[242];
-                    byte[] _dataSet = new byte[240];
+                    byte[] _datamap = new byte[236];
+                    byte[] _dataSet = new byte[234];
                     //                    byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
@@ -2079,18 +2095,20 @@ namespace ChargerLogic
                     byte _byte4 = 0;
 
                     // Preparo l'array vuoto
-                    for (int _i = 0; _i < 242; _i++)
+                    for (int _i = 0; _i < 236; _i++)
                     {
-                        _datamap[_i] = 0xFF;
+                        _datamap[_i] = 0x00;
                     }
 
                     // Cliente
+                    _arrayInit = 0x00;
                     for (int _i = 0; _i < 50; _i++)
                     {
                         if (_i < Cliente.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(Cliente, _i);
                     }
 
                     // Descrizione
+                    _arrayInit = 0x32;
                     for (int _i = 0; _i < 50; _i++)
                     {
                         if (_i < Descrizione.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(Descrizione, _i);
@@ -2098,6 +2116,7 @@ namespace ChargerLogic
 
 
                     // Note
+                    _arrayInit = 0x64;
                     for (int _i = 0; _i < 80; _i++)
                     {
                         if (_i < Note.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(Note, _i);
@@ -2105,12 +2124,14 @@ namespace ChargerLogic
 
 
                     // Id Interno
+                    _arrayInit = 0xB4;
                     for (int _i = 0; _i < 15; _i++)
                     {
                         if (_i < IdLocale.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(IdLocale, _i);
                     }
 
                     // Nome Interno
+                    _arrayInit = 0xC3;
                     for (int _i = 0; _i < 10; _i++)
                     {
                         if (_i < NomeLocale.Length) _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(NomeLocale, _i);
@@ -2118,6 +2139,7 @@ namespace ChargerLogic
 
 
                     // Data Installazione
+                    _arrayInit = 0xCD;
                     if (DataInstallazione == null)
                     {
                         DataInstallazione = new byte[5];
@@ -2138,7 +2160,7 @@ namespace ChargerLogic
 
                     // Ora calcolo il CRC
 
-                    for (int _i = 0; _i < 240; _i++)
+                    for (int _i = 0; _i < 234; _i++)
                     {
                         _dataSet[_i] = _datamap[_i];
                     }
@@ -2146,8 +2168,8 @@ namespace ChargerLogic
                     _temCRC = codCrc.ComputeChecksum(_dataSet);
 
                     FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
-                    _datamap[240] = _byte2;
-                    _datamap[241] = _byte1;
+                    _datamap[0xEA] = _byte2;
+                    _datamap[0xEB] = _byte1;
 
                     dataBuffer = _datamap;
 
@@ -2193,6 +2215,10 @@ namespace ChargerLogic
                         IdLocale = Dati.LocalId;
                         NomeLocale = Dati.LocalName;
                         DataInstallazione = new byte[5];
+                        for(int _a = 0; _a< 5; _a++)
+                        {
+                            DataInstallazione[_a] = (byte)_a;
+                        }
                     }
                 }
                 catch
