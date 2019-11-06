@@ -838,7 +838,6 @@ namespace PannelloCharger
 
                 }
 
-                return null;
             }
             catch (Exception Ex)
             {

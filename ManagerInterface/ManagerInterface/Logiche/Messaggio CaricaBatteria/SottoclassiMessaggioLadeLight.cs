@@ -446,7 +446,6 @@ namespace ChargerLogic
                 {
                     byte[] _datamap = new byte[236];
                     byte[] _dataSet = new byte[234];
-                    byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
 
@@ -1276,7 +1275,6 @@ namespace ChargerLogic
                 {
                     byte[] _datamap = new byte[0x38];
                     byte[] _dataSet = new byte[0x36];
-                    byte[] _tempString;
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
 
@@ -1579,8 +1577,6 @@ namespace ChargerLogic
                 {
                     byte[] _datamap = new byte[240];
                     byte[] _dataSet = new byte[238];
-                    byte[] _tempString;
-                    int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
 
                     Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
@@ -1588,8 +1584,7 @@ namespace ChargerLogic
                     // Variabili temporanee per il passaggio dati
                     byte _byte1 = 0;
                     byte _byte2 = 0;
-                    byte _byte3 = 0;
-                    byte _byte4 = 0;
+
 
                     // Preparo l'array vuoto
                     for (int _i = 0; _i < 240; _i++)
@@ -1790,14 +1785,14 @@ namespace ChargerLogic
             public EsitoRisposta analizzaMessaggioMappa2(byte[] _messaggio)
             {
 
-                byte[] _risposta;
-                int startByte = 0;
-                ushort _tempCRC;
+
                 Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
 
 
                 try
                 {
+                    int startByte;
+
                     datiPronti = false;
                     VuotaPacchetto();
 
@@ -1881,8 +1876,6 @@ namespace ChargerLogic
                 {
                     byte[] _datamap = new byte[240];
                     byte[] _dataSet = new byte[238];
-                    byte[] _tempString;
-                    int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
 
                     Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
@@ -1890,8 +1883,6 @@ namespace ChargerLogic
                     // Variabili temporanee per il passaggio dati
                     byte _byte1 = 0;
                     byte _byte2 = 0;
-                    byte _byte3 = 0;
-                    byte _byte4 = 0;
 
                     // Preparo l'array vuoto
                     for (int _i = 0; _i < 240; _i++)

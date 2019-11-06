@@ -793,6 +793,8 @@ namespace ChargerLogic
                         DatiCliente.LocalId = MsgDatiCli.IdLocale;
                         DatiCliente.LocalName = MsgDatiCli.NomeLocale;
 
+                        DatiCliente.salvaDati();
+
                     }
                     else
                         _esito = false;

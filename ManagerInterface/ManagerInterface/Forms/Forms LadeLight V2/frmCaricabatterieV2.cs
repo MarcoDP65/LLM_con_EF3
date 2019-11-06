@@ -144,7 +144,7 @@ namespace PannelloCharger
                 //InitializeComponent();
                 ResizeRedraw = true;
                 _msg = new SerialMessage();
-                _cb = new CaricaBatteria(ref _parametri);
+                _cb = new CaricaBatteria(ref _parametri,null);
                 InizializzaScheda();
                 _esito = _cb.apriPorta();
                 if (!_esito)
@@ -199,8 +199,13 @@ namespace PannelloCharger
 
                     CaricaAreaContatori();
 
+                    _cb.LeggiDatiCliente();
+                    MostraDatiCliente();
+
                     // ora carico il ciclo corrente e i contatori programmazioni
                     CaricaProgrammazioni();
+
+                    _cb.ApparatoLL.salvaDati();
 
                     _apparatoPresente = _esito;
                     return true;
@@ -4882,7 +4887,7 @@ namespace PannelloCharger
                 _cb.DatiCliente.Description = txtCliDescrizione.Text.Trim();
                 _cb.DatiCliente.Note = txtCliNote.Text.Trim();
                 _cb.DatiCliente.LocalId = txtCliCodiceLL.Text.Trim();
-                _cb.DatiCliente.LocalName = txtCliCodiceLL.Text.Trim();
+                _cb.DatiCliente.LocalName = txtCliNomeIntLL.Text.Trim();
 
                 _esito = _cb.ScriviDatiCliente();
                 if (_esito)

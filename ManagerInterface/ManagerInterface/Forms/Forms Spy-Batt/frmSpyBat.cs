@@ -29,6 +29,7 @@ namespace PannelloCharger
 {
     public partial class frmSpyBat : Form
     {
+
         const int TabParametri = 6;
         public const int NumGrafici = 20;
         public enum IdGrafico : int { };
@@ -87,6 +88,8 @@ namespace PannelloCharger
 
         public Esp32Setting ModuloEsp32 = new Esp32Setting();
 
+        internal TabControl PaSchedeValoriNascoste = new TabControl();
+
         public bool ProfiloInCaricamento { get; set; }
 
         private ParametriSetupPro _parametriPro = new ParametriSetupPro();
@@ -123,6 +126,7 @@ namespace PannelloCharger
                 InitializeComponent();
                 inizializzaComboPro();
                 tabCaricaBatterie.DrawMode = TabDrawMode.OwnerDrawFixed;
+                tbcPaSchedeValori.DrawMode = TabDrawMode.OwnerDrawFixed;
                 // Setto il bordo invisibile ai due groupbox dell'upd FW
                 grbFWdettUpload.Paint += PaintBorderlessGroupBox;
                 grbFWDettStato.Paint += PaintBorderlessGroupBox;
@@ -328,7 +332,7 @@ namespace PannelloCharger
 
                 InizializzaOxyGrSingolo();
                 applicaAutorizzazioni();
-                RicalcolaStatistiche();
+               //RicalcolaStatistiche();
                 InizializzaCalibrazioni();
                 InizializzaVistaCorrenti();
                 InizializzaVistaCorrentiCal();
@@ -834,6 +838,13 @@ namespace PannelloCharger
 
                 #endregion
 
+                #region "Profilo di Carica"
+
+                ApplicaAutorizzazioniSchedaLL(LivelloCorrente);
+
+                
+                #endregion
+
                 #region "Variabili"
                 if (LivelloCorrente < 1)
                     _readonly = false;
@@ -1011,6 +1022,8 @@ namespace PannelloCharger
             }
 
         }
+
+
 
 
         public bool RefreshTestata(string IdApparato, LogicheBase Logiche, bool SerialeCollegata)
@@ -9643,6 +9656,7 @@ namespace PannelloCharger
             try
             {
 
+                // This ONLY works if you set your tab control's DrawMode to OwnerDrawFixed - the DrawItem event never fires if it's set to Normal.
 
 
                 Graphics g = e.Graphics;
@@ -10255,13 +10269,6 @@ namespace PannelloCharger
 
         }
 
-
-
-
-
-
-
-
         private void txtMemAddrR_TextChanged(object sender, EventArgs e)
         {
 
@@ -10362,7 +10369,17 @@ namespace PannelloCharger
                     if ((_mbProfiloCarica)cmbPaProfilo.SelectedItem != null)
                     {
                         string Grafico = (string)((_mbProfiloCarica)cmbPaProfilo.SelectedItem).Grafico;
-                        if (Grafico == "")
+                        int LivelloCorrente;
+                        if (_logiche.currentUser != null)
+                        {
+                            LivelloCorrente = _logiche.currentUser.livello;
+                        }
+                        else
+                        {
+                            LivelloCorrente = 99;
+                        }
+
+                        if (Grafico == "" || LivelloCorrente > 1)
                         {
                             var myImage = new Bitmap(Properties.Resources.lade_light_INTEGRATED);
                             picPaImmagineProfilo.BackColor = Color.White;
@@ -10376,8 +10393,6 @@ namespace PannelloCharger
                             picPaImmagineProfilo.BackColor = Color.White;
                             picPaImmagineProfilo.Image = myImage;
                             picPaImmagineProfilo.SizeMode = PictureBoxSizeMode.Zoom;
-
-
                         }
                     }
 
@@ -10579,7 +10594,7 @@ namespace PannelloCharger
 
                         _sb.ModCicloCorrente.CalcolaOpportunityChg(0x0F0F, _sb.ModCicloCorrente.Tensione, _sb.ModCicloCorrente.Capacita, _sb.CbAttivo);
                         AssegnaOppCCorrente();
-
+                        rslPaOppFinestra.Enabled = true;
                         btnPaSalvaDati.Enabled = true;
                         ProfiloInCaricamento = false;
 
@@ -10589,7 +10604,7 @@ namespace PannelloCharger
                         ProfiloInCaricamento = true;
                         _sb.ModCicloCorrente.CalcolaOpportunityChg(0, 0, 0, null);
                         AssegnaOppCCorrente();
-
+                        rslPaOppFinestra.Enabled = false;
                         btnPaSalvaDati.Enabled = true;
                         ProfiloInCaricamento = false;
 
@@ -10998,6 +11013,56 @@ namespace PannelloCharger
             }
 
             this.Cursor = Cursors.Default;
+        }
+
+        private void tbcPaSchedeValori_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            try
+            {
+                // This ONLY works if you set your tab control's DrawMode to OwnerDrawFixed - the DrawItem event never fires if it's set to Normal.
+
+
+                Graphics g = e.Graphics;
+                Brush _TextBrush;
+
+                // Get the item from the collection.
+                TabPage _TabPage = tbcPaSchedeValori.TabPages[e.Index];
+
+                // Get the real bounds for the tab rectangle.
+                Rectangle _TabBounds = tbcPaSchedeValori.GetTabRect(e.Index);
+
+                // Use our own font. Because we CAN.
+                Font _TabFont;
+
+                if (e.State == DrawItemState.Selected)
+                {
+                    // Draw a different background color, and don't paint a focus rectangle.
+                    _TextBrush = new SolidBrush(Color.White);
+                    g.FillRectangle(Brushes.DarkGray, e.Bounds);
+                    _TabFont = new Font(e.Font.FontFamily, (float)11, FontStyle.Bold, GraphicsUnit.Pixel);
+                }
+                else
+                {
+                    _TextBrush = new System.Drawing.SolidBrush(e.ForeColor);
+                    _TabFont = new Font(e.Font.FontFamily, (float)11, FontStyle.Regular, GraphicsUnit.Pixel);
+                    // e.DrawBackground();
+                }
+
+                //Font fnt = new Font(e.Font.FontFamily, (float)7.5, FontStyle.Bold);
+
+                // Draw string. Center the text.
+                StringFormat _StringFlags = new StringFormat();
+                _StringFlags.Alignment = StringAlignment.Center;
+                _StringFlags.LineAlignment = StringAlignment.Center;
+                g.DrawString(tbcPaSchedeValori.TabPages[e.Index].Text, _TabFont, _TextBrush, _TabBounds, new StringFormat(_StringFlags));
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("tbcPaSchedeValori_DrawItem: " + Ex.Message);
+
+            }
         }
     }
 }

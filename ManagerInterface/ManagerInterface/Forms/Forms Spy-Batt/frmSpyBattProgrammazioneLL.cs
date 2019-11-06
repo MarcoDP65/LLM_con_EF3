@@ -80,6 +80,140 @@ namespace PannelloCharger
             }
         }
 
+        public bool ApplicaAutorizzazioniSchedaLL(int LivelloCorrente)
+        {
+            try
+            {
+
+                switch (LivelloCorrente)
+                {
+                    case 0:
+                        chkPaUsaSpyBatt.Visible = true;
+                        lblPaUsaSpybatt.Visible = true;
+                        txtPaCassone.Visible = true;
+                        lblPaCassone.Visible = true;
+                        txtPaIdSetup.Visible = true;
+                        lblPaIdSetup.Visible = true;
+                        btnCicloCorrente.Visible = true;
+                        btnCancellaCicloCorrente.Visible = true;
+                        btnPaProfileRefresh.Visible = true;
+                        btnPaSalvaDati.Visible = true;
+                        chkPaSbloccaValori.Visible = true;
+                        lblPaSbloccaValori.Visible = true;
+                        break;
+                    case 1:
+                        chkPaUsaSpyBatt.Visible = true;
+                        lblPaUsaSpybatt.Visible = true;
+                        txtPaCassone.Visible = true;
+                        lblPaCassone.Visible = true;
+                        txtPaIdSetup.Visible = true;
+                        lblPaIdSetup.Visible = true;
+                        btnCicloCorrente.Visible = true;
+                        btnCancellaCicloCorrente.Visible = true;
+                        btnPaProfileRefresh.Visible = true;
+                        btnPaSalvaDati.Visible = true;
+                        chkPaSbloccaValori.Visible = false;
+                        lblPaSbloccaValori.Visible = false;
+                        break;
+                    case 2:
+                        chkPaUsaSpyBatt.Visible = false;
+                        lblPaUsaSpybatt.Visible = false;
+                        txtPaCassone.Visible = false;
+                        lblPaCassone.Visible = false;
+                        txtPaIdSetup.Visible = false;
+                        lblPaIdSetup.Visible = false;
+                        btnCicloCorrente.Visible = true;
+                        btnCancellaCicloCorrente.Visible = false;
+                        btnPaProfileRefresh.Visible = false;
+                        btnPaSalvaDati.Visible = true;
+                        chkPaSbloccaValori.Visible = false;
+                        lblPaSbloccaValori.Visible = false;
+                        lblPaOppVSoglia.Visible = false;
+                        txtPaOppVSoglia.Visible = false;
+                        txtPaOppDurataMax.Visible = false;
+                        lblPaOppDurataMax.Visible = false;
+
+                        break;
+                    case 3:
+                        chkPaUsaSpyBatt.Visible = false;
+                        lblPaUsaSpybatt.Visible = false;
+                        txtPaCassone.Visible = false;
+                        lblPaCassone.Visible = false;
+                        txtPaIdSetup.Visible = false;
+                        lblPaIdSetup.Visible = false;
+                        btnCicloCorrente.Visible = false;
+                        btnCancellaCicloCorrente.Visible = false;
+                        btnPaProfileRefresh.Visible = false;
+                        btnPaSalvaDati.Visible = false;
+                        txtPaOppDurataMax.Visible = false;
+                        lblPaOppDurataMax.Visible = false;
+                        chkPaSbloccaValori.Visible = false;
+                        lblPaSbloccaValori.Visible = false;
+                        lblPaOppVSoglia.Visible = false;
+                        txtPaOppVSoglia.Visible = false;
+                        break;
+                    default:
+                        chkPaUsaSpyBatt.Visible = false;
+                        lblPaUsaSpybatt.Visible = false;
+                        txtPaCassone.Visible = false;
+                        lblPaCassone.Visible = false;
+                        txtPaIdSetup.Visible = false;
+                        lblPaIdSetup.Visible = false;
+                        btnCicloCorrente.Visible = false;
+                        btnCancellaCicloCorrente.Visible = false;
+                        btnPaProfileRefresh.Visible = false;
+                        btnPaSalvaDati.Visible = false;
+                        chkPaSbloccaValori.Visible = false;
+                        lblPaSbloccaValori.Visible = false;
+                        txtPaOppDurataMax.Visible = false;
+                        lblPaOppDurataMax.Visible = false;
+                        lblPaOppVSoglia.Visible = false;
+                        txtPaOppVSoglia.Visible = false;
+                        break;
+                }
+
+                //  se liv > 1 tolgo tutte le tab tranne opportunity
+                if (LivelloCorrente > 1)
+                {
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaGeneraleCiclo);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaGeneraleCiclo);
+
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaPCStep0);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaPCStep0);
+
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaPCStep1);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaPCStep1);
+
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaPCStep2);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaPCStep2);
+
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaPCStep3);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaPCStep3);
+                    
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaPCEqual);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaPCEqual);
+
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaPCMant);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaPCMant);
+
+                    PaSchedeValoriNascoste.TabPages.Add(tbpPaParSoglia);
+                    tbcPaSchedeValori.TabPages.Remove(tbpPaParSoglia);
+
+                }
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("ApplicaAutorizzazioniSchedaLL: " + ex.Message, ex);
+                return false;
+            }
+        }
+
+
+
+
         public bool AggiornaSelezioneProfili( )
         {
             try
@@ -684,6 +818,8 @@ namespace PannelloCharger
 
                 OppNotturno((_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio >= _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine));
 
+                
+
                 return true;
             }
             catch
@@ -945,6 +1081,7 @@ namespace PannelloCharger
                     _mbProfiloCarica tmpPC = (_mbProfiloCarica)(cmbPaProfilo.SelectedItem);
                     if (_sb.ModCicloCorrente.Profilo.IdProfiloCaricaLL != tmpPC.IdProfiloCaricaLL) return false;
                 }
+
                 else
                 {
                     // Non ho un profilo attivo. mi fermo quì

@@ -496,7 +496,7 @@ namespace ChargerLogic
         }
 
 
-        public CaricaBatteria(ref parametriSistema parametri)
+        public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente)
         {
 
             try
@@ -512,7 +512,7 @@ namespace ChargerLogic
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
 
-                DatiCliente = new llDatiCliente();
+                DatiCliente = new llDatiCliente(dbCorrente);
                 DatiBase = new DatiConfigCariche();
                 //InizializzaDatiLocali();
 

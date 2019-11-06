@@ -9112,13 +9112,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="lblPaUsaSafety.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 13</value>
+    <value>102, 13</value>
   </data>
   <data name="lblPaUsaSafety.TabIndex" type="System.Int32, mscorlib">
     <value>144</value>
   </data>
   <data name="lblPaUsaSafety.Text" xml:space="preserve">
-    <value>Attiva contatto SAFETY</value>
+    <value>Attiva SAFE-OFF</value>
   </data>
   <data name="&gt;&gt;lblPaUsaSafety.Name" xml:space="preserve">
     <value>lblPaUsaSafety</value>
@@ -9390,40 +9390,40 @@
   <data name="&gt;&gt;txtPaCassone.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label305.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblPaCassone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label305.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPaCassone.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
-  <data name="label305.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblPaCassone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label305.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblPaCassone.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 81</value>
   </data>
-  <data name="label305.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="lblPaCassone.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
-  <data name="label305.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblPaCassone.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
   </data>
-  <data name="label305.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblPaCassone.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
   </data>
-  <data name="label305.Text" xml:space="preserve">
+  <data name="lblPaCassone.Text" xml:space="preserve">
     <value>Cassone</value>
   </data>
-  <data name="&gt;&gt;label305.Name" xml:space="preserve">
-    <value>label305</value>
+  <data name="&gt;&gt;lblPaCassone.Name" xml:space="preserve">
+    <value>lblPaCassone</value>
   </data>
-  <data name="&gt;&gt;label305.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblPaCassone.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label305.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblPaCassone.Parent" xml:space="preserve">
     <value>tbpPaGeneraleCiclo</value>
   </data>
-  <data name="&gt;&gt;label305.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPaCassone.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="txtPaIdSetup.Font" type="System.Drawing.Font, System.Drawing">
@@ -11487,37 +11487,37 @@
   <data name="&gt;&gt;txtPaOppDurataMax.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label337.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblPaOppDurataMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label337.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblPaOppDurataMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label337.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblPaOppDurataMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>409, 26</value>
   </data>
-  <data name="label337.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="lblPaOppDurataMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
-  <data name="label337.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblPaOppDurataMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
   </data>
-  <data name="label337.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblPaOppDurataMax.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
   </data>
-  <data name="label337.Text" xml:space="preserve">
+  <data name="lblPaOppDurataMax.Text" xml:space="preserve">
     <value>Durata Max (Min)</value>
   </data>
-  <data name="&gt;&gt;label337.Name" xml:space="preserve">
-    <value>label337</value>
+  <data name="&gt;&gt;lblPaOppDurataMax.Name" xml:space="preserve">
+    <value>lblPaOppDurataMax</value>
   </data>
-  <data name="&gt;&gt;label337.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblPaOppDurataMax.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label337.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblPaOppDurataMax.Parent" xml:space="preserve">
     <value>tbpPaPCOpp</value>
   </data>
-  <data name="&gt;&gt;label337.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPaOppDurataMax.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="txtPaOppCorrente.Font" type="System.Drawing.Font, System.Drawing">
@@ -11613,37 +11613,37 @@
   <data name="&gt;&gt;txtPaOppVSoglia.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="label339.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblPaOppVSoglia.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label339.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblPaOppVSoglia.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label339.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblPaOppVSoglia.Location" type="System.Drawing.Point, System.Drawing">
     <value>511, 23</value>
   </data>
-  <data name="label339.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="lblPaOppVSoglia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
-  <data name="label339.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblPaOppVSoglia.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 13</value>
   </data>
-  <data name="label339.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblPaOppVSoglia.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
   </data>
-  <data name="label339.Text" xml:space="preserve">
+  <data name="lblPaOppVSoglia.Text" xml:space="preserve">
     <value>Tensione (V/el)</value>
   </data>
-  <data name="&gt;&gt;label339.Name" xml:space="preserve">
-    <value>label339</value>
+  <data name="&gt;&gt;lblPaOppVSoglia.Name" xml:space="preserve">
+    <value>lblPaOppVSoglia</value>
   </data>
-  <data name="&gt;&gt;label339.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblPaOppVSoglia.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label339.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblPaOppVSoglia.Parent" xml:space="preserve">
     <value>tbpPaPCOpp</value>
   </data>
-  <data name="&gt;&gt;label339.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPaOppVSoglia.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
   <data name="txtPaOppOraFine.Font" type="System.Drawing.Font, System.Drawing">
@@ -12463,13 +12463,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label348.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+    <value>65, 17</value>
   </data>
   <data name="label348.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
   </data>
   <data name="label348.Text" xml:space="preserve">
-    <value>Tipo Batteria</value>
+    <value>Batteria</value>
   </data>
   <data name="&gt;&gt;label348.Name" xml:space="preserve">
     <value>label348</value>
@@ -12532,13 +12532,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="lblPaAttivaEqual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 13</value>
+    <value>91, 13</value>
   </data>
   <data name="lblPaAttivaEqual.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
   </data>
   <data name="lblPaAttivaEqual.Text" xml:space="preserve">
-    <value>Equalizzazione Finale</value>
+    <value>Equalizzazione</value>
   </data>
   <data name="&gt;&gt;lblPaAttivaEqual.Name" xml:space="preserve">
     <value>lblPaAttivaEqual</value>
@@ -12585,40 +12585,40 @@
   <data name="&gt;&gt;chkPaUsaSpyBatt.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="label349.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblPaUsaSpybatt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label349.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPaUsaSpybatt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt, style=Bold</value>
   </data>
-  <data name="label349.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblPaUsaSpybatt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label349.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblPaUsaSpybatt.Location" type="System.Drawing.Point, System.Drawing">
     <value>35, 440</value>
   </data>
-  <data name="label349.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="lblPaUsaSpybatt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
-  <data name="label349.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 13</value>
+  <data name="lblPaUsaSpybatt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 13</value>
   </data>
-  <data name="label349.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblPaUsaSpybatt.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="label349.Text" xml:space="preserve">
-    <value>Usa SPY-BATT / TOKEN</value>
+  <data name="lblPaUsaSpybatt.Text" xml:space="preserve">
+    <value>Usa SPY-BATT / ID-BATT</value>
   </data>
-  <data name="&gt;&gt;label349.Name" xml:space="preserve">
-    <value>label349</value>
+  <data name="&gt;&gt;lblPaUsaSpybatt.Name" xml:space="preserve">
+    <value>lblPaUsaSpybatt</value>
   </data>
-  <data name="&gt;&gt;label349.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblPaUsaSpybatt.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label349.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblPaUsaSpybatt.Parent" xml:space="preserve">
     <value>grbCicloCorrente</value>
   </data>
-  <data name="&gt;&gt;label349.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPaUsaSpybatt.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
   <data name="btnPaSalvaDati.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -12892,7 +12892,7 @@
     <value>18</value>
   </data>
   <data name="tbpProfiloLLPro.Text" xml:space="preserve">
-    <value>Profilo LADE-LIGHT</value>
+    <value>Profilo di Carica</value>
   </data>
   <data name="&gt;&gt;tbpProfiloLLPro.Name" xml:space="preserve">
     <value>tbpProfiloLLPro</value>
@@ -14038,7 +14038,7 @@
     <value>pannelloTurno1</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Type" xml:space="preserve">
-    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=3.2.1.9, Culture=neutral, PublicKeyToken=null</value>
+    <value>PannelloCharger.PannelloTurno, LADELIGHT Manager, Version=3.2.1.12, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannelloTurno1.Parent" xml:space="preserve">
     <value>tlpGrigliaTurni</value>
@@ -37341,5 +37341,8 @@ SPY-BATT</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label337.Text" xml:space="preserve">
+    <value>Durata Max (Min)</value>
   </data>
 </root>

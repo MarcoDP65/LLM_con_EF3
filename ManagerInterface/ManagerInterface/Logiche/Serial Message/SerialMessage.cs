@@ -2146,8 +2146,6 @@ namespace ChargerLogic
 
         public static byte[] StringToArray(string source, int ArrayLen)
         {
-            string _tempString = "";
-        
 
             try
             {

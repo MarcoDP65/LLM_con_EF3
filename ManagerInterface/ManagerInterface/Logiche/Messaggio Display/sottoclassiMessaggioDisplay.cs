@@ -31,8 +31,6 @@ namespace ChargerLogic
 
                 byte[] _risposta;
                 int startByte = 0;
-                ushort _tempShort;
-                byte _tempByte;
 
                 try
                 {

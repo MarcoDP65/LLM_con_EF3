@@ -905,9 +905,6 @@ namespace MoriData
                     return DateTime.MinValue;
                 }
 
-
-                return DateTime.Now;
-
             }
         }
 

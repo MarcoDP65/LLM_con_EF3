@@ -54,9 +54,9 @@ namespace ChargerLogic
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x01, NomeProfilo = "IWa", DurataFase2 = 100, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 1, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x02, NomeProfilo = "IU", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 1, FlagLitio = 0, Ordine = 2, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, Grafico = "IU650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x03, NomeProfilo = "IUIa", DurataFase2 = 100, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 3, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, Grafico = "IUIa650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x04, NomeProfilo = "IWa Pb13", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 4, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x05, NomeProfilo = "IWa Pb11", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 5, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x06, NomeProfilo = "IWa Pb8", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 6, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x04, NomeProfilo = "Pb13h", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 4, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x05, NomeProfilo = "Pb11h", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 5, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x06, NomeProfilo = "Pb8h", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 6, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, Grafico = "IUIa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x08, NomeProfilo = "IWa Pb13 Equal", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x09, NomeProfilo = "IWa Pb11 Equal", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 9, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
@@ -72,8 +72,8 @@ namespace ChargerLogic
 
             ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x0000, SortOrder = 0, BatteryType = "N.D.", DivisoreCelle = 200, StandardChargeProfile = 0x00 ,OldBatteryTypeId = 0x00,TensioniFisse = 0});
             ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x1001, SortOrder = 1, BatteryType = "Batteria standard Pb/Lead", DivisoreCelle = 200, StandardChargeProfile = 0x04, OldBatteryTypeId = 0x71, TensioniFisse = 1});
-            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x2001, SortOrder = 2, BatteryType = "Batteria standard GEL", DivisoreCelle = 200, StandardChargeProfile = 0x02, OldBatteryTypeId = 0x72, TensioniFisse = 1 });
-            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x3001, SortOrder = 3, BatteryType = "Batteria standard Litio", DivisoreCelle = 0, StandardChargeProfile = 0x03, OldBatteryTypeId = 0x73, TensioniFisse = 0 });
+            // ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x2001, SortOrder = 2, BatteryType = "Batteria standard GEL", DivisoreCelle = 200, StandardChargeProfile = 0x02, OldBatteryTypeId = 0x72, TensioniFisse = 1 });
+            // ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x3001, SortOrder = 3, BatteryType = "Batteria standard Litio", DivisoreCelle = 0, StandardChargeProfile = 0x03, OldBatteryTypeId = 0x73, TensioniFisse = 0 });
 
             return true;
         }

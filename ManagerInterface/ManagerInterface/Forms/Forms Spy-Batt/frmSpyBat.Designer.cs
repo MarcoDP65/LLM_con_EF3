@@ -325,7 +325,7 @@
             this.tbcPaSchedeValori = new System.Windows.Forms.TabControl();
             this.tbpPaGeneraleCiclo = new System.Windows.Forms.TabPage();
             this.txtPaCassone = new System.Windows.Forms.TextBox();
-            this.label305 = new System.Windows.Forms.Label();
+            this.lblPaCassone = new System.Windows.Forms.Label();
             this.txtPaIdSetup = new System.Windows.Forms.TextBox();
             this.lblPaIdSetup = new System.Windows.Forms.Label();
             this.txtPaNomeSetup = new System.Windows.Forms.TextBox();
@@ -391,11 +391,11 @@
             this.chkPaOppNotturno = new System.Windows.Forms.CheckBox();
             this.rslPaOppFinestra = new Syncfusion.Windows.Forms.Tools.RangeSlider();
             this.txtPaOppDurataMax = new System.Windows.Forms.TextBox();
-            this.label337 = new System.Windows.Forms.Label();
+            this.lblPaOppDurataMax = new System.Windows.Forms.Label();
             this.txtPaOppCorrente = new System.Windows.Forms.TextBox();
             this.label338 = new System.Windows.Forms.Label();
             this.txtPaOppVSoglia = new System.Windows.Forms.TextBox();
-            this.label339 = new System.Windows.Forms.Label();
+            this.lblPaOppVSoglia = new System.Windows.Forms.Label();
             this.txtPaOppOraFine = new System.Windows.Forms.TextBox();
             this.lblPaOppOraFine = new System.Windows.Forms.Label();
             this.txtPaOppOraInizio = new System.Windows.Forms.TextBox();
@@ -424,7 +424,7 @@
             this.chkPaAttivaEqual = new System.Windows.Forms.CheckBox();
             this.lblPaAttivaEqual = new System.Windows.Forms.Label();
             this.chkPaUsaSpyBatt = new System.Windows.Forms.CheckBox();
-            this.label349 = new System.Windows.Forms.Label();
+            this.lblPaUsaSpybatt = new System.Windows.Forms.Label();
             this.btnPaSalvaDati = new System.Windows.Forms.Button();
             this.label350 = new System.Windows.Forms.Label();
             this.cmbPaProfilo = new System.Windows.Forms.ComboBox();
@@ -3310,7 +3310,7 @@
             this.grbCicloCorrente.Controls.Add(this.chkPaAttivaEqual);
             this.grbCicloCorrente.Controls.Add(this.lblPaAttivaEqual);
             this.grbCicloCorrente.Controls.Add(this.chkPaUsaSpyBatt);
-            this.grbCicloCorrente.Controls.Add(this.label349);
+            this.grbCicloCorrente.Controls.Add(this.lblPaUsaSpybatt);
             this.grbCicloCorrente.Controls.Add(this.btnPaSalvaDati);
             this.grbCicloCorrente.Controls.Add(this.label350);
             this.grbCicloCorrente.Controls.Add(this.cmbPaProfilo);
@@ -3331,6 +3331,7 @@
             // 
             // cmbPaTipoLadeLight
             // 
+            this.cmbPaTipoLadeLight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cmbPaTipoLadeLight, "cmbPaTipoLadeLight");
             this.cmbPaTipoLadeLight.FormattingEnabled = true;
             this.cmbPaTipoLadeLight.Name = "cmbPaTipoLadeLight";
@@ -3428,11 +3429,12 @@
             resources.ApplyResources(this.tbcPaSchedeValori, "tbcPaSchedeValori");
             this.tbcPaSchedeValori.Name = "tbcPaSchedeValori";
             this.tbcPaSchedeValori.SelectedIndex = 0;
+            this.tbcPaSchedeValori.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tbcPaSchedeValori_DrawItem);
             // 
             // tbpPaGeneraleCiclo
             // 
             this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaCassone);
-            this.tbpPaGeneraleCiclo.Controls.Add(this.label305);
+            this.tbpPaGeneraleCiclo.Controls.Add(this.lblPaCassone);
             this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaIdSetup);
             this.tbpPaGeneraleCiclo.Controls.Add(this.lblPaIdSetup);
             this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaNomeSetup);
@@ -3446,10 +3448,10 @@
             resources.ApplyResources(this.txtPaCassone, "txtPaCassone");
             this.txtPaCassone.Name = "txtPaCassone";
             // 
-            // label305
+            // lblPaCassone
             // 
-            resources.ApplyResources(this.label305, "label305");
-            this.label305.Name = "label305";
+            resources.ApplyResources(this.lblPaCassone, "lblPaCassone");
+            this.lblPaCassone.Name = "lblPaCassone";
             // 
             // txtPaIdSetup
             // 
@@ -3825,11 +3827,11 @@
             this.tbpPaPCOpp.Controls.Add(this.chkPaOppNotturno);
             this.tbpPaPCOpp.Controls.Add(this.rslPaOppFinestra);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppDurataMax);
-            this.tbpPaPCOpp.Controls.Add(this.label337);
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppDurataMax);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppCorrente);
             this.tbpPaPCOpp.Controls.Add(this.label338);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppVSoglia);
-            this.tbpPaPCOpp.Controls.Add(this.label339);
+            this.tbpPaPCOpp.Controls.Add(this.lblPaOppVSoglia);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppOraFine);
             this.tbpPaPCOpp.Controls.Add(this.lblPaOppOraFine);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppOraInizio);
@@ -3877,10 +3879,10 @@
             resources.ApplyResources(this.txtPaOppDurataMax, "txtPaOppDurataMax");
             this.txtPaOppDurataMax.Name = "txtPaOppDurataMax";
             // 
-            // label337
+            // lblPaOppDurataMax
             // 
-            resources.ApplyResources(this.label337, "label337");
-            this.label337.Name = "label337";
+            resources.ApplyResources(this.lblPaOppDurataMax, "lblPaOppDurataMax");
+            this.lblPaOppDurataMax.Name = "lblPaOppDurataMax";
             // 
             // txtPaOppCorrente
             // 
@@ -3897,10 +3899,10 @@
             resources.ApplyResources(this.txtPaOppVSoglia, "txtPaOppVSoglia");
             this.txtPaOppVSoglia.Name = "txtPaOppVSoglia";
             // 
-            // label339
+            // lblPaOppVSoglia
             // 
-            resources.ApplyResources(this.label339, "label339");
-            this.label339.Name = "label339";
+            resources.ApplyResources(this.lblPaOppVSoglia, "lblPaOppVSoglia");
+            this.lblPaOppVSoglia.Name = "lblPaOppVSoglia";
             // 
             // txtPaOppOraFine
             // 
@@ -4038,6 +4040,7 @@
             // 
             // cmbPaTipoBatteria
             // 
+            this.cmbPaTipoBatteria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cmbPaTipoBatteria, "cmbPaTipoBatteria");
             this.cmbPaTipoBatteria.FormattingEnabled = true;
             this.cmbPaTipoBatteria.Name = "cmbPaTipoBatteria";
@@ -4070,11 +4073,11 @@
             this.chkPaUsaSpyBatt.Name = "chkPaUsaSpyBatt";
             this.chkPaUsaSpyBatt.UseVisualStyleBackColor = true;
             // 
-            // label349
+            // lblPaUsaSpybatt
             // 
-            resources.ApplyResources(this.label349, "label349");
-            this.label349.ForeColor = System.Drawing.Color.Red;
-            this.label349.Name = "label349";
+            resources.ApplyResources(this.lblPaUsaSpybatt, "lblPaUsaSpybatt");
+            this.lblPaUsaSpybatt.ForeColor = System.Drawing.Color.Red;
+            this.lblPaUsaSpybatt.Name = "lblPaUsaSpybatt";
             // 
             // btnPaSalvaDati
             // 
@@ -4091,6 +4094,8 @@
             // 
             // cmbPaProfilo
             // 
+            this.cmbPaProfilo.BackColor = System.Drawing.Color.White;
+            this.cmbPaProfilo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cmbPaProfilo, "cmbPaProfilo");
             this.cmbPaProfilo.FormattingEnabled = true;
             this.cmbPaProfilo.Name = "cmbPaProfilo";
@@ -10557,7 +10562,7 @@
         private System.Windows.Forms.TabControl tbcPaSchedeValori;
         private System.Windows.Forms.TabPage tbpPaGeneraleCiclo;
         private System.Windows.Forms.TextBox txtPaCassone;
-        private System.Windows.Forms.Label label305;
+        private System.Windows.Forms.Label lblPaCassone;
         private System.Windows.Forms.TextBox txtPaIdSetup;
         private System.Windows.Forms.Label lblPaIdSetup;
         private System.Windows.Forms.TextBox txtPaNomeSetup;
@@ -10623,11 +10628,11 @@
         private System.Windows.Forms.CheckBox chkPaOppNotturno;
         private Syncfusion.Windows.Forms.Tools.RangeSlider rslPaOppFinestra;
         private System.Windows.Forms.TextBox txtPaOppDurataMax;
-        private System.Windows.Forms.Label label337;
+        private System.Windows.Forms.Label lblPaOppDurataMax;
         private System.Windows.Forms.TextBox txtPaOppCorrente;
         private System.Windows.Forms.Label label338;
         private System.Windows.Forms.TextBox txtPaOppVSoglia;
-        private System.Windows.Forms.Label label339;
+        private System.Windows.Forms.Label lblPaOppVSoglia;
         private System.Windows.Forms.TextBox txtPaOppOraFine;
         private System.Windows.Forms.Label lblPaOppOraFine;
         private System.Windows.Forms.TextBox txtPaOppOraInizio;
@@ -10656,7 +10661,7 @@
         private System.Windows.Forms.CheckBox chkPaAttivaEqual;
         private System.Windows.Forms.Label lblPaAttivaEqual;
         private System.Windows.Forms.CheckBox chkPaUsaSpyBatt;
-        private System.Windows.Forms.Label label349;
+        private System.Windows.Forms.Label lblPaUsaSpybatt;
         private System.Windows.Forms.Button btnPaSalvaDati;
         private System.Windows.Forms.Label label350;
         private System.Windows.Forms.ComboBox cmbPaProfilo;

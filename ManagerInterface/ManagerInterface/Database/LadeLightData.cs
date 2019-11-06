@@ -456,47 +456,6 @@ namespace MoriData
                     _mappaLocale.datiValidi = true;
                     break;
                 case 1:
-                case 2:
-                    _mappaLocale.Testata = new ElementoMemoria { StartAddress = 0x00, ElemetSize = 64, NoOfElemets = 1, ExtraMem = 0, EndAddress = 0x003F };
-                    _mappaLocale.DatiCliente = new ElementoMemoria { StartAddress = 0x40, ElemetSize = 256, NoOfElemets = 4, ExtraMem = 0, EndAddress = 0x043F };
-                    _mappaLocale.Programmazioni = new ElementoMemoria { StartAddress = 0x440, ElemetSize = 128, NoOfElemets = 23, ExtraMem = 0, EndAddress = 0x1FFF };
-                    _mappaLocale.MemLunga = new ElementoMemoria { StartAddress = 0x134000, ElemetSize = 51, NoOfElemets = 14677, ExtraMem = 0, EndAddress = 0x1DFFFF };
-                    _mappaLocale.MemBreve = new ElementoMemoria { StartAddress = 0x2000, ElemetSize = 26, NoOfElemets = 48049, ExtraMem = 0, EndAddress = 0x133FFF };
-                    _mappaLocale.datiValidi = true;
-                    break;
-
-                case 3:
-                    _mappaLocale.Testata = new ElementoMemoria { StartAddress = 0x00, ElemetSize = 64, NoOfElemets = 1, ExtraMem = 3996, EndAddress = 0x0FFF };
-                    _mappaLocale.DatiCliente = new ElementoMemoria { StartAddress = 0x1000, ElemetSize = 240, NoOfElemets = 4, ExtraMem = 0, EndAddress = 0x043F };
-                    _mappaLocale.Programmazioni = new ElementoMemoria { StartAddress = 0x1400, ElemetSize = 128, NoOfElemets = 23, ExtraMem = 0, EndAddress = 0x1FFF };
-                    _mappaLocale.MemLunga = new ElementoMemoria { StartAddress = 0x130000, ElemetSize = 51, NoOfElemets = 13818, ExtraMem = 0, EndAddress = 0x1DFFFF };
-                    _mappaLocale.MemBreve = new ElementoMemoria { StartAddress = 0x3000, ElemetSize = 26, NoOfElemets = 1, ExtraMem = 0, EndAddress = 0x133FFF };
-                    _mappaLocale.datiValidi = true;
-                    break;
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                    _mappaLocale.Testata = new ElementoMemoria { StartAddress = 0x00, ElemetSize = 64, NoOfElemets = 1, ExtraMem = 3996, EndAddress = 0x0FFF };
-                    _mappaLocale.DatiCliente = new ElementoMemoria { StartAddress = 0x1000, ElemetSize = 240, NoOfElemets = 4, ExtraMem = 0, EndAddress = 0x043F };
-                    _mappaLocale.Programmazioni = new ElementoMemoria { StartAddress = 0x1400, ElemetSize = 128, NoOfElemets = 23, ExtraMem = 0, EndAddress = 0x1FFF };
-                    _mappaLocale.MemLunga = new ElementoMemoria { StartAddress = 0x130000, ElemetSize = 57, NoOfElemets = 12359, ExtraMem = 0, EndAddress = 0x1DC000 };
-                    _mappaLocale.MemBreve = new ElementoMemoria { StartAddress = 0x3000, ElemetSize = 26, NoOfElemets = 1, ExtraMem = 0, EndAddress = 0x133FFF };
-                    _mappaLocale.datiValidi = true;
-                    break;
-
-                case 99:
-                    _mappaLocale.Testata = new ElementoMemoria { StartAddress = 0x00, ElemetSize = 64, NoOfElemets = 1, ExtraMem = 3996, EndAddress = 0x0FFF };
-                    _mappaLocale.DatiCliente = new ElementoMemoria { StartAddress = 0x1024, ElemetSize = 240, NoOfElemets = 4, ExtraMem = 0, EndAddress = 0x043F };
-                    _mappaLocale.Programmazioni = new ElementoMemoria { StartAddress = 0x142C, ElemetSize = 128, NoOfElemets = 23, ExtraMem = 0, EndAddress = 0x1FFF };
-                    _mappaLocale.MemLunga = new ElementoMemoria { StartAddress = 0x13694E, ElemetSize = 51, NoOfElemets = 13818, ExtraMem = 0, EndAddress = 0x1DFFFF };
-                    _mappaLocale.MemBreve = new ElementoMemoria { StartAddress = 0x3068, ElemetSize = 26, NoOfElemets = 1, ExtraMem = 0, EndAddress = 0x133FFF };
-                    _mappaLocale.datiValidi = true;
-                    break;
 
                 default:
                     _mappaLocale.datiValidi = false;
@@ -512,26 +471,26 @@ namespace MoriData
             try
             {
                 SQLiteCommand CancellaRecord;
-                int esito;
+                int esito = 0;
                 Log.Debug("Cancella Apparato ------------------------ ");
                 // Cliente
-                CancellaRecord = _database.CreateCommand("delete from _sbDatiCliente where IdApparato = ? ", IdApparato);
-                esito = CancellaRecord.ExecuteNonQuery();
+                // CancellaRecord = _database.CreateCommand("delete from _sbDatiCliente where IdApparato = ? ", IdApparato);
+                //esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Cliente: " + esito.ToString());
 
                 // Programmazioni
-                CancellaRecord = _database.CreateCommand("delete from _sbProgrammaRicarica where IdApparato = ? ", IdApparato);
-                esito = CancellaRecord.ExecuteNonQuery();
+                // CancellaRecord = _database.CreateCommand("delete from _sbProgrammaRicarica where IdApparato = ? ", IdApparato);
+                // esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Programmazioni: " + esito.ToString());
 
                 // Cicli Brevi
-                CancellaRecord = _database.CreateCommand("delete from _sbMemBreve where IdApparato = ? ", IdApparato);
-                esito = CancellaRecord.ExecuteNonQuery();
+                // CancellaRecord = _database.CreateCommand("delete from _sbMemBreve where IdApparato = ? ", IdApparato);
+                // esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Brevi: " + esito.ToString());
 
                 // Cicli Lunghi
-                CancellaRecord = _database.CreateCommand("delete from _sbMemLunga where IdApparato = ? ", IdApparato);
-                esito = CancellaRecord.ExecuteNonQuery();
+                // CancellaRecord = _database.CreateCommand("delete from _sbMemLunga where IdApparato = ? ", IdApparato);
+                // esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Lunghi: " + esito.ToString());
 
                 //Apparato
