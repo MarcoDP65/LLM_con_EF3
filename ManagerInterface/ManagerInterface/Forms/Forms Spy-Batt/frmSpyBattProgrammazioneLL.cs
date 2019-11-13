@@ -250,33 +250,14 @@ namespace PannelloCharger
                     cmbPaProfilo.DisplayMember = "NomeProfilo";
                     cmbPaProfilo.SelectedItem = profiloDefault;
 
-                    //--- non ativo su spybatt
-                    // Carico le tensioni in base al tipo e verifico che la tensione impostata sia valida
-                    //byte TipoApp = _sb.CbAttivo.IdModelloLL;
-                    //var Listatens = from t in _sb.DatiBase.TensioniBatteria
-                    //                join tm in _sb.DatiBase.TensioniModello on t.IdTensione equals tm.IdTensione
-                    //                where ( tm.IdModelloLL == TipoApp )
-                    //                && ( t.IdTensione == _sb.ProgrammaCorrente.BatteryVdef )
-                    //                select t;
 
-                    //if (Listatens.Count() != 1)
-                    //{
-                        // NON VALIDO
-
-
-                    //}
-                    //else
-                    //{
-                        txtPaTensione.Text = FunzioniMR.StringaTensione(_sb.ProgrammaCorrente.BatteryVdef);
-                        txtPaTensione.ReadOnly = true;
-                        txtPaNumCelle.Text = _sb.ProgrammaCorrente.BatteryCells.ToString();
-                        txtPaNumCelle.ReadOnly = true;
-                        txtPaCapacita.Text = FunzioniMR.StringaCapacitaUint(_sb.ProgrammaCorrente.BatteryAhdef,10,0);
-                        txtPaCapacita.ReadOnly = true;
-                    //}
-
-
-
+                    txtPaTensione.Text = FunzioniMR.StringaTensione(_sb.ProgrammaCorrente.BatteryVdef);
+                    txtPaTensione.ReadOnly = true;
+                    txtPaNumCelle.Text = _sb.ProgrammaCorrente.BatteryCells.ToString();
+                    txtPaNumCelle.ReadOnly = true;
+                    txtPaCapacita.Text = FunzioniMR.StringaCapacitaUint(_sb.ProgrammaCorrente.BatteryAhdef, 10, 0);
+                    txtPaCapacita.ReadOnly = true;
+                                       
                 }
                 else
                 {
@@ -288,9 +269,6 @@ namespace PannelloCharger
                         cmbPaProfilo.DisplayMember = "NomeProfilo";
                     }
                 }
-
-
-
 
                 return true;
             }
@@ -361,12 +339,7 @@ namespace PannelloCharger
 
                 }
 
-
-
-
                 return (esitoRicalcolo == CaricaBatteria.EsitoRicalcolo.OK);
-
-
 
             }
             catch (Exception Ex)
@@ -551,14 +524,9 @@ namespace PannelloCharger
                             }
                         }
 
-
-                        //FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
-                        //FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, ModCicloCorrente.ValoriCiclo.OpportunityOraFine, ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppVSoglia, _sb.ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax, _sb.ModCicloCorrente.ParametriAttivi.OpportunityTensioneMax, 1, SbloccaValori);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppCorrente, _sb.ModCicloCorrente.ValoriCiclo.OpportunityCorrente, _sb.ModCicloCorrente.ParametriAttivi.OpportunityCorrente, 2, SbloccaValori);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppDurataMax, _sb.ModCicloCorrente.ValoriCiclo.OpportunityDurataMax, _sb.ModCicloCorrente.ParametriAttivi.OpportunityDurataMax, 3, SbloccaValori);
-
-                        //chkPaOppNotturno.Checked = (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
 
                         OppNotturno(true);
 
@@ -572,28 +540,6 @@ namespace PannelloCharger
                     {
                         chkPaAttivaOppChg.Checked = false;
                     }
-
-
-
-                    /*
-
-                    FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaOppChg, ref lblPaAttivaOppChg, _sb.ModCicloCorrente.ValoriCiclo.OpportunityAttivabile, _sb.ModCicloCorrente.ParametriAttivi.OpportunityAttivabile, 3, SbloccaValori);
-
-                    if (true) // (chkPaAttivaOppChg.Checked)
-                    {
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraInizio, _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio, _sb.ModCicloCorrente.ParametriAttivi.OpportunityOraInizio, 4, false);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppOraFine, _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine, _sb.ModCicloCorrente.ParametriAttivi.OpportunityOraFine, 4, false);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppVSoglia, _sb.ModCicloCorrente.ValoriCiclo.OpportunityTensioneMax, _sb.ModCicloCorrente.ParametriAttivi.OpportunityTensioneMax, 1, SbloccaValori);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppCorrente, _sb.ModCicloCorrente.ValoriCiclo.OpportunityCorrente, _sb.ModCicloCorrente.ParametriAttivi.OpportunityCorrente, 2, SbloccaValori);
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaOppDurataMax, _sb.ModCicloCorrente.ValoriCiclo.OpportunityDurataMax, _sb.ModCicloCorrente.ParametriAttivi.OpportunityDurataMax, 3, SbloccaValori);
-
-                        chkPaOppNotturno.Checked = (_sb.ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > _sb.ModCicloCorrente.ValoriCiclo.OpportunityOraFine);
-                        OppNotturno(true);
-
-                    }
-
-                    */
-
 
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinRic, _sb.ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMin, _sb.ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMin, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMaxRic, _sb.ModCicloCorrente.ValoriCiclo.TensRiconoscimentoMax, _sb.ModCicloCorrente.ParametriAttivi.TensRiconoscimentoMax, 1, SbloccaValori);

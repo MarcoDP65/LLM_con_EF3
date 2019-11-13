@@ -7602,6 +7602,10 @@ namespace PannelloCharger
             txtFWFileSBFrd.Text = sfdImportDati.FileName;
 
             bool _preview = CaricafileSBF();
+            if(_preview)
+            {
+                CaricaEPreparaFileSBF();
+            }
         }
 
         private void btnFWFileSBFLoad_Click(object sender, EventArgs e)
@@ -7610,6 +7614,30 @@ namespace PannelloCharger
             {
                 bool esitoVerifica = false;
                 if (txtFWFileSBFrd.Text == "") return;
+
+                btnFWLanciaTrasmissione.Enabled = false;
+                esitoVerifica = CaricafileSBF();
+
+                if (esitoVerifica)
+                {
+                    CaricaEPreparaFileSBF();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnFWFileSBFLoad_Click: " + Ex.Message);
+            }
+        }
+
+
+
+
+        private bool CaricaEPreparaFileSBF()
+        {
+            try
+            {
+                bool esitoVerifica = false;
+                if (txtFWFileSBFrd.Text == "") return false;
 
                 btnFWLanciaTrasmissione.Enabled = false;
                 esitoVerifica = CaricafileSBF();
@@ -7629,12 +7657,19 @@ namespace PannelloCharger
                         txtFWSBFArea.Text = "2";
                     }
                 }
+                return true;
             }
             catch (Exception Ex)
             {
                 Log.Error("btnFWFileSBFLoad_Click: " + Ex.Message);
+                return false;
             }
         }
+
+
+
+
+
 
         private void btnFwCaricaStato_Click(object sender, EventArgs e)
         {
@@ -7689,6 +7724,7 @@ namespace PannelloCharger
                 AggiornaFirmware();
                 //_sb.VerificaPresenza();
                 _esito = reconnectSpyBat();
+                VerificaStatoFw();
                 this.Cursor = Cursors.Default;
             }
             catch
@@ -10004,6 +10040,7 @@ namespace PannelloCharger
                 if (txtFwAreaTestata.Text != "BL")
                 {
                     SwitchAreaBl(_sb.Id, _sb.apparatoPresente);
+                    VerificaStatoFw();
                 }
 
             }
@@ -10021,6 +10058,7 @@ namespace PannelloCharger
                 if (txtFwAreaTestata.Text != "A1")
                 {
                     SwitchAreaFw(_sb.Id, _sb.apparatoPresente, 1);
+                    VerificaStatoFw();
                 }
 
             }
@@ -10038,6 +10076,7 @@ namespace PannelloCharger
                 if (txtFwAreaTestata.Text != "A2")
                 {
                     SwitchAreaFw(_sb.Id, _sb.apparatoPresente, 2);
+                    VerificaStatoFw();
                 }
 
             }

@@ -88,6 +88,7 @@ namespace ChargerLogic
                     // non ho un profilo attivo. esco
                     return false;
                 }
+
                 IdProgramma = ProfiloRegistrato.IdProgramma;
                 NomeProfilo = ProfiloRegistrato.ProgramName;
 

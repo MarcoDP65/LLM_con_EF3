@@ -129,6 +129,10 @@ namespace ChargerLogic
         public SerialMessage.OcBaudRate BrOCcorrente = SerialMessage.OcBaudRate.OFF;
         public SerialMessage.OcEchoMode EchoOCcorrente = SerialMessage.OcEchoMode.OFF;
 
+
+        // Solo ad uso test letture
+        public int NumeroTentativiLettura;
+
         private bool aspettaRisposta(int timeout, int risposteAttese = 1, bool aspettaAck = false, bool runAsync = false)
         {
             object vuoto;
@@ -161,7 +165,7 @@ namespace ChargerLogic
                 if (_parametri.CanaleLadeLight == parametriSistema.CanaleDispositivo.USB)
                 {
                     // mi metto in ascolto sul canale USB fino a EOT o a timeout 
-                    // aspetto 10 mS 
+                    // aspetto 100 mS 
                     // System.Threading.Thread.Sleep(100);
 
                     // Check the amount of data available to read
@@ -1520,7 +1524,9 @@ namespace ChargerLogic
 
             try
             {
-                bool _esito;
+                bool _esito = false ;
+                bool _daticompleti = false;
+                int _numciclolettura = 0;
 
                 // Verifico che il canale sia attivo
 
@@ -1546,18 +1552,44 @@ namespace ChargerLogic
                 //Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
-                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
-                //Log.Debug(_mS.hexdumpArray(_mS._pacchettoMem.memDataDecoded));
 
-                for (int _ciclo = 0; ((_ciclo < NumByte) && (_ciclo < _mS._pacchettoMem.numBytes)); _ciclo++)
+                // 08/11/2019  controllo che i bytes ottenuti siano quelli richiesti: se sono meno ritento la lettura, fino a 3 volte
+
+
+                // 08/11/2019  controllo che i bytes ottenuti siano quelli richiesti:
+
+                while (!_daticompleti && _numciclolettura < 3)
                 {
+                    _numciclolettura++;
+                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
 
-                    Dati[_ciclo] = _mS._pacchettoMem.memDataDecoded[_ciclo];
+                    if (_esito)
+                    {
+                        if(_mS._pacchettoMem.numBytes == NumByte)
+                        {
+                            for (int _ciclo = 0; ((_ciclo < NumByte) && (_ciclo < _mS._pacchettoMem.numBytes)); _ciclo++)
+                            {
+
+                                Dati[_ciclo] = _mS._pacchettoMem.memDataDecoded[_ciclo];
+                            }
+                            _daticompleti = true;
+                        }
+                        else
+                        {
+                            Log.Debug("---------------------------------------------------------------------------------------------");
+                            Log.Debug("Lettura Incompleta: richiesti " + NumByte.ToString() + " bytes, ottenuti " + _mS._pacchettoMem.numBytes.ToString());
+                            Log.Debug("                    Tentativo lettura n° " + _numciclolettura.ToString());
+                            Log.Debug("---------------------------------------------------------------------------------------------");
+
+                            // aggiungo un ritardo di 100 ms
+                            System.Threading.Thread.Sleep(100);
+                        }
+
+                    }
                 }
-
-                return _esito;
-
+                NumeroTentativiLettura = _numciclolettura;
+                return ( _esito && _daticompleti);
 
             }
 

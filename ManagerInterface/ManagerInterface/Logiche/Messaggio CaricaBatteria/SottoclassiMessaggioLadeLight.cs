@@ -722,6 +722,8 @@ namespace ChargerLogic
             public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
             {
 
+
+
                 byte[] _risposta;
                 int startByte = 0;
                 ushort _tempCRC;

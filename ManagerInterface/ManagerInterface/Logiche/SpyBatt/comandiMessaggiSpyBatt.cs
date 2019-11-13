@@ -191,7 +191,7 @@ namespace ChargerLogic
 
                                                 case SerialMessage.TipoRisposta.Nack:
                                                 case SerialMessage.TipoRisposta.NonValido:
-                                                    _ultimaRisposta = _msgRicevuto;
+                                                    _ultimaRisposta = SerialMessage.TipoRisposta.Nack;  //_msgRicevuto;
                                                     _breakRicevuti++;
                                                     _inAttesa = false;
                                                     break;

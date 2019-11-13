@@ -741,6 +741,7 @@ namespace MoriData
                         case "3.00":
                         case "3.01":
                         case "3.02":
+                        case "3.03":
                             {
                                 return 10;
                             }
@@ -785,6 +786,7 @@ namespace MoriData
                         case "3.00":
                         case "3.01":
                         case "3.02":
+                        case "3.03":
                             return true;
 
                         default:
@@ -824,6 +826,7 @@ namespace MoriData
                         case "3.00":
                         case "3.01":
                         case "3.02":
+                        case "3.03":
                             return true;
 
                         default:
@@ -876,6 +879,7 @@ namespace MoriData
                         case "3.00":
                         case "3.01":
                         case "3.02":
+                        case "3.03":
                             return 8666;
 
                         default:

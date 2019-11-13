@@ -123,6 +123,8 @@ namespace PannelloCharger
                     return false;
                 }
 
+
+                VerificaStatoFw();
                 _esito = _firmMng.CaricaFileSBF(txtFWFileSBFrd.Text);
                 if (_esito == FirmwareManager.ExitCode.OK)
                 {

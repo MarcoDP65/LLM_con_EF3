@@ -4959,6 +4959,101 @@ namespace PannelloCharger
                 Log.Error("btnSalveCliente_Click: " + Ex.Message);
             }
         }
+
+        private void btnMemTestExac_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                uint _StartAddr;
+                ushort _NumByte;
+                int _letturaCorrente;
+                int _numErrori;
+                int _NumLetture = 0;
+                int _NumLettureOK = 0;
+                int _NumLettureERR = 0;
+                bool _esito;
+                byte[] _Dati;
+
+                if (chkMemHex.Checked)
+                {
+                    if (uint.TryParse(txtMemAddrR.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemAddrR.Text, out _StartAddr) != true) return;
+                }
+
+                if (ushort.TryParse(txtMemLenR.Text, out _NumByte) != true) return;
+                if (_NumByte < 1) _NumByte = 1;
+                if (_NumByte > 240) _NumByte = 240;
+                _Dati = new byte[_NumByte];
+
+                _NumLetture = 0;
+                if (int.TryParse(txtMemNumTest.Text, out _NumLetture) != true) return;
+
+                this.Cursor = Cursors.WaitCursor;
+                Random random = new System.Random();
+
+                if (_NumLetture > 0)
+                {
+                    _numErrori = 0;
+
+                    for (int _cicloLetture = 0; _cicloLetture < _NumLetture; _cicloLetture++)
+                    {
+                        _letturaCorrente = _cicloLetture + 1;
+                        if (chkMemTestLenRND.Checked)
+                        {
+                            _NumByte = (ushort)random.Next(1, 240);
+                        }
+                        if (chkMemTestAddrRND.Checked)
+                        {
+                            _StartAddr = (uint)random.Next(0, 0x1F0000);
+                        }
+
+
+                        _esito = _cb.LeggiBloccoMemoria(_StartAddr, _NumByte, out _Dati);
+
+                        if (!_esito)
+                        {
+                            MessageBox.Show("Lettura " + _letturaCorrente.ToString() + " non riuscita", "Lettura dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Cursor = Cursors.Default;
+                            return;
+                        }
+                        else
+                        {
+
+                            if(_cb.NumeroTentativiLettura != 1 )
+                            {
+                                _numErrori += 1;
+                            }
+                            txtMemNumTestOK.Text = _letturaCorrente.ToString();
+                            txtMemNumTestERR.Text = _numErrori.ToString();
+                            if (_letturaCorrente % 10 == 0)
+                            {
+                                Application.DoEvents();
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                   // MessageBox.Show("Inserire un numero di blocchi valido", "Esportazione dati Corrente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+                this.Cursor = Cursors.Default;
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+                this.Cursor = Cursors.Default;
+            }
+
+        }
     }
 }
 

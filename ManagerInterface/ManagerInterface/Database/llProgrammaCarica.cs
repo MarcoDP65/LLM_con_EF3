@@ -27,7 +27,18 @@ namespace MoriData
         public Int32 IdLocale { get; set; }
 
         [MaxLength(24)]
+        [Indexed(Name = "IDXProgrammaCarica", Order = 1, Unique = true)]
         public string IdApparato { get; set; }
+
+        [Indexed(Name = "IDXProgrammaCarica", Order = 2, Unique = true)]
+        public string TipoApparato { get; set; }
+        // Identifica l'apparato a cui appartiene l'ID, ovvero dove è stato caricato
+        // LL - Ladelight
+        // SB - SPY-BATT
+        // IB - ID-BATT
+
+        [Indexed(Name = "IDXProgrammaCarica", Order = 2, Unique = true)]
+
         public ushort IdProgramma { get; set; }
 
         public DateTime CreationDate { get; set; }

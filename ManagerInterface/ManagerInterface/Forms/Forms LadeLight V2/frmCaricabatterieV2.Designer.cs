@@ -303,6 +303,16 @@
             this.txtFwRevBootloader = new System.Windows.Forms.TextBox();
             this.label124 = new System.Windows.Forms.Label();
             this.tabMemRead = new System.Windows.Forms.TabPage();
+            this.grbMemTestLetture = new System.Windows.Forms.GroupBox();
+            this.chkMemTestAddrRND = new System.Windows.Forms.CheckBox();
+            this.chkMemTestLenRND = new System.Windows.Forms.CheckBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.txtMemNumTestERR = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.txtMemNumTestOK = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.txtMemNumTest = new System.Windows.Forms.TextBox();
+            this.btnMemTestExac = new System.Windows.Forms.Button();
             this.grbMemAzzeraLogger = new System.Windows.Forms.GroupBox();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.btnMemClearLogExec = new System.Windows.Forms.Button();
@@ -711,6 +721,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.flwFWFileLLFStruct)).BeginInit();
             this.grbStatoFirmware.SuspendLayout();
             this.tabMemRead.SuspendLayout();
+            this.grbMemTestLetture.SuspendLayout();
             this.grbMemAzzeraLogger.SuspendLayout();
             this.grbMemCaricaLogger.SuspendLayout();
             this.grbMemSalvaLogger.SuspendLayout();
@@ -3995,6 +4006,7 @@
             // tabMemRead
             // 
             this.tabMemRead.BackColor = System.Drawing.Color.LightYellow;
+            this.tabMemRead.Controls.Add(this.grbMemTestLetture);
             this.tabMemRead.Controls.Add(this.grbMemAzzeraLogger);
             this.tabMemRead.Controls.Add(this.grbMemCaricaLogger);
             this.tabMemRead.Controls.Add(this.grbMemSalvaLogger);
@@ -4011,6 +4023,127 @@
             this.tabMemRead.Size = new System.Drawing.Size(1285, 542);
             this.tabMemRead.TabIndex = 10;
             this.tabMemRead.Text = "Accesso Memoria";
+            // 
+            // grbMemTestLetture
+            // 
+            this.grbMemTestLetture.BackColor = System.Drawing.Color.White;
+            this.grbMemTestLetture.Controls.Add(this.chkMemTestAddrRND);
+            this.grbMemTestLetture.Controls.Add(this.chkMemTestLenRND);
+            this.grbMemTestLetture.Controls.Add(this.label51);
+            this.grbMemTestLetture.Controls.Add(this.txtMemNumTestERR);
+            this.grbMemTestLetture.Controls.Add(this.label47);
+            this.grbMemTestLetture.Controls.Add(this.txtMemNumTestOK);
+            this.grbMemTestLetture.Controls.Add(this.label46);
+            this.grbMemTestLetture.Controls.Add(this.txtMemNumTest);
+            this.grbMemTestLetture.Controls.Add(this.btnMemTestExac);
+            this.grbMemTestLetture.Location = new System.Drawing.Point(710, 402);
+            this.grbMemTestLetture.Name = "grbMemTestLetture";
+            this.grbMemTestLetture.Size = new System.Drawing.Size(266, 123);
+            this.grbMemTestLetture.TabIndex = 55;
+            this.grbMemTestLetture.TabStop = false;
+            this.grbMemTestLetture.Text = "Test Letture";
+            // 
+            // chkMemTestAddrRND
+            // 
+            this.chkMemTestAddrRND.AutoSize = true;
+            this.chkMemTestAddrRND.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkMemTestAddrRND.Location = new System.Drawing.Point(10, 85);
+            this.chkMemTestAddrRND.Margin = new System.Windows.Forms.Padding(2);
+            this.chkMemTestAddrRND.Name = "chkMemTestAddrRND";
+            this.chkMemTestAddrRND.Size = new System.Drawing.Size(102, 19);
+            this.chkMemTestAddrRND.TabIndex = 46;
+            this.chkMemTestAddrRND.Text = "Addr Random";
+            this.chkMemTestAddrRND.UseVisualStyleBackColor = true;
+            // 
+            // chkMemTestLenRND
+            // 
+            this.chkMemTestLenRND.AutoSize = true;
+            this.chkMemTestLenRND.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkMemTestLenRND.Location = new System.Drawing.Point(10, 65);
+            this.chkMemTestLenRND.Margin = new System.Windows.Forms.Padding(2);
+            this.chkMemTestLenRND.Name = "chkMemTestLenRND";
+            this.chkMemTestLenRND.Size = new System.Drawing.Size(98, 19);
+            this.chkMemTestLenRND.TabIndex = 45;
+            this.chkMemTestLenRND.Text = "Len Random";
+            this.chkMemTestLenRND.UseVisualStyleBackColor = true;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label51.Location = new System.Drawing.Point(180, 19);
+            this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(54, 15);
+            this.label51.TabIndex = 44;
+            this.label51.Text = "ERRORI";
+            // 
+            // txtMemNumTestERR
+            // 
+            this.txtMemNumTestERR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemNumTestERR.Location = new System.Drawing.Point(183, 34);
+            this.txtMemNumTestERR.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMemNumTestERR.Name = "txtMemNumTestERR";
+            this.txtMemNumTestERR.Size = new System.Drawing.Size(72, 21);
+            this.txtMemNumTestERR.TabIndex = 43;
+            this.txtMemNumTestERR.Text = "0";
+            this.txtMemNumTestERR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label47.Location = new System.Drawing.Point(101, 19);
+            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(65, 15);
+            this.label47.TabIndex = 42;
+            this.label47.Text = "Letture OK";
+            // 
+            // txtMemNumTestOK
+            // 
+            this.txtMemNumTestOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemNumTestOK.Location = new System.Drawing.Point(104, 34);
+            this.txtMemNumTestOK.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMemNumTestOK.Name = "txtMemNumTestOK";
+            this.txtMemNumTestOK.Size = new System.Drawing.Size(72, 21);
+            this.txtMemNumTestOK.TabIndex = 41;
+            this.txtMemNumTestOK.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label46.Location = new System.Drawing.Point(7, 19);
+            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(75, 15);
+            this.label46.TabIndex = 40;
+            this.label46.Text = "Num Letture";
+            // 
+            // txtMemNumTest
+            // 
+            this.txtMemNumTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemNumTest.Location = new System.Drawing.Point(10, 34);
+            this.txtMemNumTest.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMemNumTest.Name = "txtMemNumTest";
+            this.txtMemNumTest.Size = new System.Drawing.Size(72, 21);
+            this.txtMemNumTest.TabIndex = 39;
+            this.txtMemNumTest.Text = "100";
+            this.txtMemNumTest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnMemTestExac
+            // 
+            this.btnMemTestExac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemTestExac.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemTestExac.Location = new System.Drawing.Point(167, 78);
+            this.btnMemTestExac.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMemTestExac.Name = "btnMemTestExac";
+            this.btnMemTestExac.Size = new System.Drawing.Size(88, 30);
+            this.btnMemTestExac.TabIndex = 38;
+            this.btnMemTestExac.Text = "Esegui";
+            this.btnMemTestExac.UseVisualStyleBackColor = true;
+            this.btnMemTestExac.Click += new System.EventHandler(this.btnMemTestExac_Click);
             // 
             // grbMemAzzeraLogger
             // 
@@ -4550,7 +4683,7 @@
             this.txtMemDataGrid.Multiline = true;
             this.txtMemDataGrid.Name = "txtMemDataGrid";
             this.txtMemDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMemDataGrid.Size = new System.Drawing.Size(664, 275);
+            this.txtMemDataGrid.Size = new System.Drawing.Size(664, 299);
             this.txtMemDataGrid.TabIndex = 16;
             // 
             // grbMemScrittura
@@ -8657,6 +8790,8 @@
             this.grbStatoFirmware.PerformLayout();
             this.tabMemRead.ResumeLayout(false);
             this.tabMemRead.PerformLayout();
+            this.grbMemTestLetture.ResumeLayout(false);
+            this.grbMemTestLetture.PerformLayout();
             this.grbMemAzzeraLogger.ResumeLayout(false);
             this.grbMemAzzeraLogger.PerformLayout();
             this.grbMemCaricaLogger.ResumeLayout(false);
@@ -9391,5 +9526,15 @@
         private System.Windows.Forms.Button btnCaricaCliente;
         private System.Windows.Forms.TextBox txtCliNomeIntLL;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.GroupBox grbMemTestLetture;
+        private System.Windows.Forms.CheckBox chkMemTestAddrRND;
+        private System.Windows.Forms.CheckBox chkMemTestLenRND;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox txtMemNumTestERR;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox txtMemNumTestOK;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TextBox txtMemNumTest;
+        private System.Windows.Forms.Button btnMemTestExac;
     }
 }

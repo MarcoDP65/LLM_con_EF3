@@ -273,6 +273,7 @@ namespace ChargerLogic
 
             sbData = new spybattData(dbCorrente);
             sbCliente = new sbDatiCliente(dbCorrente);
+            ProfiloAttivo = new llProgrammaCarica(dbCorrente);
             SoglieAnalisi.CaricaSoglie(dbCorrente, "", "");
             InizializzaParametriCalibrazione();
             dbCollegato = true;
@@ -632,7 +633,7 @@ namespace ChargerLogic
                     Log.Debug(_mS.hexdumpMessaggio());
                     _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                     _esito = aspettaRisposta(elementiComuni.TimeoutLungo);
-                    if (_esito)
+                    if (_esito && UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk)
                     {
                         IntestazioneSb = _mS.Intestazione;
                         // prima di sovrascrivere i dati, se il numero di lunghi presenti sulla scheda 
@@ -2865,9 +2866,6 @@ namespace ChargerLogic
             }
 
         }
-
-
-
 
 
 

@@ -677,6 +677,7 @@ namespace ChargerLogic
                     Log.Debug("----------------------------------------------------------");
 
                     ControllaAttesa(UltimaScrittura);
+                    Log.Debug("----------------------------------------------------------");
 
                     _mS.ComponiMessaggioSwitchFW(Area);
                     Log.Debug(_mS.hexdumpArray(_mS.MessageBuffer));
