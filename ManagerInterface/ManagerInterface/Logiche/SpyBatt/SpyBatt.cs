@@ -830,7 +830,7 @@ namespace ChargerLogic
                 {
                     ControllaAttesa(UltimaScrittura);
 
-                    // ASPETTO 1 secondo
+                    // ASPETTO 2 secondi
                     Log.Debug("---------------------------------------------- Inizio Attesa 2 ---------------------------------");
                     Thread.Sleep(2000);
                     Log.Debug("---------------------------------------------- Fine Attesa   ---------------------------------");

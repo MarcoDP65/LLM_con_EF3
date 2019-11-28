@@ -448,7 +448,6 @@ namespace PannelloCharger
                         }
                     }
                     Log.Debug("NUOVO LL");
-                    //frmSpyBat sbCorrente = new frmSpyBat(ref varGlobali, true, "", logiche, esitoCanaleApparato, true);
 
                     frmCaricabatterieV2 cbCorrente = new frmCaricabatterieV2(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
 

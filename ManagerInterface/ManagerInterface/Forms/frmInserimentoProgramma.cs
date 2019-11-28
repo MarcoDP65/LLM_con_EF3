@@ -433,8 +433,10 @@ namespace PannelloCharger
                 }
                 else
                 {
+                    // la programmazione è riuscita. cancello l'eventuale profilo presente.
+
+                    _sb.CancellaProgrammazioneLL(true);
                     return true;
-                    //this.Close();
                 }
 
             }

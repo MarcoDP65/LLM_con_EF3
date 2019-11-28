@@ -23,13 +23,28 @@ namespace ChargerLogic
         public byte NumeroRecordProg { get; set; }
         public llProgrammaCarica ProgrammaAttivo;
         public List<llProgrammaCarica> ProgrammiDefiniti;
+        public MoriData._db _database;
+        private static ILog Log = LogManager.GetLogger("cbProgrammazioni");
+        public bool _datiSalvati;
+        public bool _recordPresente;
 
+        public string IdCorrente { get; set; }
 
         public cbProgrammazioni()
         {
 
+            _database = null;
+            _datiSalvati = true;
+            _recordPresente = false;
         }
 
+        public cbProgrammazioni(_db connessione)
+        {
+
+            _database = connessione;
+            _datiSalvati = true;
+            _recordPresente = false;
+        }
 
         public llProgrammaCarica ProgrammazioneAttiva
         {
@@ -40,6 +55,12 @@ namespace ChargerLogic
                 return ProgrammiDefiniti.Find(x => x.PosizioneCorrente == 0);
             }
         }
+
+        public bool SalvaDati()
+        {
+            return false;
+        }
+
 
 
 /*

@@ -62,9 +62,9 @@ namespace MoriData
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
         public bool _datiSalvati;
         public bool _recordPresente;
+
+        public enum ModoAttivo: byte { OFF = 0x00, BL = 0x20 , Area1 = 0x40 , Area2 = 0x80 }
         //private string _tempId;
-
-
 
         public llStatoFirmware()
         {
@@ -406,6 +406,26 @@ namespace MoriData
         {
             get { return _llSFW.Stato.ToString("X"); }
         }
+
+        public bool IsBLmode
+        {
+            get
+            { 
+                return ((_llSFW.Stato & (byte)ModoAttivo.BL) == (byte)ModoAttivo.BL); 
+            }
+
+        }
+        public bool IsAPPmode
+        {
+            get
+            {
+                byte BitMap = (byte)ModoAttivo.Area1 + (byte)ModoAttivo.Area2;
+                return ((_llSFW.Stato & BitMap) > 0 );
+            }
+
+        }
+
+
 
 
         #endregion

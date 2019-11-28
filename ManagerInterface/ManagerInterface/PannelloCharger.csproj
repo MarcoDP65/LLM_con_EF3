@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>3.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -493,11 +493,11 @@
     <Compile Include="Forms\frmSelettoreDevice.Designer.cs">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSelettoreLadLight.cs">
+    <Compile Include="Forms\frmSelettoreLadeLight.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSelettoreLadLight.Designer.cs">
-      <DependentUpon>frmSelettoreLadLight.cs</DependentUpon>
+    <Compile Include="Forms\frmSelettoreLadeLight.Designer.cs">
+      <DependentUpon>frmSelettoreLadeLight.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmSelettoreSpyBatt.cs">
       <SubType>Form</SubType>
@@ -1076,8 +1076,8 @@
     <EmbeddedResource Include="Forms\frmSelettoreDevice.resx">
       <DependentUpon>frmSelettoreDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSelettoreLadLight.resx">
-      <DependentUpon>frmSelettoreLadLight.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmSelettoreLadeLight.resx">
+      <DependentUpon>frmSelettoreLadeLight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelettoreSpyBatt.de.resx">
       <DependentUpon>frmSelettoreSpyBatt.cs</DependentUpon>

@@ -1222,7 +1222,7 @@ namespace PannelloCharger
                 txtIdBat.Text = _sb.sbCliente.BatteryId;
                 txtCliCicliAttesi.Text = _sb.sbCliente.CicliAttesi.ToString();
                 txtSerialNumber.Text = _sb.sbCliente.SerialNumber;
-                txtCliCodiceLL.Text = _sb.sbCliente.BatteryLLId;
+                txtCliCodiceLL.Text = _sb.sbCliente.BatteryLLId.Trim();
 
                 txtProgEqCorrenteImpulso.Text =  FunzioniMR.StringaCapacita(_sb.sbCliente.EqualPulseCurrent, 10) ;
                 txtProgMinAttesaEqual.Text = _sb.sbCliente.EqualMinAttesa.ToString();
@@ -2023,6 +2023,9 @@ namespace PannelloCharger
 
                     // 18/11/15 - Prima di ricaricare la lista, ricarico la testata per leggere il contatore aggiornato
 
+
+                    
+
                     txtCicliProgrammazione.Text = _sb.sbData.ProgramCount.ToString();
 
                     RicaricaProgrammazioni();
@@ -2182,6 +2185,7 @@ namespace PannelloCharger
         {
             try
             {
+                bool _esito;
                 // Prima di tutto sposto il focus su una cella non editabile per lanciare eventuali eventi leave di salvataggio
                 txtMatrSB.Focus();
 
@@ -2192,7 +2196,7 @@ namespace PannelloCharger
                 _sb.sbCliente.BatteryBrand = txtMarcaBat.Text;
                 _sb.sbCliente.BatteryModel = txtModelloBat.Text;
                 _sb.sbCliente.BatteryId = txtIdBat.Text;
-                _sb.sbCliente.BatteryLLId = txtCliCodiceLL.Text;
+                _sb.sbCliente.BatteryLLId = txtCliCodiceLL.Text.Trim();
                 _sb.sbCliente.SerialNumber = txtSerialNumber.Text;
                 /*
                  * .... già caricati al leave delle textbox
@@ -2223,9 +2227,51 @@ namespace PannelloCharger
                 else
                 { _sb.sbCliente.CicliAttesi = 1500; }
 
-                _sb.ScriviDatiCliente(SerialeCollegata);
-                if (marcaSalvataggio) DatiSalvati = true;
-                if (CaricaCliente(_sb.Id, _logiche, true)) mostraCliente();
+
+
+                _esito = _sb.ScriviDatiCliente(SerialeCollegata);
+                if (!_esito)
+                {
+                    // Non sono riuscito a scrivere. 
+                    if (_sb.VerificaPresenza())
+                    {
+                        // se lo sb è effettivamente presente rirovo la scrittura
+                        _esito = _sb.ScriviDatiCliente(SerialeCollegata);
+                        if (!_esito)
+                        {
+                            // scrittura fallita nuovamente
+                            // ... Aggiungere massaggio scrittura fallita"
+                        }
+
+                    }
+                    else
+                    {
+                        // il dispositivo non è più connesso .... errore !
+                        // ... Aggiungere massaggio "dispositivo non più raggiungibile"
+                    }
+                }
+                else
+                {
+                    if (marcaSalvataggio) DatiSalvati = true;
+                    // Aggiorno anche l'ID Batteria nel profilo 
+
+                    byte[] IdBatteria = new byte[6];
+                    string _tempId;
+                    if (_sb.sbCliente.BatteryLLId == "")
+                    {
+                        _tempId = "N.D.  ";
+                    }
+                    else
+                    {
+                        _tempId = _sb.sbCliente.BatteryLLId + "      ";
+                    }
+
+                    IdBatteria = Encoding.ASCII.GetBytes(_tempId.Substring(0, 6));
+                    _sb.SalvaIdBattProfiloLL(_sb.Id, true,  IdBatteria);
+
+                    if (CaricaCliente(_sb.Id, _logiche, true)) mostraCliente();
+                }
+
             }
             catch (Exception Ex)
             {
@@ -11040,7 +11086,7 @@ namespace PannelloCharger
             bool esitoSalvataggio = false;
             this.Cursor = Cursors.WaitCursor;
 
-            esitoSalvataggio = _sb.CancellaProgrammazioneLL(_sb.Id, _sb.apparatoPresente);
+            esitoSalvataggio = _sb.CancellaProgrammazioneLL(_sb.apparatoPresente);
 
             if (esitoSalvataggio)
             {

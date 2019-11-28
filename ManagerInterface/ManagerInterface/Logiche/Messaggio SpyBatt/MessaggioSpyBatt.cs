@@ -254,10 +254,18 @@ namespace ChargerLogic
                 }
 
                 // comando
-                byte _tmpComando = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
-                if (_tmpComando != 0xFF)
-                    _comando = _tmpComando;
-
+                byte _tmpComando;
+                // 14/11/2019 se non ho il comando,, per cui _messaggio[_startPos] == 0xFF, lo interpreto come NACK
+                if (_messaggio[_startPos] == 0xFF)
+                {
+                    _comando = (byte)TipoComando.NACK_PACKET;
+                }
+                else
+                {
+                     _tmpComando = decodificaByte(_messaggio[_startPos], _messaggio[_startPos + 1]);
+                    if (_tmpComando != 0xFF)
+                        _comando = _tmpComando;
+                }
                 //preparo la risposta: il preambolo è uguale al messaggio 
                 Array.Copy(_messaggio, messaggioRisposta, 20);
 
@@ -1581,7 +1589,7 @@ namespace ChargerLogic
                         string _tempId;
                         if(CustomerData.BatteryLLId =="")
                         {
-                            _tempId = "1    ";
+                            _tempId = "      ";
                         }
                         else
                         {

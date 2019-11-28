@@ -21,6 +21,7 @@ namespace MoriData
         public Int32 IdLocale { get; set; }
 
         [MaxLength(24)]
+        [Indexed(Name = "IdxLLParApparato", Order = 1, Unique = true)]
         public string IdApparato { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime RevisionDate { get; set; }
@@ -109,6 +110,14 @@ namespace MoriData
                     select s).FirstOrDefault();
         }
 
+        private _llParametriApparato _caricaDati(string _idApp)
+        {
+            return (from s in _database.Table<_llParametriApparato>()
+                    where s.IdApparato == _idApp
+                    select s).FirstOrDefault();
+        }
+
+
         public bool caricaDati(int idLocale)
         {
             try
@@ -126,33 +135,54 @@ namespace MoriData
             {
                 return false;
             }
-
         }
+
+        public bool caricaDati(string IdApparato)
+        {
+            try
+            {
+                llParApp = _caricaDati(IdApparato);
+                if (llParApp == null)
+                {
+                    llParApp = new _llParametriApparato();
+                    return false;
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
 
 
         public bool salvaDati()
         {
             try
             {
-                /*
-                if (_sbPar.IdApparato != nullID & _sbPar.IdApparato != null)
+                
+                if (llParApp.IdApparato != nullID & llParApp.IdApparato != null)
                 {
 
-                    _sbPar _TestDati = _caricaDati(_sbPar.IdApparato, _sbPar.IdMemoriaLunga, _sbPar.IdMemoriaBreve);
+                    _llParametriApparato _TestDati = _caricaDati(llParApp.IdApparato);
                     if (_TestDati == null)
                     {
                         //nuovo record
-                        _sbPar.CreationDate = DateTime.Now;
-                        _sbPar.RevisionDate = DateTime.Now;
+                        llParApp.CreationDate = DateTime.Now;
+                        llParApp.RevisionDate = DateTime.Now;
 
-                        int _result = _database.Insert(_sbPar);
+                        int _result = _database.Insert(llParApp);
                         _datiSalvati = true;
                     }
                     else
                     {
-                        _sbPar.IdLocale = _TestDati.IdLocale;
-                        _sbPar.RevisionDate = DateTime.Now;
-                        int _result = _database.Update(_sbPar);
+                        llParApp.IdLocale = _TestDati.IdLocale;
+                        llParApp.RevisionDate = DateTime.Now;
+                        int _result = _database.Update(llParApp);
                         _datiSalvati = true;
                     }
 
@@ -163,7 +193,7 @@ namespace MoriData
                 {
                     return false;
                 }
-                 */
+                
                 return false;
             }
             catch (Exception Ex)

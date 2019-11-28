@@ -21,7 +21,9 @@ namespace MoriData
         public Int32 IdLocale { get; set; }
 
         [MaxLength(24)]
+        [Indexed(Name = "IdxLLCliente", Order = 1, Unique = true)]
         public string IdApparato { get; set; }
+        [Indexed(Name = "IdxLLCliente", Order = 2, Unique = true)]
         public Int32 IdCliente { get; set; }   //Fisso a 1, al momento non è prevista cronologia
 
         public DateTime CreationDate { get; set; }

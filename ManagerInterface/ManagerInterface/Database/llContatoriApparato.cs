@@ -25,32 +25,32 @@ namespace MoriData
         public Int32 IdLocale { get; set; }
 
         [MaxLength(24)]
+        [Indexed(Name = "IdxLLContatori", Order = 1, Unique = true)]
         public string IdApparato { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime RevisionDate { get; set; }
         [MaxLength(20)]
         public string LastUser { get; set; }
 
-        public byte[] DataPrimaCarica;
-        public UInt32 CntCicliTotali;
-        public UInt32 CntCicliStop;
-        public UInt32 CntCicliStaccoBatt;
-        public UInt32 CntCicliLess3H;
-        public UInt32 CntCicli3Hto6H;
-        public UInt32 CntCicli6Hto9H;
-        public UInt32 CntCicliOver9H;
-        public UInt32 CntCicliOpportunity;
+        public byte[] DataPrimaCarica { get; set; }
+        public UInt32 CntCicliTotali { get; set; }
+        public UInt32 CntCicliStop { get; set; }
+        public UInt32 CntCicliStaccoBatt { get; set; }
+        public UInt32 CntCicliLess3H { get; set; }
+        public UInt32 CntCicli3Hto6H { get; set; }
+        public UInt32 CntCicli6Hto9H { get; set; }
+        public UInt32 CntCicliOver9H { get; set; }
+        public UInt32 CntCicliOpportunity { get; set; }
+        public ushort CntProgrammazioni { get; set; }
 
-        public ushort CntProgrammazioni;
+        public UInt32 CntCicliBrevi { get; set; }
+        public UInt32 PntNextBreve { get; set; }
 
-        public UInt32 CntCicliBrevi;
-        public UInt32 PntNextBreve;
+        public UInt32 CntCariche { get; set; }
+        public UInt32 PntNextCarica { get; set; }
 
-        public UInt32 CntCariche;
-        public UInt32 PntNextCarica;
-
-        public ushort CntMemReset;
-        public byte[] DataUltimaCancellazione;
+        public ushort CntMemReset { get; set; }
+        public byte[] DataUltimaCancellazione { get; set; }
 
         //StringaDataTS(byte[] DataShort)
 
@@ -76,8 +76,6 @@ namespace MoriData
         public bool _datiSalvati;
         public bool _recordPresente;
         //private string _tempId;
-
-
 
         public llContatoriApparato()
         {
@@ -106,6 +104,14 @@ namespace MoriData
                     select s).FirstOrDefault();
         }
 
+        private _llContatoriApparato _caricaDati(string _idApparato)
+        {
+            return (from s in _database.Table<_llContatoriApparato>()
+                    where s.IdApparato == _idApparato
+                    select s).FirstOrDefault();
+        }
+
+
         public bool caricaDati(int idLocale)
         {
             try
@@ -126,41 +132,61 @@ namespace MoriData
 
         }
 
+        public bool caricaDati(string idApparato)
+        {
+            try
+            {
+                llContApp = _caricaDati(idApparato);
+                if (llContApp == null)
+                {
+                    llContApp = new _llContatoriApparato();
+                    return false;
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
 
         public bool salvaDati()
         {
             try
             {
-                /*
-                if (_sbPar.IdApparato != nullID & _sbPar.IdApparato != null)
+                
+                if (llContApp.IdApparato != nullID & llContApp.IdApparato != null)
                 {
 
-                    _sbPar _TestDati = _caricaDati(_sbPar.IdApparato, _sbPar.IdMemoriaLunga, _sbPar.IdMemoriaBreve);
+                    _llContatoriApparato _TestDati = _caricaDati(llContApp.IdApparato);
                     if (_TestDati == null)
                     {
                         //nuovo record
-                        _sbPar.CreationDate = DateTime.Now;
-                        _sbPar.RevisionDate = DateTime.Now;
+                        llContApp.CreationDate = DateTime.Now;
+                        llContApp.RevisionDate = DateTime.Now;
 
-                        int _result = _database.Insert(_sbPar);
+                        int _result = _database.Insert(llContApp);
                         _datiSalvati = true;
                     }
                     else
                     {
-                        _sbPar.IdLocale = _TestDati.IdLocale;
-                        _sbPar.RevisionDate = DateTime.Now;
-                        int _result = _database.Update(_sbPar);
+                        llContApp.IdLocale = _TestDati.IdLocale;
+                        llContApp.RevisionDate = DateTime.Now;
+                        int _result = _database.Update(llContApp);
                         _datiSalvati = true;
                     }
 
-                    //_database.InsertOrReplace(_sb);
                     return true;
                 }
                 else
                 {
                     return false;
                 }
-                 */
+                 
                 return false;
             }
             catch (Exception Ex)

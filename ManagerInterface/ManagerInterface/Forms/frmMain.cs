@@ -30,6 +30,7 @@ namespace PannelloCharger
         private CaricaBatteria cbCorrente;
         public ScannerPorte Dispositivi;
         public ScannerUSB DispositiviUSB;
+        private int LogLevel = 4;
 
         public StatoPulsanti Toolbar { get; set; } = new StatoPulsanti();
 
@@ -1036,6 +1037,16 @@ namespace PannelloCharger
             stampa(true, false);
         }
 
+        public void MostraMessaggio(string Messaggio)
+        {
+            if (LogLevel < 5)
+            {
+                sstMainMsg.Text = Messaggio;
+            }
+        }
+
+
+
         private void tstBtnExport_Click(object sender, EventArgs e)
         {
             try
@@ -1290,6 +1301,138 @@ namespace PannelloCharger
             {
                 Log.Error("frmMain: " + Ex.Message);
             }
+        }
+
+
+
+        private void mnuHelpLogTest_Click(object sender, EventArgs e)
+        {
+            Log.Fatal("----------------------------------------------");
+            Log.Debug("This is a debug message");
+            Log.Info("This is an information message");
+            Log.Warn("This is a warning message");
+            Log.Error("This is an error message");
+            Log.Fatal("This is a fatal message");
+            Log.Fatal("----------------------------------------------");
+            Log.Fatal("");
+        }
+
+        private void mnuHelpLogSetlvlClear()
+        {
+            try
+            {
+                mnuHelpLogSetlvlAll.Checked = false;
+                mnuHelpLogSetlvlDebug.Checked = false;
+                mnuHelpLogSetlvlInfo.Checked = false;
+                mnuHelpLogSetlvlWarn.Checked = false;
+                mnuHelpLogSetlvlError.Checked = false;
+                mnuHelpLogSetlvlFatall.Checked = false;
+                mnuHelpLogSetlvlOff.Checked = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+
+        private void mnuHelpLogSetlvlDebug_Click(object sender, EventArgs e)
+        {
+            //((log4net.Repository.Hierarchy.Logger)Log.Logger).Level = log4net.Core.Level.Debug;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = log4net.Core.Level.Debug;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            mnuHelpLogSetlvlClear();
+            mnuHelpLogSetlvlDebug.Checked = true;
+            LogLevel = 2;
+        }
+        private void mnuHelpLogSetlvlAll_Click(object sender, EventArgs e)
+        {
+            //((log4net.Repository.Hierarchy.Logger)Log.Logger).Level = log4net.Core.Level.All;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = log4net.Core.Level.All;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            mnuHelpLogSetlvlClear();
+            mnuHelpLogSetlvlAll.Checked = true;
+            LogLevel = 0;
+        }
+
+        private void mnuHelpLogSetlvlInfo_Click(object sender, EventArgs e)
+        {
+            //((log4net.Repository.Hierarchy.Logger)Log.Logger).Level = log4net.Core.Level.Info;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = log4net.Core.Level.Info;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            mnuHelpLogSetlvlClear();
+            mnuHelpLogSetlvlInfo.Checked = true;
+            LogLevel = 1;
+        }
+
+        private void mnuHelpLogSetlvlWarn_Click(object sender, EventArgs e)
+        {
+            //((log4net.Repository.Hierarchy.Logger)Log.Logger).Level = log4net.Core.Level.Warn;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = log4net.Core.Level.Warn;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            mnuHelpLogSetlvlClear();
+            mnuHelpLogSetlvlWarn.Checked = true;
+            LogLevel = 3;
+        }
+
+        private void mnuHelpLogSetlvlError_Click(object sender, EventArgs e)
+        {
+            //((log4net.Repository.Hierarchy.Logger)Log.Logger).Level = log4net.Core.Level.Error;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = log4net.Core.Level.Error;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            mnuHelpLogSetlvlClear();
+            mnuHelpLogSetlvlError.Checked = true;
+            LogLevel = 4;
+        }
+
+        private void mnuHelpLogSetlvlFatall_Click(object sender, EventArgs e)
+        {
+            //((log4net.Repository.Hierarchy.Logger)Log.Logger).Level = log4net.Core.Level.Fatal;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = log4net.Core.Level.Fatal;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            mnuHelpLogSetlvlClear();
+            mnuHelpLogSetlvlFatall.Checked = true;
+            LogLevel = 5;
+        }
+
+        private void mnuHelpLogSetlvlOff_Click(object sender, EventArgs e)
+        {
+            //((log4net.Repository.Hierarchy.Logger)Log.Logger).Level = log4net.Core.Level.Off;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = log4net.Core.Level.Off;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            mnuHelpLogSetlvlClear();
+            mnuHelpLogSetlvlOff.Checked = true;
+            LogLevel = 6;
+        }
+
+        private void mnuArchivioLL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmSelettoreLadeLight))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                frmSelettoreLadeLight ArchivioCorrenteLL = new frmSelettoreLadeLight(ref varGlobali, logiche);
+                ArchivioCorrenteLL.MdiParent = this;
+                ArchivioCorrenteLL.StartPosition = FormStartPosition.CenterParent;
+                ArchivioCorrenteLL.MostraLista();
+                ArchivioCorrenteLL.Show();
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain: " + Ex.Message);
+            }
+
         }
     }
 

@@ -126,10 +126,14 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="lblAvanzmentoL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 82</value>
+    <value>16, 67</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblAvanzmentoL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblAvanzmentoL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
+    <value>48, 17</value>
   </data>
   <data name="lblAvanzmentoL.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -150,13 +154,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblAvanzmentoL.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="pgbAvanamentoL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 82</value>
+    <value>62, 67</value>
+  </data>
+  <data name="pgbAvanamentoL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pgbAvanamentoL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>764, 20</value>
+    <value>573, 16</value>
   </data>
   <data name="pgbAvanamentoL.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -171,13 +178,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pgbAvanamentoL.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btnStartLettura.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 239</value>
+    <value>144, 222</value>
+  </data>
+  <data name="btnStartLettura.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnStartLettura.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 35</value>
+    <value>110, 28</value>
   </data>
   <data name="btnStartLettura.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -195,13 +205,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnStartLettura.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="pgbAvanamentoB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 124</value>
+    <value>62, 101</value>
+  </data>
+  <data name="pgbAvanamentoB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pgbAvanamentoB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>764, 20</value>
+    <value>573, 16</value>
   </data>
   <data name="pgbAvanamentoB.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -216,7 +229,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pgbAvanamentoB.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lblAvanzmentoB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -225,10 +238,13 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="lblAvanzmentoB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 124</value>
+    <value>16, 101</value>
+  </data>
+  <data name="lblAvanzmentoB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblAvanzmentoB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
+    <value>48, 17</value>
   </data>
   <data name="lblAvanzmentoB.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -249,13 +265,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblAvanzmentoB.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnAnnulla.Location" type="System.Drawing.Point, System.Drawing">
-    <value>375, 239</value>
+    <value>277, 222</value>
+  </data>
+  <data name="btnAnnulla.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnAnnulla.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 35</value>
+    <value>110, 28</value>
   </data>
   <data name="btnAnnulla.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -273,16 +292,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAnnulla.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblTitolo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="lblTitolo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 34</value>
+    <value>20, 28</value>
+  </data>
+  <data name="lblTitolo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblTitolo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>821, 25</value>
+    <value>616, 20</value>
   </data>
   <data name="lblTitolo.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -300,13 +322,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblTitolo.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnChiudi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>546, 239</value>
+    <value>406, 222</value>
+  </data>
+  <data name="btnChiudi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnChiudi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 35</value>
+    <value>110, 28</value>
   </data>
   <data name="btnChiudi.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -324,13 +349,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnChiudi.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lblMessaggioAvanzamento.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 160</value>
+    <value>62, 130</value>
+  </data>
+  <data name="lblMessaggioAvanzamento.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblMessaggioAvanzamento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>764, 28</value>
+    <value>573, 23</value>
   </data>
   <data name="lblMessaggioAvanzamento.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -351,13 +379,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblMessaggioAvanzamento.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblMsg01.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 199</value>
+    <value>62, 162</value>
+  </data>
+  <data name="lblMsg01.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblMsg01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 28</value>
+    <value>274, 23</value>
   </data>
   <data name="lblMsg01.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -378,13 +409,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblMsg01.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lblMsg02.Location" type="System.Drawing.Point, System.Drawing">
-    <value>482, 199</value>
+    <value>362, 162</value>
+  </data>
+  <data name="lblMsg02.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblMsg02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 28</value>
+    <value>274, 23</value>
   </data>
   <data name="lblMsg02.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -405,16 +439,52 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblMsg02.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblMsgFail.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 6pt</value>
+  </data>
+  <data name="lblMsgFail.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblMsgFail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 194</value>
+  </data>
+  <data name="lblMsgFail.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="lblMsgFail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>573, 23</value>
+  </data>
+  <data name="lblMsgFail.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="lblMsgFail.Text" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblMsgFail.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblMsgFail.Name" xml:space="preserve">
+    <value>lblMsgFail</value>
+  </data>
+  <data name="&gt;&gt;lblMsgFail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMsgFail.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblMsgFail.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>875, 321</value>
+    <value>656, 261</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -813,7 +883,9 @@
         JgAAACYAAAAmAAAAJgAAACYAAAAmAAAAJgAAACYAAAAmAAAAJgA=
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.sstMain = new System.Windows.Forms.StatusStrip();
+            this.sstMainMsg = new System.Windows.Forms.ToolStripStatusLabel();
             this.sstProgressBase = new System.Windows.Forms.ToolStripProgressBar();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@
             this.mnuImpiantoGestioneImpianto = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCaricabatteria = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConnettiCb = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuArchivioLL = new System.Windows.Forms.ToolStripMenuItem();
             this.apparatiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orologioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,6 +78,16 @@
             this.mnuConsole = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInformazioniSu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogRoot = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlDebug = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlWarn = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlError = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlFatall = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlOff = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuHelpLogTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tstPulsanti = new System.Windows.Forms.ToolStrip();
             this.tstBtnCercaUsb = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaWireless = new System.Windows.Forms.ToolStripButton();
@@ -96,9 +108,16 @@
             // 
             this.sstMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.sstMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sstMainMsg,
             this.sstProgressBase});
             resources.ApplyResources(this.sstMain, "sstMain");
             this.sstMain.Name = "sstMain";
+            // 
+            // sstMainMsg
+            // 
+            resources.ApplyResources(this.sstMainMsg, "sstMainMsg");
+            this.sstMainMsg.Name = "sstMainMsg";
+            this.sstMainMsg.Spring = true;
             // 
             // sstProgressBase
             // 
@@ -217,6 +236,7 @@
             // 
             this.mnuCaricabatteria.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuConnettiCb,
+            this.mnuArchivioLL,
             this.apparatiToolStripMenuItem,
             this.orologioToolStripMenuItem,
             this.toolStripMenuItem6,
@@ -229,6 +249,12 @@
             this.mnuConnettiCb.Name = "mnuConnettiCb";
             resources.ApplyResources(this.mnuConnettiCb, "mnuConnettiCb");
             this.mnuConnettiCb.Click += new System.EventHandler(this.mnuConnettiCb_Click);
+            // 
+            // mnuArchivioLL
+            // 
+            this.mnuArchivioLL.Name = "mnuArchivioLL";
+            resources.ApplyResources(this.mnuArchivioLL, "mnuArchivioLL");
+            this.mnuArchivioLL.Click += new System.EventHandler(this.mnuArchivioLL_Click);
             // 
             // apparatiToolStripMenuItem
             // 
@@ -403,7 +429,8 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuInformazioniSu});
+            this.mnuInformazioniSu,
+            this.mnuHelpLogRoot});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             // 
@@ -412,6 +439,76 @@
             this.mnuInformazioniSu.Name = "mnuInformazioniSu";
             resources.ApplyResources(this.mnuInformazioniSu, "mnuInformazioniSu");
             this.mnuInformazioniSu.Click += new System.EventHandler(this.mnuInformazioniSu_Click);
+            // 
+            // mnuHelpLogRoot
+            // 
+            this.mnuHelpLogRoot.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuHelpLogSetlvlAll,
+            this.mnuHelpLogSetlvlInfo,
+            this.mnuHelpLogSetlvlDebug,
+            this.mnuHelpLogSetlvlWarn,
+            this.mnuHelpLogSetlvlError,
+            this.mnuHelpLogSetlvlFatall,
+            this.mnuHelpLogSetlvlOff,
+            this.toolStripMenuItem3,
+            this.mnuHelpLogTest});
+            this.mnuHelpLogRoot.Name = "mnuHelpLogRoot";
+            resources.ApplyResources(this.mnuHelpLogRoot, "mnuHelpLogRoot");
+            // 
+            // mnuHelpLogSetlvlAll
+            // 
+            this.mnuHelpLogSetlvlAll.Name = "mnuHelpLogSetlvlAll";
+            resources.ApplyResources(this.mnuHelpLogSetlvlAll, "mnuHelpLogSetlvlAll");
+            this.mnuHelpLogSetlvlAll.Click += new System.EventHandler(this.mnuHelpLogSetlvlAll_Click);
+            // 
+            // mnuHelpLogSetlvlDebug
+            // 
+            this.mnuHelpLogSetlvlDebug.Name = "mnuHelpLogSetlvlDebug";
+            resources.ApplyResources(this.mnuHelpLogSetlvlDebug, "mnuHelpLogSetlvlDebug");
+            this.mnuHelpLogSetlvlDebug.Click += new System.EventHandler(this.mnuHelpLogSetlvlDebug_Click);
+            // 
+            // mnuHelpLogSetlvlInfo
+            // 
+            this.mnuHelpLogSetlvlInfo.Name = "mnuHelpLogSetlvlInfo";
+            resources.ApplyResources(this.mnuHelpLogSetlvlInfo, "mnuHelpLogSetlvlInfo");
+            this.mnuHelpLogSetlvlInfo.Click += new System.EventHandler(this.mnuHelpLogSetlvlInfo_Click);
+            // 
+            // mnuHelpLogSetlvlWarn
+            // 
+            this.mnuHelpLogSetlvlWarn.Name = "mnuHelpLogSetlvlWarn";
+            resources.ApplyResources(this.mnuHelpLogSetlvlWarn, "mnuHelpLogSetlvlWarn");
+            this.mnuHelpLogSetlvlWarn.Click += new System.EventHandler(this.mnuHelpLogSetlvlWarn_Click);
+            // 
+            // mnuHelpLogSetlvlError
+            // 
+            this.mnuHelpLogSetlvlError.Checked = true;
+            this.mnuHelpLogSetlvlError.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuHelpLogSetlvlError.Name = "mnuHelpLogSetlvlError";
+            resources.ApplyResources(this.mnuHelpLogSetlvlError, "mnuHelpLogSetlvlError");
+            this.mnuHelpLogSetlvlError.Click += new System.EventHandler(this.mnuHelpLogSetlvlError_Click);
+            // 
+            // mnuHelpLogSetlvlFatall
+            // 
+            this.mnuHelpLogSetlvlFatall.Name = "mnuHelpLogSetlvlFatall";
+            resources.ApplyResources(this.mnuHelpLogSetlvlFatall, "mnuHelpLogSetlvlFatall");
+            this.mnuHelpLogSetlvlFatall.Click += new System.EventHandler(this.mnuHelpLogSetlvlFatall_Click);
+            // 
+            // mnuHelpLogSetlvlOff
+            // 
+            this.mnuHelpLogSetlvlOff.Name = "mnuHelpLogSetlvlOff";
+            resources.ApplyResources(this.mnuHelpLogSetlvlOff, "mnuHelpLogSetlvlOff");
+            this.mnuHelpLogSetlvlOff.Click += new System.EventHandler(this.mnuHelpLogSetlvlOff_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            // 
+            // mnuHelpLogTest
+            // 
+            this.mnuHelpLogTest.Name = "mnuHelpLogTest";
+            resources.ApplyResources(this.mnuHelpLogTest, "mnuHelpLogTest");
+            this.mnuHelpLogTest.Click += new System.EventHandler(this.mnuHelpLogTest_Click);
             // 
             // tstPulsanti
             // 
@@ -584,6 +681,18 @@
         private System.Windows.Forms.ToolStripMenuItem francoisToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tstBtnCercaWireless;
         private System.Windows.Forms.ToolStripMenuItem sbWirelessToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogRoot;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogSetlvlAll;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogSetlvlDebug;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogSetlvlInfo;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogSetlvlWarn;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogSetlvlError;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogSetlvlFatall;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogSetlvlOff;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpLogTest;
+        private System.Windows.Forms.ToolStripMenuItem mnuArchivioLL;
+        private System.Windows.Forms.ToolStripStatusLabel sstMainMsg;
     }
 }
 

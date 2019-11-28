@@ -31,6 +31,7 @@ namespace MoriData
                 CreateTable<_sbDefSoglia>();
                 CreateTable<_sbSoglie>();
                 CreateTable<_parametri>();
+                // Tabelle Spy Batt
                 CreateTable<_spybatt>();
                 CreateTable<_sbMemLunga>();
                 CreateTable<_sbMemBreve>();
@@ -41,8 +42,11 @@ namespace MoriData
                 CreateTable<_sbParametriGenerali>();
                 CreateTable<_NodoStruttura>();
                 CreateTable<_lmEventiDb>();
-
+                // Tabelle Lade Light
                 CreateTable<_ladelight>();
+                CreateTable<_llParametriApparato>();
+                CreateTable<_llDatiCliente>();
+
                 CreateTable<_llMemoriaCicli>();
                 CreateTable<_llContatoriApparato>();
                 CreateTable<_llProgrammaCarica>();

@@ -331,7 +331,11 @@ namespace PannelloCharger
             //time consuming operation
             DateTime _inizioChiamata = DateTime.Now;
             usParameters _parametri = (usParameters)e.Argument;
-
+            if(sbWorker.CancellationPending)
+            {
+                Log.Debug("Richiesta cancellazione pendente. chiudo il BW");
+                e.Cancel = true;
+            }
 
 
             switch (TipoComando)
@@ -477,6 +481,7 @@ namespace PannelloCharger
             bool _EsecuzioneInterrotta = false;
             string _titolo ="";
             int _step = 0;
+            int _retry = 0;
             elementiComuni.tipoMessaggio _msg = elementiComuni.tipoMessaggio.vuoto;
 
             switch (ElementoPilotato)
@@ -498,6 +503,7 @@ namespace PannelloCharger
                     _titolo = _statoLL.Titolo;
                     _step = _statoLL.Step;
                     _msg = _statoLL.TipoDati;
+                    _retry = _statoLL.NumTentativi;
                     break;
                 case ControlledDevice.Desolfatatore:
                     break;
@@ -633,6 +639,7 @@ namespace PannelloCharger
                             }
                             //Log.Info("Worker Progress " + e.ProgressPercentage.ToString() + " (" + _statoE.Step.ToString() + ")");
                             pgbAvanamentoL.Value = _localProgressPercentage;
+                            lblMsgFail.Text = "Total packet retry: " + _retry.ToString();
                             lblMessaggioAvanzamento.Text = "Processing......" + pgbAvanamentoL.Value.ToString() + "%";
                         }
                         break;
@@ -998,6 +1005,8 @@ namespace PannelloCharger
 
                 btnAnnulla.Enabled = false;
                 btnChiudi.Enabled = true;
+                
+                //sbWorker.Dispose();
                 btnStartLettura.Enabled = true;
             }
 
@@ -1082,12 +1091,13 @@ namespace PannelloCharger
                     case ControlledDevice.Nessuno:
                         break;
                     case ControlledDevice.SpyBatt:
-                        sbLocale.RichiestaInterruzione = true; ;
+                        sbLocale.RichiestaInterruzione = true; 
                         break;
                     case ControlledDevice.Display:
                         break;
                     case ControlledDevice.LadeLight:
                         llLocale.RichiestaInterruzione = true;
+                        sbWorker.CancelAsync();
                         break;
                     case ControlledDevice.Desolfatatore:
                         break;

@@ -2676,9 +2676,6 @@ namespace ChargerLogic
 
         }
 
-
-
-
         public class EsitoMessaggio
         {
             public enum Esiti : byte { OK = 0x0F, KO = 0xF0 };

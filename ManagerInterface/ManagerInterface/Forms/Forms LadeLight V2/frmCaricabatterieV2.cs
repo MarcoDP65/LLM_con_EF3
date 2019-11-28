@@ -144,12 +144,21 @@ namespace PannelloCharger
                 //InitializeComponent();
                 ResizeRedraw = true;
                 _msg = new SerialMessage();
-                _cb = new CaricaBatteria(ref _parametri,null);
+                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
                 InizializzaScheda();
                 _esito = _cb.apriPorta();
                 if (!_esito)
                 {
                     MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Hide();  //Close();
+                    return _esito;
+                }
+
+                // Ora apro esplicitamente il canale. se fallisco esco direttamente
+                _esito = _cb.StartComunicazione();
+                if (!_esito)
+                {
+                    //MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.Hide();  //Close();
                     return _esito;
                 }
@@ -1088,6 +1097,7 @@ namespace PannelloCharger
             try
             {
 
+                
 
                 _esito = _cb.CaricaAreaContatori();
 
@@ -4139,6 +4149,7 @@ namespace PannelloCharger
         {
             Log.Debug("Lancio lettura lunghi");
 
+            //_avCicli = new frmAvanzamentoCicli();
             _avCicli.ParametriWorker.MainCount = 100;
             _avCicli.llLocale = _cb;
             _avCicli.ValStart = (int)0;

@@ -107,6 +107,31 @@ namespace ChargerLogic
 
                     }
 
+                    // prima di tutto verifico di essere in modalita bootloader; se non lo sono, commuto
+
+                    _esito = CaricaStatoFirmware(IdApparato, true);
+
+                    if(!_esito)
+                    {
+                        // non riesco nemmeno a verificare lo stato. FAIL 
+                        Log.Error("Switch to BL Failed");
+                        _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                        _passo.Eventi = 0;
+                        _passo.Step = -1;
+                        _passo.EsecuzioneInterrotta = true;
+                        _stepEv = new ProgressChangedEventArgs(0, 0);
+                        Step(this, _stepEv);
+                        return false;
+                    }
+
+
+
+
+                    
+
+
                     //Prima invio la testata
 
                     if (RunAsinc)
@@ -389,7 +414,6 @@ namespace ChargerLogic
                             StatoFirmware.LenFlash3 = _mS.StatoFirmwareScheda.LenFlash3;
                             StatoFirmware.AddrFlash4 = _mS.StatoFirmwareScheda.AddrFlash4;
                             StatoFirmware.LenFlash4 = _mS.StatoFirmwareScheda.LenFlash4;
-                            StatoFirmware.Stato = _mS.StatoFirmwareScheda.Stato;
                             StatoFirmware.valido = true;
                         }
                     }

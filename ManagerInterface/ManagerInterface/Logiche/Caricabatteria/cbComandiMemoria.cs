@@ -362,6 +362,9 @@ namespace ChargerLogic
 
         }
 
+        public const int MAX_RETRY = 5;          // num max di tentativi di rilettura prima di abortire l'operazione
+    
+
         public bool LeggiBloccoLunghi(bool RunAsinc = false)
         {
             try
@@ -391,21 +394,48 @@ namespace ChargerLogic
                     }
 
                 }
+                // controllo che il canale sia aperto. se no riapro o fallisco
 
+                //  _esito = apriPorta();
+                if (!apriPorta())
+                {
+                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                    _passo.Titolo = "Caricabatteria SCOLLEGATO o NON RAGGIUNGIBILE";
+                    _passo.Eventi = 1;
+                    _passo.Step = -1;
+                    _passo.NumTentativi = 0;
+                    _passo.EsecuzioneInterrotta = true;
+                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                    Step(this, _stepEv);
+                    Log.Debug("Lettura area lunghi => apertura porta fallita! ");
+
+                    System.Threading.Thread.Sleep(5000);
+
+                }
 
 
                 Log.Debug("Inizio lettura area lunghi");
                 DateTime Inizio = DateTime.Now;
                 BloccoLunghi = new byte[_LEN_AREA_RECORD_LUNGHI];
+                // inizializzo l'array a FF
+                for (int _addr = 0; _addr< _LEN_AREA_RECORD_LUNGHI; _addr ++)
+                {
+                    BloccoLunghi[_addr] = 0xFF;
+                }
 
                 int DimPacchetto = 240;
                 int LenPacchetto = 240;
                 int NumPacchetto = 0;
+                int NumRetry = 0;
+                int TotFail = 0;
+                bool SkipOver = false;
+                bool PacchettoValido = false;
                 byte[] TmpBuffer = new byte[LenPacchetto];
                 bool FineLettura = false;
                 int IndirizzoRelativo = 0;
 
-                while (!FineLettura)
+                while (!FineLettura && !SkipOver)
                 {
                     if ((_LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo) >= LenPacchetto)
                     {
@@ -416,51 +446,94 @@ namespace ChargerLogic
                         DimPacchetto = _LEN_AREA_RECORD_LUNGHI - IndirizzoRelativo;
                     }
                     uint TempAddr = (uint)(_ADDR_START_RECORD_LUNGHI + IndirizzoRelativo);
-                    _esito = LeggiBloccoMemoria(TempAddr, (ushort)DimPacchetto, out TmpBuffer);
-                    if (_esito)
+                    PacchettoValido = false;
+                    NumRetry = 0;
+                    while (!PacchettoValido)
                     {
-                        for (int _ciclo = 0; _ciclo < DimPacchetto; _ciclo++)
+                        _esito = LeggiBloccoMemoria(TempAddr, (ushort)DimPacchetto, out TmpBuffer);
+                        if (_esito)
                         {
-                            BloccoLunghi[IndirizzoRelativo + _ciclo] = TmpBuffer[_ciclo];
-                        }
-                        IndirizzoRelativo += DimPacchetto;
-                        NumPacchetto++;
-                        if (IndirizzoRelativo >= _LEN_AREA_RECORD_LUNGHI)
-                        {
-                            FineLettura = true;
-                        }
-                        if (RunAsinc)
-                        {
-                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
-                            int _progress = 0;
-                            double _valProgress = 0;
-                            _passo.TipoDati = elementiComuni.tipoMessaggio.AreaMemLungaLL;
-                            _passo.Titolo = "";
-                            _passo.Eventi = _LEN_AREA_RECORD_LUNGHI;
-                            _passo.Step = IndirizzoRelativo;
-                            if (_passo.Eventi > 0)
+                            for (int _ciclo = 0; _ciclo < DimPacchetto; _ciclo++)
                             {
-                                _valProgress = (_passo.Step * 100) / _passo.Eventi;
+                                BloccoLunghi[IndirizzoRelativo + _ciclo] = TmpBuffer[_ciclo];
                             }
-                            _progress = (int)_valProgress;
+                            IndirizzoRelativo += DimPacchetto;
+                            NumPacchetto++;
+                            TotFail += NumeroTentativiLettura - 1;
+                            if (IndirizzoRelativo >= _LEN_AREA_RECORD_LUNGHI)
+                            {
+                                FineLettura = true;
+                            }
+                            PacchettoValido = true;
+                            if (RunAsinc)
+                            {
+                                if (!RichiestaInterruzione)
+                                {
+                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                    int _progress = 0;
+                                    double _valProgress = 0;
+                                    _passo.TipoDati = elementiComuni.tipoMessaggio.AreaMemLungaLL;
+                                    _passo.Titolo = "";
+                                    _passo.Eventi = _LEN_AREA_RECORD_LUNGHI;
+                                    _passo.Step = IndirizzoRelativo;
+                                    _passo.NumTentativi = TotFail;
+                                    if (_passo.Eventi > 0)
+                                    {
+                                        _valProgress = (_passo.Step * 100) / _passo.Eventi;
+                                    }
+                                    _progress = (int)_valProgress;
 
-                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
-                            Step(this, _stepEv);
+                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                    Step(this, _stepEv);
+                                }
+                                else
+                                {
+                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                    _passo.Titolo = "Caricamento ANNULLATO";
+                                    _passo.Eventi = 1;
+                                    _passo.Step = -1;
+                                    _passo.NumTentativi = NumRetry;
+                                    _passo.EsecuzioneInterrotta = true;
+                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                    Step(this, _stepEv);
+                                    Log.Debug("Lettura area lunghi => lettura interrotta: " + IndirizzoRelativo.ToString("x4"));
+
+                                    System.Threading.Thread.Sleep(2000);
+
+                                    SkipOver = true;
+                                    break;
+                                }
+                            }
+
                         }
+                        else
+                        {
+                            // Errore di lettura. se il num tentatovi è inferiore al massimo riprovo, 
+                            NumRetry += 1;
+                            TotFail += 1;
+                            if (NumRetry > MAX_RETRY)
+                            {
+                                // Oltre il massimo chiudo con errore
 
-                    }
-                    else
-                    {
-                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
-                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                        _passo.Titolo = "Fase 2 - Caricamento Eventi Brevi";
-                        _passo.Eventi = 1;
-                        _passo.Step = -1;
-                        _passo.EsecuzioneInterrotta = true;
-                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
-                        Step(this, _stepEv);
-                        Log.Debug("Lettura area lunghi => lettura interrotta: " + IndirizzoRelativo.ToString("x4"));
-                        break;
+
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                _passo.Titolo = "Caricamento INTERROTTO";
+                                _passo.Eventi = 1;
+                                _passo.Step = -1;
+                                _passo.NumTentativi = NumRetry;
+                                _passo.EsecuzioneInterrotta = true;
+                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                Step(this, _stepEv);
+                                Log.Debug("Lettura area lunghi => lettura interrotta: " + IndirizzoRelativo.ToString("x4"));
+
+                                System.Threading.Thread.Sleep(5000);
+
+                                SkipOver = true;
+                                break;
+                            }
+                        }
                     }
 
                 }
@@ -469,11 +542,11 @@ namespace ChargerLogic
                 Log.Debug("Lettura area lunghi => Elapsed: " + Tempo.TotalMilliseconds.ToString() + " ( " + NumPacchetto.ToString() + " )");
 
                 Inizio = DateTime.Now;
-
-
-                // ora inizio lo spacchettamento
-                AnalizzaAreaLunghi(ContatoriLL.CntCariche, ContatoriLL.PntNextCarica, true, RunAsinc);
-
+                if (!SkipOver)
+                {
+                    // ora inizio lo spacchettamento
+                    AnalizzaAreaLunghi(ContatoriLL.CntCariche, ContatoriLL.PntNextCarica, true, RunAsinc);
+                }
 
                 return FineLettura;
             }
@@ -774,7 +847,11 @@ namespace ChargerLogic
         {
             try
             {
-                DatiCliente = new llDatiCliente();
+                DatiCliente = new llDatiCliente(DbAttivo);
+                DatiCliente.IdApparato = ParametriApparato.IdApparato;
+                DatiCliente.IdCliente = 1; // al momento è fisso
+
+
                 MessaggioLadeLight.MessaggioDatiCliente MsgDatiCli = new MessaggioLadeLight.MessaggioDatiCliente();
                 bool _esito = false;
                 SerialMessage.EsitoRisposta EsitoMsg;

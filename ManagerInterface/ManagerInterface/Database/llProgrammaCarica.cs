@@ -37,8 +37,7 @@ namespace MoriData
         // SB - SPY-BATT
         // IB - ID-BATT
 
-        [Indexed(Name = "IDXProgrammaCarica", Order = 2, Unique = true)]
-
+        [Indexed(Name = "IDXProgrammaCarica", Order = 3, Unique = true)]
         public ushort IdProgramma { get; set; }
 
         public DateTime CreationDate { get; set; }
@@ -51,7 +50,6 @@ namespace MoriData
         public ushort BatteryVdef { get; set; }
         public ushort BatteryAhdef { get; set; }
         public byte   NumeroCelle { get; set; }
-
         public ushort VSoglia { get; set; }
         public ushort VRaccordoF1 { get; set; }
         public ushort VMax { get; set; }
@@ -59,10 +57,8 @@ namespace MoriData
         public ushort BatteryVminRec { get; set; }
         public ushort BatteryVmaxRec { get; set; }
         public ushort BatteryVminStop { get; set; }
-
         public ushort CorrenteMax { get; set; }
         public ushort CorrenteFase3 { get; set; }
-
         public ushort EqualTempoAttesa { get; set; }
         public ushort EqualNumImpulsi { get; set; }
         public ushort EqualDurataPausa { get; set; }

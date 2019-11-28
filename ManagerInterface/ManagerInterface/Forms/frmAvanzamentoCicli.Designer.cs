@@ -40,6 +40,7 @@
             this.lblMessaggioAvanzamento = new System.Windows.Forms.Label();
             this.lblMsg01 = new System.Windows.Forms.Label();
             this.lblMsg02 = new System.Windows.Forms.Label();
+            this.lblMsgFail = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblAvanzmentoL
@@ -105,10 +106,16 @@
             resources.ApplyResources(this.lblMsg02, "lblMsg02");
             this.lblMsg02.Name = "lblMsg02";
             // 
+            // lblMsgFail
+            // 
+            resources.ApplyResources(this.lblMsgFail, "lblMsgFail");
+            this.lblMsgFail.Name = "lblMsgFail";
+            // 
             // frmAvanzamentoCicli
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblMsgFail);
             this.Controls.Add(this.lblMsg02);
             this.Controls.Add(this.lblMsg01);
             this.Controls.Add(this.lblMessaggioAvanzamento);
@@ -145,5 +152,6 @@
         private System.Windows.Forms.Label lblMessaggioAvanzamento;
         private System.Windows.Forms.Label lblMsg01;
         private System.Windows.Forms.Label lblMsg02;
+        private System.Windows.Forms.Label lblMsgFail;
     }
 }

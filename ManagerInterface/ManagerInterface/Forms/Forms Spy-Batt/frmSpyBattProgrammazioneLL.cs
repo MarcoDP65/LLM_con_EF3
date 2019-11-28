@@ -211,9 +211,6 @@ namespace PannelloCharger
             }
         }
 
-
-
-
         public bool AggiornaSelezioneProfili( )
         {
             try
@@ -278,7 +275,6 @@ namespace PannelloCharger
                 return false;
             }
         }
-
 
         private bool RicalcolaParametriCiclo(bool MessaggioEsito = true)
         {
@@ -582,7 +578,6 @@ namespace PannelloCharger
             }
         }
 
-
         public bool MostraEqualCCorrente()
         {
             try
@@ -774,9 +769,6 @@ namespace PannelloCharger
             }
         }
 
-
-
-
         public bool ScriviParametriCarica()
         {
             try
@@ -823,7 +815,6 @@ namespace PannelloCharger
 
                     }
                 
-
 
                     byte[] IdBatteria = new byte[6];
                     string _tempId;
@@ -1110,8 +1101,6 @@ namespace PannelloCharger
                 return false;
             }
         }
-
-
 
         public bool VuotaPannelloCaricaLL()
         {

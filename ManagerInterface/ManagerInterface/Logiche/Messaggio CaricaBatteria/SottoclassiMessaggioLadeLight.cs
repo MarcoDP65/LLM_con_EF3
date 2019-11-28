@@ -1740,13 +1740,17 @@ namespace ChargerLogic
 
 
                     startByte = 0;
-                    Log.Debug(" ----------------------  Record Lungo  -----------------------------------------");
                     
                     NumeroCarica = ArrayToUint32(_messaggio, startByte, 4);
                     startByte += 4;
 
+                   // Log.Debug(" ----------------------  Record Lungo " + NumeroCarica.ToString("0000") + " -----------------------------------------");
+
                     IdSpyBatt = SubArray(_messaggio, startByte, 8);
                     startByte += 8;
+
+                    Log.Debug(" ----------------------  Record Lungo " + NumeroCarica.ToString("0000") + " -----------------------------------------");
+
 
                     IdProgrammazione = ArrayToUshort(_messaggio, startByte, 2);
                     startByte += 2;
@@ -1808,10 +1812,12 @@ namespace ChargerLogic
 
 
                     startByte = 0;
-                    Log.Debug(" ----------------------  Record Lungo  -----------------------------------------");
+ //                   Log.Debug(" ----------------------  Record Lungo  -----------------------------------------");
 
-                    NumeroCarica = ArrayToUint32(_messaggio, startByte, 4);
+                     NumeroCarica = ArrayToUint32(_messaggio, startByte, 4);
                     startByte += 4;
+
+                    Log.Debug(" ----------------------  Record Lungo " + NumeroCarica.ToString("0000") + " -----------------------------------------");
 
                     IdSpyBatt = SubArray(_messaggio, startByte, 8);
                     startByte += 8;

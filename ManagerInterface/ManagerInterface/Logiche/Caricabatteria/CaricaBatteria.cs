@@ -120,6 +120,7 @@ namespace ChargerLogic
         private string _lastError;
         private bool _cbCollegato;
         public bool apparatoPresente = false;
+        public MoriData._db DbAttivo;
 
         public byte[] DatiRisposta;
         public SerialMessage.EsitoRisposta UltimaRisposta;
@@ -515,7 +516,7 @@ namespace ChargerLogic
                 _mS.SerialNumber = Seriale;
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
-
+                DbAttivo = dbCorrente;
                 DatiCliente = new llDatiCliente(dbCorrente);
                 DatiBase = new DatiConfigCariche();
                 //InizializzaDatiLocali();
@@ -693,7 +694,7 @@ namespace ChargerLogic
                     else
                     {
                         // C'è la matricola --> registro il record
-                        ApparatoLL = new LadeLightData();
+                        ApparatoLL = new LadeLightData(DbAttivo);
                         // ApparatoLL.caricaDati(ParametriApparato.s);
                     }
 
@@ -701,6 +702,11 @@ namespace ChargerLogic
                     if (ParametriApparato.llParApp != null)
                     {
                         ModelloCorrente = DatiBase.ModelliLL.Find(x => x.IdModelloLL == ParametriApparato.llParApp.TipoApparato);
+                        if(DbAttivo !=null)
+                        {
+                            // ParametriApparato._database = DbAttivo;
+                            ParametriApparato.salvaDati();
+                        }
                     }
                     else
                     {
@@ -842,7 +848,9 @@ namespace ChargerLogic
                 MessaggioLadeLight.MessaggioAreaContatori MsgContatoriLL = new MessaggioLadeLight.MessaggioAreaContatori();
                 SerialMessage.EsitoRisposta EsitoMsg;
 
-                ContatoriLL = new llContatoriApparato();
+                ContatoriLL = new llContatoriApparato(DbAttivo);
+                ContatoriLL.llContApp.IdApparato = ParametriApparato.IdApparato;
+
 
                 uint StartAddr = 0x3000;
 
@@ -872,7 +880,7 @@ namespace ChargerLogic
                         ContatoriLL.CntMemReset = MsgContatoriLL.CntMemReset;
                         ContatoriLL.DataUltimaCancellazione = FunzioniComuni.ArrayCopy( MsgContatoriLL.DataUltimaCancellazione);
                         ContatoriLL.valido = true;
-
+                        ContatoriLL.salvaDati();
                         return true;
                     }
 
@@ -1344,6 +1352,8 @@ namespace ChargerLogic
                     return false;
                 }
 
+
+
                 return true;
             }
 
@@ -1529,9 +1539,8 @@ namespace ChargerLogic
                 int _numciclolettura = 0;
 
                 // Verifico che il canale sia attivo
-
                 ControllaAttesa(UltimaScrittura);
-
+                
                 if (NumByte < 1) NumByte = 1;
                 if (NumByte > 240 )
                 {
@@ -1562,7 +1571,7 @@ namespace ChargerLogic
                 {
                     _numciclolettura++;
                     _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                    _esito = aspettaRisposta(elementiComuni.Timeout1sec, 1, false);
 
                     if (_esito)
                     {
@@ -1590,7 +1599,6 @@ namespace ChargerLogic
                 }
                 NumeroTentativiLettura = _numciclolettura;
                 return ( _esito && _daticompleti);
-
             }
 
 
@@ -1903,7 +1911,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito;
-                ParametriApparato = new llParametriApparato();
+                ParametriApparato = new llParametriApparato(DbAttivo);
                 MessaggioLadeLight.PrimoBloccoMemoria ImmagineMemoria = new MessaggioLadeLight.PrimoBloccoMemoria();
                 SerialMessage.EsitoRisposta EsitoMsg;
 

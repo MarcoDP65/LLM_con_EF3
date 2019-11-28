@@ -460,7 +460,144 @@ namespace ChargerLogic
             }
         }
 
-        public bool CancellaProgrammazioneLL(string IdApparato, bool ApparatoConnesso )
+        public bool SalvaIdBattProfiloLL(string IdApparato, bool ApparatoConnesso, byte[] IdBatteria)
+        {
+            try
+            {
+                bool _esito;
+                byte[] BufferPag1 = new byte[4096];
+                byte[] BufferPacchetto;
+                uint AddrCorrente = 0;
+                int BlockSize = 230;
+                int LastBlock = 0;
+
+
+
+                ControllaAttesa(UltimaScrittura);
+
+                // Step 1: carico l'intero blocco iniziale (4K)
+                while ((0x1000 - AddrCorrente) > BlockSize)
+                {
+                    _esito = LeggiBloccoMemoria(AddrCorrente, (ushort)BlockSize, out BufferPacchetto);
+                    if (_esito)
+                    {
+                        for (int _I = 0; _I < BlockSize; _I++)
+                        {
+                            BufferPag1[AddrCorrente++] = BufferPacchetto[_I];
+                        }
+
+                    }
+                    else
+                    {
+                        Log.Debug("Caricamento dati fallito. Start = " + AddrCorrente.ToString("X6"));
+                        return false;
+                    }
+                }
+
+                // Ora il blocco finale
+                LastBlock = (int)(0x1000 - AddrCorrente);
+                _esito = LeggiBloccoMemoria(AddrCorrente, (ushort)LastBlock, out BufferPacchetto);
+                if (_esito)
+                {
+                    for (int _I = 0; _I < LastBlock; _I++)
+                    {
+                        BufferPag1[AddrCorrente++] = BufferPacchetto[_I];
+                    }
+
+                }
+                else
+                {
+                    Log.Debug("Caricamento dati fallito. Start = " + AddrCorrente.ToString("X6"));
+                    return false;
+                }
+
+                Log.Info("Pagina 0: ");
+                Log.Info(FunzioniComuni.HexdumpArray(BufferPag1));
+
+
+                //Inserisco l'ID Batteria LL
+                // Ora Inserisco il nuovo prg
+                for (int _I = 0; _I < 6; _I++)
+                {
+                    if (_I < IdBatteria.Length)
+                    {
+                        BufferPag1[0x01F0 + _I] = IdBatteria[_I];
+                    }
+                    else
+                    {
+                        BufferPag1[0x01F0 + _I] = 0xFF;
+                    }
+                }
+
+
+
+
+                Log.Info("Nuova Pagina 0: ");
+                Log.Info(FunzioniComuni.HexdumpArray(BufferPag1));
+
+
+                //return false;
+
+
+                // Cancello la pagina
+                _esito = CancellaBlocco4K(0x0000);
+
+                //  e ora riscrivo i dati
+                BufferPacchetto = new byte[BlockSize];
+                // Parto da 0x0100, l'area iniziale viene riscritta dal FW SB
+                AddrCorrente = 0x0000;
+                while ((0x1000 - AddrCorrente) > BlockSize)
+                {
+                    for (int _I = 0; _I < BlockSize; _I++)
+                    {
+                        BufferPacchetto[_I] = BufferPag1[AddrCorrente + _I];
+
+                    }
+                    ControllaAttesa(UltimaScrittura);
+                    _esito = ScriviBloccoMemoria(AddrCorrente, (ushort)BlockSize, BufferPacchetto);
+
+                    if (_esito)
+                    {
+                        Log.Debug("Scrittura. Start = " + AddrCorrente.ToString("X6") + " - Bytes " + BlockSize.ToString("X4"));
+                    }
+                    else
+                    {
+                        Log.Debug("Scrittura dati fallita. Start = " + AddrCorrente.ToString("X6"));
+                        return false;
+                    }
+                    AddrCorrente += (uint)BlockSize;
+
+
+                }
+
+                // Ora il blocco finale
+                BlockSize = (int)(0x1000 - AddrCorrente);
+
+                for (int _I = 0; _I < BlockSize; _I++)
+                {
+                    BufferPacchetto[_I] = BufferPag1[AddrCorrente + _I];
+                }
+                _esito = ScriviBloccoMemoria(AddrCorrente, (ushort)BlockSize, BufferPacchetto);
+                AddrCorrente += (uint)BlockSize;
+                if (!_esito)
+                {
+                    Log.Debug("Scrittura dati fallita. Start = " + AddrCorrente.ToString("X6"));
+                    return false;
+                }
+
+                Log.Debug("Scrittura dati Completata");
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SalvaProgrammazioneLL: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
+        public bool CancellaProgrammazioneLL(bool ApparatoConnesso )
         {
             try
             {
