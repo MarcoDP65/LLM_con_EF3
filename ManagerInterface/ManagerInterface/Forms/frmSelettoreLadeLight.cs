@@ -27,7 +27,7 @@ namespace PannelloCharger
         parametriSistema _parametri;
         LogicheBase _logiche;
         public MoriData._db _database;
-        IEnumerable<dataUtility.sbListaElementi> ListaLadeLight;
+        IEnumerable<dataUtility.llListaElementi> ListaLadeLight;
 
         private static ILog Log = LogManager.GetLogger("frmSelettoreLadeLight");
 
@@ -83,19 +83,21 @@ namespace PannelloCharger
         }
 
 
-        public IEnumerable<dataUtility.sbListaElementi> ListaApparati()
+        public IEnumerable<dataUtility.llListaElementi> ListaApparati()
         {
             try
             {
                 string _sql = "";
-                _sql += "select t1.Id, t1.SwVersion, t1.ProductId, t1.HwVersion, t2.DataInstall, t2.Client, t2.BatteryBrand, t2.BatteryModel, t2.BatteryId, t2.ClientNote,t2.SerialNumber,";
-                _sql += "( select max(DataLastDownload) from _sbMemLunga as t99 where t99.IdApparato = t1.Id) as UltimaLettura ";
+                _sql += "select  t1.IdApparato as IdApparato, 1 as IdCliente, t2.Client as Client, t2.ClientDescription as ClientDescription,";
+                _sql += "t1.TipoApparato as TipoApparato,";
+                _sql += "t1.RevisionDate as UltimaLettura ";
 
-                _sql += "from _spybatt as t1 left outer join _sbDatiCliente as t2 on t1.Id = t2.IdApparato order by t2.ClientNote,t1.Id ";
+                _sql += "from _llParametriApparato as t1 left outer join _llDatiCliente as t2 on t1.IdApparato = t2.IdApparato";
+
 
                 Log.Info(_sql);
 
-                return _database.Query<dataUtility.sbListaElementi>(_sql);
+                return  _database.Query<dataUtility.llListaElementi>(_sql);
             }
             catch (Exception Ex)
             {
@@ -129,82 +131,63 @@ namespace PannelloCharger
                 BrightIdeasSoftware.OLVColumn colIdConfig = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "ID",
-                    AspectName = "strIdProgramma",
+                    AspectName = "IdApparato",
                     Width = 60,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Right,
                 };
                 flvwListaApparati.AllColumns.Add(colIdConfig);
 
+                BrightIdeasSoftware.OLVColumn colClient = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Cliente",
+                    AspectName = "Client",
+                    Width = 120,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flvwListaApparati.AllColumns.Add(colClient);
 
+                BrightIdeasSoftware.OLVColumn colClientDesc = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Descrizione",
+                    AspectName = "ClientDescription",
+                    Width = 240,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flvwListaApparati.AllColumns.Add(colClientDesc);
 
+                BrightIdeasSoftware.OLVColumn colChargerType = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Modello",
+                    AspectName = "strTipoApparato",
+                    Width = 90,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Left,
+                };
+                flvwListaApparati.AllColumns.Add(colChargerType);
 
+                BrightIdeasSoftware.OLVColumn colUltimaLettura = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Ultima Lettura",
+                    AspectName = "strUltimaLettura",
+                    Width = 120,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvwListaApparati.AllColumns.Add(colUltimaLettura);
 
-
-
-                BrightIdeasSoftware.OLVColumn colCli = new BrightIdeasSoftware.OLVColumn();
-                colCli.Text = StringheColonneTabelle.ListaApp01Cliente; //"Cliente";
-                colCli.AspectName = "Client";
-                colCli.Width = 200;
-                colCli.HeaderTextAlign = HorizontalAlignment.Left;
-                colCli.TextAlign = HorizontalAlignment.Left;
-                flvwListaApparati.AllColumns.Add(colCli);
-
-                BrightIdeasSoftware.OLVColumn idBatt = new BrightIdeasSoftware.OLVColumn();
-                idBatt.Text = StringheColonneTabelle.ListaApp02IdBatt; //"ID Batt.";
-                idBatt.AspectName = "BatteryId";
-                idBatt.Width = 100;
-                idBatt.HeaderTextAlign = HorizontalAlignment.Center;
-                idBatt.TextAlign = HorizontalAlignment.Left;
-                flvwListaApparati.AllColumns.Add(idBatt);
-
-                BrightIdeasSoftware.OLVColumn colBatt = new BrightIdeasSoftware.OLVColumn();
-                colBatt.Text = StringheColonneTabelle.ListaApp03Batt; // "Batteria";
-                colBatt.AspectName = "BatteryBrand";
-                colBatt.Width = 100;
-                colBatt.HeaderTextAlign = HorizontalAlignment.Center;
-                colBatt.TextAlign = HorizontalAlignment.Left;
-                flvwListaApparati.AllColumns.Add(colBatt);
-
-                BrightIdeasSoftware.OLVColumn colBattMod = new BrightIdeasSoftware.OLVColumn();
-                colBattMod.Text = StringheColonneTabelle.ListaApp04Mod; // "Modello";
-                colBattMod.AspectName = "BatteryModel";
-                colBattMod.Width = 100;
-                colBattMod.HeaderTextAlign = HorizontalAlignment.Center;
-                colBattMod.TextAlign = HorizontalAlignment.Right;
-                flvwListaApparati.AllColumns.Add(colBattMod);
-
-                BrightIdeasSoftware.OLVColumn colNote = new BrightIdeasSoftware.OLVColumn();
-                colNote.Text = StringheColonneTabelle.ListaApp05Note; // "Note";
-                colNote.AspectName = "ClientNote";
-                colNote.Width = 200;
-                colNote.HeaderTextAlign = HorizontalAlignment.Center;
-                colNote.TextAlign = HorizontalAlignment.Left;
-                flvwListaApparati.AllColumns.Add(colNote);
-
-                BrightIdeasSoftware.OLVColumn colSN = new BrightIdeasSoftware.OLVColumn();
-                colSN.Text = StringheColonneTabelle.ListaApp07SN; // "Note";
-                colSN.AspectName = "SerialNumber";
-                colSN.Width = 100;
-                colSN.HeaderTextAlign = HorizontalAlignment.Center;
-                colSN.TextAlign = HorizontalAlignment.Left;
-                flvwListaApparati.AllColumns.Add(colSN);
-
-                BrightIdeasSoftware.OLVColumn colDul = new BrightIdeasSoftware.OLVColumn();
-                colDul.Text = "Ultima Lettura";// StringheColonneTabelle.ListaApp07SN; // "Note";
-                colDul.AspectName = "strUltimaLettura";
-                colDul.Width = 100;
-                colDul.HeaderTextAlign = HorizontalAlignment.Center;
-                colDul.TextAlign = HorizontalAlignment.Left;
-                flvwListaApparati.AllColumns.Add(colDul);
-
-                BrightIdeasSoftware.OLVColumn colId = new BrightIdeasSoftware.OLVColumn();
-                colId.Text = StringheColonneTabelle.ListaApp06IdSb;  // "ID SPY-BATT";
-                colId.AspectName = "Id";
-                colId.Width = 120;
-                colId.HeaderTextAlign = HorizontalAlignment.Left;
-                colId.TextAlign = HorizontalAlignment.Left;
-                flvwListaApparati.AllColumns.Add(colId);
+                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "",
+                    AspectName = "",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                    FillsFreeSpace = true,
+                };
+                flvwListaApparati.AllColumns.Add(colRowFiller);
 
 
                 flvwListaApparati.RebuildColumns();
@@ -221,9 +204,124 @@ namespace PannelloCharger
 
         }
 
+        private void frmSelettoreLadeLight_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.Width > 600)
+                {
+
+                    //lvwCicliBatteriaOld.Width = this.Width - 120;
+                    flvwListaApparati.Width = this.Width - 50;
+                    btnChiudi.Left = this.Width - 125;
+                }
+
+                if (this.Height > 300)
+                {
+
+                    flvwListaApparati.Height = this.Height - 105;
+                    btnApriLadeLight.Top = this.Height - 83;
+                    btnEliminaDati.Top = this.Height - 83;
+                    btnEsportaSpybatt.Top = this.Height - 83;
+                    btnImportaDati.Top = this.Height - 83;
+                    btnChiudi.Top = this.Height - 83;
+                    txtIdScheda.Top = this.Height - 83;
+
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+
+        }
+
+        private void btnApriLadeLight_Click(object sender, EventArgs e)
+        {
+            MostraDettaglioRiga();
+        }
+
+        private void MostraDettaglioRiga()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                if (flvwListaApparati.SelectedObject != null)
+                {
 
 
+                    dataUtility.llListaElementi _tempLadeLight = (dataUtility.llListaElementi)flvwListaApparati.SelectedObject;
+                    if (_tempLadeLight.IdApparato != null)
+                    {
+                        ApriLadeLight(_tempLadeLight.IdApparato);
+                    }
 
+                }
+                this.Cursor = Cursors.Default;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("MostraDettaglioRiga: " + Ex.Message);
+                this.Cursor = Cursors.Default;
+            }
 
+        }
+
+        private void ApriLadeLight(string IdApparato)
+        {
+            try
+            {
+
+                frmCaricabatterieV2 llCorrente = new frmCaricabatterieV2(ref _parametri, true, IdApparato, _logiche, false, false);
+                llCorrente.MdiParent = this.MdiParent;
+                llCorrente.StartPosition = FormStartPosition.CenterParent;
+                llCorrente.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ApriSpyBatt: " + Ex.Message);
+            }
+
+        }
+
+        private void flvwListaApparati_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = (FastObjectListView)sender;
+
+                if (_lista.SelectedObject != null)
+                {
+                    MostraDettaglioRiga();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("flvwListaApparati_MouseDoubleClick: " + Ex.Message);
+            }
+
+        }
+
+        private void flvwListaApparati_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                FastObjectListView _lista = (FastObjectListView)sender;
+
+                if (_lista.SelectedObject != null)
+                {
+                    dataUtility.llListaElementi _tempLadelight = (dataUtility.llListaElementi)flvwListaApparati.SelectedObject;
+                    if (_tempLadelight.IdApparato != null)
+                    {
+                        txtIdScheda.Text = _tempLadelight.IdApparato;
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("flvwListaApparati_SelectedIndexChanged: " + Ex.Message);
+            }
+        }
     }
 }

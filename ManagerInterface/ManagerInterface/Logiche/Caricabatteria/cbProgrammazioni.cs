@@ -24,6 +24,7 @@ namespace ChargerLogic
         public llProgrammaCarica ProgrammaAttivo;
         public List<llProgrammaCarica> ProgrammiDefiniti;
         public MoriData._db _database;
+
         private static ILog Log = LogManager.GetLogger("cbProgrammazioni");
         public bool _datiSalvati;
         public bool _recordPresente;
@@ -58,7 +59,48 @@ namespace ChargerLogic
 
         public bool SalvaDati()
         {
-            return false;
+            try
+            {
+                bool _esito;
+
+                // Se il DB non è definito, non posso fare nulla
+                if(_database == null)
+                {
+                    Log.Debug("DB attivo non definito");
+                    return false;
+                }
+
+                if ( IdCorrente == "")
+                {
+                    Log.Debug("IdCorrente non definito");
+                    return false;
+                }
+
+                
+                // se non ho dati caricati nell'elenco corrente esco
+                if (ProgrammiDefiniti.Count() < 1) return true; // Non faccio nulla perchè non ho nulla da fare
+
+                // Imposto l'ordine a 20000 - ID; poi le prog presenti in flash prenderanno la posizione effettiva
+                // _database.Execute("update ");
+
+                _esito = true; 
+
+                // poi aggiorno le singole righe
+                foreach (llProgrammaCarica TempPrg in ProgrammiDefiniti)
+                {
+                    TempPrg.IdApparato = IdCorrente;
+                    TempPrg._database = _database;
+                    // Se fallosco anche solo 1 salvataggio, fallisco l'intera operazione
+                    if (!TempPrg.salvaDati()) _esito = false;
+                }
+
+                return _esito;
+            }
+            catch
+            {
+                return false;
+            }
+            
         }
 
 

@@ -80,13 +80,14 @@ namespace ChargerLogic
                 }
 
                 bool _esito = false;
-                llMemoriaCicli tempPrg = new llMemoriaCicli();
+                llMemoriaCicli tempPrg = new llMemoriaCicli(DbAttivo);
                 MessaggioLadeLight.MessaggioMemoriaLunga ImmagineCarica = new MessaggioLadeLight.MessaggioMemoriaLunga();
                 SerialMessage.EsitoRisposta EsitoMsg;
 
                 EsitoMsg = ImmagineCarica.analizzaMessaggio(ArrayDati, ParametriApparato.llParApp.ModelloMemoria);
                 if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
                 {
+                    tempPrg.IdApparato = ParametriApparato.IdApparato;
                     tempPrg.IdMemoriaLunga = ImmagineCarica.NumeroCarica;
                     tempPrg.IdSpyBatt = ImmagineCarica.IdSpyBatt;
                     tempPrg.IdProgramma = ImmagineCarica.IdProgrammazione;
@@ -718,6 +719,7 @@ namespace ChargerLogic
                     }
                     else
                     {
+                        // TempCarica.id
                         if (TempCarica.IdMemoriaLunga == 0xFFFFFFFF)
                         {
                             DatiValidi = false;
@@ -737,6 +739,7 @@ namespace ChargerLogic
                             }
 
                             MemoriaCicli.Add(TempCarica);
+                            TempCarica.salvaDati();
                             _esito = true;
                         }
 
@@ -887,6 +890,34 @@ namespace ChargerLogic
             }
 
         }
+
+        public bool LeggiMemoriaCicliDB(string IdApparato)
+        {
+            try
+            {
+                MemoriaCicli = new List<llMemoriaCicli>();
+
+                IEnumerable<_llMemoriaCicli> _TempCicli = DbAttivo.Query<_llMemoriaCicli>("select * from _llMemoriaCicli where IdApparato = ? order by IdMemCiclo desc", IdApparato);
+
+                foreach (_llMemoriaCicli Elemento in _TempCicli)
+                {
+                    llMemoriaCicli _cLoc;
+                    _cLoc = new llMemoriaCicli(DbAttivo, Elemento);
+                    MemoriaCicli.Add(_cLoc);
+
+                }
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                return false;
+            }
+
+
+        }
+
 
     }
 }

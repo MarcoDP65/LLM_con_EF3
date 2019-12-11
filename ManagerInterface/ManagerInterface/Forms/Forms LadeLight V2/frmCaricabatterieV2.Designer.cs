@@ -200,6 +200,7 @@
             this.btnStratTest01 = new System.Windows.Forms.Button();
             this.tbpFirmware = new System.Windows.Forms.TabPage();
             this.grbFwAttivazioneArea = new System.Windows.Forms.GroupBox();
+            this.btnFwSwitchApp = new System.Windows.Forms.Button();
             this.btnFwSwitchArea2 = new System.Windows.Forms.Button();
             this.btnFwSwitchArea1 = new System.Windows.Forms.Button();
             this.btnFwSwitchBL = new System.Windows.Forms.Button();
@@ -470,16 +471,31 @@
             this.tbcPaSottopagina = new System.Windows.Forms.TabControl();
             this.tbpPaProfiloAttivo = new System.Windows.Forms.TabPage();
             this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
-            this.btnPaProfileChiudiCanale = new System.Windows.Forms.Button();
-            this.chkPaAttivaOppChg = new System.Windows.Forms.CheckBox();
-            this.lblPaAttivaOppChg = new System.Windows.Forms.Label();
+            this.btnPaProfileClear = new System.Windows.Forms.Button();
+            this.grbPaImpostazioniLocali = new System.Windows.Forms.GroupBox();
             this.chkPaUsaSafety = new System.Windows.Forms.CheckBox();
             this.lblPaUsaSafety = new System.Windows.Forms.Label();
+            this.cmbPaProfilo = new System.Windows.Forms.ComboBox();
+            this.txtPaCapacita = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.chkPaAttivaOppChg = new System.Windows.Forms.CheckBox();
+            this.lblPaAttivaOppChg = new System.Windows.Forms.Label();
+            this.chkPaAttivaMant = new System.Windows.Forms.CheckBox();
+            this.lblPaAttivaMant = new System.Windows.Forms.Label();
+            this.txtPaNumCelle = new System.Windows.Forms.TextBox();
+            this.lblPaNumCelle = new System.Windows.Forms.Label();
+            this.cmbPaTipoBatteria = new System.Windows.Forms.ComboBox();
+            this.lblPaTipoBatteria = new System.Windows.Forms.Label();
+            this.chkPaAttivaEqual = new System.Windows.Forms.CheckBox();
+            this.lblPaAttivaEqual = new System.Windows.Forms.Label();
+            this.lblPaTensione = new System.Windows.Forms.Label();
+            this.cmbPaTensione = new System.Windows.Forms.ComboBox();
+            this.txtPaTensione = new System.Windows.Forms.TextBox();
+            this.btnPaProfileChiudiCanale = new System.Windows.Forms.Button();
             this.btnPaCaricaCicli = new System.Windows.Forms.Button();
             this.chkPaSbloccaValori = new System.Windows.Forms.CheckBox();
             this.lblPaSbloccaValori = new System.Windows.Forms.Label();
-            this.chkPaAttivaMant = new System.Windows.Forms.CheckBox();
-            this.lblPaAttivaMant = new System.Windows.Forms.Label();
             this.btnCicloCorrente = new System.Windows.Forms.Button();
             this.btnPaProfileRefresh = new System.Windows.Forms.Button();
             this.picPaImmagineProfilo = new System.Windows.Forms.PictureBox();
@@ -578,22 +594,9 @@
             this.label29 = new System.Windows.Forms.Label();
             this.txtPaVLimite = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtPaNumCelle = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.cmbPaTipoBatteria = new System.Windows.Forms.ComboBox();
-            this.label136 = new System.Windows.Forms.Label();
-            this.chkPaAttivaEqual = new System.Windows.Forms.CheckBox();
-            this.lblPaAttivaEqual = new System.Windows.Forms.Label();
             this.chkPaUsaSpyBatt = new System.Windows.Forms.CheckBox();
             this.label69 = new System.Windows.Forms.Label();
             this.btnPaSalvaDati = new System.Windows.Forms.Button();
-            this.label60 = new System.Windows.Forms.Label();
-            this.cmbPaProfilo = new System.Windows.Forms.ComboBox();
-            this.txtPaCapacita = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbPaTensione = new System.Windows.Forms.ComboBox();
-            this.txtPaTensione = new System.Windows.Forms.TextBox();
             this.tbpPaListaProfili = new System.Windows.Forms.TabPage();
             this.btnPaAttivaConfigurazione = new System.Windows.Forms.Button();
             this.flwPaListaConfigurazioni = new BrightIdeasSoftware.FastObjectListView();
@@ -742,6 +745,7 @@
             this.tbcPaSottopagina.SuspendLayout();
             this.tbpPaProfiloAttivo.SuspendLayout();
             this.grbCicloCorrente.SuspendLayout();
+            this.grbPaImpostazioniLocali.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPaImmagineProfilo)).BeginInit();
             this.tbcPaSchedeValori.SuspendLayout();
             this.tbpPaGeneraleCiclo.SuspendLayout();
@@ -2763,6 +2767,7 @@
             // grbFwAttivazioneArea
             // 
             this.grbFwAttivazioneArea.BackColor = System.Drawing.Color.White;
+            this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchApp);
             this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchArea2);
             this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchArea1);
             this.grbFwAttivazioneArea.Controls.Add(this.btnFwSwitchBL);
@@ -2776,13 +2781,25 @@
             this.grbFwAttivazioneArea.TabStop = false;
             this.grbFwAttivazioneArea.Text = "Attivazione area";
             // 
+            // btnFwSwitchApp
+            // 
+            this.btnFwSwitchApp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnFwSwitchApp.Location = new System.Drawing.Point(149, 18);
+            this.btnFwSwitchApp.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFwSwitchApp.Name = "btnFwSwitchApp";
+            this.btnFwSwitchApp.Size = new System.Drawing.Size(47, 24);
+            this.btnFwSwitchApp.TabIndex = 51;
+            this.btnFwSwitchApp.Text = "App";
+            this.btnFwSwitchApp.UseVisualStyleBackColor = true;
+            this.btnFwSwitchApp.Click += new System.EventHandler(this.btnFwSwitchApp_Click);
+            // 
             // btnFwSwitchArea2
             // 
             this.btnFwSwitchArea2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFwSwitchArea2.Location = new System.Drawing.Point(267, 18);
+            this.btnFwSwitchArea2.Location = new System.Drawing.Point(287, 18);
             this.btnFwSwitchArea2.Margin = new System.Windows.Forms.Padding(2);
             this.btnFwSwitchArea2.Name = "btnFwSwitchArea2";
-            this.btnFwSwitchArea2.Size = new System.Drawing.Size(95, 24);
+            this.btnFwSwitchArea2.Size = new System.Drawing.Size(78, 24);
             this.btnFwSwitchArea2.TabIndex = 50;
             this.btnFwSwitchArea2.Text = "Area 2";
             this.btnFwSwitchArea2.UseVisualStyleBackColor = true;
@@ -2791,10 +2808,10 @@
             // btnFwSwitchArea1
             // 
             this.btnFwSwitchArea1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnFwSwitchArea1.Location = new System.Drawing.Point(167, 18);
+            this.btnFwSwitchArea1.Location = new System.Drawing.Point(200, 18);
             this.btnFwSwitchArea1.Margin = new System.Windows.Forms.Padding(2);
             this.btnFwSwitchArea1.Name = "btnFwSwitchArea1";
-            this.btnFwSwitchArea1.Size = new System.Drawing.Size(95, 24);
+            this.btnFwSwitchArea1.Size = new System.Drawing.Size(78, 24);
             this.btnFwSwitchArea1.TabIndex = 49;
             this.btnFwSwitchArea1.Text = "Area 1";
             this.btnFwSwitchArea1.UseVisualStyleBackColor = true;
@@ -2806,7 +2823,7 @@
             this.btnFwSwitchBL.Location = new System.Drawing.Point(17, 18);
             this.btnFwSwitchBL.Margin = new System.Windows.Forms.Padding(2);
             this.btnFwSwitchBL.Name = "btnFwSwitchBL";
-            this.btnFwSwitchBL.Size = new System.Drawing.Size(146, 24);
+            this.btnFwSwitchBL.Size = new System.Drawing.Size(127, 24);
             this.btnFwSwitchBL.TabIndex = 48;
             this.btnFwSwitchBL.Text = "BootLoader";
             this.btnFwSwitchBL.UseVisualStyleBackColor = true;
@@ -6113,36 +6130,19 @@
             // grbCicloCorrente
             // 
             this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
+            this.grbCicloCorrente.Controls.Add(this.btnPaProfileClear);
+            this.grbCicloCorrente.Controls.Add(this.grbPaImpostazioniLocali);
             this.grbCicloCorrente.Controls.Add(this.btnPaProfileChiudiCanale);
-            this.grbCicloCorrente.Controls.Add(this.chkPaAttivaOppChg);
-            this.grbCicloCorrente.Controls.Add(this.lblPaAttivaOppChg);
-            this.grbCicloCorrente.Controls.Add(this.chkPaUsaSafety);
-            this.grbCicloCorrente.Controls.Add(this.lblPaUsaSafety);
             this.grbCicloCorrente.Controls.Add(this.btnPaCaricaCicli);
             this.grbCicloCorrente.Controls.Add(this.chkPaSbloccaValori);
             this.grbCicloCorrente.Controls.Add(this.lblPaSbloccaValori);
-            this.grbCicloCorrente.Controls.Add(this.chkPaAttivaMant);
-            this.grbCicloCorrente.Controls.Add(this.lblPaAttivaMant);
             this.grbCicloCorrente.Controls.Add(this.btnCicloCorrente);
             this.grbCicloCorrente.Controls.Add(this.btnPaProfileRefresh);
             this.grbCicloCorrente.Controls.Add(this.picPaImmagineProfilo);
             this.grbCicloCorrente.Controls.Add(this.tbcPaSchedeValori);
-            this.grbCicloCorrente.Controls.Add(this.txtPaNumCelle);
-            this.grbCicloCorrente.Controls.Add(this.label30);
-            this.grbCicloCorrente.Controls.Add(this.cmbPaTipoBatteria);
-            this.grbCicloCorrente.Controls.Add(this.label136);
-            this.grbCicloCorrente.Controls.Add(this.chkPaAttivaEqual);
-            this.grbCicloCorrente.Controls.Add(this.lblPaAttivaEqual);
             this.grbCicloCorrente.Controls.Add(this.chkPaUsaSpyBatt);
             this.grbCicloCorrente.Controls.Add(this.label69);
             this.grbCicloCorrente.Controls.Add(this.btnPaSalvaDati);
-            this.grbCicloCorrente.Controls.Add(this.label60);
-            this.grbCicloCorrente.Controls.Add(this.cmbPaProfilo);
-            this.grbCicloCorrente.Controls.Add(this.txtPaCapacita);
-            this.grbCicloCorrente.Controls.Add(this.label5);
-            this.grbCicloCorrente.Controls.Add(this.label4);
-            this.grbCicloCorrente.Controls.Add(this.cmbPaTensione);
-            this.grbCicloCorrente.Controls.Add(this.txtPaTensione);
             this.grbCicloCorrente.Location = new System.Drawing.Point(17, 13);
             this.grbCicloCorrente.Margin = new System.Windows.Forms.Padding(2);
             this.grbCicloCorrente.Name = "grbCicloCorrente";
@@ -6152,6 +6152,269 @@
             this.grbCicloCorrente.TabStop = false;
             this.grbCicloCorrente.Text = "Profilo  Attivo";
             this.grbCicloCorrente.Enter += new System.EventHandler(this.grbCicloCorrente_Enter);
+            // 
+            // btnPaProfileClear
+            // 
+            this.btnPaProfileClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaProfileClear.Location = new System.Drawing.Point(1025, 278);
+            this.btnPaProfileClear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPaProfileClear.Name = "btnPaProfileClear";
+            this.btnPaProfileClear.Size = new System.Drawing.Size(144, 32);
+            this.btnPaProfileClear.TabIndex = 150;
+            this.btnPaProfileClear.Text = "Cancella Parametri";
+            this.btnPaProfileClear.UseVisualStyleBackColor = true;
+            this.btnPaProfileClear.Click += new System.EventHandler(this.btnPaProfileClear_Click);
+            // 
+            // grbPaImpostazioniLocali
+            // 
+            this.grbPaImpostazioniLocali.Controls.Add(this.chkPaUsaSafety);
+            this.grbPaImpostazioniLocali.Controls.Add(this.lblPaUsaSafety);
+            this.grbPaImpostazioniLocali.Controls.Add(this.cmbPaProfilo);
+            this.grbPaImpostazioniLocali.Controls.Add(this.txtPaCapacita);
+            this.grbPaImpostazioniLocali.Controls.Add(this.label5);
+            this.grbPaImpostazioniLocali.Controls.Add(this.label4);
+            this.grbPaImpostazioniLocali.Controls.Add(this.chkPaAttivaOppChg);
+            this.grbPaImpostazioniLocali.Controls.Add(this.lblPaAttivaOppChg);
+            this.grbPaImpostazioniLocali.Controls.Add(this.chkPaAttivaMant);
+            this.grbPaImpostazioniLocali.Controls.Add(this.lblPaAttivaMant);
+            this.grbPaImpostazioniLocali.Controls.Add(this.txtPaNumCelle);
+            this.grbPaImpostazioniLocali.Controls.Add(this.lblPaNumCelle);
+            this.grbPaImpostazioniLocali.Controls.Add(this.cmbPaTipoBatteria);
+            this.grbPaImpostazioniLocali.Controls.Add(this.lblPaTipoBatteria);
+            this.grbPaImpostazioniLocali.Controls.Add(this.chkPaAttivaEqual);
+            this.grbPaImpostazioniLocali.Controls.Add(this.lblPaAttivaEqual);
+            this.grbPaImpostazioniLocali.Controls.Add(this.lblPaTensione);
+            this.grbPaImpostazioniLocali.Controls.Add(this.cmbPaTensione);
+            this.grbPaImpostazioniLocali.Controls.Add(this.txtPaTensione);
+            this.grbPaImpostazioniLocali.Location = new System.Drawing.Point(5, 58);
+            this.grbPaImpostazioniLocali.Name = "grbPaImpostazioniLocali";
+            this.grbPaImpostazioniLocali.Size = new System.Drawing.Size(274, 385);
+            this.grbPaImpostazioniLocali.TabIndex = 149;
+            this.grbPaImpostazioniLocali.TabStop = false;
+            this.grbPaImpostazioniLocali.Text = "Parametri";
+            // 
+            // chkPaUsaSafety
+            // 
+            this.chkPaUsaSafety.AutoSize = true;
+            this.chkPaUsaSafety.Location = new System.Drawing.Point(8, 360);
+            this.chkPaUsaSafety.Margin = new System.Windows.Forms.Padding(2);
+            this.chkPaUsaSafety.Name = "chkPaUsaSafety";
+            this.chkPaUsaSafety.Size = new System.Drawing.Size(15, 14);
+            this.chkPaUsaSafety.TabIndex = 145;
+            this.chkPaUsaSafety.UseVisualStyleBackColor = true;
+            this.chkPaUsaSafety.CheckedChanged += new System.EventHandler(this.ChkPaUsaSafety_CheckedChanged);
+            // 
+            // lblPaUsaSafety
+            // 
+            this.lblPaUsaSafety.AutoSize = true;
+            this.lblPaUsaSafety.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaUsaSafety.ForeColor = System.Drawing.Color.Red;
+            this.lblPaUsaSafety.Location = new System.Drawing.Point(27, 361);
+            this.lblPaUsaSafety.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaUsaSafety.Name = "lblPaUsaSafety";
+            this.lblPaUsaSafety.Size = new System.Drawing.Size(142, 13);
+            this.lblPaUsaSafety.TabIndex = 144;
+            this.lblPaUsaSafety.Text = "Attiva contatto SAFETY";
+            // 
+            // cmbPaProfilo
+            // 
+            this.cmbPaProfilo.BackColor = System.Drawing.Color.White;
+            this.cmbPaProfilo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPaProfilo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.cmbPaProfilo.FormattingEnabled = true;
+            this.cmbPaProfilo.Location = new System.Drawing.Point(8, 219);
+            this.cmbPaProfilo.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPaProfilo.Name = "cmbPaProfilo";
+            this.cmbPaProfilo.Size = new System.Drawing.Size(239, 25);
+            this.cmbPaProfilo.TabIndex = 37;
+            this.cmbPaProfilo.SelectedIndexChanged += new System.EventHandler(this.cmbPaProfilo_SelectedIndexChanged);
+            // 
+            // txtPaCapacita
+            // 
+            this.txtPaCapacita.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaCapacita.Location = new System.Drawing.Point(8, 154);
+            this.txtPaCapacita.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPaCapacita.Name = "txtPaCapacita";
+            this.txtPaCapacita.Size = new System.Drawing.Size(144, 23);
+            this.txtPaCapacita.TabIndex = 5;
+            this.txtPaCapacita.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaCapacita.TextChanged += new System.EventHandler(this.txtPaCapacita_TextChanged);
+            this.txtPaCapacita.Leave += new System.EventHandler(this.txtPaCapacita_Leave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Blue;
+            this.label5.Location = new System.Drawing.Point(8, 134);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Capacità (Ah)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.Location = new System.Drawing.Point(5, 200);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(124, 17);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Profilo di Carica";
+            // 
+            // chkPaAttivaOppChg
+            // 
+            this.chkPaAttivaOppChg.AutoSize = true;
+            this.chkPaAttivaOppChg.Enabled = false;
+            this.chkPaAttivaOppChg.Location = new System.Drawing.Point(8, 321);
+            this.chkPaAttivaOppChg.Margin = new System.Windows.Forms.Padding(2);
+            this.chkPaAttivaOppChg.Name = "chkPaAttivaOppChg";
+            this.chkPaAttivaOppChg.Size = new System.Drawing.Size(15, 14);
+            this.chkPaAttivaOppChg.TabIndex = 147;
+            this.chkPaAttivaOppChg.UseVisualStyleBackColor = true;
+            this.chkPaAttivaOppChg.CheckedChanged += new System.EventHandler(this.ChkPaAttivaOppChg_CheckedChanged);
+            // 
+            // lblPaAttivaOppChg
+            // 
+            this.lblPaAttivaOppChg.AutoSize = true;
+            this.lblPaAttivaOppChg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaAttivaOppChg.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaAttivaOppChg.Location = new System.Drawing.Point(27, 322);
+            this.lblPaAttivaOppChg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaAttivaOppChg.Name = "lblPaAttivaOppChg";
+            this.lblPaAttivaOppChg.Size = new System.Drawing.Size(116, 13);
+            this.lblPaAttivaOppChg.TabIndex = 146;
+            this.lblPaAttivaOppChg.Text = "Opportunity Charge";
+            // 
+            // chkPaAttivaMant
+            // 
+            this.chkPaAttivaMant.AutoSize = true;
+            this.chkPaAttivaMant.Enabled = false;
+            this.chkPaAttivaMant.Location = new System.Drawing.Point(8, 290);
+            this.chkPaAttivaMant.Margin = new System.Windows.Forms.Padding(2);
+            this.chkPaAttivaMant.Name = "chkPaAttivaMant";
+            this.chkPaAttivaMant.Size = new System.Drawing.Size(15, 14);
+            this.chkPaAttivaMant.TabIndex = 137;
+            this.chkPaAttivaMant.UseVisualStyleBackColor = true;
+            this.chkPaAttivaMant.CheckedChanged += new System.EventHandler(this.chkPaAttivaMant_CheckedChanged);
+            // 
+            // lblPaAttivaMant
+            // 
+            this.lblPaAttivaMant.AutoSize = true;
+            this.lblPaAttivaMant.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaAttivaMant.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaAttivaMant.Location = new System.Drawing.Point(27, 290);
+            this.lblPaAttivaMant.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaAttivaMant.Name = "lblPaAttivaMant";
+            this.lblPaAttivaMant.Size = new System.Drawing.Size(86, 13);
+            this.lblPaAttivaMant.TabIndex = 136;
+            this.lblPaAttivaMant.Text = "Mantenimento";
+            // 
+            // txtPaNumCelle
+            // 
+            this.txtPaNumCelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaNumCelle.Location = new System.Drawing.Point(183, 98);
+            this.txtPaNumCelle.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPaNumCelle.Name = "txtPaNumCelle";
+            this.txtPaNumCelle.Size = new System.Drawing.Size(66, 23);
+            this.txtPaNumCelle.TabIndex = 84;
+            this.txtPaNumCelle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblPaNumCelle
+            // 
+            this.lblPaNumCelle.AutoSize = true;
+            this.lblPaNumCelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaNumCelle.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaNumCelle.Location = new System.Drawing.Point(182, 75);
+            this.lblPaNumCelle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaNumCelle.Name = "lblPaNumCelle";
+            this.lblPaNumCelle.Size = new System.Drawing.Size(67, 17);
+            this.lblPaNumCelle.TabIndex = 83;
+            this.lblPaNumCelle.Text = "N° Celle";
+            // 
+            // cmbPaTipoBatteria
+            // 
+            this.cmbPaTipoBatteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.cmbPaTipoBatteria.FormattingEnabled = true;
+            this.cmbPaTipoBatteria.Location = new System.Drawing.Point(8, 36);
+            this.cmbPaTipoBatteria.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPaTipoBatteria.Name = "cmbPaTipoBatteria";
+            this.cmbPaTipoBatteria.Size = new System.Drawing.Size(239, 25);
+            this.cmbPaTipoBatteria.TabIndex = 64;
+            this.cmbPaTipoBatteria.SelectedIndexChanged += new System.EventHandler(this.cmbPaTipoBatteria_SelectedIndexChanged);
+            // 
+            // lblPaTipoBatteria
+            // 
+            this.lblPaTipoBatteria.AutoSize = true;
+            this.lblPaTipoBatteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaTipoBatteria.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaTipoBatteria.Location = new System.Drawing.Point(8, 17);
+            this.lblPaTipoBatteria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaTipoBatteria.Name = "lblPaTipoBatteria";
+            this.lblPaTipoBatteria.Size = new System.Drawing.Size(102, 17);
+            this.lblPaTipoBatteria.TabIndex = 63;
+            this.lblPaTipoBatteria.Text = "Tipo Batteria";
+            // 
+            // chkPaAttivaEqual
+            // 
+            this.chkPaAttivaEqual.AutoSize = true;
+            this.chkPaAttivaEqual.Enabled = false;
+            this.chkPaAttivaEqual.Location = new System.Drawing.Point(8, 259);
+            this.chkPaAttivaEqual.Margin = new System.Windows.Forms.Padding(2);
+            this.chkPaAttivaEqual.Name = "chkPaAttivaEqual";
+            this.chkPaAttivaEqual.Size = new System.Drawing.Size(15, 14);
+            this.chkPaAttivaEqual.TabIndex = 58;
+            this.chkPaAttivaEqual.UseVisualStyleBackColor = true;
+            this.chkPaAttivaEqual.CheckedChanged += new System.EventHandler(this.chkPaAttivaEqual_CheckedChanged);
+            // 
+            // lblPaAttivaEqual
+            // 
+            this.lblPaAttivaEqual.AutoSize = true;
+            this.lblPaAttivaEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaAttivaEqual.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaAttivaEqual.Location = new System.Drawing.Point(27, 259);
+            this.lblPaAttivaEqual.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaAttivaEqual.Name = "lblPaAttivaEqual";
+            this.lblPaAttivaEqual.Size = new System.Drawing.Size(129, 13);
+            this.lblPaAttivaEqual.TabIndex = 57;
+            this.lblPaAttivaEqual.Text = "Equalizzazione Finale";
+            // 
+            // lblPaTensione
+            // 
+            this.lblPaTensione.AutoSize = true;
+            this.lblPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaTensione.ForeColor = System.Drawing.Color.Blue;
+            this.lblPaTensione.Location = new System.Drawing.Point(8, 75);
+            this.lblPaTensione.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPaTensione.Name = "lblPaTensione";
+            this.lblPaTensione.Size = new System.Drawing.Size(147, 17);
+            this.lblPaTensione.TabIndex = 38;
+            this.lblPaTensione.Text = "Tensione Nominale";
+            // 
+            // cmbPaTensione
+            // 
+            this.cmbPaTensione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.cmbPaTensione.FormattingEnabled = true;
+            this.cmbPaTensione.Location = new System.Drawing.Point(8, 98);
+            this.cmbPaTensione.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPaTensione.Name = "cmbPaTensione";
+            this.cmbPaTensione.Size = new System.Drawing.Size(95, 25);
+            this.cmbPaTensione.TabIndex = 76;
+            this.cmbPaTensione.SelectedIndexChanged += new System.EventHandler(this.cmbPaTensione_SelectedIndexChanged);
+            // 
+            // txtPaTensione
+            // 
+            this.txtPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaTensione.Location = new System.Drawing.Point(107, 98);
+            this.txtPaTensione.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPaTensione.Name = "txtPaTensione";
+            this.txtPaTensione.Size = new System.Drawing.Size(58, 23);
+            this.txtPaTensione.TabIndex = 39;
+            this.txtPaTensione.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnPaProfileChiudiCanale
             // 
@@ -6165,53 +6428,6 @@
             this.btnPaProfileChiudiCanale.Text = "Chiudi Canale";
             this.btnPaProfileChiudiCanale.UseVisualStyleBackColor = true;
             this.btnPaProfileChiudiCanale.Click += new System.EventHandler(this.btnPaProfileChiudiCanale_Click);
-            // 
-            // chkPaAttivaOppChg
-            // 
-            this.chkPaAttivaOppChg.AutoSize = true;
-            this.chkPaAttivaOppChg.Enabled = false;
-            this.chkPaAttivaOppChg.Location = new System.Drawing.Point(14, 331);
-            this.chkPaAttivaOppChg.Margin = new System.Windows.Forms.Padding(2);
-            this.chkPaAttivaOppChg.Name = "chkPaAttivaOppChg";
-            this.chkPaAttivaOppChg.Size = new System.Drawing.Size(15, 14);
-            this.chkPaAttivaOppChg.TabIndex = 147;
-            this.chkPaAttivaOppChg.UseVisualStyleBackColor = true;
-            this.chkPaAttivaOppChg.CheckedChanged += new System.EventHandler(this.ChkPaAttivaOppChg_CheckedChanged);
-            // 
-            // lblPaAttivaOppChg
-            // 
-            this.lblPaAttivaOppChg.AutoSize = true;
-            this.lblPaAttivaOppChg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaAttivaOppChg.ForeColor = System.Drawing.Color.Blue;
-            this.lblPaAttivaOppChg.Location = new System.Drawing.Point(33, 332);
-            this.lblPaAttivaOppChg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPaAttivaOppChg.Name = "lblPaAttivaOppChg";
-            this.lblPaAttivaOppChg.Size = new System.Drawing.Size(116, 13);
-            this.lblPaAttivaOppChg.TabIndex = 146;
-            this.lblPaAttivaOppChg.Text = "Opportunity Charge";
-            // 
-            // chkPaUsaSafety
-            // 
-            this.chkPaUsaSafety.AutoSize = true;
-            this.chkPaUsaSafety.Location = new System.Drawing.Point(14, 406);
-            this.chkPaUsaSafety.Margin = new System.Windows.Forms.Padding(2);
-            this.chkPaUsaSafety.Name = "chkPaUsaSafety";
-            this.chkPaUsaSafety.Size = new System.Drawing.Size(15, 14);
-            this.chkPaUsaSafety.TabIndex = 145;
-            this.chkPaUsaSafety.UseVisualStyleBackColor = true;
-            this.chkPaUsaSafety.CheckedChanged += new System.EventHandler(this.ChkPaUsaSafety_CheckedChanged);
-            // 
-            // lblPaUsaSafety
-            // 
-            this.lblPaUsaSafety.AutoSize = true;
-            this.lblPaUsaSafety.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaUsaSafety.ForeColor = System.Drawing.Color.Red;
-            this.lblPaUsaSafety.Location = new System.Drawing.Point(33, 406);
-            this.lblPaUsaSafety.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPaUsaSafety.Name = "lblPaUsaSafety";
-            this.lblPaUsaSafety.Size = new System.Drawing.Size(142, 13);
-            this.lblPaUsaSafety.TabIndex = 144;
-            this.lblPaUsaSafety.Text = "Attiva contatto SAFETY";
             // 
             // btnPaCaricaCicli
             // 
@@ -6248,30 +6464,6 @@
             this.lblPaSbloccaValori.TabIndex = 138;
             this.lblPaSbloccaValori.Text = "Sblocca Val.";
             // 
-            // chkPaAttivaMant
-            // 
-            this.chkPaAttivaMant.AutoSize = true;
-            this.chkPaAttivaMant.Enabled = false;
-            this.chkPaAttivaMant.Location = new System.Drawing.Point(14, 300);
-            this.chkPaAttivaMant.Margin = new System.Windows.Forms.Padding(2);
-            this.chkPaAttivaMant.Name = "chkPaAttivaMant";
-            this.chkPaAttivaMant.Size = new System.Drawing.Size(15, 14);
-            this.chkPaAttivaMant.TabIndex = 137;
-            this.chkPaAttivaMant.UseVisualStyleBackColor = true;
-            this.chkPaAttivaMant.CheckedChanged += new System.EventHandler(this.chkPaAttivaMant_CheckedChanged);
-            // 
-            // lblPaAttivaMant
-            // 
-            this.lblPaAttivaMant.AutoSize = true;
-            this.lblPaAttivaMant.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaAttivaMant.ForeColor = System.Drawing.Color.Blue;
-            this.lblPaAttivaMant.Location = new System.Drawing.Point(33, 300);
-            this.lblPaAttivaMant.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPaAttivaMant.Name = "lblPaAttivaMant";
-            this.lblPaAttivaMant.Size = new System.Drawing.Size(86, 13);
-            this.lblPaAttivaMant.TabIndex = 136;
-            this.lblPaAttivaMant.Text = "Mantenimento";
-            // 
             // btnCicloCorrente
             // 
             this.btnCicloCorrente.Location = new System.Drawing.Point(1025, 28);
@@ -6286,7 +6478,7 @@
             // btnPaProfileRefresh
             // 
             this.btnPaProfileRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPaProfileRefresh.Location = new System.Drawing.Point(1025, 254);
+            this.btnPaProfileRefresh.Location = new System.Drawing.Point(1025, 235);
             this.btnPaProfileRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.btnPaProfileRefresh.Name = "btnPaProfileRefresh";
             this.btnPaProfileRefresh.Size = new System.Drawing.Size(144, 39);
@@ -7382,79 +7574,10 @@
             this.label15.TabIndex = 89;
             this.label15.Text = "V/cell Limite";
             // 
-            // txtPaNumCelle
-            // 
-            this.txtPaNumCelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaNumCelle.Location = new System.Drawing.Point(189, 108);
-            this.txtPaNumCelle.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaNumCelle.Name = "txtPaNumCelle";
-            this.txtPaNumCelle.Size = new System.Drawing.Size(66, 23);
-            this.txtPaNumCelle.TabIndex = 84;
-            this.txtPaNumCelle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Blue;
-            this.label30.Location = new System.Drawing.Point(188, 85);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(67, 17);
-            this.label30.TabIndex = 83;
-            this.label30.Text = "N° Celle";
-            // 
-            // cmbPaTipoBatteria
-            // 
-            this.cmbPaTipoBatteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.cmbPaTipoBatteria.FormattingEnabled = true;
-            this.cmbPaTipoBatteria.Location = new System.Drawing.Point(14, 46);
-            this.cmbPaTipoBatteria.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbPaTipoBatteria.Name = "cmbPaTipoBatteria";
-            this.cmbPaTipoBatteria.Size = new System.Drawing.Size(239, 25);
-            this.cmbPaTipoBatteria.TabIndex = 64;
-            this.cmbPaTipoBatteria.SelectedIndexChanged += new System.EventHandler(this.cmbPaTipoBatteria_SelectedIndexChanged);
-            // 
-            // label136
-            // 
-            this.label136.AutoSize = true;
-            this.label136.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label136.ForeColor = System.Drawing.Color.Blue;
-            this.label136.Location = new System.Drawing.Point(14, 27);
-            this.label136.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(102, 17);
-            this.label136.TabIndex = 63;
-            this.label136.Text = "Tipo Batteria";
-            // 
-            // chkPaAttivaEqual
-            // 
-            this.chkPaAttivaEqual.AutoSize = true;
-            this.chkPaAttivaEqual.Enabled = false;
-            this.chkPaAttivaEqual.Location = new System.Drawing.Point(14, 269);
-            this.chkPaAttivaEqual.Margin = new System.Windows.Forms.Padding(2);
-            this.chkPaAttivaEqual.Name = "chkPaAttivaEqual";
-            this.chkPaAttivaEqual.Size = new System.Drawing.Size(15, 14);
-            this.chkPaAttivaEqual.TabIndex = 58;
-            this.chkPaAttivaEqual.UseVisualStyleBackColor = true;
-            this.chkPaAttivaEqual.CheckedChanged += new System.EventHandler(this.chkPaAttivaEqual_CheckedChanged);
-            // 
-            // lblPaAttivaEqual
-            // 
-            this.lblPaAttivaEqual.AutoSize = true;
-            this.lblPaAttivaEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaAttivaEqual.ForeColor = System.Drawing.Color.Blue;
-            this.lblPaAttivaEqual.Location = new System.Drawing.Point(33, 269);
-            this.lblPaAttivaEqual.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPaAttivaEqual.Name = "lblPaAttivaEqual";
-            this.lblPaAttivaEqual.Size = new System.Drawing.Size(129, 13);
-            this.lblPaAttivaEqual.TabIndex = 57;
-            this.lblPaAttivaEqual.Text = "Equalizzazione Finale";
-            // 
             // chkPaUsaSpyBatt
             // 
             this.chkPaUsaSpyBatt.AutoSize = true;
-            this.chkPaUsaSpyBatt.Location = new System.Drawing.Point(14, 378);
+            this.chkPaUsaSpyBatt.Location = new System.Drawing.Point(17, 35);
             this.chkPaUsaSpyBatt.Margin = new System.Windows.Forms.Padding(2);
             this.chkPaUsaSpyBatt.Name = "chkPaUsaSpyBatt";
             this.chkPaUsaSpyBatt.Size = new System.Drawing.Size(15, 14);
@@ -7467,7 +7590,7 @@
             this.label69.AutoSize = true;
             this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label69.ForeColor = System.Drawing.Color.Red;
-            this.label69.Location = new System.Drawing.Point(33, 378);
+            this.label69.Location = new System.Drawing.Point(36, 35);
             this.label69.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(149, 13);
@@ -7484,87 +7607,6 @@
             this.btnPaSalvaDati.Text = "Salva Configurazione";
             this.btnPaSalvaDati.UseVisualStyleBackColor = true;
             this.btnPaSalvaDati.Click += new System.EventHandler(this.btnPaSalvaDati_Click);
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.ForeColor = System.Drawing.Color.Blue;
-            this.label60.Location = new System.Drawing.Point(14, 85);
-            this.label60.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(147, 17);
-            this.label60.TabIndex = 38;
-            this.label60.Text = "Tensione Nominale";
-            // 
-            // cmbPaProfilo
-            // 
-            this.cmbPaProfilo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.cmbPaProfilo.FormattingEnabled = true;
-            this.cmbPaProfilo.Location = new System.Drawing.Point(14, 229);
-            this.cmbPaProfilo.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbPaProfilo.Name = "cmbPaProfilo";
-            this.cmbPaProfilo.Size = new System.Drawing.Size(239, 25);
-            this.cmbPaProfilo.TabIndex = 37;
-            this.cmbPaProfilo.SelectedIndexChanged += new System.EventHandler(this.cmbPaProfilo_SelectedIndexChanged);
-            // 
-            // txtPaCapacita
-            // 
-            this.txtPaCapacita.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaCapacita.Location = new System.Drawing.Point(14, 164);
-            this.txtPaCapacita.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaCapacita.Name = "txtPaCapacita";
-            this.txtPaCapacita.Size = new System.Drawing.Size(144, 23);
-            this.txtPaCapacita.TabIndex = 5;
-            this.txtPaCapacita.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPaCapacita.TextChanged += new System.EventHandler(this.txtPaCapacita_TextChanged);
-            this.txtPaCapacita.Leave += new System.EventHandler(this.txtPaCapacita_Leave);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(14, 144);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Capacità (Ah)";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(11, 210);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Profilo di Carica";
-            // 
-            // cmbPaTensione
-            // 
-            this.cmbPaTensione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.cmbPaTensione.FormattingEnabled = true;
-            this.cmbPaTensione.Location = new System.Drawing.Point(14, 108);
-            this.cmbPaTensione.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbPaTensione.Name = "cmbPaTensione";
-            this.cmbPaTensione.Size = new System.Drawing.Size(95, 25);
-            this.cmbPaTensione.TabIndex = 76;
-            this.cmbPaTensione.SelectedIndexChanged += new System.EventHandler(this.cmbPaTensione_SelectedIndexChanged);
-            // 
-            // txtPaTensione
-            // 
-            this.txtPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaTensione.Location = new System.Drawing.Point(113, 108);
-            this.txtPaTensione.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaTensione.Name = "txtPaTensione";
-            this.txtPaTensione.Size = new System.Drawing.Size(58, 23);
-            this.txtPaTensione.TabIndex = 39;
-            this.txtPaTensione.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbpPaListaProfili
             // 
@@ -8738,7 +8780,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 652);
+            this.ClientSize = new System.Drawing.Size(1309, 596);
             this.Controls.Add(this.tabCaricaBatterie);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCaricabatterieV2";
@@ -8827,6 +8869,8 @@
             this.tbpPaProfiloAttivo.ResumeLayout(false);
             this.grbCicloCorrente.ResumeLayout(false);
             this.grbCicloCorrente.PerformLayout();
+            this.grbPaImpostazioniLocali.ResumeLayout(false);
+            this.grbPaImpostazioniLocali.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPaImmagineProfilo)).EndInit();
             this.tbcPaSchedeValori.ResumeLayout(false);
             this.tbpPaGeneraleCiclo.ResumeLayout(false);
@@ -9388,15 +9432,15 @@
         private System.Windows.Forms.TextBox txtPaVLimite;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtPaNumCelle;
-        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label lblPaNumCelle;
         private System.Windows.Forms.ComboBox cmbPaTipoBatteria;
-        private System.Windows.Forms.Label label136;
+        private System.Windows.Forms.Label lblPaTipoBatteria;
         private System.Windows.Forms.CheckBox chkPaAttivaEqual;
         private System.Windows.Forms.Label lblPaAttivaEqual;
         private System.Windows.Forms.CheckBox chkPaUsaSpyBatt;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Button btnPaSalvaDati;
-        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label lblPaTensione;
         private System.Windows.Forms.ComboBox cmbPaProfilo;
         private System.Windows.Forms.TextBox txtPaCapacita;
         private System.Windows.Forms.Label label5;
@@ -9536,5 +9580,8 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TextBox txtMemNumTest;
         private System.Windows.Forms.Button btnMemTestExac;
+        public System.Windows.Forms.Button btnFwSwitchApp;
+        private System.Windows.Forms.GroupBox grbPaImpostazioniLocali;
+        private System.Windows.Forms.Button btnPaProfileClear;
     }
 }

@@ -17,6 +17,7 @@ using ChargerLogic;
 using Utility;
 using System.Data.SQLite;
 using System.Resources;
+using System.Diagnostics;
 //using PannelloCharger.
 
 
@@ -1433,6 +1434,17 @@ namespace PannelloCharger
                 Log.Error("frmMain: " + Ex.Message);
             }
 
+        }
+
+        private void mnuGestioneDispositivi_Click(object sender, EventArgs e)
+        {
+            //Process.Start("devmgmt.msc");
+
+            var Process = new Process();
+            var ProcessStartInfo = new ProcessStartInfo("cmd", "/C control printers");
+            ProcessStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            Process.StartInfo = ProcessStartInfo;
+            Process.Start();
         }
     }
 

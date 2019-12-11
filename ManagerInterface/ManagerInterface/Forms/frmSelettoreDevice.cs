@@ -426,7 +426,7 @@ namespace PannelloCharger
                 bool esitoCanaleApparato = false;
 
                 Log.Debug("Apri Canale Lade Light LL");
-
+                this.Cursor = Cursors.WaitCursor;
 
                 // se la porta seriale non è aperta , la apro
                 // -- rev 14/09  se già aperta chiudo e riapro             
@@ -472,10 +472,12 @@ namespace PannelloCharger
                 {
                     MessageBox.Show("Nessuna risposta dal canale selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+                this.Cursor = Cursors.Default;
             }
             catch (Exception Ex)
             {
                 Log.Error("frmMain.ApriLadeLight: " + Ex.Message);
+                this.Cursor = Cursors.Default;
             }
 
         }
@@ -519,6 +521,7 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("frmMain.ApriSpyBatt: " + Ex.Message);
+                this.Cursor = Cursors.Default;
             }
 
         }

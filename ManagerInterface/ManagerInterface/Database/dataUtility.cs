@@ -63,6 +63,64 @@ namespace MoriData
                 }
             }
         }
+
+
+        public class llListaElementi
+        {
+            [PrimaryKey]
+            [MaxLength(24)]
+            public string IdApparato { get; set; }
+            [MaxLength(20)]
+
+            public Int32 IdCliente { get; set; }   //Fisso a 1, al momento non è prevista cronologia
+            public string Client { get; set; }
+            public string ClientDescription { get; set; }
+            public byte TipoApparato { get; set; }
+            public byte[] DataPrimaCarica { get; set; }
+            public UInt32 CntCicliTotali { get; set; }
+
+            public DateTime UltimaLettura { get; set; }
+
+            public override string ToString()
+            {
+                return IdApparato.ToString();
+            }
+
+            public string strTipoApparato
+            {
+                get
+                {
+                    switch(TipoApparato)
+                    {
+                        case 0x81:
+                            return "LLT.3";
+                        default:
+                            return "N.D.";
+                    }
+
+                }
+            }
+
+            public string strUltimaLettura
+            {
+                get
+                {
+                    if (UltimaLettura == DateTime.MinValue)
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return UltimaLettura.ToString("yyyy/MM/dd") + " " + UltimaLettura.ToShortTimeString();
+                    }
+                }
+            }
+
+
+        }
+
+
+
     }
 
     public class _parametri

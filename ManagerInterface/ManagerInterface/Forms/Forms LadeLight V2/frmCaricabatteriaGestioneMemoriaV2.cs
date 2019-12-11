@@ -82,8 +82,26 @@ namespace PannelloCharger
                     Width = 50,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
+                    
                 };
                 flvCicliListaCariche.AllColumns.Add(colIdMemCiclo);
+
+                BrightIdeasSoftware.OLVColumn colSortIdMemCiclo = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "ID",
+                    AspectName = "strSortIdCiclo",
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                    IsVisible = false
+                };
+                flvCicliListaCariche.AllColumns.Add(colSortIdMemCiclo);
+
+
+
+
+  
+
 
                 BrightIdeasSoftware.OLVColumn colDataOraStart = new BrightIdeasSoftware.OLVColumn()
                 {
@@ -112,8 +130,8 @@ namespace PannelloCharger
                     Text = "Durata",
                     AspectName = "strDurata",
                     Width = 60,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
                 };
                 flvCicliListaCariche.AllColumns.Add(colDurata);
 
@@ -1032,6 +1050,10 @@ namespace PannelloCharger
         {
             try
             {
+                if (_cb.Programmazioni.ProgrammaAttivo == null)
+                {
+                    return false;
+                }
 
                 // if (ModCicloCorrente.ValoriCiclo.EqualAttivo == 0xF0F0)
 

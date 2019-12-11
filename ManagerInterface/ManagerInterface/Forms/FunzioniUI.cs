@@ -20,7 +20,7 @@ namespace PannelloCharger
 
         private static ILog Log = LogManager.GetLogger("FunzioniUI");
 
-        public static bool ImpostaTextBoxUshort(ref TextBox txtValore, ushort Valore, ushort Stato, byte TipoDati, bool SbloccaValore)
+        public static bool ImpostaTextBoxUshort(ref TextBox txtValore, ushort Valore, ushort Stato, byte TipoDati, bool SbloccaValore, bool BlankIfZero = false)
         {
             try
             {
@@ -39,35 +39,43 @@ namespace PannelloCharger
                         {
                             txtValore.Enabled = false;
                             txtValore.ReadOnly = true;
-                            switch (TipoDati)
+                            if (BlankIfZero && Valore == 0)
                             {
-                                case 0:  // valore diretto
-                                    {
-                                        txtValore.Text = Valore.ToString();
-                                        break;
-                                    }
-                                case 1:  // Tensione
-                                    {
-                                        txtValore.Text = FunzioniMR.StringaTensione(Valore);
-                                        break;
-                                    }
-                                case 2:  // Corrente
-                                    {
-                                        txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
-                                        break;
-                                    }
-                                case 4:  // Minuti -> hh:mm
-                                    {
-                                        txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
-                                        break;
-                                    }
+                                txtValore.Text = "";
+                            }
+                            else
+                            {
 
-                                default:  // valore diretto
-                                    {
-                                        txtValore.Text = Valore.ToString();
-                                        break;
-                                    }
+                                switch (TipoDati)
+                                {
+                                    case 0:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
+                                    case 1:  // Tensione
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaTensione(Valore);
+                                            break;
+                                        }
+                                    case 2:  // Corrente
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
+                                            break;
+                                        }
+                                    case 4:  // Minuti -> hh:mm
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
+                                            break;
+                                        }
 
+                                    default:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
+
+                                }
                             }
                             esito = true;
                             break;
@@ -77,34 +85,41 @@ namespace PannelloCharger
                         {
                             txtValore.Enabled = true;
                             txtValore.ReadOnly = (bool)((Stato == 4) && !SbloccaValore );
-                            switch (TipoDati)
+                            if (BlankIfZero && Valore == 0)
                             {
-                                case 0:  // valore diretto
-                                    {
-                                        txtValore.Text = Valore.ToString();
-                                        break;
-                                    }
-                                case 1:  // Tensione
-                                    {
-                                        txtValore.Text = FunzioniMR.StringaTensione(Valore);
-                                        break;
-                                    }
-                                case 2:  // Corrente
-                                    {
-                                        txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
-                                        break;
-                                    }
-                                case 4:  // Minuti -> hh:mm
-                                    {
-                                        txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
-                                        break;
-                                    }
-                                default:  // valore diretto
-                                    {
-                                        txtValore.Text = Valore.ToString();
-                                        break;
-                                    }
+                                txtValore.Text = "";
+                            }
+                            else
+                            {
+                                switch (TipoDati)
+                                {
+                                    case 0:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
+                                    case 1:  // Tensione
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaTensione(Valore);
+                                            break;
+                                        }
+                                    case 2:  // Corrente
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
+                                            break;
+                                        }
+                                    case 4:  // Minuti -> hh:mm
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
+                                            break;
+                                        }
+                                    default:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
 
+                                }
                             }
                             esito = true;
                             break;

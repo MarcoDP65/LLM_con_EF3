@@ -41,6 +41,9 @@ namespace ChargerLogic
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
                 elementiComuni.WaitStep _passo;
                 ProgressChangedEventArgs _stepEv;
+                Log.Debug("+---------------------------------------------------------");
+                Log.Debug("| AggiornaFirmware                                        ");
+                Log.Debug("+---------------------------------------------------------");
 
 
                 //bool _recordPresente;
@@ -49,72 +52,35 @@ namespace ChargerLogic
 
                 ControllaAttesa(UltimaScrittura);
 
+
+
+
+
+
+
+
                 if (true)  //ApparatoConnesso)
                 {
-                    // Se previsto, prima resetto la scheda
-
-                    if (false)//ResetBeforeStart)
-                    {
-
-                        if (Step != null)
-                        {
-                            _passo = new elementiComuni.WaitStep();
-                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                            _passo.Titolo = StringheMessaggio.strMsgResetSB;  //"Reset SPY-BATT";
-                            _passo.Eventi = 1;
-                            _passo.Step = -1;
-                            _passo.EsecuzioneInterrotta = false;
-                            _stepEv = new ProgressChangedEventArgs(0, _passo);
-                            Step(this, _stepEv);
-                        }
-                        //_esito = ResetScheda(false);
-                        _esito = true;
-                        //ora aspetto il riavvio e ricollego
-                        int _progress = 0;
-                        double _valProgress = 0;
-
-                        _esito = false;
-                        int _tentativi = 0;
-
-                        while (!_esito)
-                        {
-                            System.Threading.Thread.Sleep(500);
-                            if (Step != null)
-                            {
-                                _passo = new elementiComuni.WaitStep();
-                                _passo.Eventi = 20;
-                                _passo.Step = _tentativi++;
-                                _passo.EsecuzioneInterrotta = false;
-                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
-                                _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
-                                _valProgress = (_tentativi * 5);
-
-                                _progress = (int)_valProgress;
-                                // if (_lastProgress != _progress)
-                                {
-                                     _stepEv = new ProgressChangedEventArgs(_progress, _passo);
-                                    //Log.Debug("Passo " + _risposteRicevute.ToString());
-                                    Step(this, _stepEv);
-                                    //_lastProgress = _progress;
-                                }
-                            }
-
-                            _esito = VerificaPresenza();
-
-                        }
-
-
-
-                    }
 
                     // prima di tutto verifico di essere in modalita bootloader; se non lo sono, commuto
+                    _passo = new elementiComuni.WaitStep();
+                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                    _passo.Titolo = "Verifico lo stato della scheda di controllo"; //StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                    _passo.Eventi = 0;
+                    _passo.Step = 1;
+                    _passo.EsecuzioneInterrotta = false;
+                    _stepEv = new ProgressChangedEventArgs(0, _passo);
+                    Step(this, _stepEv);
+                    System.Threading.Thread.Sleep(1000);
+                    Log.Debug("Verifico lo stato della scheda di controllo");
 
-                    _esito = CaricaStatoFirmware(IdApparato, true);
 
-                    if(!_esito)
+                   _esito = CaricaStatoFirmware(IdApparato, true);
+
+                    if (!_esito)
                     {
                         // non riesco nemmeno a verificare lo stato. FAIL 
-                        Log.Error("Switch to BL Failed");
+                        Log.Error("CaricaStatoFirmware Failed");
                         _passo = new elementiComuni.WaitStep();
                         _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                         _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
@@ -129,7 +95,105 @@ namespace ChargerLogic
 
 
 
-                    
+                    if ((StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
+                    {
+                        // Sono in bootloader, posso continuare
+
+                        Log.Debug("Switch to BL non necessario, sono pronto a partire");
+
+                        _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Sistema attivo un modalità BOOTLOADER"; //StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                        _passo.Eventi = 0;
+                        _passo.Step = 1;
+                        _passo.EsecuzioneInterrotta = false;
+                        _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        Step(this, _stepEv);
+                        System.Threading.Thread.Sleep(1000);
+                    }
+                    else
+                    {
+                        // Non sono in bootloader. COMMUTO
+                        // Prima faccio un reset board 
+
+                        if(ResetScheda())
+                        {
+                            _passo = new elementiComuni.WaitStep();
+                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                            _passo.Titolo = "Sistema attivo un modalità APP. Riavvio la scheda di controllo "; //StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                            _passo.Eventi = 0;
+                            _passo.Step = 1;
+                            _passo.EsecuzioneInterrotta = false;
+                            _stepEv = new ProgressChangedEventArgs(0, _passo);
+                            Step(this, _stepEv);
+                            System.Threading.Thread.Sleep(1000);
+
+                        }
+                        else
+                        {
+                            Log.Error("Reboot board Failed");
+                            _passo = new elementiComuni.WaitStep();
+                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                            _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                            _passo.Eventi = 0;
+                            _passo.Step = -1;
+                            _passo.EsecuzioneInterrotta = true;
+                            _stepEv = new ProgressChangedEventArgs(0, 0);
+                            Step(this, _stepEv);
+                            return false;
+                        }
+
+
+
+
+                        _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Sistema attivo un modalità APP. Passo in modalità bootloader "; //StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                        _passo.Eventi = 0;
+                        _passo.Step = 1;
+                        _passo.EsecuzioneInterrotta = false;
+                        _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        Step(this, _stepEv);
+                        System.Threading.Thread.Sleep(1000);
+
+
+                        _esito = SwitchToBootLoader(IdApparato, true);
+                        if (_esito)
+                        {
+                            // Switch riuscito, mi riconnetto
+                            _esito = AttendiRiconnessione(250, 20000);
+
+
+                        }
+
+                        if (!_esito)
+                        {
+
+                            Log.Error("Switch to BL Failed");
+                            _passo = new elementiComuni.WaitStep();
+                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                            _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                            _passo.Eventi = 0;
+                            _passo.Step = -1;
+                            _passo.EsecuzioneInterrotta = true;
+                            _stepEv = new ProgressChangedEventArgs(0, _passo);
+                            Step(this, _stepEv);
+                            return false;
+
+                        }
+                        else
+                        {
+                            _passo = new elementiComuni.WaitStep();
+                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                            _passo.Titolo = "Sistema commutato un modalità BOOTLOADER"; //StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
+                            _passo.Eventi = 0;
+                            _passo.Step = -1;
+                            _passo.EsecuzioneInterrotta = false;
+                            _stepEv = new ProgressChangedEventArgs(0, _passo);
+                            Step(this, _stepEv);
+                            System.Threading.Thread.Sleep(1000);
+                        }
+                    }
 
 
                     //Prima invio la testata
@@ -147,6 +211,7 @@ namespace ChargerLogic
                             _passo.EsecuzioneInterrotta = false;
                             _stepEv = new ProgressChangedEventArgs(0, _passo);
                             Step(this, _stepEv);
+                            // poi aspetto 1 secondo per leggere il messaggio
                         }
 
                     }
@@ -189,6 +254,7 @@ namespace ChargerLogic
                                 _passo.EsecuzioneInterrotta = true;
                                 _stepEv = new ProgressChangedEventArgs(0, _passo);
                                 Step(this, _stepEv);
+                                System.Threading.Thread.Sleep(2000);
                             }
                         }
 
@@ -228,7 +294,7 @@ namespace ChargerLogic
                             {
                                 // aggiorno il titolo
                                 Log.Debug("FW Update: area #" + _numAree.ToString());
-                                 _passo = new elementiComuni.WaitStep();
+                                _passo = new elementiComuni.WaitStep();
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                 _passo.Titolo = "Caricamento Area " + _numAree.ToString();
                                 _passo.Eventi = (int)_pacchettoCorrente;
@@ -294,7 +360,7 @@ namespace ChargerLogic
                                                 if (Step != null)
                                                 {
                                                     Log.Error("FW Update(1): errore pacchetto #" + _pacchettiInviati + " - Area " + _numAree.ToString());
-                                                     _passo = new elementiComuni.WaitStep();
+                                                    _passo = new elementiComuni.WaitStep();
                                                     _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
                                                     _passo.Titolo = StringheMessaggio.strMsgAggFWFase2err1;  //"Caricamento Applicazione fallito ( Blocco Flash 1 )";
                                                     _passo.Eventi = (int)Firmware.TotaleBlocchi;
@@ -325,15 +391,71 @@ namespace ChargerLogic
 
                                 }
 
-                            
-                            
-                            
-                            //dopo la riconnessione, sincronizzo l'orologio
-                                
-                               // if (_esito) ScriviOrologio();
 
                             }
 
+                            // ora aspetto di ripristinare la connessione
+
+                            Log.Debug("----------------------------------------------------------");
+                            Log.Debug("Fine TX  " + _pacchettiInviati.ToString());
+                            Log.Debug("----------------------------------------------------------");
+
+
+
+                            //ora, se previsto aspetto il riavvio e ricollego
+                            if (WaitReconnect)
+                            {
+                                int _progress = 0;
+                                double _valProgress = 0;
+                                //  mi ricollego aspettando il riavvio
+                                //Application.DoEvents();
+
+                                if (Step != null)
+                                {
+                                    _passo = new elementiComuni.WaitStep();
+                                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                    _passo.Titolo = "Fase 3 - riavvio LADE Light";  //StringheMessaggio.strMsgAggFWFase3;  //"Fase 3 - riavvio LADE Light";
+                                    _passo.Eventi = 1;
+                                    _passo.Step = -1;
+                                    _passo.EsecuzioneInterrotta = false;
+                                    _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                    Step(this, _stepEv);
+                                }
+
+                                _esito = false;
+                                int _tentativi = 0;
+                                _lastProgress = 0;
+                                while (!_esito)
+                                {
+                                    System.Threading.Thread.Sleep(1000);
+                                    if (Step != null)
+                                    {
+                                        _passo = new elementiComuni.WaitStep();
+                                        _passo.Eventi = 100;
+                                        _passo.Step = _tentativi++;
+                                        _passo.EsecuzioneInterrotta = false;
+                                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                        _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                        _valProgress = (_tentativi);
+
+                                        _progress = (int)_valProgress;
+                                        // if (_lastProgress != _progress)
+                                        {
+                                            _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                            //Log.Debug("Passo " + _risposteRicevute.ToString());
+                                            Step(this, _stepEv);
+                                            _lastProgress = _progress;
+                                        }
+                                    }
+
+                                    _esito = VerificaPresenza();
+
+                                }
+
+                                //dopo la riconnessione, sincronizzo l'orologio
+
+                                if (_esito) ScriviOrologio();
+                            }
 
                         }
 
@@ -384,7 +506,7 @@ namespace ChargerLogic
                     Log.Debug(_mS.hexdumpMessaggio());
                     _firmwarePresente = false;
                     _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(elementiComuni.TimeoutBase, 1, false);
+                    _esito = aspettaRisposta(elementiComuni.Timeout5sec, 1, false);
                     if (_esito)
                     {
                         if (_mS._comando == (byte)SerialMessage.TipoComando.NACK_PACKET)
@@ -400,7 +522,6 @@ namespace ChargerLogic
                             StatoFirmware.RevFirmware = _mS.StatoFirmwareScheda.RevFirmware;
                             StatoFirmware.RevDisplay = _mS.StatoFirmwareScheda.RevDisplay;
 
-                            //if ((_mS.StatoFirmwareScheda.RevBootloader != "") && (_mS.StatoFirmwareScheda.RevFirmware != "??????"))
                             _firmwarePresente = true;
                             StatoFirmware.Stato = _mS.StatoFirmwareScheda.Stato;
                             StatoFirmware.CRCFirmware = _mS.StatoFirmwareScheda.CRCFirmware;
@@ -444,7 +565,6 @@ namespace ChargerLogic
                 elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
                 elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
                 SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
-
 
                 bool _recordPresente;
 
@@ -511,6 +631,7 @@ namespace ChargerLogic
             {
                 bool _esito;
                 ControllaAttesa(UltimaScrittura);
+                int NumTentativi = 0;
 
                 _mS.Comando = SerialMessage.TipoComando.CMD_RESET_BOARD;
 
@@ -531,20 +652,21 @@ namespace ChargerLogic
                 Log.Debug("------------------------------------------------------------------------------------------------------------");
 
                 // ora attendo la riconnessione:
-
-                
-                DateTime Inizio = DateTime.Now;
-                bool connesso = false;
-                System.Threading.Thread.Sleep(4000);  // aspetto 4 secondi prima di tentare la connessione
-
-                while (!connesso)
+                if (_esito)
                 {
-                    System.Threading.Thread.Sleep(1000);// aspetto un altro secondo prima di tentare la connessione
-                    connesso = StartComunicazione(5);
+                    DateTime Inizio = DateTime.Now;
+                    bool connesso = false;
+                    System.Threading.Thread.Sleep(4000);  // aspetto 4 secondi prima di tentare la connessione
+
+                    while (!connesso)
+                    {
+                        System.Threading.Thread.Sleep(1000);// aspetto un altro secondo prima di tentare la connessione
+                        connesso = StartComunicazione(5);
+                        NumTentativi += 1;
+                    }
                 }
 
-
-
+                Log.Debug("Riconnesso dopo " + NumTentativi.ToString() + " con esito " + _esito.ToString());
 
 
                 return _esito;

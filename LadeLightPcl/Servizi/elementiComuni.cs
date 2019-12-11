@@ -8,11 +8,14 @@ namespace ChargerLogic
 {
     public class elementiComuni
     {
-        public const int TimeoutBase  = 2;  // Durata di default del timeout di comunicazione, espressa in secondi/10.
-        public const int TimeoutLungo = 5;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
+        // 02/12/2019 alzati i timeout base e lungo rispettivamante da 2/10 a 10/10 e da 5/10 s 25/10 per compensare a priori il rallentamanto del LL
+
+        public const int TimeoutBase  = 10;  // Durata di default del timeout di comunicazione, espressa in secondi/10.
+        public const int TimeoutLungo = 25;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
         public const int Timeout100ms = 1;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
         public const int Timeout500ms = 5;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
         public const int Timeout1sec = 10;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
+        public const int Timeout2sec = 20;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
         public const int Timeout5sec = 50;  // Durata di default del timeout di comunicazione per le operazioni di lunga durata, espressa in secondi/10.
 
         public enum tipoMessaggio : int { vuoto = 0 ,

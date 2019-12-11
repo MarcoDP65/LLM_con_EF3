@@ -44,7 +44,7 @@ namespace ChargerLogic
 
         public DateTime UltimaScrittura;   // Registro l'istante dell'ultima scrittura
 
-        private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+        private static ILog Log = LogManager.GetLogger("CaricaBatteria");
         internal delegate void SerialDataReceivedEventHandlerDelegate(object sender, SerialDataReceivedEventArgs e);
         delegate void SetTextCallback(string text);
         string InputData = String.Empty;
@@ -500,6 +500,52 @@ namespace ChargerLogic
 
         }
 
+        public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente,string IdDispositivo)
+        {
+
+            try
+            {
+
+                //ControllaAttesa(UltimaScrittura);
+
+                _parametri = parametri;
+                //_mS = new MessaggioLadeLight();
+                //_mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
+                //byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
+                //_mS.SerialNumber = Seriale;
+                
+                _cbCollegato = false;
+                serialeApparato = _parametri.serialeCorrente;
+                DbAttivo = dbCorrente;
+                DatiCliente = new llDatiCliente(dbCorrente);
+                DatiBase = new DatiConfigCariche();
+                //InizializzaDatiLocali();
+
+                // Programmazioni
+                Programmazioni.UltimoIdProgamma = 0;
+                Programmazioni.NumeroRecordProg = 0;
+
+
+                // USB
+                cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
+                Log.Debug("cEventHelper.RemoveEventHandler serialeApparato");
+
+                serialeApparato.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(port_DataReceivedCB);
+                Log.Debug("add EventHandler serialeApparato");
+
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("NEW CaricaBatteria: " + Ex.Message);
+            }
+
+
+        }
+
+
+
+
 
         public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente)
         {
@@ -564,7 +610,18 @@ namespace ChargerLogic
         {
             try
             {
-                bool _esito = CaricaIntestazioneLL();
+                bool _esito;
+                // prima riapro il canale
+                _esito = true; // apriPorta();
+                if (_esito)
+                {
+                    _esito = StartComunicazione();
+                    if (_esito)
+                    {
+                        // se ho aperto la porta leggo la testata
+                        _esito = CaricaIntestazioneLL();
+                    }
+                }
                 return _esito;
             }
 
@@ -642,21 +699,23 @@ namespace ChargerLogic
                 _esito = LeggiBloccoMemoria(0, 240, out _Dati);
                 Log.Debug(FunzioniComuni.HexdumpArray(_Dati));
                 //_mS.
-                MessaggioLadeLight.PrimoBloccoMemoria BloccoIntestazione;
-                BloccoIntestazione = new MessaggioLadeLight.PrimoBloccoMemoria();
-                _esitoMsg = BloccoIntestazione.analizzaMessaggio(_Dati, 1);
-
-                Intestazione = new SerialMessage.comandoIniziale();
-
-                if (_esitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                if (_esito)
                 {
-                    _esito = true;
-                    Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
-                    Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
+                    MessaggioLadeLight.PrimoBloccoMemoria BloccoIntestazione;
+                    BloccoIntestazione = new MessaggioLadeLight.PrimoBloccoMemoria();
+                    _esitoMsg = BloccoIntestazione.analizzaMessaggio(_Dati, 1);
+
+                    Intestazione = new SerialMessage.comandoIniziale();
+
+                    if (_esitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
+                    {
+                        _esito = true;
+                        Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
+                        Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
 
 
+                    }
                 }
-
                 _cbCollegato = _esito;
                 apparatoPresente = _esito;
                 return _esito;
@@ -731,6 +790,50 @@ namespace ChargerLogic
                 return false;
             }
         }
+
+        public bool CaricaApparatoA0(string IdApparato)
+        {
+            try
+            {
+                bool _esito = false;
+
+                // Leggo dal primo banco memoria fissa
+                ParametriApparato = new llParametriApparato(DbAttivo);
+                _esito = ParametriApparato.caricaDati(IdApparato);
+
+                if (_esito)
+                {
+
+                    if (ParametriApparato.llParApp != null)
+                    {
+                        ModelloCorrente = DatiBase.ModelliLL.Find(x => x.IdModelloLL == ParametriApparato.llParApp.TipoApparato);
+                    }
+                    else
+                    {
+                        ModelloCorrente = null;
+                    }
+
+
+                    //Intestazione.Matricola = BloccoIntestazione.SerialeApparato;
+                    //Intestazione.PrimaInstallazione = BloccoIntestazione.DataSetupApparato.ToString();
+
+                }
+
+                _cbCollegato = false;
+                apparatoPresente = false;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+
         public bool CaricaProgrammaAttivo()
         {
             try
@@ -747,8 +850,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-
-
 
         public llProgrammaCarica CaricaProgramma(byte IdPosizione)
         {
@@ -804,13 +905,14 @@ namespace ChargerLogic
             {
                 bool _esito = false;
                 SerialMessage.EsitoRisposta _esitoMsg;
-
+                Programmazioni.IdCorrente = ParametriApparato.IdApparato;
+                Programmazioni._database = DbAttivo;
                 Programmazioni.ProgrammiDefiniti = new List<llProgrammaCarica>();
 
                 // Comincio a leggere dal primo messaggio da 240 bytes nell'area programmazioni e continuo a scorrere fino a che non ho
                 // tipo record = 0xFF o ho raggiunto l'ultimo ( 15 con inizio 0 ) 
 
-                for(byte contacicli = 0; contacicli <16; contacicli++)
+                for (byte contacicli = 0; contacicli <16; contacicli++)
                 {
                     llProgrammaCarica _tempProgramma = CaricaProgramma(contacicli);
                     if(_tempProgramma.TipoRecord != 0xFF)
@@ -827,6 +929,29 @@ namespace ChargerLogic
 
                 
                 return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
+
+
+
+        public bool CaricaContatori(string IdApparato)
+        {
+            try
+            {
+                bool _esito = false;
+                ContatoriLL = new llContatoriApparato(DbAttivo);
+                _esito = ContatoriLL.caricaDati(IdApparato);  //.llContApp.IdApparato = ParametriApparato.IdApparato;
+
+                return _esito;
+
             }
 
             catch (Exception Ex)
@@ -1096,6 +1221,7 @@ namespace ChargerLogic
                 Log.Debug(_mS.hexdumpMessaggio());
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                 _esito = aspettaRisposta(TimeoutRisposta, 0, true, false);
+                apparatoPresente = _esito;
                 return _esito;
             }
 
@@ -1111,17 +1237,27 @@ namespace ChargerLogic
         {
             try
             {
+
                 bool _esito = false;
-                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
-                _mS.Comando = SerialMessage.TipoComando.CMD_DISCONNECT;
-                _mS.ComponiMessaggio();
-                _rxRisposta = false;
-                Log.Debug("STOP");
-                Log.Debug(_mS.hexdumpMessaggio());
-                _esito = _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                if (_esito)
+
+                if (_cbCollegato)
                 {
-                    _esito = aspettaRisposta(TimeoutRisposta, 0, true, false);
+                    _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
+                    _mS.Comando = SerialMessage.TipoComando.CMD_DISCONNECT;
+                    _mS.ComponiMessaggio();
+                    _rxRisposta = false;
+                    Log.Debug("STOP");
+                    Log.Debug(_mS.hexdumpMessaggio());
+                    _esito = _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                    if (_esito)
+                    {
+                        _esito = aspettaRisposta(TimeoutRisposta, 0, true, false);
+                    }
+                    
+                }
+                else
+                {
+                    _esito = true;
                 }
                 return _esito;
             }
@@ -1153,11 +1289,14 @@ namespace ChargerLogic
             {
 
                 _startFunzione = DateTime.Now;
+                Log.Debug("----------------------------------------");
+                Log.Debug("Attesa riconnessione");
 
                 // innazitutto aspetto il tempo di attesa iniziale
                 if (AttesaIniziale > 0)
                 {
                     Thread.Sleep(AttesaIniziale);
+                    Log.Debug("Attesa iniziale ");
                 }
 
                 _connessioneAttiva = StartComunicazione();
@@ -1166,10 +1305,11 @@ namespace ChargerLogic
                 {
                     if (raggiuntoTimeout(_startFunzione, Timeout)) break;
                     _connessioneAttiva = StartComunicazione();
+                    Log.Debug("Tentativo START");
 
                 }
                 _esito = _connessioneAttiva;
-
+                Log.Debug("Tentativo Connessione: " + _esito.ToString());
                 return _esito;
             }
 
@@ -1224,8 +1364,6 @@ namespace ChargerLogic
                 bool _esito;
                 ControllaAttesa(UltimaScrittura);
 
-
-
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_CYCLE_PROG;
                 _mS.ComponiMessaggio();
                 _rxRisposta = false;
@@ -1259,6 +1397,8 @@ namespace ChargerLogic
             {
                 bool _esito;
                 llProgrammaCarica _tempPrg;
+                Programmazioni._database = DbAttivo;
+                Programmazioni.IdCorrente = ParametriApparato.IdApparato;
                 ushort TempIdProgamma = 0;
                 byte TempNumRecordProg = 0 ;
                 // prima carico l'area indici programmazioni
@@ -1301,46 +1441,59 @@ namespace ChargerLogic
 
                     // Leggo la programmazione corrente
                     _tempPrg = CaricaProgramma(0);
-                    if (_tempPrg.IdProfilo == 0XFF)
+                    if (_tempPrg == null)
                     {
-                        // La connfigurazione attiva non è valida. Considero tutta l'area inconsistente
+                        // La scheda non ha un programma definito
                         Programmazioni.UltimoIdProgamma = 0;
                         Programmazioni.NumeroRecordProg = 0;
                         Programmazioni.ProgrammiDefiniti.Clear();
                         Programmazioni.ProgrammaAttivo = null;
-                        return false;  // TRUE ?????? non ho dati, ma non sono in errore
+                        _esito = false;
 
                     }
                     else
                     {
-                        _tempPrg.ProgrammaAttivo = true;
-                        _tempPrg.PosizioneCorrente = 0;
-                        _tempPrg.Parametri = _parametri;
-                        Programmazioni.ProgrammaAttivo = _tempPrg;
-                        if (Programmazioni.NumeroRecordProg < 1) Programmazioni.NumeroRecordProg = 1;
-                        if (Programmazioni.UltimoIdProgamma < _tempPrg.IdProfilo) Programmazioni.UltimoIdProgamma = _tempPrg.IdProgramma;
-                        Programmazioni.ProgrammiDefiniti.Add(_tempPrg);
-
-                    }
-
-                    // ora leggo le altre programmazioni
-                    for ( int cicloP = 1;cicloP < TempNumRecordProg; cicloP++)
-                    {
-                        _tempPrg = CaricaProgramma((byte)cicloP);
-                        _tempPrg.Parametri = _parametri;
                         if (_tempPrg.IdProfilo == 0XFF)
                         {
-                            // Non valida, esco
-                            return true;
+                            // La connfigurazione attiva non è valida. Considero tutta l'area inconsistente
+                            Programmazioni.UltimoIdProgamma = 0;
+                            Programmazioni.NumeroRecordProg = 0;
+                            Programmazioni.ProgrammiDefiniti.Clear();
+                            Programmazioni.ProgrammaAttivo = null;
+                            return false;  //  TRUE ?????? non ho dati, ma non sono in errore
+
                         }
-                        //_tempPrg.IdProgramma = (ushort)cicloP;
-                        _tempPrg.AnalizzaListaParametri();
-                        _tempPrg.PosizioneCorrente = (byte)cicloP;
-                        _tempPrg.ProgrammaAttivo = false;
-                        Programmazioni.ProgrammiDefiniti.Add(_tempPrg);
+                        else
+                        {
+                            _tempPrg.ProgrammaAttivo = true;
+                            _tempPrg.PosizioneCorrente = 0;
+                            _tempPrg.Parametri = _parametri;
+                            Programmazioni.ProgrammaAttivo = _tempPrg;
+                            if (Programmazioni.NumeroRecordProg < 1) Programmazioni.NumeroRecordProg = 1;
+                            if (Programmazioni.UltimoIdProgamma < _tempPrg.IdProfilo) Programmazioni.UltimoIdProgamma = _tempPrg.IdProgramma;
+                            Programmazioni.ProgrammiDefiniti.Add(_tempPrg);
 
+                        }
+
+                        // ora leggo le altre programmazioni
+                        for (int cicloP = 1; cicloP < TempNumRecordProg; cicloP++)
+                        {
+                            _tempPrg = CaricaProgramma((byte)cicloP);
+                            _tempPrg.Parametri = _parametri;
+                            if (_tempPrg.IdProfilo == 0XFF)
+                            {
+                                // Non valida, esco
+                                return true;
+                            }
+                            //_tempPrg.IdProgramma = (ushort)cicloP;
+                            _tempPrg.AnalizzaListaParametri();
+                            _tempPrg.PosizioneCorrente = (byte)cicloP;
+                            _tempPrg.ProgrammaAttivo = false;
+                            Programmazioni.ProgrammiDefiniti.Add(_tempPrg);
+
+                        }
                     }
-
+                    _esito = Programmazioni.SalvaDati();
 
                 }
                 else
@@ -1349,10 +1502,50 @@ namespace ChargerLogic
                     Programmazioni.NumeroRecordProg = 0;
                     Programmazioni.ProgrammiDefiniti.Clear();
                     Programmazioni.ProgrammaAttivo = null;
-                    return false;
+                    _esito = false;
                 }
 
 
+
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
+
+        public bool CaricaProgrammazioniDB(string IdApparato)
+        {
+            try
+            {
+                bool _esito;
+                llProgrammaCarica _tempPrg;
+                Programmazioni._database = DbAttivo;
+                Programmazioni.IdCorrente = ParametriApparato.IdApparato;
+                Programmazioni.ProgrammiDefiniti = new List<llProgrammaCarica>();
+                Programmazioni.ProgrammaAttivo = null;
+
+
+                IEnumerable<_llProgrammaCarica> _TempCicli = DbAttivo.Query<_llProgrammaCarica>("select * from _llProgrammaCarica where IdApparato = ? order by PosizioneCorrente asc", IdApparato);
+
+                foreach (_llProgrammaCarica Elemento in _TempCicli)
+                {
+                    llProgrammaCarica _cLoc;
+                    _cLoc = new llProgrammaCarica( Elemento);
+                    _cLoc.Parametri = _parametri;
+                    _cLoc.GeneraListaParametri();
+                    Programmazioni.ProgrammiDefiniti.Add(_cLoc);
+                    if(_cLoc.PosizioneCorrente == 0)
+                    {
+                        Programmazioni.ProgrammaAttivo = _cLoc;
+                    }
+
+                }
 
                 return true;
             }
@@ -1364,6 +1557,7 @@ namespace ChargerLogic
                 return false;
             }
         }
+
 
 
         public bool ControllaStatoAreaFW(byte Area = 1)
@@ -1537,6 +1731,12 @@ namespace ChargerLogic
                 bool _esito = false ;
                 bool _daticompleti = false;
                 int _numciclolettura = 0;
+
+                if (!apparatoPresente)
+                {
+                    Dati = null;
+                    return false;
+                }
 
                 // Verifico che il canale sia attivo
                 ControllaAttesa(UltimaScrittura);
@@ -1735,7 +1935,7 @@ namespace ChargerLogic
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
                 _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                _esito = aspettaRisposta(elementiComuni.Timeout2sec, 0, true);
                 Log.Debug("Aspetto 150 ms per l'effettiva riabilitazione della flash" );
                 System.Threading.Thread.Sleep(150);
                 Log.Debug("------------------------------------------------------------------------------------------------------------");
@@ -1744,7 +1944,7 @@ namespace ChargerLogic
 
 
             }
-
+            
 
             catch (Exception Ex)
             {
@@ -2041,72 +2241,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-        /*
-        public bool OldSalvaProgrammazioniApparato()
-        {
-            try
-            {
-                bool _esito = false;
-                // Verifico se il programma attivo è diverso dall'attivo corrente (a meno dell'ID)
-                llProgrammaCarica AttualeCorrente = (llProgrammaCarica)Programmazioni.ProgrammiDefiniti.Find(x => x.IdProgramma == Programmazioni.ProgrammaAttivo.IdProgramma); ;
-                if(Programmazioni.ProgrammaAttivo.IsEqual(AttualeCorrente))
-                {
-                    // 
-
-                }
-
-                // ho cambiato qualcosa:
-                // Sposto avanti tutti i dati presenti
-                foreach(llProgrammaCarica tempPrg in Programmazioni.ProgrammiDefiniti)
-                {
-                    tempPrg.PosizioneCorrente += 1;
-                }
-
-
-                MessaggioLadeLight.MessaggioProgrammazione NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione();
-
-                // Prima vuoto il blocco  --> inserire la gestione dell'intera pagina
-                _esito = CancellaBlocco4K(ADDR_START_PROGRAMMAZIONI);
-
-                // in posizione 0 scrivo il programma corrente
-                NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione(Programmazioni.ProgrammaAttivo);
-                
-                if (NuovoPrg.GeneraByteArray())
-                {
-                
-
-                    byte[] _datiTemp = new byte[226];
-                    _datiTemp = NuovoPrg.dataBuffer;
-                    _esito = ScriviBloccoMemoria(0x2000, 226, _datiTemp);
-                    _esito = ScriviBloccoMemoria(0x2100, 226, _datiTemp);
-                    _esito = ScriviBloccoMemoria(0x2200, 226, _datiTemp);
-                    _esito = ScriviBloccoMemoria(0x2300, 226, _datiTemp);
-                    _esito = ScriviBloccoMemoria(0x2400, 226, _datiTemp);
-                    _esito = ScriviBloccoMemoria(0x2500, 226, _datiTemp);
-                    byte[] datiCont = new byte[10];
-                    datiCont[0] = 6;
-                    datiCont[1] = 0;
-                    datiCont[2] = 1;
-                    datiCont[3] = 0;
-                    datiCont[4] = 0;
-                    _esito = ScriviBloccoMemoria(0x20F6, 10, datiCont);
-                }
-
-
-                return _esito;
-
-            }
-
-            catch (Exception Ex)
-            {
-                Log.Error(Ex.Message);
-                _lastError = Ex.Message;
-                return false;
-            }
-        }
-        */
-
-
 
         public bool PreparaSalvataggioProgrammazioni()
         {
@@ -2141,7 +2275,7 @@ namespace ChargerLogic
             try
             {
                 bool _esito = false;
-
+                bool _cicloFallito = false;
                 // Salvo le programmazioni nella lista in ordine di posizione -> deve esistere una programm. in posizione 0
 
                 // 1 - Devo avere almeno 1 programmazione
@@ -2182,18 +2316,27 @@ namespace ChargerLogic
                         byte[] _datiTemp = new byte[226];
                         _datiTemp = NuovoPrg.dataBuffer;
                         _esito = ScriviBloccoMemoria(AdrDati, 226, _datiTemp);
+                        if (!_esito)
+                        {
+                            _cicloFallito = true;
+                        }
                         AdrDati += 0x100;
                     }
                 }
+                if (!_cicloFallito)
+                {
+                    // 4 per ultimo scrivo i contatori
+                    Log.Debug("Scrivo i contatori programmazioni");
 
-                // 4 per ultimo scrivo i contatori
-                Log.Debug("Scrivo i contatori programmazioni");
-
-                byte[] datiCont = new byte[10];
-                datiCont[0] = (byte)Programmazioni.ProgrammiDefiniti.Count;
-                FunzioniComuni.SplitUshort(Programmazioni.UltimoIdProgamma, ref datiCont[2], ref datiCont[1]);  
-                _esito = ScriviBloccoMemoria(0x20F6, 10, datiCont);
-    
+                    byte[] datiCont = new byte[10];
+                    datiCont[0] = (byte)Programmazioni.ProgrammiDefiniti.Count;
+                    FunzioniComuni.SplitUshort(Programmazioni.UltimoIdProgamma, ref datiCont[2], ref datiCont[1]);
+                    _esito = ScriviBloccoMemoria(0x20F6, 10, datiCont);
+                }
+                else
+                {
+                    return false;
+                }
 
                 return _esito;
 

@@ -77,11 +77,13 @@
             this.mnuPortaSeriale = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConsole = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGestioneDispositivi = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuInformazioniSu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpLogRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpLogSetlvlAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuHelpLogSetlvlDebug = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpLogSetlvlInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpLogSetlvlDebug = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpLogSetlvlWarn = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpLogSetlvlError = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpLogSetlvlFatall = new System.Windows.Forms.ToolStripMenuItem();
@@ -429,10 +431,23 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuGestioneDispositivi,
+            this.toolStripMenuItem7,
             this.mnuInformazioniSu,
             this.mnuHelpLogRoot});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            // 
+            // mnuGestioneDispositivi
+            // 
+            this.mnuGestioneDispositivi.Name = "mnuGestioneDispositivi";
+            resources.ApplyResources(this.mnuGestioneDispositivi, "mnuGestioneDispositivi");
+            this.mnuGestioneDispositivi.Click += new System.EventHandler(this.mnuGestioneDispositivi_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
             // 
             // mnuInformazioniSu
             // 
@@ -461,17 +476,17 @@
             resources.ApplyResources(this.mnuHelpLogSetlvlAll, "mnuHelpLogSetlvlAll");
             this.mnuHelpLogSetlvlAll.Click += new System.EventHandler(this.mnuHelpLogSetlvlAll_Click);
             // 
-            // mnuHelpLogSetlvlDebug
-            // 
-            this.mnuHelpLogSetlvlDebug.Name = "mnuHelpLogSetlvlDebug";
-            resources.ApplyResources(this.mnuHelpLogSetlvlDebug, "mnuHelpLogSetlvlDebug");
-            this.mnuHelpLogSetlvlDebug.Click += new System.EventHandler(this.mnuHelpLogSetlvlDebug_Click);
-            // 
             // mnuHelpLogSetlvlInfo
             // 
             this.mnuHelpLogSetlvlInfo.Name = "mnuHelpLogSetlvlInfo";
             resources.ApplyResources(this.mnuHelpLogSetlvlInfo, "mnuHelpLogSetlvlInfo");
             this.mnuHelpLogSetlvlInfo.Click += new System.EventHandler(this.mnuHelpLogSetlvlInfo_Click);
+            // 
+            // mnuHelpLogSetlvlDebug
+            // 
+            this.mnuHelpLogSetlvlDebug.Name = "mnuHelpLogSetlvlDebug";
+            resources.ApplyResources(this.mnuHelpLogSetlvlDebug, "mnuHelpLogSetlvlDebug");
+            this.mnuHelpLogSetlvlDebug.Click += new System.EventHandler(this.mnuHelpLogSetlvlDebug_Click);
             // 
             // mnuHelpLogSetlvlWarn
             // 
@@ -693,6 +708,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuHelpLogTest;
         private System.Windows.Forms.ToolStripMenuItem mnuArchivioLL;
         private System.Windows.Forms.ToolStripStatusLabel sstMainMsg;
+        private System.Windows.Forms.ToolStripMenuItem mnuGestioneDispositivi;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
     }
 }
 

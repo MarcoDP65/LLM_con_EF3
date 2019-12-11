@@ -86,6 +86,7 @@ namespace MoriData
         public byte TipoRecord { get; set; }
         public byte OpzioniAttive { get; set; }
         public byte IdModelloLL { get; set; }
+        public byte PosizioneCorrente { get; set; }
 
         public bool IsEqual( _llProgrammaCarica ProgCarica)
         {
@@ -147,7 +148,6 @@ namespace MoriData
         private static ILog Log = LogManager.GetLogger("llProgrammaCarica");
         public bool _datiSalvati;
         public bool _recordPresente;
-        public byte PosizioneCorrente { get; set; }
         public bool ProgrammaAttivo { get; set; }
 
 
@@ -259,7 +259,7 @@ namespace MoriData
         {
             try
             {
-                if (_llprc.IdApparato != nullID & _llprc.IdApparato != null & _llprc.IdProgramma == 0)
+                if (_llprc.IdApparato != nullID & _llprc.IdApparato != null & _llprc.IdProgramma != 0)
                 {
 
                     _llProgrammaCarica _TestDati = _caricaDati(_llprc.IdApparato, _llprc.IdProgramma);
@@ -485,6 +485,97 @@ namespace MoriData
             }
         }
 
+        public bool AzzeraValori()
+        {
+            try
+            {
+                ListaParametri = new List<ParametroLL>();
+                ParametroLL _par;
+
+                // Tipo Batteria
+                _llprc.BatteryType = 0;
+
+                // Tipo Profilo
+                _llprc.IdProfilo = 0;
+
+                // Durata Carica
+                _llprc.DurataMaxCarica = 0;
+
+                // Durata Fase 2
+                _llprc.DurataMinFase2 = 0;
+
+                _llprc.DurataMaxFase2 = 0;
+
+                _llprc.PercTempoFase2 = 0;
+
+                // Durata Fase 3
+                _llprc.DurataMaxFase3 = 0;
+
+                // Numero Celle
+                _llprc.NumeroCelle = 0;
+
+                // Tensione Nominale
+                _llprc.BatteryVdef = 0;
+
+                // Tensione di soglia
+                _llprc.VSoglia = 0;
+
+                // Tensione di raccordo F1
+                _llprc.VRaccordoF1 = 0;
+
+                // Tensione Massima
+                _llprc.VMax = 0;
+
+                // Tensione Limite
+               _llprc.VCellLimite = 0;
+
+                // Tensioni Riconoscimento
+                _llprc.BatteryVminRec = 0;
+                _llprc.BatteryVmaxRec = 0;
+                _llprc.BatteryVminStop = 0;
+
+                // Capacità Nominale
+                _llprc.BatteryAhdef = 0;
+
+                // Corrente Massima (  == Corrente di carica )
+                _llprc.CorrenteMax = 0;
+
+                // Corrente Fase 3
+               _llprc.CorrenteFase3 = 0;
+
+                // Equal fine carica:
+                // Attesa Iniziale
+                _llprc.EqualTempoAttesa = 0;
+                // Numero Impulsi
+                _llprc.EqualNumImpulsi = 0;
+                // Tempo Pausa
+                _llprc.EqualDurataPausa = 0;
+                // Tempo Erogazione
+                _llprc.EqualDurataImpulso = 0;
+                // Corrente Impulso
+                _llprc.EqualCorrenteImpulso = 0;
+
+                _llprc.IdModelloLL = 0;
+
+
+                // Riarmo BMS
+                _llprc.TempoErogazioneBMS = 0;
+                _llprc.TempoAttesaBMS = 0;
+
+                // Abilitazione SPY-BATT
+                _llprc.AbilitaComunicazioneSpybatt = 0;
+ 
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("GeneraListaParametri: " + Ex.Message + " -> " + Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
+
+
         public bool AnalizzaListaParametri()
         {
             try
@@ -675,11 +766,22 @@ namespace MoriData
 
         }
 
+        public byte PosizioneCorrente
+        {
+            get { return _llprc.PosizioneCorrente; }
+            set
+            {
+                _llprc.PosizioneCorrente = value;
+                _datiSalvati = false;
+            }
+
+        }
+
         public string strPosizioneCorrente
         {
             get
             {
-                return PosizioneCorrente.ToString("000");
+                return _llprc.PosizioneCorrente.ToString("000");
             }
 
         }
@@ -1208,6 +1310,31 @@ namespace MoriData
                 _datiSalvati = false;
             }
         }
+
+        public string strAbilitaComunicazioneSpybatt
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    if (_llprc.AbilitaComunicazioneSpybatt == 0x0F)
+                    { 
+                        return "SI";
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+                else    
+                    return "";
+            }
+
+        }
+
+
+
+
 
         public byte TempoErogazioneBMS
         {

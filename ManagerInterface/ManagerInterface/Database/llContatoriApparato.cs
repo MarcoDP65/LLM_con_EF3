@@ -140,9 +140,10 @@ namespace MoriData
                 if (llContApp == null)
                 {
                     llContApp = new _llContatoriApparato();
+                    valido = false;
                     return false;
                 }
-
+                valido = true;
                 return true;
             }
             catch

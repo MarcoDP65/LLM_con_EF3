@@ -132,6 +132,17 @@ namespace MoriData
             ProgrammaAttivo = new sbProgrammaRicarica();
         }
 
+        public llMemoriaCicli(_db connessione, _llMemoriaCicli Dati)
+        {
+            valido = false;
+            _llmc = Dati;
+            _database = connessione;
+            _datiSalvati = true;
+            _recordPresente = false;
+            ProgrammaAttivo = null;
+        }
+
+
         private _llMemoriaCicli _caricaDati(int _id)
         {
             if (_database != null)
@@ -639,6 +650,12 @@ namespace MoriData
 
         }
 
+        public string strSortIdCiclo
+        {
+            get { return _llmc.IdMemCiclo.ToString("000000"); }
+
+        }
+
         // [OLVColumn(IsVisible = true, Width = 100, DisplayIndex = 1, TextAlign = HorizontalAlignment.Right)]
         public string strSortIdMemCiclo
         {
@@ -663,6 +680,17 @@ namespace MoriData
         {
             get { return _llmc.LastUser; }
         }
+
+        public string IdApparato
+        {
+            get { return _llmc.IdApparato; }
+            set
+            {
+                _llmc.IdApparato = value;
+                _datiSalvati = false;
+            }
+        }
+
 
         public ushort IdProgramma
         {
@@ -697,15 +725,22 @@ namespace MoriData
                 if ((_llmc.OpzioniCarica & 0x06) == 0x00)
                 {
                     // NO spybatt, se i primi 2 bytes dell'ID != FFFF allora è la tensione nominale
-                    ushort Vnom = (ushort)((_llmc.IdSpyBatt[0] * 256) + _llmc.IdSpyBatt[1]);
-                    if(Vnom == 0xFFFF)
+                    if (_llmc.IdSpyBatt != null)
                     {
-                        return "";
+                        ushort Vnom = (ushort)((_llmc.IdSpyBatt[0] * 256) + _llmc.IdSpyBatt[1]);
+                        if (Vnom == 0xFFFF)
+                        {
+                            return "";
+                        }
+                        else
+
+                        {
+                            return FunzioniMR.StringaTensione(Vnom, 0);
+                        }
                     }
                     else
-
                     {
-                        return FunzioniMR.StringaTensione(Vnom,0);
+                        return "";
                     }
 
 
@@ -924,8 +959,15 @@ namespace MoriData
             {
                 if (_llmc.NumEventiBrevi != 0xFFFF && dtDataOraFine != DateTime.MinValue)
                 {
+                    string _tempDurata = "";
                     TimeSpan DurataCalc = dtDataOraFine.Subtract(dtDataOraStart);
-                    return DurataCalc.Hours.ToString("00") + ":" + DurataCalc.Minutes.ToString("00");
+
+                    if (DurataCalc.Days > 0)
+                    {
+                        _tempDurata += DurataCalc.Days.ToString() + "g ";
+                    }
+                    _tempDurata += DurataCalc.Hours.ToString("00") + ":" + DurataCalc.Minutes.ToString("00");
+                    return _tempDurata;
                 }
                 else return "";
             }
@@ -1635,27 +1677,34 @@ namespace MoriData
         {
             get
             {
-                if ((_llmc.OpzioniCarica & 0x06) != 0x00)
+                if (_llmc.IdSpyBatt != null)
                 {
-                    string _Id = "";
-                    _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":" ;
-                    _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
-                    _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
-                    _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2") ;
+                    if ((_llmc.OpzioniCarica & 0x06) != 0x00)
+                    {
+                        string _Id = "";
+                        _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":";
+                        _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
+                        _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
+                        _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2");
 
-                    return _Id;
+                        return _Id;
 
+                    }
+                    else
+                    {
+                        string _Id = "";
+                        _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":";
+                        _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
+                        _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
+                        _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2");
+
+                        return "( " + _Id + " )";
+                        //return "";
+                    }
                 }
                 else
                 {
-                    string _Id = "";
-                    _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":";
-                    _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
-                    _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
-                    _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2");
-
-                    return "( " + _Id + " )";
-                    //return "";
+                    return "";
                 }
             }
         }

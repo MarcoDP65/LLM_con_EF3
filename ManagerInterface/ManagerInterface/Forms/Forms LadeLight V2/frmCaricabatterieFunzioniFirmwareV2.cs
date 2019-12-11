@@ -492,13 +492,8 @@ namespace PannelloCharger
 
                 this.Cursor = Cursors.WaitCursor;
                 byte _area = (byte)(cmbFWSBFArea.SelectedIndex + 1);
-                /*
-                byte.TryParse(txtFWSBFArea.Text, out _area);
-                if (_area != 2)
-                    _area = 1;
 
-                txtFWSBFArea.Text = _area.ToString();
-                */
+
                 _avCicli.ParametriWorker.MainCount = 100;
 
                 _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
@@ -520,6 +515,8 @@ namespace PannelloCharger
                 // Apro il form con le progressbar
                 _avCicli.ShowDialog(this);
 
+
+
                 // aspetto 5 secondi poi mi ricollego
                 Application.DoEvents();
                 _esito = false;
@@ -531,6 +528,7 @@ namespace PannelloCharger
                     _tentativi++;
                     _esito = _cb.VerificaPresenza();
                     Application.DoEvents();
+                    if (_tentativi > 20) break;
                 }
 
 
@@ -565,6 +563,7 @@ namespace PannelloCharger
                 btnFwSwitchArea2.BackColor = Color.LightGray;
                 btnFwSwitchArea1.Enabled = false;
                 btnFwSwitchArea2.Enabled = false;
+                btnFwSwitchApp.Enabled = false;
 
 
                 Log.Debug("----------------------- CaricaStatoFirmware ---------------------------");
@@ -607,6 +606,7 @@ namespace PannelloCharger
                         {
                             txtFwAreaTestata.Text = "BL";
                             btnFwSwitchBL.BackColor = Color.LightGreen;
+                            btnFwSwitchApp.Enabled = true;
                         }
                         else
                         {

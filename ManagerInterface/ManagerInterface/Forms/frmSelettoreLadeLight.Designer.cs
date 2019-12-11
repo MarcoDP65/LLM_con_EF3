@@ -34,14 +34,14 @@
             this.btnEsportaSpybatt = new System.Windows.Forms.Button();
             this.flvwListaApparati = new BrightIdeasSoftware.FastObjectListView();
             this.btnChiudi = new System.Windows.Forms.Button();
-            this.btnApriSpybatt = new System.Windows.Forms.Button();
+            this.btnApriLadeLight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.flvwListaApparati)).BeginInit();
             this.SuspendLayout();
             // 
             // txtIdScheda
             // 
             this.txtIdScheda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtIdScheda.Location = new System.Drawing.Point(456, 393);
+            this.txtIdScheda.Location = new System.Drawing.Point(436, 376);
             this.txtIdScheda.Margin = new System.Windows.Forms.Padding(2);
             this.txtIdScheda.Name = "txtIdScheda";
             this.txtIdScheda.ReadOnly = true;
@@ -51,7 +51,7 @@
             // btnImportaDati
             // 
             this.btnImportaDati.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnImportaDati.Location = new System.Drawing.Point(329, 387);
+            this.btnImportaDati.Location = new System.Drawing.Point(309, 370);
             this.btnImportaDati.Margin = new System.Windows.Forms.Padding(2);
             this.btnImportaDati.Name = "btnImportaDati";
             this.btnImportaDati.Size = new System.Drawing.Size(94, 36);
@@ -62,7 +62,7 @@
             // btnEliminaDati
             // 
             this.btnEliminaDati.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEliminaDati.Location = new System.Drawing.Point(133, 387);
+            this.btnEliminaDati.Location = new System.Drawing.Point(113, 370);
             this.btnEliminaDati.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminaDati.Name = "btnEliminaDati";
             this.btnEliminaDati.Size = new System.Drawing.Size(94, 36);
@@ -73,7 +73,7 @@
             // btnEsportaSpybatt
             // 
             this.btnEsportaSpybatt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEsportaSpybatt.Location = new System.Drawing.Point(231, 387);
+            this.btnEsportaSpybatt.Location = new System.Drawing.Point(211, 370);
             this.btnEsportaSpybatt.Margin = new System.Windows.Forms.Padding(2);
             this.btnEsportaSpybatt.Name = "btnEsportaSpybatt";
             this.btnEsportaSpybatt.Size = new System.Drawing.Size(94, 36);
@@ -85,7 +85,7 @@
             // 
             this.flvwListaApparati.CellEditUseWholeCell = false;
             this.flvwListaApparati.HideSelection = false;
-            this.flvwListaApparati.Location = new System.Drawing.Point(34, 28);
+            this.flvwListaApparati.Location = new System.Drawing.Point(14, 11);
             this.flvwListaApparati.Margin = new System.Windows.Forms.Padding(2);
             this.flvwListaApparati.Name = "flvwListaApparati";
             this.flvwListaApparati.ShowGroups = false;
@@ -94,11 +94,13 @@
             this.flvwListaApparati.UseCompatibleStateImageBehavior = false;
             this.flvwListaApparati.View = System.Windows.Forms.View.Details;
             this.flvwListaApparati.VirtualMode = true;
+            this.flvwListaApparati.SelectedIndexChanged += new System.EventHandler(this.flvwListaApparati_SelectedIndexChanged);
+            this.flvwListaApparati.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.flvwListaApparati_MouseDoubleClick);
             // 
             // btnChiudi
             // 
             this.btnChiudi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnChiudi.Location = new System.Drawing.Point(672, 387);
+            this.btnChiudi.Location = new System.Drawing.Point(652, 370);
             this.btnChiudi.Margin = new System.Windows.Forms.Padding(2);
             this.btnChiudi.Name = "btnChiudi";
             this.btnChiudi.Size = new System.Drawing.Size(94, 36);
@@ -106,31 +108,33 @@
             this.btnChiudi.Text = "Chiudi";
             this.btnChiudi.UseVisualStyleBackColor = true;
             // 
-            // btnApriSpybatt
+            // btnApriLadeLight
             // 
-            this.btnApriSpybatt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnApriSpybatt.Location = new System.Drawing.Point(34, 387);
-            this.btnApriSpybatt.Margin = new System.Windows.Forms.Padding(2);
-            this.btnApriSpybatt.Name = "btnApriSpybatt";
-            this.btnApriSpybatt.Size = new System.Drawing.Size(94, 36);
-            this.btnApriSpybatt.TabIndex = 8;
-            this.btnApriSpybatt.Text = "Apri Scheda";
-            this.btnApriSpybatt.UseVisualStyleBackColor = true;
+            this.btnApriLadeLight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnApriLadeLight.Location = new System.Drawing.Point(14, 370);
+            this.btnApriLadeLight.Margin = new System.Windows.Forms.Padding(2);
+            this.btnApriLadeLight.Name = "btnApriLadeLight";
+            this.btnApriLadeLight.Size = new System.Drawing.Size(94, 36);
+            this.btnApriLadeLight.TabIndex = 8;
+            this.btnApriLadeLight.Text = "Apri Scheda";
+            this.btnApriLadeLight.UseVisualStyleBackColor = true;
+            this.btnApriLadeLight.Click += new System.EventHandler(this.btnApriLadeLight_Click);
             // 
             // frmSelettoreLadeLight
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 439);
+            this.ClientSize = new System.Drawing.Size(762, 415);
             this.Controls.Add(this.txtIdScheda);
             this.Controls.Add(this.btnImportaDati);
             this.Controls.Add(this.btnEliminaDati);
             this.Controls.Add(this.btnEsportaSpybatt);
             this.Controls.Add(this.flvwListaApparati);
             this.Controls.Add(this.btnChiudi);
-            this.Controls.Add(this.btnApriSpybatt);
+            this.Controls.Add(this.btnApriLadeLight);
             this.Name = "frmSelettoreLadeLight";
             this.Text = "Archivio LADE Light";
+            this.Resize += new System.EventHandler(this.frmSelettoreLadeLight_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.flvwListaApparati)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,6 +149,6 @@
         private System.Windows.Forms.Button btnEsportaSpybatt;
         private BrightIdeasSoftware.FastObjectListView flvwListaApparati;
         private System.Windows.Forms.Button btnChiudi;
-        private System.Windows.Forms.Button btnApriSpybatt;
+        private System.Windows.Forms.Button btnApriLadeLight;
     }
 }

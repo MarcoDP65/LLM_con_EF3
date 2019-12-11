@@ -80,6 +80,7 @@ namespace PannelloCharger
             sbWorker.WorkerReportsProgress = true;
             sbWorker.WorkerSupportsCancellation = true;
 
+
         }
 
         public void AvviaRicalcolo()
@@ -374,7 +375,6 @@ namespace PannelloCharger
 
                         break;
                     }
-
                 case elementiComuni.tipoMessaggio.MemBreve:
                     {
                         _stepBg.Titolo = StringheComuni.AvTitolo03Brevi;  // "Caricamento Eventi Brevi";
@@ -437,6 +437,7 @@ namespace PannelloCharger
                     }
                 case elementiComuni.tipoMessaggio.AggiornamentoFirmware:
                     {
+
                         break;
                     }
 
@@ -970,6 +971,8 @@ namespace PannelloCharger
                 {
                     Log.Debug("sbWorker_RunWorkerCompleted: Task Cancellato");
                     lblMessaggioAvanzamento.Text = "Task Cancelled.";
+
+
                 }
                 else if (e.Error != null)
                 {
@@ -1098,6 +1101,7 @@ namespace PannelloCharger
                     case ControlledDevice.LadeLight:
                         llLocale.RichiestaInterruzione = true;
                         sbWorker.CancelAsync();
+                        Log.Debug("btnAnnulla_Click -> sbWorker.CancelAsync()");
                         break;
                     case ControlledDevice.Desolfatatore:
                         break;
