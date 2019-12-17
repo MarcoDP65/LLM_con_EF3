@@ -69,6 +69,7 @@
             this.btnEliminaDati.TabIndex = 12;
             this.btnEliminaDati.Text = "Cancella Dati";
             this.btnEliminaDati.UseVisualStyleBackColor = true;
+            this.btnEliminaDati.Click += new System.EventHandler(this.btnEliminaDati_Click);
             // 
             // btnEsportaSpybatt
             // 

@@ -366,7 +366,7 @@ namespace ChargerLogic
         public const int MAX_RETRY = 5;          // num max di tentativi di rilettura prima di abortire l'operazione
     
 
-        public bool LeggiBloccoLunghi(bool RunAsinc = false)
+        public bool LeggiBloccoLunghi(bool RunAsinc = false,int StepIniziale = 0, int StepFinale = 100 )
         {
             try
             {
@@ -386,11 +386,11 @@ namespace ChargerLogic
                     {
                         elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                         _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                        _passo.Titolo = "Fase 1 - Caricamento Eventi Lunghi LL - " + Memoria.MappaCorrente.IdModelloLL; ;
+                        _passo.Titolo = "Caricamento Memoria Cariche" ;
                         _passo.Eventi = 1;
                         _passo.Step = -1;
                         _passo.EsecuzioneInterrotta = false;
-                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(StepIniziale, _passo);
                         Step(this, _stepEv);
                     }
 
@@ -480,9 +480,9 @@ namespace ChargerLogic
                                     _passo.NumTentativi = TotFail;
                                     if (_passo.Eventi > 0)
                                     {
-                                        _valProgress = (_passo.Step * 100) / _passo.Eventi;
+                                        _valProgress = _passo.Step * (StepFinale - StepIniziale) / _passo.Eventi;
                                     }
-                                    _progress = (int)_valProgress;
+                                    _progress = (int)( _valProgress + StepIniziale ) ;
 
                                     ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
                                     Step(this, _stepEv);
@@ -846,7 +846,7 @@ namespace ChargerLogic
 
         }
 
-        public bool LeggiDatiCliente()
+        public bool LeggiDatiCliente(bool RunAsinc = false, int StepIniziale = 0, int StepFinale = 100)
         {
             try
             {
@@ -861,7 +861,22 @@ namespace ChargerLogic
 
                 byte[] _datiTemp = new byte[236];
                 _esito = LeggiBloccoMemoria(0x001000, 236, out _datiTemp);
+                if (RunAsinc)
+                {
+                    //Preparo l'intestazione della finestra di avanzamento                                                                                                          
+                    if (Step != null)
+                    {
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Caricamento Dati Cliente";
+                        _passo.Eventi = 1;
+                        _passo.Step = -1;
+                        _passo.EsecuzioneInterrotta = false;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(StepFinale, _passo);
+                        Step(this, _stepEv);
+                    }
 
+                }
                 if (_esito)
                 {
                     EsitoMsg = MsgDatiCli.analizzaMessaggio(_datiTemp, 1);
@@ -918,6 +933,49 @@ namespace ChargerLogic
 
         }
 
+
+        public bool LeggiDatiCompleti(bool RunAsynk)
+        {
+            try
+            {
+                DateTime Inizio = DateTime.Now;
+
+                Log.Error(" ------------------------ ");
+                Log.Error(" - CB.LeggiDatiCompleti - ");
+                Log.Error(" ------------------------ ");
+
+                bool _esito;
+                Log.Error("START: " +  FunzioniMR.SecondiTrascorsi(Inizio));
+
+                _esito = CaricaApparatoA0(RunAsynk, 0, 2);
+                Log.Error("CaricaApparatoA0: " + FunzioniMR.SecondiTrascorsi(Inizio));
+                if (!_esito) return false;
+
+                _esito = CaricaAreaContatori(RunAsynk, 2, 3);
+                Log.Error("CaricaAreaContatori: " + FunzioniMR.SecondiTrascorsi(Inizio));
+                if (!_esito) return false;
+
+                _esito = LeggiDatiCliente(RunAsynk, 3, 5);
+                Log.Error("LeggiDatiCliente: " + FunzioniMR.SecondiTrascorsi(Inizio));
+                if (!_esito) return false;
+
+                _esito = LeggiProgrammazioni(RunAsynk, 5, 21);
+                Log.Error("LeggiProgrammazioni: " + FunzioniMR.SecondiTrascorsi(Inizio));
+                if (!_esito) return false;
+
+                _esito = LeggiBloccoLunghi(RunAsynk,21,100);
+                Log.Error("LeggiBloccoLunghi: " + FunzioniMR.SecondiTrascorsi(Inizio));
+                if (!_esito) return false;
+
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LeggiDatiCompleti: " + Ex.Message);
+                return false;
+            }
+
+        }
 
     }
 }

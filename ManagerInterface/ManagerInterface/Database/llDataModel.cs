@@ -26,6 +26,7 @@ namespace ChargerLogic
 
         public _ladelight Testata;
         public _llDatiCliente Cliente;
+        public _llContatoriApparato Contatori;
         public List<llDataCicloLungo> CicliLunghi = new List<llDataCicloLungo>();
         public List<_sbProgrammaRicarica> Programmazioni = new List<_sbProgrammaRicarica>();
         public ushort CRC { get; set; }

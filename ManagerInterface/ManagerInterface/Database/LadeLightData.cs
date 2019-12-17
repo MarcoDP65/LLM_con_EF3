@@ -473,6 +473,13 @@ namespace MoriData
                 SQLiteCommand CancellaRecord;
                 int esito = 0;
                 Log.Debug("Cancella Apparato ------------------------ ");
+
+                // Cicli Lunghi
+                //CancellaRecord = _database.CreateCommand("delete from _sbMemLunga where IdApparato = ? ", IdApparato);
+                // esito = CancellaRecord.ExecuteNonQuery();
+                Log.Debug("Cancella Lunghi: " + esito.ToString());
+
+
                 // Cliente
                 // CancellaRecord = _database.CreateCommand("delete from _sbDatiCliente where IdApparato = ? ", IdApparato);
                 //esito = CancellaRecord.ExecuteNonQuery();
@@ -488,14 +495,10 @@ namespace MoriData
                 // esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Brevi: " + esito.ToString());
 
-                // Cicli Lunghi
-                // CancellaRecord = _database.CreateCommand("delete from _sbMemLunga where IdApparato = ? ", IdApparato);
-                // esito = CancellaRecord.ExecuteNonQuery();
-                Log.Debug("Cancella Lunghi: " + esito.ToString());
 
                 //Apparato
-                CancellaRecord = _database.CreateCommand("delete from _spybatt where Id = ? ", IdApparato);
-                esito = CancellaRecord.ExecuteNonQuery();
+                //CancellaRecord = _database.CreateCommand("delete from _spybatt where Id = ? ", IdApparato);
+                //esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Apparato: " + esito.ToString());
                 return true;
             }

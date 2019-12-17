@@ -460,6 +460,23 @@ namespace Utility
             }
         }
 
+        public static string SecondiTrascorsi(DateTime Inizio)
+        {
+            try
+            {
+                DateTime Adesso = DateTime.Now;
+                TimeSpan Tempo = Adesso.Subtract(Inizio);
+
+                string _tempo = Tempo.TotalSeconds.ToString("0.00");
+                return _tempo;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+
         public static string StringaDurataBase(uint Secondi)
         {
             try

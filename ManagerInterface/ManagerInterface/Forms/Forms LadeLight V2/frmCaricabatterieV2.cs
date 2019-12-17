@@ -99,7 +99,9 @@ namespace PannelloCharger
                 if (SerialeCollegata)
                 {
                     
-                    EsitoApertura = attivaCaricabatterie(ref _par, SerialeCollegata);
+                    //EsitoApertura = attivaCaricabatterie(ref _par, SerialeCollegata);
+                    EsitoApertura = LeggiDatiCaricabatterie(ref _par, SerialeCollegata);
+
                     ApparatoConnesso = EsitoApertura;
                     InizializzaScheda();
                 }
@@ -131,7 +133,8 @@ namespace PannelloCharger
             {
                 ApparatoConnesso = false;
 
-                if (attivaCaricabatterie(ref _par, CaricaDati))
+                // if (attivaCaricabatterie(ref _par, CaricaDati))
+                if (LeggiDatiCaricabatterie(ref _par, CaricaDati))
                 {
                     ProfiloInCaricamento = false;
                     InizializzaScheda();
@@ -249,6 +252,129 @@ namespace PannelloCharger
             }
 
         }
+
+        public bool LeggiDatiCaricabatterie(ref parametriSistema _par, bool CaricaDati)
+        {
+            bool _esito;
+            try
+            {
+                //_parametri = _par;
+                //InitializeComponent();
+                ResizeRedraw = true;
+                _msg = new SerialMessage();
+                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                InizializzaScheda();
+
+
+
+                _esito = _cb.apriPorta();
+                if (_esito)
+                {
+                    _apparatoPresente = true;
+                    // Ora apro esplicitamente il canale. se fallisco esco direttamente
+                    _esito = _cb.StartComunicazione();
+                    if (_esito)
+                    {
+
+                        _tempParametri = new llParametriApparato();
+
+                        Log.Debug("Lancio lettura lunghi");
+
+                        //_avCicli = new frmAvanzamentoCicli();
+                        _avCicli.ParametriWorker.MainCount = 100;
+                        _avCicli.llLocale = _cb;
+                        _avCicli.ValStart = (int)0;
+                        _avCicli.DbDati = _logiche.dbDati.connessione;
+                        _avCicli.CaricaBrevi = false; // chkCaricaBrevi.Checked;
+                        _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
+                        _avCicli.TipoComando = elementiComuni.tipoMessaggio.CaricamentoInizialeLL;
+
+                        // Apro il form con le progressbar
+                        _avCicli.ShowDialog(this);
+
+
+                       // _esito = _cb.LeggiDatiCompleti();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(_parametri.lastError, "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Hide();  //Close();
+                }
+                //return _esito;
+
+
+
+
+                _tempParametri = new llParametriApparato();
+
+                _tempParametri = _cb.ParametriApparato;
+
+
+                if (_tempParametri.IdApparato == null)
+                {
+                    // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
+                    // Attivo solo la tab inizializzazione, se sono abilitato 
+
+                    MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    return true;
+                }
+                else
+                {
+                    if (_tempParametri.IdApparato == "????????" || _tempParametri.IdApparato.Trim() == "")
+                    {
+                        // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
+                        // Attivo solo la tab inizializzazione, se sono abilitato 
+
+                        MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        return true;
+                    }
+
+                }
+
+                _cb.ApparatoLL = new LadeLightData(_logiche.dbDati.connessione, _tempParametri);
+
+
+                txtGenIdApparato.Text = _cb.ApparatoLL._ll.Id;
+                txtGenSerialeZVT.Text = _cb.ApparatoLL._ll.SerialeZVT;
+
+                txtGenMatricola.Text = _cb.Intestazione.Matricola.ToString();
+                txtGenModello.Text = _cb.Intestazione.modello;
+
+                _cbCollegato = true;
+
+                MostraDatiCliente();
+
+                MostraContatori();
+
+                MostraProgrammazioni();
+
+                InizializzaListaCariche();
+
+                _cb.ApparatoLL.salvaDati();
+
+                _apparatoPresente = _esito;
+                return true;
+
+
+
+                return false;
+
+            }
+
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+
+
+
 
         public bool LeggiCbDaArchivio(ref parametriSistema _par, bool CaricaDati, string IdApparato)
         {
@@ -4362,16 +4488,7 @@ namespace PannelloCharger
 
                 if (Esito)
                 {
-                    //MostraCicloCorrente();
-                    ProfiloInCaricamento = true;
-                    ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
-                    ModCicloCorrente.EstraiDaProgrammaCarica();
-
-                    MostraParametriCiclo(true, false, chkPaSbloccaValori.Checked);
-                    ProfiloInCaricamento = false;
-
-                    InizializzaVistaProgrammazioni();
-
+                    MostraProgrammazioni();
 
                 }
                 else
@@ -4388,6 +4505,36 @@ namespace PannelloCharger
                 return false;
             }
         }
+
+        public bool MostraProgrammazioni()
+        {
+            try
+            {
+                bool Esito;
+
+
+                //MostraCicloCorrente();
+                ProfiloInCaricamento = true;
+                ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
+                ModCicloCorrente.EstraiDaProgrammaCarica();
+
+                MostraParametriCiclo(true, false, chkPaSbloccaValori.Checked);
+                ProfiloInCaricamento = false;
+
+                InizializzaVistaProgrammazioni();
+
+
+                return true;
+
+            }
+            catch
+            {
+                ProfiloInCaricamento = false;
+                return false;
+            }
+        }
+
+
 
         public bool LeggiProgrammazioniDB(string IdApparato)
         {

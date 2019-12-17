@@ -323,5 +323,46 @@ namespace PannelloCharger
                 Log.Error("flvwListaApparati_SelectedIndexChanged: " + Ex.Message);
             }
         }
+
+        private void btnEliminaDati_Click(object sender, EventArgs e)
+        {
+            EliminaRiga();
+        }
+
+        private void EliminaRiga()
+        {
+            try
+            {
+                if (flvwListaApparati.SelectedObject != null)
+                {
+                    dataUtility.llListaElementi _tempLadeLight = (dataUtility.llListaElementi)flvwListaApparati.SelectedObject;
+                    if (_tempLadeLight.IdApparato != null)
+                    {
+
+                        DialogResult risposta = MessageBox.Show(StringheComuni.RichConfermaCanc + "\n " + _tempLadeLight.IdApparato + "\n " + _tempLadeLight.Client  + "  -  " + _tempLadeLight.ClientDescription + " ? ", "LADE Light", MessageBoxButtons.YesNo);
+
+                        if (risposta == System.Windows.Forms.DialogResult.Yes)
+                        {
+
+                            CaricaBatteria _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                            _cb.ApparatoLL.cancellaDati(_tempLadeLight.IdApparato);
+                            ListaLadeLight = ListaApparati();
+                            MostraLista();
+
+                        }
+                    }
+
+                }
+            }
+            catch
+            {
+            }
+
+        }
+
+
+
+
+
     }
 }

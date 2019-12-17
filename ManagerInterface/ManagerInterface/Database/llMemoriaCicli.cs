@@ -56,7 +56,8 @@ namespace MoriData
         public int Ah { get; set; }
         public Int32 Wh { get; set; }
         public byte CondizioneStop { get; set; }
-        public byte[] IdSpyBatt;
+
+        public byte[] IdSpyBatt { get; set; }
 
         public int Vbat5m { get; set; }
         public int Ibat5m { get; set; }
@@ -1692,14 +1693,15 @@ namespace MoriData
                     }
                     else
                     {
+                        /*
                         string _Id = "";
                         _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":";
                         _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
                         _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
                         _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2");
-
-                        return "( " + _Id + " )";
-                        //return "";
+                        */
+                        //return "( " + _Id + " )";
+                        return "";
                     }
                 }
                 else

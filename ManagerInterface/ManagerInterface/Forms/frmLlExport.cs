@@ -18,35 +18,35 @@ using Newtonsoft.Json;
 
 namespace PannelloCharger
 {
-    public partial class frmSbExport : Form
+
+    public partial class frmLlExport : Form
     {
         parametriSistema _parametri;
-        //MessaggioSpyBatt _msg;
         LogicheBase _logiche;
-        //sbDataModel _tempDati;
-
-        //bool _apparatoPresente = false;
         ImageDump _Immagine;
+
         MessaggioSpyBatt.comandoInizialeSB _NuovaIntestazioneSb;
 
-        private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
-       
+        private static ILog Log = LogManager.GetLogger("frmLlExport");
+
 
         public elementiComuni.modoDati modo = elementiComuni.modoDati.Import;
         //static 
         UnitaSpyBatt _sb;
+
+        CaricaBatteria _cb;
         //string IdCorrente;
 
 
-        public frmSbExport()
+        public frmLlExport()
         {
             InitializeComponent();
- 
-        }
 
+        }
+        
         public void Setmode(elementiComuni.modoDati azione)
         {
-            try 
+            try
             {
                 modo = azione;
 
@@ -105,7 +105,7 @@ namespace PannelloCharger
 
 
 
-        public frmSbExport(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
+        public frmLlExport(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
         {
             bool _esito;
             try
@@ -118,17 +118,19 @@ namespace PannelloCharger
                 _logiche = Logiche;
                 if (CaricaDati)
                 {
-                    _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, Logiche.currentUser.livello);
+                    _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
                     string _idCorrente = IdApparato;
-                    _esito = _sb.CaricaCompleto(IdApparato, _logiche.dbDati.connessione);
+                    
+                    _esito = _cb.CaricaCompleto(_logiche.dbDati.connessione, IdApparato);
                     if (_esito) btnDataExport.Enabled = true;
+                    
                     MostraDati();
 
                     string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
 
                     string _nomeProposto;
-                    if (_sb.sbCliente.SerialNumber != "" & _sb.sbCliente.SerialNumber!= null)
+                    if (_sb.sbCliente.SerialNumber != "" & _sb.sbCliente.SerialNumber != null)
                         _nomeProposto = _sb.sbCliente.SerialNumber;
                     else
                     {
@@ -151,18 +153,18 @@ namespace PannelloCharger
                 Log.Error("frmSbExport: " + Ex.Message + " [" + Ex.TargetSite.ToString() + "]");
             }
 
-        
+
         }
-        
+
         public bool MostraDati()
         {
             try
             {
 
-                txtMatrSB.Text = FunzioniMR.StringaSeriale(_sb.Id);
-                txtCliente.Text = _sb.sbCliente.Client;
-                txtNote.Text = _sb.sbCliente.ClientNote;
-                txtManufcturedBy.Text = _sb.sbData.ProductId;
+                txtMatrSB.Text = _cb.ApparatoLL.Id;
+                txtCliente.Text = _cb.DatiCliente.Client;
+                txtNote.Text = _cb.DatiCliente.Note;
+                txtManufcturedBy.Text = "" ;
 
                 return true;
             }
@@ -177,7 +179,7 @@ namespace PannelloCharger
         {
             try
             {
-
+                /*
                 txtMatrSB.Text = FunzioniMR.StringaSeriale(_sb.sbData.Id);
                 txtCliente.Text = _sb.ModelloDati.Cliente.Client;
                 txtNote.Text = _sb.ModelloDati.Cliente.ClientNote;
@@ -185,7 +187,7 @@ namespace PannelloCharger
                 txtNumLunghi.Text = _sb.sbData.ContLunghi.ToString();
                 txtNumBrevi.Text = _sb.sbData.ContBrevi.ToString();
                 txtManufcturedBy.Text = _sb.sbData.LongMem.ToString() + " / " + _sb.sbData.ContBrevi.ToString() + "  ( Prg: " + _sb.sbData.ProgramCount.ToString() + " )";
-
+                */
 
                 return true;
             }
@@ -200,7 +202,7 @@ namespace PannelloCharger
         {
             try
             {
-
+                /*
                 if (_sb.sbData == null)
                 {
                     return false;
@@ -229,9 +231,9 @@ namespace PannelloCharger
                     txtNumBrevi.Text = _sb.sbData.ContBrevi.ToString();
                     txtManufcturedBy.Text = _sb.sbData.LongMem.ToString() + " / " + _sb.sbData.ContBrevi.ToString() + "  ( Prg: " + _sb.sbData.ProgramCount.ToString() + " )";
 
-
+                */
                     return true;
-                }
+                //}
             }
             catch (Exception Ex)
             {
@@ -258,7 +260,7 @@ namespace PannelloCharger
                 filePath = txtNuovoFile.Text;
                 if (!File.Exists(filePath)) File.Create(filePath).Close();
                 Log.Debug("file prepara esportazione");
-                _sb.PreparaEsportazione(true, true, true, true,true);
+                _sb.PreparaEsportazione(true, true, true, true, true);
                 string JsonData = JsonConvert.SerializeObject(_sb.ModelloDati);
                 Log.Debug("file generato");
                 // Prima comprimo i dati
@@ -266,7 +268,7 @@ namespace PannelloCharger
 
                 // Ora cifro i dati
                 string JsonEncript = StringCipher.Encrypt(JsonZip);
-                
+
 
                 //JsonEncript = JsonData;
                 Log.Debug("file criptato");
@@ -280,8 +282,8 @@ namespace PannelloCharger
             }
             else
             {
-//                MessageBox.Show("Inserire un nome valido", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show( StringheComuni.InserireNome, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //                MessageBox.Show("Inserire un nome valido", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(StringheComuni.InserireNome, StringheComuni.EsportazioneDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -309,7 +311,7 @@ namespace PannelloCharger
                         Log.Debug("file caricato: len = " + _fileImport.Length.ToString());
 
                         _fileDecripted = StringCipher.Decrypt(_fileImport);
-                        if(_fileDecripted != "")
+                        if (_fileDecripted != "")
                         {
                             //il file è cifrato
                             Log.Debug("file criptato");
@@ -323,7 +325,7 @@ namespace PannelloCharger
                         {
 
                             //è compresso
-                            _fileImport = _fileDecompress; 
+                            _fileImport = _fileDecompress;
 
                         }
 
@@ -350,13 +352,13 @@ namespace PannelloCharger
                         if (_crc == _tempCRC)
                         { // I CRC ciincidono: dati validi
                             _sb.ModelloDati = _importData;
-                            _sb.importaModello(_logiche.dbDati.connessione,true, true, true, true, true);
+                            _sb.importaModello(_logiche.dbDati.connessione, true, true, true, true, true);
                             MostraDati();
 
                         }
                         else
                         {
-//                            MessageBox.Show("File danneggiato: impossibile caricare i dati", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //                            MessageBox.Show("File danneggiato: impossibile caricare i dati", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             MessageBox.Show(StringheComuni.FileDanneggiato, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return false;
                         }
@@ -367,7 +369,7 @@ namespace PannelloCharger
                 }
                 else
                 {
-//                    MessageBox.Show("Inserire un nome valido", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //                    MessageBox.Show("Inserire un nome valido", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     MessageBox.Show(StringheComuni.InserireNome, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -375,7 +377,7 @@ namespace PannelloCharger
 
             catch (Exception Ex)
             {
-//                MessageBox.Show("Dati non validi", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //                MessageBox.Show("Dati non validi", "Importazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(StringheComuni.DatiNonValidi, StringheComuni.ImportaDati, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error("MostraDati: " + Ex.Message);
                 return false;
@@ -458,13 +460,13 @@ namespace PannelloCharger
 
             }
         }
-
+    
 
         private bool salvaImportazione()
         {
             try
             {
-                _sb.importaModello(_logiche.dbDati.connessione,true, true, true, true, true);
+                _sb.importaModello(_logiche.dbDati.connessione, true, true, true, true, true);
                 _sb.sbData._database = _logiche.dbDati.connessione;
                 if (_sb.recordPresente(_sb.sbData.Id, _logiche.dbDati.connessione))
                 {
@@ -500,7 +502,7 @@ namespace PannelloCharger
                 {
                     Log.Warn("Fine SalvaLunga: ---------------------------------------------------------------------------");
                     _lunga._database = _logiche.dbDati.connessione;
-                    if(_lunga.IdProgramma != 0)
+                    if (_lunga.IdProgramma != 0)
                     {
                         _lunga.CaricaProgramma();
                     }
@@ -513,12 +515,12 @@ namespace PannelloCharger
                     Log.Warn("Fine SalvaBrevi: " + _lunga.CicliMemoriaBreve.Count.ToString());
                      */
                     _lunga.SalvaBrevi();
-                    Log.Warn("Fine SalvaBrevi compact : " );
+                    Log.Warn("Fine SalvaBrevi compact : ");
 
                 }
                 Log.Warn("Fine SalvaLunghi: " + _sb.CicliMemoriaLunga.Count.ToString());
                 _sb.ConsolidaBrevi();
-                return _esito ;
+                return _esito;
 
             }
 
@@ -575,7 +577,7 @@ namespace PannelloCharger
                 this.Cursor = Cursors.Default;
                 //this.Parent.UseWaitCursor = false;
             }
-            
+
         }
 
 
@@ -760,11 +762,11 @@ namespace PannelloCharger
                         break;
                 }
 
-                
+
             }
             catch (Exception Ex)
             {
-               
+
             }
 
         }
@@ -797,7 +799,7 @@ namespace PannelloCharger
 
                             }
 
-                            _sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true,true, txtNuovoFile.Text+"_decoded");
+                            _sb.AnalizzaHexDump(_Immagine.Testata.Id, null, _Immagine, false, true, true, txtNuovoFile.Text + "_decoded");
 
                             //MostraTestataHexDump();
                             MostraDatiImmagine();
@@ -807,12 +809,12 @@ namespace PannelloCharger
                                 string _tempSer = JsonConvert.SerializeObject(_Immagine);
                                 if (!File.Exists(txtNuovoFile.Text)) File.Create(txtNuovoFile.Text).Close();
                                 File.WriteAllText(txtNuovoFile.Text, _tempSer);
-                                
+
                             }
                             Log.Warn("---------------------- FILE RIGENERATO ------------------------------");
                             Log.Warn(txtNuovoFile.Text);
                             btnDataExport.Enabled = true;
-                        
+
                         }
                         break;
                     default:
@@ -845,5 +847,9 @@ namespace PannelloCharger
 
 
     }
+
+
+
+
 
 }

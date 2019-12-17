@@ -28,7 +28,7 @@ namespace PannelloCharger
         public MoriData._db _database;
         IEnumerable<dataUtility.sbListaElementi> ListaSpyBatt;
 
-        private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
+        private static ILog Log = LogManager.GetLogger("frmSelettoreSpyBatt");
 
         public frmSelettoreSpyBatt()
         {
@@ -285,7 +285,6 @@ namespace PannelloCharger
                     if (_tempSpybat.Id != null)
                     {
 
-//                        DialogResult risposta = MessageBox.Show("Vuoi realmente cancellare tutti i dati relativi all'apparato\n " + FunzioniMR.StringaSeriale(_tempSpybat.Id) + "  -  " + _tempSpybat.ClientNote + " ? ", "SPY-BATT", MessageBoxButtons.YesNo);
                         DialogResult risposta = MessageBox.Show(StringheComuni.RichConfermaCanc + "\n " + FunzioniMR.StringaSeriale(_tempSpybat.Id) + "  -  " + _tempSpybat.ClientNote + " ? ", "SPY-BATT", MessageBoxButtons.YesNo);
 
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
@@ -302,7 +301,8 @@ namespace PannelloCharger
                 }
             }
             catch
-            { }
+            {
+            }
 
         }
 
@@ -324,8 +324,10 @@ namespace PannelloCharger
 
                 }
             }
-            catch
-            { }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
 
         }
 

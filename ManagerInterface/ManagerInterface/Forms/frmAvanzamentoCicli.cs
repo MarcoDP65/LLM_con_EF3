@@ -332,7 +332,7 @@ namespace PannelloCharger
             //time consuming operation
             DateTime _inizioChiamata = DateTime.Now;
             usParameters _parametri = (usParameters)e.Argument;
-            if(sbWorker.CancellationPending)
+            if (sbWorker.CancellationPending)
             {
                 Log.Debug("Richiesta cancellazione pendente. chiudo il BW");
                 e.Cancel = true;
@@ -370,7 +370,7 @@ namespace PannelloCharger
                         // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
                         sbWorker.ReportProgress(0, _stepBg);
                         Log.Debug("Lancio lettura: MemLunga " + ValStart.ToString() + " - " + ValFine.ToString());
-                        
+
                         _esito = llLocale.LeggiBloccoLunghi(true);
 
                         break;
@@ -452,6 +452,20 @@ namespace PannelloCharger
                         _esito = llLocale.AggiornaFirmware("", llLocale.apparatoPresente, FirmwareArea, FirmwareLLBlock, true); // InviaACK, true, SalvaHexDump, FileHexDump);
                         break;
                     }
+                case elementiComuni.tipoMessaggio.CaricamentoInizialeLL:
+                    {
+                        _stepBg.Titolo = "Caricamento Memoria Dati";
+                        _stepBg.Step = -1;
+                        // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio lettura: CaricamentoInizialeLL " + ValStart.ToString() + " - " + ValFine.ToString());
+
+                        _esito = llLocale.LeggiDatiCompleti(true);
+
+                        break;
+                    }
+
+
 
             }
 
@@ -942,7 +956,8 @@ namespace PannelloCharger
                 {
                     _valAvanzamento = 0;
                 }
-                ValAvanzamento = (int)_valAvanzamento;
+                ValAvanzamento = (int)e.ProgressPercentage;
+                //ValAvanzamento = (int)_valAvanzamento;
                 Log.Warn("Ricevuto STEP LL " + ValAvanzamento.ToString());
                 sbWorker.ReportProgress(ValAvanzamento, _statoE);
             }
