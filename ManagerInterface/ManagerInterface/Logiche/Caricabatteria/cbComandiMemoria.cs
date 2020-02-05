@@ -949,23 +949,44 @@ namespace ChargerLogic
 
                 _esito = CaricaApparatoA0(RunAsynk, 0, 2);
                 Log.Error("CaricaApparatoA0: " + FunzioniMR.SecondiTrascorsi(Inizio));
-                if (!_esito) return false;
+                if (!_esito)
+                {
+                    UltimoMsgErrore = "Fallito Caricamento area A0";
+                    return false;
+                }
 
                 _esito = CaricaAreaContatori(RunAsynk, 2, 3);
                 Log.Error("CaricaAreaContatori: " + FunzioniMR.SecondiTrascorsi(Inizio));
-                if (!_esito) return false;
+                if (!_esito)
+                {
+                    UltimoMsgErrore = "Fallito Caricamento area Contatori";
+                    return false;
+                }
+
 
                 _esito = LeggiDatiCliente(RunAsynk, 3, 5);
                 Log.Error("LeggiDatiCliente: " + FunzioniMR.SecondiTrascorsi(Inizio));
-                if (!_esito) return false;
+                if (!_esito)
+                {
+                    UltimoMsgErrore = "Fallito Caricamento Dati Cliente";
+                    return false;
+                }
 
                 _esito = LeggiProgrammazioni(RunAsynk, 5, 21);
                 Log.Error("LeggiProgrammazioni: " + FunzioniMR.SecondiTrascorsi(Inizio));
-                if (!_esito) return false;
+                if (!_esito)
+                {
+                    UltimoMsgErrore = "Fallito Caricamento area Programmazioni";
+                    return false;
+                }
 
                 _esito = LeggiBloccoLunghi(RunAsynk,21,100);
                 Log.Error("LeggiBloccoLunghi: " + FunzioniMR.SecondiTrascorsi(Inizio));
-                if (!_esito) return false;
+                if (!_esito)
+                {
+                    UltimoMsgErrore = "Fallito Caricamento area Cariche";
+                    return false;
+                }
 
                 return true;
             }

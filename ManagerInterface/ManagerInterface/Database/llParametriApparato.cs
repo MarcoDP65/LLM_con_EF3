@@ -64,6 +64,9 @@ namespace MoriData
 
         public byte PresenzaRabboccatore { get; set; }
 
+        public DateTime UltimaLetturaDati { get; set; }
+        public String DtUltimaLetturaDati { get; set; }
+
         public override string ToString()
         {
             return IdApparato + " -> " + IstanteLettura.ToString();

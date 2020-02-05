@@ -186,6 +186,17 @@ namespace MoriData
             _recordPresente = false;
         }
 
+        public llProgrammaCarica(_db connessione, _llProgrammaCarica Dati )
+        {
+            valido = true;
+            _llprc = Dati;
+            _database = connessione;
+            _datiSalvati = false;
+            _recordPresente = false;
+        }
+
+
+
         private _llProgrammaCarica _caricaDati(int _id)
         {
             return (from s in _database.Table<_llProgrammaCarica>()

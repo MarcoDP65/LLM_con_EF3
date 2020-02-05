@@ -25,7 +25,7 @@ namespace ChargerLogic
         public string NomeProfilo { get; set; }
         public ushort IdProgramma { get; set; }
         public bool DatiSalvati { get; set; }
-
+        public bool RichiestoNuovoId { get; set; }
         public ushort DurataMaxCarica { get; set; }
 
         public llProgrammaCarica ProfiloRegistrato;
@@ -43,6 +43,7 @@ namespace ChargerLogic
             ParametriAttivi = new ParametriCiclo();
             ListaParametri = new List<ParametroLL>();
             ProfiloRegistrato = new llProgrammaCarica();
+            RichiestoNuovoId = false;
             DatiSalvati = true;
             NumParametriAttivi = 0;
             ModelloProfilo = null;

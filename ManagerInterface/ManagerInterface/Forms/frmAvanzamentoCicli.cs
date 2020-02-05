@@ -461,6 +461,10 @@ namespace PannelloCharger
                         Log.Debug("Lancio lettura: CaricamentoInizialeLL " + ValStart.ToString() + " - " + ValFine.ToString());
 
                         _esito = llLocale.LeggiDatiCompleti(true);
+                        if (!_esito)
+                        {
+                            lblMessaggioAvanzamento.Text = llLocale.UltimoMsgErrore;
+                        }
 
                         break;
                     }

@@ -732,6 +732,12 @@ namespace PannelloCharger
                         //coincide col programma esistente. esco
                         return true;
                     }
+                    else
+                    {
+                        // Almeno 1 valore cambiato --> prenoto il cambio ID
+                        ModCicloCorrente.RichiestoNuovoId = true;
+
+                    }
                 }
                 // Carico i valori impostati nelle textbox
                 esito = LeggiValoriParametriCarica();
@@ -4836,7 +4842,14 @@ namespace PannelloCharger
                 if (esito)
                 {
                     //coincide col programma esistente. esco
+                   
                     return true;
+                }
+                else
+                {
+                    // Almeno 1 valore cambiato --> prenoto il cambio ID
+                    ModCicloCorrente.RichiestoNuovoId = true;
+
                 }
                 // Carico i valori impostati nelle textbox
                 esito = LeggiValoriParametriCarica();

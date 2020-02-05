@@ -90,14 +90,15 @@ namespace PannelloCharger
                 string _sql = "";
                 _sql += "select  t1.IdApparato as IdApparato, 1 as IdCliente, t2.Client as Client, t2.ClientDescription as ClientDescription,";
                 _sql += "t1.TipoApparato as TipoApparato,";
-                _sql += "t1.RevisionDate as UltimaLettura ";
+                _sql += "t1.UltimaLetturaDati as UltimaLettura, ";
+                _sql += "t1.DtUltimaLetturaDati as DtUltimaLettura " ;
 
                 _sql += "from _llParametriApparato as t1 left outer join _llDatiCliente as t2 on t1.IdApparato = t2.IdApparato";
 
 
                 Log.Info(_sql);
 
-                return  _database.Query<dataUtility.llListaElementi>(_sql);
+                return _database.Query<dataUtility.llListaElementi>(_sql);
             }
             catch (Exception Ex)
             {
@@ -178,6 +179,16 @@ namespace PannelloCharger
                 };
                 flvwListaApparati.AllColumns.Add(colUltimaLettura);
 
+                BrightIdeasSoftware.OLVColumn colDtUltimaLettura = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Dt Ultima Lettura",
+                    AspectName = "strDtUltimaLettura",
+                    Width = 120,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                flvwListaApparati.AllColumns.Add(colDtUltimaLettura);
+
                 BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "",
@@ -210,8 +221,6 @@ namespace PannelloCharger
             {
                 if (this.Width > 600)
                 {
-
-                    //lvwCicliBatteriaOld.Width = this.Width - 120;
                     flvwListaApparati.Width = this.Width - 50;
                     btnChiudi.Left = this.Width - 125;
                 }
@@ -222,7 +231,7 @@ namespace PannelloCharger
                     flvwListaApparati.Height = this.Height - 105;
                     btnApriLadeLight.Top = this.Height - 83;
                     btnEliminaDati.Top = this.Height - 83;
-                    btnEsportaSpybatt.Top = this.Height - 83;
+                    btnEsportaLadeLight.Top = this.Height - 83;
                     btnImportaDati.Top = this.Height - 83;
                     btnChiudi.Top = this.Height - 83;
                     txtIdScheda.Top = this.Height - 83;
@@ -339,13 +348,14 @@ namespace PannelloCharger
                     if (_tempLadeLight.IdApparato != null)
                     {
 
-                        DialogResult risposta = MessageBox.Show(StringheComuni.RichConfermaCanc + "\n " + _tempLadeLight.IdApparato + "\n " + _tempLadeLight.Client  + "  -  " + _tempLadeLight.ClientDescription + " ? ", "LADE Light", MessageBoxButtons.YesNo);
+                        DialogResult risposta = MessageBox.Show(StringheComuni.RichConfermaCanc + "\n " + _tempLadeLight.IdApparato + "\n " + _tempLadeLight.Client + "  -  " + _tempLadeLight.ClientDescription + " ? ", "LADE Light", MessageBoxButtons.YesNo);
 
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
                         {
 
                             CaricaBatteria _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
                             _cb.ApparatoLL.cancellaDati(_tempLadeLight.IdApparato);
+
                             ListaLadeLight = ListaApparati();
                             MostraLista();
 
@@ -360,9 +370,80 @@ namespace PannelloCharger
 
         }
 
+        private void btnEsportaLadeLight_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EsportaDatiRiga();
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnEsportaLadeLight_Click: " + Ex.Message);
+            }
+        }
+
+        public void EsportaDatiRiga()
+        {
+            try
+            {
+                if (flvwListaApparati.SelectedObject != null)
+                {
 
 
+                    dataUtility.llListaElementi _tempLadeLight = (dataUtility.llListaElementi)flvwListaApparati.SelectedObject;
+                    if (_tempLadeLight.IdApparato != null)
+                    {
+                        ApriExportLadeLight(_tempLadeLight.IdApparato);
+                        //MessageBox.Show("Esporta Dati", "Esportazione dati Apparato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
+                }
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
 
+        }
+
+        private void ApriExportLadeLight(string IdApparato)
+        {
+            try
+            {
+
+                frmLlExport llExport = new frmLlExport(ref _parametri, true, IdApparato, _logiche, false, false);
+                llExport.MdiParent = this.MdiParent;
+                llExport.StartPosition = FormStartPosition.CenterParent;
+                llExport.Setmode(elementiComuni.modoDati.Output);
+                llExport.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ApriExportSpyBatt: " + Ex.Message);
+            }
+
+        }
+
+        private void btnImportaDati_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                frmLlExport llExport = new frmLlExport(ref _parametri, true, "", _logiche, false, false);
+
+                llExport.StartPosition = FormStartPosition.CenterParent;
+                llExport.Setmode(elementiComuni.modoDati.Import);
+                llExport.ShowDialog();
+                ListaLadeLight = ListaApparati();
+                MostraLista();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+            }
+
+        }
     }
 }

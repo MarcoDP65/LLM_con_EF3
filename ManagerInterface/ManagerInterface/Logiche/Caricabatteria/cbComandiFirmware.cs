@@ -116,6 +116,7 @@ namespace ChargerLogic
                         // Non sono in bootloader. COMMUTO
                         // Prima faccio un reset board 
 
+                        /*
                         if(ResetScheda())
                         {
                             _passo = new elementiComuni.WaitStep();
@@ -142,7 +143,7 @@ namespace ChargerLogic
                             Step(this, _stepEv);
                             return false;
                         }
-
+                        */
 
 
 

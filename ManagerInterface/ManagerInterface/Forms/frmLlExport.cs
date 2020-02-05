@@ -58,7 +58,7 @@ namespace PannelloCharger
                             btnDataExport.Text = StringheComuni.CaricaDati;   // "Carica Dati";
                             modo = elementiComuni.modoDati.Import;
                             btnDataExport.Enabled = false;
-                            btnAnteprima.Visible = true;
+                            btnAnteprima.Visible = false;
                             btnEstract.Visible = false;
                         }
                         break;
@@ -78,7 +78,7 @@ namespace PannelloCharger
                             btnDataExport.Text = StringheComuni.SalvaDati;     // "Carica Dati";
                             modo = elementiComuni.modoDati.HexDumpRecovery;
                             btnDataExport.Enabled = false;
-                            btnAnteprima.Visible = true;
+                            btnAnteprima.Visible = false;
                             btnEstract.Visible = true;
                             btnEstract.Enabled = false;
 
@@ -127,20 +127,19 @@ namespace PannelloCharger
                     MostraDati();
 
                     string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                    _pathTeorico += "\\LADELIGHT Manager\\LADE Light";
 
                     string _nomeProposto;
-                    if (_sb.sbCliente.SerialNumber != "" & _sb.sbCliente.SerialNumber != null)
-                        _nomeProposto = _sb.sbCliente.SerialNumber;
+                    if (_cb.DatiCliente.IdApparato != "" & _cb.DatiCliente.IdApparato != null)
+                        _nomeProposto = _cb.DatiCliente.IdApparato;
                     else
                     {
-                        if (_sb.sbCliente.BatteryId != "")
-                            _nomeProposto = _sb.sbCliente.BatteryId;
-                        else
-                            _nomeProposto = _sb.Id;
+                        _nomeProposto = _cb.DatiCliente.Client + " " + _cb.DatiCliente.Note;
+                        if (_nomeProposto.Trim() == "")
+                            _nomeProposto = _cb.ParametriApparato.IdApparato;
 
                     }
-                    _nomeProposto += ".sbdata";
+                    _nomeProposto += ".lldata";
 
                     txtNuovoFile.Text = _pathTeorico + "\\" + _nomeProposto;
 
@@ -260,8 +259,9 @@ namespace PannelloCharger
                 filePath = txtNuovoFile.Text;
                 if (!File.Exists(filePath)) File.Create(filePath).Close();
                 Log.Debug("file prepara esportazione");
-                _sb.PreparaEsportazione(true, true, true, true, true);
-                string JsonData = JsonConvert.SerializeObject(_sb.ModelloDati);
+
+                _cb.PreparaEsportazione();
+                string JsonData = JsonConvert.SerializeObject(_cb.ModelloDati);
                 Log.Debug("file generato");
                 // Prima comprimo i dati
                 string JsonZip = FunzioniComuni.CompressString(JsonData);
@@ -330,11 +330,11 @@ namespace PannelloCharger
                         }
 
 
-                        sbDataModel _importData;
+                        llDataModel _importData;
                         elementiComuni.Crc16Ccitt codCrc = new elementiComuni.Crc16Ccitt(elementiComuni.InitialCrcValue.NonZero1);
                         ushort _crc;
 
-                        _importData = JsonConvert.DeserializeObject<sbDataModel>(_fileImport);
+                        _importData = JsonConvert.DeserializeObject<llDataModel>(_fileImport);
 
                         Log.Debug("file convertito");
 
@@ -351,8 +351,8 @@ namespace PannelloCharger
 
                         if (_crc == _tempCRC)
                         { // I CRC ciincidono: dati validi
-                            _sb.ModelloDati = _importData;
-                            _sb.importaModello(_logiche.dbDati.connessione, true, true, true, true, true);
+                            _cb.ModelloDati = _importData;
+                            _cb.importaModello(_logiche.dbDati.connessione, false);
                             MostraDati();
 
                         }
@@ -466,61 +466,9 @@ namespace PannelloCharger
         {
             try
             {
-                _sb.importaModello(_logiche.dbDati.connessione, true, true, true, true, true);
-                _sb.sbData._database = _logiche.dbDati.connessione;
-                if (_sb.recordPresente(_sb.sbData.Id, _logiche.dbDati.connessione))
-                {
-                    DialogResult risposta = MessageBox.Show(StringheComuni.DatiGiaPresenti + "\n " + FunzioniMR.StringaSeriale(_sb.ModelloDati.ID) + "  -  " + _sb.ModelloDati.Cliente.ClientNote + " \n Rimpiazzo i dati esistenti ? ", "SPY-BATT", MessageBoxButtons.YesNo);
-
-                    if (risposta == System.Windows.Forms.DialogResult.Yes)
-                    {
-                        //UnitaSpyBatt _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione);
-                        int _numClone = _sb.CreaClone();
-                        lblNumClone.Visible = true;
-                        txtNumClone.Visible = true;
-                        txtNumClone.Text = _numClone.ToString("000");
-                        Application.DoEvents();
-                        _sb.sbData.cancellaDati(_sb.sbData.Id);
-                    }
-                    else return false;
-                }
-
-                bool _esito = _sb.sbData.salvaDati();
-
-                //_sb.sbCliente._database = _logiche.dbDati.connessione;
-                _sb.sbCliente.IdCliente = 1;
-                _esito = _esito && _sb.sbCliente.salvaDati();
-                Log.Warn("Salva Info Comuni ");
-                foreach (sbProgrammaRicarica _prog in _sb.Programmazioni)
-                {
-                    _prog._database = _logiche.dbDati.connessione;
-                    _prog.salvaDati();
-                }
-                Log.Warn("Fine SalvaProgrammazioni: " + _sb.Programmazioni.Count.ToString());
-
-                foreach (sbMemLunga _lunga in _sb.CicliMemoriaLunga)
-                {
-                    Log.Warn("Fine SalvaLunga: ---------------------------------------------------------------------------");
-                    _lunga._database = _logiche.dbDati.connessione;
-                    if (_lunga.IdProgramma != 0)
-                    {
-                        _lunga.CaricaProgramma();
-                    }
-                    _lunga.salvaDati();
-                    Log.Warn("Fine SalvaLunga: " + _lunga.IdMemoriaLunga.ToString());
-                    /*foreach (sbMemBreve _breve in _lunga.CicliMemoriaBreve)
-                    {
-                        _breve.salvaDati();
-                    }
-                    Log.Warn("Fine SalvaBrevi: " + _lunga.CicliMemoriaBreve.Count.ToString());
-                     */
-                    _lunga.SalvaBrevi();
-                    Log.Warn("Fine SalvaBrevi compact : ");
-
-                }
-                Log.Warn("Fine SalvaLunghi: " + _sb.CicliMemoriaLunga.Count.ToString());
-                _sb.ConsolidaBrevi();
-                return _esito;
+                _cb.importaModello(_logiche.dbDati.connessione, true);
+                this.Close();
+                return true;
 
             }
 
@@ -550,6 +498,7 @@ namespace PannelloCharger
                         break;
                     case elementiComuni.modoDati.Output:
                         esportaDati();
+                        this.Close();
                         break;
                     case elementiComuni.modoDati.HexDumpRecovery:
                         if (_sb.ModelloDati.ID == "")
@@ -613,18 +562,21 @@ namespace PannelloCharger
                         {
                             ofdImportDati.Title = StringheComuni.ImportaDati;
                             ofdImportDati.CheckFileExists = false;
-                            ofdImportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
+                            ofdImportDati.Filter = "LADE Light exchange data (*.lldata)|*.lldata|All files (*.*)|*.*";
                             // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
                             string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                            _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                            _pathTeorico += "\\LADELIGHT Manager\\LADE Light";
                             if (!Directory.Exists(_pathTeorico))
                             {
                                 Directory.CreateDirectory(_pathTeorico);
                             }
-                            sfdExportDati.InitialDirectory = _pathTeorico;
-                            ofdImportDati.ShowDialog();
-                            txtNuovoFile.Text = ofdImportDati.FileName;
-                            if (importaDati()) btnDataExport.Enabled = true;
+                            ofdImportDati.InitialDirectory = _pathTeorico;
+                            ofdImportDati.FileName = "";
+                            if (ofdImportDati.ShowDialog() == DialogResult.OK)
+                            {
+                                txtNuovoFile.Text = ofdImportDati.FileName;
+                                if (importaDati()) btnDataExport.Enabled = true;
+                            }
                         }
                         break;
                     case elementiComuni.modoDati.Output:
@@ -632,10 +584,10 @@ namespace PannelloCharger
                             string _filename = "";
 
                             sfdExportDati.Title = StringheComuni.EsportaDati;
-                            sfdExportDati.Filter = "SPY-BATT exchange data (*.sbdata)|*.sbdata|All files (*.*)|*.*";
+                            sfdExportDati.Filter = "LADE Light exchange data (*.lldata)|*.lldata|All files (*.*)|*.*";
                             // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
                             string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                            _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                            _pathTeorico += "\\LADELIGHT Manager\\LADE Light";
                             if (!Directory.Exists(_pathTeorico))
                             {
                                 Directory.CreateDirectory(_pathTeorico);
@@ -657,10 +609,10 @@ namespace PannelloCharger
                         {
                             ofdImportDati.Title = "HEXDUMP RECOVERY"; // StringheComuni.ImportaDati;
                             ofdImportDati.CheckFileExists = false;
-                            ofdImportDati.Filter = "SPY-BATT HexDump data (*.sbx)|*.sbx|All files (*.*)|*.*";
+                            ofdImportDati.Filter = "LADE Light HexDump data (*.llx)|*.llx|All files (*.*)|*.*";
                             // Propongo come directory iniziale  user\documents\LADELIGHT Manager\SPY-BATT
                             string _pathTeorico = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                            _pathTeorico += "\\LADELIGHT Manager\\SPY-BATT";
+                            _pathTeorico += "\\LADELIGHT Manager\\LADE Light";
                             if (!Directory.Exists(_pathTeorico))
                             {
                                 Directory.CreateDirectory(_pathTeorico);
@@ -844,7 +796,6 @@ namespace PannelloCharger
         {
 
         }
-
 
     }
 

@@ -475,30 +475,35 @@ namespace MoriData
                 Log.Debug("Cancella Apparato ------------------------ ");
 
                 // Cicli Lunghi
-                //CancellaRecord = _database.CreateCommand("delete from _sbMemLunga where IdApparato = ? ", IdApparato);
-                // esito = CancellaRecord.ExecuteNonQuery();
+                CancellaRecord = _database.CreateCommand("delete from _llMemoriaCicli where IdApparato = ? ", IdApparato);
+                esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Lunghi: " + esito.ToString());
 
 
                 // Cliente
-                // CancellaRecord = _database.CreateCommand("delete from _sbDatiCliente where IdApparato = ? ", IdApparato);
-                //esito = CancellaRecord.ExecuteNonQuery();
+                CancellaRecord = _database.CreateCommand("delete from _llDatiCliente where IdApparato = ? ", IdApparato);
+                esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Cliente: " + esito.ToString());
 
                 // Programmazioni
-                // CancellaRecord = _database.CreateCommand("delete from _sbProgrammaRicarica where IdApparato = ? ", IdApparato);
-                // esito = CancellaRecord.ExecuteNonQuery();
+                CancellaRecord = _database.CreateCommand("delete from _llProgrammaCarica where IdApparato = ? ", IdApparato);
+                esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Programmazioni: " + esito.ToString());
 
-                // Cicli Brevi
-                // CancellaRecord = _database.CreateCommand("delete from _sbMemBreve where IdApparato = ? ", IdApparato);
-                // esito = CancellaRecord.ExecuteNonQuery();
-                Log.Debug("Cancella Brevi: " + esito.ToString());
+                // Contatori
+                CancellaRecord = _database.CreateCommand("delete from _llContatoriApparato where IdApparato = ? ", IdApparato);
+                esito = CancellaRecord.ExecuteNonQuery();
+                Log.Debug("Cancella Programmazioni: " + esito.ToString());
 
+
+                // Parametri Apparato
+                CancellaRecord = _database.CreateCommand("delete from _llParametriApparato where IdApparato = ? ", IdApparato);
+                esito = CancellaRecord.ExecuteNonQuery();
+                Log.Debug("Cancella Apparato: " + esito.ToString());
 
                 //Apparato
-                //CancellaRecord = _database.CreateCommand("delete from _spybatt where Id = ? ", IdApparato);
-                //esito = CancellaRecord.ExecuteNonQuery();
+                CancellaRecord = _database.CreateCommand("delete from _ladelight where Id = ? ", IdApparato);
+                esito = CancellaRecord.ExecuteNonQuery();
                 Log.Debug("Cancella Apparato: " + esito.ToString());
                 return true;
             }

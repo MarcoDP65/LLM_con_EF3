@@ -69,7 +69,7 @@
             // 
             this.txtFileAnalisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtFileAnalisi.Location = new System.Drawing.Point(113, 112);
-            this.txtFileAnalisi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFileAnalisi.Margin = new System.Windows.Forms.Padding(2);
             this.txtFileAnalisi.Name = "txtFileAnalisi";
             this.txtFileAnalisi.Size = new System.Drawing.Size(332, 21);
             this.txtFileAnalisi.TabIndex = 7;
@@ -90,7 +90,7 @@
             // txtNumClone
             // 
             this.txtNumClone.Location = new System.Drawing.Point(412, 144);
-            this.txtNumClone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumClone.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumClone.Name = "txtNumClone";
             this.txtNumClone.Size = new System.Drawing.Size(72, 20);
             this.txtNumClone.TabIndex = 37;
@@ -99,7 +99,7 @@
             // txtFwVersion
             // 
             this.txtFwVersion.Location = new System.Drawing.Point(16, 144);
-            this.txtFwVersion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFwVersion.Margin = new System.Windows.Forms.Padding(2);
             this.txtFwVersion.Name = "txtFwVersion";
             this.txtFwVersion.Size = new System.Drawing.Size(82, 20);
             this.txtFwVersion.TabIndex = 36;
@@ -118,7 +118,7 @@
             // txtNumBrevi
             // 
             this.txtNumBrevi.Location = new System.Drawing.Point(321, 144);
-            this.txtNumBrevi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumBrevi.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumBrevi.Name = "txtNumBrevi";
             this.txtNumBrevi.Size = new System.Drawing.Size(72, 20);
             this.txtNumBrevi.TabIndex = 34;
@@ -137,7 +137,7 @@
             // txtNumLunghi
             // 
             this.txtNumLunghi.Location = new System.Drawing.Point(232, 144);
-            this.txtNumLunghi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumLunghi.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumLunghi.Name = "txtNumLunghi";
             this.txtNumLunghi.Size = new System.Drawing.Size(72, 20);
             this.txtNumLunghi.TabIndex = 32;
@@ -156,7 +156,7 @@
             // txtNumProgrammazioni
             // 
             this.txtNumProgrammazioni.Location = new System.Drawing.Point(142, 144);
-            this.txtNumProgrammazioni.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumProgrammazioni.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumProgrammazioni.Name = "txtNumProgrammazioni";
             this.txtNumProgrammazioni.Size = new System.Drawing.Size(72, 20);
             this.txtNumProgrammazioni.TabIndex = 30;
@@ -176,7 +176,7 @@
             // 
             this.txtNuovoFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtNuovoFile.Location = new System.Drawing.Point(16, 39);
-            this.txtNuovoFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNuovoFile.Margin = new System.Windows.Forms.Padding(2);
             this.txtNuovoFile.Name = "txtNuovoFile";
             this.txtNuovoFile.Size = new System.Drawing.Size(428, 21);
             this.txtNuovoFile.TabIndex = 4;
@@ -185,24 +185,26 @@
             // 
             this.btnDataExport.Enabled = false;
             this.btnDataExport.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDataExport.Location = new System.Drawing.Point(267, 340);
-            this.btnDataExport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDataExport.Location = new System.Drawing.Point(262, 300);
+            this.btnDataExport.Margin = new System.Windows.Forms.Padding(2);
             this.btnDataExport.Name = "btnDataExport";
-            this.btnDataExport.Size = new System.Drawing.Size(115, 32);
+            this.btnDataExport.Size = new System.Drawing.Size(159, 32);
             this.btnDataExport.TabIndex = 27;
-            this.btnDataExport.Text = "Salva Dati";
+            this.btnDataExport.Text = "Genera File";
             this.btnDataExport.UseVisualStyleBackColor = true;
+            this.btnDataExport.Click += new System.EventHandler(this.btnDataExport_Click);
             // 
             // chkChiudi
             // 
             this.chkChiudi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkChiudi.Location = new System.Drawing.Point(397, 340);
-            this.chkChiudi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkChiudi.Location = new System.Drawing.Point(99, 300);
+            this.chkChiudi.Margin = new System.Windows.Forms.Padding(2);
             this.chkChiudi.Name = "chkChiudi";
-            this.chkChiudi.Size = new System.Drawing.Size(115, 32);
+            this.chkChiudi.Size = new System.Drawing.Size(159, 32);
             this.chkChiudi.TabIndex = 26;
-            this.chkChiudi.Text = "Chiudi";
+            this.chkChiudi.Text = "Annulla";
             this.chkChiudi.UseVisualStyleBackColor = true;
+            this.chkChiudi.Click += new System.EventHandler(this.chkChiudi_Click);
             // 
             // ofdImportDati
             // 
@@ -212,7 +214,7 @@
             // 
             this.txtMatrSB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
             this.txtMatrSB.Location = new System.Drawing.Point(16, 42);
-            this.txtMatrSB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMatrSB.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatrSB.Name = "txtMatrSB";
             this.txtMatrSB.Size = new System.Drawing.Size(198, 23);
             this.txtMatrSB.TabIndex = 28;
@@ -233,7 +235,7 @@
             // 
             this.txtManufcturedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
             this.txtManufcturedBy.Location = new System.Drawing.Point(218, 42);
-            this.txtManufcturedBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtManufcturedBy.Margin = new System.Windows.Forms.Padding(2);
             this.txtManufcturedBy.Name = "txtManufcturedBy";
             this.txtManufcturedBy.Size = new System.Drawing.Size(266, 23);
             this.txtManufcturedBy.TabIndex = 26;
@@ -253,17 +255,18 @@
             // 
             this.btnSfoglia.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnSfoglia.Location = new System.Drawing.Point(448, 37);
-            this.btnSfoglia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSfoglia.Margin = new System.Windows.Forms.Padding(2);
             this.btnSfoglia.Name = "btnSfoglia";
             this.btnSfoglia.Size = new System.Drawing.Size(25, 24);
             this.btnSfoglia.TabIndex = 6;
             this.btnSfoglia.Text = " ...";
             this.btnSfoglia.UseVisualStyleBackColor = true;
+            this.btnSfoglia.Click += new System.EventHandler(this.btnSfoglia_Click);
             // 
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(218, 93);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(266, 20);
             this.txtNote.TabIndex = 16;
@@ -271,10 +274,10 @@
             // btnEstract
             // 
             this.btnEstract.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEstract.Location = new System.Drawing.Point(141, 340);
-            this.btnEstract.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEstract.Location = new System.Drawing.Point(262, 336);
+            this.btnEstract.Margin = new System.Windows.Forms.Padding(2);
             this.btnEstract.Name = "btnEstract";
-            this.btnEstract.Size = new System.Drawing.Size(115, 32);
+            this.btnEstract.Size = new System.Drawing.Size(159, 32);
             this.btnEstract.TabIndex = 29;
             this.btnEstract.Text = "Estrai Dati";
             this.btnEstract.UseVisualStyleBackColor = true;
@@ -296,7 +299,7 @@
             this.chkGeneraFileAnalisi.AutoSize = true;
             this.chkGeneraFileAnalisi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.chkGeneraFileAnalisi.Location = new System.Drawing.Point(16, 115);
-            this.chkGeneraFileAnalisi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkGeneraFileAnalisi.Margin = new System.Windows.Forms.Padding(2);
             this.chkGeneraFileAnalisi.Name = "chkGeneraFileAnalisi";
             this.chkGeneraFileAnalisi.Size = new System.Drawing.Size(96, 17);
             this.chkGeneraFileAnalisi.TabIndex = 17;
@@ -308,7 +311,7 @@
             // 
             this.btnSfogliaAnalisi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnSfogliaAnalisi.Location = new System.Drawing.Point(448, 110);
-            this.btnSfogliaAnalisi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSfogliaAnalisi.Margin = new System.Windows.Forms.Padding(2);
             this.btnSfogliaAnalisi.Name = "btnSfogliaAnalisi";
             this.btnSfogliaAnalisi.Size = new System.Drawing.Size(25, 24);
             this.btnSfogliaAnalisi.TabIndex = 16;
@@ -338,9 +341,9 @@
             this.grbGeneraExcel.Controls.Add(this.btnSfoglia);
             this.grbGeneraExcel.Controls.Add(this.txtNuovoFile);
             this.grbGeneraExcel.Location = new System.Drawing.Point(12, 204);
-            this.grbGeneraExcel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbGeneraExcel.Margin = new System.Windows.Forms.Padding(2);
             this.grbGeneraExcel.Name = "grbGeneraExcel";
-            this.grbGeneraExcel.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbGeneraExcel.Padding = new System.Windows.Forms.Padding(2);
             this.grbGeneraExcel.Size = new System.Drawing.Size(500, 79);
             this.grbGeneraExcel.TabIndex = 25;
             this.grbGeneraExcel.TabStop = false;
@@ -361,7 +364,7 @@
             // txtCliente
             // 
             this.txtCliente.Location = new System.Drawing.Point(16, 93);
-            this.txtCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCliente.Margin = new System.Windows.Forms.Padding(2);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(198, 20);
             this.txtCliente.TabIndex = 14;
@@ -380,10 +383,10 @@
             // btnAnteprima
             // 
             this.btnAnteprima.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAnteprima.Location = new System.Drawing.Point(12, 340);
-            this.btnAnteprima.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnteprima.Location = new System.Drawing.Point(99, 336);
+            this.btnAnteprima.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnteprima.Name = "btnAnteprima";
-            this.btnAnteprima.Size = new System.Drawing.Size(115, 32);
+            this.btnAnteprima.Size = new System.Drawing.Size(159, 32);
             this.btnAnteprima.TabIndex = 28;
             this.btnAnteprima.Text = "Anteprima";
             this.btnAnteprima.UseVisualStyleBackColor = true;
@@ -410,9 +413,9 @@
             this.groupBox2.Controls.Add(this.txtCliente);
             this.groupBox2.Controls.Add(this.lblFirmwCb);
             this.groupBox2.Location = new System.Drawing.Point(12, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(500, 179);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
@@ -422,7 +425,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 379);
+            this.ClientSize = new System.Drawing.Size(524, 378);
             this.Controls.Add(this.btnDataExport);
             this.Controls.Add(this.chkChiudi);
             this.Controls.Add(this.btnEstract);

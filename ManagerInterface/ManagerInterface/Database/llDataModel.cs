@@ -17,18 +17,12 @@ namespace ChargerLogic
     {
         public string ID { get; set; }
 
-        public bool testata { get; set; }
-        public bool cliente { get; set; }
-        public bool contatori { get; set; }
-        public bool cicliLunghi { get; set; }
-        public bool cicliBrevi { get; set; }
-        public bool programmazioni { get; set; }
-
         public _ladelight Testata;
+        public _llParametriApparato Parametri;
         public _llDatiCliente Cliente;
         public _llContatoriApparato Contatori;
-        public List<llDataCicloLungo> CicliLunghi = new List<llDataCicloLungo>();
-        public List<_sbProgrammaRicarica> Programmazioni = new List<_sbProgrammaRicarica>();
+        public List<_llMemoriaCicli> CicliCarica = new List<_llMemoriaCicli>();
+        public List<_llProgrammaCarica> Programmazioni = new List<_llProgrammaCarica>();
         public ushort CRC { get; set; }
     }
 

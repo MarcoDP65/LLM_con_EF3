@@ -43,6 +43,7 @@ namespace ChargerLogic
         private static Queue<byte> codaDatiSER = new Queue<byte>();
 
         public DateTime UltimaScrittura;   // Registro l'istante dell'ultima scrittura
+        public string UltimoMsgErrore;
 
         private static ILog Log = LogManager.GetLogger("CaricaBatteria");
         internal delegate void SerialDataReceivedEventHandlerDelegate(object sender, SerialDataReceivedEventArgs e);
@@ -86,6 +87,7 @@ namespace ChargerLogic
         public List<llMemoriaCicli> MemoriaCicli;
         public List<llMemBreve> BreviCicloCorrente;
 
+        public llDataModel ModelloDati = new llDataModel();
 
 
         //public const byte SizeCharge = 36;
@@ -562,6 +564,7 @@ namespace ChargerLogic
                 _cbCollegato = false;
                 serialeApparato = _parametri.serialeCorrente;
                 DbAttivo = dbCorrente;
+                ApparatoLL = new LadeLightData(dbCorrente);
                 DatiCliente = new llDatiCliente(dbCorrente);
                 DatiBase = new DatiConfigCariche();
                 //InizializzaDatiLocali();
@@ -1866,11 +1869,11 @@ namespace ChargerLogic
                 _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
                 _mS._pacchettoMem = new SerialMessage.PacchettoReadMem();
 
-                //Log.Debug("-----------------------------------------------------------------------------------------------------------");
-                //Log.Debug("Lettura di " + NumByte.ToString() + " bytes dall'indirizzo " + StartAddr.ToString("X2"));
+                Log.Debug("-----------------------------------------------------------------------------------------------------------");
+                Log.Debug("Lettura di " + NumByte.ToString() + " bytes dall'indirizzo " + StartAddr.ToString("X2"));
 
                 _mS.ComponiMessaggioLeggiMem(StartAddr, NumByte);
-                //Log.Debug(_mS.hexdumpMessaggio());
+                Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
 
@@ -2264,19 +2267,20 @@ namespace ChargerLogic
                         Memoria = new llMappaMemoria(ImmagineMemoria.ModelloMemoria);
 
                         ParametriApparato.llParApp.IdApparato = ImmagineMemoria.IDApparato;
-
+                         
                         ParametriApparato.llParApp.VMin = ImmagineMemoria.VMin;
                         ParametriApparato.llParApp.VMax = ImmagineMemoria.VMax;
                         ParametriApparato.llParApp.Amax = ImmagineMemoria.Amax;
                         ParametriApparato.llParApp.PresenzaRabboccatore = ImmagineMemoria.PresenzaRabboccatore;
+                        DateTime Lettura = DateTime.Now;
+                        ParametriApparato.llParApp.UltimaLetturaDati = Lettura;
+                        ParametriApparato.llParApp.DtUltimaLetturaDati = Lettura.ToString("yyyy/MM/dd") + " " + Lettura.ToString("hh:mm"); 
 
                     }
 
                 }
 
-
                 return _esito;
-
             }
 
             catch (Exception Ex)
@@ -2500,6 +2504,118 @@ namespace ChargerLogic
             }
         }
 
+        
+        public bool PreparaEsportazione()
+        {
+            try
+            {
+                bool _esito;
+                elementiComuni.Crc16Ccitt codCrc = new elementiComuni.Crc16Ccitt(elementiComuni.InitialCrcValue.NonZero1);
+                ushort _crc;
+
+                _esito = false;
+
+                ModelloDati.ID = ParametriApparato.IdApparato;
+
+
+
+                ModelloDati.Testata = ApparatoLL._ll;
+                ModelloDati.Cliente = DatiCliente._lldc;
+                ModelloDati.Contatori = ContatoriLL.llContApp;
+                ModelloDati.Parametri = ParametriApparato.llParApp;
+
+                ModelloDati.Programmazioni.Clear();
+
+                foreach (llProgrammaCarica _prog in Programmazioni.ProgrammiDefiniti)
+                {
+                    ModelloDati.Programmazioni.Add(_prog._llprc);
+                }
+
+
+                ModelloDati.CicliCarica.Clear();
+                foreach (llMemoriaCicli _memL in MemoriaCicli)
+                {
+                    ModelloDati.CicliCarica.Add(_memL._llmc);
+                }
+
+
+                ModelloDati.CRC = 0;
+                string _tempSer = JsonConvert.SerializeObject(ModelloDati);
+                byte[] _tepBSer = FunzioniMR.GetBytes(_tempSer);
+
+                _crc = codCrc.ComputeChecksum(_tepBSer);
+                ModelloDati.CRC = _crc;
+                _esito = true;
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("PreparaEsportazione: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+                return false;
+            }
+        }
+
+        public bool importaModello(MoriData._db dbCorrente, bool SalvaDati)
+        {
+            try
+            {
+                bool _esito;
+                _esito = false;
+
+                ApparatoLL = new LadeLightData(dbCorrente);
+                ApparatoLL._ll = ModelloDati.Testata;
+                if(SalvaDati) ApparatoLL.salvaDati();
+
+                ParametriApparato = new llParametriApparato(dbCorrente);
+                ParametriApparato.llParApp = ModelloDati.Parametri;
+                if (SalvaDati) ParametriApparato.salvaDati();
+
+
+                DatiCliente = new llDatiCliente(dbCorrente);
+                DatiCliente._lldc = ModelloDati.Cliente;
+                if (SalvaDati) DatiCliente.salvaDati();
+
+                ContatoriLL = new llContatoriApparato(dbCorrente);
+                ContatoriLL.llContApp = ModelloDati.Contatori;
+                if (SalvaDati) ContatoriLL.salvaDati();
+
+
+                Programmazioni = new cbProgrammazioni(dbCorrente);
+                if(Programmazioni.ProgrammiDefiniti == null)
+                {
+                    Programmazioni.ProgrammiDefiniti = new List<llProgrammaCarica>();
+                }
+                Programmazioni.ProgrammiDefiniti.Clear();
+                foreach (_llProgrammaCarica _prog in ModelloDati.Programmazioni )
+                {
+                    Programmazioni.ProgrammiDefiniti.Add( new llProgrammaCarica(dbCorrente, _prog));
+                }
+                if (SalvaDati) Programmazioni.SalvaDati();
+
+                if(MemoriaCicli == null)
+                {
+                    MemoriaCicli = new List<llMemoriaCicli>();
+                }
+                MemoriaCicli.Clear();
+                foreach (_llMemoriaCicli _memL in ModelloDati.CicliCarica)
+                {
+                    llMemoriaCicli _TempCiclo = new llMemoriaCicli(dbCorrente, _memL);
+                    if (SalvaDati) _TempCiclo.salvaDati();
+                    MemoriaCicli.Add(_TempCiclo);
+                }
+
+ 
+                _esito = true;
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("importaModello: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+                return false;
+            }
+        }
 
 
         /*************************************************************************************************************************************/

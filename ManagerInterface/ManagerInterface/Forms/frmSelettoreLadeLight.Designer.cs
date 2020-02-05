@@ -31,7 +31,7 @@
             this.txtIdScheda = new System.Windows.Forms.TextBox();
             this.btnImportaDati = new System.Windows.Forms.Button();
             this.btnEliminaDati = new System.Windows.Forms.Button();
-            this.btnEsportaSpybatt = new System.Windows.Forms.Button();
+            this.btnEsportaLadeLight = new System.Windows.Forms.Button();
             this.flvwListaApparati = new BrightIdeasSoftware.FastObjectListView();
             this.btnChiudi = new System.Windows.Forms.Button();
             this.btnApriLadeLight = new System.Windows.Forms.Button();
@@ -58,6 +58,7 @@
             this.btnImportaDati.TabIndex = 13;
             this.btnImportaDati.Text = "Importa Dati";
             this.btnImportaDati.UseVisualStyleBackColor = true;
+            this.btnImportaDati.Click += new System.EventHandler(this.btnImportaDati_Click);
             // 
             // btnEliminaDati
             // 
@@ -71,16 +72,17 @@
             this.btnEliminaDati.UseVisualStyleBackColor = true;
             this.btnEliminaDati.Click += new System.EventHandler(this.btnEliminaDati_Click);
             // 
-            // btnEsportaSpybatt
+            // btnEsportaLadeLight
             // 
-            this.btnEsportaSpybatt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEsportaSpybatt.Location = new System.Drawing.Point(211, 370);
-            this.btnEsportaSpybatt.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEsportaSpybatt.Name = "btnEsportaSpybatt";
-            this.btnEsportaSpybatt.Size = new System.Drawing.Size(94, 36);
-            this.btnEsportaSpybatt.TabIndex = 11;
-            this.btnEsportaSpybatt.Text = "Esporta Dati";
-            this.btnEsportaSpybatt.UseVisualStyleBackColor = true;
+            this.btnEsportaLadeLight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnEsportaLadeLight.Location = new System.Drawing.Point(211, 370);
+            this.btnEsportaLadeLight.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEsportaLadeLight.Name = "btnEsportaLadeLight";
+            this.btnEsportaLadeLight.Size = new System.Drawing.Size(94, 36);
+            this.btnEsportaLadeLight.TabIndex = 11;
+            this.btnEsportaLadeLight.Text = "Esporta Dati";
+            this.btnEsportaLadeLight.UseVisualStyleBackColor = true;
+            this.btnEsportaLadeLight.Click += new System.EventHandler(this.btnEsportaLadeLight_Click);
             // 
             // flvwListaApparati
             // 
@@ -129,7 +131,7 @@
             this.Controls.Add(this.txtIdScheda);
             this.Controls.Add(this.btnImportaDati);
             this.Controls.Add(this.btnEliminaDati);
-            this.Controls.Add(this.btnEsportaSpybatt);
+            this.Controls.Add(this.btnEsportaLadeLight);
             this.Controls.Add(this.flvwListaApparati);
             this.Controls.Add(this.btnChiudi);
             this.Controls.Add(this.btnApriLadeLight);
@@ -147,7 +149,7 @@
         private System.Windows.Forms.TextBox txtIdScheda;
         private System.Windows.Forms.Button btnImportaDati;
         private System.Windows.Forms.Button btnEliminaDati;
-        private System.Windows.Forms.Button btnEsportaSpybatt;
+        private System.Windows.Forms.Button btnEsportaLadeLight;
         private BrightIdeasSoftware.FastObjectListView flvwListaApparati;
         private System.Windows.Forms.Button btnChiudi;
         private System.Windows.Forms.Button btnApriLadeLight;

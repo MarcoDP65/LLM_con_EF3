@@ -1693,14 +1693,16 @@ namespace MoriData
                     }
                     else
                     {
+                        // Non c'era uno spybatt collegato. Nei primi 2 bytes c'è la tensione nominale in V/100
+
                         /*
                         string _Id = "";
                         _Id += _llmc.IdSpyBatt[0].ToString("X2") + _llmc.IdSpyBatt[1].ToString("X2") + ":";
                         _Id += _llmc.IdSpyBatt[2].ToString("X2") + _llmc.IdSpyBatt[3].ToString("X2") + ":";
                         _Id += _llmc.IdSpyBatt[4].ToString("X2") + _llmc.IdSpyBatt[5].ToString("X2") + ":";
                         _Id += _llmc.IdSpyBatt[6].ToString("X2") + _llmc.IdSpyBatt[7].ToString("X2");
+                        return "( " + _Id + " )";
                         */
-                        //return "( " + _Id + " )";
                         return "";
                     }
                 }

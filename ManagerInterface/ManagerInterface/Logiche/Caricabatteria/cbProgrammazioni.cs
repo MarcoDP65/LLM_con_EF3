@@ -20,6 +20,8 @@ namespace ChargerLogic
     public class cbProgrammazioni
     {
         public ushort UltimoIdProgamma { get; set; }
+        public ushort IdProgammaPrenotato { get; set; }
+
         public byte NumeroRecordProg { get; set; }
         public llProgrammaCarica ProgrammaAttivo;
         public List<llProgrammaCarica> ProgrammiDefiniti;

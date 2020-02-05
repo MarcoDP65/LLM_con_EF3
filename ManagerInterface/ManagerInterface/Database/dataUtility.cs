@@ -80,6 +80,7 @@ namespace MoriData
             public UInt32 CntCicliTotali { get; set; }
 
             public DateTime UltimaLettura { get; set; }
+            public string DtUltimaLettura { get; set; }
 
             public override string ToString()
             {
@@ -111,8 +112,16 @@ namespace MoriData
                     }
                     else
                     {
-                        return UltimaLettura.ToString("yyyy/MM/dd") + " " + UltimaLettura.ToShortTimeString();
+                        return UltimaLettura.ToString("yyyy/MM/dd") + " " + UltimaLettura.ToString("hh:mm"); //ToShortTimeString();
                     }
+                }
+            }
+
+            public string strDtUltimaLettura
+            {
+                get
+                {
+                    return DtUltimaLettura;
                 }
             }
 
