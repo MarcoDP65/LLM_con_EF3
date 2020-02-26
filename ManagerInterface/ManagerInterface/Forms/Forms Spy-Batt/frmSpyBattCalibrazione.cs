@@ -1313,7 +1313,7 @@ namespace PannelloCharger
                 txtCalStepCorrente.Text = "Verifica Elettrolita";
                 lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
 
-                /*
+                
                 //l'elettrolita non può essere presente
                 if (_sb.sbVariabili.PresenzaElettrolita == 0xF0)
                 {
@@ -1362,7 +1362,7 @@ namespace PannelloCharger
                     lbxCalListaStep.Items.Add(txtCalStepCorrente.Text);
                     Application.DoEvents();
                 }
-                */
+                
                 // ora comincio la fase di calibrazione:
                 _risposta = MessageBox.Show("Collegare l'Alimentatore alla presa DIRETTA", "Verifica Polarità", MessageBoxButtons.OKCancel);
                 if (_risposta != DialogResult.OK)
