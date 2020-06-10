@@ -230,6 +230,21 @@
             this.txtVarAhScarica = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.tabMemRead = new System.Windows.Forms.TabPage();
+            this.grbClonaRigeneratore = new System.Windows.Forms.GroupBox();
+            this.lblMemRegenAvanzamentoWrite = new System.Windows.Forms.Label();
+            this.lblMemRegenAvanzamentoRead = new System.Windows.Forms.Label();
+            this.txtMemRegenNumBlocchiWR = new System.Windows.Forms.TextBox();
+            this.btnMemRegenScriviImmDisp = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtMemRegenNumBlocchi = new System.Windows.Forms.TextBox();
+            this.btnMemRegenGeneraImmagine = new System.Windows.Forms.Button();
+            this.btnMemRegenCercaFileRd = new System.Windows.Forms.Button();
+            this.btnMemRegenCaricaImmagine = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnMemRegenCercaFileWr = new System.Windows.Forms.Button();
+            this.txtMemRegenNomeFile = new System.Windows.Forms.TextBox();
+            this.btnMemRegenSalvaImmegine = new System.Windows.Forms.Button();
             this.grbCopiaCicli = new System.Windows.Forms.GroupBox();
             this.optMemProcedure = new System.Windows.Forms.RadioButton();
             this.optMemSequenze = new System.Windows.Forms.RadioButton();
@@ -248,9 +263,6 @@
             this.label135 = new System.Windows.Forms.Label();
             this.txtMemCicliStartAddr = new System.Windows.Forms.TextBox();
             this.grbMemCancFisica = new System.Windows.Forms.GroupBox();
-            this.rbtMemAreaApp2 = new System.Windows.Forms.RadioButton();
-            this.rbtMemAreaApp1 = new System.Windows.Forms.RadioButton();
-            this.rbtMemAreaLibera = new System.Windows.Forms.RadioButton();
             this.label111 = new System.Windows.Forms.Label();
             this.txtMemCFBlocchi = new System.Windows.Forms.TextBox();
             this.chkMemCFStartAddHex = new System.Windows.Forms.CheckBox();
@@ -523,6 +535,7 @@
             this.grbVariabiliImmediate.SuspendLayout();
             this.grbVariabiliStatoConn.SuspendLayout();
             this.tabMemRead.SuspendLayout();
+            this.grbClonaRigeneratore.SuspendLayout();
             this.grbCopiaCicli.SuspendLayout();
             this.grbMemCancFisica.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -1367,8 +1380,7 @@
             this.flvwCicliBatteria.CellEditUseWholeCell = false;
             this.flvwCicliBatteria.CheckBoxes = true;
             this.flvwCicliBatteria.FullRowSelect = true;
-            this.flvwCicliBatteria.SelectedBackColor  = System.Drawing.Color.Empty;
-            this.flvwCicliBatteria.SelectedForeColor = System.Drawing.Color.Empty;
+            this.flvwCicliBatteria.HideSelection = false;
             this.flvwCicliBatteria.Location = new System.Drawing.Point(43, 37);
             this.flvwCicliBatteria.Name = "flvwCicliBatteria";
             this.flvwCicliBatteria.ShowGroups = false;
@@ -1905,8 +1917,7 @@
             // flvwProgrammiCarica
             // 
             this.flvwProgrammiCarica.CellEditUseWholeCell = false;
-            this.flvwProgrammiCarica.SelectedBackColor = System.Drawing.Color.Empty;
-            this.flvwProgrammiCarica.SelectedBackColor = System.Drawing.Color.Empty;
+            this.flvwProgrammiCarica.HideSelection = false;
             this.flvwProgrammiCarica.Location = new System.Drawing.Point(42, 166);
             this.flvwProgrammiCarica.Name = "flvwProgrammiCarica";
             this.flvwProgrammiCarica.ShowGroups = false;
@@ -2847,6 +2858,7 @@
             // tabMemRead
             // 
             this.tabMemRead.BackColor = System.Drawing.Color.LightGray;
+            this.tabMemRead.Controls.Add(this.grbClonaRigeneratore);
             this.tabMemRead.Controls.Add(this.grbCopiaCicli);
             this.tabMemRead.Controls.Add(this.grbMemCancFisica);
             this.tabMemRead.Controls.Add(this.groupBox8);
@@ -2859,6 +2871,182 @@
             this.tabMemRead.Size = new System.Drawing.Size(1593, 678);
             this.tabMemRead.TabIndex = 9;
             this.tabMemRead.Text = "Accesso Memoria";
+            // 
+            // grbClonaRigeneratore
+            // 
+            this.grbClonaRigeneratore.BackColor = System.Drawing.Color.White;
+            this.grbClonaRigeneratore.Controls.Add(this.lblMemRegenAvanzamentoWrite);
+            this.grbClonaRigeneratore.Controls.Add(this.lblMemRegenAvanzamentoRead);
+            this.grbClonaRigeneratore.Controls.Add(this.txtMemRegenNumBlocchiWR);
+            this.grbClonaRigeneratore.Controls.Add(this.btnMemRegenScriviImmDisp);
+            this.grbClonaRigeneratore.Controls.Add(this.label9);
+            this.grbClonaRigeneratore.Controls.Add(this.txtMemRegenNumBlocchi);
+            this.grbClonaRigeneratore.Controls.Add(this.btnMemRegenGeneraImmagine);
+            this.grbClonaRigeneratore.Controls.Add(this.btnMemRegenCercaFileRd);
+            this.grbClonaRigeneratore.Controls.Add(this.btnMemRegenCaricaImmagine);
+            this.grbClonaRigeneratore.Controls.Add(this.label10);
+            this.grbClonaRigeneratore.Controls.Add(this.label11);
+            this.grbClonaRigeneratore.Controls.Add(this.btnMemRegenCercaFileWr);
+            this.grbClonaRigeneratore.Controls.Add(this.txtMemRegenNomeFile);
+            this.grbClonaRigeneratore.Controls.Add(this.btnMemRegenSalvaImmegine);
+            this.grbClonaRigeneratore.Location = new System.Drawing.Point(942, 398);
+            this.grbClonaRigeneratore.Name = "grbClonaRigeneratore";
+            this.grbClonaRigeneratore.Size = new System.Drawing.Size(405, 229);
+            this.grbClonaRigeneratore.TabIndex = 53;
+            this.grbClonaRigeneratore.TabStop = false;
+            this.grbClonaRigeneratore.Text = "Copia PACCHETTO RIGENERATORE";
+            // 
+            // lblMemRegenAvanzamentoWrite
+            // 
+            this.lblMemRegenAvanzamentoWrite.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblMemRegenAvanzamentoWrite.Location = new System.Drawing.Point(182, 83);
+            this.lblMemRegenAvanzamentoWrite.Name = "lblMemRegenAvanzamentoWrite";
+            this.lblMemRegenAvanzamentoWrite.Size = new System.Drawing.Size(162, 19);
+            this.lblMemRegenAvanzamentoWrite.TabIndex = 59;
+            this.lblMemRegenAvanzamentoWrite.Text = ".";
+            this.lblMemRegenAvanzamentoWrite.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblMemRegenAvanzamentoRead
+            // 
+            this.lblMemRegenAvanzamentoRead.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblMemRegenAvanzamentoRead.Location = new System.Drawing.Point(186, 48);
+            this.lblMemRegenAvanzamentoRead.Name = "lblMemRegenAvanzamentoRead";
+            this.lblMemRegenAvanzamentoRead.Size = new System.Drawing.Size(162, 19);
+            this.lblMemRegenAvanzamentoRead.TabIndex = 58;
+            this.lblMemRegenAvanzamentoRead.Text = ".";
+            this.lblMemRegenAvanzamentoRead.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtMemRegenNumBlocchiWR
+            // 
+            this.txtMemRegenNumBlocchiWR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemRegenNumBlocchiWR.Location = new System.Drawing.Point(350, 78);
+            this.txtMemRegenNumBlocchiWR.Name = "txtMemRegenNumBlocchiWR";
+            this.txtMemRegenNumBlocchiWR.Size = new System.Drawing.Size(37, 24);
+            this.txtMemRegenNumBlocchiWR.TabIndex = 57;
+            this.txtMemRegenNumBlocchiWR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnMemRegenScriviImmDisp
+            // 
+            this.btnMemRegenScriviImmDisp.BackColor = System.Drawing.Color.LightGreen;
+            this.btnMemRegenScriviImmDisp.Enabled = false;
+            this.btnMemRegenScriviImmDisp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemRegenScriviImmDisp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemRegenScriviImmDisp.Location = new System.Drawing.Point(21, 78);
+            this.btnMemRegenScriviImmDisp.Name = "btnMemRegenScriviImmDisp";
+            this.btnMemRegenScriviImmDisp.Size = new System.Drawing.Size(146, 33);
+            this.btnMemRegenScriviImmDisp.TabIndex = 56;
+            this.btnMemRegenScriviImmDisp.Text = "Scrivi Memoria";
+            this.btnMemRegenScriviImmDisp.UseVisualStyleBackColor = false;
+            this.btnMemRegenScriviImmDisp.Click += new System.EventHandler(this.btnMemRegenScriviImmDisp_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label9.Location = new System.Drawing.Point(334, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 17);
+            this.label9.TabIndex = 55;
+            this.label9.Text = "Blocchi";
+            // 
+            // txtMemRegenNumBlocchi
+            // 
+            this.txtMemRegenNumBlocchi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemRegenNumBlocchi.Location = new System.Drawing.Point(350, 43);
+            this.txtMemRegenNumBlocchi.Name = "txtMemRegenNumBlocchi";
+            this.txtMemRegenNumBlocchi.Size = new System.Drawing.Size(37, 24);
+            this.txtMemRegenNumBlocchi.TabIndex = 54;
+            this.txtMemRegenNumBlocchi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnMemRegenGeneraImmagine
+            // 
+            this.btnMemRegenGeneraImmagine.BackColor = System.Drawing.Color.Pink;
+            this.btnMemRegenGeneraImmagine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemRegenGeneraImmagine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemRegenGeneraImmagine.Location = new System.Drawing.Point(21, 39);
+            this.btnMemRegenGeneraImmagine.Name = "btnMemRegenGeneraImmagine";
+            this.btnMemRegenGeneraImmagine.Size = new System.Drawing.Size(146, 33);
+            this.btnMemRegenGeneraImmagine.TabIndex = 53;
+            this.btnMemRegenGeneraImmagine.Text = "Leggi Memoria";
+            this.btnMemRegenGeneraImmagine.UseVisualStyleBackColor = false;
+            this.btnMemRegenGeneraImmagine.Click += new System.EventHandler(this.btnMemRegenGeneraImmagine_Click);
+            // 
+            // btnMemRegenCercaFileRd
+            // 
+            this.btnMemRegenCercaFileRd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemRegenCercaFileRd.Location = new System.Drawing.Point(236, 180);
+            this.btnMemRegenCercaFileRd.Name = "btnMemRegenCercaFileRd";
+            this.btnMemRegenCercaFileRd.Size = new System.Drawing.Size(33, 30);
+            this.btnMemRegenCercaFileRd.TabIndex = 52;
+            this.btnMemRegenCercaFileRd.Text = "...";
+            this.btnMemRegenCercaFileRd.UseVisualStyleBackColor = true;
+            this.btnMemRegenCercaFileRd.Click += new System.EventHandler(this.btnMemRegenCercaFileRd_Click);
+            // 
+            // btnMemRegenCaricaImmagine
+            // 
+            this.btnMemRegenCaricaImmagine.BackColor = System.Drawing.Color.Pink;
+            this.btnMemRegenCaricaImmagine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemRegenCaricaImmagine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemRegenCaricaImmagine.Location = new System.Drawing.Point(275, 177);
+            this.btnMemRegenCaricaImmagine.Name = "btnMemRegenCaricaImmagine";
+            this.btnMemRegenCaricaImmagine.Size = new System.Drawing.Size(112, 33);
+            this.btnMemRegenCaricaImmagine.TabIndex = 50;
+            this.btnMemRegenCaricaImmagine.Text = "Leggi File";
+            this.btnMemRegenCaricaImmagine.UseVisualStyleBackColor = false;
+            this.btnMemRegenCaricaImmagine.Click += new System.EventHandler(this.btnMemRegenCaricaImmagine_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label10.Location = new System.Drawing.Point(15, 127);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 17);
+            this.label10.TabIndex = 49;
+            this.label10.Text = "File Immagine";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label11.Location = new System.Drawing.Point(-183, 115);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(149, 17);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "File Firmware Pubblico";
+            // 
+            // btnMemRegenCercaFileWr
+            // 
+            this.btnMemRegenCercaFileWr.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemRegenCercaFileWr.Location = new System.Drawing.Point(16, 177);
+            this.btnMemRegenCercaFileWr.Name = "btnMemRegenCercaFileWr";
+            this.btnMemRegenCercaFileWr.Size = new System.Drawing.Size(33, 30);
+            this.btnMemRegenCercaFileWr.TabIndex = 47;
+            this.btnMemRegenCercaFileWr.Text = "...";
+            this.btnMemRegenCercaFileWr.UseVisualStyleBackColor = true;
+            this.btnMemRegenCercaFileWr.Click += new System.EventHandler(this.btnMemRegenCercaFileWr_Click);
+            // 
+            // txtMemRegenNomeFile
+            // 
+            this.txtMemRegenNomeFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtMemRegenNomeFile.Location = new System.Drawing.Point(18, 147);
+            this.txtMemRegenNomeFile.Name = "txtMemRegenNomeFile";
+            this.txtMemRegenNomeFile.Size = new System.Drawing.Size(369, 24);
+            this.txtMemRegenNomeFile.TabIndex = 46;
+            // 
+            // btnMemRegenSalvaImmegine
+            // 
+            this.btnMemRegenSalvaImmegine.BackColor = System.Drawing.Color.LightGreen;
+            this.btnMemRegenSalvaImmegine.Enabled = false;
+            this.btnMemRegenSalvaImmegine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemRegenSalvaImmegine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnMemRegenSalvaImmegine.Location = new System.Drawing.Point(55, 177);
+            this.btnMemRegenSalvaImmegine.Name = "btnMemRegenSalvaImmegine";
+            this.btnMemRegenSalvaImmegine.Size = new System.Drawing.Size(112, 33);
+            this.btnMemRegenSalvaImmegine.TabIndex = 21;
+            this.btnMemRegenSalvaImmegine.Text = "Salva File";
+            this.btnMemRegenSalvaImmegine.UseVisualStyleBackColor = false;
+            this.btnMemRegenSalvaImmegine.Click += new System.EventHandler(this.btnMemRegenSalvaImmegine_Click);
             // 
             // grbCopiaCicli
             // 
@@ -2879,9 +3067,9 @@
             this.grbCopiaCicli.Controls.Add(this.txtMemCicliNumBlocchi);
             this.grbCopiaCicli.Controls.Add(this.label135);
             this.grbCopiaCicli.Controls.Add(this.txtMemCicliStartAddr);
-            this.grbCopiaCicli.Location = new System.Drawing.Point(942, 278);
+            this.grbCopiaCicli.Location = new System.Drawing.Point(942, 146);
             this.grbCopiaCicli.Name = "grbCopiaCicli";
-            this.grbCopiaCicli.Size = new System.Drawing.Size(405, 265);
+            this.grbCopiaCicli.Size = new System.Drawing.Size(405, 241);
             this.grbCopiaCicli.TabIndex = 52;
             this.grbCopiaCicli.TabStop = false;
             this.grbCopiaCicli.Text = "Copia SEQUENZE / PROCEDURE";
@@ -3065,9 +3253,6 @@
             // grbMemCancFisica
             // 
             this.grbMemCancFisica.BackColor = System.Drawing.Color.White;
-            this.grbMemCancFisica.Controls.Add(this.rbtMemAreaApp2);
-            this.grbMemCancFisica.Controls.Add(this.rbtMemAreaApp1);
-            this.grbMemCancFisica.Controls.Add(this.rbtMemAreaLibera);
             this.grbMemCancFisica.Controls.Add(this.label111);
             this.grbMemCancFisica.Controls.Add(this.txtMemCFBlocchi);
             this.grbMemCancFisica.Controls.Add(this.chkMemCFStartAddHex);
@@ -3077,45 +3262,10 @@
             this.grbMemCancFisica.Cursor = System.Windows.Forms.Cursors.Default;
             this.grbMemCancFisica.Location = new System.Drawing.Point(942, 20);
             this.grbMemCancFisica.Name = "grbMemCancFisica";
-            this.grbMemCancFisica.Size = new System.Drawing.Size(405, 237);
+            this.grbMemCancFisica.Size = new System.Drawing.Size(405, 109);
             this.grbMemCancFisica.TabIndex = 51;
             this.grbMemCancFisica.TabStop = false;
             this.grbMemCancFisica.Text = "Cancellazione 4K Memoria";
-            // 
-            // rbtMemAreaApp2
-            // 
-            this.rbtMemAreaApp2.AutoSize = true;
-            this.rbtMemAreaApp2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtMemAreaApp2.Location = new System.Drawing.Point(18, 165);
-            this.rbtMemAreaApp2.Name = "rbtMemAreaApp2";
-            this.rbtMemAreaApp2.Size = new System.Drawing.Size(102, 21);
-            this.rbtMemAreaApp2.TabIndex = 18;
-            this.rbtMemAreaApp2.Text = "Area APP 2";
-            this.rbtMemAreaApp2.UseVisualStyleBackColor = true;
-            // 
-            // rbtMemAreaApp1
-            // 
-            this.rbtMemAreaApp1.AutoSize = true;
-            this.rbtMemAreaApp1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtMemAreaApp1.Location = new System.Drawing.Point(18, 138);
-            this.rbtMemAreaApp1.Name = "rbtMemAreaApp1";
-            this.rbtMemAreaApp1.Size = new System.Drawing.Size(102, 21);
-            this.rbtMemAreaApp1.TabIndex = 17;
-            this.rbtMemAreaApp1.Text = "Area APP 1";
-            this.rbtMemAreaApp1.UseVisualStyleBackColor = true;
-            // 
-            // rbtMemAreaLibera
-            // 
-            this.rbtMemAreaLibera.AutoSize = true;
-            this.rbtMemAreaLibera.Checked = true;
-            this.rbtMemAreaLibera.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbtMemAreaLibera.Location = new System.Drawing.Point(18, 111);
-            this.rbtMemAreaLibera.Name = "rbtMemAreaLibera";
-            this.rbtMemAreaLibera.Size = new System.Drawing.Size(113, 21);
-            this.rbtMemAreaLibera.TabIndex = 16;
-            this.rbtMemAreaLibera.TabStop = true;
-            this.rbtMemAreaLibera.Text = "Zona Custom";
-            this.rbtMemAreaLibera.UseVisualStyleBackColor = true;
             // 
             // label111
             // 
@@ -3900,8 +4050,7 @@
             this.flvwLettureCorrente.AlternateRowBackColor = System.Drawing.Color.LightYellow;
             this.flvwLettureCorrente.CellEditUseWholeCell = false;
             this.flvwLettureCorrente.FullRowSelect = true;
-            this.flvwLettureCorrente.SelectedBackColor = System.Drawing.Color.Empty;
-            this.flvwLettureCorrente.SelectedBackColor = System.Drawing.Color.Empty;
+            this.flvwLettureCorrente.HideSelection = false;
             this.flvwLettureCorrente.Location = new System.Drawing.Point(23, 393);
             this.flvwLettureCorrente.Name = "flvwLettureCorrente";
             this.flvwLettureCorrente.ShowGroups = false;
@@ -5771,6 +5920,7 @@
             // 
             // lvwCicliBatteriaAA
             // 
+            this.lvwCicliBatteriaAA.HideSelection = false;
             this.lvwCicliBatteriaAA.Location = new System.Drawing.Point(43, 158);
             this.lvwCicliBatteriaAA.Name = "lvwCicliBatteriaAA";
             this.lvwCicliBatteriaAA.Size = new System.Drawing.Size(1070, 35);
@@ -5792,7 +5942,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1788, 738);
+            this.ClientSize = new System.Drawing.Size(1430, 745);
             this.Controls.Add(this.tabCaricaBatterie);
             this.Name = "frmDesolfatatore";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -5846,6 +5996,8 @@
             this.grbVariabiliStatoConn.PerformLayout();
             this.tabMemRead.ResumeLayout(false);
             this.tabMemRead.PerformLayout();
+            this.grbClonaRigeneratore.ResumeLayout(false);
+            this.grbClonaRigeneratore.PerformLayout();
             this.grbCopiaCicli.ResumeLayout(false);
             this.grbCopiaCicli.PerformLayout();
             this.grbMemCancFisica.ResumeLayout(false);
@@ -6243,9 +6395,6 @@
         private System.Windows.Forms.CheckBox chkMemHexW;
         private System.Windows.Forms.RadioButton rbtFwBootLdr;
         public System.Windows.Forms.Button btnFwCheckArea;
-        private System.Windows.Forms.RadioButton rbtMemAreaApp2;
-        private System.Windows.Forms.RadioButton rbtMemAreaApp1;
-        private System.Windows.Forms.RadioButton rbtMemAreaLibera;
         private System.Windows.Forms.TextBox txtFWRevA2LenP;
         private System.Windows.Forms.TextBox txtFWRevA2AddrP;
         private System.Windows.Forms.TextBox txtFWRevA2LenN2;
@@ -6356,5 +6505,20 @@
         private System.Windows.Forms.Label lblMemCicliStatoOp;
         private System.Windows.Forms.RadioButton optMemProcedure;
         private System.Windows.Forms.RadioButton optMemSequenze;
+        private System.Windows.Forms.GroupBox grbClonaRigeneratore;
+        private System.Windows.Forms.Button btnMemRegenCercaFileRd;
+        private System.Windows.Forms.Button btnMemRegenCaricaImmagine;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnMemRegenCercaFileWr;
+        private System.Windows.Forms.TextBox txtMemRegenNomeFile;
+        private System.Windows.Forms.Button btnMemRegenSalvaImmegine;
+        private System.Windows.Forms.TextBox txtMemRegenNumBlocchiWR;
+        private System.Windows.Forms.Button btnMemRegenScriviImmDisp;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMemRegenNumBlocchi;
+        private System.Windows.Forms.Button btnMemRegenGeneraImmagine;
+        private System.Windows.Forms.Label lblMemRegenAvanzamentoRead;
+        private System.Windows.Forms.Label lblMemRegenAvanzamentoWrite;
     }
 }

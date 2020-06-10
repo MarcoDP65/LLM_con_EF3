@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>3.2.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -314,6 +314,7 @@
     <Compile Include="Forms\Forms LadeLight V2\frmCaricabatterieV2.Designer.cs">
       <DependentUpon>frmCaricabatterieV2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Forms LadeLight V2\llLvwCaricheSortableDS.cs" />
     <Compile Include="Forms\Forms LadeLight\frmCaricabatteriaClassiSupporto.cs" />
     <Compile Include="Forms\Forms LadeLight\frmCaricaBatteriaComandiProxy.cs">
       <SubType>Form</SubType>
@@ -561,6 +562,7 @@
     <Compile Include="Logiche\Display\DisplaySetupComponents.cs" />
     <Compile Include="Logiche\FileFirmware.cs" />
     <Compile Include="Logiche\FileFirmwareLL.cs" />
+    <Compile Include="Logiche\FileSetupRigeneratore.cs" />
     <Compile Include="Logiche\ImageDump.cs" />
     <Compile Include="Logiche\LogicheBase.cs" />
     <Compile Include="Logiche\MappaSpybatt.cs" />

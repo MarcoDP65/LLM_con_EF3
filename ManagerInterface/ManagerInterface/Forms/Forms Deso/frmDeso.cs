@@ -21,8 +21,7 @@ using Utility;
 using MdiHelper;
 using log4net;
 using log4net.Config;
-
-
+using Newtonsoft.Json;
 
 namespace PannelloCharger
 {
@@ -85,6 +84,7 @@ namespace PannelloCharger
         public System.Collections.Generic.List<sbAnalisiCorrente> ValoriTestCorrente = new List<sbAnalisiCorrente>();
         public System.Collections.Generic.List<mrDataPoint> ValoriPuntualiGrCorrenti = new List<mrDataPoint>();
 
+        public FileSetupRigeneratore ImmagineDeso = null;
 
 
         public string IdCorrente;
@@ -5764,6 +5764,7 @@ namespace PannelloCharger
                     return;
                 }
 
+
                 // Prima vuoto la memoria
 
                 if (_NumSequenze > 0)
@@ -5871,6 +5872,403 @@ namespace PannelloCharger
                 txtMemCicliStartAddr.Text = "2000";
             }
         }
+
+        private void btnMemRegenGeneraImmagine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1 : vuoto l'immagine
+                ImmagineDeso = new FileSetupRigeneratore();
+                txtMemRegenNumBlocchi.Text = "0";
+                lblMemRegenAvanzamentoRead.Visible = true;
+                Application.DoEvents();
+                AreaDatiRegen BloccoDati;
+
+                // Step 1:sequenze da 1 a 60; addr 0x2000
+                BloccoDati = new AreaDatiRegen();
+                BloccoDati.IdBlocco = 1;
+                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.StartAddress = 0x2000;
+                BloccoDati.NumBlocchi = 60;
+
+                if(!CaricaBloccoDati(BloccoDati))
+                {
+                    return;
+                }
+                ImmagineDeso.ListaBlocchi.Add(BloccoDati);
+
+                // Step 2:sequenze da 100 a 119; addr 0x65000
+                BloccoDati = new AreaDatiRegen();
+                BloccoDati.IdBlocco = 2;
+                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.StartAddress = 0x65000;
+                BloccoDati.NumBlocchi = 20;
+
+                if (!CaricaBloccoDati(BloccoDati))
+                {
+                    return;
+                }
+                ImmagineDeso.ListaBlocchi.Add(BloccoDati);
+
+
+                // Step 3:procedura 1; addr 0x12C000
+                BloccoDati = new AreaDatiRegen();
+                BloccoDati.IdBlocco = 3;
+                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.StartAddress = 0x12C000;
+                BloccoDati.NumBlocchi = 1;
+
+                if (!CaricaBloccoDati(BloccoDati))
+                {
+                    return;
+                }
+                ImmagineDeso.ListaBlocchi.Add(BloccoDati);
+
+
+                // Step 4:procedure 2; addr 0x18F000
+                BloccoDati = new AreaDatiRegen();
+                BloccoDati.IdBlocco = 4;
+                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.StartAddress = 0x18F000;
+                BloccoDati.NumBlocchi = 2;
+
+                if (!CaricaBloccoDati(BloccoDati))
+                {
+                    return;
+                }
+                ImmagineDeso.ListaBlocchi.Add(BloccoDati);
+
+
+                lblMemRegenAvanzamentoRead.Visible = false;
+                btnMemRegenSalvaImmegine.Enabled = true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+
+        }
+
+        private void btnMemRegenScriviImmDisp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ImmagineDeso == null) return;
+
+                if (ImmagineDeso.ListaBlocchi.Count < 1) return;
+
+                foreach(AreaDatiRegen BloccoDati in ImmagineDeso.ListaBlocchi)
+                {
+                    bool esito = ScriviBloccoDati(BloccoDati);
+                    if (!esito)
+                    {
+                        MessageBox.Show("Scrittura Area " + BloccoDati.IdBlocco.ToString() + " non riuscita", "Scrittura dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                MessageBox.Show("Scrittura Memoria Sequenze/Procedure completata", "Scrittura dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+        }
+
+
+        private bool CaricaBloccoDati(AreaDatiRegen BloccoAttivo)
+        {
+            try
+            {
+
+                uint _StartAddr = BloccoAttivo.StartAddress;
+                uint _TmpAddr;
+                ushort _NumSequenze = (ushort)BloccoAttivo.NumBlocchi;
+                bool _esito;
+                byte[] _dataArray;
+                int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                byte[] _tempBuffer;
+
+                txtMemRegenNumBlocchi.Text = BloccoAttivo.IdBlocco.ToString();
+
+                _numBytes = _NumSequenze * 0x1000;
+
+                _dataArray = new byte[_numBytes];
+                BloccoAttivo.Data = new byte[_numBytes];
+
+                _cicliCompleti = _numBytes / DataBlock;
+                _byteResidui = _numBytes % DataBlock;
+
+                lblMemRegenAvanzamentoRead.Text = _cicliCompleti.ToString() + " pacchetti + " + _byteResidui.ToString() + " bytes";
+
+                // Leggo prima i pacchetti interi
+                _tempBuffer = new byte[DataBlock];
+
+                for (int _step = 0; _step < _cicliCompleti; _step++)
+                {
+                    _TmpAddr = (uint)(_step * DataBlock);
+                    _esito = _sb.LeggiBloccoMemoria(_StartAddr + _TmpAddr, DataBlock, out _tempBuffer);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for (int _ii = 0; _ii < DataBlock; _ii++)
+                        {
+                            _dataArray[_TmpAddr + _ii] = _tempBuffer[_ii];
+                        }
+                        lblMemRegenAvanzamentoRead.Text =  _step.ToString() + " di " + _cicliCompleti.ToString();
+                        Application.DoEvents();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Errore lettura pacchetto " + _step.ToString(), "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+                }
+
+
+
+                // Ora Leggo il residuo
+                if (_byteResidui > 0)
+                {
+                    _tempBuffer = new byte[_byteResidui];
+
+
+                    _TmpAddr = (uint)(_cicliCompleti * DataBlock);
+                    _esito = _sb.LeggiBloccoMemoria(_StartAddr + _TmpAddr, (ushort)_byteResidui, out _tempBuffer);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for (int _ii = 0; _ii < _byteResidui; _ii++)
+                        {
+                            _dataArray[_TmpAddr + _ii] = _tempBuffer[_ii];
+                        }
+                        lblMemRegenAvanzamentoRead.Text = "Pacchetto Finale";
+                        Application.DoEvents();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Errore lettura pacchetto finale ", "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+
+                }
+
+                Log.Debug("--- Carica Immagine -------------------");
+                Log.Debug(FunzioniMR.hexdumpArray(_dataArray));
+                //ora salvo l'immagine
+                BloccoAttivo.Data = _dataArray;
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+                return false;
+            }
+
+
+        }
+
+
+        private bool ScriviBloccoDati(AreaDatiRegen BloccoAttivo)
+        {
+
+
+            try
+            {
+
+                uint _StartAddr = BloccoAttivo.StartAddress;
+                uint _TmpAddr;
+                ushort _NumByte;
+                ushort _NumSequenze = (ushort)BloccoAttivo.NumBlocchi;
+                bool _esito;
+                byte[] _dataArray;
+                int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                byte[] _tempBuffer;
+                lblMemRegenAvanzamentoWrite.Visible = true;
+                txtMemRegenNumBlocchiWR.Text = BloccoAttivo.IdBlocco.ToString();
+                // Prima vuoto la memoria
+
+                _numBytes = _NumSequenze * 0x1000;
+
+                if (_NumSequenze > 0)
+                {
+                    int _bloccoCorrente;
+                    _TmpAddr = _StartAddr;
+                    for (int _cicloBlocchi = 0; _cicloBlocchi < _NumSequenze; _cicloBlocchi++)
+                    {
+                        _bloccoCorrente = _cicloBlocchi + 1;
+                        _esito = _sb.CancellaBlocco4K(_TmpAddr);
+                        if (!_esito)
+                        {
+                            MessageBox.Show("Cancellazione del blocco " + _bloccoCorrente.ToString() + " non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                        else
+                        {
+                            _TmpAddr += 0x1000;
+                            lblMemRegenAvanzamentoWrite.Text = "Cancellazione pagina " + _bloccoCorrente.ToString();
+
+                            Application.DoEvents();
+                        }
+                    }
+
+                }
+                else
+                {
+                    return false;
+                }
+
+                DataBuffer = BloccoAttivo.Data;
+
+
+                uint _stepSent = 0;
+                uint _posizione = 0;
+                uint _datiTrasferiti = 0;
+                byte[] _Tempbuffer = new byte[DataBlock];
+                _TmpAddr = _StartAddr;
+                while ((_numBytes - _datiTrasferiti) > DataBlock)
+                {
+
+                    for (int _blockStep = 0; _blockStep < DataBlock; _blockStep++)
+                    {
+                        _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                        _posizione++;
+                        _datiTrasferiti++;
+                    }
+                    _esito = _sb.ScriviBloccoMemoria(_TmpAddr, (ushort)DataBlock, _Tempbuffer);
+
+                    _TmpAddr += DataBlock;
+                    _stepSent++;
+                    lblMemRegenAvanzamentoWrite.Text = "Pacchetto " + _stepSent.ToString();
+                    Application.DoEvents();
+
+                }
+
+
+                // Ora trasmetto il residuo
+                int _residuo = (int)(_numBytes - _datiTrasferiti);
+                _Tempbuffer = new byte[_residuo];
+                for (int _blockStep = 0; _blockStep < _residuo; _blockStep++)
+                {
+                    _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                    _posizione++;
+                    _datiTrasferiti++;
+                }
+                _esito = _sb.ScriviBloccoMemoria(_TmpAddr, (ushort)_residuo, _Tempbuffer);
+                _stepSent++;
+
+                lblMemRegenAvanzamentoWrite.Text = "Pacchetto " + _stepSent.ToString();
+                Application.DoEvents();
+
+
+                lblMemRegenAvanzamentoWrite.Text = _NumSequenze.ToString() + " pagine inserite";
+                lblMemRegenAvanzamentoWrite.Visible = true;
+                Application.DoEvents();
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+
+
+        private void btnMemRegenCercaFileWr_Click(object sender, EventArgs e)
+        {
+            sfdExportDati.Filter = "RSF Regeneraton Setup File (*.rsf)|*.rsf|All files (*.*)|*.*";
+            sfdExportDati.ShowDialog();
+            txtMemRegenNomeFile.Text = sfdExportDati.FileName;
+        }
+
+        private void btnMemRegenCercaFileRd_Click(object sender, EventArgs e)
+        {
+            sfdImportDati.Filter = "RSF Regeneraton Cicles File (*.rsf)|*.rsf|All files (*.*)|*.*";
+            sfdImportDati.ShowDialog();
+            txtMemRegenNomeFile.Text = sfdImportDati.FileName;
+        }
+
+        private void btnMemRegenSalvaImmegine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string filePath = txtMemRegenNomeFile.Text;
+
+                if (filePath == "") return;
+
+                if (!File.Exists(filePath)) File.Create(filePath).Close();
+                Log.Debug("file prepara esportazione");
+                string JsonData = JsonConvert.SerializeObject(ImmagineDeso);
+                Log.Debug("file generato");
+                // Prima comprimo i dati
+                // string JsonZip = FunzioniComuni.CompressString(JsonData);
+
+                File.WriteAllText(filePath, JsonData);
+
+                Log.Debug("file salvato");
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnMemRegenSalvaImmegine_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnMemRegenCaricaImmagine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnMemRegenScriviImmDisp.Enabled = false;
+                txtMemRegenNumBlocchiWR.Text = "";
+
+                string filePath = txtMemRegenNomeFile.Text;
+                if (File.Exists(filePath))
+                {
+                    string _infile = File.ReadAllText(filePath);
+                    ImmagineDeso = JsonConvert.DeserializeObject<FileSetupRigeneratore>(_infile);
+                    Log.Debug("file caricato");
+                    if(ImmagineDeso != null)
+                    {
+                        txtMemRegenNumBlocchiWR.Text = ImmagineDeso.ListaBlocchi.Count.ToString();
+
+                        if (ImmagineDeso.ListaBlocchi.Count >0 )
+                        {
+                            btnMemRegenScriviImmDisp.Enabled = true;
+
+                        }
+                    }
+                    btnMemRegenScriviImmDisp.Enabled = true;
+
+                    return;
+                }
+                    
+
+                Log.Debug("Caricamento file fallito");
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnMemRegenSalvaImmegine_Click: " + Ex.Message);
+            }
+
+        }
+
+
     }
 
 }

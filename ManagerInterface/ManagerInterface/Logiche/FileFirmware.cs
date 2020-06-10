@@ -860,6 +860,7 @@ namespace ChargerLogic
                     case "3.01":
                     case "3.02":
                     case "3.03":
+                    case "3.04":
                         // Livello 6/7;
                         // Valido con bootloader 1.02.xx
                         return (_blv == 2);

@@ -67,7 +67,7 @@ namespace PannelloCharger
                 {
                     Text = "ID",
                     AspectName = "strSortIdMemCiclo",
-                    Width = 0,
+                    Width = 50,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
                     
@@ -82,7 +82,7 @@ namespace PannelloCharger
                     Width = 50,
                     HeaderTextAlign = HorizontalAlignment.Left,
                     TextAlign = HorizontalAlignment.Left,
-                    
+                                   
                 };
                 flvCicliListaCariche.AllColumns.Add(colIdMemCiclo);
 
@@ -695,15 +695,6 @@ namespace PannelloCharger
                 flvCicliListaCariche.AllColumns.Add(colstrVettErrUndef);
 
 
-
-
-
-
-
-
-
-
-
                 BrightIdeasSoftware.OLVColumn colstrNumEventiBrevi = new BrightIdeasSoftware.OLVColumn()
                 {
                     Text = "Brevi",
@@ -737,6 +728,7 @@ namespace PannelloCharger
                 flvCicliListaCariche.AllColumns.Add(colRowFiller);
 
                 flvCicliListaCariche.RebuildColumns();
+
                 flvCicliListaCariche.SetObjects(_cb.MemoriaCicli);
                 flvCicliListaCariche.Sort(sortColPosizioneCiclo, SortOrder.Descending);
                 flvCicliListaCariche.BuildList();

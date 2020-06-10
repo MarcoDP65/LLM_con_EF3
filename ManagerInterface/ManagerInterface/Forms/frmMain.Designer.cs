@@ -532,9 +532,9 @@
             this.tstPulsanti.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tstBtnCercaUsb,
             this.tstBtnCercaWireless,
+            this.tstBtnExport,
             this.tstBtnSave,
             this.tstBtnCercaRS232,
-            this.tstBtnExport,
             this.tstBtnPrint,
             this.tstBtnRefresh,
             this.toolStripSeparator2,

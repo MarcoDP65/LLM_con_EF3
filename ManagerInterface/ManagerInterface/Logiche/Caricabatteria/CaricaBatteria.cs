@@ -85,6 +85,8 @@ namespace ChargerLogic
         public DatiConfigCariche DatiBase { get; set; }
 
         public List<llMemoriaCicli> MemoriaCicli;
+        public llLvwCaricheSortableDS MemCicliLvwDS;
+
         public List<llMemBreve> BreviCicloCorrente;
 
         public llDataModel ModelloDati = new llDataModel();
@@ -2914,6 +2916,10 @@ namespace ChargerLogic
                 return _datiRicevuti;
             }
         }
+
+        /******************************************************************************************************/
+
+
 
     }
 
