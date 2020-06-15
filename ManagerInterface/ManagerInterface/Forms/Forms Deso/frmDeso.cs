@@ -6192,15 +6192,30 @@ namespace PannelloCharger
         private void btnMemRegenCercaFileWr_Click(object sender, EventArgs e)
         {
             sfdExportDati.Filter = "RSF Regeneraton Setup File (*.rsf)|*.rsf|All files (*.*)|*.*";
-            sfdExportDati.ShowDialog();
+            DialogResult esito =  sfdExportDati.ShowDialog();
+            if (esito == DialogResult.OK)
+            {
+                txtMemRegenNomeFile.Text = sfdExportDati.FileName;
+                btnMemRegenSalvaImmegine_Click(sender,e);
+                MessageBox.Show("File generato", "Creazione file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             txtMemRegenNomeFile.Text = sfdExportDati.FileName;
         }
 
         private void btnMemRegenCercaFileRd_Click(object sender, EventArgs e)
         {
             sfdImportDati.Filter = "RSF Regeneraton Cicles File (*.rsf)|*.rsf|All files (*.*)|*.*";
-            sfdImportDati.ShowDialog();
-            txtMemRegenNomeFile.Text = sfdImportDati.FileName;
+            DialogResult esito = sfdImportDati.ShowDialog();
+            if (esito == DialogResult.OK)
+            {
+                txtMemRegenNomeFile.Text = sfdImportDati.FileName;
+                btnMemRegenCaricaImmagine_Click(sender, e);
+                MessageBox.Show("File caricato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+
+           //txtMemRegenNomeFile.Text = sfdImportDati.FileName;
         }
 
         private void btnMemRegenSalvaImmegine_Click(object sender, EventArgs e)
