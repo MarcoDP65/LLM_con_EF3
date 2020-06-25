@@ -8,7 +8,7 @@ namespace ChargerLogic
 {
     public class FileSetupRigeneratore
     {
-        public enum TipoArea :  byte { Sequenze = 0x01, Procedure = 0x02, NonDefinito = 0x00 };
+        public enum TipoArea :  byte { Sequenze = 0x01, Procedure = 0x02, Lingua = 0xF0, NonDefinito = 0x00 };
         public List<AreaDatiRegen> ListaBlocchi { get; set; }
 
         public FileSetupRigeneratore()

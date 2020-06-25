@@ -512,63 +512,6 @@ namespace PannelloCharger
             }
         }
 
-
-
-        public bool CaricaSbOrigine(string IdApparato, MoriData._db dbCorrente, bool ApparatoConnesso = false)
-        {
-            bool _esito = false;
-            bool _esitoDati = false;
-            try
-            {
-                parametriSistema _tmpParametri = new parametriSistema();
-
-                _sbTemp = new UnitaSpyBatt(ref _tmpParametri, dbCorrente, _logiche.currentUser.livello);
-                _esitoDati = _sbTemp.CaricaCompleto(IdApparato, dbCorrente, ApparatoConnesso);
-
-                _esito = _esitoDati;
-
-
-                return _esito;
-            }
-            catch
-            {
-                return _esito;
-            }
-
-        }
-
-        private bool RiscriviTestata(byte[] _tempData)
-        {
-            bool _esito = false;
-
-            try
-            {
-                int _lunghezzaValida;
-                int _scartati;
-                uint _StartAddr = 0;
-                ushort _NumByte = 0x80;
-                
-
-
-                _lunghezzaValida = _tempData.Length; 
-
-                if (_lunghezzaValida > 0)
-                {
-                    _esito = _sb.ScriviBloccoMemoria(_StartAddr, (ushort)_lunghezzaValida, _tempData);
-
-                }
-                return _esito;
-
-            }
-            catch (Exception Ex)
-            {
-                Log.Error("VerificaWriteMem: " + Ex.Message);
-                return _esito;
-            }
-
-        }
-
-
     }
 
 }

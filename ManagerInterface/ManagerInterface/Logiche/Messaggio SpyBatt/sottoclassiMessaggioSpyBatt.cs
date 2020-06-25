@@ -2071,6 +2071,10 @@ namespace ChargerLogic
                         Log.Debug(FunzioniMR.hexdumpArray(_risposta));
 
                         RevBootloader = ArrayToString(_risposta, startByte, 6);
+                        if(_risposta.Length == 7)
+                        {
+                            return EsitoRisposta.MessaggioOk;
+                        }
                         startByte += 6;
                         RevFirmware = ArrayToString(_risposta, startByte, 6);
                         startByte += 6;
