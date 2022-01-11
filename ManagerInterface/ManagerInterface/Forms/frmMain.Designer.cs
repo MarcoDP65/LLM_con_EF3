@@ -93,9 +93,9 @@
             this.tstPulsanti = new System.Windows.Forms.ToolStrip();
             this.tstBtnCercaUsb = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaWireless = new System.Windows.Forms.ToolStripButton();
+            this.tstBtnExport = new System.Windows.Forms.ToolStripButton();
             this.tstBtnSave = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaRS232 = new System.Windows.Forms.ToolStripButton();
-            this.tstBtnExport = new System.Windows.Forms.ToolStripButton();
             this.tstBtnPrint = new System.Windows.Forms.ToolStripButton();
             this.tstBtnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -557,6 +557,13 @@
             this.tstBtnCercaWireless.Name = "tstBtnCercaWireless";
             this.tstBtnCercaWireless.Click += new System.EventHandler(this.tstBtnCercaWireless_Click);
             // 
+            // tstBtnExport
+            // 
+            this.tstBtnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.tstBtnExport, "tstBtnExport");
+            this.tstBtnExport.Name = "tstBtnExport";
+            this.tstBtnExport.Click += new System.EventHandler(this.tstBtnExport_Click);
+            // 
             // tstBtnSave
             // 
             this.tstBtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -570,13 +577,6 @@
             resources.ApplyResources(this.tstBtnCercaRS232, "tstBtnCercaRS232");
             this.tstBtnCercaRS232.Name = "tstBtnCercaRS232";
             this.tstBtnCercaRS232.Click += new System.EventHandler(this.tstBtnCercaRS232_Click);
-            // 
-            // tstBtnExport
-            // 
-            this.tstBtnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.tstBtnExport, "tstBtnExport");
-            this.tstBtnExport.Name = "tstBtnExport";
-            this.tstBtnExport.Click += new System.EventHandler(this.tstBtnExport_Click);
             // 
             // tstBtnPrint
             // 

@@ -182,6 +182,7 @@ namespace PannelloCharger
             bool _esitoFunzione = false;
             try
             {
+                // Firmware
                 txtFwRevBootloader.Text = "...";
                 txtFwRevFirmware.Text = "";
                 txtFwStatoMicro.Text = "";
@@ -190,6 +191,16 @@ namespace PannelloCharger
                 txtFwStatoSA1.Text = "";
                 txtFwStatoSA2.Text = "";
                 txtFwAreaTestata.Text = "";
+                // Init
+                txtInitRevBootloader.Text = "...";
+                txtInitRevFirmware.Text = "";
+                txtInitStatoMicro.Text = "";
+                txtInitStatoHA1.Text = "";
+                txtInitStatoHA2.Text = "";
+                txtFwStatoSA1.Text = "";
+                txtFwStatoSA2.Text = "";
+                txtFwAreaTestata.Text = "";
+
                 Log.Debug("----------------------- CaricaStatoFirmware ---------------------------");
 
 
@@ -207,11 +218,20 @@ namespace PannelloCharger
                         txtFwRevBootloader.Text = _sb.StatoFirmware.strRevBootloader;
                         txtFwRevFirmware.Text = _sb.StatoFirmware.strRevFirmware;
 
+                        txtInitRevBootloader.Text = _sb.StatoFirmware.strRevBootloader;
+                        txtInitRevFirmware.Text = _sb.StatoFirmware.strRevFirmware;
+
                         MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA1, true);
                         MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _sb.StatoFirmware.Stato, ref txtFwStatoHA2, true);
                         MostraStato(FirmwareManager.MascheraStato.Blocco1SW, _sb.StatoFirmware.Stato, ref txtFwStatoSA1, false);
                         MostraStato(FirmwareManager.MascheraStato.Blocco2SW, _sb.StatoFirmware.Stato, ref txtFwStatoSA2, false);
                         MostraStato(FirmwareManager.MascheraStato.FlashmPHW, _sb.StatoFirmware.Stato, ref txtFwStatoMicro, true);
+
+                        MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _sb.StatoFirmware.Stato, ref txtInitStatoHA1, true);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _sb.StatoFirmware.Stato, ref txtInitStatoHA2, true);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco1SW, _sb.StatoFirmware.Stato, ref txtInitStatoSA1, false);
+                        MostraStato(FirmwareManager.MascheraStato.Blocco2SW, _sb.StatoFirmware.Stato, ref txtInitStatoSA2, false);
+                        MostraStato(FirmwareManager.MascheraStato.FlashmPHW, _sb.StatoFirmware.Stato, ref txtInitStatoMicro, true);
 
                         _esitoFunzione = true;
 
@@ -220,6 +240,7 @@ namespace PannelloCharger
                         if ((_sb.StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.BootLoaderInUso) == (byte)FirmwareManager.MascheraStato.BootLoaderInUso)
                         {
                             txtFwAreaTestata.Text = "BL";
+                            txtInitAreaTestata.Text = "BL";
                         }
                         else
                         {
@@ -232,12 +253,14 @@ namespace PannelloCharger
                             if (_esitoMicro1)
                             {
                                 txtFwAreaTestata.Text = "A1";
+                                txtInitAreaTestata.Text = "A1";
                             }
                             else
                             {
                                 if (_esitoMicro2)
                                 {
                                     txtFwAreaTestata.Text = "A2";
+                                    txtInitAreaTestata.Text = "A2";
                                 }
 
                             }
@@ -281,6 +304,11 @@ namespace PannelloCharger
                     txtFWRevA1AddrP.Text = "";
                     txtFWRevA1LenP.Text = "";
                     _area = 0x1C0000;
+
+                    txtInitRevA1State.Text = "KO";
+                    txtInitRevA1State.ForeColor = Color.Red;
+                    txtInitRevA1RevFw.Text = "";
+                    txtInitRevA1RilFw.Text = "";
                 }
                 else
                 {
@@ -295,6 +323,11 @@ namespace PannelloCharger
                     txtFWRevA2AddrP.Text = "";
                     txtFWRevA2LenP.Text = "";
                     _area = 0x1E0000;
+
+                    txtInitRevA2State.Text = "KO";
+                    txtInitRevA2State.ForeColor = Color.Red;
+                    txtInitRevA2RevFw.Text = "";
+                    txtInitRevA2RilFw.Text = "";
 
                 }
 
@@ -319,6 +352,11 @@ namespace PannelloCharger
                             txtFWRevA1LenN2.Text = _tempFW.FirmwareBlock.LenFlash2.ToString();
                             txtFWRevA1AddrP.Text = _tempFW.FirmwareBlock.AddrProxy.ToString();
                             txtFWRevA1LenP.Text = _tempFW.FirmwareBlock.LenProxy.ToString();
+
+                            txtInitRevA1State.Text = "OK";
+                            txtInitRevA1State.ForeColor = Color.Black;
+                            txtInitRevA1RevFw.Text = _tempFW.FirmwareBlock.Release;
+                            txtInitRevA1RilFw.Text = _tempFW.FirmwareBlock.ReleaseDate;
                         }
                         else
                         {
@@ -332,6 +370,11 @@ namespace PannelloCharger
                             txtFWRevA2LenN2.Text = _tempFW.FirmwareBlock.LenFlash2.ToString();
                             txtFWRevA2AddrP.Text = _tempFW.FirmwareBlock.AddrProxy.ToString();
                             txtFWRevA2LenP.Text = _tempFW.FirmwareBlock.LenProxy.ToString();
+
+                            txtInitRevA2State.Text = "OK";
+                            txtInitRevA2State.ForeColor = Color.Black;
+                            txtInitRevA2RevFw.Text = _tempFW.FirmwareBlock.Release;
+                            txtInitRevA2RilFw.Text = _tempFW.FirmwareBlock.ReleaseDate;
                         }
                     }
 
@@ -345,6 +388,79 @@ namespace PannelloCharger
                 return _esito;
             }
         }
+
+
+        public bool CaricaSeqProc()
+        {
+            bool _esito = false;
+            byte[] _bufferDati = new byte[64];
+            //uint _area;
+
+            try
+            {
+                DataBlockInfo InfoSequenze = new DataBlockInfo();
+
+                txtInitProcSeqRev.Text = "";
+                txtInitProcSeqData.Text = "";
+
+                _esito = _sb.LeggiBloccoMemoria(0x124000, 32, out _bufferDati);
+                if (_bufferDati.Length == 32)
+                {
+                    InfoSequenze = new DataBlockInfo();
+                    _esito = InfoSequenze.FromByteArray(_bufferDati);
+
+                    txtInitProcSeqRev.Text = InfoSequenze.BlockRelease; 
+                    txtInitProcSeqData.Text = InfoSequenze.strDataRilascio; 
+
+                }
+
+                return _esito;
+
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+
+
+        public bool CaricaListaLingueAttive()
+        {
+            bool _esito = false;
+            byte[] _bufferDati = new byte[64];
+            //uint _area;
+
+            try
+            {
+                lbxInitLng.Items.Clear();
+                for (int _idLingua = 0; _idLingua<6; _idLingua++)
+                {
+                    uint IndirizzoAttivo = (uint)(0x126000 + (0x1000 * _idLingua));
+                    _esito = _sb.LeggiBloccoMemoria(IndirizzoAttivo,32, out _bufferDati);
+                    if(_esito)
+                    {
+                        if (_bufferDati[0] != 0xFF)
+                        {
+
+                            string Lingua = FunzioniComuni.ArrayToString(_bufferDati, 0, 16,true);
+
+                            lbxInitLng.Items.Add(Lingua);
+                        }
+                            
+                    }
+                }
+                return _esito;
+
+            }
+            catch
+            {
+                return _esito;
+            }
+        }
+
+
+
 
         public bool SwitchAreaFw(string IdApparato, bool SerialeCollegata, byte IdArea)
         {
@@ -482,7 +598,7 @@ namespace PannelloCharger
 
                 txtFWSBFArea.Text = _area.ToString();
                 _avCicli.ParametriWorker.MainCount = 100;
-
+                _sb.ModoDesolfatatore = true;
                 _avCicli.sbLocale = _sb;
                 _avCicli.FirmwareBlock = _firmMng.FirmwareBlock;
                 _avCicli.FirmwareArea = _area;
@@ -511,6 +627,50 @@ namespace PannelloCharger
 
             }
         }
+
+        public bool MostraInitSetup()
+        {
+            try
+            {
+                if(InitSetup == null)
+                {
+                    return false;
+                }
+
+                chkInitFWArea1.Checked = InitSetup.Valori.FWArea1Enabled;
+                txtInitDirFWArea1.Text = InitSetup.Valori.FWArea1Filename;
+
+                chkInitFWArea2.Checked = InitSetup.Valori.FWArea2Enabled;
+                txtInitDirFWArea2.Text = InitSetup.Valori.FWArea2Filename;
+
+                chkInitProcSeq.Checked = InitSetup.Valori.ProcSeqEnabled;
+                txtInitDirProcSeq.Text = InitSetup.Valori.ProcSeqFilename;
+
+                chkInitLingue.Checked = InitSetup.Valori.LngEnabled;
+                txtInitDirLingue.Text = InitSetup.Valori.LngFilename;
+
+                chkInitSerArea.Checked = InitSetup.Valori.AreaEnabled;
+                if(InitSetup.Valori.AreaAttiva == 2)
+                {
+                    optInitSerAreaA2.Checked = true;
+                }
+                else
+                {
+                    optInitSerAreaA1.Checked = true;
+                }
+
+                chkInitDeleteTest.Checked = InitSetup.Valori.CancellaValori;
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
 
     }
 

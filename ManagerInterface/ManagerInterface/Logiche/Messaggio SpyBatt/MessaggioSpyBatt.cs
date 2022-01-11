@@ -36,6 +36,7 @@ namespace ChargerLogic
         public ParametriSpybatt ParametriGenerali;
         public OcBaudRate  BrOCcorrente = OcBaudRate.OFF;
         public OcEchoMode EchoOCcorrente = OcEchoMode.OFF;
+        public bool Desolfatatore = false;
 
         public byte[] LLstopMessage;
 
@@ -53,8 +54,9 @@ namespace ChargerLogic
 
         private EsitoRisposta _ultimaRisposta = EsitoRisposta.MessaggioVuoto;
 
-        public MessaggioSpyBatt()
+        public MessaggioSpyBatt(bool ModoDesolfatatore = false)
         {
+            Desolfatatore = ModoDesolfatatore;
             fwLevel = 0;
             fwAckLevel = 0;
         }
@@ -92,92 +94,115 @@ namespace ChargerLogic
 
                 if (FwLevelId.Length >= 4) _LocalVer = FwLevelId.Substring(0, 4);
 
-                switch (_LocalVer)
+                if (!Desolfatatore)
                 {
-                    case "1.04":
-                    case "1.05":
-                    case "1.06":
-                        return 0;
-                    // break;
+                    switch (_LocalVer)
+                    {
+                        case "1.04":
+                        case "1.05":
+                        case "1.06":
+                            return 0;
+                        // break;
 
-                    case "1.07":
-                        return 1;
-                    // break;
+                        case "1.07":
+                            return 1;
+                        // break;
 
-                    case "1.08":
-                        if (FwLevelId == "1.08.01")
-                            return 2;
-                        else
+                        case "1.08":
+                            if (FwLevelId == "1.08.01")
+                                return 2;
+                            else
+                                return 3;
+                        // break;
+                        case "1.09":
                             return 3;
-                    // break;
-                    case "1.09":
-                        return 3;
 
-                    case "1.10":
-                    case "1.11":
-                    case "1.12":
-                    case "1.13":
-                    case "2.01":
-                        return 4;
-                    case "2.02":
-                        {
+                        case "1.10":
+                        case "1.11":
+                        case "1.12":
+                        case "1.13":
+                        case "2.01":
+                            return 4;
+                        case "2.02":
+                            {
+                                switch (FwLevelId)
+                                {
+                                    case "2.02.01":
+                                    case "2.02.02":
+                                    case "2.02.03":
+                                        return 4;
+                                    case "2.02.04":
+                                    case "2.02.05":
+                                    case "2.02.06":
+                                    case "2.02.07":
+                                    case "2.02.08":
+                                        return 5;
+                                    default:
+                                        return 5;
+                                }
+
+                            }
+                        case "2.03":
                             switch (FwLevelId)
                             {
-                                case "2.02.01":
-                                case "2.02.02":
-                                case "2.02.03":
-                                    return 4;
-                                case "2.02.04":
-                                case "2.02.05":
-                                case "2.02.06":
-                                case "2.02.07":
-                                case "2.02.08":
-                                    return 5;
+                                case "2.03.05":
+                                case "2.03.06":
+                                    return 7;
                                 default:
-                                    return 5;
+                                    return 6;
                             }
 
-                        }
-                    case "2.03":
-                        switch (FwLevelId)
-                        {
-                            case "2.03.05":
-                            case "2.03.06":
-                                return 7;
-                            default:
-                                return 6;
-                        }
 
+                        case "2.04":
+                            switch (FwLevelId)
+                            {
 
-                    case "2.04":
-                        switch (FwLevelId)
-                        {
+                                case "2.04.06":
+                                    return 9;
+                                case "2.04.07":
+                                case "2.04.08":
+                                case "2.04.09":
+                                case "2.04.10":
+                                case "2.04.11":
+                                    return 10;
+                                default:
+                                    return 8;
+                            }
 
-                            case "2.04.06":
-                                return 9;
-                            case "2.04.07":
-                            case "2.04.08":
-                            case "2.04.09":
-                            case "2.04.10":
-                            case "2.04.11":
+                        case "3.00":
+                        case "3.01":
+                            {
                                 return 10;
-                            default:
-                                return 8;
-                        }
-
-                    case "3.00":
-                    case "3.01":
-                        {
-                            return 10;
-                        }
+                            }
 
 
-                    default:
-                        //variante per marco
-                        //return -1;
-                        return 8;
-                        //  break;
+                        default:
+                            //variante per marco
+                            //return -1;
+                            return 8;
+                            //  break;
+                    }
                 }
+                else
+                {
+                    switch (_LocalVer)
+                    {
+                        case "2.01":
+                        case "2.02":
+                        case "2.03":
+                            return 10;
+
+
+
+                        default:
+                            //variante per marco
+                            //return -1;
+                            return 10;
+                            //  break;
+                    }
+                }
+
+
             }
             catch
             {
@@ -2835,6 +2860,9 @@ namespace ChargerLogic
             }
 
         }
+
+
+
 
         public new ushort ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes)
         {

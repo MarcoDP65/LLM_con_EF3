@@ -418,7 +418,7 @@ namespace Utility
             byte[] _arrayResult = new byte[3];
             _arrayResult[0] = 1;
             _arrayResult[1] = 1;
-            _arrayResult[2] = 15;
+            _arrayResult[2] = 0;
 
             try
             {
@@ -2025,6 +2025,82 @@ namespace Utility
             return _tempArray;
         }
 
+        public static bool IfCleanArray(byte[] source, int lenght = 0, int start = 0)
+        {
+            try
+            {
+                if (lenght == 0)
+                {
+                    lenght = source.Length - start;
+                }
+                bool trovatoFF = false;
+                for (int _i = 0; _i < lenght; _i++)
+                {
+                    if (source[_i + start] == 0xFF)
+                    {
+                        trovatoFF = true;
+                        return trovatoFF;
+                    }
+                }
+
+                return trovatoFF;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static string StringaDataTS(byte[] DataShort)
+        {
+            try
+            {
+                string _timestamp = "";
+                short _tempAnno = 2000;
+                _timestamp += DataShort[0].ToString("00");
+                _timestamp += "/" + DataShort[1].ToString("00");
+                _tempAnno += (short)DataShort[2];
+                _timestamp += "/" + _tempAnno.ToString("0000");
+                return _timestamp;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        public static string StringaTimestamp(byte[] Dataora)
+        {
+            try
+            {
+                if (Dataora == null)
+                {
+                    return "N.D.";
+                }
+                else
+                {
+                    if (Dataora[0] > 31 || Dataora[0] < 1 || Dataora[1] > 12 || Dataora[1] < 1)
+                    {
+                        return "N.D.";
+                    }
+                    else
+                    {
+                        string _timestamp = "";
+                        _timestamp += Dataora[0].ToString("00");
+                        _timestamp += "/" + Dataora[1].ToString("00");
+                        _timestamp += "/" + Dataora[2].ToString("00");
+                        _timestamp += "  " + Dataora[3].ToString("00");
+                        _timestamp += ":" + Dataora[4].ToString("00");
+                        return _timestamp;
+                    }
+                }
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+
         public static byte[] StringToArray(string source, int ArrayLen, int Start = 0)
         {
             string _tempString = "";
@@ -2241,7 +2317,7 @@ namespace Utility
         /// <param name="start">Inizio con base 0.</param>
         /// <param name="lenght">Lunghezza.</param>
         /// <returns></returns>
-        public static string ArrayToString(byte[] source, int start, int lenght)
+        public static string ArrayToString(byte[] source, int start, int lenght, bool StopToFF = false)
         {
 
 
@@ -2249,6 +2325,19 @@ namespace Utility
             {
                 if ((source.Length - start) < lenght)
                     return "";
+                if (StopToFF)
+                {
+                    int CurrPos = 0;
+                    while (CurrPos < lenght)
+                    {
+                        if (source[CurrPos] == 0xFF)
+                        {
+                            lenght = CurrPos;
+                            break;
+                        }
+                        CurrPos++;
+                    }
+                }
 
                 string result = System.Text.Encoding.UTF8.GetString(source, start, lenght);
                 return result;

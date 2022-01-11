@@ -25,6 +25,7 @@ using Newtonsoft.Json;
 using ExcelDataReader;
 
 using System.Diagnostics;
+using Syncfusion.Windows.Forms.Tools.MultiColumnTreeView;
 
 namespace PannelloCharger
 {
@@ -70,7 +71,7 @@ namespace PannelloCharger
         public byte[] LngDataBuffer;
 
         private List<string> LingueValide;
-
+        public brInitSetup InitSetup;
 
 
 
@@ -89,7 +90,7 @@ namespace PannelloCharger
 
         public string IdCorrente;
 
-        public frmDesolfatatore(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate)
+        public frmDesolfatatore(ref parametriSistema _par, bool CaricaDati, string IdApparato, LogicheBase Logiche, bool SerialeCollegata, bool AutoUpdate, bool ModoDesolfatatore = true)
         {
             bool _esito;
             try
@@ -104,10 +105,16 @@ namespace PannelloCharger
 
                 Log.Debug("----------------------- frmSpyBat ---------------------------");
 
-                _msg = new MessaggioSpyBatt();
-                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello);
+                _msg = new MessaggioSpyBatt(ModoDesolfatatore);
+
+                _sb = new UnitaSpyBatt(ref _parametri, _logiche.dbDati.connessione, _logiche.currentUser.livello, ModoDesolfatatore);
+                //_sb.Desolfatatore = ModoDesolfatatore;
 
                 _stat = new StatMemLungaSB();
+                InitSetup = new brInitSetup(_logiche.dbDati.connessione);
+                InitSetup.caricaDati(1);
+                MostraInitSetup();
+
                 string _idCorrente = IdApparato;
                 abilitaSalvataggi(false);
 
@@ -204,7 +211,7 @@ namespace PannelloCharger
 
                 if (SerialeCollegata)
                 {
-                    _msg = new MessaggioSpyBatt();
+                    _msg = new MessaggioSpyBatt(true);
                     _esito = _sb.apriPorta();
                     if (!_esito)
                     {
@@ -260,7 +267,8 @@ namespace PannelloCharger
 
                 if (SerialeCollegata)
                 {
-                    _msg = new MessaggioSpyBatt();
+                    _msg = new MessaggioSpyBatt(true);
+      
                     _esito = _sb.apriPorta();
                     if (!_esito)
                     {
@@ -3917,7 +3925,7 @@ namespace PannelloCharger
                 // Step 1:sequenze da 1 a 60; addr 0x2000
                 BloccoDati = new AreaDatiRegen();
                 BloccoDati.IdBlocco = 1;
-                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.Tipo = AreaDatiRegen.TipoArea.Sequenze;
                 BloccoDati.StartAddress = 0x2000;
                 BloccoDati.NumBlocchi = 60;
 
@@ -3930,7 +3938,7 @@ namespace PannelloCharger
                 // Step 2:sequenze da 100 a 119; addr 0x65000
                 BloccoDati = new AreaDatiRegen();
                 BloccoDati.IdBlocco = 2;
-                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.Tipo = AreaDatiRegen.TipoArea.Sequenze;
                 BloccoDati.StartAddress = 0x65000;
                 BloccoDati.NumBlocchi = 20;
 
@@ -3944,7 +3952,7 @@ namespace PannelloCharger
                 // Step 3:procedura 1; addr 0x12C000
                 BloccoDati = new AreaDatiRegen();
                 BloccoDati.IdBlocco = 3;
-                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.Tipo = AreaDatiRegen.TipoArea.Sequenze;
                 BloccoDati.StartAddress = 0x12C000;
                 BloccoDati.NumBlocchi = 1;
 
@@ -3958,7 +3966,7 @@ namespace PannelloCharger
                 // Step 4:procedure 2; addr 0x18F000
                 BloccoDati = new AreaDatiRegen();
                 BloccoDati.IdBlocco = 4;
-                BloccoDati.Tipo = FileSetupRigeneratore.TipoArea.Sequenze;
+                BloccoDati.Tipo = AreaDatiRegen.TipoArea.Sequenze;
                 BloccoDati.StartAddress = 0x18F000;
                 BloccoDati.NumBlocchi = 2;
 
@@ -3971,6 +3979,7 @@ namespace PannelloCharger
 
                 lblMemRegenAvanzamentoRead.Visible = false;
                 btnMemRegenSalvaImmegine.Enabled = true;
+                InizializzaVistaBlocchi();
 
             }
             catch (Exception Ex)
@@ -4005,6 +4014,106 @@ namespace PannelloCharger
             catch (Exception Ex)
             {
                 Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+        }
+
+        private bool InizializzaVistaBlocchi()
+        {
+            try
+            {
+                HeaderFormatStyle _stile = new HeaderFormatStyle();
+                _stile.SetBackColor(Color.DarkGray);
+                _stile.SetForeColor(Color.Yellow);
+                Font _carattere = new Font("Tahoma", 9, FontStyle.Bold);
+                _stile.SetFont(_carattere);
+                Font _colonnaBold = new Font("Tahoma", 8, FontStyle.Bold);
+                Font _carTesto = new Font("Tahoma", 10, FontStyle.Regular);
+
+                lvwPackContenuto.HeaderUsesThemes = false;
+                lvwPackContenuto.HeaderFormatStyle = _stile;
+                lvwPackContenuto.UseAlternatingBackColors = true;
+                lvwPackContenuto.AlternateRowBackColor = Color.LightGoldenrodYellow;
+
+                lvwPackContenuto.AllColumns.Clear();
+
+                lvwPackContenuto.View = View.Details;
+                lvwPackContenuto.ShowGroups = false;
+                lvwPackContenuto.GridLines = true;
+                lvwPackContenuto.Font = _carTesto;
+                lvwPackContenuto.RowHeight = 25;
+                lvwPackContenuto.FullRowSelect = true;
+
+                BrightIdeasSoftware.OLVColumn colIdBlocco = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "ID",
+                    AspectName = "strIdBlocco",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                lvwPackContenuto.AllColumns.Add(colIdBlocco);
+
+                BrightIdeasSoftware.OLVColumn colTipo = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Tipo",
+                    AspectName = "strTipoArea",
+                    Width = 60,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                lvwPackContenuto.AllColumns.Add(colTipo);
+
+                BrightIdeasSoftware.OLVColumn colBlocchi = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Blocchi",
+                    AspectName = "strNumBlocchi",
+                    Width = 80,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                lvwPackContenuto.AllColumns.Add(colBlocchi);
+
+                BrightIdeasSoftware.OLVColumn colAddress = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Start",
+                    AspectName = "strStartAddress",
+                    Width = 120,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                lvwPackContenuto.AllColumns.Add(colAddress);
+
+                BrightIdeasSoftware.OLVColumn colSize = new BrightIdeasSoftware.OLVColumn()
+                {
+                    Text = "Dim",
+                    AspectName = "strDataSize",
+                    Width = 120,
+                    HeaderTextAlign = HorizontalAlignment.Left,
+                    TextAlign = HorizontalAlignment.Right,
+                };
+                lvwPackContenuto.AllColumns.Add(colSize);
+
+                BrightIdeasSoftware.OLVColumn colRowFiller = new BrightIdeasSoftware.OLVColumn();
+                colRowFiller.Text = "";
+                colRowFiller.Width = 60;
+                colRowFiller.HeaderTextAlign = HorizontalAlignment.Center;
+                colRowFiller.TextAlign = HorizontalAlignment.Right;
+                colRowFiller.FillsFreeSpace = true;
+                lvwPackContenuto.AllColumns.Add(colRowFiller);
+
+                lvwPackContenuto.Sort(colAddress);
+                lvwPackContenuto.RebuildColumns();
+                lvwPackContenuto.SetObjects(ImmagineDeso.ListaBlocchi);
+                lvwPackContenuto.BuildList();
+
+
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 
@@ -4227,14 +4336,14 @@ namespace PannelloCharger
             {
                 txtMemRegenNomeFile.Text = sfdExportDati.FileName;
                 btnMemRegenSalvaImmegine_Click(sender,e);
-                MessageBox.Show("File generato", "Creazione file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("File generato", "Creazione file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             txtMemRegenNomeFile.Text = sfdExportDati.FileName;
         }
 
         private void btnMemRegenCercaFileRd_Click(object sender, EventArgs e)
         {
-            sfdImportDati.Filter = "RSF Regeneraton Cicles File (*.rsf)|*.rsf|All files (*.*)|*.*";
+            sfdImportDati.Filter = "RSF Regenerator Setup File (*.rsf)|*.rsf|All files (*.*)|*.*";
             DialogResult esito = sfdImportDati.ShowDialog();
             if (esito == DialogResult.OK)
             {
@@ -4243,9 +4352,6 @@ namespace PannelloCharger
                 MessageBox.Show("File caricato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-
-
-           //txtMemRegenNomeFile.Text = sfdImportDati.FileName;
         }
 
         private void btnMemRegenSalvaImmegine_Click(object sender, EventArgs e)
@@ -4259,13 +4365,51 @@ namespace PannelloCharger
 
                 if (!File.Exists(filePath)) File.Create(filePath).Close();
                 Log.Debug("file prepara esportazione");
+
+                if(txtPackDataCreazione.Text !="")
+                {
+                    DateTime TempD;
+                    bool isValid = DateTime.TryParseExact(txtPackDataCreazione.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out TempD);
+                    if (isValid)
+                    {
+                        ImmagineDeso.DataCreazionePacchetto = TempD;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Inserire una data valida", "Scrittura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                ImmagineDeso.Note = txtPackNote.Text;
+                ImmagineDeso.FwMin = txtPackFwMin.Text;
+                ImmagineDeso.FwMax = txtPackFwMax.Text;
+                ImmagineDeso.Release = txtPackRelease.Text;
+
                 string JsonData = JsonConvert.SerializeObject(ImmagineDeso);
                 Log.Debug("file generato");
                 // Prima comprimo i dati
+
+                if(chkPackComprimiFile.Checked)
+                {
+                    Log.Debug("file generato");
+                    // Prima comprimo i dati
+                    string JsonZip = FunzioniComuni.CompressString(JsonData);
+
+                    // Ora cifro i dati
+                    // string JsonEncript = StringCipher.Encrypt(JsonZip);
+                    // PER INCOMPATIBILITA' DEL METODO DI CIFRATUTA CON NET CORE (XAMARIN)
+                    // RIMOSSA LA CIFRATURA DEL PACCHETTO  (16/07/2020)
+                    // JsonEncript = JsonData;
+                    // Log.Debug("file criptato");
+
+                    JsonData = JsonZip;
+                
+                }
+
                 // string JsonZip = FunzioniComuni.CompressString(JsonData);
 
                 File.WriteAllText(filePath, JsonData);
-
+                MessageBox.Show("File salvato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Log.Debug("file salvato");
             }
             catch (Exception Ex)
@@ -4282,10 +4426,32 @@ namespace PannelloCharger
                 btnMemRegenScriviImmDisp.Enabled = false;
                 txtMemRegenNumBlocchiWR.Text = "";
 
+                string _fileDecripted = "";
+                string _fileDecompress = "";
+
                 string filePath = txtMemRegenNomeFile.Text;
                 if (File.Exists(filePath))
                 {
                     string _infile = File.ReadAllText(filePath);
+                    // Verifico se è criptato
+                    _fileDecripted = StringCipher.Decrypt(_infile);
+                    if (_fileDecripted != "")
+                    {
+                        //il file è cifrato
+                        Log.Debug("file criptato");
+                        _infile = _fileDecripted;
+                    }
+
+                    // verifico se è compresso
+                    _fileDecompress = FunzioniComuni.DecompressString(_infile);
+                    if (_fileDecompress != "")
+                    {
+
+                        //è compresso
+                        _infile = _fileDecompress;
+
+                    }
+
                     ImmagineDeso = JsonConvert.DeserializeObject<FileSetupRigeneratore>(_infile);
                     Log.Debug("file caricato");
                     if(ImmagineDeso != null)
@@ -4299,7 +4465,12 @@ namespace PannelloCharger
                         }
                     }
                     btnMemRegenScriviImmDisp.Enabled = true;
-
+                    txtPackDataCreazione.Text = ImmagineDeso.DataCreazionePacchetto.ToString("dd/MM/yyyy");
+                    txtPackFwMin.Text = ImmagineDeso.FwMin;
+                    txtPackFwMax.Text = ImmagineDeso.FwMax;
+                    txtPackRelease.Text = ImmagineDeso.Release;
+                    txtPackNote.Text = ImmagineDeso.Note;
+                    InizializzaVistaBlocchi();
                     return;
                 }
                     
@@ -4675,7 +4846,7 @@ namespace PannelloCharger
                     AreaDati.IdBlocco = cmbLngListaLingue.SelectedIndex;
                     AreaDati.NumBlocchi = 1;
                     AreaDati.StartAddress = IndirizzoAttivo;
-                    AreaDati.Tipo = FileSetupRigeneratore.TipoArea.Lingua;
+                    AreaDati.Tipo = AreaDatiRegen.TipoArea.Lingua;
                     AreaDati.Data = LngDataBuffer;
                     PacchettoSetupLingue.ListaBlocchi.Add(AreaDati);
                 }
@@ -4728,7 +4899,7 @@ namespace PannelloCharger
                     AreaDati.IdBlocco = cmbLngListaLingue.SelectedIndex;
                     AreaDati.NumBlocchi = 1;
                     AreaDati.StartAddress = IndirizzoAttivo;
-                    AreaDati.Tipo = FileSetupRigeneratore.TipoArea.Lingua;
+                    AreaDati.Tipo = AreaDatiRegen.TipoArea.Lingua;
                     AreaDati.Data = LngDataBuffer;
                     PacchettoSetupLingue.ListaBlocchi.Add(AreaDati);
                 }
@@ -4739,6 +4910,411 @@ namespace PannelloCharger
             }
             catch
             {
+
+            }
+        }
+
+        private void grbClonaRigeneratore_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMemRegenAccodaImmagine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string _fileDecripted = "";
+                string _fileDecompress = "";
+                FileSetupRigeneratore tempImmagine;
+
+                string filePath = txtMemRegenNomeFile.Text;
+                if (File.Exists(filePath))
+                {
+                    string _infile = File.ReadAllText(filePath);
+                    // Verifico se è criptato
+                    _fileDecripted = StringCipher.Decrypt(_infile);
+                    if (_fileDecripted != "")
+                    {
+                        //il file è cifrato
+                        Log.Debug("file criptato");
+                        _infile = _fileDecripted;
+                    }
+
+                    // verifico se è compresso
+                    _fileDecompress = FunzioniComuni.DecompressString(_infile);
+                    if (_fileDecompress != "")
+                    {
+
+                        //è compresso
+                        _infile = _fileDecompress;
+
+                    }
+
+                    tempImmagine = JsonConvert.DeserializeObject<FileSetupRigeneratore>(_infile);
+                    Log.Debug("file caricato");
+
+
+                    if (tempImmagine != null)
+                    {
+                        if (ImmagineDeso == null)
+                        {
+                            ImmagineDeso = tempImmagine;
+                        }
+                        else
+                        {
+                            foreach(AreaDatiRegen blocco in tempImmagine.ListaBlocchi)
+                            {
+                                ImmagineDeso.ListaBlocchi.Add(blocco);
+                            }
+                        }
+                        txtMemRegenNumBlocchiWR.Text = ImmagineDeso.ListaBlocchi.Count.ToString();
+
+                        if (ImmagineDeso.ListaBlocchi.Count > 0)
+                        {
+                            btnMemRegenScriviImmDisp.Enabled = true;
+                        }
+
+                        btnMemRegenScriviImmDisp.Enabled = true;
+                        txtPackDataCreazione.Text = ImmagineDeso.DataCreazionePacchetto.ToString("dd/MM/yyyy");
+                        txtPackFwMin.Text = ImmagineDeso.FwMin;
+                        txtPackFwMax.Text = ImmagineDeso.FwMax;
+                        txtPackRelease.Text = ImmagineDeso.Release;
+                        txtPackNote.Text = ImmagineDeso.Note;
+                    }
+                    InizializzaVistaBlocchi();
+                    return;
+                }
+
+
+                Log.Debug("Caricamento file fallito");
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnMemRegenSalvaImmegine_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnMemRegenCercaFileAppend_Click(object sender, EventArgs e)
+        {
+            sfdImportDati.Filter = "RSF Regeneraton Cicles File (*.rsf)|*.rsf|All files (*.*)|*.*";
+            DialogResult esito = sfdImportDati.ShowDialog();
+            if (esito == DialogResult.OK)
+            {
+                txtMemRegenNomeFile.Text = sfdImportDati.FileName;
+                //btnMemRegenCaricaImmagine_Click(sender, e);
+                //MessageBox.Show("File caricato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void tbpFirmware_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInitCaricaStato_Click(object sender, EventArgs e)
+        {
+            string _tempId = _sb.Id;
+            _sb.VerificaPresenza();
+            CaricaStatoFirmware(ref _tempId, _logiche, _sb.apparatoPresente);
+            CaricaStatoAreaFw(1, _sb.StatoFirmware.Stato);
+            CaricaStatoAreaFw(2, _sb.StatoFirmware.Stato);
+            CaricaSeqProc();
+            CaricaListaLingueAttive();
+        }
+
+        private void textBox33_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void btnInitFileA1Search_Click(object sender, EventArgs e)
+        {
+            sfdImportDati.Filter = "SBF SPY-BATT Firmware File (*.sbf)|*.sbf|All files (*.*)|*.*";
+            if (txtInitDirFWArea1.Text != "")
+            {
+                sfdImportDati.FileName = txtInitDirFWArea1.Text;
+            }
+            sfdImportDati.ShowDialog();
+            txtInitDirFWArea1.Text = sfdImportDati.FileName;
+        }
+
+        private void btnInitSaveInit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (InitSetup == null)
+                {
+                    InitSetup = new brInitSetup(_logiche.dbDati.connessione);
+                    InitSetup.AzzeraValori();
+                }
+
+                InitSetup.Valori.FWArea1Enabled = chkInitFWArea1.Checked;
+                if (chkInitFWArea1.Checked)
+                {
+                    InitSetup.Valori.FWArea1Filename = txtInitDirFWArea1.Text;
+                }
+                else
+                {
+                    InitSetup.Valori.FWArea1Filename = "";
+                }
+
+                InitSetup.Valori.FWArea2Enabled = chkInitFWArea2.Checked;
+                if (chkInitFWArea2.Checked)
+                {
+                    InitSetup.Valori.FWArea2Filename = txtInitDirFWArea2.Text;
+                }
+                else
+                {
+                    InitSetup.Valori.FWArea2Filename = "";
+                }
+
+                InitSetup.Valori.ProcSeqEnabled = chkInitProcSeq.Checked;
+                if (chkInitProcSeq.Checked)
+                {
+                    InitSetup.Valori.ProcSeqFilename = txtInitDirProcSeq.Text;
+                }
+                else
+                {
+                    InitSetup.Valori.ProcSeqFilename = "";
+                }
+
+                InitSetup.Valori.LngEnabled = chkInitLingue.Checked;
+                if (chkInitLingue.Checked)
+                {
+                    InitSetup.Valori.LngFilename = txtInitDirLingue.Text;
+                }
+                else
+                {
+                    InitSetup.Valori.LngFilename = "";
+                }
+
+                InitSetup.Valori.AreaEnabled = chkInitSerArea.Checked;
+                if (chkInitSerArea.Checked)
+                {
+                    if (optInitSerAreaA2.Checked)
+                    {
+                        InitSetup.Valori.AreaAttiva = 2;
+                    }
+                    else
+                    {
+                        InitSetup.Valori.AreaAttiva = 1;
+                    }
+                }
+
+                InitSetup.Valori.CancellaValori = chkInitDeleteTest.Checked;
+
+
+                InitSetup.salvaDati();
+                MostraInitSetup();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnInitFileA2Search_Click(object sender, EventArgs e)
+        {
+            sfdImportDati.Filter = "SBF SPY-BATT Firmware File (*.sbf)|*.sbf|All files (*.*)|*.*";
+            if (txtInitDirFWArea2.Text != "")
+            {
+                sfdImportDati.FileName = txtInitDirFWArea2.Text;
+            }
+            sfdImportDati.ShowDialog();
+            txtInitDirFWArea2.Text = sfdImportDati.FileName;
+        }
+
+        private void btnInitFileProcSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                sfdImportDati.Filter = "RSF Regenerator Setup File (*.rsf)|*.rsf|All files (*.*)|*.*";
+                if (txtInitDirProcSeq.Text != "")
+                {
+                    sfdImportDati.FileName = txtInitDirProcSeq.Text;
+                }
+                sfdImportDati.ShowDialog();
+                txtInitDirProcSeq.Text = sfdImportDati.FileName;
+            }
+            catch
+            {
+                txtInitDirProcSeq.Text = "";
+            }
+        }
+
+        private void btnInitFileLngSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                sfdImportDati.Filter = "RSF Regenerator Setup File (*.rsf)|*.rsf|All files (*.*)|*.*";
+                if (txtInitDirLingue.Text != "")
+                {
+                    sfdImportDati.FileName = txtInitDirLingue.Text;
+                }
+                sfdImportDati.ShowDialog();
+                txtInitDirLingue.Text = sfdImportDati.FileName;
+            }
+            catch
+            {
+                txtInitDirLingue.Text = "";
+            }
+        }
+        private void chkInitFWArea1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkInitFWArea1.Checked)
+            {
+                txtInitDirFWArea1.Enabled = true;
+                btnInitFileA1Search.Enabled = true;
+            }
+            else
+            {
+                txtInitDirFWArea1.Enabled = false;
+                btnInitFileA1Search.Enabled = false;
+            }
+        }
+
+        private void chkInitFWArea2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkInitFWArea2.Checked)
+            {
+                txtInitDirFWArea2.Enabled = true;
+                btnInitFileA2Search.Enabled = true;
+            }
+            else
+            {
+                txtInitDirFWArea2.Enabled = false;
+                btnInitFileA2Search.Enabled = false;
+            }
+        }
+
+        private void chkInitProcSeq_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkInitProcSeq.Checked)
+            {
+                txtInitDirProcSeq.Enabled = true;
+                btnInitFileProcSearch.Enabled = true;
+            }
+            else
+            {
+                txtInitDirProcSeq.Enabled = false;
+                btnInitFileProcSearch.Enabled = false;
+            }
+        }
+
+        private void chkInitLingue_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkInitLingue.Checked)
+            {
+                txtInitDirLingue.Enabled = true;
+                btnInitFileLngSearch.Enabled = true;
+            }
+            else
+            {
+                txtInitDirLingue.Enabled = false;
+                btnInitFileLngSearch.Enabled = false;
+            }
+        }
+
+        private void btnInitReloadInit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InitSetup.caricaDati(1);
+                MostraInitSetup();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public bool InizalizzaRigeneratore()
+        {
+            try
+            {
+                Log.Debug("Lancio inizializzazione scheda");
+                // Creo una copa temporanea del modello setup da passare al form attività:
+
+                brInitSetup TempSetup = new brInitSetup();
+                TempSetup.AzzeraValori();
+                TempSetup.Valori.FWArea1Enabled = chkInitFWArea1.Checked;
+                TempSetup.Valori.FWArea1Filename = txtInitDirFWArea1.Text;
+                TempSetup.Valori.FWArea2Enabled = chkInitFWArea2.Checked;
+                TempSetup.Valori.FWArea2Filename = txtInitDirFWArea2.Text;
+                TempSetup.Valori.ProcSeqEnabled = chkInitProcSeq.Checked;
+                TempSetup.Valori.ProcSeqFilename = txtInitDirProcSeq.Text;
+                TempSetup.Valori.LngEnabled = chkInitLingue.Checked;
+                TempSetup.Valori.LngFilename = txtInitDirLingue.Text;
+                TempSetup.Valori.AreaEnabled = chkInitSerArea.Checked;
+                if(optInitSerAreaA2.Checked)
+                {
+                    TempSetup.Valori.AreaAttiva = 2;
+                }
+                else
+                {
+                    TempSetup.Valori.AreaAttiva = 1;
+                }
+                TempSetup.Valori.CancellaValori = chkInitDeleteTest.Checked;
+
+                this.Cursor = Cursors.WaitCursor;
+                //_avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.Desolfatatore;
+                _avCicli.ParametriWorker.MainCount = 100;
+                _avCicli.InitSetup = TempSetup;
+                _sb.ModoDesolfatatore = true;
+                _avCicli.sbLocale = _sb;
+                _avCicli.ValStart = 1;
+                _avCicli.ValFine = (int)_sb.sbData.LongMem;
+                _avCicli.DbDati = _logiche.dbDati.connessione;
+                _avCicli.CaricaBrevi = false;
+                _avCicli.TipoComando = elementiComuni.tipoMessaggio.InizializzazioneRigeneratore;
+                _avCicli.InviaACK = false;
+                _avCicli.SalvaHexDump = false;
+                _avCicli.FileHexDump = "";
+                _avCicli.Text = "Inizializzazione Rigeneratore";
+                Log.Debug("FRM firmwareUPD : ");
+
+
+                // Apro il form con le progressbar
+
+                _avCicli.ShowDialog(this);
+
+                this.Cursor = Cursors.Default;
+                return true;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("frmSpyBat.DumpInteraMemoria: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        private void btnInitExecuteInit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //bool _esito;
+                string _tempId = _sb.Id;
+
+                this.Cursor = Cursors.WaitCursor;
+                InizalizzaRigeneratore();
+
+                CaricaStatoFirmware(ref _tempId, _logiche, _sb.apparatoPresente);
+                CaricaStatoAreaFw(1, _sb.StatoFirmware.Stato);
+                CaricaStatoAreaFw(2, _sb.StatoFirmware.Stato);
+                CaricaSeqProc();
+                CaricaListaLingueAttive();
+
+                this.Cursor = Cursors.Default;
+            }
+            catch
+            {
+                this.Cursor = Cursors.Default;
 
             }
         }

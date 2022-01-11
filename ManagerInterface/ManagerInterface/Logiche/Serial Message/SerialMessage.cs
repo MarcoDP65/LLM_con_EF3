@@ -781,6 +781,10 @@ namespace ChargerLogic
                 for (int i = 0; i <= 7; i++)
                 {
                     splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+
+                    msb = 0x30;
+                    lsb = 0x30;
+
                     _comandoBase[(i*2)] = msb;
                     _comandoBase[(i*2)+1] = lsb;
                 }
@@ -873,6 +877,10 @@ namespace ChargerLogic
                 for (int i = 0; i <= 7; i++)
                 {
                     splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+
+                    msb = 0x30;
+                    lsb = 0x30;
+
                     _comandoBase[(i * 2)] = msb;
                     _comandoBase[(i * 2) + 1] = lsb;
                 }
@@ -992,6 +1000,10 @@ namespace ChargerLogic
                 for (int i = 0; i <= 7; i++)
                 {
                     splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+
+                    msb = 0x30;
+                    lsb = 0x30;
+
                     _comandoBase[(i * 2)] = msb;
                     _comandoBase[(i * 2) + 1] = lsb;
                 }
@@ -1082,6 +1094,10 @@ namespace ChargerLogic
                 for (int i = 0; i <= 7; i++)
                 {
                     splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+
+                    msb = 0x30;
+                    lsb = 0x30;
+
                     _comandoBase[(i * 2)] = msb;
                     _comandoBase[(i * 2) + 1] = lsb;
                 }
@@ -1180,6 +1196,10 @@ namespace ChargerLogic
                 for (int i = 0; i <= 7; i++)
                 {
                     splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+
+                    msb = 0x30;
+                    lsb = 0x30;
+
                     _comandoBase[(i * 2)] = msb;
                     _comandoBase[(i * 2) + 1] = lsb;
                 }
@@ -1320,6 +1340,10 @@ namespace ChargerLogic
                 for (int i = 0; i <= 7; i++)
                 {
                     splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+
+                    msb = 0x30;
+                    lsb = 0x30;
+
                     _comandoBase[(i * 2)] = msb;
                     _comandoBase[(i * 2) + 1] = lsb;
                 }

@@ -388,10 +388,10 @@ namespace PannelloCharger
                                 ApriSpyBatt();
                                 return;
 
-
+                            case "REGENERATOR":
                             case "BATTERY REGENERATOR":
                             case "DESOLFATATORE":
-                                //_tempCanale.Description = "SPY-BATT";
+                                //_tempCanale.Description = "DESOLFATATORE";
                                 _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
                                 _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
                                 ApriDesolfatatore();

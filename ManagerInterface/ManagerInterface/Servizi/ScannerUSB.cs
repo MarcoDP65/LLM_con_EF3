@@ -27,6 +27,7 @@ namespace PannelloCharger
         public int NumDevIdBatt;
         public int NumDevSeqDes;
         public int NumDevRegen;
+        public int NumDevCharger;
         public int NumDevFTDInoInit;
         public List<UsbDevice> ListaPorte;
 
@@ -152,6 +153,18 @@ namespace PannelloCharger
                         RegenUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
                     }
 
+                    if (ftdiDeviceList[CicloDev].Description == "REGENERATOR")
+                    {
+                        NumDevRegen++;
+                        RegenUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                    }
+
+                    if (ftdiDeviceList[CicloDev].Description == "PSW SUPERCHARGER")
+                    {
+                        NumDevCharger++;
+                        RegenUsbSerialNo = ftdiDeviceList[CicloDev].SerialNumber;
+                    }
+
                 }
             }
             else
@@ -162,7 +175,7 @@ namespace PannelloCharger
 
 
 
-            if (NumDevLadeLight > 0 || NumDevSpyBatt > 0 || NumDevFTDInoInit > 0 || NumDevRegen >0 || NumDevIdBatt > 0)
+            if (NumDevLadeLight > 0 || NumDevSpyBatt > 0 || NumDevFTDInoInit > 0 || NumDevRegen >0 || NumDevIdBatt > 0 || NumDevCharger > 0)
             {
                 return true;
             }

@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 using log4net;
 using log4net.Config;
 using ChargerLogic;
 using Utility;
 using MoriData;
+using Newtonsoft.Json;
 
 namespace PannelloCharger
 {
@@ -55,6 +57,7 @@ namespace PannelloCharger
         private DateTime _startCompute;
         private DateTime _firstRecord;
         private bool _firstRecordReceived;
+        public brInitSetup InitSetup { get; set; }
 
         public usParameters ParametriWorker = new usParameters();
 
@@ -150,6 +153,9 @@ namespace PannelloCharger
                     DoWork_LL(sender, e);
                     break;
                 case ControlledDevice.Desolfatatore:
+                    sbLocale.RichiestaInterruzione = false;
+                    DoWork_SB(sender, e);
+
                     break;
                 default:
                     break;
@@ -291,6 +297,262 @@ namespace PannelloCharger
                         break;
                     }
 
+                case elementiComuni.tipoMessaggio.InizializzazioneRigeneratore:
+                    {
+                        
+                        FirmwareManager _firmMng = new FirmwareManager();
+                        FirmwareManager.ExitCode _esitoFw;
+
+                        _esito = false;
+                        _stepBg.Titolo = "Inizializzazione Rigeneratore";
+                        _stepBg.Step = -1;
+                        sbWorker.ReportProgress(0, _stepBg);
+                        _stepBg.FaseCorrente = "Inizializzazione Rigeneratore";
+
+
+                        // Step 1 Firmware area 1
+                        if (InitSetup.Valori.FWArea1Enabled)
+                        {
+                            _stepBg.Titolo = "Inizializzazione FW Area 1";
+                            _stepBg.FaseCorrente = "Inizializzazione FW Area 1";
+                            _stepBg.Step = 1;
+                            sbWorker.ReportProgress(0, _stepBg);
+                            _esito = false;
+                            if (InitSetup.Valori.FWArea1Filename != "")
+                            {
+                                if (File.Exists(InitSetup.Valori.FWArea1Filename))
+                                {
+                                    _esitoFw = _firmMng.CaricaFileSBF(InitSetup.Valori.FWArea1Filename);
+                                    if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                    {
+                                        _esitoFw = _firmMng.PreparaUpgradeFw();
+                                        if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                        {
+                                            _esitoFw = _firmMng.ComponiArrayTestata();
+                                            if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                            {
+                                                _esito = sbLocale.AggiornaFirmware(sbLocale.Id, sbLocale.apparatoPresente, 1, _firmMng.FirmwareBlock, true,true,true, "Inizializzazione - FW Area 1");// InviaACK, true, SalvaHexDump, FileHexDump);
+                                            }
+                                        }
+                                    }
+
+                                }
+
+                                if(!_esito)
+                                {
+                                    MessageBox.Show("Inizializzazione - FW Area 1\nOperazione non riuscita", "INIZIALIZZAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+
+                        }
+                        
+                        // Step 2 Firmware area 2
+                        if (InitSetup.Valori.FWArea2Enabled)
+                        {
+                            _stepBg.Titolo = "Inizializzazione FW Area 2";
+                            _stepBg.FaseCorrente = "Inizializzazione FW Area 2";
+                            _stepBg.Step = 2;
+                            sbWorker.ReportProgress(0, _stepBg);
+                            _esito = false;
+                            if (InitSetup.Valori.FWArea2Filename != "")
+                            {
+                                _esito = false;
+                                if (File.Exists(InitSetup.Valori.FWArea2Filename))
+                                {
+                                    _esitoFw = _firmMng.CaricaFileSBF(InitSetup.Valori.FWArea2Filename);
+                                    if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                    {
+                                        _esitoFw = _firmMng.PreparaUpgradeFw();
+                                        if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                        {
+                                            _esitoFw = _firmMng.ComponiArrayTestata();
+                                            if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                            {
+                                                _esito = sbLocale.AggiornaFirmware(sbLocale.Id, sbLocale.apparatoPresente, 2, _firmMng.FirmwareBlock, true, true, true, "Inizializzazione - FW Area 2");// InviaACK, true, SalvaHexDump, FileHexDump);
+                                            }
+                                        }
+                                    }
+
+                                }
+                                if (!_esito)
+                                {
+                                    MessageBox.Show("Inizializzazione - FW Area 2\nOperazione non riuscita", "INIZIALIZZAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+
+                        // Step 3 procedure
+                        if (InitSetup.Valori.ProcSeqEnabled)
+                        {
+                            _stepBg.Titolo = "Inizializzazione Procedure/Sequenze";
+                            _stepBg.FaseCorrente = "Inizializzazione Procedure/Sequenze";
+                            _stepBg.Step = 2;
+                            sbWorker.ReportProgress(0, _stepBg);
+                            _esito = false;
+                            if (InitSetup.Valori.ProcSeqFilename != "")
+                            {
+                                if (File.Exists(InitSetup.Valori.ProcSeqFilename))
+                                {
+                                    string _infile = File.ReadAllText(InitSetup.Valori.ProcSeqFilename);
+                                    string _fileDecripted;
+                                    string _fileDecompress;
+                                    // Verifico se è criptato
+                                    _fileDecripted = StringCipher.Decrypt(_infile);
+                                    if (_fileDecripted != "")
+                                    {
+                                        //il file è cifrato
+                                        Log.Debug("file criptato");
+                                        _infile = _fileDecripted;
+                                    }
+
+                                    // verifico se è compresso
+                                    _fileDecompress = FunzioniComuni.DecompressString(_infile);
+                                    if (_fileDecompress != "")
+                                    {
+
+                                        //è compresso
+                                        _infile = _fileDecompress;
+
+                                    }
+
+                                    FileSetupRigeneratore ImmagineDeso = JsonConvert.DeserializeObject<FileSetupRigeneratore>(_infile);
+                                    Log.Debug("file caricato");
+                                    if (ImmagineDeso != null)
+                                    {
+
+                                        foreach (AreaDatiRegen BloccoDati in ImmagineDeso.ListaBlocchi)
+                                        {
+                                            bool esito = sbLocale.ScriviBloccoDati(BloccoDati,true, "Inizializzazione Sequenze/Procedure");
+                                            if (!esito)
+                                            {
+                                                MessageBox.Show("Scrittura Area " + BloccoDati.IdBlocco.ToString() + " non riuscita", "Scrittura dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        }
+
+                                    }
+
+                                    DataBlockInfo InfoSequenze = new DataBlockInfo();
+                                    InfoSequenze.BlockRelease = ImmagineDeso.Release;
+                                    InfoSequenze.RegenFwMin = ImmagineDeso.FwMin;
+                                    InfoSequenze.RegenFwMax = ImmagineDeso.FwMax;
+                                    InfoSequenze.dtDataRilascio = ImmagineDeso.DataCreazionePacchetto;
+                                    InfoSequenze.dtDataInstallazione = DateTime.Now;
+
+                                    _esito = sbLocale.CancellaBlocco4K(0x124000);
+                                    byte[] TempInfo = InfoSequenze.ToByteArray();
+                                    _esito = sbLocale.ScriviBloccoMemoria(0x124000, 32, TempInfo);
+     
+                                }
+                            }
+                        }
+
+
+                        // Step 4 Lingue
+                        if (InitSetup.Valori.LngEnabled)
+                        {
+                            _stepBg.Titolo = "Inizializzazione Lingue";
+                            _stepBg.FaseCorrente = "Inizializzazione Lingue";
+                            _stepBg.Step = 2;
+                            sbWorker.ReportProgress(0, _stepBg);
+                            _esito = false;
+                            if (InitSetup.Valori.LngFilename != "")
+                            {
+                                if (File.Exists(InitSetup.Valori.LngFilename))
+                                {
+                                    string _infile = File.ReadAllText(InitSetup.Valori.LngFilename);
+                                    string _fileDecripted;
+                                    string _fileDecompress;
+                                    // Verifico se è criptato
+                                    _fileDecripted = StringCipher.Decrypt(_infile);
+                                    if (_fileDecripted != "")
+                                    {
+                                        //il file è cifrato
+                                        Log.Debug("file criptato");
+                                        _infile = _fileDecripted;
+                                    }
+
+                                    // verifico se è compresso
+                                    _fileDecompress = FunzioniComuni.DecompressString(_infile);
+                                    if (_fileDecompress != "")
+                                    {
+
+                                        //è compresso
+                                        _infile = _fileDecompress;
+
+                                    }
+
+                                    FileSetupRigeneratore ImmagineDeso = JsonConvert.DeserializeObject<FileSetupRigeneratore>(_infile);
+                                    Log.Debug("file caricato");
+                                    if (ImmagineDeso != null)
+                                    {
+
+                                        foreach (AreaDatiRegen BloccoDati in ImmagineDeso.ListaBlocchi)
+                                        {
+                                           _esito = sbLocale.ScriviBloccoDati(BloccoDati, true, "Inizializzazione Lingue");
+                                            if (!_esito)
+                                            {
+                                                MessageBox.Show("Scrittura Area " + BloccoDati.IdBlocco.ToString() + " non riuscita", "Scrittura dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        }
+
+                                    }
+
+                                }
+                            }
+                        }
+
+
+                        // Step 5 Set Area
+                        if (InitSetup.Valori.AreaEnabled)
+                        {
+                            _esito = sbLocale.ImpostaAreaAttiva((byte)InitSetup.Valori.AreaAttiva, true, "Impostazione area attiva");
+                            if (!_esito)
+                            {
+                                MessageBox.Show("Inizializzazione\nImpostazione area attiva non riuscita", "INIZIALIZZAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+
+                        // Step 6 Cancella valori
+                        if (InitSetup.Valori.CancellaValori)
+                        {
+                            _esito = sbLocale.CancellaBlocco4K(0x1B8000);
+                            _esito = sbLocale.CancellaBlocco4K(0x1B9000);
+
+
+                            if (!_esito)
+                            {
+                                MessageBox.Show("Inizializzazione\n Cancellazione dati test - Operazione non riuscita", "INIZIALIZZAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+
+                        if (!_esito)
+                        {
+                            MessageBox.Show("Inizializzazione\nOperazione non riuscita", "INIZIALIZZAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            _stepBg.Titolo = "OPERAZIONE COMPLETATA";
+                            _stepBg.FaseCorrente = "";
+                            _stepBg.Step = -1;
+                            sbWorker.ReportProgress(100, _stepBg);
+                            _stepBg.Titolo = "OPERAZIONE COMPLETATA";
+                            _stepBg.FaseCorrente = "";
+                            _stepBg.Step = 1;
+                            sbWorker.ReportProgress(100, _stepBg);
+
+                            MessageBox.Show("Inizializzazione\nOperazione Completata", "INIZIALIZZAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        break;
+                    }
+
                 case elementiComuni.tipoMessaggio.AggiornamentoFirmwareLL:
                     {
                         _stepBg.Titolo = StringheComuni.AvTitolo04Firmware;  // "Aggiornamento Firmware";
@@ -302,6 +564,7 @@ namespace PannelloCharger
                         _esito = llLocale.AggiornaFirmware("", llLocale.apparatoPresente, FirmwareArea, FirmwareLLBlock, true); // InviaACK, true, SalvaHexDump, FileHexDump);
                         break;
                     }
+
 
             }
 
@@ -316,6 +579,58 @@ namespace PannelloCharger
             _esitoBg.SecondiElaborazione = _tTrascorso.TotalSeconds;
             e.Result = _esitoBg;
         }
+
+        public void EseguiInitRigeneratore(elementiComuni.WaitStep _stepBg)
+        {
+            try
+            {
+                bool _esito;
+                FirmwareManager _firmMng = new FirmwareManager();
+                FirmwareManager.ExitCode _esitoFw;
+
+                // Step 1 Firmware area 1
+                if (InitSetup.Valori.FWArea1Enabled)
+                {
+                    _stepBg.Titolo = "Inizializzazione FW Area 1";
+                    _stepBg.Step = 1;
+                    sbWorker.ReportProgress(0, _stepBg);
+                    _esito = false;
+                    if (InitSetup.Valori.FWArea1Filename != "")
+                    {
+                        if(File.Exists(InitSetup.Valori.FWArea1Filename))
+                        {
+                            _esitoFw = _firmMng.CaricaFileSBF(InitSetup.Valori.FWArea1Filename);
+                            if (_esitoFw == FirmwareManager.ExitCode.OK)
+                            {
+                                _esitoFw = _firmMng.PreparaUpgradeFw();
+                                if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                {
+                                    _esitoFw = _firmMng.ComponiArrayTestata();
+                                    if (_esitoFw == FirmwareManager.ExitCode.OK)
+                                    {
+                                        _esito = sbLocale.AggiornaFirmware(sbLocale.Id, sbLocale.apparatoPresente, 1, _firmMng.FirmwareBlock, true);// InviaACK, true, SalvaHexDump, FileHexDump);
+                                    }
+                                }
+                            }
+                          
+                        }
+                    }
+                }
+
+
+
+
+
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
+
 
 
         void DoWork_LL(object sender, DoWorkEventArgs e)
@@ -463,7 +778,7 @@ namespace PannelloCharger
                         _esito = llLocale.LeggiDatiCompleti(true);
                         if (!_esito)
                         {
-                            lblMessaggioAvanzamento.Text = llLocale.UltimoMsgErrore;
+                            // lblMessaggioAvanzamento.Text = llLocale.UltimoMsgErrore;
                         }
 
                         break;
@@ -487,12 +802,11 @@ namespace PannelloCharger
 
 
 
-
-
         void sbWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             string _messaggio1; 
             string _messaggio2;
+            string _MessaggioFase = "";
             int _localProgressPercentage = e.ProgressPercentage;
 
             elementiComuni.WaitStep _statoE = null;
@@ -513,6 +827,7 @@ namespace PannelloCharger
                     _titolo = _statoE.Titolo;
                     _step = _statoE.Step;
                     _msg = _statoE.TipoDati;
+                    _MessaggioFase = _statoE.FaseCorrente;
                     break;
                 case ControlledDevice.Display:
                     break;
@@ -603,6 +918,7 @@ namespace PannelloCharger
                             //Log.Info("Worker Progress " + e.ProgressPercentage.ToString() + " (" + _statoE.Step.ToString() + ")");
                             pgbAvanamentoL.Value = _localProgressPercentage;
                             lblMessaggioAvanzamento.Text = "Processing......" + pgbAvanamentoL.Value.ToString() + "%";
+                            lblMsgFail.Text = _MessaggioFase;
                         }
                         break;
                     }

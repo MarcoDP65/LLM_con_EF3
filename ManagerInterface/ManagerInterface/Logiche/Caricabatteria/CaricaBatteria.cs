@@ -1101,7 +1101,7 @@ namespace ChargerLogic
                 if ((ContatoriLL.CntCariche == 0) && !AzzeraTotale)
                 {
                     // Il numero cariche è già a 0 non ho nulla da azzerare
-                    return false;
+                    return true;
                 }
 
                 for (int cnt = 0; cnt < 5; cnt++)
@@ -1137,6 +1137,7 @@ namespace ChargerLogic
                 MsgContatoriLL.DataUltimaCancellazione[2] = (byte)(adesso.Year - 2000);
                 MsgContatoriLL.DataUltimaCancellazione[1] = (byte)(adesso.Month);
                 MsgContatoriLL.DataUltimaCancellazione[0] = (byte)(adesso.Day);
+                MsgContatoriLL.CntCicliOpportunity = 0;
 
                 if (MsgContatoriLL.GeneraByteArray())
                 {

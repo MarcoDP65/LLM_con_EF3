@@ -15,6 +15,7 @@ using MoriData;
 using Utility;
 using Newtonsoft.Json;
 using PannelloCharger;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace ChargerLogic
 {
@@ -106,7 +107,7 @@ namespace ChargerLogic
         /// <param name="Firmware"></param>
         /// <param name="RunAsinc"></param>
         /// <returns></returns>
-        public bool AggiornaFirmware(string IdApparato, bool ApparatoConnesso,byte Area, BloccoFirmware Firmware, bool RunAsinc = false, bool WaitReconnect = true, bool ResetBeforeStart = true )
+        public bool AggiornaFirmware(string IdApparato, bool ApparatoConnesso, byte Area, BloccoFirmware Firmware, bool RunAsinc = false, bool WaitReconnect = true, bool ResetBeforeStart = true, string StepDescription = "" )
         {
             try
             {
@@ -132,7 +133,17 @@ namespace ChargerLogic
                         {
                             elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                             _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                            _passo.Titolo = StringheMessaggio.strMsgResetSB;  //"Reset SPY-BATT";
+                            if(ModoDesolfatatore)
+                            {
+                                _passo.Titolo = "Reset RIGENERATORE";
+                                _passo.FaseCorrente = StepDescription;
+                            }
+                            else
+                            {
+                                _passo.Titolo = StringheMessaggio.strMsgResetSB;  //"Reset SPY-BATT";
+                                _passo.FaseCorrente = "";
+                            }
+
                             _passo.Eventi = 1;
                             _passo.Step = -1;
                             _passo.EsecuzioneInterrotta = false;
@@ -158,6 +169,7 @@ namespace ChargerLogic
                                 _passo.EsecuzioneInterrotta = false;
                                 _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                 _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                _passo.FaseCorrente = StepDescription;
                                 _valProgress = (_tentativi * 5);
 
                                 _progress = (int)_valProgress;
@@ -191,6 +203,7 @@ namespace ChargerLogic
                             _passo.Eventi = 1;
                             _passo.Step = -1;
                             _passo.EsecuzioneInterrotta = false;
+                            _passo.FaseCorrente = StepDescription;
                             ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
                             Step(this, _stepEv);
                         }
@@ -246,6 +259,7 @@ namespace ChargerLogic
                                 _passo.Step = -1;
                                 _passo.EsecuzioneInterrotta = false;
                                 ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                                _passo.FaseCorrente = StepDescription;
                                 Step(this, _stepEv);
                             }
 
@@ -283,6 +297,7 @@ namespace ChargerLogic
                                             _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                             _passo.Step = _pacchettiInviati;
                                             _passo.EsecuzioneInterrotta = false;
+                                            _passo.FaseCorrente = StepDescription;
                                             if (Firmware.TotaleBlocchi > 0)
                                             {
                                                 _valProgress = (_pacchettiInviati * 100) / Firmware.TotaleBlocchi;
@@ -313,6 +328,7 @@ namespace ChargerLogic
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                                 _passo.Step = -1;
                                                 _passo.EsecuzioneInterrotta = true;
+                                                _passo.FaseCorrente = StepDescription;
                                                 ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
                                                 Step(this, _stepEv);
                                                 return false;
@@ -369,6 +385,7 @@ namespace ChargerLogic
                                             _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                             _passo.Step = _pacchettiInviati;
                                             _passo.EsecuzioneInterrotta = false;
+                                            _passo.FaseCorrente = StepDescription;
                                             if (Firmware.TotaleBlocchi > 0)
                                             {
                                                 _valProgress = (_pacchettiInviati * 100) / Firmware.TotaleBlocchi;
@@ -399,6 +416,7 @@ namespace ChargerLogic
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                                 _passo.Step = -1;
                                                 _passo.EsecuzioneInterrotta = true;
+                                                _passo.FaseCorrente = StepDescription;
                                                 ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
                                                 Step(this, _stepEv);
                                                 return false;
@@ -448,6 +466,7 @@ namespace ChargerLogic
                                             _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                             _passo.Step = _pacchettiInviati;
                                             _passo.EsecuzioneInterrotta = false;
+                                            _passo.FaseCorrente = StepDescription;
                                             if (Firmware.TotaleBlocchi > 0)
                                             {
                                                 _valProgress = (_pacchettiInviati * 100) / Firmware.TotaleBlocchi;
@@ -478,6 +497,7 @@ namespace ChargerLogic
                                                 _passo.Eventi = (int)Firmware.TotaleBlocchi;
                                                 _passo.Step = -1;
                                                 _passo.EsecuzioneInterrotta = true;
+                                                _passo.FaseCorrente = StepDescription;
                                                 ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
                                                 Step(this, _stepEv);
                                                 return false;
@@ -517,7 +537,15 @@ namespace ChargerLogic
                                 {
                                     elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
                                     _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
-                                    _passo.Titolo = StringheMessaggio.strMsgAggFWFase3;  //"Fase 3 - riavvio SPY-BATT";
+                                    if (ModoDesolfatatore)
+                                    {
+                                        _passo.Titolo = "Fase 3 - riavvio RIGENERATORE";
+                                        _passo.FaseCorrente = StepDescription;
+                                    }
+                                    else
+                                    {
+                                        _passo.Titolo = StringheMessaggio.strMsgAggFWFase3;  //"Fase 3 - riavvio SPY-BATT";
+                                    }
                                     _passo.Eventi = 1;
                                     _passo.Step = -1;
                                     _passo.EsecuzioneInterrotta = false;
@@ -539,6 +567,7 @@ namespace ChargerLogic
                                         _passo.EsecuzioneInterrotta = false;
                                         _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
                                         _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                        _passo.FaseCorrente = StepDescription;
                                         _valProgress = (_tentativi * 5) ;
 
                                         _progress = (int)_valProgress;
@@ -557,7 +586,7 @@ namespace ChargerLogic
 
                                 //dopo la riconnessione, sincronizzo l'orologio
 
-                                if(_esito) ScriviOrologio();
+                                if(_esito && (!ModoDesolfatatore)) ScriviOrologio();
 
                             }
 
@@ -783,6 +812,356 @@ namespace ChargerLogic
             }
         }
 
+
+        public bool ScriviBloccoDati(AreaDatiRegen BloccoAttivo, bool RunAsinc = false , string StepDescription = "")
+        {
+
+
+            try
+            {
+
+                uint _StartAddr = BloccoAttivo.StartAddress;
+                uint _TmpAddr;
+                //ushort _NumByte;
+                ushort _NumSequenze = (ushort)BloccoAttivo.NumBlocchi;
+                bool _esito;
+                //byte[] _dataArray;
+                int _numBytes;
+                //int _cicliCompleti;
+                //int _byteResidui;
+                //byte[] _tempBuffer;
+
+                //lblMemRegenAvanzamentoWrite.Visible = true;
+                //txtMemRegenNumBlocchiWR.Text = BloccoAttivo.IdBlocco.ToString();
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
+
+
+                // Prima vuoto la memoria
+
+                _numBytes = _NumSequenze * 0x1000;
+                ushort _pacchettiInviati = 0;
+                ushort _pacchettoCorrente = 0;
+                ushort _tmpPacchettoCorrente;
+
+                //Preparo l'intestazione della finestra di avanzamento
+                if (Step != null)
+                {
+                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                    _passo.Titolo = "Aggiornamento memoria";
+                    _passo.Eventi = (int)_NumSequenze;
+                    _passo.Step = -1;
+                    _passo.EsecuzioneInterrotta = false;
+                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                    _passo.FaseCorrente = StepDescription;
+                    Step(this, _stepEv);
+                }
+
+                if (_NumSequenze > 0)
+                {
+                    int _bloccoCorrente;
+                    _TmpAddr = _StartAddr;
+                    for (int _cicloBlocchi = 0; _cicloBlocchi < _NumSequenze; _cicloBlocchi++)
+                    {
+                        _bloccoCorrente = _cicloBlocchi + 1;
+                        _esito = CancellaBlocco4K(_TmpAddr);
+                        if (_esito)
+                        {
+                            _TmpAddr += 0x1000;
+                            if (Step != null)
+                            {
+                                if (_ultimaRisposta == SerialMessage.TipoRisposta.Ack)
+                                {
+                                    // Il pacchetto è stato accettato; incremento i contatori e continuo
+                                    int _progress = 0;
+                                    double _valProgress = 0;
+                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                    _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                    _passo.Eventi = (int)_NumSequenze;
+                                    _passo.Step = _bloccoCorrente;
+                                    _passo.EsecuzioneInterrotta = false;
+                                    _passo.FaseCorrente = StepDescription + " / Canc : " + BloccoAttivo.strIdBlocco;
+                                    if (_NumSequenze > 0)
+                                    {
+                                        _valProgress = (_bloccoCorrente * 100) / _NumSequenze;
+                                    }
+                                    _progress = (int)_valProgress;
+
+                                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                    Step(this, _stepEv);
+                                }
+                            }
+                        
+                        }
+                        else
+                        { return false; }
+                    }
+
+                }
+                else
+                {
+                    return false;
+                }
+
+                byte[] DataBuffer = BloccoAttivo.Data;
+
+
+                uint _stepSent = 0;
+                uint _posizione = 0;
+                uint _datiTrasferiti = 0;
+                byte[] _Tempbuffer = new byte[DataBlock];
+                _TmpAddr = _StartAddr;
+                while ((_numBytes - _datiTrasferiti) > DataBlock)
+                {
+
+                    for (int _blockStep = 0; _blockStep < DataBlock; _blockStep++)
+                    {
+                        _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                        _posizione++;
+                        _datiTrasferiti++;
+                    }
+                    _esito = ScriviBloccoMemoria(_TmpAddr, (ushort)DataBlock, _Tempbuffer);
+
+                    _TmpAddr += DataBlock;
+                    _stepSent++;
+                    if (_esito)
+                    {
+                        if (Step != null)
+                        {
+                            if (_ultimaRisposta == SerialMessage.TipoRisposta.Data)
+                            {
+                                // Il pacchetto è stato accettato; incremento i contatori e continuo
+                                int _progress = 0;
+                                double _valProgress = 0;
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                                _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                _passo.Eventi = (int)_numBytes;
+                                _passo.Step = (int)_datiTrasferiti;
+                                _passo.EsecuzioneInterrotta = false;
+                                _passo.FaseCorrente = StepDescription + " / Scritt.: " + BloccoAttivo.strIdBlocco;
+                                if (_numBytes > 0)
+                                {
+                                    _valProgress = (_datiTrasferiti * 100) / _numBytes;
+                                }
+                                _progress = (int)_valProgress;
+                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                Step(this, _stepEv);
+                            }
+                        }
+                    }
+                    else
+                    { return false; }
+
+
+                }
+
+
+                // Ora trasmetto il residuo
+                int _residuo = (int)(_numBytes - _datiTrasferiti);
+                _Tempbuffer = new byte[_residuo];
+                for (int _blockStep = 0; _blockStep < _residuo; _blockStep++)
+                {
+                    _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                    _posizione++;
+                    _datiTrasferiti++;
+                }
+                _esito = ScriviBloccoMemoria(_TmpAddr, (ushort)_residuo, _Tempbuffer);
+                _stepSent++;
+                if (_esito)
+                {
+                    if (Step != null)
+                    {
+                        if (_ultimaRisposta == SerialMessage.TipoRisposta.Ack)
+                        {
+                            // Il pacchetto è stato accettato; incremento i contatori e continuo
+                            int _progress = 0;
+                            double _valProgress = 0;
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                            _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                            _passo.Eventi = (int)_numBytes;
+                            _passo.Step = (int)_datiTrasferiti;
+                            _passo.EsecuzioneInterrotta = false;
+                            _passo.FaseCorrente = StepDescription + " / Fine Scritt.: " + BloccoAttivo.strIdBlocco;
+                            if (_numBytes > 0)
+                            {
+                                _valProgress = (_datiTrasferiti * 100) / _numBytes;
+                            }
+                            _progress = (int)_valProgress;
+                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                            Step(this, _stepEv);
+                        }
+                    }
+                }
+                else
+                { return false; }
+
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+        public bool ImpostaAreaAttiva( byte Area, bool WaitReconnect = true, string StepDescription = "")
+        {
+            try
+            {
+                bool _esito;
+                //object _dataRx;
+                elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+                elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
+                SerialMessage.LadeLightBool _AckPacchetto = SerialMessage.LadeLightBool.False;
+
+                // Leggo InfoFW e verifico che l'area indicata sia OK
+
+                if (Step != null)
+                {
+                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                    _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                    if (ModoDesolfatatore)
+                    {
+                        _passo.Titolo = "Impostazione area attiva RIGENERATORE";
+                        _passo.FaseCorrente = StepDescription;
+                    }
+                    else
+                    {
+                        _passo.Titolo = StringheMessaggio.strMsgResetSB;  //"Reset SPY-BATT";
+                        _passo.FaseCorrente = "";
+                    }
+
+                    _passo.Eventi = 1;
+                    _passo.Step = -1;
+                    _passo.EsecuzioneInterrotta = false;
+                    _passo.FaseCorrente = StepDescription + " / Impostazione area " + Area.ToString();
+                    ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                    Step(this, _stepEv);
+                }
+
+
+
+                _esito = CaricaStatoFirmware(Id, true);
+                if (_esito && (UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk))
+                {
+                    if (Area == 2)
+                    {
+                        if ((StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco2InUso) == (byte)FirmwareManager.MascheraStato.Blocco2InUso)
+                        {
+                            // Sono già in area 2 
+                            return true;
+                        }
+                        // Verifico se l'area 2 è OK
+                        if ((StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco2SW) != (byte)FirmwareManager.MascheraStato.Blocco2SW)
+                        {
+                            return false;
+                        }
+
+                        _esito = SwitchFirmware(Id, true, 2);
+
+
+                    }
+                    else
+                    {
+                        if ((StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco1InUso) == (byte)FirmwareManager.MascheraStato.Blocco1InUso)
+                        {
+                            // Sono già in area 2 
+                            return true;
+                        }
+                        // Verifico se l'area 2 è OK
+                        if ((StatoFirmware.Stato & (byte)FirmwareManager.MascheraStato.Blocco1SW) != (byte)FirmwareManager.MascheraStato.Blocco1SW)
+                        {
+                            return false;
+                        }
+
+                        _esito = SwitchFirmware(Id, true, 1);
+
+
+                    }
+
+                    //ora aspetto il riavvio e ricollego
+
+                    int _progress = 0;
+                    double _valProgress = 0;
+                    //  mi ricollego aspettando il riavvio
+                    //Application.DoEvents();
+
+                    if (Step != null)
+                    {
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        if (ModoDesolfatatore)
+                        {
+                            _passo.Titolo = "Attesa riavvio RIGENERATORE";
+                            _passo.FaseCorrente = StepDescription;
+                        }
+                        else
+                        {
+                            _passo.Titolo = StringheMessaggio.strMsgAggFWFase3;  //"Fase 3 - riavvio SPY-BATT";
+                        }
+                        _passo.Eventi = 1;
+                        _passo.Step = -1;
+                        _passo.FaseCorrente = StepDescription + " / Attesa riavvio area " + Area.ToString();
+                        _passo.EsecuzioneInterrotta = false;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(0, _passo);
+                        Step(this, _stepEv);
+                    }
+
+                    _esito = false;
+                    int _tentativi = 5;
+
+                    System.Threading.Thread.Sleep(500);
+
+                    while (!_esito)
+                    {
+                        System.Threading.Thread.Sleep(100);
+                        if (Step != null)
+                        {
+                            elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                            _passo.Eventi = 20;
+                            _passo.Step = _tentativi++;
+                            _passo.EsecuzioneInterrotta = false;
+                            _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.Dati;
+                            _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                            _passo.FaseCorrente = StepDescription;
+                            _valProgress = (_tentativi );
+
+                            _progress = (int)_valProgress;
+                            _passo.FaseCorrente = StepDescription + " / Attesa riavvio area " + Area.ToString();
+
+                            ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_progress, _passo);
+                                //Log.Debug("Passo " + _risposteRicevute.ToString());
+                                Step(this, _stepEv);
+                        }
+
+                        _esito = VerificaPresenza();
+
+                    }
+
+
+
+
+
+                }
+
+                
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("FW Update: " + Ex.Message);
+                Log.Error(Ex.TargetSite.ToString());
+
+                return false;
+            }
+        }
 
 
     }

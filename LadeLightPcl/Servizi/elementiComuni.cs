@@ -33,6 +33,7 @@ namespace ChargerLogic
                                           AreaMemLungaLL = 15,
                                           AreaMemBreveLL = 16,
                                           CaricamentoInizialeLL = 18,
+                                          InizializzazioneRigeneratore = 32,
                                           NonDefinito = -1 };
 
         public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Nack = 2, Break = 3, Dati = 10, NonValido = -1 };
@@ -236,6 +237,7 @@ namespace ChargerLogic
             private int _numEventi;
             private int _evCorrente;
             private string _titolo;
+            private string _faseCorrente;
             private bool _esecuzioneInterrotta;
             private tipoMessaggio _TipoDati;
             private contenutoMessaggio _DatiRicevuti;
@@ -298,6 +300,17 @@ namespace ChargerLogic
                 get
                 {
                     return this._titolo;
+                }
+            }
+            public string FaseCorrente
+            {
+                set
+                {
+                    _faseCorrente = value;
+                }
+                get
+                {
+                    return this._faseCorrente;
                 }
             }
             public tipoMessaggio TipoDati

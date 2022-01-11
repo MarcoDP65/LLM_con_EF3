@@ -368,11 +368,11 @@ namespace ChargerLogic
                     Log.Debug(" ----------------------  Primo Blocco Memoria  -----------------------------------------");
 
 
-                    ProduttoreApparato = ArrayToString(_messaggio, startByte, 18);
+                    ProduttoreApparato = ArrayToString(_messaggio, startByte, 18);    // Start 0
                     startByte += 18;
-                    NomeApparato = ArrayToString(_messaggio, startByte, 10);
+                    NomeApparato = ArrayToString(_messaggio, startByte, 10);          // Start 18 
                     startByte += 10;
-                    SerialeApparato = ArrayToUint32(_messaggio, startByte, 3);
+                    SerialeApparato = ArrayToUint32(_messaggio, startByte, 3);        // Start 28
                     if (SerialeApparato != 0xFFFFFF)
                     {
                         ProgressivoCodice = SerialeApparato & 0x03FFFF;
@@ -384,14 +384,14 @@ namespace ChargerLogic
                         AnnoCodice = 0;
                     }
                     startByte += 3;
-                    TipoApparato = _messaggio[startByte];
+                    TipoApparato = _messaggio[startByte];                           // Start 31
                     startByte += 1;
-                    DataSetupApparato = ArrayToUint32(_messaggio, startByte, 3);
+                    DataSetupApparato = ArrayToUint32(_messaggio, startByte, 3);    // Start 32
                     startByte += 3;
-                    SerialeZVT = SubArray(_messaggio, startByte, 8);
+                    SerialeZVT = SubArray(_messaggio, startByte, 8);                // Start 35
                     LottoZVT = FunzioniMR.DecodificaStringaLottoZVT(SerialeZVT);
                     startByte += 8;
-                    HardwareZVT = ArrayToString(_messaggio, startByte, 8);
+                    HardwareZVT = ArrayToString(_messaggio, startByte, 8);          // Start 43 
                     startByte += 8;
                     SerialePFC = SubArray(_messaggio, startByte, 8);
                     startByte += 8;
@@ -1223,41 +1223,42 @@ namespace ChargerLogic
                     startByte = 0;
                     Log.Debug(" ----------------------  Area Contatori  -----------------------------------------");
 
-
-                    DataPrimaCarica = SubArray(_messaggio, startByte, 5);
-                    startByte += 5;
-                    CntCicliTotali = ArrayToUint32(_messaggio, startByte, 4);
+                    
+                    DataPrimaCarica = SubArray(_messaggio, startByte, 5);          // Start   0
+                    startByte += 5; 
+                    CntCicliTotali = ArrayToUint32(_messaggio, startByte, 4);      // Start   5
                     startByte += 4;
-                    CntCicliStop = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCicliStop = ArrayToUint32(_messaggio, startByte, 4);        // Start   9
                     startByte += 4;
-                    CntCicliStaccoBatt = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCicliStaccoBatt = ArrayToUint32(_messaggio, startByte, 4);  // Start  13 (0x0D)
                     startByte += 4;
-                    CntCicliLess3H = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCicliLess3H = ArrayToUint32(_messaggio, startByte, 4);      // Start  17 (0x11)
                     startByte += 4;
-                    CntCicli3Hto6H = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCicli3Hto6H = ArrayToUint32(_messaggio, startByte, 4);      // Start  21 (0x15)
                     startByte += 4;
-                    CntCicli6Hto9H = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCicli6Hto9H = ArrayToUint32(_messaggio, startByte, 4);      // Start  25 (0x19)
+                    startByte += 4; 
+                    CntCicliOver9H = ArrayToUint32(_messaggio, startByte, 4);      // Start  29 (0x1D)
                     startByte += 4;
-                    CntCicliOver9H = ArrayToUint32(_messaggio, startByte, 4);
-                    startByte += 4;
-                    CntProgrammazioni = ArrayToUshort(_messaggio, startByte, 2);
+                    CntProgrammazioni = ArrayToUshort(_messaggio, startByte, 2);   // Start  33 (0x21)
                     startByte += 2;
-                    CntCicliBrevi = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCicliBrevi = ArrayToUint32(_messaggio, startByte, 4);       // Start  35 (0x23)
                     startByte += 4;
-                    PntNextBreve = ArrayToUint32(_messaggio, startByte, 3);
+                    PntNextBreve = ArrayToUint32(_messaggio, startByte, 3);        // Start  39 (0x27)
                     startByte += 3;
-                    CntCariche = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCariche = ArrayToUint32(_messaggio, startByte, 4);          // Start  42 (0x2A) 
                     startByte += 4;
-                    PntNextCarica = ArrayToUint32(_messaggio, startByte, 3);
+                    PntNextCarica = ArrayToUint32(_messaggio, startByte, 3);       // Start  46 (0x2E)
                     startByte += 3;
-                    CntMemReset = ArrayToUshort(_messaggio, startByte, 2);
+                    CntMemReset = ArrayToUshort(_messaggio, startByte, 2);         // Start  49 (0x31)
                     startByte += 2;
                     if (CntMemReset == 0xFFFF) CntMemReset = 0;
-                    DataUltimaCancellazione = SubArray(_messaggio, startByte, 3);
+                    DataUltimaCancellazione = SubArray(_messaggio, startByte, 3);  // Start  51 (0x33)
                     startByte += 3;
-                    CntCicliOpportunity = ArrayToUint32(_messaggio, startByte, 4);
+                    CntCicliOpportunity = ArrayToUint32(_messaggio, startByte, 4); // Start  54 (0x36)
                     startByte += 4;
 
+                    // CRC 2 byte da 58  (0x3A)
 
                     datiPronti = true;
 
@@ -1275,8 +1276,8 @@ namespace ChargerLogic
             {
                 try
                 {
-                    byte[] _datamap = new byte[0x38];
-                    byte[] _dataSet = new byte[0x36];
+                    byte[] _datamap = new byte[0x3C];
+                    byte[] _dataSet = new byte[0x3C];
                     int _arrayInit = 0;
                     ushort _temCRC = 0x0000;
 

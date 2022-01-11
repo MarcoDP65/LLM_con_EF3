@@ -272,11 +272,11 @@ namespace ChargerLogic
                 //Serializzo il pacchetto dati
                 string JsonData = JsonConvert.SerializeObject(FirmwareData);
 
+                // Prima comprimo i dati
+                string JsonZip = FunzioniComuni.CompressString(JsonData);
 
                 // Cifro i dati
-
-
-                string JsonEncript = StringCipher.Encrypt(JsonData);
+                string JsonEncript = StringCipher.Encrypt(JsonZip);
 
                 // ora salvo il file 
                 File.AppendAllText(NomeFile, JsonEncript);
@@ -309,6 +309,16 @@ namespace ChargerLogic
                       
                         _fileImport = _fileDecripted;
                     }
+
+                    // Ora verifico se è compresso
+                    string _fileUnzipped = FunzioniComuni.DecompressString(_fileImport);
+
+                    if (_fileUnzipped != "")
+                    {
+                        _fileImport = _fileUnzipped;
+                    }
+
+
                     /*
                      
                     Nella versione pubblica rifiutare i files non cifrati

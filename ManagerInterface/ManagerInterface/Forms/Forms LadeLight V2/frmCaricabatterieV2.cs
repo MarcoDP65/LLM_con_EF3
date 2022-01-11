@@ -5626,6 +5626,100 @@ namespace PannelloCharger
                 Log.Error("btnPaProfileClear_Click: " + Ex.Message);
             }
         }
+
+        private void btnMemClearLogExec_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool Esito;
+                bool EsitoDel;
+
+                // Chiedo sconferma azzeramento:
+
+                DialogResult Risposta = MessageBox.Show("Confermi l'azzeramento della scheda corrente ?", "DATI SCHEDA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (Risposta != DialogResult.OK)
+                {
+                    return;
+                }
+
+                this.Cursor = Cursors.WaitCursor;
+
+                // Programmazioni
+                // 1 blocco dall'indirizzo  0x2000 / 0x2FFF
+
+                if (chkMemCResetProg.Checked)
+                {
+                    EsitoDel = _cb.CancellaBlocco4K(0x2000);
+                    if (!EsitoDel)
+                    {
+                        MessageBox.Show("Cancellazione PROGRAMMAZIONI non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Cursor = Cursors.Arrow;
+                        return;
+                    }
+
+                }
+
+                // Azzeramento contatori - Funzione specifica
+
+                if (chkMemCResetCont.Checked)
+                {
+                    EsitoDel = _cb.AzzeraContatori();
+                    if (!EsitoDel)
+                    {
+                        MessageBox.Show("Cancellazione CONTATORI non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Cursor = Cursors.Arrow;
+                        return;
+                    }
+
+                }
+
+                // Cicli
+                // Brevi:  area totale 429 blocchi da 0x006000 - Cancello solo il primo
+                // Lunghi: area totale   4 blocchi da 0x1B3000 - Cancello tutto
+
+
+                if (chkMemCResetCicli.Checked)
+                {
+                    EsitoDel = _cb.CancellaBlocco4K(0x006000);
+                    if (!EsitoDel)
+                    {
+                        MessageBox.Show("Cancellazione CICLI non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Cursor = Cursors.Arrow;
+                        return;
+                    }
+
+                    for (int Ciclo = 0; Ciclo < 4; Ciclo++)
+                    {
+                        uint Addr = 0x1B3000;
+
+                        EsitoDel = _cb.CancellaBlocco4K(Addr);
+                        if (!EsitoDel)
+                        {
+                            MessageBox.Show("Cancellazione CICLI non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Cursor = Cursors.Arrow;
+                            return;
+                        }
+                        Addr += 0x1000;
+                    }
+                }
+
+
+                // Reboot
+                if (chkMemCReboot.Checked)
+                {
+                    _cb.ResetScheda();
+                }
+
+                this.Cursor = Cursors.Arrow;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaProfileClear_Click: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
+            }
+        }
     }
 }
 

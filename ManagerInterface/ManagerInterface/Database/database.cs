@@ -50,7 +50,7 @@ namespace MoriData
                 CreateTable<_llMemoriaCicli>();
                 CreateTable<_llContatoriApparato>();
                 CreateTable<_llProgrammaCarica>();
-
+                CreateTable <_brInitSetup>();
                 inizializzaUtente();
                 inizializzaDefSoglie();
                 inizializzaSoglie();

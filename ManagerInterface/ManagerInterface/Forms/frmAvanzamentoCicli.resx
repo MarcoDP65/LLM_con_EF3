@@ -181,7 +181,7 @@
     <value>11</value>
   </data>
   <data name="btnStartLettura.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 222</value>
+    <value>144, 235</value>
   </data>
   <data name="btnStartLettura.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -268,7 +268,7 @@
     <value>7</value>
   </data>
   <data name="btnAnnulla.Location" type="System.Drawing.Point, System.Drawing">
-    <value>277, 222</value>
+    <value>277, 235</value>
   </data>
   <data name="btnAnnulla.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -325,7 +325,7 @@
     <value>5</value>
   </data>
   <data name="btnChiudi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 222</value>
+    <value>406, 235</value>
   </data>
   <data name="btnChiudi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -442,7 +442,7 @@
     <value>1</value>
   </data>
   <data name="lblMsgFail.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 6pt</value>
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
   <data name="lblMsgFail.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -454,7 +454,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="lblMsgFail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>573, 23</value>
+    <value>573, 26</value>
   </data>
   <data name="lblMsgFail.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -484,7 +484,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>656, 261</value>
+    <value>656, 274</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

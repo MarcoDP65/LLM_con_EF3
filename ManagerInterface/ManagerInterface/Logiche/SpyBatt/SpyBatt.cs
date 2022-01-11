@@ -39,6 +39,8 @@ namespace ChargerLogic
         /// <summary>
         /// Enum StatoScheda
         /// </summary>
+        /// 
+        const int DataBlock = 128;
         public enum StatoScheda : byte { NonCollegata = 0x00, SoloBootloader = 0x01, BLandFW = 0x02, SoloFW = 0x03 };
 
         /// <exclude />
@@ -66,7 +68,7 @@ namespace ChargerLogic
         public mbTipoBatteria BattAttiva { get; set; }
 
         public ModelloCiclo ModCicloCorrente = new ModelloCiclo();
-
+        public bool Desolfatatore = false;
 
         //Strutture Memoria
         private bool _firmwarePresente = false;
@@ -104,6 +106,7 @@ namespace ChargerLogic
         int lastByte = 0;
         bool readingMessage = false;
         public int TipoRisposta;
+        public bool ModoDesolfatatore = false;
 
         static bool _rxRisposta;
 
@@ -207,12 +210,13 @@ namespace ChargerLogic
         /// </summary>
         /// <param name="parametri">The parametri.</param>
         /// <param name="LivelloAutorizzazione">The livello autorizzazione.</param>
-        public UnitaSpyBatt(ref parametriSistema parametri, int LivelloAutorizzazione)
+        public UnitaSpyBatt(ref parametriSistema parametri, int LivelloAutorizzazione, bool Desolfatatore = false)
         {
 
             _parametri = parametri;
             LivelloUser = LivelloAutorizzazione;
-            _mS = new MessaggioSpyBatt();
+            ModoDesolfatatore = Desolfatatore;
+            _mS = new MessaggioSpyBatt(ModoDesolfatatore);
             _mS.Dispositivo = MessaggioSpyBatt.TipoDispositivo.Charger;
             byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
             byte[] numeroSeriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -240,11 +244,12 @@ namespace ChargerLogic
         /// <param name="parametri">The parametri.</param>
         /// <param name="dbCorrente">The database corrente.</param>
         /// <param name="LivelloAutorizzazione">The livello autorizzazione.</param>
-        public UnitaSpyBatt(ref parametriSistema parametri, MoriData._db dbCorrente, int LivelloAutorizzazione)
+        public UnitaSpyBatt(ref parametriSistema parametri, MoriData._db dbCorrente, int LivelloAutorizzazione, bool Desolfatatore = false)
         {
             LivelloUser = LivelloAutorizzazione;
             _parametri = parametri;
-            _mS = new MessaggioSpyBatt();
+            ModoDesolfatatore = Desolfatatore;
+            _mS = new MessaggioSpyBatt(true);
             _mS.Dispositivo = MessaggioSpyBatt.TipoDispositivo.Charger;
             byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
             byte[] numeroSeriale = { 0, 0, 0, 0, 0, 0, 0, 0 };

@@ -315,11 +315,11 @@
             this.txtMemNumTest = new System.Windows.Forms.TextBox();
             this.btnMemTestExac = new System.Windows.Forms.Button();
             this.grbMemAzzeraLogger = new System.Windows.Forms.GroupBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.chkMemCReboot = new System.Windows.Forms.CheckBox();
             this.btnMemClearLogExec = new System.Windows.Forms.Button();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.chkMemCResetCicli = new System.Windows.Forms.CheckBox();
+            this.chkMemCResetCont = new System.Windows.Forms.CheckBox();
+            this.chkMemCResetProg = new System.Windows.Forms.CheckBox();
             this.label41 = new System.Windows.Forms.Label();
             this.grbMemCaricaLogger = new System.Windows.Forms.GroupBox();
             this.btnMemRewriteExec = new System.Windows.Forms.Button();
@@ -4165,11 +4165,11 @@
             // grbMemAzzeraLogger
             // 
             this.grbMemAzzeraLogger.BackColor = System.Drawing.Color.White;
-            this.grbMemAzzeraLogger.Controls.Add(this.checkBox10);
+            this.grbMemAzzeraLogger.Controls.Add(this.chkMemCReboot);
             this.grbMemAzzeraLogger.Controls.Add(this.btnMemClearLogExec);
-            this.grbMemAzzeraLogger.Controls.Add(this.checkBox7);
-            this.grbMemAzzeraLogger.Controls.Add(this.checkBox8);
-            this.grbMemAzzeraLogger.Controls.Add(this.checkBox9);
+            this.grbMemAzzeraLogger.Controls.Add(this.chkMemCResetCicli);
+            this.grbMemAzzeraLogger.Controls.Add(this.chkMemCResetCont);
+            this.grbMemAzzeraLogger.Controls.Add(this.chkMemCResetProg);
             this.grbMemAzzeraLogger.Controls.Add(this.label41);
             this.grbMemAzzeraLogger.Location = new System.Drawing.Point(993, 350);
             this.grbMemAzzeraLogger.Name = "grbMemAzzeraLogger";
@@ -4178,18 +4178,18 @@
             this.grbMemAzzeraLogger.TabStop = false;
             this.grbMemAzzeraLogger.Text = "Azzera Memoria Cicli";
             // 
-            // checkBox10
+            // chkMemCReboot
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Checked = true;
-            this.checkBox10.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox10.ForeColor = System.Drawing.Color.Red;
-            this.checkBox10.Location = new System.Drawing.Point(23, 106);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(66, 19);
-            this.checkBox10.TabIndex = 38;
-            this.checkBox10.Text = "Reboot";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.chkMemCReboot.AutoSize = true;
+            this.chkMemCReboot.Checked = true;
+            this.chkMemCReboot.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMemCReboot.ForeColor = System.Drawing.Color.Red;
+            this.chkMemCReboot.Location = new System.Drawing.Point(23, 106);
+            this.chkMemCReboot.Name = "chkMemCReboot";
+            this.chkMemCReboot.Size = new System.Drawing.Size(66, 19);
+            this.chkMemCReboot.TabIndex = 38;
+            this.chkMemCReboot.Text = "Reboot";
+            this.chkMemCReboot.UseVisualStyleBackColor = true;
             // 
             // btnMemClearLogExec
             // 
@@ -4202,42 +4202,43 @@
             this.btnMemClearLogExec.TabIndex = 37;
             this.btnMemClearLogExec.Text = "Esegui";
             this.btnMemClearLogExec.UseVisualStyleBackColor = true;
+            this.btnMemClearLogExec.Click += new System.EventHandler(this.btnMemClearLogExec_Click);
             // 
-            // checkBox7
+            // chkMemCResetCicli
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Checked = true;
-            this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox7.Location = new System.Drawing.Point(23, 81);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(100, 19);
-            this.checkBox7.TabIndex = 36;
-            this.checkBox7.Text = "Brevi / Lunghi";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.chkMemCResetCicli.AutoSize = true;
+            this.chkMemCResetCicli.Checked = true;
+            this.chkMemCResetCicli.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMemCResetCicli.Location = new System.Drawing.Point(23, 81);
+            this.chkMemCResetCicli.Name = "chkMemCResetCicli";
+            this.chkMemCResetCicli.Size = new System.Drawing.Size(100, 19);
+            this.chkMemCResetCicli.TabIndex = 36;
+            this.chkMemCResetCicli.Text = "Brevi / Lunghi";
+            this.chkMemCResetCicli.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // chkMemCResetCont
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Checked = true;
-            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Location = new System.Drawing.Point(23, 56);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(75, 19);
-            this.checkBox8.TabIndex = 35;
-            this.checkBox8.Text = "Contatori";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.chkMemCResetCont.AutoSize = true;
+            this.chkMemCResetCont.Checked = true;
+            this.chkMemCResetCont.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMemCResetCont.Location = new System.Drawing.Point(23, 56);
+            this.chkMemCResetCont.Name = "chkMemCResetCont";
+            this.chkMemCResetCont.Size = new System.Drawing.Size(75, 19);
+            this.chkMemCResetCont.TabIndex = 35;
+            this.chkMemCResetCont.Text = "Contatori";
+            this.chkMemCResetCont.UseVisualStyleBackColor = true;
             // 
-            // checkBox9
+            // chkMemCResetProg
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Checked = true;
-            this.checkBox9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox9.Location = new System.Drawing.Point(23, 31);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(118, 19);
-            this.checkBox9.TabIndex = 34;
-            this.checkBox9.Text = "Programmazioni";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.chkMemCResetProg.AutoSize = true;
+            this.chkMemCResetProg.Checked = true;
+            this.chkMemCResetProg.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMemCResetProg.Location = new System.Drawing.Point(23, 31);
+            this.chkMemCResetProg.Name = "chkMemCResetProg";
+            this.chkMemCResetProg.Size = new System.Drawing.Size(118, 19);
+            this.chkMemCResetProg.TabIndex = 34;
+            this.chkMemCResetProg.Text = "Programmazioni";
+            this.chkMemCResetProg.UseVisualStyleBackColor = true;
             // 
             // label41
             // 
@@ -9188,11 +9189,11 @@
         private System.Windows.Forms.Label label124;
         private System.Windows.Forms.TabPage tabMemRead;
         private System.Windows.Forms.GroupBox grbMemAzzeraLogger;
-        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox chkMemCReboot;
         private System.Windows.Forms.Button btnMemClearLogExec;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox chkMemCResetCicli;
+        private System.Windows.Forms.CheckBox chkMemCResetCont;
+        private System.Windows.Forms.CheckBox chkMemCResetProg;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.GroupBox grbMemCaricaLogger;
         private System.Windows.Forms.Button btnMemRewriteExec;

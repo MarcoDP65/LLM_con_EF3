@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.grbTargetTemplate = new System.Windows.Forms.GroupBox();
+            this.optFTDIRegen = new System.Windows.Forms.RadioButton();
+            this.optFTDIBattRegen = new System.Windows.Forms.RadioButton();
+            this.optFTDIidbatt = new System.Windows.Forms.RadioButton();
             this.optFTDIDesolf = new System.Windows.Forms.RadioButton();
             this.optFTDISBFinto = new System.Windows.Forms.RadioButton();
             this.optFTDILadeLight = new System.Windows.Forms.RadioButton();
@@ -43,14 +46,13 @@
             this.txtEsito = new System.Windows.Forms.TextBox();
             this.btnMostraTemplate = new System.Windows.Forms.Button();
             this.btnResetDevice = new System.Windows.Forms.Button();
-            this.optFTDIidbatt = new System.Windows.Forms.RadioButton();
-            this.optFTDIBattRegen = new System.Windows.Forms.RadioButton();
             this.grbTargetTemplate.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbTargetTemplate
             // 
             this.grbTargetTemplate.BackColor = System.Drawing.Color.White;
+            this.grbTargetTemplate.Controls.Add(this.optFTDIRegen);
             this.grbTargetTemplate.Controls.Add(this.optFTDIBattRegen);
             this.grbTargetTemplate.Controls.Add(this.optFTDIidbatt);
             this.grbTargetTemplate.Controls.Add(this.optFTDIDesolf);
@@ -59,19 +61,52 @@
             this.grbTargetTemplate.Controls.Add(this.optFTDISpybatt);
             this.grbTargetTemplate.Controls.Add(this.optFTDIGenerico);
             this.grbTargetTemplate.Location = new System.Drawing.Point(20, 184);
-            this.grbTargetTemplate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbTargetTemplate.Margin = new System.Windows.Forms.Padding(2);
             this.grbTargetTemplate.Name = "grbTargetTemplate";
-            this.grbTargetTemplate.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grbTargetTemplate.Size = new System.Drawing.Size(372, 185);
+            this.grbTargetTemplate.Padding = new System.Windows.Forms.Padding(2);
+            this.grbTargetTemplate.Size = new System.Drawing.Size(385, 207);
             this.grbTargetTemplate.TabIndex = 0;
             this.grbTargetTemplate.TabStop = false;
             this.grbTargetTemplate.Text = "Modello Interfaccia";
             // 
+            // optFTDIRegen
+            // 
+            this.optFTDIRegen.AutoSize = true;
+            this.optFTDIRegen.Location = new System.Drawing.Point(27, 132);
+            this.optFTDIRegen.Margin = new System.Windows.Forms.Padding(2);
+            this.optFTDIRegen.Name = "optFTDIRegen";
+            this.optFTDIRegen.Size = new System.Drawing.Size(148, 17);
+            this.optFTDIRegen.TabIndex = 7;
+            this.optFTDIRegen.Text = "Scheda REGENERATOR";
+            this.optFTDIRegen.UseVisualStyleBackColor = true;
+            // 
+            // optFTDIBattRegen
+            // 
+            this.optFTDIBattRegen.AutoSize = true;
+            this.optFTDIBattRegen.Location = new System.Drawing.Point(27, 110);
+            this.optFTDIBattRegen.Margin = new System.Windows.Forms.Padding(2);
+            this.optFTDIBattRegen.Name = "optFTDIBattRegen";
+            this.optFTDIBattRegen.Size = new System.Drawing.Size(201, 17);
+            this.optFTDIBattRegen.TabIndex = 6;
+            this.optFTDIBattRegen.Text = "Scheda BATTERY REGENERATOR";
+            this.optFTDIBattRegen.UseVisualStyleBackColor = true;
+            // 
+            // optFTDIidbatt
+            // 
+            this.optFTDIidbatt.AutoSize = true;
+            this.optFTDIidbatt.Location = new System.Drawing.Point(27, 89);
+            this.optFTDIidbatt.Margin = new System.Windows.Forms.Padding(2);
+            this.optFTDIidbatt.Name = "optFTDIidbatt";
+            this.optFTDIidbatt.Size = new System.Drawing.Size(166, 17);
+            this.optFTDIidbatt.TabIndex = 5;
+            this.optFTDIidbatt.Text = "Scheda ID-BATT Programmer";
+            this.optFTDIidbatt.UseVisualStyleBackColor = true;
+            // 
             // optFTDIDesolf
             // 
             this.optFTDIDesolf.AutoSize = true;
-            this.optFTDIDesolf.Location = new System.Drawing.Point(27, 130);
-            this.optFTDIDesolf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optFTDIDesolf.Location = new System.Drawing.Point(27, 153);
+            this.optFTDIDesolf.Margin = new System.Windows.Forms.Padding(2);
             this.optFTDIDesolf.Name = "optFTDIDesolf";
             this.optFTDIDesolf.Size = new System.Drawing.Size(195, 17);
             this.optFTDIDesolf.TabIndex = 4;
@@ -82,8 +117,8 @@
             // 
             this.optFTDISBFinto.AutoSize = true;
             this.optFTDISBFinto.ForeColor = System.Drawing.Color.Green;
-            this.optFTDISBFinto.Location = new System.Drawing.Point(27, 152);
-            this.optFTDISBFinto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optFTDISBFinto.Location = new System.Drawing.Point(27, 175);
+            this.optFTDISBFinto.Margin = new System.Windows.Forms.Padding(2);
             this.optFTDISBFinto.Name = "optFTDISBFinto";
             this.optFTDISBFinto.Size = new System.Drawing.Size(167, 17);
             this.optFTDISBFinto.TabIndex = 3;
@@ -94,7 +129,7 @@
             // 
             this.optFTDILadeLight.AutoSize = true;
             this.optFTDILadeLight.Location = new System.Drawing.Point(27, 68);
-            this.optFTDILadeLight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optFTDILadeLight.Margin = new System.Windows.Forms.Padding(2);
             this.optFTDILadeLight.Name = "optFTDILadeLight";
             this.optFTDILadeLight.Size = new System.Drawing.Size(128, 17);
             this.optFTDILadeLight.TabIndex = 2;
@@ -106,7 +141,7 @@
             this.optFTDISpybatt.AutoSize = true;
             this.optFTDISpybatt.Checked = true;
             this.optFTDISpybatt.Location = new System.Drawing.Point(27, 46);
-            this.optFTDISpybatt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optFTDISpybatt.Margin = new System.Windows.Forms.Padding(2);
             this.optFTDISpybatt.Name = "optFTDISpybatt";
             this.optFTDISpybatt.Size = new System.Drawing.Size(117, 17);
             this.optFTDISpybatt.TabIndex = 1;
@@ -119,7 +154,7 @@
             this.optFTDIGenerico.AutoSize = true;
             this.optFTDIGenerico.ForeColor = System.Drawing.Color.Red;
             this.optFTDIGenerico.Location = new System.Drawing.Point(27, 24);
-            this.optFTDIGenerico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optFTDIGenerico.Margin = new System.Windows.Forms.Padding(2);
             this.optFTDIGenerico.Name = "optFTDIGenerico";
             this.optFTDIGenerico.Size = new System.Drawing.Size(140, 17);
             this.optFTDIGenerico.TabIndex = 0;
@@ -128,18 +163,19 @@
             // 
             // btnChiudi
             // 
-            this.btnChiudi.Location = new System.Drawing.Point(326, 562);
-            this.btnChiudi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChiudi.Location = new System.Drawing.Point(326, 590);
+            this.btnChiudi.Margin = new System.Windows.Forms.Padding(2);
             this.btnChiudi.Name = "btnChiudi";
             this.btnChiudi.Size = new System.Drawing.Size(79, 31);
             this.btnChiudi.TabIndex = 1;
             this.btnChiudi.Text = "Chiudi";
             this.btnChiudi.UseVisualStyleBackColor = true;
+            this.btnChiudi.Click += new System.EventHandler(this.btnChiudi_Click);
             // 
             // btnApplicaTemplate
             // 
-            this.btnApplicaTemplate.Location = new System.Drawing.Point(104, 562);
-            this.btnApplicaTemplate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnApplicaTemplate.Location = new System.Drawing.Point(104, 590);
+            this.btnApplicaTemplate.Margin = new System.Windows.Forms.Padding(2);
             this.btnApplicaTemplate.Name = "btnApplicaTemplate";
             this.btnApplicaTemplate.Size = new System.Drawing.Size(79, 31);
             this.btnApplicaTemplate.TabIndex = 2;
@@ -152,7 +188,7 @@
             this.lvwListaPorte.FullRowSelect = true;
             this.lvwListaPorte.HideSelection = false;
             this.lvwListaPorte.Location = new System.Drawing.Point(20, 18);
-            this.lvwListaPorte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvwListaPorte.Margin = new System.Windows.Forms.Padding(2);
             this.lvwListaPorte.Name = "lvwListaPorte";
             this.lvwListaPorte.Size = new System.Drawing.Size(386, 104);
             this.lvwListaPorte.TabIndex = 3;
@@ -163,7 +199,7 @@
             // txtFtdiSerialId
             // 
             this.txtFtdiSerialId.Location = new System.Drawing.Point(230, 150);
-            this.txtFtdiSerialId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFtdiSerialId.Margin = new System.Windows.Forms.Padding(2);
             this.txtFtdiSerialId.Name = "txtFtdiSerialId";
             this.txtFtdiSerialId.Size = new System.Drawing.Size(176, 20);
             this.txtFtdiSerialId.TabIndex = 4;
@@ -171,7 +207,7 @@
             // btnUsbReload
             // 
             this.btnUsbReload.Location = new System.Drawing.Point(20, 136);
-            this.btnUsbReload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUsbReload.Margin = new System.Windows.Forms.Padding(2);
             this.btnUsbReload.Name = "btnUsbReload";
             this.btnUsbReload.Size = new System.Drawing.Size(196, 31);
             this.btnUsbReload.TabIndex = 5;
@@ -192,8 +228,8 @@
             // txtEsito
             // 
             this.txtEsito.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEsito.Location = new System.Drawing.Point(20, 388);
-            this.txtEsito.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEsito.Location = new System.Drawing.Point(20, 416);
+            this.txtEsito.Margin = new System.Windows.Forms.Padding(2);
             this.txtEsito.Multiline = true;
             this.txtEsito.Name = "txtEsito";
             this.txtEsito.ReadOnly = true;
@@ -203,8 +239,8 @@
             // 
             // btnMostraTemplate
             // 
-            this.btnMostraTemplate.Location = new System.Drawing.Point(20, 562);
-            this.btnMostraTemplate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMostraTemplate.Location = new System.Drawing.Point(20, 590);
+            this.btnMostraTemplate.Margin = new System.Windows.Forms.Padding(2);
             this.btnMostraTemplate.Name = "btnMostraTemplate";
             this.btnMostraTemplate.Size = new System.Drawing.Size(79, 31);
             this.btnMostraTemplate.TabIndex = 8;
@@ -214,8 +250,8 @@
             // 
             // btnResetDevice
             // 
-            this.btnResetDevice.Location = new System.Drawing.Point(187, 562);
-            this.btnResetDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnResetDevice.Location = new System.Drawing.Point(187, 590);
+            this.btnResetDevice.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetDevice.Name = "btnResetDevice";
             this.btnResetDevice.Size = new System.Drawing.Size(113, 31);
             this.btnResetDevice.TabIndex = 9;
@@ -223,34 +259,12 @@
             this.btnResetDevice.UseVisualStyleBackColor = true;
             this.btnResetDevice.Click += new System.EventHandler(this.btnResetDevice_Click);
             // 
-            // optFTDIidbatt
-            // 
-            this.optFTDIidbatt.AutoSize = true;
-            this.optFTDIidbatt.Location = new System.Drawing.Point(27, 89);
-            this.optFTDIidbatt.Margin = new System.Windows.Forms.Padding(2);
-            this.optFTDIidbatt.Name = "optFTDIidbatt";
-            this.optFTDIidbatt.Size = new System.Drawing.Size(166, 17);
-            this.optFTDIidbatt.TabIndex = 5;
-            this.optFTDIidbatt.Text = "Scheda ID-BATT Programmer";
-            this.optFTDIidbatt.UseVisualStyleBackColor = true;
-            // 
-            // optFTDIBattRegen
-            // 
-            this.optFTDIBattRegen.AutoSize = true;
-            this.optFTDIBattRegen.Location = new System.Drawing.Point(27, 109);
-            this.optFTDIBattRegen.Margin = new System.Windows.Forms.Padding(2);
-            this.optFTDIBattRegen.Name = "optFTDIBattRegen";
-            this.optFTDIBattRegen.Size = new System.Drawing.Size(201, 17);
-            this.optFTDIBattRegen.TabIndex = 6;
-            this.optFTDIBattRegen.Text = "Scheda BATTERY REGENERATOR";
-            this.optFTDIBattRegen.UseVisualStyleBackColor = true;
-            // 
             // frmFlashFTDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
-            this.ClientSize = new System.Drawing.Size(427, 613);
+            this.ClientSize = new System.Drawing.Size(427, 634);
             this.Controls.Add(this.btnResetDevice);
             this.Controls.Add(this.btnMostraTemplate);
             this.Controls.Add(this.txtEsito);
@@ -261,7 +275,7 @@
             this.Controls.Add(this.btnApplicaTemplate);
             this.Controls.Add(this.btnChiudi);
             this.Controls.Add(this.grbTargetTemplate);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmFlashFTDI";
@@ -292,5 +306,6 @@
         private System.Windows.Forms.RadioButton optFTDIDesolf;
         private System.Windows.Forms.RadioButton optFTDIBattRegen;
         private System.Windows.Forms.RadioButton optFTDIidbatt;
+        private System.Windows.Forms.RadioButton optFTDIRegen;
     }
 }

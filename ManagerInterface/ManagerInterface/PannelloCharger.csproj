@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>3.2.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -248,6 +248,7 @@
     <Compile Include="Componenti\PannelloTurno.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Database\brInitSetup.cs" />
     <Compile Include="Database\DatiConfigCariche.cs" />
     <Compile Include="Database\GestioneBatterie\InizializzazioneBatterie.cs" />
     <Compile Include="Database\GestioneBatterie\mbParProfiloTipoBatt.cs" />
@@ -587,6 +588,7 @@
     <Compile Include="Logiche\Messaggio CaricaBatteria\MessaggioLadeLight.cs" />
     <Compile Include="Logiche\Messaggio CaricaBatteria\SottoclassiMessaggioLadeLight.cs" />
     <Compile Include="Logiche\Messaggio Display\sottoclassiMessaggioDisplay.cs" />
+    <Compile Include="Logiche\Messaggio SpyBatt\DataBlockInfo.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\MessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio SpyBatt\sottoclassiMessaggioSpyBatt.cs" />
     <Compile Include="Logiche\Messaggio Display\MessaggioDisplay.cs" />
