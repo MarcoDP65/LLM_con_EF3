@@ -32,12 +32,17 @@ namespace ChargerLogic
         public FTDI usbSpyBatt;
         public string usbSpyBattSerNum;
 
+        public SerialPort serialeSuperCharger;
+        public FTDI usbSuperCharger;
+        public string usbSuperChargerSerNum;
+
         public DateTime UltimoMessaggio;
       
 
 
         public CanaleDispositivo CanaleSpyBat;
         public CanaleDispositivo CanaleLadeLight;
+        public CanaleDispositivo CanaleSupercharger;
 
         public string portName = "COM9";
         public Int32 baudRate = 115200;
@@ -114,10 +119,12 @@ namespace ChargerLogic
                     serialeCorrente = new SerialPort();
                     serialeLadeLight = new SerialPort();
                     serialeSpyBatt = new SerialPort();
+                    serialeSuperCharger = new SerialPort();
 
                     usbCorrente = new FTDI();
                     usbLadeLight = new FTDI();
                     usbSpyBatt = new FTDI();
+                    usbSuperCharger = new FTDI();
                 }
 
             }
@@ -776,7 +783,7 @@ namespace ChargerLogic
                 lastError = Ex.Message;
             }
         }
- #endregion
+        #endregion
 
 
     }

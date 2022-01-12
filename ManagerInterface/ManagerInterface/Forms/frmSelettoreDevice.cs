@@ -363,6 +363,12 @@ namespace PannelloCharger
 
                         switch (_tempCanale.Description)
                         {
+                            case "PSW SUPERCHARGER":
+                                _varGlobali.usbLadeLightSerNum = _tempCanale.SerialNumber;
+                                _varGlobali.CanaleLadeLight = parametriSistema.CanaleDispositivo.USB;
+                                ApriSuperCharger();
+                                return;
+
                             case "LADE LIGHT":
                                 _varGlobali.usbLadeLightSerNum = _tempCanale.SerialNumber;
                                 _varGlobali.CanaleLadeLight = parametriSistema.CanaleDispositivo.USB;
@@ -420,6 +426,68 @@ namespace PannelloCharger
         }
 
 
+        private void ApriSuperCharger()
+        {
+            try
+            {
+                bool esitoCanaleApparato = false;
+
+                Log.Debug("Apri Canale SuperCharger");
+                this.Cursor = Cursors.WaitCursor;
+
+                // se la porta seriale non è aperta , la apro
+                // -- rev 14/09  se già aperta chiudo e riapro             
+                if (_varGlobali.statoCanaleLadeLight())
+                {
+                    Log.Debug("USB LadeLight aperto - lo richiudo");
+                    _varGlobali.chiudiCanaleLadeLight();
+                }
+
+                esitoCanaleApparato = _varGlobali.apriLadeLight();
+                if (esitoCanaleApparato)
+                {
+                    foreach (Form form in Application.OpenForms)
+                    {
+                        if (form.GetType() == typeof(frmSuperCharger))
+                        {
+                            form.Activate();
+                            return;
+                        }
+                    }
+                    Log.Debug("NUOVO LL");
+
+                    frmSuperCharger cbCorrente = new frmSuperCharger(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+
+                    if (!cbCorrente.ApparatoConnesso)
+                    {
+                        cbCorrente.Close();
+                        MessageBox.Show("Nessuna risposta dal dispositivo selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    cbCorrente.Cursor = Cursors.WaitCursor;
+
+                    cbCorrente.MdiParent = this.MdiParent;
+                    cbCorrente.StartPosition = FormStartPosition.Manual;
+                    cbCorrente.Location = new Point(5, 5);
+
+                    //cbCorrente.ParametriProfilo = ParametriProfilo;
+                    //cbCorrente.Cursor = Cursors.WaitCursor;
+                    cbCorrente.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Nessuna risposta dal canale selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                this.Cursor = Cursors.Default;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain.ApriLadeLight: " + Ex.Message);
+                this.Cursor = Cursors.Default;
+            }
+
+        }
 
         private void ApriLadeLight()
         {
