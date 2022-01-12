@@ -15,7 +15,7 @@ namespace ChargerLogic
         public enum LLBoolean : byte { lltrue = 0x0F, llfalse = 0xF0};
         public enum InitialCrcValue : ushort { Zeros, NonZero1 = 0xffff, NonZero2 = 0x1D0F };
         public enum RequiredActionOutcome : byte {Success = 0x0F,Failed = 0xF0, UnDone = 0xFF,Undefined = 0x00};
-        public enum TipoDispositivo : ushort { PcOrSmart = 0xBCBC, Charger = 0x0000, SpyBat = 0x0003 };
+        public enum TipoDispositivo : ushort { PcOrSmart = 0xBCBC, Charger = 0x0000, SpyBat = 0x0003, Supercharger = 0x0008 };
         public enum TipoComando : byte {
 
             CMD_NOTHING = 0x00,
@@ -45,6 +45,8 @@ namespace ChargerLogic
             CMD_ERASE_4K_MEM = 0x2E,
             CMD_READ_MEMORY = 0x33,
             CMD_WRITE_MEMORY = 0x35,
+            CMD_READ_MEMORY_DF = 0x34,
+            CMD_WRITE_MEMORY_DF = 0x36,
             CMD_READ_ALL_MEMORY = 0x39,
             CMD_CALIB_ON_OFF = 0x3B,
             CMD_CALIB_PARAM = 0x3E,

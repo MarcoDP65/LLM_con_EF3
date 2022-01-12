@@ -46,12 +46,14 @@
             this.txtEsito = new System.Windows.Forms.TextBox();
             this.btnMostraTemplate = new System.Windows.Forms.Button();
             this.btnResetDevice = new System.Windows.Forms.Button();
+            this.optFTDISuperChg = new System.Windows.Forms.RadioButton();
             this.grbTargetTemplate.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbTargetTemplate
             // 
             this.grbTargetTemplate.BackColor = System.Drawing.Color.White;
+            this.grbTargetTemplate.Controls.Add(this.optFTDISuperChg);
             this.grbTargetTemplate.Controls.Add(this.optFTDIRegen);
             this.grbTargetTemplate.Controls.Add(this.optFTDIBattRegen);
             this.grbTargetTemplate.Controls.Add(this.optFTDIidbatt);
@@ -64,7 +66,7 @@
             this.grbTargetTemplate.Margin = new System.Windows.Forms.Padding(2);
             this.grbTargetTemplate.Name = "grbTargetTemplate";
             this.grbTargetTemplate.Padding = new System.Windows.Forms.Padding(2);
-            this.grbTargetTemplate.Size = new System.Drawing.Size(385, 207);
+            this.grbTargetTemplate.Size = new System.Drawing.Size(385, 228);
             this.grbTargetTemplate.TabIndex = 0;
             this.grbTargetTemplate.TabStop = false;
             this.grbTargetTemplate.Text = "Modello Interfaccia";
@@ -117,13 +119,14 @@
             // 
             this.optFTDISBFinto.AutoSize = true;
             this.optFTDISBFinto.ForeColor = System.Drawing.Color.Green;
-            this.optFTDISBFinto.Location = new System.Drawing.Point(27, 175);
+            this.optFTDISBFinto.Location = new System.Drawing.Point(27, 195);
             this.optFTDISBFinto.Margin = new System.Windows.Forms.Padding(2);
             this.optFTDISBFinto.Name = "optFTDISBFinto";
             this.optFTDISBFinto.Size = new System.Drawing.Size(167, 17);
             this.optFTDISBFinto.TabIndex = 3;
             this.optFTDISBFinto.Text = "Interfaccia FT201x su HW SB";
             this.optFTDISBFinto.UseVisualStyleBackColor = true;
+            this.optFTDISBFinto.CheckedChanged += new System.EventHandler(this.optFTDISBFinto_CheckedChanged);
             // 
             // optFTDILadeLight
             // 
@@ -259,6 +262,17 @@
             this.btnResetDevice.UseVisualStyleBackColor = true;
             this.btnResetDevice.Click += new System.EventHandler(this.btnResetDevice_Click);
             // 
+            // optFTDISuperChg
+            // 
+            this.optFTDISuperChg.AutoSize = true;
+            this.optFTDISuperChg.Location = new System.Drawing.Point(27, 174);
+            this.optFTDISuperChg.Margin = new System.Windows.Forms.Padding(2);
+            this.optFTDISuperChg.Name = "optFTDISuperChg";
+            this.optFTDISuperChg.Size = new System.Drawing.Size(203, 17);
+            this.optFTDISuperChg.TabIndex = 8;
+            this.optFTDISuperChg.Text = "Scheda DISPLAY SUPERCHARGER";
+            this.optFTDISuperChg.UseVisualStyleBackColor = true;
+            // 
             // frmFlashFTDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,5 +321,6 @@
         private System.Windows.Forms.RadioButton optFTDIBattRegen;
         private System.Windows.Forms.RadioButton optFTDIidbatt;
         private System.Windows.Forms.RadioButton optFTDIRegen;
+        private System.Windows.Forms.RadioButton optFTDISuperChg;
     }
 }
