@@ -10,6 +10,9 @@ using System.IO;
 using log4net;
 using log4net.Config;
 
+using ChargerLogic;
+
+
 namespace MoriData
 {
     /// <summary>
@@ -19,7 +22,12 @@ namespace MoriData
     public class _llModelloCb
     {
         [PrimaryKey]
-        public byte IdModelloLL { get; set; }
+        public byte IdModelloLL { get; set; }      // (0b)1xxxxxxx   LadeLight
+                                                   // (0b)0VVAAMMM   SuperCharger   
+                                                   // VV: volt nominali  01 = 24 | 10 = 48 | 11 = 80  | 00  -  Non Standard
+                                                   // AA: Ampere erogati 01 = 80 | 10 = 120| 11 = 160 | 00  -  Non Standard
+                                                   // MMM: Moduli presenti                            | 000 -  Non Standard
+
 
         public string NomeModello { get; set; }
         public double CorrenteMin { get; set; }
@@ -27,9 +35,13 @@ namespace MoriData
         public double TensioneMin { get; set; }
         public double TensioneMax { get; set; }
         public byte Attivo { get; set; }
+        public double TensioneNominale { get; set; }
+
+        public ushort Opzioni { get; set; }
 
         public byte Trifase { get; set; }
         public int Ordine { get; set; }
+        public CaricaBatteria.TipoCaricaBatteria FamigliaCaricabetteria { get; set; }
 
     }
 

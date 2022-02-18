@@ -383,7 +383,7 @@ namespace PannelloCharger
 
                             if (optFTDISuperChg.Checked)
                             {
-                                // LADE LIGHT
+                                // PSW SUPERCHARGER
                                 //-----------------------------------------------------
                                 _epromCorrente.ProductID = 0x7A73;
                                 _epromCorrente.Manufacturer = FunzioniMR.CompletaAZero("MORI RADDRIZZATORI", 32);
@@ -392,12 +392,12 @@ namespace PannelloCharger
                                 //-----------------------------------------------------
                                 _epromCorrente.I2CDeviceId = 0x123456;
                                 //-----------------------------------------------------
-                                _epromCorrente.Cbus0 = 0x00; // 0x05;
-                                _epromCorrente.Cbus1 = 0x00;
-                                _epromCorrente.Cbus2 = 0x00;
-                                _epromCorrente.Cbus3 = 0x00; // 0x04;
-                                _epromCorrente.Cbus4 = 0x00; // 0x11;
-                                _epromCorrente.Cbus5 = 0x00; // 0x15;
+                                _epromCorrente.Cbus0 = 0x04; // PWREN#
+                                _epromCorrente.Cbus1 = 0x00; // tristate
+                                _epromCorrente.Cbus2 = 0x00; // tristate
+                                _epromCorrente.Cbus3 = 0x04; // PWREN#
+                                _epromCorrente.Cbus4 = 0x00; // 
+                                _epromCorrente.Cbus5 = 0x00; //
                                 _epromCorrente.Cbus6 = 0x00;
                                 //-----------------------------------------------------
                             }

@@ -118,7 +118,7 @@ namespace PannelloCharger
                 _logiche = Logiche;
                 if (CaricaDati)
                 {
-                    _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                    _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione,CaricaBatteria.TipoCaricaBatteria.LadeLight);
                     string _idCorrente = IdApparato;
                     
                     _esito = _cb.CaricaCompleto(_logiche.dbDati.connessione, IdApparato);

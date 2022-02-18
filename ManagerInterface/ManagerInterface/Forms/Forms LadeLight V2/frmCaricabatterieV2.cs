@@ -164,7 +164,7 @@ namespace PannelloCharger
                 //InitializeComponent();
                 ResizeRedraw = true;
                 _msg = new SerialMessage();
-                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione,CaricaBatteria.TipoCaricaBatteria.LadeLight);
                 InizializzaScheda();
                 _esito = _cb.apriPorta();
                 if (!_esito)
@@ -262,7 +262,7 @@ namespace PannelloCharger
                 //InitializeComponent();
                 ResizeRedraw = true;
                 _msg = new SerialMessage();
-                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione, CaricaBatteria.TipoCaricaBatteria.LadeLight);
                 InizializzaScheda();
 
 
@@ -384,7 +384,7 @@ namespace PannelloCharger
 
                 ResizeRedraw = true;
                 _msg = null;   //new SerialMessage();
-                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione, CaricaBatteria.TipoCaricaBatteria.LadeLight);
                 _apparatoPresente = false;
                 //_esito = _cb.VerificaPresenza();
                 _tempParametri = new llParametriApparato();

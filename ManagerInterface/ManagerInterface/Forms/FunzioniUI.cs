@@ -105,7 +105,7 @@ namespace PannelloCharger
                                         }
                                     case 2:  // Corrente
                                         {
-                                            txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
+                                            txtValore.Text = FunzioniMR.StringaCorrenteUSh(Valore);
                                             break;
                                         }
                                     case 4:  // Minuti -> hh:mm

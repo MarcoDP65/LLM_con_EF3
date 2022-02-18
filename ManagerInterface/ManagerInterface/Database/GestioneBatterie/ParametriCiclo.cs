@@ -39,6 +39,10 @@ namespace MoriData
         public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
         public byte AttivaRiarmoPulse { get; set; }  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
 
+        public ushort CoeffK { get; set; }
+        public ushort CoeffKc { get; set; }
+
+
         // Tempi
         public ushort TempoT0Max { get; set; }
         public ushort TempoT1Max { get; set; }

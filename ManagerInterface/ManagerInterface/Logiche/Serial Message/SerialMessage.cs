@@ -107,6 +107,9 @@ namespace ChargerLogic
 
             CoeffK     = 0x05,                       // INTERO, %tempo fase 2 rispetto a fase 1
             TempoT0Max = 0x06,                       // In Minuti
+            CoeffKc    = 0x07,                       // INTERO, % capacità  massima erogabile nel ciclo di carica
+                                                     //         in rapporto alla capacità nominale della batteria 
+                                                     //         Valore minimo 100
 
             // CoeffK = 0xF1,  Vecchio Valore        // 1 decimale, %tempo fase 2 rispetto a fase 1
 
@@ -121,17 +124,17 @@ namespace ChargerLogic
             TensioneMassimaRiconoscimento = 0x1B,    // V per Cella, 2 decimali  Pb 1.90
             TensioneMinimaStop = 0x1C,               // V per Cella, 2 decimali  Pb 2.05
 
-            CorrenteCaricaI1 = 0x21,                 // A, 1 decimale
-            CorrenteMassima = 0x22,                  // A, 1 decimale
-            CorrenteF3 = 0x23,                       // A, 1 decimale
-            CorrenteFinaleF2 = 0x24,                 // A, 1 decimale
-            CorrenteRaccordo = 0x25,                 // A, 1 decimale
-            CorrentePrecicloI0 = 0x26,               // A, 1 decimale
+            CorrenteCaricaI1     = 0x21,             // A, 1 decimale
+            CorrenteMassima      = 0x22,             // A, 1 decimale
+            CorrenteF3           = 0x23,             // A, 1 decimale
+            CorrenteFinaleF2     = 0x24,             // A, 1 decimale
+            CorrenteRaccordo     = 0x25,             // A, 1 decimale
+            CorrentePrecicloI0   = 0x26,             // A, 1 decimale
 
-            CapacitaNominale = 0x31,
-            CapacitaDaRicaricare = 0x32,             // Attualmente non in uso
+            CapacitaNominale     = 0x31,
+            CapacitaDaRicaricare = 0x32,             // Attualmente non in uso - Capacita totale da cariicare nel ciclo corrente ( se non intervengono soglie di sicurezza )
 
-            FrequenzaSwitching = 0x40,               // Attualmente non in uso
+            FrequenzaSwitching   = 0x40,             // Attualmente non in uso
 
             DivisoreK = 0x50,                        // da trasmettere SEMPRE prima dei parametri K 
                                                      // --> ora è USA SPY-BATT, sempre presente, 0x00 == USA SB/TOKEN, 
@@ -1323,7 +1326,7 @@ namespace ChargerLogic
             catch { return _esito; }
         }
 
-        public ushort ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes)
+        public ushort ComponiMessaggioLeggiMem(UInt32 memAddress, ushort numBytes, bool MemoriaInterna = false)
         {
             ushort _esito = 0;
             ushort _dispositivo;
@@ -1361,8 +1364,9 @@ namespace ChargerLogic
                 splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
                 _comandoBase[(18)] = msb;
                 _comandoBase[(19)] = lsb;
+                if (MemoriaInterna) _comando = (byte)(TipoComando.CMD_READ_MEMORY_DF);
+                else _comando = (byte)(TipoComando.CMD_READ_MEMORY);
 
-                _comando = (byte)(TipoComando.CMD_READ_MEMORY);
                 splitUshort(codificaByte(_comando), ref lsb, ref msb);
                 _comandoBase[(20)] = msb;
                 _comandoBase[(21)] = lsb;

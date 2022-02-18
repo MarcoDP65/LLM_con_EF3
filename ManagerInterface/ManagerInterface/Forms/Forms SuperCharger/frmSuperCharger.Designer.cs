@@ -371,6 +371,7 @@
             this.chkMemClearMantieniCliente = new System.Windows.Forms.CheckBox();
             this.cmdMemClear = new System.Windows.Forms.Button();
             this.grbMemLettura = new System.Windows.Forms.GroupBox();
+            this.chkMemInt = new System.Windows.Forms.CheckBox();
             this.chkMemHex = new System.Windows.Forms.CheckBox();
             this.lblReadMemBytes = new System.Windows.Forms.Label();
             this.lblReadMemStartAddr = new System.Windows.Forms.Label();
@@ -390,34 +391,26 @@
             this.btnScriviInizializzazione = new System.Windows.Forms.Button();
             this.btnCaricaInizializzazione = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.label147 = new System.Windows.Forms.Label();
-            this.txtInitNumLottoPFC = new System.Windows.Forms.TextBox();
-            this.label145 = new System.Windows.Forms.Label();
-            this.txtInitNumLottoZVT = new System.Windows.Forms.TextBox();
-            this.label126 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtInitBrdVMaxModulo = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.txtInitBrdVMinModulo = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.txtInitBrdOpzioniModulo = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.chkInitBrdSpareModulo = new System.Windows.Forms.CheckBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.txtInitBrdANomModulo = new System.Windows.Forms.NumericUpDown();
+            this.label52 = new System.Windows.Forms.Label();
+            this.txtInitBrdVNomModulo = new System.Windows.Forms.NumericUpDown();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtInitBrdNumModuli = new System.Windows.Forms.NumericUpDown();
             this.txtInitRevHwDISP = new System.Windows.Forms.TextBox();
             this.label131 = new System.Windows.Forms.Label();
-            this.txtInitRevHwPFC = new System.Windows.Forms.TextBox();
-            this.label130 = new System.Windows.Forms.Label();
-            this.txtInitRevHwZVT = new System.Windows.Forms.TextBox();
-            this.label129 = new System.Windows.Forms.Label();
             this.txtInitRevFwDISP = new System.Windows.Forms.TextBox();
             this.label127 = new System.Windows.Forms.Label();
             this.txtInitNumSerDISP = new System.Windows.Forms.TextBox();
             this.label128 = new System.Windows.Forms.Label();
-            this.txtInitRevFwPFC = new System.Windows.Forms.TextBox();
-            this.label105 = new System.Windows.Forms.Label();
-            this.txtInitNumSerPFC = new System.Windows.Forms.TextBox();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label102 = new System.Windows.Forms.Label();
-            this.txtInitRevFwZVT = new System.Windows.Forms.TextBox();
-            this.label113 = new System.Windows.Forms.Label();
-            this.txtInitNumSerZVT = new System.Windows.Forms.TextBox();
-            this.label125 = new System.Windows.Forms.Label();
             this.grbInitCalibrazione = new System.Windows.Forms.GroupBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label101 = new System.Windows.Forms.Label();
@@ -426,12 +419,12 @@
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.label106 = new System.Windows.Forms.Label();
             this.grbInitDatiBase = new System.Windows.Forms.GroupBox();
+            this.txtInitAMax = new System.Windows.Forms.NumericUpDown();
+            this.label58 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.chkInitPresenzaRabb = new System.Windows.Forms.CheckBox();
-            this.txtInitAMax = new System.Windows.Forms.TextBox();
             this.txtInitVMax = new System.Windows.Forms.TextBox();
             this.txtInitVMin = new System.Windows.Forms.TextBox();
             this.txtInitIDApparato = new System.Windows.Forms.TextBox();
@@ -523,6 +516,8 @@
             this.txtPaSogliaVs = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tbpPaPCStep2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtPaCoeffKc = new System.Windows.Forms.TextBox();
             this.txtPaVMax = new System.Windows.Forms.TextBox();
             this.label207 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -699,7 +694,6 @@
             this.btnCaricaMemoria = new System.Windows.Forms.Button();
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.chkMemInt = new System.Windows.Forms.CheckBox();
             this.tabMonitor.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
@@ -737,8 +731,12 @@
             this.tabInizializzazione.SuspendLayout();
             this.grbInitLimiti.SuspendLayout();
             this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitBrdANomModulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitBrdVNomModulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitBrdNumModuli)).BeginInit();
             this.grbInitCalibrazione.SuspendLayout();
             this.grbInitDatiBase.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitAMax)).BeginInit();
             this.tabOrologio.SuspendLayout();
             this.grbAccensione.SuspendLayout();
             this.grbOraCorrente.SuspendLayout();
@@ -797,7 +795,7 @@
             this.tabMonitor.Location = new System.Drawing.Point(4, 22);
             this.tabMonitor.Margin = new System.Windows.Forms.Padding(2);
             this.tabMonitor.Name = "tabMonitor";
-            this.tabMonitor.Size = new System.Drawing.Size(1285, 542);
+            this.tabMonitor.Size = new System.Drawing.Size(1331, 618);
             this.tabMonitor.TabIndex = 8;
             this.tabMonitor.Text = "Monitor";
             // 
@@ -1066,7 +1064,7 @@
             this.tabCb02.Location = new System.Drawing.Point(4, 22);
             this.tabCb02.Margin = new System.Windows.Forms.Padding(2);
             this.tabCb02.Name = "tabCb02";
-            this.tabCb02.Size = new System.Drawing.Size(1285, 542);
+            this.tabCb02.Size = new System.Drawing.Size(1331, 618);
             this.tabCb02.TabIndex = 1;
             this.tabCb02.Text = "Cavi";
             // 
@@ -1324,7 +1322,7 @@
             this.tbpProxySig60.Location = new System.Drawing.Point(4, 22);
             this.tbpProxySig60.Margin = new System.Windows.Forms.Padding(2);
             this.tbpProxySig60.Name = "tbpProxySig60";
-            this.tbpProxySig60.Size = new System.Drawing.Size(1285, 542);
+            this.tbpProxySig60.Size = new System.Drawing.Size(1331, 618);
             this.tbpProxySig60.TabIndex = 9;
             this.tbpProxySig60.Text = "SIG60 Proxy";
             // 
@@ -2761,7 +2759,7 @@
             this.tbpFirmware.Location = new System.Drawing.Point(4, 22);
             this.tbpFirmware.Margin = new System.Windows.Forms.Padding(2);
             this.tbpFirmware.Name = "tbpFirmware";
-            this.tbpFirmware.Size = new System.Drawing.Size(1285, 542);
+            this.tbpFirmware.Size = new System.Drawing.Size(1331, 618);
             this.tbpFirmware.TabIndex = 12;
             this.tbpFirmware.Text = "Firmware";
             // 
@@ -4038,7 +4036,7 @@
             this.tabMemRead.Location = new System.Drawing.Point(4, 22);
             this.tabMemRead.Margin = new System.Windows.Forms.Padding(2);
             this.tabMemRead.Name = "tabMemRead";
-            this.tabMemRead.Size = new System.Drawing.Size(1285, 542);
+            this.tabMemRead.Size = new System.Drawing.Size(1331, 618);
             this.tabMemRead.TabIndex = 10;
             this.tabMemRead.Text = "Accesso Memoria";
             // 
@@ -4894,6 +4892,19 @@
             this.grbMemLettura.TabStop = false;
             this.grbMemLettura.Text = "Lettura Memoria";
             // 
+            // chkMemInt
+            // 
+            this.chkMemInt.AutoSize = true;
+            this.chkMemInt.ForeColor = System.Drawing.Color.Blue;
+            this.chkMemInt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkMemInt.Location = new System.Drawing.Point(14, 77);
+            this.chkMemInt.Margin = new System.Windows.Forms.Padding(2);
+            this.chkMemInt.Name = "chkMemInt";
+            this.chkMemInt.Size = new System.Drawing.Size(117, 19);
+            this.chkMemInt.TabIndex = 14;
+            this.chkMemInt.Text = "Memoria Interna";
+            this.chkMemInt.UseVisualStyleBackColor = true;
+            // 
             // chkMemHex
             // 
             this.chkMemHex.AutoSize = true;
@@ -4977,7 +4988,7 @@
             this.tabInizializzazione.Location = new System.Drawing.Point(4, 22);
             this.tabInizializzazione.Margin = new System.Windows.Forms.Padding(2);
             this.tabInizializzazione.Name = "tabInizializzazione";
-            this.tabInizializzazione.Size = new System.Drawing.Size(1285, 542);
+            this.tabInizializzazione.Size = new System.Drawing.Size(1331, 618);
             this.tabInizializzazione.TabIndex = 13;
             this.tabInizializzazione.Text = "Inizializzazione";
             this.tabInizializzazione.Enter += new System.EventHandler(this.tabInizializzazione_Enter);
@@ -4993,7 +5004,7 @@
             this.grbInitLimiti.Controls.Add(this.label148);
             this.grbInitLimiti.Controls.Add(this.txtInitMaxBrevi);
             this.grbInitLimiti.Controls.Add(this.label146);
-            this.grbInitLimiti.Location = new System.Drawing.Point(554, 30);
+            this.grbInitLimiti.Location = new System.Drawing.Point(635, 30);
             this.grbInitLimiti.Margin = new System.Windows.Forms.Padding(2);
             this.grbInitLimiti.Name = "grbInitLimiti";
             this.grbInitLimiti.Padding = new System.Windows.Forms.Padding(2);
@@ -5115,34 +5126,26 @@
             // groupBox11
             // 
             this.groupBox11.BackColor = System.Drawing.Color.White;
-            this.groupBox11.Controls.Add(this.label147);
-            this.groupBox11.Controls.Add(this.txtInitNumLottoPFC);
-            this.groupBox11.Controls.Add(this.label145);
-            this.groupBox11.Controls.Add(this.txtInitNumLottoZVT);
-            this.groupBox11.Controls.Add(this.label126);
-            this.groupBox11.Controls.Add(this.label104);
-            this.groupBox11.Controls.Add(this.maskedTextBox3);
-            this.groupBox11.Controls.Add(this.maskedTextBox2);
-            this.groupBox11.Controls.Add(this.maskedTextBox1);
+            this.groupBox11.Controls.Add(this.txtInitBrdVMaxModulo);
+            this.groupBox11.Controls.Add(this.label57);
+            this.groupBox11.Controls.Add(this.txtInitBrdVMinModulo);
+            this.groupBox11.Controls.Add(this.label56);
+            this.groupBox11.Controls.Add(this.txtInitBrdOpzioniModulo);
+            this.groupBox11.Controls.Add(this.label55);
+            this.groupBox11.Controls.Add(this.label54);
+            this.groupBox11.Controls.Add(this.chkInitBrdSpareModulo);
+            this.groupBox11.Controls.Add(this.label53);
+            this.groupBox11.Controls.Add(this.txtInitBrdANomModulo);
+            this.groupBox11.Controls.Add(this.label52);
+            this.groupBox11.Controls.Add(this.txtInitBrdVNomModulo);
+            this.groupBox11.Controls.Add(this.label30);
+            this.groupBox11.Controls.Add(this.txtInitBrdNumModuli);
             this.groupBox11.Controls.Add(this.txtInitRevHwDISP);
             this.groupBox11.Controls.Add(this.label131);
-            this.groupBox11.Controls.Add(this.txtInitRevHwPFC);
-            this.groupBox11.Controls.Add(this.label130);
-            this.groupBox11.Controls.Add(this.txtInitRevHwZVT);
-            this.groupBox11.Controls.Add(this.label129);
             this.groupBox11.Controls.Add(this.txtInitRevFwDISP);
             this.groupBox11.Controls.Add(this.label127);
             this.groupBox11.Controls.Add(this.txtInitNumSerDISP);
             this.groupBox11.Controls.Add(this.label128);
-            this.groupBox11.Controls.Add(this.txtInitRevFwPFC);
-            this.groupBox11.Controls.Add(this.label105);
-            this.groupBox11.Controls.Add(this.txtInitNumSerPFC);
-            this.groupBox11.Controls.Add(this.label107);
-            this.groupBox11.Controls.Add(this.label102);
-            this.groupBox11.Controls.Add(this.txtInitRevFwZVT);
-            this.groupBox11.Controls.Add(this.label113);
-            this.groupBox11.Controls.Add(this.txtInitNumSerZVT);
-            this.groupBox11.Controls.Add(this.label125);
             this.groupBox11.Location = new System.Drawing.Point(25, 238);
             this.groupBox11.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox11.Name = "groupBox11";
@@ -5150,114 +5153,209 @@
             this.groupBox11.Size = new System.Drawing.Size(710, 192);
             this.groupBox11.TabIndex = 3;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Dettagli Schede";
+            this.groupBox11.Text = "Dettaglo Schede";
             // 
-            // label147
+            // txtInitBrdVMaxModulo
             // 
-            this.label147.AutoSize = true;
-            this.label147.Location = new System.Drawing.Point(169, 80);
-            this.label147.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(62, 13);
-            this.label147.TabIndex = 75;
-            this.label147.Text = "Seriale PFC";
+            this.txtInitBrdVMaxModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitBrdVMaxModulo.Location = new System.Drawing.Point(458, 127);
+            this.txtInitBrdVMaxModulo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInitBrdVMaxModulo.MaxLength = 18;
+            this.txtInitBrdVMaxModulo.Name = "txtInitBrdVMaxModulo";
+            this.txtInitBrdVMaxModulo.Size = new System.Drawing.Size(83, 22);
+            this.txtInitBrdVMaxModulo.TabIndex = 83;
+            this.txtInitBrdVMaxModulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtInitNumLottoPFC
+            // label57
             // 
-            this.txtInitNumLottoPFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitNumLottoPFC.Location = new System.Drawing.Point(15, 97);
-            this.txtInitNumLottoPFC.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitNumLottoPFC.MaxLength = 18;
-            this.txtInitNumLottoPFC.Name = "txtInitNumLottoPFC";
-            this.txtInitNumLottoPFC.Size = new System.Drawing.Size(138, 23);
-            this.txtInitNumLottoPFC.TabIndex = 73;
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(460, 111);
+            this.label57.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(36, 13);
+            this.label57.TabIndex = 82;
+            this.label57.Text = "V max";
             // 
-            // label145
+            // txtInitBrdVMinModulo
             // 
-            this.label145.AutoSize = true;
-            this.label145.Location = new System.Drawing.Point(169, 28);
-            this.label145.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label145.Name = "label145";
-            this.label145.Size = new System.Drawing.Size(63, 13);
-            this.label145.TabIndex = 72;
-            this.label145.Text = "Seriale ZVT";
+            this.txtInitBrdVMinModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitBrdVMinModulo.Location = new System.Drawing.Point(363, 127);
+            this.txtInitBrdVMinModulo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInitBrdVMinModulo.MaxLength = 18;
+            this.txtInitBrdVMinModulo.Name = "txtInitBrdVMinModulo";
+            this.txtInitBrdVMinModulo.Size = new System.Drawing.Size(83, 22);
+            this.txtInitBrdVMinModulo.TabIndex = 81;
+            this.txtInitBrdVMinModulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtInitNumLottoZVT
+            // label56
             // 
-            this.txtInitNumLottoZVT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitNumLottoZVT.Location = new System.Drawing.Point(15, 45);
-            this.txtInitNumLottoZVT.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitNumLottoZVT.MaxLength = 18;
-            this.txtInitNumLottoZVT.Name = "txtInitNumLottoZVT";
-            this.txtInitNumLottoZVT.Size = new System.Drawing.Size(138, 23);
-            this.txtInitNumLottoZVT.TabIndex = 71;
-            this.txtInitNumLottoZVT.Leave += new System.EventHandler(this.txtInitNumLottoZVT_Leave);
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(365, 111);
+            this.label56.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(33, 13);
+            this.label56.TabIndex = 80;
+            this.label56.Text = "V min";
             // 
-            // label126
+            // txtInitBrdOpzioniModulo
             // 
-            this.label126.AutoSize = true;
-            this.label126.Enabled = false;
-            this.label126.Location = new System.Drawing.Point(575, 130);
-            this.label126.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(95, 13);
-            this.label126.TabIndex = 70;
-            this.label126.Text = "Data Abbinamento";
+            this.txtInitBrdOpzioniModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitBrdOpzioniModulo.Location = new System.Drawing.Point(244, 127);
+            this.txtInitBrdOpzioniModulo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInitBrdOpzioniModulo.MaxLength = 18;
+            this.txtInitBrdOpzioniModulo.Name = "txtInitBrdOpzioniModulo";
+            this.txtInitBrdOpzioniModulo.Size = new System.Drawing.Size(83, 22);
+            this.txtInitBrdOpzioniModulo.TabIndex = 79;
+            this.txtInitBrdOpzioniModulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label104
+            // label55
             // 
-            this.label104.AutoSize = true;
-            this.label104.Enabled = false;
-            this.label104.Location = new System.Drawing.Point(575, 80);
-            this.label104.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(95, 13);
-            this.label104.TabIndex = 69;
-            this.label104.Text = "Data Abbinamento";
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(246, 111);
+            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(42, 13);
+            this.label55.TabIndex = 78;
+            this.label55.Text = "Opzioni";
             // 
-            // maskedTextBox3
+            // label54
             // 
-            this.maskedTextBox3.Enabled = false;
-            this.maskedTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.maskedTextBox3.Location = new System.Drawing.Point(578, 145);
-            this.maskedTextBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBox3.Mask = "00/00/0000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(111, 23);
-            this.maskedTextBox3.TabIndex = 68;
-            this.maskedTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(127, 68);
+            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(81, 13);
+            this.label54.TabIndex = 77;
+            this.label54.Text = "Modulo Riserva";
             // 
-            // maskedTextBox2
+            // chkInitBrdSpareModulo
             // 
-            this.maskedTextBox2.Enabled = false;
-            this.maskedTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.maskedTextBox2.Location = new System.Drawing.Point(578, 97);
-            this.maskedTextBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBox2.Mask = "00/00/0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(111, 23);
-            this.maskedTextBox2.TabIndex = 67;
-            this.maskedTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.chkInitBrdSpareModulo.AutoSize = true;
+            this.chkInitBrdSpareModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkInitBrdSpareModulo.Location = new System.Drawing.Point(162, 87);
+            this.chkInitBrdSpareModulo.Margin = new System.Windows.Forms.Padding(2);
+            this.chkInitBrdSpareModulo.Name = "chkInitBrdSpareModulo";
+            this.chkInitBrdSpareModulo.Size = new System.Drawing.Size(15, 14);
+            this.chkInitBrdSpareModulo.TabIndex = 76;
+            this.chkInitBrdSpareModulo.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox1
+            // label53
             // 
-            this.maskedTextBox1.Enabled = false;
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.maskedTextBox1.Location = new System.Drawing.Point(578, 45);
-            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(111, 23);
-            this.maskedTextBox1.TabIndex = 66;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(123, 112);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(85, 13);
+            this.label53.TabIndex = 53;
+            this.label53.Text = "Corrente Modulo";
+            // 
+            // txtInitBrdANomModulo
+            // 
+            this.txtInitBrdANomModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitBrdANomModulo.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.txtInitBrdANomModulo.Location = new System.Drawing.Point(125, 128);
+            this.txtInitBrdANomModulo.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.txtInitBrdANomModulo.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.txtInitBrdANomModulo.Name = "txtInitBrdANomModulo";
+            this.txtInitBrdANomModulo.Size = new System.Drawing.Size(95, 22);
+            this.txtInitBrdANomModulo.TabIndex = 52;
+            this.txtInitBrdANomModulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInitBrdANomModulo.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.txtInitBrdANomModulo.Leave += new System.EventHandler(this.txtInitBrdANomModulo_Leave);
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(12, 112);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(89, 13);
+            this.label52.TabIndex = 51;
+            this.label52.Text = "Tensione Modulo";
+            // 
+            // txtInitBrdVNomModulo
+            // 
+            this.txtInitBrdVNomModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitBrdVNomModulo.Increment = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.txtInitBrdVNomModulo.Location = new System.Drawing.Point(14, 128);
+            this.txtInitBrdVNomModulo.Maximum = new decimal(new int[] {
+            92,
+            0,
+            0,
+            0});
+            this.txtInitBrdVNomModulo.Minimum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.txtInitBrdVNomModulo.Name = "txtInitBrdVNomModulo";
+            this.txtInitBrdVNomModulo.Size = new System.Drawing.Size(95, 22);
+            this.txtInitBrdVNomModulo.TabIndex = 50;
+            this.txtInitBrdVNomModulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInitBrdVNomModulo.Value = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(11, 68);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(38, 13);
+            this.label30.TabIndex = 49;
+            this.label30.Text = "Moduli";
+            // 
+            // txtInitBrdNumModuli
+            // 
+            this.txtInitBrdNumModuli.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitBrdNumModuli.Location = new System.Drawing.Point(13, 84);
+            this.txtInitBrdNumModuli.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.txtInitBrdNumModuli.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtInitBrdNumModuli.Name = "txtInitBrdNumModuli";
+            this.txtInitBrdNumModuli.Size = new System.Drawing.Size(95, 22);
+            this.txtInitBrdNumModuli.TabIndex = 48;
+            this.txtInitBrdNumModuli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInitBrdNumModuli.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtInitRevHwDISP
             // 
             this.txtInitRevHwDISP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitRevHwDISP.Location = new System.Drawing.Point(476, 146);
+            this.txtInitRevHwDISP.Location = new System.Drawing.Point(340, 38);
             this.txtInitRevHwDISP.Margin = new System.Windows.Forms.Padding(2);
             this.txtInitRevHwDISP.MaxLength = 8;
             this.txtInitRevHwDISP.Name = "txtInitRevHwDISP";
@@ -5268,59 +5366,17 @@
             // label131
             // 
             this.label131.AutoSize = true;
-            this.label131.Location = new System.Drawing.Point(473, 130);
+            this.label131.Location = new System.Drawing.Point(337, 22);
             this.label131.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label131.Name = "label131";
             this.label131.Size = new System.Drawing.Size(49, 13);
             this.label131.TabIndex = 46;
             this.label131.Text = "Rev HW";
             // 
-            // txtInitRevHwPFC
-            // 
-            this.txtInitRevHwPFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitRevHwPFC.Location = new System.Drawing.Point(476, 97);
-            this.txtInitRevHwPFC.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitRevHwPFC.MaxLength = 8;
-            this.txtInitRevHwPFC.Name = "txtInitRevHwPFC";
-            this.txtInitRevHwPFC.Size = new System.Drawing.Size(83, 23);
-            this.txtInitRevHwPFC.TabIndex = 45;
-            this.txtInitRevHwPFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label130
-            // 
-            this.label130.AutoSize = true;
-            this.label130.Location = new System.Drawing.Point(473, 80);
-            this.label130.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label130.Name = "label130";
-            this.label130.Size = new System.Drawing.Size(49, 13);
-            this.label130.TabIndex = 44;
-            this.label130.Text = "Rev HW";
-            // 
-            // txtInitRevHwZVT
-            // 
-            this.txtInitRevHwZVT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitRevHwZVT.Location = new System.Drawing.Point(476, 45);
-            this.txtInitRevHwZVT.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitRevHwZVT.MaxLength = 8;
-            this.txtInitRevHwZVT.Name = "txtInitRevHwZVT";
-            this.txtInitRevHwZVT.Size = new System.Drawing.Size(83, 23);
-            this.txtInitRevHwZVT.TabIndex = 43;
-            this.txtInitRevHwZVT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label129
-            // 
-            this.label129.AutoSize = true;
-            this.label129.Location = new System.Drawing.Point(473, 28);
-            this.label129.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(49, 13);
-            this.label129.TabIndex = 42;
-            this.label129.Text = "Rev HW";
-            // 
             // txtInitRevFwDISP
             // 
             this.txtInitRevFwDISP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitRevFwDISP.Location = new System.Drawing.Point(380, 146);
+            this.txtInitRevFwDISP.Location = new System.Drawing.Point(244, 38);
             this.txtInitRevFwDISP.Margin = new System.Windows.Forms.Padding(2);
             this.txtInitRevFwDISP.MaxLength = 18;
             this.txtInitRevFwDISP.Name = "txtInitRevFwDISP";
@@ -5331,7 +5387,7 @@
             // label127
             // 
             this.label127.AutoSize = true;
-            this.label127.Location = new System.Drawing.Point(380, 130);
+            this.label127.Location = new System.Drawing.Point(244, 22);
             this.label127.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label127.Name = "label127";
             this.label127.Size = new System.Drawing.Size(47, 13);
@@ -5341,120 +5397,23 @@
             // txtInitNumSerDISP
             // 
             this.txtInitNumSerDISP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitNumSerDISP.Location = new System.Drawing.Point(171, 146);
+            this.txtInitNumSerDISP.Location = new System.Drawing.Point(13, 38);
             this.txtInitNumSerDISP.Margin = new System.Windows.Forms.Padding(2);
             this.txtInitNumSerDISP.MaxLength = 18;
             this.txtInitNumSerDISP.Name = "txtInitNumSerDISP";
-            this.txtInitNumSerDISP.Size = new System.Drawing.Size(195, 23);
+            this.txtInitNumSerDISP.Size = new System.Drawing.Size(207, 23);
             this.txtInitNumSerDISP.TabIndex = 37;
             this.txtInitNumSerDISP.Leave += new System.EventHandler(this.txtInitNumSerDISP_Leave);
             // 
             // label128
             // 
             this.label128.AutoSize = true;
-            this.label128.Location = new System.Drawing.Point(169, 130);
+            this.label128.Location = new System.Drawing.Point(11, 22);
             this.label128.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label128.Name = "label128";
             this.label128.Size = new System.Drawing.Size(81, 13);
             this.label128.TabIndex = 36;
             this.label128.Text = "Scheda Display";
-            // 
-            // txtInitRevFwPFC
-            // 
-            this.txtInitRevFwPFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitRevFwPFC.Location = new System.Drawing.Point(380, 97);
-            this.txtInitRevFwPFC.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitRevFwPFC.MaxLength = 18;
-            this.txtInitRevFwPFC.Name = "txtInitRevFwPFC";
-            this.txtInitRevFwPFC.Size = new System.Drawing.Size(83, 23);
-            this.txtInitRevFwPFC.TabIndex = 33;
-            this.txtInitRevFwPFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(380, 80);
-            this.label105.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(47, 13);
-            this.label105.TabIndex = 32;
-            this.label105.Text = "Rev FW";
-            // 
-            // txtInitNumSerPFC
-            // 
-            this.txtInitNumSerPFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitNumSerPFC.Location = new System.Drawing.Point(171, 97);
-            this.txtInitNumSerPFC.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitNumSerPFC.MaxLength = 18;
-            this.txtInitNumSerPFC.Name = "txtInitNumSerPFC";
-            this.txtInitNumSerPFC.Size = new System.Drawing.Size(195, 23);
-            this.txtInitNumSerPFC.TabIndex = 31;
-            this.txtInitNumSerPFC.Leave += new System.EventHandler(this.txtInitNumSerPFC_Leave);
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(14, 80);
-            this.label107.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(100, 13);
-            this.label107.TabIndex = 30;
-            this.label107.Text = "Scheda PFC (Lotto)";
-            // 
-            // label102
-            // 
-            this.label102.AutoSize = true;
-            this.label102.Enabled = false;
-            this.label102.Location = new System.Drawing.Point(575, 28);
-            this.label102.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(95, 13);
-            this.label102.TabIndex = 28;
-            this.label102.Text = "Data Abbinamento";
-            // 
-            // txtInitRevFwZVT
-            // 
-            this.txtInitRevFwZVT.Enabled = false;
-            this.txtInitRevFwZVT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitRevFwZVT.Location = new System.Drawing.Point(380, 45);
-            this.txtInitRevFwZVT.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitRevFwZVT.MaxLength = 18;
-            this.txtInitRevFwZVT.Name = "txtInitRevFwZVT";
-            this.txtInitRevFwZVT.Size = new System.Drawing.Size(83, 23);
-            this.txtInitRevFwZVT.TabIndex = 21;
-            this.txtInitRevFwZVT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Enabled = false;
-            this.label113.Location = new System.Drawing.Point(380, 28);
-            this.label113.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(47, 13);
-            this.label113.TabIndex = 20;
-            this.label113.Text = "Rev FW";
-            // 
-            // txtInitNumSerZVT
-            // 
-            this.txtInitNumSerZVT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitNumSerZVT.Location = new System.Drawing.Point(171, 45);
-            this.txtInitNumSerZVT.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitNumSerZVT.MaxLength = 18;
-            this.txtInitNumSerZVT.Name = "txtInitNumSerZVT";
-            this.txtInitNumSerZVT.Size = new System.Drawing.Size(195, 23);
-            this.txtInitNumSerZVT.TabIndex = 19;
-            this.txtInitNumSerZVT.Leave += new System.EventHandler(this.txtInitNumSerZVT_Leave);
-            // 
-            // label125
-            // 
-            this.label125.AutoSize = true;
-            this.label125.Location = new System.Drawing.Point(13, 28);
-            this.label125.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label125.Name = "label125";
-            this.label125.Size = new System.Drawing.Size(101, 13);
-            this.label125.TabIndex = 18;
-            this.label125.Text = "Scheda ZVT (Lotto)";
             // 
             // grbInitCalibrazione
             // 
@@ -5464,11 +5423,11 @@
             this.grbInitCalibrazione.Controls.Add(this.label100);
             this.grbInitCalibrazione.Controls.Add(this.textBox36);
             this.grbInitCalibrazione.Controls.Add(this.label106);
-            this.grbInitCalibrazione.Location = new System.Drawing.Point(802, 30);
+            this.grbInitCalibrazione.Location = new System.Drawing.Point(870, 35);
             this.grbInitCalibrazione.Margin = new System.Windows.Forms.Padding(2);
             this.grbInitCalibrazione.Name = "grbInitCalibrazione";
             this.grbInitCalibrazione.Padding = new System.Windows.Forms.Padding(2);
-            this.grbInitCalibrazione.Size = new System.Drawing.Size(365, 166);
+            this.grbInitCalibrazione.Size = new System.Drawing.Size(316, 166);
             this.grbInitCalibrazione.TabIndex = 2;
             this.grbInitCalibrazione.TabStop = false;
             this.grbInitCalibrazione.Text = "Calibrazione";
@@ -5540,12 +5499,12 @@
             // grbInitDatiBase
             // 
             this.grbInitDatiBase.BackColor = System.Drawing.Color.White;
+            this.grbInitDatiBase.Controls.Add(this.txtInitAMax);
+            this.grbInitDatiBase.Controls.Add(this.label58);
             this.grbInitDatiBase.Controls.Add(this.label26);
-            this.grbInitDatiBase.Controls.Add(this.label11);
             this.grbInitDatiBase.Controls.Add(this.label10);
             this.grbInitDatiBase.Controls.Add(this.label9);
             this.grbInitDatiBase.Controls.Add(this.chkInitPresenzaRabb);
-            this.grbInitDatiBase.Controls.Add(this.txtInitAMax);
             this.grbInitDatiBase.Controls.Add(this.txtInitVMax);
             this.grbInitDatiBase.Controls.Add(this.txtInitVMin);
             this.grbInitDatiBase.Controls.Add(this.txtInitIDApparato);
@@ -5568,36 +5527,65 @@
             this.grbInitDatiBase.Margin = new System.Windows.Forms.Padding(2);
             this.grbInitDatiBase.Name = "grbInitDatiBase";
             this.grbInitDatiBase.Padding = new System.Windows.Forms.Padding(2);
-            this.grbInitDatiBase.Size = new System.Drawing.Size(498, 192);
+            this.grbInitDatiBase.Size = new System.Drawing.Size(570, 192);
             this.grbInitDatiBase.TabIndex = 1;
             this.grbInitDatiBase.TabStop = false;
             this.grbInitDatiBase.Text = "Dati Macchina Completa";
             this.grbInitDatiBase.Enter += new System.EventHandler(this.grbInitDatiBase_Enter);
             // 
+            // txtInitAMax
+            // 
+            this.txtInitAMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitAMax.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.txtInitAMax.Location = new System.Drawing.Point(235, 147);
+            this.txtInitAMax.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.txtInitAMax.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.txtInitAMax.Name = "txtInitAMax";
+            this.txtInitAMax.Size = new System.Drawing.Size(75, 22);
+            this.txtInitAMax.TabIndex = 78;
+            this.txtInitAMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInitAMax.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(233, 131);
+            this.label58.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(37, 13);
+            this.label58.TabIndex = 77;
+            this.label58.Text = "A Max";
+            // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(428, 130);
+            this.label26.Location = new System.Drawing.Point(508, 130);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(36, 13);
             this.label26.TabIndex = 75;
             this.label26.Text = "Rabb.";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(360, 131);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 13);
-            this.label11.TabIndex = 74;
-            this.label11.Text = "A Max";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(290, 131);
+            this.label10.Location = new System.Drawing.Point(370, 131);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 13);
@@ -5607,7 +5595,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(232, 131);
+            this.label9.Location = new System.Drawing.Point(312, 131);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 13);
@@ -5618,29 +5606,17 @@
             // 
             this.chkInitPresenzaRabb.AutoSize = true;
             this.chkInitPresenzaRabb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkInitPresenzaRabb.Location = new System.Drawing.Point(439, 151);
+            this.chkInitPresenzaRabb.Location = new System.Drawing.Point(519, 151);
             this.chkInitPresenzaRabb.Margin = new System.Windows.Forms.Padding(2);
             this.chkInitPresenzaRabb.Name = "chkInitPresenzaRabb";
             this.chkInitPresenzaRabb.Size = new System.Drawing.Size(15, 14);
             this.chkInitPresenzaRabb.TabIndex = 71;
             this.chkInitPresenzaRabb.UseVisualStyleBackColor = true;
             // 
-            // txtInitAMax
-            // 
-            this.txtInitAMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitAMax.Location = new System.Drawing.Point(362, 146);
-            this.txtInitAMax.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitAMax.MaxLength = 18;
-            this.txtInitAMax.Name = "txtInitAMax";
-            this.txtInitAMax.ReadOnly = true;
-            this.txtInitAMax.Size = new System.Drawing.Size(52, 23);
-            this.txtInitAMax.TabIndex = 70;
-            this.txtInitAMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txtInitVMax
             // 
             this.txtInitVMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitVMax.Location = new System.Drawing.Point(290, 146);
+            this.txtInitVMax.Location = new System.Drawing.Point(370, 146);
             this.txtInitVMax.Margin = new System.Windows.Forms.Padding(2);
             this.txtInitVMax.MaxLength = 18;
             this.txtInitVMax.Name = "txtInitVMax";
@@ -5652,7 +5628,7 @@
             // txtInitVMin
             // 
             this.txtInitVMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitVMin.Location = new System.Drawing.Point(235, 146);
+            this.txtInitVMin.Location = new System.Drawing.Point(315, 146);
             this.txtInitVMin.Margin = new System.Windows.Forms.Padding(2);
             this.txtInitVMin.MaxLength = 18;
             this.txtInitVMin.Name = "txtInitVMin";
@@ -5669,7 +5645,7 @@
             this.txtInitIDApparato.MaxLength = 18;
             this.txtInitIDApparato.Name = "txtInitIDApparato";
             this.txtInitIDApparato.ReadOnly = true;
-            this.txtInitIDApparato.Size = new System.Drawing.Size(238, 23);
+            this.txtInitIDApparato.Size = new System.Drawing.Size(315, 23);
             this.txtInitIDApparato.TabIndex = 67;
             this.txtInitIDApparato.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -5686,7 +5662,7 @@
             // txtInitDataInizializ
             // 
             this.txtInitDataInizializ.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtInitDataInizializ.Location = new System.Drawing.Point(362, 45);
+            this.txtInitDataInizializ.Location = new System.Drawing.Point(439, 45);
             this.txtInitDataInizializ.Margin = new System.Windows.Forms.Padding(2);
             this.txtInitDataInizializ.Mask = "00/00/0000";
             this.txtInitDataInizializ.Name = "txtInitDataInizializ";
@@ -5719,7 +5695,7 @@
             // label99
             // 
             this.label99.AutoSize = true;
-            this.label99.Location = new System.Drawing.Point(359, 28);
+            this.label99.Location = new System.Drawing.Point(436, 28);
             this.label99.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label99.Name = "label99";
             this.label99.Size = new System.Drawing.Size(102, 13);
@@ -5800,7 +5776,7 @@
             this.txtInitProductId.MaxLength = 18;
             this.txtInitProductId.Name = "txtInitProductId";
             this.txtInitProductId.ReadOnly = true;
-            this.txtInitProductId.Size = new System.Drawing.Size(111, 23);
+            this.txtInitProductId.Size = new System.Drawing.Size(192, 23);
             this.txtInitProductId.TabIndex = 21;
             this.txtInitProductId.Text = "LADE LIGHT";
             // 
@@ -5844,7 +5820,7 @@
             this.tabOrologio.Location = new System.Drawing.Point(4, 22);
             this.tabOrologio.Margin = new System.Windows.Forms.Padding(2);
             this.tabOrologio.Name = "tabOrologio";
-            this.tabOrologio.Size = new System.Drawing.Size(1285, 542);
+            this.tabOrologio.Size = new System.Drawing.Size(1331, 618);
             this.tabOrologio.TabIndex = 2;
             this.tabOrologio.Text = "Orologio/Accensione";
             // 
@@ -6098,7 +6074,7 @@
             this.tabProfiloAttuale.Location = new System.Drawing.Point(4, 22);
             this.tabProfiloAttuale.Margin = new System.Windows.Forms.Padding(2);
             this.tabProfiloAttuale.Name = "tabProfiloAttuale";
-            this.tabProfiloAttuale.Size = new System.Drawing.Size(1285, 542);
+            this.tabProfiloAttuale.Size = new System.Drawing.Size(1331, 618);
             this.tabProfiloAttuale.TabIndex = 5;
             this.tabProfiloAttuale.Text = "Configurazione";
             // 
@@ -6114,7 +6090,7 @@
             this.tbcPaSottopagina.Margin = new System.Windows.Forms.Padding(2);
             this.tbcPaSottopagina.Name = "tbcPaSottopagina";
             this.tbcPaSottopagina.SelectedIndex = 0;
-            this.tbcPaSottopagina.Size = new System.Drawing.Size(1215, 526);
+            this.tbcPaSottopagina.Size = new System.Drawing.Size(1261, 602);
             this.tbcPaSottopagina.TabIndex = 65;
             // 
             // tbpPaProfiloAttivo
@@ -6124,7 +6100,7 @@
             this.tbpPaProfiloAttivo.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaProfiloAttivo.Name = "tbpPaProfiloAttivo";
             this.tbpPaProfiloAttivo.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpPaProfiloAttivo.Size = new System.Drawing.Size(1207, 500);
+            this.tbpPaProfiloAttivo.Size = new System.Drawing.Size(1253, 576);
             this.tbpPaProfiloAttivo.TabIndex = 0;
             this.tbpPaProfiloAttivo.Text = "Profilo Attivo";
             this.tbpPaProfiloAttivo.UseVisualStyleBackColor = true;
@@ -6150,7 +6126,7 @@
             this.grbCicloCorrente.Margin = new System.Windows.Forms.Padding(2);
             this.grbCicloCorrente.Name = "grbCicloCorrente";
             this.grbCicloCorrente.Padding = new System.Windows.Forms.Padding(2);
-            this.grbCicloCorrente.Size = new System.Drawing.Size(1173, 467);
+            this.grbCicloCorrente.Size = new System.Drawing.Size(1217, 522);
             this.grbCicloCorrente.TabIndex = 0;
             this.grbCicloCorrente.TabStop = false;
             this.grbCicloCorrente.Text = "Profilo  Attivo";
@@ -6191,7 +6167,7 @@
             this.grbPaImpostazioniLocali.Controls.Add(this.txtPaTensione);
             this.grbPaImpostazioniLocali.Location = new System.Drawing.Point(5, 58);
             this.grbPaImpostazioniLocali.Name = "grbPaImpostazioniLocali";
-            this.grbPaImpostazioniLocali.Size = new System.Drawing.Size(274, 385);
+            this.grbPaImpostazioniLocali.Size = new System.Drawing.Size(264, 409);
             this.grbPaImpostazioniLocali.TabIndex = 149;
             this.grbPaImpostazioniLocali.TabStop = false;
             this.grbPaImpostazioniLocali.Text = "Parametri";
@@ -6199,7 +6175,7 @@
             // chkPaUsaSafety
             // 
             this.chkPaUsaSafety.AutoSize = true;
-            this.chkPaUsaSafety.Location = new System.Drawing.Point(8, 360);
+            this.chkPaUsaSafety.Location = new System.Drawing.Point(8, 367);
             this.chkPaUsaSafety.Margin = new System.Windows.Forms.Padding(2);
             this.chkPaUsaSafety.Name = "chkPaUsaSafety";
             this.chkPaUsaSafety.Size = new System.Drawing.Size(15, 14);
@@ -6212,7 +6188,7 @@
             this.lblPaUsaSafety.AutoSize = true;
             this.lblPaUsaSafety.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaUsaSafety.ForeColor = System.Drawing.Color.Red;
-            this.lblPaUsaSafety.Location = new System.Drawing.Point(27, 361);
+            this.lblPaUsaSafety.Location = new System.Drawing.Point(27, 368);
             this.lblPaUsaSafety.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPaUsaSafety.Name = "lblPaUsaSafety";
             this.lblPaUsaSafety.Size = new System.Drawing.Size(142, 13);
@@ -6238,7 +6214,7 @@
             this.txtPaCapacita.Location = new System.Drawing.Point(8, 154);
             this.txtPaCapacita.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaCapacita.Name = "txtPaCapacita";
-            this.txtPaCapacita.Size = new System.Drawing.Size(144, 23);
+            this.txtPaCapacita.Size = new System.Drawing.Size(154, 23);
             this.txtPaCapacita.TabIndex = 5;
             this.txtPaCapacita.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPaCapacita.TextChanged += new System.EventHandler(this.txtPaCapacita_TextChanged);
@@ -6402,20 +6378,20 @@
             this.cmbPaTensione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
             this.cmbPaTensione.FormattingEnabled = true;
-            this.cmbPaTensione.Location = new System.Drawing.Point(8, 98);
+            this.cmbPaTensione.Location = new System.Drawing.Point(11, 98);
             this.cmbPaTensione.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPaTensione.Name = "cmbPaTensione";
-            this.cmbPaTensione.Size = new System.Drawing.Size(95, 25);
+            this.cmbPaTensione.Size = new System.Drawing.Size(151, 25);
             this.cmbPaTensione.TabIndex = 76;
             this.cmbPaTensione.SelectedIndexChanged += new System.EventHandler(this.cmbPaTensione_SelectedIndexChanged);
             // 
             // txtPaTensione
             // 
             this.txtPaTensione.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaTensione.Location = new System.Drawing.Point(107, 98);
+            this.txtPaTensione.Location = new System.Drawing.Point(11, 98);
             this.txtPaTensione.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaTensione.Name = "txtPaTensione";
-            this.txtPaTensione.Size = new System.Drawing.Size(58, 23);
+            this.txtPaTensione.Size = new System.Drawing.Size(151, 23);
             this.txtPaTensione.TabIndex = 39;
             this.txtPaTensione.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -6772,6 +6748,8 @@
             // 
             // tbpPaPCStep2
             // 
+            this.tbpPaPCStep2.Controls.Add(this.label11);
+            this.tbpPaPCStep2.Controls.Add(this.txtPaCoeffKc);
             this.tbpPaPCStep2.Controls.Add(this.txtPaVMax);
             this.tbpPaPCStep2.Controls.Add(this.label207);
             this.tbpPaPCStep2.Controls.Add(this.label17);
@@ -6795,13 +6773,34 @@
             this.tbpPaPCStep2.Text = "Fase 2";
             this.tbpPaPCStep2.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(378, 79);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 13);
+            this.label11.TabIndex = 122;
+            this.label11.Text = "Coeff. Kc (%)";
+            // 
+            // txtPaCoeffKc
+            // 
+            this.txtPaCoeffKc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaCoeffKc.Location = new System.Drawing.Point(380, 95);
+            this.txtPaCoeffKc.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPaCoeffKc.Name = "txtPaCoeffKc";
+            this.txtPaCoeffKc.Size = new System.Drawing.Size(87, 23);
+            this.txtPaCoeffKc.TabIndex = 121;
+            this.txtPaCoeffKc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaCoeffKc.Leave += new System.EventHandler(this.txtPaCoeffKc_Leave);
+            // 
             // txtPaVMax
             // 
             this.txtPaVMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPaVMax.Location = new System.Drawing.Point(380, 38);
             this.txtPaVMax.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaVMax.Name = "txtPaVMax";
-            this.txtPaVMax.Size = new System.Drawing.Size(102, 23);
+            this.txtPaVMax.Size = new System.Drawing.Size(87, 23);
             this.txtPaVMax.TabIndex = 120;
             this.txtPaVMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPaVMax.Leave += new System.EventHandler(this.TxtPaVMax_Leave);
@@ -7620,7 +7619,7 @@
             this.tbpPaListaProfili.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaListaProfili.Name = "tbpPaListaProfili";
             this.tbpPaListaProfili.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpPaListaProfili.Size = new System.Drawing.Size(1207, 500);
+            this.tbpPaListaProfili.Size = new System.Drawing.Size(1253, 576);
             this.tbpPaListaProfili.TabIndex = 1;
             this.tbpPaListaProfili.Text = "Lista Profili";
             this.tbpPaListaProfili.UseVisualStyleBackColor = true;
@@ -7672,7 +7671,7 @@
             this.tbpPaCfgAvanzate.Location = new System.Drawing.Point(4, 22);
             this.tbpPaCfgAvanzate.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaCfgAvanzate.Name = "tbpPaCfgAvanzate";
-            this.tbpPaCfgAvanzate.Size = new System.Drawing.Size(1207, 500);
+            this.tbpPaCfgAvanzate.Size = new System.Drawing.Size(1253, 576);
             this.tbpPaCfgAvanzate.TabIndex = 2;
             this.tbpPaCfgAvanzate.Text = "Parametri Avanzati";
             this.tbpPaCfgAvanzate.UseVisualStyleBackColor = true;
@@ -7774,7 +7773,7 @@
             this.tabCb04.Location = new System.Drawing.Point(4, 22);
             this.tabCb04.Margin = new System.Windows.Forms.Padding(2);
             this.tabCb04.Name = "tabCb04";
-            this.tabCb04.Size = new System.Drawing.Size(1285, 542);
+            this.tabCb04.Size = new System.Drawing.Size(1331, 618);
             this.tabCb04.TabIndex = 3;
             this.tabCb04.Text = "Memoria Cicli";
             // 
@@ -7930,7 +7929,7 @@
             this.tabGenerale.Location = new System.Drawing.Point(4, 22);
             this.tabGenerale.Margin = new System.Windows.Forms.Padding(2);
             this.tabGenerale.Name = "tabGenerale";
-            this.tabGenerale.Size = new System.Drawing.Size(1285, 542);
+            this.tabGenerale.Size = new System.Drawing.Size(1331, 618);
             this.tabGenerale.TabIndex = 0;
             this.tabGenerale.Text = "Generale";
             this.tabGenerale.Click += new System.EventHandler(this.tabCb01_Click);
@@ -8775,29 +8774,16 @@
             this.tabCaricaBatterie.Margin = new System.Windows.Forms.Padding(2);
             this.tabCaricaBatterie.Name = "tabCaricaBatterie";
             this.tabCaricaBatterie.SelectedIndex = 0;
-            this.tabCaricaBatterie.Size = new System.Drawing.Size(1293, 568);
+            this.tabCaricaBatterie.Size = new System.Drawing.Size(1339, 644);
             this.tabCaricaBatterie.TabIndex = 0;
             this.tabCaricaBatterie.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabCaricaBatterie_Selected);
-            // 
-            // chkMemInt
-            // 
-            this.chkMemInt.AutoSize = true;
-            this.chkMemInt.ForeColor = System.Drawing.Color.Blue;
-            this.chkMemInt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkMemInt.Location = new System.Drawing.Point(14, 77);
-            this.chkMemInt.Margin = new System.Windows.Forms.Padding(2);
-            this.chkMemInt.Name = "chkMemInt";
-            this.chkMemInt.Size = new System.Drawing.Size(117, 19);
-            this.chkMemInt.TabIndex = 14;
-            this.chkMemInt.Text = "Memoria Interna";
-            this.chkMemInt.UseVisualStyleBackColor = true;
             // 
             // frmSuperCharger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ClientSize = new System.Drawing.Size(1309, 594);
+            this.ClientSize = new System.Drawing.Size(1415, 718);
             this.Controls.Add(this.tabCaricaBatterie);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSuperCharger";
@@ -8871,10 +8857,14 @@
             this.grbInitLimiti.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitBrdANomModulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitBrdVNomModulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitBrdNumModuli)).EndInit();
             this.grbInitCalibrazione.ResumeLayout(false);
             this.grbInitCalibrazione.PerformLayout();
             this.grbInitDatiBase.ResumeLayout(false);
             this.grbInitDatiBase.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInitAMax)).EndInit();
             this.tabOrologio.ResumeLayout(false);
             this.grbAccensione.ResumeLayout(false);
             this.grbAccensione.PerformLayout();
@@ -9279,35 +9269,6 @@
         private System.Windows.Forms.Label label146;
         private System.Windows.Forms.Button btnScriviInizializzazione;
         private System.Windows.Forms.Button btnCaricaInizializzazione;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Label label147;
-        private System.Windows.Forms.TextBox txtInitNumLottoPFC;
-        private System.Windows.Forms.Label label145;
-        private System.Windows.Forms.TextBox txtInitNumLottoZVT;
-        private System.Windows.Forms.Label label126;
-        private System.Windows.Forms.Label label104;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.TextBox txtInitRevHwDISP;
-        private System.Windows.Forms.Label label131;
-        private System.Windows.Forms.TextBox txtInitRevHwPFC;
-        private System.Windows.Forms.Label label130;
-        private System.Windows.Forms.TextBox txtInitRevHwZVT;
-        private System.Windows.Forms.Label label129;
-        private System.Windows.Forms.TextBox txtInitRevFwDISP;
-        private System.Windows.Forms.Label label127;
-        private System.Windows.Forms.TextBox txtInitNumSerDISP;
-        private System.Windows.Forms.Label label128;
-        private System.Windows.Forms.TextBox txtInitRevFwPFC;
-        private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.TextBox txtInitNumSerPFC;
-        private System.Windows.Forms.Label label107;
-        private System.Windows.Forms.Label label102;
-        private System.Windows.Forms.TextBox txtInitRevFwZVT;
-        private System.Windows.Forms.Label label113;
-        private System.Windows.Forms.TextBox txtInitNumSerZVT;
-        private System.Windows.Forms.Label label125;
         private System.Windows.Forms.GroupBox grbInitCalibrazione;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label101;
@@ -9317,11 +9278,9 @@
         private System.Windows.Forms.Label label106;
         private System.Windows.Forms.GroupBox grbInitDatiBase;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkInitPresenzaRabb;
-        private System.Windows.Forms.TextBox txtInitAMax;
         private System.Windows.Forms.TextBox txtInitVMax;
         private System.Windows.Forms.TextBox txtInitVMin;
         private System.Windows.Forms.TextBox txtInitIDApparato;
@@ -9601,5 +9560,30 @@
         private System.Windows.Forms.GroupBox grbPaImpostazioniLocali;
         private System.Windows.Forms.Button btnPaProfileClear;
         private System.Windows.Forms.CheckBox chkMemInt;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.NumericUpDown txtInitBrdNumModuli;
+        private System.Windows.Forms.TextBox txtInitRevHwDISP;
+        private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.TextBox txtInitRevFwDISP;
+        private System.Windows.Forms.Label label127;
+        private System.Windows.Forms.TextBox txtInitNumSerDISP;
+        private System.Windows.Forms.Label label128;
+        private System.Windows.Forms.TextBox txtInitBrdOpzioniModulo;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.CheckBox chkInitBrdSpareModulo;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.NumericUpDown txtInitBrdANomModulo;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.NumericUpDown txtInitBrdVNomModulo;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox txtInitBrdVMaxModulo;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox txtInitBrdVMinModulo;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.NumericUpDown txtInitAMax;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtPaCoeffKc;
     }
 }

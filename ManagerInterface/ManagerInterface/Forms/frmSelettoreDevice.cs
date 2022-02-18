@@ -443,6 +443,7 @@ namespace PannelloCharger
                     _varGlobali.chiudiCanaleLadeLight();
                 }
 
+                _varGlobali.TipoCharger = CaricaBatteria.TipoCaricaBatteria.SuperCharger;
                 esitoCanaleApparato = _varGlobali.apriLadeLight();
                 if (esitoCanaleApparato)
                 {
@@ -454,17 +455,17 @@ namespace PannelloCharger
                             return;
                         }
                     }
-                    Log.Debug("NUOVO LL");
+                    Log.Debug("NUOVO SCHG");
 
                     frmSuperCharger cbCorrente = new frmSuperCharger(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
-
+                    /*
                     if (!cbCorrente.ApparatoConnesso)
                     {
                         cbCorrente.Close();
                         MessageBox.Show("Nessuna risposta dal dispositivo selezionato", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
-
+                    */
                     cbCorrente.Cursor = Cursors.WaitCursor;
 
                     cbCorrente.MdiParent = this.MdiParent;
@@ -506,6 +507,7 @@ namespace PannelloCharger
                     _varGlobali.chiudiCanaleLadeLight();
                 }
 
+                _varGlobali.TipoCharger = CaricaBatteria.TipoCaricaBatteria.LadeLight;
                 esitoCanaleApparato = _varGlobali.apriLadeLight();
                 if (esitoCanaleApparato)
                 {

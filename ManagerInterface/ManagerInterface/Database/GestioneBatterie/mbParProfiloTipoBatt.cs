@@ -50,6 +50,7 @@ namespace MoriData
         public string MantTempoMaxErogazione { get; set; }
 
         public string FattoreK { get; set; }
+        public string FattoreKs { get; set; }
 
         // Tensioni
         public string TensionePrecicloV0 { get; set; }

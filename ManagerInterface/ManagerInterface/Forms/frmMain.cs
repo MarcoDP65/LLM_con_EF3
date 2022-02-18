@@ -62,7 +62,7 @@ namespace PannelloCharger
                 
                 varGlobali = new parametriSistema();
                 logiche = new LogicheBase();
-                cbCorrente = new CaricaBatteria(ref varGlobali, logiche.dbDati.connessione);
+                cbCorrente = new CaricaBatteria(ref varGlobali, logiche.dbDati.connessione, CaricaBatteria.TipoCaricaBatteria.Generico);
 
                 Toolbar.reset();
                 AggiornaToolbar(Toolbar);

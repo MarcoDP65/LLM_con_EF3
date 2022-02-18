@@ -31,7 +31,10 @@ namespace MoriData
         public byte TipoBatteria { get; set; }
         public short AttesaBMS { get; set; }
         public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
+        public byte AttivaMant { get; set; }         // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
         public byte AttivaRiarmoPulse { get; set; }  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
+        public byte AttivaOpportunity { get; set; }  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
+
         public string Grafico { get; set; }          // Nome dell'immagine profilo nel file risorse
 
         public int Ordine { get; set; }

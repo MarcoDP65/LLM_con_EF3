@@ -35,6 +35,7 @@ namespace MoriData
         public byte AnnoCodice { get; set; }
         public uint ProgressivoCodice { get; set; }
         public byte TipoApparato { get; set; }
+        public byte FamigliaApparato { get; set; }
         public uint DataSetupApparato { get; set; }
 
         public String IdLottoZVT { get; set; }       
@@ -63,6 +64,15 @@ namespace MoriData
         public ushort Amax { get; set; }
 
         public byte PresenzaRabboccatore { get; set; }
+
+        // Gestione Moduli SCHG
+        public byte NumeroModuli { get; set; }
+        public ushort ModVNom { get; set; }
+        public ushort ModANom { get; set; }
+        public ushort ModOpzioni { get; set; }
+        public ushort ModVMin { get; set; }
+        public ushort ModVMax { get; set; }
+
 
         public DateTime UltimaLetturaDati { get; set; }
         public String DtUltimaLetturaDati { get; set; }
@@ -243,6 +253,18 @@ namespace MoriData
 
         }
 
+        public byte FamigliaApparato
+        {
+            get
+            {
+                return llParApp.FamigliaApparato;
+            }
+            set
+            {
+                llParApp.FamigliaApparato = value;
+            }
+
+        }
 
         public bool SchedaInizializzata
         {

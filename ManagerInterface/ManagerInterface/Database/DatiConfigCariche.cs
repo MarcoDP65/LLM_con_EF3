@@ -37,11 +37,25 @@ namespace MoriData
 
         public bool inizializzaModelli()
         {
+
             ModelliLL = new List<_llModelloCb>();
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "N.D.", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0, Attivo = 0xff });
-            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "LLT.3 24-80V / 120A", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 120, Ordine = 1, Trifase = 1, Attivo = 0x01 });  // V max--> 80/2*3 = 120
-            //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 92, Ordine = 2, Trifase = 1, Attivo = 0x00 });   // V max--> 48/2*3 =  92
-            //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x01, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0, Attivo = 0x00 });
+            // Il primo bit caratterzza la famiglia: 0 supercharger, 1 Lade Light
+
+            // LADE Light
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "N.D.", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.NonDefinito, TensioneNominale = 0 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "LLT.3 24-80V / 120A", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 120, Ordine = 1, Trifase = 1, Attivo = 0x01, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.LadeLight, TensioneNominale = 0 });  // V max--> 80/2*3 = 120
+                                                                                                                                                                                                                              //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 92, Ordine = 2, Trifase = 1, Attivo = 0x00 });   // V max--> 48/2*3 =  92
+                                                                                                                                                                                                                              //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xC1, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0, Attivo = 0x00 });
+
+            // SUPERCHARGER - i modelli sono caratterizzati solo per tensione nominale, la corrente è definita sul dispositivo in base ai moduli
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x18, NomeModello = "SCHG 24V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 24, TensioneMax = 29, Ordine = 101, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger,TensioneNominale = 24 });
+            // ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x24, NomeModello = "SCHG 36V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 36, TensioneMax = 43, Ordine = 102, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger,TensioneNominale = 36 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x30, NomeModello = "SCHG 48V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 48, TensioneMax = 53, Ordine = 103, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger, TensioneNominale = 48 });
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x50, NomeModello = "SCHG 80V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 80, TensioneMax = 96, Ordine = 104, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger, TensioneNominale = 80 });
+            // ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x5C, NomeModello = "SCHG 92V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 92, TensioneMax = 110, Ordine = 105, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger,TensioneNominale = 92 });
+
+
+
             return true;
         }
 
@@ -55,7 +69,7 @@ namespace MoriData
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x04, NomeProfilo = "IWa Pb13", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 4, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x05, NomeProfilo = "IWa Pb11", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 5, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x06, NomeProfilo = "IWa Pb8", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 6, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, Grafico = "IWa650" });
-            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, Grafico = "IUIa650" });
+            ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, Grafico = "LITIO650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x08, NomeProfilo = "IWa Pb13 Equal", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x09, NomeProfilo = "IWa Pb11 Equal", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 9, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
             ProfiliCarica.Add(new _llProfiloCarica() { IdProfiloCaricaLL = 0x0A, NomeProfilo = "IWa Pb8 Equal", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 10, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, Grafico = "IWa650" });
@@ -212,8 +226,15 @@ namespace MoriData
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x82, IdTensione = 3600, TxTensione = "36,00", Attivo = 1 });
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x82, IdTensione = 4800, TxTensione = "48,00", Attivo = 1 });
 
-            // 24 - 70 Trifase
-            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x01, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
+            // SCHG 24 Trifase
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x18, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
+
+            // SCHG 48 Trifase
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x30, IdTensione = 4800, TxTensione = "48,00", Attivo = 1 });
+
+            // SCHG 80 Trifase
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x50, IdTensione = 8000, TxTensione = "80,00", Attivo = 1 });
+
 
             return true;
         }

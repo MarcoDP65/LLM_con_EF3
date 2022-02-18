@@ -36,6 +36,8 @@ namespace ChargerLogic
 
 
         public enum EsitoRicalcolo : byte { OK = 0x00, ErrIMax = 0x11, ErrIMin = 0x12, ErrVMax = 0x21, ErrVMin = 0x22, ErrGenerico = 0xF0, ParNonValidi = 0xF1, ErrCBNonDef = 0xF2, ErrUndef = 0xFF }
+        public enum TipoCaricaBatteria : byte { Generico = 0x00, LadeLight = 0x01, SuperCharger = 0x02 , NonDefinito = 0xFF}
+
 
         public SerialPort serialeApparato;
         private static MessaggioLadeLight _mS;
@@ -134,7 +136,7 @@ namespace ChargerLogic
         public SerialMessage.OcBaudRate BrOCcorrente = SerialMessage.OcBaudRate.OFF;
         public SerialMessage.OcEchoMode EchoOCcorrente = SerialMessage.OcEchoMode.OFF;
 
-
+        public TipoCaricaBatteria TipoCB = TipoCaricaBatteria.Generico;
         // Solo ad uso test letture
         public int NumeroTentativiLettura;
 
@@ -503,7 +505,7 @@ namespace ChargerLogic
 
         }
 
-        public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente, string IdDispositivo)
+        public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente, string IdDispositivo, TipoCaricaBatteria TipoCharger )
         {
 
             try
@@ -527,6 +529,7 @@ namespace ChargerLogic
                 // Programmazioni
                 Programmazioni.UltimoIdProgamma = 0;
                 Programmazioni.NumeroRecordProg = 0;
+                TipoCB = TipoCharger;
 
 
                 // USB
@@ -550,7 +553,7 @@ namespace ChargerLogic
 
 
 
-        public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente)
+        public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente, TipoCaricaBatteria TipoCharger)
         {
 
             try
@@ -564,6 +567,7 @@ namespace ChargerLogic
                 byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
                 _mS.SerialNumber = Seriale;
                 _cbCollegato = false;
+                TipoCB = TipoCharger;
                 serialeApparato = _parametri.serialeCorrente;
                 DbAttivo = dbCorrente;
                 ApparatoLL = new LadeLightData(dbCorrente);
@@ -596,7 +600,6 @@ namespace ChargerLogic
         public bool apriPorta()
         {
             bool _esito;
-            //_esito = _parametri.apriCom();
             _esito = _parametri.apriLadeLight();
             return _esito;
 
@@ -643,37 +646,6 @@ namespace ChargerLogic
             {
                 bool _esito = CaricaIntestazioneLL();
                 return _esito;
-
-
-                /*
-                bool _esito = false;
-                _mS.Comando = SerialMessage.TipoComando.CMD_CONNECT;
-                _mS.ComponiMessaggio();
-                _rxRisposta = false;
-                Log.Debug("START");
-                Log.Debug(_mS.hexdumpMessaggio());
-
-                // Leggo la testata apparato
-                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                _esito = aspettaRisposta(AttesaTimeout, 0,true,false);
-                if (_mS._comando == (byte)SerialMessage.TipoComando.ACK_PACKET)  
-                {
-                    _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
-                    _mS.Comando = SerialMessage.TipoComando.CMD_UART_HOST_CONNECTED;
-                    _mS.ComponiMessaggio();
-                    _rxRisposta = false;
-                    Log.Debug("PRIMA LETTURA");
-                    Log.Debug(_mS.hexdumpMessaggio());
-                    _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                    _esito = aspettaRisposta(AttesaTimeout, 1,true,false);
-                    Intestazione = _mS.Intestazione;
-                    _cbCollegato = _esito;
-                    apparatoPresente = _esito;
-                    return _esito;
-
-                }
-                return _esito;
-                */
             }
 
             catch (Exception Ex)
@@ -781,6 +753,13 @@ namespace ChargerLogic
                     if (ParametriApparato.llParApp != null)
                     {
                         ModelloCorrente = DatiBase.ModelliLL.Find(x => x.IdModelloLL == ParametriApparato.llParApp.TipoApparato);
+
+                        // sostituisco i valori teorici con quelli memorizzati sulla macchina
+                        ModelloCorrente.TensioneMin = ParametriApparato.llParApp.VMin;
+                        ModelloCorrente.TensioneMax = ParametriApparato.llParApp.VMax;
+                        ModelloCorrente.CorrenteMin = ParametriApparato.llParApp.Amax/10;
+                        ModelloCorrente.CorrenteMax = ParametriApparato.llParApp.Amax;
+
                         if (DbAttivo != null)
                         {
                             // ParametriApparato._database = DbAttivo;
@@ -873,6 +852,31 @@ namespace ChargerLogic
             }
         }
 
+        public bool CaricaApparatoA0Fake(string IdApparato,byte TipoApp)
+        {
+            try
+            {
+                bool _esito = true;
+
+                // Leggo dal primo banco memoria fissa
+                ParametriApparato = new llParametriApparato();
+                ParametriApparato.llParApp.IdApparato = IdApparato;
+
+                ModelloCorrente = DatiBase.ModelliLL.Find(x => x.IdModelloLL == TipoApp);
+
+
+                //_cbCollegato = false;
+                //apparatoPresente = false;
+                return _esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
 
 
         public bool CaricaProgrammaAttivo()
@@ -1840,7 +1844,7 @@ namespace ChargerLogic
         /// <param name="NumByte">Numero di byte da leggere (max 242)</param>
         /// <param name="Dati">bytearray dati letti</param>
         /// <returns></returns>
-        public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte, out byte[] Dati)
+        public bool LeggiBloccoMemoria(uint StartAddr, ushort NumByte, out byte[] Dati, bool MemoriaInterna = false)
         {
 
 
@@ -1868,14 +1872,20 @@ namespace ChargerLogic
 
                 Dati = new byte[NumByte];
 
-
-                _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
+                if (MemoriaInterna)
+                {
+                    _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY_DF;
+                }
+                else
+                {
+                    _mS.Comando = SerialMessage.TipoComando.CMD_READ_MEMORY;
+                }
                 _mS._pacchettoMem = new SerialMessage.PacchettoReadMem();
 
                 Log.Debug("-----------------------------------------------------------------------------------------------------------");
                 Log.Debug("Lettura di " + NumByte.ToString() + " bytes dall'indirizzo " + StartAddr.ToString("X2"));
 
-                _mS.ComponiMessaggioLeggiMem(StartAddr, NumByte);
+                _mS.ComponiMessaggioLeggiMem(StartAddr, NumByte,MemoriaInterna);
                 Log.Debug(_mS.hexdumpMessaggio());
                 _rxRisposta = false;
                 _startRead = DateTime.Now;
@@ -2275,6 +2285,14 @@ namespace ChargerLogic
                         ParametriApparato.llParApp.VMax = ImmagineMemoria.VMax;
                         ParametriApparato.llParApp.Amax = ImmagineMemoria.Amax;
                         ParametriApparato.llParApp.PresenzaRabboccatore = ImmagineMemoria.PresenzaRabboccatore;
+                        ParametriApparato.llParApp.NumeroModuli = ImmagineMemoria.NumeroModuli;
+                        ParametriApparato.llParApp.ModVNom = ImmagineMemoria.ModVNom;
+                        ParametriApparato.llParApp.ModANom = ImmagineMemoria.ModANom;
+                        ParametriApparato.llParApp.ModOpzioni = ImmagineMemoria.ModOpzioni;
+                        ParametriApparato.llParApp.ModVMin = ImmagineMemoria.ModVMin;
+                        ParametriApparato.llParApp.ModVMax = ImmagineMemoria.ModVMax;
+
+
                         DateTime Lettura = DateTime.Now;
                         ParametriApparato.llParApp.UltimaLetturaDati = Lettura;
                         ParametriApparato.llParApp.DtUltimaLetturaDati = Lettura.ToString("yyyy/MM/dd") + " " + Lettura.ToString("hh:mm"); 
@@ -2305,7 +2323,7 @@ namespace ChargerLogic
 
 
                 // Dati ripresi tal quale dall'originale
-
+                ImmagineMemoria.SerieApparato = (CaricaBatteria.TipoCaricaBatteria)ParametriApparato.llParApp.TipoApparato;
                 ImmagineMemoria.ProduttoreApparato = ParametriApparato.llParApp.ProduttoreApparato;
                 ImmagineMemoria.NomeApparato = ParametriApparato.llParApp.NomeApparato;
                 ImmagineMemoria.MaxRecordBrevi = ParametriApparato.llParApp.MaxRecordBrevi;
@@ -2317,6 +2335,7 @@ namespace ChargerLogic
 
                 ImmagineMemoria.SerialeApparato = ParametriApparato.llParApp.SerialeApparato;
                 ImmagineMemoria.TipoApparato = ParametriApparato.llParApp.TipoApparato;
+                ImmagineMemoria.SerieApparato = (CaricaBatteria.TipoCaricaBatteria)ParametriApparato.llParApp.FamigliaApparato;
                 ImmagineMemoria.DataSetupApparato = ParametriApparato.llParApp.DataSetupApparato;
 
                 ImmagineMemoria.SerialeZVT = ParametriApparato.llParApp.SerialeZVT;
@@ -2335,8 +2354,12 @@ namespace ChargerLogic
                 ImmagineMemoria.VMax = ParametriApparato.llParApp.VMax;
                 ImmagineMemoria.Amax = ParametriApparato.llParApp.Amax;
                 ImmagineMemoria.PresenzaRabboccatore = ParametriApparato.llParApp.PresenzaRabboccatore;
-
-
+                ImmagineMemoria.NumeroModuli = ParametriApparato.llParApp.NumeroModuli;
+                ImmagineMemoria.ModVNom = ParametriApparato.llParApp.ModVNom;
+                ImmagineMemoria.ModANom = ParametriApparato.llParApp.ModANom;
+                ImmagineMemoria.ModOpzioni = ParametriApparato.llParApp.ModOpzioni;
+                ImmagineMemoria.ModVMin = ParametriApparato.llParApp.ModVMin;
+                ImmagineMemoria.ModVMax = ParametriApparato.llParApp.ModVMax;
 
                 if (ImmagineMemoria.GeneraByteArray())
                 {
@@ -2868,6 +2891,7 @@ namespace ChargerLogic
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;
                                 _inviaRisposta = false;
                                 break;
+                            case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY_DF:
                             case (byte)SerialMessage.TipoComando.CMD_READ_MEMORY:
                                 Log.Debug("Read MEMORY");
                                 _datiRicevuti = SerialMessage.TipoRisposta.Data;

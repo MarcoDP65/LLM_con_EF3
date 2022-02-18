@@ -353,7 +353,7 @@ namespace PannelloCharger
                         if (risposta == System.Windows.Forms.DialogResult.Yes)
                         {
 
-                            CaricaBatteria _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                            CaricaBatteria _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione, CaricaBatteria.TipoCaricaBatteria.LadeLight);
                             _cb.ApparatoLL.cancellaDati(_tempLadeLight.IdApparato);
 
                             ListaLadeLight = ListaApparati();

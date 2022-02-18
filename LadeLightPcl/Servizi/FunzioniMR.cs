@@ -166,6 +166,22 @@ namespace Utility
             }
         }
 
+        public static string StringaCorrenteUSh(ushort Corrente, string Formato = "0.0")
+        {
+            try
+            {
+                string _correnti = "";
+                float _inAmpere;
+                _inAmpere = Math.Abs((float)Corrente / 10);
+                _correnti = _inAmpere.ToString(Formato);
+                return _correnti;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
         public static string StringaCorrenteLL(ushort Corrente)
         {
             try
@@ -954,6 +970,36 @@ namespace Utility
             }
 
         }
+
+        public static ushort ConvertiUshort(double Valore, int Fattore = 1, ushort ValIfNull = 0)
+        {
+            try
+            {
+                ushort _valore;
+                double _fattore;
+                double _valoreD;
+                
+                _fattore = (double)Fattore;
+                _valoreD = Math.Round(Valore * Fattore, 2);
+                if (_valoreD > 65535)
+                {
+                    _valore = ValIfNull;
+                }
+                else
+                {
+                    _valore = (ushort)(_valoreD);
+                }
+
+                return _valore;
+
+            }
+            catch
+            {
+                return ValIfNull;
+            }
+
+        }
+
 
         public static ushort ConvertiHexUshort(string Testo, ushort ValIfNull = 0)
         {
@@ -2535,6 +2581,10 @@ namespace Utility
         {
             try
             {
+                if (Formula == null)
+                {
+                    return 0;
+                }
                 // Verifico la lunghezza minima (3)
                 if (Formula.Length < 4)
                 {
@@ -2618,14 +2668,20 @@ namespace Utility
             {
                 ushort esito = 0;
                 string OperazioneUsata = "";
+
+                if (Formula == null)
+                    return 0;
+
                 if (Formula.Length > 0)
                 {
                     OperazioneUsata = Formula.Substring(0, 1);
                 }
                 
+
                 switch (OperazioneUsata)
                 {
                     case "":
+                    case " ":
                         {
                             esito = 0;
                             break;

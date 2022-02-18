@@ -43,6 +43,7 @@ namespace ChargerLogic
         public CanaleDispositivo CanaleSpyBat;
         public CanaleDispositivo CanaleLadeLight;
         public CanaleDispositivo CanaleSupercharger;
+        public CaricaBatteria.TipoCaricaBatteria TipoCharger;
 
         public string portName = "COM9";
         public Int32 baudRate = 115200;
@@ -51,7 +52,7 @@ namespace ChargerLogic
         public Parity parityBit = Parity.None;
         public Handshake handShake = Handshake.None;
 
-        public uint baudRateUSB = 3000000;
+        public uint baudRateUSB = 115200;//3000000;
 
         public string lastError;
 
@@ -628,7 +629,8 @@ namespace ChargerLogic
                             }
 
                             // Set flow control - set RTS/CTS flow control
-                            ftStatus = usbLadeLight.SetFlowControl(FTDI.FT_FLOW_CONTROL.FT_FLOW_RTS_CTS, 0x11, 0x13);
+//                            ftStatus = usbLadeLight.SetFlowControl(FTDI.FT_FLOW_CONTROL.FT_FLOW_RTS_CTS, 0x11, 0x13);
+                            ftStatus = usbLadeLight.SetFlowControl(FTDI.FT_FLOW_CONTROL.FT_FLOW_NONE, 0, 0);
                             if (ftStatus != FTDI.FT_STATUS.FT_OK)
                             {
                                 // Wait for a key press

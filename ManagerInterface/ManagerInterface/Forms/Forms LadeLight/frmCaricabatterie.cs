@@ -125,7 +125,7 @@ namespace PannelloCharger
                 //InitializeComponent();
                 ResizeRedraw = true;
                 _msg = new SerialMessage();
-                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione);
+                _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione, CaricaBatteria.TipoCaricaBatteria.LadeLight);
                 InizializzaScheda();
                 _esito = _cb.apriPorta();
                 if (!_esito)

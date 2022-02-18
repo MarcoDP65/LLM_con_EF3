@@ -54,7 +54,7 @@ namespace ChargerLogic
             try
             {
                 ProfiloRegistrato = new llProgrammaCarica();
-                ///// ProfiloRegistrato.IdProfilo = IdProfilo; // tipo dati ????
+                // ProfiloRegistrato.IdProfilo = IdProfilo; // tipo dati ????
                 // ProfiloRegistrato.IdProgramma = idp
                 ProfiloRegistrato.TipoBatteria = Batteria.BatteryTypeId;
                 ProfiloRegistrato.IdProgramma = IdProgramma;
@@ -146,6 +146,12 @@ namespace ChargerLogic
 
                         case SerialMessage.ParametroLadeLight.Safety:
                             ValoriCiclo.AbilitaSafety = dato.ValoreParametro;
+                            numeroValori += 1;
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.CoeffKc:
+                            ValoriCiclo.CoeffKc = dato.ValoreParametro;
+                            ParametriAttivi.CoeffKc = StatoCella;
                             numeroValori += 1;
                             break;
 
@@ -463,11 +469,13 @@ namespace ChargerLogic
                 ParametriAttivi.CorrenteI0 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteI0);
                 ValoriCiclo.CorrenteI0 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteI0);
                 ParametriAttivi.TensionePrecicloV0 = FunzioniComuni.StatoParametro(ModelloProfilo.TensionePrecicloV0);
-                if ((ValoriCiclo.CorrenteI0/10) > ModelloCB.CorrenteMax)
+                if (ParametriAttivi.CorrenteI0 > 0)
                 {
-                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                    if ((ValoriCiclo.CorrenteI0 / 10) > ModelloCB.CorrenteMax)
+                    {
+                        return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                    }
                 }
-                
                 ValoriCiclo.TensionePrecicloV0 = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensionePrecicloV0);
 
                 ParametriAttivi.TempoT1Max = FunzioniComuni.StatoParametro(ModelloProfilo.TempoT1Max);
@@ -898,8 +906,16 @@ namespace ChargerLogic
                 ListaParametri.Add(NuovoParametro);
                 NumParametriAttivi += 1;
 
-                // Preciclo
-                if (true)  // (ParametriAttivi.TempoT0Max > 0)
+                // Per Litio FATTORE SICUREZZA CAPACITà MASSIMA
+                if (true)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.CoeffKc, ValoriCiclo.CoeffKc);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                    // Preciclo
+                    if (true)  // (ParametriAttivi.TempoT0Max > 0)
                 {
                     NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TempoT0Max, ValoriCiclo.TempoT0Max);
                     ListaParametri.Add(NuovoParametro);
@@ -1262,6 +1278,10 @@ namespace ChargerLogic
                         case SerialMessage.ParametroLadeLight.CoeffK:
                             ValoriCiclo.FattoreK = _par.ValoreParametro;
                             if (RigeneraPermessi) ParametriAttivi.FattoreK = 1; // Read only                
+                            break;
+                        case SerialMessage.ParametroLadeLight.CoeffKc:
+                            ValoriCiclo.CoeffKc = _par.ValoreParametro;
+                            if (RigeneraPermessi) ParametriAttivi.CoeffKc = 1; // Read only                
                             break;
 
                         case SerialMessage.ParametroLadeLight.CorrenteFinaleF2:

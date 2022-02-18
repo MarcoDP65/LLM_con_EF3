@@ -278,7 +278,9 @@ namespace ChargerLogic
         public class PrimoBloccoMemoria
         {
             public string ProduttoreApparato { get; set; }  // 18 byte, fisso MORI RADDRIZZATORI 
-            public string NomeApparato { get; set; }        // 10 byte, fisso LADE LIGHT 
+            public string NomeApparato { get; set; }        // 10 byte, fisso LADE LIGHT  oppure 16 byte PSW SUPERCHARGER
+
+            public CaricaBatteria.TipoCaricaBatteria SerieApparato { get; set; }
 
             public uint SerialeApparato { get; set; }
             public byte AnnoCodice { get; set; }
@@ -309,6 +311,16 @@ namespace ChargerLogic
             public ushort VMax { get; set; }
             public ushort Amax { get; set; }
             public byte PresenzaRabboccatore { get; set; }
+
+            // Gestione Moduli SCHG
+            public byte NumeroModuli { get; set; }
+            public ushort ModVNom { get; set; }
+            public ushort ModANom { get; set; }
+            public ushort ModOpzioni { get; set; }
+            public ushort ModVMin { get; set; }
+            public ushort ModVMax { get; set; }
+
+
 
             public ushort CrcPacchetto { get; set; }
             
@@ -365,7 +377,88 @@ namespace ChargerLogic
 
 
                     startByte = 0;
-                    Log.Debug(" ----------------------  Primo Blocco Memoria  -----------------------------------------");
+                    Log.Debug(" ----------------------  Verifica tipo Primo Blocco Memoria  -----------------------------------------");
+
+                    startByte = 18;
+                    NomeApparato = ArrayToString(_messaggio, startByte, 10);          // Start 18 
+                    if ( NomeApparato == "LADE LIGHT")
+                    {
+                        SerieApparato = CaricaBatteria.TipoCaricaBatteria.LadeLight;
+                        return analizzaMessaggioLL(_messaggio, fwLevel);
+                    }
+
+                    NomeApparato = ArrayToString(_messaggio, startByte, 16);          // Start 18 
+                    if (NomeApparato == "PSW SUPERCHARGER")
+                    {
+                        SerieApparato = CaricaBatteria.TipoCaricaBatteria.SuperCharger;
+                        return analizzaMessaggioSC(_messaggio, fwLevel);
+                    }
+
+
+                    // TIPO APPARATO NON RICONOSCIUTO
+                    SerieApparato = CaricaBatteria.TipoCaricaBatteria.NonDefinito;
+                    return EsitoRisposta.NonRiconosciuto;
+
+                }
+
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+            }
+
+
+
+
+            public EsitoRisposta analizzaMessaggioLL(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 236)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    CrcPacchetto = ArrayToUshort(_messaggio, 234, 2);
+                    if (CrcPacchetto == 0xFFFF)
+                    {
+                        // CRC non coerente
+                        //return EsitoRisposta.MessaggioVuoto;
+                    }
+                    else
+                    {
+                        // Controllo il CRC
+                        byte[] _verificaCrc = new byte[234];
+                        for (int _i = 0; _i < 234; _i++)
+                        {
+                            _verificaCrc[_i] = _messaggio[_i];
+                        }
+                        _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
+
+
+                        if (CrcPacchetto != _tempCRC)
+                        {
+                            // CRC non coerente
+                            return EsitoRisposta.BadCRC;
+
+                        }
+                    }
+
+
+                    startByte = 0;
+                    Log.Debug(" ----------------------  Primo Blocco Memoria Lade Light -----------------------------------------");
 
 
                     ProduttoreApparato = ArrayToString(_messaggio, startByte, 18);    // Start 0
@@ -439,8 +532,158 @@ namespace ChargerLogic
 
             }
 
+            public EsitoRisposta analizzaMessaggioSC(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+                ushort _tempCRC;
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+
+                try
+                {
+                    datiPronti = false;
+                    VuotaPacchetto();
+
+
+                    if (_messaggio.Length < 236)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    CrcPacchetto = ArrayToUshort(_messaggio, 234, 2);
+                    if (CrcPacchetto == 0xFFFF)
+                    {
+                        // CRC non coerente
+                        //return EsitoRisposta.MessaggioVuoto;
+                    }
+                    else
+                    {
+                        // Controllo il CRC
+                        byte[] _verificaCrc = new byte[234];
+                        for (int _i = 0; _i < 234; _i++)
+                        {
+                            _verificaCrc[_i] = _messaggio[_i];
+                        }
+                        _tempCRC = codCrc.ComputeChecksum(_verificaCrc);
+
+
+                        if (CrcPacchetto != _tempCRC)
+                        {
+                            // CRC non coerente
+                            return EsitoRisposta.BadCRC;
+
+                        }
+                    }
+
+
+                    startByte = 0;
+                    Log.Debug(" ----------------------  Primo Blocco Memoria SuperCharger  -----------------------------------------");
+
+
+                    ProduttoreApparato = ArrayToString(_messaggio, startByte, 18);    // Start 0
+                    startByte += 18;
+                    NomeApparato = ArrayToString(_messaggio, startByte, 16);          // Start 18 
+                    startByte += 16;
+                    SerialeApparato = ArrayToUint32(_messaggio, startByte, 3);        // Start 28
+                    if (SerialeApparato != 0xFFFFFF)
+                    {
+                        ProgressivoCodice = SerialeApparato & 0x03FFFF;
+                        AnnoCodice = (byte)(_messaggio[startByte] >> 2);
+                    }
+                    else
+                    {
+                        ProgressivoCodice = 0;
+                        AnnoCodice = 0;
+                    }
+
+                    startByte += 3;
+                    TipoApparato = _messaggio[startByte];                           // Start 31
+                    startByte += 1;
+                    DataSetupApparato = ArrayToUint32(_messaggio, startByte, 3);    // Start 32
+                    startByte += 3;
+                    SerialeDISP = SubArray(_messaggio, startByte, 8);
+                    startByte += 8;
+                    SoftwareDISP = ArrayToString(_messaggio, startByte, 8);
+                    startByte += 8;
+                    HardwareDisp = ArrayToString(_messaggio, startByte, 8);
+                    startByte += 8;
+                    MaxRecordBrevi = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+                    MaxRecordCarica = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    SizeExternMemory = ArrayToUint32(_messaggio, startByte, 3);
+                    startByte += 3;
+                    MaxProgrammazioni = _messaggio[startByte];
+                    startByte += 1;
+                    ModelloMemoria = _messaggio[startByte];
+                    startByte += 1;
+                    IDApparato = ArrayToString(_messaggio, startByte, 8);
+                    startByte += 8;
+                    VMin = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    VMax = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    Amax = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    PresenzaRabboccatore = _messaggio[startByte];
+                    startByte += 1;
+                    NumeroModuli = _messaggio[startByte];
+                    startByte += 1;
+                    ModVNom = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    ModANom = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    ModOpzioni = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    ModVMin = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+                    ModVMax = ArrayToUshort(_messaggio, startByte, 2);
+                    startByte += 2;
+
+                    datiPronti = true;
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
 
             public bool GeneraByteArray()
+            {
+                try
+                {
+                    
+                    switch (SerieApparato)
+                    {
+                        case CaricaBatteria.TipoCaricaBatteria.LadeLight:
+                            {
+                                return GeneraByteArrayLL();
+                            }
+                        case CaricaBatteria.TipoCaricaBatteria.SuperCharger:
+                            {
+                                return GeneraByteArraySC();
+                            }
+                        default:
+                            {
+                                return false;
+                            }
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+
+
+            public bool GeneraByteArrayLL()
             {
                 try
                 {
@@ -655,13 +898,205 @@ namespace ChargerLogic
 
             }
 
+            public bool GeneraByteArraySC()
+            {
+                try
+                {
+                    byte[] _datamap = new byte[236];
+                    byte[] _dataSet = new byte[234];
+                    int _arrayInit = 0;
+                    ushort _temCRC = 0x0000;
+
+                    Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+                    // Variabili temporanee per il passaggio dati
+                    byte _byte1 = 0;
+                    byte _byte2 = 0;
+                    byte _byte3 = 0;
+                    byte _byte4 = 0;
+
+                    // Preparo l'array vuoto
+                    for (int _i = 0; _i < 236; _i++)
+                    {
+                        _datamap[_i] = 0xFF;
+                    }
+
+                    //Produttore Apparato 
+                    for (int _i = 0; _i < 18; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(ProduttoreApparato, _i);
+                    }
+
+                    //Nome Apparato 
+                    for (int _i = 0; _i < 16; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(NomeApparato, _i);
+                    }
+
+                    // Seriale Apparato (3 bytes)
+                    FunzioniComuni.SplitUint32(SerialeApparato, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    // Tipo Apparato
+                    _datamap[_arrayInit++] = TipoApparato;
+
+                    // Data inizializzazione Apparato (3 bytes)
+                    FunzioniComuni.SplitUint32(DataSetupApparato, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //Seriale DISP
+                    if (SerialeDISP == null)
+                    {
+                        _arrayInit += 8;
+                    }
+                    else
+                    {
+                        for (int _i = 0; _i < 8; _i++)
+                        {
+                            if (_i < SerialeDISP.Length)
+                            {
+                                _datamap[_arrayInit++] = SerialeDISP[_i];
+                            }
+                            else
+                                _datamap[_arrayInit++] = 0x00;
+                        }
+                    }
+
+                    // Rev Software DISP
+                    for (int _i = 0; _i < 8; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(SoftwareDISP, _i);
+                    }
+
+                    // Rev Hardware DISP
+                    for (int _i = 0; _i < 8; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(HardwareDisp, _i);
+                    }
+
+
+                    // MaxRecordBrevi (3 bytes)
+                    // -> MaxRecordBrevi = 0x00E555;
+                    FunzioniComuni.SplitUint32(MaxRecordBrevi, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    // Max Testate carica (2 bytes)
+                    // -> MaxRecordCarica = 0x01C7;
+                    FunzioniComuni.SplitUshort(MaxRecordCarica, ref _byte2, ref _byte1);
+
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // SizeExternMemory (3 bytes)
+                    // -> SizeExternMemory = 0x200000;
+                    FunzioniComuni.SplitUint32(SizeExternMemory, ref _byte1, ref _byte2, ref _byte3, ref _byte4);
+
+                    _datamap[_arrayInit++] = _byte2;
+                    _datamap[_arrayInit++] = _byte3;
+                    _datamap[_arrayInit++] = _byte4;
+
+                    //Max Programmazioni
+                    // -> MaxProgrammazioni = 0x10;
+                    _datamap[_arrayInit++] = MaxProgrammazioni;
+
+                    //ModelloMemoria
+                    // -> ModelloMemoria = 0x01;
+                    _datamap[_arrayInit++] = ModelloMemoria;
+
+                    // IDApparato ( Stringa 8 bytes )
+
+                    for (int _i = 0; _i < 8; _i++)
+                    {
+                        _datamap[_arrayInit++] = FunzioniComuni.ByteSubString(IDApparato, _i);
+                    }
+
+                    // VMIN
+                    FunzioniComuni.SplitUshort(VMin, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // VMAX
+                    FunzioniComuni.SplitUshort(VMax, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // AMAX
+                    FunzioniComuni.SplitUshort(Amax, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // Rabboccatore
+                    _datamap[_arrayInit++] = PresenzaRabboccatore;
+
+                    // Numero Moduli
+                    _datamap[_arrayInit++] = NumeroModuli;
+
+                    // ModVNom
+                    FunzioniComuni.SplitUshort(ModVNom, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // ModANom
+                    FunzioniComuni.SplitUshort(ModANom, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // ModOpzioni
+                    FunzioniComuni.SplitUshort(ModOpzioni, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // ModVMin
+                    FunzioniComuni.SplitUshort(ModVMin, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+                    // ModVMax
+                    FunzioniComuni.SplitUshort(ModVMax, ref _byte2, ref _byte1);
+                    _datamap[_arrayInit++] = _byte1;
+                    _datamap[_arrayInit++] = _byte2;
+
+
+
+                    for (int _i = 0; _i < 234; _i++)
+                    {
+                        _dataSet[_i] = _datamap[_i];
+                    }
+
+                    _temCRC = codCrc.ComputeChecksum(_dataSet);
+
+                    FunzioniComuni.SplitUshort(_temCRC, ref _byte1, ref _byte2);
+                    _datamap[234] = _byte2;
+                    _datamap[235] = _byte1;
+
+                    dataBuffer = _datamap;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+
+
 
             public bool VuotaPacchetto()
             {
                 try
                 {
                     ProduttoreApparato = "MORI RADDRIZZATORI";
-                    NomeApparato = "LADE LIGHT";
+                    NomeApparato = "N.D.";
                     SerialeApparato = 0;
                     AnnoCodice = 18;
                     ProgressivoCodice = 0;
@@ -680,6 +1115,16 @@ namespace ChargerLogic
                     SizeExternMemory = 0x20000;
                     MaxProgrammazioni = 16;
                     ModelloMemoria = 1;
+                    PresenzaRabboccatore = 0;
+                    VMin = 0;
+                    VMax = 0;
+                    Amax = 0;
+                    NumeroModuli = 0;
+                    ModVNom = 0;
+                    ModANom = 0;
+                    ModOpzioni = 0;
+                    ModVMin = 0;
+                    ModVMax = 0;
 
                     CrcPacchetto = 0;
 
