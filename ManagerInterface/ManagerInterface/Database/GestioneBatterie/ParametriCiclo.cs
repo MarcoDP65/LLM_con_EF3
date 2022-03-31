@@ -252,7 +252,57 @@ namespace MoriData
 
     }
 
-}
+
+        #region "Flag Visibilità"
+        public bool Fase0Attiva
+        {
+            get
+            {
+                if (CorrenteI0 == 0 && TempoT0Max == 0 && TensionePrecicloV0 == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        public bool Fase1Attiva
+        {
+            get
+            {
+                if (CorrenteI1 == 0 && TempoT1Max == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+        public bool Fase2Attiva
+        {
+            get
+            {
+                if (TempoT2Max == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+        public bool Fase3Attiva
+        {
+            get
+            {
+                if (TempoT3Max == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+
+        #endregion
+    }
 
 
 }

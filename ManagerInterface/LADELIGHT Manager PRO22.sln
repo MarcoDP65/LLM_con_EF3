@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLPlantService", "LLPlantSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomTabControl", "..\CustomTabControl\CustomTabControl.csproj", "{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USBClassLibrary", "..\USBClassLibrary\USBClassLibrary.csproj", "{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -93,8 +95,7 @@ Global
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.All|Any CPU.Build.0 = Debug|x86
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.All|x86.ActiveCfg = Debug|x86
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.All|x86.Build.0 = Debug|x86
-		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Debug|x86.ActiveCfg = Debug|x86
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Debug|x86.Build.0 = Debug|x86
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.DefaultBuild|Any CPU.ActiveCfg = Debug|x86
@@ -104,14 +105,30 @@ Global
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Release|Any CPU.ActiveCfg = Release|x86
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Release|x86.ActiveCfg = Release|x86
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE}.Release|x86.Build.0 = Release|x86
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.All|Any CPU.Build.0 = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.All|x86.ActiveCfg = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.All|x86.Build.0 = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Debug|x86.Build.0 = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.DefaultBuild|x86.Build.0 = Debug|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Release|x86.ActiveCfg = Release|Any CPU
+		{B89A0E26-8A40-4EB2-BEEC-100359BCE76E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {93F9884D-788F-46E3-B2DA-ED81E839C53D}
-		RESX_ConfirmAddLanguageFile = True
-		RESX_AutoCreateNewLanguageFiles = True
 		RESX_NeutralResourcesLanguage = it-IT
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_ConfirmAddLanguageFile = True
+		SolutionGuid = {93F9884D-788F-46E3-B2DA-ED81E839C53D}
 	EndGlobalSection
 EndGlobal

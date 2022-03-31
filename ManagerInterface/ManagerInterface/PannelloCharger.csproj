@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>3.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -78,6 +78,9 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
@@ -1330,6 +1333,10 @@
     <None Include="Resources\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CustomTabControl\CustomTabControl.csproj">
+      <Project>{4dbfe2cf-45e4-4594-8e6a-5ebc2eef85ae}</Project>
+      <Name>CustomTabControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\LadeLightPcl\LadeLightPcl.csproj">
       <Project>{cd7b5a1c-4014-4707-90cc-824fa4ffbf10}</Project>
       <Name>LadeLightPcl</Name>

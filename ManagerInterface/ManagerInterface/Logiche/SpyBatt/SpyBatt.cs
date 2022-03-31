@@ -4946,7 +4946,7 @@ namespace ChargerLogic
         }
 
         /// <summary>
-        /// Scrivis the orologio.
+        /// Aggiorna l' orologio.
         /// </summary>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ScriviOrologio()

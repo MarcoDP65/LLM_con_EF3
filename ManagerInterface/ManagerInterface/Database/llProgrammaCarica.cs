@@ -907,7 +907,7 @@ namespace MoriData
             {
                 if (_llprc != null)
                 {
-                    return FunzioniMR.StringaCorrenteLL( _llprc.BatteryAhdef) ;
+                    return FunzioniMR.StringaCorrenteUSh( _llprc.BatteryAhdef) ;
                 }
                 else
                     return "N.D.";

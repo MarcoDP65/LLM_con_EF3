@@ -2207,6 +2207,52 @@ namespace ChargerLogic
         }
 
 
+        /// <summary>
+        /// Forzas the orologio.
+        /// </summary>
+        /// <param name="Giorno">The giorno.</param>
+        /// <param name="Mese">The mese.</param>
+        /// <param name="Anno">The anno.</param>
+        /// <param name="Ore">The ore.</param>
+        /// <param name="Minuti">The minuti.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool ForzaOrologio(int Giorno, int Mese, int Anno, int Ore, int Minuti)
+        {
+            try
+            {
+                bool _esito;
+                ControllaAttesa(UltimaScrittura);
+
+                DateTime _now = DateTime.Now;
+
+                DateTime dateValue = new DateTime(Anno, Mese, Giorno, Ore, Minuti, 0);
+                _mS.Comando = SerialMessage.TipoComando.CMD_UPDATE_RTC;
+                _mS.DatiRTC = new SerialMessage.comandoRTC();
+                _mS.DatiRTC.anno = (ushort)Anno;
+                _mS.DatiRTC.mese = (byte)Mese;
+                _mS.DatiRTC.giorno = (byte)Giorno;
+                _mS.DatiRTC.giornoSett = (byte)dateValue.DayOfWeek;
+                _mS.DatiRTC.ore = (byte)Ore;
+                _mS.DatiRTC.minuti = (byte)Minuti;
+                _mS.DatiRTC.secondi = (byte)0;
+
+                _mS.ComponiMessaggioOra();
+                _rxRisposta = false;
+                Log.Debug("Scrivi RTC");
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+
+                return _esito; //_esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+        }
+
         public bool RiceviMessaggio()
         {
             try {

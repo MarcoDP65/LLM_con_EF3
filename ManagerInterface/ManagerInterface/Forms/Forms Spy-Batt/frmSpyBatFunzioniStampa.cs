@@ -551,11 +551,6 @@ namespace PannelloCharger
                 graphcs.DrawString(lblCelleP1.Text, _etichette, _pennaBase, 600, _rigaLabel);
                 graphcs.DrawString(txtProgcCelleV1.Text, _valoriBase, _pennaBase, 600, _rigaLabel + DeltaIntestazione);
 
-    
-
-
-
-
             }
             catch (Exception Ex)
             {

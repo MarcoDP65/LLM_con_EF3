@@ -463,7 +463,7 @@
             this.tabProfiloAttuale = new System.Windows.Forms.TabPage();
             this.tbcPaSottopagina = new System.Windows.Forms.TabControl();
             this.tbpPaProfiloAttivo = new System.Windows.Forms.TabPage();
-            this.grbCicloCorrente = new System.Windows.Forms.GroupBox();
+            this.pippo = new System.Windows.Forms.GroupBox();
             this.btnPaProfileClear = new System.Windows.Forms.Button();
             this.grbPaImpostazioniLocali = new System.Windows.Forms.GroupBox();
             this.chkPaUsaSafety = new System.Windows.Forms.CheckBox();
@@ -492,7 +492,7 @@
             this.btnCicloCorrente = new System.Windows.Forms.Button();
             this.btnPaProfileRefresh = new System.Windows.Forms.Button();
             this.picPaImmagineProfilo = new System.Windows.Forms.PictureBox();
-            this.tbcPaSchedeValori = new System.Windows.Forms.TabControl();
+            this.tbcPaSchedeValori = new System.Windows.Forms.CustomTabControl();
             this.tbpPaGeneraleCiclo = new System.Windows.Forms.TabPage();
             this.txtPaCassone = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
@@ -694,6 +694,20 @@
             this.btnCaricaMemoria = new System.Windows.Forms.Button();
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grbCalData = new System.Windows.Forms.GroupBox();
+            this.txtCalMinuti = new System.Windows.Forms.TextBox();
+            this.label266 = new System.Windows.Forms.Label();
+            this.txtCalOre = new System.Windows.Forms.TextBox();
+            this.label267 = new System.Windows.Forms.Label();
+            this.btnCalScriviGiorno = new System.Windows.Forms.Button();
+            this.txtCalAnno = new System.Windows.Forms.TextBox();
+            this.label250 = new System.Windows.Forms.Label();
+            this.txtCalMese = new System.Windows.Forms.TextBox();
+            this.label249 = new System.Windows.Forms.Label();
+            this.txtCalGiorno = new System.Windows.Forms.TextBox();
+            this.label248 = new System.Windows.Forms.Label();
             this.tabMonitor.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
@@ -743,7 +757,7 @@
             this.tabProfiloAttuale.SuspendLayout();
             this.tbcPaSottopagina.SuspendLayout();
             this.tbpPaProfiloAttivo.SuspendLayout();
-            this.grbCicloCorrente.SuspendLayout();
+            this.pippo.SuspendLayout();
             this.grbPaImpostazioniLocali.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPaImmagineProfilo)).BeginInit();
             this.tbcPaSchedeValori.SuspendLayout();
@@ -769,6 +783,7 @@
             this.GrbMainDatiApparato.SuspendLayout();
             this.grbDatiCliente.SuspendLayout();
             this.tabCaricaBatterie.SuspendLayout();
+            this.grbCalData.SuspendLayout();
             this.SuspendLayout();
             // 
             // tmrLetturaAutomatica
@@ -5815,6 +5830,7 @@
             // tabOrologio
             // 
             this.tabOrologio.BackColor = System.Drawing.Color.LightYellow;
+            this.tabOrologio.Controls.Add(this.grbCalData);
             this.tabOrologio.Controls.Add(this.grbAccensione);
             this.tabOrologio.Controls.Add(this.grbOraCorrente);
             this.tabOrologio.Location = new System.Drawing.Point(4, 22);
@@ -5834,7 +5850,7 @@
             this.grbAccensione.Controls.Add(this.cmbOreRitardo);
             this.grbAccensione.Controls.Add(this.rbtAccensione02);
             this.grbAccensione.Controls.Add(this.rbtAccensione01);
-            this.grbAccensione.Location = new System.Drawing.Point(21, 180);
+            this.grbAccensione.Location = new System.Drawing.Point(429, 27);
             this.grbAccensione.Margin = new System.Windows.Forms.Padding(2);
             this.grbAccensione.Name = "grbAccensione";
             this.grbAccensione.Padding = new System.Windows.Forms.Padding(2);
@@ -5999,17 +6015,17 @@
             this.grbOraCorrente.Margin = new System.Windows.Forms.Padding(2);
             this.grbOraCorrente.Name = "grbOraCorrente";
             this.grbOraCorrente.Padding = new System.Windows.Forms.Padding(2);
-            this.grbOraCorrente.Size = new System.Drawing.Size(255, 124);
+            this.grbOraCorrente.Size = new System.Drawing.Size(278, 124);
             this.grbOraCorrente.TabIndex = 0;
             this.grbOraCorrente.TabStop = false;
             this.grbOraCorrente.Text = "Orologio Sistema";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(136, 74);
+            this.button1.Location = new System.Drawing.Point(149, 74);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 22);
+            this.button1.Size = new System.Drawing.Size(117, 22);
             this.button1.TabIndex = 5;
             this.button1.Text = "Imposta Orologio";
             this.button1.UseVisualStyleBackColor = true;
@@ -6020,7 +6036,7 @@
             this.btnLeggiRtc.Location = new System.Drawing.Point(18, 74);
             this.btnLeggiRtc.Margin = new System.Windows.Forms.Padding(2);
             this.btnLeggiRtc.Name = "btnLeggiRtc";
-            this.btnLeggiRtc.Size = new System.Drawing.Size(101, 22);
+            this.btnLeggiRtc.Size = new System.Drawing.Size(116, 22);
             this.btnLeggiRtc.TabIndex = 4;
             this.btnLeggiRtc.Text = "Leggi Orologio";
             this.btnLeggiRtc.UseVisualStyleBackColor = true;
@@ -6029,22 +6045,23 @@
             // txtOraRtc
             // 
             this.txtOraRtc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOraRtc.Location = new System.Drawing.Point(136, 41);
+            this.txtOraRtc.Location = new System.Drawing.Point(149, 41);
             this.txtOraRtc.Margin = new System.Windows.Forms.Padding(2);
             this.txtOraRtc.Name = "txtOraRtc";
-            this.txtOraRtc.Size = new System.Drawing.Size(102, 23);
+            this.txtOraRtc.Size = new System.Drawing.Size(118, 23);
             this.txtOraRtc.TabIndex = 3;
             this.txtOraRtc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblOraRTC
             // 
             this.lblOraRTC.AutoSize = true;
-            this.lblOraRTC.Location = new System.Drawing.Point(134, 24);
+            this.lblOraRTC.Location = new System.Drawing.Point(146, 24);
             this.lblOraRTC.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOraRTC.Name = "lblOraRTC";
             this.lblOraRTC.Size = new System.Drawing.Size(24, 13);
             this.lblOraRTC.TabIndex = 2;
             this.lblOraRTC.Text = "Ora";
+            this.lblOraRTC.Click += new System.EventHandler(this.lblOraRTC_Click);
             // 
             // txtDataRtc
             // 
@@ -6052,7 +6069,7 @@
             this.txtDataRtc.Location = new System.Drawing.Point(18, 41);
             this.txtDataRtc.Margin = new System.Windows.Forms.Padding(2);
             this.txtDataRtc.Name = "txtDataRtc";
-            this.txtDataRtc.Size = new System.Drawing.Size(102, 23);
+            this.txtDataRtc.Size = new System.Drawing.Size(116, 23);
             this.txtDataRtc.TabIndex = 1;
             this.txtDataRtc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -6095,7 +6112,7 @@
             // 
             // tbpPaProfiloAttivo
             // 
-            this.tbpPaProfiloAttivo.Controls.Add(this.grbCicloCorrente);
+            this.tbpPaProfiloAttivo.Controls.Add(this.pippo);
             this.tbpPaProfiloAttivo.Location = new System.Drawing.Point(4, 22);
             this.tbpPaProfiloAttivo.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaProfiloAttivo.Name = "tbpPaProfiloAttivo";
@@ -6106,31 +6123,31 @@
             this.tbpPaProfiloAttivo.UseVisualStyleBackColor = true;
             this.tbpPaProfiloAttivo.Click += new System.EventHandler(this.tbpPaProfiloAttivo_Click);
             // 
-            // grbCicloCorrente
+            // pippo
             // 
-            this.grbCicloCorrente.BackColor = System.Drawing.Color.White;
-            this.grbCicloCorrente.Controls.Add(this.btnPaProfileClear);
-            this.grbCicloCorrente.Controls.Add(this.grbPaImpostazioniLocali);
-            this.grbCicloCorrente.Controls.Add(this.btnPaProfileChiudiCanale);
-            this.grbCicloCorrente.Controls.Add(this.btnPaCaricaCicli);
-            this.grbCicloCorrente.Controls.Add(this.chkPaSbloccaValori);
-            this.grbCicloCorrente.Controls.Add(this.lblPaSbloccaValori);
-            this.grbCicloCorrente.Controls.Add(this.btnCicloCorrente);
-            this.grbCicloCorrente.Controls.Add(this.btnPaProfileRefresh);
-            this.grbCicloCorrente.Controls.Add(this.picPaImmagineProfilo);
-            this.grbCicloCorrente.Controls.Add(this.tbcPaSchedeValori);
-            this.grbCicloCorrente.Controls.Add(this.chkPaUsaSpyBatt);
-            this.grbCicloCorrente.Controls.Add(this.label69);
-            this.grbCicloCorrente.Controls.Add(this.btnPaSalvaDati);
-            this.grbCicloCorrente.Location = new System.Drawing.Point(17, 13);
-            this.grbCicloCorrente.Margin = new System.Windows.Forms.Padding(2);
-            this.grbCicloCorrente.Name = "grbCicloCorrente";
-            this.grbCicloCorrente.Padding = new System.Windows.Forms.Padding(2);
-            this.grbCicloCorrente.Size = new System.Drawing.Size(1217, 522);
-            this.grbCicloCorrente.TabIndex = 0;
-            this.grbCicloCorrente.TabStop = false;
-            this.grbCicloCorrente.Text = "Profilo  Attivo";
-            this.grbCicloCorrente.Enter += new System.EventHandler(this.grbCicloCorrente_Enter);
+            this.pippo.BackColor = System.Drawing.Color.White;
+            this.pippo.Controls.Add(this.btnPaProfileClear);
+            this.pippo.Controls.Add(this.grbPaImpostazioniLocali);
+            this.pippo.Controls.Add(this.btnPaProfileChiudiCanale);
+            this.pippo.Controls.Add(this.btnPaCaricaCicli);
+            this.pippo.Controls.Add(this.chkPaSbloccaValori);
+            this.pippo.Controls.Add(this.lblPaSbloccaValori);
+            this.pippo.Controls.Add(this.btnCicloCorrente);
+            this.pippo.Controls.Add(this.btnPaProfileRefresh);
+            this.pippo.Controls.Add(this.picPaImmagineProfilo);
+            this.pippo.Controls.Add(this.tbcPaSchedeValori);
+            this.pippo.Controls.Add(this.chkPaUsaSpyBatt);
+            this.pippo.Controls.Add(this.label69);
+            this.pippo.Controls.Add(this.btnPaSalvaDati);
+            this.pippo.Location = new System.Drawing.Point(17, 13);
+            this.pippo.Margin = new System.Windows.Forms.Padding(2);
+            this.pippo.Name = "pippo";
+            this.pippo.Padding = new System.Windows.Forms.Padding(2);
+            this.pippo.Size = new System.Drawing.Size(1217, 522);
+            this.pippo.TabIndex = 0;
+            this.pippo.TabStop = false;
+            this.pippo.Text = "Profilo  Attivo";
+            this.pippo.Enter += new System.EventHandler(this.grbCicloCorrente_Enter);
             // 
             // btnPaProfileClear
             // 
@@ -6488,6 +6505,24 @@
             this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCMant);
             this.tbcPaSchedeValori.Controls.Add(this.tbpPaPCOpp);
             this.tbcPaSchedeValori.Controls.Add(this.tbpPaParSoglia);
+            // 
+            // 
+            // 
+            this.tbcPaSchedeValori.DisplayStyleProvider.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.tbcPaSchedeValori.DisplayStyleProvider.BorderColorHot = System.Drawing.SystemColors.ControlDark;
+            this.tbcPaSchedeValori.DisplayStyleProvider.BorderColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
+            this.tbcPaSchedeValori.DisplayStyleProvider.CloserColor = System.Drawing.Color.Empty;
+            this.tbcPaSchedeValori.DisplayStyleProvider.FocusTrack = true;
+            this.tbcPaSchedeValori.DisplayStyleProvider.HotTrack = true;
+            this.tbcPaSchedeValori.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tbcPaSchedeValori.DisplayStyleProvider.Opacity = 1F;
+            this.tbcPaSchedeValori.DisplayStyleProvider.Overlap = 0;
+            this.tbcPaSchedeValori.DisplayStyleProvider.Padding = new System.Drawing.Point(6, 3);
+            this.tbcPaSchedeValori.DisplayStyleProvider.ShowTabCloser = false;
+            this.tbcPaSchedeValori.DisplayStyleProvider.TextColor = System.Drawing.SystemColors.ControlText;
+            this.tbcPaSchedeValori.DisplayStyleProvider.TextColorDisabled = System.Drawing.SystemColors.ControlDark;
+            this.tbcPaSchedeValori.DisplayStyleProvider.TextColorSelected = System.Drawing.SystemColors.ControlText;
+            this.tbcPaSchedeValori.HotTrack = true;
             this.tbcPaSchedeValori.Location = new System.Drawing.Point(284, 302);
             this.tbcPaSchedeValori.Margin = new System.Windows.Forms.Padding(2);
             this.tbcPaSchedeValori.Name = "tbcPaSchedeValori";
@@ -6503,10 +6538,10 @@
             this.tbpPaGeneraleCiclo.Controls.Add(this.lblPaIdSetup);
             this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaNomeSetup);
             this.tbpPaGeneraleCiclo.Controls.Add(this.label152);
-            this.tbpPaGeneraleCiclo.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaGeneraleCiclo.Location = new System.Drawing.Point(4, 23);
             this.tbpPaGeneraleCiclo.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaGeneraleCiclo.Name = "tbpPaGeneraleCiclo";
-            this.tbpPaGeneraleCiclo.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaGeneraleCiclo.Size = new System.Drawing.Size(719, 138);
             this.tbpPaGeneraleCiclo.TabIndex = 5;
             this.tbpPaGeneraleCiclo.Text = "Generale";
             this.tbpPaGeneraleCiclo.UseVisualStyleBackColor = true;
@@ -6582,9 +6617,9 @@
             this.tbpPaPCStep0.Controls.Add(this.label23);
             this.tbpPaPCStep0.Controls.Add(this.txtPaSogliaV0);
             this.tbpPaPCStep0.Controls.Add(this.label22);
-            this.tbpPaPCStep0.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaPCStep0.Location = new System.Drawing.Point(4, 23);
             this.tbpPaPCStep0.Name = "tbpPaPCStep0";
-            this.tbpPaPCStep0.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaPCStep0.Size = new System.Drawing.Size(719, 138);
             this.tbpPaPCStep0.TabIndex = 6;
             this.tbpPaPCStep0.Text = "Fase 0";
             this.tbpPaPCStep0.UseVisualStyleBackColor = true;
@@ -6661,11 +6696,11 @@
             this.tbpPaPCStep1.Controls.Add(this.label13);
             this.tbpPaPCStep1.Controls.Add(this.txtPaSogliaVs);
             this.tbpPaPCStep1.Controls.Add(this.label12);
-            this.tbpPaPCStep1.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaPCStep1.Location = new System.Drawing.Point(4, 23);
             this.tbpPaPCStep1.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaPCStep1.Name = "tbpPaPCStep1";
             this.tbpPaPCStep1.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpPaPCStep1.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaPCStep1.Size = new System.Drawing.Size(719, 138);
             this.tbpPaPCStep1.TabIndex = 0;
             this.tbpPaPCStep1.Text = "Fase 1";
             this.tbpPaPCStep1.UseVisualStyleBackColor = true;
@@ -6764,11 +6799,11 @@
             this.tbpPaPCStep2.Controls.Add(this.label16);
             this.tbpPaPCStep2.Controls.Add(this.txtPaRaccordoF1);
             this.tbpPaPCStep2.Controls.Add(this.label14);
-            this.tbpPaPCStep2.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaPCStep2.Location = new System.Drawing.Point(4, 23);
             this.tbpPaPCStep2.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaPCStep2.Name = "tbpPaPCStep2";
             this.tbpPaPCStep2.Padding = new System.Windows.Forms.Padding(2);
-            this.tbpPaPCStep2.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaPCStep2.Size = new System.Drawing.Size(719, 138);
             this.tbpPaPCStep2.TabIndex = 1;
             this.tbpPaPCStep2.Text = "Fase 2";
             this.tbpPaPCStep2.UseVisualStyleBackColor = true;
@@ -6945,10 +6980,10 @@
             // 
             this.tbpPaPCStep3.Controls.Add(this.label19);
             this.tbpPaPCStep3.Controls.Add(this.txtPaTempoT3Max);
-            this.tbpPaPCStep3.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaPCStep3.Location = new System.Drawing.Point(4, 23);
             this.tbpPaPCStep3.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaPCStep3.Name = "tbpPaPCStep3";
-            this.tbpPaPCStep3.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaPCStep3.Size = new System.Drawing.Size(719, 138);
             this.tbpPaPCStep3.TabIndex = 2;
             this.tbpPaPCStep3.Text = "Fase 3";
             this.tbpPaPCStep3.UseVisualStyleBackColor = true;
@@ -6986,10 +7021,10 @@
             this.tbpPaPCEqual.Controls.Add(this.label134);
             this.tbpPaPCEqual.Controls.Add(this.txtPaEqualAttesa);
             this.tbpPaPCEqual.Controls.Add(this.label135);
-            this.tbpPaPCEqual.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaPCEqual.Location = new System.Drawing.Point(4, 23);
             this.tbpPaPCEqual.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaPCEqual.Name = "tbpPaPCEqual";
-            this.tbpPaPCEqual.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaPCEqual.Size = new System.Drawing.Size(719, 138);
             this.tbpPaPCEqual.TabIndex = 3;
             this.tbpPaPCEqual.Text = "Equal";
             this.tbpPaPCEqual.UseVisualStyleBackColor = true;
@@ -7106,10 +7141,10 @@
             this.tbpPaPCMant.Controls.Add(this.label35);
             this.tbpPaPCMant.Controls.Add(this.txtPaMantAttesa);
             this.tbpPaPCMant.Controls.Add(this.label36);
-            this.tbpPaPCMant.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaPCMant.Location = new System.Drawing.Point(4, 23);
             this.tbpPaPCMant.Margin = new System.Windows.Forms.Padding(2);
             this.tbpPaPCMant.Name = "tbpPaPCMant";
-            this.tbpPaPCMant.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaPCMant.Size = new System.Drawing.Size(719, 138);
             this.tbpPaPCMant.TabIndex = 4;
             this.tbpPaPCMant.Text = "Mant";
             this.tbpPaPCMant.UseVisualStyleBackColor = true;
@@ -7232,9 +7267,9 @@
             this.tbpPaPCOpp.Controls.Add(this.lblPaOppOraFine);
             this.tbpPaPCOpp.Controls.Add(this.txtPaOppOraInizio);
             this.tbpPaPCOpp.Controls.Add(this.lblPaOppOraInizio);
-            this.tbpPaPCOpp.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaPCOpp.Location = new System.Drawing.Point(4, 23);
             this.tbpPaPCOpp.Name = "tbpPaPCOpp";
-            this.tbpPaPCOpp.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaPCOpp.Size = new System.Drawing.Size(719, 138);
             this.tbpPaPCOpp.TabIndex = 8;
             this.tbpPaPCOpp.Text = "Opportunity";
             this.tbpPaPCOpp.UseVisualStyleBackColor = true;
@@ -7408,9 +7443,9 @@
             this.tbpPaParSoglia.Controls.Add(this.label29);
             this.tbpPaParSoglia.Controls.Add(this.txtPaVLimite);
             this.tbpPaParSoglia.Controls.Add(this.label15);
-            this.tbpPaParSoglia.Location = new System.Drawing.Point(4, 22);
+            this.tbpPaParSoglia.Location = new System.Drawing.Point(4, 23);
             this.tbpPaParSoglia.Name = "tbpPaParSoglia";
-            this.tbpPaParSoglia.Size = new System.Drawing.Size(719, 139);
+            this.tbpPaParSoglia.Size = new System.Drawing.Size(719, 138);
             this.tbpPaParSoglia.TabIndex = 7;
             this.tbpPaParSoglia.Text = "Soglie";
             this.tbpPaParSoglia.UseVisualStyleBackColor = true;
@@ -8778,6 +8813,172 @@
             this.tabCaricaBatterie.TabIndex = 0;
             this.tabCaricaBatterie.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabCaricaBatterie_Selected);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(71, 0);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(71, 0);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // grbCalData
+            // 
+            this.grbCalData.BackColor = System.Drawing.Color.White;
+            this.grbCalData.Controls.Add(this.txtCalMinuti);
+            this.grbCalData.Controls.Add(this.label266);
+            this.grbCalData.Controls.Add(this.txtCalOre);
+            this.grbCalData.Controls.Add(this.label267);
+            this.grbCalData.Controls.Add(this.btnCalScriviGiorno);
+            this.grbCalData.Controls.Add(this.txtCalAnno);
+            this.grbCalData.Controls.Add(this.label250);
+            this.grbCalData.Controls.Add(this.txtCalMese);
+            this.grbCalData.Controls.Add(this.label249);
+            this.grbCalData.Controls.Add(this.txtCalGiorno);
+            this.grbCalData.Controls.Add(this.label248);
+            this.grbCalData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grbCalData.Location = new System.Drawing.Point(21, 173);
+            this.grbCalData.Margin = new System.Windows.Forms.Padding(2);
+            this.grbCalData.Name = "grbCalData";
+            this.grbCalData.Padding = new System.Windows.Forms.Padding(2);
+            this.grbCalData.Size = new System.Drawing.Size(278, 126);
+            this.grbCalData.TabIndex = 5;
+            this.grbCalData.TabStop = false;
+            this.grbCalData.Text = "Forza Data/Ora";
+            // 
+            // txtCalMinuti
+            // 
+            this.txtCalMinuti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCalMinuti.Location = new System.Drawing.Point(230, 40);
+            this.txtCalMinuti.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCalMinuti.Name = "txtCalMinuti";
+            this.txtCalMinuti.Size = new System.Drawing.Size(37, 23);
+            this.txtCalMinuti.TabIndex = 12;
+            this.txtCalMinuti.Text = "00";
+            this.txtCalMinuti.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label266
+            // 
+            this.label266.AutoSize = true;
+            this.label266.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label266.Location = new System.Drawing.Point(228, 24);
+            this.label266.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label266.Name = "label266";
+            this.label266.Size = new System.Drawing.Size(41, 15);
+            this.label266.TabIndex = 11;
+            this.label266.Text = "Minuti";
+            // 
+            // txtCalOre
+            // 
+            this.txtCalOre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCalOre.Location = new System.Drawing.Point(190, 40);
+            this.txtCalOre.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCalOre.Name = "txtCalOre";
+            this.txtCalOre.Size = new System.Drawing.Size(37, 23);
+            this.txtCalOre.TabIndex = 10;
+            this.txtCalOre.Text = "12";
+            this.txtCalOre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label267
+            // 
+            this.label267.AutoSize = true;
+            this.label267.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label267.Location = new System.Drawing.Point(188, 24);
+            this.label267.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label267.Name = "label267";
+            this.label267.Size = new System.Drawing.Size(27, 15);
+            this.label267.TabIndex = 9;
+            this.label267.Text = "Ore";
+            // 
+            // btnCalScriviGiorno
+            // 
+            this.btnCalScriviGiorno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCalScriviGiorno.Location = new System.Drawing.Point(14, 76);
+            this.btnCalScriviGiorno.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCalScriviGiorno.Name = "btnCalScriviGiorno";
+            this.btnCalScriviGiorno.Size = new System.Drawing.Size(253, 34);
+            this.btnCalScriviGiorno.TabIndex = 8;
+            this.btnCalScriviGiorno.Text = "Imposta Data/Ora  Manuale";
+            this.btnCalScriviGiorno.UseVisualStyleBackColor = true;
+            this.btnCalScriviGiorno.Click += new System.EventHandler(this.btnCalScriviGiorno_Click);
+            // 
+            // txtCalAnno
+            // 
+            this.txtCalAnno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCalAnno.Location = new System.Drawing.Point(94, 40);
+            this.txtCalAnno.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCalAnno.Name = "txtCalAnno";
+            this.txtCalAnno.Size = new System.Drawing.Size(69, 23);
+            this.txtCalAnno.TabIndex = 7;
+            this.txtCalAnno.Text = "2017";
+            this.txtCalAnno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label250
+            // 
+            this.label250.AutoSize = true;
+            this.label250.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label250.Location = new System.Drawing.Point(92, 24);
+            this.label250.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label250.Name = "label250";
+            this.label250.Size = new System.Drawing.Size(35, 15);
+            this.label250.TabIndex = 6;
+            this.label250.Text = "Anno";
+            // 
+            // txtCalMese
+            // 
+            this.txtCalMese.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCalMese.Location = new System.Drawing.Point(54, 40);
+            this.txtCalMese.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCalMese.Name = "txtCalMese";
+            this.txtCalMese.Size = new System.Drawing.Size(37, 23);
+            this.txtCalMese.TabIndex = 5;
+            this.txtCalMese.Text = "01";
+            this.txtCalMese.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label249
+            // 
+            this.label249.AutoSize = true;
+            this.label249.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label249.Location = new System.Drawing.Point(52, 24);
+            this.label249.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label249.Name = "label249";
+            this.label249.Size = new System.Drawing.Size(38, 15);
+            this.label249.TabIndex = 4;
+            this.label249.Text = "Mese";
+            // 
+            // txtCalGiorno
+            // 
+            this.txtCalGiorno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtCalGiorno.Location = new System.Drawing.Point(14, 40);
+            this.txtCalGiorno.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCalGiorno.Name = "txtCalGiorno";
+            this.txtCalGiorno.Size = new System.Drawing.Size(37, 23);
+            this.txtCalGiorno.TabIndex = 3;
+            this.txtCalGiorno.Text = "1";
+            this.txtCalGiorno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label248
+            // 
+            this.label248.AutoSize = true;
+            this.label248.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label248.Location = new System.Drawing.Point(11, 24);
+            this.label248.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label248.Name = "label248";
+            this.label248.Size = new System.Drawing.Size(44, 15);
+            this.label248.TabIndex = 2;
+            this.label248.Text = "Giorno";
+            // 
             // frmSuperCharger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8874,8 +9075,8 @@
             this.tabProfiloAttuale.PerformLayout();
             this.tbcPaSottopagina.ResumeLayout(false);
             this.tbpPaProfiloAttivo.ResumeLayout(false);
-            this.grbCicloCorrente.ResumeLayout(false);
-            this.grbCicloCorrente.PerformLayout();
+            this.pippo.ResumeLayout(false);
+            this.pippo.PerformLayout();
             this.grbPaImpostazioniLocali.ResumeLayout(false);
             this.grbPaImpostazioniLocali.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPaImmagineProfilo)).EndInit();
@@ -8916,6 +9117,8 @@
             this.grbDatiCliente.ResumeLayout(false);
             this.grbDatiCliente.PerformLayout();
             this.tabCaricaBatterie.ResumeLayout(false);
+            this.grbCalData.ResumeLayout(false);
+            this.grbCalData.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -9319,7 +9522,7 @@
         private System.Windows.Forms.TabPage tabProfiloAttuale;
         private System.Windows.Forms.TabControl tbcPaSottopagina;
         private System.Windows.Forms.TabPage tbpPaProfiloAttivo;
-        private System.Windows.Forms.GroupBox grbCicloCorrente;
+        private System.Windows.Forms.GroupBox pippo;
         private System.Windows.Forms.CheckBox chkPaSbloccaValori;
         private System.Windows.Forms.Label lblPaSbloccaValori;
         private System.Windows.Forms.CheckBox chkPaAttivaMant;
@@ -9327,7 +9530,7 @@
         private System.Windows.Forms.Button btnCicloCorrente;
         private System.Windows.Forms.Button btnPaProfileRefresh;
         private System.Windows.Forms.PictureBox picPaImmagineProfilo;
-        private System.Windows.Forms.TabControl tbcPaSchedeValori;
+        private System.Windows.Forms.CustomTabControl tbcPaSchedeValori;
         private System.Windows.Forms.TabPage tbpPaGeneraleCiclo;
         private System.Windows.Forms.TextBox txtPaCassone;
         private System.Windows.Forms.Label label38;
@@ -9585,5 +9788,19 @@
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtPaCoeffKc;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox grbCalData;
+        private System.Windows.Forms.TextBox txtCalMinuti;
+        private System.Windows.Forms.Label label266;
+        private System.Windows.Forms.TextBox txtCalOre;
+        private System.Windows.Forms.Label label267;
+        private System.Windows.Forms.Button btnCalScriviGiorno;
+        private System.Windows.Forms.TextBox txtCalAnno;
+        private System.Windows.Forms.Label label250;
+        private System.Windows.Forms.TextBox txtCalMese;
+        private System.Windows.Forms.Label label249;
+        private System.Windows.Forms.TextBox txtCalGiorno;
+        private System.Windows.Forms.Label label248;
     }
 }

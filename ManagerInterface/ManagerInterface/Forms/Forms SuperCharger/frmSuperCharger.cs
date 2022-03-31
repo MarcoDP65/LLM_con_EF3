@@ -1278,6 +1278,11 @@ namespace PannelloCharger
                 LeftPosPaOppOraFine = txtPaOppOraFine.Left;
 
                 LeftPosPaOppOraInizio = txtPaOppOraFine.Left;
+                // Inizializzo a True il visible delle tabpages
+
+
+
+
             }
             catch (Exception Ex)
             {
@@ -3641,8 +3646,8 @@ namespace PannelloCharger
                     //ToolTipText = "Dati Modificabili",
                     AspectName = "strBatteryVdef",
                     Width = 120,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
                 };
                 flwPaListaConfigurazioni.AllColumns.Add(colRowBattVNom);
 
@@ -3652,8 +3657,8 @@ namespace PannelloCharger
                     //ToolTipText = "Dati Modificabili",
                     AspectName = "strBatteryAhdef",
                     Width = 120,
-                    HeaderTextAlign = HorizontalAlignment.Left,
-                    TextAlign = HorizontalAlignment.Left,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
                 };
                 flwPaListaConfigurazioni.AllColumns.Add(colRowBattAhNom);
 
@@ -4178,7 +4183,7 @@ namespace PannelloCharger
                                 cmbPaTensione.SelectedItem = TensBatt;
                             }
 
-                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaTensione, ModCicloCorrente.Tensione, 1, 1, SbloccaValori,true);
+                            FunzioniUI.ImpostaTextBoxUshort(ref txtPaTensione, ModCicloCorrente.Tensione, 1, 1, SbloccaValori, true);
                             txtPaTensione.Visible = true;
                         }
 
@@ -4206,95 +4211,37 @@ namespace PannelloCharger
 
                     }
                     byte ModoProf;
-                    /*
-
-                    ModoProf = (byte)ModCicloCorrente.Profilo.AttivaEqual;
-                    switch (ModoProf)
-                    {
-                        case 0x00:
-                            chkPaAttivaEqual.Checked = false;
-                            chkPaAttivaEqual.Enabled = false;
-                            break;
-                        case 0xF0:
-                            chkPaAttivaEqual.Checked = false;
-                            chkPaAttivaEqual.Enabled = true;
-                            break;
-                        case 0xFF:
-                            chkPaAttivaEqual.Checked = true;
-                            chkPaAttivaEqual.Enabled = false;
-                            break;
-                        default:
-                            chkPaAttivaEqual.Checked = false;
-                            chkPaAttivaEqual.Enabled = false;
-                            break;
-
-                    }
-
-                    ModoProf = (byte)ModCicloCorrente.Profilo.AttivaMant;
-                    switch (ModoProf)
-                    {
-                        case 0x00:
-                            chkPaAttivaMant.Checked = false;
-                            chkPaAttivaMant.Enabled = false;
-                            break;
-                        case 0xF0:
-                            chkPaAttivaMant.Checked = false;
-                            chkPaAttivaMant.Enabled = true;
-                            break;
-                        case 0xFF:
-                            chkPaAttivaMant.Checked = true;
-                            chkPaAttivaMant.Enabled = false;
-                            break;
-                        default:
-                            chkPaAttivaMant.Checked = false;
-                            chkPaAttivaMant.Enabled = false;
-                            break;
-
-                    }
-
-
-                    ModoProf = (byte)ModCicloCorrente.Profilo.AttivaRiarmoPulse;
-                    switch (ModoProf)
-                    {
-                        case 0x00:
-                            chkPaAttivaRiarmoBms.Checked = false;
-                            chkPaAttivaRiarmoBms.Enabled = false;
-                            break;
-                        case 0xF0:
-                            chkPaAttivaRiarmoBms.Checked = false;
-                            chkPaAttivaRiarmoBms.Enabled = true;
-                            break;
-                        case 0xFF:
-                            chkPaAttivaRiarmoBms.Checked = true;
-                            chkPaAttivaRiarmoBms.Enabled = false;
-                            break;
-                        default:
-                            chkPaAttivaRiarmoBms.Checked = false;
-                            chkPaAttivaRiarmoBms.Enabled = false;
-                            break;
-
-                    }
-                    */
 
 
 
-                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, ModCicloCorrente.NumeroCelle, 4, 3, SbloccaValori,true);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaNumCelle, ModCicloCorrente.NumeroCelle, 4, 3, SbloccaValori, true);
                     if (!SkipCapacità)
                     {
                         // se sono entrato da txtCapacita_change evito di riformattare
-                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 5, 2, SbloccaValori,true);
+                        FunzioniUI.ImpostaTextBoxUshort(ref txtPaCapacita, ModCicloCorrente.Capacita, 5, 2, SbloccaValori, true);
                     }
 
 
-
+                    // FASE 0 (Preciclo)
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaV0, ModCicloCorrente.ValoriCiclo.TensionePrecicloV0, ModCicloCorrente.ParametriAttivi.TensionePrecicloV0, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaPrefaseI0, ModCicloCorrente.ValoriCiclo.CorrenteI0, ModCicloCorrente.ParametriAttivi.CorrenteI0, 2, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaDurataMaxT0, ModCicloCorrente.ValoriCiclo.TempoT0Max, ModCicloCorrente.ParametriAttivi.TempoT0Max, 3, SbloccaValori);
+                    // Se I0, V0 e T0 sono a 0 con flag " " spengo il tab del preciclo
+                    if (ModCicloCorrente.ValoriCiclo.Fase0Attiva && ModCicloCorrente.ParametriAttivi.Fase0Attiva )
+                    {
+                        tbcPaSchedeValori.ShowTab("tbpPaPCStep0");
+                    }
+                    else
+                    {
+                        tbcPaSchedeValori.HideTab("tbpPaPCStep0");
+                    }
 
+                    // FASE 1 - Sempre visibile
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaSogliaVs, ModCicloCorrente.ValoriCiclo.TensioneSogliaVs, ModCicloCorrente.ParametriAttivi.TensioneSogliaVs, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteI1, ModCicloCorrente.ValoriCiclo.CorrenteI1, ModCicloCorrente.ParametriAttivi.CorrenteI1, 2, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref cmbPaDurataMaxT1, ModCicloCorrente.ValoriCiclo.TempoT1Max, ModCicloCorrente.ParametriAttivi.TempoT1Max, 3, SbloccaValori);
 
+                    // FASE 2 - Sempre visibile
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaRaccordoF1, ModCicloCorrente.ValoriCiclo.TensioneRaccordoVr, ModCicloCorrente.ParametriAttivi.TensioneRaccordoVr, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteRaccordo, ModCicloCorrente.ValoriCiclo.CorrenteRaccordoIr, ModCicloCorrente.ParametriAttivi.CorrenteRaccordoIr, 2, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteF3, ModCicloCorrente.ValoriCiclo.CorrenteFinaleI2, ModCicloCorrente.ParametriAttivi.CorrenteFinaleI2, 2, SbloccaValori);
@@ -4304,9 +4251,19 @@ namespace PannelloCharger
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT2Max, ModCicloCorrente.ValoriCiclo.TempoT2Max, ModCicloCorrente.ParametriAttivi.TempoT2Max, 3, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCoeffK, ModCicloCorrente.ValoriCiclo.FattoreK, ModCicloCorrente.ParametriAttivi.FattoreK, 3, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCoeffKc, ModCicloCorrente.ValoriCiclo.CoeffKc, ModCicloCorrente.ParametriAttivi.CoeffKc, 3, SbloccaValori);
-
+                    
+                    // FASE 3
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT3Max, ModCicloCorrente.ValoriCiclo.TempoT3Max, ModCicloCorrente.ParametriAttivi.TempoT3Max, 3, SbloccaValori);
-                   // EQUALIZZAZIONE
+                    if (ModCicloCorrente.ValoriCiclo.Fase3Attiva && ModCicloCorrente.ParametriAttivi.Fase3Attiva)
+                    {
+                        tbcPaSchedeValori.ShowTab("tbpPaPCStep3");
+                    }
+                    else
+                    {
+                        tbcPaSchedeValori.HideTab("tbpPaPCStep3");
+                    }
+
+                    // EQUALIZZAZIONE
                     ModoProf = (byte)ModCicloCorrente.Profilo.AttivaEqual;
                     switch (ModoProf)
                     {
@@ -4324,6 +4281,16 @@ namespace PannelloCharger
                             break;
 
                     }
+
+                    if(ModCicloCorrente.ParametriAttivi.EqualAttivabile == 1)
+                    {
+                        tbcPaSchedeValori.HideTab("tbpPaPCEqual");
+                    }
+                    else
+                    {
+                        tbcPaSchedeValori.ShowTab("tbpPaPCEqual" + "");
+                    }
+
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaEqual, ref lblPaAttivaEqual, ModCicloCorrente.ValoriCiclo.EqualAttivabile, ModCicloCorrente.ParametriAttivi.EqualAttivabile, 3, SbloccaValori);
                     txtPaEqualAttesa.Text = "";
                     MostraEqualCCorrente();
@@ -5885,6 +5852,40 @@ namespace PannelloCharger
                 txtPaCoeffKc.ForeColor = Color.Black;
 
 
+        }
+
+        private void lblOraRTC_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCalScriviGiorno_Click(object sender, EventArgs e)
+        {
+            bool _esito;            try
+            {
+                int _giorno = int.Parse(txtCalGiorno.Text);
+                int _mese = int.Parse(txtCalMese.Text);
+                int _anno = int.Parse(txtCalAnno.Text);
+                int _ore = int.Parse(txtCalOre.Text);
+                int _minuti = int.Parse(txtCalMinuti.Text);
+
+                _esito = _cb.ForzaOrologio(_giorno, _mese, _anno, _ore, _minuti);
+                if (_esito)
+                {
+
+                    _esito = _cb.LeggiOrologio();
+                    if (_esito)
+                    {
+                        txtOraRtc.Text = _cb.OrologioSistema.ore.ToString("00") + ":" + _cb.OrologioSistema.minuti.ToString("00");
+                        txtDataRtc.Text = _cb.OrologioSistema.giorno.ToString("00") + "/" + _cb.OrologioSistema.mese.ToString("00") + "/" + _cb.OrologioSistema.anno.ToString("0000");
+                    }
+
+                }
+
+            }
+            catch
+            {
+            }
         }
     }
 }
