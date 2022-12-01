@@ -148,6 +148,24 @@ namespace ChargerLogic
         /// </summary>
         public enum VersoCorrente : byte { Diretto = 0x0F, Inverso = 0xF0, NonDefinito = 0x00 };
 
+        public enum EsitoVerificaParametri : byte 
+        { 
+            Ok = 0x00, 
+            ErroreNome = 0x01,
+            BatteriaNonDefinita = 0x11,
+            BatteriaNonCorretta = 0x12,
+
+            ProfiloNonDefinito = 0x21,
+            ProfiloNonCorretto = 0x22,
+
+            ErroreCassone = 0xF1,
+            ErroreSpyBatt = 0xF2,
+
+            ErroreGenerico = 0xFF
+        }
+
+
+
         public enum EsitoControlloValore : byte
         {
             EsitoPositivo = 0x00,

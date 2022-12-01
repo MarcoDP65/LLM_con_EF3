@@ -34,6 +34,7 @@ namespace ChargerLogic
         public List<_mbProfiloTipoBatt> ParametriCarica;
 
 
+
         public bool InizializzaDatiLocali()
         {
             inizializzaProfili();
@@ -57,12 +58,14 @@ namespace ChargerLogic
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x04, NomeProfilo = "Pb13h", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 4, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x05, NomeProfilo = "Pb11h", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 5, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x06, NomeProfilo = "Pb8h", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 6, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "LITIO650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "LITIO650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x08, NomeProfilo = "IWa Pb13 Equal", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x09, NomeProfilo = "IWa Pb11 Equal", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 9, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0A, NomeProfilo = "IWa Pb8 Equal", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 10, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0B, NomeProfilo = "Litio con BMS", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0C, NomeProfilo = "Litio con CAN", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0,AttivaOpportunity=0x00, Grafico = "" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0C, NomeProfilo = "Litio con CAN", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x10, NomeProfilo = "SuperCAP", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "LITIO650" });
             return true;
         }
 
@@ -70,10 +73,20 @@ namespace ChargerLogic
         {
             ModelliBatteria = new List<mbTipoBatteria>();
 
-            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x0000, SortOrder = 0, BatteryType = "N.D.", DivisoreCelle = 200, StandardChargeProfile = 0x00 ,OldBatteryTypeId = 0x00,TensioniFisse = 0});
+            ModelliBatteria.Add(new mbTipoBatteria() 
+            { 
+                BatteryTypeId = 0x0000, 
+                SortOrder = 0, 
+                BatteryType = "N.D.", 
+                DivisoreCelle = 200, 
+                StandardChargeProfile = 0x00 ,
+                OldBatteryTypeId = 0x00,
+                TensioniFisse = 0
+            });
             ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x1001, SortOrder = 1, BatteryType = "Batteria standard Pb/Lead", DivisoreCelle = 200, StandardChargeProfile = 0x04, OldBatteryTypeId = 0x71, TensioniFisse = 1});
-            // ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x2001, SortOrder = 2, BatteryType = "Batteria standard GEL", DivisoreCelle = 200, StandardChargeProfile = 0x02, OldBatteryTypeId = 0x72, TensioniFisse = 1 });
+            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x2001, SortOrder = 2, BatteryType = "Batteria standard GEL/AGM", DivisoreCelle = 200, StandardChargeProfile = 0x02, OldBatteryTypeId = 0x72, TensioniFisse = 1 });
             ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x3001, SortOrder = 3, BatteryType = "Batteria standard Litio", DivisoreCelle = 0, StandardChargeProfile = 0x07, OldBatteryTypeId = 0x00, TensioniFisse = 0 });
+            ModelliBatteria.Add(new mbTipoBatteria() { BatteryTypeId = 0x4001, SortOrder = 4, BatteryType = "Super Capacitor", DivisoreCelle = 0, StandardChargeProfile = 0x10, OldBatteryTypeId = 0x00, TensioniFisse = 0 });
 
             return true;
         }
@@ -342,8 +355,8 @@ namespace ChargerLogic
                     TensionePrecicloV0 = "###190",
                     TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "",
-                    TensioneMassimaVMax = "",
-                    TensioneLimiteVLim = "",
+                    TensioneMassimaVMax = "=##265",
+                    TensioneLimiteVLim = "=##300",
                     MantTensIniziale = "=##210",
                     MantTensFinale = "=##230",
                     TensRiconoscimentoMin = "=##150",
@@ -360,7 +373,7 @@ namespace ChargerLogic
                     EqualCorrenteImpulso = "=C/24",
 
                     EqualNumImpulsi = "=##10",
-                    EqualAttivabile = "~##1",
+                    EqualAttivabile = "=##1",
                     MantAttivabile = "=##1",
 
                     OpportunityOraInizio = "=##300",   // 11  ore --> fine alle 18, inizio alle 5
@@ -401,7 +414,7 @@ namespace ChargerLogic
                     TensionePrecicloV0 = "###190",
                     TensioneSogliaVs = "=##240",
                     TensioneRaccordoVr = "",
-                    TensioneMassimaVMax = "",
+                    TensioneMassimaVMax = "=##265",
                     TensioneLimiteVLim = "",
                     TensRiconoscimentoMin = "=##150",
                     TensRiconoscimentoMax = "=##240",
@@ -451,10 +464,13 @@ namespace ChargerLogic
                     FattoreK = "",
                     FattoreKs = "=##110",
                     DurataNominale = "=##600",
-                    EqualAttivabile = " ##000",
-                    EqualTempoAttesa = "",
+                    // parametri EQUAL usati per riarmo BMS
+                    EqualAttivabile = "~##1",
+                    EqualTempoAttesa = "=##10",
                     EqualTempoImpulso = "",
-                    EqualTempoPausa = "",
+                    EqualTempoPausa = "=##10",
+                    EqualNumImpulsi = "=##5",
+                    // --------------------------------------
                     MantTempoAttesa = "",
                     MantTempoMaxErogazione = "",
                     // Tensioni
@@ -476,7 +492,7 @@ namespace ChargerLogic
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "",
                     MantCorrenteImpulso = "",
-                    EqualCorrenteImpulso = "",
+                    EqualCorrenteImpulso = "=C#050",
 
                     OpportunityOraInizio = "",   // 10  ore --> fine alle 18, inizio alle 4
                     OpportunityOraFine = "",
@@ -488,7 +504,6 @@ namespace ChargerLogic
 
                     MantAttivabile = " ##0",
 
-                    EqualNumImpulsi = "",
 
                     AbilitaSpyBatt = "~##0",
                     AbilitaSafety = "~##1",
@@ -496,6 +511,69 @@ namespace ChargerLogic
 
                 });
             #endregion "Ciclo LITIO"
+
+            #region "Ciclo SuperCAP - SuperCapacitor"
+            ParametriCarica.Add(
+                new _mbProfiloTipoBatt()
+                {
+                    IdProfiloCaricaLL = 0x10,
+                    BatteryTypeId = 0x4001,
+                    // tempi
+                    TempoT0Max = "",
+                    TempoT1Max = "",
+                    TempoT2Min = "",
+                    TempoT2Max = "",
+                    TempoT3Max = "",
+                    FattoreK = "",
+                    FattoreKs = "=##110",
+                    DurataNominale = "=##600",
+                    // parametri EQUAL usati per riarmo BMS
+                    EqualAttivabile = "~##1",
+                    EqualTempoAttesa = "=##10",
+                    EqualTempoImpulso = "",
+                    EqualTempoPausa = "=##10",
+                    EqualNumImpulsi = "=##5",
+                    // --------------------------------------
+                    MantTempoAttesa = "",
+                    MantTempoMaxErogazione = "",
+                    // Tensioni
+                    TensionePrecicloV0 = "",
+                    TensioneSogliaVs = "=##000",
+                    TensioneRaccordoVr = "",
+                    TensioneMassimaVMax = "",
+                    TensioneLimiteVLim = "",
+                    MantTensIniziale = "",
+                    MantTensFinale = "",
+                    TensRiconoscimentoMin = "",
+                    TensRiconoscimentoMax = "",
+                    TensMinimaStop = "",
+                    //Correnti
+                    CorrenteI0 = "",
+                    CorrenteI1 = "=C/2",
+                    CorrenteFinaleI2 = "=C/20",
+                    CorrenteMassima = "=C/1",
+                    CorrenteI3 = "",
+                    CorrenteRaccordoIr = "",
+                    MantCorrenteImpulso = "",
+                    EqualCorrenteImpulso = "=C#050",
+
+                    OpportunityOraInizio = "",   // 10  ore --> fine alle 18, inizio alle 4
+                    OpportunityOraFine = "",
+                    OpportunityDurataMax = "",
+                    OpportunityCorrente = "",
+                    OpportunityTensioneMax = "",
+                    OpportunityAttivabile = " ##0",
+
+
+                    MantAttivabile = " ##0",
+
+
+                    AbilitaSpyBatt = "~##0",
+                    AbilitaSafety = "~##1",
+
+
+                });
+            #endregion "Ciclo SuperCAP"
 
 
             return true;
@@ -534,6 +612,21 @@ namespace ChargerLogic
         public bool inizializzaDurateProfilo()
         {
             DurateProfilo = new List<llDurataProfilo>();
+
+            //SuperCAP
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 720, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 660, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 600, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 540, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 480, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 420, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 360, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 300, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 240, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 180, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 120, IdProfiloCaricaLL = 0x10, Attivo = 1 });
+            DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL =  60, IdProfiloCaricaLL = 0x10, Attivo = 1 });
 
             //Litio
             DurateProfilo.Add(new llDurataProfilo() { IdDurataCaricaLL = 780, IdProfiloCaricaLL = 0x07, Attivo = 1 });
@@ -628,6 +721,9 @@ namespace ChargerLogic
             ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x73, IdProfiloCaricaLL = 0x07, Attivo = 1 });
             ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x73, IdProfiloCaricaLL = 0x0B, Attivo = 1 });
             ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x73, IdProfiloCaricaLL = 0x0C, Attivo = 1 });
+
+            // SuperCap
+            ProfiloTipoBatt.Add(new _llProfiloTipoBatt() { BatteryTypeId = 0x73, IdProfiloCaricaLL = 0x10, Attivo = 1 });
 
             return true;
         }

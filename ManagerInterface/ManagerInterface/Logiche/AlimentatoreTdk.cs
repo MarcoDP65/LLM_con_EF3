@@ -56,7 +56,7 @@ namespace PannelloCharger
                 
                 analizzaMessaggioBase(_serBuffer);
             }
-            catch (Exception Ex)
+            catch //(Exception Ex)
             {
 
             }
@@ -79,7 +79,7 @@ namespace PannelloCharger
                 return _serBuffer;
                 //analizzaMessaggioBase(_serBuffer);
             }
-            catch (Exception Ex)
+            catch //(Exception Ex)
             {
                 return "";
             }
@@ -88,7 +88,7 @@ namespace PannelloCharger
 
 
 
-        private bool analizzaMessaggioBase(string Messaggio )
+         bool analizzaMessaggioBase(string Messaggio )
         {
             try
             {
@@ -96,7 +96,7 @@ namespace PannelloCharger
                 return false;
             }
 
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 return false;
             }
@@ -122,7 +122,7 @@ namespace PannelloCharger
 
                 return false;
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 return false;
             }
@@ -143,7 +143,7 @@ namespace PannelloCharger
                 return _portaAttiva;
             }
 
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 return _portaAttiva;
             }

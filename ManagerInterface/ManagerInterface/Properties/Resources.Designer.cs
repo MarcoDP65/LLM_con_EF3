@@ -73,6 +73,16 @@ namespace PannelloCharger.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Base_fondino_Y {
+            get {
+                object obj = ResourceManager.GetObject("Base fondino Y", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap cinquea {
             get {
                 object obj = ResourceManager.GetObject("cinquea", resourceCulture);
@@ -256,6 +266,16 @@ namespace PannelloCharger.Properties {
         public static System.Drawing.Bitmap ico_SpyBatt {
             get {
                 object obj = ResourceManager.GetObject("ico_SpyBatt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ICOLadeLight {
+            get {
+                object obj = ResourceManager.GetObject("ICOLadeLight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

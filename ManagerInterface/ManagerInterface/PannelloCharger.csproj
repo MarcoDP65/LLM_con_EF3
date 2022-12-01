@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>3.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -585,6 +585,7 @@
     </Compile>
     <Compile Include="Forms\FunzioniUI.cs" />
     <Compile Include="Logiche\AlimentatoreTdk.cs" />
+    <Compile Include="Logiche\BaudRate.cs" />
     <Compile Include="Logiche\Caricabatteria\CaricaBatteria.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiFirmware.cs" />
     <Compile Include="Logiche\Caricabatteria\cbComandiMemoria.cs" />
@@ -658,6 +659,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StringheStatistica.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\TestiProgrammazione.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestiProgrammazione.resx</DependentUpon>
     </Compile>
     <Compile Include="Servizi\DeviceBt.cs" />
     <Compile Include="Servizi\echoMessaggio.cs" />
@@ -787,16 +793,7 @@
       <DependentUpon>frmSpyBat.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.es.resx">
-      <DependentUpon>frmSuperCharger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.fr-FR.resx">
-      <DependentUpon>frmSuperCharger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.fr.resx">
-      <DependentUpon>frmSuperCharger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.hi-IN.resx">
+    <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.en.resx">
       <DependentUpon>frmSuperCharger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.resx">
@@ -1038,6 +1035,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMessaggioElettrolita.fr-FR.resx">
       <DependentUpon>frmMessaggioElettrolita.cs</DependentUpon>
@@ -1311,6 +1309,11 @@
       <LastGenOutput>StringheStatistica.Designer.cs</LastGenOutput>
       <CustomToolNamespace>PannelloCharger</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TestiProgrammazione.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestiProgrammazione.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PannelloCharger</CustomToolNamespace>
+    </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -1329,14 +1332,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\ICO_lade_light.png" />
     <None Include="Resources\StringheMessaggio.en.resx.bak" />
     <None Include="Resources\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CustomTabControl\CustomTabControl.csproj">
-      <Project>{4dbfe2cf-45e4-4594-8e6a-5ebc2eef85ae}</Project>
-      <Name>CustomTabControl</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\LadeLightPcl\LadeLightPcl.csproj">
       <Project>{cd7b5a1c-4014-4707-90cc-824fa4ffbf10}</Project>
       <Name>LadeLightPcl</Name>
@@ -1374,6 +1374,8 @@
     <None Include="Resources\folder.png" />
     <None Include="Resources\echarger 600.png" />
     <None Include="Resources\coniglio16.png" />
+    <None Include="Resources\Base fondino Y.png" />
+    <Content Include="Resources\BaseFondinoY.png" />
     <Content Include="Resources\Grf-Car.bmp" />
     <Content Include="Resources\Grf-Scar.bmp" />
     <Content Include="Resources\Grf-V-Car.bmp" />
@@ -1408,6 +1410,7 @@
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
     <None Include="Resources\Sfondo_SPYBATT.bmp" />
+    <Content Include="Resources\save_white.png" />
     <Content Include="Resources\tre.png" />
     <None Include="Resources\trec.png" />
     <Content Include="Resources\usb.jpg" />

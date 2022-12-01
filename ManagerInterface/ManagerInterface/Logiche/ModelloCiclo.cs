@@ -401,6 +401,8 @@ namespace ChargerLogic
                     }
                 }
 
+                ParametriAttivi.BatteryTypeId = Batteria.BatteryTypeId;
+
                 CaricaBatteria.EsitoRicalcolo esitoRicalcolo = CalcolaParametriFissi(Batteria._mbTb, Profilo, Tensione, Capacita, NumeroCelle,null);
 
 
@@ -460,6 +462,9 @@ namespace ChargerLogic
                     ValoriCiclo.CorrenteI1 = 0;
 
                 }
+
+                ParametriAttivi.BatteryTypeId = Batteria.BatteryTypeId;
+
                 NumeroCelle = Celle;
                 Capacita = CapacitaDefinita;
                 DurataMaxCarica = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.DurataNominale);
@@ -552,7 +557,7 @@ namespace ChargerLogic
                 ValoriCiclo.AbilitaSpyBatt = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.AbilitaSpyBatt);
                 ParametriAttivi.AbilitaSpyBatt = FunzioniComuni.StatoParametro(ModelloProfilo.AbilitaSpyBatt);
 
-                ValoriCiclo.AbilitaSpyBatt = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.AbilitaSafety);
+                ValoriCiclo.AbilitaSafety = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.AbilitaSafety);
                 ParametriAttivi.AbilitaSafety = FunzioniComuni.StatoParametro(ModelloProfilo.AbilitaSafety);
 
 

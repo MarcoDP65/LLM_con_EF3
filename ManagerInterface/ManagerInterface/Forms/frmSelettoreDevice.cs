@@ -355,7 +355,8 @@ namespace PannelloCharger
             {
                 if (flvwListaDevices.SelectedObject != null)
                 {
-
+                    // Preparo il baudrate specifico per il dispositivo
+                    BaudRate BR = new BaudRate();
 
                     ScannerUSB.UsbDevice _tempCanale = (ScannerUSB.UsbDevice)flvwListaDevices.SelectedObject;
                     if (_tempCanale.SerialNumber != null)
@@ -364,31 +365,47 @@ namespace PannelloCharger
                         switch (_tempCanale.Description)
                         {
                             case "PSW SUPERCHARGER":
+                            case "SUPERCHARGER":
                                 _varGlobali.usbLadeLightSerNum = _tempCanale.SerialNumber;
+                                BR.Mode = BaudRate.BRType.BR_115200;
+                                BR.Speed = 0;
+                                _varGlobali.ActiveBaudRate = BR;
                                 _varGlobali.CanaleLadeLight = parametriSistema.CanaleDispositivo.USB;
                                 ApriSuperCharger();
                                 return;
 
                             case "LADE LIGHT":
                                 _varGlobali.usbLadeLightSerNum = _tempCanale.SerialNumber;
+                                BR.Mode = BaudRate.BRType.BR_9600;
+                                BR.Speed = 0;
+                                _varGlobali.ActiveBaudRate = BR;
                                 _varGlobali.CanaleLadeLight = parametriSistema.CanaleDispositivo.USB;
                                 ApriLadeLight();
                                 return;
 
                             case "SPY-BATT":
                                 _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
+                                BR.Mode = BaudRate.BRType.BR_115200;
+                                BR.Speed = 0;
+                                _varGlobali.ActiveBaudRate = BR;
                                 _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
                                 ApriSpyBatt(_tempCanale.SerialNumber);
                                 return;
 
                             case "FT201X USB I2C":
                                 _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
+                                BR.Mode = BaudRate.BRType.BR_115200;
+                                BR.Speed = 0;
+                                _varGlobali.ActiveBaudRate = BR;
                                 _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
                                 ApriSpyBatt();
                                 return;
 
                             case "SEQ-DESO":
                                 //_tempCanale.Description = "SPY-BATT";
+                                BR.Mode = BaudRate.BRType.BR_115200;
+                                BR.Speed = 0;
+                                _varGlobali.ActiveBaudRate = BR;
                                 _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
                                 _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
                                 ApriSpyBatt();
@@ -399,6 +416,9 @@ namespace PannelloCharger
                             case "DESOLFATATORE":
                                 //_tempCanale.Description = "DESOLFATATORE";
                                 _varGlobali.usbSpyBattSerNum = _tempCanale.SerialNumber;
+                                BR.Mode = BaudRate.BRType.BR_115200;
+                                BR.Speed = 0;
+                                _varGlobali.ActiveBaudRate = BR;
                                 _varGlobali.CanaleSpyBat = parametriSistema.CanaleDispositivo.USB;
                                 ApriDesolfatatore();
                                 return;
@@ -444,6 +464,7 @@ namespace PannelloCharger
                 }
 
                 _varGlobali.TipoCharger = CaricaBatteria.TipoCaricaBatteria.SuperCharger;
+
                 esitoCanaleApparato = _varGlobali.apriLadeLight();
                 if (esitoCanaleApparato)
                 {
@@ -455,7 +476,7 @@ namespace PannelloCharger
                             return;
                         }
                     }
-                    Log.Debug("NUOVO SCHG");
+                    Log.Debug("NUOVO SCHG ");
 
                     frmSuperCharger cbCorrente = new frmSuperCharger(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
                     /*

@@ -34,8 +34,21 @@ namespace ChargerLogic
         public const int BLOCCHI_RECORD_BREVI = 429;
         public const int LEN_RECORD_BREVE = 30;
 
+        public const int DATABLOCK = 128;
 
-        public enum EsitoRicalcolo : byte { OK = 0x00, ErrIMax = 0x11, ErrIMin = 0x12, ErrVMax = 0x21, ErrVMin = 0x22, ErrGenerico = 0xF0, ParNonValidi = 0xF1, ErrCBNonDef = 0xF2, ErrUndef = 0xFF }
+
+        public enum EsitoRicalcolo : byte { 
+            OK = 0x00, 
+            ErrIMax = 0x11, 
+            ErrIMin = 0x12, 
+            ErrVMax = 0x21, 
+            ErrVMin = 0x22, 
+            ErrGenerico = 0xF0, 
+            ParNonValidi = 0xF1, 
+            ErrCBNonDef = 0xF2,
+            CapBattNonValida = 0xF4,
+            ErrUndef = 0xFF 
+        }
         public enum TipoCaricaBatteria : byte { Generico = 0x00, LadeLight = 0x01, SuperCharger = 0x02 , NonDefinito = 0xFF}
 
 
@@ -61,6 +74,8 @@ namespace ChargerLogic
         public SerialMessage.comandoRTC OrologioSistema = new SerialMessage.comandoRTC();
         public SerialMessage.cicloAttuale CicloInMacchina = new SerialMessage.cicloAttuale();
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
+
+        public BaudRate BaudRateUSB;
 
         public cbProgrammazioni Programmazioni = new cbProgrammazioni();
 
@@ -531,11 +546,30 @@ namespace ChargerLogic
                 Programmazioni.NumeroRecordProg = 0;
                 TipoCB = TipoCharger;
 
+                BaudRateUSB = new BaudRate();
+                switch ( TipoCB )
+                {
+                    case TipoCaricaBatteria.LadeLight:
+                        BaudRateUSB.Mode = BaudRate.BRType.BR_9600;
+                        BaudRateUSB.Speed = 0;
+                        break;
+
+                    case TipoCaricaBatteria.SuperCharger:
+                        BaudRateUSB.Mode = BaudRate.BRType.BR_115200;
+                        BaudRateUSB.Speed = 0;
+                        break;
+
+                    default:
+                        BaudRateUSB.Mode = BaudRate.BRType.BR_9600;
+                        BaudRateUSB.Speed = 0;
+                        break;
+                }
+
+
 
                 // USB
                 cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
                 Log.Debug("cEventHelper.RemoveEventHandler serialeApparato");
-
                 serialeApparato.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(port_DataReceivedCB);
                 Log.Debug("add EventHandler serialeApparato");
 
@@ -552,7 +586,12 @@ namespace ChargerLogic
 
 
 
-
+        /// <summary>
+        /// Inizializzo il caricabatteria; in base al tipo imposto la velocita di comunicazione di default
+        /// </summary>
+        /// <param name="parametri"></param>
+        /// <param name="dbCorrente"></param>
+        /// <param name="TipoCharger"></param>
         public CaricaBatteria(ref parametriSistema parametri, MoriData._db dbCorrente, TipoCaricaBatteria TipoCharger)
         {
 
@@ -579,6 +618,24 @@ namespace ChargerLogic
                 Programmazioni.UltimoIdProgamma = 0;
                 Programmazioni.NumeroRecordProg = 0;
 
+                BaudRateUSB = new BaudRate();
+                switch (TipoCB)
+                {
+                    case TipoCaricaBatteria.LadeLight:
+                        BaudRateUSB.Mode = BaudRate.BRType.BR_9600;
+                        BaudRateUSB.Speed = 0;
+                        break;
+
+                    case TipoCaricaBatteria.SuperCharger:
+                        BaudRateUSB.Mode = BaudRate.BRType.BR_115200;
+                        BaudRateUSB.Speed = 0;
+                        break;
+
+                    default:
+                        BaudRateUSB.Mode = BaudRate.BRType.BR_9600;
+                        BaudRateUSB.Speed = 0;
+                        break;
+                }
 
                 // USB
                 cEventHelper.RemoveEventHandler(serialeApparato, "DataReceived");
@@ -597,6 +654,11 @@ namespace ChargerLogic
 
         }
 
+        /// <summary>
+        ///  Apro la porta di comunicazione ( porta FISICA, non mando l'inizio comunicazione ) 
+        ///  Il BAURATE di apertura è quello definito nei parametri generali
+        /// </summary>
+        /// <returns></returns>
         public bool apriPorta()
         {
             bool _esito;
@@ -605,6 +667,10 @@ namespace ChargerLogic
 
         }
 
+        /// <summary>
+        /// Chiudo la porta di comunicazione ( porta FISICA, non mando il messaggio di fine comunicazione ) 
+        /// </summary>
+        /// <returns></returns>
         public bool chiudiPorta()
         {
             //_esito = _parametri.apriCom();
@@ -705,6 +771,13 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Carica i dati base del dispositivo dal primo blocco della memora esterna ( Addr 0x0000 )
+        /// </summary>
+        /// <param name="RunAsinc"></param>
+        /// <param name="StepIniziale"></param>
+        /// <param name="StepFinale"></param>
+        /// <returns></returns>
         public bool CaricaApparatoA0(bool RunAsinc = false, int StepIniziale = 0, int StepFinale = 100)
         {
             try
@@ -811,6 +884,11 @@ namespace ChargerLogic
             }
         }
 
+        /// <summary>
+        /// Carica i dati base dell'apparato da DB in base all'ID
+        /// </summary>
+        /// <param name="IdApparato"></param>
+        /// <returns></returns>
         public bool CaricaApparatoA0(string IdApparato)
         {
             try
@@ -915,7 +993,7 @@ namespace ChargerLogic
 
                 if (_esito)
                 {
-                    EsitoMsg = ImmagineCarica.analizzaMessaggio(_datiTemp, 1);
+                    EsitoMsg = ImmagineCarica.analizzaMessaggio(_datiTemp, 1); 
                     if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
                     {
                         tempPrg.IdProgramma = ImmagineCarica.IdProgrammazione;
@@ -2321,9 +2399,9 @@ namespace ChargerLogic
                         ParametriApparato.llParApp.MaxRecordCarica = ImmagineMemoria.MaxRecordCarica;
                         ParametriApparato.llParApp.SizeExternMemory = ImmagineMemoria.SizeExternMemory;
                         ParametriApparato.llParApp.MaxProgrammazioni = ImmagineMemoria.MaxProgrammazioni;
-                        ParametriApparato.llParApp.ModelloMemoria = ImmagineMemoria.ModelloMemoria;
+                        ParametriApparato.llParApp.ModelloMemoria =  ImmagineMemoria.ModelloMemoria;
 
-                        Memoria = new llMappaMemoria(ImmagineMemoria.ModelloMemoria);
+                        Memoria = new llMappaMemoria(ImmagineMemoria.ModelloMemoria, TipoCB);
 
                         ParametriApparato.llParApp.IdApparato = ImmagineMemoria.IDApparato;
                          
@@ -2690,6 +2768,54 @@ namespace ChargerLogic
         }
 
 
+        public bool ImpostaBaudRate(BaudRate NewBR)
+        {
+            try
+            {
+                bool _esito;
+                byte[] DatiComando = new byte[4];
+                // DatiComando[0] = (byte)SerialMessage.TipoComando.CMD_UART_SWITCH_BDRATE;
+                NewBR.SetCmdData();
+
+                ControllaAttesa(UltimaScrittura);
+                for(int _ciclo=0; _ciclo<4; _ciclo++)
+                {
+                    DatiComando[_ciclo ] = NewBR.CmdData[_ciclo];
+                }
+                _mS.Dispositivo = SerialMessage.TipoDispositivo.PcOrSmart;
+                _mS.Comando = SerialMessage.TipoComando.CMD_UART_SWITCH_BDRATE;
+                _mS.ComponiMessaggioNew(DatiComando);
+
+                _rxRisposta = false;
+                Log.Debug("Imposta Baudrate: " + NewBR.ToString());
+                _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
+                _esito = aspettaRisposta(elementiComuni.TimeoutBase, 0, true);
+                if(_esito)
+                {
+                    // Cambiata velocità della uart rispro la connessione USB con la nuova velocità
+                    chiudiPorta();
+                    BaudRateUSB = NewBR;
+                    _parametri.ActiveBaudRate = NewBR;
+                    apriPorta();
+                    _esito = VerificaPresenza();
+                }
+                return _esito; //_esito;
+            }
+
+            catch (Exception Ex)
+            {
+                Log.Error(Ex.Message);
+                _lastError = Ex.Message;
+                return false;
+            }
+
+        }
+
+
+
+
+
+
         /*************************************************************************************************************************************/
 
         private void port_DataReceivedCBOLD(object sender, SerialDataReceivedEventArgs e)
@@ -2989,6 +3115,10 @@ namespace ChargerLogic
         }
 
         /******************************************************************************************************/
+
+
+
+
 
 
 

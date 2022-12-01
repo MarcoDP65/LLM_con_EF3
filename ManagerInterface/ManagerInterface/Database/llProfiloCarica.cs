@@ -30,7 +30,7 @@ namespace MoriData
         public byte FlagLitio { get; set; }
         public byte TipoBatteria { get; set; }
         public short AttesaBMS { get; set; }
-        public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
+        public byte AttivaEqual { get; set; }        // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF,  0x0F Libero ON
         public byte AttivaRiarmoPulse { get; set; }  // 0x00 Bloccato OFF, 0xFF bloccato ON, 0xF0 Libero OFF
         public string Grafico { get; set; }          // Nome dell'immagine profilo nel file risorse
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,4 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="chkEqualizzazioneLI" xml:space="preserve">
+    <value>Impulsi Riarmo BMS</value>
+  </data>
+  <data name="chkEqualizzazionePB" xml:space="preserve">
+    <value>Equalizzazione Finale</value>
+  </data>
+  <data name="lblCorrenteImpLI" xml:space="preserve">
+    <value>Corrente Minima (A)</value>
+  </data>
+  <data name="lblCorrenteImpPB" xml:space="preserve">
+    <value>Corrente Impulso (A)</value>
+  </data>
+  <data name="lblNumInpulsiLI" xml:space="preserve">
+    <value>N° Max Tentativi</value>
+  </data>
+  <data name="lblNumInpulsiPB" xml:space="preserve">
+    <value>N° Impulsi</value>
+  </data>
+  <data name="lblTAttesaImpulsoLI" xml:space="preserve">
+    <value>Tempo Attesa Impulso (s)</value>
+  </data>
+  <data name="lblTAttesaImpulsoPB" xml:space="preserve">
+    <value>Tempo Attesa iniziale  (m)</value>
+  </data>
+  <data name="lblTDurataImpulsoLI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTDurataImpulsoPB" xml:space="preserve">
+    <value>Durata Impulso (m)</value>
+  </data>
+  <data name="lblTempoPausaLI" xml:space="preserve">
+    <value>Durata Impulso (s)</value>
+  </data>
+  <data name="lblTempoPausaPB" xml:space="preserve">
+    <value>Tempo Pausa (m)</value>
+  </data>
+  <data name="tabEqualLI" xml:space="preserve">
+    <value>Riarmo BMS</value>
+  </data>
+  <data name="tabEqualPB" xml:space="preserve">
+    <value>Equal</value>
+  </data>
 </root>

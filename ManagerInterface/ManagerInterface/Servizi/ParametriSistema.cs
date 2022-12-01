@@ -37,8 +37,7 @@ namespace ChargerLogic
         public string usbSuperChargerSerNum;
 
         public DateTime UltimoMessaggio;
-      
-
+        public BaudRate ActiveBaudRate { get; set; }
 
         public CanaleDispositivo CanaleSpyBat;
         public CanaleDispositivo CanaleLadeLight;
@@ -52,7 +51,7 @@ namespace ChargerLogic
         public Parity parityBit = Parity.None;
         public Handshake handShake = Handshake.None;
 
-        public uint baudRateUSB = 115200;//3000000;
+        // public uint baudRateUSB = 115200;//3000000;
 
         public string lastError;
 
@@ -80,6 +79,8 @@ namespace ChargerLogic
             try
             {
                 lastError = "";
+
+                ActiveBaudRate = new BaudRate();
 
                 InizializzaFTDI();
 
@@ -355,7 +356,7 @@ namespace ChargerLogic
 
                                     // Set up device data parameters
                                     // Set Baud rate to 9600
-                                    ftStatus = usbSpyBatt.SetBaudRate(baudRateUSB);
+                                    ftStatus = usbSpyBatt.SetBaudRate(ActiveBaudRate.SetSpeed() );
                                     if (ftStatus != FTDI.FT_STATUS.FT_OK)
                                     {
                                         // Wait for a key press
@@ -589,6 +590,7 @@ namespace ChargerLogic
             FTDI.FT_STATUS ftStatus = FTDI.FT_STATUS.FT_OK;
             try
             {
+
                 if (CanaleLadeLight == CanaleDispositivo.USB)
                 {
                     Log.Debug("Apro il canale USB: " + usbLadeLightSerNum);
@@ -610,8 +612,8 @@ namespace ChargerLogic
 
                             // Set up device data parameters
                             // Set Baud rate to baudRateUSB
-                            ftStatus = usbLadeLight.SetBaudRate(baudRateUSB);
-                            Log.Debug("Baudrate USB:" + baudRateUSB.ToString());
+                            ftStatus = usbLadeLight.SetBaudRate(ActiveBaudRate.SetSpeed());
+                            Log.Debug("Baudrate USB:" + ActiveBaudRate.ToString());
                             if (ftStatus != FTDI.FT_STATUS.FT_OK)
                             {
                                 // Wait for a key press

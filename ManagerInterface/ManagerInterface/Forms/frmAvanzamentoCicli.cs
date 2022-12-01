@@ -32,7 +32,7 @@ namespace PannelloCharger
         
         private BackgroundWorker sbWorker;
 
-        public enum ControlledDevice : byte { Nessuno = 0, SpyBatt = 1, Display = 2, LadeLight = 3, Desolfatatore = 4 };
+        public enum ControlledDevice : byte { Nessuno = 0, SpyBatt = 1, Display = 2, LadeLight = 3, Desolfatatore = 4 , SuperCharger = 5};
 
 
         public UnitaSpyBatt sbLocale;

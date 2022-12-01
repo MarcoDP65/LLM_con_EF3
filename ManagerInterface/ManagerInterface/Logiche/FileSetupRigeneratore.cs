@@ -28,9 +28,10 @@ namespace ChargerLogic
         }
     }
 
+    // 09/06/2022 - allargato l'elenco tipologie per rendere la classe usabile anche con altri device
     public class AreaDatiRegen
     {
-        public enum TipoArea : byte { Sequenze = 0x01, Procedure = 0x02, Lingua = 0xF0, NonDefinito = 0x00 };
+        public enum TipoArea : byte { Sequenze = 0x01, Procedure = 0x02, Lingua = 0xF0, Contatori = 0x10, Programmazioni = 0x11, CicliLunghi = 0x20, CicliBrevi = 0x21, NonDefinito = 0x00 };
 
         public int IdBlocco { get; set; }
         public TipoArea Tipo { get; set; }

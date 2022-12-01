@@ -929,7 +929,8 @@ namespace PannelloCharger
         {
             try
             {
-                
+                mbTipoBatteria _Batteria = (mbTipoBatteria)cmbPaTipoBatteria.SelectedItem;
+
                 txtPaEqualNumPulse.Text = "";
                 txtPaEqualAttesa.Text = "";
                 txtPaEqualPulsePause.Text = "";
@@ -938,6 +939,29 @@ namespace PannelloCharger
 
                 if (_cb.Programmazioni.ProgrammaAttivo != null)
                 {
+                   if( (_Batteria.BatteryTypeId & 0x3000 ) == 0x3000)
+                    {
+                        lblPaAttivaEqual.Text = TestiProgrammazione.chkEqualizzazioneLI;
+                        tbpPaPCEqual.Text = TestiProgrammazione.tabEqualLI;
+                        lblPaEqualNumPulse.Text = TestiProgrammazione.lblNumInpulsiLI;
+                        lblPaEqualAttesa.Text = TestiProgrammazione.lblTAttesaImpulsoLI;
+                        lblPaEqualPulsePause.Text = TestiProgrammazione.lblTempoPausaLI;
+                        lblPaEqualPulseTime.Text = TestiProgrammazione.lblTDurataImpulsoLI;
+                        lblPaEqualPulseCurrent.Text = TestiProgrammazione.lblCorrenteImpLI;
+
+                    }
+                    else
+                    {
+                        lblPaAttivaEqual.Text = TestiProgrammazione.chkEqualizzazionePB;
+                        tbpPaPCEqual.Text = TestiProgrammazione.tabEqualPB;
+                        lblPaEqualNumPulse.Text = TestiProgrammazione.lblNumInpulsiPB;
+                        lblPaEqualAttesa.Text = TestiProgrammazione.lblTAttesaImpulsoPB;
+                        lblPaEqualPulsePause.Text = TestiProgrammazione.lblTempoPausaPB;
+                        lblPaEqualPulseTime.Text = TestiProgrammazione.lblTDurataImpulsoPB;
+                        lblPaEqualPulseCurrent.Text = TestiProgrammazione.lblCorrenteImpPB;
+
+                    }
+
                     if (_cb.Programmazioni.ProgrammaAttivo.EqualNumImpulsi > 0 || _cb.Programmazioni.ProgrammaAttivo.EqualTempoAttesa > 0)
                     {
                         chkPaAttivaEqual.Checked = true;

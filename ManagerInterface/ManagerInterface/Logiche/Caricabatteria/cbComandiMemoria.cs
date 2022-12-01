@@ -375,7 +375,7 @@ namespace ChargerLogic
                 // innanzitutto verifico che modello memoria usare.
 
                 int _ADDR_START_RECORD_LUNGHI = (int)Memoria.MappaCorrente.RecordLunghi.AddrArea;
-                int _LEN_AREA_RECORD_LUNGHI = Memoria.MappaCorrente.RecordLunghi.NumPagine * 0x01000 ;
+                int _LEN_AREA_RECORD_LUNGHI =  Memoria.MappaCorrente.RecordLunghi.NumPagine * 0x01000 ;
 
   
 
@@ -707,8 +707,12 @@ namespace ChargerLogic
                     }
                     if(AddrUltimaCarica < SizeCharge)
                     {
-                        //se il puntatore inizliale divanta < 0, riparto dalla fine
-                        AddrUltimaCarica = (UInt32)( 0x003000 - SizeCharge) ;
+                        if (AddrUltimaCarica == 0 && (MemoriaCicli.Count+1) >= UltimaCarica)
+                        {
+                            DatiValidi = false;
+                        }
+                        //se il puntatore inizliale divanta < 0, riparto dalla fine a meno che abbia raggiunto il conteggio
+                        AddrUltimaCarica = (UInt32)((Memoria.MappaCorrente.RecordLunghi.NumPagine * 0x1000 )- SizeCharge) ;
                     }
                     AddrUltimaCarica -= SizeCharge;
 
@@ -993,6 +997,249 @@ namespace ChargerLogic
             catch (Exception Ex)
             {
                 Log.Error("LeggiDatiCompleti: " + Ex.Message);
+                return false;
+            }
+
+        }
+
+
+
+        public bool CaricaBloccoDati(AreaDatiRegen BloccoAttivo,bool RunAsync)
+        {
+            try
+            {
+
+                uint _StartAddr = BloccoAttivo.StartAddress;
+                uint _TmpAddr;
+                ushort _NumPagine = (ushort)BloccoAttivo.NumBlocchi;
+                bool _esito;
+                byte[] _dataArray;
+                int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                byte[] _tempBuffer;
+                int StepIniziale = 0;
+                // txtMemRegenNumBlocchi.Text = BloccoAttivo.IdBlocco.ToString();
+
+                _numBytes = _NumPagine * 0x1000;
+
+                _dataArray = new byte[_numBytes];
+                BloccoAttivo.Data = new byte[_numBytes];
+
+                _cicliCompleti = _numBytes / DATABLOCK;
+                _byteResidui = _numBytes % DATABLOCK;
+
+                if (RunAsync)
+                {
+                    //Preparo l'intestazione della finestra di avanzamento                                                                                                          
+                    if (Step != null)
+                    {
+                        elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                        _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                        _passo.Titolo = "Lettura Memoria ";
+                        _passo.Eventi = 1;
+                        _passo.Step = -1;
+                        _passo.EsecuzioneInterrotta = false;
+                        ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(StepIniziale, _passo);
+                        Step(this, _stepEv);
+                    }
+
+                }
+
+
+                // lblMemRegenAvanzamentoRead.Text = _cicliCompleti.ToString() + " pacchetti + " + _byteResidui.ToString() + " bytes";
+
+                // Leggo prima i pacchetti interi
+                _tempBuffer = new byte[DATABLOCK];
+
+                for (int _step = 0; _step < _cicliCompleti; _step++)
+                {
+                    _TmpAddr = (uint)(_step * DATABLOCK);
+                    _esito = LeggiBloccoMemoria(_StartAddr + _TmpAddr, DATABLOCK, out _tempBuffer);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for (int _ii = 0; _ii < DATABLOCK; _ii++)
+                        {
+                            _dataArray[_TmpAddr + _ii] = _tempBuffer[_ii];
+                        }
+                        //lblMemRegenAvanzamentoRead.Text = _step.ToString() + " di " + _cicliCompleti.ToString();
+                        //Application.DoEvents();
+
+                        if (RunAsync)
+                        {
+                            //Preparo l'intestazione della finestra di avanzamento                                                                                                          
+                            if (Step != null)
+                            {
+                                elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                _passo.DatiRicevuti = elementiComuni.contenutoMessaggio.vuoto;
+                                _passo.Titolo = "Lettura Memoria ";
+                                _passo.Eventi = 1;
+                                _passo.Step = -1;
+                                _passo.EsecuzioneInterrotta = false;
+                                ProgressChangedEventArgs _stepEv = new ProgressChangedEventArgs(_step, _passo);
+                                Step(this, _stepEv);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        //MessageBox.Show("Errore lettura pacchetto " + _step.ToString(), "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+                }
+
+
+
+                // Ora Leggo il residuo
+                if (_byteResidui > 0)
+                {
+                    _tempBuffer = new byte[_byteResidui];
+
+
+                    _TmpAddr = (uint)(_cicliCompleti * DATABLOCK);
+                    _esito = LeggiBloccoMemoria(_StartAddr + _TmpAddr, (ushort)_byteResidui, out _tempBuffer);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for (int _ii = 0; _ii < _byteResidui; _ii++)
+                        {
+                            _dataArray[_TmpAddr + _ii] = _tempBuffer[_ii];
+                        }
+                        // lblMemRegenAvanzamentoRead.Text = "Pacchetto Finale";
+                        // Application.DoEvents();
+
+                    }
+                    else
+                    {
+                        //MessageBox.Show("Errore lettura pacchetto finale ", "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+
+                }
+
+                Log.Debug("--- Carica Immagine -------------------");
+                // Log.Debug(FunzioniMR.hexdumpArray(_dataArray));
+                //ora salvo l'immagine
+                BloccoAttivo.Data = _dataArray;
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+                return false;
+            }
+
+
+        }
+
+
+        public  bool ScriviBloccoDati(AreaDatiRegen BloccoAttivo, bool RunAsync)
+        {
+            try
+            {
+
+                uint _StartAddr = BloccoAttivo.StartAddress;
+                uint _TmpAddr;
+                ushort _NumByte;
+                ushort _NumPagine = (ushort)BloccoAttivo.NumBlocchi;
+                bool _esito;
+                byte[] _dataArray;
+                int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                byte[] DataBuffer;
+                byte[] _tempBuffer;
+
+                // Prima vuoto la memoria
+
+                _numBytes = _NumPagine * 0x1000;
+
+                if (_NumPagine > 0)
+                {
+                    int _bloccoCorrente;
+                    _TmpAddr = _StartAddr;
+                    for (int _cicloBlocchi = 0; _cicloBlocchi < _NumPagine; _cicloBlocchi++)
+                    {
+                        _bloccoCorrente = _cicloBlocchi + 1;
+                        _esito = CancellaBlocco4K(_TmpAddr);
+                        if (!_esito)
+                        {
+                            // MessageBox.Show("Cancellazione del blocco " + _bloccoCorrente.ToString() + " non riuscita", "Cancellazione dati ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                        else
+                        {
+                            _TmpAddr += 0x1000;
+                            //lblMemRegenAvanzamentoWrite.Text = "Cancellazione pagina " + _bloccoCorrente.ToString();
+
+                           // Application.DoEvents();
+                        }
+                    }
+
+                }
+                else
+                {
+                    return false;
+                }
+
+                DataBuffer = BloccoAttivo.Data;
+
+
+                uint _stepSent = 0;
+                uint _posizione = 0;
+                uint _datiTrasferiti = 0;
+                byte[] _Tempbuffer = new byte[DATABLOCK];
+                _TmpAddr = _StartAddr;
+                while ((_numBytes - _datiTrasferiti) > DATABLOCK)
+                {
+
+                    for (int _blockStep = 0; _blockStep < DATABLOCK; _blockStep++)
+                    {
+                        _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                        _posizione++;
+                        _datiTrasferiti++;
+                    }
+                    _esito = ScriviBloccoMemoria(_TmpAddr, (ushort)DATABLOCK, _Tempbuffer);
+
+                    _TmpAddr += DATABLOCK;
+                    _stepSent++;
+
+                    //lblMemRegenAvanzamentoWrite.Text = "Pacchetto " + _stepSent.ToString();
+                    //Application.DoEvents();
+
+                }
+
+
+                // Ora trasmetto il residuo
+                int _residuo = (int)(_numBytes - _datiTrasferiti);
+                _Tempbuffer = new byte[_residuo];
+                for (int _blockStep = 0; _blockStep < _residuo; _blockStep++)
+                {
+                    _Tempbuffer[_blockStep] = DataBuffer[_posizione];
+                    _posizione++;
+                    _datiTrasferiti++;
+                }
+                _esito = ScriviBloccoMemoria(_TmpAddr, (ushort)_residuo, _Tempbuffer);
+                _stepSent++;
+
+                // lblMemRegenAvanzamentoWrite.Text = "Pacchetto " + _stepSent.ToString();
+                // Application.DoEvents();
+
+
+                // lblMemRegenAvanzamentoWrite.Text = _NumSequenze.ToString() + " pagine inserite";
+                // lblMemRegenAvanzamentoWrite.Visible = true;
+                //             Application.DoEvents();
+
+                return true;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
                 return false;
             }
 
