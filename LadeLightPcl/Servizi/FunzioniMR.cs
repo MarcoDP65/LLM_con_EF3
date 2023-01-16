@@ -2635,10 +2635,21 @@ namespace Utility
                         {
                             if (ValParametro != 0)
                             {
-                                ValFormula = (ushort)((ValoreVar * 10) / ValParametro);
+                                double Vformulasdl = (double)ValoreVar/((double)ValParametro /10);    
+                                ValFormula = (ushort)(Vformulasdl);
                             }
                             break;
                         }
+                    case "|":
+                        {
+                            if (ValParametro != 0)
+                            {
+                                double Vformulasdl = (double)ValoreVar / ((double)ValParametro / 100);
+                                ValFormula = (ushort)(Vformulasdl);
+                            }
+                            break;
+                        }
+
 
                     case "*":
                         {

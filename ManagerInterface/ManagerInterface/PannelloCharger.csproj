@@ -26,8 +26,8 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>9</ApplicationRevision>
-    <ApplicationVersion>3.3.0.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>3.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1407,6 +1407,7 @@
     <None Include="Resources\OFF_16.png" />
     <None Include="Resources\LITIO650.png" />
     <None Include="Resources\LITIO650.bmp" />
+    <None Include="Resources\Quasar650.png" />
     <Content Include="Resources\rs232.jpg" />
     <None Include="Resources\spyBatt.png" />
     <None Include="Resources\Sfondo_SPYBATT.bmp" />

@@ -110,6 +110,8 @@ namespace ChargerLogic
             CoeffKc    = 0x07,                       // INTERO, % capacità  massima erogabile nel ciclo di carica
                                                      //         in rapporto alla capacità nominale della batteria 
                                                      //         Valore minimo 100
+            PeriododT  = 0x08,                       // Attivo nel profilo QUASAR (dV/dT) durata del periodoo dT, in minuti
+            TempoTF    = 0x09,                       // Attivo nel profilo QUASAR,durata in minuti del periodo di chiusura della fase 2 a corrente decrescente
 
             // CoeffK = 0xF1,  Vecchio Valore        // 1 decimale, %tempo fase 2 rispetto a fase 1
 
@@ -120,6 +122,7 @@ namespace ChargerLogic
             TensioneMassimaCella = 0x13,             // V per Cella, 2 decimali  Pb 2.65
             TensioneLimiteCella = 0x14,              // V per Cella, 2 decimali  Pb 2.78
             TensionePrecicloV0 = 0x15,               // V per Cella, 2 decimali  Pb 2.78
+            TensionedV         = 0x16,               // V per Cella, 2 Decimali
             TensioneMinimaRiconoscimento = 0x1A,     // V per Cella, 2 decimali  Pb 1.50
             TensioneMassimaRiconoscimento = 0x1B,    // V per Cella, 2 decimali  Pb 1.90
             TensioneMinimaStop = 0x1C,               // V per Cella, 2 decimali  Pb 2.05
@@ -150,6 +153,7 @@ namespace ChargerLogic
             NumeroCelle =                   0x57,
             Safety =                        0x58,   // Contatto Safety sul cavo 0x0F Attivo; 0xF0 non presente
 
+            TemperaturaLimite =             0x5A,   // Nel profilo QUASAR (dV/dT) e la soglia oltre la quale riduce la corrente  
 
             EqualFineCaricaAttesa =         0x60,   // Minuti
             EqualFineCaricaNumImpulsi =     0x61,   // intero

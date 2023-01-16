@@ -76,6 +76,7 @@
             // 
             // lvwCicliBrevi
             // 
+            this.lvwCicliBrevi.HideSelection = false;
             resources.ApplyResources(this.lvwCicliBrevi, "lvwCicliBrevi");
             this.lvwCicliBrevi.Name = "lvwCicliBrevi";
             this.lvwCicliBrevi.UseCompatibleStateImageBehavior = false;
@@ -268,8 +269,7 @@
             this.flvwCicliBrevi.AlternateRowBackColor = System.Drawing.Color.WhiteSmoke;
             this.flvwCicliBrevi.CellEditUseWholeCell = false;
             this.flvwCicliBrevi.FullRowSelect = true;
-            this.flvwCicliBrevi.SelectedBackColor = System.Drawing.Color.Empty;
-            this.flvwCicliBrevi.SelectedForeColor = System.Drawing.Color.Empty;
+            this.flvwCicliBrevi.HideSelection = false;
             resources.ApplyResources(this.flvwCicliBrevi, "flvwCicliBrevi");
             this.flvwCicliBrevi.Name = "flvwCicliBrevi";
             this.flvwCicliBrevi.ShowGroups = false;

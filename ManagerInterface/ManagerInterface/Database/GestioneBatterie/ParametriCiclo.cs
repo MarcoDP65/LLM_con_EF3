@@ -49,6 +49,8 @@ namespace MoriData
         public ushort TempoT2Min { get; set; }
         public ushort TempoT2Max { get; set; }
         public ushort TempoT3Max { get; set; }
+        public ushort TempodT { get; set; }
+        public ushort TempoFinale { get; set; }
 
         public ushort EqualTempoAttesa { get; set; }
         public ushort EqualTempoImpulso { get; set; }
@@ -70,6 +72,8 @@ namespace MoriData
         public ushort TensioneRaccordoVr { get; set; }
         public ushort TensioneMassimaVMax { get; set; }
         public ushort TensioneLimiteVLim { get; set; }
+
+        public ushort TensionedV { get; set; }
 
         public ushort MantTensIniziale { get; set; }
         public ushort MantTensFinale { get; set; }
@@ -99,6 +103,8 @@ namespace MoriData
 
         public ushort MantAttivabile { get; set; }
         public ushort MantAttivo { get; set; }
+
+        public ushort TemperaturaLimite { get; set; }
 
         public ushort OpportunityAttivabile { get; set; }
         public ushort OpportunityAttivo { get; set; }

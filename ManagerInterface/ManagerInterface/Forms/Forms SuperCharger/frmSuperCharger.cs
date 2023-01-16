@@ -4343,8 +4343,14 @@ namespace PannelloCharger
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaEqualPulseCurrent, ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso, ModCicloCorrente.ParametriAttivi.EqualCorrenteImpulso, 2, SbloccaValori);
                     }
 
-
-                    ModoProf = (byte)ModCicloCorrente?.Profilo.AttivaMant;
+                    if (ModCicloCorrente.Profilo != null)
+                    {
+                        ModoProf = (byte)ModCicloCorrente.Profilo.AttivaMant;
+                    }
+                    else
+                    {
+                        ModoProf = 0;
+                    }
                     switch (ModoProf)
                     {
                         case 0x00:
@@ -4375,8 +4381,15 @@ namespace PannelloCharger
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantDurataMax, ModCicloCorrente.ValoriCiclo.MantTempoMaxErogazione, ModCicloCorrente.ParametriAttivi.MantTempoMaxErogazione, 3, SbloccaValori);
                         FunzioniUI.ImpostaTextBoxUshort(ref txtPaMantCorrente, ModCicloCorrente.ValoriCiclo.MantCorrenteImpulso, ModCicloCorrente.ParametriAttivi.MantCorrenteImpulso, 2, SbloccaValori);
                     }
-                    
-                    ModoProf = (byte)ModCicloCorrente.Profilo.AttivaOpportunity;
+
+                    if (ModCicloCorrente.Profilo != null)
+                    {
+                        ModoProf = (byte)ModCicloCorrente.Profilo.AttivaOpportunity;
+                    }
+                    else
+                    {
+                        ModoProf = 0;
+                    }
                     switch (ModoProf)
                     {
                         case 0x00:

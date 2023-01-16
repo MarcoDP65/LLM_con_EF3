@@ -41,6 +41,8 @@ namespace MoriData
         public string TempoT2Max { get; set; }
         public string TempoT3Max { get; set; }
         public string DurataNominale { get; set; }
+        public string TempodT { get; set; }
+        public string TempoFinale { get; set; }
 
         public string EqualTempoAttesa { get; set; }
         public string EqualTempoImpulso { get; set; }
@@ -60,6 +62,7 @@ namespace MoriData
         public string TensioneLimiteVLim { get; set; }
         public string TensRiconoscimentoMin { get; set; }
         public string TensRiconoscimentoMax { get; set; }
+        public string TensionedV { get; set; }
 
         public string TensMinimaStop { get; set; }
 
@@ -91,6 +94,7 @@ namespace MoriData
         public string EqualAttivabile { get; set; }
         public string MantAttivabile { get; set; }
         public string OpportunityAttivabile { get; set; }
+        public string TemperaturaLimite { get; set; }
 
 
 
