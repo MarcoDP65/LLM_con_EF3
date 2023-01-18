@@ -238,7 +238,22 @@ namespace ChargerLogic
                             numeroValori += 1;
                             break;
 
-                            // Fase 3
+                        case SerialMessage.ParametroLadeLight.TensionedV:
+                            ValoriCiclo.TensionedV = dato.ValoreParametro;
+                            ParametriAttivi.TensionedV = StatoCella;
+                            numeroValori += 1;
+                            break;
+                        case SerialMessage.ParametroLadeLight.PeriododT:
+                            ValoriCiclo.TempodT = dato.ValoreParametro;
+                            ParametriAttivi.TempodT = StatoCella;
+                            numeroValori += 1;
+                            break;
+                        case SerialMessage.ParametroLadeLight.TempoTF:
+                            ValoriCiclo.TempoFinale = dato.ValoreParametro;
+                            ParametriAttivi.TempoFinale = StatoCella;
+                            numeroValori += 1;
+                            break;
+                        // Fase 3
 
                         case SerialMessage.ParametroLadeLight.TempoT3Max:
                             ValoriCiclo.TempoT3Max = dato.ValoreParametro;
@@ -397,6 +412,11 @@ namespace ChargerLogic
                             ParametriAttivi.CorrenteMassima = StatoCella;
                             numeroValori += 1;
                             break;
+                        case SerialMessage.ParametroLadeLight.TemperaturaLimite:
+                            ValoriCiclo.TemperaturaLimite = dato.ValoreParametro;
+                            ParametriAttivi.TemperaturaLimite = StatoCella;
+                            numeroValori += 1;
+                            break;
                             #endregion "Soglie"
                     }
                 }
@@ -505,6 +525,15 @@ namespace ChargerLogic
                 ValoriCiclo.TempoT2Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT2Max);
                 ParametriAttivi.FattoreK = FunzioniComuni.StatoParametro(ModelloProfilo.FattoreK);
                 ValoriCiclo.FattoreK = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.FattoreK);
+
+                ParametriAttivi.TensionedV = FunzioniComuni.StatoParametro(ModelloProfilo.TensionedV);
+                ValoriCiclo.TensionedV = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensionedV);
+                ParametriAttivi.TempodT = FunzioniComuni.StatoParametro(ModelloProfilo.TempodT);
+                ValoriCiclo.TempodT = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempodT);
+                ParametriAttivi.TempoFinale = FunzioniComuni.StatoParametro(ModelloProfilo.TempoFinale);
+                ValoriCiclo.TempoFinale = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoFinale);
+                ParametriAttivi.TemperaturaLimite = FunzioniComuni.StatoParametro(ModelloProfilo.TemperaturaLimite);
+                ValoriCiclo.TemperaturaLimite = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TemperaturaLimite);
 
                 ParametriAttivi.CorrenteFinaleI2 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteFinaleI2);
                 ValoriCiclo.CorrenteFinaleI2 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteFinaleI2);
@@ -1198,8 +1227,33 @@ namespace ChargerLogic
                     NumParametriAttivi += 1;
                 }
 
+                if (true)  // (dV)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TensionedV, ValoriCiclo.TensionedV);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
 
+                if (true)  // (dT)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.PeriododT, ValoriCiclo.TempodT);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
 
+                if (true)  // (Tempo Finale)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TempoTF, ValoriCiclo.TempoFinale);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
+
+                if (true)  // (Temperatura)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TemperaturaLimite, ValoriCiclo.TemperaturaLimite);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
 
                 return NumParametriAttivi;
 
@@ -1303,6 +1357,28 @@ namespace ChargerLogic
                             ValoriCiclo.TempoT3Max = _par.ValoreParametro;
                             if (RigeneraPermessi) ParametriAttivi.TempoT3Max = 1; // Read only                
                             break;
+
+                        case SerialMessage.ParametroLadeLight.TensionedV:
+                            ValoriCiclo.TensionedV = _par.ValoreParametro;
+                            if (RigeneraPermessi) ParametriAttivi.TensionedV = 1; // Read only                
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.PeriododT:
+                            ValoriCiclo.TempodT = _par.ValoreParametro;
+                            if (RigeneraPermessi) ParametriAttivi.TempodT = 1; // Read only                
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.TempoTF:
+                            ValoriCiclo.TempoFinale = _par.ValoreParametro;
+                            if (RigeneraPermessi) ParametriAttivi.TempoFinale = 1; // Read only                
+                            break;
+
+                        case SerialMessage.ParametroLadeLight.TemperaturaLimite:
+                            ValoriCiclo.TemperaturaLimite = _par.ValoreParametro;
+                            if (RigeneraPermessi) ParametriAttivi.TemperaturaLimite = 1; // Read only                
+                            break;
+
+
 
                     }
 

@@ -854,6 +854,9 @@ namespace PannelloCharger
                     ModCicloCorrente.ValoriCiclo.TempoT2Max = FunzioniMR.ConvertiUshort(txtPaTempoT2Max.Text, 1, 0);
                     ModCicloCorrente.ValoriCiclo.FattoreK = FunzioniMR.ConvertiUshort(txtPaCoeffK.Text, 1, 0);
                     ModCicloCorrente.ValoriCiclo.CoeffKc = FunzioniMR.ConvertiUshort(txtPaCoeffKc.Text, 1, 0);
+                    ModCicloCorrente.ValoriCiclo.TensionedV = FunzioniMR.ConvertiUshort(txtPadV.Text, 1, 0);
+                    ModCicloCorrente.ValoriCiclo.TempodT = FunzioniMR.ConvertiUshort(txtPadT.Text, 1, 0);
+                    ModCicloCorrente.ValoriCiclo.TempoFinale = FunzioniMR.ConvertiUshort(txtPaTempoFin.Text, 1, 0);
 
 
                     // Fase 3 (I) 
@@ -892,6 +895,8 @@ namespace PannelloCharger
                     ModCicloCorrente.ValoriCiclo.TensMinStop = FunzioniMR.ConvertiUshort(txtPaVMinStop.Text, 100, 0);
                     ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim = FunzioniMR.ConvertiUshort(txtPaVLimite.Text, 100, 0);
                     ModCicloCorrente.ValoriCiclo.CorrenteMassima = FunzioniMR.ConvertiUshort(txtPaCorrenteMassima.Text, 10, 0);
+                    ModCicloCorrente.ValoriCiclo.TemperaturaLimite = FunzioniMR.ConvertiUshort(txtPaTempLimite.Text, 1, 0);
+
                 }
                 return true;
             }
@@ -977,6 +982,9 @@ namespace PannelloCharger
                 if (ModCicloCorrente.ValoriCiclo.TempoT2Max != FunzioniMR.ConvertiUshort(txtPaTempoT2Max.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.FattoreK != FunzioniMR.ConvertiUshort(txtPaCoeffK.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.CoeffKc != FunzioniMR.ConvertiUshort(txtPaCoeffKc.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
+                if (ModCicloCorrente.ValoriCiclo.TensionedV != FunzioniMR.ConvertiUshort(txtPadV.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
+                if (ModCicloCorrente.ValoriCiclo.TempodT != FunzioniMR.ConvertiUshort(txtPadT.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
+                if (ModCicloCorrente.ValoriCiclo.TempoFinale != FunzioniMR.ConvertiUshort(txtPaTempoFin.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
 
                 // Fase 3 (I) 
                 if (ModCicloCorrente.ValoriCiclo.TempoT3Max != FunzioniMR.ConvertiUshort(txtPaTempoT3Max.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
@@ -1014,6 +1022,7 @@ namespace PannelloCharger
                 if (ModCicloCorrente.ValoriCiclo.TensMinStop != FunzioniMR.ConvertiUshort(txtPaVMinStop.Text, 100, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim != FunzioniMR.ConvertiUshort(txtPaVLimite.Text, 100, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.CorrenteMassima != FunzioniMR.ConvertiUshort(txtPaCorrenteMassima.Text, 10, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
+                if (ModCicloCorrente.ValoriCiclo.TemperaturaLimite != FunzioniMR.ConvertiUshort(txtPaTempLimite.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
 
                 // TRUE => nessun parametro è stato modificato.
                 return elementiComuni.EsitoVerificaParametri.Ok;
@@ -4281,7 +4290,10 @@ namespace PannelloCharger
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT2Max, ModCicloCorrente.ValoriCiclo.TempoT2Max, ModCicloCorrente.ParametriAttivi.TempoT2Max, 3, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCoeffK, ModCicloCorrente.ValoriCiclo.FattoreK, ModCicloCorrente.ParametriAttivi.FattoreK, 3, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCoeffKc, ModCicloCorrente.ValoriCiclo.CoeffKc, ModCicloCorrente.ParametriAttivi.CoeffKc, 3, SbloccaValori);
-                    
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPadV, ModCicloCorrente.ValoriCiclo.TensionedV, ModCicloCorrente.ParametriAttivi.TensionedV, 3, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPadT, ModCicloCorrente.ValoriCiclo.TempodT, ModCicloCorrente.ParametriAttivi.TempodT, 3, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoFin, ModCicloCorrente.ValoriCiclo.TempoFinale, ModCicloCorrente.ParametriAttivi.TempoFinale, 3, SbloccaValori);
+
                     // FASE 3
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempoT3Max, ModCicloCorrente.ValoriCiclo.TempoT3Max, ModCicloCorrente.ParametriAttivi.TempoT3Max, 3, SbloccaValori);
                     if (ModCicloCorrente.ValoriCiclo.Fase3Attiva && ModCicloCorrente.ParametriAttivi.Fase3Attiva)
@@ -4406,11 +4418,11 @@ namespace PannelloCharger
                             break;
 
                     }
-                    ModCicloCorrente.ParametriAttivi.OpportunityAttivabile = 4;
+                    //ModCicloCorrente.ParametriAttivi.OpportunityAttivabile = 4;
 
                     FunzioniUI.ImpostaCheckBoxUshort(ref chkPaAttivaOppChg, ref lblPaAttivaOppChg, ModCicloCorrente.ValoriCiclo.OpportunityAttivabile, ModCicloCorrente.ParametriAttivi.OpportunityAttivabile, 3, SbloccaValori);
 
-                    if (true) // (chkPaAttivaOppChg.Checked)
+                    if (chkPaAttivaOppChg.Checked)
                     {
                         if (ModCicloCorrente.ValoriCiclo.OpportunityOraInizio > ModCicloCorrente.ValoriCiclo.OpportunityOraFine)
                         {
@@ -4481,6 +4493,7 @@ namespace PannelloCharger
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVMinStop, ModCicloCorrente.ValoriCiclo.TensMinStop, ModCicloCorrente.ParametriAttivi.TensMinStop, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaVLimite, ModCicloCorrente.ValoriCiclo.TensioneLimiteVLim, ModCicloCorrente.ParametriAttivi.TensioneLimiteVLim, 1, SbloccaValori);
                     FunzioniUI.ImpostaTextBoxUshort(ref txtPaCorrenteMassima, ModCicloCorrente.ValoriCiclo.CorrenteMassima, ModCicloCorrente.ParametriAttivi.CorrenteMassima, 2, SbloccaValori);
+                    FunzioniUI.ImpostaTextBoxUshort(ref txtPaTempLimite, ModCicloCorrente.ValoriCiclo.TemperaturaLimite, ModCicloCorrente.ParametriAttivi.TemperaturaLimite, 3, SbloccaValori);
 
                 }
 

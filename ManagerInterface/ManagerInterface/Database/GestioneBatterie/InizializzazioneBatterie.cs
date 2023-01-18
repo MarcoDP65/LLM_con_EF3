@@ -65,8 +65,8 @@ namespace ChargerLogic
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0B, NomeProfilo = "Litio con BMS", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0C, NomeProfilo = "Litio con CAN", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0E, NomeProfilo = "SuperCAP", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "LITIO650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x11, NomeProfilo = "QUASAR Std.", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x12, NomeProfilo = "QUASAR Fast", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0F, NomeProfilo = "QUASAR Std.", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x10, NomeProfilo = "QUASAR Fast", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
 
             return true;
         }
@@ -605,7 +605,7 @@ namespace ChargerLogic
             ParametriCarica.Add(
                 new _mbProfiloTipoBatt()
                 {
-                    IdProfiloCaricaLL = 0x11,
+                    IdProfiloCaricaLL = 0x0F,
                     BatteryTypeId = 0x1001,
                     // tempi
                     TempoT0Max = "=##015",
@@ -656,7 +656,7 @@ namespace ChargerLogic
                     OpportunityDurataMax = "=##240",
                     OpportunityCorrente = "=C/4",
                     OpportunityTensioneMax = "=##240",
-                    OpportunityAttivabile = "~##1",
+                    OpportunityAttivabile = "~##0",
                     TemperaturaLimite = "=##48",
                     AbilitaSpyBatt = "~##1",
                     AbilitaSafety = "~##0",
@@ -668,7 +668,7 @@ namespace ChargerLogic
             ParametriCarica.Add(
                 new _mbProfiloTipoBatt()
                 {
-                    IdProfiloCaricaLL = 0x12,
+                    IdProfiloCaricaLL = 0x10,
                     BatteryTypeId = 0x1001,
                     // tempi
                     TempoT0Max = "=##015",
@@ -719,7 +719,7 @@ namespace ChargerLogic
                     OpportunityDurataMax = "=##240",
                     OpportunityCorrente = "=C/4",
                     OpportunityTensioneMax = "=##240",
-                    OpportunityAttivabile = "~##1",
+                    OpportunityAttivabile = "~##0",
                     TemperaturaLimite = "=##48",
                     AbilitaSpyBatt = "~##1",
                     AbilitaSafety = "~##0",

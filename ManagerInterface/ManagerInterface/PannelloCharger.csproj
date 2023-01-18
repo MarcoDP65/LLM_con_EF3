@@ -1255,6 +1255,7 @@
     <EmbeddedResource Include="Resources\profili\ModelliProfilo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelliProfilo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\StringheColonneTabelle.en.resx" />
     <EmbeddedResource Include="Resources\StringheColonneTabelle.fr-FR.resx" />

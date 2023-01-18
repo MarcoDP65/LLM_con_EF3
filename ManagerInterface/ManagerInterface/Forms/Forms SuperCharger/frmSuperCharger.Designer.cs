@@ -540,6 +540,12 @@
             this.txtPaSogliaVs = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tbpPaPCStep2 = new System.Windows.Forms.TabPage();
+            this.txtPaTempoFin = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtPadT = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtPadV = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtPaCoeffKc = new System.Windows.Forms.TextBox();
             this.txtPaVMax = new System.Windows.Forms.TextBox();
@@ -597,6 +603,8 @@
             this.txtPaOppOraInizio = new System.Windows.Forms.TextBox();
             this.lblPaOppOraInizio = new System.Windows.Forms.Label();
             this.tbpPaParSoglia = new System.Windows.Forms.TabPage();
+            this.txtPaTempLimite = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
             this.txtPaVMinStop = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.txtPaBMSTempoAttesa = new System.Windows.Forms.TextBox();
@@ -4430,6 +4438,12 @@
             // 
             // tbpPaPCStep2
             // 
+            this.tbpPaPCStep2.Controls.Add(this.txtPaTempoFin);
+            this.tbpPaPCStep2.Controls.Add(this.label31);
+            this.tbpPaPCStep2.Controls.Add(this.txtPadT);
+            this.tbpPaPCStep2.Controls.Add(this.label21);
+            this.tbpPaPCStep2.Controls.Add(this.txtPadV);
+            this.tbpPaPCStep2.Controls.Add(this.label20);
             this.tbpPaPCStep2.Controls.Add(this.label11);
             this.tbpPaPCStep2.Controls.Add(this.txtPaCoeffKc);
             this.tbpPaPCStep2.Controls.Add(this.txtPaVMax);
@@ -4449,6 +4463,36 @@
             resources.ApplyResources(this.tbpPaPCStep2, "tbpPaPCStep2");
             this.tbpPaPCStep2.Name = "tbpPaPCStep2";
             this.tbpPaPCStep2.UseVisualStyleBackColor = true;
+            // 
+            // txtPaTempoFin
+            // 
+            resources.ApplyResources(this.txtPaTempoFin, "txtPaTempoFin");
+            this.txtPaTempoFin.Name = "txtPaTempoFin";
+            // 
+            // label31
+            // 
+            resources.ApplyResources(this.label31, "label31");
+            this.label31.Name = "label31";
+            // 
+            // txtPadT
+            // 
+            resources.ApplyResources(this.txtPadT, "txtPadT");
+            this.txtPadT.Name = "txtPadT";
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // txtPadV
+            // 
+            resources.ApplyResources(this.txtPadV, "txtPadV");
+            this.txtPadV.Name = "txtPadV";
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
             // 
             // label11
             // 
@@ -4798,6 +4842,8 @@
             // 
             // tbpPaParSoglia
             // 
+            this.tbpPaParSoglia.Controls.Add(this.txtPaTempLimite);
+            this.tbpPaParSoglia.Controls.Add(this.label59);
             this.tbpPaParSoglia.Controls.Add(this.txtPaVMinStop);
             this.tbpPaParSoglia.Controls.Add(this.label42);
             this.tbpPaParSoglia.Controls.Add(this.txtPaBMSTempoAttesa);
@@ -4817,6 +4863,16 @@
             resources.ApplyResources(this.tbpPaParSoglia, "tbpPaParSoglia");
             this.tbpPaParSoglia.Name = "tbpPaParSoglia";
             this.tbpPaParSoglia.UseVisualStyleBackColor = true;
+            // 
+            // txtPaTempLimite
+            // 
+            resources.ApplyResources(this.txtPaTempLimite, "txtPaTempLimite");
+            this.txtPaTempLimite.Name = "txtPaTempLimite";
+            // 
+            // label59
+            // 
+            resources.ApplyResources(this.label59, "label59");
+            this.label59.Name = "label59";
             // 
             // txtPaVMinStop
             // 
@@ -6452,5 +6508,13 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox txtPaTempoFin;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txtPadT;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtPadV;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtPaTempLimite;
+        private System.Windows.Forms.Label label59;
     }
 }
