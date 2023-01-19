@@ -65,8 +65,8 @@ namespace ChargerLogic
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0B, NomeProfilo = "Litio con BMS", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0C, NomeProfilo = "Litio con CAN", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
             ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0E, NomeProfilo = "SuperCAP", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "LITIO650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0F, NomeProfilo = "QUASAR Std.", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
-            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x10, NomeProfilo = "QUASAR Fast", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0F, NomeProfilo = "QUASAR Std.", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0x00, AttivaEqual = 0xF0, AttivaMant = 0xFF, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x10, NomeProfilo = "QUASAR Fast", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0x00, AttivaEqual = 0xF0, AttivaMant = 0xFF, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
 
             return true;
         }
@@ -637,7 +637,7 @@ namespace ChargerLogic
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "=C/08",
 
-                    EqualAttivabile = "~##1",
+                    EqualAttivabile = "~##0",
                     EqualNumImpulsi = "=##12",
                     EqualTempoAttesa = "=##480",
                     EqualTempoImpulso = "=##5",
@@ -700,7 +700,7 @@ namespace ChargerLogic
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "=C/08",
 
-                    EqualAttivabile = "~##1",
+                    EqualAttivabile = "~##0",
                     EqualNumImpulsi = "=##12",
                     EqualTempoAttesa = "=##480",
                     EqualTempoImpulso = "=##5",

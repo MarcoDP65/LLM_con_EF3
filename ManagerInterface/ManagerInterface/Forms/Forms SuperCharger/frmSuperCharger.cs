@@ -3392,12 +3392,12 @@ namespace PannelloCharger
                             break;
                         case 0x0F:
                             chkPaAttivaEqual.Checked = true;
-                            chkPaAttivaEqual.Enabled = true;
+                            chkPaAttivaEqual.Enabled = false;
                             //lblPaAttivaEqual.Enabled = true;
                             break;
                         case 0xFF:
                             chkPaAttivaEqual.Checked = true;
-                            chkPaAttivaEqual.Enabled = false;
+                            chkPaAttivaEqual.Enabled = true;
                             //chkPaAttivaEqual.Enabled = false;
 
                             break;
@@ -3420,9 +3420,13 @@ namespace PannelloCharger
                             chkPaAttivaMant.Checked = false;
                             chkPaAttivaMant.Enabled = true;
                             break;
-                        case 0xFF:
+                        case 0x0F:
                             chkPaAttivaMant.Checked = true;
                             chkPaAttivaMant.Enabled = false;
+                            break;
+                        case 0xFF:
+                            chkPaAttivaMant.Checked = true;
+                            chkPaAttivaMant.Enabled = true;
                             break;
                         default:
                             chkPaAttivaMant.Checked = false;
@@ -3441,9 +3445,13 @@ namespace PannelloCharger
                             chkPaAttivaOppChg.Checked = false;
                             chkPaAttivaOppChg.Enabled = true;
                             break;
-                        case 0xFF:
+                        case 0x0F:
                             chkPaAttivaOppChg.Checked = true;
                             chkPaAttivaOppChg.Enabled = false;
+                            break;
+                        case 0xFF:
+                            chkPaAttivaOppChg.Checked = true;
+                            chkPaAttivaOppChg.Enabled = true;
                             break;
                         default:
                             chkPaAttivaOppChg.Checked = false;
@@ -3464,9 +3472,13 @@ namespace PannelloCharger
                             chkPaAttivaRiarmoBms.Checked = false;
                             chkPaAttivaRiarmoBms.Enabled = true;
                             break;
-                        case 0xFF:
+                        case 0x0F:
                             chkPaAttivaRiarmoBms.Checked = true;
                             chkPaAttivaRiarmoBms.Enabled = false;
+                            break;
+                        case 0xFF:
+                            chkPaAttivaRiarmoBms.Checked = true;
+                            chkPaAttivaRiarmoBms.Enabled = true;
                             break;
                         default:
                             chkPaAttivaRiarmoBms.Checked = false;
@@ -4323,6 +4335,9 @@ namespace PannelloCharger
                         case 0xF0:
                             ModCicloCorrente.ParametriAttivi.EqualAttivabile = 4;
                             break;
+                        case 0x0F:
+                            ModCicloCorrente.ParametriAttivi.EqualAttivabile = 1;
+                            break;
                         case 0xFF:
                             ModCicloCorrente.ParametriAttivi.EqualAttivabile = 1;
                             break;
@@ -4371,8 +4386,11 @@ namespace PannelloCharger
                         case 0xF0:
                             ModCicloCorrente.ParametriAttivi.MantAttivabile = 4;
                             break;
-                        case 0xFF:
+                        case 0x0F:
                             ModCicloCorrente.ParametriAttivi.MantAttivabile = 1;
+                            break;
+                        case 0xFF:
+                            ModCicloCorrente.ParametriAttivi.MantAttivabile = 4;
                             break;
                         default:
                             ModCicloCorrente.ParametriAttivi.MantAttivabile = 1;
@@ -4410,8 +4428,11 @@ namespace PannelloCharger
                         case 0xF0:
                             ModCicloCorrente.ParametriAttivi.OpportunityAttivabile = 4;
                             break;
-                        case 0xFF:
+                        case 0x0F:
                             ModCicloCorrente.ParametriAttivi.OpportunityAttivabile = 1;
+                            break;
+                        case 0xFF:
+                            ModCicloCorrente.ParametriAttivi.OpportunityAttivabile = 4;
                             break;
                         default:
                             ModCicloCorrente.ParametriAttivi.OpportunityAttivabile = 1;
