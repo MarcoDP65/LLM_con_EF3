@@ -173,6 +173,7 @@ namespace ChargerLogic
                     OpportunityCorrente = "=C/4",
                     OpportunityTensioneMax = "=##240",
                     OpportunityAttivabile = "~##1",
+                    TemperaturaLimite = "=##48",
 
                     AbilitaSpyBatt = "~##1",
                     AbilitaSafety = "~##0",
@@ -231,6 +232,7 @@ namespace ChargerLogic
                     OpportunityCorrente = "=C/4",
                     OpportunityTensioneMax = "=##240",
                     OpportunityAttivabile = "~##1",
+                    TemperaturaLimite = "=##48",
 
                     AbilitaSpyBatt = "~##1",
                     AbilitaSafety = "~##0",
@@ -292,6 +294,7 @@ namespace ChargerLogic
                     OpportunityCorrente = "=C/4",
                     OpportunityTensioneMax = "=##240",
                     OpportunityAttivabile = "~##1",
+                    TemperaturaLimite = "=##48",
 
                     AbilitaSpyBatt = "~##1",
                     AbilitaSafety = "~##0",
@@ -332,7 +335,7 @@ namespace ChargerLogic
                     //Correnti
                     CorrenteI0 = "#C/20",
                     CorrenteI1 = "=C/10",
-                    CorrenteFinaleI2 = "=C/24",
+                    CorrenteFinaleI2 = "==##0",
                     CorrenteMassima = "=C/5",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "",
