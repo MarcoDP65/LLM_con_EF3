@@ -9,10 +9,7 @@ using System.Text;
 using System.Windows.Forms;  
 using log4net;
 using log4net.Config;
-using SQLite.Net;
-using SQLite.Net.Attributes;
-using SQLite.Net.Interop;
-using SQLite.Net.Platform.Win32;
+using SQLite;
 using BrightIdeasSoftware;
 
 using ChargerLogic;

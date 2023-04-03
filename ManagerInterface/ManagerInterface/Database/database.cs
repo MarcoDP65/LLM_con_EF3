@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQLite.Net;
-using SQLite.Net.Attributes;
-using SQLite.Net.Interop;
-using SQLite.Net.Platform.Win32;
+using SQLite;
+//using SQLite.Net;
+//using SQLite.Net.Attributes;
+//using SQLite.Net.Interop;
+//using SQLite.Net.Platform.Win32;
 using System.IO;
 using log4net;
 using log4net.Config;
@@ -19,15 +20,16 @@ namespace MoriData
  
         private static ILog Log = LogManager.GetLogger("PannelloChargerLog");
 
-        public _db(string _dbName) : base(new SQLitePlatformWin32(), _dbName)
+        public _db(string _dbName) : base( _dbName)
         {
             try
             {
                 int _esito;
+
                 Log.Error("Database collegato: " + _dbName);
                 //Create Tables
-                _esito = CreateTable<_lingue>();
-                _esito = CreateTable<_utente>();
+                CreateTable<_lingue>();
+                CreateTable<_utente>();
                 CreateTable<_sbDefSoglia>();
                 CreateTable<_sbSoglie>();
                 CreateTable<_parametri>();
@@ -503,7 +505,7 @@ namespace MoriData
             //private SQLiteConnection _db ;
 
             public Db(string path)
-                : base(new SQLitePlatformWin32(), path)
+                : base( path)
             {
                 isDatabaseConnected = true;
             }

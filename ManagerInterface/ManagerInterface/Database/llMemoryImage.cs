@@ -4,10 +4,7 @@ using System.Runtime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQLite.Net;
-using SQLite.Net.Attributes;
-using SQLite.Net.Interop;
-using SQLite.Net.Platform.Win32;
+using SQLite;
 using System.IO;
 using System.Globalization;
 

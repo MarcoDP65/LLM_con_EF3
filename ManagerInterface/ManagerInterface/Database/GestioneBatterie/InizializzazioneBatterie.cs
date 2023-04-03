@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 using System.Threading;
 using System.ComponentModel;
 
-using SQLite.Net;
+using SQLite;
 
 namespace ChargerLogic
 {

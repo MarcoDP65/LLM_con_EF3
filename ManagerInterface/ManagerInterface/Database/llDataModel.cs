@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQLite.Net;
+using SQLite;
 using log4net;
 using log4net.Config;
 using MoriData;

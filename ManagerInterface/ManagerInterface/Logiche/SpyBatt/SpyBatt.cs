@@ -21,7 +21,7 @@ using System.Threading;
 using System.ComponentModel;
  // using System.Windows.Forms;
 
-using SQLite.Net;
+using SQLite;
 using log4net;
 using log4net.Config;
 using FTD2XX_NET;

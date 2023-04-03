@@ -15,7 +15,7 @@ using log4net;
 using log4net.Config;
 using ChargerLogic;
 using Utility;
-using System.Data.SQLite;
+using SQLite;
 using System.Resources;
 using System.Diagnostics;
 //using PannelloCharger.

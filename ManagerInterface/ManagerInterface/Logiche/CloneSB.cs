@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.ComponentModel;
 
-using SQLite.Net;
+using SQLite;
 using log4net;
 using log4net.Config;
 using MoriData;
