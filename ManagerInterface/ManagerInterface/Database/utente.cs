@@ -21,7 +21,7 @@ namespace MoriData
         public string Password { get; set; }
         [MaxLength(255)]
         public string NomeUtente { get; set; }
-        [Secure]
+        //[Secure]
         public int Livello { get; set; }
         public int Lingua { get; set; }
         public int Attivo { get; set; }

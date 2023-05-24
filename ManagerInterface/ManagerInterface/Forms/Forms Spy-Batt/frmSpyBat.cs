@@ -4801,7 +4801,7 @@ namespace PannelloCharger
                 serValore.Color = OxyPlot.OxyColors.Blue;
 
 
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
+                OxyPlot.Series.BarSeries ColValore = new OxyPlot.Series.BarSeries();
                 ColValore.StrokeThickness = 1;
                 ColValore.Title = DatiGraph.TitoloAsseY;
 
@@ -4815,7 +4815,7 @@ namespace PannelloCharger
                     AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
                     //AsseCat.ActualLabels.Add(DatiGraph.arrayLabel[_ciclo]);
 
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
+                    OxyPlot.Series.BarItem colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = DatiGraph.arrayValori[_ciclo];
                     colonna.CategoryIndex = -1;
                     if (_ciclo < DatiGraph.StepSoglia)
@@ -4932,7 +4932,7 @@ namespace PannelloCharger
                 serValore.Color = OxyPlot.OxyColors.Blue;
 
 
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
+                OxyPlot.Series.BarSeries ColValore = new OxyPlot.Series.BarSeries();
                 ColValore.StrokeThickness = 1;
                 ColValore.Title = DatiGraph.TitoloAsseY;
                 ColValore.FillColor = OxyPlot.OxyColors.Blue;
@@ -4944,7 +4944,7 @@ namespace PannelloCharger
                 {
                     AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
 
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
+                    OxyPlot.Series.BarItem colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = DatiGraph.arrayValori[_ciclo];
                     colonna.CategoryIndex = -1;
                     double _percCicli = 0;
@@ -5087,7 +5087,7 @@ namespace PannelloCharger
                 serValore.Color = OxyPlot.OxyColors.Blue;
 
 
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
+                OxyPlot.Series.BarSeries ColValore = new OxyPlot.Series.BarSeries();
                 ColValore.StrokeThickness = 1;
                 ColValore.Title = DatiGraph.TitoloAsseY;
                 ColValore.FillColor = OxyPlot.OxyColors.Blue;
@@ -5100,7 +5100,7 @@ namespace PannelloCharger
                     AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
                     //AsseCat.ActualLabels.Add(DatiGraph.arrayLabel[_ciclo]);
 
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
+                    OxyPlot.Series.BarItem colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = DatiGraph.arrayValori[_ciclo];
                     colonna.CategoryIndex = -1;
                     double _percCicli = 0;
@@ -5234,7 +5234,7 @@ namespace PannelloCharger
                 serValore.Color = OxyPlot.OxyColors.Blue;
 
 
-                OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
+                OxyPlot.Series.BarSeries ColValore = new OxyPlot.Series.BarSeries();
                 ColValore.StrokeThickness = 1;
                 ColValore.Title = DatiGraph.TitoloAsseY;
                 ColValore.FillColor = OxyPlot.OxyColors.Blue;
@@ -5249,7 +5249,7 @@ namespace PannelloCharger
                     AsseCat.Labels.Add(DatiGraph.arrayLabel[_ciclo]);
                     //AsseCat.ActualLabels.Add(DatiGraph.arrayLabel[_ciclo]);
 
-                    OxyPlot.Series.ColumnItem colonna = new OxyPlot.Series.ColumnItem();
+                    OxyPlot.Series.BarItem colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = DatiGraph.arrayValori[_ciclo];
                     colonna.CategoryIndex = -1;
                     double _percCicli = 0;
@@ -5419,9 +5419,9 @@ namespace PannelloCharger
                 Grafico.Background = OxyPlot.OxyColors.LightYellow;
                 Grafico.PlotAreaBackground = OxyPlot.OxyColors.White;
                 Grafico.PlotAreaBorderThickness = new OxyPlot.OxyThickness(1, 1, 1, 1);
-                Grafico.LegendBackground = OxyPlot.OxyColors.White;
-                Grafico.LegendBorder = OxyPlot.OxyColors.Black;
-                Grafico.LegendPlacement = OxyPlot.LegendPlacement.Outside;
+                // - Grafico.LegendBackground = OxyPlot.OxyColors.White;
+                // - Grafico.LegendBorder = OxyPlot.OxyColors.Black;
+                // - Grafico.LegendPlacement = OxyPlot.LegendPlacement.Outside;
 
 
                 Grafico.Title = TitoloGrafico;
@@ -6466,17 +6466,17 @@ namespace PannelloCharger
                     serValore.Color = OxyPlot.OxyColors.Blue;
 
 
-                    OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
+                    OxyPlot.Series.BarSeries ColValore = new OxyPlot.Series.BarSeries();
                     //ColValore.StrokeThickness = 1;
                     ColValore.Title = "ColumnSeries";
                     ColValore.FillColor = OxyPlot.OxyColors.Blue;
 
 
                     ValoriPuntualiGrafico.Clear();
-                    OxyPlot.Series.ColumnItem colonna;
+                    OxyPlot.Series.BarItem colonna;
                     //----------------------------------- LL -------------
                     AsseCat.Labels.Add("LL");
-                    colonna = new OxyPlot.Series.ColumnItem();
+                    colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = ValLL;
                     colonna.CategoryIndex = -1;
                     colonna.Color = OxyPlot.OxyColors.Gold;
@@ -6484,7 +6484,7 @@ namespace PannelloCharger
 
                     //----------------------------------- PSW -------------
                     AsseCat.Labels.Add("PSW");
-                    colonna = new OxyPlot.Series.ColumnItem();
+                    colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = ValPSW;
                     colonna.CategoryIndex = -1;
                     colonna.Color = OxyPlot.OxyColors.Blue;
@@ -6492,7 +6492,7 @@ namespace PannelloCharger
 
                     //----------------------------------- EDM -------------
                     AsseCat.Labels.Add("EDM");
-                    colonna = new OxyPlot.Series.ColumnItem();
+                    colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = ValEDM;
                     colonna.CategoryIndex = -1;
                     colonna.Color = OxyPlot.OxyColors.Red;
@@ -7346,9 +7346,9 @@ namespace PannelloCharger
                 oxyGraficoAnalisi.TitleFontSize = 14;
 
                 //oxyGraficoAnalisi.LegendBackground = OxyPlot.OxyColor.W
-                oxyGraficoAnalisi.LegendBorder = OxyPlot.OxyColors.Black;
-                oxyGraficoAnalisi.LegendPlacement = OxyPlot.LegendPlacement.Inside;
-                oxyGraficoAnalisi.LegendPosition = OxyPlot.LegendPosition.TopLeft;
+                // - oxyGraficoAnalisi.LegendBorder = OxyPlot.OxyColors.Black;
+                // - oxyGraficoAnalisi.LegendPlacement = OxyPlot.LegendPlacement.Inside;
+                // - oxyGraficoAnalisi.LegendPosition = OxyPlot.LegendPosition.TopLeft;
 
                 // Creo gli Assi
 

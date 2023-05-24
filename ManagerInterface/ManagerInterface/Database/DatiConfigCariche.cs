@@ -44,8 +44,13 @@ namespace MoriData
             // LADE Light
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xFF, NomeModello = "N.D.", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 0, TensioneMax = 0, Ordine = 0, Trifase = 0, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.NonDefinito, TensioneNominale = 0 });
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x81, NomeModello = "LLT.3 24-80V / 120A", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 120, Ordine = 1, Trifase = 1, Attivo = 0x01, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.LadeLight, TensioneNominale = 0 });  // V max--> 80/2*3 = 120
-                                                                                                                                                                                                                              //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 92, Ordine = 2, Trifase = 1, Attivo = 0x00 });   // V max--> 48/2*3 =  92
-                                                                                                                                                                                                                              //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xC1, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0, Attivo = 0x00 });
+            //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x82, NomeModello = "Trifase 24-48 / 200", CorrenteMin = 10, CorrenteMax = 200, TensioneMin = 24, TensioneMax = 92, Ordine = 2, Trifase = 1, Attivo = 0x00 });   // V max--> 48/2*3 =  92
+            //ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xC1, NomeModello = "Monofase 24 / 70", CorrenteMin = 10, CorrenteMax = 70, TensioneMin = 24, TensioneMax = 24, Ordine = 3, Trifase = 0, Attivo = 0x00 });
+
+            // LADE Light con display SCHG
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x88, NomeModello = "LLT.3.x 24-80V / 120A SCHG", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 120, Ordine = 1, Trifase = 1, Attivo = 0x01, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger, TensioneNominale = 0 });  // V max--> 80/2*3 = 120
+
+
 
             // SUPERCHARGER - i modelli sono caratterizzati solo per tensione nominale, la corrente è definita sul dispositivo in base ai moduli
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x18, NomeModello = "SCHG 24V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 24, TensioneMax = 29, Ordine = 101, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger,TensioneNominale = 24 });
@@ -225,6 +230,13 @@ namespace MoriData
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x82, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x82, IdTensione = 3600, TxTensione = "36,00", Attivo = 1 });
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x82, IdTensione = 4800, TxTensione = "48,00", Attivo = 1 });
+
+            // 24/80 - 120 Trifase SCHG
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 3600, TxTensione = "36,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 4800, TxTensione = "48,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 7200, TxTensione = "72,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 8000, TxTensione = "80,00", Attivo = 1 });
 
             // SCHG 24 Trifase
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x18, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });

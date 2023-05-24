@@ -3024,18 +3024,18 @@ namespace PannelloCharger
                     serValore.DataFieldY = "Numero";
                     serValore.Color = OxyPlot.OxyColors.Blue;
                     
-
-                    OxyPlot.Series.ColumnSeries ColValore = new OxyPlot.Series.ColumnSeries();
+                   
+                    OxyPlot.Series.BarSeries ColValore = new OxyPlot.Series.BarSeries();
                     //ColValore.StrokeThickness = 1;
                     ColValore.Title = "ColumnSeries";
                     ColValore.FillColor = OxyPlot.OxyColors.Blue;
 
 
                     ValoriPuntualiGrafico.Clear();
-                    OxyPlot.Series.ColumnItem colonna;
+                    OxyPlot.Series.BarItem colonna;
                     //----------------------------------- LL -------------
                     AsseCat.Labels.Add("LL");
-                    colonna = new OxyPlot.Series.ColumnItem();
+                    colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = ValLL;
                     colonna.CategoryIndex = -1;
                     colonna.Color = OxyPlot.OxyColors.Gold;
@@ -3043,7 +3043,7 @@ namespace PannelloCharger
 
                     //----------------------------------- PSW -------------
                     AsseCat.Labels.Add("PSW");
-                    colonna = new OxyPlot.Series.ColumnItem();
+                    colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = ValPSW;
                     colonna.CategoryIndex = -1;
                     colonna.Color = OxyPlot.OxyColors.Blue;
@@ -3051,7 +3051,7 @@ namespace PannelloCharger
 
                     //----------------------------------- EDM -------------
                     AsseCat.Labels.Add("EDM");
-                    colonna = new OxyPlot.Series.ColumnItem();
+                    colonna = new OxyPlot.Series.BarItem();
                     colonna.Value = ValEDM;
                     colonna.CategoryIndex = -1;
                     colonna.Color = OxyPlot.OxyColors.Red;

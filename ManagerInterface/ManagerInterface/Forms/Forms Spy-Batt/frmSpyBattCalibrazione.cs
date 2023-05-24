@@ -2907,9 +2907,9 @@ namespace PannelloCharger
                 oxyGraficoCalVerifica.TitleFontSize = 14;
 
                 //oxyGraficoAnalisi.LegendBackground = OxyPlot.OxyColor.W
-                oxyGraficoCalVerifica.LegendBorder = OxyPlot.OxyColors.Black;
-                oxyGraficoCalVerifica.LegendPlacement = OxyPlot.LegendPlacement.Inside;
-                oxyGraficoCalVerifica.LegendPosition = OxyPlot.LegendPosition.TopLeft;
+                // - oxyGraficoCalVerifica.LegendBorder = OxyPlot.OxyColors.Black;
+                // - oxyGraficoCalVerifica.LegendPlacement = OxyPlot.LegendPlacement.Inside;
+                // - oxyGraficoCalVerifica.LegendPosition = OxyPlot.LegendPosition.TopLeft;
 
                 // Creo gli Assi
 

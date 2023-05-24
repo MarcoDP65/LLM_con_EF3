@@ -22,7 +22,7 @@ namespace PannelloCharger
     {
         public override bool CanConvert(Type objectType)
         {
-            return (objectType == typeof(SQLite.Net.Interop.IDbHandle));
+            return false; // (objectType == typeof(SQLite.Net.Interop.IDbHandle));
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

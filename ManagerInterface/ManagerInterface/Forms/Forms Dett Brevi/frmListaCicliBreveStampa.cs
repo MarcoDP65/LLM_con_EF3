@@ -341,7 +341,7 @@ namespace PannelloCharger
             {
                 MemoryStream memStream = new MemoryStream();
 
-                PngExporter _pngExporter = new PngExporter { Width = width, Height = heigth, Background = OxyColors.White };
+                PngExporter _pngExporter = new PngExporter { Width = width, Height = heigth }; //, Background = OxyColors.White };
                 _pngExporter.Export(Grafico, memStream);
 
                 return Image.FromStream(memStream);

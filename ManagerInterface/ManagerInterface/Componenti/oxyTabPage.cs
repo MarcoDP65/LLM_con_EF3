@@ -50,7 +50,7 @@ namespace ChargerLogic
             {
                 MemoryStream memStream = new MemoryStream();
 
-                PngExporter _pngExporter = new PngExporter { Width = width, Height = heigth, Background = OxyColors.White };
+                PngExporter _pngExporter = new PngExporter { Width = width, Height = heigth }; // - ,  Background = OxyColors.White };
                 _pngExporter.Export(GraficoBase, memStream);
 
                 return Image.FromStream(memStream);
