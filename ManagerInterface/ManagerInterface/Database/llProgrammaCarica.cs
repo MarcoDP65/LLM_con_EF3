@@ -146,6 +146,7 @@ namespace MoriData
         public bool _datiSalvati;
         public bool _recordPresente;
         public bool ProgrammaAttivo { get; set; }
+        public bool Selezionato { get; set; }
 
 
         public List<ParametroLL> ListaParametri;

@@ -625,6 +625,12 @@
             this.label69 = new System.Windows.Forms.Label();
             this.btnPaSalvaDati = new System.Windows.Forms.Button();
             this.tbpPaListaProfili = new System.Windows.Forms.TabPage();
+            this.btnPaCancellaSelezionati = new System.Windows.Forms.Button();
+            this.grbPaGeneraFile = new System.Windows.Forms.GroupBox();
+            this.btnPaSalvaFile = new System.Windows.Forms.Button();
+            this.chkPaSoloSelezionati = new System.Windows.Forms.CheckBox();
+            this.btnPaNomeFileProfiliSRC = new System.Windows.Forms.Button();
+            this.txtPaNomeFileProfili = new System.Windows.Forms.TextBox();
             this.btnPaAttivaConfigurazione = new System.Windows.Forms.Button();
             this.flwPaListaConfigurazioni = new BrightIdeasSoftware.FastObjectListView();
             this.btnPaCaricaListaProfili = new System.Windows.Forms.Button();
@@ -795,6 +801,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ImgPaOppPuntoVerde)).BeginInit();
             this.tbpPaParSoglia.SuspendLayout();
             this.tbpPaListaProfili.SuspendLayout();
+            this.grbPaGeneraFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).BeginInit();
             this.tbpPaCfgAvanzate.SuspendLayout();
             this.grbVarParametriSig.SuspendLayout();
@@ -4979,11 +4986,55 @@
             // 
             this.tbpPaListaProfili.BackgroundImage = global::PannelloCharger.Properties.Resources.Base_fondino_Y;
             resources.ApplyResources(this.tbpPaListaProfili, "tbpPaListaProfili");
+            this.tbpPaListaProfili.Controls.Add(this.btnPaCancellaSelezionati);
+            this.tbpPaListaProfili.Controls.Add(this.grbPaGeneraFile);
             this.tbpPaListaProfili.Controls.Add(this.btnPaAttivaConfigurazione);
             this.tbpPaListaProfili.Controls.Add(this.flwPaListaConfigurazioni);
             this.tbpPaListaProfili.Controls.Add(this.btnPaCaricaListaProfili);
             this.tbpPaListaProfili.Name = "tbpPaListaProfili";
             this.tbpPaListaProfili.UseVisualStyleBackColor = true;
+            // 
+            // btnPaCancellaSelezionati
+            // 
+            resources.ApplyResources(this.btnPaCancellaSelezionati, "btnPaCancellaSelezionati");
+            this.btnPaCancellaSelezionati.Name = "btnPaCancellaSelezionati";
+            this.btnPaCancellaSelezionati.UseVisualStyleBackColor = true;
+            // 
+            // grbPaGeneraFile
+            // 
+            this.grbPaGeneraFile.BackColor = System.Drawing.Color.White;
+            this.grbPaGeneraFile.Controls.Add(this.btnPaSalvaFile);
+            this.grbPaGeneraFile.Controls.Add(this.chkPaSoloSelezionati);
+            this.grbPaGeneraFile.Controls.Add(this.btnPaNomeFileProfiliSRC);
+            this.grbPaGeneraFile.Controls.Add(this.txtPaNomeFileProfili);
+            resources.ApplyResources(this.grbPaGeneraFile, "grbPaGeneraFile");
+            this.grbPaGeneraFile.Name = "grbPaGeneraFile";
+            this.grbPaGeneraFile.TabStop = false;
+            // 
+            // btnPaSalvaFile
+            // 
+            resources.ApplyResources(this.btnPaSalvaFile, "btnPaSalvaFile");
+            this.btnPaSalvaFile.Name = "btnPaSalvaFile";
+            this.btnPaSalvaFile.UseVisualStyleBackColor = true;
+            this.btnPaSalvaFile.Click += new System.EventHandler(this.btnPaSalvaFile_Click);
+            // 
+            // chkPaSoloSelezionati
+            // 
+            resources.ApplyResources(this.chkPaSoloSelezionati, "chkPaSoloSelezionati");
+            this.chkPaSoloSelezionati.Name = "chkPaSoloSelezionati";
+            this.chkPaSoloSelezionati.UseVisualStyleBackColor = true;
+            // 
+            // btnPaNomeFileProfiliSRC
+            // 
+            resources.ApplyResources(this.btnPaNomeFileProfiliSRC, "btnPaNomeFileProfiliSRC");
+            this.btnPaNomeFileProfiliSRC.Name = "btnPaNomeFileProfiliSRC";
+            this.btnPaNomeFileProfiliSRC.UseVisualStyleBackColor = true;
+            this.btnPaNomeFileProfiliSRC.Click += new System.EventHandler(this.btnPaNomeFileProfiliSRC_Click);
+            // 
+            // txtPaNomeFileProfili
+            // 
+            resources.ApplyResources(this.txtPaNomeFileProfili, "txtPaNomeFileProfili");
+            this.txtPaNomeFileProfili.Name = "txtPaNomeFileProfili";
             // 
             // btnPaAttivaConfigurazione
             // 
@@ -5796,6 +5847,8 @@
             this.tbpPaParSoglia.ResumeLayout(false);
             this.tbpPaParSoglia.PerformLayout();
             this.tbpPaListaProfili.ResumeLayout(false);
+            this.grbPaGeneraFile.ResumeLayout(false);
+            this.grbPaGeneraFile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).EndInit();
             this.tbpPaCfgAvanzate.ResumeLayout(false);
             this.grbVarParametriSig.ResumeLayout(false);
@@ -6516,5 +6569,11 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtPaTempLimite;
         private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.GroupBox grbPaGeneraFile;
+        private System.Windows.Forms.CheckBox chkPaSoloSelezionati;
+        private System.Windows.Forms.Button btnPaNomeFileProfiliSRC;
+        private System.Windows.Forms.TextBox txtPaNomeFileProfili;
+        private System.Windows.Forms.Button btnPaCancellaSelezionati;
+        private System.Windows.Forms.Button btnPaSalvaFile;
     }
 }

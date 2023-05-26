@@ -267,6 +267,7 @@
     </Compile>
     <Compile Include="Database\brInitSetup.cs" />
     <Compile Include="Database\DatiConfigCariche.cs" />
+    <Compile Include="Database\FileItemsModProfilo.cs" />
     <Compile Include="Database\GestioneBatterie\InizializzazioneBatterie.cs" />
     <Compile Include="Database\GestioneBatterie\mbParProfiloTipoBatt.cs" />
     <Compile Include="Database\GestioneBatterie\mbProduttore.cs" />
@@ -274,6 +275,7 @@
     <Compile Include="Database\GestioneBatterie\mbTecnologia.cs" />
     <Compile Include="Database\GestioneBatterie\mbTipoBatteria.cs" />
     <Compile Include="Database\GestioneBatterie\ParametriCiclo.cs" />
+    <Compile Include="Database\ItemModProfilo.cs" />
     <Compile Include="Database\LadeLightData.cs" />
     <Compile Include="Database\llContatoriApparato.cs" />
     <Compile Include="Database\llDataModel.cs" />

@@ -61,7 +61,6 @@ namespace MoriData
         public int VbatFinale { get; set; }
         public int IbatFinale { get; set; }
 
-
         public byte OpzioniCarica { get; set; }
         public UInt32 VettoreErrori { get; set; }
 

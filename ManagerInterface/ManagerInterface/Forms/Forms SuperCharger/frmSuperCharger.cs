@@ -3620,6 +3620,8 @@ namespace PannelloCharger
                 flwPaListaConfigurazioni.Font = _carTesto;
                 flwPaListaConfigurazioni.RowHeight = 25;
                 flwPaListaConfigurazioni.FullRowSelect = true;
+                flwPaListaConfigurazioni.CheckBoxes = true; 
+                flwPaListaConfigurazioni.CheckedAspectName = "Selezionato";
 
                 BrightIdeasSoftware.OLVColumn colIdConfig = new BrightIdeasSoftware.OLVColumn()
                 {
@@ -6304,6 +6306,105 @@ namespace PannelloCharger
             {
                 Log.Error("chkPaAttivaOppChg_EnabledChanged: " + Ex.Message);
             }
+        }
+
+        private void btnPaNomeFileProfiliSRC_Click(object sender, EventArgs e)
+        {
+            sfdExportDati.Filter = "LL Profile Parameter File (*.llpp)|*.llpp|All files (*.*)|*.*";
+            DialogResult esito = sfdExportDati.ShowDialog();
+            if (esito == DialogResult.OK)
+            {
+                txtPaNomeFileProfili.Text = sfdExportDati.FileName;
+            }
+        }
+
+        private void btnPaSalvaFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool DatiPresenti = false;
+
+                FileItemsModProfilo FileProfili = new FileItemsModProfilo();    
+
+
+
+
+                AreaDatiRegen BloccoDati;
+                llModelloBlocco BloccoAttivo;
+
+                //Se manca il filename esco
+                if (txtPaNomeFileProfili.Text == "")
+                {
+                    return;
+                }
+
+                if (_cb.Programmazioni.ProgrammiDefiniti.Count < 1)
+                {
+                    return;
+                }
+                this.Cursor = Cursors.WaitCursor;
+
+                // public List<llProgrammaCarica> ProgrammiDefiniti;
+                FileProfili.ListaProfili = new List<ItemModProfilo>();  
+                foreach (llProgrammaCarica Prog in _cb.Programmazioni.ProgrammiDefiniti )
+                {
+                    if(!chkPaSoloSelezionati.Checked || Prog.Selezionato)
+                    {
+                        ItemModProfilo Item = new ItemModProfilo();
+                        Item.NomeProfilo = Prog.ProgramName;
+                        Item.NoteProfilo = Prog.ProgramName;
+                        Item.Tensione = Prog.BatteryVdef;
+                        Item.Capacita = Prog.BatteryAhdef;
+                        Item.NumeroCelle = Prog.NumeroCelle;
+                        Item.TipoBatteria = Prog.TipoBatteria;
+                        Item.DurataMaxCarica = Prog.DurataMaxCarica;
+                        Item.ListaParametri = Prog.ListaParametri;
+                        Item.IdProgramma = Prog.IdProgramma;
+                        Item.IdProfiloCaricaLL = Prog.IdModelloLL;
+
+                        FileProfili.ListaProfili.Add(Item);
+                    }
+                }
+
+                FileProfili.DataCreazione = DateTime.Now;
+
+
+                // Se ho letto qualcosa, salvo il file
+                string JsonData = JsonConvert.SerializeObject(FileProfili);
+                Log.Debug("file generato");
+                // Prima comprimo i dati
+
+                if (false) //chkPackComprimiFile.Checked)
+                {
+                    Log.Debug("file generato");
+                    // Prima comprimo i dati
+                    string JsonZip = FunzioniComuni.CompressString(JsonData);
+
+                    // Ora cifro i dati
+                    // string JsonEncript = StringCipher.Encrypt(JsonZip);
+                    // PER INCOMPATIBILITA' DEL METODO DI CIFRATUTA CON NET CORE (XAMARIN)
+                    // RIMOSSA LA CIFRATURA DEL PACCHETTO  (16/07/2020)
+                    // JsonEncript = JsonData;
+                    // Log.Debug("file criptato");
+
+                    JsonData = JsonZip;
+
+                }
+
+                // string JsonZip = FunzioniComuni.CompressString(JsonData);
+
+                File.WriteAllText(txtPaNomeFileProfili.Text, JsonData);
+                MessageBox.Show("File salvato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Log.Debug("file salvato");
+                this.Cursor = Cursors.Default;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+                this.Cursor = Cursors.Default;
+            }
+
         }
     }
 }
