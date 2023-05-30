@@ -407,12 +407,6 @@
     <Compile Include="Forms\Forms SuperCharger\frmSuperCharger.Designer.cs">
       <DependentUpon>frmSuperCharger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms ID-Batt Programmer\frmIdBatt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Forms ID-Batt Programmer\frmIdBatt.Designer.cs">
-      <DependentUpon>frmIdBatt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmAboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -620,8 +614,6 @@
     <Compile Include="Logiche\FileFirmware.cs" />
     <Compile Include="Logiche\FileFirmwareLL.cs" />
     <Compile Include="Logiche\FileSetupRigeneratore.cs" />
-    <Compile Include="Logiche\ID_BATT\IDBatt.cs" />
-    <Compile Include="Logiche\ID_BATT\IDBatt_Programmazioni.cs" />
     <Compile Include="Logiche\ImageDump.cs" />
     <Compile Include="Logiche\LogicheBase.cs" />
     <Compile Include="Logiche\MappaSpybatt.cs" />
@@ -816,12 +808,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.resx">
       <DependentUpon>frmSuperCharger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms ID-Batt Programmer\frmIdBatt.en.resx">
-      <DependentUpon>frmIdBatt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms ID-Batt Programmer\frmIdBatt.resx">
-      <DependentUpon>frmIdBatt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAboutBox.de.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
@@ -1417,7 +1403,6 @@
     <None Include="Resources\if_GRAY_16.png" />
     <None Include="Resources\if_GRAY_32.png" />
     <None Include="Resources\ICOspybattBase.png" />
-    <None Include="Resources\ico_idbatt.png" />
     <Content Include="Resources\ind_due.png" />
     <Content Include="Resources\ind_tre.png" />
     <None Include="Resources\IU650.png" />
@@ -1454,6 +1439,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Forms\Forms ID-Batt Programmer\" />
     <Folder Include="Resources\IconeTreeview\" />
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

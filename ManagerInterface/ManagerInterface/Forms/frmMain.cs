@@ -179,6 +179,10 @@ namespace PannelloCharger
                 mnuCaricabatteria.Visible = false;
                 if ((byte)Livello < 0x01) mnuCaricabatteria.Visible = true;
 
+                //---------------- Menu ID Batt
+                mnuIdBatt.Visible = false;
+                if ((byte)Livello < 0x02) mnuIdBatt.Visible = true;
+
                 //---------------- Menu Spy-batt
                 mnuSpybat.Visible = false;
                 toolStripMenuItem1.Visible = false;
@@ -1445,6 +1449,38 @@ namespace PannelloCharger
             ProcessStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             Process.StartInfo = ProcessStartInfo;
             Process.Start();
+        }
+
+        private void CallIDBattToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmIdBatt))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                frmIdBatt IDBattCorrente = new frmIdBatt(ref varGlobali,false);
+                IDBattCorrente.MdiParent = this;
+                IDBattCorrente.StartPosition = FormStartPosition.CenterParent;
+                //ArchivioCorrenteLL.MostraLista();
+                IDBattCorrente.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("frmMain: " + Ex.Message);
+            }
+        }
+
+        private void tstBtnIdBatt_Click(object sender, EventArgs e)
+        {
+            CallIDBattToolStripMenuItem_Click(this,null);
         }
     }
 

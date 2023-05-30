@@ -635,18 +635,16 @@ namespace PannelloCharger
                 {
                     foreach (Form form in Application.OpenForms)
                     {
-                        if (form.GetType() == typeof(frmIdProgrammer))
+                        if (form.GetType() == typeof(frmIdBatt))
                         {
-                            frmIdProgrammer _tmpFrmIDP = (frmIdProgrammer)form;
-                            if (_tmpFrmIDP.IdCorrente == IdScheda)
-                            {
+
                                 form.Activate();
                                 return;
-                            }
+
                         }
                     }
                     Log.Debug("NUOVO IDP");
-                    frmIdProgrammer idpCorrente = new frmIdProgrammer(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
+                    frmIdBatt idpCorrente = new frmIdBatt(ref _varGlobali, true, "", logiche, esitoCanaleApparato, true);
                     idpCorrente.MdiParent = this.MdiParent; ;
                     idpCorrente.StartPosition = FormStartPosition.CenterParent;
 

@@ -226,4 +226,7 @@
   <data name="Base fondino Y" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Base fondino Y.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ico_idbatt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ico_idbatt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

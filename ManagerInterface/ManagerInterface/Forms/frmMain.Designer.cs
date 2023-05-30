@@ -63,6 +63,8 @@
             this.importaHEXDUMPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.alimentatoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuIdBatt = new System.Windows.Forms.ToolStripMenuItem();
+            this.CallIDBattToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuServizi = new System.Windows.Forms.ToolStripMenuItem();
             this.flashFTDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flashSPYBATTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,6 +95,7 @@
             this.tstPulsanti = new System.Windows.Forms.ToolStrip();
             this.tstBtnCercaUsb = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaWireless = new System.Windows.Forms.ToolStripButton();
+            this.tstBtnIdBatt = new System.Windows.Forms.ToolStripButton();
             this.tstBtnExport = new System.Windows.Forms.ToolStripButton();
             this.tstBtnSave = new System.Windows.Forms.ToolStripButton();
             this.tstBtnCercaRS232 = new System.Windows.Forms.ToolStripButton();
@@ -134,6 +137,7 @@
             this.mnuImpianto,
             this.mnuCaricabatteria,
             this.mnuSpybat,
+            this.mnuIdBatt,
             this.mnuServizi,
             this.mnuImpostazioni,
             this.toolStripMenuItem2});
@@ -340,6 +344,19 @@
             resources.ApplyResources(this.alimentatoreToolStripMenuItem, "alimentatoreToolStripMenuItem");
             this.alimentatoreToolStripMenuItem.Click += new System.EventHandler(this.alimentatoreToolStripMenuItem_Click);
             // 
+            // mnuIdBatt
+            // 
+            this.mnuIdBatt.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CallIDBattToolStripMenuItem});
+            this.mnuIdBatt.Name = "mnuIdBatt";
+            resources.ApplyResources(this.mnuIdBatt, "mnuIdBatt");
+            // 
+            // CallIDBattToolStripMenuItem
+            // 
+            this.CallIDBattToolStripMenuItem.Name = "CallIDBattToolStripMenuItem";
+            resources.ApplyResources(this.CallIDBattToolStripMenuItem, "CallIDBattToolStripMenuItem");
+            this.CallIDBattToolStripMenuItem.Click += new System.EventHandler(this.CallIDBattToolStripMenuItem_Click);
+            // 
             // mnuServizi
             // 
             this.mnuServizi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -532,6 +549,7 @@
             this.tstPulsanti.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tstBtnCercaUsb,
             this.tstBtnCercaWireless,
+            this.tstBtnIdBatt,
             this.tstBtnExport,
             this.tstBtnSave,
             this.tstBtnCercaRS232,
@@ -556,6 +574,14 @@
             resources.ApplyResources(this.tstBtnCercaWireless, "tstBtnCercaWireless");
             this.tstBtnCercaWireless.Name = "tstBtnCercaWireless";
             this.tstBtnCercaWireless.Click += new System.EventHandler(this.tstBtnCercaWireless_Click);
+            // 
+            // tstBtnIdBatt
+            // 
+            this.tstBtnIdBatt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tstBtnIdBatt.Image = global::PannelloCharger.Properties.Resources.ico_idbatt;
+            resources.ApplyResources(this.tstBtnIdBatt, "tstBtnIdBatt");
+            this.tstBtnIdBatt.Name = "tstBtnIdBatt";
+            this.tstBtnIdBatt.Click += new System.EventHandler(this.tstBtnIdBatt_Click);
             // 
             // tstBtnExport
             // 
@@ -710,6 +736,9 @@
         private System.Windows.Forms.ToolStripStatusLabel sstMainMsg;
         private System.Windows.Forms.ToolStripMenuItem mnuGestioneDispositivi;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripButton tstBtnIdBatt;
+        private System.Windows.Forms.ToolStripMenuItem mnuIdBatt;
+        private System.Windows.Forms.ToolStripMenuItem CallIDBattToolStripMenuItem;
     }
 }
 

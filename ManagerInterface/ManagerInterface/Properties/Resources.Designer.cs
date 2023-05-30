@@ -263,6 +263,16 @@ namespace PannelloCharger.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ico_idbatt {
+            get {
+                object obj = ResourceManager.GetObject("ico_idbatt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ico_SpyBatt {
             get {
                 object obj = ResourceManager.GetObject("ico_SpyBatt", resourceCulture);
