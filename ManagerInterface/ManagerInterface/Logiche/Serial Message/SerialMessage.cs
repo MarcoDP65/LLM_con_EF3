@@ -139,7 +139,7 @@ namespace ChargerLogic
 
             FrequenzaSwitching   = 0x40,             // Attualmente non in uso
 
-            DivisoreK = 0x50,                        // da trasmettere SEMPRE prima dei parametri K 
+            DivisoreK   = 0x50,                      // da trasmettere SEMPRE prima dei parametri K 
                                                      // --> ora è USA SPY-BATT, sempre presente, 0x00 == USA SB/TOKEN, 
                                                      //                                          0xF0 == false ( !=0 ) --> usa programmazione corrente
  

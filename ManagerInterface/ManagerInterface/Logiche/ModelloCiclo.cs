@@ -49,6 +49,43 @@ namespace ChargerLogic
             ModelloProfilo = null;
         }
 
+        public bool GeneraProgrammaCarica(_db connessione)
+        {
+            try
+            {
+                if(connessione != null)
+                {
+                    ProfiloRegistrato = new llProgrammaCarica(connessione);
+                    // ProfiloRegistrato.IdProfilo = IdProfilo; // tipo dati ????
+                    // ProfiloRegistrato.IdProgramma = idp
+                    ProfiloRegistrato.TipoBatteria = Batteria.BatteryTypeId;
+                    ProfiloRegistrato.IdProgramma = IdProgramma;
+                    ProfiloRegistrato.ProgramName = NomeProfilo;
+
+                    ProfiloRegistrato.BatteryVdef = Tensione;
+                    ProfiloRegistrato.BatteryAhdef = Capacita;
+                    ProfiloRegistrato.IdProfilo = Profilo.IdProfiloCaricaLL;
+
+                    GeneraListaValori();
+
+                    ProfiloRegistrato.ListaParametri = ListaParametri;
+
+
+
+                    return true;
+                }
+                else
+                { return false; }   
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+
+
         public bool GeneraProgrammaCarica()
         {
             try

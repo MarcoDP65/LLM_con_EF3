@@ -59,6 +59,60 @@ namespace ChargerLogic
             }
         }
 
+        public bool CaricaDati(string IdApp = "", string TipoApp = "")
+        {
+
+            return CaricaDatiDB(IdApp, TipoApp);
+        }
+
+
+
+        public bool CaricaDatiDB(string IdApp = "", string TipoApp = "")
+        {
+            try
+            {
+                bool _esito;
+                llProgrammaCarica _tempPrg;
+
+                ProgrammiDefiniti = new List<llProgrammaCarica>();
+                if (_database ==  null) return false;
+
+                string Sql = "select * from _llProgrammaCarica ";
+                if (IdApp != "" || TipoApp != "")
+                {
+                    Sql += " where ";
+                    if (IdApp != "") Sql += " IdApparato = '" + IdApp + "' ";
+                    if (IdApp != "" && TipoApp != "") Sql += " and ";
+                    if (TipoApp != "") Sql += " TipoApparato = '" + TipoApp + "' ";
+                }
+                Sql += " order by IdProgramma ";
+
+                IEnumerable<_llProgrammaCarica> _TempCicli = _database.Query<_llProgrammaCarica>(Sql);
+
+                foreach (_llProgrammaCarica Elemento in _TempCicli)
+                {
+                    llProgrammaCarica _cLoc;
+                    _cLoc = new llProgrammaCarica(Elemento);
+                    _cLoc.GeneraListaParametri();
+                    ProgrammiDefiniti.Add(_cLoc);
+                    if (_cLoc.PosizioneCorrente == 0)
+                    {                   
+                        ProgrammaAttivo = _cLoc;
+                    }
+
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
         public bool SalvaDati()
         {
             try

@@ -1465,7 +1465,7 @@ namespace PannelloCharger
                     }
                 }
 
-                frmIdBatt IDBattCorrente = new frmIdBatt(ref varGlobali,false);
+                frmIdBatt IDBattCorrente = new frmIdBatt(ref varGlobali,true,"IDBATT",logiche,false,true);
                 IDBattCorrente.MdiParent = this;
                 IDBattCorrente.StartPosition = FormStartPosition.CenterParent;
                 //ArchivioCorrenteLL.MostraLista();

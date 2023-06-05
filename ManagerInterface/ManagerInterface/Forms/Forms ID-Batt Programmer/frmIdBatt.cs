@@ -15,6 +15,8 @@ using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using Utility;
+using static ChargerLogic.MessaggioSpyBatt.EsitoMessaggio;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //  frmSuperCharger
 
 namespace PannelloCharger
@@ -89,26 +91,11 @@ namespace PannelloCharger
 
 
                 _logiche = Logiche;
-                if (SerialeCollegata)
-                {
-                    EsitoApertura = false;
 
-                    // EsitoApertura = attivaCaricabatterie(ref _par, SerialeCollegata);
-                    // EsitoApertura = LeggiDatiCaricabatterie(ref _par, SerialeCollegata);
+                LeggiCbDaArchivio(ref _par, CaricaDati, IdApparato, "IB");
 
-                    ApparatoConnesso = EsitoApertura;
-                    InizializzaScheda();
-                }
-                else
-                {
-                    ApparatoConnesso = false;
-                    if (IdApparato != "")
-                    {
-                        LeggiCbDaArchivio(ref _par, CaricaDati, IdApparato);
-                    }
-                }
 
-                //InizializzaScheda();
+                InizializzaScheda();
                 applicaAutorizzazioni();
                 RidimensionaControlli();
 
@@ -200,11 +187,13 @@ namespace PannelloCharger
             bool _esito;
             try
             {
-                //_parametri = _par;
-                //InitializeComponent();
+                _parametri = _par;
+                InitializeComponent();
                 ResizeRedraw = true;
+
+
                 //_msg = new SerialMessage();
-                //_cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione, CaricaBatteria.TipoCaricaBatteria.SuperCharger);
+                _cb = new IDBatt(ref _parametri, _logiche.dbDati.connessione, IDBatt.TipoCaricaBatteria.SuperCharger);
                 InizializzaScheda();
 
 
@@ -219,10 +208,9 @@ namespace PannelloCharger
 
 
                 txtGenIdApparato.Text = _cb.ApparatoLL._ll.Id;
-                txtGenSerialeZVT.Text = _cb.ApparatoLL._ll.SerialeZVT;
+                //txtGenSerialeZVT.Text = _cb.ApparatoLL._ll.SerialeZVT;
 
                 txtGenMatricola.Text = _cb.Intestazione.Matricola.ToString();
-                txtGenModello.Text = _cb.Intestazione.modello;
 
                 _cbCollegato = true;
 
@@ -252,15 +240,15 @@ namespace PannelloCharger
 
 
 
-        public bool LeggiCbDaArchivio(ref parametriSistema _par, bool CaricaDati, string IdApparato)
+        public bool LeggiCbDaArchivio(ref parametriSistema _par, bool CaricaDati, string IdApparato,string TipoApparato)
         {
             bool _esito=true;
             try
             {
 
                 ResizeRedraw = true;
-                //_msg = null;   //new SerialMessage();
                 _cb = new IDBatt(ref _parametri, _logiche.dbDati.connessione, IDBatt.TipoCaricaBatteria.SuperCharger);
+                _cb.CaricaProgrammazioniDB("IDBATT","IB");
                 _apparatoPresente = false;
                 //_esito = _cb.VerificaPresenza();
                 _tempParametri = new llParametriApparato();
@@ -272,52 +260,30 @@ namespace PannelloCharger
                     _tempParametri = _cb.ParametriApparato;
 
 
-                    if (_tempParametri.IdApparato == null)
-                    {
-                        // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
-                        // Attivo solo la tab inizializzazione, se sono abilitato 
-
-                        MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                        return true;
-                    }
-                    else
-                    {
-                        if (_tempParametri.IdApparato == "????????" || _tempParametri.IdApparato.Trim() == "")
-                        {
-                            // La scheda risponde correttamente ma non è inizializzata completamente (manca l'ID apparato)....
-                            // Attivo solo la tab inizializzazione, se sono abilitato 
-
-                            MessageBox.Show("Scheda controllo non inizializzata", "Connessione", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                            return true;
-                        }
-
-                    }
-
-                    _cb.ApparatoLL = new LadeLightData(_logiche.dbDati.connessione, _tempParametri);
+                    //_cb.ApparatoLL = new LadeLightData(_logiche.dbDati.connessione, _tempParametri);
 
 
-                    txtGenIdApparato.Text = _cb.ApparatoLL._ll.Id;
-                    txtGenSerialeZVT.Text = _cb.ApparatoLL._ll.SerialeZVT;
+                    txtGenIdApparato.Text = "IDBATT";
 
-                    txtGenMatricola.Text = _cb.Intestazione.Matricola.ToString();
-                    txtGenModello.Text = _cb.Intestazione.modello;
+                    _cb.Programmazioni.CaricaDatiDB("IDBATT", "IB");
+
+                    //txtGenMatricola.Text = _cb.Intestazione.Matricola.ToString();
+                    //txtGenModello.Text = _cb.Intestazione.modello;
 
                     _cbCollegato = true;
 
-                    CaricaContatori(IdApparato);
+                    //CaricaContatori(IdApparato);
 
-                    _cb.DatiCliente = new llDatiCliente(_logiche.dbDati.connessione);
-                    _cb.DatiCliente.caricaDati(IdApparato,1);
+                    //_cb.DatiCliente = new llDatiCliente(_logiche.dbDati.connessione);
+                    //_cb.DatiCliente.caricaDati(IdApparato,1);
 
 
                     // ora carico il ciclo corrente e i contatori programmazioni
                     InizializzaScheda();
-                    LeggiProgrammazioniDB(IdApparato);
+                    LeggiProgrammazioniDB(IdApparato, TipoApparato);
 
 
-                    ModoArchivio();
+                    //ModoArchivio();
                     _apparatoPresente = false;
                     return true;
 
@@ -343,8 +309,8 @@ namespace PannelloCharger
                 btnGenAzzzeraContatori.Visible = false;
                 btnGenAzzzeraContatoriTot.Visible = false;
                 btnPaAttivaConfigurazione.Visible = false;
-                btnCicloCorrente.Visible = false;
-                btnPaProfileChiudiCanale.Visible = false;
+               // btnCicloCorrente.Visible = false;
+               // btnPaProfileChiudiCanale.Visible = false;
                 btnPaProfileRefresh.Visible = false;
                 chkPaSbloccaValori.Visible = false;
                 lblPaSbloccaValori.Visible = false;
@@ -381,6 +347,15 @@ namespace PannelloCharger
             cmbPaTipoBatteria.DataSource = _parametri.ParametriProfilo.ModelliBatteria;  //   TipiBattria;
             cmbPaTipoBatteria.ValueMember = "BatteryTypeId";
             cmbPaTipoBatteria.DisplayMember = "BatteryType";
+
+            cmbGenModelloCB.DataSource = _cb.DatiBase.ModelliLL;
+            cmbGenModelloCB.ValueMember = "IdModelloLL";
+            cmbGenModelloCB.DisplayMember = "NomeModello";
+
+            //            cmbGenModelloCB.SelectedItem = _cb.DatiBase.ModelliLL.Where(x => ((_llModelloCb)x).IdModelloLL == 0xEE);
+            cmbGenModelloCB.SelectedIndex = _cb.DatiBase.ModelliLL.IndexOf(_cb.DatiBase.ModelliLL.FirstOrDefault(x => ((_llModelloCb)x).IdModelloLL == 0xEE));
+
+
 
             // NUOVA VERSIONE
             InizializzaVistaProgrammazioni();
@@ -574,35 +549,39 @@ namespace PannelloCharger
                 bool esito;
                 elementiComuni.EsitoVerificaParametri EsitoVer;
                 // Se so già che devo salvare, non faccio nemmeno il controllo dati:
-                if (ModCicloCorrente.DatiSalvati)
-                {
-                    // Se almeno 1 parametro è diverso dal ciclo attivo corrente lo salvo come nuovo ciclo
-                    EsitoVer = VerificaValoriParametriCarica();
-                    if (EsitoVer == elementiComuni.EsitoVerificaParametri.Ok)
-                    {
-                        //coincide col programma esistente. esco
-                        return true;
-                    }
-                    else
-                    {
-                        // Almeno 1 valore cambiato --> prenoto il cambio ID
-                        ModCicloCorrente.RichiestoNuovoId = true;
-
-                    }
-                }
                 // Carico i valori impostati nelle textbox
                 esito = LeggiValoriParametriCarica();
 
-                ModCicloCorrente.IdProgramma = (ushort)(_cb.Programmazioni.UltimoIdProgamma + 1);
+
                 bool esitoSalvataggio = false;
                 if (esito)
                 {
                     // Riscrivo i valori nelle textBox per conferma poi salvo i valori 
-                    //MostraParametriCiclo(false);
-                    ModCicloCorrente.GeneraProgrammaCarica();
+                    ModCicloCorrente.GeneraProgrammaCarica(_logiche.dbDati.connessione);
+
+
+
                     _cb.Programmazioni.ProgrammaAttivo = ModCicloCorrente.ProfiloRegistrato;
-                    _cb.PreparaSalvataggioProgrammazioni();
-                    esitoSalvataggio = _cb.SalvaProgrammazioniApparato();
+                    _cb.Programmazioni.ProgrammaAttivo.ListaParametri = ModCicloCorrente.ListaParametri;
+                    _cb.Programmazioni.ProgrammaAttivo.AnalizzaListaParametri();
+                    _cb.Programmazioni.ProgrammaAttivo.IdApparato = "IDBATT";
+                    _cb.Programmazioni.ProgrammaAttivo.TipoApparato = "IB";
+                    if (ModCicloCorrente.IdProgramma == 0)
+                    {
+                        _cb.Programmazioni.ProgrammaAttivo.IdApparato = "IDBATT";
+                        _cb.Programmazioni.ProgrammaAttivo.TipoApparato = "IB";
+
+                        //Nuovo programma, creo un nuovo ID
+                        ModCicloCorrente.IdProgramma = _cb.Programmazioni.ProgrammaAttivo.NewLocalId("IDBATT", "IB");
+                        _cb.Programmazioni.ProgrammaAttivo.IdProgramma = ModCicloCorrente.IdProgramma;
+                        if (ModCicloCorrente.IdProgramma == 0)
+                        {
+                            // Se è ancora a 0, errore ed esco
+                            return false;
+                        }
+                    }
+
+                    esitoSalvataggio = _cb.Programmazioni.ProgrammaAttivo.salvaDati();
 
                 }
 
@@ -750,6 +729,24 @@ namespace PannelloCharger
                 return false;
             }
         }
+        public bool DatiProfiloCambiati()
+        {
+            try
+            {
+                elementiComuni.EsitoVerificaParametri Test = VerificaValoriParametriCarica();
+                if (Test!= elementiComuni.EsitoVerificaParametri.Ok)
+                {
+                    return false;
+                }
+                return true;
+
+            }
+            catch
+            {
+                return true;
+            }
+        }
+
 
         public elementiComuni.EsitoVerificaParametri VerificaValoriParametriCarica()
         {
@@ -1290,7 +1287,6 @@ namespace PannelloCharger
             {
 
                 CaricaProgrammazioni();
-                IncrementaContatoreConf();
                 MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -1298,6 +1294,7 @@ namespace PannelloCharger
             {
                 MessageBox.Show("Aggiornamento configurazione non riuscito", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            CaricaProgrammazioni();
 
             this.Cursor = Cursors.Default;
         }
@@ -2235,6 +2232,7 @@ namespace PannelloCharger
             try
             {
                 // Ripristino le eventuali schede nascoste 
+                ModCicloCorrente = new ModelloCiclo();
 
                 return true;
             }
@@ -2779,8 +2777,8 @@ namespace PannelloCharger
             try
             {
                 bool Esito;
-
-                Esito = _cb.LeggiProgrammazioni();
+                Esito = _cb.Programmazioni.CaricaDatiDB("IDBATT", "IB");
+                //Esito = _cb.LeggiProgrammazioni();
 
                 if (Esito)
                 {
@@ -2832,13 +2830,13 @@ namespace PannelloCharger
 
 
 
-        public bool LeggiProgrammazioniDB(string IdApparato)
+        public bool LeggiProgrammazioniDB(string IdApparato, string TipoApparato)
         {
             try
             {
                 bool Esito;
 
-                Esito = _cb.CaricaProgrammazioniDB(IdApparato);
+                Esito = _cb.CaricaProgrammazioniDB(IdApparato, TipoApparato);
 
                 if (Esito)
                 {
@@ -2897,11 +2895,12 @@ namespace PannelloCharger
 
                 if (flwPaListaConfigurazioni.SelectedObject == null)
                 {
-                    btnPaAttivaConfigurazione.Enabled = false;
+                    // btnPaAttivaConfigurazione.Enabled = false;
                 }
                 else
                 {
-
+                    /*
+                     
                     llProgrammaCarica tmpRigaSel = (llProgrammaCarica)flwPaListaConfigurazioni.SelectedObject;
 
                     if (tmpRigaSel.PosizioneCorrente != 0)
@@ -2909,6 +2908,7 @@ namespace PannelloCharger
                     else
                         btnPaAttivaConfigurazione.Enabled = false;
 
+                    */
 
                 }
 
@@ -2924,8 +2924,6 @@ namespace PannelloCharger
         {
             try
             {
-                //FastObjectListView _lista = (FastObjectListView)sender;
-                //llMemoriaCicli CicloSel;+
 
                 if (flwPaListaConfigurazioni.SelectedObject == null)
                 {
@@ -2933,55 +2931,35 @@ namespace PannelloCharger
                 }
                 else
                 {
-
-                    llProgrammaCarica tmpRigaSel = (llProgrammaCarica)flwPaListaConfigurazioni.SelectedObject;
-
-                    if (tmpRigaSel.PosizioneCorrente == 0)
-                        return;
-                    else
+                    if (_cb.Programmazioni.ProgrammaAttivo != null) 
                     {
-                        // Riposiziono tuuuti gli elementi: quelli prima del selezionato in posizione +1, 
-                        //                                  il selezionato in posizione 0
-                        //                                  quelli dopo il selezioato, invariati
-                        bool esitoSalvataggio = false;
-                        this.Cursor = Cursors.WaitCursor;
-                        foreach (llProgrammaCarica TPC in _cb.Programmazioni.ProgrammiDefiniti)
+                        // verifica se ho mofdifiche
+                        if (DatiProfiloCambiati())
                         {
-                            if (TPC.PosizioneCorrente < tmpRigaSel.PosizioneCorrente)
+                            // Dati cambiati; messaggio salvataggio
+                            DialogResult Risposta = MessageBox.Show("Salvo i dati correnti prima di caricare i nuovi ?", "PARAMETRI CICLO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                            if (Risposta == DialogResult.Cancel)
                             {
-                                TPC.PosizioneCorrente += 1;
+                                // Cancello selezione; non faccion nulla
+                                return;
                             }
-                            else
+                            if (Risposta == DialogResult.OK)
                             {
-                                if (TPC.PosizioneCorrente == tmpRigaSel.PosizioneCorrente)
-                                {
-                                    TPC.PosizioneCorrente = 0;
-                                }
-
+                                // --> save
                             }
                         }
+                        
+                        ProfiloInCaricamento = true;
+                        _cb.Programmazioni.ProgrammaAttivo = (llProgrammaCarica)flwPaListaConfigurazioni.SelectedObject;
+                        ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
+                        //ModCicloCorrente.GeneraListaValori();
+                        ModCicloCorrente.EstraiDaProgrammaCarica();
 
-                        esitoSalvataggio = _cb.SalvaProgrammazioniApparato();
-                        CaricaProgrammazioni();
-
-                        if (esitoSalvataggio)
-                        {
-                            MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            IncrementaContatoreConf();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Aggiornamento configurazione non riuscito", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-
-
-                        this.Cursor = Cursors.Default;
-
+                        MostraParametriCiclo(true, false, chkPaSbloccaValori.Checked);
+                        ProfiloInCaricamento = false;
 
                     }
-                    btnPaAttivaConfigurazione.Enabled = false;
-
-
+                    tbcPaSottopagina.SelectedIndex = 1;
                 }
 
             }
@@ -3731,6 +3709,28 @@ namespace PannelloCharger
         {
             try
             {
+                // verifica se ho mofdifiche
+                if (DatiProfiloCambiati())
+                {
+                    // Dati cambiati; messaggio salvataggio
+                    DialogResult Risposta = MessageBox.Show("Salvo i dati correnti prima di caricare i nuovi ?", "PARAMETRI CICLO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (Risposta == DialogResult.Cancel)
+                    {
+                        // Cancello selezione; non faccion nulla
+                        return;
+                    }
+                    if (Risposta == DialogResult.OK)
+                    {
+                        // --> save
+                    }
+                }
+
+                ModCicloCorrente = new ModelloCiclo();
+
+                _cb.Programmazioni.ProgrammaAttivo = new llProgrammaCarica(_logiche.dbDati.connessione);
+                _cb.Programmazioni.ProgrammaAttivo._llprc.IdApparato = "ID-BATT";
+                _cb.Programmazioni.ProgrammaAttivo._llprc.TipoApparato = "IB";
+
                 tbcPaSchedeValori.Visible = false;
                 cmbPaTipoBatteria.SelectedIndex = 0;
                 chkPaUsaSpyBatt.Checked = false;
@@ -3740,6 +3740,9 @@ namespace PannelloCharger
                 picPaImmagineProfilo.BackColor = Color.White;
                 picPaImmagineProfilo.Image = myImage;
                 grbPaImpostazioniLocali.Enabled = true;
+                tbcPaSottopagina.SelectedIndex = 1;
+
+
             }
             catch (Exception Ex)
             {
@@ -3912,7 +3915,7 @@ namespace PannelloCharger
                 {
                     txtPaNomeSetup.Text = _cb.Programmazioni.ProgrammaAttivo.ProgramName;
                     txtPaCapacita.Text = FunzioniMR.StringaCapacita(_cb.Programmazioni.ProgrammaAttivo.BatteryAhdef, 10);
-                    List<sbTipoBatteria> Lista = (List<sbTipoBatteria>)(cmbPaTipoBatteria.DataSource);
+                    List<mbTipoBatteria> Lista = (List<mbTipoBatteria>)(cmbPaTipoBatteria.DataSource);
                     cmbPaTipoBatteria.SelectedItem = Lista.Find(x => x.BatteryTypeId == _cb.Programmazioni.ProgrammaAttivo.BatteryType);
                     List<_llProfiloCarica> ListaP = (List<_llProfiloCarica>)(cmbPaProfilo.DataSource);
                     cmbPaProfilo.SelectedItem = ListaP.Find(x => x.IdProfiloCaricaLL == _cb.Programmazioni.ProgrammaAttivo.IdProfilo);
@@ -4208,8 +4211,100 @@ namespace PannelloCharger
 
         }
 
+        private void cmbGenModelloCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(cmbGenModelloCB.SelectedItem != null)
+                {
+                    _llModelloCb CbSel = (_llModelloCb)cmbGenModelloCB.SelectedItem;
+
+                    _tempParametri = new llParametriApparato();
+                    _tempParametri.llParApp.IdApparato = "IDBATT";
+                    _tempParametri.llParApp.TipoApparato = CbSel.IdModelloLL;
+                    _tempParametri.llParApp.VMin = FunzioniMR.ConvertiUshort(CbSel.TensioneMin, 100, 0);
+
+                    _tempParametri.llParApp.VMax = FunzioniMR.ConvertiUshort(CbSel.TensioneMax, 100, 0);
+                    txtGenTensioneMax.Text = FunzioniMR.StringaCapacitaUint(_tempParametri.llParApp.VMax, 100, 1);
+
+                    _tempParametri.llParApp.Amax = FunzioniMR.ConvertiUshort(CbSel.CorrenteMax, 10, 0);
+                    txtGenCorrenteMax.Text = FunzioniMR.StringaCapacitaUint(_tempParametri.llParApp.Amax, 10, 0);
+
+                    _cb.ParametriApparato = _tempParametri;
+                    _cb.ModelloCorrente = CbSel;
+
+                }
+                else
+                {
+                    _tempParametri = null;
+                    txtGenTensioneMax.Text = "";
+                    txtGenCorrenteMax.Text = "";
+                    _cb.ParametriApparato = _tempParametri;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ModCicloCorrente = new ModelloCiclo();
+
+                _cb.Programmazioni.ProgrammaAttivo = new llProgrammaCarica(_logiche.dbDati.connessione);
+                _cb.Programmazioni.ProgrammaAttivo._llprc.IdApparato = "ID-BATT";
+                _cb.Programmazioni.ProgrammaAttivo._llprc.TipoApparato = "IB";
+
+                tbcPaSchedeValori.Visible = false;
+                cmbPaTipoBatteria.SelectedIndex = 0;
+                chkPaUsaSpyBatt.Checked = false;
+                cmbPaTipoBatteria.Enabled = true;
+
+                var myImage = new Bitmap(Properties.Resources.ICOLadeLight);
+                picPaImmagineProfilo.BackColor = Color.White;
+                picPaImmagineProfilo.Image = myImage;
+                grbPaImpostazioniLocali.Enabled = true;
+                tbcPaSottopagina.SelectedIndex = 1;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaProfileNEW_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnPaCancellaSelezionati_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(_cb.Programmazioni.ProgrammiDefiniti.Count > 0)
+                {
+                    List<llProgrammaCarica> TempList = new List<llProgrammaCarica>();
+                    foreach (llProgrammaCarica tempPrg in _cb.Programmazioni.ProgrammiDefiniti)
+                    {
+                        if (tempPrg.Selezionato)
+                        {
+                            TempList.Add(tempPrg);  
+                        }
+                    }
+                    foreach (llProgrammaCarica tempPrg in TempList)
+                    {
+                        _cb.Programmazioni.ProgrammiDefiniti.Remove(tempPrg);   
+                    }
 
 
+                }
+                MostraProgrammazioni();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }
 

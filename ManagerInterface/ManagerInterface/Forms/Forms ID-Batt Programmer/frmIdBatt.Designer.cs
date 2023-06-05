@@ -38,6 +38,17 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabProfiloAttuale = new System.Windows.Forms.TabPage();
             this.tbcPaSottopagina = new System.Windows.Forms.TabControl();
+            this.tbpPaListaProfili = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnPaCancellaSelezionati = new System.Windows.Forms.Button();
+            this.grbPaGeneraFile = new System.Windows.Forms.GroupBox();
+            this.btnPaSalvaFile = new System.Windows.Forms.Button();
+            this.chkPaSoloSelezionati = new System.Windows.Forms.CheckBox();
+            this.btnPaNomeFileProfiliSRC = new System.Windows.Forms.Button();
+            this.txtPaNomeFileProfili = new System.Windows.Forms.TextBox();
+            this.btnPaAttivaConfigurazione = new System.Windows.Forms.Button();
+            this.flwPaListaConfigurazioni = new BrightIdeasSoftware.FastObjectListView();
+            this.btnPaCaricaListaProfili = new System.Windows.Forms.Button();
             this.tbpPaProfiloAttivo = new System.Windows.Forms.TabPage();
             this.pippo = new System.Windows.Forms.GroupBox();
             this.btnPaProfileClear = new System.Windows.Forms.Button();
@@ -62,11 +73,9 @@
             this.lblPaTensione = new System.Windows.Forms.Label();
             this.cmbPaTensione = new System.Windows.Forms.ComboBox();
             this.txtPaTensione = new System.Windows.Forms.TextBox();
-            this.btnPaProfileChiudiCanale = new System.Windows.Forms.Button();
             this.btnPaCaricaCicli = new System.Windows.Forms.Button();
             this.chkPaSbloccaValori = new System.Windows.Forms.CheckBox();
             this.lblPaSbloccaValori = new System.Windows.Forms.Label();
-            this.btnCicloCorrente = new System.Windows.Forms.Button();
             this.btnPaProfileRefresh = new System.Windows.Forms.Button();
             this.picPaImmagineProfilo = new System.Windows.Forms.PictureBox();
             this.tbcPaSchedeValori = new System.Windows.Forms.TabControl();
@@ -177,16 +186,6 @@
             this.chkPaUsaSpyBatt = new System.Windows.Forms.CheckBox();
             this.label69 = new System.Windows.Forms.Label();
             this.btnPaSalvaDati = new System.Windows.Forms.Button();
-            this.tbpPaListaProfili = new System.Windows.Forms.TabPage();
-            this.btnPaCancellaSelezionati = new System.Windows.Forms.Button();
-            this.grbPaGeneraFile = new System.Windows.Forms.GroupBox();
-            this.btnPaSalvaFile = new System.Windows.Forms.Button();
-            this.chkPaSoloSelezionati = new System.Windows.Forms.CheckBox();
-            this.btnPaNomeFileProfiliSRC = new System.Windows.Forms.Button();
-            this.txtPaNomeFileProfili = new System.Windows.Forms.TextBox();
-            this.btnPaAttivaConfigurazione = new System.Windows.Forms.Button();
-            this.flwPaListaConfigurazioni = new BrightIdeasSoftware.FastObjectListView();
-            this.btnPaCaricaListaProfili = new System.Windows.Forms.Button();
             this.lblPaTitoloLista = new System.Windows.Forms.Label();
             this.tabGenerale = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -195,22 +194,12 @@
             this.btnGenAzzzeraContatori = new System.Windows.Forms.Button();
             this.btnCaricaContatori = new System.Windows.Forms.Button();
             this.GrbMainDatiApparato = new System.Windows.Forms.GroupBox();
-            this.txtGenSerialeZVT = new System.Windows.Forms.TextBox();
-            this.label151 = new System.Windows.Forms.Label();
+            this.cmbGenModelloCB = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtGenCorrenteMax = new System.Windows.Forms.TextBox();
             this.label143 = new System.Windows.Forms.Label();
             this.txtGenTensioneMax = new System.Windows.Forms.TextBox();
             this.label142 = new System.Windows.Forms.Label();
-            this.txtGenModello = new System.Windows.Forms.TextBox();
-            this.label141 = new System.Windows.Forms.Label();
-            this.txtGenRevFwDisplay = new System.Windows.Forms.TextBox();
-            this.label140 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
-            this.label139 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label138 = new System.Windows.Forms.Label();
-            this.txtGenRevHwDisplay = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtGenIdApparato = new System.Windows.Forms.TextBox();
             this.label137 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -220,6 +209,9 @@
             this.tabCaricaBatterie = new System.Windows.Forms.TabControl();
             this.tabProfiloAttuale.SuspendLayout();
             this.tbcPaSottopagina.SuspendLayout();
+            this.tbpPaListaProfili.SuspendLayout();
+            this.grbPaGeneraFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).BeginInit();
             this.tbpPaProfiloAttivo.SuspendLayout();
             this.pippo.SuspendLayout();
             this.grbPaImpostazioniLocali.SuspendLayout();
@@ -235,9 +227,6 @@
             this.tbpPaPCOpp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgPaOppPuntoVerde)).BeginInit();
             this.tbpPaParSoglia.SuspendLayout();
-            this.tbpPaListaProfili.SuspendLayout();
-            this.grbPaGeneraFile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).BeginInit();
             this.tabGenerale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.GrbMainDatiApparato.SuspendLayout();
@@ -275,10 +264,101 @@
             // tbcPaSottopagina
             // 
             resources.ApplyResources(this.tbcPaSottopagina, "tbcPaSottopagina");
-            this.tbcPaSottopagina.Controls.Add(this.tbpPaProfiloAttivo);
             this.tbcPaSottopagina.Controls.Add(this.tbpPaListaProfili);
+            this.tbcPaSottopagina.Controls.Add(this.tbpPaProfiloAttivo);
             this.tbcPaSottopagina.Name = "tbcPaSottopagina";
             this.tbcPaSottopagina.SelectedIndex = 0;
+            // 
+            // tbpPaListaProfili
+            // 
+            this.tbpPaListaProfili.BackgroundImage = global::PannelloCharger.Properties.Resources.Base_fondino_Y;
+            resources.ApplyResources(this.tbpPaListaProfili, "tbpPaListaProfili");
+            this.tbpPaListaProfili.Controls.Add(this.button1);
+            this.tbpPaListaProfili.Controls.Add(this.btnPaCancellaSelezionati);
+            this.tbpPaListaProfili.Controls.Add(this.grbPaGeneraFile);
+            this.tbpPaListaProfili.Controls.Add(this.btnPaAttivaConfigurazione);
+            this.tbpPaListaProfili.Controls.Add(this.flwPaListaConfigurazioni);
+            this.tbpPaListaProfili.Controls.Add(this.btnPaCaricaListaProfili);
+            this.tbpPaListaProfili.Name = "tbpPaListaProfili";
+            this.tbpPaListaProfili.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnPaCancellaSelezionati
+            // 
+            resources.ApplyResources(this.btnPaCancellaSelezionati, "btnPaCancellaSelezionati");
+            this.btnPaCancellaSelezionati.Name = "btnPaCancellaSelezionati";
+            this.btnPaCancellaSelezionati.UseVisualStyleBackColor = true;
+            this.btnPaCancellaSelezionati.Click += new System.EventHandler(this.btnPaCancellaSelezionati_Click);
+            // 
+            // grbPaGeneraFile
+            // 
+            this.grbPaGeneraFile.BackColor = System.Drawing.Color.White;
+            this.grbPaGeneraFile.Controls.Add(this.btnPaSalvaFile);
+            this.grbPaGeneraFile.Controls.Add(this.chkPaSoloSelezionati);
+            this.grbPaGeneraFile.Controls.Add(this.btnPaNomeFileProfiliSRC);
+            this.grbPaGeneraFile.Controls.Add(this.txtPaNomeFileProfili);
+            resources.ApplyResources(this.grbPaGeneraFile, "grbPaGeneraFile");
+            this.grbPaGeneraFile.Name = "grbPaGeneraFile";
+            this.grbPaGeneraFile.TabStop = false;
+            // 
+            // btnPaSalvaFile
+            // 
+            resources.ApplyResources(this.btnPaSalvaFile, "btnPaSalvaFile");
+            this.btnPaSalvaFile.Name = "btnPaSalvaFile";
+            this.btnPaSalvaFile.UseVisualStyleBackColor = true;
+            this.btnPaSalvaFile.Click += new System.EventHandler(this.btnPaSalvaFile_Click);
+            // 
+            // chkPaSoloSelezionati
+            // 
+            resources.ApplyResources(this.chkPaSoloSelezionati, "chkPaSoloSelezionati");
+            this.chkPaSoloSelezionati.Checked = true;
+            this.chkPaSoloSelezionati.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPaSoloSelezionati.Name = "chkPaSoloSelezionati";
+            this.chkPaSoloSelezionati.UseVisualStyleBackColor = true;
+            // 
+            // btnPaNomeFileProfiliSRC
+            // 
+            resources.ApplyResources(this.btnPaNomeFileProfiliSRC, "btnPaNomeFileProfiliSRC");
+            this.btnPaNomeFileProfiliSRC.Name = "btnPaNomeFileProfiliSRC";
+            this.btnPaNomeFileProfiliSRC.UseVisualStyleBackColor = true;
+            this.btnPaNomeFileProfiliSRC.Click += new System.EventHandler(this.btnPaNomeFileProfiliSRC_Click);
+            // 
+            // txtPaNomeFileProfili
+            // 
+            resources.ApplyResources(this.txtPaNomeFileProfili, "txtPaNomeFileProfili");
+            this.txtPaNomeFileProfili.Name = "txtPaNomeFileProfili";
+            // 
+            // btnPaAttivaConfigurazione
+            // 
+            resources.ApplyResources(this.btnPaAttivaConfigurazione, "btnPaAttivaConfigurazione");
+            this.btnPaAttivaConfigurazione.Name = "btnPaAttivaConfigurazione";
+            this.btnPaAttivaConfigurazione.UseVisualStyleBackColor = true;
+            this.btnPaAttivaConfigurazione.Click += new System.EventHandler(this.btnPaAttivaConfigurazione_Click);
+            // 
+            // flwPaListaConfigurazioni
+            // 
+            this.flwPaListaConfigurazioni.CellEditUseWholeCell = false;
+            this.flwPaListaConfigurazioni.HideSelection = false;
+            resources.ApplyResources(this.flwPaListaConfigurazioni, "flwPaListaConfigurazioni");
+            this.flwPaListaConfigurazioni.Name = "flwPaListaConfigurazioni";
+            this.flwPaListaConfigurazioni.ShowGroups = false;
+            this.flwPaListaConfigurazioni.UseCompatibleStateImageBehavior = false;
+            this.flwPaListaConfigurazioni.View = System.Windows.Forms.View.Details;
+            this.flwPaListaConfigurazioni.VirtualMode = true;
+            this.flwPaListaConfigurazioni.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.flwPaListaConfigurazioni_FormatRow);
+            this.flwPaListaConfigurazioni.SelectedIndexChanged += new System.EventHandler(this.flwPaListaConfigurazioni_SelectedIndexChanged);
+            // 
+            // btnPaCaricaListaProfili
+            // 
+            resources.ApplyResources(this.btnPaCaricaListaProfili, "btnPaCaricaListaProfili");
+            this.btnPaCaricaListaProfili.Name = "btnPaCaricaListaProfili";
+            this.btnPaCaricaListaProfili.UseVisualStyleBackColor = true;
             // 
             // tbpPaProfiloAttivo
             // 
@@ -294,11 +374,9 @@
             this.pippo.BackColor = System.Drawing.Color.White;
             this.pippo.Controls.Add(this.btnPaProfileClear);
             this.pippo.Controls.Add(this.grbPaImpostazioniLocali);
-            this.pippo.Controls.Add(this.btnPaProfileChiudiCanale);
             this.pippo.Controls.Add(this.btnPaCaricaCicli);
             this.pippo.Controls.Add(this.chkPaSbloccaValori);
             this.pippo.Controls.Add(this.lblPaSbloccaValori);
-            this.pippo.Controls.Add(this.btnCicloCorrente);
             this.pippo.Controls.Add(this.btnPaProfileRefresh);
             this.pippo.Controls.Add(this.picPaImmagineProfilo);
             this.pippo.Controls.Add(this.tbcPaSchedeValori);
@@ -476,14 +554,6 @@
             resources.ApplyResources(this.txtPaTensione, "txtPaTensione");
             this.txtPaTensione.Name = "txtPaTensione";
             // 
-            // btnPaProfileChiudiCanale
-            // 
-            resources.ApplyResources(this.btnPaProfileChiudiCanale, "btnPaProfileChiudiCanale");
-            this.btnPaProfileChiudiCanale.ForeColor = System.Drawing.Color.Red;
-            this.btnPaProfileChiudiCanale.Name = "btnPaProfileChiudiCanale";
-            this.btnPaProfileChiudiCanale.UseVisualStyleBackColor = true;
-            this.btnPaProfileChiudiCanale.Click += new System.EventHandler(this.btnPaProfileChiudiCanale_Click);
-            // 
             // btnPaCaricaCicli
             // 
             this.btnPaCaricaCicli.AutoEllipsis = true;
@@ -504,13 +574,6 @@
             resources.ApplyResources(this.lblPaSbloccaValori, "lblPaSbloccaValori");
             this.lblPaSbloccaValori.ForeColor = System.Drawing.Color.Red;
             this.lblPaSbloccaValori.Name = "lblPaSbloccaValori";
-            // 
-            // btnCicloCorrente
-            // 
-            resources.ApplyResources(this.btnCicloCorrente, "btnCicloCorrente");
-            this.btnCicloCorrente.Name = "btnCicloCorrente";
-            this.btnCicloCorrente.UseVisualStyleBackColor = true;
-            this.btnCicloCorrente.Click += new System.EventHandler(this.btnCicloCorrente_Click);
             // 
             // btnPaProfileRefresh
             // 
@@ -1222,86 +1285,6 @@
             this.btnPaSalvaDati.UseVisualStyleBackColor = true;
             this.btnPaSalvaDati.Click += new System.EventHandler(this.btnPaSalvaDati_Click);
             // 
-            // tbpPaListaProfili
-            // 
-            this.tbpPaListaProfili.BackgroundImage = global::PannelloCharger.Properties.Resources.Base_fondino_Y;
-            resources.ApplyResources(this.tbpPaListaProfili, "tbpPaListaProfili");
-            this.tbpPaListaProfili.Controls.Add(this.btnPaCancellaSelezionati);
-            this.tbpPaListaProfili.Controls.Add(this.grbPaGeneraFile);
-            this.tbpPaListaProfili.Controls.Add(this.btnPaAttivaConfigurazione);
-            this.tbpPaListaProfili.Controls.Add(this.flwPaListaConfigurazioni);
-            this.tbpPaListaProfili.Controls.Add(this.btnPaCaricaListaProfili);
-            this.tbpPaListaProfili.Name = "tbpPaListaProfili";
-            this.tbpPaListaProfili.UseVisualStyleBackColor = true;
-            // 
-            // btnPaCancellaSelezionati
-            // 
-            resources.ApplyResources(this.btnPaCancellaSelezionati, "btnPaCancellaSelezionati");
-            this.btnPaCancellaSelezionati.Name = "btnPaCancellaSelezionati";
-            this.btnPaCancellaSelezionati.UseVisualStyleBackColor = true;
-            // 
-            // grbPaGeneraFile
-            // 
-            this.grbPaGeneraFile.BackColor = System.Drawing.Color.White;
-            this.grbPaGeneraFile.Controls.Add(this.btnPaSalvaFile);
-            this.grbPaGeneraFile.Controls.Add(this.chkPaSoloSelezionati);
-            this.grbPaGeneraFile.Controls.Add(this.btnPaNomeFileProfiliSRC);
-            this.grbPaGeneraFile.Controls.Add(this.txtPaNomeFileProfili);
-            resources.ApplyResources(this.grbPaGeneraFile, "grbPaGeneraFile");
-            this.grbPaGeneraFile.Name = "grbPaGeneraFile";
-            this.grbPaGeneraFile.TabStop = false;
-            // 
-            // btnPaSalvaFile
-            // 
-            resources.ApplyResources(this.btnPaSalvaFile, "btnPaSalvaFile");
-            this.btnPaSalvaFile.Name = "btnPaSalvaFile";
-            this.btnPaSalvaFile.UseVisualStyleBackColor = true;
-            this.btnPaSalvaFile.Click += new System.EventHandler(this.btnPaSalvaFile_Click);
-            // 
-            // chkPaSoloSelezionati
-            // 
-            resources.ApplyResources(this.chkPaSoloSelezionati, "chkPaSoloSelezionati");
-            this.chkPaSoloSelezionati.Name = "chkPaSoloSelezionati";
-            this.chkPaSoloSelezionati.UseVisualStyleBackColor = true;
-            // 
-            // btnPaNomeFileProfiliSRC
-            // 
-            resources.ApplyResources(this.btnPaNomeFileProfiliSRC, "btnPaNomeFileProfiliSRC");
-            this.btnPaNomeFileProfiliSRC.Name = "btnPaNomeFileProfiliSRC";
-            this.btnPaNomeFileProfiliSRC.UseVisualStyleBackColor = true;
-            this.btnPaNomeFileProfiliSRC.Click += new System.EventHandler(this.btnPaNomeFileProfiliSRC_Click);
-            // 
-            // txtPaNomeFileProfili
-            // 
-            resources.ApplyResources(this.txtPaNomeFileProfili, "txtPaNomeFileProfili");
-            this.txtPaNomeFileProfili.Name = "txtPaNomeFileProfili";
-            // 
-            // btnPaAttivaConfigurazione
-            // 
-            resources.ApplyResources(this.btnPaAttivaConfigurazione, "btnPaAttivaConfigurazione");
-            this.btnPaAttivaConfigurazione.Name = "btnPaAttivaConfigurazione";
-            this.btnPaAttivaConfigurazione.UseVisualStyleBackColor = true;
-            this.btnPaAttivaConfigurazione.Click += new System.EventHandler(this.btnPaAttivaConfigurazione_Click);
-            // 
-            // flwPaListaConfigurazioni
-            // 
-            this.flwPaListaConfigurazioni.CellEditUseWholeCell = false;
-            this.flwPaListaConfigurazioni.HideSelection = false;
-            resources.ApplyResources(this.flwPaListaConfigurazioni, "flwPaListaConfigurazioni");
-            this.flwPaListaConfigurazioni.Name = "flwPaListaConfigurazioni";
-            this.flwPaListaConfigurazioni.ShowGroups = false;
-            this.flwPaListaConfigurazioni.UseCompatibleStateImageBehavior = false;
-            this.flwPaListaConfigurazioni.View = System.Windows.Forms.View.Details;
-            this.flwPaListaConfigurazioni.VirtualMode = true;
-            this.flwPaListaConfigurazioni.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.flwPaListaConfigurazioni_FormatRow);
-            this.flwPaListaConfigurazioni.SelectedIndexChanged += new System.EventHandler(this.flwPaListaConfigurazioni_SelectedIndexChanged);
-            // 
-            // btnPaCaricaListaProfili
-            // 
-            resources.ApplyResources(this.btnPaCaricaListaProfili, "btnPaCaricaListaProfili");
-            this.btnPaCaricaListaProfili.Name = "btnPaCaricaListaProfili";
-            this.btnPaCaricaListaProfili.UseVisualStyleBackColor = true;
-            // 
             // lblPaTitoloLista
             // 
             resources.ApplyResources(this.lblPaTitoloLista, "lblPaTitoloLista");
@@ -1361,22 +1344,12 @@
             // GrbMainDatiApparato
             // 
             this.GrbMainDatiApparato.BackColor = System.Drawing.Color.White;
-            this.GrbMainDatiApparato.Controls.Add(this.txtGenSerialeZVT);
-            this.GrbMainDatiApparato.Controls.Add(this.label151);
+            this.GrbMainDatiApparato.Controls.Add(this.cmbGenModelloCB);
+            this.GrbMainDatiApparato.Controls.Add(this.label1);
             this.GrbMainDatiApparato.Controls.Add(this.txtGenCorrenteMax);
             this.GrbMainDatiApparato.Controls.Add(this.label143);
             this.GrbMainDatiApparato.Controls.Add(this.txtGenTensioneMax);
             this.GrbMainDatiApparato.Controls.Add(this.label142);
-            this.GrbMainDatiApparato.Controls.Add(this.txtGenModello);
-            this.GrbMainDatiApparato.Controls.Add(this.label141);
-            this.GrbMainDatiApparato.Controls.Add(this.txtGenRevFwDisplay);
-            this.GrbMainDatiApparato.Controls.Add(this.label140);
-            this.GrbMainDatiApparato.Controls.Add(this.textBox34);
-            this.GrbMainDatiApparato.Controls.Add(this.label139);
-            this.GrbMainDatiApparato.Controls.Add(this.textBox12);
-            this.GrbMainDatiApparato.Controls.Add(this.label138);
-            this.GrbMainDatiApparato.Controls.Add(this.txtGenRevHwDisplay);
-            this.GrbMainDatiApparato.Controls.Add(this.label7);
             this.GrbMainDatiApparato.Controls.Add(this.txtGenIdApparato);
             this.GrbMainDatiApparato.Controls.Add(this.label137);
             this.GrbMainDatiApparato.Controls.Add(this.label8);
@@ -1387,20 +1360,26 @@
             this.GrbMainDatiApparato.Name = "GrbMainDatiApparato";
             this.GrbMainDatiApparato.TabStop = false;
             // 
-            // txtGenSerialeZVT
+            // cmbGenModelloCB
             // 
-            resources.ApplyResources(this.txtGenSerialeZVT, "txtGenSerialeZVT");
-            this.txtGenSerialeZVT.Name = "txtGenSerialeZVT";
+            this.cmbGenModelloCB.BackColor = System.Drawing.Color.White;
+            this.cmbGenModelloCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbGenModelloCB, "cmbGenModelloCB");
+            this.cmbGenModelloCB.FormattingEnabled = true;
+            this.cmbGenModelloCB.Name = "cmbGenModelloCB";
+            this.cmbGenModelloCB.SelectedIndexChanged += new System.EventHandler(this.cmbGenModelloCB_SelectedIndexChanged);
             // 
-            // label151
+            // label1
             // 
-            resources.ApplyResources(this.label151, "label151");
-            this.label151.Name = "label151";
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Name = "label1";
             // 
             // txtGenCorrenteMax
             // 
             resources.ApplyResources(this.txtGenCorrenteMax, "txtGenCorrenteMax");
             this.txtGenCorrenteMax.Name = "txtGenCorrenteMax";
+            this.txtGenCorrenteMax.ReadOnly = true;
             // 
             // label143
             // 
@@ -1411,66 +1390,18 @@
             // 
             resources.ApplyResources(this.txtGenTensioneMax, "txtGenTensioneMax");
             this.txtGenTensioneMax.Name = "txtGenTensioneMax";
+            this.txtGenTensioneMax.ReadOnly = true;
             // 
             // label142
             // 
             resources.ApplyResources(this.label142, "label142");
             this.label142.Name = "label142";
             // 
-            // txtGenModello
-            // 
-            resources.ApplyResources(this.txtGenModello, "txtGenModello");
-            this.txtGenModello.Name = "txtGenModello";
-            // 
-            // label141
-            // 
-            resources.ApplyResources(this.label141, "label141");
-            this.label141.Name = "label141";
-            // 
-            // txtGenRevFwDisplay
-            // 
-            resources.ApplyResources(this.txtGenRevFwDisplay, "txtGenRevFwDisplay");
-            this.txtGenRevFwDisplay.Name = "txtGenRevFwDisplay";
-            // 
-            // label140
-            // 
-            resources.ApplyResources(this.label140, "label140");
-            this.label140.Name = "label140";
-            // 
-            // textBox34
-            // 
-            resources.ApplyResources(this.textBox34, "textBox34");
-            this.textBox34.Name = "textBox34";
-            // 
-            // label139
-            // 
-            resources.ApplyResources(this.label139, "label139");
-            this.label139.Name = "label139";
-            // 
-            // textBox12
-            // 
-            resources.ApplyResources(this.textBox12, "textBox12");
-            this.textBox12.Name = "textBox12";
-            // 
-            // label138
-            // 
-            resources.ApplyResources(this.label138, "label138");
-            this.label138.Name = "label138";
-            // 
-            // txtGenRevHwDisplay
-            // 
-            resources.ApplyResources(this.txtGenRevHwDisplay, "txtGenRevHwDisplay");
-            this.txtGenRevHwDisplay.Name = "txtGenRevHwDisplay";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
             // txtGenIdApparato
             // 
             resources.ApplyResources(this.txtGenIdApparato, "txtGenIdApparato");
             this.txtGenIdApparato.Name = "txtGenIdApparato";
+            this.txtGenIdApparato.ReadOnly = true;
             // 
             // label137
             // 
@@ -1486,11 +1417,13 @@
             // 
             resources.ApplyResources(this.txtGenAnnoMatricola, "txtGenAnnoMatricola");
             this.txtGenAnnoMatricola.Name = "txtGenAnnoMatricola";
+            this.txtGenAnnoMatricola.ReadOnly = true;
             // 
             // txtGenMatricola
             // 
             resources.ApplyResources(this.txtGenMatricola, "txtGenMatricola");
             this.txtGenMatricola.Name = "txtGenMatricola";
+            this.txtGenMatricola.ReadOnly = true;
             // 
             // lblMatricola
             // 
@@ -1520,6 +1453,10 @@
             this.tabProfiloAttuale.ResumeLayout(false);
             this.tabProfiloAttuale.PerformLayout();
             this.tbcPaSottopagina.ResumeLayout(false);
+            this.tbpPaListaProfili.ResumeLayout(false);
+            this.grbPaGeneraFile.ResumeLayout(false);
+            this.grbPaGeneraFile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).EndInit();
             this.tbpPaProfiloAttivo.ResumeLayout(false);
             this.pippo.ResumeLayout(false);
             this.pippo.PerformLayout();
@@ -1546,10 +1483,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ImgPaOppPuntoVerde)).EndInit();
             this.tbpPaParSoglia.ResumeLayout(false);
             this.tbpPaParSoglia.PerformLayout();
-            this.tbpPaListaProfili.ResumeLayout(false);
-            this.grbPaGeneraFile.ResumeLayout(false);
-            this.grbPaGeneraFile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).EndInit();
             this.tabGenerale.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.GrbMainDatiApparato.ResumeLayout(false);
@@ -1592,11 +1525,9 @@
         private System.Windows.Forms.Label lblPaTensione;
         private System.Windows.Forms.ComboBox cmbPaTensione;
         private System.Windows.Forms.TextBox txtPaTensione;
-        private System.Windows.Forms.Button btnPaProfileChiudiCanale;
         private System.Windows.Forms.Button btnPaCaricaCicli;
         private System.Windows.Forms.CheckBox chkPaSbloccaValori;
         private System.Windows.Forms.Label lblPaSbloccaValori;
-        private System.Windows.Forms.Button btnCicloCorrente;
         private System.Windows.Forms.Button btnPaProfileRefresh;
         private System.Windows.Forms.PictureBox picPaImmagineProfilo;
         private System.Windows.Forms.TabControl tbcPaSchedeValori;
@@ -1725,28 +1656,19 @@
         private System.Windows.Forms.Button btnGenAzzzeraContatori;
         private System.Windows.Forms.Button btnCaricaContatori;
         private System.Windows.Forms.GroupBox GrbMainDatiApparato;
-        private System.Windows.Forms.TextBox txtGenSerialeZVT;
-        private System.Windows.Forms.Label label151;
         private System.Windows.Forms.TextBox txtGenCorrenteMax;
         private System.Windows.Forms.Label label143;
         private System.Windows.Forms.TextBox txtGenTensioneMax;
+        private System.Windows.Forms.TabControl tabCaricaBatterie;
+        private System.Windows.Forms.ComboBox cmbGenModelloCB;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label142;
-        private System.Windows.Forms.TextBox txtGenModello;
-        private System.Windows.Forms.Label label141;
-        private System.Windows.Forms.TextBox txtGenRevFwDisplay;
-        private System.Windows.Forms.Label label140;
-        private System.Windows.Forms.TextBox textBox34;
-        private System.Windows.Forms.Label label139;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label138;
-        private System.Windows.Forms.TextBox txtGenRevHwDisplay;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtGenIdApparato;
         private System.Windows.Forms.Label label137;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtGenAnnoMatricola;
         private System.Windows.Forms.TextBox txtGenMatricola;
         private System.Windows.Forms.Label lblMatricola;
-        private System.Windows.Forms.TabControl tabCaricaBatterie;
+        private System.Windows.Forms.Button button1;
     }
 }

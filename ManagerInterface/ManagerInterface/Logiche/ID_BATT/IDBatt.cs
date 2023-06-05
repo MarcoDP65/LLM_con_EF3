@@ -39,7 +39,7 @@ namespace ChargerLogic
             ErrCBNonDef = 0xF2,
             CapBattNonValida = 0xF4,
             ErrUndef = 0xFF
-        }
+        }     
         public enum TipoCaricaBatteria : byte { Generico = 0x00, LadeLight = 0x01, SuperCharger = 0x02, NonDefinito = 0xFF }
 
 
@@ -68,7 +68,7 @@ namespace ChargerLogic
 
         public BaudRate BaudRateUSB;
 
-        public cbProgrammazioni Programmazioni = new cbProgrammazioni();
+        public cbProgrammazioni Programmazioni; //= new cbProgrammazioni();
 
         public llParametriApparato ParametriApparato = new llParametriApparato();
         public _llModelloCb ModelloCorrente;
@@ -191,16 +191,11 @@ namespace ChargerLogic
                 //ControllaAttesa(UltimaScrittura);
 
                 _parametri = parametri;
-                _mS = new MessaggioLadeLight();
-                _mS.Dispositivo = SerialMessage.TipoDispositivo.Charger;
-                byte[] Seriale = { 0, 0, 0, 0, 0, 0, 0, 0 };
-                _mS.SerialNumber = Seriale;
-                _cbCollegato = false;
                 TipoCB = TipoCharger;
-                serialeApparato = _parametri.serialeCorrente;
                 DbAttivo = dbCorrente;
                 ApparatoLL = new LadeLightData(dbCorrente);
                 DatiCliente = new llDatiCliente(dbCorrente);
+                Programmazioni = new cbProgrammazioni(dbCorrente);
                 DatiBase = new DatiConfigCariche();
                 //InizializzaDatiLocali();
 
@@ -646,33 +641,14 @@ namespace ChargerLogic
         }
 
 
-        public bool CaricaProgrammazioniDB(string IdApparato)
+        public bool CaricaProgrammazioniDB(string IdApparato, string TipoApparato)
         {
             try
             {
                 bool _esito;
-                llProgrammaCarica _tempPrg;
-                Programmazioni._database = DbAttivo;
-                Programmazioni.IdCorrente = ParametriApparato.IdApparato;
-                Programmazioni.ProgrammiDefiniti = new List<llProgrammaCarica>();
-                Programmazioni.ProgrammaAttivo = null;
 
+                Programmazioni.CaricaDatiDB(IdApparato, TipoApparato);
 
-                IEnumerable<_llProgrammaCarica> _TempCicli = DbAttivo.Query<_llProgrammaCarica>("select * from _llProgrammaCarica where IdApparato = ? order by PosizioneCorrente asc", IdApparato);
-
-                foreach (_llProgrammaCarica Elemento in _TempCicli)
-                {
-                    llProgrammaCarica _cLoc;
-                    _cLoc = new llProgrammaCarica(Elemento);
-                    _cLoc.Parametri = _parametri;
-                    _cLoc.GeneraListaParametri();
-                    Programmazioni.ProgrammiDefiniti.Add(_cLoc);
-                    if (_cLoc.PosizioneCorrente == 0)
-                    {
-                        Programmazioni.ProgrammaAttivo = _cLoc;
-                    }
-
-                }
 
                 return true;
             }
@@ -684,7 +660,6 @@ namespace ChargerLogic
                 return false;
             }
         }
-
 
 
 
@@ -806,13 +781,16 @@ namespace ChargerLogic
             try
             {
 
-                // Sposto avanti tutti i dati presenti
-                foreach (llProgrammaCarica tempPrg in Programmazioni.ProgrammiDefiniti)
-                {
-                    tempPrg.PosizioneCorrente += 1;
-                }
+                // Sposto avanti tutti i dati presenti --> Quì non serve. Se nuovo (senza ID), genero un nuovo ID
+                //foreach (llProgrammaCarica tempPrg in Programmazioni.ProgrammiDefiniti)
+                //{
+                //    tempPrg.PosizioneCorrente += 1;
+                //}
 
                 // poi accodo in posizione 0 la progr corrente
+
+
+
                 Programmazioni.ProgrammaAttivo.PosizioneCorrente = 0;
                 Programmazioni.UltimoIdProgamma += 1;
                 Programmazioni.ProgrammaAttivo.IdProgramma = (ushort)(Programmazioni.UltimoIdProgamma);
@@ -900,7 +878,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool CaricaCompleto(MoriData._db dbCorrente, string IdApparato)
+        public bool CaricaCompleto(MoriData._db dbCorrente, string IdApparato, string TipoApparato)
         {
             try
             {
@@ -920,7 +898,7 @@ namespace ChargerLogic
                     CaricaContatori(IdApparato);
                     DatiCliente = new llDatiCliente(dbCorrente);
                     DatiCliente.caricaDati(IdApparato, 1);
-                    CaricaProgrammazioniDB(IdApparato);
+                    CaricaProgrammazioniDB(IdApparato, TipoApparato);
 
 
                     return true;

@@ -49,7 +49,9 @@ namespace MoriData
 
             // LADE Light con display SCHG
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x88, NomeModello = "LLT.3.x 24-80V / 120A SCHG", CorrenteMin = 10, CorrenteMax = 120, TensioneMin = 24, TensioneMax = 120, Ordine = 1, Trifase = 1, Attivo = 0x01, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger, TensioneNominale = 0 });  // V max--> 80/2*3 = 120
-
+            
+            // Modello generico con valori massimi per disegno profili ID BATT
+            ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0xEE, NomeModello = "MAX VALUES 24-92V / 600A SCHG", CorrenteMin = 10, CorrenteMax = 600, TensioneMin = 12, TensioneMax = 120, Ordine = 1, Trifase = 1, Attivo = 0x01, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger, TensioneNominale = 0 });  // V max--> 80/2*3 = 120
 
 
             // SUPERCHARGER - i modelli sono caratterizzati solo per tensione nominale, la corrente è definita sul dispositivo in base ai moduli
@@ -58,8 +60,6 @@ namespace MoriData
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x30, NomeModello = "SCHG 48V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 48, TensioneMax = 53, Ordine = 103, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger, TensioneNominale = 48 });
             ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x50, NomeModello = "SCHG 80V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 80, TensioneMax = 96, Ordine = 104, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger, TensioneNominale = 80 });
             // ModelliLL.Add(new _llModelloCb() { IdModelloLL = 0x5C, NomeModello = "SCHG 92V", CorrenteMin = 0, CorrenteMax = 0, TensioneMin = 92, TensioneMax = 110, Ordine = 105, Trifase = 1, Attivo = 0xff, FamigliaCaricabetteria = ChargerLogic.CaricaBatteria.TipoCaricaBatteria.SuperCharger,TensioneNominale = 92 });
-
-
 
             return true;
         }
@@ -218,6 +218,14 @@ namespace MoriData
         {
 
             TensioniModello = new List<llTensioniModello>();
+
+            // MAX VALUE 0xEE
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 3600, TxTensione = "36,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 4800, TxTensione = "48,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 7200, TxTensione = "72,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 8000, TxTensione = "80,00", Attivo = 1 });
+
 
             // 24/80 - 120 Trifase
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x81, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });

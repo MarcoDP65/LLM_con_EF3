@@ -99,7 +99,7 @@ namespace ChargerLogic
             //     se il valore è "" il parametro è disabilitato 
             //
             // 1 ) 1^cifra: Operazione
-            //     = Assegnazione -> valose fisso da assenare o calcolo su parametro - Sbloccabile
+            //     = Assegnazione -> valose fisso da assegnare o calcolo su parametro - Sbloccabile
             //     ~ come = ma già sbloccato  
             //
             // 2 ) 2^cifra: Variabile
@@ -488,7 +488,7 @@ namespace ChargerLogic
                     TempoT0Max = "",
                     TempoT1Max = "",
                     TempoT2Min = "",
-                    TempoT2Max = "",
+                    TempoT2Max = "=##120",
                     TempoT3Max = "",
                     FattoreK = "",
                     FattoreKs = "=##110",
@@ -895,6 +895,21 @@ namespace ChargerLogic
         {
 
             TensioniModello = new List<llTensioniModello>();
+            // MAX VALUE 0xEE
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 3600, TxTensione = "36,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 4800, TxTensione = "48,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 7200, TxTensione = "72,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0xEE, IdTensione = 8000, TxTensione = "80,00", Attivo = 1 });
+
+
+            // 0x88, NomeModello = "LLT.3.x 24-80V / 120A SCHG"
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 3600, TxTensione = "36,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 4800, TxTensione = "48,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 7200, TxTensione = "72,00", Attivo = 1 });
+            TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x88, IdTensione = 8000, TxTensione = "80,00", Attivo = 1 });
+
 
             // 24/80 - 120 Trifase
             TensioniModello.Add(new llTensioniModello() { IdModelloLL = 0x81, IdTensione = 2400, TxTensione = "24,00", Attivo = 1 });
