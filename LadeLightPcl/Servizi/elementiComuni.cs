@@ -33,6 +33,7 @@ namespace ChargerLogic
                                           AreaMemLungaLL = 15,
                                           AreaMemBreveLL = 16,
                                           CaricamentoInizialeLL = 18,
+                                          MemLungaLLcontatore = 20,
                                           InizializzazioneRigeneratore = 32,
                                           NonDefinito = -1 };
 

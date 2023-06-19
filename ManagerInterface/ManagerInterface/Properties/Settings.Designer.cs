@@ -214,5 +214,17 @@ namespace PannelloCharger.Properties {
                 this["pathLLFwReady"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string pathFilesProfili {
+            get {
+                return ((string)(this["pathFilesProfili"]));
+            }
+            set {
+                this["pathFilesProfili"] = value;
+            }
+        }
     }
 }

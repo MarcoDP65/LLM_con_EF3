@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>3.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -227,6 +227,12 @@
     <Reference Include="Validation, Version=2.5.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
       <HintPath>..\packages\Validation.2.5.51\lib\net45\Validation.dll</HintPath>
     </Reference>
+    <Reference Include="zxing, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net48\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net48\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Componenti\ctrlPannelloTempo.cs">
@@ -275,6 +281,7 @@
     <Compile Include="Database\GestioneBatterie\mbTecnologia.cs" />
     <Compile Include="Database\GestioneBatterie\mbTipoBatteria.cs" />
     <Compile Include="Database\GestioneBatterie\ParametriCiclo.cs" />
+    <Compile Include="Database\IDBattData.cs" />
     <Compile Include="Database\ItemModProfilo.cs" />
     <Compile Include="Database\LadeLightData.cs" />
     <Compile Include="Database\llContatoriApparato.cs" />
@@ -532,6 +539,12 @@
     </Compile>
     <Compile Include="Forms\frmPopupCambioTurmo.designer.cs">
       <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmQRCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQRCode.Designer.cs">
+      <DependentUpon>frmQRCode.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmRichiestaCodice.cs">
       <SubType>Form</SubType>
@@ -1096,6 +1109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPopupCambioTurmo.resx">
       <DependentUpon>frmPopupCambioTurmo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQRCode.resx">
+      <DependentUpon>frmQRCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRichiestaCodice.en.resx">
       <DependentUpon>frmRichiestaCodice.cs</DependentUpon>

@@ -2581,6 +2581,15 @@ namespace Utility
         {
             try
             {
+                string Visualizzazione;
+                string VarUsata;
+                string OperazioneUsata;
+                string ValoreFormula;
+
+                ushort ValParametro;
+                ushort ValFormula;
+                bool result;
+
                 if (Formula == null)
                 {
                     return 0;
@@ -2591,14 +2600,14 @@ namespace Utility
                     return 0;
                 }
 
-                string Visualizzazione = Formula.Substring(0, 1);
-                string VarUsata = Formula.Substring(1, 1);
-                string OperazioneUsata = Formula.Substring(2, 1);
-                string ValoreFormula = Formula.Substring(3);
+                 Visualizzazione = Formula.Substring(0, 1);
+                 VarUsata = Formula.Substring(1, 1);
+                 OperazioneUsata = Formula.Substring(2, 1);
+                 ValoreFormula = Formula.Substring(3);
 
-                ushort ValParametro;
-                ushort ValFormula = 0;
-                bool result = ushort.TryParse(ValoreFormula, out ValParametro);
+
+                 ValFormula = 0;
+                 result = ushort.TryParse(ValoreFormula, out ValParametro);
 
                 if (!result)
                 {
@@ -2607,7 +2616,7 @@ namespace Utility
 
 
                 // Controllo che la variabile sia quella in formula
-                if (VarUsata != Variabile && Variabile != "#" )
+                if (VarUsata != Variabile && VarUsata != "#")     // 15/06/23 - debug - sostituito Variabile con VarUsata
                 {
                     return 0;
                 }

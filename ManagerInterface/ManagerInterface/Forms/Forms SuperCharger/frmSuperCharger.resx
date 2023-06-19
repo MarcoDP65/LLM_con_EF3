@@ -19062,11 +19062,41 @@
   <data name="&gt;&gt;flvCicliListaCariche.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnCicliCaricaCont.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="btnCicliCaricaCont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCicliCaricaCont.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 19</value>
+  </data>
+  <data name="btnCicliCaricaCont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 27</value>
+  </data>
+  <data name="btnCicliCaricaCont.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnCicliCaricaCont.Text" xml:space="preserve">
+    <value>Carica Cicli Registrati</value>
+  </data>
+  <data name="&gt;&gt;btnCicliCaricaCont.Name" xml:space="preserve">
+    <value>btnCicliCaricaCont</value>
+  </data>
+  <data name="&gt;&gt;btnCicliCaricaCont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCicliCaricaCont.Parent" xml:space="preserve">
+    <value>grbCicli</value>
+  </data>
+  <data name="&gt;&gt;btnCicliCaricaCont.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnCicliCaricaArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="btnCicliCaricaArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 17</value>
+    <value>250, 19</value>
   </data>
   <data name="btnCicliCaricaArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 27</value>
@@ -19087,7 +19117,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;btnCicliCaricaArea.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnCicliMostraBrevi.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -19114,7 +19144,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;btnCicliMostraBrevi.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnCicliCaricaBrevi.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -19123,7 +19153,7 @@
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="btnCicliCaricaBrevi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 17</value>
+    <value>250, 57</value>
   </data>
   <data name="btnCicliCaricaBrevi.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 27</value>
@@ -19144,7 +19174,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;btnCicliCaricaBrevi.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkCicliCaricaBrevi.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -19171,7 +19201,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;chkCicliCaricaBrevi.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label223.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -19198,7 +19228,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;label223.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txtCicliNumRecord.Location" type="System.Drawing.Point, System.Drawing">
     <value>757, 73</value>
@@ -19225,7 +19255,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;txtCicliNumRecord.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label209.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -19252,7 +19282,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;label209.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="txtCicliAddrPrmo.Location" type="System.Drawing.Point, System.Drawing">
     <value>665, 73</value>
@@ -19279,7 +19309,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;txtCicliAddrPrmo.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnCicliCaricaLista.Location" type="System.Drawing.Point, System.Drawing">
     <value>665, 19</value>
@@ -19303,7 +19333,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;btnCicliCaricaLista.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnCicliVuotaLista.Location" type="System.Drawing.Point, System.Drawing">
     <value>548, 19</value>
@@ -19327,7 +19357,7 @@
     <value>grbCicli</value>
   </data>
   <data name="&gt;&gt;btnCicliVuotaLista.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="grbCicli.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 389</value>

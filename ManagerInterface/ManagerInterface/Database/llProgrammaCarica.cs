@@ -44,6 +44,7 @@ namespace MoriData
         public string DataInstallazione { get; set; }
 
         public string ProgramName { get; set; }
+        public string ProgramDescription { get; set; }
         public ushort BatteryType { get; set; }
         public ushort BatteryVdef { get; set; }
         public ushort BatteryAhdef { get; set; }
@@ -351,7 +352,7 @@ namespace MoriData
                 {
 
                     SQLiteCommand cmd = new SQLiteCommand(_database);
-                    string Sql = "DELETE FROM _llprc WHERE ";
+                    string Sql = "DELETE FROM _llProgrammaCarica WHERE ";
                         Sql += " IdLocale = " + _llprc.IdLocale.ToString();
                     cmd.CommandText = Sql;
                     cmd.ExecuteNonQuery();
@@ -978,7 +979,18 @@ namespace MoriData
                 }
             }
         }
-
+        public string ProgramDescription
+        {
+            get { return _llprc.ProgramDescription; }
+            set
+            {
+                if (value != null)
+                {
+                    _llprc.ProgramDescription = value;
+                    _datiSalvati = false;
+                }
+            }
+        }
         /// <summary>
         /// Tensione Nominale Batteria.
         /// </summary>

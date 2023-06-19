@@ -180,6 +180,159 @@
   <data name="tbpPaListaProfili.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnPaCaricaFile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnPaCaricaFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaCaricaFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>429, 17</value>
+  </data>
+  <data name="btnPaCaricaFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaCaricaFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 35</value>
+  </data>
+  <data name="btnPaCaricaFile.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="btnPaCaricaFile.Text" xml:space="preserve">
+    <value>Carica File</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.Name" xml:space="preserve">
+    <value>btnPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.Parent" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnPaFileInProfiliSRC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaFileInProfiliSRC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>400, 24</value>
+  </data>
+  <data name="btnPaFileInProfiliSRC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaFileInProfiliSRC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 24</value>
+  </data>
+  <data name="btnPaFileInProfiliSRC.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="btnPaFileInProfiliSRC.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.Name" xml:space="preserve">
+    <value>btnPaFileInProfiliSRC</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.Parent" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPaCaricaFileProfili.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtPaCaricaFileProfili.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 25</value>
+  </data>
+  <data name="txtPaCaricaFileProfili.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtPaCaricaFileProfili.Size" type="System.Drawing.Size, System.Drawing">
+    <value>383, 21</value>
+  </data>
+  <data name="txtPaCaricaFileProfili.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.Name" xml:space="preserve">
+    <value>txtPaCaricaFileProfili</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.Parent" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grbPaCaricaFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>616, 480</value>
+  </data>
+  <data name="grbPaCaricaFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbPaCaricaFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbPaCaricaFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>590, 86</value>
+  </data>
+  <data name="grbPaCaricaFile.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="grbPaCaricaFile.Text" xml:space="preserve">
+    <value>Carica File Profili</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.Name" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnPaGeneraQr.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnPaGeneraQr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaGeneraQr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>681, 434</value>
+  </data>
+  <data name="btnPaGeneraQr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaGeneraQr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 35</value>
+  </data>
+  <data name="btnPaGeneraQr.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="btnPaGeneraQr.Text" xml:space="preserve">
+    <value>Genera QR Code</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.Name" xml:space="preserve">
+    <value>btnPaGeneraQr</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
@@ -211,7 +364,7 @@
     <value>tbpPaListaProfili</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="btnPaCancellaSelezionati.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -244,7 +397,7 @@
     <value>tbpPaListaProfili</value>
   </data>
   <data name="&gt;&gt;btnPaCancellaSelezionati.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btnPaSalvaFile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -253,7 +406,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnPaSalvaFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>490, 19</value>
+    <value>429, 19</value>
   </data>
   <data name="btnPaSalvaFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -316,7 +469,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnPaNomeFileProfiliSRC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>447, 24</value>
+    <value>400, 24</value>
   </data>
   <data name="btnPaNomeFileProfiliSRC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -352,7 +505,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtPaNomeFileProfili.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 21</value>
+    <value>383, 21</value>
   </data>
   <data name="txtPaNomeFileProfili.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -379,7 +532,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="grbPaGeneraFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 86</value>
+    <value>590, 86</value>
   </data>
   <data name="grbPaGeneraFile.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
@@ -397,7 +550,7 @@
     <value>tbpPaListaProfili</value>
   </data>
   <data name="&gt;&gt;grbPaGeneraFile.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="btnPaAttivaConfigurazione.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -430,7 +583,7 @@
     <value>tbpPaListaProfili</value>
   </data>
   <data name="&gt;&gt;btnPaAttivaConfigurazione.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="flwPaListaConfigurazioni.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 14</value>
@@ -439,7 +592,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="flwPaListaConfigurazioni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>981, 402</value>
+    <value>1196, 402</value>
   </data>
   <data name="flwPaListaConfigurazioni.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
@@ -454,7 +607,7 @@
     <value>tbpPaListaProfili</value>
   </data>
   <data name="&gt;&gt;flwPaListaConfigurazioni.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="btnPaCaricaListaProfili.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -487,7 +640,7 @@
     <value>tbpPaListaProfili</value>
   </data>
   <data name="&gt;&gt;btnPaCaricaListaProfili.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="tbpPaListaProfili.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1156,13 +1309,13 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="cmbPaTensione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 98</value>
+    <value>12, 96</value>
   </data>
   <data name="cmbPaTensione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="cmbPaTensione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 25</value>
+    <value>76, 25</value>
   </data>
   <data name="cmbPaTensione.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -1183,13 +1336,13 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtPaTensione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 98</value>
+    <value>92, 98</value>
   </data>
   <data name="txtPaTensione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtPaTensione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 23</value>
+    <value>70, 23</value>
   </data>
   <data name="txtPaTensione.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -1392,11 +1545,74 @@
   <data name="&gt;&gt;picPaImmagineProfilo.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="txtPaDescrizioneSetup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtPaDescrizioneSetup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 82</value>
+  </data>
+  <data name="txtPaDescrizioneSetup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtPaDescrizioneSetup.MaxLength" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="txtPaDescrizioneSetup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>519, 23</value>
+  </data>
+  <data name="txtPaDescrizioneSetup.TabIndex" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.Name" xml:space="preserve">
+    <value>txtPaDescrizioneSetup</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 65</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>129</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="txtPaCassone.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtPaCassone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 96</value>
+    <value>600, 82</value>
   </data>
   <data name="txtPaCassone.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1420,7 +1636,7 @@
     <value>tbpPaGeneraleCiclo</value>
   </data>
   <data name="&gt;&gt;txtPaCassone.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label38.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1429,7 +1645,7 @@
     <value>NoControl</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 81</value>
+    <value>597, 67</value>
   </data>
   <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -1453,7 +1669,7 @@
     <value>tbpPaGeneraleCiclo</value>
   </data>
   <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtPaIdSetup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -1486,7 +1702,7 @@
     <value>tbpPaGeneraleCiclo</value>
   </data>
   <data name="&gt;&gt;txtPaIdSetup.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lblPaIdSetup.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1519,7 +1735,7 @@
     <value>tbpPaGeneraleCiclo</value>
   </data>
   <data name="&gt;&gt;lblPaIdSetup.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtPaNomeSetup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -1552,7 +1768,7 @@
     <value>tbpPaGeneraleCiclo</value>
   </data>
   <data name="&gt;&gt;txtPaNomeSetup.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label152.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1585,7 +1801,7 @@
     <value>tbpPaGeneraleCiclo</value>
   </data>
   <data name="&gt;&gt;label152.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="tbpPaGeneraleCiclo.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -4333,7 +4549,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkPaAttivaRiarmoBms.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 102</value>
+    <value>31, 99</value>
   </data>
   <data name="chkPaAttivaRiarmoBms.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

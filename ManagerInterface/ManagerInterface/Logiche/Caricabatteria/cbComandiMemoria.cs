@@ -35,7 +35,7 @@ namespace ChargerLogic
 
                 if (_esito)
                 {
-                    EsitoMsg = ImmagineCarica.analizzaMessaggio(_datiTemp, 1);
+                    EsitoMsg = ImmagineCarica.analizzaMessaggio(_datiTemp, 2);
                     if (EsitoMsg == SerialMessage.EsitoRisposta.MessaggioOk)
                     {
                         tempPrg.IdMemoriaLunga = ImmagineCarica.NumeroCarica;
@@ -47,6 +47,12 @@ namespace ChargerLogic
                         tempPrg.DataOraFine = FunzioniMR.StringaTimestamp(ImmagineCarica.DataOraStop);
                         tempPrg.Ah = ImmagineCarica.AhCaricati;
                         tempPrg.Wh = (int)ImmagineCarica.WhCaricati;
+                        tempPrg.Ibat5m = ImmagineCarica.Ibat5m;
+                        tempPrg.IbatFinale = ImmagineCarica.IbatFinale;
+                        tempPrg.Vbat5m = ImmagineCarica.Vbat5m;
+                        tempPrg.VbatFinale = ImmagineCarica.VbatFinale;
+                        tempPrg.VettoreErrori = ImmagineCarica.VettoreErrori;
+
                         tempPrg.ModStop = ImmagineCarica.ModStop;
 
 

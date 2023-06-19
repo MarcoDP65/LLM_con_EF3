@@ -23,6 +23,7 @@ namespace ChargerLogic
         public ushort NumeroCelle { get; set; }
         public ushort Capacita { get; set; }
         public string NomeProfilo { get; set; }
+        public string DescrizioneProfilo { get; set; }
         public ushort IdProgramma { get; set; }
         public bool DatiSalvati { get; set; }
         public bool RichiestoNuovoId { get; set; }
@@ -61,7 +62,7 @@ namespace ChargerLogic
                     ProfiloRegistrato.TipoBatteria = Batteria.BatteryTypeId;
                     ProfiloRegistrato.IdProgramma = IdProgramma;
                     ProfiloRegistrato.ProgramName = NomeProfilo;
-
+                    ProfiloRegistrato.ProgramDescription = DescrizioneProfilo;
                     ProfiloRegistrato.BatteryVdef = Tensione;
                     ProfiloRegistrato.BatteryAhdef = Capacita;
                     ProfiloRegistrato.IdProfilo = Profilo.IdProfiloCaricaLL;
@@ -129,6 +130,7 @@ namespace ChargerLogic
 
                 IdProgramma = ProfiloRegistrato.IdProgramma;
                 NomeProfilo = ProfiloRegistrato.ProgramName;
+                DescrizioneProfilo = ProfiloRegistrato.ProgramDescription;
 
                 ushort StatoCella = 4;
 
@@ -606,9 +608,9 @@ namespace ChargerLogic
 
                 // Soglie
                 ParametriAttivi.TensRiconoscimentoMin = FunzioniComuni.StatoParametro(ModelloProfilo.TensRiconoscimentoMin);
-                ValoriCiclo.TensRiconoscimentoMin = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensRiconoscimentoMin);
+                ValoriCiclo.TensRiconoscimentoMin = FunzioniComuni.CalcolaFormula("V",Tensione, ModelloProfilo.TensRiconoscimentoMin);
                 ParametriAttivi.TensRiconoscimentoMax = FunzioniComuni.StatoParametro(ModelloProfilo.TensRiconoscimentoMax);
-                ValoriCiclo.TensRiconoscimentoMax = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensRiconoscimentoMax);
+                ValoriCiclo.TensRiconoscimentoMax = FunzioniComuni.CalcolaFormula("V", Tensione, ModelloProfilo.TensRiconoscimentoMax);
                 ParametriAttivi.TensMinStop = FunzioniComuni.StatoParametro(ModelloProfilo.TensMinimaStop);
                 ValoriCiclo.TensMinStop = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensMinimaStop);
 

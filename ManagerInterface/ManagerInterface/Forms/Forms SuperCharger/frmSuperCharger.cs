@@ -4812,6 +4812,7 @@ namespace PannelloCharger
 
             _avCicli.AddrStart = _cb.Memoria.MappaCorrente.RecordLunghi.AddrArea;
             _avCicli.ValFine = _cb.Memoria.MappaCorrente.RecordLunghi.NumPagine * 0x1000 ;
+            //_avCicli.ValFine = 0x1000;
 
             _avCicli.DbDati = _logiche.dbDati.connessione;
             _avCicli.CaricaBrevi = false; // chkCaricaBrevi.Checked;
@@ -6405,6 +6406,44 @@ namespace PannelloCharger
                 this.Cursor = Cursors.Default;
             }
 
+        }
+
+        private void btnCicliCaricaCont_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Log.Debug("Lancio lettura lunghi su contatore");
+                //public bool CaricaListaCicli(UInt32 StartAddr, ushort NumRows, out object EsitoCaricamento, bool caricaBrevi = false,  bool RunAsinc = false)
+
+                //_avCicli = new frmAvanzamentoCicli();
+                _avCicli.ParametriWorker.MainCount = 100;
+                _avCicli.llLocale = _cb;
+                _avCicli.ValStart = (int)0;
+
+                _avCicli.AddrStart = _cb.Memoria.MappaCorrente.RecordLunghi.AddrArea;
+                _avCicli.ValFine = (int)_cb.ContatoriLL.CntCariche; // _cb.Memoria.MappaCorrente.RecordLunghi.NumPagine * 0x1000;
+                //_avCicli.ValFine = 0x1000;
+
+                _avCicli.DbDati = _logiche.dbDati.connessione;
+                _avCicli.CaricaBrevi = false; // chkCaricaBrevi.Checked;
+                _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
+                _avCicli.TipoComando = elementiComuni.tipoMessaggio.MemLungaLL;
+                Log.Debug("FRM RicaricaCicli: ");
+
+                //_esito = _sb.RicaricaCaricaCicliMemLunga(Inizio, (uint)_sb.sbData.LongMem, _logiche.dbDati.connessione, true, CaricaBrevi);
+
+                // Apro il form con le progressbar
+                _avCicli.ShowDialog(this);
+
+                InizializzaListaCariche();
+
+            }
+            catch (Exception ex)
+            {
+
+                Log.Error("btnCicliCaricaCont_Click: " + ex.Message);
+                //this.Cursor = Cursors.Default;
+            }
         }
     }
 }

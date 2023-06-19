@@ -196,6 +196,7 @@ namespace ChargerLogic
                 ApparatoLL = new LadeLightData(dbCorrente);
                 DatiCliente = new llDatiCliente(dbCorrente);
                 Programmazioni = new cbProgrammazioni(dbCorrente);
+                Programmazioni.Parametri = parametri;
                 DatiBase = new DatiConfigCariche();
                 //InizializzaDatiLocali();
 
@@ -992,6 +993,7 @@ namespace ChargerLogic
 
 
                 Programmazioni = new cbProgrammazioni(dbCorrente);
+                Programmazioni.Parametri = _parametri;
                 if (Programmazioni.ProgrammiDefiniti == null)
                 {
                     Programmazioni.ProgrammiDefiniti = new List<llProgrammaCarica>();

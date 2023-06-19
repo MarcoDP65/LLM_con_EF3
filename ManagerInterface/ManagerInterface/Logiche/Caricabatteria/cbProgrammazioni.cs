@@ -22,6 +22,8 @@ namespace ChargerLogic
         public ushort UltimoIdProgamma { get; set; }
         public ushort IdProgammaPrenotato { get; set; }
 
+        public parametriSistema Parametri;
+
         public byte NumeroRecordProg { get; set; }
         public llProgrammaCarica ProgrammaAttivo;
         public List<llProgrammaCarica> ProgrammiDefiniti;
@@ -93,6 +95,7 @@ namespace ChargerLogic
                 {
                     llProgrammaCarica _cLoc;
                     _cLoc = new llProgrammaCarica(Elemento);
+                    _cLoc.Parametri = Parametri;
                     _cLoc.GeneraListaParametri();
                     ProgrammiDefiniti.Add(_cLoc);
                     if (_cLoc.PosizioneCorrente == 0)

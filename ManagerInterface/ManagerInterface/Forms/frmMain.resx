@@ -580,7 +580,7 @@
     <value>0, 24</value>
   </data>
   <data name="tstPulsanti.Size" type="System.Drawing.Size, System.Drawing">
-    <value>929, 71</value>
+    <value>929, 39</value>
   </data>
   <data name="tstPulsanti.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -639,7 +639,7 @@
   <data name="tstBtnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0QAADdEBwivf4wAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAACjxJREFUeF7lm3lQ
+        0AAADdABEGw9BwAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAACjxJREFUeF7lm3lQ
         FGcahz+T1G5F1K3d2q1NZcscm2uTTXZdE5MYiQeJR2LUGGO8UcEDUJRDEAUVBQ9QREEOQQTU4RhG5D4E
         BJF4cERFMDHgakDkMCgIAor42/drW5NxOm7mY7BMza/qobtm6O993rebbuaPYQDu0Yt4Ihd4yi+t4vf7
         Cqp7O6XWvm+XUGNju79612JNVfEiTVUHgcecDu7Kne3ia2ycEmrf33nu9tPq8vLfqYEn3d3xBDXLe5X6

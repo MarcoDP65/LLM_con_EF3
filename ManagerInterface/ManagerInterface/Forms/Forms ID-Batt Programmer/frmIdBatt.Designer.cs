@@ -39,6 +39,11 @@
             this.tabProfiloAttuale = new System.Windows.Forms.TabPage();
             this.tbcPaSottopagina = new System.Windows.Forms.TabControl();
             this.tbpPaListaProfili = new System.Windows.Forms.TabPage();
+            this.grbPaCaricaFile = new System.Windows.Forms.GroupBox();
+            this.btnPaCaricaFile = new System.Windows.Forms.Button();
+            this.btnPaFileInProfiliSRC = new System.Windows.Forms.Button();
+            this.txtPaCaricaFileProfili = new System.Windows.Forms.TextBox();
+            this.btnPaGeneraQr = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPaCancellaSelezionati = new System.Windows.Forms.Button();
             this.grbPaGeneraFile = new System.Windows.Forms.GroupBox();
@@ -80,6 +85,8 @@
             this.picPaImmagineProfilo = new System.Windows.Forms.PictureBox();
             this.tbcPaSchedeValori = new System.Windows.Forms.TabControl();
             this.tbpPaGeneraleCiclo = new System.Windows.Forms.TabPage();
+            this.txtPaDescrizioneSetup = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtPaCassone = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.txtPaIdSetup = new System.Windows.Forms.TextBox();
@@ -210,6 +217,7 @@
             this.tabProfiloAttuale.SuspendLayout();
             this.tbcPaSottopagina.SuspendLayout();
             this.tbpPaListaProfili.SuspendLayout();
+            this.grbPaCaricaFile.SuspendLayout();
             this.grbPaGeneraFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).BeginInit();
             this.tbpPaProfiloAttivo.SuspendLayout();
@@ -273,6 +281,8 @@
             // 
             this.tbpPaListaProfili.BackgroundImage = global::PannelloCharger.Properties.Resources.Base_fondino_Y;
             resources.ApplyResources(this.tbpPaListaProfili, "tbpPaListaProfili");
+            this.tbpPaListaProfili.Controls.Add(this.grbPaCaricaFile);
+            this.tbpPaListaProfili.Controls.Add(this.btnPaGeneraQr);
             this.tbpPaListaProfili.Controls.Add(this.button1);
             this.tbpPaListaProfili.Controls.Add(this.btnPaCancellaSelezionati);
             this.tbpPaListaProfili.Controls.Add(this.grbPaGeneraFile);
@@ -281,6 +291,43 @@
             this.tbpPaListaProfili.Controls.Add(this.btnPaCaricaListaProfili);
             this.tbpPaListaProfili.Name = "tbpPaListaProfili";
             this.tbpPaListaProfili.UseVisualStyleBackColor = true;
+            // 
+            // grbPaCaricaFile
+            // 
+            this.grbPaCaricaFile.BackColor = System.Drawing.Color.White;
+            this.grbPaCaricaFile.Controls.Add(this.btnPaCaricaFile);
+            this.grbPaCaricaFile.Controls.Add(this.btnPaFileInProfiliSRC);
+            this.grbPaCaricaFile.Controls.Add(this.txtPaCaricaFileProfili);
+            resources.ApplyResources(this.grbPaCaricaFile, "grbPaCaricaFile");
+            this.grbPaCaricaFile.Name = "grbPaCaricaFile";
+            this.grbPaCaricaFile.TabStop = false;
+            // 
+            // btnPaCaricaFile
+            // 
+            resources.ApplyResources(this.btnPaCaricaFile, "btnPaCaricaFile");
+            this.btnPaCaricaFile.Name = "btnPaCaricaFile";
+            this.btnPaCaricaFile.TabStop = false;
+            this.btnPaCaricaFile.UseVisualStyleBackColor = true;
+            this.btnPaCaricaFile.Click += new System.EventHandler(this.btnPaCaricaFile_Click);
+            // 
+            // btnPaFileInProfiliSRC
+            // 
+            resources.ApplyResources(this.btnPaFileInProfiliSRC, "btnPaFileInProfiliSRC");
+            this.btnPaFileInProfiliSRC.Name = "btnPaFileInProfiliSRC";
+            this.btnPaFileInProfiliSRC.UseVisualStyleBackColor = true;
+            this.btnPaFileInProfiliSRC.Click += new System.EventHandler(this.btnPaFileInProfiliSRC_Click);
+            // 
+            // txtPaCaricaFileProfili
+            // 
+            resources.ApplyResources(this.txtPaCaricaFileProfili, "txtPaCaricaFileProfili");
+            this.txtPaCaricaFileProfili.Name = "txtPaCaricaFileProfili";
+            // 
+            // btnPaGeneraQr
+            // 
+            resources.ApplyResources(this.btnPaGeneraQr, "btnPaGeneraQr");
+            this.btnPaGeneraQr.Name = "btnPaGeneraQr";
+            this.btnPaGeneraQr.UseVisualStyleBackColor = true;
+            this.btnPaGeneraQr.Click += new System.EventHandler(this.btnPaGeneraQr_Click);
             // 
             // button1
             // 
@@ -353,6 +400,7 @@
             this.flwPaListaConfigurazioni.VirtualMode = true;
             this.flwPaListaConfigurazioni.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.flwPaListaConfigurazioni_FormatRow);
             this.flwPaListaConfigurazioni.SelectedIndexChanged += new System.EventHandler(this.flwPaListaConfigurazioni_SelectedIndexChanged);
+            this.flwPaListaConfigurazioni.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.flwPaListaConfigurazioni_MouseDoubleClick);
             // 
             // btnPaCaricaListaProfili
             // 
@@ -607,6 +655,8 @@
             // 
             // tbpPaGeneraleCiclo
             // 
+            this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaDescrizioneSetup);
+            this.tbpPaGeneraleCiclo.Controls.Add(this.label2);
             this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaCassone);
             this.tbpPaGeneraleCiclo.Controls.Add(this.label38);
             this.tbpPaGeneraleCiclo.Controls.Add(this.txtPaIdSetup);
@@ -616,6 +666,16 @@
             resources.ApplyResources(this.tbpPaGeneraleCiclo, "tbpPaGeneraleCiclo");
             this.tbpPaGeneraleCiclo.Name = "tbpPaGeneraleCiclo";
             this.tbpPaGeneraleCiclo.UseVisualStyleBackColor = true;
+            // 
+            // txtPaDescrizioneSetup
+            // 
+            resources.ApplyResources(this.txtPaDescrizioneSetup, "txtPaDescrizioneSetup");
+            this.txtPaDescrizioneSetup.Name = "txtPaDescrizioneSetup";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // txtPaCassone
             // 
@@ -1218,6 +1278,7 @@
             // 
             resources.ApplyResources(this.chkPaRiarmaBms, "chkPaRiarmaBms");
             this.chkPaRiarmaBms.Name = "chkPaRiarmaBms";
+            this.chkPaRiarmaBms.Click += new System.EventHandler(this.chkPaRiarmaBms_Click);
             // 
             // chkPaAttivaRiarmoBms
             // 
@@ -1454,6 +1515,8 @@
             this.tabProfiloAttuale.PerformLayout();
             this.tbcPaSottopagina.ResumeLayout(false);
             this.tbpPaListaProfili.ResumeLayout(false);
+            this.grbPaCaricaFile.ResumeLayout(false);
+            this.grbPaCaricaFile.PerformLayout();
             this.grbPaGeneraFile.ResumeLayout(false);
             this.grbPaGeneraFile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flwPaListaConfigurazioni)).EndInit();
@@ -1670,5 +1733,12 @@
         private System.Windows.Forms.TextBox txtGenMatricola;
         private System.Windows.Forms.Label lblMatricola;
         private System.Windows.Forms.Button button1;
+        internal System.Windows.Forms.Button btnPaGeneraQr;
+        private System.Windows.Forms.TextBox txtPaDescrizioneSetup;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox grbPaCaricaFile;
+        private System.Windows.Forms.Button btnPaCaricaFile;
+        private System.Windows.Forms.Button btnPaFileInProfiliSRC;
+        private System.Windows.Forms.TextBox txtPaCaricaFileProfili;
     }
 }

@@ -105,6 +105,7 @@ namespace ChargerLogic
             // 2 ) 2^cifra: Variabile
             //       # -> Valore assoluto -> nessun calcolo
             //       C -> Capacità nominale
+            //       V -> Tensione nominale
             //       
             // 3 ) 3^cifra: Operazione
             //       # -> Valore assoluto -> nessun calcolo
@@ -113,7 +114,7 @@ namespace ChargerLogic
             //       / -> Divisione per il valore indicato
             //       % -> Divisione per il valore indicato diviso 10
             //       es C%65 -> C/6.5
-            //       % -> Divisione per il valore indicato diviso 100
+            //       | -> Divisione per il valore indicato diviso 100
             //       es C|65 -> C/0.65
 
 
@@ -486,9 +487,9 @@ namespace ChargerLogic
                     BatteryTypeId = 0x3001,
                     // tempi
                     TempoT0Max = "",
-                    TempoT1Max = "",
+                    TempoT1Max = "=##720",
                     TempoT2Min = "",
-                    TempoT2Max = "=##120",
+                    TempoT2Max = "=##360",
                     TempoT3Max = "",
                     FattoreK = "",
                     FattoreKs = "=##110",
@@ -510,8 +511,8 @@ namespace ChargerLogic
                     TensioneLimiteVLim = "",
                     MantTensIniziale = "",
                     MantTensFinale = "",
-                    TensRiconoscimentoMin = "",
-                    TensRiconoscimentoMax = "",
+                    TensRiconoscimentoMin = "=V|133",
+                    TensRiconoscimentoMax = "=V*2",
                     TensMinimaStop = "",
                     //Correnti
                     CorrenteI0 = "",

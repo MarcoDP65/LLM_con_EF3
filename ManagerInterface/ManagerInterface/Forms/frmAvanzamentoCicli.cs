@@ -672,8 +672,6 @@ namespace PannelloCharger
                         sbWorker.ReportProgress(0, _stepBg);
                         Log.Debug("Lancio lettura: MemLunga " + ValStart.ToString() + " - " + ValFine.ToString());
                         object _esitoLunghi;
-                        // _esito = _cb.CaricaListaCicli(StartAddr, NumRows, out EsitoCaricamento, false, true);
-
                         _esito = llLocale.CaricaListaCicli(AddrStart, (ushort)ValFine, out _esitoLunghi, CaricaBrevi, true);
 
                         break;

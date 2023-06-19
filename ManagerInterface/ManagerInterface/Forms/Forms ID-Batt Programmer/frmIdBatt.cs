@@ -3,6 +3,7 @@ using ChargerLogic;
 using log4net;
 using MoriData;
 using Newtonsoft.Json;
+using PannelloCharger.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -566,6 +567,7 @@ namespace PannelloCharger
                     _cb.Programmazioni.ProgrammaAttivo.AnalizzaListaParametri();
                     _cb.Programmazioni.ProgrammaAttivo.IdApparato = "IDBATT";
                     _cb.Programmazioni.ProgrammaAttivo.TipoApparato = "IB";
+
                     if (ModCicloCorrente.IdProgramma == 0)
                     {
                         _cb.Programmazioni.ProgrammaAttivo.IdApparato = "IDBATT";
@@ -608,12 +610,19 @@ namespace PannelloCharger
                 {
                     // Nome
                     string _tempStr = txtPaNomeSetup.Text.Trim();
+                    ModCicloCorrente.NomeProfilo = _tempStr;
+
+                    // Descrizione
+                    ModCicloCorrente.DescrizioneProfilo = txtPaDescrizioneSetup.Text.Trim();
+
                     // Cassone
                     ModCicloCorrente.ValoriCiclo.TipoCassone = FunzioniMR.ConvertiUshort(txtPaCassone.Text, 1, 0);
 
 
                     // Generale
-                    ModCicloCorrente.NomeProfilo = _tempStr;
+
+
+
                     //ModCicloCorrente.IdProgramma = FunzioniMR.ConvertiUshort(txtPaIdSetup.Text, 1, 0);
 
                     // Batteria
@@ -889,6 +898,8 @@ namespace PannelloCharger
 
                 //Prima Vuoto tutto
                 //txtPaNomeProfilo.Text = "";
+                //txtPaDescrizioneSetup.Text = "";
+
 
                 //cmbPaProfilo.SelectedIndex = 0;
                 txtPaCapacita.Text = "";
@@ -1611,6 +1622,7 @@ namespace PannelloCharger
                             // Textbox
                             txtPaTensione.Visible = true;
                             txtPaTensione.Enabled = true;
+                            txtPaTensione.ReadOnly = false;
                             txtPaTensione.Text = FunzioniMR.StringaTensione(TipoLL.VMin);
                             cmbPaTensione.Visible = false;
 
@@ -2382,6 +2394,7 @@ namespace PannelloCharger
                     if (ParametriBase)
                     {
                         txtPaNomeSetup.Text = ModCicloCorrente.NomeProfilo;
+                        txtPaDescrizioneSetup.Text = ModCicloCorrente.DescrizioneProfilo;
                         txtPaIdSetup.Text = ModCicloCorrente.IdProgramma.ToString();
                         txtPaCassone.Text = ModCicloCorrente.ValoriCiclo.TipoCassone.ToString();
                         // Allineo il tipo batteria
@@ -3788,11 +3801,14 @@ namespace PannelloCharger
 
         private void btnPaNomeFileProfiliSRC_Click(object sender, EventArgs e)
         {
+            if (sfdExportDati.InitialDirectory == "") sfdExportDati.InitialDirectory = PannelloCharger.Properties.Settings.Default.pathFilesProfili;
             sfdExportDati.Filter = "LL Profile Parameter File (*.llpp)|*.llpp|All files (*.*)|*.*";
             DialogResult esito = sfdExportDati.ShowDialog();
             if (esito == DialogResult.OK)
             {
                 txtPaNomeFileProfili.Text = sfdExportDati.FileName;
+                PannelloCharger.Properties.Settings.Default.pathFilesProfili = Path.GetDirectoryName(sfdExportDati.FileName);
+
             }
         }
 
@@ -4293,6 +4309,8 @@ namespace PannelloCharger
                     }
                     foreach (llProgrammaCarica tempPrg in TempList)
                     {
+                        tempPrg._database = _logiche.dbDati.connessione;
+                        tempPrg.CancellaRecord();
                         _cb.Programmazioni.ProgrammiDefiniti.Remove(tempPrg);   
                     }
 
@@ -4304,6 +4322,178 @@ namespace PannelloCharger
             {
 
             }
+        }
+
+        private void btnPaGeneraQr_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (flwPaListaConfigurazioni.SelectedObject != null)
+                {
+                    llProgrammaCarica ProgCorr = (llProgrammaCarica)flwPaListaConfigurazioni.SelectedObject;
+                    if (ProgCorr != null)
+                    {
+                        IDBattData IDData = new IDBattData();
+
+                        frmQRCode QRCorrente = new frmQRCode();
+                        //QRCorrente.MdiParent = this.ParentForm;
+                        QRCorrente.StartPosition = FormStartPosition.CenterParent;
+                        QRCorrente.lblNomeProfilo.Text = ProgCorr._llprc.ProgramName;
+                        QRCorrente.lblDescrizione.Text = ProgCorr._llprc.ProgramDescription;
+                        QRCorrente.lblProfilo.Text = ProgCorr.strTipoProfilo;
+                        QRCorrente.lblBatteria.Text = ProgCorr.strTipoBatteria;
+                        QRCorrente.lblTensione.Text = ProgCorr.strBatteryVdef;
+                        QRCorrente.lblCorrente.Text = ProgCorr.strBatteryAhdef;
+                        IDData.Name = ProgCorr._llprc.ProgramName;
+                        IDData.Profile = ProgCorr.strTipoProfilo;
+                        IDData.Description = ProgCorr._llprc.ProgramDescription;
+                        IDData.BatteryType = ProgCorr.strTipoBatteria;
+                        IDData.BatteryData = ProgCorr.strBatteryVdef + "V - " + ProgCorr.strBatteryAhdef + "Ah";
+
+                        MessaggioLadeLight.MessaggioProgrammazione NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione(ProgCorr);
+                        if (NuovoPrg.GeneraByteArray())
+                        {
+                            QRCorrente.lblDataArray.Text = FunzioniComuni.HexdumpArray(NuovoPrg.dataBuffer);
+                            IDData.Data = QRCorrente.lblDataArray.Text;
+                            QRCorrente.CreaQR(IDData);
+                        }
+
+                        QRCorrente.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void chkPaRiarmaBms_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flwPaListaConfigurazioni_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            try
+            {
+                btnPaAttivaConfigurazione_Click(null, null);
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CaricaCicli: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
+            }
+
+
+        }
+
+        private void btnPaFileInProfiliSRC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sfdImportDati.InitialDirectory == "") sfdImportDati.InitialDirectory = PannelloCharger.Properties.Settings.Default.pathFilesProfili;
+                sfdImportDati.Filter = "LL Profile Parameter File (*.llpp)|*.llpp|All files (*.*)|*.*";
+                sfdImportDati.ShowDialog();
+                txtPaCaricaFileProfili.Text = sfdImportDati.FileName;
+
+                PannelloCharger.Properties.Settings.Default.pathFilesProfili = Path.GetDirectoryName(sfdImportDati.FileName);
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnGeneraCsv_Click: " + Ex.Message);
+            }
+        }
+
+        private void btnPaCaricaFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool DatiPresenti = false;
+
+                FileItemsModProfilo FileProfili = new FileItemsModProfilo();
+
+
+
+
+                AreaDatiRegen BloccoDati;
+                llModelloBlocco BloccoAttivo;
+
+                //Se manca il filename esco
+                if (txtPaNomeFileProfili.Text == "")
+                {
+                    return;
+                }
+
+                if (_cb.Programmazioni.ProgrammiDefiniti.Count < 1)
+                {
+                    return;
+                }
+                this.Cursor = Cursors.WaitCursor;
+
+                // public List<llProgrammaCarica> ProgrammiDefiniti;
+                FileProfili.ListaProfili = new List<ItemModProfilo>();
+                foreach (llProgrammaCarica Prog in _cb.Programmazioni.ProgrammiDefiniti)
+                {
+                    if (!chkPaSoloSelezionati.Checked || Prog.Selezionato)
+                    {
+                        ItemModProfilo Item = new ItemModProfilo();
+                        Item.NomeProfilo = Prog.ProgramName;
+                        Item.NoteProfilo = Prog.ProgramName;
+                        Item.Tensione = Prog.BatteryVdef;
+                        Item.Capacita = Prog.BatteryAhdef;
+                        Item.NumeroCelle = Prog.NumeroCelle;
+                        Item.TipoBatteria = Prog.TipoBatteria;
+                        Item.DurataMaxCarica = Prog.DurataMaxCarica;
+                        Item.ListaParametri = Prog.ListaParametri;
+                        Item.IdProgramma = Prog.IdProgramma;
+                        Item.IdProfiloCaricaLL = Prog.IdModelloLL;
+
+                        FileProfili.ListaProfili.Add(Item);
+                    }
+                }
+
+                FileProfili.DataCreazione = DateTime.Now;
+
+
+                // Se ho letto qualcosa, salvo il file
+                string JsonData = JsonConvert.SerializeObject(FileProfili);
+                Log.Debug("file generato");
+                // Prima comprimo i dati
+
+                if (false) //chkPackComprimiFile.Checked)
+                {
+                    Log.Debug("file generato");
+                    // Prima comprimo i dati
+                    string JsonZip = FunzioniComuni.CompressString(JsonData);
+
+                    // Ora cifro i dati
+                    // string JsonEncript = StringCipher.Encrypt(JsonZip);
+                    // PER INCOMPATIBILITA' DEL METODO DI CIFRATUTA CON NET CORE (XAMARIN)
+                    // RIMOSSA LA CIFRATURA DEL PACCHETTO  (16/07/2020)
+                    // JsonEncript = JsonData;
+                    // Log.Debug("file criptato");
+
+                    JsonData = JsonZip;
+
+                }
+
+                // string JsonZip = FunzioniComuni.CompressString(JsonData);
+
+                File.WriteAllText(txtPaNomeFileProfili.Text, JsonData);
+                MessageBox.Show("File salvato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Log.Debug("file salvato");
+                this.Cursor = Cursors.Default;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+                this.Cursor = Cursors.Default;
+            }
+
         }
     }
 }

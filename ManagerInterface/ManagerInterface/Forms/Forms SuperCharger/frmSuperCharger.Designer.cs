@@ -645,6 +645,7 @@
             this.tabCb04 = new System.Windows.Forms.TabPage();
             this.flvCicliListaCariche = new BrightIdeasSoftware.FastObjectListView();
             this.grbCicli = new System.Windows.Forms.GroupBox();
+            this.btnCicliCaricaCont = new System.Windows.Forms.Button();
             this.btnCicliCaricaArea = new System.Windows.Forms.Button();
             this.btnCicliMostraBrevi = new System.Windows.Forms.Button();
             this.btnCicliCaricaBrevi = new System.Windows.Forms.Button();
@@ -5144,6 +5145,7 @@
             // grbCicli
             // 
             this.grbCicli.BackColor = System.Drawing.Color.White;
+            this.grbCicli.Controls.Add(this.btnCicliCaricaCont);
             this.grbCicli.Controls.Add(this.btnCicliCaricaArea);
             this.grbCicli.Controls.Add(this.btnCicliMostraBrevi);
             this.grbCicli.Controls.Add(this.btnCicliCaricaBrevi);
@@ -5157,6 +5159,13 @@
             resources.ApplyResources(this.grbCicli, "grbCicli");
             this.grbCicli.Name = "grbCicli";
             this.grbCicli.TabStop = false;
+            // 
+            // btnCicliCaricaCont
+            // 
+            resources.ApplyResources(this.btnCicliCaricaCont, "btnCicliCaricaCont");
+            this.btnCicliCaricaCont.Name = "btnCicliCaricaCont";
+            this.btnCicliCaricaCont.UseVisualStyleBackColor = true;
+            this.btnCicliCaricaCont.Click += new System.EventHandler(this.btnCicliCaricaCont_Click);
             // 
             // btnCicliCaricaArea
             // 
@@ -6575,5 +6584,6 @@
         private System.Windows.Forms.TextBox txtPaNomeFileProfili;
         private System.Windows.Forms.Button btnPaCancellaSelezionati;
         private System.Windows.Forms.Button btnPaSalvaFile;
+        private System.Windows.Forms.Button btnCicliCaricaCont;
     }
 }
