@@ -180,6 +180,534 @@
   <data name="tbpPaListaProfili.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnPaCopiaSelezionati.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnPaCopiaSelezionati.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaCopiaSelezionati.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 434</value>
+  </data>
+  <data name="btnPaCopiaSelezionati.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaCopiaSelezionati.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 35</value>
+  </data>
+  <data name="btnPaCopiaSelezionati.TabIndex" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="btnPaCopiaSelezionati.Text" xml:space="preserve">
+    <value>Copia Configurazione</value>
+  </data>
+  <data name="&gt;&gt;btnPaCopiaSelezionati.Name" xml:space="preserve">
+    <value>btnPaCopiaSelezionati</value>
+  </data>
+  <data name="&gt;&gt;btnPaCopiaSelezionati.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaCopiaSelezionati.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;btnPaCopiaSelezionati.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.Name" xml:space="preserve">
+    <value>btnPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.Parent" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.Name" xml:space="preserve">
+    <value>btnPaFileInProfiliSRC</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.Parent" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaFileInProfiliSRC.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.Name" xml:space="preserve">
+    <value>txtPaCaricaFileProfili</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.Parent" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;txtPaCaricaFileProfili.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grbPaCaricaFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>616, 480</value>
+  </data>
+  <data name="grbPaCaricaFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbPaCaricaFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbPaCaricaFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>590, 86</value>
+  </data>
+  <data name="grbPaCaricaFile.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="grbPaCaricaFile.Text" xml:space="preserve">
+    <value>Carica File Profili</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.Name" xml:space="preserve">
+    <value>grbPaCaricaFile</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;grbPaCaricaFile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnPaGeneraQr.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnPaGeneraQr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaGeneraQr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>986, 434</value>
+  </data>
+  <data name="btnPaGeneraQr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaGeneraQr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 35</value>
+  </data>
+  <data name="btnPaGeneraQr.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="btnPaGeneraQr.Text" xml:space="preserve">
+    <value>Genera QR Code</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.Name" xml:space="preserve">
+    <value>btnPaGeneraQr</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;btnPaGeneraQr.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>495, 434</value>
+  </data>
+  <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 35</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Nuova Configurazione</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnPaCancellaSelezionati.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnPaCancellaSelezionati.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaCancellaSelezionati.Location" type="System.Drawing.Point, System.Drawing">
+    <value>741, 434</value>
+  </data>
+  <data name="btnPaCancellaSelezionati.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaCancellaSelezionati.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 35</value>
+  </data>
+  <data name="btnPaCancellaSelezionati.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="btnPaCancellaSelezionati.Text" xml:space="preserve">
+    <value>Cancella Selezionati</value>
+  </data>
+  <data name="&gt;&gt;btnPaCancellaSelezionati.Name" xml:space="preserve">
+    <value>btnPaCancellaSelezionati</value>
+  </data>
+  <data name="&gt;&gt;btnPaCancellaSelezionati.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaCancellaSelezionati.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;btnPaCancellaSelezionati.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaFile.Name" xml:space="preserve">
+    <value>btnPaSalvaFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaFile.Parent" xml:space="preserve">
+    <value>grbPaGeneraFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkPaSoloSelezionati.Name" xml:space="preserve">
+    <value>chkPaSoloSelezionati</value>
+  </data>
+  <data name="&gt;&gt;chkPaSoloSelezionati.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaSoloSelezionati.Parent" xml:space="preserve">
+    <value>grbPaGeneraFile</value>
+  </data>
+  <data name="&gt;&gt;chkPaSoloSelezionati.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnPaNomeFileProfiliSRC.Name" xml:space="preserve">
+    <value>btnPaNomeFileProfiliSRC</value>
+  </data>
+  <data name="&gt;&gt;btnPaNomeFileProfiliSRC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaNomeFileProfiliSRC.Parent" xml:space="preserve">
+    <value>grbPaGeneraFile</value>
+  </data>
+  <data name="&gt;&gt;btnPaNomeFileProfiliSRC.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeFileProfili.Name" xml:space="preserve">
+    <value>txtPaNomeFileProfili</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeFileProfili.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeFileProfili.Parent" xml:space="preserve">
+    <value>grbPaGeneraFile</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeFileProfili.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grbPaGeneraFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 480</value>
+  </data>
+  <data name="grbPaGeneraFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbPaGeneraFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="grbPaGeneraFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>590, 86</value>
+  </data>
+  <data name="grbPaGeneraFile.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="grbPaGeneraFile.Text" xml:space="preserve">
+    <value>Genera File Profili</value>
+  </data>
+  <data name="&gt;&gt;grbPaGeneraFile.Name" xml:space="preserve">
+    <value>grbPaGeneraFile</value>
+  </data>
+  <data name="&gt;&gt;grbPaGeneraFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbPaGeneraFile.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;grbPaGeneraFile.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnPaAttivaConfigurazione.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnPaAttivaConfigurazione.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaAttivaConfigurazione.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 434</value>
+  </data>
+  <data name="btnPaAttivaConfigurazione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaAttivaConfigurazione.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 35</value>
+  </data>
+  <data name="btnPaAttivaConfigurazione.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="btnPaAttivaConfigurazione.Text" xml:space="preserve">
+    <value>Modifica Configurazione</value>
+  </data>
+  <data name="&gt;&gt;btnPaAttivaConfigurazione.Name" xml:space="preserve">
+    <value>btnPaAttivaConfigurazione</value>
+  </data>
+  <data name="&gt;&gt;btnPaAttivaConfigurazione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaAttivaConfigurazione.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;btnPaAttivaConfigurazione.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="flwPaListaConfigurazioni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 14</value>
+  </data>
+  <data name="flwPaListaConfigurazioni.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="flwPaListaConfigurazioni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1196, 402</value>
+  </data>
+  <data name="flwPaListaConfigurazioni.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="&gt;&gt;flwPaListaConfigurazioni.Name" xml:space="preserve">
+    <value>flwPaListaConfigurazioni</value>
+  </data>
+  <data name="&gt;&gt;flwPaListaConfigurazioni.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;flwPaListaConfigurazioni.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;flwPaListaConfigurazioni.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnPaCaricaListaProfili.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaCaricaListaProfili.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1334, 551</value>
+  </data>
+  <data name="btnPaCaricaListaProfili.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnPaCaricaListaProfili.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 27</value>
+  </data>
+  <data name="btnPaCaricaListaProfili.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="btnPaCaricaListaProfili.Text" xml:space="preserve">
+    <value>NOOP</value>
+  </data>
+  <data name="btnPaCaricaListaProfili.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaListaProfili.Name" xml:space="preserve">
+    <value>btnPaCaricaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaListaProfili.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaListaProfili.Parent" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaListaProfili.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tbpPaListaProfili.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaListaProfili.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaListaProfili.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaListaProfili.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1469, 592</value>
+  </data>
+  <data name="tbpPaListaProfili.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tbpPaListaProfili.Text" xml:space="preserve">
+    <value>Lista Profili</value>
+  </data>
+  <data name="&gt;&gt;tbpPaListaProfili.Name" xml:space="preserve">
+    <value>tbpPaListaProfili</value>
+  </data>
+  <data name="&gt;&gt;tbpPaListaProfili.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaListaProfili.Parent" xml:space="preserve">
+    <value>tbcPaSottopagina</value>
+  </data>
+  <data name="&gt;&gt;tbpPaListaProfili.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbpPaProfiloAttivo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="&gt;&gt;pippo.Name" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;pippo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pippo.Parent" xml:space="preserve">
+    <value>tbpPaProfiloAttivo</value>
+  </data>
+  <data name="&gt;&gt;pippo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbpPaProfiloAttivo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaProfiloAttivo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaProfiloAttivo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaProfiloAttivo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1469, 592</value>
+  </data>
+  <data name="tbpPaProfiloAttivo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tbpPaProfiloAttivo.Text" xml:space="preserve">
+    <value>Profilo Attivo</value>
+  </data>
+  <data name="&gt;&gt;tbpPaProfiloAttivo.Name" xml:space="preserve">
+    <value>tbpPaProfiloAttivo</value>
+  </data>
+  <data name="&gt;&gt;tbpPaProfiloAttivo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaProfiloAttivo.Parent" xml:space="preserve">
+    <value>tbcPaSottopagina</value>
+  </data>
+  <data name="&gt;&gt;tbpPaProfiloAttivo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbcPaSottopagina.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 0</value>
+  </data>
+  <data name="tbcPaSottopagina.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbcPaSottopagina.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1477, 618</value>
+  </data>
+  <data name="tbcPaSottopagina.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSottopagina.Name" xml:space="preserve">
+    <value>tbcPaSottopagina</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSottopagina.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSottopagina.Parent" xml:space="preserve">
+    <value>tabProfiloAttuale</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSottopagina.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPaTitoloLista.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPaTitoloLista.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblPaTitoloLista.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPaTitoloLista.Location" type="System.Drawing.Point, System.Drawing">
+    <value>946, 145</value>
+  </data>
+  <data name="lblPaTitoloLista.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="lblPaTitoloLista.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="lblPaTitoloLista.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="lblPaTitoloLista.Text" xml:space="preserve">
+    <value>Profili Definiti</value>
+  </data>
+  <data name="&gt;&gt;lblPaTitoloLista.Name" xml:space="preserve">
+    <value>lblPaTitoloLista</value>
+  </data>
+  <data name="&gt;&gt;lblPaTitoloLista.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaTitoloLista.Parent" xml:space="preserve">
+    <value>tabProfiloAttuale</value>
+  </data>
+  <data name="&gt;&gt;lblPaTitoloLista.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabProfiloAttuale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabProfiloAttuale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabProfiloAttuale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1479, 618</value>
+  </data>
+  <data name="tabProfiloAttuale.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabProfiloAttuale.Text" xml:space="preserve">
+    <value>Configurazione</value>
+  </data>
+  <data name="&gt;&gt;tabProfiloAttuale.Name" xml:space="preserve">
+    <value>tabProfiloAttuale</value>
+  </data>
+  <data name="&gt;&gt;tabProfiloAttuale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabProfiloAttuale.Parent" xml:space="preserve">
+    <value>tabCaricaBatterie</value>
+  </data>
+  <data name="&gt;&gt;tabProfiloAttuale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="btnPaCaricaFile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
@@ -269,135 +797,6 @@
   </data>
   <data name="&gt;&gt;txtPaCaricaFileProfili.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="grbPaCaricaFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>616, 480</value>
-  </data>
-  <data name="grbPaCaricaFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbPaCaricaFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbPaCaricaFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>590, 86</value>
-  </data>
-  <data name="grbPaCaricaFile.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="grbPaCaricaFile.Text" xml:space="preserve">
-    <value>Carica File Profili</value>
-  </data>
-  <data name="&gt;&gt;grbPaCaricaFile.Name" xml:space="preserve">
-    <value>grbPaCaricaFile</value>
-  </data>
-  <data name="&gt;&gt;grbPaCaricaFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbPaCaricaFile.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;grbPaCaricaFile.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnPaGeneraQr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
-  </data>
-  <data name="btnPaGeneraQr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnPaGeneraQr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>681, 434</value>
-  </data>
-  <data name="btnPaGeneraQr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="btnPaGeneraQr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 35</value>
-  </data>
-  <data name="btnPaGeneraQr.TabIndex" type="System.Int32, mscorlib">
-    <value>69</value>
-  </data>
-  <data name="btnPaGeneraQr.Text" xml:space="preserve">
-    <value>Genera QR Code</value>
-  </data>
-  <data name="&gt;&gt;btnPaGeneraQr.Name" xml:space="preserve">
-    <value>btnPaGeneraQr</value>
-  </data>
-  <data name="&gt;&gt;btnPaGeneraQr.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPaGeneraQr.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;btnPaGeneraQr.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
-  </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 434</value>
-  </data>
-  <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 35</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Nuova Configurazione</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnPaCancellaSelezionati.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
-  </data>
-  <data name="btnPaCancellaSelezionati.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnPaCancellaSelezionati.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 434</value>
-  </data>
-  <data name="btnPaCancellaSelezionati.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="btnPaCancellaSelezionati.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 35</value>
-  </data>
-  <data name="btnPaCancellaSelezionati.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="btnPaCancellaSelezionati.Text" xml:space="preserve">
-    <value>Cancella Selezionati</value>
-  </data>
-  <data name="&gt;&gt;btnPaCancellaSelezionati.Name" xml:space="preserve">
-    <value>btnPaCancellaSelezionati</value>
-  </data>
-  <data name="&gt;&gt;btnPaCancellaSelezionati.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPaCancellaSelezionati.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;btnPaCancellaSelezionati.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="btnPaSalvaFile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -522,158 +921,167 @@
   <data name="&gt;&gt;txtPaNomeFileProfili.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="grbPaGeneraFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 480</value>
+  <data name="&gt;&gt;btnPaProfileClear.Name" xml:space="preserve">
+    <value>btnPaProfileClear</value>
   </data>
-  <data name="grbPaGeneraFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbPaGeneraFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="grbPaGeneraFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>590, 86</value>
-  </data>
-  <data name="grbPaGeneraFile.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="grbPaGeneraFile.Text" xml:space="preserve">
-    <value>Genera File Profili</value>
-  </data>
-  <data name="&gt;&gt;grbPaGeneraFile.Name" xml:space="preserve">
-    <value>grbPaGeneraFile</value>
-  </data>
-  <data name="&gt;&gt;grbPaGeneraFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbPaGeneraFile.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;grbPaGeneraFile.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="btnPaAttivaConfigurazione.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
-  </data>
-  <data name="btnPaAttivaConfigurazione.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnPaAttivaConfigurazione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 434</value>
-  </data>
-  <data name="btnPaAttivaConfigurazione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="btnPaAttivaConfigurazione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 35</value>
-  </data>
-  <data name="btnPaAttivaConfigurazione.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="btnPaAttivaConfigurazione.Text" xml:space="preserve">
-    <value>Modifica Configurazione</value>
-  </data>
-  <data name="&gt;&gt;btnPaAttivaConfigurazione.Name" xml:space="preserve">
-    <value>btnPaAttivaConfigurazione</value>
-  </data>
-  <data name="&gt;&gt;btnPaAttivaConfigurazione.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnPaProfileClear.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnPaAttivaConfigurazione.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
+  <data name="&gt;&gt;btnPaProfileClear.Parent" xml:space="preserve">
+    <value>pippo</value>
   </data>
-  <data name="&gt;&gt;btnPaAttivaConfigurazione.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="flwPaListaConfigurazioni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 14</value>
-  </data>
-  <data name="flwPaListaConfigurazioni.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="flwPaListaConfigurazioni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1196, 402</value>
-  </data>
-  <data name="flwPaListaConfigurazioni.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="&gt;&gt;flwPaListaConfigurazioni.Name" xml:space="preserve">
-    <value>flwPaListaConfigurazioni</value>
-  </data>
-  <data name="&gt;&gt;flwPaListaConfigurazioni.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
-  </data>
-  <data name="&gt;&gt;flwPaListaConfigurazioni.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;flwPaListaConfigurazioni.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="btnPaCaricaListaProfili.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnPaCaricaListaProfili.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1334, 551</value>
-  </data>
-  <data name="btnPaCaricaListaProfili.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="btnPaCaricaListaProfili.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 27</value>
-  </data>
-  <data name="btnPaCaricaListaProfili.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <data name="btnPaCaricaListaProfili.Text" xml:space="preserve">
-    <value>NOOP</value>
-  </data>
-  <data name="btnPaCaricaListaProfili.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;btnPaCaricaListaProfili.Name" xml:space="preserve">
-    <value>btnPaCaricaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;btnPaCaricaListaProfili.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPaCaricaListaProfili.Parent" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;btnPaCaricaListaProfili.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tbpPaListaProfili.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tbpPaListaProfili.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbpPaListaProfili.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbpPaListaProfili.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1469, 592</value>
-  </data>
-  <data name="tbpPaListaProfili.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tbpPaListaProfili.Text" xml:space="preserve">
-    <value>Lista Profili</value>
-  </data>
-  <data name="&gt;&gt;tbpPaListaProfili.Name" xml:space="preserve">
-    <value>tbpPaListaProfili</value>
-  </data>
-  <data name="&gt;&gt;tbpPaListaProfili.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpPaListaProfili.Parent" xml:space="preserve">
-    <value>tbcPaSottopagina</value>
-  </data>
-  <data name="&gt;&gt;tbpPaListaProfili.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnPaProfileClear.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tbpPaProfiloAttivo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.Name" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaCicli.Name" xml:space="preserve">
+    <value>btnPaCaricaCicli</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaCicli.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaCicli.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;btnPaCaricaCicli.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chkPaSbloccaValori.Name" xml:space="preserve">
+    <value>chkPaSbloccaValori</value>
+  </data>
+  <data name="&gt;&gt;chkPaSbloccaValori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaSbloccaValori.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;chkPaSbloccaValori.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblPaSbloccaValori.Name" xml:space="preserve">
+    <value>lblPaSbloccaValori</value>
+  </data>
+  <data name="&gt;&gt;lblPaSbloccaValori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaSbloccaValori.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;lblPaSbloccaValori.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileRefresh.Name" xml:space="preserve">
+    <value>btnPaProfileRefresh</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileRefresh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileRefresh.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileRefresh.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;picPaImmagineProfilo.Name" xml:space="preserve">
+    <value>picPaImmagineProfilo</value>
+  </data>
+  <data name="&gt;&gt;picPaImmagineProfilo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;picPaImmagineProfilo.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;picPaImmagineProfilo.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.Name" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSpyBatt.Name" xml:space="preserve">
+    <value>chkPaUsaSpyBatt</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSpyBatt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSpyBatt.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSpyBatt.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label69.Name" xml:space="preserve">
+    <value>label69</value>
+  </data>
+  <data name="&gt;&gt;label69.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label69.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;label69.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaDati.Name" xml:space="preserve">
+    <value>btnPaSalvaDati</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaDati.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaDati.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;btnPaSalvaDati.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="pippo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 13</value>
+  </data>
+  <data name="pippo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pippo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pippo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1177, 480</value>
+  </data>
+  <data name="pippo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="pippo.Text" xml:space="preserve">
+    <value>Profilo  Attivo</value>
+  </data>
+  <data name="&gt;&gt;pippo.Name" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;pippo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pippo.Parent" xml:space="preserve">
+    <value>tbpPaProfiloAttivo</value>
+  </data>
+  <data name="&gt;&gt;pippo.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnPaProfileClear.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -707,6 +1115,270 @@
   </data>
   <data name="&gt;&gt;btnPaProfileClear.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileNEW.Name" xml:space="preserve">
+    <value>btnPaProfileNEW</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileNEW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileNEW.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileNEW.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSafety.Name" xml:space="preserve">
+    <value>chkPaUsaSafety</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSafety.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSafety.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;chkPaUsaSafety.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblPaUsaSafety.Name" xml:space="preserve">
+    <value>lblPaUsaSafety</value>
+  </data>
+  <data name="&gt;&gt;lblPaUsaSafety.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaUsaSafety.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;lblPaUsaSafety.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cmbPaProfilo.Name" xml:space="preserve">
+    <value>cmbPaProfilo</value>
+  </data>
+  <data name="&gt;&gt;cmbPaProfilo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbPaProfilo.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;cmbPaProfilo.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPaCapacita.Name" xml:space="preserve">
+    <value>txtPaCapacita</value>
+  </data>
+  <data name="&gt;&gt;txtPaCapacita.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCapacita.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;txtPaCapacita.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaOppChg.Name" xml:space="preserve">
+    <value>chkPaAttivaOppChg</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaOppChg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaOppChg.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaOppChg.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaOppChg.Name" xml:space="preserve">
+    <value>lblPaAttivaOppChg</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaOppChg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaOppChg.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaOppChg.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaMant.Name" xml:space="preserve">
+    <value>chkPaAttivaMant</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaMant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaMant.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaMant.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaMant.Name" xml:space="preserve">
+    <value>lblPaAttivaMant</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaMant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaMant.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaMant.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;txtPaNumCelle.Name" xml:space="preserve">
+    <value>txtPaNumCelle</value>
+  </data>
+  <data name="&gt;&gt;txtPaNumCelle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaNumCelle.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;txtPaNumCelle.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;lblPaNumCelle.Name" xml:space="preserve">
+    <value>lblPaNumCelle</value>
+  </data>
+  <data name="&gt;&gt;lblPaNumCelle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaNumCelle.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;lblPaNumCelle.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTipoBatteria.Name" xml:space="preserve">
+    <value>cmbPaTipoBatteria</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTipoBatteria.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTipoBatteria.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTipoBatteria.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;lblPaTipoBatteria.Name" xml:space="preserve">
+    <value>lblPaTipoBatteria</value>
+  </data>
+  <data name="&gt;&gt;lblPaTipoBatteria.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaTipoBatteria.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;lblPaTipoBatteria.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaEqual.Name" xml:space="preserve">
+    <value>chkPaAttivaEqual</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaEqual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaEqual.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaEqual.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaEqual.Name" xml:space="preserve">
+    <value>lblPaAttivaEqual</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaEqual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaEqual.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;lblPaAttivaEqual.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;lblPaTensione.Name" xml:space="preserve">
+    <value>lblPaTensione</value>
+  </data>
+  <data name="&gt;&gt;lblPaTensione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaTensione.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;lblPaTensione.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTensione.Name" xml:space="preserve">
+    <value>cmbPaTensione</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTensione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTensione.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;cmbPaTensione.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;txtPaTensione.Name" xml:space="preserve">
+    <value>txtPaTensione</value>
+  </data>
+  <data name="&gt;&gt;txtPaTensione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaTensione.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;txtPaTensione.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="grbPaImpostazioniLocali.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 58</value>
+  </data>
+  <data name="grbPaImpostazioniLocali.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 409</value>
+  </data>
+  <data name="grbPaImpostazioniLocali.TabIndex" type="System.Int32, mscorlib">
+    <value>149</value>
+  </data>
+  <data name="grbPaImpostazioniLocali.Text" xml:space="preserve">
+    <value>Parametri</value>
+  </data>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.Name" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;grbPaImpostazioniLocali.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="btnPaProfileNEW.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -1315,7 +1987,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="cmbPaTensione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 25</value>
+    <value>150, 25</value>
   </data>
   <data name="cmbPaTensione.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -1336,13 +2008,13 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtPaTensione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>92, 98</value>
+    <value>12, 98</value>
   </data>
   <data name="txtPaTensione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtPaTensione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 23</value>
+    <value>150, 23</value>
   </data>
   <data name="txtPaTensione.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -1361,30 +2033,6 @@
   </data>
   <data name="&gt;&gt;txtPaTensione.ZOrder" xml:space="preserve">
     <value>19</value>
-  </data>
-  <data name="grbPaImpostazioniLocali.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 58</value>
-  </data>
-  <data name="grbPaImpostazioniLocali.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 409</value>
-  </data>
-  <data name="grbPaImpostazioniLocali.TabIndex" type="System.Int32, mscorlib">
-    <value>149</value>
-  </data>
-  <data name="grbPaImpostazioniLocali.Text" xml:space="preserve">
-    <value>Parametri</value>
-  </data>
-  <data name="&gt;&gt;grbPaImpostazioniLocali.Name" xml:space="preserve">
-    <value>grbPaImpostazioniLocali</value>
-  </data>
-  <data name="&gt;&gt;grbPaImpostazioniLocali.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbPaImpostazioniLocali.Parent" xml:space="preserve">
-    <value>pippo</value>
-  </data>
-  <data name="&gt;&gt;grbPaImpostazioniLocali.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="btnPaCaricaCicli.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1544,6 +2192,261 @@
   </data>
   <data name="&gt;&gt;picPaImmagineProfilo.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.Name" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep0.Name" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep0.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep0.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep1.Name" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep1.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep2.Name" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep2.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep3.Name" xml:space="preserve">
+    <value>tbpPaPCStep3</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep3.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCEqual.Name" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCEqual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCEqual.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCEqual.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCMant.Name" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCMant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCMant.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCMant.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCOpp.Name" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCOpp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCOpp.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCOpp.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tbpPaParSoglia.Name" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;tbpPaParSoglia.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaParSoglia.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaParSoglia.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tbcPaSchedeValori.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 302</value>
+  </data>
+  <data name="tbcPaSchedeValori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbcPaSchedeValori.Size" type="System.Drawing.Size, System.Drawing">
+    <value>727, 165</value>
+  </data>
+  <data name="tbcPaSchedeValori.TabIndex" type="System.Int32, mscorlib">
+    <value>126</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.Name" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.Parent" xml:space="preserve">
+    <value>pippo</value>
+  </data>
+  <data name="&gt;&gt;tbcPaSchedeValori.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.Name" xml:space="preserve">
+    <value>txtPaDescrizioneSetup</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;txtPaDescrizioneSetup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPaCassone.Name" xml:space="preserve">
+    <value>txtPaCassone</value>
+  </data>
+  <data name="&gt;&gt;txtPaCassone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCassone.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;txtPaCassone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label38.Name" xml:space="preserve">
+    <value>label38</value>
+  </data>
+  <data name="&gt;&gt;label38.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPaIdSetup.Name" xml:space="preserve">
+    <value>txtPaIdSetup</value>
+  </data>
+  <data name="&gt;&gt;txtPaIdSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaIdSetup.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;txtPaIdSetup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblPaIdSetup.Name" xml:space="preserve">
+    <value>lblPaIdSetup</value>
+  </data>
+  <data name="&gt;&gt;lblPaIdSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaIdSetup.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;lblPaIdSetup.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeSetup.Name" xml:space="preserve">
+    <value>txtPaNomeSetup</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeSetup.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;txtPaNomeSetup.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label152.Name" xml:space="preserve">
+    <value>label152</value>
+  </data>
+  <data name="&gt;&gt;label152.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label152.Parent" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;label152.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tbpPaGeneraleCiclo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaGeneraleCiclo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaGeneraleCiclo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaGeneraleCiclo.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tbpPaGeneraleCiclo.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.Name" xml:space="preserve">
+    <value>tbpPaGeneraleCiclo</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.Parent" xml:space="preserve">
+    <value>tbcPaSchedeValori</value>
+  </data>
+  <data name="&gt;&gt;tbpPaGeneraleCiclo.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="txtPaDescrizioneSetup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -1803,32 +2706,101 @@
   <data name="&gt;&gt;label152.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="tbpPaGeneraleCiclo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;txtPaDurataMaxT0.Name" xml:space="preserve">
+    <value>txtPaDurataMaxT0</value>
   </data>
-  <data name="tbpPaGeneraleCiclo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;txtPaDurataMaxT0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaGeneraleCiclo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+  <data name="&gt;&gt;txtPaDurataMaxT0.Parent" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
   </data>
-  <data name="tbpPaGeneraleCiclo.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtPaDurataMaxT0.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label39.Name" xml:space="preserve">
+    <value>label39</value>
+  </data>
+  <data name="&gt;&gt;label39.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label39.Parent" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
+  </data>
+  <data name="&gt;&gt;label39.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPaPrefaseI0.Name" xml:space="preserve">
+    <value>txtPaPrefaseI0</value>
+  </data>
+  <data name="&gt;&gt;txtPaPrefaseI0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaPrefaseI0.Parent" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
+  </data>
+  <data name="&gt;&gt;txtPaPrefaseI0.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaV0.Name" xml:space="preserve">
+    <value>txtPaSogliaV0</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaV0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaV0.Parent" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaV0.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tbpPaGeneraleCiclo.Text" xml:space="preserve">
-    <value>Generale</value>
+  <data name="tbpPaPCStep0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;tbpPaGeneraleCiclo.Name" xml:space="preserve">
-    <value>tbpPaGeneraleCiclo</value>
+  <data name="tbpPaPCStep0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
   </data>
-  <data name="&gt;&gt;tbpPaGeneraleCiclo.Type" xml:space="preserve">
+  <data name="tbpPaPCStep0.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tbpPaPCStep0.Text" xml:space="preserve">
+    <value>Fase 0</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep0.Name" xml:space="preserve">
+    <value>tbpPaPCStep0</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep0.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaGeneraleCiclo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaPCStep0.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaGeneraleCiclo.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tbpPaPCStep0.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="txtPaDurataMaxT0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -2019,29 +2991,119 @@
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tbpPaPCStep0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;cmbPaDurataMaxT1.Name" xml:space="preserve">
+    <value>cmbPaDurataMaxT1</value>
   </data>
-  <data name="tbpPaPCStep0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+  <data name="&gt;&gt;cmbPaDurataMaxT1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaPCStep0.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;cmbPaDurataMaxT1.Parent" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;cmbPaDurataMaxT1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cmbPaDurataCarica.Name" xml:space="preserve">
+    <value>cmbPaDurataCarica</value>
+  </data>
+  <data name="&gt;&gt;cmbPaDurataCarica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbPaDurataCarica.Parent" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;cmbPaDurataCarica.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteI1.Name" xml:space="preserve">
+    <value>txtPaCorrenteI1</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteI1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteI1.Parent" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteI1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaVs.Name" xml:space="preserve">
+    <value>txtPaSogliaVs</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaVs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaVs.Parent" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;txtPaSogliaVs.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="tbpPaPCStep0.Text" xml:space="preserve">
-    <value>Fase 0</value>
+  <data name="tbpPaPCStep1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep0.Name" xml:space="preserve">
-    <value>tbpPaPCStep0</value>
+  <data name="tbpPaPCStep1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep0.Type" xml:space="preserve">
+  <data name="tbpPaPCStep1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaPCStep1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaPCStep1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tbpPaPCStep1.Text" xml:space="preserve">
+    <value>Fase 1</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep1.Name" xml:space="preserve">
+    <value>tbpPaPCStep1</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep0.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaPCStep1.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep0.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tbpPaPCStep1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="cmbPaDurataMaxT1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -2262,35 +3324,299 @@
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="tbpPaPCStep1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;txtPaTempoFin.Name" xml:space="preserve">
+    <value>txtPaTempoFin</value>
   </data>
-  <data name="tbpPaPCStep1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;txtPaTempoFin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaPCStep1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;txtPaTempoFin.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
   </data>
-  <data name="tbpPaPCStep1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
-  </data>
-  <data name="tbpPaPCStep1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtPaTempoFin.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tbpPaPCStep1.Text" xml:space="preserve">
-    <value>Fase 1</value>
+  <data name="&gt;&gt;label31.Name" xml:space="preserve">
+    <value>label31</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep1.Name" xml:space="preserve">
-    <value>tbpPaPCStep1</value>
+  <data name="&gt;&gt;label31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep1.Type" xml:space="preserve">
+  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPadT.Name" xml:space="preserve">
+    <value>txtPadT</value>
+  </data>
+  <data name="&gt;&gt;txtPadT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPadT.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPadT.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPadV.Name" xml:space="preserve">
+    <value>txtPadV</value>
+  </data>
+  <data name="&gt;&gt;txtPadV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPadV.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPadV.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffKc.Name" xml:space="preserve">
+    <value>txtPaCoeffKc</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffKc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffKc.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffKc.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMax.Name" xml:space="preserve">
+    <value>txtPaVMax</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMax.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMax.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label207.Name" xml:space="preserve">
+    <value>label207</value>
+  </data>
+  <data name="&gt;&gt;label207.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label207.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label207.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffK.Name" xml:space="preserve">
+    <value>txtPaCoeffK</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffK.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaCoeffK.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
+  </data>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Max.Name" xml:space="preserve">
+    <value>txtPaTempoT2Max</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Max.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Max.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Max.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Min.Name" xml:space="preserve">
+    <value>txtPaTempoT2Min</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Min.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT2Min.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteRaccordo.Name" xml:space="preserve">
+    <value>txtPaCorrenteRaccordo</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteRaccordo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteRaccordo.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteRaccordo.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteF3.Name" xml:space="preserve">
+    <value>txtPaCorrenteF3</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteF3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteF3.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteF3.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;txtPaRaccordoF1.Name" xml:space="preserve">
+    <value>txtPaRaccordoF1</value>
+  </data>
+  <data name="&gt;&gt;txtPaRaccordoF1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaRaccordoF1.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;txtPaRaccordoF1.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="tbpPaPCStep2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaPCStep2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaPCStep2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaPCStep2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaPCStep2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tbpPaPCStep2.Text" xml:space="preserve">
+    <value>Fase 2</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep2.Name" xml:space="preserve">
+    <value>tbpPaPCStep2</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaPCStep2.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;tbpPaPCStep2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="txtPaTempoFin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -2985,35 +4311,56 @@
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="tbpPaPCStep2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
   </data>
-  <data name="tbpPaPCStep2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaPCStep2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>tbpPaPCStep3</value>
   </data>
-  <data name="tbpPaPCStep2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="tbpPaPCStep2.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtPaTempoT3Max.Name" xml:space="preserve">
+    <value>txtPaTempoT3Max</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT3Max.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT3Max.Parent" xml:space="preserve">
+    <value>tbpPaPCStep3</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempoT3Max.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tbpPaPCStep2.Text" xml:space="preserve">
-    <value>Fase 2</value>
+  <data name="tbpPaPCStep3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep2.Name" xml:space="preserve">
-    <value>tbpPaPCStep2</value>
+  <data name="tbpPaPCStep3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep2.Type" xml:space="preserve">
+  <data name="tbpPaPCStep3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaPCStep3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tbpPaPCStep3.Text" xml:space="preserve">
+    <value>Fase 3</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep3.Name" xml:space="preserve">
+    <value>tbpPaPCStep3</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCStep3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaPCStep3.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep2.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;tbpPaPCStep3.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3078,32 +4425,152 @@
   <data name="&gt;&gt;txtPaTempoT3Max.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tbpPaPCStep3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;txtPaEqualPulseCurrent.Name" xml:space="preserve">
+    <value>txtPaEqualPulseCurrent</value>
   </data>
-  <data name="tbpPaPCStep3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;txtPaEqualPulseCurrent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaPCStep3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+  <data name="&gt;&gt;txtPaEqualPulseCurrent.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
   </data>
-  <data name="tbpPaPCStep3.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtPaEqualPulseCurrent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulseCurrent.Name" xml:space="preserve">
+    <value>lblPaEqualPulseCurrent</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulseCurrent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulseCurrent.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulseCurrent.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulseTime.Name" xml:space="preserve">
+    <value>txtPaEqualPulseTime</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulseTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulseTime.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulseTime.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tbpPaPCStep3.Text" xml:space="preserve">
-    <value>Fase 3</value>
+  <data name="&gt;&gt;lblPaEqualPulseTime.Name" xml:space="preserve">
+    <value>lblPaEqualPulseTime</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep3.Name" xml:space="preserve">
-    <value>tbpPaPCStep3</value>
+  <data name="&gt;&gt;lblPaEqualPulseTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep3.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblPaEqualPulseTime.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulseTime.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulsePause.Name" xml:space="preserve">
+    <value>txtPaEqualPulsePause</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulsePause.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulsePause.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualPulsePause.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulsePause.Name" xml:space="preserve">
+    <value>lblPaEqualPulsePause</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulsePause.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulsePause.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualPulsePause.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualNumPulse.Name" xml:space="preserve">
+    <value>txtPaEqualNumPulse</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualNumPulse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualNumPulse.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualNumPulse.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualNumPulse.Name" xml:space="preserve">
+    <value>lblPaEqualNumPulse</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualNumPulse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualNumPulse.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualNumPulse.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualAttesa.Name" xml:space="preserve">
+    <value>txtPaEqualAttesa</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualAttesa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualAttesa.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;txtPaEqualAttesa.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualAttesa.Name" xml:space="preserve">
+    <value>lblPaEqualAttesa</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualAttesa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualAttesa.Parent" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;lblPaEqualAttesa.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tbpPaPCEqual.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaPCEqual.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaPCEqual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaPCEqual.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tbpPaPCEqual.Text" xml:space="preserve">
+    <value>Equal</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCEqual.Name" xml:space="preserve">
+    <value>tbpPaPCEqual</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCEqual.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaPCEqual.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCStep3.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;tbpPaPCEqual.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="txtPaEqualPulseCurrent.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -3420,32 +4887,152 @@
   <data name="&gt;&gt;lblPaEqualAttesa.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="tbpPaPCEqual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;txtPaMantCorrente.Name" xml:space="preserve">
+    <value>txtPaMantCorrente</value>
   </data>
-  <data name="tbpPaPCEqual.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;txtPaMantCorrente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaPCEqual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+  <data name="&gt;&gt;txtPaMantCorrente.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
   </data>
-  <data name="tbpPaPCEqual.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtPaMantCorrente.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label32.Name" xml:space="preserve">
+    <value>label32</value>
+  </data>
+  <data name="&gt;&gt;label32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantDurataMax.Name" xml:space="preserve">
+    <value>txtPaMantDurataMax</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantDurataMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantDurataMax.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantDurataMax.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tbpPaPCEqual.Text" xml:space="preserve">
-    <value>Equal</value>
+  <data name="&gt;&gt;txtPaMantVmax.Name" xml:space="preserve">
+    <value>txtPaMantVmax</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCEqual.Name" xml:space="preserve">
-    <value>tbpPaPCEqual</value>
+  <data name="&gt;&gt;txtPaMantVmax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCEqual.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtPaMantVmax.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantVmax.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantVmin.Name" xml:space="preserve">
+    <value>txtPaMantVmin</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantVmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantVmin.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantVmin.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label35.Name" xml:space="preserve">
+    <value>label35</value>
+  </data>
+  <data name="&gt;&gt;label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantAttesa.Name" xml:space="preserve">
+    <value>txtPaMantAttesa</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantAttesa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantAttesa.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;txtPaMantAttesa.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label36.Name" xml:space="preserve">
+    <value>label36</value>
+  </data>
+  <data name="&gt;&gt;label36.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label36.Parent" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tbpPaPCMant.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaPCMant.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbpPaPCMant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaPCMant.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tbpPaPCMant.Text" xml:space="preserve">
+    <value>Mant</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCMant.Name" xml:space="preserve">
+    <value>tbpPaPCMant</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCMant.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCEqual.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaPCMant.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCEqual.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;tbpPaPCMant.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="txtPaMantCorrente.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -3762,32 +5349,197 @@
   <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="tbpPaPCMant.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;lblPaOppPuntoVerde.Name" xml:space="preserve">
+    <value>lblPaOppPuntoVerde</value>
   </data>
-  <data name="tbpPaPCMant.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;lblPaOppPuntoVerde.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaPCMant.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+  <data name="&gt;&gt;lblPaOppPuntoVerde.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
   </data>
-  <data name="tbpPaPCMant.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;lblPaOppPuntoVerde.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ImgPaOppPuntoVerde.Name" xml:space="preserve">
+    <value>ImgPaOppPuntoVerde</value>
+  </data>
+  <data name="&gt;&gt;ImgPaOppPuntoVerde.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ImgPaOppPuntoVerde.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;ImgPaOppPuntoVerde.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkPaOppNotturno.Name" xml:space="preserve">
+    <value>chkPaOppNotturno</value>
+  </data>
+  <data name="&gt;&gt;chkPaOppNotturno.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaOppNotturno.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;chkPaOppNotturno.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;rslPaOppFinestra.Name" xml:space="preserve">
+    <value>rslPaOppFinestra</value>
+  </data>
+  <data name="&gt;&gt;rslPaOppFinestra.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RangeSlider, Syncfusion.Tools.Windows, Version=17.2450.0.34, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;rslPaOppFinestra.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;rslPaOppFinestra.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppDurataMax.Name" xml:space="preserve">
+    <value>txtPaOppDurataMax</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppDurataMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppDurataMax.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppDurataMax.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="tbpPaPCMant.Text" xml:space="preserve">
-    <value>Mant</value>
+  <data name="&gt;&gt;label50.Name" xml:space="preserve">
+    <value>label50</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCMant.Name" xml:space="preserve">
-    <value>tbpPaPCMant</value>
+  <data name="&gt;&gt;label50.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCMant.Type" xml:space="preserve">
+  <data name="&gt;&gt;label50.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;label50.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppCorrente.Name" xml:space="preserve">
+    <value>txtPaOppCorrente</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppCorrente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppCorrente.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppCorrente.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label49.Name" xml:space="preserve">
+    <value>label49</value>
+  </data>
+  <data name="&gt;&gt;label49.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label49.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;label49.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppVSoglia.Name" xml:space="preserve">
+    <value>txtPaOppVSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppVSoglia.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppVSoglia.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppVSoglia.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label48.Name" xml:space="preserve">
+    <value>label48</value>
+  </data>
+  <data name="&gt;&gt;label48.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label48.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;label48.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraFine.Name" xml:space="preserve">
+    <value>txtPaOppOraFine</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraFine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraFine.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraFine.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraFine.Name" xml:space="preserve">
+    <value>lblPaOppOraFine</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraFine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraFine.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraFine.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraInizio.Name" xml:space="preserve">
+    <value>txtPaOppOraInizio</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraInizio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraInizio.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;txtPaOppOraInizio.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraInizio.Name" xml:space="preserve">
+    <value>lblPaOppOraInizio</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraInizio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraInizio.Parent" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;lblPaOppOraInizio.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="tbpPaPCOpp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaPCOpp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaPCOpp.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tbpPaPCOpp.Text" xml:space="preserve">
+    <value>Opportunity</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCOpp.Name" xml:space="preserve">
+    <value>tbpPaPCOpp</value>
+  </data>
+  <data name="&gt;&gt;tbpPaPCOpp.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCMant.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaPCOpp.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCMant.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;tbpPaPCOpp.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="lblPaOppPuntoVerde.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4230,29 +5982,245 @@
   <data name="&gt;&gt;lblPaOppOraInizio.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="tbpPaPCOpp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;txtPaTempLimite.Name" xml:space="preserve">
+    <value>txtPaTempLimite</value>
   </data>
-  <data name="tbpPaPCOpp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+  <data name="&gt;&gt;txtPaTempLimite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbpPaPCOpp.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtPaTempLimite.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaTempLimite.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label59.Name" xml:space="preserve">
+    <value>label59</value>
+  </data>
+  <data name="&gt;&gt;label59.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label59.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label59.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinStop.Name" xml:space="preserve">
+    <value>txtPaVMinStop</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinStop.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinStop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label42.Name" xml:space="preserve">
+    <value>label42</value>
+  </data>
+  <data name="&gt;&gt;label42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label42.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label42.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoAttesa.Name" xml:space="preserve">
+    <value>txtPaBMSTempoAttesa</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoAttesa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoAttesa.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoAttesa.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label156.Name" xml:space="preserve">
+    <value>label156</value>
+  </data>
+  <data name="&gt;&gt;label156.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label156.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label156.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoErogazione.Name" xml:space="preserve">
+    <value>txtPaBMSTempoErogazione</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoErogazione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoErogazione.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaBMSTempoErogazione.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label157.Name" xml:space="preserve">
+    <value>label157</value>
+  </data>
+  <data name="&gt;&gt;label157.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label157.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label157.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkPaRiarmaBms.Name" xml:space="preserve">
+    <value>chkPaRiarmaBms</value>
+  </data>
+  <data name="&gt;&gt;chkPaRiarmaBms.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaRiarmaBms.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;chkPaRiarmaBms.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="tbpPaPCOpp.Text" xml:space="preserve">
-    <value>Opportunity</value>
+  <data name="&gt;&gt;chkPaAttivaRiarmoBms.Name" xml:space="preserve">
+    <value>chkPaAttivaRiarmoBms</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCOpp.Name" xml:space="preserve">
-    <value>tbpPaPCOpp</value>
+  <data name="&gt;&gt;chkPaAttivaRiarmoBms.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCOpp.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkPaAttivaRiarmoBms.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;chkPaAttivaRiarmoBms.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteMassima.Name" xml:space="preserve">
+    <value>txtPaCorrenteMassima</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteMassima.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteMassima.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaCorrenteMassima.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMaxRic.Name" xml:space="preserve">
+    <value>txtPaVMaxRic</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMaxRic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMaxRic.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMaxRic.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
+  </data>
+  <data name="&gt;&gt;label28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinRic.Name" xml:space="preserve">
+    <value>txtPaVMinRic</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinRic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinRic.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaVMinRic.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;txtPaVLimite.Name" xml:space="preserve">
+    <value>txtPaVLimite</value>
+  </data>
+  <data name="&gt;&gt;txtPaVLimite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPaVLimite.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;txtPaVLimite.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="tbpPaParSoglia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpPaParSoglia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>719, 139</value>
+  </data>
+  <data name="tbpPaParSoglia.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tbpPaParSoglia.Text" xml:space="preserve">
+    <value>Soglie</value>
+  </data>
+  <data name="&gt;&gt;tbpPaParSoglia.Name" xml:space="preserve">
+    <value>tbpPaParSoglia</value>
+  </data>
+  <data name="&gt;&gt;tbpPaParSoglia.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCOpp.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbpPaParSoglia.Parent" xml:space="preserve">
     <value>tbcPaSchedeValori</value>
   </data>
-  <data name="&gt;&gt;tbpPaPCOpp.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;tbpPaParSoglia.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="txtPaTempLimite.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -4824,54 +6792,6 @@
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="tbpPaParSoglia.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tbpPaParSoglia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
-  </data>
-  <data name="tbpPaParSoglia.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tbpPaParSoglia.Text" xml:space="preserve">
-    <value>Soglie</value>
-  </data>
-  <data name="&gt;&gt;tbpPaParSoglia.Name" xml:space="preserve">
-    <value>tbpPaParSoglia</value>
-  </data>
-  <data name="&gt;&gt;tbpPaParSoglia.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpPaParSoglia.Parent" xml:space="preserve">
-    <value>tbcPaSchedeValori</value>
-  </data>
-  <data name="&gt;&gt;tbpPaParSoglia.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="tbcPaSchedeValori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>284, 302</value>
-  </data>
-  <data name="tbcPaSchedeValori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbcPaSchedeValori.Size" type="System.Drawing.Size, System.Drawing">
-    <value>727, 165</value>
-  </data>
-  <data name="tbcPaSchedeValori.TabIndex" type="System.Int32, mscorlib">
-    <value>126</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSchedeValori.Name" xml:space="preserve">
-    <value>tbcPaSchedeValori</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSchedeValori.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSchedeValori.Parent" xml:space="preserve">
-    <value>pippo</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSchedeValori.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="chkPaUsaSpyBatt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4968,155 +6888,107 @@
   <data name="&gt;&gt;btnPaSalvaDati.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="pippo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 13</value>
-  </data>
-  <data name="pippo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="pippo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="pippo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1177, 480</value>
-  </data>
-  <data name="pippo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="pippo.Text" xml:space="preserve">
-    <value>Profilo  Attivo</value>
-  </data>
-  <data name="&gt;&gt;pippo.Name" xml:space="preserve">
-    <value>pippo</value>
-  </data>
-  <data name="&gt;&gt;pippo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pippo.Parent" xml:space="preserve">
-    <value>tbpPaProfiloAttivo</value>
-  </data>
-  <data name="&gt;&gt;pippo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tbpPaProfiloAttivo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tbpPaProfiloAttivo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbpPaProfiloAttivo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbpPaProfiloAttivo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1469, 592</value>
-  </data>
-  <data name="tbpPaProfiloAttivo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tbpPaProfiloAttivo.Text" xml:space="preserve">
-    <value>Profilo Attivo</value>
-  </data>
-  <data name="&gt;&gt;tbpPaProfiloAttivo.Name" xml:space="preserve">
-    <value>tbpPaProfiloAttivo</value>
-  </data>
-  <data name="&gt;&gt;tbpPaProfiloAttivo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpPaProfiloAttivo.Parent" xml:space="preserve">
-    <value>tbcPaSottopagina</value>
-  </data>
-  <data name="&gt;&gt;tbpPaProfiloAttivo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbcPaSottopagina.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 0</value>
-  </data>
-  <data name="tbcPaSottopagina.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbcPaSottopagina.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1477, 618</value>
-  </data>
-  <data name="tbcPaSottopagina.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSottopagina.Name" xml:space="preserve">
-    <value>tbcPaSottopagina</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSottopagina.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSottopagina.Parent" xml:space="preserve">
-    <value>tabProfiloAttuale</value>
-  </data>
-  <data name="&gt;&gt;tbcPaSottopagina.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblPaTitoloLista.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPaTitoloLista.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="lblPaTitoloLista.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPaTitoloLista.Location" type="System.Drawing.Point, System.Drawing">
-    <value>946, 145</value>
-  </data>
-  <data name="lblPaTitoloLista.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="lblPaTitoloLista.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
-  <data name="lblPaTitoloLista.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="lblPaTitoloLista.Text" xml:space="preserve">
-    <value>Profili Definiti</value>
-  </data>
-  <data name="&gt;&gt;lblPaTitoloLista.Name" xml:space="preserve">
-    <value>lblPaTitoloLista</value>
-  </data>
-  <data name="&gt;&gt;lblPaTitoloLista.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPaTitoloLista.Parent" xml:space="preserve">
-    <value>tabProfiloAttuale</value>
-  </data>
-  <data name="&gt;&gt;lblPaTitoloLista.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabProfiloAttuale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabProfiloAttuale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tabProfiloAttuale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
-  </data>
-  <data name="tabProfiloAttuale.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabProfiloAttuale.Text" xml:space="preserve">
-    <value>Configurazione</value>
-  </data>
-  <data name="&gt;&gt;tabProfiloAttuale.Name" xml:space="preserve">
-    <value>tabProfiloAttuale</value>
-  </data>
-  <data name="&gt;&gt;tabProfiloAttuale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabProfiloAttuale.Parent" xml:space="preserve">
-    <value>tabCaricaBatterie</value>
-  </data>
-  <data name="&gt;&gt;tabProfiloAttuale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="tabGenerale.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnGenResetBoard.Name" xml:space="preserve">
+    <value>btnGenResetBoard</value>
+  </data>
+  <data name="&gt;&gt;btnGenResetBoard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGenResetBoard.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;btnGenResetBoard.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatoriTot.Name" xml:space="preserve">
+    <value>btnGenAzzzeraContatoriTot</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatoriTot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatoriTot.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatoriTot.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatori.Name" xml:space="preserve">
+    <value>btnGenAzzzeraContatori</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatori.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;btnGenAzzzeraContatori.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnCaricaContatori.Name" xml:space="preserve">
+    <value>btnCaricaContatori</value>
+  </data>
+  <data name="&gt;&gt;btnCaricaContatori.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCaricaContatori.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;btnCaricaContatori.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.Name" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabGenerale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabGenerale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabGenerale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1479, 618</value>
+  </data>
+  <data name="tabGenerale.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabGenerale.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="&gt;&gt;tabGenerale.Name" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;tabGenerale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabGenerale.Parent" xml:space="preserve">
+    <value>tabCaricaBatterie</value>
+  </data>
+  <data name="&gt;&gt;tabGenerale.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6071,6 +7943,180 @@
   <data name="&gt;&gt;btnCaricaContatori.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="&gt;&gt;cmbGenModelloCB.Name" xml:space="preserve">
+    <value>cmbGenModelloCB</value>
+  </data>
+  <data name="&gt;&gt;cmbGenModelloCB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbGenModelloCB.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;cmbGenModelloCB.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtGenCorrenteMax.Name" xml:space="preserve">
+    <value>txtGenCorrenteMax</value>
+  </data>
+  <data name="&gt;&gt;txtGenCorrenteMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtGenCorrenteMax.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;txtGenCorrenteMax.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label143.Name" xml:space="preserve">
+    <value>label143</value>
+  </data>
+  <data name="&gt;&gt;label143.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label143.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;label143.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtGenTensioneMax.Name" xml:space="preserve">
+    <value>txtGenTensioneMax</value>
+  </data>
+  <data name="&gt;&gt;txtGenTensioneMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtGenTensioneMax.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;txtGenTensioneMax.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label142.Name" xml:space="preserve">
+    <value>label142</value>
+  </data>
+  <data name="&gt;&gt;label142.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label142.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;label142.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtGenIdApparato.Name" xml:space="preserve">
+    <value>txtGenIdApparato</value>
+  </data>
+  <data name="&gt;&gt;txtGenIdApparato.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtGenIdApparato.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;txtGenIdApparato.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label137.Name" xml:space="preserve">
+    <value>label137</value>
+  </data>
+  <data name="&gt;&gt;label137.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label137.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;label137.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txtGenAnnoMatricola.Name" xml:space="preserve">
+    <value>txtGenAnnoMatricola</value>
+  </data>
+  <data name="&gt;&gt;txtGenAnnoMatricola.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtGenAnnoMatricola.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;txtGenAnnoMatricola.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtGenMatricola.Name" xml:space="preserve">
+    <value>txtGenMatricola</value>
+  </data>
+  <data name="&gt;&gt;txtGenMatricola.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtGenMatricola.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;txtGenMatricola.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.Name" xml:space="preserve">
+    <value>lblMatricola</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.Parent" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;lblMatricola.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="GrbMainDatiApparato.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 245</value>
+  </data>
+  <data name="GrbMainDatiApparato.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrbMainDatiApparato.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrbMainDatiApparato.Size" type="System.Drawing.Size, System.Drawing">
+    <value>517, 166</value>
+  </data>
+  <data name="GrbMainDatiApparato.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="GrbMainDatiApparato.Text" xml:space="preserve">
+    <value>DATI APPARATO</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.Name" xml:space="preserve">
+    <value>GrbMainDatiApparato</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;GrbMainDatiApparato.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="cmbGenModelloCB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
@@ -6449,63 +8495,6 @@
   <data name="&gt;&gt;lblMatricola.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="GrbMainDatiApparato.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 245</value>
-  </data>
-  <data name="GrbMainDatiApparato.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrbMainDatiApparato.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrbMainDatiApparato.Size" type="System.Drawing.Size, System.Drawing">
-    <value>517, 166</value>
-  </data>
-  <data name="GrbMainDatiApparato.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="GrbMainDatiApparato.Text" xml:space="preserve">
-    <value>DATI APPARATO</value>
-  </data>
-  <data name="&gt;&gt;GrbMainDatiApparato.Name" xml:space="preserve">
-    <value>GrbMainDatiApparato</value>
-  </data>
-  <data name="&gt;&gt;GrbMainDatiApparato.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrbMainDatiApparato.Parent" xml:space="preserve">
-    <value>tabGenerale</value>
-  </data>
-  <data name="&gt;&gt;GrbMainDatiApparato.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tabGenerale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabGenerale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tabGenerale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
-  </data>
-  <data name="tabGenerale.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabGenerale.Text" xml:space="preserve">
-    <value>Generale</value>
-  </data>
-  <data name="&gt;&gt;tabGenerale.Name" xml:space="preserve">
-    <value>tabGenerale</value>
-  </data>
-  <data name="&gt;&gt;tabGenerale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabGenerale.Parent" xml:space="preserve">
-    <value>tabCaricaBatterie</value>
-  </data>
-  <data name="&gt;&gt;tabGenerale.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="tabCaricaBatterie.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 11</value>
   </data>
@@ -6534,7 +8523,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>64</value>
+    <value>25</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>

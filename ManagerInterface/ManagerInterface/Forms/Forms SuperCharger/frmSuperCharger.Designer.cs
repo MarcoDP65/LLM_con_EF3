@@ -489,6 +489,7 @@
             this.pippo = new System.Windows.Forms.GroupBox();
             this.btnPaProfileClear = new System.Windows.Forms.Button();
             this.grbPaImpostazioniLocali = new System.Windows.Forms.GroupBox();
+            this.btnPaProfileImport = new System.Windows.Forms.Button();
             this.btnPaProfileNEW = new System.Windows.Forms.Button();
             this.chkPaUsaSafety = new System.Windows.Forms.CheckBox();
             this.lblPaUsaSafety = new System.Windows.Forms.Label();
@@ -4079,6 +4080,7 @@
             // 
             // grbPaImpostazioniLocali
             // 
+            this.grbPaImpostazioniLocali.Controls.Add(this.btnPaProfileImport);
             this.grbPaImpostazioniLocali.Controls.Add(this.btnPaProfileNEW);
             this.grbPaImpostazioniLocali.Controls.Add(this.chkPaUsaSafety);
             this.grbPaImpostazioniLocali.Controls.Add(this.lblPaUsaSafety);
@@ -4102,6 +4104,14 @@
             resources.ApplyResources(this.grbPaImpostazioniLocali, "grbPaImpostazioniLocali");
             this.grbPaImpostazioniLocali.Name = "grbPaImpostazioniLocali";
             this.grbPaImpostazioniLocali.TabStop = false;
+            // 
+            // btnPaProfileImport
+            // 
+            resources.ApplyResources(this.btnPaProfileImport, "btnPaProfileImport");
+            this.btnPaProfileImport.ForeColor = System.Drawing.Color.Red;
+            this.btnPaProfileImport.Name = "btnPaProfileImport";
+            this.btnPaProfileImport.UseVisualStyleBackColor = true;
+            this.btnPaProfileImport.Click += new System.EventHandler(this.btnPaProfileImport_Click);
             // 
             // btnPaProfileNEW
             // 
@@ -6585,5 +6595,6 @@
         private System.Windows.Forms.Button btnPaCancellaSelezionati;
         private System.Windows.Forms.Button btnPaSalvaFile;
         private System.Windows.Forms.Button btnCicliCaricaCont;
+        private System.Windows.Forms.Button btnPaProfileImport;
     }
 }

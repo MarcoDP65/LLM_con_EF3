@@ -39,6 +39,7 @@
             this.tabProfiloAttuale = new System.Windows.Forms.TabPage();
             this.tbcPaSottopagina = new System.Windows.Forms.TabControl();
             this.tbpPaListaProfili = new System.Windows.Forms.TabPage();
+            this.btnPaCopiaSelezionati = new System.Windows.Forms.Button();
             this.grbPaCaricaFile = new System.Windows.Forms.GroupBox();
             this.btnPaCaricaFile = new System.Windows.Forms.Button();
             this.btnPaFileInProfiliSRC = new System.Windows.Forms.Button();
@@ -281,6 +282,7 @@
             // 
             this.tbpPaListaProfili.BackgroundImage = global::PannelloCharger.Properties.Resources.Base_fondino_Y;
             resources.ApplyResources(this.tbpPaListaProfili, "tbpPaListaProfili");
+            this.tbpPaListaProfili.Controls.Add(this.btnPaCopiaSelezionati);
             this.tbpPaListaProfili.Controls.Add(this.grbPaCaricaFile);
             this.tbpPaListaProfili.Controls.Add(this.btnPaGeneraQr);
             this.tbpPaListaProfili.Controls.Add(this.button1);
@@ -291,6 +293,13 @@
             this.tbpPaListaProfili.Controls.Add(this.btnPaCaricaListaProfili);
             this.tbpPaListaProfili.Name = "tbpPaListaProfili";
             this.tbpPaListaProfili.UseVisualStyleBackColor = true;
+            // 
+            // btnPaCopiaSelezionati
+            // 
+            resources.ApplyResources(this.btnPaCopiaSelezionati, "btnPaCopiaSelezionati");
+            this.btnPaCopiaSelezionati.Name = "btnPaCopiaSelezionati";
+            this.btnPaCopiaSelezionati.UseVisualStyleBackColor = true;
+            this.btnPaCopiaSelezionati.Click += new System.EventHandler(this.btnPaCopiaSelezionati_Click);
             // 
             // grbPaCaricaFile
             // 
@@ -1740,5 +1749,6 @@
         private System.Windows.Forms.Button btnPaCaricaFile;
         private System.Windows.Forms.Button btnPaFileInProfiliSRC;
         private System.Windows.Forms.TextBox txtPaCaricaFileProfili;
+        private System.Windows.Forms.Button btnPaCopiaSelezionati;
     }
 }

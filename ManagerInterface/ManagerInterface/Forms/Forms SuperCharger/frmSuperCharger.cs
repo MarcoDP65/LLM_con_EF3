@@ -3,6 +3,7 @@ using ChargerLogic;
 using log4net;
 using MoriData;
 using Newtonsoft.Json;
+using PannelloCharger.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6443,6 +6444,41 @@ namespace PannelloCharger
 
                 Log.Error("btnCicliCaricaCont_Click: " + ex.Message);
                 //this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void btnPaProfileImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                frmSelettoreProfilo ListaProf = new frmSelettoreProfilo();
+                ListaProf._database = _logiche.dbDati.connessione;
+                ListaProf.CaricaListaProfili("IDBATT", "IB");
+                ListaProf.InizializzaVistaProgrammazioni();
+                this.Cursor = Cursors.WaitCursor;
+                ListaProf.ShowDialog();
+
+
+                if(ListaProf.ProfiloSelezionato != null)
+                {
+                    ProfiloInCaricamento = true;
+                    ListaProf.ProfiloSelezionato.IdProgramma = 0;
+                    ModCicloCorrente.ProfiloRegistrato = ListaProf.ProfiloSelezionato;
+                    ModCicloCorrente.EstraiDaProgrammaCarica();
+
+                    MostraParametriCiclo(true, false);
+                    ProfiloInCaricamento = false;
+
+                }
+                this.Cursor = Cursors.Default;
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaProfileImport_Click: " + Ex.Message);
+                this.Cursor = Cursors.Default;
             }
         }
     }

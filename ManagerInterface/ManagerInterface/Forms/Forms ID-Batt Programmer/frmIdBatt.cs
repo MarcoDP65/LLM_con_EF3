@@ -16,8 +16,9 @@ using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using Utility;
-using static ChargerLogic.MessaggioSpyBatt.EsitoMessaggio;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static ZXing.QrCode.Internal.Version;
+//using static ChargerLogic.MessaggioSpyBatt.EsitoMessaggio;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //  frmSuperCharger
 
 namespace PannelloCharger
@@ -743,7 +744,7 @@ namespace PannelloCharger
             try
             {
                 elementiComuni.EsitoVerificaParametri Test = VerificaValoriParametriCarica();
-                if (Test!= elementiComuni.EsitoVerificaParametri.Ok)
+                if (Test == elementiComuni.EsitoVerificaParametri.Ok)
                 {
                     return false;
                 }
@@ -4342,13 +4343,13 @@ namespace PannelloCharger
                         QRCorrente.lblDescrizione.Text = ProgCorr._llprc.ProgramDescription;
                         QRCorrente.lblProfilo.Text = ProgCorr.strTipoProfilo;
                         QRCorrente.lblBatteria.Text = ProgCorr.strTipoBatteria;
-                        QRCorrente.lblTensione.Text = ProgCorr.strBatteryVdef;
-                        QRCorrente.lblCorrente.Text = ProgCorr.strBatteryAhdef;
+                        QRCorrente.lblTensione.Text = ProgCorr.strBatteryVdef0d;
+                        QRCorrente.lblCorrente.Text = ProgCorr.strBatteryAhdef0d;
                         IDData.Name = ProgCorr._llprc.ProgramName;
                         IDData.Profile = ProgCorr.strTipoProfilo;
                         IDData.Description = ProgCorr._llprc.ProgramDescription;
                         IDData.BatteryType = ProgCorr.strTipoBatteria;
-                        IDData.BatteryData = ProgCorr.strBatteryVdef + "V - " + ProgCorr.strBatteryAhdef + "Ah";
+                        IDData.BatteryData = ProgCorr.strBatteryVdef0d + "V - " + ProgCorr.strBatteryAhdef0d + "Ah";
 
                         MessaggioLadeLight.MessaggioProgrammazione NuovoPrg = new MessaggioLadeLight.MessaggioProgrammazione(ProgCorr);
                         if (NuovoPrg.GeneraByteArray())
@@ -4412,79 +4413,56 @@ namespace PannelloCharger
             try
             {
                 bool DatiPresenti = false;
+                string _fileDecripted = "";
+                string _fileDecompress = "";
 
                 FileItemsModProfilo FileProfili = new FileItemsModProfilo();
 
 
-
-
-                AreaDatiRegen BloccoDati;
-                llModelloBlocco BloccoAttivo;
-
                 //Se manca il filename esco
-                if (txtPaNomeFileProfili.Text == "")
+                if (txtPaCaricaFileProfili.Text == "")
                 {
                     return;
                 }
 
-                if (_cb.Programmazioni.ProgrammiDefiniti.Count < 1)
+                string filePath = txtPaCaricaFileProfili.Text;
+                if (File.Exists(filePath))
                 {
-                    return;
-                }
-                this.Cursor = Cursors.WaitCursor;
-
-                // public List<llProgrammaCarica> ProgrammiDefiniti;
-                FileProfili.ListaProfili = new List<ItemModProfilo>();
-                foreach (llProgrammaCarica Prog in _cb.Programmazioni.ProgrammiDefiniti)
-                {
-                    if (!chkPaSoloSelezionati.Checked || Prog.Selezionato)
+                    string _infile = File.ReadAllText(filePath);
+                    // Verifico se è criptato
+                    _fileDecripted = StringCipher.Decrypt(_infile);
+                    if (_fileDecripted != "")
                     {
-                        ItemModProfilo Item = new ItemModProfilo();
-                        Item.NomeProfilo = Prog.ProgramName;
-                        Item.NoteProfilo = Prog.ProgramName;
-                        Item.Tensione = Prog.BatteryVdef;
-                        Item.Capacita = Prog.BatteryAhdef;
-                        Item.NumeroCelle = Prog.NumeroCelle;
-                        Item.TipoBatteria = Prog.TipoBatteria;
-                        Item.DurataMaxCarica = Prog.DurataMaxCarica;
-                        Item.ListaParametri = Prog.ListaParametri;
-                        Item.IdProgramma = Prog.IdProgramma;
-                        Item.IdProfiloCaricaLL = Prog.IdModelloLL;
-
-                        FileProfili.ListaProfili.Add(Item);
+                        //il file è cifrato
+                        Log.Debug("file criptato");
+                        _infile = _fileDecripted;
                     }
-                }
 
-                FileProfili.DataCreazione = DateTime.Now;
+                    // verifico se è compresso
+                    _fileDecompress = FunzioniComuni.DecompressString(_infile);
+                    if (_fileDecompress != "")
+                    {
+                        //è compresso
+                        _infile = _fileDecompress;
+                    }
 
+                    FileProfili = JsonConvert.DeserializeObject<FileItemsModProfilo>(_infile);
+                    Log.Debug("file caricato");
 
-                // Se ho letto qualcosa, salvo il file
-                string JsonData = JsonConvert.SerializeObject(FileProfili);
-                Log.Debug("file generato");
-                // Prima comprimo i dati
-
-                if (false) //chkPackComprimiFile.Checked)
-                {
-                    Log.Debug("file generato");
-                    // Prima comprimo i dati
-                    string JsonZip = FunzioniComuni.CompressString(JsonData);
-
-                    // Ora cifro i dati
-                    // string JsonEncript = StringCipher.Encrypt(JsonZip);
-                    // PER INCOMPATIBILITA' DEL METODO DI CIFRATUTA CON NET CORE (XAMARIN)
-                    // RIMOSSA LA CIFRATURA DEL PACCHETTO  (16/07/2020)
-                    // JsonEncript = JsonData;
-                    // Log.Debug("file criptato");
-
-                    JsonData = JsonZip;
+                    if(FileProfili != null) 
+                    {
+                        foreach (ItemModProfilo Item in FileProfili.ListaProfili)
+                        {
+                            llProgrammaCarica NewProg = new llProgrammaCarica(_logiche.dbDati.connessione, Item);
+                            NewProg.IdProgramma = NewProg.NewLocalId("IDBATT", "IB");
+                            NewProg.salvaDati();
+                        }
+                    }
 
                 }
-
-                // string JsonZip = FunzioniComuni.CompressString(JsonData);
-
-                File.WriteAllText(txtPaNomeFileProfili.Text, JsonData);
-                MessageBox.Show("File salvato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Log.Debug("file salvato");
+                CaricaProgrammazioni();
+                MessageBox.Show("File caricato", "Lettura file dati ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Log.Debug("file caricato");
                 this.Cursor = Cursors.Default;
 
             }
@@ -4492,6 +4470,61 @@ namespace PannelloCharger
             {
                 Log.Error("cmdMemRead_Click: " + Ex.Message);
                 this.Cursor = Cursors.Default;
+            }
+
+        }
+
+        private void btnPaCopiaSelezionati_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (flwPaListaConfigurazioni.SelectedObject == null)
+                {
+                    return;
+                }
+                else
+                {
+                    if (_cb.Programmazioni.ProgrammaAttivo != null)
+                    {
+                        // verifica se ho mofdifiche
+                        if (DatiProfiloCambiati())
+                        {
+                            // Dati cambiati; messaggio salvataggio
+                            DialogResult Risposta = MessageBox.Show("Salvo i dati correnti prima di caricare i nuovi ?", "PARAMETRI CICLO", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                            if (Risposta == DialogResult.Cancel)
+                            {
+                                // Cancello selezione; non faccion nulla
+                                return;
+                            }
+                            if (Risposta == DialogResult.OK)
+                            {
+                                // --> save
+                            }
+                        }
+
+                        ProfiloInCaricamento = true;
+                        _cb.Programmazioni.ProgrammaAttivo = (llProgrammaCarica)flwPaListaConfigurazioni.SelectedObject;
+                        // Cambio ID per renderlo una copia e aggiungo "Copia" alla descrizione
+                        _cb.Programmazioni.ProgrammaAttivo.IdLocale = 0;
+                        _cb.Programmazioni.ProgrammaAttivo.IdProgramma = 0;
+                        _cb.Programmazioni.ProgrammaAttivo.ProgramDescription = "COPIA " + _cb.Programmazioni.ProgrammaAttivo.ProgramDescription;
+                        ModCicloCorrente.ProfiloRegistrato = _cb.Programmazioni.ProgrammaAttivo;
+                        //ModCicloCorrente.GeneraListaValori();
+                        ModCicloCorrente.EstraiDaProgrammaCarica();
+
+                        MostraParametriCiclo(true, false, chkPaSbloccaValori.Checked);
+                        ProfiloInCaricamento = false;
+
+                    }
+                    tbcPaSottopagina.SelectedIndex = 1;
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("btnPaAttivaConfigurazione_Click: " + Ex.Message);
+                this.Cursor = Cursors.Arrow;
             }
 
         }

@@ -7,7 +7,7 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 using Newtonsoft.Json;
-
+using System.Runtime.CompilerServices;
 
 namespace Utility
 {
@@ -703,6 +703,31 @@ namespace Utility
                 return "";
             }
         }
+
+        public static string LongWordWrap(string testo, int len)
+        {
+            try
+            {
+                string Output = "";
+                string Base = testo;
+                while (Base.Length > len)
+                {
+                    Output += Base.Substring(0, len);
+                    Base = Base.Substring(len);
+                    if (Base.Length > 0)
+                    {
+                        Output += "\n";
+                    }
+                }
+                Output += Base;
+                return Output;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+
 
         public static string StringaPotenza(int Potenza, int divisore = 1, byte Decimali = 1)
         {

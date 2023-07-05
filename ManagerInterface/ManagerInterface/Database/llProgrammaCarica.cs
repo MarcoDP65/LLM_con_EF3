@@ -14,6 +14,7 @@ using log4net.Config;
 
 using Utility;
 using ChargerLogic;
+using static ZXing.QrCode.Internal.Version;
 
 namespace MoriData
 {
@@ -201,6 +202,37 @@ namespace MoriData
             _database = connessione;
             _datiSalvati = false;
             _recordPresente = false;
+        }
+
+        public llProgrammaCarica(_db connessione, ItemModProfilo Dati)
+        {
+            try
+            {
+                valido = true;
+                _database = connessione;
+                _llprc = new _llProgrammaCarica();
+                IdApparato = "IDBATT";
+                TipoApparato = "IB"; 
+                ProgramName = Dati.NomeProfilo;
+                ProgramDescription = Dati.NoteProfilo;
+                BatteryVdef = Dati.Tensione;
+                BatteryAhdef = Dati.Capacita;
+                NumeroCelle = (byte)Dati.NumeroCelle;
+                TipoBatteria = Dati.TipoBatteria;
+                DurataMaxCarica = Dati.DurataMaxCarica;
+                ListaParametri = Dati.ListaParametri;
+                IdProgramma = Dati.IdProgramma;
+                ListaParametri = Dati.ListaParametri;
+                AnalizzaListaParametri();
+
+                _datiSalvati = false;
+                _recordPresente = false;
+            }
+            catch
+            {
+
+            }
+
         }
 
 
@@ -1032,8 +1064,33 @@ namespace MoriData
             }
         }
 
+        public string strBatteryVdef1d
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return FunzioniMR.StringaTensione(_llprc.BatteryVdef,1);
+                }
+                else
+                    return "N.D.";
 
+            }
+        }
 
+        public string strBatteryVdef0d
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return FunzioniMR.StringaTensione(_llprc.BatteryVdef, 0);
+                }
+                else
+                    return "N.D.";
+
+            }
+        }
 
         /// <summary>
         /// Capacità nominale batteria.
@@ -1066,6 +1123,19 @@ namespace MoriData
                 if (_llprc != null)
                 {
                     return FunzioniMR.StringaCorrenteUSh( _llprc.BatteryAhdef) ;
+                }
+                else
+                    return "N.D.";
+            }
+
+        }
+        public string strBatteryAhdef0d
+        {
+            get
+            {
+                if (_llprc != null)
+                {
+                    return FunzioniMR.StringaCorrenteUSh(_llprc.BatteryAhdef,"0");
                 }
                 else
                     return "N.D.";

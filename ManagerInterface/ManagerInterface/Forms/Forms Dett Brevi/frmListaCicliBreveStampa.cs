@@ -200,7 +200,7 @@ namespace PannelloCharger
 
 
                 // Parte alta
-                _tmpGraph = immmagineGrafico(oxyGraficoCiclo,1200,700);
+                _tmpGraph = immagineGrafico(oxyGraficoCiclo,1200,700);
                 if (_tmpGraph != null)
                 {
                     graphcs.DrawImage(_tmpGraph, 120, 250, 600, 350);
@@ -208,7 +208,7 @@ namespace PannelloCharger
 
 
                 //Parte Bassa
-                _tmpGraph = immmagineGrafico(oxyGraficoTensioni, 1200, 700);
+                _tmpGraph = immagineGrafico(oxyGraficoTensioni, 1200, 700);
                 if (_tmpGraph != null)
                 {
                     graphcs.DrawImage(_tmpGraph, 120, 640, 600, 350);
@@ -335,7 +335,7 @@ namespace PannelloCharger
 
 
 
-        private Image immmagineGrafico(PlotModel Grafico,int width = 1200, int heigth = 800)
+        private Image immagineGrafico(PlotModel Grafico,int width = 1200, int heigth = 800)
         {
             try
             {

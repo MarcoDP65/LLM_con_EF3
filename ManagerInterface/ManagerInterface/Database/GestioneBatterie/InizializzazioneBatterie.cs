@@ -512,7 +512,7 @@ namespace ChargerLogic
                     MantTensIniziale = "",
                     MantTensFinale = "",
                     TensRiconoscimentoMin = "=V|133",
-                    TensRiconoscimentoMax = "=V*2",
+                    TensRiconoscimentoMax = "=V|083",
                     TensMinimaStop = "",
                     //Correnti
                     CorrenteI0 = "",

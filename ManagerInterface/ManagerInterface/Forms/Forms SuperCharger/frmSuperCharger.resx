@@ -14304,11 +14304,41 @@
   <data name="&gt;&gt;btnPaProfileClear.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnPaProfileImport.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnPaProfileImport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPaProfileImport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 391</value>
+  </data>
+  <data name="btnPaProfileImport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 33</value>
+  </data>
+  <data name="btnPaProfileImport.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="btnPaProfileImport.Text" xml:space="preserve">
+    <value>IMPORTA PROFILO</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileImport.Name" xml:space="preserve">
+    <value>btnPaProfileImport</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileImport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileImport.Parent" xml:space="preserve">
+    <value>grbPaImpostazioniLocali</value>
+  </data>
+  <data name="&gt;&gt;btnPaProfileImport.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnPaProfileNEW.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
   <data name="btnPaProfileNEW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 363</value>
+    <value>12, 428</value>
   </data>
   <data name="btnPaProfileNEW.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 33</value>
@@ -14329,7 +14359,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;btnPaProfileNEW.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="chkPaUsaSafety.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14356,7 +14386,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;chkPaUsaSafety.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lblPaUsaSafety.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14389,7 +14419,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;lblPaUsaSafety.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="cmbPaProfilo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -14416,7 +14446,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;cmbPaProfilo.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtPaCapacita.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -14446,7 +14476,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;txtPaCapacita.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14479,7 +14509,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14512,7 +14542,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="chkPaAttivaOppChg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14542,7 +14572,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;chkPaAttivaOppChg.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lblPaAttivaOppChg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14575,7 +14605,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;lblPaAttivaOppChg.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="chkPaAttivaMant.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14605,7 +14635,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;chkPaAttivaMant.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lblPaAttivaMant.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14638,7 +14668,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;lblPaAttivaMant.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="txtPaNumCelle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -14668,7 +14698,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;txtPaNumCelle.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="lblPaNumCelle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14701,7 +14731,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;lblPaNumCelle.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="cmbPaTipoBatteria.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -14728,7 +14758,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;cmbPaTipoBatteria.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="lblPaTipoBatteria.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14761,7 +14791,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;lblPaTipoBatteria.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="chkPaAttivaEqual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14791,7 +14821,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;chkPaAttivaEqual.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="lblPaAttivaEqual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14824,7 +14854,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;lblPaAttivaEqual.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="lblPaTensione.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14857,7 +14887,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;lblPaTensione.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="cmbPaTensione.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -14884,7 +14914,7 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;cmbPaTensione.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="txtPaTensione.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -14914,13 +14944,13 @@
     <value>grbPaImpostazioniLocali</value>
   </data>
   <data name="&gt;&gt;txtPaTensione.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="grbPaImpostazioniLocali.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 58</value>
   </data>
   <data name="grbPaImpostazioniLocali.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 409</value>
+    <value>264, 471</value>
   </data>
   <data name="grbPaImpostazioniLocali.TabIndex" type="System.Int32, mscorlib">
     <value>149</value>
@@ -14971,7 +15001,7 @@
     <value>2</value>
   </data>
   <data name="btnPaCaricaCicli.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1039, 397</value>
+    <value>1039, 455</value>
   </data>
   <data name="btnPaCaricaCicli.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -15121,7 +15151,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="picPaImmagineProfilo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>727, 265</value>
+    <value>727, 302</value>
   </data>
   <data name="picPaImmagineProfilo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -15334,7 +15364,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpPaGeneraleCiclo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaGeneraleCiclo.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -15538,7 +15568,7 @@
     <value>4, 22</value>
   </data>
   <data name="tbpPaPCStep0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaPCStep0.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -15778,7 +15808,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpPaPCStep1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaPCStep1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -16477,7 +16507,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpPaPCStep2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaPCStep2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -16564,7 +16594,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpPaPCStep3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaPCStep3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -16891,7 +16921,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpPaPCEqual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaPCEqual.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -17218,7 +17248,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpPaPCMant.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaPCMant.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -17659,7 +17689,7 @@
     <value>4, 22</value>
   </data>
   <data name="tbpPaPCOpp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaPCOpp.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -18226,7 +18256,7 @@
     <value>4, 22</value>
   </data>
   <data name="tbpPaParSoglia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>719, 139</value>
+    <value>719, 156</value>
   </data>
   <data name="tbpPaParSoglia.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -18247,13 +18277,13 @@
     <value>8</value>
   </data>
   <data name="tbcPaSchedeValori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>284, 302</value>
+    <value>284, 341</value>
   </data>
   <data name="tbcPaSchedeValori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbcPaSchedeValori.Size" type="System.Drawing.Size, System.Drawing">
-    <value>727, 165</value>
+    <value>727, 182</value>
   </data>
   <data name="tbcPaSchedeValori.TabIndex" type="System.Int32, mscorlib">
     <value>126</value>
@@ -18331,7 +18361,7 @@
     <value>11</value>
   </data>
   <data name="btnPaSalvaDati.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1039, 435</value>
+    <value>1039, 493</value>
   </data>
   <data name="btnPaSalvaDati.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -18367,7 +18397,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pippo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1177, 480</value>
+    <value>1177, 534</value>
   </data>
   <data name="pippo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

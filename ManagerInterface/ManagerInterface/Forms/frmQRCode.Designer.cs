@@ -38,6 +38,10 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.lblBatteria = new System.Windows.Forms.Label();
             this.lblDescrizione = new System.Windows.Forms.Label();
+            this.btnSalvaFilePDF = new System.Windows.Forms.Button();
+            this.btnNomeFilePDFSRC = new System.Windows.Forms.Button();
+            this.txtNomeFilePDF = new System.Windows.Forms.TextBox();
+            this.sfdExportDati = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,9 +125,10 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(407, 360);
+            this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOK.Location = new System.Drawing.Point(402, 419);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(151, 27);
+            this.btnOK.Size = new System.Drawing.Size(150, 35);
             this.btnOK.TabIndex = 8;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -149,11 +154,48 @@
             this.lblDescrizione.TabIndex = 10;
             this.lblDescrizione.Text = "descrizione";
             // 
+            // btnSalvaFilePDF
+            // 
+            this.btnSalvaFilePDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSalvaFilePDF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSalvaFilePDF.Location = new System.Drawing.Point(402, 379);
+            this.btnSalvaFilePDF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalvaFilePDF.Name = "btnSalvaFilePDF";
+            this.btnSalvaFilePDF.Size = new System.Drawing.Size(150, 35);
+            this.btnSalvaFilePDF.TabIndex = 71;
+            this.btnSalvaFilePDF.Text = "Salva File PDF";
+            this.btnSalvaFilePDF.UseVisualStyleBackColor = true;
+            this.btnSalvaFilePDF.Click += new System.EventHandler(this.btnSalvaFilePDF_Click);
+            // 
+            // btnNomeFilePDFSRC
+            // 
+            this.btnNomeFilePDFSRC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnNomeFilePDFSRC.Location = new System.Drawing.Point(347, 384);
+            this.btnNomeFilePDFSRC.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNomeFilePDFSRC.Name = "btnNomeFilePDFSRC";
+            this.btnNomeFilePDFSRC.Size = new System.Drawing.Size(25, 24);
+            this.btnNomeFilePDFSRC.TabIndex = 70;
+            this.btnNomeFilePDFSRC.Text = "...";
+            this.btnNomeFilePDFSRC.UseVisualStyleBackColor = true;
+            this.btnNomeFilePDFSRC.Click += new System.EventHandler(this.btnNomeFilePDFSRC_Click);
+            // 
+            // txtNomeFilePDF
+            // 
+            this.txtNomeFilePDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.txtNomeFilePDF.Location = new System.Drawing.Point(20, 385);
+            this.txtNomeFilePDF.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNomeFilePDF.Name = "txtNomeFilePDF";
+            this.txtNomeFilePDF.Size = new System.Drawing.Size(323, 21);
+            this.txtNomeFilePDF.TabIndex = 69;
+            // 
             // frmQRCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 401);
+            this.ClientSize = new System.Drawing.Size(580, 467);
+            this.Controls.Add(this.btnSalvaFilePDF);
+            this.Controls.Add(this.btnNomeFilePDFSRC);
+            this.Controls.Add(this.txtNomeFilePDF);
             this.Controls.Add(this.lblDescrizione);
             this.Controls.Add(this.lblBatteria);
             this.Controls.Add(this.btnOK);
@@ -194,5 +236,9 @@
         public System.Windows.Forms.Label lblTensione;
         public System.Windows.Forms.Label lblCorrente;
         public System.Windows.Forms.Label lblDescrizione;
+        private System.Windows.Forms.Button btnSalvaFilePDF;
+        private System.Windows.Forms.Button btnNomeFilePDFSRC;
+        private System.Windows.Forms.TextBox txtNomeFilePDF;
+        private System.Windows.Forms.SaveFileDialog sfdExportDati;
     }
 }
