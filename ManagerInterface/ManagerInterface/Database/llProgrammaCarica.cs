@@ -316,8 +316,8 @@ namespace MoriData
                 ushort _lastId = 0;
 
                 var _progs = from s in _database.Table<_llProgrammaCarica>()
-                                      where s.IdApparato == IdApp && s.TipoApparato == TipoApp
-                                      select s;
+                                    where s.IdApparato == IdApp && s.TipoApparato == TipoApp
+                                    select s;
                 _lastId = 1;
 
                 if (_progs!= null)

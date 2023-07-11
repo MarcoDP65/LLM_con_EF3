@@ -841,6 +841,7 @@ namespace PannelloCharger
                 if (ModCicloCorrente.ValoriCiclo.TempoT3Max != FunzioniMR.ConvertiUshort(txtPaTempoT3Max.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
 
                 // Equalizzazione
+                if (ModCicloCorrente.ValoriCiclo.EqualAttivabile == 0x0000) ModCicloCorrente.ValoriCiclo.EqualAttivabile = 0x00F0;
                 if (ModCicloCorrente.ValoriCiclo.EqualAttivabile != (ushort)(chkPaAttivaEqual.Checked == true ? 0x000F : 0x00F0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.EqualTempoAttesa != FunzioniMR.ConvertiUshort(txtPaEqualAttesa.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.EqualNumImpulsi != FunzioniMR.ConvertiUshort(txtPaEqualNumPulse.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
@@ -849,6 +850,7 @@ namespace PannelloCharger
                 if (ModCicloCorrente.ValoriCiclo.EqualCorrenteImpulso != FunzioniMR.ConvertiUshort(txtPaEqualPulseCurrent.Text, 10, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
 
                 // Mantenimento
+                if (ModCicloCorrente.ValoriCiclo.MantAttivabile == 0x0000) ModCicloCorrente.ValoriCiclo.MantAttivabile = 0x00F0;
                 if (ModCicloCorrente.ValoriCiclo.MantAttivabile != (ushort)(chkPaAttivaMant.Checked == true ? 0x000F : 0x000F0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.MantTempoAttesa != FunzioniMR.ConvertiUshort(txtPaMantAttesa.Text, 1, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 if (ModCicloCorrente.ValoriCiclo.MantTensIniziale != FunzioniMR.ConvertiUshort(txtPaMantVmin.Text, 100, 0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
@@ -858,7 +860,7 @@ namespace PannelloCharger
 
 
                 // Opportunity
-                
+                if (ModCicloCorrente.ValoriCiclo.OpportunityAttivabile == 0x0000) ModCicloCorrente.ValoriCiclo.OpportunityAttivabile = 0x00F0;
                 if (ModCicloCorrente.ValoriCiclo.OpportunityAttivabile != (ushort)(chkPaAttivaOppChg.Checked == true ? 0x000F : 0x000F0)) return elementiComuni.EsitoVerificaParametri.ErroreGenerico;
                 // non leggo le textbox degli orari: lo slider aggiorna direttamente il parametro
                 //ModCicloCorrente.ValoriCiclo.OpportunityOraInizio = FunzioniMR.ConvertiUshort(txtPaOppOraInizio.Text, 1, 0);  
@@ -3006,7 +3008,7 @@ namespace PannelloCharger
             }
             catch (Exception Ex)
             {
-                Log.Error("BtnGenAzzzeraContatori_Click: " + Ex.Message);
+                Log.Error("BtnGenAzzeraContatori_Click: " + Ex.Message);
                 this.Cursor = Cursors.Arrow;
             }
 
@@ -3025,7 +3027,7 @@ namespace PannelloCharger
             }
             catch (Exception Ex)
             {
-                Log.Error("BtnGenAzzzeraContatori_Click: " + Ex.Message);
+                Log.Error("IncrementaContatoreConf: " + Ex.Message);
                 return false;
 
             }

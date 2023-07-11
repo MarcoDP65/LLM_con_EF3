@@ -2746,6 +2746,11 @@ namespace Utility
                             esito = 5;
                             break;
                         }
+                    case "?":
+                        {
+                            esito = 6;
+                            break;
+                        }
 
                     default:
                         {

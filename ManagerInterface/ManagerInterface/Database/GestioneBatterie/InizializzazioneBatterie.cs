@@ -100,7 +100,8 @@ namespace ChargerLogic
             //
             // 1 ) 1^cifra: Operazione
             //     = Assegnazione -> valose fisso da assegnare o calcolo su parametro - Sbloccabile
-            //     ~ come = ma già sbloccato  
+            //     ~ come = ma già sbloccato
+            //     ? come = ma sbloccato e obbligatorio != 0
             //
             // 2 ) 2^cifra: Variabile
             //       # -> Valore assoluto -> nessun calcolo
