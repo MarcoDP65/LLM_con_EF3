@@ -405,8 +405,8 @@ namespace MoriData
                 int _arrayInit = 0;
 
                 // Variabili temporanee per il passaggio dati
-                byte _byte1 = 0;
-                byte _byte2 = 0;
+                //byte _byte1 = 0;
+                //byte _byte2 = 0;
                 //byte _byte3 = 0;
                 //byte _byte4 = 0;
                 byte[] _tempArr;

@@ -96,14 +96,16 @@ namespace ChargerLogic
         public bool inizializzaParametriCarica()
         {
             // Regole composizione formula:
+            //
             //     se il valore è "" il parametro è disabilitato 
             //
-            // 1 ) 1^cifra: Operazione
-            //     = Assegnazione -> valose fisso da assegnare o calcolo su parametro - Sbloccabile
-            //     ~ come = ma già sbloccato
-            //     ? come = ma sbloccato e obbligatorio != 0
+            // 1 ) 1^cifra: modalità di assegnazione
+            //       = Assegnazione -> valore fisso da assegnare o calcolo su parametro - Sbloccabile
+            //       # Assegnazione -> valore fisso da assegnare o calcolo su parametro - NON Sbloccabile
+            //       ~ come = ma già sbloccato
+            //       ? come = ma sbloccato e obbligatorio != 0
             //
-            // 2 ) 2^cifra: Variabile
+            // 2 ) 2^cifra: Variabile da usare nella formula
             //       # -> Valore assoluto -> nessun calcolo
             //       C -> Capacità nominale
             //       V -> Tensione nominale
@@ -488,38 +490,38 @@ namespace ChargerLogic
                     BatteryTypeId = 0x3001,
                     // tempi
                     TempoT0Max = "",
-                    TempoT1Max = "=##720",
+                    TempoT1Max = "?##720",
                     TempoT2Min = "",
-                    TempoT2Max = "=##360",
+                    TempoT2Max = "?##360",
                     TempoT3Max = "",
                     FattoreK = "",
                     FattoreKs = "=##110",
                     DurataNominale = "=##600",
                     // parametri EQUAL usati per riarmo BMS
-                    EqualAttivabile = "~##1",
-                    EqualTempoAttesa = "=##10",
+                    EqualAttivabile = "~##0",
+                    EqualTempoAttesa = "=##0",
                     EqualTempoImpulso = "",
-                    EqualTempoPausa = "=##10",
-                    EqualNumImpulsi = "=##5",
+                    EqualTempoPausa = "=##0",
+                    EqualNumImpulsi = "=##0",
                     // --------------------------------------
                     MantTempoAttesa = "",
                     MantTempoMaxErogazione = "",
                     // Tensioni
                     TensionePrecicloV0 = "",
-                    TensioneSogliaVs = "=##000",
+                    TensioneSogliaVs = "?##000",
                     TensioneRaccordoVr = "",
-                    TensioneMassimaVMax = "",
-                    TensioneLimiteVLim = "",
+                    TensioneMassimaVMax = "?##000",
+                    TensioneLimiteVLim = "?##000",
                     MantTensIniziale = "",
                     MantTensFinale = "",
-                    TensRiconoscimentoMin = "=V|133",
-                    TensRiconoscimentoMax = "=V|083",
+                    TensRiconoscimentoMin = "?V|133",
+                    TensRiconoscimentoMax = "?V|083",
                     TensMinimaStop = "",
                     //Correnti
                     CorrenteI0 = "",
-                    CorrenteI1 = "=C/2",
-                    CorrenteFinaleI2 = "=C/20",
-                    CorrenteMassima = "=C/1",
+                    CorrenteI1 = "?C/2",
+                    CorrenteFinaleI2 = "?C/20",
+                    CorrenteMassima = "?C/1",
                     CorrenteI3 = "",
                     CorrenteRaccordoIr = "",
                     MantCorrenteImpulso = "",

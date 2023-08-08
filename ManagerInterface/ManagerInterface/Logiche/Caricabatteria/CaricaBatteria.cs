@@ -43,6 +43,7 @@ namespace ChargerLogic
             ErrIMin = 0x12, 
             ErrVMax = 0x21, 
             ErrVMin = 0x22, 
+            ErrValoreRichiesto = 0x41,
             ErrGenerico = 0xF0, 
             ParNonValidi = 0xF1, 
             ErrCBNonDef = 0xF2,

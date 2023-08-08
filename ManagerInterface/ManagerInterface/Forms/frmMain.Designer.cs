@@ -67,6 +67,7 @@
             this.CallIDBattToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuServizi = new System.Windows.Forms.ToolStripMenuItem();
             this.flashFTDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inizializzazioneDisplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flashSPYBATTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mSP430FlasherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sIG60MonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -361,6 +362,7 @@
             // 
             this.mnuServizi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flashFTDIToolStripMenuItem,
+            this.inizializzazioneDisplayToolStripMenuItem,
             this.flashSPYBATTToolStripMenuItem,
             this.mSP430FlasherToolStripMenuItem,
             this.sIG60MonitorToolStripMenuItem,
@@ -374,6 +376,12 @@
             this.flashFTDIToolStripMenuItem.Name = "flashFTDIToolStripMenuItem";
             resources.ApplyResources(this.flashFTDIToolStripMenuItem, "flashFTDIToolStripMenuItem");
             this.flashFTDIToolStripMenuItem.Click += new System.EventHandler(this.flashFTDIToolStripMenuItem_Click);
+            // 
+            // inizializzazioneDisplayToolStripMenuItem
+            // 
+            this.inizializzazioneDisplayToolStripMenuItem.Name = "inizializzazioneDisplayToolStripMenuItem";
+            resources.ApplyResources(this.inizializzazioneDisplayToolStripMenuItem, "inizializzazioneDisplayToolStripMenuItem");
+            this.inizializzazioneDisplayToolStripMenuItem.Click += new System.EventHandler(this.inizializzazioneDisplayToolStripMenuItem_Click);
             // 
             // flashSPYBATTToolStripMenuItem
             // 
@@ -739,6 +747,7 @@
         private System.Windows.Forms.ToolStripButton tstBtnIdBatt;
         private System.Windows.Forms.ToolStripMenuItem mnuIdBatt;
         private System.Windows.Forms.ToolStripMenuItem CallIDBattToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inizializzazioneDisplayToolStripMenuItem;
     }
 }
 

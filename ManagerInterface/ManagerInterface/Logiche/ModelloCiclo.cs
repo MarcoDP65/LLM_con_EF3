@@ -132,11 +132,24 @@ namespace ChargerLogic
                 NomeProfilo = ProfiloRegistrato.ProgramName;
                 DescrizioneProfilo = ProfiloRegistrato.ProgramDescription;
 
-                ushort StatoCella = 4;
+
+                ushort StatoCella = 4; 
 
                 Tensione = ProfiloRegistrato.BatteryVdef;
                 Capacita = ProfiloRegistrato.BatteryAhdef;
                 int numeroValori = 0;
+                
+                if (ModelloProfilo == null)
+                {
+                    
+                    /// TODO: Ricarico il modello corrente --> ???? da verificare dove lo perde
+                    ModelloProfilo = (from p in DatiModello.ParametriCarica
+                                                       where p.BatteryTypeId == Batteria.BatteryTypeId && p.IdProfiloCaricaLL == Profilo.IdProfiloCaricaLL
+                                                       select p).FirstOrDefault();
+                    
+                }
+                
+
                 ListaParametri = ProfiloRegistrato.ListaParametri;
                 foreach( ParametroLL dato in ListaParametri)
                 {
@@ -185,6 +198,7 @@ namespace ChargerLogic
 
                         case SerialMessage.ParametroLadeLight.Safety:
                             ValoriCiclo.AbilitaSafety = dato.ValoreParametro;
+                            ParametriAttivi.AbilitaSafety = FunzioniComuni.StatoParametro(ModelloProfilo?.AbilitaSafety, StatoCella);
                             numeroValori += 1;
                             break;
 
@@ -199,104 +213,118 @@ namespace ChargerLogic
                         // Preciclo
                         case SerialMessage.ParametroLadeLight.TensionePrecicloV0:
                             ValoriCiclo.TensionePrecicloV0 = dato.ValoreParametro;
-                            ParametriAttivi.TensionePrecicloV0 = StatoCella;
+                            ParametriAttivi.TensionePrecicloV0 = FunzioniComuni.StatoParametro(ModelloProfilo?.TensionePrecicloV0, StatoCella);
+                            //ParametriAttivi.TensionePrecicloV0 = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.CorrentePrecicloI0:
                             ValoriCiclo.CorrenteI0 = dato.ValoreParametro;
-                            ParametriAttivi.CorrenteI0 = StatoCella;
+                            ParametriAttivi.CorrenteI0 = FunzioniComuni.StatoParametro(ModelloProfilo?.CorrenteI0, StatoCella);
+                            //ParametriAttivi.CorrenteI0 = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.TempoT0Max:
                             ValoriCiclo.TempoT0Max = dato.ValoreParametro;
-                            ParametriAttivi.TempoT0Max = StatoCella;
+                            ParametriAttivi.TempoT0Max = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoT0Max, StatoCella);
+                            //ParametriAttivi.TempoT0Max = StatoCella;
                             numeroValori += 1;
                             break;
 
                             // Fase 1
                         case SerialMessage.ParametroLadeLight.CorrenteCaricaI1:
                             ValoriCiclo.CorrenteI1 = dato.ValoreParametro;
-                            ParametriAttivi.CorrenteI1 = StatoCella;
+                            ParametriAttivi.CorrenteI1 = FunzioniComuni.StatoParametro(ModelloProfilo?.CorrenteI1, StatoCella);
+                            //ParametriAttivi.CorrenteI1 = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.TempoT1Max:
                             ValoriCiclo.TempoT1Max = dato.ValoreParametro;
-                            ParametriAttivi.TempoT1Max = StatoCella;
+                            ParametriAttivi.TempoT1Max = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoT1Max, StatoCella);
+                            //ParametriAttivi.TempoT1Max = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.TensioneSogliaF1:
                             ValoriCiclo.TensioneSogliaVs = dato.ValoreParametro;
-                            ParametriAttivi.TensioneSogliaVs = StatoCella;
+                            ParametriAttivi.TensioneSogliaVs = FunzioniComuni.StatoParametro(ModelloProfilo?.TensioneSogliaVs, StatoCella);
+                            //ParametriAttivi.TensioneSogliaVs = StatoCella;
                             numeroValori += 1;
                             break;
 
                             // Fase 2
                         case SerialMessage.ParametroLadeLight.TensioneRaccordoF1:
                             ValoriCiclo.TensioneRaccordoVr = dato.ValoreParametro;
-                            ParametriAttivi.TensioneRaccordoVr = StatoCella;
+                            ParametriAttivi.TensioneRaccordoVr = FunzioniComuni.StatoParametro(ModelloProfilo?.TensioneRaccordoVr, 4);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.CorrenteRaccordo:
                             ValoriCiclo.CorrenteRaccordoIr = dato.ValoreParametro;
-                            ParametriAttivi.CorrenteRaccordoIr = StatoCella;
+                            ParametriAttivi.CorrenteRaccordoIr = FunzioniComuni.StatoParametro(ModelloProfilo?.CorrenteRaccordoIr, StatoCella);
+                            //ParametriAttivi.CorrenteRaccordoIr = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.CorrenteFinaleF2:
                             ValoriCiclo.CorrenteFinaleI2 = dato.ValoreParametro;
-                            ParametriAttivi.CorrenteFinaleI2 = StatoCella;
+                            ParametriAttivi.CorrenteFinaleI2 = FunzioniComuni.StatoParametro(ModelloProfilo?.CorrenteFinaleI2, StatoCella);
+                            //ParametriAttivi.CorrenteFinaleI2 = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.TensioneMassimaCella:
                             ValoriCiclo.TensioneMassimaVMax = dato.ValoreParametro;
-                            ParametriAttivi.TensioneMassimaVMax = StatoCella;
+                            ParametriAttivi.TensioneMassimaVMax = FunzioniComuni.StatoParametro(ModelloProfilo?.TensioneMassimaVMax, StatoCella);
+                            //ParametriAttivi.TensioneMassimaVMax = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.TempoT2Min:
                             ValoriCiclo.TempoT2Min = dato.ValoreParametro;
-                            ParametriAttivi.TempoT2Min = StatoCella;
+                            ParametriAttivi.TempoT2Min = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoT2Min, StatoCella);
+                            //ParametriAttivi.TempoT2Min = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.TempoT2Max:
                             ValoriCiclo.TempoT2Max = dato.ValoreParametro;
-                            ParametriAttivi.TempoT2Max = StatoCella;
+                            ParametriAttivi.TempoT2Max = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoT2Max, StatoCella);
+                            //ParametriAttivi.TempoT2Max = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.CoeffK:
                             ValoriCiclo.FattoreK = dato.ValoreParametro;
-                            ParametriAttivi.FattoreK = StatoCella;
+                            ParametriAttivi.FattoreK = FunzioniComuni.StatoParametro(ModelloProfilo?.FattoreK, StatoCella);
+                            //ParametriAttivi.FattoreK = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.TensionedV:
                             ValoriCiclo.TensionedV = dato.ValoreParametro;
-                            ParametriAttivi.TensionedV = StatoCella;
+                            ParametriAttivi.TensionedV = FunzioniComuni.StatoParametro(ModelloProfilo?.TensionedV, StatoCella);
+                            //ParametriAttivi.TensionedV = StatoCella;
                             numeroValori += 1;
                             break;
                         case SerialMessage.ParametroLadeLight.PeriododT:
                             ValoriCiclo.TempodT = dato.ValoreParametro;
-                            ParametriAttivi.TempodT = StatoCella;
+                            ParametriAttivi.TempodT = FunzioniComuni.StatoParametro(ModelloProfilo?.TempodT, StatoCella);
+                            //ParametriAttivi.TempodT = StatoCella;
                             numeroValori += 1;
                             break;
                         case SerialMessage.ParametroLadeLight.TempoTF:
                             ValoriCiclo.TempoFinale = dato.ValoreParametro;
-                            ParametriAttivi.TempoFinale = StatoCella;
+                            ParametriAttivi.TempoFinale = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoFinale, StatoCella);
                             numeroValori += 1;
                             break;
                         // Fase 3
 
                         case SerialMessage.ParametroLadeLight.TempoT3Max:
                             ValoriCiclo.TempoT3Max = dato.ValoreParametro;
-                            ParametriAttivi.TempoT3Max = StatoCella;
+                            ParametriAttivi.TempoT3Max = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoT3Max, StatoCella);
                             numeroValori += 1;
                             break;
                         #endregion "Fasi"
@@ -305,37 +333,37 @@ namespace ChargerLogic
                         #region "Equal"
                         case SerialMessage.ParametroLadeLight.EqualAttivo:
                             ValoriCiclo.EqualAttivabile = dato.ValoreParametro;
-                            ParametriAttivi.EqualAttivabile = StatoCella;
+                            ParametriAttivi.EqualAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo?.EqualAttivabile, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.EqualFineCaricaAttesa:
                             ValoriCiclo.EqualTempoAttesa = dato.ValoreParametro;
-                            ParametriAttivi.EqualTempoAttesa = StatoCella;
+                            ParametriAttivi.EqualTempoAttesa = FunzioniComuni.StatoParametro(ModelloProfilo?.EqualTempoAttesa, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.EqualFineCaricaNumImpulsi:
                             ValoriCiclo.EqualNumImpulsi = dato.ValoreParametro;
-                            ParametriAttivi.EqualNumImpulsi = StatoCella;
+                            ParametriAttivi.EqualNumImpulsi = FunzioniComuni.StatoParametro(ModelloProfilo?.EqualNumImpulsi, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.EqualFineCaricaDurataP:
                             ValoriCiclo.EqualTempoPausa = dato.ValoreParametro;
-                            ParametriAttivi.EqualTempoPausa = StatoCella;
+                            ParametriAttivi.EqualTempoPausa = FunzioniComuni.StatoParametro(ModelloProfilo?.EqualTempoPausa, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.EqualFineCaricaDurataI:
                             ValoriCiclo.EqualTempoImpulso = dato.ValoreParametro;
-                            ParametriAttivi.EqualTempoImpulso = StatoCella;
+                            ParametriAttivi.EqualTempoImpulso = FunzioniComuni.StatoParametro(ModelloProfilo?.EqualTempoImpulso, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.EqualFineCaricaCorrenteImp:
                             ValoriCiclo.EqualCorrenteImpulso = dato.ValoreParametro;
-                            ParametriAttivi.EqualCorrenteImpulso = StatoCella;
+                            ParametriAttivi.EqualCorrenteImpulso = FunzioniComuni.StatoParametro(ModelloProfilo?.EqualCorrenteImpulso, StatoCella);
                             numeroValori += 1;
                             break;
 
@@ -345,37 +373,37 @@ namespace ChargerLogic
                         #region "Mantenimento"
                         case SerialMessage.ParametroLadeLight.MantenimentoAttivo:
                             ValoriCiclo.MantAttivabile = dato.ValoreParametro;
-                            ParametriAttivi.MantAttivabile = StatoCella;
+                            ParametriAttivi.MantAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo?.MantAttivabile, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.MantenimentoAttesa:
                             ValoriCiclo.MantTempoAttesa = dato.ValoreParametro;
-                            ParametriAttivi.MantTempoAttesa = StatoCella;
+                            ParametriAttivi.MantTempoAttesa = FunzioniComuni.StatoParametro(ModelloProfilo?.MantTempoAttesa, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.MantenimentoTensIniziale:
                             ValoriCiclo.MantTensIniziale = dato.ValoreParametro;
-                            ParametriAttivi.MantTensIniziale = StatoCella;
+                            ParametriAttivi.MantTensIniziale = FunzioniComuni.StatoParametro(ModelloProfilo?.MantTensIniziale, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.MantenimentoTensFinale:
                             ValoriCiclo.MantTensFinale = dato.ValoreParametro;
-                            ParametriAttivi.MantTensFinale = StatoCella;
+                            ParametriAttivi.MantTensFinale = FunzioniComuni.StatoParametro(ModelloProfilo?.MantTensFinale, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.MantenimentoTMaxErogazione:
                             ValoriCiclo.MantTempoMaxErogazione = dato.ValoreParametro;
-                            ParametriAttivi.MantTempoMaxErogazione = StatoCella;
+                            ParametriAttivi.MantTempoMaxErogazione = FunzioniComuni.StatoParametro(ModelloProfilo?.MantTempoMaxErogazione, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.MantenimentoCorrErogazione:
                             ValoriCiclo.MantCorrenteImpulso = dato.ValoreParametro;
-                            ParametriAttivi.MantCorrenteImpulso = StatoCella;
+                            ParametriAttivi.MantCorrenteImpulso = FunzioniComuni.StatoParametro(ModelloProfilo?.MantCorrenteImpulso, StatoCella);
                             numeroValori += 1;
                             break;
 
@@ -385,37 +413,41 @@ namespace ChargerLogic
                         #region "Opportunity Charge"
                         case SerialMessage.ParametroLadeLight.OpportunityAttivo:
                             ValoriCiclo.OpportunityAttivabile = dato.ValoreParametro;
-                            ParametriAttivi.OpportunityAttivabile = StatoCella;
+                            ParametriAttivi.OpportunityAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo?.OpportunityAttivabile, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.OpportunityOraInizio:
                             ValoriCiclo.OpportunityOraInizio = dato.ValoreParametro;
+                            ParametriAttivi.TempoFinale = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoFinale, StatoCella);
+
                             ParametriAttivi.OpportunityOraInizio = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.OpportunityOraFine:
                             ValoriCiclo.OpportunityOraFine = dato.ValoreParametro;
-                            ParametriAttivi.OpportunityOraFine = StatoCella;
+                            ParametriAttivi.OpportunityOraInizio = FunzioniComuni.StatoParametro(ModelloProfilo?.OpportunityOraInizio, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.OpportunityDurataMax:
                             ValoriCiclo.OpportunityDurataMax = dato.ValoreParametro;
-                            ParametriAttivi.OpportunityDurataMax = StatoCella;
+                            ParametriAttivi.OpportunityDurataMax = FunzioniComuni.StatoParametro(ModelloProfilo?.OpportunityDurataMax, StatoCella);
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.OpportunityCorrente:
                             ValoriCiclo.OpportunityCorrente = dato.ValoreParametro;
+                            ParametriAttivi.TempoFinale = FunzioniComuni.StatoParametro(ModelloProfilo?.TempoFinale, StatoCella);
+
                             ParametriAttivi.OpportunityCorrente = StatoCella;
                             numeroValori += 1;
                             break;
 
                         case SerialMessage.ParametroLadeLight.OpportunityTensioneStop:
                             ValoriCiclo.OpportunityTensioneMax = dato.ValoreParametro;
-                            ParametriAttivi.OpportunityTensioneMax = StatoCella;
+                            ParametriAttivi.OpportunityTensioneMax = FunzioniComuni.StatoParametro(ModelloProfilo?.OpportunityTensioneMax, StatoCella);
                             numeroValori += 1;
                             break;
 
@@ -428,32 +460,32 @@ namespace ChargerLogic
                         #region"Soglie"
                         case SerialMessage.ParametroLadeLight.TensioneMinimaRiconoscimento:
                             ValoriCiclo.TensRiconoscimentoMin = dato.ValoreParametro;
-                            ParametriAttivi.TensRiconoscimentoMin = StatoCella;
+                            ParametriAttivi.TensRiconoscimentoMin = FunzioniComuni.StatoParametro(ModelloProfilo?.TensRiconoscimentoMin, StatoCella);
                             numeroValori += 1;
                             break;
                         case SerialMessage.ParametroLadeLight.TensioneMassimaRiconoscimento:
                             ValoriCiclo.TensRiconoscimentoMax = dato.ValoreParametro;
-                            ParametriAttivi.TensRiconoscimentoMax = StatoCella;
+                            ParametriAttivi.TensRiconoscimentoMax = FunzioniComuni.StatoParametro(ModelloProfilo?.TensRiconoscimentoMax, StatoCella);
                             numeroValori += 1;
                             break;
                         case SerialMessage.ParametroLadeLight.TensioneMinimaStop:
                             ValoriCiclo.TensMinStop = dato.ValoreParametro;
-                            ParametriAttivi.TensMinStop = StatoCella;
+                            ParametriAttivi.TensMinStop = FunzioniComuni.StatoParametro(ModelloProfilo?.TensMinimaStop, StatoCella);
                             numeroValori += 1;
                             break;
                         case SerialMessage.ParametroLadeLight.TensioneLimiteCella:
                             ValoriCiclo.TensioneLimiteVLim = dato.ValoreParametro;
-                            ParametriAttivi.TensioneLimiteVLim = StatoCella;
+                            ParametriAttivi.TensioneLimiteVLim = FunzioniComuni.StatoParametro(ModelloProfilo?.TensioneLimiteVLim, StatoCella);
                             numeroValori += 1;
                             break;
                         case SerialMessage.ParametroLadeLight.CorrenteMassima:
                             ValoriCiclo.CorrenteMassima = dato.ValoreParametro;
-                            ParametriAttivi.CorrenteMassima = StatoCella;
+                            ParametriAttivi.CorrenteMassima = FunzioniComuni.StatoParametro(ModelloProfilo?.CorrenteMassima, StatoCella);
                             numeroValori += 1;
                             break;
                         case SerialMessage.ParametroLadeLight.TemperaturaLimite:
                             ValoriCiclo.TemperaturaLimite = dato.ValoreParametro;
-                            ParametriAttivi.TemperaturaLimite = StatoCella;
+                            ParametriAttivi.TemperaturaLimite = FunzioniComuni.StatoParametro(ModelloProfilo?.TemperaturaLimite, StatoCella);
                             numeroValori += 1;
                             break;
                             #endregion "Soglie"
@@ -638,6 +670,165 @@ namespace ChargerLogic
                 return CaricaBatteria.EsitoRicalcolo.ErrGenerico;
             }
         }
+
+        public CaricaBatteria.EsitoRicalcolo VerificaValoriObbligatori(_mbTipoBatteria Batteria, _mbProfiloCarica Profilo, ushort Tensione, ushort CapacitaDefinita, ushort Celle, _llModelloCb ModelloCB)
+        {
+            try
+            {
+                ValoriCiclo = new ParametriCiclo();
+                ParametriAttivi = new ParametriCiclo();
+
+                bool AttivaArea;
+
+
+                if (Batteria == null || Profilo == null || Tensione < 1200 || CapacitaDefinita < 50)
+                {
+                    ValoriCiclo.Esito = 0xFF;
+                    ValoriCiclo.Messaggio = "Parametri iniziali non corretti";
+                    return CaricaBatteria.EsitoRicalcolo.ParNonValidi;
+                }
+
+                ModelloProfilo = (from p in DatiModello.ParametriCarica
+                                  where p.BatteryTypeId == Batteria.BatteryTypeId && p.IdProfiloCaricaLL == Profilo.IdProfiloCaricaLL
+                                  select p).FirstOrDefault();
+
+                if (ModelloProfilo == null)
+                {
+                    // Abbinamento batteria / ciclo non previsto
+                    ValoriCiclo.Esito = 0xF1;
+                    ValoriCiclo.Messaggio = "Abbinamento batteria / ciclo non previsto";
+                    return CaricaBatteria.EsitoRicalcolo.ParNonValidi;
+                }
+
+                // Prima controllo che tensioni e correnti siano compatibili col CB. se il cb non è indicato, sono compatibili a priori
+
+                if (ModelloCB != null)
+
+                {
+                    // Corrente massima richiesta:
+                    ValoriCiclo.CorrenteI1 = 0;
+
+                }
+
+                ParametriAttivi.BatteryTypeId = Batteria.BatteryTypeId;
+
+                NumeroCelle = Celle;
+                Capacita = CapacitaDefinita;
+                DurataMaxCarica = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.DurataNominale);
+
+                ParametriAttivi.TempoT0Max = FunzioniComuni.StatoParametro(ModelloProfilo.TempoT0Max);
+                ValoriCiclo.TempoT0Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT0Max);
+                ParametriAttivi.CorrenteI0 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteI0);
+                ValoriCiclo.CorrenteI0 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteI0);
+                ParametriAttivi.TensionePrecicloV0 = FunzioniComuni.StatoParametro(ModelloProfilo.TensionePrecicloV0);
+                if (ParametriAttivi.CorrenteI0 > 0)
+                {
+                    if ((ValoriCiclo.CorrenteI0 / 10) > ModelloCB.CorrenteMax)
+                    {
+                        return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                    }
+                }
+                ValoriCiclo.TensionePrecicloV0 = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensionePrecicloV0);
+
+                ParametriAttivi.TempoT1Max = FunzioniComuni.StatoParametro(ModelloProfilo.TempoT1Max);
+                ValoriCiclo.TempoT1Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT1Max);
+                ParametriAttivi.CorrenteI1 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteI1);
+                ValoriCiclo.CorrenteI1 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteI1);
+                if ((ValoriCiclo.CorrenteI1 / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
+                ParametriAttivi.TensioneSogliaVs = FunzioniComuni.StatoParametro(ModelloProfilo.TensioneSogliaVs);
+                ValoriCiclo.TensioneSogliaVs = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensioneSogliaVs);
+
+                ParametriAttivi.TensioneRaccordoVr = FunzioniComuni.StatoParametro(ModelloProfilo.TensioneRaccordoVr);
+                ValoriCiclo.TensioneRaccordoVr = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensioneRaccordoVr);
+                ParametriAttivi.CorrenteRaccordoIr = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteRaccordoIr);
+                ValoriCiclo.CorrenteRaccordoIr = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteRaccordoIr);
+
+                ParametriAttivi.TempoT2Min = FunzioniComuni.StatoParametro(ModelloProfilo.TempoT2Min);
+                ValoriCiclo.TempoT2Min = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT2Min);
+                ParametriAttivi.TempoT2Max = FunzioniComuni.StatoParametro(ModelloProfilo.TempoT2Max);
+                ValoriCiclo.TempoT2Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT2Max);
+                ParametriAttivi.FattoreK = FunzioniComuni.StatoParametro(ModelloProfilo.FattoreK);
+                ValoriCiclo.FattoreK = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.FattoreK);
+
+                ParametriAttivi.TensionedV = FunzioniComuni.StatoParametro(ModelloProfilo.TensionedV);
+                ValoriCiclo.TensionedV = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensionedV);
+                ParametriAttivi.TempodT = FunzioniComuni.StatoParametro(ModelloProfilo.TempodT);
+                ValoriCiclo.TempodT = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempodT);
+                ParametriAttivi.TempoFinale = FunzioniComuni.StatoParametro(ModelloProfilo.TempoFinale);
+                ValoriCiclo.TempoFinale = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoFinale);
+                ParametriAttivi.TemperaturaLimite = FunzioniComuni.StatoParametro(ModelloProfilo.TemperaturaLimite);
+                ValoriCiclo.TemperaturaLimite = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TemperaturaLimite);
+
+                ParametriAttivi.CorrenteFinaleI2 = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteFinaleI2);
+                ValoriCiclo.CorrenteFinaleI2 = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteFinaleI2);
+                if ((ValoriCiclo.CorrenteFinaleI2 / 10) > ModelloCB.CorrenteMax)
+                {
+                    return CaricaBatteria.EsitoRicalcolo.ErrIMax;
+                }
+                ParametriAttivi.TensioneMassimaVMax = FunzioniComuni.StatoParametro(ModelloProfilo.TensioneMassimaVMax);
+                ValoriCiclo.TensioneMassimaVMax = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensioneMassimaVMax);
+
+                ParametriAttivi.TempoT3Max = FunzioniComuni.StatoParametro(ModelloProfilo.TempoT3Max);
+                ValoriCiclo.TempoT3Max = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TempoT3Max);
+
+                // equal
+                ParametriAttivi.EqualAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo.EqualAttivabile);
+                ValoriCiclo.EqualAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.EqualAttivabile);
+
+                CalcolaEqualizzazione(ValoriCiclo.EqualAttivabile, Tensione, CapacitaDefinita, ModelloCB);
+
+                // Mant
+                ParametriAttivi.MantAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo.MantAttivabile);
+                ValoriCiclo.MantAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.MantAttivabile);
+
+                CalcolaMantenimento(ValoriCiclo.MantAttivabile, Tensione, CapacitaDefinita, ModelloCB);
+
+                // Opportunity
+                ParametriAttivi.OpportunityAttivabile = FunzioniComuni.StatoParametro(ModelloProfilo.OpportunityAttivabile);
+                ValoriCiclo.OpportunityAttivabile = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.OpportunityAttivabile);
+
+                CalcolaOpportunityChg(ValoriCiclo.OpportunityAttivabile, Tensione, CapacitaDefinita, ModelloCB);
+
+
+
+                // Soglie
+                ParametriAttivi.TensRiconoscimentoMin = FunzioniComuni.StatoParametro(ModelloProfilo.TensRiconoscimentoMin);
+                ValoriCiclo.TensRiconoscimentoMin = FunzioniComuni.CalcolaFormula("V", Tensione, ModelloProfilo.TensRiconoscimentoMin);
+                ParametriAttivi.TensRiconoscimentoMax = FunzioniComuni.StatoParametro(ModelloProfilo.TensRiconoscimentoMax);
+                ValoriCiclo.TensRiconoscimentoMax = FunzioniComuni.CalcolaFormula("V", Tensione, ModelloProfilo.TensRiconoscimentoMax);
+                ParametriAttivi.TensMinStop = FunzioniComuni.StatoParametro(ModelloProfilo.TensMinimaStop);
+                ValoriCiclo.TensMinStop = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensMinimaStop);
+
+                ParametriAttivi.TensioneLimiteVLim = FunzioniComuni.StatoParametro(ModelloProfilo.TensioneLimiteVLim);
+                ValoriCiclo.TensioneLimiteVLim = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.TensioneLimiteVLim);
+
+                ParametriAttivi.CorrenteMassima = FunzioniComuni.StatoParametro(ModelloProfilo.CorrenteMassima);
+                ValoriCiclo.CorrenteMassima = FunzioniComuni.CalcolaFormula("C", Capacita, ModelloProfilo.CorrenteMassima);
+
+
+                // Varie
+                ValoriCiclo.AbilitaSpyBatt = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.AbilitaSpyBatt);
+                ParametriAttivi.AbilitaSpyBatt = FunzioniComuni.StatoParametro(ModelloProfilo.AbilitaSpyBatt);
+
+                ValoriCiclo.AbilitaSafety = FunzioniComuni.CalcolaFormula("#", 0, ModelloProfilo.AbilitaSafety);
+                ParametriAttivi.AbilitaSafety = FunzioniComuni.StatoParametro(ModelloProfilo.AbilitaSafety);
+
+
+
+                return CaricaBatteria.EsitoRicalcolo.OK;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("CalcolaParametri: " + Ex.Message);
+                return CaricaBatteria.EsitoRicalcolo.ErrGenerico;
+            }
+        }
+
+
+
 
         public CaricaBatteria.EsitoRicalcolo CalcolaParametriFissi(_mbTipoBatteria Batteria, _mbProfiloCarica Profilo, ushort Tensione, ushort CapacitaDefinita, ushort Celle, _llModelloCb ModelloCB)
         {
@@ -846,18 +1037,6 @@ namespace ChargerLogic
                 {
                     return CaricaBatteria.EsitoRicalcolo.ErrIMax;
                 }
-
-
-
-                // equal
-
-                //CalcolaEqualizzazione(ValoriCiclo.EqualAttivabile, Tensione, CapacitaDefinita, ModelloProfilo, ModelloCB);
-
-                // Mant
-
-                //CalcolaMantenimento(ValoriCiclo.MantAttivabile, Tensione, CapacitaDefinita, ModelloProfilo, ModelloCB);
-
-  
 
 
                 return CaricaBatteria.EsitoRicalcolo.OK;

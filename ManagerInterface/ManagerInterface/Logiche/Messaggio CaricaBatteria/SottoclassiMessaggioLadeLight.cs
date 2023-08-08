@@ -1082,7 +1082,7 @@ namespace ChargerLogic
 
                     return true;
                 }
-                catch
+                catch 
                 {
                     return false;
                 }

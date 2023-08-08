@@ -146,6 +146,150 @@ namespace PannelloCharger
             }
         }
 
+        public static bool ImpostaTextBoxUshort(ref TextBox txtValore, ref Label lblValore,ushort Valore, ushort Stato, byte TipoDati, bool SbloccaValore, bool BlankIfZero = false)
+        {
+            try
+            {
+                bool esito = false;
+                bool SoloTextBox = false;
+
+                if (txtValore == null) return false;
+                if (lblValore == null) SoloTextBox = true;
+
+                if(!SoloTextBox) 
+                {
+                    lblValore.ForeColor = Color.Black;
+                    lblValore.Font = new Font(lblValore.Font, FontStyle.Regular);
+                }
+
+                switch (Stato)
+                {
+                    case 0:
+                        {
+                            txtValore.Text = "";
+                            txtValore.Enabled = false;
+                            esito = true;
+                            break;
+                        }
+                    case 1:
+                        {
+                            txtValore.Enabled = false;
+                            txtValore.ReadOnly = true;
+                            if (BlankIfZero && Valore == 0)
+                            {
+                                txtValore.Text = "";
+                            }
+                            else
+                            {
+
+                                switch (TipoDati)
+                                {
+                                    case 0:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
+                                    case 1:  // Tensione
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaTensione(Valore);
+                                            break;
+                                        }
+                                    case 2:  // Corrente
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaCorrenteLL(Valore);
+                                            break;
+                                        }
+                                    case 4:  // Minuti -> hh:mm
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
+                                            break;
+                                        }
+
+                                    default:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
+
+                                }
+                            }
+                            esito = true;
+                            break;
+                        }
+                    case 4:
+                    case 5:
+                    case 6:
+                        {
+                            txtValore.Enabled = true;
+                            txtValore.ReadOnly = (bool)((Stato == 4) && !SbloccaValore);
+                            if (BlankIfZero && Valore == 0)
+                            {
+                                txtValore.Text = "";
+                            }
+                            else
+                            {
+                                switch (TipoDati)
+                                {
+                                    case 0:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
+                                    case 1:  // Tensione
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaTensione(Valore);
+                                            break;
+                                        }
+                                    case 2:  // Corrente
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaCorrenteUSh(Valore);
+                                            break;
+                                        }
+                                    case 4:  // Minuti -> hh:mm
+                                        {
+                                            txtValore.Text = FunzioniMR.StringaOreMinutiLL(Valore);
+                                            break;
+                                        }
+                                    default:  // valore diretto
+                                        {
+                                            txtValore.Text = Valore.ToString();
+                                            break;
+                                        }
+
+                                }
+                            }
+                            if (Stato == 6 && !SoloTextBox)
+                            {
+                                lblValore.ForeColor = Color.Blue;
+                                lblValore.Font = new Font(lblValore.Font, FontStyle.Bold);
+
+                            }
+                            esito = true;
+                            break;
+                        }
+
+                    default:
+                        {
+                            txtValore.Text = "";
+                            txtValore.Enabled = false;
+                            esito = false;
+                            break;
+                        }
+
+                }
+                return esito;
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ImpostaTextBoxUshort: " + Ex.Message);
+                return false;
+            }
+        }
+
+
         public static bool ImpostaCheckBoxUshort(ref CheckBox chkValore,ref Label lblDescription, ushort Valore, ushort Stato, byte TipoDati, bool SbloccaValore)
         {
             try

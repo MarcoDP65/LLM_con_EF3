@@ -485,7 +485,6 @@ namespace PannelloCharger
         }
         
 
-
         private void btnUsbReload_Click(object sender, EventArgs e)
         {
             bool _esito;

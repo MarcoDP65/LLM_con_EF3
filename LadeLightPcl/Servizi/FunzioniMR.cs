@@ -2707,21 +2707,27 @@ namespace Utility
             }
         }
 
-        public static ushort StatoParametro(string Formula)
+        public static ushort StatoParametro(string Formula,ushort Default = 0)
         {
             try
             {
+                // Calcolo il livello di blocco, usato dalle funzioni di visualizzazione, in base al primo carattere della formula
                 ushort esito = 0;
                 string OperazioneUsata = "";
 
                 if (Formula == null)
-                    return 0;
+                    return Default;
 
                 if (Formula.Length > 0)
                 {
                     OperazioneUsata = Formula.Substring(0, 1);
                 }
-                
+
+                //     = Assegnazione -> valore fisso da assegnare o calcolo su parametro - Sbloccabile
+                //     # Assegnazione -> valore fisso da assegnare o calcolo su parametro - NON Sbloccabile
+                //     ~ come = ma già sbloccato
+                //     ? come = ma sbloccato e obbligatorio != 0
+
 
                 switch (OperazioneUsata)
                 {
@@ -2754,7 +2760,7 @@ namespace Utility
 
                     default:
                         {
-                            esito = 1;
+                            esito = Default;
                             break;
                         }
                 }
@@ -2764,7 +2770,7 @@ namespace Utility
 
             catch
             {
-                return 0;
+                return Default;
             }
         }
 

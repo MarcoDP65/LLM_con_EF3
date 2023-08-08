@@ -373,6 +373,18 @@
     <Compile Include="Forms\Forms LadeLight\frmCaricabatterieFunzioniFirmware.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Forms Setup LLT\frmSetupLLT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Setup LLT\frmSetupLLT.Designer.cs">
+      <DependentUpon>frmSetupLLT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms Setup LLT\frmSetupLLTEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms Setup LLT\frmSetupLLTEdit.Designer.cs">
+      <DependentUpon>frmSetupLLTEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms Spy-Batt\frmSpyBatParAndCmd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -637,6 +649,9 @@
     <Compile Include="Logiche\cEventHelper.cs" />
     <Compile Include="Logiche\CloneSB.cs" />
     <Compile Include="Logiche\clsStatBloccoSoglie.cs" />
+    <Compile Include="Logiche\Configurazione\DatiStepInizializzazione.cs" />
+    <Compile Include="Logiche\Configurazione\ModelloConfigurazione.cs" />
+    <Compile Include="Logiche\Configurazione\StepConfigurazione.cs" />
     <Compile Include="Logiche\DatiSpyBatt.cs" />
     <Compile Include="Logiche\Display\comandiMessaggiDisplay.cs" />
     <Compile Include="Logiche\Display\Display.cs" />
@@ -722,6 +737,8 @@
     <Compile Include="Servizi\StringCipher.cs" />
     <Compile Include="Servizi\SytemUtility.cs" />
     <Compile Include="Servizi\txtLogger.cs" />
+    <Compile Include="Servizi\UsbHelper.cs" />
+    <Compile Include="Servizi\UsbNotification.cs" />
     <Compile Include="Servizi\usParameters.cs" />
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Componenti\ctrlPannelloTempo.en.resx">
@@ -811,6 +828,12 @@
     <EmbeddedResource Include="Forms\Forms LadeLight\frmCaricabatterie.fr.resx">
       <DependentUpon>frmCaricabatterie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Setup LLT\frmSetupLLT.resx">
+      <DependentUpon>frmSetupLLT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms Setup LLT\frmSetupLLTEdit.resx">
+      <DependentUpon>frmSetupLLTEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms Spy-Batt\frmSpyBat.de.resx">
       <DependentUpon>frmSpyBat.cs</DependentUpon>
     </EmbeddedResource>
@@ -841,12 +864,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms SuperCharger\frmSuperCharger.resx">
       <DependentUpon>frmSuperCharger.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms ID-Batt Programmer\frmIdBatt.en.resx">
       <DependentUpon>frmIdBatt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms ID-Batt Programmer\frmIdBatt.resx">
       <DependentUpon>frmIdBatt.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAboutBox.de.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
@@ -1369,6 +1394,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TestiProgrammazione.Designer.cs</LastGenOutput>
       <CustomToolNamespace>PannelloCharger</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

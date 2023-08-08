@@ -51,8 +51,6 @@ namespace ChargerLogic
         public Parity parityBit = Parity.None;
         public Handshake handShake = Handshake.None;
 
-        // public uint baudRateUSB = 115200;//3000000;
-
         public string lastError;
 
         public string currentUser = "FACTORY";

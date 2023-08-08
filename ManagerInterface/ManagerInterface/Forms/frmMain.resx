@@ -414,6 +414,12 @@
   <data name="flashFTDIToolStripMenuItem.Text" xml:space="preserve">
     <value>Flash FTDI</value>
   </data>
+  <data name="inizializzazioneDisplayToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="inizializzazioneDisplayToolStripMenuItem.Text" xml:space="preserve">
+    <value>Inizializzazione Display</value>
+  </data>
   <data name="flashSPYBATTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 22</value>
   </data>
@@ -604,7 +610,7 @@
     <value>AppWorkspace</value>
   </data>
   <data name="tstBtnCercaUsb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnCercaUsb.Text" xml:space="preserve">
     <value>Ricerca Usb</value>
@@ -628,7 +634,7 @@
     <value>Magenta</value>
   </data>
   <data name="tstBtnIdBatt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnIdBatt.Text" xml:space="preserve">
     <value>toolStripButton1</value>
@@ -687,7 +693,7 @@
 </value>
   </data>
   <data name="tstBtnExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnExport.Text" xml:space="preserve">
     <value>Esporta</value>
@@ -739,7 +745,7 @@
     <value>Transparent</value>
   </data>
   <data name="tstBtnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnSave.Text" xml:space="preserve">
     <value>Salva</value>
@@ -937,7 +943,7 @@
     <value>Magenta</value>
   </data>
   <data name="tstBtnCercaRS232.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnCercaRS232.Text" xml:space="preserve">
     <value>Ricerca RS 232</value>
@@ -1032,7 +1038,7 @@
     <value>Transparent</value>
   </data>
   <data name="tstBtnPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnPrint.Text" xml:space="preserve">
     <value>Stampa</value>
@@ -1041,7 +1047,7 @@
     <value>Transparent</value>
   </data>
   <data name="tstBtnRefresh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnRefresh.Text" xml:space="preserve">
     <value>Refresh</value>
@@ -1050,13 +1056,13 @@
     <value>Refresh</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 71</value>
+    <value>6, 39</value>
   </data>
   <data name="tstBtnClose.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Transparent</value>
   </data>
   <data name="tstBtnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 68</value>
+    <value>36, 36</value>
   </data>
   <data name="tstBtnClose.Text" xml:space="preserve">
     <value>Chiudi</value>
@@ -1699,6 +1705,12 @@
     <value>flashFTDIToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;flashFTDIToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;inizializzazioneDisplayToolStripMenuItem.Name" xml:space="preserve">
+    <value>inizializzazioneDisplayToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;inizializzazioneDisplayToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flashSPYBATTToolStripMenuItem.Name" xml:space="preserve">

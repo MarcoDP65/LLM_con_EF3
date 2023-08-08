@@ -18,11 +18,14 @@ using Utility;
 using SQLite;
 using System.Resources;
 using System.Diagnostics;
+using System.Web.UI.WebControls;
 //using PannelloCharger.
 
 
 namespace PannelloCharger
 {
+
+    public delegate void UsbConnectionEventHandler(object sender, EventArgs e);
     public partial class frmMain : MdiParent
     {
         private static ILog Log = LogManager.GetLogger("frmMain");
@@ -32,6 +35,8 @@ namespace PannelloCharger
         public ScannerPorte Dispositivi;
         public ScannerUSB DispositiviUSB;
         private int LogLevel = 4;
+
+        public event UsbConnectionEventHandler OnUsbChange;
 
         public StatoPulsanti Toolbar { get; set; } = new StatoPulsanti();
 
@@ -57,6 +62,7 @@ namespace PannelloCharger
 
                 Thread.CurrentThread.CurrentUICulture = varGlobali.currentCulture;            
                 InitializeComponent();
+                UsbNotification.RegisterUsbDeviceNotification(this.Handle);
                 Log.Debug("Startup Applicazione");
                 frmMainInitialize();
                 
@@ -74,6 +80,51 @@ namespace PannelloCharger
             {
                 Log.Error("frmMain: " + Ex.Message );
             }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == UsbNotification.WmDevicechange)
+            {
+                switch ((int)m.WParam)
+                {
+                    case UsbNotification.DbtDeviceremovecomplete:
+                        {
+                            //Usb_DeviceRemoved(); // this is where you do your magic
+                            //listBox1.Items.Add("Device Removed");
+                            if (OnUsbChange != null)
+                            {
+                                UsbConnectionEventArgs e = new UsbConnectionEventArgs();
+                                e.ActionDetected = UsbHelper.UsbAction.Disconnect;
+                                OnUsbChange(this, e);
+                                Log.Info("DbtDeviceremovecomplete Fired");
+                            }
+                            break;
+                        }
+                        
+                    case UsbNotification.DbtDevicearrival:
+                        //Usb_DeviceAdded(); // this is where you do your magic
+                        //listBox1.Items.Add("New Device Arrived");
+                        {
+                            //Usb_DeviceRemoved(); // this is where you do your magic
+                            //listBox1.Items.Add("Device Removed");
+                            if (OnUsbChange != null)
+                            {
+                                UsbConnectionEventArgs e = new UsbConnectionEventArgs();
+                                e.ActionDetected = UsbHelper.UsbAction.Connect;
+                                // Aspetto 5 secondi
+                                //Thread.Sleep(5000);
+                                OnUsbChange(this, e);
+                                Log.Info("DbtDevicearrival Fired");
+                                // Aspetto 1/2 secondo....
+                                // Thread.Sleep(1000);
+                            }
+                            break;
+                        }
+                }
+            }
+
         }
 
         private void frmMainInitialize()
@@ -1481,6 +1532,36 @@ namespace PannelloCharger
         private void tstBtnIdBatt_Click(object sender, EventArgs e)
         {
             CallIDBattToolStripMenuItem_Click(this,null);
+        }
+
+        private void inizializzazioneDisplayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmSetupLLT))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                frmSetupLLT SetupLLTCorrente = new frmSetupLLT(ref varGlobali, true, "IDBATT", logiche, false, true);
+                SetupLLTCorrente.MdiParent = this;
+                SetupLLTCorrente.FormPrincipale = this;
+
+                SetupLLTCorrente.StartPosition = FormStartPosition.CenterParent;
+                //ArchivioCorrenteLL.MostraLista();
+                //SetupLLTCorrente.AttivaEventi();
+                SetupLLTCorrente.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SetupLLTCorrente: " + Ex.Message);
+            }
         }
     }
 
