@@ -73,7 +73,8 @@ namespace PannelloCharger
             try
             {
                 pbRicerca.Visible = true;
-                pbRicerca.Show();   
+                pbRicerca.Show();
+                int Step = 0;
                 ScannerUSB.EsitoScasione Esito = ScannerUSB.EsitoScasione.NonEseguita;
                 if (Scanner == null) return;
                 do
@@ -83,6 +84,11 @@ namespace PannelloCharger
                     ListaPorte = Scanner.ListaPorte;
                     this.flvwListaDevices.SetObjects(ListaPorte);
                     flvwListaDevices.BuildList();
+                    Step++;
+                    if ( Step > 100 )
+                    {
+                        Esito = ScannerUSB.EsitoScasione.InErrore;
+                    }
                 } while ( !(Esito == ScannerUSB.EsitoScasione.Completa || Esito == ScannerUSB.EsitoScasione.InErrore));
 
                 pbRicerca.Visible = false;
