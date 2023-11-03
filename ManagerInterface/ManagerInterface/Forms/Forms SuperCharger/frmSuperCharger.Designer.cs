@@ -221,20 +221,12 @@
             this.btnFWFileCCSsearch = new System.Windows.Forms.Button();
             this.txtFwFileCCS = new System.Windows.Forms.TextBox();
             this.grbFWArea2 = new System.Windows.Forms.GroupBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.txtFwRevA2Areas = new System.Windows.Forms.TextBox();
             this.label86 = new System.Windows.Forms.Label();
             this.txtFwRevA2Size = new System.Windows.Forms.TextBox();
-            this.txtFWRevA2Addr5 = new System.Windows.Forms.TextBox();
-            this.label80 = new System.Windows.Forms.Label();
-            this.label82 = new System.Windows.Forms.Label();
-            this.txtFWRevA2Addr4 = new System.Windows.Forms.TextBox();
-            this.txtFWRevA2Addr3 = new System.Windows.Forms.TextBox();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.txtFWRevA2Addr2 = new System.Windows.Forms.TextBox();
             this.txtFWRevA2Addr1 = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
-            this.label109 = new System.Windows.Forms.Label();
-            this.txtFwRevA2RilFw = new System.Windows.Forms.TextBox();
             this.label87 = new System.Windows.Forms.Label();
             this.txtFwRevA2MsgSize = new System.Windows.Forms.TextBox();
             this.label89 = new System.Windows.Forms.Label();
@@ -242,19 +234,11 @@
             this.label90 = new System.Windows.Forms.Label();
             this.txtFwRevA2RevFw = new System.Windows.Forms.TextBox();
             this.GrbFWArea1 = new System.Windows.Forms.GroupBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.txtFwRevA1Areas = new System.Windows.Forms.TextBox();
             this.label97 = new System.Windows.Forms.Label();
             this.txtFwRevA1Size = new System.Windows.Forms.TextBox();
-            this.label103 = new System.Windows.Forms.Label();
-            this.txtFwRevA1RilFw = new System.Windows.Forms.TextBox();
-            this.txtFWRevA1Addr5 = new System.Windows.Forms.TextBox();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
-            this.txtFWRevA1Addr4 = new System.Windows.Forms.TextBox();
-            this.txtFWRevA1Addr3 = new System.Windows.Forms.TextBox();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
-            this.txtFWRevA1Addr2 = new System.Windows.Forms.TextBox();
             this.txtFWRevA1Addr1 = new System.Windows.Forms.TextBox();
             this.label77 = new System.Windows.Forms.Label();
             this.txtFwRevA1MsgSize = new System.Windows.Forms.TextBox();
@@ -2111,20 +2095,12 @@
             // grbFWArea2
             // 
             this.grbFWArea2.BackColor = System.Drawing.Color.White;
+            this.grbFWArea2.Controls.Add(this.label63);
+            this.grbFWArea2.Controls.Add(this.txtFwRevA2Areas);
             this.grbFWArea2.Controls.Add(this.label86);
             this.grbFWArea2.Controls.Add(this.txtFwRevA2Size);
-            this.grbFWArea2.Controls.Add(this.txtFWRevA2Addr5);
-            this.grbFWArea2.Controls.Add(this.label80);
-            this.grbFWArea2.Controls.Add(this.label82);
-            this.grbFWArea2.Controls.Add(this.txtFWRevA2Addr4);
-            this.grbFWArea2.Controls.Add(this.txtFWRevA2Addr3);
-            this.grbFWArea2.Controls.Add(this.label83);
-            this.grbFWArea2.Controls.Add(this.label84);
-            this.grbFWArea2.Controls.Add(this.txtFWRevA2Addr2);
             this.grbFWArea2.Controls.Add(this.txtFWRevA2Addr1);
             this.grbFWArea2.Controls.Add(this.label85);
-            this.grbFWArea2.Controls.Add(this.label109);
-            this.grbFWArea2.Controls.Add(this.txtFwRevA2RilFw);
             this.grbFWArea2.Controls.Add(this.label87);
             this.grbFWArea2.Controls.Add(this.txtFwRevA2MsgSize);
             this.grbFWArea2.Controls.Add(this.label89);
@@ -2134,6 +2110,16 @@
             resources.ApplyResources(this.grbFWArea2, "grbFWArea2");
             this.grbFWArea2.Name = "grbFWArea2";
             this.grbFWArea2.TabStop = false;
+            // 
+            // label63
+            // 
+            resources.ApplyResources(this.label63, "label63");
+            this.label63.Name = "label63";
+            // 
+            // txtFwRevA2Areas
+            // 
+            resources.ApplyResources(this.txtFwRevA2Areas, "txtFwRevA2Areas");
+            this.txtFwRevA2Areas.Name = "txtFwRevA2Areas";
             // 
             // label86
             // 
@@ -2145,46 +2131,6 @@
             resources.ApplyResources(this.txtFwRevA2Size, "txtFwRevA2Size");
             this.txtFwRevA2Size.Name = "txtFwRevA2Size";
             // 
-            // txtFWRevA2Addr5
-            // 
-            resources.ApplyResources(this.txtFWRevA2Addr5, "txtFWRevA2Addr5");
-            this.txtFWRevA2Addr5.Name = "txtFWRevA2Addr5";
-            // 
-            // label80
-            // 
-            resources.ApplyResources(this.label80, "label80");
-            this.label80.Name = "label80";
-            // 
-            // label82
-            // 
-            resources.ApplyResources(this.label82, "label82");
-            this.label82.Name = "label82";
-            // 
-            // txtFWRevA2Addr4
-            // 
-            resources.ApplyResources(this.txtFWRevA2Addr4, "txtFWRevA2Addr4");
-            this.txtFWRevA2Addr4.Name = "txtFWRevA2Addr4";
-            // 
-            // txtFWRevA2Addr3
-            // 
-            resources.ApplyResources(this.txtFWRevA2Addr3, "txtFWRevA2Addr3");
-            this.txtFWRevA2Addr3.Name = "txtFWRevA2Addr3";
-            // 
-            // label83
-            // 
-            resources.ApplyResources(this.label83, "label83");
-            this.label83.Name = "label83";
-            // 
-            // label84
-            // 
-            resources.ApplyResources(this.label84, "label84");
-            this.label84.Name = "label84";
-            // 
-            // txtFWRevA2Addr2
-            // 
-            resources.ApplyResources(this.txtFWRevA2Addr2, "txtFWRevA2Addr2");
-            this.txtFWRevA2Addr2.Name = "txtFWRevA2Addr2";
-            // 
             // txtFWRevA2Addr1
             // 
             resources.ApplyResources(this.txtFWRevA2Addr1, "txtFWRevA2Addr1");
@@ -2194,17 +2140,6 @@
             // 
             resources.ApplyResources(this.label85, "label85");
             this.label85.Name = "label85";
-            // 
-            // label109
-            // 
-            resources.ApplyResources(this.label109, "label109");
-            this.label109.Name = "label109";
-            // 
-            // txtFwRevA2RilFw
-            // 
-            resources.ApplyResources(this.txtFwRevA2RilFw, "txtFwRevA2RilFw");
-            this.txtFwRevA2RilFw.Name = "txtFwRevA2RilFw";
-            this.txtFwRevA2RilFw.ReadOnly = true;
             // 
             // label87
             // 
@@ -2240,19 +2175,11 @@
             // GrbFWArea1
             // 
             this.GrbFWArea1.BackColor = System.Drawing.Color.White;
+            this.GrbFWArea1.Controls.Add(this.label62);
+            this.GrbFWArea1.Controls.Add(this.txtFwRevA1Areas);
             this.GrbFWArea1.Controls.Add(this.label97);
             this.GrbFWArea1.Controls.Add(this.txtFwRevA1Size);
-            this.GrbFWArea1.Controls.Add(this.label103);
-            this.GrbFWArea1.Controls.Add(this.txtFwRevA1RilFw);
-            this.GrbFWArea1.Controls.Add(this.txtFWRevA1Addr5);
-            this.GrbFWArea1.Controls.Add(this.label81);
-            this.GrbFWArea1.Controls.Add(this.label74);
-            this.GrbFWArea1.Controls.Add(this.txtFWRevA1Addr4);
-            this.GrbFWArea1.Controls.Add(this.txtFWRevA1Addr3);
-            this.GrbFWArea1.Controls.Add(this.label75);
-            this.GrbFWArea1.Controls.Add(this.label79);
             this.GrbFWArea1.Controls.Add(this.label78);
-            this.GrbFWArea1.Controls.Add(this.txtFWRevA1Addr2);
             this.GrbFWArea1.Controls.Add(this.txtFWRevA1Addr1);
             this.GrbFWArea1.Controls.Add(this.label77);
             this.GrbFWArea1.Controls.Add(this.txtFwRevA1MsgSize);
@@ -2264,6 +2191,16 @@
             this.GrbFWArea1.Name = "GrbFWArea1";
             this.GrbFWArea1.TabStop = false;
             // 
+            // label62
+            // 
+            resources.ApplyResources(this.label62, "label62");
+            this.label62.Name = "label62";
+            // 
+            // txtFwRevA1Areas
+            // 
+            resources.ApplyResources(this.txtFwRevA1Areas, "txtFwRevA1Areas");
+            this.txtFwRevA1Areas.Name = "txtFwRevA1Areas";
+            // 
             // label97
             // 
             resources.ApplyResources(this.label97, "label97");
@@ -2274,62 +2211,10 @@
             resources.ApplyResources(this.txtFwRevA1Size, "txtFwRevA1Size");
             this.txtFwRevA1Size.Name = "txtFwRevA1Size";
             // 
-            // label103
-            // 
-            resources.ApplyResources(this.label103, "label103");
-            this.label103.Name = "label103";
-            this.label103.Click += new System.EventHandler(this.label103_Click);
-            // 
-            // txtFwRevA1RilFw
-            // 
-            resources.ApplyResources(this.txtFwRevA1RilFw, "txtFwRevA1RilFw");
-            this.txtFwRevA1RilFw.Name = "txtFwRevA1RilFw";
-            this.txtFwRevA1RilFw.ReadOnly = true;
-            // 
-            // txtFWRevA1Addr5
-            // 
-            resources.ApplyResources(this.txtFWRevA1Addr5, "txtFWRevA1Addr5");
-            this.txtFWRevA1Addr5.Name = "txtFWRevA1Addr5";
-            // 
-            // label81
-            // 
-            resources.ApplyResources(this.label81, "label81");
-            this.label81.Name = "label81";
-            // 
-            // label74
-            // 
-            resources.ApplyResources(this.label74, "label74");
-            this.label74.Name = "label74";
-            // 
-            // txtFWRevA1Addr4
-            // 
-            resources.ApplyResources(this.txtFWRevA1Addr4, "txtFWRevA1Addr4");
-            this.txtFWRevA1Addr4.Name = "txtFWRevA1Addr4";
-            // 
-            // txtFWRevA1Addr3
-            // 
-            resources.ApplyResources(this.txtFWRevA1Addr3, "txtFWRevA1Addr3");
-            this.txtFWRevA1Addr3.Name = "txtFWRevA1Addr3";
-            // 
-            // label75
-            // 
-            resources.ApplyResources(this.label75, "label75");
-            this.label75.Name = "label75";
-            // 
-            // label79
-            // 
-            resources.ApplyResources(this.label79, "label79");
-            this.label79.Name = "label79";
-            // 
             // label78
             // 
             resources.ApplyResources(this.label78, "label78");
             this.label78.Name = "label78";
-            // 
-            // txtFWRevA1Addr2
-            // 
-            resources.ApplyResources(this.txtFWRevA1Addr2, "txtFWRevA1Addr2");
-            this.txtFWRevA1Addr2.Name = "txtFWRevA1Addr2";
             // 
             // txtFWRevA1Addr1
             // 
@@ -6102,18 +5987,8 @@
         private System.Windows.Forms.GroupBox grbFWArea2;
         private System.Windows.Forms.Label label86;
         private System.Windows.Forms.TextBox txtFwRevA2Size;
-        private System.Windows.Forms.TextBox txtFWRevA2Addr5;
-        private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.Label label82;
-        private System.Windows.Forms.TextBox txtFWRevA2Addr4;
-        private System.Windows.Forms.TextBox txtFWRevA2Addr3;
-        private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.TextBox txtFWRevA2Addr2;
         private System.Windows.Forms.TextBox txtFWRevA2Addr1;
         private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.Label label109;
-        private System.Windows.Forms.TextBox txtFwRevA2RilFw;
         private System.Windows.Forms.Label label87;
         private System.Windows.Forms.TextBox txtFwRevA2MsgSize;
         private System.Windows.Forms.Label label89;
@@ -6123,17 +5998,7 @@
         private System.Windows.Forms.GroupBox GrbFWArea1;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.TextBox txtFwRevA1Size;
-        private System.Windows.Forms.Label label103;
-        private System.Windows.Forms.TextBox txtFwRevA1RilFw;
-        private System.Windows.Forms.TextBox txtFWRevA1Addr5;
-        private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.TextBox txtFWRevA1Addr4;
-        private System.Windows.Forms.TextBox txtFWRevA1Addr3;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.TextBox txtFWRevA1Addr2;
         private System.Windows.Forms.TextBox txtFWRevA1Addr1;
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.TextBox txtFwRevA1MsgSize;
@@ -6620,5 +6485,9 @@
         private System.Windows.Forms.RadioButton optGenBR1M;
         private System.Windows.Forms.RadioButton optGenBR115;
         private System.Windows.Forms.TextBox txtGenBRCust;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.TextBox txtFwRevA1Areas;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.TextBox txtFwRevA2Areas;
     }
 }

@@ -2611,8 +2611,8 @@ namespace PannelloCharger
         {
             bool _esito = false;
             byte[] _bufferDati = new byte[64];
-            FirmwareLLManager _tempFW = new FirmwareLLManager();
-            FirmwareLLManager.ExitCode _esitoFW = FirmwareLLManager.ExitCode.ErroreGenerico;
+            FirmwareSCManager _tempFW = new FirmwareSCManager();
+            FirmwareSCManager.ExitCode _esitoFW = FirmwareSCManager.ExitCode.ErroreGenerico;
             uint _area;
 
             try
@@ -2625,30 +2625,22 @@ namespace PannelloCharger
                     txtFwRevA1State.Text = "KO";
                     txtFwRevA1State.ForeColor = Color.Red;
                     txtFwRevA1RevFw.Text = "";
-                    txtFwRevA1RilFw.Text = "";
-                    txtFWRevA1Addr1.Text = "";
-                    txtFWRevA1Addr2.Text = "";
-                    txtFWRevA1Addr3.Text = "";
-                    txtFWRevA1Addr4.Text = "";
-                    txtFWRevA1Addr5.Text = "";
-                    txtFwRevA1Size.Text = "";
                     txtFwRevA1MsgSize.Text = "";
-                    _area = 0x1C0000;
+                    txtFwRevA1Size.Text = "";
+                    txtFwRevA1Areas.Text = "";
+                    txtFWRevA1Addr1.Text = "";
+                    _area = 0x800000;
                 }
                 else
                 {
                     txtFwRevA2State.Text = "KO";
                     txtFwRevA2State.ForeColor = Color.Red;
                     txtFwRevA2RevFw.Text = "";
-                    txtFwRevA2RilFw.Text = "";
-                    txtFWRevA2Addr1.Text = "";
-                    txtFWRevA2Addr2.Text = "";
-                    txtFWRevA2Addr3.Text = "";
-                    txtFWRevA2Addr4.Text = "";
-                    txtFWRevA2Addr5.Text = "";
-                    txtFwRevA2Size.Text = "";
                     txtFwRevA2MsgSize.Text = "";
-                    _area = 0x1E0000;
+                    txtFwRevA2Size.Text = "";
+                    txtFwRevA2Areas.Text = "";
+                    txtFWRevA2Addr1.Text = "";
+                    _area = 0xC00000;
 
                 }
 
@@ -2659,41 +2651,28 @@ namespace PannelloCharger
                 if (_esito)
                 {
                     _esitoFW = _tempFW.AnalizzaArrayTestata(_bufferDati);
-                    if (_esitoFW == FirmwareLLManager.ExitCode.OK && _tempFW.FirmwareBlock.TestataOK)
+                    if (_esitoFW == FirmwareSCManager.ExitCode.OK && _tempFW.FirmwareBlock.TestataOK)
                     {
                         if (IdArea == 1)
                         {
                             txtFwRevA1State.Text = "OK";
                             txtFwRevA1State.ForeColor = Color.Black;
                             txtFwRevA1RevFw.Text = _tempFW.FirmwareBlock.Release;
-                            txtFwRevA1RilFw.Text = _tempFW.FirmwareBlock.ReleaseDisplay;
-
-                            txtFwRevA1Size.Text = _tempFW.FirmwareBlock.NumSezioni.ToString();
-                            txtFwRevA1MsgSize.Text = _tempFW.FirmwareBlock.LenPkt.ToString("X2");
-
-
-                            txtFWRevA1Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
-                            txtFWRevA1Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
-                            txtFWRevA1Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
-                            txtFWRevA1Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
-                            txtFWRevA1Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
-
+                            txtFwRevA1MsgSize.Text = _tempFW.FirmwareBlock.LenPkt.ToString();
+                            txtFwRevA1Size.Text = _tempFW.FirmwareBlock.LenFlash.ToString();
+                            txtFwRevA1Areas.Text = _tempFW.FirmwareBlock.NumSezioni.ToString();
+                            txtFWRevA1Addr1.Text = "0x" + _tempFW.FirmwareBlock.AddrSez1.ToString("X6");
                         }
                         else
                         {
                             txtFwRevA2State.Text = "OK";
                             txtFwRevA2State.ForeColor = Color.Black;
                             txtFwRevA2RevFw.Text = _tempFW.FirmwareBlock.Release;
-                            txtFwRevA2RilFw.Text = _tempFW.FirmwareBlock.ReleaseDisplay;
+                            txtFwRevA2MsgSize.Text = _tempFW.FirmwareBlock.LenPkt.ToString();
+                            txtFwRevA2Size.Text = _tempFW.FirmwareBlock.LenFlash.ToString();
+                            txtFwRevA2Areas.Text = _tempFW.FirmwareBlock.NumSezioni.ToString();
+                            txtFWRevA2Addr1.Text = "0x" + _tempFW.FirmwareBlock.AddrSez1.ToString("X6");
 
-                            txtFwRevA2Size.Text = _tempFW.FirmwareBlock.NumSezioni.ToString();
-                            txtFwRevA2MsgSize.Text = _tempFW.FirmwareBlock.LenPkt.ToString("X2");
-
-                            txtFWRevA2Addr1.Text = _tempFW.FirmwareBlock.AddrSez1.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez1.ToString("X8");
-                            txtFWRevA2Addr2.Text = _tempFW.FirmwareBlock.AddrSez2.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez2.ToString("X8");
-                            txtFWRevA2Addr3.Text = _tempFW.FirmwareBlock.AddrSez3.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez3.ToString("X8");
-                            txtFWRevA2Addr4.Text = _tempFW.FirmwareBlock.AddrSez4.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez4.ToString("X8");
-                            txtFWRevA2Addr5.Text = _tempFW.FirmwareBlock.AddrSez5.ToString("X8") + "\n" + _tempFW.FirmwareBlock.LenSez5.ToString("X8");
                         }
                     }
 

@@ -5913,6 +5913,69 @@
   <data name="&gt;&gt;grbFWPreparaFile.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="label63.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label63.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label63.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 23</value>
+  </data>
+  <data name="label63.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label63.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 15</value>
+  </data>
+  <data name="label63.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="label63.Text" xml:space="preserve">
+    <value>Areas</value>
+  </data>
+  <data name="&gt;&gt;label63.Name" xml:space="preserve">
+    <value>label63</value>
+  </data>
+  <data name="&gt;&gt;label63.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label63.Parent" xml:space="preserve">
+    <value>grbFWArea2</value>
+  </data>
+  <data name="&gt;&gt;label63.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtFwRevA2Areas.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtFwRevA2Areas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 39</value>
+  </data>
+  <data name="txtFwRevA2Areas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtFwRevA2Areas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 23</value>
+  </data>
+  <data name="txtFwRevA2Areas.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="txtFwRevA2Areas.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA2Areas.Name" xml:space="preserve">
+    <value>txtFwRevA2Areas</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA2Areas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA2Areas.Parent" xml:space="preserve">
+    <value>grbFWArea2</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA2Areas.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label86.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5920,7 +5983,7 @@
     <value>NoControl</value>
   </data>
   <data name="label86.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 23</value>
+    <value>208, 23</value>
   </data>
   <data name="label86.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -5944,19 +6007,19 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;label86.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtFwRevA2Size.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFwRevA2Size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 39</value>
+    <value>206, 39</value>
   </data>
   <data name="txtFwRevA2Size.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevA2Size.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 23</value>
+    <value>68, 23</value>
   </data>
   <data name="txtFwRevA2Size.TabIndex" type="System.Int32, mscorlib">
     <value>65</value>
@@ -5974,274 +6037,10 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;txtFwRevA2Size.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtFWRevA2Addr5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA2Addr5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 93</value>
-  </data>
-  <data name="txtFWRevA2Addr5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA2Addr5.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA2Addr5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 37</value>
-  </data>
-  <data name="txtFWRevA2Addr5.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <data name="txtFWRevA2Addr5.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr5.Name" xml:space="preserve">
-    <value>txtFWRevA2Addr5</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr5.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label80.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label80.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label80.Location" type="System.Drawing.Point, System.Drawing">
-    <value>296, 76</value>
-  </data>
-  <data name="label80.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label80.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label80.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="label80.Text" xml:space="preserve">
-    <value>Addr/S 5</value>
-  </data>
-  <data name="&gt;&gt;label80.Name" xml:space="preserve">
-    <value>label80</value>
-  </data>
-  <data name="&gt;&gt;label80.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label80.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;label80.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label82.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label82.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label82.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 76</value>
-  </data>
-  <data name="label82.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label82.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label82.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="label82.Text" xml:space="preserve">
-    <value>Addr/S 4</value>
-  </data>
-  <data name="&gt;&gt;label82.Name" xml:space="preserve">
-    <value>label82</value>
-  </data>
-  <data name="&gt;&gt;label82.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label82.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;label82.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtFWRevA2Addr4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA2Addr4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 92</value>
-  </data>
-  <data name="txtFWRevA2Addr4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA2Addr4.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA2Addr4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 37</value>
-  </data>
-  <data name="txtFWRevA2Addr4.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
-  </data>
-  <data name="txtFWRevA2Addr4.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr4.Name" xml:space="preserve">
-    <value>txtFWRevA2Addr4</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr4.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr4.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="txtFWRevA2Addr3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA2Addr3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 93</value>
-  </data>
-  <data name="txtFWRevA2Addr3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA2Addr3.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA2Addr3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 37</value>
-  </data>
-  <data name="txtFWRevA2Addr3.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="txtFWRevA2Addr3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr3.Name" xml:space="preserve">
-    <value>txtFWRevA2Addr3</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr3.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr3.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label83.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label83.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label83.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 76</value>
-  </data>
-  <data name="label83.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label83.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label83.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="label83.Text" xml:space="preserve">
-    <value>Addr/S 3</value>
-  </data>
-  <data name="&gt;&gt;label83.Name" xml:space="preserve">
-    <value>label83</value>
-  </data>
-  <data name="&gt;&gt;label83.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label83.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;label83.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label84.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label84.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label84.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 76</value>
-  </data>
-  <data name="label84.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label84.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label84.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="label84.Text" xml:space="preserve">
-    <value>Addr/S 2</value>
-  </data>
-  <data name="&gt;&gt;label84.Name" xml:space="preserve">
-    <value>label84</value>
-  </data>
-  <data name="&gt;&gt;label84.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label84.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;label84.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="txtFWRevA2Addr2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA2Addr2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 93</value>
-  </data>
-  <data name="txtFWRevA2Addr2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA2Addr2.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA2Addr2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 37</value>
-  </data>
-  <data name="txtFWRevA2Addr2.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="txtFWRevA2Addr2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr2.Name" xml:space="preserve">
-    <value>txtFWRevA2Addr2</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr2.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA2Addr2.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="txtFWRevA2Addr1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFWRevA2Addr1.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 92</value>
@@ -6253,7 +6052,7 @@
     <value>True</value>
   </data>
   <data name="txtFWRevA2Addr1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 37</value>
+    <value>111, 25</value>
   </data>
   <data name="txtFWRevA2Addr1.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -6271,7 +6070,7 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;txtFWRevA2Addr1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>4</value>
   </data>
   <data name="label85.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6286,13 +6085,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label85.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
+    <value>89, 15</value>
   </data>
   <data name="label85.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
   <data name="label85.Text" xml:space="preserve">
-    <value>Addr/S 1</value>
+    <value>Address Area 1</value>
   </data>
   <data name="&gt;&gt;label85.Name" xml:space="preserve">
     <value>label85</value>
@@ -6304,70 +6103,7 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;label85.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="label109.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label109.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label109.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="label109.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label109.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 15</value>
-  </data>
-  <data name="label109.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="label109.Text" xml:space="preserve">
-    <value>Rev Display</value>
-  </data>
-  <data name="&gt;&gt;label109.Name" xml:space="preserve">
-    <value>label109</value>
-  </data>
-  <data name="&gt;&gt;label109.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label109.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;label109.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="txtFwRevA2RilFw.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtFwRevA2RilFw.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 39</value>
-  </data>
-  <data name="txtFwRevA2RilFw.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFwRevA2RilFw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
-  </data>
-  <data name="txtFwRevA2RilFw.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="txtFwRevA2RilFw.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA2RilFw.Name" xml:space="preserve">
-    <value>txtFwRevA2RilFw</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA2RilFw.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA2RilFw.Parent" xml:space="preserve">
-    <value>grbFWArea2</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA2RilFw.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>5</value>
   </data>
   <data name="label87.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6400,19 +6136,19 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;label87.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>6</value>
   </data>
   <data name="txtFwRevA2MsgSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFwRevA2MsgSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 39</value>
+    <value>132, 39</value>
   </data>
   <data name="txtFwRevA2MsgSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevA2MsgSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
+    <value>70, 23</value>
   </data>
   <data name="txtFwRevA2MsgSize.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -6430,7 +6166,7 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;txtFwRevA2MsgSize.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>7</value>
   </data>
   <data name="label89.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6439,7 +6175,7 @@
     <value>NoControl</value>
   </data>
   <data name="label89.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 23</value>
+    <value>130, 23</value>
   </data>
   <data name="label89.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -6463,7 +6199,7 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;label89.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>8</value>
   </data>
   <data name="txtFwRevA2State.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -6493,7 +6229,7 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;txtFwRevA2State.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>9</value>
   </data>
   <data name="label90.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6526,7 +6262,7 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;label90.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>10</value>
   </data>
   <data name="txtFwRevA2RevFw.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -6538,7 +6274,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevA2RevFw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
+    <value>111, 23</value>
   </data>
   <data name="txtFwRevA2RevFw.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -6556,7 +6292,7 @@
     <value>grbFWArea2</value>
   </data>
   <data name="&gt;&gt;txtFwRevA2RevFw.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>11</value>
   </data>
   <data name="grbFWArea2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -6577,7 +6313,7 @@
     <value>3</value>
   </data>
   <data name="grbFWArea2.Text" xml:space="preserve">
-    <value>Area 2</value>
+    <value>App Area 2</value>
   </data>
   <data name="&gt;&gt;grbFWArea2.Name" xml:space="preserve">
     <value>grbFWArea2</value>
@@ -6591,6 +6327,69 @@
   <data name="&gt;&gt;grbFWArea2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="label62.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label62.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label62.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 23</value>
+  </data>
+  <data name="label62.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label62.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 15</value>
+  </data>
+  <data name="label62.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="label62.Text" xml:space="preserve">
+    <value>Areas</value>
+  </data>
+  <data name="&gt;&gt;label62.Name" xml:space="preserve">
+    <value>label62</value>
+  </data>
+  <data name="&gt;&gt;label62.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label62.Parent" xml:space="preserve">
+    <value>GrbFWArea1</value>
+  </data>
+  <data name="&gt;&gt;label62.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtFwRevA1Areas.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="txtFwRevA1Areas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 39</value>
+  </data>
+  <data name="txtFwRevA1Areas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtFwRevA1Areas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 23</value>
+  </data>
+  <data name="txtFwRevA1Areas.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="txtFwRevA1Areas.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA1Areas.Name" xml:space="preserve">
+    <value>txtFwRevA1Areas</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA1Areas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA1Areas.Parent" xml:space="preserve">
+    <value>GrbFWArea1</value>
+  </data>
+  <data name="&gt;&gt;txtFwRevA1Areas.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label97.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6598,7 +6397,7 @@
     <value>NoControl</value>
   </data>
   <data name="label97.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 23</value>
+    <value>207, 23</value>
   </data>
   <data name="label97.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -6622,19 +6421,19 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;label97.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtFwRevA1Size.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFwRevA1Size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 40</value>
+    <value>206, 39</value>
   </data>
   <data name="txtFwRevA1Size.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevA1Size.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 23</value>
+    <value>68, 23</value>
   </data>
   <data name="txtFwRevA1Size.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -6652,301 +6451,7 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;txtFwRevA1Size.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label103.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label103.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label103.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 23</value>
-  </data>
-  <data name="label103.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label103.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 15</value>
-  </data>
-  <data name="label103.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="label103.Text" xml:space="preserve">
-    <value>Rev Display</value>
-  </data>
-  <data name="&gt;&gt;label103.Name" xml:space="preserve">
-    <value>label103</value>
-  </data>
-  <data name="&gt;&gt;label103.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label103.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;label103.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtFwRevA1RilFw.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtFwRevA1RilFw.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 40</value>
-  </data>
-  <data name="txtFwRevA1RilFw.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFwRevA1RilFw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
-  </data>
-  <data name="txtFwRevA1RilFw.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="txtFwRevA1RilFw.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA1RilFw.Name" xml:space="preserve">
-    <value>txtFwRevA1RilFw</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA1RilFw.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA1RilFw.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevA1RilFw.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="txtFWRevA1Addr5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA1Addr5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 93</value>
-  </data>
-  <data name="txtFWRevA1Addr5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA1Addr5.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA1Addr5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 36</value>
-  </data>
-  <data name="txtFWRevA1Addr5.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="txtFWRevA1Addr5.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr5.Name" xml:space="preserve">
-    <value>txtFWRevA1Addr5</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr5.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label81.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label81.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label81.Location" type="System.Drawing.Point, System.Drawing">
-    <value>296, 76</value>
-  </data>
-  <data name="label81.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label81.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label81.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="label81.Text" xml:space="preserve">
-    <value>Addr/S 5</value>
-  </data>
-  <data name="&gt;&gt;label81.Name" xml:space="preserve">
-    <value>label81</value>
-  </data>
-  <data name="&gt;&gt;label81.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label81.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;label81.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label74.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label74.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label74.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 76</value>
-  </data>
-  <data name="label74.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label74.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label74.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="label74.Text" xml:space="preserve">
-    <value>Addr/S 4</value>
-  </data>
-  <data name="&gt;&gt;label74.Name" xml:space="preserve">
-    <value>label74</value>
-  </data>
-  <data name="&gt;&gt;label74.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label74.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;label74.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="txtFWRevA1Addr4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA1Addr4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 92</value>
-  </data>
-  <data name="txtFWRevA1Addr4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA1Addr4.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA1Addr4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 37</value>
-  </data>
-  <data name="txtFWRevA1Addr4.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="txtFWRevA1Addr4.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr4.Name" xml:space="preserve">
-    <value>txtFWRevA1Addr4</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr4.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr4.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="txtFWRevA1Addr3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA1Addr3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 93</value>
-  </data>
-  <data name="txtFWRevA1Addr3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA1Addr3.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA1Addr3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 36</value>
-  </data>
-  <data name="txtFWRevA1Addr3.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="txtFWRevA1Addr3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr3.Name" xml:space="preserve">
-    <value>txtFWRevA1Addr3</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr3.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label75.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label75.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label75.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 76</value>
-  </data>
-  <data name="label75.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label75.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label75.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
-  <data name="label75.Text" xml:space="preserve">
-    <value>Addr/S 3</value>
-  </data>
-  <data name="&gt;&gt;label75.Name" xml:space="preserve">
-    <value>label75</value>
-  </data>
-  <data name="&gt;&gt;label75.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label75.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;label75.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label79.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label79.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label79.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 76</value>
-  </data>
-  <data name="label79.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label79.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label79.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="label79.Text" xml:space="preserve">
-    <value>Addr/S 2</value>
-  </data>
-  <data name="&gt;&gt;label79.Name" xml:space="preserve">
-    <value>label79</value>
-  </data>
-  <data name="&gt;&gt;label79.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label79.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;label79.ZOrder" xml:space="preserve">
-    <value>10</value>
   </data>
   <data name="label78.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6979,43 +6484,10 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;label78.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="txtFWRevA1Addr2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="txtFWRevA1Addr2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 93</value>
-  </data>
-  <data name="txtFWRevA1Addr2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWRevA1Addr2.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtFWRevA1Addr2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 36</value>
-  </data>
-  <data name="txtFWRevA1Addr2.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="txtFWRevA1Addr2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr2.Name" xml:space="preserve">
-    <value>txtFWRevA1Addr2</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr2.Parent" xml:space="preserve">
-    <value>GrbFWArea1</value>
-  </data>
-  <data name="&gt;&gt;txtFWRevA1Addr2.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>4</value>
   </data>
   <data name="txtFWRevA1Addr1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.8pt</value>
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFWRevA1Addr1.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 92</value>
@@ -7027,7 +6499,7 @@
     <value>True</value>
   </data>
   <data name="txtFWRevA1Addr1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 37</value>
+    <value>111, 25</value>
   </data>
   <data name="txtFWRevA1Addr1.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -7045,7 +6517,7 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;txtFWRevA1Addr1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>5</value>
   </data>
   <data name="label77.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7060,13 +6532,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label77.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
+    <value>89, 15</value>
   </data>
   <data name="label77.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
   <data name="label77.Text" xml:space="preserve">
-    <value>Addr/S 1</value>
+    <value>Address Area 1</value>
   </data>
   <data name="&gt;&gt;label77.Name" xml:space="preserve">
     <value>label77</value>
@@ -7078,19 +6550,19 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;label77.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>6</value>
   </data>
   <data name="txtFwRevA1MsgSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFwRevA1MsgSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 40</value>
+    <value>132, 39</value>
   </data>
   <data name="txtFwRevA1MsgSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevA1MsgSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
+    <value>70, 23</value>
   </data>
   <data name="txtFwRevA1MsgSize.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -7108,7 +6580,7 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;txtFwRevA1MsgSize.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>7</value>
   </data>
   <data name="label91.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7117,7 +6589,7 @@
     <value>NoControl</value>
   </data>
   <data name="label91.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 23</value>
+    <value>131, 23</value>
   </data>
   <data name="label91.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -7141,13 +6613,13 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;label91.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>8</value>
   </data>
   <data name="txtFwRevA1State.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFwRevA1State.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 40</value>
+    <value>326, 39</value>
   </data>
   <data name="txtFwRevA1State.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -7171,7 +6643,7 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;txtFwRevA1State.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>9</value>
   </data>
   <data name="label93.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7204,7 +6676,7 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;label93.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>10</value>
   </data>
   <data name="txtFwRevA1RevFw.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -7216,7 +6688,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevA1RevFw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
+    <value>111, 23</value>
   </data>
   <data name="txtFwRevA1RevFw.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -7234,7 +6706,7 @@
     <value>GrbFWArea1</value>
   </data>
   <data name="&gt;&gt;txtFwRevA1RevFw.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>11</value>
   </data>
   <data name="GrbFWArea1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7255,7 +6727,7 @@
     <value>2</value>
   </data>
   <data name="GrbFWArea1.Text" xml:space="preserve">
-    <value>Area 1</value>
+    <value>App  Area 1</value>
   </data>
   <data name="&gt;&gt;GrbFWArea1.Name" xml:space="preserve">
     <value>GrbFWArea1</value>
@@ -8065,7 +7537,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFwCaricaStato.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 89</value>
+    <value>290, 93</value>
   </data>
   <data name="btnFwCaricaStato.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -8317,19 +7789,19 @@
     <value>NoControl</value>
   </data>
   <data name="label122.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 23</value>
+    <value>322, 22</value>
   </data>
   <data name="label122.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label122.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 15</value>
+    <value>56, 15</value>
   </data>
   <data name="label122.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
   </data>
   <data name="label122.Text" xml:space="preserve">
-    <value>Area</value>
+    <value>App Area</value>
   </data>
   <data name="&gt;&gt;label122.Name" xml:space="preserve">
     <value>label122</value>

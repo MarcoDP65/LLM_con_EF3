@@ -765,47 +765,49 @@ namespace ChargerLogic
             }
         }
 
+        
         public ExitCode AnalizzaArrayTestata(byte[] ArrayTestata)
         {
             ExitCode _esito = ExitCode.ErroreGenerico;
             try
             {
-                if (ArrayTestata.Length >= 16)
+                if (ArrayTestata.Length >= 29)
                 {
                     int _startPos = 0;
                     _esito = ExitCode.FormatoDatiErrato;
                     FirmwareBlock = new BloccoFirmwareSC();
                     FirmwareBlock.AzzeraDati();
-
-                    FirmwareBlock.Release = SerialMessage.ArrayToString(ArrayTestata, _startPos, 6);
-                    _startPos += 6;
-
-                    FirmwareBlock.LenPkt = ArrayTestata[_startPos];
-                    _startPos += 1;
+                    FirmwareBlock.LenPkt = ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+                    FirmwareBlock.Release = SerialMessage.ArrayToString(ArrayTestata, _startPos, 10);
+                    _startPos += 10;
+                    FirmwareBlock.LenFlash = ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
                     FirmwareBlock.NumSezioni = ArrayTestata[_startPos];
                     _startPos += 1;
+
                     FirmwareBlock.CrcFW = SerialMessage.ArrayToUshort(ArrayTestata, _startPos, 2);
                     _startPos += 2;
 
-                    foreach( SezioneFirmwareSC Zona in  FirmwareBlock.SezioneFW.OrderBy(SF => SF.NumSezione).ToList() )
+                    // Leggo solo il primo indirizzo
+                    FirmwareBlock.AddrSez1 = ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+                    FirmwareBlock.LenSez1 = ArrayToUint32(ArrayTestata, _startPos, 4);
+                    _startPos += 4;
+
+                    /*
+                    foreach ( SezioneFirmwareSC Zona in  FirmwareBlock.SezioneFW.OrderBy(SF => SF.NumSezione).ToList() )
                     {
                         Zona.AddrSezione = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
                         _startPos += 4;
                         Zona.LenSezione = SerialMessage.ArrayToUint32(ArrayTestata, _startPos, 4);
                         _startPos += 4;
                     }
+                    */
 
-                    // Vuoto
-                    _startPos += 6;
-
-                    // Crc record testata ( primi 62 bytes)
-                    FirmwareBlock.CrcTest = SerialMessage.ArrayToShort(ArrayTestata, _startPos, 2);
-                    _startPos += 2;
-
-
-                    // Se i primi 6 bytes (versione APP) sono a FF o a 00 la testata non è valida (vuota)
-                    if ((ArrayTestata[0] == 0 && ArrayTestata[1] == 0 && ArrayTestata[2] == 0 && ArrayTestata[3] == 0 && ArrayTestata[4] == 0 && ArrayTestata[5] == 0)
-                        | (ArrayTestata[0] == 0xFF && ArrayTestata[1] == 0xFF && ArrayTestata[2] == 0xFF && ArrayTestata[3] == 0xFF && ArrayTestata[4] == 0xFF && ArrayTestata[5] == 0xFF))
+                    // Se i primi 4 bytes (Dim pacchetto) sono a FF o a 00 la testata non è valida (vuota)
+                    if ((ArrayTestata[0] == 0 && ArrayTestata[1] == 0 && ArrayTestata[2] == 0 && ArrayTestata[3] == 0 )
+                        | (ArrayTestata[0] == 0xFF && ArrayTestata[1] == 0xFF && ArrayTestata[2] == 0xFF && ArrayTestata[3] == 0xFF ))
                     {
                         // Testata non caricata
                         FirmwareBlock.TestataOK = false;
@@ -1005,6 +1007,8 @@ namespace ChargerLogic
 
         public uint LenPkt { get; set; }   // Lunghezza singolo pacchetto / messaggio. variabile in funzione USB/RS485/BLE
         public int NumSezioni { get; set; }
+        public UInt32 AddrSez1 { get; set; }
+        public UInt32 LenSez1 { get; set; }
         public List<SezioneFirmwareSC>SezioneFW { get; set; }
         public ushort CrcFW { get; set; }
         public short CrcTest { get; set; }

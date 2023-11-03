@@ -111,9 +111,7 @@
     <Compile Include="TabControl\TabStyleProviders\TabStyleNoneProvider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TabControl\TabStyleProviders\TabStyleRoundedProvider.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="TabControl\TabStyleProviders\TabStyleRoundedProvider.cs" />
     <Compile Include="TabControl\TabStyleProviders\TabStyleVisualStudioProvider.cs">
       <SubType>Component</SubType>
     </Compile>
