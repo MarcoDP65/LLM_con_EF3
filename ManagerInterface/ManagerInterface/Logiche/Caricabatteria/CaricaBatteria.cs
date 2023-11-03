@@ -18,6 +18,8 @@ using System.Windows.Forms;
 
 namespace ChargerLogic
 {
+    public delegate void ChargerEvent<CBEventArgs>(CaricaBatteria me, CBEventArgs EvArgs);
+
     public partial class CaricaBatteria
     {
         public const int ADDR_START_PROGRAMMAZIONI = 0x2000;
@@ -64,6 +66,7 @@ namespace ChargerLogic
         private static ILog Log = LogManager.GetLogger("CaricaBatteria");
         internal delegate void SerialDataReceivedEventHandlerDelegate(object sender, SerialDataReceivedEventArgs e);
         delegate void SetTextCallback(string text);
+
         string InputData = String.Empty;
         byte[] _dataBuffer = new byte[0];
         int lastByte = 0;
@@ -77,6 +80,7 @@ namespace ChargerLogic
         public SerialMessage.VariabiliLadeLight VaribiliAttuali = new SerialMessage.VariabiliLadeLight();
 
         public BaudRate BaudRateUSB;
+        public event ChargerEvent<CBEventArgs> OnBaudRateChange;
 
         public cbProgrammazioni Programmazioni = new cbProgrammazioni();
 
@@ -132,6 +136,7 @@ namespace ChargerLogic
 
 
         public llStatoFirmware StatoFirmware = new llStatoFirmware();
+        public scStatoFirmware StatoFirmwareSC = new scStatoFirmware();
 
         private Boolean _firmwarePresente = false;
 

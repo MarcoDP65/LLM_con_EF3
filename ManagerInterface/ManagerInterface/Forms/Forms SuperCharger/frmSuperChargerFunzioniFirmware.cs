@@ -23,9 +23,9 @@ namespace PannelloCharger
     public partial class frmSuperCharger : Form
 
     {
-        FirmwareLLManager _firmMng = new FirmwareLLManager();
+        FirmwareSCManager _firmMng = new FirmwareSCManager();
 
-        private void InizializzaVistaStrutturaAreeCCS()
+        private void InizializzaVistaStrutturaAreeSRec()
         {
             try
             {
@@ -66,9 +66,9 @@ namespace PannelloCharger
                     ToolTipText = "Indirizzo Area di memoria",
                     AspectName = "strAddrDestPacchetto",
                     Sortable = false,
-                    Width = 80,
+                    Width = 120,
                     HeaderTextAlign = HorizontalAlignment.Center,
-                    TextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
                 };
                 lvwFWInFileStruct.AllColumns.Add(AddressArea);
@@ -80,7 +80,7 @@ namespace PannelloCharger
                     ToolTipText = "Dimensione Area di memoria",
                     AspectName = "strNumBytes",
                     Sortable = false,
-                    Width = 50,
+                    Width = 120,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
@@ -106,7 +106,7 @@ namespace PannelloCharger
 
                 lvwFWInFileStruct.RebuildColumns();
 
-                lvwFWInFileStruct.SetObjects(ListaAreeCCS);
+                lvwFWInFileStruct.SetObjects(ListaAreeSRec);
                 lvwFWInFileStruct.BuildList();
             }
             catch (Exception Ex)
@@ -119,36 +119,34 @@ namespace PannelloCharger
         /// <summary>
         /// Carico il binario generato da CCS, unisco i due files (.hex e .a01)  e verifico la correttezza formale degli stessi
         /// </summary>
-        public void CaricafileLLCCS()
+        public void CaricafileLLSrec()
         {
 
-
-
-            FirmwareLLManager.ExitCode _esito;
+            FirmwareSCManager.ExitCode _esito;
             try
             {
                 txtFWInFileStruct.Text = "";
                 btnFWLanciaTrasmissione.Enabled = false;
                 txtFWInLLFEsito.Text = "";
-                ListaAreeCCS.Clear();  
+                ListaAreeSRec.Clear();  
 
-                _esito = _firmMng.CaricaFileCCS(txtFwFileCCS.Text);
+                _esito = _firmMng.CaricaFileSRec(txtFwFileCCS.Text);
 
-                if (_esito == FirmwareLLManager.ExitCode.OK)
+                if (_esito == FirmwareSCManager.ExitCode.OK)
                 {
 
                     int NumArea = 0;
-                    foreach (AreaDatiFWLL _area in _firmMng.FirmwareData.ListaAree)
+                    foreach (AreaDatiFWSC _area in _firmMng.FirmwareData.ListaAree)
                     {
-                        ParametriArea _tempPar = new ParametriArea();
+                        ParametriAreaSCH _tempPar = new ParametriAreaSCH();
                         _tempPar.NumArea = NumArea++;
                         _tempPar.NumBytes = (int)_area.DimDati;
                         _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
                         _tempPar.NumPacchetti = 0;
-                        ListaAreeCCS.Add(_tempPar);
+                        ListaAreeSRec.Add(_tempPar);
 
                     }
-                    InizializzaVistaStrutturaAreeCCS();
+                    InizializzaVistaStrutturaAreeSRec();
 
                     btnFWFilePubSave.Enabled = true;
 
@@ -185,22 +183,22 @@ namespace PannelloCharger
                     // se ho verificati la presenza dell' A01, controllo l'HEX
                     _fileA01 = Path.ChangeExtension(FileBase, ".a01");
                     _fileHEX = Path.ChangeExtension(FileBase, ".hex");
-
+                    /*
                     txtFwFileCCShex.Text = _fileHEX;
                     txtFwFileCCShex.ForeColor = Color.Red;
                     txtFwFileCCSa01.Text = _fileA01;
                     txtFwFileCCSa01.ForeColor = Color.Red;
 
-
+                    */
                     if (File.Exists(_fileA01))
                     {
-                        txtFwFileCCSa01.ForeColor = Color.Black;
+                        //txtFwFileCCSa01.ForeColor = Color.Black;
                         _a01OK = true;
                     }
 
                     if (File.Exists(_fileHEX))
                     {
-                        txtFwFileCCShex.ForeColor = Color.Black;
+                        //txtFwFileCCShex.ForeColor = Color.Black;
                         _hexOK = true;
                     }
                 }
@@ -215,7 +213,7 @@ namespace PannelloCharger
             }
         }
 
-        public bool SalvaFileLLF()
+        public bool SalvaFileLLSCF()
         {
             try
             {
@@ -223,10 +221,10 @@ namespace PannelloCharger
                 {
                     if (_firmMng.FirmwareData.DatiOK)
                     {
-                        FirmwareLLManager.ExitCode _esito = FirmwareLLManager.ExitCode.ErroreGenerico;
-                        _esito = _firmMng.GeneraFileLLF(txtFWInFileRev.Text, txtFWLibInFileRev.Text, txtFWInFileRevData.Text, txtFWFileLLFwr.Text, false);
+                        FirmwareSCManager.ExitCode _esito = FirmwareSCManager.ExitCode.ErroreGenerico;
+                        _esito = _firmMng.GeneraFileLLSSCF(txtFWInFileRev.Text, txtFWInFileRevData.Text, txtFWFileLLFwr.Text, false);
 
-                        if (_esito == FirmwareLLManager.ExitCode.OK)
+                        if (_esito == FirmwareSCManager.ExitCode.OK)
                         {
                             MessageBox.Show("File generato", "Esportazione pacchetto Firmware", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -246,10 +244,10 @@ namespace PannelloCharger
             }
         }
 
-        public bool CaricafileLLF()
+        public bool CaricafileLLSCF()
         {
-            FirmwareLLManager.ExitCode _esito;
-            bool _esitoBool;
+            FirmwareSCManager.ExitCode _esito;
+            //bool _esitoBool;
             try
             {
 
@@ -261,27 +259,29 @@ namespace PannelloCharger
                     return false;
                 }
 
-                _esito = _firmMng.CaricaFileLLF(txtFWFileSBFrd.Text);
-                if (_esito == FirmwareLLManager.ExitCode.OK)
+                 _esito = _firmMng.CaricafileLLSCF(txtFWFileSBFrd.Text);
+
+                if (_esito == FirmwareSCManager.ExitCode.OK)
                 {
 
                     txtFWInLLFRev.Text = _firmMng.FirmwareData.Release;
-                    txtFWInLLFDispRev.Text = _firmMng.FirmwareData.DisplayRelease;
+                    // txtFWInLLFDispRev.Text = _firmMng.FirmwareData.DisplayRelease;
 
                     txtFWInSBFDtRev.Text = FunzioniMR.StringaDataTS(_firmMng.FirmwareData.ReleaseDateBlock);
-                    ListaAreeLLF.Clear();
+                    ListaAreeSRec.Clear();
                     int NumArea = 0;
-                    foreach(AreaDatiFWLL _area in _firmMng.FirmwareData.ListaAree)
+                    foreach(AreaDatiFWSC _area in _firmMng.FirmwareData.ListaAree)
                     {
-                        ParametriArea _tempPar = new ParametriArea();
+                        ParametriAreaSCH _tempPar = new ParametriAreaSCH();
                         _tempPar.NumArea = NumArea++;
                         _tempPar.NumBytes = (int)_area.DimDati;
                         _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
                         _tempPar.NumPacchetti = 0;
-                        ListaAreeLLF.Add(_tempPar);
+                        ListaAreeSRec.Add(_tempPar);
 
                     }
-                    InizializzaVistaListaAreeLLF();
+
+                    InizializzaVistaListaAreeLLSCF();
 
 
 
@@ -316,34 +316,44 @@ namespace PannelloCharger
 
         public void PreparaTrasmissioneFW()
         {
-            FirmwareLLManager.ExitCode _esito;
+            FirmwareSCManager.ExitCode _esito;
             try
             {
-
+                UInt32 StepSize;
                 btnFWLanciaTrasmissione.Enabled = false;
-                txtFWInLLFEsito.Text = "";
-                _esito = _firmMng.PreparaUpgradeFw();
-                if (_esito == FirmwareLLManager.ExitCode.OK)
+
+                if (UInt32.TryParse(txtFWFStepSize.Text, out StepSize) != true)
                 {
-                    _esito = _firmMng.ComponiArrayTestata();
-                    if (_esito == FirmwareLLManager.ExitCode.OK)
+                    StepSize = 64;
+                }
+                else
+                {
+                    if (StepSize < 2) StepSize = 2;
+                }
+                txtFWInLLFEsito.Text = "";
+                _esito = _firmMng.PreparaUpgradeFw(StepSize);
+                if (_esito == FirmwareSCManager.ExitCode.OK)
+                {
+                    _esito = _firmMng.ComponiArrayTestata(StepSize);
+                    ListaAreeSRec.Clear(); 
+                    if (_esito == FirmwareSCManager.ExitCode.OK)
                     {
 
-                        ListaAreeLLF.Clear();
+                        // --> ListaAreeLLF.Clear();
                         int NumArea = 0;
-                        foreach (AreaDatiFWLL _area in _firmMng.FirmwareBlock.ListaAree)
+                        foreach (AreaDatiFWSC _area in _firmMng.FirmwareBlock.ListaAree)
                         {
-                            ParametriArea _tempPar = new ParametriArea();
+                            ParametriAreaSCH _tempPar = new ParametriAreaSCH();
                             _tempPar.NumArea = NumArea++;
                             _tempPar.NumBytes = (int)_area.DimDati;
                             _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
                             _tempPar.NumPacchetti =(int)_area.NumeroPacchetti;
 
-                            ListaAreeLLF.Add(_tempPar);
+                            ListaAreeSRec.Add(_tempPar);
 
                         }
                   
-                        flwFWFileLLFStruct.SetObjects(ListaAreeLLF);
+                        flwFWFileLLFStruct.SetObjects(ListaAreeSRec);
                         flwFWFileLLFStruct.BuildList();
                         txtFWInLLFEsito.Text = "FW Pronto";
                         btnFWLanciaTrasmissione.Enabled = true;
@@ -366,7 +376,7 @@ namespace PannelloCharger
 
         }
 
-        private void InizializzaVistaListaAreeLLF()
+        private void InizializzaVistaListaAreeLLSCF()
         {
             try
             {
@@ -407,9 +417,9 @@ namespace PannelloCharger
                     ToolTipText = "Indirizzo Area di memoria",
                     AspectName = "strAddrDestPacchetto",
                     Sortable = false,
-                    Width = 80,
+                    Width = 100,
                     HeaderTextAlign = HorizontalAlignment.Center,
-                    TextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
                 };
                 flwFWFileLLFStruct.AllColumns.Add(AddressArea);
@@ -421,7 +431,7 @@ namespace PannelloCharger
                     ToolTipText = "Dimensione Area di memoria",
                     AspectName = "strNumBytes",
                     Sortable = false,
-                    Width = 50,
+                    Width = 80,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
@@ -434,7 +444,7 @@ namespace PannelloCharger
                     ToolTipText = "Numero Pacchetti",
                     AspectName = "strNumPacchetti",
                     Sortable = false,
-                    Width = 50,
+                    Width = 60,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
@@ -460,7 +470,7 @@ namespace PannelloCharger
 
                 flwFWFileLLFStruct.RebuildColumns();
 
-                flwFWFileLLFStruct.SetObjects(ListaAreeLLF);
+                flwFWFileLLFStruct.SetObjects(ListaAreeSRec);
                 flwFWFileLLFStruct.BuildList();
             }
             catch (Exception Ex)
@@ -476,6 +486,8 @@ namespace PannelloCharger
             {
                 bool _esito;
                 int _tentativi;
+                int StepDelay;
+                UInt32 StepSize;
 
                 Log.Debug("Lancio aggiornamento firmware");
                 // verifico se ho caricato i dati
@@ -490,21 +502,45 @@ namespace PannelloCharger
                     return;
                 }
 
+                if (int.TryParse(txtFWFStepDelay.Text, out StepDelay) != true)
+                {
+                    StepDelay = 0;  
+                }
+                else
+                {
+                    if ( StepDelay < 0 ) StepDelay = 0;
+                }
+
+/*
+                if (UInt32.TryParse(txtFWFStepSize.Text, out StepSize) != true)
+                {
+                    StepSize = 64;
+                }
+                else
+                {
+                    if (StepSize < 2) StepSize = 2;
+                }
+
+                _firmMng.FirmwareBlock.StepSize = StepSize;
+*/
                 this.Cursor = Cursors.WaitCursor;
                 byte _area = (byte)(cmbFWSBFArea.SelectedIndex + 1);
-
+                if (_area < 1) 
+                {
+                    _area = 1;  
+                }
 
                 _avCicli.ParametriWorker.MainCount = 100;
 
-                _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.LadeLight;
+                _avCicli.ElementoPilotato = frmAvanzamentoCicli.ControlledDevice.SuperCharger;
                 _avCicli.llLocale = _cb;
-                _avCicli.FirmwareLLBlock = _firmMng.FirmwareBlock;
+                _avCicli.FirmwareSCBlock = _firmMng.FirmwareBlock;
                 _avCicli.FirmwareArea = _area;
                 _avCicli.ValStart = 1;
                 _avCicli.ValFine = 0;
                 _avCicli.DbDati = null; // _logiche.dbDati.connessione;
                 _avCicli.CaricaBrevi = false;
-                _avCicli.TipoComando = elementiComuni.tipoMessaggio.AggiornamentoFirmwareLL;
+                _avCicli.TipoComando = elementiComuni.tipoMessaggio.AggiornamentoFirmwareSC;
                 _avCicli.InviaACK = InviaACK;
                 _avCicli.SalvaHexDump = false;
                 _avCicli.FileHexDump = "";
@@ -551,7 +587,6 @@ namespace PannelloCharger
             {
                 txtFwRevBootloader.Text = "...";
                 txtFwRevFirmware.Text = "";
-                txtFwRevDisplay.Text = "";
                 txtFwStatoMicro.Text = "";
                 txtFwStatoHA1.Text = "";
                 txtFwStatoHA2.Text = "";
@@ -576,7 +611,7 @@ namespace PannelloCharger
                 {
                     IdApparato = ""; // _sb.Id;
 
-                    _esito = _cb.CaricaStatoFirmware(IdApparato, SerialeCollegata);
+                    _esito = _cb.CaricaStatoFirmwareSC(IdApparato, SerialeCollegata);
 
                     if (_esito && (_cb.UltimaRisposta == SerialMessage.EsitoRisposta.MessaggioOk))
                     {
@@ -587,10 +622,10 @@ namespace PannelloCharger
                         grbFWAggiornamento.Enabled = true;
                         grbFWPreparaFile.Enabled = true;
 
-                        txtFwRevBootloader.Text = _cb.StatoFirmware.strRevBootloader;
+                        txtFwRevBootloader.Text = _cb.StatoFirmwareSC.strRevBootloader;
                         txtFwRevBootloader.ForeColor = Color.Black;
                         txtFwRevFirmware.Text = _cb.StatoFirmware.strRevFirmware;
-                        txtFwRevDisplay.Text = _cb.StatoFirmware.strRevDisplay;
+                        //txtFwRevDisplay.Text = _cb.StatoFirmware.strRevDisplay;
 
                         MostraStato(FirmwareManager.MascheraStato.Blocco1HW, _cb.StatoFirmware.Stato, ref txtFwStatoHA1, true);
                         MostraStato(FirmwareManager.MascheraStato.Blocco2HW, _cb.StatoFirmware.Stato, ref txtFwStatoHA2, true);
@@ -634,15 +669,15 @@ namespace PannelloCharger
                     }
                     else
                     {
+                        // TODO: sblocco forzato -... da sistemare
                         txtFwRevBootloader.Text = "N.D.";
                         txtFwRevBootloader.ForeColor = Color.Red;
                         txtFwRevFirmware.Text = "";
-                        txtFwRevDisplay.Text = "";
                         grbFwAttivazioneArea.Enabled = false;
                         GrbFWArea1.Enabled = false;
                         grbFWArea2.Enabled = false;
-                        grbFWAggiornamento.Enabled = false;
-                        grbFWPreparaFile.Enabled = false;
+                        grbFWAggiornamento.Enabled = true;
+                        grbFWPreparaFile.Enabled = true; 
 
                     }
 

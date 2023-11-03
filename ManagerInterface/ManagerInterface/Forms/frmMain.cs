@@ -19,6 +19,7 @@ using SQLite;
 using System.Resources;
 using System.Diagnostics;
 using System.Web.UI.WebControls;
+using PannelloCharger.Forms_Archivi;
 //using PannelloCharger.
 
 
@@ -1556,6 +1557,36 @@ namespace PannelloCharger
                 //ArchivioCorrenteLL.MostraLista();
                 //SetupLLTCorrente.AttivaEventi();
                 SetupLLTCorrente.Show();
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("SetupLLTCorrente: " + Ex.Message);
+            }
+        }
+
+        private void databaseInizializzazioneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmGestioneArchivi))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                frmGestioneArchivi GestioneArchiviCorrente = new frmGestioneArchivi(ref varGlobali, true, "IDBATT", logiche, false, true);
+                GestioneArchiviCorrente.MdiParent = this;
+                GestioneArchiviCorrente.FormPrincipale = this;
+
+                GestioneArchiviCorrente.StartPosition = FormStartPosition.CenterParent;
+                //ArchivioCorrenteLL.MostraLista();
+                //SetupLLTCorrente.AttivaEventi();
+                GestioneArchiviCorrente.Show();
 
             }
             catch (Exception Ex)

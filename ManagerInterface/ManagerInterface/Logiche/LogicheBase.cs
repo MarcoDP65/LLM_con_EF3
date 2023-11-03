@@ -14,7 +14,8 @@ namespace ChargerLogic
         public MoriData.Archivio dbDati;
 
         public MoriData.Utente currentUser;
- 
+        public MoriData.LadeLightDataContext LLContextDb;
+
 
         public  LogicheBase()
         {
@@ -30,6 +31,8 @@ namespace ChargerLogic
                 Log.Debug("Archivio da creare");
             }
 
+            LLContextDb = new MoriData.LadeLightDataContext();
+            
             currentUser = new MoriData.Utente(dbDati.connessione);
         }
 

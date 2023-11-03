@@ -62,8 +62,9 @@ namespace ChargerLogic
 
             CMD_INFO_BL = 0x51,  
             CMD_FW_UPLOAD_MSP = 0x53,  
-            CMD_FW_UPLOAD_TMS = 0x54, 
-
+            CMD_FW_UPLOAD_TMS = 0x54,
+            CMD_FW_UPLOAD_SYN = 0x55,
+            CMD_FW_DATA_SEND_EXT = 0x56,
             CMD_FW_DATA_SEND = 0x57,   
             CMD_FW_UPDATE = 0x58,
             CMD_DRAW_IMAGE = 0x5A,
@@ -1732,8 +1733,8 @@ namespace ChargerLogic
                 _comandoBase[(21)] = lsb;
 
                 int _arrayInit = _comandoBase.Length;
-                int _arrayLen = _arrayInit + 2 + 128 ;  // 2 di area + 128 di array messaggio
-          
+                int _arrayLen = _arrayInit + 2 + 128;  // 2 di area + 128 di array messaggio
+
                 Array.Resize(ref MessageBuffer, _arrayLen + 7);
 
                 MessageBuffer[0] = serSTX;
@@ -1760,6 +1761,132 @@ namespace ChargerLogic
 
                 // Array Dati
                 for (int _i = 0; _i < 64; _i++)
+                {
+                    splitUshort(_codificaByte(Intestazione[_i]), ref lsb, ref msb);
+                    MessageBuffer[_arrayInit + 1] = msb;
+                    MessageBuffer[_arrayInit + 2] = lsb;
+                    _arrayInit += 2;
+
+                }
+
+
+
+                /*******************************************************************************/
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+                /// completo il messaggio con CRC e terminatori
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+
+                MessageBuffer[_arrayLen + 6] = serETX;
+
+                Log.Debug("Corpo: " + hexdumpArray(MessageBuffer));
+                //Log.Info("CRC: " + _crc.ToString("X2"));
+                //Log.Info("CRC: " + msbDisp.ToString("X2") + lsbDisp.ToString("X2")  );
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("ll -> ComponiMessaggioTestataFW: " + Ex.Message);
+                return _esito;
+            }
+
+        }
+
+
+        public ushort ComponiMessaggioTestataFWSC(byte Blocco, byte[] Intestazione)
+        {
+            ushort _esito = 0;
+            //ushort _tempUshort;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            try
+            {
+                // Lunghezza dinamica. nessun cotrollo dimensionale se non > 18
+                if (Intestazione.Length < 18)
+                {
+                    _esito = 99;
+                    return _esito;
+                }
+
+                // Unici banchi acettabili 1 e 2 
+                if ((Blocco < 1) || (Blocco > 2))
+                {
+                    _esito = 99;
+                    return _esito;
+                }
+
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.CMD_FW_UPLOAD_SYN);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 2 + Intestazione.Length * 2;  // 2 di area +  array messaggio * 2
+          
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+
+                /*******************************************************************************/
+                /* Parte dati                                                                  */
+                /*******************************************************************************/
+
+                // id Blocco
+
+                splitUshort(codificaByte(Blocco), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+                _arrayInit += 2;
+
+
+                // Array Dati
+                for (int _i = 0; _i < Intestazione.Length; _i++)
                 {
                     splitUshort(_codificaByte(Intestazione[_i]), ref lsb, ref msb);
                     MessageBuffer[_arrayInit + 1] = msb;
@@ -1955,6 +2082,204 @@ namespace ChargerLogic
                 return _esito;
             }
 
+        }
+
+
+        /// <summary>
+        /// Preparo il messaggio di invio pacchetto dati per l'aggiornamento firmware
+        /// </summary>
+        /// <param name="NumPacchetto">Progressivo pacchetto (ushort)</param>
+        /// <param name="NumBytes">Dimensione del pachetto (byte, deve essere inferioreo uguale a 130)</param>
+        /// <param name="Dati">byte array del pacchetto con CRC finale</param>
+        /// <returns></returns>
+        public ushort ComponiMessaggioPacchettoDatiExtFW(UInt32 NumPacchetto, UInt32 NumBytes, byte[] Dati, ushort CRCPacchetto)
+        {
+            ushort _esito = 0;
+            //ushort _tempUshort;
+            byte _comando;
+            byte msbDisp = 0;
+            byte lsbDisp = 0;
+            byte msb = 0;
+            byte lsb = 0;
+            byte Val0 = 0;
+            byte Val1 = 0;
+            byte Val2 = 0;
+            byte Val3 = 0;
+
+            byte[] _conv32 = new byte[4];
+
+            Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+
+            //try
+            {
+                // Prima controllo che non siano più di 130 byte
+                /*
+                if (Dati.Length > 130)
+                {
+                    _esito = 99;
+                    return _esito;
+                }
+                */
+
+                //serial
+                for (int i = 0; i <= 7; i++)
+                {
+                    splitUshort(codificaByte(SerialNumber[i]), ref lsb, ref msb);
+                    _comandoBase[(i * 2)] = msb;
+                    _comandoBase[(i * 2) + 1] = lsb;
+                }
+                //dispositivo
+
+                _dispositivo = (ushort)(Dispositivo);
+                splitUshort(_dispositivo, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                _comandoBase[(16)] = msb;
+                _comandoBase[(17)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                _comandoBase[(18)] = msb;
+                _comandoBase[(19)] = lsb;
+
+                _comando = (byte)(TipoComando.CMD_FW_DATA_SEND_EXT);
+                splitUshort(codificaByte(_comando), ref lsb, ref msb);
+                _comandoBase[(20)] = msb;
+                _comandoBase[(21)] = lsb;
+
+                int _arrayInit = _comandoBase.Length;
+                int _arrayLen = _arrayInit + 16 + (int)(NumBytes * 2);
+
+                Array.Resize(ref MessageBuffer, _arrayLen + 7);
+                for (int m = 0; m < _arrayLen +7 ; m++)
+                {
+                    MessageBuffer[m] = 0;
+                }
+
+                MessageBuffer[0] = serSTX;
+                for (int m = 0; m < _arrayInit; m++)
+                {
+                    MessageBuffer[m + 1] = _comandoBase[m];
+                }
+
+
+
+
+
+                /*******************************************************************************/
+                /* Parte dati                                                                  */
+                /*******************************************************************************/
+                // Num Pacchetto
+
+                splitUint32(NumPacchetto, ref Val3, ref Val2,ref Val1, ref Val0);
+
+                splitUshort(codificaByte(Val3), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(Val2), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+
+                splitUshort(codificaByte(Val1), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 5)] = msb;
+                MessageBuffer[(_arrayInit + 6)] = lsb;
+
+                splitUshort(codificaByte(Val0), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 7)] = msb;
+                MessageBuffer[(_arrayInit + 8)] = lsb;
+
+
+                _arrayInit += 8;
+
+                // Dim Pacchetto
+
+
+                splitUint32(NumBytes, ref Val3, ref Val2, ref Val1, ref Val0);
+
+                splitUshort(codificaByte(Val3), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(Val2), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+
+                splitUshort(codificaByte(Val1), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 5)] = msb;
+                MessageBuffer[(_arrayInit + 6)] = lsb;
+
+                splitUshort(codificaByte(Val0), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 7)] = msb;
+                MessageBuffer[(_arrayInit + 8)] = lsb;
+
+
+                _arrayInit += 8;
+
+
+                // Array Dati
+                Log.Debug("----------------------------------------------------------------------------");
+                Log.Debug("Corpo: " + hexdumpArray(Dati));
+                Log.Debug("CRC: " + CRCPacchetto.ToString("x4"));
+
+
+                for (int _i = 0; _i < (NumBytes - 2); _i++)
+                {
+                    splitUshort(_codificaByte(Dati[_i]), ref lsb, ref msb);
+                    MessageBuffer[_arrayInit + 1] = msb;
+                    MessageBuffer[_arrayInit + 2] = lsb;
+                    _arrayInit += 2;
+                }
+
+                // Aggiungo il CRC pacchetto
+                splitUshort(CRCPacchetto, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 1)] = msb;
+                MessageBuffer[(_arrayInit + 2)] = lsb;
+
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[(_arrayInit + 3)] = msb;
+                MessageBuffer[(_arrayInit + 4)] = lsb;
+                _arrayInit += 4;
+
+
+                /*******************************************************************************/
+                /// calcolo il crc
+                byte[] _tempMessaggio = new byte[_arrayLen];
+                Array.Copy(MessageBuffer, 1, _tempMessaggio, 0, _arrayLen);
+                _crc = codCrc.ComputeChecksum(_tempMessaggio);
+
+                CRC = _crc;
+
+                /// completo il messaggio con CRC e terminatori
+                MessageBuffer[_arrayLen + 1] = serENDPAC;
+
+                splitUshort(_crc, ref lsbDisp, ref msbDisp);
+
+                splitUshort(codificaByte(msbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 2] = msb;
+                MessageBuffer[_arrayLen + 3] = lsb;
+                splitUshort(codificaByte(lsbDisp), ref lsb, ref msb);
+                MessageBuffer[_arrayLen + 4] = msb;
+                MessageBuffer[_arrayLen + 5] = lsb;
+
+                MessageBuffer[_arrayLen + 6] = serETX;
+                Log.Debug("----------------------------------------------------------------------------");
+                Log.Debug("Messaggio: " + hexdumpArray(MessageBuffer));
+                Log.Debug("----------------------------------------------------------------------------");
+
+                //Log.Info("CRC: " + _crc.ToString("X2"));
+                //Log.Info("CRC: " + msbDisp.ToString("X2") + lsbDisp.ToString("X2")  );
+                return _esito;
+            }
+            /*
+            catch (Exception Ex)
+            {
+                Log.Error("LL -> ComponiMessaggioDatiFW: " + Ex.Message);
+
+                return _esito;
+            }
+            */
         }
 
 

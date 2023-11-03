@@ -205,19 +205,16 @@
             this.btnFwSwitchArea1 = new System.Windows.Forms.Button();
             this.btnFwSwitchBL = new System.Windows.Forms.Button();
             this.grbFWPreparaFile = new System.Windows.Forms.GroupBox();
+            this.txtFWInFileRev = new System.Windows.Forms.MaskedTextBox();
             this.txtFWInFileStruct = new System.Windows.Forms.TextBox();
             this.lvwFWInFileStruct = new BrightIdeasSoftware.FastObjectListView();
-            this.txtFwFileCCSa01 = new System.Windows.Forms.TextBox();
-            this.txtFwFileCCShex = new System.Windows.Forms.TextBox();
-            this.txtFWLibInFileRev = new System.Windows.Forms.TextBox();
-            this.label256 = new System.Windows.Forms.Label();
             this.txtFWInFileRevData = new System.Windows.Forms.MaskedTextBox();
             this.label96 = new System.Windows.Forms.Label();
             this.btnFWFileLLFsearch = new System.Windows.Forms.Button();
             this.txtFWFileLLFwr = new System.Windows.Forms.TextBox();
             this.label92 = new System.Windows.Forms.Label();
             this.btnFWFilePubSave = new System.Windows.Forms.Button();
-            this.txtFWInFileRev = new System.Windows.Forms.TextBox();
+            this.txtFWInFileRevSS = new System.Windows.Forms.TextBox();
             this.label94 = new System.Windows.Forms.Label();
             this.label95 = new System.Windows.Forms.Label();
             this.btnFWFileCCSLoad = new System.Windows.Forms.Button();
@@ -266,9 +263,12 @@
             this.label93 = new System.Windows.Forms.Label();
             this.txtFwRevA1RevFw = new System.Windows.Forms.TextBox();
             this.grbFWAggiornamento = new System.Windows.Forms.GroupBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.txtFWFStepSize = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.txtFWFStepDelay = new System.Windows.Forms.TextBox();
             this.cmbFWSBFArea = new System.Windows.Forms.ComboBox();
             this.flwFWFileLLFStruct = new BrightIdeasSoftware.FastObjectListView();
-            this.txtFWInLLFDispRev = new System.Windows.Forms.TextBox();
             this.txtFWInSBFDtRev = new System.Windows.Forms.TextBox();
             this.label110 = new System.Windows.Forms.Label();
             this.btnFWLanciaTrasmissione = new System.Windows.Forms.Button();
@@ -283,8 +283,6 @@
             this.btnFWFileLLFReadSearch = new System.Windows.Forms.Button();
             this.txtFWFileSBFrd = new System.Windows.Forms.TextBox();
             this.grbStatoFirmware = new System.Windows.Forms.GroupBox();
-            this.label186 = new System.Windows.Forms.Label();
-            this.txtFwRevDisplay = new System.Windows.Forms.TextBox();
             this.grbFWDettStato = new System.Windows.Forms.GroupBox();
             this.txtFwStatoSA2 = new System.Windows.Forms.TextBox();
             this.label117 = new System.Windows.Forms.Label();
@@ -371,24 +369,19 @@
             this.chkMemClearMantieniCliente = new System.Windows.Forms.CheckBox();
             this.cmdMemClear = new System.Windows.Forms.Button();
             this.grbMemLettura = new System.Windows.Forms.GroupBox();
+            this.cmdMemReadExt = new System.Windows.Forms.Button();
+            this.cmdMemRead = new System.Windows.Forms.Button();
             this.chkMemInt = new System.Windows.Forms.CheckBox();
             this.chkMemHex = new System.Windows.Forms.CheckBox();
             this.lblReadMemBytes = new System.Windows.Forms.Label();
             this.lblReadMemStartAddr = new System.Windows.Forms.Label();
             this.txtMemLenR = new System.Windows.Forms.TextBox();
             this.txtMemAddrR = new System.Windows.Forms.TextBox();
-            this.cmdMemRead = new System.Windows.Forms.Button();
             this.tabInizializzazione = new System.Windows.Forms.TabPage();
             this.grbConnessioni = new System.Windows.Forms.GroupBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.lblGenBRState = new System.Windows.Forms.Label();
-            this.btnGenCambiaBaudRate = new System.Windows.Forms.Button();
-            this.grbGenBaudrate = new System.Windows.Forms.GroupBox();
-            this.optGenBR3M = new System.Windows.Forms.RadioButton();
-            this.optGenBR1M = new System.Windows.Forms.RadioButton();
-            this.optGenBR115 = new System.Windows.Forms.RadioButton();
             this.btnCaricaMemoria = new System.Windows.Forms.Button();
             this.grbInitLimiti = new System.Windows.Forms.GroupBox();
             this.txtInitModelloMemoria = new System.Windows.Forms.TextBox();
@@ -658,6 +651,15 @@
             this.btnCicliCaricaLista = new System.Windows.Forms.Button();
             this.btnCicliVuotaLista = new System.Windows.Forms.Button();
             this.tabGenerale = new System.Windows.Forms.TabPage();
+            this.lblGenBRState = new System.Windows.Forms.Label();
+            this.btnGenCambiaBaudRate = new System.Windows.Forms.Button();
+            this.grbGenBaudrate = new System.Windows.Forms.GroupBox();
+            this.txtGenBRCust = new System.Windows.Forms.TextBox();
+            this.optGenBRCust = new System.Windows.Forms.RadioButton();
+            this.optGenBR2995K = new System.Windows.Forms.RadioButton();
+            this.optGenBR3M = new System.Windows.Forms.RadioButton();
+            this.optGenBR1M = new System.Windows.Forms.RadioButton();
+            this.optGenBR115 = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSalveCliente = new System.Windows.Forms.Button();
             this.btnCaricaCliente = new System.Windows.Forms.Button();
@@ -772,7 +774,6 @@
             this.grbMemLettura.SuspendLayout();
             this.tabInizializzazione.SuspendLayout();
             this.grbConnessioni.SuspendLayout();
-            this.grbGenBaudrate.SuspendLayout();
             this.grbInitLimiti.SuspendLayout();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtInitBrdANomModulo)).BeginInit();
@@ -811,6 +812,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.flvCicliListaCariche)).BeginInit();
             this.grbCicli.SuspendLayout();
             this.tabGenerale.SuspendLayout();
+            this.grbGenBaudrate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbMainContatori.SuspendLayout();
             this.GrbMainDatiApparato.SuspendLayout();
@@ -1995,19 +1997,16 @@
             // grbFWPreparaFile
             // 
             this.grbFWPreparaFile.BackColor = System.Drawing.Color.White;
+            this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRev);
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileStruct);
             this.grbFWPreparaFile.Controls.Add(this.lvwFWInFileStruct);
-            this.grbFWPreparaFile.Controls.Add(this.txtFwFileCCSa01);
-            this.grbFWPreparaFile.Controls.Add(this.txtFwFileCCShex);
-            this.grbFWPreparaFile.Controls.Add(this.txtFWLibInFileRev);
-            this.grbFWPreparaFile.Controls.Add(this.label256);
             this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRevData);
             this.grbFWPreparaFile.Controls.Add(this.label96);
             this.grbFWPreparaFile.Controls.Add(this.btnFWFileLLFsearch);
             this.grbFWPreparaFile.Controls.Add(this.txtFWFileLLFwr);
             this.grbFWPreparaFile.Controls.Add(this.label92);
             this.grbFWPreparaFile.Controls.Add(this.btnFWFilePubSave);
-            this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRev);
+            this.grbFWPreparaFile.Controls.Add(this.txtFWInFileRevSS);
             this.grbFWPreparaFile.Controls.Add(this.label94);
             this.grbFWPreparaFile.Controls.Add(this.label95);
             this.grbFWPreparaFile.Controls.Add(this.btnFWFileCCSLoad);
@@ -2016,6 +2015,12 @@
             resources.ApplyResources(this.grbFWPreparaFile, "grbFWPreparaFile");
             this.grbFWPreparaFile.Name = "grbFWPreparaFile";
             this.grbFWPreparaFile.TabStop = false;
+            // 
+            // txtFWInFileRev
+            // 
+            this.txtFWInFileRev.Culture = new System.Globalization.CultureInfo("en-US");
+            resources.ApplyResources(this.txtFWInFileRev, "txtFWInFileRev");
+            this.txtFWInFileRev.Name = "txtFWInFileRev";
             // 
             // txtFWInFileStruct
             // 
@@ -2033,26 +2038,6 @@
             this.lvwFWInFileStruct.UseCompatibleStateImageBehavior = false;
             this.lvwFWInFileStruct.View = System.Windows.Forms.View.Details;
             this.lvwFWInFileStruct.VirtualMode = true;
-            // 
-            // txtFwFileCCSa01
-            // 
-            resources.ApplyResources(this.txtFwFileCCSa01, "txtFwFileCCSa01");
-            this.txtFwFileCCSa01.Name = "txtFwFileCCSa01";
-            // 
-            // txtFwFileCCShex
-            // 
-            resources.ApplyResources(this.txtFwFileCCShex, "txtFwFileCCShex");
-            this.txtFwFileCCShex.Name = "txtFwFileCCShex";
-            // 
-            // txtFWLibInFileRev
-            // 
-            resources.ApplyResources(this.txtFWLibInFileRev, "txtFWLibInFileRev");
-            this.txtFWLibInFileRev.Name = "txtFWLibInFileRev";
-            // 
-            // label256
-            // 
-            resources.ApplyResources(this.label256, "label256");
-            this.label256.Name = "label256";
             // 
             // txtFWInFileRevData
             // 
@@ -2089,10 +2074,10 @@
             this.btnFWFilePubSave.UseVisualStyleBackColor = true;
             this.btnFWFilePubSave.Click += new System.EventHandler(this.btnFWFilePubSave_Click);
             // 
-            // txtFWInFileRev
+            // txtFWInFileRevSS
             // 
-            resources.ApplyResources(this.txtFWInFileRev, "txtFWInFileRev");
-            this.txtFWInFileRev.Name = "txtFWInFileRev";
+            resources.ApplyResources(this.txtFWInFileRevSS, "txtFWInFileRevSS");
+            this.txtFWInFileRevSS.Name = "txtFWInFileRevSS";
             // 
             // label94
             // 
@@ -2385,9 +2370,12 @@
             // grbFWAggiornamento
             // 
             this.grbFWAggiornamento.BackColor = System.Drawing.Color.White;
+            this.grbFWAggiornamento.Controls.Add(this.label61);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWFStepSize);
+            this.grbFWAggiornamento.Controls.Add(this.label60);
+            this.grbFWAggiornamento.Controls.Add(this.txtFWFStepDelay);
             this.grbFWAggiornamento.Controls.Add(this.cmbFWSBFArea);
             this.grbFWAggiornamento.Controls.Add(this.flwFWFileLLFStruct);
-            this.grbFWAggiornamento.Controls.Add(this.txtFWInLLFDispRev);
             this.grbFWAggiornamento.Controls.Add(this.txtFWInSBFDtRev);
             this.grbFWAggiornamento.Controls.Add(this.label110);
             this.grbFWAggiornamento.Controls.Add(this.btnFWLanciaTrasmissione);
@@ -2404,6 +2392,28 @@
             resources.ApplyResources(this.grbFWAggiornamento, "grbFWAggiornamento");
             this.grbFWAggiornamento.Name = "grbFWAggiornamento";
             this.grbFWAggiornamento.TabStop = false;
+            // 
+            // label61
+            // 
+            resources.ApplyResources(this.label61, "label61");
+            this.label61.Name = "label61";
+            // 
+            // txtFWFStepSize
+            // 
+            this.txtFWFStepSize.AllowDrop = true;
+            resources.ApplyResources(this.txtFWFStepSize, "txtFWFStepSize");
+            this.txtFWFStepSize.Name = "txtFWFStepSize";
+            // 
+            // label60
+            // 
+            resources.ApplyResources(this.label60, "label60");
+            this.label60.Name = "label60";
+            // 
+            // txtFWFStepDelay
+            // 
+            this.txtFWFStepDelay.AllowDrop = true;
+            resources.ApplyResources(this.txtFWFStepDelay, "txtFWFStepDelay");
+            this.txtFWFStepDelay.Name = "txtFWFStepDelay";
             // 
             // cmbFWSBFArea
             // 
@@ -2424,12 +2434,6 @@
             this.flwFWFileLLFStruct.UseCompatibleStateImageBehavior = false;
             this.flwFWFileLLFStruct.View = System.Windows.Forms.View.Details;
             this.flwFWFileLLFStruct.VirtualMode = true;
-            // 
-            // txtFWInLLFDispRev
-            // 
-            resources.ApplyResources(this.txtFWInLLFDispRev, "txtFWInLLFDispRev");
-            this.txtFWInLLFDispRev.Name = "txtFWInLLFDispRev";
-            this.txtFWInLLFDispRev.ReadOnly = true;
             // 
             // txtFWInSBFDtRev
             // 
@@ -2509,8 +2513,6 @@
             // grbStatoFirmware
             // 
             this.grbStatoFirmware.BackColor = System.Drawing.Color.White;
-            this.grbStatoFirmware.Controls.Add(this.label186);
-            this.grbStatoFirmware.Controls.Add(this.txtFwRevDisplay);
             this.grbStatoFirmware.Controls.Add(this.grbFWDettStato);
             this.grbStatoFirmware.Controls.Add(this.txtFwStatoSA2);
             this.grbStatoFirmware.Controls.Add(this.label117);
@@ -2532,16 +2534,6 @@
             resources.ApplyResources(this.grbStatoFirmware, "grbStatoFirmware");
             this.grbStatoFirmware.Name = "grbStatoFirmware";
             this.grbStatoFirmware.TabStop = false;
-            // 
-            // label186
-            // 
-            resources.ApplyResources(this.label186, "label186");
-            this.label186.Name = "label186";
-            // 
-            // txtFwRevDisplay
-            // 
-            resources.ApplyResources(this.txtFwRevDisplay, "txtFwRevDisplay");
-            this.txtFwRevDisplay.Name = "txtFwRevDisplay";
             // 
             // grbFWDettStato
             // 
@@ -3134,17 +3126,32 @@
             // grbMemLettura
             // 
             this.grbMemLettura.BackColor = System.Drawing.Color.White;
+            this.grbMemLettura.Controls.Add(this.cmdMemReadExt);
+            this.grbMemLettura.Controls.Add(this.cmdMemRead);
             this.grbMemLettura.Controls.Add(this.chkMemInt);
             this.grbMemLettura.Controls.Add(this.chkMemHex);
             this.grbMemLettura.Controls.Add(this.lblReadMemBytes);
             this.grbMemLettura.Controls.Add(this.lblReadMemStartAddr);
             this.grbMemLettura.Controls.Add(this.txtMemLenR);
             this.grbMemLettura.Controls.Add(this.txtMemAddrR);
-            this.grbMemLettura.Controls.Add(this.cmdMemRead);
             this.grbMemLettura.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.grbMemLettura, "grbMemLettura");
             this.grbMemLettura.Name = "grbMemLettura";
             this.grbMemLettura.TabStop = false;
+            // 
+            // cmdMemReadExt
+            // 
+            resources.ApplyResources(this.cmdMemReadExt, "cmdMemReadExt");
+            this.cmdMemReadExt.Name = "cmdMemReadExt";
+            this.cmdMemReadExt.UseVisualStyleBackColor = true;
+            this.cmdMemReadExt.Click += new System.EventHandler(this.cmdMemReadExt_Click);
+            // 
+            // cmdMemRead
+            // 
+            resources.ApplyResources(this.cmdMemRead, "cmdMemRead");
+            this.cmdMemRead.Name = "cmdMemRead";
+            this.cmdMemRead.UseVisualStyleBackColor = true;
+            this.cmdMemRead.Click += new System.EventHandler(this.cmdMemRead_Click);
             // 
             // chkMemInt
             // 
@@ -3181,22 +3188,12 @@
             resources.ApplyResources(this.txtMemAddrR, "txtMemAddrR");
             this.txtMemAddrR.Name = "txtMemAddrR";
             // 
-            // cmdMemRead
-            // 
-            resources.ApplyResources(this.cmdMemRead, "cmdMemRead");
-            this.cmdMemRead.Name = "cmdMemRead";
-            this.cmdMemRead.UseVisualStyleBackColor = true;
-            this.cmdMemRead.Click += new System.EventHandler(this.cmdMemRead_Click);
-            // 
             // tabInizializzazione
             // 
             this.tabInizializzazione.BackColor = System.Drawing.Color.LightYellow;
             this.tabInizializzazione.BackgroundImage = global::PannelloCharger.Properties.Resources.Base_fondino_Y;
             resources.ApplyResources(this.tabInizializzazione, "tabInizializzazione");
             this.tabInizializzazione.Controls.Add(this.grbConnessioni);
-            this.tabInizializzazione.Controls.Add(this.lblGenBRState);
-            this.tabInizializzazione.Controls.Add(this.btnGenCambiaBaudRate);
-            this.tabInizializzazione.Controls.Add(this.grbGenBaudrate);
             this.tabInizializzazione.Controls.Add(this.btnCaricaMemoria);
             this.tabInizializzazione.Controls.Add(this.grbInitLimiti);
             this.tabInizializzazione.Controls.Add(this.btnScriviInizializzazione);
@@ -3238,47 +3235,6 @@
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // lblGenBRState
-            // 
-            this.lblGenBRState.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.lblGenBRState, "lblGenBRState");
-            this.lblGenBRState.Name = "lblGenBRState";
-            // 
-            // btnGenCambiaBaudRate
-            // 
-            resources.ApplyResources(this.btnGenCambiaBaudRate, "btnGenCambiaBaudRate");
-            this.btnGenCambiaBaudRate.Name = "btnGenCambiaBaudRate";
-            this.btnGenCambiaBaudRate.UseVisualStyleBackColor = true;
-            // 
-            // grbGenBaudrate
-            // 
-            this.grbGenBaudrate.Controls.Add(this.optGenBR3M);
-            this.grbGenBaudrate.Controls.Add(this.optGenBR1M);
-            this.grbGenBaudrate.Controls.Add(this.optGenBR115);
-            resources.ApplyResources(this.grbGenBaudrate, "grbGenBaudrate");
-            this.grbGenBaudrate.Name = "grbGenBaudrate";
-            this.grbGenBaudrate.TabStop = false;
-            // 
-            // optGenBR3M
-            // 
-            resources.ApplyResources(this.optGenBR3M, "optGenBR3M");
-            this.optGenBR3M.Name = "optGenBR3M";
-            this.optGenBR3M.UseVisualStyleBackColor = true;
-            // 
-            // optGenBR1M
-            // 
-            resources.ApplyResources(this.optGenBR1M, "optGenBR1M");
-            this.optGenBR1M.Name = "optGenBR1M";
-            this.optGenBR1M.UseVisualStyleBackColor = true;
-            // 
-            // optGenBR115
-            // 
-            resources.ApplyResources(this.optGenBR115, "optGenBR115");
-            this.optGenBR115.Checked = true;
-            this.optGenBR115.Name = "optGenBR115";
-            this.optGenBR115.TabStop = true;
-            this.optGenBR115.UseVisualStyleBackColor = true;
             // 
             // btnCaricaMemoria
             // 
@@ -5243,6 +5199,9 @@
             this.tabGenerale.BackColor = System.Drawing.Color.LightYellow;
             this.tabGenerale.BackgroundImage = global::PannelloCharger.Properties.Resources.Base_fondino_Y;
             resources.ApplyResources(this.tabGenerale, "tabGenerale");
+            this.tabGenerale.Controls.Add(this.lblGenBRState);
+            this.tabGenerale.Controls.Add(this.btnGenCambiaBaudRate);
+            this.tabGenerale.Controls.Add(this.grbGenBaudrate);
             this.tabGenerale.Controls.Add(this.pictureBox1);
             this.tabGenerale.Controls.Add(this.btnSalveCliente);
             this.tabGenerale.Controls.Add(this.btnCaricaCliente);
@@ -5255,6 +5214,69 @@
             this.tabGenerale.Controls.Add(this.grbDatiCliente);
             this.tabGenerale.Name = "tabGenerale";
             this.tabGenerale.Click += new System.EventHandler(this.tabCb01_Click);
+            // 
+            // lblGenBRState
+            // 
+            this.lblGenBRState.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.lblGenBRState, "lblGenBRState");
+            this.lblGenBRState.Name = "lblGenBRState";
+            // 
+            // btnGenCambiaBaudRate
+            // 
+            resources.ApplyResources(this.btnGenCambiaBaudRate, "btnGenCambiaBaudRate");
+            this.btnGenCambiaBaudRate.Name = "btnGenCambiaBaudRate";
+            this.btnGenCambiaBaudRate.UseVisualStyleBackColor = true;
+            this.btnGenCambiaBaudRate.Click += new System.EventHandler(this.btnGenCambiaBaudRate_Click);
+            // 
+            // grbGenBaudrate
+            // 
+            this.grbGenBaudrate.Controls.Add(this.txtGenBRCust);
+            this.grbGenBaudrate.Controls.Add(this.optGenBRCust);
+            this.grbGenBaudrate.Controls.Add(this.optGenBR2995K);
+            this.grbGenBaudrate.Controls.Add(this.optGenBR3M);
+            this.grbGenBaudrate.Controls.Add(this.optGenBR1M);
+            this.grbGenBaudrate.Controls.Add(this.optGenBR115);
+            resources.ApplyResources(this.grbGenBaudrate, "grbGenBaudrate");
+            this.grbGenBaudrate.Name = "grbGenBaudrate";
+            this.grbGenBaudrate.TabStop = false;
+            // 
+            // txtGenBRCust
+            // 
+            resources.ApplyResources(this.txtGenBRCust, "txtGenBRCust");
+            this.txtGenBRCust.Name = "txtGenBRCust";
+            // 
+            // optGenBRCust
+            // 
+            resources.ApplyResources(this.optGenBRCust, "optGenBRCust");
+            this.optGenBRCust.Name = "optGenBRCust";
+            this.optGenBRCust.UseVisualStyleBackColor = true;
+            this.optGenBRCust.CheckedChanged += new System.EventHandler(this.optGenBRCust_CheckedChanged);
+            // 
+            // optGenBR2995K
+            // 
+            resources.ApplyResources(this.optGenBR2995K, "optGenBR2995K");
+            this.optGenBR2995K.Name = "optGenBR2995K";
+            this.optGenBR2995K.UseVisualStyleBackColor = true;
+            // 
+            // optGenBR3M
+            // 
+            resources.ApplyResources(this.optGenBR3M, "optGenBR3M");
+            this.optGenBR3M.Name = "optGenBR3M";
+            this.optGenBR3M.UseVisualStyleBackColor = true;
+            // 
+            // optGenBR1M
+            // 
+            resources.ApplyResources(this.optGenBR1M, "optGenBR1M");
+            this.optGenBR1M.Name = "optGenBR1M";
+            this.optGenBR1M.UseVisualStyleBackColor = true;
+            // 
+            // optGenBR115
+            // 
+            resources.ApplyResources(this.optGenBR115, "optGenBR115");
+            this.optGenBR115.Checked = true;
+            this.optGenBR115.Name = "optGenBR115";
+            this.optGenBR115.TabStop = true;
+            this.optGenBR115.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -5815,8 +5837,6 @@
             this.tabInizializzazione.ResumeLayout(false);
             this.grbConnessioni.ResumeLayout(false);
             this.grbConnessioni.PerformLayout();
-            this.grbGenBaudrate.ResumeLayout(false);
-            this.grbGenBaudrate.PerformLayout();
             this.grbInitLimiti.ResumeLayout(false);
             this.grbInitLimiti.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -5877,6 +5897,8 @@
             this.grbCicli.ResumeLayout(false);
             this.grbCicli.PerformLayout();
             this.tabGenerale.ResumeLayout(false);
+            this.grbGenBaudrate.ResumeLayout(false);
+            this.grbGenBaudrate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grbMainContatori.ResumeLayout(false);
             this.grbMainContatori.PerformLayout();
@@ -6064,19 +6086,14 @@
         public System.Windows.Forms.Button btnFwSwitchArea1;
         public System.Windows.Forms.Button btnFwSwitchBL;
         private System.Windows.Forms.GroupBox grbFWPreparaFile;
-        private System.Windows.Forms.TextBox txtFWInFileStruct;
         private BrightIdeasSoftware.FastObjectListView lvwFWInFileStruct;
-        private System.Windows.Forms.TextBox txtFwFileCCSa01;
-        private System.Windows.Forms.TextBox txtFwFileCCShex;
-        private System.Windows.Forms.TextBox txtFWLibInFileRev;
-        private System.Windows.Forms.Label label256;
         private System.Windows.Forms.MaskedTextBox txtFWInFileRevData;
         private System.Windows.Forms.Label label96;
         private System.Windows.Forms.Button btnFWFileLLFsearch;
         private System.Windows.Forms.TextBox txtFWFileLLFwr;
         private System.Windows.Forms.Label label92;
         public System.Windows.Forms.Button btnFWFilePubSave;
-        private System.Windows.Forms.TextBox txtFWInFileRev;
+        private System.Windows.Forms.TextBox txtFWInFileRevSS;
         private System.Windows.Forms.Label label94;
         private System.Windows.Forms.Label label95;
         public System.Windows.Forms.Button btnFWFileCCSLoad;
@@ -6127,7 +6144,6 @@
         private System.Windows.Forms.GroupBox grbFWAggiornamento;
         private System.Windows.Forms.ComboBox cmbFWSBFArea;
         private BrightIdeasSoftware.FastObjectListView flwFWFileLLFStruct;
-        private System.Windows.Forms.TextBox txtFWInLLFDispRev;
         private System.Windows.Forms.TextBox txtFWInSBFDtRev;
         private System.Windows.Forms.Label label110;
         public System.Windows.Forms.Button btnFWLanciaTrasmissione;
@@ -6142,8 +6158,6 @@
         private System.Windows.Forms.Button btnFWFileLLFReadSearch;
         private System.Windows.Forms.TextBox txtFWFileSBFrd;
         private System.Windows.Forms.GroupBox grbStatoFirmware;
-        private System.Windows.Forms.Label label186;
-        private System.Windows.Forms.TextBox txtFwRevDisplay;
         private System.Windows.Forms.GroupBox grbFWDettStato;
         private System.Windows.Forms.TextBox txtFwStatoSA2;
         private System.Windows.Forms.Label label117;
@@ -6569,12 +6583,6 @@
         private System.Windows.Forms.Label label248;
         private System.Windows.Forms.Button btnPaProfileNEW;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblGenBRState;
-        private System.Windows.Forms.Button btnGenCambiaBaudRate;
-        private System.Windows.Forms.GroupBox grbGenBaudrate;
-        private System.Windows.Forms.RadioButton optGenBR3M;
-        private System.Windows.Forms.RadioButton optGenBR1M;
-        private System.Windows.Forms.RadioButton optGenBR115;
         private System.Windows.Forms.Button btnCaricaMemoria;
         private System.Windows.Forms.GroupBox grbConnessioni;
         private System.Windows.Forms.CheckBox checkBox3;
@@ -6596,5 +6604,21 @@
         private System.Windows.Forms.Button btnPaSalvaFile;
         private System.Windows.Forms.Button btnCicliCaricaCont;
         private System.Windows.Forms.Button btnPaProfileImport;
+        private System.Windows.Forms.TextBox txtFWInFileStruct;
+        private System.Windows.Forms.MaskedTextBox txtFWInFileRev;
+        private System.Windows.Forms.Button cmdMemReadExt;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.TextBox txtFWFStepDelay;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox txtFWFStepSize;
+        private System.Windows.Forms.Label lblGenBRState;
+        private System.Windows.Forms.Button btnGenCambiaBaudRate;
+        private System.Windows.Forms.GroupBox grbGenBaudrate;
+        private System.Windows.Forms.RadioButton optGenBRCust;
+        private System.Windows.Forms.RadioButton optGenBR2995K;
+        private System.Windows.Forms.RadioButton optGenBR3M;
+        private System.Windows.Forms.RadioButton optGenBR1M;
+        private System.Windows.Forms.RadioButton optGenBR115;
+        private System.Windows.Forms.TextBox txtGenBRCust;
     }
 }

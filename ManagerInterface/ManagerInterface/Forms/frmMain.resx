@@ -414,12 +414,6 @@
   <data name="flashFTDIToolStripMenuItem.Text" xml:space="preserve">
     <value>Flash FTDI</value>
   </data>
-  <data name="inizializzazioneDisplayToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="inizializzazioneDisplayToolStripMenuItem.Text" xml:space="preserve">
-    <value>Inizializzazione Display</value>
-  </data>
   <data name="flashSPYBATTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 22</value>
   </data>
@@ -431,6 +425,24 @@
   </data>
   <data name="mSP430FlasherToolStripMenuItem.Text" xml:space="preserve">
     <value>MSP430 Flasher</value>
+  </data>
+  <data name="toolStripMenuItem9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 6</value>
+  </data>
+  <data name="inizializzazioneDisplayToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="inizializzazioneDisplayToolStripMenuItem.Text" xml:space="preserve">
+    <value>Inizializzazione Display</value>
+  </data>
+  <data name="databaseInizializzazioneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="databaseInizializzazioneToolStripMenuItem.Text" xml:space="preserve">
+    <value>Database Inizializzazione</value>
+  </data>
+  <data name="toolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 6</value>
   </data>
   <data name="sIG60MonitorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 22</value>
@@ -1707,12 +1719,6 @@
   <data name="&gt;&gt;flashFTDIToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;inizializzazioneDisplayToolStripMenuItem.Name" xml:space="preserve">
-    <value>inizializzazioneDisplayToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;inizializzazioneDisplayToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;flashSPYBATTToolStripMenuItem.Name" xml:space="preserve">
     <value>flashSPYBATTToolStripMenuItem</value>
   </data>
@@ -1724,6 +1730,30 @@
   </data>
   <data name="&gt;&gt;mSP430FlasherToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem9.Name" xml:space="preserve">
+    <value>toolStripMenuItem9</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;inizializzazioneDisplayToolStripMenuItem.Name" xml:space="preserve">
+    <value>inizializzazioneDisplayToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;inizializzazioneDisplayToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;databaseInizializzazioneToolStripMenuItem.Name" xml:space="preserve">
+    <value>databaseInizializzazioneToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;databaseInizializzazioneToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem8.Name" xml:space="preserve">
+    <value>toolStripMenuItem8</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;sIG60MonitorToolStripMenuItem.Name" xml:space="preserve">
     <value>sIG60MonitorToolStripMenuItem</value>

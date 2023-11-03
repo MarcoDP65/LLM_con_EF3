@@ -2202,6 +2202,43 @@ namespace Utility
             }
         }
 
+        public static bool CheckSrecCrc(byte[] data)
+        {
+            try
+            {
+                if(data.Length < 2)
+                {
+                    return true;
+                }
+
+                uint CheckSum = 0;
+                for (int  _i = 0; _i < (data.Length -1); _i++ )
+                {
+                    CheckSum += data[_i]; 
+                }
+                CheckSum = CheckSum & 0x000000FF;
+                byte Complement = (byte)CheckSum;
+                Complement = (byte)~data[data.Length - 1];
+                if ((byte)CheckSum == Complement)
+                {
+                    return true;    
+                }
+                else
+                {
+                    return false;   
+                }
+
+
+            }
+            catch 
+            { 
+                return false; 
+            }
+
+        }
+
+
+
         /// <summary>
         /// Convert Hexadecimals string to array.
         /// </summary>
@@ -2227,7 +2264,7 @@ namespace Utility
                     _tempString += "00";
                 }
            
-                // ora carico i bytes, scorrrendo la stringa da dx verso sx 2 caratteri alla volta
+                // ora carico i bytes, scorrendo la stringa da dx verso sx 2 caratteri alla volta
                 _tempString += source;
                 int sourceLen = _tempString.Length;
 
@@ -2295,6 +2332,35 @@ namespace Utility
             }
         }
 
+        public static byte[] ArrayAppend(byte[] source, byte[] NewData, int start = 0, int length = 0)
+        {
+            try
+            {
+                if (start > NewData.Length) start = NewData.Length;
+                if (length > ( NewData.Length -  start ) ) length = NewData.Length - start;
+                int NewLen = source.Length + length;
+
+                byte[] outData = new byte[NewLen];
+                
+                for (int _i = 0; _i < source.Length; _i++)
+                {
+                    outData[_i] = source[_i];
+                }
+
+                int NewAddr = source.Length;
+                for (int _i = 0; _i < length ; _i++)
+                {
+                    outData[NewAddr] = NewData[_i + start];
+                    NewAddr += 1;
+                }
+                return outData;
+            }
+            catch
+            {
+                return source;
+            }
+        }
+
 
         public static short ArrayToShort(byte[] source, int start, int lenght)
         {
@@ -2321,6 +2387,31 @@ namespace Utility
             }
         }
 
+        public static uint ArrayToUInt(byte[] source, int start, int lenght)
+        {
+            uint _tempVal32 = 0;
+            int _segno = 1;
+            byte _tempB;
+            try
+            {
+                for (int _i = start; _i < (start + lenght); _i++)
+                {
+                    if (_i < source.Length)
+                    {
+                        _tempB = source[_i];
+                        _tempVal32 = (uint)(_tempVal32 << 8);
+                        _tempVal32 += _tempB;
+                    }
+
+                }
+                return _tempVal32;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public static ushort ArrayToUshort(byte[] source, int start, int lenght)
         {
             ushort _tempVal16 = 0;
@@ -2335,7 +2426,7 @@ namespace Utility
                         _tempB = source[_i];
                         _tempVal16 = (ushort)(_tempVal16 << 8);
                         _tempVal16 += _tempB;
-                    }
+                    } 
 
                 }
                 return _tempVal16;

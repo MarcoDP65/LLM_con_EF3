@@ -100,6 +100,7 @@
             // 
             resources.ApplyResources(this.lblMsg01, "lblMsg01");
             this.lblMsg01.Name = "lblMsg01";
+            this.lblMsg01.Click += new System.EventHandler(this.lblMsg01_Click);
             // 
             // lblMsg02
             // 

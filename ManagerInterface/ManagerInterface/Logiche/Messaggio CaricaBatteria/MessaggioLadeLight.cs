@@ -30,8 +30,11 @@ namespace ChargerLogic
         //public VariabiliSpybatt variabiliScheda;
         //public CalibrazioniSpybatt valoriCalibrazione;
         //public ImmagineDumpMem DumpMem;
-        public StatoFirmware StatoFirmwareScheda;
+        public StatoFirmware StatoFirmwareScheda { get; set; }
+        public StatoFirmwareSC StatoFirmwareSchedaSC {  get; set; }
         public byte StatoAreaFW { get; set; }
+
+        public CaricaBatteria.TipoCaricaBatteria TipoCB { get; set; }
 
         //public ComandoStrategia ComandoStrat;
         //public ParametriSpybatt ParametriGenerali;
@@ -56,6 +59,7 @@ namespace ChargerLogic
         public MessaggioLadeLight()
         {
             fwLevel = 0;
+            TipoCB = CaricaBatteria.TipoCaricaBatteria.Generico;
         }
 
         public ushort ComponiMessaggioSwitchBL()
@@ -646,7 +650,16 @@ namespace ChargerLogic
                             // ora leggo la parte dati
                             _buffArray = new byte[(_endPos - (preambleLenght + 7))];
                             Array.Copy(_messaggio, preambleLenght + 1, _buffArray, 0, _endPos - (preambleLenght + 7));
-                            _risposta = StatoFirmwareScheda.analizzaMessaggio(_buffArray, fwLevel);
+                            //switch( )
+                            if(TipoCB == CaricaBatteria.TipoCaricaBatteria.SuperCharger)
+                            {
+                                _risposta = StatoFirmwareSchedaSC.analizzaMessaggio(_buffArray, fwLevel);
+                            }
+                            else
+                            {
+                                _risposta = StatoFirmwareScheda.analizzaMessaggio(_buffArray, fwLevel);
+                            }
+                            
                             if (_risposta != EsitoRisposta.MessaggioOk) { return EsitoRisposta.ErroreGenerico; }
 
                             break;

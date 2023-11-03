@@ -41,6 +41,7 @@
             this.btnNuovoSetup = new System.Windows.Forms.Button();
             this.btnSelezionaSetup = new System.Windows.Forms.Button();
             this.flvListaSetup = new BrightIdeasSoftware.FastObjectListView();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tbcFunzioni.SuspendLayout();
             this.tbpSetupCorrente.SuspendLayout();
             this.grbConnessioni.SuspendLayout();
@@ -63,6 +64,7 @@
             // 
             // tbpSetupCorrente
             // 
+            this.tbpSetupCorrente.Controls.Add(this.comboBox1);
             this.tbpSetupCorrente.Controls.Add(this.listBox1);
             this.tbpSetupCorrente.Controls.Add(this.grbConnessioni);
             this.tbpSetupCorrente.Controls.Add(this.fastObjectListView1);
@@ -148,10 +150,10 @@
             // 
             this.fastObjectListView1.CellEditUseWholeCell = false;
             this.fastObjectListView1.HideSelection = false;
-            this.fastObjectListView1.Location = new System.Drawing.Point(630, 61);
+            this.fastObjectListView1.Location = new System.Drawing.Point(611, 95);
             this.fastObjectListView1.Name = "fastObjectListView1";
             this.fastObjectListView1.ShowGroups = false;
-            this.fastObjectListView1.Size = new System.Drawing.Size(417, 476);
+            this.fastObjectListView1.Size = new System.Drawing.Size(384, 238);
             this.fastObjectListView1.TabIndex = 0;
             this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
             this.fastObjectListView1.View = System.Windows.Forms.View.Details;
@@ -207,6 +209,16 @@
             this.flvListaSetup.View = System.Windows.Forms.View.Details;
             this.flvListaSetup.VirtualMode = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(611, 39);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(384, 24);
+            this.comboBox1.TabIndex = 3;
+            // 
             // frmSetupLLT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,5 +255,6 @@
         private System.Windows.Forms.Button btnConnetti;
         private BrightIdeasSoftware.FastObjectListView flvwListaDevices;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

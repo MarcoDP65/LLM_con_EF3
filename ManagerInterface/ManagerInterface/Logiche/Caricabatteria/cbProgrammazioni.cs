@@ -25,6 +25,8 @@ namespace ChargerLogic
         public parametriSistema Parametri;
 
         public byte NumeroRecordProg { get; set; }
+        public ushort IdProgammaAttivo { get; set; }
+
         public llProgrammaCarica ProgrammaAttivo;
         public List<llProgrammaCarica> ProgrammiDefiniti;
         public MoriData._db _database;
@@ -49,6 +51,7 @@ namespace ChargerLogic
             _database = connessione;
             _datiSalvati = true;
             _recordPresente = false;
+            IdProgammaAttivo = 0;
         }
 
         public llProgrammaCarica ProgrammazioneAttiva
@@ -69,7 +72,7 @@ namespace ChargerLogic
 
 
 
-        public bool CaricaDatiDB(string IdApp = "", string TipoApp = "")
+        public bool CaricaDatiDB(string IdApp = "", string TipoApp = "", int IdAttivo =  0)
         {
             try
             {
@@ -77,7 +80,7 @@ namespace ChargerLogic
                 llProgrammaCarica _tempPrg;
 
                 ProgrammiDefiniti = new List<llProgrammaCarica>();
-                if (_database ==  null) return false;
+                if (_database == null) return false;
 
                 string Sql = "select * from _llProgrammaCarica ";
                 if (IdApp != "" || TipoApp != "")
@@ -91,18 +94,25 @@ namespace ChargerLogic
 
                 IEnumerable<_llProgrammaCarica> _TempCicli = _database.Query<_llProgrammaCarica>(Sql);
 
+                llProgrammaCarica _cBase = null;
                 foreach (_llProgrammaCarica Elemento in _TempCicli)
                 {
                     llProgrammaCarica _cLoc;
                     _cLoc = new llProgrammaCarica(Elemento);
+                    _cBase = _cLoc;
                     _cLoc.Parametri = Parametri;
                     _cLoc.GeneraListaParametri();
                     ProgrammiDefiniti.Add(_cLoc);
-                    if (_cLoc.PosizioneCorrente == 0)
-                    {                   
+                    if (_cLoc.IdProgramma == IdAttivo)
+                    {
                         ProgrammaAttivo = _cLoc;
+                        IdProgammaAttivo = _cLoc.IdProgramma;
                     }
 
+                }
+                if (ProgrammaAttivo == null)
+                {
+                    ProgrammaAttivo = _cBase;
                 }
 
                 return true;

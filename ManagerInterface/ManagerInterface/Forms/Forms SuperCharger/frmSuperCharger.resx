@@ -790,7 +790,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabMonitor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabMonitor.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1435,7 +1435,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabCb02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabCb02.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5242,7 +5242,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpProxySig60.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tbpProxySig60.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -5418,11 +5418,41 @@
   <data name="&gt;&gt;grbFwAttivazioneArea.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtFWInFileRev.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="txtFWInFileRev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 103</value>
+  </data>
+  <data name="txtFWInFileRev.Mask" xml:space="preserve">
+    <value>00.00.0000</value>
+  </data>
+  <data name="txtFWInFileRev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 22</value>
+  </data>
+  <data name="txtFWInFileRev.TabIndex" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="txtFWInFileRev.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtFWInFileRev.Name" xml:space="preserve">
+    <value>txtFWInFileRev</value>
+  </data>
+  <data name="&gt;&gt;txtFWInFileRev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFWInFileRev.Parent" xml:space="preserve">
+    <value>grbFWPreparaFile</value>
+  </data>
+  <data name="&gt;&gt;txtFWInFileRev.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="txtFWInFileStruct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
   <data name="txtFWInFileStruct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>448, 91</value>
+    <value>447, 67</value>
   </data>
   <data name="txtFWInFileStruct.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5446,16 +5476,16 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileStruct.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lvwFWInFileStruct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>271, 117</value>
+    <value>194, 101</value>
   </data>
   <data name="lvwFWInFileStruct.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="lvwFWInFileStruct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 88</value>
+    <value>306, 97</value>
   </data>
   <data name="lvwFWInFileStruct.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -5470,133 +5500,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;lvwFWInFileStruct.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtFwFileCCSa01.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt, style=Italic</value>
-  </data>
-  <data name="txtFwFileCCSa01.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 89</value>
-  </data>
-  <data name="txtFwFileCCSa01.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFwFileCCSa01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>398, 21</value>
-  </data>
-  <data name="txtFwFileCCSa01.TabIndex" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCSa01.Name" xml:space="preserve">
-    <value>txtFwFileCCSa01</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCSa01.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCSa01.Parent" xml:space="preserve">
-    <value>grbFWPreparaFile</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCSa01.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="txtFwFileCCShex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt, style=Italic</value>
-  </data>
-  <data name="txtFwFileCCShex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 65</value>
-  </data>
-  <data name="txtFwFileCCShex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFwFileCCShex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>398, 21</value>
-  </data>
-  <data name="txtFwFileCCShex.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCShex.Name" xml:space="preserve">
-    <value>txtFwFileCCShex</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCShex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCShex.Parent" xml:space="preserve">
-    <value>grbFWPreparaFile</value>
-  </data>
-  <data name="&gt;&gt;txtFwFileCCShex.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtFWLibInFileRev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtFWLibInFileRev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 160</value>
-  </data>
-  <data name="txtFWLibInFileRev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWLibInFileRev.MaxLength" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="txtFWLibInFileRev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
-  </data>
-  <data name="txtFWLibInFileRev.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="txtFWLibInFileRev.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWLibInFileRev.Name" xml:space="preserve">
-    <value>txtFWLibInFileRev</value>
-  </data>
-  <data name="&gt;&gt;txtFWLibInFileRev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWLibInFileRev.Parent" xml:space="preserve">
-    <value>grbFWPreparaFile</value>
-  </data>
-  <data name="&gt;&gt;txtFWLibInFileRev.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label256.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label256.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label256.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 167</value>
-  </data>
-  <data name="label256.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label256.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 15</value>
-  </data>
-  <data name="label256.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="label256.Text" xml:space="preserve">
-    <value>Strategia</value>
-  </data>
-  <data name="&gt;&gt;label256.Name" xml:space="preserve">
-    <value>label256</value>
-  </data>
-  <data name="&gt;&gt;label256.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label256.Parent" xml:space="preserve">
-    <value>grbFWPreparaFile</value>
-  </data>
-  <data name="&gt;&gt;label256.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="txtFWInFileRevData.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFWInFileRevData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 133</value>
+    <value>20, 146</value>
   </data>
   <data name="txtFWInFileRevData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5605,7 +5515,7 @@
     <value>00/00/0000</value>
   </data>
   <data name="txtFWInFileRevData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 23</value>
+    <value>121, 23</value>
   </data>
   <data name="txtFWInFileRevData.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
@@ -5623,7 +5533,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWInFileRevData.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="label96.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5656,13 +5566,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label96.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="btnFWFileLLFsearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnFWFileLLFsearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>418, 217</value>
+    <value>539, 214</value>
   </data>
   <data name="btnFWFileLLFsearch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5686,19 +5596,19 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFileLLFsearch.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="txtFWFileLLFwr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtFWFileLLFwr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 219</value>
+    <value>19, 216</value>
   </data>
   <data name="txtFWFileLLFwr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFWFileLLFwr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>398, 21</value>
+    <value>512, 21</value>
   </data>
   <data name="txtFWFileLLFwr.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -5713,7 +5623,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFWFileLLFwr.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="label92.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5722,7 +5632,7 @@
     <value>NoControl</value>
   </data>
   <data name="label92.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 117</value>
+    <value>20, 132</value>
   </data>
   <data name="label92.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -5746,7 +5656,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label92.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="btnFWFilePubSave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5755,7 +5665,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFWFilePubSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>447, 217</value>
+    <value>583, 214</value>
   </data>
   <data name="btnFWFilePubSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5779,40 +5689,43 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFilePubSave.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>8</value>
   </data>
-  <data name="txtFWInFileRev.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="txtFWInFileRevSS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
-  <data name="txtFWInFileRev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 133</value>
+  <data name="txtFWInFileRevSS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 74</value>
   </data>
-  <data name="txtFWInFileRev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="txtFWInFileRevSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="txtFWInFileRev.MaxLength" type="System.Int32, mscorlib">
+  <data name="txtFWInFileRevSS.MaxLength" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="txtFWInFileRev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
+  <data name="txtFWInFileRevSS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
   </data>
-  <data name="txtFWInFileRev.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtFWInFileRevSS.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
   </data>
-  <data name="txtFWInFileRev.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="txtFWInFileRevSS.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;txtFWInFileRev.Name" xml:space="preserve">
-    <value>txtFWInFileRev</value>
+  <data name="txtFWInFileRevSS.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;txtFWInFileRev.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtFWInFileRevSS.Name" xml:space="preserve">
+    <value>txtFWInFileRevSS</value>
+  </data>
+  <data name="&gt;&gt;txtFWInFileRevSS.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtFWInFileRev.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtFWInFileRevSS.Parent" xml:space="preserve">
     <value>grbFWPreparaFile</value>
   </data>
-  <data name="&gt;&gt;txtFWInFileRev.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;txtFWInFileRevSS.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="label94.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5821,7 +5734,7 @@
     <value>NoControl</value>
   </data>
   <data name="label94.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 117</value>
+    <value>18, 85</value>
   </data>
   <data name="label94.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -5845,7 +5758,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label94.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="label95.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5860,13 +5773,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label95.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 15</value>
+    <value>157, 15</value>
   </data>
   <data name="label95.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
   <data name="label95.Text" xml:space="preserve">
-    <value>File Firmware CCS (HEX)</value>
+    <value>File Firmware Base (SREC)</value>
   </data>
   <data name="&gt;&gt;label95.Name" xml:space="preserve">
     <value>label95</value>
@@ -5878,13 +5791,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;label95.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="btnFWFileCCSLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnFWFileCCSLoad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>448, 39</value>
+    <value>583, 39</value>
   </data>
   <data name="btnFWFileCCSLoad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5908,13 +5821,13 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFileCCSLoad.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>12</value>
   </data>
   <data name="btnFWFileCCSsearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnFWFileCCSsearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>419, 39</value>
+    <value>539, 39</value>
   </data>
   <data name="btnFWFileCCSsearch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5938,7 +5851,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;btnFWFileCCSsearch.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>13</value>
   </data>
   <data name="txtFwFileCCS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5950,7 +5863,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwFileCCS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>398, 21</value>
+    <value>514, 21</value>
   </data>
   <data name="txtFwFileCCS.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -5965,7 +5878,7 @@
     <value>grbFWPreparaFile</value>
   </data>
   <data name="&gt;&gt;txtFwFileCCS.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>14</value>
   </data>
   <data name="grbFWPreparaFile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5980,13 +5893,13 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="grbFWPreparaFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 253</value>
+    <value>688, 253</value>
   </data>
   <data name="grbFWPreparaFile.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="grbFWPreparaFile.Text" xml:space="preserve">
-    <value>Preparazione File SBF</value>
+    <value>Preparazione File SCF</value>
   </data>
   <data name="&gt;&gt;grbFWPreparaFile.Name" xml:space="preserve">
     <value>grbFWPreparaFile</value>
@@ -7356,6 +7269,138 @@
   <data name="&gt;&gt;GrbFWArea1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label61.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label61.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label61.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 198</value>
+  </data>
+  <data name="label61.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label61.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 15</value>
+  </data>
+  <data name="label61.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="label61.Text" xml:space="preserve">
+    <value>Step Size</value>
+  </data>
+  <data name="&gt;&gt;label61.Name" xml:space="preserve">
+    <value>label61</value>
+  </data>
+  <data name="&gt;&gt;label61.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label61.Parent" xml:space="preserve">
+    <value>grbFWAggiornamento</value>
+  </data>
+  <data name="&gt;&gt;label61.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtFWFStepSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtFWFStepSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 214</value>
+  </data>
+  <data name="txtFWFStepSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtFWFStepSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtFWFStepSize.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="txtFWFStepSize.Text" xml:space="preserve">
+    <value>254</value>
+  </data>
+  <data name="txtFWFStepSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepSize.Name" xml:space="preserve">
+    <value>txtFWFStepSize</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepSize.Parent" xml:space="preserve">
+    <value>grbFWAggiornamento</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label60.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label60.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label60.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 198</value>
+  </data>
+  <data name="label60.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label60.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 15</value>
+  </data>
+  <data name="label60.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="label60.Text" xml:space="preserve">
+    <value>Step Delay ms</value>
+  </data>
+  <data name="&gt;&gt;label60.Name" xml:space="preserve">
+    <value>label60</value>
+  </data>
+  <data name="&gt;&gt;label60.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label60.Parent" xml:space="preserve">
+    <value>grbFWAggiornamento</value>
+  </data>
+  <data name="&gt;&gt;label60.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtFWFStepDelay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtFWFStepDelay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>460, 214</value>
+  </data>
+  <data name="txtFWFStepDelay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtFWFStepDelay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="txtFWFStepDelay.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="txtFWFStepDelay.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtFWFStepDelay.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepDelay.Name" xml:space="preserve">
+    <value>txtFWFStepDelay</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepDelay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepDelay.Parent" xml:space="preserve">
+    <value>grbFWAggiornamento</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepDelay.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="cmbFWSBFArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt, style=Bold</value>
   </data>
@@ -7390,7 +7435,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;cmbFWSBFArea.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="flwFWFileLLFStruct.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 89</value>
@@ -7414,37 +7459,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;flwFWFileLLFStruct.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtFWInLLFDispRev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtFWInLLFDispRev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 115</value>
-  </data>
-  <data name="txtFWInLLFDispRev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFWInLLFDispRev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 23</value>
-  </data>
-  <data name="txtFWInLLFDispRev.TabIndex" type="System.Int32, mscorlib">
-    <value>82</value>
-  </data>
-  <data name="txtFWInLLFDispRev.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFWInLLFDispRev.Name" xml:space="preserve">
-    <value>txtFWInLLFDispRev</value>
-  </data>
-  <data name="&gt;&gt;txtFWInLLFDispRev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFWInLLFDispRev.Parent" xml:space="preserve">
-    <value>grbFWAggiornamento</value>
-  </data>
-  <data name="&gt;&gt;txtFWInLLFDispRev.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="txtFWInSBFDtRev.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -7474,7 +7489,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInSBFDtRev.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="label110.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7507,16 +7522,19 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="btnFWLanciaTrasmissione.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="btnFWLanciaTrasmissione.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
   </data>
   <data name="btnFWLanciaTrasmissione.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnFWLanciaTrasmissione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>428, 210</value>
+    <value>553, 208</value>
   </data>
   <data name="btnFWLanciaTrasmissione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -7540,7 +7558,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWLanciaTrasmissione.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="txtFWInLLFEsito.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -7570,7 +7588,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInLLFEsito.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="label108.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7603,7 +7621,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label108.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="label114.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7636,7 +7654,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label114.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="btnFWPreparaTrasmissione.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7645,7 +7663,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFWPreparaTrasmissione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 212</value>
+    <value>230, 213</value>
   </data>
   <data name="btnFWPreparaTrasmissione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -7669,7 +7687,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWPreparaTrasmissione.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="txtFWInLLFRev.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -7699,7 +7717,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInLLFRev.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="label115.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7732,7 +7750,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label115.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="label116.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7765,19 +7783,19 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label116.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="btnFWFileLLFLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnFWFileLLFLoad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>464, 41</value>
+    <value>583, 42</value>
   </data>
   <data name="btnFWFileLLFLoad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="btnFWFileLLFLoad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 28</value>
+    <value>73, 28</value>
   </data>
   <data name="btnFWFileLLFLoad.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -7795,13 +7813,13 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWFileLLFLoad.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="btnFWFileLLFReadSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnFWFileLLFReadSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>418, 44</value>
+    <value>539, 44</value>
   </data>
   <data name="btnFWFileLLFReadSearch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -7825,7 +7843,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWFileLLFReadSearch.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="txtFWFileSBFrd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7837,7 +7855,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFWFileSBFrd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>386, 21</value>
+    <value>513, 21</value>
   </data>
   <data name="txtFWFileSBFrd.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -7852,7 +7870,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWFileSBFrd.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="grbFWAggiornamento.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7867,7 +7885,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="grbFWAggiornamento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 249</value>
+    <value>688, 249</value>
   </data>
   <data name="grbFWAggiornamento.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -7887,74 +7905,11 @@
   <data name="&gt;&gt;grbFWAggiornamento.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label186.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label186.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label186.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 23</value>
-  </data>
-  <data name="label186.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label186.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 15</value>
-  </data>
-  <data name="label186.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="label186.Text" xml:space="preserve">
-    <value>Rev Display</value>
-  </data>
-  <data name="&gt;&gt;label186.Name" xml:space="preserve">
-    <value>label186</value>
-  </data>
-  <data name="&gt;&gt;label186.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label186.Parent" xml:space="preserve">
-    <value>grbStatoFirmware</value>
-  </data>
-  <data name="&gt;&gt;label186.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtFwRevDisplay.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
-  </data>
-  <data name="txtFwRevDisplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 39</value>
-  </data>
-  <data name="txtFwRevDisplay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="txtFwRevDisplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
-  </data>
-  <data name="txtFwRevDisplay.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="txtFwRevDisplay.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevDisplay.Name" xml:space="preserve">
-    <value>txtFwRevDisplay</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevDisplay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevDisplay.Parent" xml:space="preserve">
-    <value>grbStatoFirmware</value>
-  </data>
-  <data name="&gt;&gt;txtFwRevDisplay.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="grbFWDettStato.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="grbFWDettStato.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 66</value>
+    <value>228, 89</value>
   </data>
   <data name="grbFWDettStato.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -7963,7 +7918,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="grbFWDettStato.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 17</value>
+    <value>36, 28</value>
   </data>
   <data name="grbFWDettStato.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -7978,7 +7933,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;grbFWDettStato.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="txtFwStatoSA2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8008,7 +7963,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwStatoSA2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="label117.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8041,7 +7996,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="txtFwStatoSA1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8071,7 +8026,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwStatoSA1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="label118.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8104,7 +8059,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label118.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="btnFwCaricaStato.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -8134,7 +8089,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;btnFwCaricaStato.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="txtFwStatoHA2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8164,7 +8119,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwStatoHA2.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="label119.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8197,7 +8152,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label119.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="txtFwStatoHA1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8227,7 +8182,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwStatoHA1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="label120.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8260,7 +8215,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label120.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="txtFwStatoMicro.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8290,7 +8245,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwStatoMicro.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
   </data>
   <data name="label121.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8323,7 +8278,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label121.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="txtFwAreaTestata.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8353,7 +8308,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwAreaTestata.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>12</value>
   </data>
   <data name="label122.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8386,19 +8341,19 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label122.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>13</value>
   </data>
   <data name="txtFwRevFirmware.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="txtFwRevFirmware.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 39</value>
+    <value>158, 39</value>
   </data>
   <data name="txtFwRevFirmware.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevFirmware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
+    <value>129, 23</value>
   </data>
   <data name="txtFwRevFirmware.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -8416,7 +8371,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwRevFirmware.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>14</value>
   </data>
   <data name="label123.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8425,7 +8380,7 @@
     <value>NoControl</value>
   </data>
   <data name="label123.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 23</value>
+    <value>155, 23</value>
   </data>
   <data name="label123.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -8449,7 +8404,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label123.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>15</value>
   </data>
   <data name="txtFwRevBootloader.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -8461,7 +8416,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtFwRevBootloader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
+    <value>130, 23</value>
   </data>
   <data name="txtFwRevBootloader.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -8479,7 +8434,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;txtFwRevBootloader.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>16</value>
   </data>
   <data name="label124.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8512,7 +8467,7 @@
     <value>grbStatoFirmware</value>
   </data>
   <data name="&gt;&gt;label124.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>17</value>
   </data>
   <data name="grbStatoFirmware.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -8554,7 +8509,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbpFirmware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tbpFirmware.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -8872,7 +8827,7 @@
     <value>8</value>
   </data>
   <data name="grbMemTestLetture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>710, 402</value>
+    <value>853, 402</value>
   </data>
   <data name="grbMemTestLetture.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 123</value>
@@ -9070,7 +9025,7 @@
     <value>5</value>
   </data>
   <data name="grbMemAzzeraLogger.Location" type="System.Drawing.Point, System.Drawing">
-    <value>993, 374</value>
+    <value>1136, 374</value>
   </data>
   <data name="grbMemAzzeraLogger.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 151</value>
@@ -9298,7 +9253,7 @@
     <value>6</value>
   </data>
   <data name="grbMemCaricaLogger.Location" type="System.Drawing.Point, System.Drawing">
-    <value>993, 181</value>
+    <value>1136, 181</value>
   </data>
   <data name="grbMemCaricaLogger.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 151</value>
@@ -9526,7 +9481,7 @@
     <value>6</value>
   </data>
   <data name="grbMemSalvaLogger.Location" type="System.Drawing.Point, System.Drawing">
-    <value>993, 16</value>
+    <value>1136, 16</value>
   </data>
   <data name="grbMemSalvaLogger.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 151</value>
@@ -10081,7 +10036,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbMemCancFisica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>706, 16</value>
+    <value>849, 16</value>
   </data>
   <data name="grbMemCancFisica.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -10147,7 +10102,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 16</value>
+    <value>340, 20</value>
   </data>
   <data name="groupBox9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -10192,7 +10147,7 @@
     <value>Vertical</value>
   </data>
   <data name="txtMemDataGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>664, 285</value>
+    <value>813, 285</value>
   </data>
   <data name="txtMemDataGrid.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -10519,7 +10474,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="grbMemScrittura.Size" type="System.Drawing.Size, System.Drawing">
-    <value>663, 90</value>
+    <value>813, 90</value>
   </data>
   <data name="grbMemScrittura.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -10609,7 +10564,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grbMemCancellazione.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 16</value>
+    <value>522, 20</value>
   </data>
   <data name="grbMemCancellazione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -10637,6 +10592,75 @@
   </data>
   <data name="&gt;&gt;grbMemCancellazione.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="cmdMemReadExt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="cmdMemReadExt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdMemReadExt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 30</value>
+  </data>
+  <data name="cmdMemReadExt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="cmdMemReadExt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 41</value>
+  </data>
+  <data name="cmdMemReadExt.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="cmdMemReadExt.Text" xml:space="preserve">
+    <value>Lettura Estesa</value>
+  </data>
+  <data name="&gt;&gt;cmdMemReadExt.Name" xml:space="preserve">
+    <value>cmdMemReadExt</value>
+  </data>
+  <data name="&gt;&gt;cmdMemReadExt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdMemReadExt.Parent" xml:space="preserve">
+    <value>grbMemLettura</value>
+  </data>
+  <data name="&gt;&gt;cmdMemReadExt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdMemRead.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="cmdMemRead.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdMemRead.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 79</value>
+  </data>
+  <data name="cmdMemRead.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="cmdMemRead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 12</value>
+  </data>
+  <data name="cmdMemRead.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="cmdMemRead.Text" xml:space="preserve">
+    <value>Lettura Diretta</value>
+  </data>
+  <data name="cmdMemRead.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cmdMemRead.Name" xml:space="preserve">
+    <value>cmdMemRead</value>
+  </data>
+  <data name="&gt;&gt;cmdMemRead.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdMemRead.Parent" xml:space="preserve">
+    <value>grbMemLettura</value>
+  </data>
+  <data name="&gt;&gt;cmdMemRead.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="chkMemInt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10669,7 +10693,7 @@
     <value>grbMemLettura</value>
   </data>
   <data name="&gt;&gt;chkMemInt.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="chkMemHex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10702,7 +10726,7 @@
     <value>grbMemLettura</value>
   </data>
   <data name="&gt;&gt;chkMemHex.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="lblReadMemBytes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10735,7 +10759,7 @@
     <value>grbMemLettura</value>
   </data>
   <data name="&gt;&gt;lblReadMemBytes.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lblReadMemStartAddr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10768,7 +10792,7 @@
     <value>grbMemLettura</value>
   </data>
   <data name="&gt;&gt;lblReadMemStartAddr.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtMemLenR.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10801,7 +10825,7 @@
     <value>grbMemLettura</value>
   </data>
   <data name="&gt;&gt;txtMemLenR.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="txtMemAddrR.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10834,40 +10858,7 @@
     <value>grbMemLettura</value>
   </data>
   <data name="&gt;&gt;txtMemAddrR.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="cmdMemRead.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="cmdMemRead.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdMemRead.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 29</value>
-  </data>
-  <data name="cmdMemRead.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="cmdMemRead.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 41</value>
-  </data>
-  <data name="cmdMemRead.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="cmdMemRead.Text" xml:space="preserve">
-    <value>Lettura Diretta</value>
-  </data>
-  <data name="&gt;&gt;cmdMemRead.Name" xml:space="preserve">
-    <value>cmdMemRead</value>
-  </data>
-  <data name="&gt;&gt;cmdMemRead.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdMemRead.Parent" xml:space="preserve">
-    <value>grbMemLettura</value>
-  </data>
-  <data name="&gt;&gt;cmdMemRead.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="grbMemLettura.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -10912,7 +10903,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabMemRead.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabMemRead.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -11043,162 +11034,6 @@
   <data name="&gt;&gt;grbConnessioni.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblGenBRState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>648, 406</value>
-  </data>
-  <data name="lblGenBRState.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 24</value>
-  </data>
-  <data name="lblGenBRState.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="lblGenBRState.Text" xml:space="preserve">
-    <value>Connected</value>
-  </data>
-  <data name="&gt;&gt;lblGenBRState.Name" xml:space="preserve">
-    <value>lblGenBRState</value>
-  </data>
-  <data name="&gt;&gt;lblGenBRState.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblGenBRState.Parent" xml:space="preserve">
-    <value>tabInizializzazione</value>
-  </data>
-  <data name="&gt;&gt;lblGenBRState.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnGenCambiaBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>651, 376</value>
-  </data>
-  <data name="btnGenCambiaBaudRate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="btnGenCambiaBaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
-  </data>
-  <data name="btnGenCambiaBaudRate.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="btnGenCambiaBaudRate.Text" xml:space="preserve">
-    <value>Cambia Baudrate</value>
-  </data>
-  <data name="&gt;&gt;btnGenCambiaBaudRate.Name" xml:space="preserve">
-    <value>btnGenCambiaBaudRate</value>
-  </data>
-  <data name="&gt;&gt;btnGenCambiaBaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnGenCambiaBaudRate.Parent" xml:space="preserve">
-    <value>tabInizializzazione</value>
-  </data>
-  <data name="&gt;&gt;btnGenCambiaBaudRate.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="optGenBR3M.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="optGenBR3M.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 65</value>
-  </data>
-  <data name="optGenBR3M.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
-  </data>
-  <data name="optGenBR3M.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="optGenBR3M.Text" xml:space="preserve">
-    <value>3.000.000</value>
-  </data>
-  <data name="&gt;&gt;optGenBR3M.Name" xml:space="preserve">
-    <value>optGenBR3M</value>
-  </data>
-  <data name="&gt;&gt;optGenBR3M.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;optGenBR3M.Parent" xml:space="preserve">
-    <value>grbGenBaudrate</value>
-  </data>
-  <data name="&gt;&gt;optGenBR3M.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="optGenBR1M.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="optGenBR1M.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 42</value>
-  </data>
-  <data name="optGenBR1M.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
-  </data>
-  <data name="optGenBR1M.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="optGenBR1M.Text" xml:space="preserve">
-    <value>1.000.000</value>
-  </data>
-  <data name="&gt;&gt;optGenBR1M.Name" xml:space="preserve">
-    <value>optGenBR1M</value>
-  </data>
-  <data name="&gt;&gt;optGenBR1M.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;optGenBR1M.Parent" xml:space="preserve">
-    <value>grbGenBaudrate</value>
-  </data>
-  <data name="&gt;&gt;optGenBR1M.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="optGenBR115.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="optGenBR115.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 19</value>
-  </data>
-  <data name="optGenBR115.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 17</value>
-  </data>
-  <data name="optGenBR115.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="optGenBR115.Text" xml:space="preserve">
-    <value>115.000</value>
-  </data>
-  <data name="&gt;&gt;optGenBR115.Name" xml:space="preserve">
-    <value>optGenBR115</value>
-  </data>
-  <data name="&gt;&gt;optGenBR115.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;optGenBR115.Parent" xml:space="preserve">
-    <value>grbGenBaudrate</value>
-  </data>
-  <data name="&gt;&gt;optGenBR115.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="grbGenBaudrate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>650, 278</value>
-  </data>
-  <data name="grbGenBaudrate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 93</value>
-  </data>
-  <data name="grbGenBaudrate.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="grbGenBaudrate.Text" xml:space="preserve">
-    <value>BaudRate</value>
-  </data>
-  <data name="&gt;&gt;grbGenBaudrate.Name" xml:space="preserve">
-    <value>grbGenBaudrate</value>
-  </data>
-  <data name="&gt;&gt;grbGenBaudrate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grbGenBaudrate.Parent" xml:space="preserve">
-    <value>tabInizializzazione</value>
-  </data>
-  <data name="&gt;&gt;grbGenBaudrate.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="btnCaricaMemoria.Location" type="System.Drawing.Point, System.Drawing">
     <value>649, 249</value>
   </data>
@@ -11227,7 +11062,7 @@
     <value>tabInizializzazione</value>
   </data>
   <data name="&gt;&gt;btnCaricaMemoria.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="txtInitModelloMemoria.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -11509,7 +11344,7 @@
     <value>tabInizializzazione</value>
   </data>
   <data name="&gt;&gt;grbInitLimiti.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="btnScriviInizializzazione.Location" type="System.Drawing.Point, System.Drawing">
     <value>1072, 422</value>
@@ -11536,7 +11371,7 @@
     <value>tabInizializzazione</value>
   </data>
   <data name="&gt;&gt;btnScriviInizializzazione.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="btnCaricaInizializzazione.Location" type="System.Drawing.Point, System.Drawing">
     <value>947, 422</value>
@@ -11563,7 +11398,7 @@
     <value>tabInizializzazione</value>
   </data>
   <data name="&gt;&gt;btnCaricaInizializzazione.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="txtInitBrdVMaxModulo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -12202,7 +12037,7 @@
     <value>tabInizializzazione</value>
   </data>
   <data name="&gt;&gt;groupBox11.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="textBox11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -12424,7 +12259,7 @@
     <value>tabInizializzazione</value>
   </data>
   <data name="&gt;&gt;grbInitCalibrazione.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="txtInitAMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -13195,7 +13030,7 @@
     <value>tabInizializzazione</value>
   </data>
   <data name="&gt;&gt;grbInitDatiBase.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="tabInizializzazione.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -13204,7 +13039,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabInizializzazione.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabInizializzazione.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -14248,7 +14083,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabOrologio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabOrologio.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -19045,7 +18880,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabProfiloAttuale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabProfiloAttuale.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -19420,7 +19255,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabCb04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabCb04.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -19442,6 +19277,261 @@
   </data>
   <data name="tabGenerale.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
+  </data>
+  <data name="lblGenBRState.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblGenBRState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1083, 452</value>
+  </data>
+  <data name="lblGenBRState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 24</value>
+  </data>
+  <data name="lblGenBRState.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="lblGenBRState.Text" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="&gt;&gt;lblGenBRState.Name" xml:space="preserve">
+    <value>lblGenBRState</value>
+  </data>
+  <data name="&gt;&gt;lblGenBRState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGenBRState.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;lblGenBRState.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnGenCambiaBaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnGenCambiaBaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1086, 422</value>
+  </data>
+  <data name="btnGenCambiaBaudRate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnGenCambiaBaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
+  </data>
+  <data name="btnGenCambiaBaudRate.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="btnGenCambiaBaudRate.Text" xml:space="preserve">
+    <value>Cambia Baudrate</value>
+  </data>
+  <data name="&gt;&gt;btnGenCambiaBaudRate.Name" xml:space="preserve">
+    <value>btnGenCambiaBaudRate</value>
+  </data>
+  <data name="&gt;&gt;btnGenCambiaBaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGenCambiaBaudRate.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;btnGenCambiaBaudRate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtGenBRCust.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtGenBRCust.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 108</value>
+  </data>
+  <data name="txtGenBRCust.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 20</value>
+  </data>
+  <data name="txtGenBRCust.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtGenBRCust.Text" xml:space="preserve">
+    <value>9600</value>
+  </data>
+  <data name="&gt;&gt;txtGenBRCust.Name" xml:space="preserve">
+    <value>txtGenBRCust</value>
+  </data>
+  <data name="&gt;&gt;txtGenBRCust.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtGenBRCust.Parent" xml:space="preserve">
+    <value>grbGenBaudrate</value>
+  </data>
+  <data name="&gt;&gt;txtGenBRCust.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="optGenBRCust.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="optGenBRCust.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optGenBRCust.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 111</value>
+  </data>
+  <data name="optGenBRCust.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="optGenBRCust.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;optGenBRCust.Name" xml:space="preserve">
+    <value>optGenBRCust</value>
+  </data>
+  <data name="&gt;&gt;optGenBRCust.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optGenBRCust.Parent" xml:space="preserve">
+    <value>grbGenBaudrate</value>
+  </data>
+  <data name="&gt;&gt;optGenBRCust.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="optGenBR2995K.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="optGenBR2995K.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optGenBR2995K.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 65</value>
+  </data>
+  <data name="optGenBR2995K.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="optGenBR2995K.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="optGenBR2995K.Text" xml:space="preserve">
+    <value>2.995.200</value>
+  </data>
+  <data name="&gt;&gt;optGenBR2995K.Name" xml:space="preserve">
+    <value>optGenBR2995K</value>
+  </data>
+  <data name="&gt;&gt;optGenBR2995K.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optGenBR2995K.Parent" xml:space="preserve">
+    <value>grbGenBaudrate</value>
+  </data>
+  <data name="&gt;&gt;optGenBR2995K.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="optGenBR3M.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="optGenBR3M.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optGenBR3M.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 88</value>
+  </data>
+  <data name="optGenBR3M.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="optGenBR3M.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="optGenBR3M.Text" xml:space="preserve">
+    <value>3.000.000</value>
+  </data>
+  <data name="&gt;&gt;optGenBR3M.Name" xml:space="preserve">
+    <value>optGenBR3M</value>
+  </data>
+  <data name="&gt;&gt;optGenBR3M.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optGenBR3M.Parent" xml:space="preserve">
+    <value>grbGenBaudrate</value>
+  </data>
+  <data name="&gt;&gt;optGenBR3M.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="optGenBR1M.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="optGenBR1M.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optGenBR1M.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 42</value>
+  </data>
+  <data name="optGenBR1M.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="optGenBR1M.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="optGenBR1M.Text" xml:space="preserve">
+    <value>1.000.000</value>
+  </data>
+  <data name="&gt;&gt;optGenBR1M.Name" xml:space="preserve">
+    <value>optGenBR1M</value>
+  </data>
+  <data name="&gt;&gt;optGenBR1M.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optGenBR1M.Parent" xml:space="preserve">
+    <value>grbGenBaudrate</value>
+  </data>
+  <data name="&gt;&gt;optGenBR1M.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="optGenBR115.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="optGenBR115.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optGenBR115.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 19</value>
+  </data>
+  <data name="optGenBR115.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 17</value>
+  </data>
+  <data name="optGenBR115.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="optGenBR115.Text" xml:space="preserve">
+    <value>115.000</value>
+  </data>
+  <data name="&gt;&gt;optGenBR115.Name" xml:space="preserve">
+    <value>optGenBR115</value>
+  </data>
+  <data name="&gt;&gt;optGenBR115.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optGenBR115.Parent" xml:space="preserve">
+    <value>grbGenBaudrate</value>
+  </data>
+  <data name="&gt;&gt;optGenBR115.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="grbGenBaudrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1085, 280</value>
+  </data>
+  <data name="grbGenBaudrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 137</value>
+  </data>
+  <data name="grbGenBaudrate.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="grbGenBaudrate.Text" xml:space="preserve">
+    <value>BaudRate</value>
+  </data>
+  <data name="&gt;&gt;grbGenBaudrate.Name" xml:space="preserve">
+    <value>grbGenBaudrate</value>
+  </data>
+  <data name="&gt;&gt;grbGenBaudrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grbGenBaudrate.Parent" xml:space="preserve">
+    <value>tabGenerale</value>
+  </data>
+  <data name="&gt;&gt;grbGenBaudrate.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -20600,7 +20690,7 @@
 </value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>631, 0</value>
+    <value>588, -12</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>553, 229</value>
@@ -20621,10 +20711,10 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="btnSalveCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1083, 430</value>
+    <value>15, 568</value>
   </data>
   <data name="btnSalveCliente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -20648,10 +20738,10 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;btnSalveCliente.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="btnCaricaCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1083, 402</value>
+    <value>15, 540</value>
   </data>
   <data name="btnCaricaCliente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -20675,13 +20765,13 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;btnCaricaCliente.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="btnGenResetBoard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="btnGenResetBoard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1083, 473</value>
+    <value>1085, 543</value>
   </data>
   <data name="btnGenResetBoard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -20705,10 +20795,10 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;btnGenResetBoard.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="btnGenAzzzeraContatoriTot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1083, 349</value>
+    <value>549, 566</value>
   </data>
   <data name="btnGenAzzzeraContatoriTot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -20732,10 +20822,10 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;btnGenAzzzeraContatoriTot.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="btnGenAzzzeraContatori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1083, 323</value>
+    <value>549, 540</value>
   </data>
   <data name="btnGenAzzzeraContatori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -20759,10 +20849,10 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;btnGenAzzzeraContatori.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="btnCaricaContatori.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1083, 279</value>
+    <value>700, 540</value>
   </data>
   <data name="btnCaricaContatori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -20786,7 +20876,7 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;btnCaricaContatori.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="txtContCaricheOpportunity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
@@ -21776,7 +21866,7 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;grbMainContatori.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="txtGenSerialeZVT.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -22484,7 +22574,7 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;GrbMainDatiApparato.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="txtCliNomeIntLL.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -22823,7 +22913,7 @@
     <value>tabGenerale</value>
   </data>
   <data name="&gt;&gt;grbDatiCliente.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="tabGenerale.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -22832,7 +22922,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabGenerale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 618</value>
+    <value>1479, 696</value>
   </data>
   <data name="tabGenerale.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -22859,7 +22949,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabCaricaBatterie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1487, 644</value>
+    <value>1487, 722</value>
   </data>
   <data name="tabCaricaBatterie.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -22931,7 +23021,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1508, 675</value>
+    <value>1508, 744</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

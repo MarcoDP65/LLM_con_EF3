@@ -85,8 +85,15 @@ namespace MoriData
         public ushort OpportunityTensioneMax { get; set; }
         public ushort OpportunityCorrente { get; set; }
 
+        public ushort MantenimentoAttivo { get; set; }
+        public ushort MantenimentoAttesa { get; set; }
+        public ushort MantenimentoTensIniziale { get; set; }
+        public ushort MantenimentoTensFinale { get; set; }
+        public ushort MantenimentoTMaxErogazione { get; set; }
+        public ushort MantenimentoCorrErogazione { get; set; }
 
-        public byte AbilitaContattoSafety { get; set; }
+
+        public ushort AbilitaContattoSafety { get; set; }
         public byte AbilitaComunicazioneSpybatt { get; set; }
         public byte TempoErogazioneBMS { get; set; }
         public byte TempoAttesaBMS { get; set; }
@@ -128,6 +135,20 @@ namespace MoriData
                 if (DurataMinFase2 != ProgCarica.DurataMinFase2) return false;
                 if (DurataMaxFase2 != ProgCarica.DurataMaxFase2) return false;
                 if (DurataMaxFase3 != ProgCarica.DurataMaxFase3) return false;
+
+                if (OpportunityOraInizio != ProgCarica.OpportunityOraInizio) return false;
+                if (OpportunityOraFine != ProgCarica.OpportunityOraFine) return false;
+                if (OpportunityDurataMax != ProgCarica.OpportunityDurataMax) return false;
+                if (OpportunityTensioneMax != ProgCarica.OpportunityTensioneMax) return false;
+                if (OpportunityCorrente != ProgCarica.OpportunityCorrente) return false;
+
+                if (MantenimentoAttivo != ProgCarica.MantenimentoAttivo) return false;
+                if (MantenimentoAttesa != ProgCarica.MantenimentoAttesa) return false;
+                if (MantenimentoTensIniziale != ProgCarica.MantenimentoTensIniziale) return false;
+                if (MantenimentoTensFinale != ProgCarica.MantenimentoTensFinale) return false;
+                if (MantenimentoTMaxErogazione != ProgCarica.MantenimentoTMaxErogazione) return false;
+                if (MantenimentoCorrErogazione != ProgCarica.MantenimentoCorrErogazione) return false;
+
                 if (AbilitaComunicazioneSpybatt != ProgCarica.AbilitaComunicazioneSpybatt) return false;
                 if (TempoErogazioneBMS != ProgCarica.TempoErogazioneBMS) return false;
                 if (TempoAttesaBMS != ProgCarica.TempoAttesaBMS) return false;
@@ -483,6 +504,11 @@ namespace MoriData
                 _par.ValoreParametro = _llprc.PercTempoFase2;
                 ListaParametri.Add(_par);
 
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.Safety;
+                _par.ValoreParametro = _llprc.AbilitaContattoSafety;
+                ListaParametri.Add(_par);
+
                 // Numero Celle
                 _par = new ParametroLL();
                 _par.idParametro = (byte)SerialMessage.ParametroLadeLight.NumeroCelle;
@@ -608,12 +634,80 @@ namespace MoriData
                 _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaDurataI;
                 _par.ValoreParametro = _llprc.EqualDurataImpulso;
                 ListaParametri.Add(_par);
+
                 // Corrente Impulso
                 _par = new ParametroLL();
                 _par.idParametro = (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaCorrenteImp;
                 _par.ValoreParametro = _llprc.EqualCorrenteImpulso;
                 ListaParametri.Add(_par);
 
+                // Opportunity Ora Inizio
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.OpportunityOraInizio;
+                _par.ValoreParametro = _llprc.OpportunityOraInizio;
+                ListaParametri.Add(_par);
+
+                // Opportunity Ora Fine
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.OpportunityOraFine;
+                _par.ValoreParametro = _llprc.OpportunityOraFine;
+                ListaParametri.Add(_par);
+
+                // Opportunity Durata Max
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.OpportunityDurataMax;
+                _par.ValoreParametro = _llprc.OpportunityDurataMax;
+                ListaParametri.Add(_par);
+
+                // Opportunity Tensione Max
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.OpportunityTensioneStop;
+                _par.ValoreParametro = _llprc.OpportunityTensioneMax;
+                ListaParametri.Add(_par);
+
+                // Opportunity Corrente
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.OpportunityCorrente;
+                _par.ValoreParametro = _llprc.OpportunityCorrente;
+                ListaParametri.Add(_par);
+
+                // Mantenimento Attivo
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.MantenimentoAttivo;
+                _par.ValoreParametro = _llprc.MantenimentoAttivo;
+                ListaParametri.Add(_par);
+
+                // Mantenimento Attesa
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.MantenimentoAttesa;
+                _par.ValoreParametro = _llprc.MantenimentoAttesa;
+                ListaParametri.Add(_par);
+
+                // Mantenimento TensIniziale
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.MantenimentoTensIniziale;
+                _par.ValoreParametro = _llprc.MantenimentoTensIniziale;
+                ListaParametri.Add(_par);
+
+                // Mantenimento TensFinale
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.MantenimentoTensFinale;
+                _par.ValoreParametro = _llprc.MantenimentoTensFinale;
+                ListaParametri.Add(_par);
+
+                // Mantenimento TMaxErogazione
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.MantenimentoTMaxErogazione;
+                _par.ValoreParametro = _llprc.MantenimentoTMaxErogazione;
+                ListaParametri.Add(_par);
+
+                // Mantenimento  CorrErogazione
+                _par = new ParametroLL();
+                _par.idParametro = (byte)SerialMessage.ParametroLadeLight.MantenimentoCorrErogazione;
+                _par.ValoreParametro = _llprc.MantenimentoCorrErogazione;
+                ListaParametri.Add(_par);
+
+                // Modello LadeLight
                 _par = new ParametroLL();
                 _par.idParametro = (byte)SerialMessage.ParametroLadeLight.ModelloLadeLight;
                 _par.ValoreParametro = _llprc.IdModelloLL;
@@ -715,6 +809,18 @@ namespace MoriData
 
                 _llprc.IdModelloLL = 0;
 
+                _llprc.OpportunityOraInizio = 0;
+                _llprc.OpportunityOraFine = 0;
+                _llprc.OpportunityDurataMax = 0;
+                _llprc.OpportunityTensioneMax = 0;
+                _llprc.OpportunityCorrente = 0;
+
+                _llprc.MantenimentoAttivo = 0;
+                _llprc.MantenimentoAttesa = 0;
+                _llprc.MantenimentoTensIniziale = 0;
+                _llprc.MantenimentoTensFinale = 0;
+                _llprc.MantenimentoTMaxErogazione = 0;
+                _llprc.MantenimentoCorrErogazione = 0;
 
                 // Riarmo BMS
                 _llprc.TempoErogazioneBMS = 0;
@@ -840,15 +946,63 @@ namespace MoriData
                         case (byte)SerialMessage.ParametroLadeLight.EqualFineCaricaCorrenteImp:
                             _llprc.EqualCorrenteImpulso = _par.ValoreParametro;
                             break;
-
+                        case (byte)SerialMessage.ParametroLadeLight.Safety:
+                            _llprc.AbilitaContattoSafety = _par.ValoreParametro;
+                            break;
 
                         case (byte)SerialMessage.ParametroLadeLight.DivisoreK:
                             _llprc.AbilitaComunicazioneSpybatt = (byte)_par.ValoreParametro;
                             break;
 
+                        case (byte)SerialMessage.ParametroLadeLight.OpportunityOraInizio:
+                            _llprc.OpportunityOraInizio = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.OpportunityOraFine:
+                            _llprc.OpportunityOraFine = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.OpportunityDurataMax:
+                            _llprc.OpportunityDurataMax = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.OpportunityTensioneStop:
+                            _llprc.OpportunityTensioneMax = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.OpportunityCorrente:
+                            _llprc.OpportunityCorrente = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.MantenimentoAttivo:
+                            _llprc.MantenimentoAttivo = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.MantenimentoAttesa:
+                            _llprc.MantenimentoAttesa = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.MantenimentoTensIniziale:
+                            _llprc.MantenimentoTensIniziale = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.MantenimentoTensFinale:
+                            _llprc.MantenimentoTensFinale = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.MantenimentoTMaxErogazione:
+                            _llprc.MantenimentoTMaxErogazione = (byte)_par.ValoreParametro;
+                            break;
+
+                        case (byte)SerialMessage.ParametroLadeLight.MantenimentoCorrErogazione:
+                            _llprc.MantenimentoCorrErogazione = (byte)_par.ValoreParametro;
+                            break;
+
+
                         case (byte)SerialMessage.ParametroLadeLight.ModelloLadeLight:
                             _llprc.IdModelloLL = (byte)_par.ValoreParametro;
                             break;
+
 
                         case (byte)SerialMessage.ParametroLadeLight.RiarmoBMS:
                             FunzioniComuni.SplitUshort(_par.ValoreParametro, ref loval, ref hival);

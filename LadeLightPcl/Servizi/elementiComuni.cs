@@ -35,6 +35,7 @@ namespace ChargerLogic
                                           CaricamentoInizialeLL = 18,
                                           MemLungaLLcontatore = 20,
                                           InizializzazioneRigeneratore = 32,
+                                          AggiornamentoFirmwareSC = 40,
                                           NonDefinito = -1 };
 
         public enum contenutoMessaggio : int { vuoto = 0, Ack = 1, Nack = 2, Break = 3, Dati = 10, NonValido = -1 };

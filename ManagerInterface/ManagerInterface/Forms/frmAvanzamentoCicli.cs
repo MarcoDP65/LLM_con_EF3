@@ -42,6 +42,7 @@ namespace PannelloCharger
         public elementiComuni.tipoMessaggio TipoComando { get; set; }
         public BloccoFirmware FirmwareBlock { get; set; }
         public BloccoFirmwareLL FirmwareLLBlock { get; set; }
+        public BloccoFirmwareSC FirmwareSCBlock { get; set; }
         public byte FirmwareArea { get; set; }
         public int ValStart;
         public UInt32 AddrStart;
@@ -152,6 +153,12 @@ namespace PannelloCharger
                     llLocale.RichiestaInterruzione = false;
                     DoWork_LL(sender, e);
                     break;
+
+                case ControlledDevice.SuperCharger:
+                    llLocale.RichiestaInterruzione = false;
+                    DoWork_LL(sender, e);
+                    break;
+
                 case ControlledDevice.Desolfatatore:
                     sbLocale.RichiestaInterruzione = false;
                     DoWork_SB(sender, e);
@@ -765,6 +772,185 @@ namespace PannelloCharger
                         _esito = llLocale.AggiornaFirmware("", llLocale.apparatoPresente, FirmwareArea, FirmwareLLBlock, true); // InviaACK, true, SalvaHexDump, FileHexDump);
                         break;
                     }
+
+                case elementiComuni.tipoMessaggio.AggiornamentoFirmwareSC:
+                    {
+                        _stepBg.Titolo = StringheComuni.AvTitolo04Firmware;  // "Aggiornamento Firmware";
+                        _stepBg.Step = -1;
+                        _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio aggiornamento firmware SC");
+
+                        _esito = llLocale.AggiornaFirmwareSC("", llLocale.apparatoPresente, FirmwareArea, FirmwareSCBlock, true); // InviaACK, true, SalvaHexDump, FileHexDump);
+                        break;
+                    }
+
+                case elementiComuni.tipoMessaggio.CaricamentoInizialeLL:
+                    {
+                        _stepBg.Titolo = "Caricamento Memoria Dati";
+                        _stepBg.Step = -1;
+                        // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio lettura: CaricamentoInizialeLL " + ValStart.ToString() + " - " + ValFine.ToString());
+
+                        _esito = llLocale.LeggiDatiCompleti(true);
+                        if (!_esito)
+                        {
+                            // lblMessaggioAvanzamento.Text = llLocale.UltimoMsgErrore;
+                        }
+
+                        break;
+                    }
+
+
+
+            }
+
+
+
+            //Report 100% completion on operation completed
+
+            TimeSpan _tTrascorso = DateTime.Now.Subtract(_inizioChiamata);
+
+            _esitoBg.EventiPrevisti = 1;
+            _esitoBg.UltimoEvento = 1;
+            _esitoBg.SecondiElaborazione = _tTrascorso.TotalSeconds;
+            e.Result = _esitoBg;
+        }
+
+
+        void DoWork_SC(object sender, DoWorkEventArgs e)
+        {
+            //NOTE : Never play with the UI thread here...
+            bool _esito;
+
+            btnAnnulla.Enabled = true;
+            btnChiudi.Enabled = false;
+            btnStartLettura.Enabled = false;
+            elementiComuni.EndStep _esitoBg = new elementiComuni.EndStep();
+            elementiComuni.WaitStep _stepBg = new elementiComuni.WaitStep();
+            ProgressChangedEventArgs _stepEv;
+            //time consuming operation
+            DateTime _inizioChiamata = DateTime.Now;
+            usParameters _parametri = (usParameters)e.Argument;
+            if (sbWorker.CancellationPending)
+            {
+                Log.Debug("Richiesta cancellazione pendente. chiudo il BW");
+                e.Cancel = true;
+            }
+
+
+            switch (TipoComando)
+            {
+                case elementiComuni.tipoMessaggio.vuoto:
+                    {
+                        break;
+                    }
+                case elementiComuni.tipoMessaggio.DumpMemoria:
+                    {
+                        break;
+                    }
+                case elementiComuni.tipoMessaggio.MemLungaLL:
+                    {
+                        _stepBg.Titolo = StringheComuni.AvTitolo02Lunghi;  // "Caricamento Eventi Lunghi";
+                        _stepBg.Step = -1;
+                        // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio lettura: MemLunga " + ValStart.ToString() + " - " + ValFine.ToString());
+                        object _esitoLunghi;
+                        _esito = llLocale.CaricaListaCicli(AddrStart, (ushort)ValFine, out _esitoLunghi, CaricaBrevi, true);
+
+                        break;
+                    }
+                case elementiComuni.tipoMessaggio.AreaMemLungaLL:
+                    {
+                        _stepBg.Titolo = StringheComuni.AvTitolo02Lunghi;  // "Caricamento Eventi Lunghi";
+                        _stepBg.Step = -1;
+                        // _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio lettura: MemLunga " + ValStart.ToString() + " - " + ValFine.ToString());
+
+                        _esito = llLocale.LeggiBloccoLunghi(true);
+
+                        break;
+                    }
+                case elementiComuni.tipoMessaggio.MemBreve:
+                    {
+                        _stepBg.Titolo = StringheComuni.AvTitolo03Brevi;  // "Caricamento Eventi Brevi";
+                        _stepBg.Step = -1;
+
+                        _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        int _stepCorrente = 0;
+
+                        foreach (Registrazione _elemento in ListaCicli.Elenco)
+                        {
+                            // Se chiedo la cancellazione esco al ciclo successivo
+                            if (sbWorker.CancellationPending)
+                            {
+                                e.Cancel = true;
+                                sbLocale.RichiestaInterruzione = true;
+                                break;
+                            }
+
+                            sbMemLunga _memLunga = (sbMemLunga)_elemento.Record;
+                            if (_memLunga != null)
+                            {
+                                _stepCorrente++;
+                                //Scarico i brevi solo se ho un puntatore valido
+                                if (_memLunga.PuntatorePrimoBreve < 0xFFFFFFFF)
+                                {
+
+                                    //prima avanzo il contatore lunghi
+                                    elementiComuni.WaitStep _passo = new elementiComuni.WaitStep();
+                                    int _progress = 0;
+                                    double _valProgress = 0;
+                                    _passo.TipoDati = elementiComuni.tipoMessaggio.MemLunga;
+                                    _passo.Titolo = "";
+                                    _passo.Eventi = ListaCicli.Elenco.Count();
+                                    _passo.Step = _stepCorrente;
+                                    if (_passo.Eventi > 0)
+                                    {
+                                        _valProgress = (_passo.Step * 100) / _passo.Eventi;
+                                    }
+                                    _progress = (int)_valProgress;
+                                    //ProgressChangedEventArgs _stepEvBreve = new ProgressChangedEventArgs(_progress, _passo);
+                                    //Step(this, _stepEvBreve);
+                                    sbWorker.ReportProgress(_progress, _passo);
+                                    // poi lancio il caricamento brevi
+
+                                    if (sbLocale.RicaricaCaricaCicliMemBreve(_memLunga))
+                                    {
+                                        _memLunga.CaricaBrevi();
+                                        Log.Debug("Caricati Brevi ");
+
+                                    }
+                                }
+                            }
+
+                        }
+
+                        sbLocale.ConsolidaBrevi();
+
+                        break;
+                    }
+                case elementiComuni.tipoMessaggio.AggiornamentoFirmware:
+                    {
+
+                        break;
+                    }
+
+                case elementiComuni.tipoMessaggio.AggiornamentoFirmwareSC:
+                    {
+                        _stepBg.Titolo = StringheComuni.AvTitolo04Firmware;  // "Aggiornamento Firmware";
+                        _stepBg.Step = -1;
+                        _stepEv = new ProgressChangedEventArgs(0, _stepBg);
+                        sbWorker.ReportProgress(0, _stepBg);
+                        Log.Debug("Lancio aggiornamento firmware ");
+
+                        _esito = llLocale.AggiornaFirmware("", llLocale.apparatoPresente, FirmwareArea, FirmwareLLBlock, true); // InviaACK, true, SalvaHexDump, FileHexDump);
+                        break;
+                    }
                 case elementiComuni.tipoMessaggio.CaricamentoInizialeLL:
                     {
                         _stepBg.Titolo = "Caricamento Memoria Dati";
@@ -800,6 +986,9 @@ namespace PannelloCharger
 
 
 
+
+
+
         void sbWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             string _messaggio1; 
@@ -830,6 +1019,14 @@ namespace PannelloCharger
                 case ControlledDevice.Display:
                     break;
                 case ControlledDevice.LadeLight:
+                    _statoLL = (elementiComuni.WaitStep)e.UserState;
+                    _EsecuzioneInterrotta = _statoLL.EsecuzioneInterrotta;
+                    _titolo = _statoLL.Titolo;
+                    _step = _statoLL.Step;
+                    _msg = _statoLL.TipoDati;
+                    _retry = _statoLL.NumTentativi;
+                    break;
+                case ControlledDevice.SuperCharger:
                     _statoLL = (elementiComuni.WaitStep)e.UserState;
                     _EsecuzioneInterrotta = _statoLL.EsecuzioneInterrotta;
                     _titolo = _statoLL.Titolo;
@@ -1466,6 +1663,9 @@ namespace PannelloCharger
                 case ControlledDevice.LadeLight:
                     llLocale.Step += new CaricaBatteria.StepHandler(stepRispostaLL);
                     break;
+                case ControlledDevice.SuperCharger:
+                    llLocale.Step += new CaricaBatteria.StepHandler(stepRispostaLL);
+                    break;
                 case ControlledDevice.Desolfatatore:
                     break;
                 default:
@@ -1501,9 +1701,9 @@ namespace PannelloCharger
            // this.Dispose();
         }
 
+        private void lblMsg01_Click(object sender, EventArgs e)
+        {
 
-
-
-
+        }
     }
 }

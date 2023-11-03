@@ -67,9 +67,12 @@
             this.CallIDBattToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuServizi = new System.Windows.Forms.ToolStripMenuItem();
             this.flashFTDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inizializzazioneDisplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flashSPYBATTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mSP430FlasherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+            this.inizializzazioneDisplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseInizializzazioneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.sIG60MonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmazioniAvanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testCalendarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -362,9 +365,12 @@
             // 
             this.mnuServizi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flashFTDIToolStripMenuItem,
-            this.inizializzazioneDisplayToolStripMenuItem,
             this.flashSPYBATTToolStripMenuItem,
             this.mSP430FlasherToolStripMenuItem,
+            this.toolStripMenuItem9,
+            this.inizializzazioneDisplayToolStripMenuItem,
+            this.databaseInizializzazioneToolStripMenuItem,
+            this.toolStripMenuItem8,
             this.sIG60MonitorToolStripMenuItem,
             this.programmazioniAvanzateToolStripMenuItem,
             this.testCalendarioToolStripMenuItem});
@@ -377,12 +383,6 @@
             resources.ApplyResources(this.flashFTDIToolStripMenuItem, "flashFTDIToolStripMenuItem");
             this.flashFTDIToolStripMenuItem.Click += new System.EventHandler(this.flashFTDIToolStripMenuItem_Click);
             // 
-            // inizializzazioneDisplayToolStripMenuItem
-            // 
-            this.inizializzazioneDisplayToolStripMenuItem.Name = "inizializzazioneDisplayToolStripMenuItem";
-            resources.ApplyResources(this.inizializzazioneDisplayToolStripMenuItem, "inizializzazioneDisplayToolStripMenuItem");
-            this.inizializzazioneDisplayToolStripMenuItem.Click += new System.EventHandler(this.inizializzazioneDisplayToolStripMenuItem_Click);
-            // 
             // flashSPYBATTToolStripMenuItem
             // 
             this.flashSPYBATTToolStripMenuItem.Name = "flashSPYBATTToolStripMenuItem";
@@ -393,6 +393,28 @@
             this.mSP430FlasherToolStripMenuItem.Name = "mSP430FlasherToolStripMenuItem";
             resources.ApplyResources(this.mSP430FlasherToolStripMenuItem, "mSP430FlasherToolStripMenuItem");
             this.mSP430FlasherToolStripMenuItem.Click += new System.EventHandler(this.mSP430FlasherToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            resources.ApplyResources(this.toolStripMenuItem9, "toolStripMenuItem9");
+            // 
+            // inizializzazioneDisplayToolStripMenuItem
+            // 
+            this.inizializzazioneDisplayToolStripMenuItem.Name = "inizializzazioneDisplayToolStripMenuItem";
+            resources.ApplyResources(this.inizializzazioneDisplayToolStripMenuItem, "inizializzazioneDisplayToolStripMenuItem");
+            this.inizializzazioneDisplayToolStripMenuItem.Click += new System.EventHandler(this.inizializzazioneDisplayToolStripMenuItem_Click);
+            // 
+            // databaseInizializzazioneToolStripMenuItem
+            // 
+            this.databaseInizializzazioneToolStripMenuItem.Name = "databaseInizializzazioneToolStripMenuItem";
+            resources.ApplyResources(this.databaseInizializzazioneToolStripMenuItem, "databaseInizializzazioneToolStripMenuItem");
+            this.databaseInizializzazioneToolStripMenuItem.Click += new System.EventHandler(this.databaseInizializzazioneToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            resources.ApplyResources(this.toolStripMenuItem8, "toolStripMenuItem8");
             // 
             // sIG60MonitorToolStripMenuItem
             // 
@@ -748,6 +770,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuIdBatt;
         private System.Windows.Forms.ToolStripMenuItem CallIDBattToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inizializzazioneDisplayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem databaseInizializzazioneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
     }
 }
 

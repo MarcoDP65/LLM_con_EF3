@@ -5,6 +5,7 @@ using System.Text;
 using log4net;
 using log4net.Config;
 using MoriData;
+using PannelloCharger;
 using Utility;
 
 
@@ -121,6 +122,124 @@ namespace ChargerLogic
                             startByte += 1;
                             if (Stato == 0xFF) Stato = 0x07;
                         }
+
+                        datiPronti = true;
+                        IstanteLettura = DateTime.Now;
+
+                    }
+
+
+                    return EsitoRisposta.MessaggioOk;
+                }
+                catch
+                {
+                    return EsitoRisposta.ErroreGenerico;
+                }
+
+            }
+
+
+        }
+        public class StatoFirmwareSC
+        {
+            public ushort CodiceBL { get; set; }
+            public string RevBootloader { get; set; }   
+            public string RevFirmware { get; set; }
+            public byte[] ReleaseDateBlock { get; set; }
+            public UInt32 LenPkt { get; set; }
+            public ushort CRCFirmware { get; set; }
+            public UInt32 lunghezzaFwApp { get; set; }
+            public byte NumeroAree { get; set; }
+
+            public List<ParametriAreaSCH> ListaAree { get; set; }
+
+            public ushort Stato { get; set; }
+            public DateTime IstanteLettura { get; set; }
+
+            byte[] _dataBuffer { get; set; }
+            public byte[] dataBuffer { get; set; }
+            public bool datiPronti;
+            public string lastError;
+
+            public EsitoRisposta analizzaMessaggio(byte[] _messaggio, int fwLevel)
+            {
+
+                byte[] _risposta;
+                int startByte = 0;
+
+                try
+                {
+                    datiPronti = false;
+                    if (_messaggio.Length < 2)
+                    {
+                        datiPronti = false;
+                        return EsitoRisposta.NonRiconosciuto;
+                    }
+
+                    _risposta = new byte[(_messaggio.Length / 2)];
+
+                    if (decodificaArray(_messaggio, ref _risposta))
+                    {
+                        startByte = 0;
+                        Log.Debug(" ---------------------- Info Firmware -----------------------------------------");
+                        Log.Debug(FunzioniMR.hexdumpArray(_risposta));
+
+                        CodiceBL = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        Stato = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        RevBootloader = ArrayToString(_risposta, startByte, 10);
+                        startByte += 10;
+                        LenPkt = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        RevFirmware = ArrayToString(_risposta, startByte, 10);
+                        startByte += 10;
+                        lunghezzaFwApp = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        NumeroAree = _risposta[startByte];
+                        startByte += 1;
+                        CRCFirmware = ArrayToUshort(_risposta, startByte, 2);
+                        startByte += 2;
+                        /*
+                        AddrFlash0 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        LenFlash0 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        AddrFlash1 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        LenFlash1 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        AddrFlash2 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        LenFlash2 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        AddrFlash3 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        LenFlash3 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        AddrFlash4 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        LenFlash4 = ArrayToUint32(_risposta, startByte, 4);
+                        startByte += 4;
+                        */
+                        /*
+                        ReleaseDateBlock = new byte[3];
+                        ReleaseDateBlock[0] = _risposta[startByte];
+                        if (ReleaseDateBlock[0] == 0xFF)
+                            ReleaseDateBlock[0] = 1;
+
+                        startByte += 1;
+                        ReleaseDateBlock[1] = _risposta[startByte];
+                        if (ReleaseDateBlock[1] == 0xFF)
+                            ReleaseDateBlock[1] = 1;
+
+                        startByte += 1;
+                        ReleaseDateBlock[2] = _risposta[startByte];
+                        if (ReleaseDateBlock[2] == 0xFF)
+                            ReleaseDateBlock[2] = 15;
+
+                        startByte += 1;
+                        */
 
                         datiPronti = true;
                         IstanteLettura = DateTime.Now;
@@ -1153,7 +1272,7 @@ namespace ChargerLogic
             public string NomeCiclo { get; set; }
             public ushort IdProfilo { get; set; }
             public byte NumParametri { get; set; }
-            public List<ParametroLL> Parametri;
+            public List<ParametroLL> Parametri { get; set; }
 
             public ushort CrcPacchetto { get; set; }
 

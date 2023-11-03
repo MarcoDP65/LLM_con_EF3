@@ -68,8 +68,12 @@ namespace PannelloCharger
         private llMemoriaCicli CicloCorrente;
 
         public List<llVariabili> ListaValori = new List<llVariabili>();  // lista per listview realtime logger
-        public List<ParametriArea> ListaAreeLLF = new List<ParametriArea>();  // lista per listview file Firmware upload
-        public List<ParametriArea> ListaAreeCCS = new List<ParametriArea>();  // lista per listview file Firmware upload
+
+        public List<ParametriAreaSCH> ListaAreeSRec = new List<ParametriAreaSCH>();  // lista per listview file Firmware upload
+
+
+        //public List<ParametriArea> ListaAreeLLF = new List<ParametriArea>();  // lista per listview file Firmware upload
+        //public List<ParametriArea> ListaAreeCCS = new List<ParametriArea>();  // lista per listview file Firmware upload
 
         private List<TabPage> PagineNascoste = new List<TabPage>();
 
@@ -97,6 +101,7 @@ namespace PannelloCharger
                 InitializeComponent();
                 
                 ResizeRedraw = true;
+
 
 
                 _logiche = Logiche;
@@ -171,6 +176,8 @@ namespace PannelloCharger
                 ResizeRedraw = true;
                 _msg = new SerialMessage();
                 _cb = new CaricaBatteria(ref _parametri, _logiche.dbDati.connessione, CaricaBatteria.TipoCaricaBatteria.SuperCharger);
+                _cb.OnBaudRateChange += OnBRChange;
+
                 InizializzaScheda();
                 _esito = _cb.apriPorta();
                 if (!_esito)
@@ -2095,11 +2102,11 @@ namespace PannelloCharger
             {
                 if (sfdImportDati.InitialDirectory == "") sfdImportDati.InitialDirectory = PannelloCharger.Properties.Settings.Default.pathLLFwSource;
 
-                sfdImportDati.Filter = "CCS Generated File (*.hex)|*.hex|All files (*.*)|*.*";
+                sfdImportDati.Filter = "SRec File (*.srec)|*.srec|All files (*.*)|*.*";
                 sfdImportDati.ShowDialog();
                 txtFwFileCCS.Text = sfdImportDati.FileName;
 
-                ControllaNomiFilesCCSLL(sfdImportDati.FileName);
+                //ControllaNomiFilesCCSLL(sfdImportDati.FileName);
 
                 PannelloCharger.Properties.Settings.Default.pathLLFwSource = Path.GetDirectoryName(sfdImportDati.FileName);
             }
@@ -2112,7 +2119,7 @@ namespace PannelloCharger
 
         private void btnFWFileSBFsearch_Click(object sender, EventArgs e)
         {
-            sfdExportDati.Filter = "LLF LADE Light Firmware File (*.llf)|*.llf|All files (*.*)|*.*";
+            sfdExportDati.Filter = "LLSCF LADE Light SuperCharger Firmware File (*.llscf)|*.llscf|All files (*.*)|*.*";
             sfdExportDati.ShowDialog();
             txtFWFileLLFwr.Text = sfdExportDati.FileName;
             btnFWLanciaTrasmissione.Enabled = false;
@@ -2121,7 +2128,7 @@ namespace PannelloCharger
 
         private void btnFWFileCCSLoad_Click(object sender, EventArgs e)
         {
-            CaricafileLLCCS();
+            CaricafileLLSrec();
         }
 
         private void btnFWFilePubSave_Click(object sender, EventArgs e)
@@ -2134,17 +2141,17 @@ namespace PannelloCharger
                     return;
                 }
 
-                SalvaFileLLF();
+                SalvaFileLLSCF();
             }
         }
 
         private void btnFWFileLLFReadSearch_Click(object sender, EventArgs e)
         {
-            sfdImportDati.Filter = "LLF LADE Light Firmware File (*.llf)|*.llf|All files (*.*)|*.*";
+            sfdImportDati.Filter = "LLSCF LADE Light SuperCharger Firmware File (*.llscf)|*.llscf|All files (*.*)|*.*";
             sfdImportDati.ShowDialog();
             txtFWFileSBFrd.Text = sfdImportDati.FileName;
 
-            bool _preview = CaricafileLLF();
+            bool _preview = CaricafileLLSCF();
         }
 
         private void btnFWFileLLFLoad_Click(object sender, EventArgs e)
@@ -2154,7 +2161,7 @@ namespace PannelloCharger
                 if (txtFWFileSBFrd.Text == "") return;
 
                 btnFWLanciaTrasmissione.Enabled = false;
-                CaricafileLLF();
+                CaricafileLLSCF();
 
 
                 PreparaTrasmissioneFW();
@@ -2183,7 +2190,7 @@ namespace PannelloCharger
 
         private void btnFWFileSBFLoad_Click(object sender, EventArgs e)
         {
-            CaricafileLLCCS();
+             CaricafileLLSCF();
         }
 
         private void btnFWLanciaTrasmissione_Click(object sender, EventArgs e)
@@ -2439,7 +2446,7 @@ namespace PannelloCharger
                         _risposta += _Dati[_i].ToString("X2") + " ";
                         _colonne += 1;
                         if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
-                        if (_colonne > 15)
+                        if (_colonne > 31)
                         {
                             _risposta += "\r\n";
                             _colonne = 0;
@@ -2473,6 +2480,132 @@ namespace PannelloCharger
             }
 
         }
+
+        public bool LeggiBloccoMemoriaExt(uint StartAddr, ushort NumByte, bool MemoriaInterna)
+        {
+            try
+            {
+                byte[] _tempBuffer;
+                byte[] _Dati;
+                bool _esito = false;
+                uint tempAddr = StartAddr;
+                byte DATABLOCK = 128;
+                //byte[] _dataArray;
+                //int _numBytes;
+                int _cicliCompleti;
+                int _byteResidui;
+                int StepIniziale = 0;
+                int BaseStep;
+
+                // txtMemRegenNumBlocchi.Text = BloccoAttivo.IdBlocco.ToString();
+                //_numBytes = _NumPagine * 0x1000;
+
+                _Dati = new byte[NumByte];
+
+                _cicliCompleti = NumByte / DATABLOCK;
+                _byteResidui = NumByte % DATABLOCK;
+
+
+                // Leggo prima i pacchetti interi
+                _tempBuffer = new byte[DATABLOCK];
+
+                for (int _step = 0; _step < _cicliCompleti; _step++)
+                {
+                    BaseStep = (_step * DATABLOCK);
+                    _esito = _cb.LeggiBloccoMemoria(tempAddr, DATABLOCK, out _tempBuffer,false);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for (int _ii = 0; _ii < DATABLOCK; _ii++)
+                        {
+                            _Dati[BaseStep + _ii] = _tempBuffer[_ii];
+                        }
+                        tempAddr += DATABLOCK;
+                        //Application.DoEvents();
+
+                    }
+                    else
+                    {
+                        //MessageBox.Show("Errore lettura pacchetto " + _step.ToString(), "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+                }
+
+
+
+                // Ora Leggo il residuo
+                if (_byteResidui > 0)
+                {
+                    _tempBuffer = new byte[_byteResidui];
+
+                    BaseStep = (_cicliCompleti * DATABLOCK);
+                    _esito = _cb.LeggiBloccoMemoria(tempAddr, (ushort)_byteResidui, out _tempBuffer);
+                    if (_esito)
+                    {
+                        // Pacchetto letto con successo, accodo i dati
+                        for (int _ii = 0; _ii < _byteResidui; _ii++)
+                        {
+                            _Dati[BaseStep + _ii] = _tempBuffer[_ii];
+                        }
+                        // lblMemRegenAvanzamentoRead.Text = "Pacchetto Finale";
+                        // Application.DoEvents();
+
+                    }
+                    else
+                    {
+                        //MessageBox.Show("Errore lettura pacchetto finale ", "Esportazione dati", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+
+                }
+
+                if (_esito == true)
+                {
+
+
+                    string _risposta = "";
+                    int _colonne = 0;
+                    for (int _i = 0; _i < _Dati.Length; _i++)
+                    {
+                        _risposta += _Dati[_i].ToString("X2") + " ";
+                        _colonne += 1;
+                        if (_colonne > 0 && (_colonne % 4) == 0) _risposta += "  ";
+                        if (_colonne > 31)
+                        {
+                            _risposta += "\r\n";
+                            _colonne = 0;
+
+                        }
+                    }
+                    if (MemoriaInterna)
+                    {
+                        txtMemDataGrid.ForeColor = Color.Blue;
+                    }
+                    else
+                    {
+                        txtMemDataGrid.ForeColor = Color.Black;
+                    }
+                    txtMemDataGrid.Text = _risposta;
+
+                }
+                else
+                {
+                    txtMemDataGrid.ForeColor = Color.Red;
+                    txtMemDataGrid.Text = "Lettura Fallita";
+                }
+
+
+                return _esito;
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("LeggiBloccoMemoria: " + Ex.Message);
+                return false;
+            }
+
+        }
+
 
         public bool CaricaStatoAreaFw(byte IdArea, byte StatoFirmware)
         {
@@ -6097,10 +6230,68 @@ namespace PannelloCharger
 
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+
+        public void OnBRChange(CaricaBatteria CB,CBEventArgs EvArgs)
         {
+            try
+            {
+                if (EvArgs == null) return;
+                if (EvArgs.CurrentBaudrate == null) return;
+
+                switch(EvArgs.CurrentBaudrate.Mode) 
+                {
+                    case BaudRate.BRType.BR_115200:
+                        {
+                            optGenBR115.Checked = true;
+                            txtGenBRCust.Text = "";
+                            break;
+                        }
+                    case BaudRate.BRType.BR_CUSTOM:
+                        {
+                            switch(EvArgs.CurrentBaudrate.Speed)
+                            {
+                                case 1000000:
+                                    {
+                                        optGenBR1M.Checked = true;
+                                        txtGenBRCust.Text = "";
+                                        break;
+                                    }
+                                case 2995200:
+                                    {
+                                        optGenBR2995K.Checked = true;
+                                        txtGenBRCust.Text = "";
+                                        break;
+                                    }
+                                case 3000000:
+                                    {
+                                        optGenBR3M.Checked = true;
+                                        txtGenBRCust.Text = "";
+                                        break;
+                                    }
+                                default:
+                                    {
+                                        optGenBRCust.Checked = true;
+                                        txtGenBRCust.Text = EvArgs.CurrentBaudrate.Speed.ToString();
+                                        break;
+                                    }
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+
+            }
+            catch
+            {
+
+            }
 
         }
+
+
 
         private void btnGenCambiaBaudRate_Click(object sender, EventArgs e)
         {
@@ -6124,6 +6315,12 @@ namespace PannelloCharger
                     TempBR.Speed = 1000000;
                 }
 
+                if (optGenBR2995K.Checked)
+                {
+                    TempBR.Mode = BaudRate.BRType.BR_CUSTOM;
+                    TempBR.Speed = 2995200;
+                }
+
 
                 if (optGenBR3M.Checked)
                 {
@@ -6131,11 +6328,30 @@ namespace PannelloCharger
                     TempBR.Speed = 3000000;
                 }
 
+                if (optGenBRCust.Checked)
+                {
+                    int CustBr = 0;
+                    if (int.TryParse(txtGenBRCust.Text, out CustBr) != true)
+                    {
+                        TempBR.Mode = BaudRate.BRType.BR_CUSTOM;
+                        TempBR.Speed = CustBr;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
+
                 this.Cursor = Cursors.WaitCursor;
-
-
+                lblGenBRState.Text = "Changing ....";
+                lblGenBRState.ForeColor = Color.Red;
+                Application.DoEvents();
                 Esito = _cb.ImpostaBaudRate(TempBR);
 
+                lblGenBRState.Text = "Connected ....";
+                lblGenBRState.ForeColor = Color.Green;
+                Application.DoEvents();
                 this.Cursor = Cursors.Default;
 
             }
@@ -6479,6 +6695,90 @@ namespace PannelloCharger
             {
                 Log.Error("btnPaProfileImport_Click: " + Ex.Message);
                 this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void cmdMemReadExt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                uint _StartAddr;
+                ushort _NumByte;
+                bool _esito;
+                bool _memoriaInterna;
+
+                if (chkMemHex.Checked)
+                {
+                    if (uint.TryParse(txtMemAddrR.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out _StartAddr) != true) return;
+                }
+                else
+                {
+
+                    if (uint.TryParse(txtMemAddrR.Text, out _StartAddr) != true) return;
+                }
+
+
+
+                if (ushort.TryParse(txtMemLenR.Text, out _NumByte) != true) return;
+
+                if (_NumByte < 1) _NumByte = 1;
+                if (_NumByte > 240)
+                {
+                    txtMemLenR.Text = _NumByte.ToString();
+                    _memoriaInterna = chkMemInt.Checked;
+                    if (_StartAddr < 0) _StartAddr = 0;
+                    if (chkMemHex.Checked)
+                        txtMemAddrR.Text = _StartAddr.ToString("X6");
+                    else
+                        txtMemAddrR.Text = _StartAddr.ToString();
+
+                    txtMemDataGrid.Text = "";
+                    _esito = LeggiBloccoMemoriaExt(_StartAddr, _NumByte, _memoriaInterna);
+                }
+                else
+                {
+
+                    txtMemLenR.Text = _NumByte.ToString();
+                    _memoriaInterna = chkMemInt.Checked;
+                    if (_StartAddr < 0) _StartAddr = 0;
+                    if (chkMemHex.Checked)
+                        txtMemAddrR.Text = _StartAddr.ToString("X6");
+                    else
+                        txtMemAddrR.Text = _StartAddr.ToString();
+
+                    txtMemDataGrid.Text = "";
+                    _esito = LeggiBloccoMemoria(_StartAddr, _NumByte, _memoriaInterna);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Log.Error("cmdMemRead_Click: " + Ex.Message);
+            }
+
+        }
+
+        private void btnGenCambiaBaudRate_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void optGenBRCust_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (optGenBRCust.Checked) 
+                {
+                    txtGenBRCust.Enabled = true;
+                }
+                else
+                {
+                    txtGenBRCust.Enabled = false;
+                }
+            }
+            catch
+            {
+
             }
         }
     }

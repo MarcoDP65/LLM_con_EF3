@@ -1299,8 +1299,8 @@ namespace PannelloCharger
 
             if (esitoSalvataggio)
             {
-
-                CaricaProgrammazioni();
+                int IdAttivo = _cb.Programmazioni.ProgrammaAttivo.IdProgramma;
+                CaricaProgrammazioni(IdAttivo );
                 MessageBox.Show("Configurazione Aggiornata", "CONFIGURAZIONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -2767,13 +2767,12 @@ namespace PannelloCharger
             }
         }
 
-        public bool CaricaProgrammazioni()
+        public bool CaricaProgrammazioni(int IdAttivo = 0 )
         {
             try
             {
                 bool Esito;
-                Esito = _cb.Programmazioni.CaricaDatiDB("IDBATT", "IB");
-                //Esito = _cb.LeggiProgrammazioni();
+                Esito = _cb.Programmazioni.CaricaDatiDB("IDBATT", "IB", IdAttivo);
 
                 if (Esito)
                 {
