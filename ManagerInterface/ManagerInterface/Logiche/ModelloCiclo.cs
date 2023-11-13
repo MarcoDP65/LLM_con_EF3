@@ -59,6 +59,8 @@ namespace ChargerLogic
                     ProfiloRegistrato = new llProgrammaCarica(connessione);
                     // ProfiloRegistrato.IdProfilo = IdProfilo; // tipo dati ????
                     // ProfiloRegistrato.IdProgramma = idp
+
+                    // Se usa SB -->x tutto vuoto
                     ProfiloRegistrato.TipoBatteria = Batteria.BatteryTypeId;
                     ProfiloRegistrato.IdProgramma = IdProgramma;
                     ProfiloRegistrato.ProgramName = NomeProfilo;
@@ -97,11 +99,13 @@ namespace ChargerLogic
                 ProfiloRegistrato.TipoBatteria = Batteria.BatteryTypeId;
                 ProfiloRegistrato.IdProgramma = IdProgramma;
                 ProfiloRegistrato.ProgramName = NomeProfilo;
-
+                
                 ProfiloRegistrato.BatteryVdef = Tensione;
                 ProfiloRegistrato.BatteryAhdef = Capacita;
-                ProfiloRegistrato.IdProfilo = Profilo.IdProfiloCaricaLL;
-
+                if (Profilo != null)
+                {
+                    ProfiloRegistrato.IdProfilo = Profilo.IdProfiloCaricaLL;
+                }
                 GeneraListaValori();
 
                 ProfiloRegistrato.ListaParametri = ListaParametri;
@@ -1154,9 +1158,19 @@ namespace ChargerLogic
                 NumParametriAttivi += 1;
 
                 // Tipo Profilo
-                NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TipoProfilo, Profilo.IdProfiloCaricaLL);
-                ListaParametri.Add(NuovoParametro);
-                NumParametriAttivi += 1;
+                if (Profilo == null)
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TipoProfilo, 0x0000);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+
+                }
+                else
+                {
+                    NuovoParametro = new ParametroLL((byte)SerialMessage.ParametroLadeLight.TipoProfilo, Profilo.IdProfiloCaricaLL);
+                    ListaParametri.Add(NuovoParametro);
+                    NumParametriAttivi += 1;
+                }
 
                 // Per Litio FATTORE SICUREZZA CAPACITà MASSIMA
                 if (true)

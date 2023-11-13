@@ -767,7 +767,7 @@ namespace ChargerLogic
                                     _mS.ComponiMessaggioPacchettoDatiExtFW(_tmpPacchettoCorrente, _pacchettoDati.DimPacchetto, _pacchettoDati.PacchettoDati, _pacchettoDati.CRC);
                                     // _parametri.scriviMessaggioSpyBatt(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
                                     _parametri.scriviMessaggioLadeLight(_mS.MessageBuffer, 0, _mS.MessageBuffer.Length);
-                                    _esito = aspettaRisposta(100, 0, true);
+                                    _esito = aspettaRisposta(Firmware.StepTimeout, 0, true);
 
                                     Log.Debug("Passo " + _pacchettoCorrente.ToString() + " inviato con esito " + _esito.ToString());
                                     Log.Debug("----------------------------------------------------------");
@@ -871,7 +871,7 @@ namespace ChargerLogic
                                 _passo.EsecuzioneInterrotta = false;
                                 _stepEv = new ProgressChangedEventArgs(0, _passo);
                                 Step(this, _stepEv);
-                                System.Threading.Thread.Sleep(2000);
+                                System.Threading.Thread.Sleep(1000);
                             }
 
 

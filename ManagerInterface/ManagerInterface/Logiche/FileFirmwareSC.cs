@@ -1037,6 +1037,7 @@ namespace ChargerLogic
         // Parametri per debug
 
         public int StepDelay { get; set; }
+        public int StepTimeout { get; set; }
         public UInt32 StepSize { get; set; }
 
         public BloccoFirmwareSC()
@@ -1061,6 +1062,7 @@ namespace ChargerLogic
 
             NumSezioni = 0;
             StepDelay = 0;
+            StepTimeout = 100;
 
             MessaggioTestata = new byte[4192];
             for (int _i = 0; _i < 4192; _i++)

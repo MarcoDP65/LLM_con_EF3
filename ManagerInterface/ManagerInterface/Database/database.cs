@@ -53,6 +53,10 @@ namespace MoriData
                 CreateTable<_llContatoriApparato>();
                 CreateTable<_llProgrammaCarica>();
                 CreateTable <_brInitSetup>();
+
+                // Tabelle per inizializzazione display
+                CreateTable<SqInitArticolo>();
+
                 inizializzaUtente();
                 inizializzaDefSoglie();
                 inizializzaSoglie();

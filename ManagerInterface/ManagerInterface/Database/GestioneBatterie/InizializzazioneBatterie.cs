@@ -934,6 +934,30 @@ namespace ChargerLogic
         }
 
 
+        public bool inizializzaSequenzeInit()
+        {
+            ProfiliCarica = new List<_mbProfiloCarica>();
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x00, NomeProfilo = "Non Definito", DurataFase2 = 100, Attivo = 2, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 0, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, AttivaOpportunity = 0x00, AttivaMant = 0xF0, Grafico = "" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x01, NomeProfilo = "IWa", DurataFase2 = 100, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 1, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x02, NomeProfilo = "IU", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 1, FlagLitio = 0, Ordine = 2, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IU650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x03, NomeProfilo = "IUIa", DurataFase2 = 100, Attivo = 0, FlagPb = 0, FlagGel = 0, FlagLitio = 0, Ordine = 3, AttivaRiarmoPulse = 0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x0F, Grafico = "IUIa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x04, NomeProfilo = "Pb13h", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 4, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x05, NomeProfilo = "Pb11h", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 5, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x06, NomeProfilo = "Pb8h", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 6, AttivaRiarmoPulse = 0, AttivaEqual = 0xF0, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x07, NomeProfilo = "Litio", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "LITIO650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x08, NomeProfilo = "IWa Pb13 Equal", DurataFase2 = 60, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x09, NomeProfilo = "IWa Pb11 Equal", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 9, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0A, NomeProfilo = "IWa Pb8 Equal", DurataFase2 = 120, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 10, AttivaRiarmoPulse = 0, AttivaEqual = 0xFF, AttivaMant = 0xF0, AttivaOpportunity = 0xF0, Grafico = "IWa650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0B, NomeProfilo = "Litio con BMS", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0C, NomeProfilo = "Litio con CAN", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 7, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0x00, AttivaMant = 0xF0, AttivaOpportunity = 0x00, Grafico = "" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0E, NomeProfilo = "SuperCAP", DurataFase2 = 100, Attivo = 1, FlagPb = 0, FlagGel = 0, FlagLitio = 1, Ordine = 8, AttivaRiarmoPulse = 0xF0, AttivaEqual = 0xF0, AttivaMant = 0x00, AttivaOpportunity = 0x00, Grafico = "LITIO650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x0F, NomeProfilo = "QUASAR Std.", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0x00, AttivaEqual = 0xF0, AttivaMant = 0xFF, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
+            ProfiliCarica.Add(new _mbProfiloCarica() { IdProfiloCaricaLL = 0x10, NomeProfilo = "QUASAR Fast", DurataFase2 = 100, Attivo = 1, FlagPb = 1, FlagGel = 0, FlagLitio = 0, Ordine = 8, AttivaRiarmoPulse = 0x00, AttivaEqual = 0xF0, AttivaMant = 0xFF, AttivaOpportunity = 0x00, Grafico = "Quasar650" });
+
+            return true;
+        }
+
+
 
     }
 }

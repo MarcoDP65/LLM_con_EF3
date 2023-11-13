@@ -17,6 +17,7 @@ using System.Text;
 using System.Windows.Forms;
 using Utility;
 
+
 namespace PannelloCharger
 {
     public partial class frmSuperCharger : Form

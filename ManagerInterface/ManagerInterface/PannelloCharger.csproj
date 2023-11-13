@@ -27,7 +27,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>LADE LIGHT Manager</ProductName>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>3.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -387,7 +387,11 @@
     <Compile Include="Database\GestioneBatterie\mbTipoBatteria.cs" />
     <Compile Include="Database\GestioneBatterie\ParametriCiclo.cs" />
     <Compile Include="Database\IDBattData.cs" />
+    <Compile Include="Database\Inizializzazioni SQLite\SqInitArticolo.cs" />
+    <Compile Include="Database\Inizializzazioni SQLite\SqStepInit.cs" />
     <Compile Include="Database\Inizializzazioni\LadeLightDataContext.cs" />
+    <Compile Include="Database\Inizializzazioni\ModelliInitDisplay.cs" />
+    <Compile Include="Database\Inizializzazioni\ModelloInit.cs" />
     <Compile Include="Database\Inizializzazioni\TArticoli.cs" />
     <Compile Include="Database\Inizializzazioni\TCodiciAssegnati.cs" />
     <Compile Include="Database\Inizializzazioni\TContatori.cs" />

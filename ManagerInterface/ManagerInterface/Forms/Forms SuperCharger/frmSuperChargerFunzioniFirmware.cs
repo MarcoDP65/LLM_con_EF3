@@ -487,6 +487,7 @@ namespace PannelloCharger
                 bool _esito;
                 int _tentativi;
                 int StepDelay;
+                int StepTimeout;
                 UInt32 StepSize;
 
                 Log.Debug("Lancio aggiornamento firmware");
@@ -511,24 +512,38 @@ namespace PannelloCharger
                     if ( StepDelay < 0 ) StepDelay = 0;
                 }
 
-/*
-                if (UInt32.TryParse(txtFWFStepSize.Text, out StepSize) != true)
+                if (int.TryParse(txtFWFStepTimeout.Text, out StepTimeout) != true)
                 {
-                    StepSize = 64;
+                    StepTimeout = 0;
                 }
                 else
                 {
-                    if (StepSize < 2) StepSize = 2;
+                    if (StepTimeout < 0) StepTimeout = 0;
                 }
 
-                _firmMng.FirmwareBlock.StepSize = StepSize;
-*/
+
+
+                /*
+                                if (UInt32.TryParse(txtFWFStepSize.Text, out StepSize) != true)
+                                {
+                                    StepSize = 64;
+                                }
+                                else
+                                {
+                                    if (StepSize < 2) StepSize = 2;
+                                }
+
+                                _firmMng.FirmwareBlock.StepSize = StepSize;
+                */
                 this.Cursor = Cursors.WaitCursor;
                 byte _area = (byte)(cmbFWSBFArea.SelectedIndex + 1);
                 if (_area < 1) 
                 {
                     _area = 1;  
                 }
+
+                _firmMng.FirmwareBlock.StepTimeout = StepTimeout;
+                _firmMng.FirmwareBlock.StepDelay = StepDelay;
 
                 _avCicli.ParametriWorker.MainCount = 100;
 

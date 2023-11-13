@@ -6741,6 +6741,73 @@
   <data name="&gt;&gt;GrbFWArea1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label64.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label64.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 184</value>
+  </data>
+  <data name="label64.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label64.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 29</value>
+  </data>
+  <data name="label64.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="label64.Text" xml:space="preserve">
+    <value>Step Timeout  
+*100 ms</value>
+  </data>
+  <data name="label64.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="&gt;&gt;label64.Name" xml:space="preserve">
+    <value>label64</value>
+  </data>
+  <data name="&gt;&gt;label64.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label64.Parent" xml:space="preserve">
+    <value>grbFWAggiornamento</value>
+  </data>
+  <data name="&gt;&gt;label64.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtFWFStepTimeout.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="txtFWFStepTimeout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 213</value>
+  </data>
+  <data name="txtFWFStepTimeout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtFWFStepTimeout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="txtFWFStepTimeout.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="txtFWFStepTimeout.Text" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="txtFWFStepTimeout.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepTimeout.Name" xml:space="preserve">
+    <value>txtFWFStepTimeout</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepTimeout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepTimeout.Parent" xml:space="preserve">
+    <value>grbFWAggiornamento</value>
+  </data>
+  <data name="&gt;&gt;txtFWFStepTimeout.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label61.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6772,7 +6839,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label61.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtFWFStepSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -6805,7 +6872,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWFStepSize.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label60.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6814,7 +6881,7 @@
     <value>NoControl</value>
   </data>
   <data name="label60.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 198</value>
+    <value>457, 196</value>
   </data>
   <data name="label60.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -6838,7 +6905,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label60.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtFWFStepDelay.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -6871,7 +6938,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWFStepDelay.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="cmbFWSBFArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt, style=Bold</value>
@@ -6907,7 +6974,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;cmbFWSBFArea.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="flwFWFileLLFStruct.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 89</value>
@@ -6931,7 +6998,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;flwFWFileLLFStruct.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtFWInSBFDtRev.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -6961,7 +7028,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInSBFDtRev.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label110.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6994,7 +7061,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="btnFWLanciaTrasmissione.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7030,7 +7097,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWLanciaTrasmissione.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="txtFWInLLFEsito.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -7060,7 +7127,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInLLFEsito.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="label108.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7093,7 +7160,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label108.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="label114.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7126,7 +7193,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label114.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="btnFWPreparaTrasmissione.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7159,7 +7226,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWPreparaTrasmissione.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="txtFWInLLFRev.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
@@ -7189,7 +7256,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWInLLFRev.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="label115.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7222,7 +7289,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label115.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="label116.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7255,7 +7322,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;label116.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="btnFWFileLLFLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -7285,7 +7352,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWFileLLFLoad.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="btnFWFileLLFReadSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -7315,7 +7382,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;btnFWFileLLFReadSearch.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="txtFWFileSBFrd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7342,7 +7409,7 @@
     <value>grbFWAggiornamento</value>
   </data>
   <data name="&gt;&gt;txtFWFileSBFrd.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="grbFWAggiornamento.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>

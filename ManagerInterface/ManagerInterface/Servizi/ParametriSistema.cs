@@ -36,12 +36,17 @@ namespace ChargerLogic
         public FTDI usbSuperCharger;
         public string usbSuperChargerSerNum;
 
+        public SerialPort serialeInitSuperCharger;
+        public FTDI usbInitSuperCharger;
+        public string usbInitSuperChargerSerNum;
+
         public DateTime UltimoMessaggio;
         public BaudRate ActiveBaudRate { get; set; }
 
         public CanaleDispositivo CanaleSpyBat;
         public CanaleDispositivo CanaleLadeLight;
         public CanaleDispositivo CanaleSupercharger;
+        public CanaleDispositivo CanaleInitSupercharger;
         public CaricaBatteria.TipoCaricaBatteria TipoCharger;
 
         public string portName = "COM9";
@@ -120,11 +125,13 @@ namespace ChargerLogic
                     serialeLadeLight = new SerialPort();
                     serialeSpyBatt = new SerialPort();
                     serialeSuperCharger = new SerialPort();
+                    serialeInitSuperCharger = new SerialPort();
 
                     usbCorrente = new FTDI();
                     usbLadeLight = new FTDI();
                     usbSpyBatt = new FTDI();
                     usbSuperCharger = new FTDI();
+                    usbInitSuperCharger = new FTDI();
                 }
 
             }
@@ -685,7 +692,7 @@ namespace ChargerLogic
         }
 
 
-       public bool scriviMessaggioLadeLight(byte[] messaggio, int Start, int NumByte)
+        public bool scriviMessaggioLadeLight(byte[] messaggio, int Start, int NumByte)
         {
 
             try

@@ -832,13 +832,14 @@ namespace ChargerLogic
                     if (ParametriApparato.llParApp != null)
                     {
                         ModelloCorrente = DatiBase.ModelliLL.Find(x => x.IdModelloLL == ParametriApparato.llParApp.TipoApparato);
-
-                        // sostituisco i valori teorici con quelli memorizzati sulla macchina
-                        ModelloCorrente.TensioneMin = ParametriApparato.llParApp.VMin;
-                        ModelloCorrente.TensioneMax = ParametriApparato.llParApp.VMax;
-                        ModelloCorrente.CorrenteMin = ParametriApparato.llParApp.Amax/10;
-                        ModelloCorrente.CorrenteMax = ParametriApparato.llParApp.Amax;
-
+                        if (ModelloCorrente != null)
+                        {
+                            // sostituisco i valori teorici con quelli memorizzati sulla macchina
+                            ModelloCorrente.TensioneMin = ParametriApparato.llParApp.VMin;
+                            ModelloCorrente.TensioneMax = ParametriApparato.llParApp.VMax;
+                            ModelloCorrente.CorrenteMin = ParametriApparato.llParApp.Amax / 10;
+                            ModelloCorrente.CorrenteMax = ParametriApparato.llParApp.Amax;
+                        }
                         if (DbAttivo != null)
                         {
                             // ParametriApparato._database = DbAttivo;
@@ -2111,10 +2112,8 @@ namespace ChargerLogic
         /// Cancella fisicamente un blocco di 4K dalla memoria flash mettendo tutti i Bytes a 0xFF
         /// </summary>
         /// <returns></returns>
-        public bool CancellaBlocco4K(uint StartAddr)
+        public bool CancellaBlocco4K(uint StartAddr, bool BeepIfZero = false)
         {
-
-
             try
             {
                 bool _esito;
@@ -2123,14 +2122,21 @@ namespace ChargerLogic
 
                 if (StartAddr < 0x1000)
                 {
-                    DialogResult risposta = MessageBox.Show("Richiesta cancellazione AREA 0 (Inizializzazione)\nConfermi l'operazione ?\nStart = " + StartAddr.ToString("6x"), "Cancellazione Memoria",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (risposta != System.Windows.Forms.DialogResult.Yes)
+                    if (!BeepIfZero)
                     {
-                        return false;
-                    }
+                        DialogResult risposta = MessageBox.Show("Richiesta cancellazione AREA 0 (Inizializzazione)\nConfermi l'operazione ?\nStart = " + StartAddr.ToString("6x"), "Cancellazione Memoria",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (risposta != System.Windows.Forms.DialogResult.Yes)
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        // Area 0 --> faccio un beep ... da cambiare con un toast message
+                        System.Media.SystemSounds.Exclamation.Play();
+                    }
                 }
                 //Fine DEBUG
 
@@ -2442,7 +2448,7 @@ namespace ChargerLogic
             }
         }
 
-        public bool ScriviParametriApparato()
+        public bool ScriviParametriApparato(bool SilentDelete = false)
         {
             try
             {
@@ -2494,7 +2500,7 @@ namespace ChargerLogic
                 if (ImmagineMemoria.GeneraByteArray())
                 {
                     // da far diventare unica
-                    _esito = CancellaBlocco4K(0);
+                    _esito = CancellaBlocco4K(0,SilentDelete);
 
                     byte[] _datiTemp = new byte[2];
                     _datiTemp = ImmagineMemoria.dataBuffer;
