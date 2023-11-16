@@ -66,7 +66,7 @@ namespace PannelloCharger
                     ToolTipText = "Indirizzo Area di memoria",
                     AspectName = "strAddrDestPacchetto",
                     Sortable = false,
-                    Width = 120,
+                    Width = 100,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
@@ -80,13 +80,25 @@ namespace PannelloCharger
                     ToolTipText = "Dimensione Area di memoria",
                     AspectName = "strNumBytes",
                     Sortable = false,
-                    Width = 120,
+                    Width = 100,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
                 };
                 lvwFWInFileStruct.AllColumns.Add(DimArea);
 
+                OLVColumn CrcArea = new OLVColumn()
+                {
+                    Text = "CRC",
+                    ToolTipText = "CRC Area di memoria",
+                    AspectName = "strCRCArea",
+                    Sortable = false,
+                    Width = 50,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
+                    IsVisible = true,
+                };
+                lvwFWInFileStruct.AllColumns.Add(CrcArea);
 
                 //-------------------------------------------- 
 
@@ -143,6 +155,7 @@ namespace PannelloCharger
                         _tempPar.NumBytes = (int)_area.DimDati;
                         _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
                         _tempPar.NumPacchetti = 0;
+                        _tempPar.CRCArea = _area.CRCPacchetto;
                         ListaAreeSRec.Add(_tempPar);
 
                     }
@@ -277,6 +290,7 @@ namespace PannelloCharger
                         _tempPar.NumBytes = (int)_area.DimDati;
                         _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
                         _tempPar.NumPacchetti = 0;
+                        _tempPar.CRCArea = _area.CRCPacchetto;
                         ListaAreeSRec.Add(_tempPar);
 
                     }
@@ -346,6 +360,7 @@ namespace PannelloCharger
                             ParametriAreaSCH _tempPar = new ParametriAreaSCH();
                             _tempPar.NumArea = NumArea++;
                             _tempPar.NumBytes = (int)_area.DimDati;
+                            _tempPar.CRCArea = _area.CRCPacchetto;
                             _tempPar.AddrDestPacchetto = _area.AddrDestPacchetto;
                             _tempPar.NumPacchetti =(int)_area.NumeroPacchetti;
 
@@ -417,7 +432,7 @@ namespace PannelloCharger
                     ToolTipText = "Indirizzo Area di memoria",
                     AspectName = "strAddrDestPacchetto",
                     Sortable = false,
-                    Width = 100,
+                    Width = 80,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
@@ -431,12 +446,27 @@ namespace PannelloCharger
                     ToolTipText = "Dimensione Area di memoria",
                     AspectName = "strNumBytes",
                     Sortable = false,
-                    Width = 80,
+                    Width = 60,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Right,
                     IsVisible = true,
                 };
                 flwFWFileLLFStruct.AllColumns.Add(DimArea);
+
+
+
+                OLVColumn CrcArea = new OLVColumn()
+                {
+                    Text = "CRC",
+                    ToolTipText = "CRC Area di memoria",
+                    AspectName = "strCRCArea",
+                    Sortable = false,
+                    Width = 40,
+                    HeaderTextAlign = HorizontalAlignment.Center,
+                    TextAlign = HorizontalAlignment.Right,
+                    IsVisible = true,
+                };
+                flwFWFileLLFStruct.AllColumns.Add(CrcArea);
 
                 OLVColumn NumPacchetti = new OLVColumn()
                 {
@@ -459,7 +489,7 @@ namespace PannelloCharger
                 {
                     Text = "",
                     Sortable = false,
-                    Width = 50,
+                    Width = 40,
                     HeaderTextAlign = HorizontalAlignment.Center,
                     TextAlign = HorizontalAlignment.Center,
                     FillsFreeSpace = true,

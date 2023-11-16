@@ -26,6 +26,7 @@ namespace PannelloCharger
         public int NumPacchetti { get; set; }
         public uint DimPacchetto { get; set; }
         public UInt32 AddrDestPacchetto { get; set; }
+        public ushort CRCArea { get; set; }    
 
         public string strNumArea
         {
@@ -54,6 +55,18 @@ namespace PannelloCharger
             {
                 if (NumPacchetti >= 0)
                     return NumPacchetti.ToString("0");
+                else
+                    return "";
+            }
+
+        }
+
+        public string strCRCArea
+        {
+            get
+            {
+                if (NumPacchetti >= 0)
+                    return CRCArea.ToString("X4");
                 else
                     return "";
             }

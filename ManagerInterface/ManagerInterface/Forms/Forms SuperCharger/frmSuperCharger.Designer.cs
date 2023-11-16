@@ -247,6 +247,8 @@
             this.label93 = new System.Windows.Forms.Label();
             this.txtFwRevA1RevFw = new System.Windows.Forms.TextBox();
             this.grbFWAggiornamento = new System.Windows.Forms.GroupBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.txtFWFStepTimeout = new System.Windows.Forms.TextBox();
             this.label61 = new System.Windows.Forms.Label();
             this.txtFWFStepSize = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
@@ -722,8 +724,6 @@
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label64 = new System.Windows.Forms.Label();
-            this.txtFWFStepTimeout = new System.Windows.Forms.TextBox();
             this.tabMonitor.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flvwLettureParametri)).BeginInit();
@@ -2281,6 +2281,17 @@
             resources.ApplyResources(this.grbFWAggiornamento, "grbFWAggiornamento");
             this.grbFWAggiornamento.Name = "grbFWAggiornamento";
             this.grbFWAggiornamento.TabStop = false;
+            // 
+            // label64
+            // 
+            resources.ApplyResources(this.label64, "label64");
+            this.label64.Name = "label64";
+            // 
+            // txtFWFStepTimeout
+            // 
+            this.txtFWFStepTimeout.AllowDrop = true;
+            resources.ApplyResources(this.txtFWFStepTimeout, "txtFWFStepTimeout");
+            this.txtFWFStepTimeout.Name = "txtFWFStepTimeout";
             // 
             // label61
             // 
@@ -5651,17 +5662,6 @@
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label64
-            // 
-            resources.ApplyResources(this.label64, "label64");
-            this.label64.Name = "label64";
-            // 
-            // txtFWFStepTimeout
-            // 
-            this.txtFWFStepTimeout.AllowDrop = true;
-            resources.ApplyResources(this.txtFWFStepTimeout, "txtFWFStepTimeout");
-            this.txtFWFStepTimeout.Name = "txtFWFStepTimeout";
             // 
             // frmSuperCharger
             // 

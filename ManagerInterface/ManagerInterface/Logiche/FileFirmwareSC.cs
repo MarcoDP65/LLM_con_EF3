@@ -271,14 +271,17 @@ namespace ChargerLogic
 
                 // BloccoFirmware.ListaAree.Add(_AreaCorrente);
                 // Blocchi dati elaborati, Ora accodo tutto e calcolo dimensioni e crc globale
-
+                // 16/11/23 -  Calcolo anche il CSC di area
+                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
                 uint DimTotale = 0;
                 foreach( AreaDatiFWSC Area in  BloccoFirmware.ListaAree ) 
                 {
                     DimTotale += Area.DimDati;
+                    codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+                    Area.CRCPacchetto = codCrc.ComputeChecksum(Area.PacchettoDati);
                 }
                 BloccoFirmware.LenFlash = DimTotale;
-
+                // Creo l'array generale
                 byte[] TempImmagine = new byte[DimTotale];
                 uint PosCorrente = 0;
                 foreach (AreaDatiFWSC Area in BloccoFirmware.ListaAree)
@@ -289,7 +292,7 @@ namespace ChargerLogic
                     }
                 }
 
-                Crc16Ccitt codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
+                codCrc = new Crc16Ccitt(InitialCrcValue.NonZero1);
                 BloccoFirmware.CrcFlash = codCrc.ComputeChecksum(TempImmagine);
 
                 BloccoFirmware.DatiOK = true;
@@ -725,6 +728,12 @@ namespace ChargerLogic
                     FirmwareBlock.MessaggioTestata[(_startByte + 3)] = _byte04;
                     _startByte += 4;
 
+                    // CRC Area 
+                    DataSplitter.splitUshort(_area.CRCPacchetto, ref lsb, ref msb);
+                    FirmwareBlock.MessaggioTestata[(_startByte + 0)] = msb;
+                    FirmwareBlock.MessaggioTestata[(_startByte + 1)] = lsb;
+                    _startByte += 2;
+
                 }
 
                 // Aggiungo il CRC calcolato sui bytes utili 
@@ -1112,7 +1121,7 @@ namespace ChargerLogic
         public uint DimPacchetto { get; set; }
         public UInt32 AddrDestPacchetto { get; set; }
         public UInt32 AddrFinePacchetto { get; set; }
-
+        public ushort CRCPacchetto { get; set; }
         public bool DatiOK { get; set; }
         public List<PacchettoDatiFWSC> ListaPacchetti = new List<PacchettoDatiFWSC>();
 
