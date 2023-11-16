@@ -666,7 +666,7 @@ namespace ChargerLogic
                     return _esito;
                 }
                 byte _startByte = 0;
-                int ArrayLen = 23 + 8 * FirmwareBlock.ListaAree.Count;
+                int ArrayLen = 23 + 10 * FirmwareBlock.ListaAree.Count;
                 int CrcLen = ArrayLen - 2;
                 FirmwareBlock.MessaggioTestata = new byte[ArrayLen];
 
